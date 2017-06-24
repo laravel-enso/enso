@@ -1,0 +1,74 @@
+// Variables
+@import "variables";
+@import "enso-variables";
+@import "bootswatch-variables";
+@import "ios-switch";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootswatch-paper";
+
+//square instead of rounded margins for all elements
+.btn,
+.badge,
+.navbar-nav > .user-menu .user-image,
+.chat .item > img,
+.form-control,
+.box,
+.box-header,
+.label,
+.nav-tabs-custom,
+.content-header > .breadcrumb, //fixme
+#toast-container > div {
+  	border-radius: 0;
+}
+
+//toaster customize
+.toast-top-right {
+  top: 55px;
+  right: 5px;
+}
+
+//toaster customize
+.toast-top-center {
+  top: 55px;
+}
+
+// cancel the blue outline of buttons in chrome
+button:focus,
+input:focus,
+select:focus,
+.btn-box-tool, {
+  	outline: 0 !important;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+//nprogress
+#nprogress .bar {
+  background: #f44336;
+  box-shadow: 0 1px 5px #888888;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #ff851b, 0 0 5px #ff851b;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}

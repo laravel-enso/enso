@@ -1,0 +1,48 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+canvas {
+  vertical-align: bottom;
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.login-title {
+  color: #c5c5c5;
+}
+
+.login-box {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -300px;
+}
+
+.login-box-body {
+  opacity: 0.85;
+}
+
+.reset-link {
+  float: right;
+  color: #c5c5c5;
+}
+
+#particles-js {
+  background-color: #201c1c;
+}
+

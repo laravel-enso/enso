@@ -1,0 +1,49 @@
+{
+    "global": {
+        "lang": "ro",
+        "dtStateSave": true,
+        "fixedHeader": true,
+        "collapsedSidebar": false,
+        "theme": "purple"
+    },
+    "local": {
+        "dashboard": {
+            "charts": {
+                "left": {
+                    "bar": {
+                        "title": "Bar Chart",
+                        "source": "/dashboard/getBarChartData"
+                    },
+                    "radar": {
+                        "title": "Radar Chart",
+                        "source": "/dashboard/getRadarChartData"
+                    },
+                    "polarArea": {
+                        "title": "Polar Chart",
+                        "source": "/dashboard/getPolarChartData"
+                    }
+                },
+                "center": {
+                    "pie": {
+                        "title": "Pie Chart",
+                        "source": "/dashboard/getPieChartData"
+                    },
+                    "doughnut": {
+                        "title": "Doughnut Chart",
+                        "source": "/dashboard/getPieChartData"
+                    },
+                    "line": {
+                        "title": "Line Chart",
+                        "source": "/dashboard/getLineChartData"
+                    }
+                },
+                "right": {
+                    "bubble": {
+                        "title": "Bubble Chart",
+                        "source": "/dashboard/getBubbleChartData"
+                    }
+                }
+            }
+        }
+    }
+}
