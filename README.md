@@ -18,7 +18,7 @@ demo *soon*
 5. Publish the needed assets with:
 
 ```
-art vendor:publish --tag=core-storage`
+art vendor:publish --tag=core-storage
 art vendor:publish --tag=avatars-storage
 ```
 
