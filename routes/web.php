@@ -4,8 +4,8 @@ Auth::routes();
 
 Route::group([
     'middleware' => ['auth', 'action-logger'],
-    'prefix' => 'dashboard',
-    'as' => 'dashboard.'
+    'prefix'     => 'dashboard',
+    'as'         => 'dashboard.',
 ], function () {
     Route::get('getLineChartData', 'DashboardController@getLineChartData')->name('getLineChartData');
     Route::get('getBarChartData', 'DashboardController@getBarChartData')->name('getBarChartData');

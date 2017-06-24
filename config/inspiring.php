@@ -31,6 +31,6 @@
                   "Be so good they can't ignore you - Steve Martin",
                   'The worst decision is indecision - Ryan Harwood @ PureWow',
                   "Don't guess. Measure - Slava Akhmechet @ RethinkDB",
-                  'Try again. Fail again. Fail better - Samuel Beckett'
-            ]
+                  'Try again. Fail again. Fail better - Samuel Beckett',
+            ],
       ];
