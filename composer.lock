@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "72e9cf290d262ae4b2f5e3f1515e4cd6",
+    "content-hash": "c91adb0dde64578d4b567706e456efcc",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -879,16 +879,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.10",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "7457588df1fc8dd687726210da6831b0d0d933e6"
+                "reference": "e517bb21c15fb292a2268eb157af66ef6d102dc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/7457588df1fc8dd687726210da6831b0d0d933e6",
-                "reference": "7457588df1fc8dd687726210da6831b0d0d933e6",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/e517bb21c15fb292a2268eb157af66ef6d102dc6",
+                "reference": "e517bb21c15fb292a2268eb157af66ef6d102dc6",
                 "shasum": ""
             },
             "require": {
@@ -934,7 +934,7 @@
                 }
             ],
             "description": "Dependency for Laravel Enso.",
-            "time": "2017-06-24T15:36:21+00:00"
+            "time": "2017-06-25T14:17:19+00:00"
         },
         {
             "name": "laravel-enso/coreplus",
@@ -1251,16 +1251,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.15",
+            "version": "1.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "c3843a01150963349f1238181cd833b2eaa97b40"
+                "reference": "92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/c3843a01150963349f1238181cd833b2eaa97b40",
-                "reference": "c3843a01150963349f1238181cd833b2eaa97b40",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf",
+                "reference": "92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1284,7 @@
                 }
             ],
             "description": "LaravelEnso localisation management depedency",
-            "time": "2017-06-24T14:36:03+00:00"
+            "time": "2017-06-25T14:15:35+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
@@ -5428,7 +5428,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.4"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
