@@ -1,7 +1,5 @@
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
-[![Total Downloads](https://poser.pugx.org/laravel-enso/enso/downloads)](https://packagist.org/packages/laravel-enso/enso)
-[![Latest Stable Version](https://poser.pugx.org/laravel-enso/enso/version)](https://packagist.org/packages/laravel-enso/enso)
 
 Boilerplate for any new Laravel project with lots of goodies included.
 
