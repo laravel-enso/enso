@@ -686,16 +686,16 @@
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "2f88670465ac7bfb711fe5afc3b9a71c995fd39d"
+                "reference": "d6b6539a1c893311535dc474d34c82bd066cd11c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/2f88670465ac7bfb711fe5afc3b9a71c995fd39d",
-                "reference": "2f88670465ac7bfb711fe5afc3b9a71c995fd39d",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/d6b6539a1c893311535dc474d34c82bd066cd11c",
+                "reference": "d6b6539a1c893311535dc474d34c82bd066cd11c",
                 "shasum": ""
             },
             "require": {
@@ -714,12 +714,12 @@
             ],
             "authors": [
                 {
-                    "name": "mishu",
+                    "name": "Mishu",
                     "email": "mishu@xtelecom.ro"
                 }
             ],
             "description": "Avatar Manager depedency for Laravel Enso",
-            "time": "2017-06-24T14:52:49+00:00"
+            "time": "2017-06-25T12:33:09+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -1101,16 +1101,16 @@
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "9d784aa092f115a5c2a4d2fcf90e713bab924740"
+                "reference": "053b4511edb59080ff54fb880edf888d2a40bc99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/9d784aa092f115a5c2a4d2fcf90e713bab924740",
-                "reference": "9d784aa092f115a5c2a4d2fcf90e713bab924740",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/053b4511edb59080ff54fb880edf888d2a40bc99",
+                "reference": "053b4511edb59080ff54fb880edf888d2a40bc99",
                 "shasum": ""
             },
             "require": {
@@ -1136,7 +1136,7 @@
                 }
             ],
             "description": "File manager dependency for Laravel Enso",
-            "time": "2017-06-25T12:29:47+00:00"
+            "time": "2017-06-25T15:33:31+00:00"
         },
         {
             "name": "laravel-enso/helpers",
