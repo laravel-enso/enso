@@ -5,6 +5,8 @@ Boilerplate for any new Laravel project with lots of goodies included.
 
 demo *soon*
 
+100% compatible with Google Chrome for the moment.
+
 Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
 
 [AdminLTE](https://adminlte.io)
@@ -41,20 +43,13 @@ Special thanks to Taylor Otwell, [Jeffrey Way](https://laracasts.com), Evan You 
 
 4. Run `php artisan migrate`
 
-5. Publish the needed assets with:
+5. Setup the `config/laravel-enso.php` file
 
-```
-art vendor:publish --tag=core-storage
-art vendor:publish --tag=avatars-storage
-```
+6. (optional) `npm install` / `npm run dev`
 
-6. Setup the `config/laravel-enso.php` file
+7. Login into the project with user: `admin@login.com`, password: `password`
 
-7. (optional) `npm install` / `npm run dev`
-
-8. Login into the project with user: `admin@login.com`, password: `password`
-
-9. Enjoy
+Enjoy!
 
 ### Contributions
 
