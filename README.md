@@ -9,13 +9,13 @@ demo *soon*
 
 Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
 
-[Greatest free bootstrap admin template, AdminLTE](https://adminlte.io)
+[AdminLTE](https://adminlte.io)
 
-[The most complete Data table library out there](https://datatables.net)
+[DataTables](https://datatables.net)
 
 [Bootswatch Paper](https://bootswatch.com)
 
-[Chartjs](http://www.chartjs.org)
+[Chartjs](http://chartjs.org)
 
 [Font awesome](http://fontawesome.io)
 
@@ -31,7 +31,7 @@ Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
 
 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
 
-Special thanks to Taylor Otwell, [Jeffrey Way](www.laracasts.com) and Evan You ...
+Special thanks to Taylor Otwell, [Jeffrey Way](https://laracasts.com), Evan You and [Allan Jardine](https://datatables.net) ...
 
 ### Installation Steps
 
