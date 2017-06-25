@@ -4,8 +4,14 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7.0",
+        "laravel-enso/commentsmanager": "^1.1",
+        "laravel-enso/contactpersons": "^1.1",
         "laravel-enso/core": "^1.1",
+        "laravel-enso/coreplus": "^1.1",
+        "laravel-enso/dataimport": "^1.1",
+        "laravel-enso/documentsmanager": "^1.1",
+        "laravel-enso/notifications": "^1.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },

@@ -37,11 +37,6 @@ canvas {
   opacity: 0.85;
 }
 
-.reset-link {
-  float: right;
-  color: #c5c5c5;
-}
-
 #particles-js {
   background-color: #201c1c;
 }

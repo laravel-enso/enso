@@ -6,7 +6,7 @@ use LaravelEnso\Core\app\Models\Owner as Owners;
 
 class Owner extends Owners
 {
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = ['name', 'description', 'is_active'];
 
     public function users()
     {

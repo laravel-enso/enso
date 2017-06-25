@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 149);
+/******/ 	return __webpack_require__(__webpack_require__.s = 166);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 149:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(150);
+module.exports = __webpack_require__(167);
 
 
 /***/ }),
 
-/***/ 150:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 moment.locale(Store.user.preferences.global.lang);
@@ -85,9 +85,9 @@ Chart.defaults.global.legend.fullWidth = false;
 
 toastr.options = __webpack_require__(7);
 
-__webpack_require__(151);
+__webpack_require__(168);
 
-window.bootstrapSelect = __webpack_require__(152);
+window.bootstrapSelect = __webpack_require__(169);
 
 $.fn.selectpicker.defaults = bootstrapSelect()[Store.user.preferences.global.lang] || bootstrapSelect()['en'];
 
@@ -120,7 +120,7 @@ axios.interceptors.response.use(function (response) {
 
 /***/ }),
 
-/***/ 151:
+/***/ 168:
 /***/ (function(module, exports) {
 
 $.extend(true, $.fn.dataTable.defaults, {
@@ -154,7 +154,7 @@ $.fn.dataTable.Api.register('sum()', function () {
 
 /***/ }),
 
-/***/ 152:
+/***/ 169:
 /***/ (function(module, exports) {
 
 module.exports = function () {

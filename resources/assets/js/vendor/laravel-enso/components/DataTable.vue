@@ -8,7 +8,7 @@
             </h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool btn-sm" @click="clearState()">
-                    <i class="fa fa-undo"></i>
+                    reset
                 </button>
                 <button class="btn btn-box-tool btn-sm" @click="toggleDisplayClass()">
                     <i class="fa fa-th-list" v-if="classes.display"></i>

@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e25d9cbb31aac7cd04133fc9d3470cff",
+    "content-hash": "72e9cf290d262ae4b2f5e3f1515e4cd6",
     "packages": [
+        {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "de15d00a74696db62e1b4782474c27ed0c4fc763"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/de15d00a74696db62e1b4782474c27ed0c4fc763",
+                "reference": "de15d00a74696db62e1b4782474c27ed0c4fc763",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+                "maximebf/debugbar": "~1.13.0",
+                "php": ">=5.5.9",
+                "symfony/finder": "~2.7|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2017-06-01T17:46:08+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -533,16 +595,16 @@
         },
         {
             "name": "laracasts/flash",
-            "version": "2.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/flash.git",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
+                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
                 "shasum": ""
             },
             "require": {
@@ -550,9 +612,20 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "mockery/mockery": "dev-master"
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^6.1"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Flash\\FlashServiceProvider"
+                    ],
+                    "aliases": {
+                        "Flash": "Laracasts\\Flash\\Flash"
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Laracasts\\Flash": "src/"
@@ -572,20 +645,20 @@
                 }
             ],
             "description": "Easy flash notifications",
-            "time": "2016-07-11T20:46:02+00:00"
+            "time": "2017-06-22T19:01:19+00:00"
         },
         {
             "name": "laravel-enso/actionlogger",
-            "version": "1.1.6",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActionLogger.git",
-                "reference": "ae94e5bfd1f159fa112930c21964470c67c79147"
+                "reference": "9b7cf88aaace478e6553e3deed72d4a685d688c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/ae94e5bfd1f159fa112930c21964470c67c79147",
-                "reference": "ae94e5bfd1f159fa112930c21964470c67c79147",
+                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/9b7cf88aaace478e6553e3deed72d4a685d688c1",
+                "reference": "9b7cf88aaace478e6553e3deed72d4a685d688c1",
                 "shasum": ""
             },
             "require": {
@@ -609,20 +682,20 @@
                 }
             ],
             "description": "Middleware for logging user's accesed routes",
-            "time": "2017-06-22T13:05:29+00:00"
+            "time": "2017-06-24T14:20:06+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "1.1.5",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "38f12579a9e4f929df2d31429d696b0975aa0cd9"
+                "reference": "2f88670465ac7bfb711fe5afc3b9a71c995fd39d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/38f12579a9e4f929df2d31429d696b0975aa0cd9",
-                "reference": "38f12579a9e4f929df2d31429d696b0975aa0cd9",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/2f88670465ac7bfb711fe5afc3b9a71c995fd39d",
+                "reference": "2f88670465ac7bfb711fe5afc3b9a71c995fd39d",
                 "shasum": ""
             },
             "require": {
@@ -641,12 +714,12 @@
             ],
             "authors": [
                 {
-                    "name": "Mishu",
+                    "name": "mishu",
                     "email": "mishu@xtelecom.ro"
                 }
             ],
             "description": "Avatar Manager depedency for Laravel Enso",
-            "time": "2017-06-23T11:08:14+00:00"
+            "time": "2017-06-24T14:52:49+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -687,22 +760,140 @@
             "time": "2017-06-22T17:56:30+00:00"
         },
         {
-            "name": "laravel-enso/core",
-            "version": "1.1.2",
+            "name": "laravel-enso/cnpvalidator",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "8f88925c76118d06ef92f8e7836b09ad0189287c"
+                "url": "https://github.com/laravel-enso/CnpValidator.git",
+                "reference": "9b3c200bca16dc69669f613f7bec2c128b309325"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/8f88925c76118d06ef92f8e7836b09ad0189287c",
-                "reference": "8f88925c76118d06ef92f8e7836b09ad0189287c",
+                "url": "https://api.github.com/repos/laravel-enso/CnpValidator/zipball/9b3c200bca16dc69669f613f7bec2c128b309325",
+                "reference": "9b3c200bca16dc69669f613f7bec2c128b309325",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "validator",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\CnpValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Romanian CNP validator for Laravel",
+            "time": "2017-06-20T19:25:51+00:00"
+        },
+        {
+            "name": "laravel-enso/commentsmanager",
+            "version": "1.1.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/CommentsManager.git",
+                "reference": "89b70157f2a6283564199d12837474acea7b3d37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/89b70157f2a6283564199d12837474acea7b3d37",
+                "reference": "89b70157f2a6283564199d12837474acea7b3d37",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "1.1.*",
+                "laravel-enso/trackwho": "1.1.*",
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "plugin",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\CommentsManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Commentable plugin for Laravel Enso",
+            "time": "2017-06-25T12:29:18+00:00"
+        },
+        {
+            "name": "laravel-enso/contactpersons",
+            "version": "1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/ContactPersons.git",
+                "reference": "293a28421920b46f242f00b97118ef84887c59b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/ContactPersons/zipball/293a28421920b46f242f00b97118ef84887c59b2",
+                "reference": "293a28421920b46f242f00b97118ef84887c59b2",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "1.1.*",
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "plugin",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\ContactPersons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                },
+                {
+                    "name": "Mihai Ocneanu",
+                    "email": "mihai.ocneanu@gmail.com"
+                }
+            ],
+            "description": "Contact Persons plugin for Larave Enso",
+            "time": "2017-06-23T17:34:12+00:00"
+        },
+        {
+            "name": "laravel-enso/core",
+            "version": "1.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/Core.git",
+                "reference": "7457588df1fc8dd687726210da6831b0d0d933e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/7457588df1fc8dd687726210da6831b0d0d933e6",
+                "reference": "7457588df1fc8dd687726210da6831b0d0d933e6",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~6.0",
-                "laracasts/flash": "^2.0",
+                "laracasts/flash": "^3.0",
                 "laravel-enso/actionlogger": "1.1.*",
                 "laravel-enso/avatarmanager": "1.1.*",
                 "laravel-enso/charts": "1.1.*",
@@ -718,6 +909,7 @@
                 "laravel-enso/rememberable": "1.1.*",
                 "laravel-enso/rolemanager": "1.1.*",
                 "laravel-enso/select": "1.1.*",
+                "laravel-enso/structuremanager": "1.1.*",
                 "laravel-enso/trackwho": "1.1.*",
                 "laravel-enso/tutorialmanager": "1.1.*",
                 "laravel/framework": "5.4.*",
@@ -742,20 +934,107 @@
                 }
             ],
             "description": "Dependency for Laravel Enso.",
-            "time": "2017-06-23T11:12:13+00:00"
+            "time": "2017-06-24T15:36:21+00:00"
         },
         {
-            "name": "laravel-enso/datatable",
-            "version": "1.1.14",
+            "name": "laravel-enso/coreplus",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/DataTable.git",
-                "reference": "56d1c19d814a1f8b934060e1fc3c8bbf102be08c"
+                "url": "https://github.com/laravel-enso/CorePlus.git",
+                "reference": "b68ffd022ca601c606d356ed1cebd2d2b98996b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/56d1c19d814a1f8b934060e1fc3c8bbf102be08c",
-                "reference": "56d1c19d814a1f8b934060e1fc3c8bbf102be08c",
+                "url": "https://api.github.com/repos/laravel-enso/CorePlus/zipball/b68ffd022ca601c606d356ed1cebd2d2b98996b8",
+                "reference": "b68ffd022ca601c606d356ed1cebd2d2b98996b8",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/laravel-debugbar": "^2.3",
+                "laravel-enso/cnpvalidator": "1.1.*",
+                "laravel-enso/commentsmanager": "1.1.*",
+                "laravel-enso/contactpersons": "1.1.*",
+                "laravel-enso/core": "1.1.*",
+                "laravel-enso/dataimport": "1.1.*",
+                "laravel-enso/documentsmanager": "1.1.*",
+                "laravel-enso/notifications": "1.1.*",
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "dependency",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\CorePlus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Dependency for Laravel Enso.",
+            "time": "2017-06-25T12:38:27+00:00"
+        },
+        {
+            "name": "laravel-enso/dataimport",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/DataImport.git",
+                "reference": "9ad6ec98bc60e9cf6674869e41295f678b3925ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/9ad6ec98bc60e9cf6674869e41295f678b3925ec",
+                "reference": "9ad6ec98bc60e9cf6674869e41295f678b3925ec",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "1.1.*",
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\DataImport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mishu",
+                    "email": "mishu@xtelecom.ro"
+                },
+                {
+                    "name": "Mihai Ocneanu",
+                    "email": "mihai.ocneanu@gmail.com"
+                }
+            ],
+            "description": "Excel Importer",
+            "time": "2017-06-23T17:36:40+00:00"
+        },
+        {
+            "name": "laravel-enso/datatable",
+            "version": "1.1.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/DataTable.git",
+                "reference": "f03c71e6e6f0953bd0613c7ee92137f27cf800f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/f03c71e6e6f0953bd0613c7ee92137f27cf800f3",
+                "reference": "f03c71e6e6f0953bd0613c7ee92137f27cf800f3",
                 "shasum": ""
             },
             "require": {
@@ -780,20 +1059,58 @@
                 }
             ],
             "description": "DataTable builder for DataTable.net jQuery library",
-            "time": "2017-06-23T11:13:07+00:00"
+            "time": "2017-06-25T11:59:45+00:00"
         },
         {
-            "name": "laravel-enso/filemanager",
-            "version": "1.1.5",
+            "name": "laravel-enso/documentsmanager",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "21d6c1d83424d2f9826ff0257b59986e7fee9688"
+                "url": "https://github.com/laravel-enso/DocumentsManager.git",
+                "reference": "a8db41f3a3452c40ec3a7bbfcf6a12520702229d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/21d6c1d83424d2f9826ff0257b59986e7fee9688",
-                "reference": "21d6c1d83424d2f9826ff0257b59986e7fee9688",
+                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/a8db41f3a3452c40ec3a7bbfcf6a12520702229d",
+                "reference": "a8db41f3a3452c40ec3a7bbfcf6a12520702229d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "1.1.*",
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "plugin",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\DocumentsManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Documentable plugin for Larave Enso",
+            "time": "2017-06-25T12:35:24+00:00"
+        },
+        {
+            "name": "laravel-enso/filemanager",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/FileManager.git",
+                "reference": "9d784aa092f115a5c2a4d2fcf90e713bab924740"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/9d784aa092f115a5c2a4d2fcf90e713bab924740",
+                "reference": "9d784aa092f115a5c2a4d2fcf90e713bab924740",
                 "shasum": ""
             },
             "require": {
@@ -819,20 +1136,20 @@
                 }
             ],
             "description": "File manager dependency for Laravel Enso",
-            "time": "2017-06-22T18:04:58+00:00"
+            "time": "2017-06-25T12:29:47+00:00"
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "1.1.1",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Helpers.git",
-                "reference": "241160fe185b2e8ba9258ec5e027ae61b3a15c8e"
+                "reference": "1330e7c09f7fe13670b2c5c960621b818dfbc354"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/241160fe185b2e8ba9258ec5e027ae61b3a15c8e",
-                "reference": "241160fe185b2e8ba9258ec5e027ae61b3a15c8e",
+                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/1330e7c09f7fe13670b2c5c960621b818dfbc354",
+                "reference": "1330e7c09f7fe13670b2c5c960621b818dfbc354",
                 "shasum": ""
             },
             "require": {
@@ -856,7 +1173,7 @@
                 }
             ],
             "description": "Collection of helper classes for Laravel-enso/core",
-            "time": "2017-06-21T12:21:23+00:00"
+            "time": "2017-06-25T12:02:48+00:00"
         },
         {
             "name": "laravel-enso/historytracker",
@@ -897,23 +1214,23 @@
         },
         {
             "name": "laravel-enso/impersonate",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Impersonate.git",
-                "reference": "6be2834f11c463376b480bfcbe8c9888750a16b3"
+                "reference": "89964a65973388fbcd79c57a7b4296ebb86f0815"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/6be2834f11c463376b480bfcbe8c9888750a16b3",
-                "reference": "6be2834f11c463376b480bfcbe8c9888750a16b3",
+                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/89964a65973388fbcd79c57a7b4296ebb86f0815",
+                "reference": "89964a65973388fbcd79c57a7b4296ebb86f0815",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "5.4.*",
                 "php": ">=5.6.4"
             },
-            "type": "middleware",
+            "type": "depedency",
             "autoload": {
                 "psr-4": {
                     "LaravelEnso\\Impersonate\\": "src/"
@@ -929,21 +1246,21 @@
                     "email": "mishu@xtelecom.ro"
                 }
             ],
-            "description": "Middleware for impersonating users",
-            "time": "2017-06-22T19:25:17+00:00"
+            "description": "Depedency for Laravel Enso user impersonating",
+            "time": "2017-06-24T14:35:19+00:00"
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.11",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "0c9ee5792bdd9814895f3111cb303307ce965c47"
+                "reference": "c3843a01150963349f1238181cd833b2eaa97b40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/0c9ee5792bdd9814895f3111cb303307ce965c47",
-                "reference": "0c9ee5792bdd9814895f3111cb303307ce965c47",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/c3843a01150963349f1238181cd833b2eaa97b40",
+                "reference": "c3843a01150963349f1238181cd833b2eaa97b40",
                 "shasum": ""
             },
             "require": {
@@ -967,20 +1284,20 @@
                 }
             ],
             "description": "LaravelEnso localisation management depedency",
-            "time": "2017-06-23T13:28:25+00:00"
+            "time": "2017-06-24T14:36:03+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
-            "version": "1.1.8",
+            "version": "1.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/LogManager.git",
-                "reference": "cbb0a5444047d61b45480b22990d786fede77e8d"
+                "reference": "28aaf7544e6296b17277950f9dfbe35730cd7835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/cbb0a5444047d61b45480b22990d786fede77e8d",
-                "reference": "cbb0a5444047d61b45480b22990d786fede77e8d",
+                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/28aaf7544e6296b17277950f9dfbe35730cd7835",
+                "reference": "28aaf7544e6296b17277950f9dfbe35730cd7835",
                 "shasum": ""
             },
             "require": {
@@ -1006,20 +1323,20 @@
                 }
             ],
             "description": "Depedency for Laravel Enso logs management",
-            "time": "2017-06-23T12:13:55+00:00"
+            "time": "2017-06-24T14:36:33+00:00"
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "1.1.5",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "31cc28392c25a462300f37f332c5fc67e85c7176"
+                "reference": "7a1ec1c5122103d978e0cccf01bf5d9b75e79aa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/31cc28392c25a462300f37f332c5fc67e85c7176",
-                "reference": "31cc28392c25a462300f37f332c5fc67e85c7176",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/7a1ec1c5122103d978e0cccf01bf5d9b75e79aa2",
+                "reference": "7a1ec1c5122103d978e0cccf01bf5d9b75e79aa2",
                 "shasum": ""
             },
             "require": {
@@ -1044,20 +1361,59 @@
                 }
             ],
             "description": "Menu Manager depedency for Laravel Enso",
-            "time": "2017-06-23T11:15:57+00:00"
+            "time": "2017-06-24T14:37:15+00:00"
         },
         {
-            "name": "laravel-enso/permissionmanager",
+            "name": "laravel-enso/notifications",
             "version": "1.1.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "1d4516d6e15996925f20c0b0f702e05003becc6a"
+                "url": "https://github.com/laravel-enso/Notifications.git",
+                "reference": "ef6433c2ba2cff89df2b4b25d5575dde8cfc9580"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/1d4516d6e15996925f20c0b0f702e05003becc6a",
-                "reference": "1d4516d6e15996925f20c0b0f702e05003becc6a",
+                "url": "https://api.github.com/repos/laravel-enso/Notifications/zipball/ef6433c2ba2cff89df2b4b25d5575dde8cfc9580",
+                "reference": "ef6433c2ba2cff89df2b4b25d5575dde8cfc9580",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.4.*",
+                "nesbot/carbon": "^1.0",
+                "php": ">=5.6.4",
+                "pusher/pusher-php-server": "^2.5"
+            },
+            "type": "depedency",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\Notifications\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Notifications manager dependency for LaravelEnso",
+            "time": "2017-06-23T17:40:51+00:00"
+        },
+        {
+            "name": "laravel-enso/permissionmanager",
+            "version": "1.1.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/PermissionManager.git",
+                "reference": "1d3def962b738ca908e46f1bd2c1ef9d78867d7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/1d3def962b738ca908e46f1bd2c1ef9d78867d7e",
+                "reference": "1d3def962b738ca908e46f1bd2c1ef9d78867d7e",
                 "shasum": ""
             },
             "require": {
@@ -1082,7 +1438,7 @@
                 }
             ],
             "description": "Permission Manager depedency for Laravel Enso.",
-            "time": "2017-06-23T11:17:20+00:00"
+            "time": "2017-06-24T14:38:15+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
@@ -1123,16 +1479,16 @@
         },
         {
             "name": "laravel-enso/rolemanager",
-            "version": "1.1.4",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/RoleManager.git",
-                "reference": "08c6fb32bbf7c361a6502ba281894de218970d4e"
+                "reference": "091dbea78ffe4fd5c0828bfa857240f21cd59c3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/08c6fb32bbf7c361a6502ba281894de218970d4e",
-                "reference": "08c6fb32bbf7c361a6502ba281894de218970d4e",
+                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/091dbea78ffe4fd5c0828bfa857240f21cd59c3e",
+                "reference": "091dbea78ffe4fd5c0828bfa857240f21cd59c3e",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1513,7 @@
                 }
             ],
             "description": "Role Manager depedency for Laravel Enso",
-            "time": "2017-06-23T11:18:07+00:00"
+            "time": "2017-06-24T14:38:45+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -1195,6 +1551,43 @@
             ],
             "description": "Bootstrap Select data builder with server-side and a vue component",
             "time": "2017-06-22T13:46:28+00:00"
+        },
+        {
+            "name": "laravel-enso/structuremanager",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/StructureManager.git",
+                "reference": "880bd39623697fb5cd74c6052add3fb2200de5ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/880bd39623697fb5cd74c6052add3fb2200de5ba",
+                "reference": "880bd39623697fb5cd74c6052add3fb2200de5ba",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "type": "dependency",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\StructureManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mishu",
+                    "email": "mishu@xtelecom.ro"
+                }
+            ],
+            "description": "Structure Manager depedency for Laravel Enso",
+            "time": "2017-06-25T11:51:22+00:00"
         },
         {
             "name": "laravel-enso/trackwho",
@@ -1235,16 +1628,16 @@
         },
         {
             "name": "laravel-enso/tutorialmanager",
-            "version": "1.1.12",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TutorialManager.git",
-                "reference": "5d4d55f69f970a7975cfb28b256343cd3e98cb3f"
+                "reference": "bb4bf31c05889d2cad97f36032475275b988fc55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/5d4d55f69f970a7975cfb28b256343cd3e98cb3f",
-                "reference": "5d4d55f69f970a7975cfb28b256343cd3e98cb3f",
+                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/bb4bf31c05889d2cad97f36032475275b988fc55",
+                "reference": "bb4bf31c05889d2cad97f36032475275b988fc55",
                 "shasum": ""
             },
             "require": {
@@ -1269,7 +1662,7 @@
                 }
             ],
             "description": "Laravel Enso tutorials management dependency",
-            "time": "2017-06-23T11:18:50+00:00"
+            "time": "2017-06-24T14:39:28+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1677,6 +2070,67 @@
                 "laravel"
             ],
             "time": "2017-06-21T20:39:34+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "1.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "afee79a236348e39a44cb837106b7c5b4897ac2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/afee79a236348e39a44cb837106b7c5b4897ac2a",
+                "reference": "afee79a236348e39a44cb837106b7c5b4897ac2a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2017-01-05T08:46:19+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2108,16 +2562,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.7",
+            "version": "v0.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "be969b9dc89dcaefdb9a3117fa91fa38bca19f50"
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/be969b9dc89dcaefdb9a3117fa91fa38bca19f50",
-                "reference": "be969b9dc89dcaefdb9a3117fa91fa38bca19f50",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
                 "shasum": ""
             },
             "require": {
@@ -2177,7 +2631,51 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-06-20T12:51:31+00:00"
+            "time": "2017-06-24T06:16:19+00:00"
+        },
+        {
+            "name": "pusher/pusher-php-server",
+            "version": "2.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "2cf2ba85e7ce3250468a1c42ab7c948a7d43839d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/2cf2ba85e7ce3250468a1c42ab7c948a7d43839d",
+                "reference": "2cf2ba85e7ce3250468a1c42ab7c948a7d43839d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "homepage": "https://github.com/pusher/pusher-php-server",
+            "keywords": [
+                "events",
+                "php-pusher-server",
+                "publish",
+                "pusher",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2017-06-06T16:41:17+00:00"
         },
         {
             "name": "ramsey/uuid",

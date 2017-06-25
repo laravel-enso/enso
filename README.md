@@ -3,7 +3,25 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/enso/downloads)](https://packagist.org/packages/laravel-enso/enso)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/enso/version)](https://packagist.org/packages/laravel-enso/enso)
 
+Boilerplate for any new Laravel project with lots of goodies included.
+
 demo *soon*
+
+Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
+
+[Greatest free bootstrap admin template, AdminLTE](https://adminlte.io)
+[The most complete Data table library out there](https://datatables.net)
+[Bootswatch Paper](https://bootswatch.com)
+[Chartjs](http://www.chartjs.org)
+[Font awesome](http://fontawesome.io)
+[Toastr.js](http://codeseven.github.io/toastr)
+[Particles.js](http://vincentgarreau.com/particles.js)
+[Nprogress.js](http://ricostacruz.com/nprogress)
+[Bootstrap Tour](http://bootstraptour.com)
+[Bootstrap Select](https://silviomoreto.github.io/bootstrap-select)
+[Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
+
+Special thanks to Taylor Otwell, [Jeffrey Way](www.laracasts.com) and Evan You ...
 
 ### Installation Steps
 
