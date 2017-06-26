@@ -3,11 +3,11 @@
 
 Boilerplate for any new Laravel project with lots of goodies included.
 
-demo *soon*
+Demo coming *soon*
 
 100% compatible with Google Chrome for the moment.
 
-Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
+Built with Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
 
 [AdminLTE](https://adminlte.io)
 
@@ -31,7 +31,7 @@ Build with Bootstrap 3.3.7, Vuejs 2.x, of course Laravel 5.4 and:
 
 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
 
-Special thanks to Taylor Otwell, [Jeffrey Way](https://laracasts.com), Evan You and [Allan Jardine](https://datatables.net) ...
+Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/)...
 
 ### Installation Steps
 
