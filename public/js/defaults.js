@@ -60,20 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 149);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 149:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(150);
-
-
-/***/ }),
-
-/***/ 150:
+/***/ "./resources/assets/js/defaults.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 moment.locale(Store.user.preferences.global.lang);
@@ -83,11 +75,11 @@ Chart.defaults.global.legend.display = true;
 Chart.defaults.global.legend.labels.boxWidth = 15;
 Chart.defaults.global.legend.fullWidth = false;
 
-toastr.options = __webpack_require__(7);
+toastr.options = __webpack_require__("./resources/assets/js/vendor/laravel-enso/modules/toastr.js");
 
-__webpack_require__(151);
+__webpack_require__("./resources/assets/js/vendor/laravel-enso/modules/dataTable.js");
 
-window.bootstrapSelect = __webpack_require__(152);
+window.bootstrapSelect = __webpack_require__("./resources/assets/js/vendor/laravel-enso/modules/bootstrapSelect.js");
 
 $.fn.selectpicker.defaults = bootstrapSelect()[Store.user.preferences.global.lang] || bootstrapSelect()['en'];
 
@@ -120,7 +112,39 @@ axios.interceptors.response.use(function (response) {
 
 /***/ }),
 
-/***/ 151:
+/***/ "./resources/assets/js/vendor/laravel-enso/modules/bootstrapSelect.js":
+/***/ (function(module, exports) {
+
+module.exports = function () {
+    return {
+        'en': {
+            noneSelectedText: 'Nothing selected',
+            noneResultsText: 'No results match {0}',
+            countSelectedText: function countSelectedText(numSelected, numTotal) {
+                return numSelected === 1 ? "{0} item selected from {1} total items" : "{0} items selected from {1} total items";
+            },
+            maxOptionsText: function maxOptionsText(numAll, numGroup) {
+                return [numAll === 1 ? 'Limit reached ({n} item max)' : 'Limit reached ({n} items max)', numGroup === 1 ? 'Group limit reached ({n} item max)' : 'Group limit reached ({n} items max)'];
+            },
+            selectAllText: 'Select All',
+            deselectAllText: 'Deselect All',
+            multipleSeparator: ', '
+        },
+        'ro': {
+            noneSelectedText: 'Nu a fost selectat nimic',
+            noneResultsText: 'Nu exista niciun rezultat {0}',
+            countSelectedText: '{0} din {1} selectat(e)',
+            maxOptionsText: ['Limita a fost atinsa ({n} {var} max)', 'Limita de grup a fost atinsa ({n} {var} max)', ['iteme', 'item']],
+            multipleSeparator: ', ',
+            selectAllText: 'Selecteaza tot',
+            deselectAllText: 'Deselecteaza tot'
+        }
+    };
+};
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/modules/dataTable.js":
 /***/ (function(module, exports) {
 
 $.extend(true, $.fn.dataTable.defaults, {
@@ -154,39 +178,7 @@ $.fn.dataTable.Api.register('sum()', function () {
 
 /***/ }),
 
-/***/ 152:
-/***/ (function(module, exports) {
-
-module.exports = function () {
-    return {
-        'en': {
-            noneSelectedText: 'Nothing selected',
-            noneResultsText: 'No results match {0}',
-            countSelectedText: function countSelectedText(numSelected, numTotal) {
-                return numSelected === 1 ? "{0} item selected from {1} total items" : "{0} items selected from {1} total items";
-            },
-            maxOptionsText: function maxOptionsText(numAll, numGroup) {
-                return [numAll === 1 ? 'Limit reached ({n} item max)' : 'Limit reached ({n} items max)', numGroup === 1 ? 'Group limit reached ({n} item max)' : 'Group limit reached ({n} items max)'];
-            },
-            selectAllText: 'Select All',
-            deselectAllText: 'Deselect All',
-            multipleSeparator: ', '
-        },
-        'ro': {
-            noneSelectedText: 'Nu a fost selectat nimic',
-            noneResultsText: 'Nu exista niciun rezultat {0}',
-            countSelectedText: '{0} din {1} selectat(e)',
-            maxOptionsText: ['Limita a fost atinsa ({n} {var} max)', 'Limita de grup a fost atinsa ({n} {var} max)', ['iteme', 'item']],
-            multipleSeparator: ', ',
-            selectAllText: 'Selecteaza tot',
-            deselectAllText: 'Deselecteaza tot'
-        }
-    };
-};
-
-/***/ }),
-
-/***/ 7:
+/***/ "./resources/assets/js/vendor/laravel-enso/modules/toastr.js":
 /***/ (function(module, exports) {
 
 module.exports = function () {
@@ -208,6 +200,14 @@ module.exports = function () {
         "hideMethod": "fadeOut"
     };
 };
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./resources/assets/js/defaults.js");
+
 
 /***/ })
 

@@ -4,7 +4,7 @@
 		{{ store.labels.language }}
 		<li class="dropdown pull-right" style="list-style-type: none;">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	            <i class="flag-icon" :class="language.flag"></i>
+	            <i :class="language.flag"></i>
             </a>
             <ul class="dropdown-menu language-selector">
                 <li v-for="language in store.languages">

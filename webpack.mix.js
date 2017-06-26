@@ -14,5 +14,5 @@ mix
 	.sass('resources/assets/sass/main.scss', 'public/css')
 	.sass('resources/assets/sass/auth.scss', 'public/css')
 	.sass('resources/assets/sass/error.scss', 'public/css')
-	.sass('resources/assets/sass/welcome.scss', 'public/css');
-	// .version();
+	.sass('resources/assets/sass/welcome.scss', 'public/css')
+	.version();

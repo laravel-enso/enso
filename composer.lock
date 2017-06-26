@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4312f33fb3ab79ef79bd1c36a962fd41",
+    "content-hash": "021224725eee965fb2aa0cfb7ce96f50",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -587,16 +587,16 @@
         },
         {
             "name": "laravel-enso/actionlogger",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActionLogger.git",
-                "reference": "9b7cf88aaace478e6553e3deed72d4a685d688c1"
+                "reference": "466a8f0581890b47c6c2d59f970923e4c42621f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/9b7cf88aaace478e6553e3deed72d4a685d688c1",
-                "reference": "9b7cf88aaace478e6553e3deed72d4a685d688c1",
+                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/466a8f0581890b47c6c2d59f970923e4c42621f3",
+                "reference": "466a8f0581890b47c6c2d59f970923e4c42621f3",
                 "shasum": ""
             },
             "require": {
@@ -620,7 +620,7 @@
                 }
             ],
             "description": "Middleware for logging user's accesed routes",
-            "time": "2017-06-24T14:20:06+00:00"
+            "time": "2017-06-26T19:15:19+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -699,16 +699,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.14",
+            "version": "1.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "ea4af088372268bdd2902714650785f17011fbc3"
+                "reference": "d6017a845ed5584d3ff2613bdee7e2e17d7bdd13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/ea4af088372268bdd2902714650785f17011fbc3",
-                "reference": "ea4af088372268bdd2902714650785f17011fbc3",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d6017a845ed5584d3ff2613bdee7e2e17d7bdd13",
+                "reference": "d6017a845ed5584d3ff2613bdee7e2e17d7bdd13",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                 }
             ],
             "description": "Dependency for Laravel Enso.",
-            "time": "2017-06-25T18:41:25+00:00"
+            "time": "2017-06-26T19:15:51+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -909,16 +909,16 @@
         },
         {
             "name": "laravel-enso/impersonate",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Impersonate.git",
-                "reference": "89964a65973388fbcd79c57a7b4296ebb86f0815"
+                "reference": "4ebb665afe439b279f25619ee708a12d0aed54a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/89964a65973388fbcd79c57a7b4296ebb86f0815",
-                "reference": "89964a65973388fbcd79c57a7b4296ebb86f0815",
+                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/4ebb665afe439b279f25619ee708a12d0aed54a8",
+                "reference": "4ebb665afe439b279f25619ee708a12d0aed54a8",
                 "shasum": ""
             },
             "require": {
@@ -942,20 +942,20 @@
                 }
             ],
             "description": "Depedency for Laravel Enso user impersonating",
-            "time": "2017-06-24T14:35:19+00:00"
+            "time": "2017-06-24T14:35:44+00:00"
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.16",
+            "version": "1.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf"
+                "reference": "c7c0d876928c0044ff2c860b7dcd50b57450c682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf",
-                "reference": "92dbfb17ac46f8fb68ba6b25c46f4c382565e5cf",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/c7c0d876928c0044ff2c860b7dcd50b57450c682",
+                "reference": "c7c0d876928c0044ff2c860b7dcd50b57450c682",
                 "shasum": ""
             },
             "require": {
@@ -979,7 +979,7 @@
                 }
             ],
             "description": "LaravelEnso localisation management depedency",
-            "time": "2017-06-25T14:15:35+00:00"
+            "time": "2017-06-26T19:05:46+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
@@ -1098,16 +1098,16 @@
         },
         {
             "name": "laravel-enso/rememberable",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Rememberable.git",
-                "reference": "70d6057b313706f33c21f1534b18e756df110b40"
+                "reference": "ae4837b9590b918c90e21d16a45f5992af5c13a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Rememberable/zipball/70d6057b313706f33c21f1534b18e756df110b40",
-                "reference": "70d6057b313706f33c21f1534b18e756df110b40",
+                "url": "https://api.github.com/repos/laravel-enso/Rememberable/zipball/ae4837b9590b918c90e21d16a45f5992af5c13a9",
+                "reference": "ae4837b9590b918c90e21d16a45f5992af5c13a9",
                 "shasum": ""
             },
             "require": {
@@ -1126,12 +1126,12 @@
             ],
             "authors": [
                 {
-                    "name": "Mishu",
+                    "name": "mishu",
                     "email": "mishu@xtelecom.ro"
                 }
             ],
             "description": "Trait for caching Laravel models",
-            "time": "2017-06-13T07:57:14+00:00"
+            "time": "2017-06-13T08:37:53+00:00"
         },
         {
             "name": "laravel-enso/rolemanager",

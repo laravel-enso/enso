@@ -1,11 +1,11 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/main.css": "/css/main.css",
-    "/css/auth.css": "/css/auth.css",
-    "/css/error.css": "/css/error.css",
-    "/css/welcome.css": "/css/welcome.css",
-    "/js/defaults.js": "/js/defaults.js",
-    "/js/auth.js": "/js/auth.js",
-    "/css/all.css": "/css/all.css"
+    "/js/app.js": "/js/app.js?id=de629155465b81690d4e",
+    "/css/app.css": "/css/app.css?id=510796ea1d160d8344f2",
+    "/css/main.css": "/css/main.css?id=fbb9e5c939f17500ad86",
+    "/css/auth.css": "/css/auth.css?id=0c1766e6886300a55b71",
+    "/css/error.css": "/css/error.css?id=1669591b078183f3db46",
+    "/css/welcome.css": "/css/welcome.css?id=13c100926f00c6a478d7",
+    "/js/defaults.js": "/js/defaults.js?id=29d0a3a07656f004864f",
+    "/js/auth.js": "/js/auth.js?id=4795b87ff37a1e0ca1cd",
+    "/css/all.css": "/css/all.css?id=97ec37cdbb60d44f5b03"
 }
