@@ -1994,6 +1994,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            keys: ['left', 'center', 'right'],
             preferences: Store.user.preferences.local.dashboard
         };
     }
@@ -39761,10 +39762,10 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, _vm._l((_vm.preferences.charts), function(charts, column) {
+  }, _vm._l((_vm.keys), function(key) {
     return _c('div', {
       staticClass: "col-md-4"
-    }, _vm._l((charts), function(chart, type) {
+    }, _vm._l((_vm.preferences.charts[key]), function(chart, type) {
       return _c('div', [_c('chart', {
         ref: chart.title,
         refInFor: true,
@@ -50827,8 +50828,6 @@ Vue.mixin({
             if (error.response && error.response.data.level) {
                 return toastr[error.response.data.level](error.response.data.message);
             }
-
-            console.log(error);
 
             throw error;
         }
