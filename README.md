@@ -3,7 +3,8 @@
 
 Boilerplate for any new Laravel project with lots of goodies included.
 
-[Check Demo](https://laravel-enso.com) - more goodies to come in the next couple of weeks...
+[Demo](https://laravel-enso.com) login with user: `admin@login.com` and password: `password` 
+* more goodies to come in the next couple of weeks... *
 
 100% compatible with Google Chrome for the moment.
 
