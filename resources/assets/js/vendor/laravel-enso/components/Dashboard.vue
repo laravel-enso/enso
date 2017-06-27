@@ -1,8 +1,8 @@
 <template>
     <div class="row">
         <div class="col-md-4"
-            v-for="key in keys">
-            <div v-for="(chart, type) in preferences.charts[key]">
+            v-for="(charts, column) in preferences.charts">
+            <div v-for="(chart, type) in charts">
                 <chart :type="type"
                     :source="chart.source"
                     :params="params"
@@ -26,7 +26,6 @@
         },
         data() {
             return {
-                keys: ['left', 'center', 'right'],
                 preferences: Store.user.preferences.local.dashboard
             }
         }

@@ -1,4 +1,5 @@
 <template>
+
     <draggable :list="menus"
         element="ul"
         class="sortable-menu"
@@ -13,14 +14,13 @@
             </li>
         </transition-group>
     </draggable>
+
 </template>
 
 <script>
 
     export default {
-
         props: {
-
             menus: {
                 type: Array,
                 required: true
@@ -55,4 +55,5 @@
     .list-complete-enter, .list-complete-leave-active {
         opacity: 0;
     }
+
 </style>
