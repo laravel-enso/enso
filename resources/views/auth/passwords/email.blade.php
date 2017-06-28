@@ -18,7 +18,7 @@
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Genereaza link pentru reset parola', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::submit(__('Send a reset password link'), ['class' => 'btn btn-primary btn-block']) !!}
                 </div>
             {!! Form::close() !!}
         </div>
