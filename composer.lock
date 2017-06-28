@@ -701,16 +701,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.18",
+            "version": "1.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "a99d11895ad60c3631a4bd6960be6a403e336f9d"
+                "reference": "cdda1071a378b2e5b4805ca8e41df5f732500757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/a99d11895ad60c3631a4bd6960be6a403e336f9d",
-                "reference": "a99d11895ad60c3631a4bd6960be6a403e336f9d",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/cdda1071a378b2e5b4805ca8e41df5f732500757",
+                "reference": "cdda1071a378b2e5b4805ca8e41df5f732500757",
                 "shasum": ""
             },
             "require": {
@@ -756,7 +756,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-06-27T19:07:02+00:00"
+            "time": "2017-06-28T06:34:02+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -988,25 +988,25 @@
         },
         {
             "name": "laravel-enso/logmanager",
-            "version": "1.1.11",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/LogManager.git",
-                "reference": "aeeaf06f42aff188a70168cf7d32d465cae8b14e"
+                "reference": "1dd51830edf5119bd2475219157abab88154df18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/aeeaf06f42aff188a70168cf7d32d465cae8b14e",
-                "reference": "aeeaf06f42aff188a70168cf7d32d465cae8b14e",
+                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/1dd51830edf5119bd2475219157abab88154df18",
+                "reference": "1dd51830edf5119bd2475219157abab88154df18",
                 "shasum": ""
             },
             "require": {
                 "jenssegers/date": "^3.2",
+                "laravel-enso/structuremanager": "1.1.*",
                 "laravel/framework": "5.4.*",
-                "nesbot/carbon": "^1.0",
-                "php": ">=5.6.4"
+                "php": ">=7.1.0"
             },
-            "type": "depedency",
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "LaravelEnso\\LogManager\\": "src/"
@@ -1018,12 +1018,12 @@
             ],
             "authors": [
                 {
-                    "name": "mishu",
+                    "name": "Mishu",
                     "email": "mishu@xtelecom.ro"
                 }
             ],
-            "description": "Depedency for Laravel Enso logs management",
-            "time": "2017-06-24T14:36:33+00:00"
+            "description": "Log management dependency for Laravel Enso",
+            "time": "2017-06-28T07:22:31+00:00"
         },
         {
             "name": "laravel-enso/menumanager",
@@ -1066,16 +1066,16 @@
         },
         {
             "name": "laravel-enso/permissionmanager",
-            "version": "1.1.12",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "94a9d23438b355dc83e637647dee840dda7dea4c"
+                "reference": "18ddf00f171820f0fc3a4f0d1961b63c3bfb1506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/94a9d23438b355dc83e637647dee840dda7dea4c",
-                "reference": "94a9d23438b355dc83e637647dee840dda7dea4c",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/18ddf00f171820f0fc3a4f0d1961b63c3bfb1506",
+                "reference": "18ddf00f171820f0fc3a4f0d1961b63c3bfb1506",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
                 }
             ],
             "description": "Permission Manager dependency for Laravel Enso",
-            "time": "2017-06-27T18:26:38+00:00"
+            "time": "2017-06-27T20:43:53+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
