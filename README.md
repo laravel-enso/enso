@@ -3,7 +3,7 @@
 
 *Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
 
-
+&nbsp;
 ### With enso you get
 
 - [Customizable and powerful data-tables](https://github.com/laravel-enso/DataTable):
@@ -32,9 +32,10 @@
 - many more helpers and hidden gems
 
 ***fully working in less than 5 minutes!***
-<br>
 
-
+&nbsp; 
+&nbsp; 
+&nbsp; 
 
 ### Demo
 
@@ -58,13 +59,9 @@
 
 Enjoy!
 
+### Thanks
 
-
-
-
-
-
-Built with with &#10084;&#65039;, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
+Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
 
 [AdminLTE](https://adminlte.io), [DataTables](https://datatables.net), 
 [Bootswatch Paper](https://bootswatch.com), [Chartjs](http://chartjs.org), 
@@ -73,7 +70,7 @@ Built with with &#10084;&#65039;, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs
 [Bootstrap Tour](http://bootstraptour.com), [Bootstrap Select](https://silviomoreto.github.io/bootstrap-select), 
 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
 
-Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/)...
+Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/).
 
 
 ### Contributions
