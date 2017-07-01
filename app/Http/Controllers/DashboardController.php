@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $preferences = json_encode(request()->user()->preferences->local->dashboard);
+        $preferences = json_encode(request()->user()->getPreferences()->local->dashboard);
 
         return view('dashboard.index', compact('preferences'));
     }
