@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/laravel-enso/Enso.png?label=ready&title=Ready)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
 
