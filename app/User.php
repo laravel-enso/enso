@@ -10,7 +10,7 @@ class User extends Users
 
     protected $fillable = ['first_name', 'last_name', 'phone', 'is_active', 'role_id'];
 
-    protected $appends = ['avatar_id', 'full_name', 'preferences'];
+    protected $appends = ['full_name'];
 
     public function owner()
     {
