@@ -1,6 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/laravel-enso/Enso.png?label=ready&title=Ready)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
+[![Stories in Ready](https://badge.waffle.io/laravel-enso/Enso.png?label=ready&title=Ready)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
 
 *Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
 

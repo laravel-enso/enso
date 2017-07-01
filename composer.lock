@@ -418,16 +418,16 @@
         },
         {
             "name": "jenssegers/date",
-            "version": "v3.2.11",
+            "version": "v3.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/date.git",
-                "reference": "68262b137a4811cc351b3c26308e252505606b8f"
+                "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/date/zipball/68262b137a4811cc351b3c26308e252505606b8f",
-                "reference": "68262b137a4811cc351b3c26308e252505606b8f",
+                "url": "https://api.github.com/repos/jenssegers/date/zipball/1db4d580d1d45085a48fd4a332697619b9a3851c",
+                "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c",
                 "shasum": ""
             },
             "require": {
@@ -443,6 +443,14 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Jenssegers\\Date\\DateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Date": "Jenssegers\\Date\\Date"
+                    }
                 }
             },
             "autoload": {
@@ -471,7 +479,7 @@
                 "time",
                 "translation"
             ],
-            "time": "2017-06-06T11:42:35+00:00"
+            "time": "2017-06-30T11:51:03+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -663,22 +671,21 @@
         },
         {
             "name": "laravel-enso/charts",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Charts.git",
-                "reference": "f953777bf2f0615f14e6e421a009d20fce2a9fae"
+                "reference": "9ceac9d06802869cdff9c99f16e859f3c4a00ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/f953777bf2f0615f14e6e421a009d20fce2a9fae",
-                "reference": "f953777bf2f0615f14e6e421a009d20fce2a9fae",
+                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/9ceac9d06802869cdff9c99f16e859f3c4a00ab2",
+                "reference": "9ceac9d06802869cdff9c99f16e859f3c4a00ab2",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/helpers": "1.1.*",
                 "laravel/framework": "5.4.*",
-                "php": ">=5.6.4"
+                "php": ">=7.1.0"
             },
             "type": "library",
             "autoload": {
@@ -692,25 +699,25 @@
             ],
             "authors": [
                 {
-                    "name": "mishu",
+                    "name": "Mishu",
                     "email": "mishu@xtelecom.ro"
                 }
             ],
-            "description": "Charts wrapper for Chart.js",
-            "time": "2017-06-22T17:56:30+00:00"
+            "description": "This package is a server-side data builder for Chart.js, with a VueJS component for the frontend.",
+            "time": "2017-07-01T15:45:59+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.21",
+            "version": "1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "cdda1071a378b2e5b4805ca8e41df5f732500757"
+                "reference": "8c5afc4cc5445dd6f1a1716919e64b4e41cf184b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/cdda1071a378b2e5b4805ca8e41df5f732500757",
-                "reference": "cdda1071a378b2e5b4805ca8e41df5f732500757",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/8c5afc4cc5445dd6f1a1716919e64b4e41cf184b",
+                "reference": "8c5afc4cc5445dd6f1a1716919e64b4e41cf184b",
                 "shasum": ""
             },
             "require": {
@@ -756,7 +763,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-06-28T06:34:02+00:00"
+            "time": "2017-07-01T16:41:10+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -950,16 +957,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.18",
+            "version": "1.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "5601e9ab5d59ed97d60bd80385bffeccf1af18c2"
+                "reference": "db101b5244acc0da93a90feacb0650431b8edbdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/5601e9ab5d59ed97d60bd80385bffeccf1af18c2",
-                "reference": "5601e9ab5d59ed97d60bd80385bffeccf1af18c2",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/db101b5244acc0da93a90feacb0650431b8edbdb",
+                "reference": "db101b5244acc0da93a90feacb0650431b8edbdb",
                 "shasum": ""
             },
             "require": {
@@ -984,20 +991,20 @@
                 }
             ],
             "description": "Localisation management dependency for Laravel Enso",
-            "time": "2017-06-27T13:11:39+00:00"
+            "time": "2017-07-01T15:02:53+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
-            "version": "1.1.12",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/LogManager.git",
-                "reference": "1dd51830edf5119bd2475219157abab88154df18"
+                "reference": "8e435ff712e291ab7e5633bcf768e905bc586efa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/1dd51830edf5119bd2475219157abab88154df18",
-                "reference": "1dd51830edf5119bd2475219157abab88154df18",
+                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/8e435ff712e291ab7e5633bcf768e905bc586efa",
+                "reference": "8e435ff712e291ab7e5633bcf768e905bc586efa",
                 "shasum": ""
             },
             "require": {
@@ -1023,20 +1030,20 @@
                 }
             ],
             "description": "Log management dependency for Laravel Enso",
-            "time": "2017-06-28T07:22:31+00:00"
+            "time": "2017-06-28T19:48:35+00:00"
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "1.1.9",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "32f491cad14dcaaae716ad29c14d05edf5c9511a"
+                "reference": "6abff86ede4613b8ef6d1a3443062b1626258296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/32f491cad14dcaaae716ad29c14d05edf5c9511a",
-                "reference": "32f491cad14dcaaae716ad29c14d05edf5c9511a",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/6abff86ede4613b8ef6d1a3443062b1626258296",
+                "reference": "6abff86ede4613b8ef6d1a3443062b1626258296",
                 "shasum": ""
             },
             "require": {
@@ -1062,7 +1069,7 @@
                 }
             ],
             "description": "Menu Manager dependency for Laravel Enso",
-            "time": "2017-06-27T13:30:26+00:00"
+            "time": "2017-07-01T15:53:47+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",
@@ -1330,16 +1337,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.27",
+            "version": "v5.4.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "66f5e1b37cbd66e730ea18850ded6dc0ad570404"
+                "reference": "442511fc62121085d184355e4f964c88942bbecb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/66f5e1b37cbd66e730ea18850ded6dc0ad570404",
-                "reference": "66f5e1b37cbd66e730ea18850ded6dc0ad570404",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/442511fc62121085d184355e4f964c88942bbecb",
+                "reference": "442511fc62121085d184355e4f964c88942bbecb",
                 "shasum": ""
             },
             "require": {
@@ -1455,7 +1462,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-06-15T19:08:25+00:00"
+            "time": "2017-06-30T13:43:07+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1912,16 +1919,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d"
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0808939f81c1347a3c8a82a5925385a08074b0f1",
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1",
                 "shasum": ""
             },
             "require": {
@@ -1959,7 +1966,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-03-05T18:23:57+00:00"
+            "time": "2017-06-28T20:53:48+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4272,16 +4279,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "eabce450df194817a7d7e27e19013569a903a2bf"
+                "reference": "d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/eabce450df194817a7d7e27e19013569a903a2bf",
-                "reference": "eabce450df194817a7d7e27e19013569a903a2bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4",
+                "reference": "d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4",
                 "shasum": ""
             },
             "require": {
@@ -4327,7 +4334,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-03-03T06:30:20+00:00"
+            "time": "2017-06-30T08:15:21+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4492,16 +4499,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744"
+                "reference": "cd0871b3975fb7fc44d11314fd1ee20925fce4f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/74776f8dbc081cab9287c2a601c0c1d842568744",
-                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/cd0871b3975fb7fc44d11314fd1ee20925fce4f5",
+                "reference": "cd0871b3975fb7fc44d11314fd1ee20925fce4f5",
                 "shasum": ""
             },
             "require": {
@@ -4513,7 +4520,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -4538,7 +4545,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-06-20T16:25:05+00:00"
+            "time": "2017-07-01T08:51:00+00:00"
         },
         {
             "name": "sebastian/exporter",
