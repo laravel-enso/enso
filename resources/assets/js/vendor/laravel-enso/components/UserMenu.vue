@@ -3,7 +3,7 @@
 	<li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle"
             data-toggle="dropdown">
-            <img :src="'/core/avatars/' + store.user.avatar_id"
+            <img :src="'/core/avatars/' + store.user.avatarId"
                 class="user-image user-avatar"
                 alt="User Image">
             <span class="hidden-xs">
@@ -12,7 +12,7 @@
         </a>
         <ul class="dropdown-menu">
             <li class="user-header">
-                <img :src="'/core/avatars/' + store.user.avatar_id"
+                <img :src="'/core/avatars/' + store.user.avatarId"
                     class="img-square user-avatar"
                     alt="User Image">
                 <p>

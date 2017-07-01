@@ -1,1 +1,302 @@
-[v-cloak]{display:none}.breadcrumb>li+li:before{content:"/\A0";padding:0 5px;color:#3c3a3a}a.greyed{color:rgba(68,68,68,.5)!important}.fa-rotate-45{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.fa-rotate-135{-webkit-transform:rotate(135deg);transform:rotate(135deg)}.btn{border:0}.box .overlay,.overlay-wrapper .overlay{background:hsla(0,0%,100%,.3)}section.content-header{min-height:49px}.invoice{margin:0}.actions-btn.bs-select-all.btn.btn-default,.actions-btn.btn.btn-default,.box>.box-header>.box-tools .btn{border:0;-webkit-box-shadow:none;box-shadow:none}.actions-btn.btn.btn-default{font-weight:600;font-size:14px;color:#009688}div.bootstrap-select>button.btn.dropdown-toggle.btn-default{-webkit-box-shadow:none;box-shadow:none;border-bottom:1px solid #ddd}.box>.box-header>.box-tools .btn{border:0;-webkit-box-shadow:none;box-shadow:none}.input-group-addon:last-child{border:0;-webkit-box-shadow:inset 0 -1px 0 #ddd;box-shadow:inset 0 -1px 0 #ddd}.fa-search.input-group-addon{cursor:pointer}.label{-webkit-box-shadow:1px 1px 4px rgba(0,0,0,.4);box-shadow:1px 1px 4px rgba(0,0,0,.4);-webkit-transition:all .4s}input[type=checkbox]:indeterminate:after{background-image:url("/images/indeterminate.png");border-color:#009688}input[type=radio]:after,input[type=radio]:before{border-radius:0}.form-group.has-error .form-control,.form-group.has-error .input-group-addon{border-bottom:none;-webkit-box-shadow:inset 0 -2px 0 #f44336;box-shadow:inset 0 -2px 0 #f44336}.fa.fa-spinner.fa-spin.spinner-custom{color:#f44336}.fa.fa-spinner.fa-spin.spinner-custom-small{color:#f44336;font-size:18px}.margin-top-md{margin-top:20px}.margin-bottom-md{margin-bottom:20px}.margin-left-md{margin-left:20px}.margin-right-md{margin-right:20px}.margin-none{margin:0}.bold{font-weight:700}.margin-left-xs{margin-left:5px}.margin-right-xs{margin-right:5px}.margin-top-xs{margin-top:5px}.margin-bottom-xs{margin-bottom:5px}.padding-left-xs{padding-left:5px}.padding-right-xs{padding-right:5px}.padding-top-xs{padding-top:5px}.padding-bottom-xs{padding-bottom:5px}.padding-none{padding:0}.margin-left-sm{margin-left:10px}.margin-right-sm{margin-right:10px}.margin-top-sm{margin-top:10px}.margin-bottom-sm{margin-bottom:10px}.flex-center-x{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.flex-center-xy,.flex-center-y{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.flex-center-xy{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}a:focus,a:hover{text-decoration:none;color:#72afd2}.content-wrapper{background-image:url("/images/background.jpg")}table{width:100%}.tooltip{display:none;opacity:0;-webkit-transition:opacity .15s;transition:opacity .15s;pointer-events:none;padding:4px;z-index:10000}.tooltip .tooltip-content{background:#000;opacity:.8;color:#fff;padding:4px 8px}.tooltip.tooltip-open-transitionend{display:block}.tooltip.tooltip-after-open{opacity:.8}div.stop-impersonating{z-index:2000;position:fixed;top:14px}.draggable{cursor:move;cursor:grab;cursor:-webkit-grab}.draggable:active{cursor:grabbing;cursor:-webkit-grabbing}
+[v-cloak] {
+  display: none;
+}
+
+/** START admin-lte customizations **/
+
+.breadcrumb > li + li:before {
+  content: "/\A0";
+  padding: 0 5px;
+  color: #3c3a3a;
+}
+
+a.greyed {
+  color: rgba(68, 68, 68, 0.5) !important;
+}
+
+.fa-rotate-45 {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.fa-rotate-135 {
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.btn {
+  border: 0;
+}
+
+.box .overlay,
+.overlay-wrapper .overlay {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+section.content-header {
+  min-height: 49px;
+}
+
+.invoice {
+  margin: 0;
+}
+
+/* END admin-lte customizations */
+
+/** START bootstrap-paper customizations **/
+
+.box > .box-header > .box-tools .btn,
+.actions-btn.bs-select-all.btn.btn-default {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.actions-btn.btn.btn-default {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #009688;
+}
+
+div.bootstrap-select > button.btn.dropdown-toggle.btn-default {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.box > .box-header > .box-tools .btn {
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.input-group-addon:last-child {
+  border: 0;
+  -webkit-box-shadow: inset 0 -1px 0 #ddd;
+          box-shadow: inset 0 -1px 0 #ddd;
+}
+
+.fa-search.input-group-addon {
+  cursor: pointer;
+}
+
+.label {
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  -webkit-transition: all 0.4s;
+}
+
+input[type='checkbox']:indeterminate:after {
+  background-image: url("/images/indeterminate.png");
+  border-color: #009688;
+}
+
+input[type="radio"]:before,
+input[type="radio"]:after {
+  border-radius: 0;
+}
+
+/* Form control error underline */
+
+.form-group.has-error .form-control,
+.form-group.has-error .input-group-addon {
+  border-bottom: none;
+  -webkit-box-shadow: inset 0 -2px 0 #f44336;
+          box-shadow: inset 0 -2px 0 #f44336;
+}
+
+/* END bootstrap-paper customizations */
+
+/** START spinner classes used for ajax loading **/
+
+.fa.fa-spinner.fa-spin.spinner-custom {
+  color: #f44336;
+}
+
+.fa.fa-spinner.fa-spin.spinner-custom-small {
+  color: #f44336;
+  font-size: 18px;
+}
+
+/* END spinner classes used for ajax loading */
+
+/** START helper classes **/
+
+.margin-top-md {
+  margin-top: 20px;
+}
+
+.margin-bottom-md {
+  margin-bottom: 20px;
+}
+
+.margin-left-md {
+  margin-left: 20px;
+}
+
+.margin-right-md {
+  margin-right: 20px;
+}
+
+.margin-none {
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.margin-left-xs {
+  margin-left: 5px;
+}
+
+.margin-right-xs {
+  margin-right: 5px;
+}
+
+.margin-top-xs {
+  margin-top: 5px;
+}
+
+.margin-bottom-xs {
+  margin-bottom: 5px;
+}
+
+.padding-left-xs {
+  padding-left: 5px;
+}
+
+.padding-right-xs {
+  padding-right: 5px;
+}
+
+.padding-top-xs {
+  padding-top: 5px;
+}
+
+.padding-bottom-xs {
+  padding-bottom: 5px;
+}
+
+.padding-none {
+  padding: 0;
+}
+
+.margin-left-sm {
+  margin-left: 10px;
+}
+
+.margin-right-sm {
+  margin-right: 10px;
+}
+
+.margin-top-sm {
+  margin-top: 10px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 10px;
+}
+
+.flex-center-x {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flex-center-y {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-center-xy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* END helper classes */
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #72afd2;
+}
+
+.content-wrapper {
+  background-image: url("/images/background.jpg");
+}
+
+table {
+  width: 100%;
+}
+
+/* tooltip */
+
+.tooltip {
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity .15s;
+  transition: opacity .15s;
+  pointer-events: none;
+  padding: 4px;
+  z-index: 10000;
+}
+
+.tooltip .tooltip-content {
+  background: black;
+  opacity: 0.8;
+  color: white;
+  padding: 4px 8px;
+}
+
+.tooltip.tooltip-open-transitionend {
+  display: block;
+}
+
+.tooltip.tooltip-after-open {
+  opacity: 0.8;
+}
+
+/* end tooltip */
+
+/* stop-impersonating button */
+
+div.stop-impersonating {
+  z-index: 2000;
+  position: fixed;
+  top: 14px;
+}
+
+/* end stop-impersonating button */
+
+.draggable {
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+
+.draggable:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+

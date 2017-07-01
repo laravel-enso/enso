@@ -1,1 +1,28 @@
-body{height:100%;width:100%;font-family:Lato}.content{text-align:center;display:inline-block;position:fixed;top:50%;left:0;right:0;margin-top:-94px;font-weight:100}#enter{-webkit-box-shadow:1px 1px 4px rgba(0,0,0,.4);box-shadow:1px 1px 4px rgba(0,0,0,.4);border:none;border-radius:0}.title{font-size:50px}
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Lato';
+}
+
+.content {
+  text-align: center;
+  display: inline-block;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -94px;
+  font-weight: 100;
+}
+
+#enter {
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 0;
+}
+
+.title {
+  font-size: 50px;
+}
+
