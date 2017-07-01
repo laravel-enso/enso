@@ -3,7 +3,7 @@
 Auth::routes();
 
 Route::group([
-    'middleware' => ['auth', 'action-logger'],
+    'middleware' => ['auth'],
     'prefix'     => 'dashboard',
     'as'         => 'dashboard.',
 ], function () {

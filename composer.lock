@@ -595,16 +595,16 @@
         },
         {
             "name": "laravel-enso/actionlogger",
-            "version": "1.1.10",
+            "version": "1.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActionLogger.git",
-                "reference": "ffead4919e05c68da8631a372a275fcccdc9c149"
+                "reference": "09721ca21ab2ce8e72b100b41b5a81815c241840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/ffead4919e05c68da8631a372a275fcccdc9c149",
-                "reference": "ffead4919e05c68da8631a372a275fcccdc9c149",
+                "url": "https://api.github.com/repos/laravel-enso/ActionLogger/zipball/09721ca21ab2ce8e72b100b41b5a81815c241840",
+                "reference": "09721ca21ab2ce8e72b100b41b5a81815c241840",
                 "shasum": ""
             },
             "require": {
@@ -629,7 +629,7 @@
                 }
             ],
             "description": "Users' actions logger dependency for Laravel Enso",
-            "time": "2017-06-27T10:50:14+00:00"
+            "time": "2017-07-01T18:40:04+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -708,16 +708,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.25",
+            "version": "1.1.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "8c5afc4cc5445dd6f1a1716919e64b4e41cf184b"
+                "reference": "4d6474b44f9253f1139a597dd8b0d3b36e4cf24b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/8c5afc4cc5445dd6f1a1716919e64b4e41cf184b",
-                "reference": "8c5afc4cc5445dd6f1a1716919e64b4e41cf184b",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/4d6474b44f9253f1139a597dd8b0d3b36e4cf24b",
+                "reference": "4d6474b44f9253f1139a597dd8b0d3b36e4cf24b",
                 "shasum": ""
             },
             "require": {
@@ -763,7 +763,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-07-01T16:41:10+00:00"
+            "time": "2017-07-01T19:03:35+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -957,16 +957,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.19",
+            "version": "1.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "db101b5244acc0da93a90feacb0650431b8edbdb"
+                "reference": "aa434e35834cab6a8c924b8586f1006ed3f2974a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/db101b5244acc0da93a90feacb0650431b8edbdb",
-                "reference": "db101b5244acc0da93a90feacb0650431b8edbdb",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/aa434e35834cab6a8c924b8586f1006ed3f2974a",
+                "reference": "aa434e35834cab6a8c924b8586f1006ed3f2974a",
                 "shasum": ""
             },
             "require": {
@@ -991,20 +991,20 @@
                 }
             ],
             "description": "Localisation management dependency for Laravel Enso",
-            "time": "2017-07-01T15:02:53+00:00"
+            "time": "2017-07-01T18:53:54+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
-            "version": "1.1.13",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/LogManager.git",
-                "reference": "8e435ff712e291ab7e5633bcf768e905bc586efa"
+                "reference": "c39f54e2297871824ec3a72c3c7a5dcc33fdd7bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/8e435ff712e291ab7e5633bcf768e905bc586efa",
-                "reference": "8e435ff712e291ab7e5633bcf768e905bc586efa",
+                "url": "https://api.github.com/repos/laravel-enso/LogManager/zipball/c39f54e2297871824ec3a72c3c7a5dcc33fdd7bc",
+                "reference": "c39f54e2297871824ec3a72c3c7a5dcc33fdd7bc",
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +1030,7 @@
                 }
             ],
             "description": "Log management dependency for Laravel Enso",
-            "time": "2017-06-28T19:48:35+00:00"
+            "time": "2017-07-01T18:54:36+00:00"
         },
         {
             "name": "laravel-enso/menumanager",
