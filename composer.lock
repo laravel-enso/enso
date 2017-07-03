@@ -990,16 +990,16 @@
         },
         {
             "name": "laravel-enso/imagetransformer",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ImageTransformer.git",
-                "reference": "b53b9b482346fc98c855b7878cd604428f291725"
+                "reference": "95fc9c8f74da4ee6c734a4f9a7d436be9ddbb82c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ImageTransformer/zipball/b53b9b482346fc98c855b7878cd604428f291725",
-                "reference": "b53b9b482346fc98c855b7878cd604428f291725",
+                "url": "https://api.github.com/repos/laravel-enso/ImageTransformer/zipball/95fc9c8f74da4ee6c734a4f9a7d436be9ddbb82c",
+                "reference": "95fc9c8f74da4ee6c734a4f9a7d436be9ddbb82c",
                 "shasum": ""
             },
             "require": {
@@ -1025,7 +1025,7 @@
                 }
             ],
             "description": "Image transformer dependency for Laravel Enso",
-            "time": "2017-07-03T11:21:19+00:00"
+            "time": "2017-07-03T12:43:07+00:00"
         },
         {
             "name": "laravel-enso/impersonate",
