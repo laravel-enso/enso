@@ -1,6 +1,7 @@
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
-[![Stories in Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=In%20Progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
+[![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
+[![Stories in Done](https://badge.waffle.io/laravel-enso/Enso.png?label=done&title=Done)](https://waffle.io/laravel-enso/Enso?utm_source=badge)
 
 *Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
 
