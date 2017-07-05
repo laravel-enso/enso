@@ -9,12 +9,26 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+        <testsuite name="actionlogger">
+            <directory suffix="Test.php">./vendor/laravel-enso/actionlogger/tests/features</directory>
         </testsuite>
-
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="cnpvalidator">
+            <directory suffix="Test.php">./vendor/laravel-enso/cnpvalidator/tests/features</directory>
+        </testsuite>
+        <testsuite name="core">
+            <directory suffix="Test.php">./vendor/laravel-enso/core/tests/unit</directory>
+        </testsuite>
+        <testsuite name="filemanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/filemanager/tests/unit</directory>
+        </testsuite>
+        <testsuite name="menumanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/menumanager/tests/unit</directory>
+        </testsuite>
+        <testsuite name="permissionmanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/permissionmanager/tests/unit</directory>
+        </testsuite>
+        <testsuite name="tutorialmanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/tutorialmanager/tests/unit</directory>
         </testsuite>
     </testsuites>
     <filter>
