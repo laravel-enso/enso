@@ -1,5 +1,6 @@
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
+[![Stories in Backlog](https://badge.waffle.io/laravel-enso/Enso.png?label=backlog&title=Backlog)](https://waffle.io/laravel-enso/Enso)
 [![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
 [![Stories in Done](https://badge.waffle.io/laravel-enso/Enso.png?label=done&title=Done)](https://waffle.io/laravel-enso/Enso)
 
