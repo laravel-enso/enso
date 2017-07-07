@@ -779,16 +779,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.31",
+            "version": "1.1.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "0a28fcb7e3f8b8419664bdc196c1dc7dd6cc34e0"
+                "reference": "6ab0b06320c88c77f0eac9d9bc3ed584e8a13779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/0a28fcb7e3f8b8419664bdc196c1dc7dd6cc34e0",
-                "reference": "0a28fcb7e3f8b8419664bdc196c1dc7dd6cc34e0",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/6ab0b06320c88c77f0eac9d9bc3ed584e8a13779",
+                "reference": "6ab0b06320c88c77f0eac9d9bc3ed584e8a13779",
                 "shasum": ""
             },
             "require": {
@@ -835,7 +835,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-07-07T21:43:46+00:00"
+            "time": "2017-07-07T22:09:08+00:00"
         },
         {
             "name": "laravel-enso/datatable",
