@@ -30,6 +30,8 @@
 - User application preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
 - Queueable jobs
 - Push notifications - working out of the box (requires Pusher)
+- Automatic breadcrumbs generation
+- Application-wide timesptamp formatting customization through the configuration file
 - many more helpers and hidden gems
 
 ***fully working in less than 5 minutes!***
