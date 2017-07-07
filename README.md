@@ -10,7 +10,7 @@
 
 <!--h-->
 ### Official Documentation
- 
+Check out the official documentation [here](https://docs.laravel-enso.com/).
 <!--/h-->
  
 ### Demo
@@ -65,7 +65,7 @@ Enjoy!
 - Application-wide timestamp formatting customization through the configuration file
 - many more helpers and hidden gems
 
-***fully working in less than 5 minutes!***
+**fully working in less than 5 minutes!**
 
 &nbsp; 
 &nbsp; 
