@@ -1,17 +1,48 @@
+<!--h--> 
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
 [![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
+<!--/h-->
 
 *Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
 
 &nbsp;
+
+<!--h-->
+### Official Documentation
+Check out the official documentation [here](https://docs.laravel-enso.com/).
+<!--/h-->
+ 
+### Demo
+
+[Demo application](https://laravel-enso.com), just login with user: `admin@login.com` and password: `password` 
+
+
+### Installation Steps
+
+1. Download the project with `git clone https://github.com/laravel-enso/Enso.git`
+
+2. Run in the project folder `composer install`
+
+3. Configure `.env` file. Run `php artisan key:generate`
+
+4. Run `php artisan migrate`
+
+5. Login into the project with user: `admin@login.com`, password: `password`
+
+6. (optional) Setup the `config/laravel-enso.php` file
+
+7. (optional) `npm install` / `npm run dev` 
+
+Enjoy!
+
 ### With enso you get
 
 - [Customizable and powerful data-tables](https://github.com/laravel-enso/DataTable):
     - server side, with multi-argument, 
     - full column search 
     - sublime snippet for table template 
-    - server side excel export for every tables - coming soon
+    - server-side excel export for every tables - coming soon
 - [Bootstrap select](https://github.com/laravel-enso/Select) - server side builder with parameters conditioning, including pivot parameters
 - Advanced owner / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure 
 - [Log management](https://github.com/laravel-enso/LogManager) -  view, download, clear
@@ -30,35 +61,75 @@
 - User application preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
 - Queueable jobs
 - Push notifications - working out of the box (requires Pusher)
+- Automatic breadcrumbs generation
+- Application-wide timestamp formatting customization through the configuration file
 - many more helpers and hidden gems
 
-***fully working in less than 5 minutes!***
+**fully working in less than 5 minutes!**
 
 &nbsp; 
 &nbsp; 
 &nbsp; 
 
-### Demo
 
-[Demo application](https://laravel-enso.com), just login with user: `admin@login.com` and password: `password` 
+### Under the Hood
 
-### Installation Steps
+#### Authentication
+ - the standard Laravel authentication is used, via email & password
 
-1. Download the project with `git clone https://github.com/laravel-enso/Enso.git`
+#### Authorization
 
-2. Run in the project folder `composer install`
+ - application wide, checking user status: active/inactive. The check is made for every request, via a middleware. The inactive status prevents the user from logging in and making requests. If an user becomes inactive while he's still logged in, at his next request he'll be logged out and redirected to the login page with a notification
+ - application-section wide, via the menu visibility, depending on the user's role. The users that don't have access to a certain menu, can't see it. The check is made before each menu redraw. This level doesn't block access to the routes, it just affects the visibility of the menus
+ - application-section wide, depending on permitted access to routes, which is tied to the user's role and the associated permissions for that role. The check is made for each request, via a middleware. If the user is not allowed on a route a 403 response is given back and a `laravel.log` entry is made.
+ - content specific, via gates & policies. The check is made locally, when and where gates & policies are used
 
-3. Configure `.env` file. Run `php artisan key:generate`
+#### Middleware & Middleware Groups
+- for the routes within the application, the 'core' middleware group is applied
+- the 'core' group contains the middleware below, presented in the order they're applied: 
+    - `verify-active-state` - checks users's status (active/inactive)
+    - `action-logger` - logs for each request the user's id, route, url, the HTTP verb and the timestamps
+    - `verify-route-access` - authorizes the access to a route
+    - `impersonate` - starts and stops the [impersonation](https://github.com/laravel-enso/Impersonate) of a user, when needed
+    - `set-language` - sets the user's chosen language ([localisation](https://github.com/laravel-enso/Localisation))
 
-4. Run `php artisan migrate`
+#### Owners, [Roles](https://github.com/laravel-enso/RoleManager) & Users
+- users represent the operators using the application
+- roles are collections of permissions
+- owners are user groups, and can represent departments, types, and even companies
+- an owner can have many users
+- an owner can have many roles
+- an user has **just one owner** and **just one role**
+- the role of a user may only be one of the roles available for its owner
+- users have an active or inactive status, where inactive users cannot login or make requests into the application (but can set/reset their password) 
 
-5. Setup the `config/laravel-enso.php` file
+#### Preferences
 
-6. (optional) `npm install` / `npm run dev`
+The mechanism allows saving and loading upon every request the user's preferences for several aspects of the application.
+- the preferences can be updated from the right-hand sidebar. From here the user can also reset the preferences to default.
+- the user's preferences are store in the `preferences` table, under `value` column in JSON format.
+- list of preferences
+    - `lang` - the user's language
+    - `theme` - the currently selected theme
+    - `dtStateSave` - flag for saving the state/preferences for each data-table within the application (for up to 90 days)
+    - `fixedHeader` - flag for setting the header fixed or scrollable
+    - `collapsedSidebar` - flag for setting the starting position of the main sidebar extended or collapsed
 
-7. Login into the project with user: `admin@login.com`, password: `password`
+#### Environment
+- config
+    - within the configuration file `config/larave-enso.php` various options may be set, such as the folders used for storing uploads, avatars, etc. the caching duration and the timestamps format when displaying them
 
-Enjoy!
+
+#### Telemetry   
+- the implicit `login` event that Laravel fires on a user's login triggers a listener that stores the user's ip, user-agent and timestamps inside the `logins` table
+
+
+
+#### Exceptions    
+- where needed, `EnsoException` instances are thrown. \EnsoException is also a Facade.
+- depending on the type of the request (ajax or non ajax) a different response is returned
+   
+   
 
 ### Thanks
 
@@ -74,10 +145,12 @@ Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Lar
 Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/).
 
 
+<!--h-->
 ### Contributions
 
 are welcome. Pull requests are great, but issues are good too.
 
 ### License
 
-Laravel Enso Core is released under the MIT license.
+This package is released under the MIT license.
+<!--/h-->
