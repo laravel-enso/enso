@@ -779,16 +779,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.35",
+            "version": "1.1.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "2cf14252c85879613bd4bca76c726a99e38eaaa1"
+                "reference": "25c8bce9314ffbb82d06844e24d4a6fe2bd97d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2cf14252c85879613bd4bca76c726a99e38eaaa1",
-                "reference": "2cf14252c85879613bd4bca76c726a99e38eaaa1",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/25c8bce9314ffbb82d06844e24d4a6fe2bd97d25",
+                "reference": "25c8bce9314ffbb82d06844e24d4a6fe2bd97d25",
                 "shasum": ""
             },
             "require": {
@@ -835,7 +835,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-07-09T09:30:26+00:00"
+            "time": "2017-07-09T10:05:54+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -1066,16 +1066,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "1.1.22",
+            "version": "1.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "d3ebdeb7365a2d2c28f4d6907419e15245d497d1"
+                "reference": "30338746a2c12da9f7f1f7023b428bc3ab73af00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/d3ebdeb7365a2d2c28f4d6907419e15245d497d1",
-                "reference": "d3ebdeb7365a2d2c28f4d6907419e15245d497d1",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/30338746a2c12da9f7f1f7023b428bc3ab73af00",
+                "reference": "30338746a2c12da9f7f1f7023b428bc3ab73af00",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1100,7 @@
                 }
             ],
             "description": "Localisation management dependency for Laravel Enso",
-            "time": "2017-07-07T19:47:19+00:00"
+            "time": "2017-07-09T10:08:41+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
