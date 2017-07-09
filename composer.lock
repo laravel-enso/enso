@@ -703,16 +703,16 @@
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "1.1.14",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "9c6c8ea3fd8da4d60e038b66e6a4a6f51d3a8642"
+                "reference": "4ba913cfaa2f89859476c4043230c6dbf88bbb53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/9c6c8ea3fd8da4d60e038b66e6a4a6f51d3a8642",
-                "reference": "9c6c8ea3fd8da4d60e038b66e6a4a6f51d3a8642",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/4ba913cfaa2f89859476c4043230c6dbf88bbb53",
+                "reference": "4ba913cfaa2f89859476c4043230c6dbf88bbb53",
                 "shasum": ""
             },
             "require": {
@@ -738,7 +738,7 @@
                 }
             ],
             "description": "User Avatar manager dependency for Laravel Enso",
-            "time": "2017-07-07T19:30:51+00:00"
+            "time": "2017-07-09T11:56:03+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -779,16 +779,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.36",
+            "version": "1.1.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "25c8bce9314ffbb82d06844e24d4a6fe2bd97d25"
+                "reference": "bbfa06c589e89098945c5d9f9e797dc9159624e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/25c8bce9314ffbb82d06844e24d4a6fe2bd97d25",
-                "reference": "25c8bce9314ffbb82d06844e24d4a6fe2bd97d25",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/bbfa06c589e89098945c5d9f9e797dc9159624e5",
+                "reference": "bbfa06c589e89098945c5d9f9e797dc9159624e5",
                 "shasum": ""
             },
             "require": {
@@ -835,7 +835,7 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-07-09T10:05:54+00:00"
+            "time": "2017-07-09T12:07:38+00:00"
         },
         {
             "name": "laravel-enso/datatable",

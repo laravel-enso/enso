@@ -1,8 +1,8 @@
 *
-!avatars/
-!exports/
-!files/
-!imports
-!public/
-!temp/
 !.gitignore
+!public
+!avatars
+!exports
+!files
+!imports
+!temp
