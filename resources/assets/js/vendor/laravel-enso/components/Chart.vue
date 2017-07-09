@@ -3,7 +3,7 @@
         <div class="box-header with-border" :class="{'draggable': draggable}">
 	        <h3 class="box-title">
 	        	<i :class="icons[type]"></i>
-                <slot name="chart-title"></slot>
+                {{ title }}
             </h3>
             <div class="box-tools pull-right">
                 <button type="button"
@@ -33,6 +33,11 @@
 			type: {
 				type: String,
 				required: true
+			},
+			title: {
+				type: String,
+				required: false,
+				default: 'Chart'
 			},
 			source: {
 				type: String,

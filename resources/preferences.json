@@ -9,40 +9,47 @@
     "local": {
         "dashboard": {
             "charts": {
-                "left": {
-                    "bar": {
+                "left": [
+                    {
+                        "type" : "bar",
                         "title": "Bar Chart",
                         "source": "/dashboard/getBarChartData"
                     },
-                    "radar": {
+                    {
+                        "type" : "radar",
                         "title": "Radar Chart",
                         "source": "/dashboard/getRadarChartData"
                     },
-                    "polarArea": {
+                    {
+                        "type" : "polarArea",
                         "title": "Polar Chart",
                         "source": "/dashboard/getPolarChartData"
                     }
-                },
-                "center": {
-                    "pie": {
+                ],
+                "center": [
+                    {
+                        "type" : "pie",
                         "title": "Pie Chart",
                         "source": "/dashboard/getPieChartData"
                     },
-                    "doughnut": {
+                    {
+                        "type" : "doughnut",
                         "title": "Doughnut Chart",
                         "source": "/dashboard/getPieChartData"
                     },
-                    "line": {
+                    {
+                        "type" : "line",
                         "title": "Line Chart",
                         "source": "/dashboard/getLineChartData"
                     }
-                },
-                "right": {
-                    "bubble": {
+                ],
+                "right": [
+                    {
+                        "type" : "bubble",
                         "title": "Bubble Chart",
                         "source": "/dashboard/getBubbleChartData"
                     }
-                }
+                ]
             }
         }
     }

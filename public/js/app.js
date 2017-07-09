@@ -1643,6 +1643,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: String,
 			required: true
 		},
+		title: {
+			type: String,
+			required: false,
+			default: 'Chart'
+		},
 		source: {
 			type: String,
 			default: ''
@@ -1992,11 +1997,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Object
         }
     },
+
     data: function data() {
         return {
+            labels: null,
             keys: ['left', 'center', 'right'],
             preferences: Store.user.preferences.local.dashboard
         };
+    },
+
+
+    methods: {
+        setLabels: function setLabels() {
+            var _this = this;
+
+            axios.get('/home/getTranslations', { params: this.getChartLabels() }).then(function (response) {
+                _this.labels = response.data;
+            }).catch(function (error) {
+                _this.reportEnsoException(error);
+            });
+        },
+        getChartLabels: function getChartLabels() {
+            var _this2 = this;
+
+            var labels = [];
+
+            this.keys.forEach(function (key) {
+                labels = labels.concat(_this2.preferences.charts[key].pluck('title'));
+            });
+
+            return labels;
+        }
+    },
+
+    mounted: function mounted() {
+        this.setLabels();
     }
 });
 
@@ -39693,7 +39728,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "box-title"
   }, [_c('i', {
     class: _vm.icons[_vm.type]
-  }), _vm._v(" "), _vm._t("chart-title")], 2), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                " + _vm._s(_vm.title) + "\n            ")]), _vm._v(" "), _c('div', {
     staticClass: "box-tools pull-right"
   }, [_c('button', {
     staticClass: "btn btn-box-tool btn-sm",
@@ -39764,27 +39799,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "row"
   }, _vm._l((_vm.keys), function(key) {
-    return _c('div', {
+    return (_vm.labels) ? _c('div', {
       staticClass: "col-md-4"
-    }, _vm._l((_vm.preferences.charts[key]), function(chart, type) {
+    }, _vm._l((_vm.preferences.charts[key]), function(chart) {
       return _c('div', [_c('chart', {
         ref: chart.title,
         refInFor: true,
         attrs: {
-          "type": type,
+          "type": chart.type,
           "source": chart.source,
           "params": _vm.params,
-          "collapsed": chart.collapsed
+          "collapsed": chart.collapsed,
+          "title": _vm.labels[chart.title]
         },
         on: {
           "changed-state": function($event) {
             _vm.updateState($event, chart.source)
           }
         }
-      }, [_c('span', {
-        slot: "chart-title"
-      }, [_vm._v(_vm._s(chart.title))])])], 1)
-    }))
+      })], 1)
+    })) : _vm._e()
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true

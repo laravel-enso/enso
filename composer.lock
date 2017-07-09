@@ -742,16 +742,16 @@
         },
         {
             "name": "laravel-enso/charts",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Charts.git",
-                "reference": "d12e293a46ce5533d9b972c5cca5b3299d3b26e7"
+                "reference": "b2c77f2c2e8f54c27494c6def83d6834a59338f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/d12e293a46ce5533d9b972c5cca5b3299d3b26e7",
-                "reference": "d12e293a46ce5533d9b972c5cca5b3299d3b26e7",
+                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/b2c77f2c2e8f54c27494c6def83d6834a59338f3",
+                "reference": "b2c77f2c2e8f54c27494c6def83d6834a59338f3",
                 "shasum": ""
             },
             "require": {
@@ -775,20 +775,20 @@
                 }
             ],
             "description": "This package is a server-side data builder for Chart.js, with a VueJS component for the frontend.",
-            "time": "2017-07-07T19:37:04+00:00"
+            "time": "2017-07-09T09:37:38+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "1.1.32",
+            "version": "1.1.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "6ab0b06320c88c77f0eac9d9bc3ed584e8a13779"
+                "reference": "2cf14252c85879613bd4bca76c726a99e38eaaa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/6ab0b06320c88c77f0eac9d9bc3ed584e8a13779",
-                "reference": "6ab0b06320c88c77f0eac9d9bc3ed584e8a13779",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2cf14252c85879613bd4bca76c726a99e38eaaa1",
+                "reference": "2cf14252c85879613bd4bca76c726a99e38eaaa1",
                 "shasum": ""
             },
             "require": {
@@ -835,26 +835,25 @@
                 }
             ],
             "description": "Main requirement & dependency aggregator for Laravel Enso",
-            "time": "2017-07-07T22:09:08+00:00"
+            "time": "2017-07-09T09:30:26+00:00"
         },
         {
             "name": "laravel-enso/datatable",
-            "version": "1.1.19",
+            "version": "1.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataTable.git",
-                "reference": "8e08a05b9d50daaf685b22b5ec25fbbf55c087ad"
+                "reference": "129c9aad0bfdfac43936364e9ee51be7e38f3b98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/8e08a05b9d50daaf685b22b5ec25fbbf55c087ad",
-                "reference": "8e08a05b9d50daaf685b22b5ec25fbbf55c087ad",
+                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/129c9aad0bfdfac43936364e9ee51be7e38f3b98",
+                "reference": "129c9aad0bfdfac43936364e9ee51be7e38f3b98",
                 "shasum": ""
             },
             "require": {
                 "laravel-enso/helpers": "1.1.*",
                 "laravel/framework": "5.4.*",
-                "nesbot/carbon": "^1.0",
                 "php": ">=7.1.0"
             },
             "type": "library",
@@ -874,7 +873,7 @@
                 }
             ],
             "description": "DataTable package for the DataTables.net library with server-side processing and a VueJS component",
-            "time": "2017-07-07T19:44:28+00:00"
+            "time": "2017-07-09T05:51:02+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
