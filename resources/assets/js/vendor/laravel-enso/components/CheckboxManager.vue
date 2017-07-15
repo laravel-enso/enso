@@ -1,11 +1,11 @@
 <template>
 
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" :id="'heading-' + groupName">
+        <div class="panel-heading" role="tab" :id="'heading-' + groupName + '-' + _uid">
             <h4 class="panel-title">
                 <a class="collapsed" role="button"
                     data-toggle="collapse"
-                    :href="'#component-' + groupName"
+                    :href="'#component-' + groupName + '-' + _uid"
                     aria-expanded="false">
                     {{ groupName }}
                 </a>
@@ -17,7 +17,7 @@
                 </div>
             </h4>
         </div>
-        <div :id="'component-' + groupName"
+        <div :id="'component-' + groupName + '-' + _uid"
             class="panel-collapse collapse"
             role="tabpanel">
             <div class="panel-group"

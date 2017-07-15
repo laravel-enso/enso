@@ -2124,13 +2124,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             default: 'primary'
         },
         extraFilters: {
-            type: Object
+            type: Object,
+            default: function _default() {
+                return {};
+            }
         },
         customParams: {
-            type: Object
+            type: Object,
+            default: function _default() {
+                return {};
+            }
         },
         intervalFilters: {
-            type: Object
+            type: Object,
+            default: function _default() {
+                return {};
+            }
         }
     },
 
@@ -2150,6 +2159,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
 
         return {
+            tableName: null,
             showModal: false,
             loading: false,
             hasEditor: false,
@@ -2163,6 +2173,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             tableClass: null,
             deleteRoute: null,
             editedCell: {},
+            customButtons: false,
             classes: {
                 compact: false,
                 display: false
@@ -2206,6 +2217,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     }
                 },
+                buttons: [{ extend: 'pageLength' }, { extend: 'colvis', text: '<i class="fa fa-eye"></i>' }, { extend: 'copy', text: '<i class="fa fa-clipboard"></i>' }, {
+                    className: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    action: function action() {
+                        self.exportExcel();
+                    }
+                }],
                 drawCallback: function drawCallback() {
                     self.toggleClasses();
 
@@ -2260,12 +2278,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         processInitData: function processInitData(data) {
             this.getSettings();
             this.setStyle(data);
+            this.tableOptions.language = data.language || null;
+            this.tableName = data.tableName;
             this.header = data.header;
             this.tableOptions.columns = data.columns;
             this.computeExtraColumns(data);
             this.totals = data.totals || {};
             this.computeRender(data);
             this.computeEditor(data);
+            this.customButtons = data.customButtons;
         },
         getSettings: function getSettings() {
             var settings = Store.user.preferences.global.dtStateSave && localStorage.hasOwnProperty(this.settingsKey) ? JSON.parse(localStorage.getItem(this.settingsKey)) : null;
@@ -2276,7 +2297,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.headerAlign = data.headerAlign;
             this.bodyAlign = data.bodyAlign;
             this.tableOptions.dom = data.dom || this.tableOptions.dom;
-            this.tableOptions.language = data.language || null;
         },
         computeExtraColumns: function computeExtraColumns(data) {
             if (data.actionButtons) {
@@ -2323,7 +2343,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             this.dtHandle = $('#' + this.tableId).DataTable(this.tableOptions);
+            this.setCustomButtons();
             this.addProcessingListener();
+        },
+        setCustomButtons: function setCustomButtons() {
+            if (!this.customButtons) {
+                this.dtHandle.buttons(['.excel']).disable();
+            }
         },
         addProcessingListener: function addProcessingListener() {
             var self = this;
@@ -2484,6 +2510,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.dtHandle.state.clear();
             window.location.reload();
+        },
+        exportExcel: function exportExcel() {
+            var _this3 = this;
+
+            axios.get(this.source + '/exportExcel', { params: this.getExportParams() }).then(function (response) {
+                toastr.success(response.data.message);
+            }).catch(function (error) {
+                _this3.reportEnsoException(error);
+            });
+        },
+        getExportParams: function getExportParams() {
+            return {
+                'recordsDisplay': this.dtHandle.page.info().recordsDisplay,
+                'columns': this.dtHandle.ajax.params().columns,
+                'search': this.dtHandle.ajax.params().search,
+                'totals': JSON.stringify(this.totals),
+                'extraFilters': JSON.stringify(this.extraFilters),
+                'intervalFilters': JSON.stringify(this.intervalFilters),
+                'customParams': JSON.stringify(this.customParams)
+            };
         }
     },
 
@@ -3474,7 +3520,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeSelection: function removeSelection() {
             var _this2 = this;
 
-            this.selectedOptions = '';
+            this.selectedOptions = this.multiple ? [] : '';
 
             this.$nextTick(function () {
                 //we need next tick
@@ -38981,7 +39027,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "box-title"
   }, [_c('i', {
     staticClass: "fa fa-table"
-  }), _vm._v(" "), _vm._t("data-table-title")], 2), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._t("data-table-title", [_vm._v(_vm._s(_vm.tableName))])], 2), _vm._v(" "), _c('div', {
     staticClass: "box-tools pull-right"
   }, [_c('button', {
     staticClass: "btn btn-box-tool btn-sm",
@@ -39395,7 +39441,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.menus.length) ? _c('checkbox-manager', {
     attrs: {
       "parent-accordion": "#accordion-menus",
-      "group-name": "sidebar",
+      "group-name": "menus",
       "role-permissions": _vm.roleMenus,
       "group-data": _vm.menus
     }
@@ -39582,7 +39628,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading",
     attrs: {
       "role": "tab",
-      "id": 'heading-' + _vm.groupName
+      "id": 'heading-' + _vm.groupName + '-' + _vm._uid
     }
   }, [_c('h4', {
     staticClass: "panel-title"
@@ -39591,7 +39637,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "role": "button",
       "data-toggle": "collapse",
-      "href": '#component-' + _vm.groupName,
+      "href": '#component-' + _vm.groupName + '-' + _vm._uid,
       "aria-expanded": "false"
     }
   }, [_vm._v("\n                " + _vm._s(_vm.groupName) + "\n            ")]), _vm._v(" "), _c('div', {
@@ -39612,7 +39658,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-collapse collapse",
     attrs: {
-      "id": 'component-' + _vm.groupName,
+      "id": 'component-' + _vm.groupName + '-' + _vm._uid,
       "role": "tabpanel"
     }
   }, [(_vm.groupCount) ? _c('div', {
@@ -51870,35 +51916,35 @@ module.exports = function () {
 /***/ "./resources/assets/sass/app.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/adi/code/enso/node_modules/node-sass/vendor/darwin-x64-57/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 8.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 7.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/Users/adi/code/enso/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:193:19)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:180:3)\n    at NormalModule.build (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:273:15)\n    at Compilation.buildModule (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:147:10)\n    at moduleFactory.create (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:434:9)\n    at factory (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:253:5)\n    at applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:99:14)\n    at /Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:204:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/adi/code/enso/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:208:13)\n    at resolver (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:74:11)\n    at process.nextTick (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:205:8)\n    at _combinedTickCallback (internal/process/next_tick.js:95:7)\n    at process._tickCallback (internal/process/next_tick.js:161:9)");
 
 /***/ }),
 
 /***/ "./resources/assets/sass/auth.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/adi/code/enso/node_modules/node-sass/vendor/darwin-x64-57/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 8.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 7.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/Users/adi/code/enso/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:193:19)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:180:3)\n    at NormalModule.build (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:273:15)\n    at Compilation.buildModule (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:147:10)\n    at moduleFactory.create (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:434:9)\n    at factory (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:253:5)\n    at applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:99:14)\n    at /Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:204:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/adi/code/enso/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:208:13)\n    at resolver (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:74:11)\n    at process.nextTick (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:205:8)\n    at _combinedTickCallback (internal/process/next_tick.js:95:7)\n    at process._tickCallback (internal/process/next_tick.js:161:9)");
 
 /***/ }),
 
 /***/ "./resources/assets/sass/error.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/adi/code/enso/node_modules/node-sass/vendor/darwin-x64-57/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 8.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 7.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/Users/adi/code/enso/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:193:19)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:180:3)\n    at NormalModule.build (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:273:15)\n    at Compilation.buildModule (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:147:10)\n    at moduleFactory.create (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:434:9)\n    at factory (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:253:5)\n    at applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:99:14)\n    at /Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:204:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/adi/code/enso/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:208:13)\n    at resolver (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:74:11)\n    at process.nextTick (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:205:8)\n    at _combinedTickCallback (internal/process/next_tick.js:95:7)\n    at process._tickCallback (internal/process/next_tick.js:161:9)");
 
 /***/ }),
 
 /***/ "./resources/assets/sass/main.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/adi/code/enso/node_modules/node-sass/vendor/darwin-x64-57/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 8.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 7.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/Users/adi/code/enso/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:193:19)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:180:3)\n    at NormalModule.build (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:273:15)\n    at Compilation.buildModule (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:147:10)\n    at moduleFactory.create (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:434:9)\n    at factory (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:253:5)\n    at applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:99:14)\n    at /Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:204:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/adi/code/enso/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:208:13)\n    at resolver (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:74:11)\n    at process.nextTick (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:205:8)\n    at _combinedTickCallback (internal/process/next_tick.js:95:7)\n    at process._tickCallback (internal/process/next_tick.js:161:9)");
 
 /***/ }),
 
 /***/ "./resources/assets/sass/welcome.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/adi/code/enso/node_modules/node-sass/vendor/darwin-x64-57/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 8.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 7.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/Users/adi/code/enso/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (/Users/adi/code/enso/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:569:30)\n    at Object.Module._extensions..js (module.js:580:10)\n    at Module.load (module.js:503:32)\n    at tryModuleLoad (module.js:466:12)\n    at Function.Module._load (module.js:458:3)\n    at Module.require (module.js:513:17)\n    at require (internal/module.js:11:18)\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:193:19)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/adi/code/enso/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/adi/code/enso/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:180:3)\n    at NormalModule.build (/Users/adi/code/enso/node_modules/webpack/lib/NormalModule.js:273:15)\n    at Compilation.buildModule (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:147:10)\n    at moduleFactory.create (/Users/adi/code/enso/node_modules/webpack/lib/Compilation.js:434:9)\n    at factory (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:253:5)\n    at applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:99:14)\n    at /Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:204:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/adi/code/enso/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/adi/code/enso/node_modules/tapable/lib/Tapable.js:208:13)\n    at resolver (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:74:11)\n    at process.nextTick (/Users/adi/code/enso/node_modules/webpack/lib/NormalModuleFactory.js:205:8)\n    at _combinedTickCallback (internal/process/next_tick.js:95:7)\n    at process._tickCallback (internal/process/next_tick.js:161:9)");
 
 /***/ }),
 

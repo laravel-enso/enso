@@ -157,7 +157,6 @@ $.extend(true, $.fn.dataTable.defaults, {
     stateDuration: 60 * 60 * 24 * 90,
     order: [],
     colReorder: true,
-    buttons: [{ extend: 'pageLength', className: "blahblah" }, { extend: 'colvis', text: '<i class="fa fa-eye"></i>' }, { extend: 'copy', text: '<i class="fa fa-clipboard"></i>' }],
     responsive: true,
     serverSide: true
 });

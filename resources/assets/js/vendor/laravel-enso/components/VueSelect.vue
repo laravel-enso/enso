@@ -126,7 +126,7 @@
                 return $('#bs-select-' + this._uid + ' input').val() || ''; //we don't want undefined
             },
             removeSelection() {
-                this.selectedOptions = '';
+                this.selectedOptions = this.multiple ? [] : '';
 
                 this.$nextTick(() => { //we need next tick
                     $('#select-' + this._uid).selectpicker('refresh');

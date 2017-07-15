@@ -9,7 +9,7 @@
             </center>
             <div class="panel-group" id="accordion-menus" role="tablist" aria-multiselectable="false">
                 <checkbox-manager parent-accordion="#accordion-menus"
-                    group-name="sidebar"
+                    group-name="menus"
                     :role-permissions="roleMenus"
                     :group-data="menus"
                     v-if="menus.length">
