@@ -41,6 +41,10 @@
 			disabled: {
 				type: Boolean,
 				default: false
+			},
+			format: {
+				type: String,
+				default: 'dd-mm-yyyy'
 			}
 		},
 		computed: {
@@ -67,12 +71,12 @@
 			let self = this;
 
 		    $("#date-input-" + this._uid).datepicker({
-		        format: "dd-mm-yyyy",
+		        format: self.format,
 		        language: Store.user.preferences.lang,
 		        todayHighlight: true,
 		        autoclose: true
 		    }).on('hide', function(date) {
-		    	self.$emit('input', date.format('dd-mm-yyyy'));
+		    	self.$emit('input', date.format(self.format));
 		    });
 		}
 	}

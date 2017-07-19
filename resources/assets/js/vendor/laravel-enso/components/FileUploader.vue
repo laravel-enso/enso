@@ -70,8 +70,8 @@
                 return formData;
             },
             sizeCheckPasses(file) {
-                if (file.size > this.maxFileSize) {
-                    toastr.warning('File size Limit of ' + this.maxFileSize + ' Kb excedeed by ' + file.name);
+                if (file.size > this.fileSizeLimit) {
+                    toastr.warning('File size Limit of ' + this.fileSizeLimit + ' Kb excedeed by ' + file.name);
 
                     return false;
                 }
