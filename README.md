@@ -117,8 +117,8 @@ The mechanism allows saving and loading upon every request the user's preference
 
 #### Translations
 
-A light translation service is available for the front-end, that may be called from any page of VueJS component
-- the service endpoint is:  `home/getTranslations` 
+A light translation service is available for the front-end, that may be called from any page or VueJS component
+- the service endpoint is:  (GET) `home/getTranslations` 
 - takes a list of however many string parameters
 - gives back a JSON object, when the property names are the given parameters, and their values are their translated values
 
