@@ -115,6 +115,15 @@ The mechanism allows saving and loading upon every request the user's preference
     - `fixedHeader` - flag for setting the header fixed or scrollable
     - `collapsedSidebar` - flag for setting the starting position of the main sidebar extended or collapsed
 
+#### Translations
+
+A light translation service is available for the front-end, that may be called from any page or VueJS component
+- the service endpoint is:  (GET) `home/getTranslations` 
+- takes a list of however many string parameters
+- gives back a JSON object, when the property names are the given parameters, and their values are their translated values
+
+The service uses the Laravel `__()` translation method/mechanism in order to get the translated values.
+
 #### Environment
 - config
     - within the configuration file `config/larave-enso.php` various options may be set, such as the folders used for storing uploads, avatars, etc. the caching duration and the timestamps format when displaying them
