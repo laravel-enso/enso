@@ -198,17 +198,27 @@
 
         watch: {
             'extraFilters': {
-                handler: 'getData',
+                handler() {
+                    this.getData.call(this);
+                },
                 deep: true
             },
             'intervalFilters': {
-                handler: 'getData',
+                handler() {
+                    this.getData.call(this);
+                },
                 deep: true
             },
             'customParams': {
-                handler: 'getData',
+                handler() {
+                    this.getData.call(this);
+                },
                 deep: true
             }
+        },
+
+        created() {
+            this.getData = _.debounce(this.getData, 500);
         },
 
         methods: {
@@ -416,14 +426,14 @@
                 + (this.actionButtons.standard.download ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + 'download/' + data + '"><i class="fa fa-cloud-download"></i></a>' : '')
                 + (this.actionButtons.standard.delete ? '<a class="btn btn-xs btn-danger margin-left-xs delete-model" data-route="' + this.source + '/' + data + '"><i class="fa fa-trash-o"><i class=""></i></a>' : '');
             },
-            getData: _.debounce(function() {
+            getData() {
                 if (!this.dtHandle) {
                     return this.initTable();
                 }
 
                 let pageNumber = this.dtHandle.page.info().page;
                 this.dtHandle.page(pageNumber).draw('page');
-            }, 500),
+            },
             deleteModel() {
                 this.showModal = false;
 

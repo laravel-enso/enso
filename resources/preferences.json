@@ -8,49 +8,53 @@
     },
     "local": {
         "dashboard": {
-            "charts": {
-                "left": [
-                    {
-                        "type" : "bar",
-                        "title": "Bar Chart",
+            "grid": [
+                [{
+                    "type": "chart",
+                    "data": {
+                        "type": "bar",
                         "source": "/dashboard/getBarChartData"
-                    },
-                    {
-                        "type" : "radar",
-                        "title": "Radar Chart",
+                    }
+                }, {
+                    "type": "chart",
+                    "data": {
+                        "type": "radar",
                         "source": "/dashboard/getRadarChartData"
-                    },
-                    {
-                        "type" : "polarArea",
-                        "title": "Polar Chart",
+                    }
+                }, {
+                    "type": "chart",
+                    "data": {
+                        "type": "polarArea",
                         "source": "/dashboard/getPolarChartData"
                     }
-                ],
-                "center": [
-                    {
-                        "type" : "pie",
-                        "title": "Pie Chart",
+                }],
+                [{
+                    "type": "chart",
+                    "data": {
+                        "type": "pie",
                         "source": "/dashboard/getPieChartData"
-                    },
-                    {
-                        "type" : "doughnut",
-                        "title": "Doughnut Chart",
+                    }
+                }, {
+                    "type": "chart",
+                    "data": {
+                        "type": "doughnut",
                         "source": "/dashboard/getPieChartData"
-                    },
-                    {
-                        "type" : "line",
-                        "title": "Line Chart",
+                    }
+                }, {
+                    "type": "chart",
+                    "data": {
+                        "type": "line",
                         "source": "/dashboard/getLineChartData"
                     }
-                ],
-                "right": [
-                    {
-                        "type" : "bubble",
-                        "title": "Bubble Chart",
+                }],
+                [{
+                    "type": "chart",
+                    "data": {
+                        "type": "bubble",
                         "source": "/dashboard/getBubbleChartData"
                     }
-                ]
-            }
+                }]
+            ]
         }
     }
 }

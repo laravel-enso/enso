@@ -1643,11 +1643,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: String,
 			required: true
 		},
-		title: {
-			type: String,
-			required: false,
-			default: 'Chart'
-		},
 		source: {
 			type: String,
 			default: ''
@@ -1655,12 +1650,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		headerClass: {
 			type: String,
 			default: 'primary'
-		},
-		options: {
-			type: Object,
-			default: function _default() {
-				return {};
-			}
 		},
 		params: {
 			type: Object
@@ -1675,6 +1664,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			chart: null,
 			loading: false,
 			data: {},
+			options: {},
+			title: 'Chart',
 			icons: {
 				bar: 'fa fa-bar-chart',
 				pie: 'fa fa-pie-chart',
@@ -1694,7 +1685,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.loading = true;
 
 			axios.get(this.source, { params: this.params }).then(function (response) {
-				_this.data = response.data;
+				_this.data = response.data.data;
+				_this.options = Object.assign({}, _this.options, response.data.options);
+				_this.title = response.data.title || _this.title;
 				_this.loading = false;
 				_this.updateData();
 			}).catch(function (error) {
@@ -1835,6 +1828,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         permissionIds: function permissionIds() {
             return this.isRoot ? this.groupData.pluck('id') : [];
+        },
+        sortedKeys: function sortedKeys() {
+            return this.isRoot ? null : Object.keys(this.groupData).sort();
         }
     },
 
@@ -1989,6 +1985,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1998,40 +1998,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    data: function data() {
-        return {
-            labels: null,
-            keys: ['left', 'center', 'right'],
-            preferences: Store.user.preferences.local.dashboard
-        };
-    },
-
-
-    methods: {
-        setLabels: function setLabels() {
-            var _this = this;
-
-            axios.get('/home/getTranslations', { params: this.getChartLabels() }).then(function (response) {
-                _this.labels = response.data;
-            }).catch(function (error) {
-                _this.reportEnsoException(error);
-            });
-        },
-        getChartLabels: function getChartLabels() {
-            var _this2 = this;
-
-            var labels = [];
-
-            this.keys.forEach(function (key) {
-                labels = labels.concat(_this2.preferences.charts[key].pluck('title'));
-            });
-
-            return labels;
+    computed: {
+        columnsClass: function columnsClass() {
+            return 'col-md-' + 12 / this.grid.length;
         }
     },
 
-    mounted: function mounted() {
-        this.setLabels();
+    data: function data() {
+        return {
+            labels: null,
+            grid: Store.user.preferences.local.dashboard.grid
+        };
     }
 });
 
@@ -2250,18 +2227,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         'extraFilters': {
-            handler: 'getData',
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
             deep: true
         },
         'intervalFilters': {
-            handler: 'getData',
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
             deep: true
         },
         'customParams': {
-            handler: 'getData',
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
             deep: true
         }
     },
+
+    created: function created() {
+        this.getData = _.debounce(this.getData, 500);
+    },
+
 
     methods: {
         initTable: function initTable() {
@@ -2459,15 +2450,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getStandardActionButtons: function getStandardActionButtons(data) {
             return '' + (this.actionButtons.standard.show ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + data + '"><i class="fa fa-eye"></i></a>' : '') + (this.actionButtons.standard.edit ? '<a class="btn btn-xs btn-warning margin-left-xs" href="' + this.source + '/' + data + '/edit"><i class="fa fa-pencil-square-o"></i></a>' : '') + (this.actionButtons.standard.download ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + 'download/' + data + '"><i class="fa fa-cloud-download"></i></a>' : '') + (this.actionButtons.standard.delete ? '<a class="btn btn-xs btn-danger margin-left-xs delete-model" data-route="' + this.source + '/' + data + '"><i class="fa fa-trash-o"><i class=""></i></a>' : '');
         },
-
-        getData: _.debounce(function () {
+        getData: function getData() {
             if (!this.dtHandle) {
                 return this.initTable();
             }
 
             var pageNumber = this.dtHandle.page.info().page;
             this.dtHandle.page(pageNumber).draw('page');
-        }, 500),
+        },
         deleteModel: function deleteModel() {
             var _this2 = this;
 
@@ -2945,6 +2935,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         roleId: {
             type: String,
             required: true
+        }
+    },
+
+    computed: {
+        sortedKeys: function sortedKeys() {
+            return Object.keys(this.permissions).sort();
         }
     },
 
@@ -39458,14 +39454,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "role": "tablist",
       "aria-multiselectable": "false"
     }
-  }, _vm._l((_vm.permissions), function(groupData, groupName) {
+  }, _vm._l((_vm.sortedKeys), function(group) {
     return _c('checkbox-manager', {
-      key: groupName,
+      key: group,
       attrs: {
         "parent-accordion": "#accordion-groups",
-        "group-name": groupName,
+        "group-name": group,
         "role-permissions": _vm.rolePermissions,
-        "group-data": groupData
+        "group-data": _vm.permissions[group]
       }
     })
   }))], 1), _vm._v(" "), _c('center', [_c('button', {
@@ -39678,15 +39674,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "role": "tablist",
       "aria-multiselectable": "false"
     }
-  }, _vm._l((_vm.groupData), function(group, index) {
+  }, _vm._l((_vm.sortedKeys), function(group) {
     return _c('checkbox-manager', {
-      key: index,
+      key: group,
       ref: "children",
       refInFor: true,
       attrs: {
         "parent-accordion": '#accordion-group-' + _vm._uid,
-        "group-name": index,
-        "group-data": group,
+        "group-name": group,
+        "group-data": _vm.groupData[group],
         "role-permissions": _vm.rolePermissions
       },
       on: {
@@ -39848,27 +39844,30 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, _vm._l((_vm.keys), function(key) {
-    return (_vm.labels) ? _c('div', {
-      staticClass: "col-md-4"
-    }, _vm._l((_vm.preferences.charts[key]), function(chart) {
-      return _c('div', [_c('chart', {
-        ref: chart.title,
+  }, _vm._l((_vm.grid), function(column) {
+    return _c('div', {
+      class: _vm.columnsClass
+    }, _vm._l((column), function(element, index) {
+      return _c('div', [(element.type === 'chart') ? _c('chart', {
+        ref: element.type + '-' + index,
         refInFor: true,
         attrs: {
-          "type": chart.type,
-          "source": chart.source,
+          "type": element.data.type,
+          "source": element.data.source,
           "params": _vm.params,
-          "collapsed": chart.collapsed,
-          "title": _vm.labels[chart.title]
-        },
-        on: {
-          "changed-state": function($event) {
-            _vm.updateState($event, chart.source)
-          }
+          "collapsed": element.data.collapsed
         }
-      })], 1)
-    })) : _vm._e()
+      }) : _vm._e(), _vm._v(" "), (element.type === 'table') ? _c('data-table', {
+        ref: element.type + '-' + index,
+        refInFor: true,
+        attrs: {
+          "source": element.data.source,
+          "id": element.type + '-' + index
+        }
+      }, [_c('span', {
+        slot: "data-table-title"
+      }, [_vm._v("Cheltuieli cu termen depasit")])]) : _vm._e()], 1)
+    }))
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true

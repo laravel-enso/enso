@@ -34,11 +34,6 @@
 				type: String,
 				required: true
 			},
-			title: {
-				type: String,
-				required: false,
-				default: 'Chart'
-			},
 			source: {
 				type: String,
 				default: ''
@@ -46,12 +41,6 @@
 			headerClass: {
 				type: String,
 				default: 'primary'
-			},
-			options: {
-				type: Object,
-				default() {
-					return {};
-				}
 			},
 			params: {
 				type: Object,
@@ -66,6 +55,8 @@
 				chart: null,
 	            loading: false,
 	            data: {},
+	            options: {},
+	            title: 'Chart',
 	            icons: {
 	            	bar: 'fa fa-bar-chart',
 	            	pie: 'fa fa-pie-chart',
@@ -82,7 +73,9 @@
 				this.loading = true;
 
 				axios.get(this.source, { params:this.params }).then(response => {
-					this.data = response.data;
+					this.data = response.data.data;
+					this.options = Object.assign({}, this.options, response.data.options);
+					this.title = response.data.title || this.title;
 					this.loading = false;
 					this.updateData();
 				}).catch(error => {

@@ -1,16 +1,20 @@
 <template>
     <div class="row">
-        <div class="col-md-4" v-if="labels"
-            v-for="key in keys">
-            <div v-for="chart in preferences.charts[key]">
-                <chart :type="chart.type"
-                    :source="chart.source"
+        <div :class="columnsClass" v-for="column in grid">
+            <div v-for="(element, index) in column">
+                <chart v-if="element.type === 'chart'"
+                    :type="element.data.type"
+                    :source="element.data.source"
                     :params="params"
-                    :ref="chart.title"
-                    :collapsed="chart.collapsed"
-                    :title = "labels[chart.title]"
-                    @changed-state="updateState($event, chart.source)">
+                    :ref="element.type + '-' + index"
+                    :collapsed="element.data.collapsed">
                 </chart>
+                <data-table v-if="element.type === 'table'"
+                    :source="element.data.source"
+                    :ref="element.type + '-' + index"
+                    :id="element.type + '-' + index">
+                    <span slot="data-table-title">Cheltuieli cu termen depasit</span>
+                </data-table>
             </div>
         </div>
     </div>
@@ -25,37 +29,18 @@
             }
         },
 
-        data() {
-            return {
-                labels: null,
-                keys: ['left', 'center', 'right'],
-                preferences: Store.user.preferences.local.dashboard
+        computed: {
+            columnsClass() {
+                return 'col-md-' + (12 / this.grid.length);
             }
         },
 
-        methods: {
-            setLabels() {
-                axios.get('/home/getTranslations', {params: this.getChartLabels()}).then(response => {
-                    this.labels = response.data;
-                }).catch(error => {
-                    this.reportEnsoException(error);
-                });
-            },
-            getChartLabels() {
-                let labels = [];
-
-                this.keys.forEach(key => {
-                    labels = labels.concat(this.preferences.charts[key].pluck('title'));
-                });
-
-                return labels;
-            },
-        },
-
-        mounted() {
-            this.setLabels();
-        },
-
+        data() {
+            return {
+                labels: null,
+                grid: Store.user.preferences.local.dashboard.grid,
+            }
+        }
     }
 
 </script>

@@ -25,13 +25,13 @@
                 role="tablist" aria-multiselectable="false"
                 style="margin-left: 25px;margin-right:25px;margin-top:10px; padding-bottom: 10px"
                 v-if="groupCount">
-                <checkbox-manager v-for="(group, index) in groupData"
+                <checkbox-manager v-for="group in sortedKeys"
                     ref="children"
                     :parent-accordion="'#accordion-group-' + _uid"
-                    :group-name="index"
-                    :group-data="group"
+                    :group-name="group"
+                    :group-data="groupData[group]"
                     :role-permissions="rolePermissions"
-                    :key="index"
+                    :key="group"
                     @state-updated="updateGroupState">
                 </checkbox-manager>
             </div>
@@ -89,6 +89,9 @@
             },
             permissionIds() {
                 return this.isRoot ? this.groupData.pluck('id') : [];
+            },
+            sortedKeys() {
+                return this.isRoot ? null : Object.keys(this.groupData).sort();
             }
         },
 

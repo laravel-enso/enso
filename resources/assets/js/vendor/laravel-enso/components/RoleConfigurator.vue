@@ -23,12 +23,12 @@
                 </h5>
             </center>
             <div class="panel-group" id="accordion-groups" role="tablist" aria-multiselectable="false">
-                <checkbox-manager v-for="(groupData, groupName) in permissions"
-                    :key="groupName"
+                <checkbox-manager v-for="group in sortedKeys"
+                    :key="group"
                     parent-accordion="#accordion-groups"
-                    :group-name="groupName"
+                    :group-name="group"
                     :role-permissions="rolePermissions"
-                    :group-data="groupData">
+                    :group-data="permissions[group]">
                 </checkbox-manager>
             </div>
         </div>
@@ -48,6 +48,12 @@
             roleId: {
                 type: String,
                 required: true
+            }
+        },
+
+        computed: {
+            sortedKeys() {
+                return Object.keys(this.permissions).sort();
             }
         },
 
