@@ -1635,6 +1635,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1653,12 +1654,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		params: {
 			type: Object
-		},
-		draggable: {
-			type: Boolean,
-			default: false
 		}
 	},
+
 	data: function data() {
 		return {
 			chart: null,
@@ -1677,6 +1675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		};
 	},
+
 
 	methods: {
 		getData: function getData() {
@@ -1707,10 +1706,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return this.init();
 			}
 
-			var data = this.data;
+			var self = this;
 
 			this.chart.data.datasets.forEach(function (dataset, index) {
-				dataset.data = data.datasets[index].data;
+				dataset.data = self.data.datasets[index].data;
 			});
 
 			this.chart.update();
@@ -1722,6 +1721,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.chart.destroy();
 		}
 	},
+
 	mounted: function mounted() {
 		this.getData();
 	},
@@ -2081,9 +2081,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2136,6 +2133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
 
         return {
+            labels: Store.labels,
             tableName: null,
             showModal: false,
             loading: false,
@@ -2794,6 +2792,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2831,6 +2836,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			default: false
 		}
 	},
+
+	data: function data() {
+		return {
+			labels: Store.labels
+		};
+	},
+
+
 	methods: {
 		cancelAction: function cancelAction() {
 			this.$emit(this.cancelEvent);
@@ -3021,6 +3034,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3092,6 +3107,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -3365,20 +3382,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            value: ''
-        };
-    },
+	data: function data() {
+		return {
+			value: ''
+		};
+	},
 
-    methods: {
-        changed: function changed() {
-            this.$emit('input', this.value);
-        }
-    }
+	methods: {
+		changed: function changed() {
+			this.$emit('input', this.value);
+		}
+	}
 });
 
 /***/ }),
@@ -3938,7 +3958,7 @@ var tutorialTemplate = '\
 		get: function get() {
 			var _this = this;
 
-			axios.get('/system/tutorials/getTutorial/' + this.route).then(function (response) {
+			axios.get('/system/tutorials/' + this.route).then(function (response) {
 				_this.tutorialSteps = response.data;
 				_this.init();
 			}).catch(function (error) {
@@ -6513,7 +6533,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n\t\tposition: fixed;\n\t\tz-index: 9998;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tbackground-color: rgba(0, 0, 0, .5);\n\t\tdisplay: table;\n\t\ttransition: opacity .3s ease;\n}\n.modal-wrapper {\n\t\tdisplay: table-cell;\n\t\tvertical-align: middle;\n}\n.modal-container {\n\t\tmin-width: 250px;\n\t\tmargin: 0px auto;\n\t\tpadding: 5px 5px;\n\t\tbackground-color: #fff;\n\t\tborder-radius: 2px;\n\t\tbox-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n\t\ttransition: all .3s ease;\n}\n.modal-header {\n\t\tmargin-top: 0;\n\t\tcolor: #42b983;\n\t\tpadding: 5px;\n\t\tborder-bottom: 1px solid #bbbbbb;\n}\n.modal-body {\n\t\tmargin: 0;\n\t    border-bottom: 1px solid #bbbbbb;\n\t    overflow-y: scroll;\n}\n.modal-footer {\n\t\tpadding:5px;\n}\n.modal-default-button {\n\t\tfloat: right;\n}\n.modal-enter {\n\t\topacity: 0;\n\t\ttransition: height 0.3s ease-in-out;\n}\n.modal-leave-active {\n\t\topacity: 0;\n}\n.modal-enter .modal-container,\n\t.modal-leave-active .modal-container {\n\t\t-webkit-transform: scale(1.1);\n\t\ttransform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n\tposition: fixed;\n\tz-index: 9998;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: rgba(0, 0, 0, .5);\n\tdisplay: table;\n\ttransition: opacity .3s ease;\n}\n.modal-wrapper {\n\tdisplay: table-cell;\n\tvertical-align: middle;\n}\n.modal-container {\n\tmin-width: 250px;\n\tmargin: 0px auto;\n\tpadding: 5px 5px;\n\tbackground-color: #fff;\n\tborder-radius: 2px;\n\tbox-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n\ttransition: all .3s ease;\n}\n.modal-header {\n\tmargin-top: 0;\n\tcolor: #42b983;\n\tpadding: 5px;\n\tborder-bottom: 1px solid #bbbbbb;\n}\n.modal-body {\n\tmargin: 0;\n    border-bottom: 1px solid #bbbbbb;\n    overflow-y: scroll;\n}\n.modal-footer {\n\tpadding:5px;\n}\n.modal-default-button {\n\tfloat: right;\n}\n.modal-enter {\n\topacity: 0;\n\ttransition: height 0.3s ease-in-out;\n}\n.modal-leave-active {\n\topacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n\t-webkit-transform: scale(1.1);\n\ttransform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
@@ -38936,8 +38956,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "value"
     }],
     attrs: {
-      "type": "radio",
       "name": 'radio-' + _vm._uid,
+      "type": "radio",
       "value": "1"
     },
     domProps: {
@@ -38961,8 +38981,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "value"
     }],
     attrs: {
-      "type": "radio",
       "name": 'radio-' + _vm._uid,
+      "type": "radio",
       "value": "0"
     },
     domProps: {
@@ -38986,8 +39006,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "value"
     }],
     attrs: {
-      "type": "radio",
       "name": 'radio-' + _vm._uid,
+      "type": "radio",
       "value": ""
     },
     domProps: {
@@ -39087,7 +39107,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "text-center"
     }, [(i == 2) ? _c('span', {
       staticClass: "totals"
-    }, [_vm._t("data-table-total", [_vm._v("Totals")])], 2) : _vm._e()])
+    }, [_vm._v(_vm._s(_vm.labels.totals))]) : _vm._e()])
   }))]) : _vm._e()], 1)]), _vm._v(" "), (_vm.loading) ? _c('div', {
     staticClass: "overlay"
   }, [_c('i', {
@@ -39105,13 +39125,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.deleteModel()
       }
     }
-  }, [_c('span', {
-    slot: "modal-body"
-  }, [_vm._t("modal-body")], 2), _vm._v(" "), _c('span', {
-    slot: "modal-cancel"
-  }, [_vm._t("modal-cancel")], 2), _vm._v(" "), _c('span', {
-    slot: "modal-ok"
-  }, [_vm._t("modal-ok")], 2)])], 1)
+  })], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
     staticClass: "btn btn-box-tool btn-sm",
@@ -39538,13 +39552,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }, [(_vm.header) ? _c('div', {
     staticClass: "modal-header"
-  }, [_c('center', [_c('h5', [_vm._t("modal-header")], 2)])], 1) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [_c('center', [_c('h5', [_vm._t("header")], 2)])], 1) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "modal-body",
     style: ({
       'max-height': _vm.maxHeight ? _vm.maxHeight + 'px' : null,
       'height': _vm.height ? _vm.height + 'px' : null
     })
-  }, [_vm._t("modal-body")], 2), _vm._v(" "), _c('div', {
+  }, [_vm._t("body", [_vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.labels.areYouSure) + "\n\t\t\t\t\t")])], 2), _vm._v(" "), _c('div', {
     staticClass: "modal-footer"
   }, [_c('button', {
     staticClass: "btn btn-primary",
@@ -39554,7 +39568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.cancelAction
     }
-  }, [_vm._t("modal-cancel")], 2), _vm._v(" "), (!_vm.cancelOnly) ? _c('button', {
+  }, [_vm._t("cancel", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.cancel) + "\n\t\t\t\t\t\t")])], 2), _vm._v(" "), (!_vm.cancelOnly) ? _c('button', {
     staticClass: "btn btn-primary button-default",
     attrs: {
       "type": "button"
@@ -39562,7 +39576,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.commitAction
     }
-  }, [_vm._t("modal-ok")], 2) : _vm._e()])])])])]) : _vm._e()
+  }, [_vm._t("ok", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.ok) + "\n\t\t\t\t\t\t")])], 2) : _vm._e()])])])])]) : _vm._e()
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -39766,10 +39780,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     class: 'box box-' + _vm.headerClass
   }, [_c('div', {
-    staticClass: "box-header with-border",
-    class: {
-      'draggable': _vm.draggable
-    }
+    staticClass: "box-header with-border"
   }, [_c('h3', {
     staticClass: "box-title"
   }, [_c('i', {
@@ -39782,7 +39793,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "button"
     },
     on: {
-      "click": _vm.getData
+      "click": function($event) {
+        _vm.getData()
+      }
     }
   }, [_c('i', {
     staticClass: "fa fa-refresh"
