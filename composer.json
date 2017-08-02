@@ -5,7 +5,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0",
-        "laravel-enso/core": "^1.1.12",
+        "laravel-enso/core": "^1.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },

@@ -45,7 +45,7 @@
                 <tfoot v-if="hasTotals">
                 <tr>
                     <td v-for="i in header.length" class="text-center">
-                        <span v-if="i == 2" class="totals"><slot name="data-table-total">Totals</slot></span>
+                        <span v-if="i == 2" class="totals">{{ labels.totals }}</span>
                     </td>
                 </tr>
                 </tfoot>
@@ -55,9 +55,6 @@
             <i class="fa fa-spinner fa-spin spinner-custom" ></i>
         </div>
         <modal :show="showModal" @cancel-action="showModal = false; deleteRoute = null" @commit-action="deleteModel()">
-            <span slot="modal-body"><slot name="modal-body"></slot></span>
-            <span slot="modal-cancel"><slot name="modal-cancel"></slot></span>
-            <span slot="modal-ok"><slot name="modal-ok"></slot></span>
         </modal>
     </div>
 
@@ -113,6 +110,7 @@
 
         data (self = this) {
             return {
+                labels: Store.labels,
                 tableName: null,
                 showModal: false,
                 loading: false,

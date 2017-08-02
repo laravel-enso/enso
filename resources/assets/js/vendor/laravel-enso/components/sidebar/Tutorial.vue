@@ -51,7 +51,7 @@
 
 		methods: {
 			get() {
-				axios.get('/system/tutorials/getTutorial/' + this.route).then(response => {
+				axios.get('/system/tutorials/' + this.route).then(response => {
 					this.tutorialSteps = response.data;
 					this.init();
 			    }).catch(error => {

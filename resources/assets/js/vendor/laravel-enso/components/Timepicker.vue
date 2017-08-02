@@ -1,4 +1,5 @@
 <template>
+
 	<div class="input-group time-picker">
 		<i class="fa fa-times clear-button btn-box-tool"
 			@click="clearTime"
@@ -17,6 +18,7 @@
 			<i class="fa fa-clock-o"></i>
 		</span>
 	</div>
+
 </template>
 
 <script>

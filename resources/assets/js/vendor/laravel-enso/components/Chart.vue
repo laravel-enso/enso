@@ -1,6 +1,6 @@
 <template>
 	<div :class="'box box-' + headerClass">
-        <div class="box-header with-border" :class="{'draggable': draggable}">
+        <div class="box-header with-border">
 	        <h3 class="box-title">
 	        	<i :class="icons[type]"></i>
                 {{ title }}
@@ -8,10 +8,11 @@
             <div class="box-tools pull-right">
                 <button type="button"
                 	class="btn btn-box-tool btn-sm"
-                	@click="getData">
+                	@click="getData()">
                     <i class="fa fa-refresh"></i>
                 </button>
-                <button class="btn btn-box-tool btn-sm" data-widget="collapse">
+                <button class="btn btn-box-tool btn-sm"
+                	data-widget="collapse">
                     <i class="fa fa-minus">
                     </i>
                 </button>
@@ -45,11 +46,8 @@
 			params: {
 				type: Object,
 			},
-            draggable: {
-            	type: Boolean,
-            	default: false
-            },
 		},
+
 		data() {
 			return {
 				chart: null,
@@ -68,6 +66,7 @@
 	            },
 			};
 		},
+
 		methods: {
 			getData() {
 				this.loading = true;
@@ -95,10 +94,10 @@
 					return this.init();
 				}
 
-				let data = this.data;
+				let self = this;
 
 				this.chart.data.datasets.forEach((dataset, index) => {
-					dataset.data = data.datasets[index].data;
+					dataset.data = self.data.datasets[index].data;
 				});
 
 				this.chart.update();
@@ -110,9 +109,11 @@
 				this.chart.destroy();
 			}
 		},
+
 		mounted() {
 			this.getData();
 		},
+
 		beforeDestroy() {
 			this.destroy();
 		}

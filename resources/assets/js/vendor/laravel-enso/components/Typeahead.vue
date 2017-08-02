@@ -1,4 +1,5 @@
 <template>
+
 	<div
 		:class="{'open':showDropdown, 'typeahead-wrapper': true}">
 		<div class="input-group" :class="{'has-error' : inputHasError}">
@@ -25,6 +26,7 @@
 			</li>
 		</ul>
 	</div>
+
 </template>
 
 <script>
