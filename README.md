@@ -30,7 +30,7 @@ Check out the official documentation [here](https://docs.laravel-enso.com/).
 
 5. Login into the project with user: `admin@login.com`, password: `password`
 
-6. (optional) Setup the `config/laravel-enso.php` file
+6. (optional) Setup the `config/laravel-enso.php` and the `config/labels.php` files
 
 7. (optional) `npm install` / `npm run dev` 
 
