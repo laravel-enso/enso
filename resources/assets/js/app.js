@@ -22,4 +22,3 @@ window.Vue = require('vue');
 // });
 
 require('./enso');
-

@@ -1,23 +1,23 @@
 html,body {
 	width:100%;
 	height:100%;
-	background:#111;
+	margin:0;
 }
 
-html {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-canvas {
-	vertical-align:bottom;
+body {
+  display:flex;
 }
 
 #particles-js {
-	width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
 }
 
 // login customize
@@ -27,18 +27,9 @@ canvas {
 }
 
 .login-box {
-	position: fixed;
-	top: 50%;
-	left: 0;
-	right: 0;
-	margin-top: -300px;
+	margin:auto;
 }
 
 .login-box-body {
 	opacity: 0.85;
-}
-
-//custom particles backgound color
-#particles-js {
-background-color: #201c1c;
 }

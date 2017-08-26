@@ -1602,24 +1602,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Chart.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1648,9 +1635,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: String,
 			default: ''
 		},
-		headerClass: {
+		theme: {
 			type: String,
 			default: 'primary'
+		},
+		solid: {
+			type: Boolean,
+			default: false
 		},
 		params: {
 			type: Object
@@ -1678,7 +1669,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 	methods: {
-		getData: function getData() {
+		get: function get() {
 			var _this = this;
 
 			this.loading = true;
@@ -1723,7 +1714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 	mounted: function mounted() {
-		this.getData();
+		this.get();
 	},
 	beforeDestroy: function beforeDestroy() {
 		this.destroy();
@@ -1732,11 +1723,1412 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        source: {
+            type: String,
+            required: true
+        },
+        id: {
+            type: String,
+            default: null
+        },
+        theme: {
+            type: String,
+            default: 'primary'
+        },
+        solid: {
+            type: Boolean,
+            default: false
+        },
+        customRender: {
+            type: Function,
+            default: function _default() {
+                return function (data) {
+                    toastr.warning('Custom render function is missing');
+
+                    return data;
+                };
+            }
+        },
+        extraFilters: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
+        },
+        customParams: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
+        },
+        intervalFilters: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
+        }
+    },
+
+    computed: {
+        hasTotals: function hasTotals() {
+            return Object.keys(this.totals).length > 0;
+        },
+        tableId: function tableId() {
+            return this.id || 'table-' + this._uid;
+        },
+        settingsKey: function settingsKey() {
+            return 'DataTables_' + this.tableId + '_' + this.source + '_settings';
+        }
+    },
+
+    data: function data() {
+        var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
+
+        return {
+            labels: Store.labels,
+            tableName: null,
+            showModal: false,
+            loading: false,
+            hasEditor: false,
+            dtHandle: null,
+            dtEditorHandle: null,
+            header: {},
+            totals: {},
+            actionButtons: {},
+            headerAlign: null,
+            bodyAlign: null,
+            tableClass: null,
+            deleteRoute: null,
+            editedCell: {},
+            customButtons: false,
+            classes: {
+                compact: false,
+                display: false
+            },
+            firstColumn: {
+                render: function render(data, type, row, meta) {
+                    return meta.settings._iDisplayStart + meta.row + 1;
+                },
+
+                responsivePriority: 1,
+                searchable: false,
+                orderable: false
+            },
+            lastColumn: {
+                data: 'DT_RowId',
+                render: function render(data, type, row, meta) {
+                    return self.getActionButtons(data);
+                },
+
+                responsivePriority: 1,
+                searchable: false,
+                orderable: false
+            },
+            tableOptions: {
+                dom: 'Bfrtip',
+                ajax: {
+                    url: this.source + '/getTableData',
+                    type: 'GET',
+                    data: {
+                        totals: function totals() {
+                            return JSON.stringify(self.totals);
+                        },
+                        extraFilters: function extraFilters() {
+                            return JSON.stringify(self.extraFilters);
+                        },
+                        intervalFilters: function intervalFilters() {
+                            return JSON.stringify(self.intervalFilters);
+                        },
+                        customParams: function customParams() {
+                            return JSON.stringify(self.customParams);
+                        }
+                    }
+                },
+                buttons: [{ extend: 'pageLength' }, { extend: 'colvis', text: '<i class="fa fa-eye"></i>' }, { extend: 'copy', text: '<i class="fa fa-clipboard"></i>' }, {
+                    className: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    action: function action() {
+                        self.exportExcel();
+                    }
+                }],
+                drawCallback: function drawCallback() {
+                    self.toggleClasses();
+
+                    for (var index in self.totals) {
+                        self.drawColumnTotal(this.api(), index, self.dtHandle.context[0].json.totals[index]);
+                    }
+
+                    $('#' + self.tableId).on('draw.dt', function () {
+                        self.addPostDrawListeners();
+                    });
+                }
+            },
+            editorOptions: {
+                ajax: {
+                    url: this.source + '/setTableData',
+                    headers: { 'X-CSRF-TOKEN': Laravel.csrfToken }
+                },
+                table: this.id || '#table-' + this._uid,
+                fields: []
+            }
+        };
+    },
+
+
+    watch: {
+        'extraFilters': {
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
+            deep: true
+        },
+        'intervalFilters': {
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
+            deep: true
+        },
+        'customParams': {
+            handler: function handler() {
+                this.getData.call(this);
+            },
+
+            deep: true
+        }
+    },
+
+    created: function created() {
+        this.getData = _.debounce(this.getData, 500);
+    },
+
+
+    methods: {
+        initTable: function initTable() {
+            var _this = this;
+
+            axios.get(this.source + '/initTable').then(function (response) {
+                _this.processInitData(response.data);
+            }).catch(function (error) {
+                _this.reportEnsoException(error);
+            }).then(function () {
+                _this.mountDataTable();
+            });
+        },
+        processInitData: function processInitData(data) {
+            this.getSettings();
+            this.setStyle(data);
+            this.tableOptions.language = data.language || null;
+            this.tableName = data.tableName;
+            this.header = data.header;
+            this.tableOptions.columns = data.columns;
+            this.computeExtraColumns(data);
+            this.totals = data.totals || {};
+            this.computeRender(data);
+            this.computeEditor(data);
+            this.customButtons = data.customButtons;
+        },
+        getSettings: function getSettings() {
+            var settings = Store.user.preferences.global.dtStateSave && localStorage.hasOwnProperty(this.settingsKey) ? JSON.parse(localStorage.getItem(this.settingsKey)) : null;
+            this.classes = settings ? settings : this.classes;
+        },
+        setStyle: function setStyle(data) {
+            this.tableClass = data.tableClass || null;
+            this.headerAlign = data.headerAlign;
+            this.bodyAlign = data.bodyAlign;
+            this.tableOptions.dom = data.dom || this.tableOptions.dom;
+        },
+        computeExtraColumns: function computeExtraColumns(data) {
+            if (data.actionButtons) {
+                this.tableOptions.columns.push(this.lastColumn);
+                this.header.push(data.actionButtons.label);
+                this.actionButtons = data.actionButtons;
+            }
+
+            if (data.crtNo) {
+                this.tableOptions.columns.unshift(this.firstColumn);
+                this.header.unshift(data.crtNo);
+            }
+        },
+        computeRender: function computeRender(data) {
+            this.computeBoolean(data);
+            this.computeCustomRender(data);
+        },
+        computeBoolean: function computeBoolean(data) {
+            if (!data.boolean) {
+                return false;
+            }
+
+            var self = this;
+
+            data.boolean.forEach(function (index) {
+                var render = function render(data, type, row, meta) {
+                    return data ? '<span class="label bg-green"><i class="fa fa-check"></span>' : '<span class="label bg-red"><i class="fa fa-times"></span>';
+                };
+
+                self.$set(self.tableOptions.columns[index], 'render', render);
+            });
+        },
+        computeCustomRender: function computeCustomRender(data) {
+            if (!data.render) {
+                return false;
+            }
+
+            var self = this;
+
+            data.render.forEach(function (index) {
+                var render = function render(data, type, row, meta) {
+                    return self.customRender(self.tableOptions.columns[index].data, data, type, row, meta);
+                };
+
+                self.$set(self.tableOptions.columns[index], 'render', render);
+            });
+        },
+        computeEditor: function computeEditor(data) {
+            var self = this;
+
+            this.hasEditor = data.editable && data.editable.length > 0;
+            if (!this.hasEditor) {
+                return false;
+            }
+
+            data.editable.forEach(function (column) {
+                self.editorOptions.fields.push(column);
+            });
+        },
+        mountDataTable: function mountDataTable() {
+            if (this.hasEditor) {
+                this.initEditor();
+            };
+
+            this.dtHandle = $('#' + this.tableId).DataTable(this.tableOptions);
+            this.setCustomButtons();
+            this.addProcessingListener();
+        },
+        setCustomButtons: function setCustomButtons() {
+            if (!this.customButtons) {
+                this.dtHandle.buttons(['.excel']).disable();
+            }
+        },
+        addProcessingListener: function addProcessingListener() {
+            var self = this;
+
+            this.dtHandle.on('processing.dt', function (e, settings, processing) {
+                self.updateLoadingState(processing);
+            });
+        },
+        addPostDrawListeners: function addPostDrawListeners() {
+            var self = this;
+
+            $('table a.delete-model').off('click').on('click', function (event) {
+                self.deleteRoute = $(event.currentTarget).data('route');
+                self.showModal = true;
+            });
+
+            if (self.actionButtons.custom) {
+                self.actionButtons.custom.forEach(function (button) {
+                    $('table a.' + button.event.toLowerCase()).off('click').on('click', function () {
+                        self.$emit($(this).data('event'), $(this).data('id'));
+                    });
+                });
+            }
+        },
+        initEditor: function initEditor() {
+            this.dtEditorHandle = new $.fn.dataTable.Editor(this.editorOptions);
+            this.addClickListener();
+            this.addSelectOnFocusListener();
+            this.addBlurListener();
+            this.addPreSubmitListener();
+            this.addPostSubmitListener();
+        },
+        addClickListener: function addClickListener() {
+            var self = this;
+
+            $('#' + this.tableId).on('click', 'tbody tr td.editable', function () {
+                self.editedCell.value = self.dtHandle.cell(this).data();
+                var index = self.dtHandle.cell(this).index().column;
+                self.editedCell.id = this.parentNode.id;
+                self.editedCell.column = self.tableOptions.columns[index].data;
+                self.dtEditorHandle.inline(this);
+            });
+        },
+        addSelectOnFocusListener: function addSelectOnFocusListener() {
+            var self = this;
+
+            $('input', this.dtEditorHandle.node()).on('focus', function () {
+                $(this).val(self.editedCell.value);
+                this.select();
+            });
+        },
+        addBlurListener: function addBlurListener() {
+            var self = this;
+
+            $('input', this.dtEditorHandle.node()).on('blur', function () {
+                $('div.DTE_Field_InputControl').removeClass('has-error');
+                self.editedCell = {};
+            });
+        },
+        addPreSubmitListener: function addPreSubmitListener() {
+            var self = this;
+
+            this.dtEditorHandle.on('preSubmit', function (event, payload, action) {
+                for (var table in payload.data[self.editedCell.id]) {
+                    for (var property in payload.data[self.editedCell.id][table]) {
+                        if (property !== self.editedCell.column) {
+                            delete payload.data[self.editedCell.id][table][property];
+                        }
+                    }
+                }
+            });
+        },
+        addPostSubmitListener: function addPostSubmitListener() {
+            this.dtEditorHandle.on('postSubmit', function (event, response) {
+                if (!response) {
+                    toastr.error("Something went wrong");
+                    throw 500;
+                }
+
+                if (response.level) {
+                    $('div.DTE_Field_InputControl').addClass('has-error');
+                    return toastr[response.level](response.message);
+                }
+
+                $('div.DTE_Field_InputControl').removeClass('has-error');
+                toastr.success(response.message);
+            });
+        },
+        updateLoadingState: function updateLoadingState(processing) {
+            return (this.loading = processing) ? NProgress.start() : NProgress.done();
+        },
+        drawColumnTotal: function drawColumnTotal(api, column, total) {
+            $(api.table().column(column).footer()).html('<b>' + this.$options.filters.numberFormat(parseFloat(total).toFixed(2)) + '</b>');
+        },
+        getActionButtons: function getActionButtons(data) {
+            return '<span style="display: inline-flex">' + this.getCustomActionButtons(data) + this.getStandardActionButtons(data) + '</span>';
+        },
+        getCustomActionButtons: function getCustomActionButtons(data) {
+            var buttons = '';
+
+            this.actionButtons.custom.forEach(function (action) {
+                buttons += '<a class="margin-left-xs ' + action.event.toLowerCase() + '"data-id="' + data + '" data-event="' + action.event + '"><i class="btn btn-xs ' + action.class + '"></i></a>';
+            });
+
+            return buttons;
+        },
+        getStandardActionButtons: function getStandardActionButtons(data) {
+            return '' + (this.actionButtons.standard.show ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + data + '"><i class="fa fa-eye"></i></a>' : '') + (this.actionButtons.standard.edit ? '<a class="btn btn-xs btn-warning margin-left-xs" href="' + this.source + '/' + data + '/edit"><i class="fa fa-pencil-square-o"></i></a>' : '') + (this.actionButtons.standard.download ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + 'download/' + data + '"><i class="fa fa-cloud-download"></i></a>' : '') + (this.actionButtons.standard.delete ? '<a class="btn btn-xs btn-danger margin-left-xs delete-model" data-route="' + this.source + '/' + data + '"><i class="fa fa-trash-o"><i class=""></i></a>' : '');
+        },
+        getData: function getData() {
+            if (!this.dtHandle) {
+                return this.initTable();
+            }
+
+            var pageNumber = this.dtHandle.page.info().page;
+            this.dtHandle.page(pageNumber).draw('page');
+        },
+        deleteModel: function deleteModel() {
+            var _this2 = this;
+
+            this.showModal = false;
+
+            axios.delete(this.deleteRoute).then(function (response) {
+                _this2.dtHandle.ajax.reload();
+                toastr.success(response.data.message);
+            }).catch(function (error) {
+                _this2.reportEnsoException(error);
+            });
+        },
+        toggleClasses: function toggleClasses() {
+            if (this.classes.compact) {
+                $('#' + this.tableId).toggleClass('compact');
+            }
+
+            if (this.classes.display) {
+                $('#' + this.tableId).toggleClass('display');
+            }
+        },
+        toggleCompactClass: function toggleCompactClass() {
+            this.classes.compact = !this.classes.compact;
+            $('#' + this.tableId).toggleClass('compact');
+            if (Store.user.preferences.global.dtStateSave) {
+                localStorage.setItem(this.settingsKey, JSON.stringify(this.classes));
+            }
+        },
+        toggleDisplayClass: function toggleDisplayClass() {
+            this.classes.display = !this.classes.display;
+            $('#' + this.tableId).toggleClass('display');
+            if (Store.user.preferences.global.dtStateSave) {
+                localStorage.setItem(this.settingsKey, JSON.stringify(this.classes));
+            }
+        },
+        clearState: function clearState() {
+            if (localStorage.hasOwnProperty(this.settingsKey)) {
+                localStorage.removeItem(this.settingsKey);
+            }
+
+            this.dtHandle.state.clear();
+            window.location.reload();
+        },
+        exportExcel: function exportExcel() {
+            var _this3 = this;
+
+            axios.get(this.source + '/exportExcel', { params: this.getExportParams() }).then(function (response) {
+                toastr.success(response.data.message);
+            }).catch(function (error) {
+                _this3.reportEnsoException(error);
+            });
+        },
+        getExportParams: function getExportParams() {
+            return {
+                'recordsDisplay': this.dtHandle.page.info().recordsDisplay,
+                'columns': this.dtHandle.ajax.params().columns,
+                'search': this.dtHandle.ajax.params().search,
+                'totals': JSON.stringify(this.totals),
+                'extraFilters': JSON.stringify(this.extraFilters),
+                'intervalFilters': JSON.stringify(this.intervalFilters),
+                'customParams': JSON.stringify(this.customParams)
+            };
+        }
+    },
+
+    mounted: function mounted() {
+        this.initTable();
+    },
+    beforeDestroy: function beforeDestroy() {
+        this.dtHandle.destroy();
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        params: {
+            type: Object
+        }
+    },
+
+    computed: {
+        columnsClass: function columnsClass() {
+            return 'col-md-' + 12 / this.grid.length;
+        }
+    },
+
+    data: function data() {
+        return {
+            labels: null,
+            grid: Store.user.preferences.local.dashboard.grid
+        };
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__("./node_modules/flatpickr/dist/flatpickr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+var FlatpickrL10ns = {
+	ro: __webpack_require__("./node_modules/flatpickr/dist/l10n/ro.js").ro
+};
+
+__WEBPACK_IMPORTED_MODULE_0_flatpickr___default.a.localize(FlatpickrL10ns[Store.user.preferences.global.lang]);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		value: {
+			required: true,
+			default: null,
+			validate: function validate(value) {
+				return value === null || typeof value === 'string' || value instanceof Date || value instanceof Array;
+			}
+		},
+		name: {
+			type: String,
+			default: null
+		},
+		time: {
+			type: Boolean,
+			default: false
+		},
+		timeOnly: {
+			type: Boolean,
+			default: false
+		},
+		placeholder: {
+			type: String,
+			default: Store.labels.selectDate
+		},
+		disabled: {
+			type: Boolean,
+			default: false
+		},
+		format: {
+			type: String,
+			default: 'd-m-Y'
+		},
+		inputClass: {
+			type: String,
+			default: 'form-control'
+		}
+	},
+
+	data: function data() {
+		return {
+			picker: null
+		};
+	},
+
+
+	computed: {
+		config: function config() {
+			var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
+
+			return {
+				weekNumbers: false,
+				defaultDate: this.value,
+				dateFormat: this.format,
+				allowInput: false,
+				clickOpens: true,
+				noCalendar: this.timeOnly,
+				enableTime: this.time || this.timeOnly,
+				onChange: function onChange(selectedDates, dateStr) {
+					self.$emit('input', dateStr);
+				}
+			};
+		}
+	},
+
+	watch: {
+		value: {
+			handler: function handler(newValue) {
+				this.picker.setDate(newValue);
+			},
+
+
+			deep: true
+		}
+	},
+
+	mounted: function mounted() {
+		this.picker = new __WEBPACK_IMPORTED_MODULE_0_flatpickr___default.a("#date-input-" + this._uid, this.config);
+	},
+	beforeDestroy: function beforeDestroy() {
+		this.picker.destroy();
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		show: {
+			type: Boolean,
+			required: true
+		},
+		header: {
+			type: Boolean,
+			default: false
+		},
+		containerStyle: {
+			type: Object,
+			default: function _default() {
+				return {
+					'max-width': '250px'
+				};
+			}
+		},
+		bodyStyle: {
+			type: Object,
+			default: function _default() {
+				return {
+					'max-height': '500px'
+				};
+			}
+		},
+		cancelOnly: {
+			type: Boolean,
+			default: false
+		}
+	},
+
+	data: function data() {
+		return {
+			labels: Store ? Store.labels : {}
+		};
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		list: {
+			type: Array,
+			required: true
+		},
+		length: {
+			type: Number,
+			default: 10
+		},
+		lengths: {
+			type: Array,
+			default: function _default() {
+				return [10, 15, 20, 25, 30];
+			}
+		},
+		border: {
+			type: Boolean,
+			default: false
+		}
+	},
+
+	computed: {
+		computedList: function computedList() {
+			var _this = this;
+
+			return this.list.filter(function (el, index) {
+				return index >= _this.start - 1 && index < _this.current * _this.pageLength;
+			});
+		},
+		pages: function pages() {
+			return Math.ceil(this.records / this.pageLength);
+		},
+		records: function records() {
+			return this.list.length;
+		},
+		start: function start() {
+			return (this.current - 1) * this.pageLength + 1;
+		},
+		offset: function offset() {
+			return this.start + this.computedList.length - 1;
+		}
+	},
+
+	watch: {
+		pageLength: function pageLength() {
+			if (this.current > this.pages) {
+				this.current = this.pages;
+			}
+		}
+	},
+
+	data: function data() {
+		return {
+			pageLength: this.length,
+			open: false,
+			current: 1
+		};
+	},
+
+	methods: {
+		next: function next() {
+			if (this.current < this.pages) {
+				this.current++;
+			}
+		},
+		previous: function previous() {
+			if (this.current > 1) {
+				this.current--;
+			}
+		},
+		changeLength: function changeLength(newLength) {
+			this.current = Math.ceil(this.start / newLength);
+			this.pageLength = newLength;
+			this.open = false;
+		}
+	},
+
+	mounted: function mounted() {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		disabled: {
+			type: Boolean,
+			default: false
+		},
+		limit: {
+			type: Number,
+			default: 10
+		},
+		url: {
+			type: String,
+			required: true
+		},
+		params: {
+			type: Object,
+			default: null
+		},
+		displayProperty: {
+			type: String,
+			required: true
+		},
+		placeholder: {
+			type: String,
+			default: 'Searching for something?'
+		},
+		regExp: {
+			type: RegExp,
+			default: function _default() {
+				return (/^[A-Za-z0-9 _-]*[A-Za-z0-9][A-Za-z0-9 _-]*$/
+				);
+			}
+		},
+		value: {
+			type: String,
+			default: ""
+		}
+	},
+
+	computed: {
+		hasError: function hasError() {
+			return this.value && !this.regExp.test(this.value);
+		},
+		showClearButton: function showClearButton() {
+			return this.value && !this.disabled;
+		},
+		showDropdown: function showDropdown() {
+			return !this.hideDropdown && this.value && !this.hasError && this.items.length > 0;
+		},
+		element: function element() {
+			return document.getElementById('typeahead-' + this._uid);
+		}
+	},
+
+	watch: {
+		value: function value() {
+			if (this.value === "") {
+				this.items = [];
+			}
+		}
+	},
+
+	data: function data() {
+		return {
+			index: 0,
+			items: [],
+			hideDropdown: false
+		};
+	},
+
+
+	filters: {
+		highlight: function highlight(item, value) {
+			value.split(' ').filter(function (word) {
+				return word.length;
+			}).forEach(function (word) {
+				item = item.replace(new RegExp('(' + word + ')', 'gi'), '<b>$1</b>');
+			});
+
+			return item;
+		}
+	},
+
+	created: function created() {
+		this.getData = _.debounce(this.getData, 200);
+	},
+
+
+	methods: {
+		getData: function getData() {
+			var _this = this;
+
+			if (!this.value || this.hasError) {
+				return false;
+			}
+
+			axios.get(this.url, { params: this.getParams() }).then(function (response) {
+				_this.hideDropdown = false;
+				_this.items = response.data;
+			}).catch(function (error) {
+				_this.reportEnsoException(error);
+			});
+		},
+		getParams: function getParams() {
+			return {
+				value: this.value,
+				limit: this.limit,
+				params: this.params
+			};
+		},
+		update: function update(value) {
+			this.$emit('input', value);
+		},
+		setActive: function setActive(index) {
+			this.index = index;
+		},
+		isActive: function isActive(index) {
+			return this.index === index;
+		},
+		hit: function hit() {
+			if (this.showDropdown) {
+				this.update(this.items[this.index][this.displayProperty]);
+				this.$emit('update', this.items[this.index]);
+				this.hideDropdown = true;
+			}
+		},
+		keyUp: function keyUp() {
+			if (this.index > 0) {
+				this.index--;
+			}
+		},
+		keyDown: function keyDown() {
+			if (this.index < this.items.length - 1) {
+				this.index++;
+			};
+		},
+		clear: function clear() {
+			this.update("");
+			this.$emit('update', {});
+		}
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    title: {
+      type: String,
+      default: null
+    },
+    theme: {
+      type: String,
+      default: 'primary'
+    },
+    options: {
+      type: Array,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+
+  computed: {
+    boxClass: function boxClass() {
+      return 'box-' + this.theme;
+    }
+  },
+
+  data: function data() {
+    return {
+      value: null
+    };
+  },
+
+
+  methods: {
+    changed: function changed() {
+      this.$emit('input', this.value);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        url: {
+            type: String,
+            required: true
+        },
+        fileSizeLimit: {
+            type: Number,
+            default: 8388608,
+            validator: function validator(value) {
+                return value <= 8388608;
+            }
+        }
+    },
+
+    data: function data() {
+        return {
+            input: null
+        };
+    },
+
+
+    methods: {
+        openFileBrowser: function openFileBrowser() {
+            this.input.click();
+        },
+        upload: function upload() {
+            var _this = this;
+
+            this.$emit('upload-start');
+
+            axios.post(this.url, this.getFormData()).then(function (response) {
+                _this.resetForm();
+                _this.$emit('upload-successful', response.data);
+            }).catch(function (error) {
+                _this.resetForm();
+                _this.$emit('upload-error');
+                _this.reportEnsoException(error);
+            });
+        },
+        getFormData: function getFormData() {
+            var formData = new FormData(),
+                files = this.input.files;
+
+            for (var i = 0; i < files.length; i++) {
+                if (this.sizeCheckPasses(files[i])) {
+                    formData.append("file_" + i, files[i]);
+                }
+            }
+
+            return formData;
+        },
+        sizeCheckPasses: function sizeCheckPasses(file) {
+            if (file.size > this.fileSizeLimit) {
+                toastr.warning('File size Limit of ' + this.fileSizeLimit + ' Kb excedeed by ' + file.name);
+
+                return false;
+            }
+
+            return true;
+        },
+        resetForm: function resetForm() {
+            var form = document.getElementById('file-form-' + this._uid);
+            form.reset();
+        }
+    },
+
+    mounted: function mounted() {
+        this.input = document.getElementById('upload-input-' + this._uid);
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        menus: {
+            type: Array,
+            required: true
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1962,7 +3354,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1974,930 +3366,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        params: {
-            type: Object
-        }
-    },
-
-    computed: {
-        columnsClass: function columnsClass() {
-            return 'col-md-' + 12 / this.grid.length;
-        }
-    },
-
-    data: function data() {
-        return {
-            labels: null,
-            grid: Store.user.preferences.local.dashboard.grid
-        };
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        source: {
-            type: String,
-            required: true
-        },
-        id: {
-            type: String,
-            default: null
-        },
-        headerClass: {
-            type: String,
-            default: 'primary'
-        },
-        extraFilters: {
-            type: Object,
-            default: function _default() {
-                return {};
-            }
-        },
-        customParams: {
-            type: Object,
-            default: function _default() {
-                return {};
-            }
-        },
-        intervalFilters: {
-            type: Object,
-            default: function _default() {
-                return {};
-            }
-        }
-    },
-
-    computed: {
-        hasTotals: function hasTotals() {
-            return Object.keys(this.totals).length > 0;
-        },
-        tableId: function tableId() {
-            return this.id || 'table-' + this._uid;
-        },
-        settingsKey: function settingsKey() {
-            return 'DataTables_' + this.tableId + '_' + this.source + '_settings';
-        }
-    },
-
-    data: function data() {
-        var self = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
-
-        return {
-            labels: Store.labels,
-            tableName: null,
-            showModal: false,
-            loading: false,
-            hasEditor: false,
-            dtHandle: null,
-            dtEditorHandle: null,
-            header: {},
-            totals: {},
-            actionButtons: {},
-            headerAlign: null,
-            bodyAlign: null,
-            tableClass: null,
-            deleteRoute: null,
-            editedCell: {},
-            customButtons: false,
-            classes: {
-                compact: false,
-                display: false
-            },
-            firstColumn: {
-                render: function render(data, type, row, meta) {
-                    return meta.settings._iDisplayStart + meta.row + 1;
-                },
-
-                responsivePriority: 1,
-                searchable: false,
-                orderable: false
-            },
-            lastColumn: {
-                data: 'DT_RowId',
-                render: function render(data, type, row, meta) {
-                    return self.getActionButtons(data);
-                },
-
-                responsivePriority: 1,
-                searchable: false,
-                orderable: false
-            },
-            tableOptions: {
-                dom: 'Bfrtip',
-                ajax: {
-                    url: this.source + '/getTableData',
-                    type: 'GET',
-                    data: {
-                        totals: function totals() {
-                            return JSON.stringify(self.totals);
-                        },
-                        extraFilters: function extraFilters() {
-                            return JSON.stringify(self.extraFilters);
-                        },
-                        intervalFilters: function intervalFilters() {
-                            return JSON.stringify(self.intervalFilters);
-                        },
-                        customParams: function customParams() {
-                            return JSON.stringify(self.customParams);
-                        }
-                    }
-                },
-                buttons: [{ extend: 'pageLength' }, { extend: 'colvis', text: '<i class="fa fa-eye"></i>' }, { extend: 'copy', text: '<i class="fa fa-clipboard"></i>' }, {
-                    className: 'excel',
-                    text: '<i class="fa fa-file-excel-o"></i>',
-                    action: function action() {
-                        self.exportExcel();
-                    }
-                }],
-                drawCallback: function drawCallback() {
-                    self.toggleClasses();
-
-                    for (var index in self.totals) {
-                        self.drawColumnTotal(this.api(), index, self.dtHandle.context[0].json.totals[index]);
-                    }
-
-                    $('#' + self.tableId).on('draw.dt', function () {
-                        self.addPostDrawListeners();
-                    });
-                }
-            },
-            editorOptions: {
-                ajax: {
-                    url: this.source + '/setTableData',
-                    headers: { 'X-CSRF-TOKEN': Laravel.csrfToken }
-                },
-                table: this.id || '#table-' + this._uid,
-                fields: []
-            }
-        };
-    },
-
-
-    watch: {
-        'extraFilters': {
-            handler: function handler() {
-                this.getData.call(this);
-            },
-
-            deep: true
-        },
-        'intervalFilters': {
-            handler: function handler() {
-                this.getData.call(this);
-            },
-
-            deep: true
-        },
-        'customParams': {
-            handler: function handler() {
-                this.getData.call(this);
-            },
-
-            deep: true
-        }
-    },
-
-    created: function created() {
-        this.getData = _.debounce(this.getData, 500);
-    },
-
-
-    methods: {
-        initTable: function initTable() {
-            var _this = this;
-
-            axios.get(this.source + '/initTable').then(function (response) {
-                _this.processInitData(response.data);
-            }).catch(function (error) {
-                _this.reportEnsoException(error);
-            }).then(function () {
-                _this.mountDataTable();
-            });
-        },
-        processInitData: function processInitData(data) {
-            this.getSettings();
-            this.setStyle(data);
-            this.tableOptions.language = data.language || null;
-            this.tableName = data.tableName;
-            this.header = data.header;
-            this.tableOptions.columns = data.columns;
-            this.computeExtraColumns(data);
-            this.totals = data.totals || {};
-            this.computeRender(data);
-            this.computeEditor(data);
-            this.customButtons = data.customButtons;
-        },
-        getSettings: function getSettings() {
-            var settings = Store.user.preferences.global.dtStateSave && localStorage.hasOwnProperty(this.settingsKey) ? JSON.parse(localStorage.getItem(this.settingsKey)) : null;
-            this.classes = settings ? settings : this.classes;
-        },
-        setStyle: function setStyle(data) {
-            this.tableClass = data.tableClass || null;
-            this.headerAlign = data.headerAlign;
-            this.bodyAlign = data.bodyAlign;
-            this.tableOptions.dom = data.dom || this.tableOptions.dom;
-        },
-        computeExtraColumns: function computeExtraColumns(data) {
-            if (data.actionButtons) {
-                this.tableOptions.columns.push(this.lastColumn);
-                this.header.push(data.actionButtons.label);
-                this.actionButtons = data.actionButtons;
-            }
-
-            if (data.crtNo) {
-                this.tableOptions.columns.unshift(this.firstColumn);
-                this.header.unshift(data.crtNo);
-            }
-        },
-        computeRender: function computeRender(data) {
-            if (!data.render) {
-                return false;
-            }
-
-            var self = this;
-
-            data.render.forEach(function (index) {
-                var renderFunction = function renderFunction(data, type, row, meta) {
-                    return self.$parent.customRender(self.tableOptions.columns[index].data, data, type, row, meta);
-                };
-
-                self.$set(self.tableOptions.columns[index], 'render', renderFunction);
-            });
-        },
-        computeEditor: function computeEditor(data) {
-            var self = this;
-
-            this.hasEditor = data.editable && data.editable.length > 0;
-            if (!this.hasEditor) {
-                return false;
-            }
-
-            data.editable.forEach(function (column) {
-                self.editorOptions.fields.push(column);
-            });
-        },
-        mountDataTable: function mountDataTable() {
-            if (this.hasEditor) {
-                this.initEditor();
-            };
-
-            this.dtHandle = $('#' + this.tableId).DataTable(this.tableOptions);
-            this.setCustomButtons();
-            this.addProcessingListener();
-        },
-        setCustomButtons: function setCustomButtons() {
-            if (!this.customButtons) {
-                this.dtHandle.buttons(['.excel']).disable();
-            }
-        },
-        addProcessingListener: function addProcessingListener() {
-            var self = this;
-
-            this.dtHandle.on('processing.dt', function (e, settings, processing) {
-                self.updateLoadingState(processing);
-            });
-        },
-        addPostDrawListeners: function addPostDrawListeners() {
-            var self = this;
-
-            $('table a.delete-model').off('click').on('click', function (event) {
-                self.deleteRoute = $(event.currentTarget).data('route');
-                self.showModal = true;
-            });
-
-            if (self.actionButtons.custom) {
-                self.actionButtons.custom.forEach(function (button) {
-                    $('table a.' + button.event.toLowerCase()).off('click').on('click', function () {
-                        self.$emit($(this).data('event'), $(this).data('id'));
-                    });
-                });
-            }
-        },
-        initEditor: function initEditor() {
-            this.dtEditorHandle = new $.fn.dataTable.Editor(this.editorOptions);
-            this.addClickListener();
-            this.addSelectOnFocusListener();
-            this.addBlurListener();
-            this.addPreSubmitListener();
-            this.addPostSubmitListener();
-        },
-        addClickListener: function addClickListener() {
-            var self = this;
-
-            $('#' + this.tableId).on('click', 'tbody tr td.editable', function () {
-                self.editedCell.value = self.dtHandle.cell(this).data();
-                var index = self.dtHandle.cell(this).index().column;
-                self.editedCell.id = this.parentNode.id;
-                self.editedCell.column = self.tableOptions.columns[index].data;
-                self.dtEditorHandle.inline(this);
-            });
-        },
-        addSelectOnFocusListener: function addSelectOnFocusListener() {
-            var self = this;
-
-            $('input', this.dtEditorHandle.node()).on('focus', function () {
-                $(this).val(self.editedCell.value);
-                this.select();
-            });
-        },
-        addBlurListener: function addBlurListener() {
-            var self = this;
-
-            $('input', this.dtEditorHandle.node()).on('blur', function () {
-                $('div.DTE_Field_InputControl').removeClass('has-error');
-                self.editedCell = {};
-            });
-        },
-        addPreSubmitListener: function addPreSubmitListener() {
-            var self = this;
-
-            this.dtEditorHandle.on('preSubmit', function (event, payload, action) {
-                for (var table in payload.data[self.editedCell.id]) {
-                    for (var property in payload.data[self.editedCell.id][table]) {
-                        if (property !== self.editedCell.column) {
-                            delete payload.data[self.editedCell.id][table][property];
-                        }
-                    }
-                }
-            });
-        },
-        addPostSubmitListener: function addPostSubmitListener() {
-            this.dtEditorHandle.on('postSubmit', function (event, response) {
-                if (!response) {
-                    toastr.error("Something went wrong");
-                    throw 500;
-                }
-
-                if (response.level) {
-                    $('div.DTE_Field_InputControl').addClass('has-error');
-                    return toastr[response.level](response.message);
-                }
-
-                $('div.DTE_Field_InputControl').removeClass('has-error');
-                toastr.success(response.message);
-            });
-        },
-        updateLoadingState: function updateLoadingState(processing) {
-            return (this.loading = processing) ? NProgress.start() : NProgress.done();
-        },
-        drawColumnTotal: function drawColumnTotal(api, column, total) {
-            $(api.table().column(column).footer()).html('<b>' + this.$options.filters.numberFormat(parseFloat(total).toFixed(2)) + '</b>');
-        },
-        getActionButtons: function getActionButtons(data) {
-            return '<span style="display: inline-flex">' + this.getCustomActionButtons(data) + this.getStandardActionButtons(data) + '</span>';
-        },
-        getCustomActionButtons: function getCustomActionButtons(data) {
-            var buttons = '';
-
-            this.actionButtons.custom.forEach(function (action) {
-                buttons += '<a class="margin-left-xs ' + action.event.toLowerCase() + '"data-id="' + data + '" data-event="' + action.event + '"><i class="btn btn-xs ' + action.class + '"></i></a>';
-            });
-
-            return buttons;
-        },
-        getStandardActionButtons: function getStandardActionButtons(data) {
-            return '' + (this.actionButtons.standard.show ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + data + '"><i class="fa fa-eye"></i></a>' : '') + (this.actionButtons.standard.edit ? '<a class="btn btn-xs btn-warning margin-left-xs" href="' + this.source + '/' + data + '/edit"><i class="fa fa-pencil-square-o"></i></a>' : '') + (this.actionButtons.standard.download ? '<a class="btn btn-xs btn-success margin-left-xs" href="' + this.source + '/' + 'download/' + data + '"><i class="fa fa-cloud-download"></i></a>' : '') + (this.actionButtons.standard.delete ? '<a class="btn btn-xs btn-danger margin-left-xs delete-model" data-route="' + this.source + '/' + data + '"><i class="fa fa-trash-o"><i class=""></i></a>' : '');
-        },
-        getData: function getData() {
-            if (!this.dtHandle) {
-                return this.initTable();
-            }
-
-            var pageNumber = this.dtHandle.page.info().page;
-            this.dtHandle.page(pageNumber).draw('page');
-        },
-        deleteModel: function deleteModel() {
-            var _this2 = this;
-
-            this.showModal = false;
-
-            axios.delete(this.deleteRoute).then(function (response) {
-                _this2.dtHandle.ajax.reload();
-                toastr.success(response.data.message);
-            }).catch(function (error) {
-                _this2.reportEnsoException(error);
-            });
-        },
-        toggleClasses: function toggleClasses() {
-            if (this.classes.compact) {
-                $('#' + this.tableId).toggleClass('compact');
-            }
-
-            if (this.classes.display) {
-                $('#' + this.tableId).toggleClass('display');
-            }
-        },
-        toggleCompactClass: function toggleCompactClass() {
-            this.classes.compact = !this.classes.compact;
-            $('#' + this.tableId).toggleClass('compact');
-            if (Store.user.preferences.global.dtStateSave) {
-                localStorage.setItem(this.settingsKey, JSON.stringify(this.classes));
-            }
-        },
-        toggleDisplayClass: function toggleDisplayClass() {
-            this.classes.display = !this.classes.display;
-            $('#' + this.tableId).toggleClass('display');
-            if (Store.user.preferences.global.dtStateSave) {
-                localStorage.setItem(this.settingsKey, JSON.stringify(this.classes));
-            }
-        },
-        clearState: function clearState() {
-            if (localStorage.hasOwnProperty(this.settingsKey)) {
-                localStorage.removeItem(this.settingsKey);
-            }
-
-            this.dtHandle.state.clear();
-            window.location.reload();
-        },
-        exportExcel: function exportExcel() {
-            var _this3 = this;
-
-            axios.get(this.source + '/exportExcel', { params: this.getExportParams() }).then(function (response) {
-                toastr.success(response.data.message);
-            }).catch(function (error) {
-                _this3.reportEnsoException(error);
-            });
-        },
-        getExportParams: function getExportParams() {
-            return {
-                'recordsDisplay': this.dtHandle.page.info().recordsDisplay,
-                'columns': this.dtHandle.ajax.params().columns,
-                'search': this.dtHandle.ajax.params().search,
-                'totals': JSON.stringify(this.totals),
-                'extraFilters': JSON.stringify(this.extraFilters),
-                'intervalFilters': JSON.stringify(this.intervalFilters),
-                'customParams': JSON.stringify(this.customParams)
-            };
-        }
-    },
-
-    mounted: function mounted() {
-        this.initTable();
-    },
-    beforeDestroy: function beforeDestroy() {
-        this.dtHandle.destroy();
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		name: {
-			type: String,
-			default: null
-		},
-		value: {
-			type: String,
-			default: ''
-		},
-		width: {
-			type: String,
-			default: '100%'
-		},
-		clearButton: {
-			type: Boolean,
-			default: false
-		},
-		disabled: {
-			type: Boolean,
-			default: false
-		},
-		format: {
-			type: String,
-			default: 'dd-mm-yyyy'
-		}
-	},
-	computed: {
-		showClearButton: function showClearButton() {
-			return this.clearButton && this.value && !this.disabled;
-		}
-	},
-	directives: {
-		updateDatePicker: {
-			/* the directive is necessary to update the timepicker library
-   * when the model is changed from the parent */
-			update: function update(el) {
-				$(el).datepicker('update');
-			}
-		}
-	},
-	methods: {
-		clearDate: function clearDate() {
-			$("#date-input-" + this._uid).datepicker('clearDates');
-			this.$emit('input', "");
-		}
-	},
-	mounted: function mounted() {
-		var self = this;
-
-		$("#date-input-" + this._uid).datepicker({
-			format: self.format,
-			language: Store.user.preferences.lang,
-			todayHighlight: true,
-			autoclose: true
-		}).on('hide', function (date) {
-			self.$emit('input', date.format(self.format));
-		});
-	}
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        multiple: {
-            type: Boolean,
-            default: false
-        },
-        url: {
-            type: String,
-            required: true
-        },
-        fileSizeLimit: {
-            type: Number,
-            default: 8388608,
-            validator: function validator(value) {
-                return value <= 8388608;
-            }
-        }
-    },
-
-    data: function data() {
-        return {
-            input: null
-        };
-    },
-
-
-    methods: {
-        openFileBrowser: function openFileBrowser() {
-            this.input.click();
-        },
-        upload: function upload() {
-            var _this = this;
-
-            axios.post(this.url, this.getFormData()).then(function (response) {
-                _this.resetForm();
-                _this.$emit('upload-successful', response.data);
-            }).catch(function (error) {
-                _this.resetForm();
-                _this.reportEnsoException(error);
-            });
-        },
-        getFormData: function getFormData() {
-            var formData = new FormData(),
-                files = this.input.files;
-            for (var i = 0; i < files.length; i++) {
-                if (this.sizeCheckPasses(files[i])) {
-                    formData.append("file_" + i, files[i]);
-                }
-            }
-
-            return formData;
-        },
-        sizeCheckPasses: function sizeCheckPasses(file) {
-            if (file.size > this.fileSizeLimit) {
-                toastr.warning('File size Limit of ' + this.fileSizeLimit + ' Kb excedeed by ' + file.name);
-
-                return false;
-            }
-
-            return true;
-        },
-        resetForm: function resetForm() {
-            var form = document.getElementById('file-form-' + this._uid);
-            form.reset();
-        }
-    },
-
-    mounted: function mounted() {
-        this.input = document.getElementById('upload-input-' + this._uid);
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        element: {
-            type: String,
-            required: true
-        }
-    },
-    methods: {
-        clearInput: function clearInput() {
-            $(this.element).val('').change();
-        }
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		show: {
-			type: Boolean,
-			required: true
-		},
-		header: {
-			type: Boolean,
-			default: false
-		},
-		commitEvent: {
-			type: String,
-			default: 'commit-action'
-		},
-		cancelEvent: {
-			type: String,
-			default: 'cancel-action'
-		},
-		height: {
-			type: String,
-			default: ''
-		},
-		maxHeight: {
-			type: String,
-			default: '500'
-		},
-		maxWidth: {
-			type: String,
-			default: '250'
-		},
-		cancelOnly: {
-			type: Boolean,
-			default: false
-		}
-	},
-
-	data: function data() {
-		return {
-			labels: Store.labels
-		};
-	},
-
-
-	methods: {
-		cancelAction: function cancelAction() {
-			this.$emit(this.cancelEvent);
-		},
-		commitAction: function commitAction() {
-			this.$emit(this.commitEvent);
-		}
-	}
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        menus: {
-            type: Array,
-            required: true
-        }
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -3008,11 +3476,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__("./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
 //
 //
 //
@@ -3036,73 +3506,205 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		value: {
-			type: String,
-			default: ''
-		},
-		name: {
-			type: String,
-			default: null
-		},
-		clearButton: {
-			type: Boolean,
-			default: false
-		},
-		disabled: {
-			type: Boolean,
-			default: false
-		}
-	},
-	computed: {
-		showClearButton: function showClearButton() {
-			return this.clearButton && this.value && !this.disabled;
-		}
-	},
-	directives: {
-		/* the directive is necessary to update the timepicker library
-  * when the model is changed from the parent */
-		updateTimePicker: {
-			update: function update(el) {
-				var event = new Event('change');
-				el.dispatchEvent(event);
-			}
-		}
-	},
-	methods: {
-		clearTime: function clearTime() {
-			$("#input-" + this._uid).timepicker('setTime', '');
-			this.$emit('input', '');
-		},
-		emitInputEvent: function emitInputEvent(event) {
-			this.$emit('input', event.target.value);
-		},
-		hideWidget: function hideWidget() {
-			$("#input-" + this._uid).timepicker('hideWidget');
-		}
-	},
-	mounted: function mounted() {
-		$('#input-' + this._uid).timepicker({
-			// template: false,
-			// showInputs: false,
-			defaultTime: false,
-			maxHours: 24,
-			showMeridian: false
-		}).on('changeTime.timepicker', function () {
-			//dispatch an input event that bubbles up so
-			//vue updates the bound model
-			var event = new Event('input');
-			$(this)[0].dispatchEvent(event);
-		});
-	}
+    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
+
+    props: {
+        value: {
+            default: null
+        },
+        source: {
+            type: String,
+            default: null
+        },
+        options: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
+        },
+        keyMap: {
+            type: String,
+            default: 'number'
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        params: {
+            type: Object,
+            default: null
+        },
+        pivotParams: {
+            type: Object,
+            default: null
+        },
+        customParams: {
+            type: Object,
+            default: null
+        },
+        labels: {
+            type: Object,
+            default: function _default() {
+                return Store ? {
+                    placeholder: Store.labels.selectOption,
+                    selected: Store.labels.selected,
+                    select: Store.labels.select,
+                    deselect: Store.labels.deselect,
+                    noResult: Store.labels.noResult
+                } : null;
+            }
+        }
+    },
+
+    computed: {
+        isServerSide: function isServerSide() {
+            return this.source !== null;
+        },
+        optionKeys: function optionKeys() {
+            return this.keyMap === 'number' ? Object.keys(this.optionList).map(Number) : Object.keys(this.optionList);
+        },
+        matchedValue: function matchedValue() {
+            var self = this;
+
+            if (!this.multiple) {
+                return this.optionKeys.filter(function (option) {
+                    return option === self.value;
+                }).length > 0;
+            }
+
+            return this.optionKeys.filter(function (option) {
+                return self.value.filter(function (val) {
+                    return val === option;
+                }).length > 0;
+            }).length > 0;
+        }
+    },
+
+    filters: {
+        highlight: function highlight(option, query) {
+            query.split(' ').filter(function (word) {
+                return word.length;
+            }).forEach(function (word) {
+                option = option.replace(new RegExp('(' + word + ')', 'gi'), '<b>$1</b>');
+            });
+
+            return option;
+        }
+    },
+
+    watch: {
+        params: {
+            handler: function handler() {
+                this.getOptions();
+            },
+
+            deep: true
+        },
+        pivotParams: {
+            handler: function handler() {
+                this.getOptions();
+            },
+
+            deep: true
+        },
+        customParams: {
+            handler: function handler() {
+                this.getOptions();
+            },
+
+            deep: true
+        }
+    },
+
+    data: function data() {
+        return {
+            optionList: this.options,
+            loading: false,
+            query: ""
+        };
+    },
+    created: function created() {
+        this.$bus.$on('form-restored', this.update);
+    },
+
+
+    methods: {
+        getOptions: function getOptions() {
+            var _this = this;
+
+            if (!this.isServerSide) {
+                return false;
+            }
+
+            this.loading = true;
+
+            axios.get(this.source, { params: this.getParams() }).then(function (response) {
+                _this.processOptions(response);
+                _this.loading = false;
+            }).catch(function (error) {
+                _this.loading = true;
+                _this.reportEnsoException(error);
+            });
+        },
+        getParams: function getParams() {
+            return {
+                params: this.params,
+                pivotParams: this.pivotParams,
+                customParams: this.customParams,
+                query: this.query,
+                value: this.value
+            };
+        },
+        processOptions: function processOptions(response) {
+            this.optionList = response.data;
+            var self = this;
+
+            if (!this.query && !this.matchedValue) {
+                this.clear();
+            }
+        },
+        customLabel: function customLabel(option) {
+            return this.optionList[option];
+        },
+        update: function update() {
+            var _this2 = this;
+
+            this.$nextTick(function () {
+                _this2.$emit('input', _this2.value);
+            });
+        },
+        clear: function clear() {
+            this.$emit('input', this.multiple ? [] : null);
+        }
+    },
+
+    mounted: function mounted() {
+        if (this.isServerSide) {
+            this.getOptions();
+        }
+    }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3130,6 +3732,457 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        name: {
+            type: String,
+            default: null
+        },
+        value: {
+            default: null
+        },
+        selectClass: {
+            type: String,
+            default: 'form-control'
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        source: {
+            type: String,
+            default: null
+        },
+        options: {
+            type: Array,
+            default: function _default() {
+                return [];
+            }
+        },
+        params: {
+            type: Object,
+            default: null
+        },
+        pivotParams: {
+            type: Object,
+            default: null
+        },
+        customParams: {
+            type: Object,
+            default: null
+        }
+    },
+
+    computed: {
+        clearButton: function clearButton() {
+            return !this.disabled && !this.multiple && this.value;
+        },
+        isServerSide: function isServerSide() {
+            return this.source !== null;
+        },
+        element: function element() {
+            return $('#select-' + this._uid);
+        },
+        query: function query() {
+            return $('#bs-select-' + this._uid + ' input');
+        }
+    },
+
+    directives: {
+        selectpicker: {
+            inserted: function inserted(element, binding, vnode) {
+                $(element).selectpicker({
+                    actionsBox: true,
+                    liveSearch: true,
+                    size: 5
+                });
+
+                $(element).selectpicker('val', vnode.context.value);
+
+                $(element).on('changed.bs.select', function () {
+                    vnode.context.$emit('input', $(element).val());
+                });
+            },
+            unbind: function unbind(element, binding, vnode) {
+                $(element).off().selectpicker('destroy');
+            }
+        }
+    },
+
+    watch: {
+        params: {
+            handler: function handler() {
+                this.getOptionList();
+            },
+
+            deep: true
+        },
+        pivotParams: {
+            handler: function handler() {
+                this.getOptionList();
+            },
+
+            deep: true
+        },
+        value: {
+            handler: function handler() {
+                this.element.selectpicker('val', this.value);
+                this.$emit('input', this.value);
+            }
+        }
+    },
+
+    data: function data() {
+        return {
+            optionList: this.options
+        };
+    },
+
+
+    methods: {
+        getOptionList: function getOptionList() {
+            var _this = this;
+
+            axios.get(this.source, { params: this.getParams() }).then(function (response) {
+                _this.processOptions(response);
+            }).catch(function (error) {
+                _this.reportEnsoException(error);
+            }).then(function () {
+                _this.element.selectpicker('refresh');
+                _this.update(_this.value);
+            });
+        },
+        getParams: function getParams() {
+            return {
+                params: this.params,
+                pivotParams: this.pivotParams,
+                customParams: this.customParams,
+                query: this.getQuery(),
+                value: this.value
+            };
+        },
+        processOptions: function processOptions(response) {
+            this.optionList = response.data.length === 0 && this.getQuery() ? [{ key: null, value: '' }] : response.data;
+        },
+        addQueryListener: function addQueryListener() {
+            var self = this;
+            this.query.on('input', _.throttle(self.getOptionList, 200));
+        },
+        getQuery: function getQuery() {
+            return this.query.val() || ''; //we don't want undefined
+        },
+        update: function update(value) {
+            this.element.selectpicker('val', value).trigger('changed.bs.select');
+        },
+        clear: function clear() {
+            this.update('');
+        }
+    },
+
+    mounted: function mounted() {
+        if (this.isServerSide) {
+            this.getOptionList();
+            this.addQueryListener();
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Overlay_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Overlay: __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default.a },
+
+    props: {
+        theme: {
+            type: String
+        },
+        border: {
+            type: Boolean,
+            default: false
+        },
+        solid: {
+            type: Boolean,
+            default: false
+        },
+        open: {
+            type: Boolean,
+            default: true
+        },
+        footer: {
+            type: Boolean,
+            default: false
+        },
+        icon: {
+            type: String,
+            default: null
+        },
+        title: {
+            type: String,
+            default: null
+        },
+        search: {
+            type: Boolean,
+            default: false
+        },
+        badge: {
+            type: Number,
+            default: null
+        },
+        refresh: {
+            type: Boolean,
+            default: false
+        },
+        collapsible: {
+            type: Boolean,
+            default: false
+        },
+        removable: {
+            type: Boolean,
+            default: false
+        },
+        overlay: {
+            type: Boolean,
+            default: false
+        },
+        bodyStyle: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
+        }
+    },
+
+    computed: {
+        boxBody: function boxBody() {
+            return $('#box-body-' + this._uid);
+        },
+        searchInput: function searchInput() {
+            return $('#search-input-' + this._uid);
+        },
+        boxClass: function boxClass() {
+            return 'box-' + this.theme + (this.solid ? ' box-solid' : '') + (this.open ? '' : ' collapsed-box');
+        },
+        headerClass: function headerClass() {
+            return this.border ? 'with-border' : '';
+        }
+    },
+
+    data: function data() {
+        return {
+            query: null,
+            collapsed: !this.open,
+            inTransition: false
+        };
+    },
+
+
+    methods: {
+        toggle: function toggle() {
+            var _this = this;
+
+            if (this.inTransition) {
+                return false;
+            }
+
+            this.$emit('toggle');
+            this.inTransition = true;
+
+            return this.collapsed ? this.boxBody.slideDown(500, function () {
+                _this.collapsed = false;
+                _this.$emit('expanded');
+                _this.inTransition = false;
+            }) : this.boxBody.slideUp(500, function () {
+                _this.collapsed = true;
+                _this.$emit('collapsed');
+                _this.inTransition = false;
+            });
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Overlay_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Overlay: __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default.a },
+
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String
+    },
+    name: {
+      type: String,
+      default: null
+    },
+    position: {
+      type: String,
+      default: null
+    },
+    items: {
+      type: Array,
+      default: []
+    },
+    overlay: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data: function data() {
+    return {
+      labels: Store ? Store.labels : ''
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3141,136 +4194,560 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		disabled: {
-			type: Boolean,
-			default: false
-		},
-		limit: {
-			type: Number,
-			default: 10
-		},
-		url: {
-			type: String,
-			required: true
-		},
-		customParams: {
-			type: Object,
-			default: null
-		},
-		displayProperty: {
-			type: String,
-			required: true
-		},
-		placeholder: {
-			type: String,
-			default: 'type something'
-		},
-		clearButton: {
-			type: Boolean,
-			default: false
-		},
-		regExp: {
-			type: RegExp,
-			default: function _default() {
-				return (/^[A-Za-z0-9 _-]*[A-Za-z0-9][A-Za-z0-9 _-]*$/
-				);
-			}
-		}
-	},
-	computed: {
-		inputHasError: function inputHasError() {
-			return this.currentValue && !this.regExp.test(this.currentValue);
-		},
-		showClearButton: function showClearButton() {
-			return this.clearButton && this.currentValue && !this.disabled;
-		}
-	},
 	data: function data() {
 		return {
-			currentIndex: 0,
-			showDropdown: false,
-			items: [],
-			style: {
-				width: this.width
-			},
-			currentValue: null
+			breadcrumbs: Store.breadcrumbs
 		};
 	},
+
+
 	methods: {
-		highlight: function highlight(item, currentValue) {
-			currentValue.split(' ').filter(function (word) {
-				return word.length;
-			}).forEach(function (word) {
-				item = item.replace(new RegExp('(' + word + ')', 'gi'), '<b>$1</b>');
-			});
-
-			return item;
+		getClass: function getClass(breadcrumb) {
+			return breadcrumb.link ? null : 'greyed';
 		},
-		update: _.debounce(function () {
-			var _this = this;
-
-			if (!this.currentValue) {
-				this.reset();
-				return false;
-			}
-
-			if (this.inputHasError) {
-				this.showDropdown = false;
-				return false;
-			}
-
-			var params = {
-				currentValue: this.currentValue,
-				limit: this.limit,
-				customParams: this.customParams
-			};
-
-			axios.get(this.url, { params: params }).then(function (response) {
-				_this.items = response.data;
-				_this.showDropdown = _this.items.length > 0;
-			});
-		}, 100),
-		reset: function reset() {
-			this.items = [];
-			this.showDropdown = false;
-		},
-		setActive: function setActive(index) {
-			this.currentIndex = index;
-		},
-		isActive: function isActive(index) {
-			return this.currentIndex === index;
-		},
-		hit: function hit() {
-			if (this.showDropdown) {
-				var item = this.items[this.currentIndex];
-				this.currentValue = item[this.displayProperty];
-				this.showDropdown = false;
-				this.$emit('input', item);
-				this.clearInput();
-			}
-		},
-		keyUp: function keyUp() {
-			if (this.currentIndex > 0) this.currentIndex--;
-		},
-		keyDown: function keyDown() {
-			if (this.currentIndex < this.items.length - 1) this.currentIndex++;
-		},
-		clearInput: function clearInput() {
-			this.currentValue = '';
-			this.items = [];
-			this.$emit('input', {});
+		getLink: function getLink(breadcrumb) {
+			return breadcrumb.link ? '/' + breadcrumb.link : null;
 		}
 	}
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      default: null
+    },
+    text: {
+      type: String,
+      default: null
+    },
+    number: {
+      type: String,
+      default: null
+    },
+    progress: {
+      type: String,
+      default: false
+    },
+    description: {
+      type: String,
+      default: false
+    }
+  },
+
+  data: function data() {
+    return {
+      labels: Store ? Store.labels : ''
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		userId: {
+			type: Number,
+			required: true
+		},
+		paginate: {
+			type: Number,
+			default: 6
+		}
+	},
+
+	data: function data() {
+		return {
+			labels: Store.labels,
+			unreadCount: 0,
+			totalCount: 0,
+			notifications: [],
+			needsUpdate: true,
+			offset: 0,
+			loading: false
+		};
+	},
+
+
+	methods: {
+		getCount: function getCount() {
+			var _this = this;
+
+			axios.get('/core/notifications/getCount').then(function (response) {
+				_this.unreadCount = response.data;
+			}).catch(function (error) {
+				_this.reportEnsoException(error);
+			});
+		},
+		getList: function getList() {
+			var _this2 = this;
+
+			if (!this.needsUpdate || this.loading) {
+				return false;
+			}
+
+			this.loading = true;
+
+			axios.get('/core/notifications/getList/' + this.offset + '/' + this.paginate).then(function (response) {
+				_this2.notifications = _this2.offset ? _this2.notifications.concat(response.data) : response.data;
+				_this2.offset = _this2.notifications.length;
+				_this2.needsUpdate = false;
+				_this2.loading = false;
+			}).catch(function (error) {
+				_this2.loading = false;
+				_this2.reportEnsoException(error);
+			});
+		},
+		getMore: function getMore() {
+			this.needsUpdate = true;
+			this.getList();
+			$('#notifications').addClass('open');
+		},
+		process: function process(notification) {
+			var _this3 = this;
+
+			axios.patch('/core/notifications/markAsRead/' + notification.id).then(function (response) {
+				_this3.unreadCount = _this3.unreadCount ? --_this3.unreadCount : _this3.unreadCount;
+				window.location.href = notification.data.link;
+				notification = response.data; // fixme
+			}).catch(function (error) {
+				_this3.reportEnsoException(error);
+			});
+		},
+		markAllAsRead: function markAllAsRead() {
+			var _this4 = this;
+
+			axios.patch('/core/notifications/markAllAsRead').then(function (response) {
+				_this4.setAllAsRead();
+			}).catch(function (error) {
+				_this4.reportEnsoException(error);
+			});
+		},
+		setAllAsRead: function setAllAsRead() {
+			this.notifications.forEach(function (notification) {
+				notification.read_at = notification.read_at || moment().format('Y-MM-DD H:mm:s');
+			});
+
+			this.unreadCount = 0;
+		},
+		clearAll: function clearAll() {
+			var _this5 = this;
+
+			axios.patch('/core/notifications/clearAll').then(function (response) {
+				_this5.notifications = [];
+				_this5.unreadCount = 0;
+			}).catch(function (error) {
+				_this5.reportEnsoException(error);
+			});
+		},
+		listen: function listen() {
+			var self = this;
+
+			Echo.private('App.User.' + this.userId).notification(function (notification) {
+				self.unreadCount++;
+				self.needsUpdate = true;
+				self.offset = 0;
+			});
+
+			this.geListIfBodyIsOpen();
+		},
+		geListIfBodyIsOpen: function geListIfBodyIsOpen() {
+			if ($('#notifications').hasClass('open')) {
+				self.getList();
+				document.getElementById('notifications-body').scrollTop = 0;
+			}
+		},
+		computeScrollPosition: function computeScrollPosition(event) {
+			var a = event.target.scrollTop,
+			    b = event.target.scrollHeight - event.target.clientHeight,
+			    c = a / b;
+
+			if (c === 1) {
+				this.needsUpdate = true;
+				this.getList();
+			}
+		}
+	},
+
+	mounted: function mounted() {
+		this.getCount();
+		this.listen();
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_simple_spinner__ = __webpack_require__("./node_modules/vue-simple-spinner/dist/vue-simple-spinner.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_simple_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_simple_spinner__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	components: { Spinner: __WEBPACK_IMPORTED_MODULE_0_vue_simple_spinner___default.a },
+
+	props: {
+		lineFgColor: {
+			type: String,
+			default: '#41b883'
+		},
+		lineBgColor: {
+			type: String,
+			default: 'transparent'
+		},
+		speed: {
+			type: Number,
+			default: 1
+		},
+		size: {
+			type: String,
+			default: 'medium'
+		}
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		customRender: {
+			type: Function,
+			default: null
+		}
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    theme: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      default: null
+    },
+    title: {
+      type: String,
+      default: null
+    },
+    body: {
+      type: String,
+      default: null
+    },
+    overlay: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data: function data() {
+    return {
+      labels: Store ? Store.labels : ''
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		title: {
+			type: String,
+			default: null
+		},
+		tabs: {
+			type: Array,
+			required: true,
+			default: function _default() {
+				return [];
+			}
+		},
+		reverse: {
+			type: Boolean,
+			default: false
+		},
+		active: {
+			type: Number,
+			default: 0
+		},
+		icon: {
+			type: String,
+			default: null
+		}
+	},
+
+	computed: {
+		hasBadges: function hasBadges() {
+			return this.tabs.length > 0 && this.tabs[0] instanceof Object;
+		},
+		sortedTabs: function sortedTabs() {
+			return this.reverse ? this.tabs.slice().reverse() : this.tabs;
+		},
+		sortedActive: function sortedActive() {
+			return this.reverse ? this.tabs.length - 1 - this.selected : this.selected;
+		}
+	},
+
+	data: function data() {
+		return {
+			selected: this.active
+		};
+	},
+
+	methods: {},
+
+	mounted: function mounted() {
+		this.selected = this.sortedActive;
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3337,11 +4814,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Overlay_vue__);
 //
 //
 //
@@ -3376,229 +4855,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			value: ''
-		};
-	},
+  components: { Overlay: __WEBPACK_IMPORTED_MODULE_0__Overlay_vue___default.a },
 
-	methods: {
-		changed: function changed() {
-			this.$emit('input', this.value);
-		}
-	}
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: {
-        name: {
-            type: String,
-            default: null
-        },
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        multiple: {
-            type: Boolean,
-            default: false
-        },
-        source: {
-            type: String,
-            default: null
-        },
-        selected: {
-            default: null
-        },
-        options: {
-            type: Array,
-            default: null
-        },
-        reset: {
-            type: Boolean,
-            default: false
-        },
-        placeholder: {
-            type: String,
-            default: null
-        },
-        params: {
-            type: Object,
-            default: null
-        },
-        pivotParams: {
-            type: Object,
-            default: null
-        },
-        customParams: {
-            type: Object,
-            default: null
-        }
+  props: {
+    theme: {
+      type: String,
+      required: true
     },
-
-    computed: {
-        isServerSide: function isServerSide() {
-            return this.options === null;
-        }
+    background: {
+      type: String
     },
-
-    watch: {
-        params: {
-            handler: 'getOptionsList',
-            deep: true
-        },
-        pivotParams: {
-            handler: 'getOptionsList',
-            deep: true
-        },
-        selected: {
-            handler: 'handleSelectedChange'
-        },
-        options: {
-            handler: 'handleOptionsChange',
-            deep: true
-        }
+    avatar: {
+      type: String
     },
-
-    data: function data() {
-        return {
-            optionsList: this.options || {},
-            selectedOptions: this.selected ? this.selected : this.multiple ? [] : this.selected
-        };
+    name: {
+      type: String,
+      default: null
     },
-
-
-    methods: {
-        getOptionsList: function getOptionsList() {
-            var _this = this;
-
-            axios.get(this.source, { params: this.getParams() }).then(function (response) {
-                _this.optionsList = _this.multiple && Object.keys(response.data).length === 0 && _this.getQuery() ? { 1: { key: null, value: '' } } : response.data;
-            }).catch(function (error) {
-                _this.reportEnsoException(error);
-            }).then(function () {
-                $('#select-' + _this._uid).selectpicker('refresh');
-            });
-        },
-        getParams: function getParams() {
-            var query = this.getQuery();
-
-            return {
-                params: this.params,
-                pivotParams: this.pivotParams,
-                customParams: this.customParams,
-                query: query,
-                selected: this.selectedOptions
-            };
-        },
-        getQuery: function getQuery() {
-            return $('#bs-select-' + this._uid + ' input').val() || ''; //we don't want undefined
-        },
-        removeSelection: function removeSelection() {
-            var _this2 = this;
-
-            this.selectedOptions = this.multiple ? [] : '';
-
-            this.$nextTick(function () {
-                //we need next tick
-                $('#select-' + _this2._uid).selectpicker('refresh');
-                _this2.$emit('input', _this2.selectedOptions);
-            });
-        },
-        handleSelectedChange: function handleSelectedChange() {
-            this.selectedOptions = this.selected;
-
-            if (this.isServerSide) {
-                return this.getOptionsList();
-            }
-
-            $('#select-' + this._uid).selectpicker('val', this.selectedOptions);
-            this.$emit('input', this.selectedOptions);
-        },
-        handleOptionsChange: function handleOptionsChange() {
-            this.optionsList = this.options;
-            this.removeSelection();
-        },
-        init: function init() {
-            $('#select-' + this._uid).selectpicker({
-                width: '100%',
-                liveSearch: true,
-                size: 5,
-                actionsBox: true,
-                title: this.placeholder || $.fn.selectpicker.defaults.noneSelectedText
-            });
-        }
+    position: {
+      type: String,
+      default: null
     },
-
-    mounted: function mounted() {
-        this.init();
-
-        if (this.selectedOptions) {
-            this.$emit('input', this.selectedOptions);
-            $('#select-' + this._uid).selectpicker('val', this.selectedOptions); //necesary for using without server-side
-        }
-
-        if (this.isServerSide) {
-            this.getOptionsList();
-            var self = this;
-            $('#bs-select-' + this._uid + ' input').on('input', _.throttle(self.getOptionsList, 200));
-        }
+    items: {
+      type: Array,
+      default: []
     },
-    beforeDestroy: function beforeDestroy() {
-        $('#select-' + this._uid).selectpicker('destroy');
+    overlay: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  computed: {
+    computedClass: function computedClass() {
+      return 'col-sm-' + 12 / this.items.length;
+    }
+  },
+
+  data: function data() {
+    return {
+      labels: Store ? Store.labels : ''
+    };
+  }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -3650,11 +4965,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -3762,11 +5078,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -3805,7 +5123,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3851,11 +5169,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -3897,7 +5218,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3987,6 +5308,290 @@ var tutorialTemplate = '\
 			this.get();
 		}
 	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/classes/Errors.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vueadminlte_Box_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vueadminlte_Box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vueadminlte_Box_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_VueSelect_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_VueSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__select_VueSelect_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__enso_Datepicker_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__enso_Datepicker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__enso_Datepicker_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__VueFormInput_vue__ = __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__VueFormInput_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__VueFormInput_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Box: __WEBPACK_IMPORTED_MODULE_1__vueadminlte_Box_vue___default.a, VueSelect: __WEBPACK_IMPORTED_MODULE_2__select_VueSelect_vue___default.a, Datepicker: __WEBPACK_IMPORTED_MODULE_3__enso_Datepicker_vue___default.a, VueFormInput: __WEBPACK_IMPORTED_MODULE_4__VueFormInput_vue___default.a },
+
+    props: {
+        data: {
+            type: Object,
+            required: true
+        }
+    },
+
+    computed: {
+        hasChanges: function hasChanges() {
+            var self = this;
+
+            return this.data.attributes.filter(function (attribute, index) {
+                if (Array.isArray(attribute.value)) {
+                    return attribute.value.toString() === self.originalData[index].toString();
+                }
+
+                return !attribute.value && !self.originalData[index] || attribute.value && self.originalData[index] && attribute.value === self.originalData[index];
+            }).length !== this.data.attributes.length;
+        }
+    },
+
+    data: function data() {
+        return {
+            loading: false,
+            showModal: false,
+            errors: new __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__["a" /* default */](),
+            originalData: this.data.attributes.pluck('value')
+        };
+    },
+
+
+    methods: {
+        submit: function submit() {
+            var _this = this;
+
+            this.loading = true;
+            axios[this.data.action](this.data.url, this.formData()).then(function (response) {
+                _this.loading = false;
+                toastr.success(response.data.message);
+                _this.$emit(_this.data.action);
+
+                if (response.data.redirect) {
+                    window.location.href = response.data.redirect;
+                }
+            }).catch(function (error) {
+                _this.reportEnsoException(error);
+            }).catch(function (error) {
+                _this.errors.set(error.response.data);
+                _this.loading = false;
+            });
+        },
+        formData: function formData() {
+            return this.data.attributes.reduce(function (object, element) {
+                object[element.column] = element.value;
+                return object;
+            }, {});
+        },
+        setOriginal: function setOriginal() {
+            var self = this;
+
+            this.data.attributes.forEach(function (attribute, index) {
+                attribute.value = self.originalData[index];
+            });
+
+            this.errors.empty();
+            this.$bus.$emit('form-restored');
+        },
+        clear: function clear() {
+            this.data.attributes.forEach(function (element) {
+                element.value = Array.isArray(element.value) ? [] : null;
+            });
+        },
+        destroy: function destroy() {
+            var _this2 = this;
+
+            this.showModal = false;
+            this.loading = true;
+
+            axios.delete(this.data.url).then(function (response) {
+                _this2.loading = false;
+                toastr.success(response.data.message);
+                _this2.$emit('delete');
+
+                if (response.data.redirect) {
+                    window.location.href = response.data.redirect;
+                }
+            }).catch(function (error) {
+                _this2.loading = false;
+                _this2.reportEnsoException(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        element: {
+            type: Object,
+            required: true
+        },
+        inputClass: {
+            type: String,
+            default: 'form-control'
+        }
+    }
 });
 
 /***/ }),
@@ -6375,7 +7980,7 @@ if (typeof jQuery === 'undefined') {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/flatpickr/dist/themes/material_green.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6383,14 +7988,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n#control-sidebar-settings-tab {\n\tmargin-top: 10px;\n}\naside#sidebar.control-sidebar.control-sidebar-light.control-sidebar-open a.dropdown-toggle {\n\tcolor: #141a1d;\n}\naside#sidebar.control-sidebar.control-sidebar-open {\n\theight: 100%;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open a.dropdown-toggle {\n\tcolor: #fff;\n}\n\n", ""]);
+exports.push([module.i, "\n.flatpickr-calendar {\n  background: transparent;\n  overflow: hidden;\n  max-height: 0;\n  opacity: 0;\n  visibility: hidden;\n  text-align: center;\n  padding: 0;\n  -webkit-animation: none;\n          animation: none;\n  direction: ltr;\n  border: 0;\n  font-size: 14px;\n  line-height: 24px;\n  border-radius: 5px;\n  position: absolute;\n  width: 307.875px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-touch-action: manipulation;\n      touch-action: manipulation;\n  -webkit-box-shadow: 0 3px 13px rgba(0,0,0,0.08);\n          box-shadow: 0 3px 13px rgba(0,0,0,0.08);\n}\n.flatpickr-calendar.open,\n.flatpickr-calendar.inline {\n  opacity: 1;\n  visibility: visible;\n  overflow: visible;\n  max-height: 640px;\n}\n.flatpickr-calendar.open {\n  display: inline-block;\n  z-index: 99999;\n}\n.flatpickr-calendar.animate.open {\n  -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-calendar.inline {\n  display: block;\n  position: relative;\n  top: 2px;\n}\n.flatpickr-calendar.static {\n  position: absolute;\n  top: calc(100% + 2px);\n}\n.flatpickr-calendar.static.open {\n  z-index: 999;\n  display: block;\n}\n.flatpickr-calendar.hasWeeks {\n  width: auto;\n}\n.flatpickr-calendar .hasWeeks .dayContainer,\n.flatpickr-calendar .hasTime .dayContainer {\n  border-bottom: 0;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.flatpickr-calendar .hasWeeks .dayContainer {\n  border-left: 0;\n}\n.flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {\n  height: 40px;\n  border-top: 1px solid rgba(72,72,72,0.2);\n}\n.flatpickr-calendar.showTimeInput.hasTime .flatpickr-innerContainer {\n  border-bottom: 0;\n}\n.flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {\n  border: 1px solid rgba(72,72,72,0.2);\n}\n.flatpickr-calendar.noCalendar.hasTime .flatpickr-time {\n  height: auto;\n}\n.flatpickr-calendar:before,\n.flatpickr-calendar:after {\n  position: absolute;\n  display: block;\n  pointer-events: none;\n  border: solid transparent;\n  content: '';\n  height: 0;\n  width: 0;\n  left: 22px;\n}\n.flatpickr-calendar.rightMost:before,\n.flatpickr-calendar.rightMost:after {\n  left: auto;\n  right: 22px;\n}\n.flatpickr-calendar:before {\n  border-width: 5px;\n  margin: 0 -5px;\n}\n.flatpickr-calendar:after {\n  border-width: 4px;\n  margin: 0 -4px;\n}\n.flatpickr-calendar.arrowTop:before,\n.flatpickr-calendar.arrowTop:after {\n  bottom: 100%;\n}\n.flatpickr-calendar.arrowTop:before {\n  border-bottom-color: rgba(72,72,72,0.2);\n}\n.flatpickr-calendar.arrowTop:after {\n  border-bottom-color: #1bbc9b;\n}\n.flatpickr-calendar.arrowBottom:before,\n.flatpickr-calendar.arrowBottom:after {\n  top: 100%;\n}\n.flatpickr-calendar.arrowBottom:before {\n  border-top-color: rgba(72,72,72,0.2);\n}\n.flatpickr-calendar.arrowBottom:after {\n  border-top-color: #1bbc9b;\n}\n.flatpickr-calendar:focus {\n  outline: 0;\n}\n.flatpickr-wrapper {\n  position: relative;\n  display: inline-block;\n}\n.flatpickr-month {\n  border-radius: 5px 5px 0 0;\n  background: #1bbc9b;\n  color: #fff;\n  fill: #fff;\n  height: 28px;\n  line-height: 1;\n  text-align: center;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n}\n.flatpickr-prev-month,\n.flatpickr-next-month {\n  text-decoration: none;\n  cursor: pointer;\n  position: absolute;\n  top: 0px;\n  line-height: 16px;\n  height: 28px;\n  padding: 10px calc(3.57% - 1.5px);\n  z-index: 3;\n}\n.flatpickr-prev-month i,\n.flatpickr-next-month i {\n  position: relative;\n}\n.flatpickr-prev-month.flatpickr-prev-month,\n.flatpickr-next-month.flatpickr-prev-month {\n/*\n        /*rtl:begin:ignore*/\n/*\n        */\n  left: 0;\n/*\n        /*rtl:end:ignore*/\n/*\n        */\n}\n/*\n        /*rtl:begin:ignore*/\n/*\n        /*rtl:end:ignore*/\n.flatpickr-prev-month.flatpickr-next-month,\n.flatpickr-next-month.flatpickr-next-month {\n/*\n        /*rtl:begin:ignore*/\n/*\n        */\n  right: 0;\n/*\n        /*rtl:end:ignore*/\n/*\n        */\n}\n/*\n        /*rtl:begin:ignore*/\n/*\n        /*rtl:end:ignore*/\n.flatpickr-prev-month:hover,\n.flatpickr-next-month:hover {\n  color: #bbb;\n}\n.flatpickr-prev-month:hover svg,\n.flatpickr-next-month:hover svg {\n  fill: #f64747;\n}\n.flatpickr-prev-month svg,\n.flatpickr-next-month svg {\n  width: 14px;\n}\n.flatpickr-prev-month svg path,\n.flatpickr-next-month svg path {\n  -webkit-transition: fill 0.1s;\n  transition: fill 0.1s;\n  fill: inherit;\n}\n.numInputWrapper {\n  position: relative;\n  height: auto;\n}\n.numInputWrapper input,\n.numInputWrapper span {\n  display: inline-block;\n}\n.numInputWrapper input {\n  width: 100%;\n}\n.numInputWrapper span {\n  position: absolute;\n  right: 0;\n  width: 14px;\n  padding: 0 4px 0 2px;\n  height: 50%;\n  line-height: 50%;\n  opacity: 0;\n  cursor: pointer;\n  border: 1px solid rgba(72,72,72,0.05);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.numInputWrapper span:hover {\n  background: rgba(0,0,0,0.1);\n}\n.numInputWrapper span:active {\n  background: rgba(0,0,0,0.2);\n}\n.numInputWrapper span:after {\n  display: block;\n  content: \"\";\n  position: absolute;\n  top: 33%;\n}\n.numInputWrapper span.arrowUp {\n  top: 0;\n  border-bottom: 0;\n}\n.numInputWrapper span.arrowUp:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-bottom: 4px solid rgba(72,72,72,0.6);\n}\n.numInputWrapper span.arrowDown {\n  top: 50%;\n}\n.numInputWrapper span.arrowDown:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-top: 4px solid rgba(72,72,72,0.6);\n}\n.numInputWrapper span svg {\n  width: inherit;\n  height: auto;\n}\n.numInputWrapper span svg path {\n  fill: rgba(255,255,255,0.5);\n}\n.numInputWrapper:hover {\n  background: rgba(0,0,0,0.05);\n}\n.numInputWrapper:hover span {\n  opacity: 1;\n}\n.flatpickr-current-month {\n  font-size: 135%;\n  line-height: inherit;\n  font-weight: 300;\n  color: inherit;\n  position: absolute;\n  width: 75%;\n  left: 12.5%;\n  padding: 6.16px 0 0 0;\n  line-height: 1;\n  height: 28px;\n  display: inline-block;\n  text-align: center;\n  -webkit-transform: translate3d(0px, 0px, 0px);\n          transform: translate3d(0px, 0px, 0px);\n}\n.flatpickr-current-month.slideLeft {\n  -webkit-transform: translate3d(-100%, 0px, 0px);\n          transform: translate3d(-100%, 0px, 0px);\n  -webkit-animation: fpFadeOut 400ms ease, fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeOut 400ms ease, fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-current-month.slideLeftNew {\n  -webkit-transform: translate3d(100%, 0px, 0px);\n          transform: translate3d(100%, 0px, 0px);\n  -webkit-animation: fpFadeIn 400ms ease, fpSlideLeftNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeIn 400ms ease, fpSlideLeftNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-current-month.slideRight {\n  -webkit-transform: translate3d(100%, 0px, 0px);\n          transform: translate3d(100%, 0px, 0px);\n  -webkit-animation: fpFadeOut 400ms ease, fpSlideRight 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeOut 400ms ease, fpSlideRight 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-current-month.slideRightNew {\n  -webkit-transform: translate3d(0, 0, 0px);\n          transform: translate3d(0, 0, 0px);\n  -webkit-animation: fpFadeIn 400ms ease, fpSlideRightNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeIn 400ms ease, fpSlideRightNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-current-month span.cur-month {\n  font-family: inherit;\n  font-weight: 700;\n  color: inherit;\n  display: inline-block;\n  margin-left: 0.5ch;\n  padding: 0;\n}\n.flatpickr-current-month span.cur-month:hover {\n  background: rgba(0,0,0,0.05);\n}\n.flatpickr-current-month .numInputWrapper {\n  width: 6ch;\n  width: 7ch\\0;\n  display: inline-block;\n}\n.flatpickr-current-month .numInputWrapper span.arrowUp:after {\n  border-bottom-color: #fff;\n}\n.flatpickr-current-month .numInputWrapper span.arrowDown:after {\n  border-top-color: #fff;\n}\n.flatpickr-current-month input.cur-year {\n  background: transparent;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: inherit;\n  cursor: default;\n  padding: 0 0 0 0.5ch;\n  margin: 0;\n  display: inline-block;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: 300;\n  line-height: inherit;\n  height: initial;\n  border: 0;\n  border-radius: 0;\n  vertical-align: initial;\n}\n.flatpickr-current-month input.cur-year:focus {\n  outline: 0;\n}\n.flatpickr-current-month input.cur-year[disabled],\n.flatpickr-current-month input.cur-year[disabled]:hover {\n  font-size: 100%;\n  color: rgba(255,255,255,0.5);\n  background: transparent;\n  pointer-events: none;\n}\n.flatpickr-weekdays {\n  background: #1bbc9b;\n  text-align: center;\n  overflow: hidden;\n  width: 100%;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 28px;\n}\nspan.flatpickr-weekday {\n  cursor: default;\n  font-size: 90%;\n  background: #1bbc9b;\n  color: rgba(0,0,0,0.54);\n  line-height: 1;\n  margin: 0;\n  text-align: center;\n  display: block;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  font-weight: bolder;\n}\n.dayContainer,\n.flatpickr-weeks {\n  padding: 1px 0 0 0;\n}\n.flatpickr-days {\n  position: relative;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  width: 307.875px;\n  border-left: 1px solid rgba(72,72,72,0.2);\n  border-right: 1px solid rgba(72,72,72,0.2);\n}\n.flatpickr-days:focus {\n  outline: 0;\n}\n.dayContainer {\n  padding: 0;\n  outline: 0;\n  text-align: left;\n  width: 307.875px;\n  min-width: 307.875px;\n  max-width: 307.875px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  display: inline-block;\n  display: -ms-flexbox;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  -ms-flex-pack: justify;\n  -webkit-justify-content: space-around;\n          justify-content: space-around;\n  -webkit-transform: translate3d(0px, 0px, 0px);\n          transform: translate3d(0px, 0px, 0px);\n  opacity: 1;\n}\n.flatpickr-calendar.animate .dayContainer.slideLeft {\n  -webkit-animation: fpFadeOut 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeOut 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-calendar.animate .dayContainer.slideLeft,\n.flatpickr-calendar.animate .dayContainer.slideLeftNew {\n  -webkit-transform: translate3d(-100%, 0px, 0px);\n          transform: translate3d(-100%, 0px, 0px);\n}\n.flatpickr-calendar.animate .dayContainer.slideLeftNew {\n  -webkit-animation: fpFadeIn 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeIn 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideLeft 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-calendar.animate .dayContainer.slideRight {\n  -webkit-animation: fpFadeOut 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideRight 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeOut 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideRight 400ms cubic-bezier(0.23, 1, 0.32, 1);\n  -webkit-transform: translate3d(100%, 0px, 0px);\n          transform: translate3d(100%, 0px, 0px);\n}\n.flatpickr-calendar.animate .dayContainer.slideRightNew {\n  -webkit-animation: fpFadeIn 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideRightNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeIn 400ms cubic-bezier(0.23, 1, 0.32, 1), fpSlideRightNew 400ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-day {\n  background: none;\n  border: 1px solid transparent;\n  border-radius: 150px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #484848;\n  cursor: pointer;\n  font-weight: 400;\n  width: 14.2857143%;\n  -webkit-flex-basis: 14.2857143%;\n      -ms-flex-preferred-size: 14.2857143%;\n          flex-basis: 14.2857143%;\n  max-width: 39px;\n  height: 39px;\n  line-height: 39px;\n  margin: 0;\n  display: inline-block;\n  position: relative;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n}\n.flatpickr-day.inRange,\n.flatpickr-day.prevMonthDay.inRange,\n.flatpickr-day.nextMonthDay.inRange,\n.flatpickr-day.today.inRange,\n.flatpickr-day.prevMonthDay.today.inRange,\n.flatpickr-day.nextMonthDay.today.inRange,\n.flatpickr-day:hover,\n.flatpickr-day.prevMonthDay:hover,\n.flatpickr-day.nextMonthDay:hover,\n.flatpickr-day:focus,\n.flatpickr-day.prevMonthDay:focus,\n.flatpickr-day.nextMonthDay:focus {\n  cursor: pointer;\n  outline: 0;\n  background: #e2e2e2;\n  border-color: #e2e2e2;\n}\n.flatpickr-day.today {\n  border-color: #bbb;\n}\n.flatpickr-day.today:hover,\n.flatpickr-day.today:focus {\n  border-color: #bbb;\n  background: #bbb;\n  color: #fff;\n}\n.flatpickr-day.selected,\n.flatpickr-day.startRange,\n.flatpickr-day.endRange,\n.flatpickr-day.selected.inRange,\n.flatpickr-day.startRange.inRange,\n.flatpickr-day.endRange.inRange,\n.flatpickr-day.selected:focus,\n.flatpickr-day.startRange:focus,\n.flatpickr-day.endRange:focus,\n.flatpickr-day.selected:hover,\n.flatpickr-day.startRange:hover,\n.flatpickr-day.endRange:hover,\n.flatpickr-day.selected.prevMonthDay,\n.flatpickr-day.startRange.prevMonthDay,\n.flatpickr-day.endRange.prevMonthDay,\n.flatpickr-day.selected.nextMonthDay,\n.flatpickr-day.startRange.nextMonthDay,\n.flatpickr-day.endRange.nextMonthDay {\n  background: #1bbc9b;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  color: #fff;\n  border-color: #1bbc9b;\n}\n.flatpickr-day.selected.startRange,\n.flatpickr-day.startRange.startRange,\n.flatpickr-day.endRange.startRange {\n  border-radius: 50px 0 0 50px;\n}\n.flatpickr-day.selected.endRange,\n.flatpickr-day.startRange.endRange,\n.flatpickr-day.endRange.endRange {\n  border-radius: 0 50px 50px 0;\n}\n.flatpickr-day.selected.startRange + .endRange,\n.flatpickr-day.startRange.startRange + .endRange,\n.flatpickr-day.endRange.startRange + .endRange {\n  -webkit-box-shadow: -10px 0 0 #1bbc9b;\n          box-shadow: -10px 0 0 #1bbc9b;\n}\n.flatpickr-day.selected.startRange.endRange,\n.flatpickr-day.startRange.startRange.endRange,\n.flatpickr-day.endRange.startRange.endRange {\n  border-radius: 50px;\n}\n.flatpickr-day.inRange {\n  border-radius: 0;\n  -webkit-box-shadow: -5px 0 0 #e2e2e2, 5px 0 0 #e2e2e2;\n          box-shadow: -5px 0 0 #e2e2e2, 5px 0 0 #e2e2e2;\n}\n.flatpickr-day.disabled,\n.flatpickr-day.disabled:hover {\n  pointer-events: none;\n}\n.flatpickr-day.disabled,\n.flatpickr-day.disabled:hover,\n.flatpickr-day.prevMonthDay,\n.flatpickr-day.nextMonthDay,\n.flatpickr-day.notAllowed,\n.flatpickr-day.notAllowed.prevMonthDay,\n.flatpickr-day.notAllowed.nextMonthDay {\n  color: rgba(72,72,72,0.3);\n  background: transparent;\n  border-color: transparent;\n  cursor: default;\n}\n.flatpickr-day.week.selected {\n  border-radius: 0;\n  -webkit-box-shadow: -5px 0 0 #1bbc9b, 5px 0 0 #1bbc9b;\n          box-shadow: -5px 0 0 #1bbc9b, 5px 0 0 #1bbc9b;\n}\n.rangeMode .flatpickr-day {\n  margin-top: 1px;\n}\n.flatpickr-weekwrapper {\n  display: inline-block;\n  float: left;\n}\n.flatpickr-weekwrapper .flatpickr-weeks {\n  padding: 0 12px;\n  border-left: 1px solid rgba(72,72,72,0.2);\n}\n.flatpickr-weekwrapper .flatpickr-weekday {\n  float: none;\n  width: 100%;\n  line-height: 28px;\n}\n.flatpickr-weekwrapper span.flatpickr-day {\n  display: block;\n  width: 100%;\n  max-width: none;\n}\n.flatpickr-innerContainer {\n  display: block;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  overflow: hidden;\n  background: #fff;\n  border-bottom: 1px solid rgba(72,72,72,0.2);\n}\n.flatpickr-rContainer {\n  display: inline-block;\n  padding: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.flatpickr-time {\n  text-align: center;\n  outline: 0;\n  display: block;\n  height: 0;\n  line-height: 40px;\n  max-height: 40px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  background: #fff;\n  border-radius: 0 0 5px 5px;\n}\n.flatpickr-time:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.flatpickr-time .numInputWrapper {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  width: 40%;\n  height: 40px;\n  float: left;\n}\n.flatpickr-time .numInputWrapper span.arrowUp:after {\n  border-bottom-color: #484848;\n}\n.flatpickr-time .numInputWrapper span.arrowDown:after {\n  border-top-color: #484848;\n}\n.flatpickr-time.hasSeconds .numInputWrapper {\n  width: 26%;\n}\n.flatpickr-time.time24hr .numInputWrapper {\n  width: 49%;\n}\n.flatpickr-time input {\n  background: transparent;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  border: 0;\n  border-radius: 0;\n  text-align: center;\n  margin: 0;\n  padding: 0;\n  height: inherit;\n  line-height: inherit;\n  cursor: pointer;\n  color: #484848;\n  font-size: 14px;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.flatpickr-time input.flatpickr-hour {\n  font-weight: bold;\n}\n.flatpickr-time input.flatpickr-minute,\n.flatpickr-time input.flatpickr-second {\n  font-weight: 400;\n}\n.flatpickr-time input:focus {\n  outline: 0;\n  border: 0;\n}\n.flatpickr-time .flatpickr-time-separator,\n.flatpickr-time .flatpickr-am-pm {\n  height: inherit;\n  display: inline-block;\n  float: left;\n  line-height: inherit;\n  color: #484848;\n  font-weight: bold;\n  width: 2%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-align-self: center;\n      -ms-flex-item-align: center;\n          align-self: center;\n}\n.flatpickr-time .flatpickr-am-pm {\n  outline: 0;\n  width: 18%;\n  cursor: pointer;\n  text-align: center;\n  font-weight: 400;\n}\n.flatpickr-time .flatpickr-am-pm:hover,\n.flatpickr-time .flatpickr-am-pm:focus {\n  background: #ececec;\n}\n.flatpickr-input[readonly] {\n  cursor: pointer;\n}\n@-webkit-keyframes fpFadeInDown {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n@keyframes fpFadeInDown {\nfrom {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0);\n}\nto {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n}\n@-webkit-keyframes fpSlideLeft {\nfrom {\n    -webkit-transform: translate3d(0px, 0px, 0px);\n            transform: translate3d(0px, 0px, 0px);\n}\nto {\n    -webkit-transform: translate3d(-100%, 0px, 0px);\n            transform: translate3d(-100%, 0px, 0px);\n}\n}\n@keyframes fpSlideLeft {\nfrom {\n    -webkit-transform: translate3d(0px, 0px, 0px);\n            transform: translate3d(0px, 0px, 0px);\n}\nto {\n    -webkit-transform: translate3d(-100%, 0px, 0px);\n            transform: translate3d(-100%, 0px, 0px);\n}\n}\n@-webkit-keyframes fpSlideLeftNew {\nfrom {\n    -webkit-transform: translate3d(100%, 0px, 0px);\n            transform: translate3d(100%, 0px, 0px);\n}\nto {\n    -webkit-transform: translate3d(0px, 0px, 0px);\n            transform: translate3d(0px, 0px, 0px);\n}\n}\n@keyframes fpSlideLeftNew {\nfrom {\n    -webkit-transform: translate3d(100%, 0px, 0px);\n            transform: translate3d(100%, 0px, 0px);\n}\nto {\n    -webkit-transform: translate3d(0px, 0px, 0px);\n            transform: translate3d(0px, 0px, 0px);\n}\n}\n@-webkit-keyframes fpSlideRight {\nfrom {\n    -webkit-transform: translate3d(0, 0, 0px);\n            transform: translate3d(0, 0, 0px);\n}\nto {\n    -webkit-transform: translate3d(100%, 0px, 0px);\n            transform: translate3d(100%, 0px, 0px);\n}\n}\n@keyframes fpSlideRight {\nfrom {\n    -webkit-transform: translate3d(0, 0, 0px);\n            transform: translate3d(0, 0, 0px);\n}\nto {\n    -webkit-transform: translate3d(100%, 0px, 0px);\n            transform: translate3d(100%, 0px, 0px);\n}\n}\n@-webkit-keyframes fpSlideRightNew {\nfrom {\n    -webkit-transform: translate3d(-100%, 0, 0px);\n            transform: translate3d(-100%, 0, 0px);\n}\nto {\n    -webkit-transform: translate3d(0, 0, 0px);\n            transform: translate3d(0, 0, 0px);\n}\n}\n@keyframes fpSlideRightNew {\nfrom {\n    -webkit-transform: translate3d(-100%, 0, 0px);\n            transform: translate3d(-100%, 0, 0px);\n}\nto {\n    -webkit-transform: translate3d(0, 0, 0px);\n            transform: translate3d(0, 0, 0px);\n}\n}\n@-webkit-keyframes fpFadeOut {\nfrom {\n    opacity: 1;\n}\nto {\n    opacity: 0;\n}\n}\n@keyframes fpFadeOut {\nfrom {\n    opacity: 1;\n}\nto {\n    opacity: 0;\n}\n}\n@-webkit-keyframes fpFadeIn {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n@keyframes fpFadeIn {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6398,14 +8003,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.typeahead-wrapper {\n\tposition: relative;\n\twidth: 100%;\n}\n.typeahead-wrapper .input-group .input-group-addon {\n\tbackground-color: inherit;\n}\n.input-group  i.clear-button {\n\tposition: absolute;\n\tcursor: pointer;\n\ttop: calc((100% - 12px)/2);\n\tleft: 2px;\n\toutline: none;\n\tz-index: 4;\n\tdisplay: block;\n}\n.input-group  i.clear-button:focus {\n\topacity: .1;\n}\ninput.form-control.typeahead {\n\tpadding-left: 25px;\n}\n\n", ""]);
+exports.push([module.i, "\na.input-button {\n\tcursor: pointer;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6413,14 +8018,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\nul.color-theme-selector {\n\tmin-width: 0;\n\tborder-color: #141a1d;\n\tpadding: 2px;\n\tmargin: 2px;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open ul.color-theme-selector {\n\tbackground-color: #141a1d;\n\tmax-height: 105px;\n\toverflow-y: scroll;\n\tcursor:pointer;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open ul.color-theme-selector li > a {\n\tcolor: #95989e;\n}\naside#sidebar.control-sidebar.control-sidebar-light.control-sidebar-open ul.color-theme-selector {\n\tmax-height: 105px;\n\toverflow-y: scroll;\n\tcursor:pointer;\n}\n\n", ""]);
+exports.push([module.i, "\ndiv.vue-select .multiselect {\n    min-height: 33px;\n}\ndiv.vue-select .multiselect__select {\n    height: 31px;\n}\n.form-group div.vue-select .multiselect__tags {\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid #e8e8e8;\n}\ndiv.vue-select .multiselect__tags {\n    min-height: 32px;\n    padding: 4px 40px 0 4px;\n    border-radius: 3px;\n}\ndiv.vue-select .multiselect__tag {\n    border-radius: 3px;\n    margin-bottom: 4px;\n}\ndiv.vue-select .multiselect__tag-icon {\n    border-radius: 3px;\n    line-height: 21px;\n}\ndiv.vue-select input[type=text].multiselect__input {\n    font-size: 14px;\n    box-shadow: none;\n    margin-bottom: 4px;\n    padding: 1px;\n    border-bottom: none;\n}\ndiv.vue-select .multiselect__content-wrapper {\n    border-bottom-left-radius: 3px;\n    border-bottom-right-radius: 3px;\n}\ndiv.vue-select .multiselect__option,\ndiv.vue-select .multiselect__option:after {\n    line-height: 14px;\n    padding: 10px;\n    min-height: 33px;\n}\ndiv.vue-select .multiselect__spinner {\n    height: 30px\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-multiselect/dist/vue-multiselect.min.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6428,14 +8033,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\ni.reset {\n    z-index: 10;\n    position: absolute;\n    right: 35px;\n    bottom: 24px;\n    cursor: pointer;\n}\n.bootstrap-select.btn-group .dropdown-menu {\n    width: 100%;\n    min-width: 0;\n}\n\n", ""]);
+exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n}\n.multiselect__spinner{position:absolute;right:1px;top:1px;width:48px;height:35px;background:#fff;display:block\n}\n.multiselect__spinner:after,.multiselect__spinner:before{position:absolute;content:\"\";top:50%;left:50%;margin:-8px 0 0 -8px;width:16px;height:16px;border-radius:100%;border-color:#41b883 transparent transparent;border-style:solid;border-width:2px;box-shadow:0 0 0 1px transparent\n}\n.multiselect__spinner:before{animation:a 2.4s cubic-bezier(.41,.26,.2,.62);animation-iteration-count:infinite\n}\n.multiselect__spinner:after{animation:a 2.4s cubic-bezier(.51,.09,.21,.8);animation-iteration-count:infinite\n}\n.multiselect__loading-enter-active,.multiselect__loading-leave-active{transition:opacity .4s ease-in-out;opacity:1\n}\n.multiselect__loading-enter,.multiselect__loading-leave-active{opacity:0\n}\n.multiselect,.multiselect__input,.multiselect__single{font-family:inherit;font-size:14px;-ms-touch-action:manipulation;touch-action:manipulation\n}\n.multiselect{box-sizing:content-box;display:block;position:relative;width:100%;min-height:40px;text-align:left;color:#35495e\n}\n.multiselect *{box-sizing:border-box\n}\n.multiselect:focus{outline:none\n}\n.multiselect--disabled{opacity:.6\n}\n.multiselect--active{z-index:1\n}\n.multiselect--active .multiselect__current,.multiselect--active .multiselect__input,.multiselect--active .multiselect__tags{border-bottom-left-radius:0;border-bottom-right-radius:0\n}\n.multiselect--active .multiselect__select{transform:rotate(180deg)\n}\n.multiselect--above.multiselect--active .multiselect__current,.multiselect--above.multiselect--active .multiselect__input,.multiselect--above.multiselect--active .multiselect__tags{border-top-left-radius:0;border-top-right-radius:0\n}\n.multiselect__input,.multiselect__single{position:relative;display:inline-block;min-height:20px;line-height:20px;border:none;border-radius:5px;background:#fff;padding:1px 0 0 5px;width:100%;transition:border .1s ease;box-sizing:border-box;margin-bottom:8px\n}\n.multiselect__tag~.multiselect__input,.multiselect__tag~.multiselect__single{width:auto\n}\n.multiselect__input:hover,.multiselect__single:hover{border-color:#cfcfcf\n}\n.multiselect__input:focus,.multiselect__single:focus{border-color:#a8a8a8;outline:none\n}\n.multiselect__single{padding-left:6px;margin-bottom:8px\n}\n.multiselect__tags-wrap{display:inline\n}\n.multiselect__tags{min-height:40px;display:block;padding:8px 40px 0 8px;border-radius:5px;border:1px solid #e8e8e8;background:#fff\n}\n.multiselect__tag{position:relative;display:inline-block;padding:4px 26px 4px 10px;border-radius:5px;margin-right:10px;color:#fff;line-height:1;background:#41b883;margin-bottom:8px;white-space:nowrap\n}\n.multiselect__tag-icon{cursor:pointer;margin-left:7px;position:absolute;right:0;top:0;bottom:0;font-weight:700;font-style:normal;width:22px;text-align:center;line-height:22px;transition:all .2s ease;border-radius:5px\n}\n.multiselect__tag-icon:after{content:\"\\D7\";color:#266d4d;font-size:14px\n}\n.multiselect__tag-icon:focus,.multiselect__tag-icon:hover{background:#369a6e\n}\n.multiselect__tag-icon:focus:after,.multiselect__tag-icon:hover:after{color:#fff\n}\n.multiselect__current{min-height:40px;overflow:hidden;padding:8px 12px 0;padding-right:30px;white-space:nowrap;border-radius:5px;border:1px solid #e8e8e8\n}\n.multiselect__current,.multiselect__select{line-height:16px;box-sizing:border-box;display:block;margin:0;text-decoration:none;cursor:pointer\n}\n.multiselect__select{position:absolute;width:40px;height:38px;right:1px;top:1px;padding:4px 8px;text-align:center;transition:transform .2s ease\n}\n.multiselect__select:before{position:relative;right:0;top:65%;color:#999;margin-top:4px;border-style:solid;border-width:5px 5px 0;border-color:#999 transparent transparent;content:\"\"\n}\n.multiselect__placeholder{color:#adadad;display:inline-block;margin-bottom:10px;padding-top:2px\n}\n.multiselect--active .multiselect__placeholder{display:none\n}\n.multiselect__content-wrapper{position:absolute;display:block;background:#fff;width:100%;max-height:240px;overflow:auto;border:1px solid #e8e8e8;border-top:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px;z-index:1;-webkit-overflow-scrolling:touch\n}\n.multiselect__content{list-style:none;display:inline-block;padding:0;margin:0;min-width:100%\n}\n.multiselect--above .multiselect__content-wrapper{bottom:100%;border-bottom-left-radius:0;border-bottom-right-radius:0;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom:none;border-top:1px solid #e8e8e8\n}\n.multiselect__content::webkit-scrollbar{display:none\n}\n.multiselect__element{display:block\n}\n.multiselect__option{display:block;padding:12px;min-height:40px;line-height:16px;text-decoration:none;text-transform:none;vertical-align:middle;position:relative;cursor:pointer;white-space:nowrap\n}\n.multiselect__option:after{top:0;right:0;position:absolute;line-height:40px;padding-right:12px;padding-left:20px\n}\n.multiselect__option--highlight{background:#41b883;outline:none;color:#fff\n}\n.multiselect__option--highlight:after{content:attr(data-select);background:#41b883;color:#fff\n}\n.multiselect__option--selected{background:#f3f3f3;color:#35495e;font-weight:700\n}\n.multiselect__option--selected:after{content:attr(data-selected);color:silver\n}\n.multiselect__option--selected.multiselect__option--highlight{background:#ff6a6a;color:#fff\n}\n.multiselect__option--selected.multiselect__option--highlight:after{background:#ff6a6a;content:attr(data-deselect);color:#fff\n}\n.multiselect--disabled{background:#ededed;pointer-events:none\n}\n.multiselect--disabled .multiselect__current,.multiselect--disabled .multiselect__select,.multiselect__option--disabled{background:#ededed;color:#a6a6a6\n}\n.multiselect__option--disabled{cursor:text;pointer-events:none\n}\n.multiselect__option--disabled.multiselect__option--highlight{background:#dedede!important\n}\n.multiselect-enter-active,.multiselect-leave-active{transition:all .15s ease\n}\n.multiselect-enter,.multiselect-leave-active{opacity:0\n}\n.multiselect__strong{margin-bottom:10px;display:inline-block\n}\n@keyframes a{\n0%{transform:rotate(0)\n}\nto{transform:rotate(2turn)\n}\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6443,14 +8048,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.DTE_Field_Input input {\n    height: 26px;\n}\ntfoot > tr > td > span.totals {\n    font-weight: bold;\n}\ntd.editable {\n    color: #00776c;\n}\ndiv.DTE_Inline div.DTE_Inline_Field div.DTE_Field input,\ndiv.DTE_Inline div.DTE_Inline_Buttons div.DTE_Field input {\n    width: 100%;\n    text-align: center;\n}\ntable .editable {\n    cursor: pointer;\n}\ntable.dataTable thead th {\n    background-color: #405665;\n    color: white;\n}\ntable.dataTable thead th,\ntable.dataTable tfoot th {\n    font-weight: normal;\n}\ntable.dataTable thead th {\n    position: relative;\n    background-image: none !important;\n}\ntable.dataTable tfoot td {\n    background-color: #405665;\n    color: white;\n}\ntable.dataTable tfoot td {\n    position: relative;\n    background-image: none !important;\n}\ntable.dataTable thead th.sorting:after,\ntable.dataTable thead th.sorting_asc:after,\ntable.dataTable thead th.sorting_desc:after {\n    position: absolute;\n    top: calc(50% - 8.17px);\n    right: 3px;\n    display: block;\n    font-family: FontAwesome;\n}\ntable.dataTable thead th.sorting:after {\n    content: \"\\F0DC\";\n    color: #ddd;\n    font-size: 0.8em;\n    padding-top: 0.12em;\n}\ntable.dataTable thead th.sorting_asc:after {\n    content: \"\\F0DE\";\n}\ntable.dataTable thead th.sorting_desc:after {\n    content: \"\\F0DD\";\n}\n\n/* datatables-responsive control button */\ntable.dataTable.dtr-column > tbody > tr > td.control,\ntable.dataTable.dtr-column > tbody > tr > th.control {\n    position: relative;\n    cursor: pointer;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {\n    color: inherit;\n    background-color:inherit;\n    font-family: \"FontAwesome\";\n    content: '\\F0FE';\n    box-shadow: none;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {\n    background-color: inherit;\n    font-family: \"FontAwesome\";\n    content: '\\F146';\n}\ntable > tbody > tr.selected {\n    font-weight: bold;\n}\ndiv.dataTables_filter input {\n    border: 1px solid #ddd;\n}\ndiv.dataTables_filter label,\ndiv.dataTables_length label {\n    font-weight: 400;\n}\ndiv.dataTables_length {\n    margin-right: 4px;\n}\ndiv.dataTables_length > label > div.bootstrap-select > button.btn.dropdown-toggle.btn-default {\n    box-shadow: none;\n    border: 1px solid #ddd;\n}\ndiv.dt-button-collection {\n    width: auto;\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask {\n\tposition: fixed;\n\tz-index: 9998;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: rgba(0, 0, 0, .5);\n\tdisplay: table;\n\ttransition: opacity .3s ease;\n}\n.modal-wrapper {\n\tdisplay: table-cell;\n\tvertical-align: middle;\n}\n.modal-container {\n\tmin-width: 250px;\n\tmargin: 0px auto;\n\tpadding: 5px 5px;\n\tbackground-color: #fff;\n\tborder-radius: 2px;\n\tbox-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n\ttransition: all .3s ease;\n}\n.modal-header {\n\tmargin-top: 0;\n\tcolor: #42b983;\n\tpadding: 5px;\n\tborder-bottom: 1px solid #bbbbbb;\n}\n.modal-body {\n\tmargin: 0;\n    border-bottom: 1px solid #bbbbbb;\n    overflow-y: auto;\n}\n.modal-footer {\n\tpadding:5px;\n}\n.modal-default-button {\n\tfloat: right;\n}\n.modal-enter {\n\topacity: 0;\n\ttransition: height 0.3s ease-in-out;\n}\n.modal-leave-active {\n\topacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n\t-webkit-transform: scale(1.1);\n\ttransform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6458,14 +8063,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.navbar-nav > .user-menu > .dropdown-menu > li.user-header {\n\theight: 206px;\n}\nform#logout-form {\n\tdisplay: none;\n}\n.navbar-nav > .user-menu > .dropdown-menu > .user-footer {\n\tbackground-color: #605ca8;\n}\n#logout-button {\n\tbackground: #ff6347;\n\tcolor: #fff;\n}\n#profile-button {\n\tbackground: #3097d1;\n\tcolor: #fff;\n}\n.navbar-nav > .user-menu > .dropdown-menu,\n.navbar-nav > .user-menu > .dropdown-menu > .user-body {\n\tborder-bottom-right-radius: 0;\n\tborder-bottom-left-radius: 0;\n\tborder: 1px solid grey;\n\tpadding: 0;\n}\n\n", ""]);
+exports.push([module.i, "\nlabel.vue-filter {\n\tmargin-bottom: 0;\n\tmargin-top: 3px;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6473,29 +8078,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.time-picker > i.clear-button {\n  position: absolute;\n  cursor: pointer;\n  top: calc(50% - 12px);\n  left: 2px;\n  outline: none;\n  z-index: 3;\n  display: block;\n}\n.time-picker > i.clear-button:focus {\n  opacity: .1;\n}\n.time-picker > input {\n\ttext-align: right;\n}\n\n", ""]);
+exports.push([module.i, "\n.typeahead-wrapper {\n\t\tposition: relative;\n\t\twidth: 100%;\n}\na.input-button {\n    \tcursor: pointer;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.popover.tour-tour {\n\tbackground: #22262e;\n\tcolor: white;\n\tborder-radius: 0px;\n\topacity: 0.9;\n\tbox-shadow: 0 -2px 10px #888888;\n}\n.popover-title {\n\tbackground: #22262e;\n\tcolor: white;\n\ttext-align: center;\n\tfont-size: 13px;\n}\n.popover-content {\n\tfont-size: 13px;\n}\n.popover.bottom > .arrow:after {\n\tborder-bottom-color: red;\n}\n.popover.top > .arrow:after {\n\tborder-top-color: red;\n}\n.popover.left > .arrow:after {\n\tborder-left-color: red;\n}\n.popover.right > .arrow:after {\n\tborder-right-color: red;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6510,7 +8100,7 @@ exports.push([module.i, "\nul.sortable-menu {\n    list-style: none;\n}\nli.sort
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6518,14 +8108,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\nbutton.file-upload {\n    background: transparent;\n}\n\n", ""]);
+exports.push([module.i, "\nul.color-theme-selector {\n\tmin-width: 0;\n\tborder-color: #141a1d;\n\tpadding: 2px;\n\tmargin: 2px;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open ul.color-theme-selector {\n\tbackground-color: #141a1d;\n\tmax-height: 105px;\n\toverflow-y: scroll;\n\tcursor:pointer;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open ul.color-theme-selector li > a {\n\tcolor: #95989e;\n}\naside#sidebar.control-sidebar.control-sidebar-light.control-sidebar-open ul.color-theme-selector {\n\tmax-height: 105px;\n\toverflow-y: scroll;\n\tcursor:pointer;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6533,14 +8123,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.modal-mask {\n\tposition: fixed;\n\tz-index: 9998;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: rgba(0, 0, 0, .5);\n\tdisplay: table;\n\ttransition: opacity .3s ease;\n}\n.modal-wrapper {\n\tdisplay: table-cell;\n\tvertical-align: middle;\n}\n.modal-container {\n\tmin-width: 250px;\n\tmargin: 0px auto;\n\tpadding: 5px 5px;\n\tbackground-color: #fff;\n\tborder-radius: 2px;\n\tbox-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n\ttransition: all .3s ease;\n}\n.modal-header {\n\tmargin-top: 0;\n\tcolor: #42b983;\n\tpadding: 5px;\n\tborder-bottom: 1px solid #bbbbbb;\n}\n.modal-body {\n\tmargin: 0;\n    border-bottom: 1px solid #bbbbbb;\n    overflow-y: scroll;\n}\n.modal-footer {\n\tpadding:5px;\n}\n.modal-default-button {\n\tfloat: right;\n}\n.modal-enter {\n\topacity: 0;\n\ttransition: height 0.3s ease-in-out;\n}\n.modal-leave-active {\n\topacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n\t-webkit-transform: scale(1.1);\n\ttransform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\nul.language-selector {\n\tmin-width: 0;\n\tbackground-color: #141a1d;\n\tborder-color: #141a1d;\n\tpadding: 2px;\n\tmargin: 2px;\n}\nul.language-selector li a {\n\tcursor: pointer;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6548,14 +8138,89 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.date-picker > i.clear-button {\n      position: absolute;\n      cursor: pointer;\n      top: calc(50% - 12px);\n      left: 2px;\n      outline: none;\n      z-index: 3;\n      display: block;\n}\n.date-picker > i.clear-button:focus {\n      opacity: .1;\n}\n.date-picker > input {\n    \ttext-align: right;\n}\n.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top,\n\t.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-right.datepicker-orient-top {\n\t\tz-index: 9999 !important;\n}\n\n", ""]);
+exports.push([module.i, "\nli#notifications.notifications-menu >.dropdown-menu>li.header {\n\tfont-size: 13px;\n}\nli#notifications > ul.dropdown-menu {\n\tfont-size: 12px;\n}\n.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {\n\twidth: 300px;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.popover.tour-tour {\n\tbackground: #22262e;\n\tcolor: white;\n\tborder-radius: 0px;\n\topacity: 0.9;\n\tbox-shadow: 0 -2px 10px #888888;\n}\n.popover-title {\n\tbackground: #22262e;\n\tcolor: white;\n\ttext-align: center;\n\tfont-size: 13px;\n}\n.popover-content {\n\tfont-size: 13px;\n}\n.popover.bottom > .arrow:after {\n\tborder-bottom-color: red;\n}\n.popover.top > .arrow:after {\n\tborder-top-color: red;\n}\n.popover.left > .arrow:after {\n\tborder-left-color: red;\n}\n.popover.right > .arrow:after {\n\tborder-right-color: red;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#control-sidebar-settings-tab {\n\tmargin-top: 10px;\n}\naside#sidebar.control-sidebar.control-sidebar-light.control-sidebar-open a.dropdown-toggle {\n\tcolor: #141a1d;\n}\naside#sidebar.control-sidebar.control-sidebar-open {\n\theight: 100%;\n}\naside#sidebar.control-sidebar.control-sidebar-dark.control-sidebar-open a.dropdown-toggle {\n\tcolor: #fff;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\ninput.search {\n    color: #3c3a3a;\n    vertical-align: middle;\n}\na.input-button {\n    cursor: pointer;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.vue-select > i.clear-button {\n    z-index: 10;\n    float:right;\n    position: absolute;\n    right: 50px;\n    cursor: pointer;\n}\n.bootstrap-select.btn-group .dropdown-menu {\n    width: 100%;\n    min-width: 0;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6570,7 +8235,7 @@ exports.push([module.i, "\ndiv.permission-label {\n    display:inline-flex;\n}\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6578,14 +8243,14 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.input-clear {\n    cursor: pointer;\n}\n\n", ""]);
+exports.push([module.i, "\ndiv.overlay {\n        display: flex;\n}\ndiv.overlay > .spinner {\n        margin: auto;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -6593,7 +8258,67 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\nul.language-selector {\n\tmin-width: 0;\n\tbackground-color: #141a1d;\n\tborder-color: #141a1d;\n\tpadding: 2px;\n\tmargin: 2px;\n}\nul.language-selector li a {\n\tcursor: pointer;\n}\n\n", ""]);
+exports.push([module.i, "\n.navbar-nav > .user-menu > .dropdown-menu > li.user-header {\n\theight: 206px;\n}\nform#logout-form {\n\tdisplay: none;\n}\n.navbar-nav > .user-menu > .dropdown-menu > .user-footer {\n\tbackground-color: #605ca8;\n}\n#logout-button {\n\tbackground: #ff6347;\n\tcolor: #fff;\n}\n#profile-button {\n\tbackground: #3097d1;\n\tcolor: #fff;\n}\n.navbar-nav > .user-menu > .dropdown-menu,\n.navbar-nav > .user-menu > .dropdown-menu > .user-body {\n\tborder-bottom-right-radius: 0;\n\tborder-bottom-left-radius: 0;\n\tborder: 1px solid grey;\n\tpadding: 0;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\ndiv.nav-tabs-custom > .nav-tabs > li.active {\n\tborder-top-color: transparent;\n}\ndiv.nav-tabs-custom > .nav-tabs > li {\n\tcursor: pointer;\n}\ndiv.nav-tabs-custom {\n\tbox-shadow: none;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.DTE_Field_Input input {\n    height: 26px;\n}\ntfoot > tr > td > span.totals {\n    font-weight: bold;\n}\ntd.editable {\n    color: #00776c;\n}\ndiv.DTE_Inline div.DTE_Inline_Field div.DTE_Field input,\ndiv.DTE_Inline div.DTE_Inline_Buttons div.DTE_Field input {\n    width: 100%;\n    text-align: center;\n}\ntable .editable {\n    cursor: pointer;\n}\ntable.dataTable thead th {\n    background-color: #405665;\n    color: white;\n}\ntable.dataTable thead th,\ntable.dataTable tfoot th {\n    font-weight: normal;\n}\ntable.dataTable thead th {\n    position: relative;\n    background-image: none !important;\n}\ntable.dataTable tfoot td {\n    background-color: #405665;\n    color: white;\n}\ntable.dataTable tfoot td {\n    position: relative;\n    background-image: none !important;\n}\ntable.dataTable thead th.sorting:after,\ntable.dataTable thead th.sorting_asc:after,\ntable.dataTable thead th.sorting_desc:after {\n    position: absolute;\n    top: calc(50% - 8.17px);\n    right: 3px;\n    display: block;\n    font-family: FontAwesome;\n}\ntable.dataTable thead th.sorting:after {\n    content: \"\\F0DC\";\n    color: #ddd;\n    font-size: 0.8em;\n    padding-top: 0.12em;\n}\ntable.dataTable thead th.sorting_asc:after {\n    content: \"\\F0DE\";\n}\ntable.dataTable thead th.sorting_desc:after {\n    content: \"\\F0DD\";\n}\n\n/* datatables-responsive control button */\ntable.dataTable.dtr-column > tbody > tr > td.control,\ntable.dataTable.dtr-column > tbody > tr > th.control {\n    position: relative;\n    cursor: pointer;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {\n    color: inherit;\n    background-color:inherit;\n    font-family: \"FontAwesome\";\n    content: '\\F0FE';\n    box-shadow: none;\n}\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,\ntable.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {\n    background-color: inherit;\n    font-family: \"FontAwesome\";\n    content: '\\F146';\n}\ntable > tbody > tr.selected {\n    font-weight: bold;\n}\ndiv.dataTables_filter input {\n    border: 1px solid #ddd;\n}\ndiv.dataTables_filter label,\ndiv.dataTables_length label {\n    font-weight: 400;\n}\ndiv.dataTables_length {\n    margin-right: 4px;\n}\ndiv.dataTables_length > label > div.bootstrap-select > button.btn.dropdown-toggle.btn-default {\n    box-shadow: none;\n    border: 1px solid #ddd;\n}\ndiv.dt-button-collection {\n    width: auto;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\nbutton.file-upload {\n    background: transparent;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.btn-group.paginate.with-border {\n\tborder: 1px solid #B1B3B3;\n}\nul.dropdown-menu.paginate {\n\tmin-width: 70px;\n}\nul.dropdown-menu.paginate > li {\n\ttext-align: center;\n}\ndiv.paginate > button.paginate {\n\twidth: 70px;\n}\ndiv.paginate > button.previous,\ndiv.paginate > button.next {\n\twidth: 40px;\n}\n\n", ""]);
 
 // exports
 
@@ -6680,6 +8405,2390 @@ function toComment(sourceMap) {
 	return '/*# ' + data + ' */';
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/flatpickr/dist/flatpickr.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*! flatpickr v3.0.6, @license MIT */
+function FlatpickrInstance(element, config) {
+	var self = this;
+
+	self._ = {};
+	self._.afterDayAnim = afterDayAnim;
+	self._bind = bind;
+	self._compareDates = compareDates;
+	self._setHoursFromDate = setHoursFromDate;
+	self.changeMonth = changeMonth;
+	self.changeYear = changeYear;
+	self.clear = clear;
+	self.close = close;
+	self._createElement = createElement;
+	self.destroy = destroy;
+	self.isEnabled = isEnabled;
+	self.jumpToDate = jumpToDate;
+	self.open = open;
+	self.redraw = redraw;
+	self.set = set;
+	self.setDate = setDate;
+	self.toggle = toggle;
+
+	function init() {
+		self.element = self.input = element;
+		self.instanceConfig = config || {};
+		self.parseDate = FlatpickrInstance.prototype.parseDate.bind(self);
+		self.formatDate = FlatpickrInstance.prototype.formatDate.bind(self);
+
+		setupFormats();
+		parseConfig();
+		setupLocale();
+		setupInputs();
+		setupDates();
+		setupHelperFunctions();
+
+		self.isOpen = false;
+
+		self.isMobile = !self.config.disableMobile && !self.config.inline && self.config.mode === "single" && !self.config.disable.length && !self.config.enable.length && !self.config.weekNumbers && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+		if (!self.isMobile) build();
+
+		bindEvents();
+
+		if (self.selectedDates.length || self.config.noCalendar) {
+			if (self.config.enableTime) {
+				setHoursFromDate(self.config.noCalendar ? self.latestSelectedDateObj || self.config.minDate : null);
+			}
+			updateValue(false);
+		}
+
+		self.showTimeInput = self.selectedDates.length > 0 || self.config.noCalendar;
+
+		if (self.config.weekNumbers) {
+			self.calendarContainer.style.width = self.daysContainer.offsetWidth + self.weekWrapper.offsetWidth + "px";
+		}
+
+		if (!self.isMobile) positionCalendar();
+
+		triggerEvent("Ready");
+	}
+
+	/**
+  * Binds a function to the current flatpickr instance
+  * @param {Function} fn the function
+  * @return {Function} the function bound to the instance
+  */
+	function bindToInstance(fn) {
+		return fn.bind(self);
+	}
+
+	/**
+  * The handler for all events targeting the time inputs
+  * @param {Event} e the event - "input", "wheel", "increment", etc
+  */
+	function updateTime(e) {
+		if (self.config.noCalendar && !self.selectedDates.length)
+			// picking time only
+			self.selectedDates = [self.now];
+
+		timeWrapper(e);
+
+		if (!self.selectedDates.length) return;
+
+		if (!self.minDateHasTime || e.type !== "input" || e.target.value.length >= 2) {
+			setHoursFromInputs();
+			updateValue();
+		} else {
+			setTimeout(function () {
+				setHoursFromInputs();
+				updateValue();
+			}, 1000);
+		}
+	}
+
+	/**
+  * Syncs the selected date object time with user's time input
+  */
+	function setHoursFromInputs() {
+		if (!self.config.enableTime) return;
+
+		var hours = (parseInt(self.hourElement.value, 10) || 0) % (self.amPM ? 12 : 24),
+		    minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60,
+		    seconds = self.config.enableSeconds ? (parseInt(self.secondElement.value, 10) || 0) % 60 : 0;
+
+		if (self.amPM !== undefined) hours = hours % 12 + 12 * (self.amPM.textContent === "PM");
+
+		if (self.minDateHasTime && compareDates(self.latestSelectedDateObj, self.config.minDate) === 0) {
+
+			hours = Math.max(hours, self.config.minDate.getHours());
+			if (hours === self.config.minDate.getHours()) minutes = Math.max(minutes, self.config.minDate.getMinutes());
+		}
+
+		if (self.maxDateHasTime && compareDates(self.latestSelectedDateObj, self.config.maxDate) === 0) {
+			hours = Math.min(hours, self.config.maxDate.getHours());
+			if (hours === self.config.maxDate.getHours()) minutes = Math.min(minutes, self.config.maxDate.getMinutes());
+		}
+
+		setHours(hours, minutes, seconds);
+	}
+
+	/**
+  * Syncs time input values with a date
+  * @param {Date} dateObj the date to sync with
+  */
+	function setHoursFromDate(dateObj) {
+		var date = dateObj || self.latestSelectedDateObj;
+
+		if (date) setHours(date.getHours(), date.getMinutes(), date.getSeconds());
+	}
+
+	/**
+  * Sets the hours, minutes, and optionally seconds
+  * of the latest selected date object and the
+  * corresponding time inputs
+  * @param {Number} hours the hour. whether its military
+  *                 or am-pm gets inferred from config
+  * @param {Number} minutes the minutes
+  * @param {Number} seconds the seconds (optional)
+  */
+	function setHours(hours, minutes, seconds) {
+		if (self.selectedDates.length) {
+			self.latestSelectedDateObj.setHours(hours % 24, minutes, seconds || 0, 0);
+		}
+
+		if (!self.config.enableTime || self.isMobile) return;
+
+		self.hourElement.value = self.pad(!self.config.time_24hr ? (12 + hours) % 12 + 12 * (hours % 12 === 0) : hours);
+
+		self.minuteElement.value = self.pad(minutes);
+
+		if (!self.config.time_24hr) self.amPM.textContent = hours >= 12 ? "PM" : "AM";
+
+		if (self.config.enableSeconds === true) self.secondElement.value = self.pad(seconds);
+	}
+
+	/**
+  * Handles the year input and incrementing events
+  * @param {Event} event the keyup or increment event
+  */
+	function onYearInput(event) {
+		var year = event.target.value;
+		if (event.delta) year = (parseInt(year) + event.delta).toString();
+
+		if (year.length === 4 || event.key === "Enter") {
+			self.currentYearElement.blur();
+			if (!/[^\d]/.test(year)) changeYear(year);
+		}
+	}
+
+	/**
+  * Essentially addEventListener + tracking
+  * @param {Element} element the element to addEventListener to
+  * @param {String} event the event name
+  * @param {Function} handler the event handler
+  */
+	function bind(element, event, handler) {
+		if (event instanceof Array) return event.forEach(function (ev) {
+			return bind(element, ev, handler);
+		});
+
+		if (element instanceof Array) return element.forEach(function (el) {
+			return bind(el, event, handler);
+		});
+
+		element.addEventListener(event, handler);
+		self._handlers.push({ element: element, event: event, handler: handler });
+	}
+
+	/**
+  * A mousedown handler which mimics click.
+  * Minimizes latency, since we don't need to wait for mouseup in most cases.
+  * Also, avoids handling right clicks.
+  *
+  * @param {Function} handler the event handler
+  */
+	function onClick(handler) {
+		return function (evt) {
+			return evt.which === 1 && handler(evt);
+		};
+	}
+
+	/**
+  * Adds all the necessary event listeners
+  */
+	function bindEvents() {
+		self._handlers = [];
+		self._animationLoop = [];
+		if (self.config.wrap) {
+			["open", "close", "toggle", "clear"].forEach(function (evt) {
+				Array.prototype.forEach.call(self.element.querySelectorAll("[data-" + evt + "]"), function (el) {
+					return bind(el, "mousedown", onClick(self[evt]));
+				});
+			});
+		}
+
+		if (self.isMobile) return setupMobile();
+
+		self.debouncedResize = debounce(onResize, 50);
+		self.triggerChange = function () {
+			triggerEvent("Change");
+		};
+		self.debouncedChange = debounce(self.triggerChange, 300);
+
+		if (self.config.mode === "range" && self.daysContainer) bind(self.daysContainer, "mouseover", function (e) {
+			return onMouseOver(e.target);
+		});
+
+		bind(window.document.body, "keydown", onKeyDown);
+
+		if (!self.config.static) bind(self._input, "keydown", onKeyDown);
+
+		if (!self.config.inline && !self.config.static) bind(window, "resize", self.debouncedResize);
+
+		if (window.ontouchstart !== undefined) bind(window.document, "touchstart", documentClick);
+
+		bind(window.document, "mousedown", onClick(documentClick));
+		bind(self._input, "blur", documentClick);
+
+		if (self.config.clickOpens === true) {
+			bind(self._input, "focus", self.open);
+			bind(self._input, "mousedown", onClick(self.open));
+		}
+
+		if (!self.config.noCalendar) {
+			self.monthNav.addEventListener("wheel", function (e) {
+				return e.preventDefault();
+			});
+			bind(self.monthNav, "wheel", debounce(onMonthNavScroll, 10));
+			bind(self.monthNav, "mousedown", onClick(onMonthNavClick));
+
+			bind(self.monthNav, ["keyup", "increment"], onYearInput);
+			bind(self.daysContainer, "mousedown", onClick(selectDate));
+
+			if (self.config.animate) {
+				bind(self.daysContainer, ["webkitAnimationEnd", "animationend"], animateDays);
+				bind(self.monthNav, ["webkitAnimationEnd", "animationend"], animateMonths);
+			}
+		}
+
+		if (self.config.enableTime) {
+			var selText = function selText(e) {
+				return e.target.select();
+			};
+			bind(self.timeContainer, ["wheel", "input", "increment"], updateTime);
+			bind(self.timeContainer, "mousedown", onClick(timeIncrement));
+
+			bind(self.timeContainer, ["wheel", "increment"], self.debouncedChange);
+			bind(self.timeContainer, "input", self.triggerChange);
+
+			bind([self.hourElement, self.minuteElement], "focus", selText);
+
+			if (self.secondElement !== undefined) bind(self.secondElement, "focus", function () {
+				return self.secondElement.select();
+			});
+
+			if (self.amPM !== undefined) {
+				bind(self.amPM, "mousedown", onClick(function (e) {
+					updateTime(e);
+					self.triggerChange(e);
+				}));
+			}
+		}
+	}
+
+	function processPostDayAnimation() {
+		for (var i = self._animationLoop.length; i--;) {
+			self._animationLoop[i]();
+			self._animationLoop.splice(i, 1);
+		}
+	}
+
+	/**
+  * Removes the day container that slided out of view
+  * @param {Event} e the animation event
+  */
+	function animateDays(e) {
+		if (self.daysContainer.childNodes.length > 1) {
+			switch (e.animationName) {
+				case "fpSlideLeft":
+					self.daysContainer.lastChild.classList.remove("slideLeftNew");
+					self.daysContainer.removeChild(self.daysContainer.firstChild);
+					self.days = self.daysContainer.firstChild;
+					processPostDayAnimation();
+
+					break;
+
+				case "fpSlideRight":
+					self.daysContainer.firstChild.classList.remove("slideRightNew");
+					self.daysContainer.removeChild(self.daysContainer.lastChild);
+					self.days = self.daysContainer.firstChild;
+					processPostDayAnimation();
+
+					break;
+
+				default:
+					break;
+			}
+		}
+	}
+
+	/**
+  * Removes the month element that animated out of view
+  * @param {Event} e the animation event
+  */
+	function animateMonths(e) {
+		switch (e.animationName) {
+			case "fpSlideLeftNew":
+			case "fpSlideRightNew":
+				self.navigationCurrentMonth.classList.remove("slideLeftNew");
+				self.navigationCurrentMonth.classList.remove("slideRightNew");
+				var nav = self.navigationCurrentMonth;
+
+				while (nav.nextSibling && /curr/.test(nav.nextSibling.className)) {
+					self.monthNav.removeChild(nav.nextSibling);
+				}while (nav.previousSibling && /curr/.test(nav.previousSibling.className)) {
+					self.monthNav.removeChild(nav.previousSibling);
+				}self.oldCurMonth = null;
+				break;
+		}
+	}
+
+	/**
+  * Set the calendar view to a particular date.
+  * @param {Date} jumpDate the date to set the view to
+  */
+	function jumpToDate(jumpDate) {
+		jumpDate = jumpDate ? self.parseDate(jumpDate) : self.latestSelectedDateObj || (self.config.minDate > self.now ? self.config.minDate : self.config.maxDate && self.config.maxDate < self.now ? self.config.maxDate : self.now);
+
+		try {
+			self.currentYear = jumpDate.getFullYear();
+			self.currentMonth = jumpDate.getMonth();
+		} catch (e) {
+			/* istanbul ignore next */
+			console.error(e.stack);
+			/* istanbul ignore next */
+			console.warn("Invalid date supplied: " + jumpDate);
+		}
+
+		self.redraw();
+	}
+
+	/**
+  * The up/down arrow handler for time inputs
+  * @param {Event} e the click event
+  */
+	function timeIncrement(e) {
+		if (~e.target.className.indexOf("arrow")) incrementNumInput(e, e.target.classList.contains("arrowUp") ? 1 : -1);
+	}
+
+	/**
+  * Increments/decrements the value of input associ-
+  * ated with the up/down arrow by dispatching an
+  * "increment" event on the input.
+  *
+  * @param {Event} e the click event
+  * @param {Number} delta the diff (usually 1 or -1)
+  * @param {Element} inputElem the input element
+  */
+	function incrementNumInput(e, delta, inputElem) {
+		var input = inputElem || e.target.parentNode.childNodes[0];
+		var event = createEvent("increment");
+		event.delta = delta;
+		input.dispatchEvent(event);
+	}
+
+	function createNumberInput(inputClassName) {
+		var wrapper = createElement("div", "numInputWrapper"),
+		    numInput = createElement("input", "numInput " + inputClassName),
+		    arrowUp = createElement("span", "arrowUp"),
+		    arrowDown = createElement("span", "arrowDown");
+
+		numInput.type = "text";
+		numInput.pattern = "\\d*";
+
+		wrapper.appendChild(numInput);
+		wrapper.appendChild(arrowUp);
+		wrapper.appendChild(arrowDown);
+
+		return wrapper;
+	}
+
+	function build() {
+		var fragment = window.document.createDocumentFragment();
+		self.calendarContainer = createElement("div", "flatpickr-calendar");
+		self.calendarContainer.tabIndex = -1;
+
+		if (!self.config.noCalendar) {
+			fragment.appendChild(buildMonthNav());
+			self.innerContainer = createElement("div", "flatpickr-innerContainer");
+
+			if (self.config.weekNumbers) self.innerContainer.appendChild(buildWeeks());
+
+			self.rContainer = createElement("div", "flatpickr-rContainer");
+			self.rContainer.appendChild(buildWeekdays());
+
+			if (!self.daysContainer) {
+				self.daysContainer = createElement("div", "flatpickr-days");
+				self.daysContainer.tabIndex = -1;
+			}
+
+			buildDays();
+			self.rContainer.appendChild(self.daysContainer);
+
+			self.innerContainer.appendChild(self.rContainer);
+			fragment.appendChild(self.innerContainer);
+		}
+
+		if (self.config.enableTime) fragment.appendChild(buildTime());
+
+		toggleClass(self.calendarContainer, "rangeMode", self.config.mode === "range");
+		toggleClass(self.calendarContainer, "animate", self.config.animate);
+
+		self.calendarContainer.appendChild(fragment);
+
+		var customAppend = self.config.appendTo && self.config.appendTo.nodeType;
+
+		if (self.config.inline || self.config.static) {
+			self.calendarContainer.classList.add(self.config.inline ? "inline" : "static");
+
+			if (self.config.inline && !customAppend) {
+				return self.element.parentNode.insertBefore(self.calendarContainer, self._input.nextSibling);
+			}
+
+			if (self.config.static) {
+				var wrapper = createElement("div", "flatpickr-wrapper");
+				self.element.parentNode.insertBefore(wrapper, self.element);
+				wrapper.appendChild(self.element);
+
+				if (self.altInput) wrapper.appendChild(self.altInput);
+
+				wrapper.appendChild(self.calendarContainer);
+				return;
+			}
+		}
+
+		(customAppend ? self.config.appendTo : window.document.body).appendChild(self.calendarContainer);
+	}
+
+	function createDay(className, date, dayNumber, i) {
+		var dateIsEnabled = isEnabled(date, true),
+		    dayElement = createElement("span", "flatpickr-day " + className, date.getDate());
+
+		dayElement.dateObj = date;
+		dayElement.$i = i;
+		dayElement.setAttribute("aria-label", self.formatDate(date, self.config.ariaDateFormat));
+
+		if (compareDates(date, self.now) === 0) {
+			self.todayDateElem = dayElement;
+			dayElement.classList.add("today");
+		}
+
+		if (dateIsEnabled) {
+			dayElement.tabIndex = -1;
+			if (isDateSelected(date)) {
+				dayElement.classList.add("selected");
+				self.selectedDateElem = dayElement;
+				if (self.config.mode === "range") {
+					toggleClass(dayElement, "startRange", compareDates(date, self.selectedDates[0]) === 0);
+
+					toggleClass(dayElement, "endRange", compareDates(date, self.selectedDates[1]) === 0);
+				}
+			}
+		} else {
+			dayElement.classList.add("disabled");
+			if (self.selectedDates[0] && date > self.minRangeDate && date < self.selectedDates[0]) self.minRangeDate = date;else if (self.selectedDates[0] && date < self.maxRangeDate && date > self.selectedDates[0]) self.maxRangeDate = date;
+		}
+
+		if (self.config.mode === "range") {
+			if (isDateInRange(date) && !isDateSelected(date)) dayElement.classList.add("inRange");
+
+			if (self.selectedDates.length === 1 && (date < self.minRangeDate || date > self.maxRangeDate)) dayElement.classList.add("notAllowed");
+		}
+
+		if (self.config.weekNumbers && className !== "prevMonthDay" && dayNumber % 7 === 1) {
+			self.weekNumbers.insertAdjacentHTML("beforeend", "<span class='disabled flatpickr-day'>" + self.config.getWeek(date) + "</span>");
+		}
+
+		triggerEvent("DayCreate", dayElement);
+
+		return dayElement;
+	}
+
+	function focusOnDay(currentIndex, offset) {
+		var newIndex = currentIndex + offset || 0,
+		    targetNode = currentIndex !== undefined ? self.days.childNodes[newIndex] : self.selectedDateElem || self.todayDateElem || self.days.childNodes[0],
+		    focus = function focus() {
+			targetNode = targetNode || self.days.childNodes[newIndex];
+			targetNode.focus();
+
+			if (self.config.mode === "range") onMouseOver(targetNode);
+		};
+
+		if (targetNode === undefined && offset !== 0) {
+			if (offset > 0) {
+				self.changeMonth(1);
+				newIndex = newIndex % 42;
+			} else if (offset < 0) {
+				self.changeMonth(-1);
+				newIndex += 42;
+			}
+
+			return afterDayAnim(focus);
+		}
+
+		focus();
+	}
+
+	function afterDayAnim(fn) {
+		if (self.config.animate === true) return self._animationLoop.push(fn);
+		fn();
+	}
+
+	function buildDays(delta) {
+		var firstOfMonth = (new Date(self.currentYear, self.currentMonth, 1).getDay() - self.l10n.firstDayOfWeek + 7) % 7,
+		    isRangeMode = self.config.mode === "range";
+
+		self.prevMonthDays = self.utils.getDaysinMonth((self.currentMonth - 1 + 12) % 12);
+		self.selectedDateElem = undefined;
+		self.todayDateElem = undefined;
+
+		var daysInMonth = self.utils.getDaysinMonth(),
+		    days = window.document.createDocumentFragment();
+
+		var dayNumber = self.prevMonthDays + 1 - firstOfMonth,
+		    dayIndex = 0;
+
+		if (self.config.weekNumbers && self.weekNumbers.firstChild) self.weekNumbers.textContent = "";
+
+		if (isRangeMode) {
+			// const dateLimits = self.config.enable.length || self.config.disable.length || self.config.mixDate || self.config.maxDate;
+			self.minRangeDate = new Date(self.currentYear, self.currentMonth - 1, dayNumber);
+			self.maxRangeDate = new Date(self.currentYear, self.currentMonth + 1, (42 - firstOfMonth) % daysInMonth);
+		}
+
+		// prepend days from the ending of previous month
+		for (; dayNumber <= self.prevMonthDays; dayNumber++, dayIndex++) {
+			days.appendChild(createDay("prevMonthDay", new Date(self.currentYear, self.currentMonth - 1, dayNumber), dayNumber, dayIndex));
+		}
+
+		// Start at 1 since there is no 0th day
+		for (dayNumber = 1; dayNumber <= daysInMonth; dayNumber++, dayIndex++) {
+			days.appendChild(createDay("", new Date(self.currentYear, self.currentMonth, dayNumber), dayNumber, dayIndex));
+		}
+
+		// append days from the next month
+		for (var dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth; dayNum++, dayIndex++) {
+			days.appendChild(createDay("nextMonthDay", new Date(self.currentYear, self.currentMonth + 1, dayNum % daysInMonth), dayNum, dayIndex));
+		}
+
+		if (isRangeMode && self.selectedDates.length === 1 && days.childNodes[0]) {
+			self._hidePrevMonthArrow = self._hidePrevMonthArrow || self.minRangeDate > days.childNodes[0].dateObj;
+
+			self._hideNextMonthArrow = self._hideNextMonthArrow || self.maxRangeDate < new Date(self.currentYear, self.currentMonth + 1, 1);
+		} else updateNavigationCurrentMonth();
+
+		var dayContainer = createElement("div", "dayContainer");
+		dayContainer.appendChild(days);
+
+		if (!self.config.animate || delta === undefined) clearNode(self.daysContainer);else {
+			while (self.daysContainer.childNodes.length > 1) {
+				self.daysContainer.removeChild(self.daysContainer.firstChild);
+			}
+		}
+
+		if (delta >= 0) self.daysContainer.appendChild(dayContainer);else self.daysContainer.insertBefore(dayContainer, self.daysContainer.firstChild);
+
+		self.days = self.daysContainer.firstChild;
+		return self.daysContainer;
+	}
+
+	function clearNode(node) {
+		while (node.firstChild) {
+			node.removeChild(node.firstChild);
+		}
+	}
+
+	function buildMonthNav() {
+		var monthNavFragment = window.document.createDocumentFragment();
+		self.monthNav = createElement("div", "flatpickr-month");
+
+		self.prevMonthNav = createElement("span", "flatpickr-prev-month");
+		self.prevMonthNav.innerHTML = self.config.prevArrow;
+
+		self.currentMonthElement = createElement("span", "cur-month");
+		self.currentMonthElement.title = self.l10n.scrollTitle;
+
+		var yearInput = createNumberInput("cur-year");
+		self.currentYearElement = yearInput.childNodes[0];
+		self.currentYearElement.title = self.l10n.scrollTitle;
+
+		if (self.config.minDate) self.currentYearElement.min = self.config.minDate.getFullYear();
+
+		if (self.config.maxDate) {
+			self.currentYearElement.max = self.config.maxDate.getFullYear();
+
+			self.currentYearElement.disabled = self.config.minDate && self.config.minDate.getFullYear() === self.config.maxDate.getFullYear();
+		}
+
+		self.nextMonthNav = createElement("span", "flatpickr-next-month");
+		self.nextMonthNav.innerHTML = self.config.nextArrow;
+
+		self.navigationCurrentMonth = createElement("span", "flatpickr-current-month");
+		self.navigationCurrentMonth.appendChild(self.currentMonthElement);
+		self.navigationCurrentMonth.appendChild(yearInput);
+
+		monthNavFragment.appendChild(self.prevMonthNav);
+		monthNavFragment.appendChild(self.navigationCurrentMonth);
+		monthNavFragment.appendChild(self.nextMonthNav);
+		self.monthNav.appendChild(monthNavFragment);
+
+		Object.defineProperty(self, "_hidePrevMonthArrow", {
+			get: function get() {
+				return this.__hidePrevMonthArrow;
+			},
+			set: function set(bool) {
+				if (this.__hidePrevMonthArrow !== bool) self.prevMonthNav.style.display = bool ? "none" : "block";
+				this.__hidePrevMonthArrow = bool;
+			}
+		});
+
+		Object.defineProperty(self, "_hideNextMonthArrow", {
+			get: function get() {
+				return this.__hideNextMonthArrow;
+			},
+			set: function set(bool) {
+				if (this.__hideNextMonthArrow !== bool) self.nextMonthNav.style.display = bool ? "none" : "block";
+				this.__hideNextMonthArrow = bool;
+			}
+		});
+
+		updateNavigationCurrentMonth();
+
+		return self.monthNav;
+	}
+
+	function buildTime() {
+		self.calendarContainer.classList.add("hasTime");
+		if (self.config.noCalendar) self.calendarContainer.classList.add("noCalendar");
+		self.timeContainer = createElement("div", "flatpickr-time");
+		self.timeContainer.tabIndex = -1;
+		var separator = createElement("span", "flatpickr-time-separator", ":");
+
+		var hourInput = createNumberInput("flatpickr-hour");
+		self.hourElement = hourInput.childNodes[0];
+
+		var minuteInput = createNumberInput("flatpickr-minute");
+		self.minuteElement = minuteInput.childNodes[0];
+
+		self.hourElement.tabIndex = self.minuteElement.tabIndex = -1;
+
+		self.hourElement.value = self.pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getHours() : self.config.defaultHour % (self.time_24hr ? 24 : 12));
+
+		self.minuteElement.value = self.pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getMinutes() : self.config.defaultMinute);
+
+		self.hourElement.step = self.config.hourIncrement;
+		self.minuteElement.step = self.config.minuteIncrement;
+
+		self.hourElement.min = self.config.time_24hr ? 0 : 1;
+		self.hourElement.max = self.config.time_24hr ? 23 : 12;
+
+		self.minuteElement.min = 0;
+		self.minuteElement.max = 59;
+
+		self.hourElement.title = self.minuteElement.title = self.l10n.scrollTitle;
+
+		self.timeContainer.appendChild(hourInput);
+		self.timeContainer.appendChild(separator);
+		self.timeContainer.appendChild(minuteInput);
+
+		if (self.config.time_24hr) self.timeContainer.classList.add("time24hr");
+
+		if (self.config.enableSeconds) {
+			self.timeContainer.classList.add("hasSeconds");
+
+			var secondInput = createNumberInput("flatpickr-second");
+			self.secondElement = secondInput.childNodes[0];
+
+			self.secondElement.value = self.pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getSeconds() : self.config.defaultSeconds);
+
+			self.secondElement.step = self.minuteElement.step;
+			self.secondElement.min = self.minuteElement.min;
+			self.secondElement.max = self.minuteElement.max;
+
+			self.timeContainer.appendChild(createElement("span", "flatpickr-time-separator", ":"));
+			self.timeContainer.appendChild(secondInput);
+		}
+
+		if (!self.config.time_24hr) {
+			// add self.amPM if appropriate
+			self.amPM = createElement("span", "flatpickr-am-pm", ["AM", "PM"][(self.latestSelectedDateObj ? self.hourElement.value : self.config.defaultHour) > 11 | 0]);
+			self.amPM.title = self.l10n.toggleTitle;
+			self.amPM.tabIndex = -1;
+			self.timeContainer.appendChild(self.amPM);
+		}
+
+		return self.timeContainer;
+	}
+
+	function buildWeekdays() {
+		if (!self.weekdayContainer) self.weekdayContainer = createElement("div", "flatpickr-weekdays");
+
+		var firstDayOfWeek = self.l10n.firstDayOfWeek;
+		var weekdays = self.l10n.weekdays.shorthand.slice();
+
+		if (firstDayOfWeek > 0 && firstDayOfWeek < weekdays.length) {
+			weekdays = [].concat(weekdays.splice(firstDayOfWeek, weekdays.length), weekdays.splice(0, firstDayOfWeek));
+		}
+
+		self.weekdayContainer.innerHTML = "\n\t\t<span class=flatpickr-weekday>\n\t\t\t" + weekdays.join("</span><span class=flatpickr-weekday>") + "\n\t\t</span>\n\t\t";
+
+		return self.weekdayContainer;
+	}
+
+	/* istanbul ignore next */
+	function buildWeeks() {
+		self.calendarContainer.classList.add("hasWeeks");
+		self.weekWrapper = createElement("div", "flatpickr-weekwrapper");
+		self.weekWrapper.appendChild(createElement("span", "flatpickr-weekday", self.l10n.weekAbbreviation));
+		self.weekNumbers = createElement("div", "flatpickr-weeks");
+		self.weekWrapper.appendChild(self.weekNumbers);
+
+		return self.weekWrapper;
+	}
+
+	function changeMonth(value, is_offset, animate) {
+		is_offset = is_offset === undefined || is_offset;
+		var delta = is_offset ? value : value - self.currentMonth;
+		var skipAnimations = !self.config.animate || animate === false;
+
+		if (delta < 0 && self._hidePrevMonthArrow || delta > 0 && self._hideNextMonthArrow) return;
+
+		self.currentMonth += delta;
+
+		if (self.currentMonth < 0 || self.currentMonth > 11) {
+			self.currentYear += self.currentMonth > 11 ? 1 : -1;
+			self.currentMonth = (self.currentMonth + 12) % 12;
+
+			triggerEvent("YearChange");
+		}
+
+		buildDays(!skipAnimations ? delta : undefined);
+
+		if (skipAnimations) {
+			triggerEvent("MonthChange");
+			return updateNavigationCurrentMonth();
+		}
+
+		// remove possible remnants from clicking too fast
+		var nav = self.navigationCurrentMonth;
+		if (delta < 0) {
+			while (nav.nextSibling && /curr/.test(nav.nextSibling.className)) {
+				self.monthNav.removeChild(nav.nextSibling);
+			}
+		} else if (delta > 0) {
+			while (nav.previousSibling && /curr/.test(nav.previousSibling.className)) {
+				self.monthNav.removeChild(nav.previousSibling);
+			}
+		}
+
+		self.oldCurMonth = self.navigationCurrentMonth;
+
+		self.navigationCurrentMonth = self.monthNav.insertBefore(self.oldCurMonth.cloneNode(true), delta > 0 ? self.oldCurMonth.nextSibling : self.oldCurMonth);
+
+		if (delta > 0) {
+			self.daysContainer.firstChild.classList.add("slideLeft");
+			self.daysContainer.lastChild.classList.add("slideLeftNew");
+
+			self.oldCurMonth.classList.add("slideLeft");
+			self.navigationCurrentMonth.classList.add("slideLeftNew");
+		} else if (delta < 0) {
+			self.daysContainer.firstChild.classList.add("slideRightNew");
+			self.daysContainer.lastChild.classList.add("slideRight");
+
+			self.oldCurMonth.classList.add("slideRight");
+			self.navigationCurrentMonth.classList.add("slideRightNew");
+		}
+
+		self.currentMonthElement = self.navigationCurrentMonth.firstChild;
+		self.currentYearElement = self.navigationCurrentMonth.lastChild.childNodes[0];
+
+		updateNavigationCurrentMonth();
+		self.oldCurMonth.firstChild.textContent = self.utils.monthToStr(self.currentMonth - delta);
+
+		triggerEvent("MonthChange");
+
+		if (document.activeElement && document.activeElement.$i) {
+			var index = document.activeElement.$i;
+			afterDayAnim(function () {
+				focusOnDay(index, 0);
+			});
+		}
+	}
+
+	function clear(triggerChangeEvent) {
+		self.input.value = "";
+
+		if (self.altInput) self.altInput.value = "";
+
+		if (self.mobileInput) self.mobileInput.value = "";
+
+		self.selectedDates = [];
+		self.latestSelectedDateObj = undefined;
+		self.showTimeInput = false;
+
+		self.redraw();
+
+		if (triggerChangeEvent !== false)
+			// triggerChangeEvent is true (default) or an Event
+			triggerEvent("Change");
+	}
+
+	function close() {
+		self.isOpen = false;
+
+		if (!self.isMobile) {
+			self.calendarContainer.classList.remove("open");
+			self._input.classList.remove("active");
+		}
+
+		triggerEvent("Close");
+	}
+
+	function destroy() {
+		if (self.config !== undefined) triggerEvent("Destroy");
+
+		for (var i = self._handlers.length; i--;) {
+			var h = self._handlers[i];
+			h.element.removeEventListener(h.event, h.handler);
+		}
+
+		self._handlers = [];
+
+		if (self.mobileInput) {
+			if (self.mobileInput.parentNode) self.mobileInput.parentNode.removeChild(self.mobileInput);
+			self.mobileInput = null;
+		} else if (self.calendarContainer && self.calendarContainer.parentNode) self.calendarContainer.parentNode.removeChild(self.calendarContainer);
+
+		if (self.altInput) {
+			self.input.type = "text";
+			if (self.altInput.parentNode) self.altInput.parentNode.removeChild(self.altInput);
+			delete self.altInput;
+		}
+
+		if (self.input) {
+			self.input.type = self.input._type;
+			self.input.classList.remove("flatpickr-input");
+			self.input.removeAttribute("readonly");
+			self.input.value = "";
+		}
+
+		["_showTimeInput", "latestSelectedDateObj", "_hideNextMonthArrow", "_hidePrevMonthArrow", "__hideNextMonthArrow", "__hidePrevMonthArrow", "isMobile", "isOpen", "selectedDateElem", "minDateHasTime", "maxDateHasTime", "days", "daysContainer", "_input", "_positionElement", "innerContainer", "rContainer", "monthNav", "todayDateElem", "calendarContainer", "weekdayContainer", "prevMonthNav", "nextMonthNav", "currentMonthElement", "currentYearElement", "navigationCurrentMonth", "selectedDateElem", "config"].forEach(function (k) {
+			try {
+				delete self[k];
+			} catch (e) {}
+		});
+	}
+
+	function isCalendarElem(elem) {
+		if (self.config.appendTo && self.config.appendTo.contains(elem)) return true;
+
+		return self.calendarContainer.contains(elem);
+	}
+
+	function documentClick(e) {
+		if (self.isOpen && !self.config.inline) {
+			var isCalendarElement = isCalendarElem(e.target);
+			var isInput = e.target === self.input || e.target === self.altInput || self.element.contains(e.target) ||
+			// web components
+			e.path && e.path.indexOf && (~e.path.indexOf(self.input) || ~e.path.indexOf(self.altInput));
+
+			var lostFocus = e.type === "blur" ? isInput && e.relatedTarget && !isCalendarElem(e.relatedTarget) : !isInput && !isCalendarElement;
+
+			if (lostFocus && self.config.ignoredFocusElements.indexOf(e.target) === -1) {
+				self.close();
+
+				if (self.config.mode === "range" && self.selectedDates.length === 1) {
+					self.clear(false);
+					self.redraw();
+				}
+			}
+		}
+	}
+
+	function changeYear(newYear) {
+		if (!newYear || self.currentYearElement.min && newYear < self.currentYearElement.min || self.currentYearElement.max && newYear > self.currentYearElement.max) return;
+
+		var newYearNum = parseInt(newYear, 10),
+		    isNewYear = self.currentYear !== newYearNum;
+
+		self.currentYear = newYearNum || self.currentYear;
+
+		if (self.config.maxDate && self.currentYear === self.config.maxDate.getFullYear()) {
+			self.currentMonth = Math.min(self.config.maxDate.getMonth(), self.currentMonth);
+		} else if (self.config.minDate && self.currentYear === self.config.minDate.getFullYear()) {
+			self.currentMonth = Math.max(self.config.minDate.getMonth(), self.currentMonth);
+		}
+
+		if (isNewYear) {
+			self.redraw();
+			triggerEvent("YearChange");
+		}
+	}
+
+	function isEnabled(date, timeless) {
+		if (self.config.minDate && compareDates(date, self.config.minDate, timeless !== undefined ? timeless : !self.minDateHasTime) < 0 || self.config.maxDate && compareDates(date, self.config.maxDate, timeless !== undefined ? timeless : !self.maxDateHasTime) > 0) return false;
+
+		if (!self.config.enable.length && !self.config.disable.length) return true;
+
+		var dateToCheck = self.parseDate(date, null, true); // timeless
+
+		var bool = self.config.enable.length > 0,
+		    array = bool ? self.config.enable : self.config.disable;
+
+		for (var i = 0, d; i < array.length; i++) {
+			d = array[i];
+
+			if (d instanceof Function && d(dateToCheck)) // disabled by function
+				return bool;else if (d instanceof Date && d.getTime() === dateToCheck.getTime())
+				// disabled by date
+				return bool;else if (typeof d === "string" && self.parseDate(d, null, true).getTime() === dateToCheck.getTime())
+				// disabled by date string
+				return bool;else if ( // disabled by range
+			(typeof d === "undefined" ? "undefined" : _typeof(d)) === "object" && d.from && d.to && dateToCheck >= d.from && dateToCheck <= d.to) return bool;
+		}
+
+		return !bool;
+	}
+
+	function onKeyDown(e) {
+		var isInput = e.target === self._input;
+		var calendarElem = isCalendarElem(e.target);
+		var allowInput = self.config.allowInput;
+		var allowKeydown = self.isOpen && (!allowInput || !isInput);
+		var allowInlineKeydown = self.config.inline && isInput && !allowInput;
+
+		if (e.key === "Enter" && allowInput && isInput) {
+			self.setDate(self._input.value, true, e.target === self.altInput ? self.config.altFormat : self.config.dateFormat);
+			return e.target.blur();
+		} else if (calendarElem || allowKeydown || allowInlineKeydown) {
+			var isTimeObj = self.timeContainer && self.timeContainer.contains(e.target);
+			switch (e.key) {
+				case "Enter":
+					if (isTimeObj) updateValue();else selectDate(e);
+
+					break;
+
+				case "Escape":
+					// escape
+					e.preventDefault();
+					self.close();
+					break;
+
+				case "Backspace":
+				case "Delete":
+					if (!self.config.allowInput) self.clear();
+					break;
+
+				case "ArrowLeft":
+				case "ArrowRight":
+					if (!isTimeObj) {
+						e.preventDefault();
+
+						if (self.daysContainer) {
+							var _delta = e.key === "ArrowRight" ? 1 : -1;
+
+							if (!e.ctrlKey) focusOnDay(e.target.$i, _delta);else changeMonth(_delta, true);
+						} else if (self.config.enableTime && !isTimeObj) self.hourElement.focus();
+					}
+
+					break;
+
+				case "ArrowUp":
+				case "ArrowDown":
+					e.preventDefault();
+					var delta = e.key === "ArrowDown" ? 1 : -1;
+
+					if (self.daysContainer) {
+						if (e.ctrlKey) {
+							changeYear(self.currentYear - delta);
+							focusOnDay(e.target.$i, 0);
+						} else if (!isTimeObj) focusOnDay(e.target.$i, delta * 7);
+					} else if (self.config.enableTime) {
+						if (!isTimeObj) self.hourElement.focus();
+						updateTime(e);
+						self.debouncedChange();
+					}
+
+					break;
+
+				case "Tab":
+					if (e.target === self.hourElement) {
+						e.preventDefault();
+						self.minuteElement.select();
+					} else if (e.target === self.minuteElement && (self.secondElement || self.amPM)) {
+						e.preventDefault();
+						(self.secondElement || self.amPM).focus();
+					} else if (e.target === self.secondElement) {
+						e.preventDefault();
+						self.amPM.focus();
+					}
+
+					break;
+
+				case "a":
+					if (e.target === self.amPM) {
+						self.amPM.textContent = "AM";
+						setHoursFromInputs();
+						updateValue();
+					}
+					break;
+
+				case "p":
+					if (e.target === self.amPM) {
+						self.amPM.textContent = "PM";
+						setHoursFromInputs();
+						updateValue();
+					}
+					break;
+
+				default:
+					break;
+
+			}
+
+			triggerEvent("KeyDown", e);
+		}
+	}
+
+	function onMouseOver(elem) {
+		if (self.selectedDates.length !== 1 || !elem.classList.contains("flatpickr-day")) return;
+
+		var hoverDate = elem.dateObj,
+		    initialDate = self.parseDate(self.selectedDates[0], null, true),
+		    rangeStartDate = Math.min(hoverDate.getTime(), self.selectedDates[0].getTime()),
+		    rangeEndDate = Math.max(hoverDate.getTime(), self.selectedDates[0].getTime()),
+		    containsDisabled = false;
+
+		for (var t = rangeStartDate; t < rangeEndDate; t += self.utils.duration.DAY) {
+			if (!isEnabled(new Date(t))) {
+				containsDisabled = true;
+				break;
+			}
+		}
+
+		var _loop = function _loop(timestamp, i) {
+			var outOfRange = timestamp < self.minRangeDate.getTime() || timestamp > self.maxRangeDate.getTime(),
+			    dayElem = self.days.childNodes[i];
+
+			if (outOfRange) {
+				self.days.childNodes[i].classList.add("notAllowed");
+				["inRange", "startRange", "endRange"].forEach(function (c) {
+					dayElem.classList.remove(c);
+				});
+				return "continue";
+			} else if (containsDisabled && !outOfRange) return "continue";
+
+			["startRange", "inRange", "endRange", "notAllowed"].forEach(function (c) {
+				dayElem.classList.remove(c);
+			});
+
+			var minRangeDate = Math.max(self.minRangeDate.getTime(), rangeStartDate),
+			    maxRangeDate = Math.min(self.maxRangeDate.getTime(), rangeEndDate);
+
+			elem.classList.add(hoverDate < self.selectedDates[0] ? "startRange" : "endRange");
+
+			if (initialDate < hoverDate && timestamp === initialDate.getTime()) dayElem.classList.add("startRange");else if (initialDate > hoverDate && timestamp === initialDate.getTime()) dayElem.classList.add("endRange");
+
+			if (timestamp >= minRangeDate && timestamp <= maxRangeDate) dayElem.classList.add("inRange");
+		};
+
+		for (var timestamp = self.days.childNodes[0].dateObj.getTime(), i = 0; i < 42; i++, timestamp += self.utils.duration.DAY) {
+			var _ret = _loop(timestamp, i);
+
+			if (_ret === "continue") continue;
+		}
+	}
+
+	function onResize() {
+		if (self.isOpen && !self.config.static && !self.config.inline) positionCalendar();
+	}
+
+	function open(e, positionElement) {
+		if (self.isMobile) {
+			if (e) {
+				e.preventDefault();
+				e.target.blur();
+			}
+
+			setTimeout(function () {
+				self.mobileInput.click();
+			}, 0);
+
+			triggerEvent("Open");
+			return;
+		}
+
+		if (self.isOpen || self._input.disabled || self.config.inline) return;
+
+		self.isOpen = true;
+		self.calendarContainer.classList.add("open");
+		positionCalendar(positionElement);
+		self._input.classList.add("active");
+
+		triggerEvent("Open");
+	}
+
+	function minMaxDateSetter(type) {
+		return function (date) {
+			var dateObj = self.config["_" + type + "Date"] = self.parseDate(date);
+
+			var inverseDateObj = self.config["_" + (type === "min" ? "max" : "min") + "Date"];
+			var isValidDate = date && dateObj instanceof Date;
+
+			if (isValidDate) {
+				self[type + "DateHasTime"] = dateObj.getHours() || dateObj.getMinutes() || dateObj.getSeconds();
+			}
+
+			if (self.selectedDates) {
+				self.selectedDates = self.selectedDates.filter(function (d) {
+					return isEnabled(d);
+				});
+				if (!self.selectedDates.length && type === "min") setHoursFromDate(dateObj);
+				updateValue();
+			}
+
+			if (self.daysContainer) {
+				redraw();
+
+				if (isValidDate) self.currentYearElement[type] = dateObj.getFullYear();else self.currentYearElement.removeAttribute(type);
+
+				self.currentYearElement.disabled = inverseDateObj && dateObj && inverseDateObj.getFullYear() === dateObj.getFullYear();
+			}
+		};
+	}
+
+	function parseConfig() {
+		var boolOpts = ["wrap", "weekNumbers", "allowInput", "clickOpens", "time_24hr", "enableTime", "noCalendar", "altInput", "shorthandCurrentMonth", "inline", "static", "enableSeconds", "disableMobile"];
+
+		var hooks = ["onChange", "onClose", "onDayCreate", "onDestroy", "onKeyDown", "onMonthChange", "onOpen", "onParseConfig", "onReady", "onValueUpdate", "onYearChange"];
+
+		self.config = Object.create(flatpickr.defaultConfig);
+
+		var userConfig = _extends({}, self.instanceConfig, JSON.parse(JSON.stringify(self.element.dataset || {})));
+
+		self.config.parseDate = userConfig.parseDate;
+		self.config.formatDate = userConfig.formatDate;
+
+		Object.defineProperty(self.config, "enable", {
+			get: function get() {
+				return self.config._enable || [];
+			},
+			set: function set(dates) {
+				return self.config._enable = parseDateRules(dates);
+			}
+		});
+
+		Object.defineProperty(self.config, "disable", {
+			get: function get() {
+				return self.config._disable || [];
+			},
+			set: function set(dates) {
+				return self.config._disable = parseDateRules(dates);
+			}
+		});
+
+		_extends(self.config, userConfig);
+
+		if (!userConfig.dateFormat && userConfig.enableTime) {
+			self.config.dateFormat = self.config.noCalendar ? "H:i" + (self.config.enableSeconds ? ":S" : "") : flatpickr.defaultConfig.dateFormat + " H:i" + (self.config.enableSeconds ? ":S" : "");
+		}
+
+		if (userConfig.altInput && userConfig.enableTime && !userConfig.altFormat) {
+			self.config.altFormat = self.config.noCalendar ? "h:i" + (self.config.enableSeconds ? ":S K" : " K") : flatpickr.defaultConfig.altFormat + (" h:i" + (self.config.enableSeconds ? ":S" : "") + " K");
+		}
+
+		Object.defineProperty(self.config, "minDate", {
+			get: function get() {
+				return this._minDate;
+			},
+			set: minMaxDateSetter("min")
+		});
+
+		Object.defineProperty(self.config, "maxDate", {
+			get: function get() {
+				return this._maxDate;
+			},
+			set: minMaxDateSetter("max")
+		});
+
+		self.config.minDate = userConfig.minDate;
+		self.config.maxDate = userConfig.maxDate;
+
+		for (var i = 0; i < boolOpts.length; i++) {
+			self.config[boolOpts[i]] = self.config[boolOpts[i]] === true || self.config[boolOpts[i]] === "true";
+		}for (var _i = hooks.length; _i--;) {
+			if (self.config[hooks[_i]] !== undefined) {
+				self.config[hooks[_i]] = arrayify(self.config[hooks[_i]] || []).map(bindToInstance);
+			}
+		}
+
+		for (var _i2 = 0; _i2 < self.config.plugins.length; _i2++) {
+			var pluginConf = self.config.plugins[_i2](self) || {};
+			for (var key in pluginConf) {
+
+				if (self.config[key] instanceof Array || ~hooks.indexOf(key)) {
+					self.config[key] = arrayify(pluginConf[key]).map(bindToInstance).concat(self.config[key]);
+				} else if (typeof userConfig[key] === "undefined") self.config[key] = pluginConf[key];
+			}
+		}
+
+		triggerEvent("ParseConfig");
+	}
+
+	function setupLocale() {
+		if (_typeof(self.config.locale) !== "object" && typeof flatpickr.l10ns[self.config.locale] === "undefined") console.warn("flatpickr: invalid locale " + self.config.locale);
+
+		self.l10n = _extends(Object.create(flatpickr.l10ns.default), _typeof(self.config.locale) === "object" ? self.config.locale : self.config.locale !== "default" ? flatpickr.l10ns[self.config.locale] || {} : {});
+	}
+
+	function positionCalendar() {
+		var positionElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : self._positionElement;
+
+		if (self.calendarContainer === undefined) return;
+
+		var calendarHeight = self.calendarContainer.offsetHeight,
+		    calendarWidth = self.calendarContainer.offsetWidth,
+		    configPos = self.config.position,
+		    inputBounds = positionElement.getBoundingClientRect(),
+		    distanceFromBottom = window.innerHeight - inputBounds.bottom,
+		    showOnTop = configPos === "above" || configPos !== "below" && distanceFromBottom < calendarHeight && inputBounds.top > calendarHeight;
+
+		var top = window.pageYOffset + inputBounds.top + (!showOnTop ? positionElement.offsetHeight + 2 : -calendarHeight - 2);
+
+		toggleClass(self.calendarContainer, "arrowTop", !showOnTop);
+		toggleClass(self.calendarContainer, "arrowBottom", showOnTop);
+
+		if (self.config.inline) return;
+
+		var left = window.pageXOffset + inputBounds.left;
+		var right = window.document.body.offsetWidth - inputBounds.right;
+		var rightMost = left + calendarWidth > window.document.body.offsetWidth;
+
+		toggleClass(self.calendarContainer, "rightMost", rightMost);
+
+		if (self.config.static) return;
+
+		self.calendarContainer.style.top = top + "px";
+
+		if (!rightMost) {
+			self.calendarContainer.style.left = left + "px";
+			self.calendarContainer.style.right = "auto";
+		} else {
+			self.calendarContainer.style.left = "auto";
+			self.calendarContainer.style.right = right + "px";
+		}
+	}
+
+	function redraw() {
+		if (self.config.noCalendar || self.isMobile) return;
+
+		buildWeekdays();
+		updateNavigationCurrentMonth();
+		buildDays();
+	}
+
+	function selectDate(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if (!e.target.classList.contains("flatpickr-day") || e.target.classList.contains("disabled") || e.target.classList.contains("notAllowed")) return;
+
+		var selectedDate = self.latestSelectedDateObj = new Date(e.target.dateObj.getTime());
+
+		var shouldChangeMonth = selectedDate.getMonth() !== self.currentMonth && self.config.mode !== "range";
+
+		self.selectedDateElem = e.target;
+
+		if (self.config.mode === "single") self.selectedDates = [selectedDate];else if (self.config.mode === "multiple") {
+			var selectedIndex = isDateSelected(selectedDate);
+			if (selectedIndex) self.selectedDates.splice(selectedIndex, 1);else self.selectedDates.push(selectedDate);
+		} else if (self.config.mode === "range") {
+			if (self.selectedDates.length === 2) self.clear();
+
+			self.selectedDates.push(selectedDate);
+
+			// unless selecting same date twice, sort ascendingly
+			if (compareDates(selectedDate, self.selectedDates[0], true) !== 0) self.selectedDates.sort(function (a, b) {
+				return a.getTime() - b.getTime();
+			});
+		}
+
+		setHoursFromInputs();
+
+		if (shouldChangeMonth) {
+			var isNewYear = self.currentYear !== selectedDate.getFullYear();
+			self.currentYear = selectedDate.getFullYear();
+			self.currentMonth = selectedDate.getMonth();
+
+			if (isNewYear) triggerEvent("YearChange");
+
+			triggerEvent("MonthChange");
+		}
+
+		buildDays();
+
+		if (self.minDateHasTime && self.config.enableTime && compareDates(selectedDate, self.config.minDate) === 0) setHoursFromDate(self.config.minDate);
+
+		updateValue();
+
+		if (self.config.enableTime) setTimeout(function () {
+			return self.showTimeInput = true;
+		}, 50);
+
+		if (self.config.mode === "range") {
+			if (self.selectedDates.length === 1) {
+				onMouseOver(e.target);
+
+				self._hidePrevMonthArrow = self._hidePrevMonthArrow || self.minRangeDate > self.days.childNodes[0].dateObj;
+
+				self._hideNextMonthArrow = self._hideNextMonthArrow || self.maxRangeDate < new Date(self.currentYear, self.currentMonth + 1, 1);
+			} else updateNavigationCurrentMonth();
+		}
+
+		triggerEvent("Change");
+
+		// maintain focus
+		if (!shouldChangeMonth) focusOnDay(e.target.$i, 0);else afterDayAnim(function () {
+			return self.selectedDateElem && self.selectedDateElem.focus();
+		});
+
+		if (self.config.enableTime) setTimeout(function () {
+			return self.hourElement.select();
+		}, 451);
+
+		if (self.config.closeOnSelect) {
+			var single = self.config.mode === "single" && !self.config.enableTime;
+			var range = self.config.mode === "range" && self.selectedDates.length === 2 && !self.config.enableTime;
+
+			if (single || range) self.close();
+		}
+	}
+
+	function set(option, value) {
+		if (option !== null && (typeof option === "undefined" ? "undefined" : _typeof(option)) === "object") _extends(self.config, option);else self.config[option] = value;
+
+		self.redraw();
+		jumpToDate();
+	}
+
+	function setSelectedDate(inputDate, format) {
+		if (inputDate instanceof Array) self.selectedDates = inputDate.map(function (d) {
+			return self.parseDate(d, format);
+		});else if (inputDate instanceof Date || !isNaN(inputDate)) self.selectedDates = [self.parseDate(inputDate, format)];else if (inputDate && inputDate.substring) {
+			switch (self.config.mode) {
+				case "single":
+					self.selectedDates = [self.parseDate(inputDate, format)];
+					break;
+
+				case "multiple":
+					self.selectedDates = inputDate.split("; ").map(function (date) {
+						return self.parseDate(date, format);
+					});
+					break;
+
+				case "range":
+					self.selectedDates = inputDate.split(self.l10n.rangeSeparator).map(function (date) {
+						return self.parseDate(date, format);
+					});
+
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		self.selectedDates = self.selectedDates.filter(function (d) {
+			return d instanceof Date && isEnabled(d, false);
+		});
+
+		self.selectedDates.sort(function (a, b) {
+			return a.getTime() - b.getTime();
+		});
+	}
+
+	function setDate(date, triggerChange, format) {
+		if (date !== 0 && !date) return self.clear(triggerChange);
+
+		setSelectedDate(date, format);
+
+		self.showTimeInput = self.selectedDates.length > 0;
+		self.latestSelectedDateObj = self.selectedDates[0];
+
+		self.redraw();
+		jumpToDate();
+
+		setHoursFromDate();
+		updateValue(triggerChange);
+
+		if (triggerChange) triggerEvent("Change");
+	}
+
+	function parseDateRules(arr) {
+		for (var i = arr.length; i--;) {
+			if (typeof arr[i] === "string" || +arr[i]) arr[i] = self.parseDate(arr[i], null, true);else if (arr[i] && arr[i].from && arr[i].to) {
+				arr[i].from = self.parseDate(arr[i].from);
+				arr[i].to = self.parseDate(arr[i].to);
+			}
+		}
+
+		return arr.filter(function (x) {
+			return x;
+		}); // remove falsy values
+	}
+
+	function setupDates() {
+		self.selectedDates = [];
+		self.now = new Date();
+
+		var preloadedDate = self.config.defaultDate || self.input.value;
+		if (preloadedDate) setSelectedDate(preloadedDate, self.config.dateFormat);
+
+		var initialDate = self.selectedDates.length ? self.selectedDates[0] : self.config.minDate && self.config.minDate.getTime() > self.now ? self.config.minDate : self.config.maxDate && self.config.maxDate.getTime() < self.now ? self.config.maxDate : self.now;
+
+		self.currentYear = initialDate.getFullYear();
+		self.currentMonth = initialDate.getMonth();
+
+		if (self.selectedDates.length) self.latestSelectedDateObj = self.selectedDates[0];
+
+		self.minDateHasTime = self.config.minDate && (self.config.minDate.getHours() || self.config.minDate.getMinutes() || self.config.minDate.getSeconds());
+
+		self.maxDateHasTime = self.config.maxDate && (self.config.maxDate.getHours() || self.config.maxDate.getMinutes() || self.config.maxDate.getSeconds());
+
+		Object.defineProperty(self, "latestSelectedDateObj", {
+			get: function get() {
+				return self._selectedDateObj || self.selectedDates[self.selectedDates.length - 1];
+			},
+			set: function set(date) {
+				self._selectedDateObj = date;
+			}
+		});
+
+		if (!self.isMobile) {
+			Object.defineProperty(self, "showTimeInput", {
+				get: function get() {
+					return self._showTimeInput;
+				},
+				set: function set(bool) {
+					self._showTimeInput = bool;
+					if (self.calendarContainer) toggleClass(self.calendarContainer, "showTimeInput", bool);
+					positionCalendar();
+				}
+			});
+		}
+	}
+
+	function setupHelperFunctions() {
+		self.utils = {
+			duration: {
+				DAY: 86400000
+			},
+			getDaysinMonth: function getDaysinMonth(month, yr) {
+				month = typeof month === "undefined" ? self.currentMonth : month;
+
+				yr = typeof yr === "undefined" ? self.currentYear : yr;
+
+				if (month === 1 && (yr % 4 === 0 && yr % 100 !== 0 || yr % 400 === 0)) return 29;
+
+				return self.l10n.daysInMonth[month];
+			},
+			monthToStr: function monthToStr(monthNumber, shorthand) {
+				shorthand = typeof shorthand === "undefined" ? self.config.shorthandCurrentMonth : shorthand;
+
+				return self.l10n.months[(shorthand ? "short" : "long") + "hand"][monthNumber];
+			}
+		};
+	}
+
+	/* istanbul ignore next */
+	function setupFormats() {
+		self.formats = Object.create(FlatpickrInstance.prototype.formats);
+		["D", "F", "J", "M", "W", "l"].forEach(function (f) {
+			self.formats[f] = FlatpickrInstance.prototype.formats[f].bind(self);
+		});
+
+		self.revFormat.F = FlatpickrInstance.prototype.revFormat.F.bind(self);
+		self.revFormat.M = FlatpickrInstance.prototype.revFormat.M.bind(self);
+	}
+
+	function setupInputs() {
+		self.input = self.config.wrap ? self.element.querySelector("[data-input]") : self.element;
+
+		/* istanbul ignore next */
+		if (!self.input) return console.warn("Error: invalid input element specified", self.input);
+
+		self.input._type = self.input.type;
+		self.input.type = "text";
+
+		self.input.classList.add("flatpickr-input");
+		self._input = self.input;
+
+		if (self.config.altInput) {
+			// replicate self.element
+			self.altInput = createElement(self.input.nodeName, self.input.className + " " + self.config.altInputClass);
+			self._input = self.altInput;
+			self.altInput.placeholder = self.input.placeholder;
+			self.altInput.disabled = self.input.disabled;
+			self.altInput.required = self.input.required;
+			self.altInput.type = "text";
+			self.input.type = "hidden";
+
+			if (!self.config.static && self.input.parentNode) self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
+		}
+
+		if (!self.config.allowInput) self._input.setAttribute("readonly", "readonly");
+
+		self._positionElement = self.config.positionElement || self._input;
+	}
+
+	function setupMobile() {
+		var inputType = self.config.enableTime ? self.config.noCalendar ? "time" : "datetime-local" : "date";
+
+		self.mobileInput = createElement("input", self.input.className + " flatpickr-mobile");
+		self.mobileInput.step = self.input.getAttribute("step") || "any";
+		self.mobileInput.tabIndex = 1;
+		self.mobileInput.type = inputType;
+		self.mobileInput.disabled = self.input.disabled;
+		self.mobileInput.placeholder = self.input.placeholder;
+
+		self.mobileFormatStr = inputType === "datetime-local" ? "Y-m-d\\TH:i:S" : inputType === "date" ? "Y-m-d" : "H:i:S";
+
+		if (self.selectedDates.length) {
+			self.mobileInput.defaultValue = self.mobileInput.value = self.formatDate(self.selectedDates[0], self.mobileFormatStr);
+		}
+
+		if (self.config.minDate) self.mobileInput.min = self.formatDate(self.config.minDate, "Y-m-d");
+
+		if (self.config.maxDate) self.mobileInput.max = self.formatDate(self.config.maxDate, "Y-m-d");
+
+		self.input.type = "hidden";
+		if (self.config.altInput) self.altInput.type = "hidden";
+
+		try {
+			self.input.parentNode.insertBefore(self.mobileInput, self.input.nextSibling);
+		} catch (e) {
+			//
+		}
+
+		self.mobileInput.addEventListener("change", function (e) {
+			self.setDate(e.target.value, false, self.mobileFormatStr);
+			triggerEvent("Change");
+			triggerEvent("Close");
+		});
+	}
+
+	function toggle() {
+		if (self.isOpen) return self.close();
+		self.open();
+	}
+
+	function triggerEvent(event, data) {
+		var hooks = self.config["on" + event];
+
+		if (hooks !== undefined && hooks.length > 0) {
+			for (var i = 0; hooks[i] && i < hooks.length; i++) {
+				hooks[i](self.selectedDates, self.input.value, self, data);
+			}
+		}
+
+		if (event === "Change") {
+			self.input.dispatchEvent(createEvent("change"));
+
+			// many front-end frameworks bind to the input event
+			self.input.dispatchEvent(createEvent("input"));
+		}
+	}
+
+	/**
+  * Creates an Event, normalized across browsers
+  * @param {String} name the event name, e.g. "click"
+  * @return {Event} the created event
+  */
+	function createEvent(name) {
+		if (self._supportsEvents) return new Event(name, { bubbles: true });
+
+		self._[name + "Event"] = document.createEvent("Event");
+		self._[name + "Event"].initEvent(name, true, true);
+		return self._[name + "Event"];
+	}
+
+	function isDateSelected(date) {
+		for (var i = 0; i < self.selectedDates.length; i++) {
+			if (compareDates(self.selectedDates[i], date) === 0) return "" + i;
+		}
+
+		return false;
+	}
+
+	function isDateInRange(date) {
+		if (self.config.mode !== "range" || self.selectedDates.length < 2) return false;
+		return compareDates(date, self.selectedDates[0]) >= 0 && compareDates(date, self.selectedDates[1]) <= 0;
+	}
+
+	function updateNavigationCurrentMonth() {
+		if (self.config.noCalendar || self.isMobile || !self.monthNav) return;
+
+		self.currentMonthElement.textContent = self.utils.monthToStr(self.currentMonth) + " ";
+		self.currentYearElement.value = self.currentYear;
+
+		self._hidePrevMonthArrow = self.config.minDate && (self.currentYear === self.config.minDate.getFullYear() ? self.currentMonth <= self.config.minDate.getMonth() : self.currentYear < self.config.minDate.getFullYear());
+
+		self._hideNextMonthArrow = self.config.maxDate && (self.currentYear === self.config.maxDate.getFullYear() ? self.currentMonth + 1 > self.config.maxDate.getMonth() : self.currentYear > self.config.maxDate.getFullYear());
+	}
+
+	/**
+  * Updates the values of inputs associated with the calendar
+  * @return {void}
+  */
+	function updateValue(triggerChange) {
+		if (!self.selectedDates.length) return self.clear(triggerChange);
+
+		if (self.isMobile) {
+			self.mobileInput.value = self.selectedDates.length ? self.formatDate(self.latestSelectedDateObj, self.mobileFormatStr) : "";
+		}
+
+		var joinChar = self.config.mode !== "range" ? "; " : self.l10n.rangeSeparator;
+
+		self.input.value = self.selectedDates.map(function (dObj) {
+			return self.formatDate(dObj, self.config.dateFormat);
+		}).join(joinChar);
+
+		if (self.config.altInput) {
+			self.altInput.value = self.selectedDates.map(function (dObj) {
+				return self.formatDate(dObj, self.config.altFormat);
+			}).join(joinChar);
+		}
+
+		if (triggerChange !== false) triggerEvent("ValueUpdate");
+	}
+
+	function mouseDelta(e) {
+		return Math.max(-1, Math.min(1, e.wheelDelta || -e.deltaY));
+	}
+
+	function onMonthNavScroll(e) {
+		e.preventDefault();
+		var isYear = self.currentYearElement.parentNode.contains(e.target);
+
+		if (e.target === self.currentMonthElement || isYear) {
+
+			var delta = mouseDelta(e);
+
+			if (isYear) {
+				changeYear(self.currentYear + delta);
+				e.target.value = self.currentYear;
+			} else self.changeMonth(delta, true, false);
+		}
+	}
+
+	function onMonthNavClick(e) {
+		var isPrevMonth = self.prevMonthNav.contains(e.target);
+		var isNextMonth = self.nextMonthNav.contains(e.target);
+
+		if (isPrevMonth || isNextMonth) changeMonth(isPrevMonth ? -1 : 1);else if (e.target === self.currentYearElement) {
+			e.preventDefault();
+			self.currentYearElement.select();
+		} else if (e.target.className === "arrowUp") self.changeYear(self.currentYear + 1);else if (e.target.className === "arrowDown") self.changeYear(self.currentYear - 1);
+	}
+
+	/**
+  * Creates an HTMLElement with given tag, class, and textual content
+  * @param {String} tag the HTML tag
+  * @param {String} className the new element's class name
+  * @param {String} content The new element's text content
+  * @return {HTMLElement} the created HTML element
+  */
+	function createElement(tag, className, content) {
+		var e = window.document.createElement(tag);
+		className = className || "";
+		content = content || "";
+
+		e.className = className;
+
+		if (content !== undefined) e.textContent = content;
+
+		return e;
+	}
+
+	function arrayify(obj) {
+		if (obj instanceof Array) return obj;
+		return [obj];
+	}
+
+	function toggleClass(elem, className, bool) {
+		if (bool) return elem.classList.add(className);
+		elem.classList.remove(className);
+	}
+
+	/* istanbul ignore next */
+	function debounce(func, wait, immediate) {
+		var timeout = void 0;
+		return function () {
+			var context = this,
+			    args = arguments;
+			clearTimeout(timeout);
+			timeout = setTimeout(function () {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			}, wait);
+			if (immediate && !timeout) func.apply(context, args);
+		};
+	}
+
+	/**
+  * Compute the difference in dates, measured in ms
+  * @param {Date} date1
+  * @param {Date} date2
+  * @param {Boolean} timeless whether to reset times of both dates to 00:00
+  * @return {Number} the difference in ms
+  */
+	function compareDates(date1, date2, timeless) {
+		if (!(date1 instanceof Date) || !(date2 instanceof Date)) return false;
+
+		if (timeless !== false) {
+			return new Date(date1.getTime()).setHours(0, 0, 0, 0) - new Date(date2.getTime()).setHours(0, 0, 0, 0);
+		}
+
+		return date1.getTime() - date2.getTime();
+	}
+
+	function timeWrapper(e) {
+		e.preventDefault();
+
+		var isKeyDown = e.type === "keydown",
+		    isWheel = e.type === "wheel",
+		    isIncrement = e.type === "increment",
+		    input = e.target;
+
+		if (self.amPM && e.target === self.amPM) return e.target.textContent = ["AM", "PM"][e.target.textContent === "AM" | 0];
+
+		var min = Number(input.min),
+		    max = Number(input.max),
+		    step = Number(input.step),
+		    curValue = parseInt(input.value, 10),
+		    delta = e.delta || (!isKeyDown ? Math.max(-1, Math.min(1, e.wheelDelta || -e.deltaY)) || 0 : e.which === 38 ? 1 : -1);
+
+		var newValue = curValue + step * delta;
+
+		if (typeof input.value !== "undefined" && input.value.length === 2) {
+			var isHourElem = input === self.hourElement,
+			    isMinuteElem = input === self.minuteElement;
+
+			if (newValue < min) {
+				newValue = max + newValue + !isHourElem + (isHourElem && !self.amPM);
+
+				if (isMinuteElem) incrementNumInput(null, -1, self.hourElement);
+			} else if (newValue > max) {
+				newValue = input === self.hourElement ? newValue - max - !self.amPM : min;
+
+				if (isMinuteElem) incrementNumInput(null, 1, self.hourElement);
+			}
+
+			if (self.amPM && isHourElem && (step === 1 ? newValue + curValue === 23 : Math.abs(newValue - curValue) > step)) self.amPM.textContent = self.amPM.textContent === "PM" ? "AM" : "PM";
+
+			input.value = self.pad(newValue);
+		}
+	}
+
+	init();
+	return self;
+}
+
+FlatpickrInstance.prototype = {
+	formats: {
+		// get the date in UTC
+		Z: function Z(date) {
+			return date.toISOString();
+		},
+
+		// weekday name, short, e.g. Thu
+		D: function D(date) {
+			return this.l10n.weekdays.shorthand[this.formats.w(date)];
+		},
+
+		// full month name e.g. January
+		F: function F(date) {
+			return this.utils.monthToStr(this.formats.n(date) - 1, false);
+		},
+
+		// padded hour 1-12
+		G: function G(date) {
+			return FlatpickrInstance.prototype.pad(FlatpickrInstance.prototype.formats.h(date));
+		},
+
+		// hours with leading zero e.g. 03
+		H: function H(date) {
+			return FlatpickrInstance.prototype.pad(date.getHours());
+		},
+
+		// day (1-30) with ordinal suffix e.g. 1st, 2nd
+		J: function J(date) {
+			return date.getDate() + this.l10n.ordinal(date.getDate());
+		},
+
+		// AM/PM
+		K: function K(date) {
+			return date.getHours() > 11 ? "PM" : "AM";
+		},
+
+		// shorthand month e.g. Jan, Sep, Oct, etc
+		M: function M(date) {
+			return this.utils.monthToStr(date.getMonth(), true);
+		},
+
+		// seconds 00-59
+		S: function S(date) {
+			return FlatpickrInstance.prototype.pad(date.getSeconds());
+		},
+
+		// unix timestamp
+		U: function U(date) {
+			return date.getTime() / 1000;
+		},
+
+		W: function W(date) {
+			return this.config.getWeek(date);
+		},
+
+		// full year e.g. 2016
+		Y: function Y(date) {
+			return date.getFullYear();
+		},
+
+		// day in month, padded (01-30)
+		d: function d(date) {
+			return FlatpickrInstance.prototype.pad(date.getDate());
+		},
+
+		// hour from 1-12 (am/pm)
+		h: function h(date) {
+			return date.getHours() % 12 ? date.getHours() % 12 : 12;
+		},
+
+		// minutes, padded with leading zero e.g. 09
+		i: function i(date) {
+			return FlatpickrInstance.prototype.pad(date.getMinutes());
+		},
+
+		// day in month (1-30)
+		j: function j(date) {
+			return date.getDate();
+		},
+
+		// weekday name, full, e.g. Thursday
+		l: function l(date) {
+			return this.l10n.weekdays.longhand[date.getDay()];
+		},
+
+		// padded month number (01-12)
+		m: function m(date) {
+			return FlatpickrInstance.prototype.pad(date.getMonth() + 1);
+		},
+
+		// the month number (1-12)
+		n: function n(date) {
+			return date.getMonth() + 1;
+		},
+
+		// seconds 0-59
+		s: function s(date) {
+			return date.getSeconds();
+		},
+
+		// number of the day of the week
+		w: function w(date) {
+			return date.getDay();
+		},
+
+		// last two digits of year e.g. 16 for 2016
+		y: function y(date) {
+			return String(date.getFullYear()).substring(2);
+		}
+	},
+
+	/**
+  * Formats a given Date object into a string based on supplied format
+  * @param {Date} dateObj the date object
+  * @param {String} frmt a string composed of formatting tokens e.g. "Y-m-d"
+  * @return {String} The textual representation of the date e.g. 2017-02-03
+  */
+	formatDate: function formatDate(dateObj, frmt) {
+		var _this = this;
+
+		if (this.config !== undefined && this.config.formatDate !== undefined) return this.config.formatDate(dateObj, frmt);
+
+		return frmt.split("").map(function (c, i, arr) {
+			return _this.formats[c] && arr[i - 1] !== "\\" ? _this.formats[c](dateObj) : c !== "\\" ? c : "";
+		}).join("");
+	},
+
+
+	revFormat: {
+		D: function D() {},
+		F: function F(dateObj, monthName) {
+			dateObj.setMonth(this.l10n.months.longhand.indexOf(monthName));
+		},
+		G: function G(dateObj, hour) {
+			dateObj.setHours(parseFloat(hour));
+		},
+		H: function H(dateObj, hour) {
+			dateObj.setHours(parseFloat(hour));
+		},
+		J: function J(dateObj, day) {
+			dateObj.setDate(parseFloat(day));
+		},
+		K: function K(dateObj, amPM) {
+			var hours = dateObj.getHours();
+
+			if (hours !== 12) dateObj.setHours(hours % 12 + 12 * /pm/i.test(amPM));
+		},
+		M: function M(dateObj, shortMonth) {
+			dateObj.setMonth(this.l10n.months.shorthand.indexOf(shortMonth));
+		},
+		S: function S(dateObj, seconds) {
+			dateObj.setSeconds(seconds);
+		},
+		U: function U(dateObj, unixSeconds) {
+			return new Date(parseFloat(unixSeconds) * 1000);
+		},
+
+		W: function W(dateObj, weekNumber) {
+			weekNumber = parseInt(weekNumber);
+			return new Date(dateObj.getFullYear(), 0, 2 + (weekNumber - 1) * 7, 0, 0, 0, 0, 0);
+		},
+		Y: function Y(dateObj, year) {
+			dateObj.setFullYear(year);
+		},
+		Z: function Z(dateObj, ISODate) {
+			return new Date(ISODate);
+		},
+
+		d: function d(dateObj, day) {
+			dateObj.setDate(parseFloat(day));
+		},
+		h: function h(dateObj, hour) {
+			dateObj.setHours(parseFloat(hour));
+		},
+		i: function i(dateObj, minutes) {
+			dateObj.setMinutes(parseFloat(minutes));
+		},
+		j: function j(dateObj, day) {
+			dateObj.setDate(parseFloat(day));
+		},
+		l: function l() {},
+		m: function m(dateObj, month) {
+			dateObj.setMonth(parseFloat(month) - 1);
+		},
+		n: function n(dateObj, month) {
+			dateObj.setMonth(parseFloat(month) - 1);
+		},
+		s: function s(dateObj, seconds) {
+			dateObj.setSeconds(parseFloat(seconds));
+		},
+		w: function w() {},
+		y: function y(dateObj, year) {
+			dateObj.setFullYear(2000 + parseFloat(year));
+		}
+	},
+
+	tokenRegex: {
+		D: "(\\w+)",
+		F: "(\\w+)",
+		G: "(\\d\\d|\\d)",
+		H: "(\\d\\d|\\d)",
+		J: "(\\d\\d|\\d)\\w+",
+		K: "(am|AM|Am|aM|pm|PM|Pm|pM)",
+		M: "(\\w+)",
+		S: "(\\d\\d|\\d)",
+		U: "(.+)",
+		W: "(\\d\\d|\\d)",
+		Y: "(\\d{4})",
+		Z: "(.+)",
+		d: "(\\d\\d|\\d)",
+		h: "(\\d\\d|\\d)",
+		i: "(\\d\\d|\\d)",
+		j: "(\\d\\d|\\d)",
+		l: "(\\w+)",
+		m: "(\\d\\d|\\d)",
+		n: "(\\d\\d|\\d)",
+		s: "(\\d\\d|\\d)",
+		w: "(\\d\\d|\\d)",
+		y: "(\\d{2})"
+	},
+
+	pad: function pad(number) {
+		return ("0" + number).slice(-2);
+	},
+
+	/**
+  * Parses a date(+time) string into a Date object
+  * @param {String} date the date string, e.g. 2017-02-03 14:45
+  * @param {String} givenFormat the date format, e.g. Y-m-d H:i
+  * @param {Boolean} timeless whether to reset the time of Date object
+  * @return {Date} the parsed Date object
+  */
+	parseDate: function parseDate(date, givenFormat, timeless) {
+		var _this2 = this;
+
+		if (date !== 0 && !date) return null;
+
+		var date_orig = date;
+
+		if (date instanceof Date) date = new Date(date.getTime()); // create a copy
+
+		else if (date.toFixed !== undefined) // timestamp
+				date = new Date(date);else {
+				// date string
+				var format = givenFormat || (this.config || flatpickr.defaultConfig).dateFormat;
+				date = String(date).trim();
+
+				if (date === "today") {
+					date = new Date();
+					timeless = true;
+				} else if (/Z$/.test(date) || /GMT$/.test(date)) // datestrings w/ timezone
+					date = new Date(date);else if (this.config && this.config.parseDate) date = this.config.parseDate(date, format);else {
+					(function () {
+						var parsedDate = !_this2.config || !_this2.config.noCalendar ? new Date(new Date().getFullYear(), 0, 1, 0, 0, 0, 0) : new Date(new Date().setHours(0, 0, 0, 0));
+
+						var matched = void 0,
+						    ops = [];
+
+						for (var i = 0, matchIndex = 0, regexStr = ""; i < format.length; i++) {
+							var token = format[i];
+							var isBackSlash = token === "\\";
+							var escaped = format[i - 1] === "\\" || isBackSlash;
+
+							if (_this2.tokenRegex[token] && !escaped) {
+								regexStr += _this2.tokenRegex[token];
+								var match = new RegExp(regexStr).exec(date);
+								if (match && (matched = true)) {
+									ops[token !== "Y" ? "push" : "unshift"]({
+										fn: _this2.revFormat[token],
+										val: match[++matchIndex]
+									});
+								}
+							} else if (!isBackSlash) regexStr += "."; // don't really care
+
+							ops.forEach(function (_ref) {
+								var fn = _ref.fn,
+								    val = _ref.val;
+								return parsedDate = fn(parsedDate, val) || parsedDate;
+							});
+						}
+
+						date = matched ? parsedDate : null;
+					})();
+				}
+			}
+
+		/* istanbul ignore next */
+		if (!(date instanceof Date)) {
+			console.warn("flatpickr: invalid date " + date_orig);
+			console.info(this.element);
+			return null;
+		}
+
+		if (timeless === true) date.setHours(0, 0, 0, 0);
+
+		return date;
+	}
+};
+
+/* istanbul ignore next */
+function _flatpickr(nodeList, config) {
+	var nodes = Array.prototype.slice.call(nodeList); // static list
+	var instances = [];
+	for (var i = 0; i < nodes.length; i++) {
+		try {
+			if (nodes[i].getAttribute("data-fp-omit") !== null) continue;
+
+			if (nodes[i]._flatpickr) {
+				nodes[i]._flatpickr.destroy();
+				nodes[i]._flatpickr = null;
+			}
+
+			nodes[i]._flatpickr = new FlatpickrInstance(nodes[i], config || {});
+			instances.push(nodes[i]._flatpickr);
+		} catch (e) {
+			console.warn(e, e.stack);
+		}
+	}
+
+	return instances.length === 1 ? instances[0] : instances;
+}
+
+/* istanbul ignore next */
+if (typeof HTMLElement !== "undefined") {
+	// browser env
+	HTMLCollection.prototype.flatpickr = NodeList.prototype.flatpickr = function (config) {
+		return _flatpickr(this, config);
+	};
+
+	HTMLElement.prototype.flatpickr = function (config) {
+		return _flatpickr([this], config);
+	};
+}
+
+/* istanbul ignore next */
+function flatpickr(selector, config) {
+	if (selector instanceof NodeList) return _flatpickr(selector, config);else if (!(selector instanceof HTMLElement)) return _flatpickr(window.document.querySelectorAll(selector), config);
+
+	return _flatpickr([selector], config);
+}
+
+/* istanbul ignore next */
+flatpickr.defaultConfig = FlatpickrInstance.defaultConfig = {
+	mode: "single",
+
+	position: "auto",
+
+	animate: typeof window !== "undefined" && window.navigator.userAgent.indexOf("MSIE") === -1,
+
+	// wrap: see https://chmln.github.io/flatpickr/examples/#flatpickr-external-elements
+	wrap: false,
+
+	// enables week numbers
+	weekNumbers: false,
+
+	// allow manual datetime input
+	allowInput: false,
+
+	/*
+ 	clicking on input opens the date(time)picker.
+ 	disable if you wish to open the calendar manually with .open()
+ */
+	clickOpens: true,
+
+	/*
+ 	closes calendar after date selection,
+ 	unless 'mode' is 'multiple' or enableTime is true
+ */
+	closeOnSelect: true,
+
+	// display time picker in 24 hour mode
+	time_24hr: false,
+
+	// enables the time picker functionality
+	enableTime: false,
+
+	// noCalendar: true will hide the calendar. use for a time picker along w/ enableTime
+	noCalendar: false,
+
+	// more date format chars at https://chmln.github.io/flatpickr/#dateformat
+	dateFormat: "Y-m-d",
+
+	// date format used in aria-label for days
+	ariaDateFormat: "F j, Y",
+
+	// altInput - see https://chmln.github.io/flatpickr/#altinput
+	altInput: false,
+
+	// the created altInput element will have this class.
+	altInputClass: "form-control input",
+
+	// same as dateFormat, but for altInput
+	altFormat: "F j, Y", // defaults to e.g. June 10, 2016
+
+	// defaultDate - either a datestring or a date object. used for datetimepicker"s initial value
+	defaultDate: null,
+
+	// the minimum date that user can pick (inclusive)
+	minDate: null,
+
+	// the maximum date that user can pick (inclusive)
+	maxDate: null,
+
+	// dateparser that transforms a given string to a date object
+	parseDate: null,
+
+	// dateformatter that transforms a given date object to a string, according to passed format
+	formatDate: null,
+
+	getWeek: function getWeek(givenDate) {
+		var date = new Date(givenDate.getTime());
+		var onejan = new Date(date.getFullYear(), 0, 1);
+		return Math.ceil(((date - onejan) / 86400000 + onejan.getDay() + 1) / 7);
+	},
+
+
+	// see https://chmln.github.io/flatpickr/#disable
+	enable: [],
+
+	// see https://chmln.github.io/flatpickr/#disable
+	disable: [],
+
+	// display the short version of month names - e.g. Sep instead of September
+	shorthandCurrentMonth: false,
+
+	// displays calendar inline. see https://chmln.github.io/flatpickr/#inline-calendar
+	inline: false,
+
+	// position calendar inside wrapper and next to the input element
+	// leave at false unless you know what you"re doing
+	"static": false,
+
+	// DOM node to append the calendar to in *static* mode
+	appendTo: null,
+
+	// code for previous/next icons. this is where you put your custom icon code e.g. fontawesome
+	prevArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z' /></svg>",
+	nextArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z' /></svg>",
+
+	// enables seconds in the time picker
+	enableSeconds: false,
+
+	// step size used when scrolling/incrementing the hour element
+	hourIncrement: 1,
+
+	// step size used when scrolling/incrementing the minute element
+	minuteIncrement: 5,
+
+	// initial value in the hour element
+	defaultHour: 12,
+
+	// initial value in the minute element
+	defaultMinute: 0,
+
+	// initial value in the seconds element
+	defaultSeconds: 0,
+
+	// disable native mobile datetime input support
+	disableMobile: false,
+
+	// default locale
+	locale: "default",
+
+	plugins: [],
+
+	ignoredFocusElements: [],
+
+	// called every time calendar is closed
+	onClose: undefined, // function (dateObj, dateStr) {}
+
+	// onChange callback when user selects a date or time
+	onChange: undefined, // function (dateObj, dateStr) {}
+
+	// called for every day element
+	onDayCreate: undefined,
+
+	// called every time the month is changed
+	onMonthChange: undefined,
+
+	// called every time calendar is opened
+	onOpen: undefined, // function (dateObj, dateStr) {}
+
+	// called after the configuration has been parsed
+	onParseConfig: undefined,
+
+	// called after calendar is ready
+	onReady: undefined, // function (dateObj, dateStr) {}
+
+	// called after input value updated
+	onValueUpdate: undefined,
+
+	// called every time the year is changed
+	onYearChange: undefined,
+
+	onKeyDown: undefined,
+
+	onDestroy: undefined
+};
+
+/* istanbul ignore next */
+flatpickr.l10ns = {
+	en: {
+		weekdays: {
+			shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+			longhand: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+		},
+		months: {
+			shorthand: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			longhand: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+		},
+		daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+		firstDayOfWeek: 0,
+		ordinal: function ordinal(nth) {
+			var s = nth % 100;
+			if (s > 3 && s < 21) return "th";
+			switch (s % 10) {
+				case 1:
+					return "st";
+				case 2:
+					return "nd";
+				case 3:
+					return "rd";
+				default:
+					return "th";
+			}
+		},
+		rangeSeparator: " to ",
+		weekAbbreviation: "Wk",
+		scrollTitle: "Scroll to increment",
+		toggleTitle: "Click to toggle"
+	}
+};
+
+flatpickr.l10ns.default = Object.create(flatpickr.l10ns.en);
+flatpickr.localize = function (l10n) {
+	return _extends(flatpickr.l10ns.default, l10n || {});
+};
+flatpickr.setDefaults = function (config) {
+	return _extends(flatpickr.defaultConfig, config || {});
+};
+
+/* istanbul ignore next */
+if (typeof jQuery !== "undefined") {
+	jQuery.fn.flatpickr = function (config) {
+		return _flatpickr(this, config);
+	};
+}
+
+Date.prototype.fp_incr = function (days) {
+	return new Date(this.getFullYear(), this.getMonth(), this.getDate() + parseInt(days, 10));
+};
+
+if (true) module.exports = flatpickr;
+
+/***/ }),
+
+/***/ "./node_modules/flatpickr/dist/l10n/ro.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Romanian locals for flatpickr */
+var flatpickr = flatpickr || { l10ns: {} };
+flatpickr.l10ns.ro = {};
+
+flatpickr.l10ns.ro.weekdays = {
+	shorthand: ["Dum", "Lun", "Mar", "Mie", "Joi", "Vin", "Sam"],
+	longhand: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"]
+};
+
+flatpickr.l10ns.ro.months = {
+	shorthand: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"],
+	longhand: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"]
+};
+
+flatpickr.l10ns.ro.firstDayOfWeek = 1;
+
+flatpickr.l10ns.ro.ordinal = function () {
+	return "";
+};
+
+if (true) module.exports = flatpickr.l10ns;
 
 /***/ }),
 
@@ -38699,88 +42808,287 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-08c26fcf\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-07df432c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('aside', {
-    staticClass: "control-sidebar",
-    class: 'control-sidebar-' + _vm.sidebarTheme,
+  return _c('div', {
+    staticClass: "input-group flatpickr"
+  }, [_c('input', {
+    class: _vm.inputClass,
     attrs: {
-      "id": "sidebar"
+      "type": "text",
+      "placeholder": _vm.placeholder,
+      "id": 'date-input-' + _vm._uid,
+      "name": _vm.name,
+      "disabled": _vm.disabled
+    },
+    domProps: {
+      "value": _vm.value
     }
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "tab-content"
-  }, [_c('sidebar-settings')], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "nav nav-tabs nav-justified control-sidebar-tabs"
-  }, [_c('li', {
-    staticClass: "active"
-  }, [_c('a', {
-    attrs: {
-      "href": "#control-sidebar-settings-tab",
-      "data-toggle": "tab"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon"
+  }, [(_vm.value && !_vm.disabled) ? _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.picker.clear();
+        _vm.$emit('clear')
+      }
     }
   }, [_c('i', {
-    staticClass: "fa fa-gears"
+    staticClass: "fa fa-times"
+  })]) : _vm._e(), _vm._v(" "), _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.picker.open()
+      }
+    }
+  }, [(_vm.timeOnly) ? _c('i', {
+    staticClass: "fa fa-clock-o"
+  }) : _c('i', {
+    staticClass: "fa fa-calendar"
   })])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-08c26fcf", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-07df432c", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-10895326\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-08e06b59\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "vue-select",
+    attrs: {
+      "id": 'vue-select-' + _vm._uid
+    }
+  }, [_c('multiselect', {
+    attrs: {
+      "value": _vm.value,
+      "searchable": "",
+      "allow-empty": "",
+      "disabled": _vm.disabled,
+      "multiple": _vm.multiple,
+      "clear-on-select": !_vm.multiple,
+      "close-on-select": !_vm.multiple,
+      "select-label": _vm.labels.select,
+      "deselect-label": _vm.labels.deselect,
+      "selected-label": _vm.labels.selected,
+      "placeholder": _vm.labels.placeholder,
+      "loading": _vm.loading,
+      "options-limit": 100,
+      "options": _vm.optionKeys,
+      "custom-label": _vm.customLabel
+    },
+    on: {
+      "search-change": function($event) {
+        _vm.query = $event;
+        _vm.getOptions()
+      },
+      "input": function($event) {
+        _vm.$emit('input', $event)
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "option",
+      fn: function(props) {
+        return [_c('span', {
+          domProps: {
+            "innerHTML": _vm._s(_vm.$options.filters.highlight(_vm.optionList[props.option], _vm.query))
+          }
+        })]
+      }
+    }])
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("\n            " + _vm._s(_vm.labels.noResult) + "\n        ")])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-08e06b59", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-0c34d226\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('transition', {
+    attrs: {
+      "name": "modal"
+    }
+  }, [_c('div', {
+    staticClass: "modal-mask"
+  }, [_c('div', {
+    staticClass: "modal-wrapper"
+  }, [_c('div', {
+    staticClass: "modal-container",
+    style: (_vm.containerStyle)
+  }, [(_vm.header) ? _c('div', {
+    staticClass: "modal-header"
+  }, [_c('center', [_c('h5', [_vm._t("header")], 2)])], 1) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "modal-body",
+    style: (_vm.bodyStyle)
+  }, [_vm._t("body", [_vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.labels.areYouSure) + "\n\t\t\t\t\t")])], 2), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.$emit('cancel-action')
+      }
+    }
+  }, [_vm._t("cancel", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.cancel) + "\n\t\t\t\t\t\t")])], 2), _vm._v(" "), (!_vm.cancelOnly) ? _c('button', {
+    staticClass: "btn btn-primary button-default",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.$emit('commit-action')
+      }
+    }
+  }, [_vm._t("ok", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.ok) + "\n\t\t\t\t\t\t")])], 2) : _vm._e()])])])])]) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0c34d226", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1790ac5e\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "box",
+    class: _vm.boxClass
+  }, [_c('table', {
+    staticClass: "text-center"
+  }, [_c('tbody', [_c('tr', [_c('td', {
+    attrs: {
+      "colspan": _vm.options.length + 1
+    }
+  }, [_vm._v("\n\t                    " + _vm._s(_vm.title) + "\n\t                ")])]), _vm._v(" "), _c('tr', [_vm._l((_vm.options), function(option) {
+    return _c('td', [_c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.value),
+        expression: "value"
+      }],
+      attrs: {
+        "name": 'radio-' + _vm._uid,
+        "type": "radio"
+      },
+      domProps: {
+        "value": option.value,
+        "checked": _vm._q(_vm.value, option.value)
+      },
+      on: {
+        "change": _vm.changed,
+        "__c": function($event) {
+          _vm.value = option.value
+        }
+      }
+    }), _vm._v(" "), _c('label', {
+      staticClass: "vue-filter",
+      attrs: {
+        "for": 'yes-' + _vm._uid
+      }
+    }, [_vm._v("\n\t                            " + _vm._s(option.label) + "\n\t                        ")])])
+  }), _vm._v(" "), _c('td', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.value),
+      expression: "value"
+    }],
+    attrs: {
+      "name": 'radio-' + _vm._uid,
+      "type": "radio"
+    },
+    domProps: {
+      "value": null,
+      "checked": _vm._q(_vm.value, null)
+    },
+    on: {
+      "change": _vm.changed,
+      "__c": function($event) {
+        _vm.value = null
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "vue-filter",
+    attrs: {
+      "for": 'n-a-' + _vm._uid
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-power-off text-red",
     class: {
-      'open': _vm.showDropdown, 'typeahead-wrapper': true
+      'text-red': _vm.value === null, 'text-green': _vm.value !== null
+    }
+  })])])], 2)])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1790ac5e", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1d6973f2\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "typeahead-wrapper",
+    class: {
+      'open': _vm.showDropdown
     }
   }, [_c('div', {
     staticClass: "input-group",
     class: {
-      'has-error': _vm.inputHasError
+      'has-error': _vm.hasError
     }
-  }, [(_vm.clearButton) ? _c('i', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.showClearButton),
-      expression: "showClearButton"
-    }],
-    staticClass: "fa fa-times clear-button",
-    on: {
-      "click": _vm.clearInput
-    }
-  }) : _vm._e(), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.currentValue),
-      expression: "currentValue"
-    }],
-    staticClass: "form-control typeahead",
+  }, [_c('input', {
+    staticClass: "form-control",
     attrs: {
       "type": "text",
       "disabled": _vm.disabled,
+      "id": 'typeahead-' + _vm._uid,
       "placeholder": _vm.placeholder
     },
     domProps: {
-      "value": (_vm.currentValue)
+      "value": _vm.value
     },
     on: {
-      "input": [function($event) {
-        if ($event.target.composing) { return; }
-        _vm.currentValue = $event.target.value
-      }, _vm.update],
+      "input": function($event) {
+        _vm.update($event.target.value);
+        _vm.getData();
+      },
       "keydown": [function($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "up", 38)) { return null; }
         _vm.keyUp($event)
@@ -38792,13 +43100,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.hit($event)
       }, function($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "esc", 27)) { return null; }
-        _vm.reset($event)
+        _vm.update('')
       }],
       "blur": function($event) {
-        _vm.showDropdown = false
+        _vm.dropdown = false
       }
     }
-  }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('ul', {
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon"
+  }, [(_vm.showClearButton) ? _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.clear();
+        _vm.$emit('clear')
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-times"
+  })]) : _vm._e(), _vm._v(" "), _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.element.focus()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search"
+  })])])]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu"
   }, _vm._l((_vm.items), function(item, index) {
     return _c('li', {
@@ -38806,6 +43135,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         'active': _vm.isActive(index)
       }
     }, [_c('a', {
+      domProps: {
+        "innerHTML": _vm._s(_vm.$options.filters.highlight(item[_vm.displayProperty], _vm.value))
+      },
       on: {
         "mousedown": function($event) {
           $event.preventDefault();
@@ -38815,30 +43147,183 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.setActive(index)
         }
       }
-    }, [_c('span', {
-      domProps: {
-        "innerHTML": _vm._s(_vm.highlight(item[_vm.displayProperty], _vm.currentValue))
-      }
-    })])])
+    })])
   }))])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "input-group-addon"
-  }, [_c('i', {
-    staticClass: "fa fa-search"
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-10895326", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-1d6973f2", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-11e132fb\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1d8a0354\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('section', {
+    staticClass: "content-header"
+  }, [_vm._t("header"), _vm._v(" "), _c('breadcrumbs')], 2), _vm._v(" "), _c('section', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_vm._t("default")], 2)])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d8a0354", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-24fde759\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('draggable', {
+    staticClass: "sortable-menu",
+    attrs: {
+      "list": _vm.menus,
+      "element": "ul",
+      "options": {
+        group: {
+          name: 'menus'
+        }
+      }
+    }
+  }, [_c('transition-group', {
+    staticStyle: {
+      "display": "block",
+      "min-height": "5px"
+    },
+    attrs: {
+      "name": "list-complete"
+    }
+  }, _vm._l((_vm.menus), function(menu) {
+    return _c('li', {
+      key: menu.unique_id,
+      staticClass: "sortable-menu list-complete-item"
+    }, [_c('div', [_vm._v(_vm._s(menu.name))]), _vm._v(" "), _c('reorderable-menu', {
+      attrs: {
+        "menus": menu.children
+      }
+    })], 1)
+  }))], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-24fde759", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-253ad2ae\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('box', {
+    attrs: {
+      "theme": _vm.theme,
+      "collapsible": "",
+      "refresh": "",
+      "removable": "",
+      "solid": _vm.solid,
+      "open": true,
+      "icon": _vm.icons[_vm.type],
+      "title": _vm.title,
+      "overlay": _vm.loading
+    },
+    on: {
+      "refresh": function($event) {
+        _vm.get()
+      }
+    }
+  }, [_c('div', {
+    staticClass: "chart"
+  }, [_c('canvas', {
+    attrs: {
+      "id": 'canvas-' + _vm._uid
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-253ad2ae", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27bf2d2d\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12"
+  }, [_c('center', [_c('h5', [_vm._t("menus-title")], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "panel-group",
+    attrs: {
+      "id": "accordion-menus",
+      "role": "tablist",
+      "aria-multiselectable": "false"
+    }
+  }, [(_vm.menus.length) ? _c('checkbox-manager', {
+    attrs: {
+      "parent-accordion": "#accordion-menus",
+      "group-name": "menus",
+      "role-permissions": _vm.roleMenus,
+      "group-data": _vm.menus
+    }
+  }) : _vm._e()], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12"
+  }, [_c('center', [_c('h5', [_vm._t("permissions-title")], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "panel-group",
+    attrs: {
+      "id": "accordion-groups",
+      "role": "tablist",
+      "aria-multiselectable": "false"
+    }
+  }, _vm._l((_vm.sortedKeys), function(group) {
+    return _c('checkbox-manager', {
+      key: group,
+      attrs: {
+        "parent-accordion": "#accordion-groups",
+        "group-name": group,
+        "role-permissions": _vm.rolePermissions,
+        "group-data": _vm.permissions[group]
+      }
+    })
+  }))], 1), _vm._v(" "), _c('center', [_c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": _vm.setPermissions
+    }
+  }, [_vm._t("update-button")], 2)])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-27bf2d2d", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-31ff1540\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -38852,8 +43337,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('a', {
     staticClass: "dropdown-toggle",
     attrs: {
-      "data-toggle": "dropdown",
-      "href": "#"
+      "href": "#",
+      "data-toggle": "dropdown"
     }
   }, [_vm._v("\n        \t\t" + _vm._s(_vm.store.user.preferences.global.theme) + "\n      \t\t")]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu color-theme-selector"
@@ -38871,359 +43356,247 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-11e132fb", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-31ff1540", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-17dec448\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3e0e1f09\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    attrs: {
-      "id": 'bs-select-' + _vm._uid
-    }
-  }, [(_vm.reset && !_vm.multiple && _vm.selectedOptions) ? _c('i', {
-    staticClass: "fa fa-times reset btn-box-tool",
-    on: {
-      "click": _vm.removeSelection
-    }
-  }) : _vm._e(), _vm._v(" "), _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.selectedOptions),
-      expression: "selectedOptions"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "multiple": _vm.multiple,
-      "id": 'select-' + _vm._uid,
-      "name": _vm.name,
-      "disabled": _vm.disabled
-    },
-    on: {
-      "change": [function($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        });
-        _vm.selectedOptions = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }, function($event) {
-        _vm.$emit('input', _vm.selectedOptions)
-      }]
-    }
-  }, _vm._l((_vm.optionsList), function(option) {
-    return _c('option', {
-      domProps: {
-        "value": option.key,
-        "innerHTML": _vm._s(option.value)
-      }
-    })
-  }))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-17dec448", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1e00bcc4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "box box-primary"
-  }, [_c('table', {
-    staticClass: "text-center"
-  }, [_c('tbody', [_c('tr', [_c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_vm._t("vue-filter-name")], 2)]), _vm._v(" "), _c('tr', [_c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    attrs: {
-      "name": 'radio-' + _vm._uid,
-      "type": "radio",
-      "value": "1"
-    },
-    domProps: {
-      "checked": _vm._q(_vm.value, "1")
-    },
-    on: {
-      "change": _vm.changed,
-      "__c": function($event) {
-        _vm.value = "1"
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": 'yes-' + _vm._uid
-    }
-  }, [_vm._t("vue-filter-yes")], 2)]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    attrs: {
-      "name": 'radio-' + _vm._uid,
-      "type": "radio",
-      "value": "0"
-    },
-    domProps: {
-      "checked": _vm._q(_vm.value, "0")
-    },
-    on: {
-      "change": _vm.changed,
-      "__c": function($event) {
-        _vm.value = "0"
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": 'no-' + _vm._uid
-    }
-  }, [_vm._t("vue-filter-no")], 2)]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    attrs: {
-      "name": 'radio-' + _vm._uid,
-      "type": "radio",
-      "value": ""
-    },
-    domProps: {
-      "checked": _vm._q(_vm.value, "")
-    },
-    on: {
-      "change": _vm.changed,
-      "__c": function($event) {
-        _vm.value = ""
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": 'n-a-' + _vm._uid
-    }
-  }, [_vm._t("vue-filter-n-a")], 2)])])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1e00bcc4", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2261692c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    class: 'box box-' + _vm.headerClass
+    staticClass: "small-box",
+    class: _vm.theme
   }, [_c('div', {
-    staticClass: "box-header with-border"
-  }, [_c('h3', {
-    staticClass: "box-title"
+    staticClass: "inner"
+  }, [_vm._t("default", [_c('h3', [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.body))])])], 2), _vm._v(" "), _c('div', {
+    staticClass: "icon"
   }, [_c('i', {
-    staticClass: "fa fa-table"
-  }), _vm._v(" "), _vm._t("data-table-title", [_vm._v(_vm._s(_vm.tableName))])], 2), _vm._v(" "), _c('div', {
-    staticClass: "box-tools pull-right"
-  }, [_c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
-    on: {
-      "click": function($event) {
-        _vm.clearState()
-      }
-    }
-  }, [_vm._v("\n                reset\n            ")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
-    on: {
-      "click": function($event) {
-        _vm.toggleDisplayClass()
-      }
-    }
-  }, [(_vm.classes.display) ? _c('i', {
-    staticClass: "fa fa-th-list"
-  }) : _c('i', {
-    staticClass: "fa fa-bars"
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
-    on: {
-      "click": function($event) {
-        _vm.toggleCompactClass()
-      }
-    }
-  }, [(_vm.classes.compact) ? _c('i', {
-    staticClass: "fa fa-th-large"
-  }) : _c('i', {
-    staticClass: "fa fa-th"
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
-    on: {
-      "click": function($event) {
-        _vm.getData()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-refresh"
-  })]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
-    staticClass: "box-body table-responsive"
-  }, [_c('table', {
-    staticClass: "table display",
-    class: _vm.tableClass,
+    class: _vm.icon
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "small-box-footer",
     attrs: {
-      "id": _vm.tableId,
-      "width": "100%"
+      "href": "#"
     }
-  }, [_c('thead', [_c('tr', _vm._l((_vm.header), function(label) {
-    return _c('th', {
-      class: 'text-' + _vm.headerAlign
-    }, [_vm._v("\n                        " + _vm._s(label) + "\n                    ")])
-  }))]), _vm._v(" "), _c('tbody', {
-    class: 'text-' + _vm.bodyAlign
-  }), _vm._v(" "), (_vm.hasTotals) ? _c('tfoot', [_c('tr', _vm._l((_vm.header.length), function(i) {
-    return _c('td', {
-      staticClass: "text-center"
-    }, [(i == 2) ? _c('span', {
-      staticClass: "totals"
-    }, [_vm._v(_vm._s(_vm.labels.totals))]) : _vm._e()])
-  }))]) : _vm._e()])]), _vm._v(" "), (_vm.loading) ? _c('div', {
-    staticClass: "overlay"
-  }, [_c('i', {
-    staticClass: "fa fa-spinner fa-spin spinner-custom"
-  })]) : _vm._e(), _vm._v(" "), _c('modal', {
-    attrs: {
-      "show": _vm.showModal
-    },
+  }, [_vm._t("footer", [_vm._v("\n\t\t\t" + _vm._s(_vm.labels.more) + "\n\t\t\t"), _c('i', {
+    staticClass: "fa fa-arrow-circle-right",
     on: {
-      "cancel-action": function($event) {
-        _vm.showModal = false;
-        _vm.deleteRoute = null
-      },
-      "commit-action": function($event) {
-        _vm.deleteModel()
+      "click": function($event) {
+        _vm.$emit('load-more')
       }
     }
-  })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
-    attrs: {
-      "data-widget": "collapse"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-minus"
-  })])
-}]}
+  })])], 2)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2261692c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3e0e1f09", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-228e71d8\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-421edf22\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "dropdown user user-menu"
+  return _c('label', {
+    staticClass: "control-sidebar-subheading"
+  }, [_vm._v("\n\t\t" + _vm._s(_vm.store.labels.language) + "\n\t\t"), _c('li', {
+    staticClass: "dropdown pull-right",
+    staticStyle: {
+      "list-style-type": "none"
+    }
   }, [_c('a', {
     staticClass: "dropdown-toggle",
     attrs: {
       "href": "#",
       "data-toggle": "dropdown"
     }
-  }, [_c('img', {
-    staticClass: "user-image user-avatar",
-    attrs: {
-      "src": '/core/avatars/' + _vm.store.user.avatarId,
-      "alt": "User Image"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "hidden-xs"
-  }, [_vm._v("\n                " + _vm._s(_vm.store.user.first_name) + "\n            ")])]), _vm._v(" "), _c('ul', {
-    staticClass: "dropdown-menu"
-  }, [_c('li', {
-    staticClass: "user-header"
-  }, [_c('img', {
-    staticClass: "img-square user-avatar",
-    attrs: {
-      "src": '/core/avatars/' + _vm.store.user.avatarId,
-      "alt": "User Image"
-    }
-  }), _vm._v(" "), _c('p', [_vm._v("\n                    " + _vm._s(_vm.store.user.first_name) + "\n                    "), _c('small', [_vm._v("\n                        " + _vm._s(_vm.store.user.role.name) + "\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "pull-left"
-  }, [_c('a', {
-    staticClass: "btn btn-sm btn-default",
-    attrs: {
-      "href": '/administration/users/' + _vm.store.user.id,
-      "id": "profile-button"
-    }
-  }, [_vm._v("\n                        " + _vm._s(_vm.store.labels.profile) + "\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "pull-right"
-  }, [_c('a', {
-    staticClass: "btn btn-sm btn-default",
-    attrs: {
-      "href": "#",
-      "id": "logout-button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.logout()
+  }, [_c('i', {
+    class: _vm.language.flag
+  })]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu language-selector"
+  }, _vm._l((_vm.store.languages), function(language) {
+    return _c('li', [_c('a', {
+      on: {
+        "click": function($event) {
+          _vm.setLanguage(language.name)
+        }
       }
-    }
-  }, [_vm._v("\n                      " + _vm._s(_vm.store.labels.logout) + "\n                    ")]), _vm._v(" "), _c('form', {
-    attrs: {
-      "id": "logout-form",
-      "action": "/logout",
-      "method": "POST"
-    }
-  }, [_c('input', {
-    attrs: {
-      "name": "_token",
-      "type": "hidden"
-    },
-    domProps: {
-      "value": _vm.csrfToken
-    }
-  })])])])])])
+    }, [_c('i', {
+      staticClass: "flag-icon",
+      class: language.flag
+    })])])
+  }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-228e71d8", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-421edf22", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2851e0c0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4a1fd873\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "dropdown notifications-menu",
+    attrs: {
+      "id": "notifications"
+    }
+  }, [_c('a', {
+    staticClass: "dropdown-toggle",
+    attrs: {
+      "href": "#",
+      "data-toggle": "dropdown"
+    },
+    on: {
+      "click": function($event) {
+        _vm.getList()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-bell-o"
+  }), _vm._v(" "), (_vm.unreadCount) ? _c('span', {
+    staticClass: "label label-danger",
+    domProps: {
+      "textContent": _vm._s(_vm.unreadCount)
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu"
+  }, [_c('li', {
+    staticClass: "header"
+  }, [(_vm.unreadCount) ? _c('span', [_vm._v("\n\t\t\t\t" + _vm._s(_vm.labels.youHave) + "\n\t\t\t\t"), _c('b', [_vm._v(_vm._s(_vm.unreadCount))]), _vm._v(" "), (_vm.unreadCount == 1) ? _c('span', [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.labels.one) + "\n\t\t\t\t")]) : _c('span', [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.labels.many) + "\n\t\t\t\t")])]) : _c('span', [_vm._v("\n\t\t\t\t" + _vm._s(_vm.labels.noNotifications) + "\n\t\t\t")]), _vm._v(" "), (_vm.loading) ? _c('span', {
+    staticClass: "pull-right"
+  }, [_c('i', {
+    staticClass: "fa fa-spinner fa-spin text-orange"
+  })]) : _vm._e()]), _vm._v(" "), _c('li', [_c('ul', {
+    staticClass: "menu",
+    attrs: {
+      "id": "notifications-body"
+    },
+    on: {
+      "scroll": function($event) {
+        _vm.computeScrollPosition($event)
+      }
+    }
+  }, _vm._l((_vm.notifications), function(notification) {
+    return _c('li', [_c('a', {
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          if (!('button' in $event) && _vm._k($event.keyCode, "up", 38)) { return null; }
+          _vm.process(notification)
+        }
+      }
+    }, [(notification.read_at) ? _c('i', {
+      staticClass: "fa fa-envelope-open-o text-green"
+    }) : _c('i', {
+      staticClass: "fa fa-envelope-o text-orange"
+    }), _vm._v(" "), _c('span', {
+      class: {
+        'bold': !notification.read_at
+      }
+    }, [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(notification.data.body) + "\n\t\t\t\t\t\t")])])])
+  }))]), _vm._v(" "), (_vm.unreadCount || _vm.notifications.length) ? _c('li', {
+    staticClass: "footer"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('a', {
+    staticClass: "pull-left",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        _vm.markAllAsRead()
+      }
+    }
+  }, [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.labels.markAllAsRead) + "\n\t\t\t\t")]), _vm._v(" "), _c('a', {
+    staticClass: "pull-right",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        _vm.clearAll()
+      }
+    }
+  }, [_vm._v("\n\t\t\t  \t\t" + _vm._s(_vm.labels.clearAll) + "\n\t\t\t  \t")]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])]) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4a1fd873", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4bfdae18\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "box box-widget widget-user"
+  }, [_c('div', {
+    staticClass: "widget-user-header",
+    class: _vm.theme,
+    style: ('background: url(' + _vm.background + ') center center')
+  }, [_c('h3', {
+    staticClass: "widget-user-username"
+  }, [_vm._v(_vm._s(_vm.name))]), _vm._v(" "), _c('h5', {
+    staticClass: "widget-user-desc"
+  }, [_vm._v(_vm._s(_vm.position))])]), _vm._v(" "), _c('div', {
+    staticClass: "widget-user-image"
+  }, [_c('img', {
+    staticClass: "img-circle",
+    attrs: {
+      "src": _vm.avatar,
+      "alt": "User Avatar"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "box-footer"
+  }, [_c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.items), function(item) {
+    return _c('div', {
+      class: _vm.computedClass
+    }, [_c('div', {
+      staticClass: "description-block"
+    }, [_c('h5', {
+      staticClass: "description-header"
+    }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(item.value) + "\n\t\t\t\t\t")]), _vm._v(" "), _c('span', {
+      staticClass: "description-text"
+    }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(item.label) + "\n\t\t\t\t\t")])])])
+  }))]), _vm._v(" "), (_vm.overlay) ? _c('overlay') : _vm._e()], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4bfdae18", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5c51f33b\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39311,61 +43684,59 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2851e0c0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5c51f33b", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2b8a87e5\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5e21d97a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "input-group time-picker"
-  }, [(_vm.showClearButton) ? _c('i', {
-    staticClass: "fa fa-times clear-button btn-box-tool",
-    on: {
-      "click": _vm.clearTime
-    }
-  }) : _vm._e(), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "update-time-picker",
-      rawName: "v-update-time-picker"
-    }],
-    staticClass: "form-control",
+    staticClass: "box box-widget widget-user-2"
+  }, [_c('div', {
+    staticClass: "widget-user-header",
+    class: _vm.theme
+  }, [_c('div', {
+    staticClass: "widget-user-image"
+  }, [_c('img', {
+    staticClass: "img-square",
     attrs: {
-      "id": 'input-' + _vm._uid,
-      "type": "text",
-      "name": _vm.name,
-      "disabled": _vm.disabled
-    },
-    domProps: {
-      "value": _vm.value
-    },
-    on: {
-      "input": _vm.emitInputEvent,
-      "blur": _vm.hideWidget
+      "src": _vm.image,
+      "alt": "User Avatar"
     }
-  }), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "input-group-addon"
-  }, [_c('i', {
-    staticClass: "fa fa-clock-o"
-  })])
-}]}
+  })]), _vm._v(" "), _c('h3', {
+    staticClass: "widget-user-username"
+  }, [_vm._v(_vm._s(_vm.name))]), _vm._v(" "), _c('h5', {
+    staticClass: "widget-user-desc"
+  }, [_vm._v(_vm._s(_vm.position))])]), _vm._v(" "), _c('div', {
+    staticClass: "box-footer no-padding"
+  }, [_c('ul', {
+    staticClass: "nav nav-stacked"
+  }, _vm._l((_vm.items), function(item) {
+    return _c('li', [_c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v(_vm._s(item.label) + "\n\t\t\t\t"), _c('span', {
+      staticClass: "pull-right badge",
+      class: item.badge
+    }, [_vm._v("\n\t\t\t\t\t" + _vm._s(item.value))])])])
+  }))]), _vm._v(" "), (_vm.overlay) ? _c('overlay') : _vm._e()], 1)
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2b8a87e5", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5e21d97a", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2cc43a7b\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-60c44cf6\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39387,252 +43758,388 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2cc43a7b", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-60c44cf6", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3d90627a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('draggable', {
-    staticClass: "sortable-menu",
-    attrs: {
-      "list": _vm.menus,
-      "element": "ul",
-      "options": {
-        group: {
-          name: 'menus'
-        }
-      }
-    }
-  }, [_c('transition-group', {
-    staticStyle: {
-      "display": "block",
-      "min-height": "5px"
-    },
-    attrs: {
-      "name": "list-complete"
-    }
-  }, _vm._l((_vm.menus), function(menu) {
-    return _c('li', {
-      key: menu.unique_id,
-      staticClass: "sortable-menu list-complete-item"
-    }, [_c('div', [_vm._v(_vm._s(menu.name))]), _vm._v(" "), _c('reorderable-menu', {
-      attrs: {
-        "menus": menu.children
-      }
-    })], 1)
-  }))], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3d90627a", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3dcaa395\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-65d83d88\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-xs-12"
-  }, [_c('center', [_c('h5', [_vm._t("menus-title")], 2)]), _vm._v(" "), _c('div', {
-    staticClass: "panel-group",
-    attrs: {
-      "id": "accordion-menus",
-      "role": "tablist",
-      "aria-multiselectable": "false"
-    }
-  }, [(_vm.menus.length) ? _c('checkbox-manager', {
-    attrs: {
-      "parent-accordion": "#accordion-menus",
-      "group-name": "menus",
-      "role-permissions": _vm.roleMenus,
-      "group-data": _vm.menus
-    }
-  }) : _vm._e()], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "col-xs-12"
-  }, [_c('center', [_c('h5', [_vm._t("permissions-title")], 2)]), _vm._v(" "), _c('div', {
-    staticClass: "panel-group",
-    attrs: {
-      "id": "accordion-groups",
-      "role": "tablist",
-      "aria-multiselectable": "false"
-    }
-  }, _vm._l((_vm.sortedKeys), function(group) {
-    return _c('checkbox-manager', {
-      key: group,
-      attrs: {
-        "parent-accordion": "#accordion-groups",
-        "group-name": group,
-        "role-permissions": _vm.rolePermissions,
-        "group-data": _vm.permissions[group]
-      }
-    })
-  }))], 1), _vm._v(" "), _c('center', [_c('button', {
-    staticClass: "btn btn-primary",
-    on: {
-      "click": _vm.setPermissions
-    }
-  }, [_vm._t("update-button")], 2)])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3dcaa395", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3ec1a254\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_c('span', {
-    staticClass: "file-upload",
-    on: {
-      "click": _vm.openFileBrowser
-    }
-  }, [_vm._t("upload-button", [_c('i', {
-    staticClass: "btn btn-xs btn-primary fa fa-upload"
-  })])], 2), _vm._v(" "), _c('form', {
-    attrs: {
-      "id": 'file-form-' + _vm._uid
-    }
-  }, [_c('input', {
-    staticClass: "hidden",
-    attrs: {
-      "id": 'upload-input-' + _vm._uid,
-      "type": "file",
-      "name": _vm.multiple ? 'files[]' : 'file',
-      "multiple": _vm.multiple
-    },
-    on: {
-      "change": _vm.upload
-    }
-  })])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3ec1a254", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-43ec6b5a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.show) ? _c('transition', {
-    attrs: {
-      "name": "modal"
-    }
-  }, [_c('div', {
-    staticClass: "modal-mask"
-  }, [_c('div', {
-    staticClass: "modal-wrapper"
-  }, [_c('div', {
-    staticClass: "modal-container",
-    style: ({
-      'max-width': _vm.maxWidth + 'px'
-    })
-  }, [(_vm.header) ? _c('div', {
-    staticClass: "modal-header"
-  }, [_c('center', [_c('h5', [_vm._t("header")], 2)])], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "modal-body",
-    style: ({
-      'max-height': _vm.maxHeight ? _vm.maxHeight + 'px' : null,
-      'height': _vm.height ? _vm.height + 'px' : null
-    })
-  }, [_vm._t("body", [_vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.labels.areYouSure) + "\n\t\t\t\t\t")])], 2), _vm._v(" "), _c('div', {
-    staticClass: "modal-footer"
-  }, [_c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.cancelAction
-    }
-  }, [_vm._t("cancel", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.cancel) + "\n\t\t\t\t\t\t")])], 2), _vm._v(" "), (!_vm.cancelOnly) ? _c('button', {
-    staticClass: "btn btn-primary button-default",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.commitAction
-    }
-  }, [_vm._t("ok", [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.labels.ok) + "\n\t\t\t\t\t\t")])], 2) : _vm._e()])])])])]) : _vm._e()
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-43ec6b5a", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-611d80f4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "input-group date-picker"
-  }, [(_vm.showClearButton) ? _c('i', {
-    staticClass: "fa fa-times clear-button btn-box-tool",
-    on: {
-      "click": _vm.clearDate
-    }
-  }) : _vm._e(), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "update-date-picker",
-      rawName: "v-update-date-picker"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "id": 'date-input-' + _vm._uid,
-      "name": _vm.name,
-      "disabled": _vm.disabled
-    },
-    domProps: {
-      "value": _vm.value
-    }
-  }), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "input-group-addon"
+    staticClass: "info-box",
+    class: _vm.theme
+  }, [_c('span', {
+    staticClass: "info-box-icon"
   }, [_c('i', {
-    staticClass: "fa fa-calendar"
-  })])
+    class: _vm.icon
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "info-box-content"
+  }, [_vm._t("default", [_c('span', {
+    staticClass: "info-box-text"
+  }, [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _c('span', {
+    staticClass: "info-box-number"
+  }, [_vm._v(_vm._s(_vm.number))]), _vm._v(" "), _c('div', {
+    staticClass: "progress"
+  }, [_c('div', {
+    staticClass: "progress-bar",
+    style: ({
+      'width': _vm.progress + '%'
+    })
+  })]), _vm._v(" "), _c('span', {
+    staticClass: "progress-description"
+  }, [_vm._v("\n                    " + _vm._s(_vm.description) + "\n            \t")])])], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-65d83d88", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6d88a1f4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('aside', {
+    staticClass: "control-sidebar",
+    class: 'control-sidebar-' + _vm.sidebarTheme,
+    attrs: {
+      "id": "sidebar"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "tab-content"
+  }, [_c('sidebar-settings')], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "nav nav-tabs nav-justified control-sidebar-tabs"
+  }, [_c('li', {
+    staticClass: "active"
+  }, [_c('a', {
+    attrs: {
+      "href": "#control-sidebar-settings-tab",
+      "data-toggle": "tab"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-gears"
+  })])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-611d80f4", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6d88a1f4", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-656b2be0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6ee69b96\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "box",
+    class: _vm.boxClass,
+    attrs: {
+      "id": 'box-' + _vm._uid
+    }
+  }, [_c('div', {
+    staticClass: "box-header",
+    class: _vm.headerClass
+  }, [(_vm.icon) ? _c('i', {
+    class: _vm.icon
+  }) : _vm._e(), _vm._v(" "), (_vm.title) ? _c('h3', {
+    staticClass: "box-title"
+  }, [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "box-tools pull-right"
+  }, [(_vm.search) ? _c('span', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query),
+      expression: "query"
+    }],
+    staticClass: "search margin-right-xs",
+    attrs: {
+      "type": "text",
+      "size": "15",
+      "id": 'search-input-' + _vm._uid
+    },
+    domProps: {
+      "value": (_vm.query)
+    },
+    on: {
+      "input": [function($event) {
+        if ($event.target.composing) { return; }
+        _vm.query = $event.target.value
+      }, function($event) {
+        _vm.$emit('query-update', _vm.query)
+      }]
+    }
+  }), _vm._v(" "), (_vm.query) ? _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.query = null
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-times"
+  })]) : _vm._e(), _vm._v(" "), _c('a', {
+    staticClass: "input-button",
+    on: {
+      "click": function($event) {
+        _vm.searchInput.focus()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search"
+  })])]) : _vm._e(), _vm._v(" "), _vm._t("btn-box-tool"), _vm._v(" "), (_vm.badge !== null) ? _c('span', {
+    staticClass: "badge bg-orange"
+  }, [_vm._v("\n                " + _vm._s(_vm.badge) + "\n            ")]) : _vm._e(), _vm._v(" "), (_vm.refresh) ? _c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.$emit('refresh')
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-refresh"
+  })]) : _vm._e(), _vm._v(" "), (_vm.collapsible) ? _c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.toggle()
+      }
+    }
+  }, [(!_vm.collapsed) ? _c('i', {
+    staticClass: "fa fa-minus"
+  }) : _vm._e(), _vm._v(" "), (_vm.collapsed) ? _c('i', {
+    staticClass: "fa fa-plus"
+  }) : _vm._e()]) : _vm._e(), _vm._v(" "), (_vm.removable) ? _c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    attrs: {
+      "data-widget": "remove"
+    },
+    on: {
+      "click": function($event) {
+        _vm.$emit('remove')
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-times"
+  })]) : _vm._e()], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "box-body",
+    style: (_vm.bodyStyle),
+    attrs: {
+      "id": 'box-body-' + _vm._uid
+    }
+  }, [_vm._t("default")], 2), _vm._v(" "), (_vm.footer) ? _c('div', {
+    staticClass: "box-footer"
+  }, [_vm._t("footer")], 2) : _vm._e(), _vm._v(" "), (_vm.overlay) ? _c('overlay') : _vm._e()], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6ee69b96", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-708d93cc\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [(_vm.element.config.content === 'text') ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.element.value),
+      expression: "element.value"
+    }],
+    class: _vm.inputClass,
+    attrs: {
+      "readonly": _vm.element.config.readonly,
+      "type": "text",
+      "disabled": _vm.element.config.disabled
+    },
+    domProps: {
+      "value": (_vm.element.value)
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.$emit('update')
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.element.value = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.element.config.content === 'email') ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.element.value),
+      expression: "element.value"
+    }],
+    class: _vm.inputClass,
+    attrs: {
+      "readonly": _vm.element.config.readonly,
+      "type": "email",
+      "disabled": _vm.element.config.disabled
+    },
+    domProps: {
+      "value": (_vm.element.value)
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.$emit('update')
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.element.value = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.element.config.content === 'number') ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.element.value),
+      expression: "element.value"
+    }],
+    class: _vm.inputClass,
+    attrs: {
+      "readonly": _vm.element.config.readonly,
+      "type": "number",
+      "step": _vm.element.config.step,
+      "min": _vm.element.config.min,
+      "max": _vm.element.config.max,
+      "disabled": _vm.element.config.disabled
+    },
+    domProps: {
+      "value": (_vm.element.value)
+    },
+    on: {
+      "keydown": function($event) {
+        _vm.$emit('update')
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.element.value = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.element.config.content === 'checkbox') ? _c('span', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.element.value),
+      expression: "element.value"
+    }],
+    staticClass: "toggle",
+    class: _vm.inputClass,
+    attrs: {
+      "id": _vm.element.column,
+      "readonly": _vm.element.config.readonly,
+      "type": "checkbox",
+      "disabled": _vm.element.config.disabled
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.element.value) ? _vm._i(_vm.element.value, null) > -1 : (_vm.element.value)
+    },
+    on: {
+      "click": function($event) {
+        _vm.$emit('update')
+      },
+      "__c": function($event) {
+        var $$a = _vm.element.value,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.element.value = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.element.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.element.value = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "toggle-input",
+    attrs: {
+      "for": _vm.element.column
+    }
+  }, [_c('i')])]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-708d93cc", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7584da02\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "vue-select",
+    attrs: {
+      "id": 'bs-select-' + _vm._uid
+    }
+  }, [(_vm.clearButton) ? _c('i', {
+    staticClass: "fa fa-times clear-button btn-box-tool",
+    on: {
+      "click": function($event) {
+        _vm.clear()
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "selectpicker",
+      rawName: "v-selectpicker"
+    }],
+    class: _vm.selectClass,
+    attrs: {
+      "multiple": _vm.multiple,
+      "id": 'select-' + _vm._uid,
+      "name": _vm.name,
+      "disabled": _vm.disabled
+    }
+  }, _vm._l((_vm.optionList), function(option) {
+    return _c('option', {
+      domProps: {
+        "value": option.key,
+        "innerHTML": _vm._s(option.value)
+      }
+    })
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7584da02", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-775b6510\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39641,8 +44148,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "panel-heading",
     attrs: {
-      "role": "tab",
-      "id": 'heading-' + _vm.groupName + '-' + _vm._uid
+      "id": 'heading-' + _vm.groupName + '-' + _vm._uid,
+      "role": "tab"
     }
   }, [_c('h4', {
     staticClass: "panel-title"
@@ -39767,177 +44274,305 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-656b2be0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-775b6510", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8a14b1f8\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Chart.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f55e5ce\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    class: 'box box-' + _vm.headerClass
+  return _c('box', {
+    attrs: {
+      "theme": this.errors.any() ? 'danger' : _vm.data.theme,
+      "icon": _vm.data.icon,
+      "title": _vm.data.title,
+      "open": "",
+      "collapsible": "",
+      "removable": "",
+      "border": !_vm.data.solid,
+      "solid": _vm.data.solid,
+      "overlay": _vm.loading
+    }
+  }, [_c('span', {
+    slot: "btn-box-tool"
+  }, [(_vm.data.action === 'patch' && _vm.hasChanges) ? _c('i', {
+    staticClass: "btn btn-box-tool btn-sm fa fa-undo",
+    on: {
+      "click": function($event) {
+        _vm.setOriginal()
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _c('i', {
+    staticClass: "btn btn-box-tool btn-sm fa fa-eraser",
+    on: {
+      "click": function($event) {
+        _vm.clear()
+      }
+    }
+  })]), _vm._v(" "), _c('form', {
+    attrs: {
+      "name": 'form-' + _vm._uid
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.submit()
+      }
+    }
   }, [_c('div', {
-    staticClass: "box-header with-border"
-  }, [_c('h3', {
-    staticClass: "box-title"
-  }, [_c('i', {
-    class: _vm.icons[_vm.type]
-  }), _vm._v("\n                " + _vm._s(_vm.title) + "\n            ")]), _vm._v(" "), _c('div', {
-    staticClass: "box-tools pull-right"
-  }, [_c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
+    staticClass: "row"
+  }, _vm._l((_vm.data.attributes), function(element) {
+    return _c('div', {
+      class: _vm.data.wrapperClass
+    }, [_c('div', {
+      staticClass: "form-group",
+      class: {
+        'has-error': _vm.errors.has(element.column)
+      }
+    }, [_c('label', [_vm._v("\n                        " + _vm._s(element.label) + "\n                    ")]), _vm._v(" "), (_vm.errors.has(element.column)) ? _c('small', {
+      staticClass: "text-danger",
+      staticStyle: {
+        "float": "right"
+      }
+    }, [_vm._v("\n                        " + _vm._s(_vm.errors.get(element.column)) + "\n                    ")]) : _vm._e(), _vm._v(" "), (element.config.custom) ? _c('span', [_vm._t(element.column, null, {
+      element: element,
+      errors: _vm.errors
+    })], 2) : _c('span', [(element.config.type === 'input') ? _c('vue-form-input', {
+      attrs: {
+        "element": element
+      },
+      on: {
+        "update": function($event) {
+          _vm.errors.clear(element.column)
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (element.config.type === 'select') ? _c('vue-select', {
+      attrs: {
+        "options": element.config.options,
+        "source": element.config.source,
+        "key-map": element.config.keyMap,
+        "multiple": element.config.multiple,
+        "disabled": element.config.disabled
+      },
+      on: {
+        "input": function($event) {
+          _vm.errors.clear(element.column);
+        }
+      },
+      model: {
+        value: (element.value),
+        callback: function($$v) {
+          element.value = $$v
+        },
+        expression: "element.value"
+      }
+    }) : _vm._e(), _vm._v(" "), (element.config.type === 'datepicker') ? _c('datepicker', {
+      attrs: {
+        "format": element.config.format,
+        "time": element.config.time,
+        "disabled": element.config.disabled
+      },
+      on: {
+        "input": function($event) {
+          _vm.errors.clear(element.column)
+        }
+      },
+      model: {
+        value: (element.value),
+        callback: function($$v) {
+          element.value = $$v
+        },
+        expression: "element.value"
+      }
+    }) : _vm._e(), _vm._v(" "), (element.config.type === 'timepicker') ? _c('datepicker', {
+      attrs: {
+        "format": element.config.format,
+        "time-only": "",
+        "disabled": element.config.disabled
+      },
+      on: {
+        "input": function($event) {
+          _vm.errors.clear(element.column)
+        }
+      },
+      model: {
+        value: (element.value),
+        callback: function($$v) {
+          element.value = $$v
+        },
+        expression: "element.value"
+      }
+    }) : _vm._e(), _vm._v(" "), (element.config.type === 'textarea') ? _c('textarea', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (element.value),
+        expression: "element.value"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "rows": element.config.rows,
+        "disabled": element.config.disabled
+      },
+      domProps: {
+        "value": (element.value)
+      },
+      on: {
+        "input": [function($event) {
+          if ($event.target.composing) { return; }
+          element.value = $event.target.value
+        }, function($event) {
+          _vm.errors.clear(element.column)
+        }]
+      }
+    }) : _vm._e()], 1)])])
+  })), _vm._v(" "), _c('center', [(_vm.data.action === 'patch') ? _c('button', {
+    staticClass: "btn btn-danger",
     attrs: {
       "type": "button"
     },
     on: {
       "click": function($event) {
-        _vm.getData()
+        _vm.showModal = true
       }
     }
-  }, [_c('i', {
-    staticClass: "fa fa-refresh"
-  })]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
-    staticClass: "box-body"
-  }, [_c('canvas', {
+  }, [_c('span', [_vm._v(_vm._s(_vm.data.submitDelete))])]) : _vm._e(), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
     attrs: {
-      "id": 'canvas-' + _vm._uid
+      "type": "submit",
+      "disabled": _vm.errors.any()
     }
-  })]), _vm._v(" "), (_vm.loading) ? _c('div', {
-    staticClass: "overlay"
-  }, [_c('i', {
-    staticClass: "fa fa-spin fa-spinner spinner-custom"
-  })]) : _vm._e()])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-box-tool btn-sm",
+  }, [(_vm.data.action === 'post') ? _c('span', [_vm._v(_vm._s(_vm.data.submitStore))]) : _c('span', [_vm._v(_vm._s(_vm.data.submitUpdate))])])])], 1), _vm._v(" "), _c('modal', {
     attrs: {
-      "data-widget": "collapse"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-minus"
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8a14b1f8", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-92bd9a26\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times pull-right btn-box-tool input-clear",
+      "show": _vm.showModal
+    },
     on: {
-      "click": _vm.clearInput
+      "cancel-action": function($event) {
+        _vm.showModal = false
+      },
+      "commit-action": function($event) {
+        _vm.destroy()
+      }
     }
-  })
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-92bd9a26", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-7f55e5ce", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b178108c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8261f3ca\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
-  }, _vm._l((_vm.grid), function(column) {
-    return _c('div', {
-      class: _vm.columnsClass
-    }, _vm._l((column), function(element, index) {
-      return _c('div', [(element.type === 'chart') ? _c('chart', {
-        ref: element.type + '-' + index,
-        refInFor: true,
-        attrs: {
-          "type": element.data.type,
-          "source": element.data.source,
-          "params": _vm.params,
-          "collapsed": element.data.collapsed
-        }
-      }) : _vm._e(), _vm._v(" "), (element.type === 'table') ? _c('data-table', {
-        ref: element.type + '-' + index,
-        refInFor: true,
-        attrs: {
-          "source": element.data.source,
-          "id": element.type + '-' + index
-        }
-      }, [_c('span', {
-        slot: "data-table-title"
-      }, [_vm._v("Cheltuieli cu termen depasit")])]) : _vm._e()], 1)
-    }))
-  }))
+    staticClass: "overlay"
+  }, [_c('spinner', {
+    staticClass: "spinner",
+    attrs: {
+      "line-fg-color": _vm.lineFgColor,
+      "line-bg-color": _vm.lineBgColor,
+      "speed": _vm.speed,
+      "size": _vm.size
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b178108c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-8261f3ca", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c37dae18\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8a36f6e2\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    staticClass: "control-sidebar-subheading"
-  }, [_vm._v("\n\t\t" + _vm._s(_vm.store.labels.language) + "\n\t\t"), _c('li', {
-    staticClass: "dropdown pull-right",
-    staticStyle: {
-      "list-style-type": "none"
-    }
+  return _c('li', {
+    staticClass: "dropdown user user-menu"
   }, [_c('a', {
     staticClass: "dropdown-toggle",
     attrs: {
-      "data-toggle": "dropdown",
-      "href": "#"
+      "href": "#",
+      "data-toggle": "dropdown"
     }
-  }, [_c('i', {
-    class: _vm.language.flag
-  })]), _vm._v(" "), _c('ul', {
-    staticClass: "dropdown-menu language-selector"
-  }, _vm._l((_vm.store.languages), function(language) {
-    return _c('li', [_c('a', {
-      on: {
-        "click": function($event) {
-          _vm.setLanguage(language.name)
-        }
+  }, [_c('img', {
+    staticClass: "user-image user-avatar",
+    attrs: {
+      "src": '/core/avatars/' + _vm.store.user.avatarId,
+      "alt": "User Image"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "hidden-xs"
+  }, [_vm._v("\n                " + _vm._s(_vm.store.user.first_name) + "\n            ")])]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu"
+  }, [_c('li', {
+    staticClass: "user-header"
+  }, [_c('img', {
+    staticClass: "img-square user-avatar",
+    attrs: {
+      "src": '/core/avatars/' + _vm.store.user.avatarId,
+      "alt": "User Image"
+    }
+  }), _vm._v(" "), _c('p', [_vm._v("\n                    " + _vm._s(_vm.store.user.first_name) + "\n                    "), _c('small', [_vm._v("\n                        " + _vm._s(_vm.store.user.role.name) + "\n                    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "pull-left"
+  }, [_c('a', {
+    staticClass: "btn btn-sm btn-default",
+    attrs: {
+      "href": '/administration/users/' + _vm.store.user.id,
+      "id": "profile-button"
+    }
+  }, [_vm._v("\n                        " + _vm._s(_vm.store.labels.profile) + "\n                    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "pull-right"
+  }, [_c('a', {
+    staticClass: "btn btn-sm btn-default",
+    attrs: {
+      "href": "#",
+      "id": "logout-button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.logout()
       }
-    }, [_c('i', {
-      staticClass: "flag-icon",
-      class: language.flag
-    })])])
-  }))])])
+    }
+  }, [_vm._v("\n                      " + _vm._s(_vm.store.labels.logout) + "\n                    ")]), _vm._v(" "), _c('form', {
+    attrs: {
+      "id": "logout-form",
+      "action": "/logout",
+      "method": "POST"
+    }
+  }, [_c('input', {
+    attrs: {
+      "name": "_token",
+      "type": "hidden"
+    },
+    domProps: {
+      "value": _vm.csrfToken
+    }
+  })])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c37dae18", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-8a36f6e2", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-dd0feede\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-947f0468\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39991,29 +44626,1054 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-dd0feede", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-947f0468", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9568767a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "nav-tabs-custom"
+  }, [_c('ul', {
+    staticClass: "nav nav-tabs",
+    class: {
+      'pull-right': _vm.reverse
+    }
+  }, [_vm._l((_vm.sortedTabs), function(tab, index) {
+    return _c('li', {
+      class: {
+        'active': index === _vm.selected
+      }
+    }, [_c('a', {
+      on: {
+        "click": function($event) {
+          _vm.selected = index
+        }
+      }
+    }, [(_vm.hasBadges) ? _c('span', [_vm._v("\n    \t\t\t\t\t" + _vm._s(tab.label)), _c('span', {
+      staticClass: "badge bg-orange margin-left-xs"
+    }, [_vm._v(_vm._s(tab.badge))])]) : _c('span', [_vm._v(_vm._s(tab))])])])
+  }), _vm._v(" "), (_vm.reverse) ? _c('li', {
+    staticClass: "pull-left header"
+  }, [_c('i', {
+    class: _vm.icon
+  }), _vm._v(" " + _vm._s(_vm.title) + "\n\t\t\t")]) : _vm._e()], 2), _vm._v(" "), (_vm.tabs.length && _vm.selected >= 0) ? _c('div', {
+    staticClass: "tab-content"
+  }, _vm._l((_vm.tabs), function(tab, index) {
+    return (_vm.sortedActive === index) ? _c('div', {
+      staticClass: "tab-pane active"
+    }, [(_vm.hasBadges) ? _vm._t(tab.label) : _vm._t(tab)], 2) : _vm._e()
+  })) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-9568767a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-be583158\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.grid), function(column) {
+    return _c('div', {
+      class: _vm.columnsClass
+    }, _vm._l((column), function(element, index) {
+      return _c('div', [(element.type === 'chart') ? _c('chart', {
+        ref: element.type + '-' + index,
+        refInFor: true,
+        attrs: {
+          "solid": true,
+          "type": element.data.type,
+          "source": element.data.source,
+          "params": _vm.params,
+          "collapsed": element.data.collapsed
+        }
+      }) : _vm._e(), _vm._v(" "), (element.type === 'table') ? _c('data-table', {
+        ref: element.type + '-' + index,
+        refInFor: true,
+        attrs: {
+          "solid": true,
+          "source": element.data.source,
+          "id": element.type + '-' + index
+        }
+      }, [_c('span', {
+        slot: "data-table-title"
+      }, [_vm._v("Cheltuieli cu termen depasit")])]) : _vm._e()], 1)
+    }))
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-be583158", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d1cd5502\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('box', {
+    attrs: {
+      "theme": _vm.theme,
+      "collapsible": "",
+      "refresh": "",
+      "removable": "",
+      "solid": _vm.solid,
+      "open": true,
+      "icon": "fa fa-table",
+      "title": _vm.tableName,
+      "overlay": _vm.loading
+    },
+    on: {
+      "refresh": function($event) {
+        _vm.getData()
+      }
+    }
+  }, [_c('span', {
+    slot: "btn-box-tool"
+  }, [_c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.clearState()
+      }
+    }
+  }, [_vm._v("\n            reset\n        ")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.toggleDisplayClass()
+      }
+    }
+  }, [(_vm.classes.display) ? _c('i', {
+    staticClass: "fa fa-th-list"
+  }) : _c('i', {
+    staticClass: "fa fa-bars"
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-box-tool btn-sm",
+    on: {
+      "click": function($event) {
+        _vm.toggleCompactClass()
+      }
+    }
+  }, [(_vm.classes.compact) ? _c('i', {
+    staticClass: "fa fa-th-large"
+  }) : _c('i', {
+    staticClass: "fa fa-th"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "table-responsive"
+  }, [_c('table', {
+    staticClass: "table display",
+    class: _vm.tableClass,
+    attrs: {
+      "id": _vm.tableId,
+      "width": "100%"
+    }
+  }, [_c('thead', [_c('tr', _vm._l((_vm.header), function(label) {
+    return _c('th', {
+      class: 'text-' + _vm.headerAlign
+    }, [_vm._v("\n                        " + _vm._s(label) + "\n                    ")])
+  }))]), _vm._v(" "), _c('tbody', {
+    class: 'text-' + _vm.bodyAlign
+  }), _vm._v(" "), (_vm.hasTotals) ? _c('tfoot', [_c('tr', _vm._l((_vm.header.length), function(i) {
+    return _c('td', {
+      staticClass: "text-center"
+    }, [(i == 2) ? _c('span', {
+      staticClass: "totals"
+    }, [_vm._v("\n                        " + _vm._s(_vm.labels.totals) + "\n                    ")]) : _vm._e()])
+  }))]) : _vm._e()])]), _vm._v(" "), _c('modal', {
+    attrs: {
+      "show": _vm.showModal
+    },
+    on: {
+      "cancel-action": function($event) {
+        _vm.showModal = false;
+        _vm.deleteRoute = null
+      },
+      "commit-action": function($event) {
+        _vm.deleteModel()
+      }
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d1cd5502", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d9900a1c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('span', {
+    staticClass: "file-upload",
+    on: {
+      "click": _vm.openFileBrowser
+    }
+  }, [_vm._t("upload-button", [_c('i', {
+    staticClass: "btn btn-xs btn-primary fa fa-upload"
+  })])], 2), _vm._v(" "), _c('form', {
+    attrs: {
+      "id": 'file-form-' + _vm._uid
+    }
+  }, [_c('input', {
+    staticClass: "hidden",
+    attrs: {
+      "id": 'upload-input-' + _vm._uid,
+      "type": "file",
+      "name": _vm.multiple ? 'files[]' : 'file',
+      "multiple": _vm.multiple
+    },
+    on: {
+      "change": _vm.upload
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d9900a1c", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-e931bb32\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "btn-group paginate pull-right",
+    class: {
+      'with-border': _vm.border
+    }
+  }, [_c('div', {
+    staticClass: "btn-group paginate",
+    class: {
+      'open': _vm.open
+    }
+  }, [_c('button', {
+    staticClass: "btn btn-default btn-flat paginate",
+    on: {
+      "click": function($event) {
+        _vm.open = !_vm.open
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-bars"
+  }), _vm._v("\n\t\t\t\t" + _vm._s(_vm.pageLength) + "\n\t\t\t\t"), (!_vm.open) ? _c('span', {
+    staticClass: "fa fa-caret-down"
+  }) : _c('span', {
+    staticClass: "fa fa-caret-up"
+  })]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu paginate"
+  }, _vm._l((_vm.lengths), function(length) {
+    return (length !== _vm.pageLength && length) ? _c('li', [_c('a', {
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          _vm.changeLength(length)
+        }
+      }
+    }, [_vm._v(_vm._s(length))])]) : _vm._e()
+  }))]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-flat"
+  }, [_c('i', {
+    staticClass: "fa fa-eye margin-right-xs"
+  }), _vm._v("\n\t\t\t" + _vm._s(_vm.start) + " -> " + _vm._s(_vm.offset) + " / " + _vm._s(_vm.records) + "\n\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-flat previous",
+    on: {
+      "click": _vm.previous
+    }
+  }, [_vm._v("<\n\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-flat current-page"
+  }, [_c('i', {
+    staticClass: "fa fa-file-text-o margin-right-xs"
+  }), _vm._v(_vm._s(_vm.current) + " / " + _vm._s(_vm.pages) + "\n\t\t")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-flat next",
+    on: {
+      "click": _vm.next
+    }
+  }, [_vm._v(">\n\t\t")])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _vm._t("default", null, {
+    list: _vm.computedList
+  })], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e931bb32", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-fb6afdca\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ol', {
+    staticClass: "breadcrumb"
+  }, _vm._l((_vm.breadcrumbs), function(breadcrumb) {
+    return _c('li', [_c('a', {
+      class: _vm.getClass(breadcrumb),
+      attrs: {
+        "href": _vm.getLink(breadcrumb)
+      }
+    }, [_vm._v("\n                " + _vm._s(breadcrumb.label) + "\n            ")])])
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-fb6afdca", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.VueMultiselect=e():t.VueMultiselect=e()}(this,function(){return function(t){function e(n){if(i[n])return i[n].exports;var s=i[n]={i:n,l:!1,exports:{}};return t[n].call(s.exports,s,s.exports,e),s.l=!0,s.exports}var i={};return e.m=t,e.c=i,e.i=function(t){return t},e.d=function(t,i,n){e.o(t,i)||Object.defineProperty(t,i,{configurable:!1,enumerable:!0,get:n})},e.n=function(t){var i=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(i,"a",i),i},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=4)}([function(t,e,i){"use strict";function n(t,e,i){return e in t?Object.defineProperty(t,e,{value:i,enumerable:!0,configurable:!0,writable:!0}):t[e]=i,t}function s(t){return 0!==t&&(!(!Array.isArray(t)||0!==t.length)||!t)}function l(t,e){return void 0===t&&(t="undefined"),null===t&&(t="null"),!1===t&&(t="false"),-1!==t.toString().toLowerCase().indexOf(e.trim())}function o(t,e,i,n){return t.filter(function(t){return l(n(t,i),e)})}function r(t){return t.filter(function(t){return!t.$isLabel})}function a(t,e){return function(i){return i.reduce(function(i,n){return n[t]&&n[t].length?(i.push({$groupLabel:n[e],$isLabel:!0}),i.concat(n[t])):i},[])}}function u(t,e,i,s,l){return function(r){return r.map(function(r){var a;if(!r[i])return console.warn("Options passed to vue-multiselect do not contain groups, despite the config."),[];var u=o(r[i],t,e,l);return u.length?(a={},n(a,s,r[s]),n(a,i,u),a):[]})}}Object.defineProperty(e,"__esModule",{value:!0});var c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},h=i(2),p=function(t){return t&&t.__esModule?t:{default:t}}(h),d=function(){for(var t=arguments.length,e=Array(t),i=0;i<t;i++)e[i]=arguments[i];return function(t){return e.reduce(function(t,e){return e(t)},t)}};e.default={data:function(){return{search:"",isOpen:!1,prefferedOpenDirection:"below",optimizedHeight:this.maxHeight,internalValue:this.value||0===this.value?(0,p.default)(Array.isArray(this.value)?this.value:[this.value]):[]}},props:{internalSearch:{type:Boolean,default:!0},options:{type:Array,required:!0},multiple:{type:Boolean,default:!1},value:{type:null,default:function(){return[]}},trackBy:{type:String},label:{type:String},searchable:{type:Boolean,default:!0},clearOnSelect:{type:Boolean,default:!0},hideSelected:{type:Boolean,default:!1},placeholder:{type:String,default:"Select option"},allowEmpty:{type:Boolean,default:!0},resetAfter:{type:Boolean,default:!1},closeOnSelect:{type:Boolean,default:!0},customLabel:{type:Function,default:function(t,e){return s(t)?"":e?t[e]:t}},taggable:{type:Boolean,default:!1},tagPlaceholder:{type:String,default:"Press enter to create a tag"},max:{type:Number},id:{default:null},optionsLimit:{type:Number,default:1e3},groupValues:{type:String},groupLabel:{type:String},blockKeys:{type:Array,default:function(){return[]}},preserveSearch:{type:Boolean,default:!1}},mounted:function(){this.multiple||this.clearOnSelect||console.warn("[Vue-Multiselect warn]: ClearOnSelect and Multiple props can’t be both set to false.")},computed:{filteredOptions:function(){var t=this.search||"",e=t.toLowerCase(),i=this.options.concat();return this.internalSearch?(i=this.groupValues?this.filterAndFlat(i,e,this.label):o(i,e,this.label,this.customLabel),i=this.hideSelected?i.filter(this.isNotSelected):i):i=this.groupValues?a(this.groupValues,this.groupLabel)(i):i,this.taggable&&e.length&&!this.isExistingOption(e)&&i.unshift({isTag:!0,label:t}),i.slice(0,this.optionsLimit)},valueKeys:function(){var t=this;return this.trackBy?this.internalValue.map(function(e){return e[t.trackBy]}):this.internalValue},optionKeys:function(){var t=this;return(this.groupValues?this.flatAndStrip(this.options):this.options).map(function(e){return t.customLabel(e,t.label).toString().toLowerCase()})},currentOptionLabel:function(){return this.multiple?this.searchable?"":this.placeholder:this.internalValue[0]?this.getOptionLabel(this.internalValue[0]):this.searchable?"":this.placeholder}},watch:{internalValue:function(t,e){this.resetAfter&&this.internalValue.length&&(this.search="",this.internalValue=[])},search:function(){this.$emit("search-change",this.search,this.id)},value:function(t){this.internalValue=this.getInternalValue(t)}},methods:{getValue:function(){return this.multiple?(0,p.default)(this.internalValue):0===this.internalValue.length?null:(0,p.default)(this.internalValue[0])},getInternalValue:function(t){return null===t||void 0===t?[]:this.multiple?(0,p.default)(t):(0,p.default)([t])},filterAndFlat:function(t,e,i){return d(u(e,i,this.groupValues,this.groupLabel,this.customLabel),a(this.groupValues,this.groupLabel))(t)},flatAndStrip:function(t){return d(a(this.groupValues,this.groupLabel),r)(t)},updateSearch:function(t){this.search=t},isExistingOption:function(t){return!!this.options&&this.optionKeys.indexOf(t)>-1},isSelected:function(t){var e=this.trackBy?t[this.trackBy]:t;return this.valueKeys.indexOf(e)>-1},isNotSelected:function(t){return!this.isSelected(t)},getOptionLabel:function(t){return s(t)?"":t.isTag?t.label:t.$isLabel?t.$groupLabel:this.customLabel(t,this.label)||""},select:function(t,e){if(!(-1!==this.blockKeys.indexOf(e)||this.disabled||t.$isLabel||t.$isDisabled||this.max&&this.multiple&&this.internalValue.length===this.max)){if(t.isTag)this.$emit("tag",t.label,this.id),this.search="",this.closeOnSelect&&!this.multiple&&this.deactivate();else{if(this.isSelected(t))return void("Tab"!==e&&this.removeElement(t));this.multiple?this.internalValue.push(t):this.internalValue=[t],this.$emit("select",(0,p.default)(t),this.id),this.$emit("input",this.getValue(),this.id),this.clearOnSelect&&(this.search="")}this.closeOnSelect&&this.deactivate()}},removeElement:function(t){var e=!(arguments.length>1&&void 0!==arguments[1])||arguments[1];if(!this.disabled){if(!this.allowEmpty&&this.internalValue.length<=1)return void this.deactivate();var i="object"===(void 0===t?"undefined":c(t))?this.valueKeys.indexOf(t[this.trackBy]):this.valueKeys.indexOf(t);this.internalValue.splice(i,1),this.$emit("remove",(0,p.default)(t),this.id),this.$emit("input",this.getValue(),this.id),this.closeOnSelect&&e&&this.deactivate()}},removeLastElement:function(){-1===this.blockKeys.indexOf("Delete")&&0===this.search.length&&Array.isArray(this.internalValue)&&this.removeElement(this.internalValue[this.internalValue.length-1],!1)},activate:function(){var t=this;this.isOpen||this.disabled||(this.adjustPosition(),this.groupValues&&0===this.pointer&&this.filteredOptions.length&&(this.pointer=1),this.isOpen=!0,this.searchable?(this.preserveSearch||(this.search=""),this.$nextTick(function(){return t.$refs.search.focus()})):this.$el.focus(),this.$emit("open",this.id))},deactivate:function(){this.isOpen&&(this.isOpen=!1,this.searchable?this.$refs.search.blur():this.$el.blur(),this.preserveSearch||(this.search=""),this.$emit("close",this.getValue(),this.id))},toggle:function(){this.isOpen?this.deactivate():this.activate()},adjustPosition:function(){if("undefined"!=typeof window){var t=this.$el.getBoundingClientRect().top,e=window.innerHeight-this.$el.getBoundingClientRect().bottom;e>this.maxHeight||e>t||"below"===this.openDirection||"bottom"===this.openDirection?(this.prefferedOpenDirection="below",this.optimizedHeight=Math.min(e,this.maxHeight)-40):(this.prefferedOpenDirection="above",this.optimizedHeight=Math.min(t,this.maxHeight)-40)}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={data:function(){return{pointer:0,visibleElements:this.maxHeight/this.optionHeight}},props:{showPointer:{type:Boolean,default:!0},optionHeight:{type:Number,default:40}},computed:{pointerPosition:function(){return this.pointer*this.optionHeight}},watch:{filteredOptions:function(){this.pointerAdjust()}},methods:{optionHighlight:function(t,e){return{"multiselect__option--highlight":t===this.pointer&&this.showPointer,"multiselect__option--selected":this.isSelected(e)}},addPointerElement:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"Enter",e=t.key;this.filteredOptions.length>0&&this.select(this.filteredOptions[this.pointer],e),this.pointerReset()},pointerForward:function(){this.pointer<this.filteredOptions.length-1&&(this.pointer++,this.$refs.list.scrollTop<=this.pointerPosition-this.visibleElements*this.optionHeight&&(this.$refs.list.scrollTop=this.pointerPosition-(this.visibleElements-1)*this.optionHeight),this.filteredOptions[this.pointer].$isLabel&&this.pointerForward())},pointerBackward:function(){this.pointer>0?(this.pointer--,this.$refs.list.scrollTop>=this.pointerPosition&&(this.$refs.list.scrollTop=this.pointerPosition),this.filteredOptions[this.pointer].$isLabel&&this.pointerBackward()):this.filteredOptions[0].$isLabel&&this.pointerForward()},pointerReset:function(){this.closeOnSelect&&(this.pointer=0,this.$refs.list&&(this.$refs.list.scrollTop=0))},pointerAdjust:function(){this.pointer>=this.filteredOptions.length-1&&(this.pointer=this.filteredOptions.length?this.filteredOptions.length-1:0)},pointerSet:function(t){this.pointer=t}}}},function(t,e,i){"use strict";function n(t){if(Array.isArray(t))return t.map(n);if(t&&"object"===(void 0===t?"undefined":s(t))){for(var e={},i=Object.keys(t),l=0,o=i.length;l<o;l++){var r=i[l];e[r]=n(t[r])}return e}return t}Object.defineProperty(e,"__esModule",{value:!0});var s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};e.default=n},function(t,e,i){i(6);var n=i(7)(i(5),i(8),null,null);t.exports=n.exports},function(t,e,i){"use strict";function n(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.deepClone=e.pointerMixin=e.multiselectMixin=e.Multiselect=void 0;var s=i(3),l=n(s),o=i(0),r=n(o),a=i(1),u=n(a),c=i(2),h=n(c);e.default=l.default,e.Multiselect=l.default,e.multiselectMixin=r.default,e.pointerMixin=u.default,e.deepClone=h.default},function(t,e,i){"use strict";function n(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var s=i(0),l=n(s),o=i(1),r=n(o);e.default={name:"vue-multiselect",mixins:[l.default,r.default],props:{name:{type:String,default:""},selectLabel:{type:String,default:"Press enter to select"},selectedLabel:{type:String,default:"Selected"},deselectLabel:{type:String,default:"Press enter to remove"},showLabels:{type:Boolean,default:!0},limit:{type:Number,default:99999},maxHeight:{type:Number,default:300},limitText:{type:Function,default:function(t){return"and "+t+" more"}},loading:{type:Boolean,default:!1},disabled:{type:Boolean,default:!1},openDirection:{type:String,default:""},showNoResults:{type:Boolean,default:!0},tabindex:{type:Number,default:0}},computed:{visibleValue:function(){return this.multiple?this.internalValue.slice(0,this.limit):[]},deselectLabelText:function(){return this.showLabels?this.deselectLabel:""},selectLabelText:function(){return this.showLabels?this.selectLabel:""},selectedLabelText:function(){return this.showLabels?this.selectedLabel:""},inputStyle:function(){if(this.multiple&&this.value&&this.value.length)return this.isOpen?{width:"auto"}:{display:"none"}},contentStyle:function(){return this.options.length?{display:"inline-block"}:{display:"block"}},isAbove:function(){return"above"===this.openDirection||"top"===this.openDirection||"below"!==this.openDirection&&"bottom"!==this.openDirection&&"above"===this.prefferedOpenDirection}}}},function(t,e){},function(t,e){t.exports=function(t,e,i,n){var s,l=t=t||{},o=typeof t.default;"object"!==o&&"function"!==o||(s=t,l=t.default);var r="function"==typeof l?l.options:l;if(e&&(r.render=e.render,r.staticRenderFns=e.staticRenderFns),i&&(r._scopeId=i),n){var a=Object.create(r.computed||null);Object.keys(n).forEach(function(t){var e=n[t];a[t]=function(){return e}}),r.computed=a}return{esModule:s,exports:l,options:r}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",{staticClass:"multiselect",class:{"multiselect--active":t.isOpen,"multiselect--disabled":t.disabled,"multiselect--above":t.isAbove},attrs:{tabindex:t.tabindex},on:{focus:function(e){t.activate()},blur:function(e){!t.searchable&&t.deactivate()},keydown:[function(e){return"button"in e||!t._k(e.keyCode,"down",40)?e.target!==e.currentTarget?null:(e.preventDefault(),void t.pointerForward()):null},function(e){return"button"in e||!t._k(e.keyCode,"up",38)?e.target!==e.currentTarget?null:(e.preventDefault(),void t.pointerBackward()):null},function(e){return"button"in e||!t._k(e.keyCode,"enter",13)||!t._k(e.keyCode,"tab",9)?(e.stopPropagation(),e.target!==e.currentTarget?null:void t.addPointerElement(e)):null}],keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"esc",27))return null;t.deactivate()}}},[t._t("carret",[i("div",{staticClass:"multiselect__select",on:{mousedown:function(e){e.preventDefault(),e.stopPropagation(),t.toggle()}}})]),t._v(" "),t._t("clear",null,{search:t.search}),t._v(" "),i("div",{ref:"tags",staticClass:"multiselect__tags"},[i("div",{directives:[{name:"show",rawName:"v-show",value:t.visibleValue.length>0,expression:"visibleValue.length > 0"}],staticClass:"multiselect__tags-wrap"},[t._l(t.visibleValue,function(e){return[t._t("tag",[i("span",{staticClass:"multiselect__tag"},[i("span",{domProps:{textContent:t._s(t.getOptionLabel(e))}}),t._v(" "),i("i",{staticClass:"multiselect__tag-icon",attrs:{"aria-hidden":"true",tabindex:"1"},on:{keydown:function(i){if(!("button"in i)&&t._k(i.keyCode,"enter",13))return null;i.preventDefault(),t.removeElement(e)},mousedown:function(i){i.preventDefault(),t.removeElement(e)}}})])],{option:e,search:t.search,remove:t.removeElement})]})],2),t._v(" "),t.internalValue&&t.internalValue.length>t.limit?[i("strong",{staticClass:"multiselect__strong",domProps:{textContent:t._s(t.limitText(t.internalValue.length-t.limit))}})]:t._e(),t._v(" "),i("transition",{attrs:{name:"multiselect__loading"}},[t._t("loading",[i("div",{directives:[{name:"show",rawName:"v-show",value:t.loading,expression:"loading"}],staticClass:"multiselect__spinner"})])],2),t._v(" "),t.searchable?i("input",{ref:"search",staticClass:"multiselect__input",style:t.inputStyle,attrs:{name:t.name,id:t.id,type:"text",autocomplete:"off",placeholder:t.placeholder,disabled:t.disabled},domProps:{value:t.isOpen?t.search:t.currentOptionLabel},on:{input:function(e){t.updateSearch(e.target.value)},focus:function(e){e.preventDefault(),t.activate()},blur:function(e){e.preventDefault(),t.deactivate()},keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"esc",27))return null;t.deactivate()},keydown:[function(e){if(!("button"in e)&&t._k(e.keyCode,"down",40))return null;e.preventDefault(),t.pointerForward()},function(e){if(!("button"in e)&&t._k(e.keyCode,"up",38))return null;e.preventDefault(),t.pointerBackward()},function(e){return"button"in e||!t._k(e.keyCode,"enter",13)?(e.preventDefault(),e.stopPropagation(),e.target!==e.currentTarget?null:void t.addPointerElement(e)):null},function(e){if(!("button"in e)&&t._k(e.keyCode,"delete",[8,46]))return null;e.stopPropagation(),t.removeLastElement()}]}}):t._e(),t._v(" "),t.searchable?t._e():i("span",{staticClass:"multiselect__single",domProps:{textContent:t._s(t.currentOptionLabel)}})],2),t._v(" "),i("transition",{attrs:{name:"multiselect"}},[i("div",{directives:[{name:"show",rawName:"v-show",value:t.isOpen,expression:"isOpen"}],ref:"list",staticClass:"multiselect__content-wrapper",style:{maxHeight:t.optimizedHeight+"px"},on:{mousedown:function(t){t.preventDefault()}}},[i("ul",{staticClass:"multiselect__content",style:t.contentStyle},[t._t("beforeList"),t._v(" "),t.multiple&&t.max===t.internalValue.length?i("li",[i("span",{staticClass:"multiselect__option"},[t._t("maxElements",[t._v("Maximum of "+t._s(t.max)+" options selected. First remove a selected option to select another.")])],2)]):t._e(),t._v(" "),!t.max||t.internalValue.length<t.max?t._l(t.filteredOptions,function(e,n){return i("li",{key:n,staticClass:"multiselect__element"},[e&&(e.$isLabel||e.$isDisabled)?t._e():i("span",{staticClass:"multiselect__option",class:t.optionHighlight(n,e),attrs:{"data-select":e&&e.isTag?t.tagPlaceholder:t.selectLabelText,"data-selected":t.selectedLabelText,"data-deselect":t.deselectLabelText},on:{click:function(i){i.stopPropagation(),t.select(e)},mouseenter:function(e){if(e.target!==e.currentTarget)return null;t.pointerSet(n)}}},[t._t("option",[i("span",[t._v(t._s(t.getOptionLabel(e)))])],{option:e,search:t.search})],2),t._v(" "),e&&(e.$isLabel||e.$isDisabled)?i("span",{staticClass:"multiselect__option multiselect__option--disabled",class:t.optionHighlight(n,e)},[t._t("option",[i("span",[t._v(t._s(t.getOptionLabel(e)))])],{option:e,search:t.search})],2):t._e()])}):t._e(),t._v(" "),i("li",{directives:[{name:"show",rawName:"v-show",value:t.showNoResults&&0===t.filteredOptions.length&&t.search&&!t.loading,expression:"showNoResults && (filteredOptions.length === 0 && search && !loading)"}]},[i("span",{staticClass:"multiselect__option"},[t._t("noResult",[t._v("No elements found. Consider changing the search query.")])],2)]),t._v(" "),t._t("afterList")],2)])])],2)},staticRenderFns:[]}}])});
+
+/***/ }),
+
+/***/ "./node_modules/vue-simple-spinner/dist/vue-simple-spinner.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * vue-simple-spinner v1.2.5 (https://github.com/dzwillia/vue-simple-spinner)
+ * (c) 2017 David Z. Williams
+ * Released under the MIT License.
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["vue-simple-spinner"] = factory();
+	else
+		root["vue-simple-spinner"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(7)
+
+var Component = __webpack_require__(5)(
+  /* script */
+  __webpack_require__(1),
+  /* template */
+  __webpack_require__(6),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+var isNumber = function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+exports.default = {
+  name: 'vue-simple-spinner',
+  props: {
+    'size': {
+      default: 32
+    },
+    'line-size': {
+      type: Number,
+      default: 3
+    },
+    'line-bg-color': {
+      type: String,
+      default: '#eee'
+    },
+    'line-fg-color': {
+      type: String,
+      default: '#2196f3' },
+    'speed': {
+      type: Number,
+      default: 0.8
+    },
+    'spacing': {
+      type: Number,
+      default: 4
+    },
+    'message': {
+      type: String,
+      default: ''
+    },
+    'font-size': {
+      type: Number,
+      default: 13
+    },
+    'text-fg-color': {
+      type: String,
+      default: '#555'
+    }
+  },
+  computed: {
+    size_px: function size_px() {
+      switch (this.size) {
+        case 'tiny':
+          return 12;
+        case 'small':
+          return 16;
+        case 'medium':
+          return 32;
+        case 'large':
+          return 48;
+        case 'big':
+          return 64;
+        case 'huge':
+          return 96;
+        case 'massive':
+          return 128;
+      }
+
+      return isNumber(this.size) ? this.size : 32;
+    },
+    line_size_px: function line_size_px() {
+      switch (this.size) {
+        case 'tiny':
+          return 1;
+        case 'small':
+          return 2;
+        case 'medium':
+          return 3;
+        case 'large':
+          return 3;
+        case 'big':
+          return 4;
+        case 'huge':
+          return 4;
+        case 'massive':
+          return 5;
+      }
+
+      return isNumber(this.lineSize) ? this.lineSize : 4;
+    },
+    text_margin_top: function text_margin_top() {
+      switch (this.size) {
+        case 'tiny':
+        case 'small':
+        case 'medium':
+        case 'large':
+        case 'big':
+        case 'huge':
+        case 'massive':
+          return Math.min(Math.max(Math.ceil(this.size_px / 8), 3), 12);
+      }
+
+      return isNumber(this.spacing) ? this.spacing : 4;
+    },
+    text_font_size: function text_font_size() {
+      switch (this.size) {
+        case 'tiny':
+        case 'small':
+        case 'medium':
+        case 'large':
+        case 'big':
+        case 'huge':
+        case 'massive':
+          return Math.min(Math.max(Math.ceil(this.size_px * 0.4), 11), 32);
+      }
+
+      return isNumber(this.fontSize) ? this.fontSize : 13;
+    },
+    spinner_style: function spinner_style() {
+      return {
+        'margin': '0 auto',
+        'border-radius': '100%',
+        'border': this.line_size_px + 'px solid ' + this.lineBgColor,
+        'border-top': this.line_size_px + 'px solid ' + this.lineFgColor,
+        'width': this.size_px + 'px',
+        'height': this.size_px + 'px',
+        'animation': 'vue-simple-spinner-spin ' + this.speed + 's linear infinite'
+      };
+    },
+    text_style: function text_style() {
+      return {
+        'margin-top': this.text_margin_top + 'px',
+        'color': this.textFgColor,
+        'font-size': this.text_font_size + 'px',
+        'text-align': 'center'
+      };
+    }
+  }
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.VueSimpleSpinner = undefined;
+
+var _Spinner = __webpack_require__(0);
+
+var _Spinner2 = _interopRequireDefault(_Spinner);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+if (typeof window !== 'undefined' && window.Vue) {
+  Vue.component('vue-simple-spinner', _Spinner2.default);
+}
+
+exports.VueSimpleSpinner = _Spinner2.default;
+exports.default = _Spinner2.default;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".vue-simple-spinner{transition:all .3s linear}@keyframes vue-simple-spinner-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function() {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		var result = [];
+		for(var i = 0; i < this.length; i++) {
+			var item = this[i];
+			if(item[2]) {
+				result.push("@media " + item[2] + "{" + item[1] + "}");
+			} else {
+				result.push(item[1]);
+			}
+		}
+		return result.join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "vue-simple-spinner",
+    style: (_vm.spinner_style)
+  }), _vm._v(" "), (_vm.message.length > 0) ? _c('div', {
+    staticClass: "vue-simple-spinner",
+    style: (_vm.text_style)
+  }, [_vm._v(_vm._s(_vm.message))]) : _vm._e()])
+},staticRenderFns: []}
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue");
+var content = __webpack_require__(3);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("44466127", content, false);
+var update = __webpack_require__(8)("d89557e4", content, true);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(9)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction) {
+  isProduction = _isProduction
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ })
+/******/ ]);
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/flatpickr/dist/themes/material_green.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/flatpickr/dist/themes/material_green.css");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("2a13c0dd", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Sidebar.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Sidebar.vue");
+   module.hot.accept("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./material_green.css", function() {
+     var newContent = require("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./material_green.css");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40024,23 +45684,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("646c58cf", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("17fe1f36", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Typeahead.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Typeahead.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./Datepicker.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./Datepicker.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40051,23 +45711,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6268757e", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("2c1d9367", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSelector.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSelector.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./VueSelect.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./VueSelect.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40078,23 +45738,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-multiselect/dist/vue-multiselect.min.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-multiselect/dist/vue-multiselect.min.css");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("0210bea4", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("d1c097d4", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueSelect.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueSelect.vue");
+   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./vue-multiselect.min.css", function() {
+     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./vue-multiselect.min.css");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40105,23 +45765,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6a5ccdc2", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("82bf3f4c", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DataTable.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DataTable.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40132,23 +45792,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("0c1acc5b", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("3133a4a0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMenu.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMenu.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueFilter.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueFilter.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40159,23 +45819,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("3acdbe5d", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("da30fbb0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Timepicker.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Timepicker.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Typeahead.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Typeahead.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40186,23 +45846,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6621ba44", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("66d57dba", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tutorial.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tutorial.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ReorderableMenu.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ReorderableMenu.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40213,23 +45873,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("52a93d64", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("3a02e48a", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ReorderableMenu.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ReorderableMenu.vue");
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSelector.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSelector.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40240,23 +45900,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("f6fab5f4", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("cff96d96", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUploader.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUploader.vue");
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSelector.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSelector.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40267,23 +45927,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("1dd8c87c", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("61bf9873", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Notifications.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Notifications.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40294,23 +45954,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("dd6bdb60", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("2c67040f", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datepicker.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datepicker.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserWidget.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserWidget.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40321,23 +45981,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("bd9e5ce0", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("ac3c6b10", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckboxManager.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckboxManager.vue");
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tutorial.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tutorial.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40348,23 +46008,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("200b7c56", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("879387b8", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InputClear.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InputClear.vue");
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Sidebar.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Sidebar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40375,23 +46035,239 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("269bc4b8", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("776b245c", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSelector.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSelector.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Box.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Box.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("37f56729", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueSelectLegacy.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VueSelectLegacy.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("f3ba0f90", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckboxManager.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckboxManager.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("488a121d", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Overlay.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Overlay.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("5f6f0ba6", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMenu.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMenu.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("2b3841b0", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tabs.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tabs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("13a6fd39", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DataTable.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DataTable.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("24d2790c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUploader.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUploader.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("7a567e41", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Paginate.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Paginate.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -51274,8 +57150,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_tooltip__ = __webpack_require__("./node_modules/v-tooltip/dist/v-tooltip.common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_v_tooltip__);
-window.Laravel = { "csrfToken": document.head.querySelector("[name=csrf-token]").content };
-window.eventHub = new Vue();
+window.Laravel = {
+    "csrfToken": document.head.querySelector("[name=csrf-token]").content
+};
+
+var bus = new Vue();
+Vue.prototype.$bus = bus;
 
 window.initBootstrapSelect = __webpack_require__("./resources/assets/js/vendor/laravel-enso/modules/initBootstrapSelect.js");
 
@@ -51321,7 +57201,6 @@ Vue.mixin({
             if (error.response && error.response.data.level) {
                 return toastr[error.response.data.level](error.response.data.message);
             }
-
             throw error;
         }
     }
@@ -51333,9 +57212,9 @@ Array.prototype.unique = function () {
     });
 };
 
-Array.prototype.pluck = function (key) {
+Array.prototype.pluck = function (value) {
     return this.map(function (object) {
-        return object[key];
+        return object[value];
     });
 };
 
@@ -51347,45 +57226,117 @@ String.prototype.capitalizeFirst = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-// Vue.component('notifications', require('./vendor/laravel-enso/components/Notifications.vue'));
-Vue.component('userMenu', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue"));
-Vue.component('sidebar', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue"));
-Vue.component('sidebarSettings', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue"));
-Vue.component('languageSelector', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue"));
-Vue.component('tutorial', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue"));
-Vue.component('settingSwitch', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue"));
-Vue.component('themeSelector', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue"));
-Vue.component('typeahead', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue"));
-Vue.component('inputClear', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/InputClear.vue"));
-Vue.component('datepicker', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue"));
-Vue.component('timepicker', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue"));
-// Vue.component('documentsManager', require('./vendor/laravel-enso/components/DocumentsManager.vue'));
-// Vue.component('commentsManager', require('./vendor/laravel-enso/components/CommentsManager.vue'));
-Vue.component('modal', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Modal.vue"));
-Vue.component('vueFilter', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue"));
-Vue.component('chart', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Chart.vue"));
-Vue.component('dataTable', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/DataTable.vue"));
-Vue.component('vueSelect', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue"));
-Vue.component('checkboxManager', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue"));
-Vue.component('roleConfigurator', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue"));
-Vue.component('dashboard', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue"));
-Vue.component('reorderableMenu', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue"));
-Vue.component('fileUploader', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue"));
-Vue.component('draggable', __webpack_require__("./node_modules/vuedraggable/dist/vuedraggable.js"));
+Vue.component('notifications', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue"));
+Vue.component('userMenu', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue"));
+Vue.component('sidebar', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue"));
+Vue.component('sidebarSettings', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue"));
+Vue.component('languageSelector', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue"));
+Vue.component('tutorial', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue"));
+Vue.component('settingSwitch', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue"));
+Vue.component('themeSelector', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue"));
+Vue.component('box', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue"));
+Vue.component('smallBox', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue"));
+Vue.component('infoBox', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue"));
+Vue.component('boxWidget', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue"));
+Vue.component('userWidget', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue"));
+Vue.component('page', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue"));
+Vue.component('breadcrumbs', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue"));
+Vue.component('tabs', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue"));
 
-/* END core END */
+Vue.component('modal', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue"));
+Vue.component('vueFilter', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue"));
+Vue.component('dashboard', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue"));
+Vue.component('typeahead', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue"));
+Vue.component('datepicker', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue"));
+Vue.component('paginate', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue"));
+
+Vue.component('chart', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue"));
+
+Vue.component('dataTable', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue"));
+
+Vue.component('vueSelect', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue"));
+Vue.component('vueSelectLegacy', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue"));
+
+Vue.component('roleConfigurator', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue"));
+Vue.component('checkboxManager', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue"));
+
+Vue.component('reorderableMenu', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue"));
+
+Vue.component('fileUploader', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue"));
+
+Vue.component('vueForm', __webpack_require__("./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue"));
+
+Vue.component('draggable', __webpack_require__("./node_modules/vuedraggable/dist/vuedraggable.js"));
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Chart.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/classes/Errors.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Errors = function () {
+    function Errors() {
+        _classCallCheck(this, Errors);
+
+        this.errors = {};
+    }
+
+    _createClass(Errors, [{
+        key: "any",
+        value: function any() {
+            return Object.keys(this.errors).length > 0;
+        }
+    }, {
+        key: "has",
+        value: function has(field) {
+            return this.errors.hasOwnProperty(field);
+        }
+    }, {
+        key: "get",
+        value: function get(field) {
+            return this.has(field) ? this.errors[field][0] : null;
+        }
+    }, {
+        key: "set",
+        value: function set(errors) {
+            this.errors = errors;
+        }
+    }, {
+        key: "clear",
+        value: function clear(field) {
+            if (this.has(field)) {
+                Vue.delete(this.errors, field);
+            }
+        }
+    }, {
+        key: "empty",
+        value: function empty() {
+            for (var field in this.errors) {
+                this.clear(field);
+            }
+        }
+    }]);
+
+    return Errors;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Errors);
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Chart.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8a14b1f8\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Chart.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-253ad2ae\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue"),
   /* styles */
   null,
   /* scopeId */
@@ -51393,7 +57344,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Chart.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/charts/Chart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Chart.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51404,9 +57355,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8a14b1f8", Component.options)
+    hotAPI.createRecord("data-v-253ad2ae", Component.options)
   } else {
-    hotAPI.reload("data-v-8a14b1f8", Component.options)
+    hotAPI.reload("data-v-253ad2ae", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51418,19 +57369,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656b2be0\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d1cd5502\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-656b2be0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d1cd5502\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51438,93 +57389,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/CheckboxManager.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] CheckboxManager.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-656b2be0", Component.options)
-  } else {
-    hotAPI.reload("data-v-656b2be0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b178108c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Dashboard.vue"),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Dashboard.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dashboard.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b178108c", Component.options)
-  } else {
-    hotAPI.reload("data-v-b178108c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/DataTable.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2261692c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue")
-}
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2261692c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/DataTable.vue"),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/DataTable.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/datatable/DataTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DataTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51535,9 +57400,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2261692c", Component.options)
+    hotAPI.createRecord("data-v-d1cd5502", Component.options)
   } else {
-    hotAPI.reload("data-v-2261692c", Component.options)
+    hotAPI.reload("data-v-d1cd5502", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51549,19 +57414,61 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-be583158\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/Dashboard.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Dashboard.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-be583158", Component.options)
+  } else {
+    hotAPI.reload("data-v-be583158", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-611d80f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/flatpickr/dist/themes/material_green.css")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-07df432c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-611d80f4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Datepicker.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-07df432c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51569,7 +57476,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Datepicker.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/Datepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Datepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51580,9 +57487,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611d80f4", Component.options)
+    hotAPI.createRecord("data-v-07df432c", Component.options)
   } else {
-    hotAPI.reload("data-v-611d80f4", Component.options)
+    hotAPI.reload("data-v-07df432c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51594,19 +57501,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec1a254\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c34d226\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3ec1a254\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/FileUploader.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-0c34d226\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51614,97 +57521,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/FileUploader.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] FileUploader.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ec1a254", Component.options)
-  } else {
-    hotAPI.reload("data-v-3ec1a254", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/InputClear.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92bd9a26\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue")
-}
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-92bd9a26\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/InputClear.vue"),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/InputClear.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] InputClear.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-92bd9a26", Component.options)
-  } else {
-    hotAPI.reload("data-v-92bd9a26", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Modal.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ec6b5a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue")
-}
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-43ec6b5a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Modal.vue"),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Modal.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51715,9 +57532,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-43ec6b5a", Component.options)
+    hotAPI.createRecord("data-v-0c34d226", Component.options)
   } else {
-    hotAPI.reload("data-v-43ec6b5a", Component.options)
+    hotAPI.reload("data-v-0c34d226", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51729,19 +57546,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d90627a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e931bb32\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3d90627a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-e931bb32\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51749,9 +57566,9 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/ReorderableMenu.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/Paginate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] ReorderableMenu.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Paginate.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -51760,9 +57577,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d90627a", Component.options)
+    hotAPI.createRecord("data-v-e931bb32", Component.options)
   } else {
-    hotAPI.reload("data-v-3d90627a", Component.options)
+    hotAPI.reload("data-v-e931bb32", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51774,60 +57591,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3dcaa395\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue"),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/RoleConfigurator.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] RoleConfigurator.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3dcaa395", Component.options)
-  } else {
-    hotAPI.reload("data-v-3dcaa395", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b8a87e5\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1d6973f2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2b8a87e5\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Timepicker.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1d6973f2\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51835,52 +57611,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Timepicker.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Timepicker.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2b8a87e5", Component.options)
-  } else {
-    hotAPI.reload("data-v-2b8a87e5", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10895326\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue")
-}
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-10895326\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/Typeahead.vue"),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/Typeahead.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/Typeahead.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Typeahead.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51891,9 +57622,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-10895326", Component.options)
+    hotAPI.createRecord("data-v-1d6973f2", Component.options)
   } else {
-    hotAPI.reload("data-v-10895326", Component.options)
+    hotAPI.reload("data-v-1d6973f2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51905,19 +57636,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-228e71d8\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1790ac5e\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-228e71d8\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/UserMenu.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1790ac5e\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51925,48 +57656,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/UserMenu.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] UserMenu.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-228e71d8", Component.options)
-  } else {
-    hotAPI.reload("data-v-228e71d8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1e00bcc4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/VueFilter.vue"),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/VueFilter.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/enso/VueFilter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueFilter.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51977,9 +57667,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e00bcc4", Component.options)
+    hotAPI.createRecord("data-v-1790ac5e", Component.options)
   } else {
-    hotAPI.reload("data-v-1e00bcc4", Component.options)
+    hotAPI.reload("data-v-1790ac5e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51991,19 +57681,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17dec448\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d9900a1c\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-17dec448\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/VueSelect.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d9900a1c\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52011,7 +57701,184 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/VueSelect.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/filemanager/FileUploader.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] FileUploader.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d9900a1c", Component.options)
+  } else {
+    hotAPI.reload("data-v-d9900a1c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24fde759\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-24fde759\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/menumanager/ReorderableMenu.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ReorderableMenu.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-24fde759", Component.options)
+  } else {
+    hotAPI.reload("data-v-24fde759", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-775b6510\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-775b6510\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/rolemanager/CheckboxManager.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CheckboxManager.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-775b6510", Component.options)
+  } else {
+    hotAPI.reload("data-v-775b6510", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27bf2d2d\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/rolemanager/RoleConfigurator.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RoleConfigurator.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-27bf2d2d", Component.options)
+  } else {
+    hotAPI.reload("data-v-27bf2d2d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-multiselect/dist/vue-multiselect.min.css")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08e06b59\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-08e06b59\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/select/VueSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52022,9 +57889,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-17dec448", Component.options)
+    hotAPI.createRecord("data-v-08e06b59", Component.options)
   } else {
-    hotAPI.reload("data-v-17dec448", Component.options)
+    hotAPI.reload("data-v-08e06b59", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52036,19 +57903,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c37dae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7584da02\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c37dae18\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7584da02\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52056,7 +57923,527 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/LanguageSelector.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/select/VueSelectLegacy.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] VueSelectLegacy.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7584da02", Component.options)
+  } else {
+    hotAPI.reload("data-v-7584da02", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ee69b96\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6ee69b96\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Box.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Box.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6ee69b96", Component.options)
+  } else {
+    hotAPI.reload("data-v-6ee69b96", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5e21d97a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/BoxWidget.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] BoxWidget.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5e21d97a", Component.options)
+  } else {
+    hotAPI.reload("data-v-5e21d97a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-fb6afdca\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Breadcrumbs.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Breadcrumbs.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fb6afdca", Component.options)
+  } else {
+    hotAPI.reload("data-v-fb6afdca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-65d83d88\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/InfoBox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] InfoBox.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-65d83d88", Component.options)
+  } else {
+    hotAPI.reload("data-v-65d83d88", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a1fd873\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4a1fd873\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Notifications.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Notifications.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a1fd873", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a1fd873", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8261f3ca\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8261f3ca\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Overlay.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Overlay.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8261f3ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-8261f3ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1d8a0354\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Page.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d8a0354", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d8a0354", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3e0e1f09\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/SmallBox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] SmallBox.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e0e1f09", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e0e1f09", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9568767a\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9568767a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/Tabs.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Tabs.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9568767a", Component.options)
+  } else {
+    hotAPI.reload("data-v-9568767a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8a36f6e2\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8a36f6e2\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserMenu.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] UserMenu.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8a36f6e2", Component.options)
+  } else {
+    hotAPI.reload("data-v-8a36f6e2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bfdae18\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4bfdae18\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/UserWidget.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] UserWidget.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4bfdae18", Component.options)
+  } else {
+    hotAPI.reload("data-v-4bfdae18", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-421edf22\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue")
+}
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-421edf22\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/LanguageSelector.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LanguageSelector.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52067,9 +58454,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c37dae18", Component.options)
+    hotAPI.createRecord("data-v-421edf22", Component.options)
   } else {
-    hotAPI.reload("data-v-c37dae18", Component.options)
+    hotAPI.reload("data-v-421edf22", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52081,15 +58468,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2851e0c0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5c51f33b\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue"),
   /* styles */
   null,
   /* scopeId */
@@ -52097,7 +58484,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/Settings.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Settings.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Settings.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52108,9 +58495,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2851e0c0", Component.options)
+    hotAPI.createRecord("data-v-5c51f33b", Component.options)
   } else {
-    hotAPI.reload("data-v-2851e0c0", Component.options)
+    hotAPI.reload("data-v-5c51f33b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52122,19 +58509,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-08c26fcf\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6d88a1f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-08c26fcf\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6d88a1f4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52142,7 +58529,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/Sidebar.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Sidebar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sidebar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52153,9 +58540,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-08c26fcf", Component.options)
+    hotAPI.createRecord("data-v-6d88a1f4", Component.options)
   } else {
-    hotAPI.reload("data-v-08c26fcf", Component.options)
+    hotAPI.reload("data-v-6d88a1f4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52167,15 +58554,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-dd0feede\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-947f0468\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue"),
   /* styles */
   null,
   /* scopeId */
@@ -52183,7 +58570,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/Switch.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52194,9 +58581,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dd0feede", Component.options)
+    hotAPI.createRecord("data-v-947f0468", Component.options)
   } else {
-    hotAPI.reload("data-v-dd0feede", Component.options)
+    hotAPI.reload("data-v-947f0468", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52208,19 +58595,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e132fb\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31ff1540\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-11e132fb\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-31ff1540\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52228,7 +58615,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/ThemeSelector.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/ThemeSelector.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ThemeSelector.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52239,9 +58626,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-11e132fb", Component.options)
+    hotAPI.createRecord("data-v-31ff1540", Component.options)
   } else {
-    hotAPI.reload("data-v-11e132fb", Component.options)
+    hotAPI.reload("data-v-31ff1540", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52253,19 +58640,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue":
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc43a7b\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-60c44cf6\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue")
 }
 var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
   /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue"),
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue"),
   /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2cc43a7b\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue"),
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-60c44cf6\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue"),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52273,7 +58660,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/sidebar/Tutorial.vue"
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueadminlte/sidebar/Tutorial.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tutorial.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52284,9 +58671,91 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2cc43a7b", Component.options)
+    hotAPI.createRecord("data-v-60c44cf6", Component.options)
   } else {
-    hotAPI.reload("data-v-2cc43a7b", Component.options)
+    hotAPI.reload("data-v-60c44cf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f55e5ce\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueforms/VueForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] VueForm.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7f55e5ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-7f55e5ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-708d93cc\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/adi/code/enso/resources/assets/js/vendor/laravel-enso/components/vueforms/VueFormInput.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] VueFormInput.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-708d93cc", Component.options)
+  } else {
+    hotAPI.reload("data-v-708d93cc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

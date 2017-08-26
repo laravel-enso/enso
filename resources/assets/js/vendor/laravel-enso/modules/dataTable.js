@@ -2,7 +2,7 @@ $.extend(true, $.fn.dataTable.defaults, {
     dom: 'Brftip',
     stateSave: Store.user.preferences.global.dtStateSave,
     lengthMenu: [10, 15, 20, 25, 30],
-    autoWidth: true,
+    autoWidth: false,
     pagingType: "full_numbers",
     filter: true,
     stateDuration: 60 * 60 * 24 * 90,

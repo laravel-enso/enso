@@ -4,15 +4,21 @@ input.toggle {
   opacity: 0;
 }
 
+.form-group input.toggle + label {
+    margin-top: 6px;
+    margin-bottom: 1px;
+}
+
 input.toggle + label {
     // display: block;
+    cursor: pointer;
     position: relative;
     box-shadow: inset 0 0 0px 1px $brand-primary;
     text-indent: -5000px;
     height: 22.5px;
     width: 37.5px;
     border-radius: 15px;
-    }
+}
 
 input.toggle + label:before {
     content: "";
@@ -27,7 +33,7 @@ input.toggle + label:before {
     -moz-transition: .25s ease-in-out;
     -webkit-transition: .25s ease-in-out;
     transition: .25s ease-in-out;
-    }
+}
 
 input.toggle + label:after {
     content: "";
@@ -54,4 +60,8 @@ input.toggle:checked + label:before {
 input.toggle:checked + label:after {
     left: 15px;
     box-shadow: inset 0 0 0 1px rgba(19, 191, 17, 1), 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+input.toggle:disabled + label:before {
+    background: #eee;
 }
