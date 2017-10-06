@@ -1,11 +1,12 @@
 {
-    "/js/app.js": "/js/app.js?id=70d4de90a817c2aa2524",
-    "/css/app.css": "/css/app.css?id=d41d8cd98f00b204e980",
-    "/css/main.css": "/css/main.css?id=d19e10abc0a200954713",
-    "/css/auth.css": "/css/auth.css?id=f6c50b0e36faa5c92a46",
-    "/css/error.css": "/css/error.css?id=1669591b078183f3db46",
-    "/css/welcome.css": "/css/welcome.css?id=13c100926f00c6a478d7",
-    "/js/defaults.js": "/js/defaults.js?id=bca1ef38185e5c02bf0a",
-    "/js/auth.js": "/js/auth.js?id=85c24c1d98524916e00f",
+    "/js/app.js": "/js/app.js?id=541cf68363cf77ebe822",
+    "/css/app.css": "/css/app.css?id=9980b7a66e2f967e1703",
+    "/css/enso.css": "/css/enso.css?id=1b06d6536b58487ed586",
+    "/css/particles.css": "/css/particles.css?id=749a7c7bd3bdd4dd342c",
+    "/css/auth.css": "/css/auth.css?id=00d98eaf6fe5b3c71134",
+    "/css/error.css": "/css/error.css?id=916c34b86bc34f8f34d2",
+    "/css/welcome.css": "/css/welcome.css?id=96b491431335c5874b4a",
+    "/js/defaults.js": "/js/defaults.js?id=5f6c1ebe67c6b3a4aae2",
+    "/js/auth.js": "/js/auth.js?id=e187e06ad1c8027ec634",
     "/css/all.css": "/css/all.css?id=97ec37cdbb60d44f5b03"
 }

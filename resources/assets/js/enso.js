@@ -6,6 +6,7 @@ const bus = new Vue();
 Vue.prototype.$bus = bus;
 
 window.initBootstrapSelect = require('./vendor/laravel-enso/modules/initBootstrapSelect');
+require('animate.css');
 
 import VTooltip from 'v-tooltip';
 Vue.use(VTooltip);
@@ -46,8 +47,8 @@ Vue.directive('focus', {
 Vue.mixin({
     methods: {
         reportEnsoException(error) {
-            if (error.response && error.response.data.level) {
-                return toastr[error.response.data.level](error.response.data.message);
+            if (error.response && error.response.data.message) {
+                toastr.error(error.response.data.message);
             }
             throw error;
         }

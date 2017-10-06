@@ -9,9 +9,11 @@ mix
 	.js('resources/assets/js/app.js', 'public/js')
 	.js('resources/assets/js/auth.js', 'public/js')
 	.js('resources/assets/js/defaults.js', 'public/js')
+	.sourceMaps()
 
 	.sass('resources/assets/sass/app.scss', 'public/css')
-	.sass('resources/assets/sass/main.scss', 'public/css')
+	.sass('resources/assets/sass/enso.scss', 'public/css')
+	.sass('resources/assets/sass/particles.scss', 'public/css')
 	.sass('resources/assets/sass/auth.scss', 'public/css')
 	.sass('resources/assets/sass/error.scss', 'public/css')
 	.sass('resources/assets/sass/welcome.scss', 'public/css')
