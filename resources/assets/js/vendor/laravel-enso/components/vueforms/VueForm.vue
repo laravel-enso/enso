@@ -22,7 +22,7 @@
                         :class="data.wrapperClass">
                     <div class="form-group"
                         :class="{ 'has-error' : errors.has(element.column) }">
-                        <label>
+                        <label class="bold">
                             {{ element.label }}
                         </label>
                         <small v-if="errors.has(element.column)"

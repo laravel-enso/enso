@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "390ab79ac4a275f7ba6f2551a0c01a82",
+    "content-hash": "46d7bad2104a051d8af7929bb6f54ca7",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1045,17 +1045,83 @@
             "time": "2017-09-19T10:48:35+00:00"
         },
         {
-            "name": "laravel-enso/core",
-            "version": "1.3.5",
+            "name": "laravel-enso/contacts",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "c0ede30c452b8bc34455189f8f6b0c3edd87ac44"
+                "url": "https://github.com/laravel-enso/Contacts.git",
+                "reference": "64dcde552bac4399281786a3043b2eec832e9edd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c0ede30c452b8bc34455189f8f6b0c3edd87ac44",
-                "reference": "c0ede30c452b8bc34455189f8f6b0c3edd87ac44",
+                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/64dcde552bac4399281786a3043b2eec832e9edd",
+                "reference": "64dcde552bac4399281786a3043b2eec832e9edd",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/datatable": "1.3.*",
+                "laravel-enso/helpers": "1.3.*",
+                "laravel-enso/structuremanager": "1.3.*",
+                "laravel-enso/trackwho": "1.3.*",
+                "laravel-enso/vueadminlte": "1.3.*",
+                "laravel/framework": "5.5.*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "laravel-enso/testhelper": "1.3.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEnso\\Contacts\\ContactsServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\Contacts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Ocneanu",
+                    "email": "aocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mihai Ocneanu",
+                    "email": "mihai.ocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Contacts dependency for Larave Enso",
+            "homepage": "https://github.com/laravel-enso/Contacts",
+            "keywords": [
+                "contacts",
+                "laravel-enso"
+            ],
+            "time": "2017-10-06T12:15:40+00:00"
+        },
+        {
+            "name": "laravel-enso/core",
+            "version": "1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/Core.git",
+                "reference": "da21d08046fc03e89727e511742b1892ca4bbf8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/da21d08046fc03e89727e511742b1892ca4bbf8d",
+                "reference": "da21d08046fc03e89727e511742b1892ca4bbf8d",
                 "shasum": ""
             },
             "require": {
@@ -1139,7 +1205,7 @@
                 "laravel-boilerplate",
                 "laravel-enso"
             ],
-            "time": "2017-10-06T14:47:34+00:00"
+            "time": "2017-10-08T12:26:33+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -1313,16 +1379,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "1.3.2",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "b138e8fa63ec151fcdecf55872a1cb143d6dbf90"
+                "reference": "666ce4290bb0a39b651066a9f7499526c33a7d1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/b138e8fa63ec151fcdecf55872a1cb143d6dbf90",
-                "reference": "b138e8fa63ec151fcdecf55872a1cb143d6dbf90",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/666ce4290bb0a39b651066a9f7499526c33a7d1c",
+                "reference": "666ce4290bb0a39b651066a9f7499526c33a7d1c",
                 "shasum": ""
             },
             "require": {
@@ -1365,7 +1431,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2017-10-05T08:04:26+00:00"
+            "time": "2017-10-09T09:36:38+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2143,16 +2209,16 @@
         },
         {
             "name": "laravel-enso/vueadminlte",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueAdminLTE.git",
-                "reference": "9a676ff26c2d040dde8f994f7dbc76c913acef13"
+                "reference": "b072eb0aa5067b496faf78001aedc4ee38c06b86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueAdminLTE/zipball/9a676ff26c2d040dde8f994f7dbc76c913acef13",
-                "reference": "9a676ff26c2d040dde8f994f7dbc76c913acef13",
+                "url": "https://api.github.com/repos/laravel-enso/VueAdminLTE/zipball/b072eb0aa5067b496faf78001aedc4ee38c06b86",
+                "reference": "b072eb0aa5067b496faf78001aedc4ee38c06b86",
                 "shasum": ""
             },
             "require": {
@@ -2193,7 +2259,7 @@
                 "laravel-enso",
                 "vue-admin-lte"
             ],
-            "time": "2017-09-26T13:34:04+00:00"
+            "time": "2017-10-09T09:41:19+00:00"
         },
         {
             "name": "laravel-enso/vuecomponents",
@@ -5490,16 +5556,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.0",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61"
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1bcaca096998de32c29535fdd2dea0c475e8f61",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
                 "shasum": ""
             },
             "require": {
@@ -5570,7 +5636,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-06T03:14:57+00:00"
+            "time": "2017-10-07T17:53:53+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

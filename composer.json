@@ -7,6 +7,7 @@
         "php": ">=7.0",
         "barryvdh/laravel-debugbar": "^2.3",
         "fideloper/proxy": "~3.3",
+        "laravel-enso/contacts": "1.3.1",
         "laravel-enso/core": "1.3.*",
         "laravel-enso/vueadminlte": "1.3.*",
         "laravel/framework": "5.5.*",

@@ -8,14 +8,18 @@
 
 &nbsp;
 
+
+Note: Documentation is pending update for version 2.x. Moving forward, we decided to continue developing Enso as a SPA, using Bulma as the CSS framework, for too many reasons to list here :smiley: 
+------
+
+
 <!--h-->
 ### Official Documentation
-Check out the official documentation [here](https://docs.laravel-enso.com/).
+Check out the official documentation for v1.x [here](https://docs.laravel-enso.com/).
 <!--/h-->
  
 ### Demo
-
-[Demo application](https://laravel-enso.com), just login with user: `admin@login.com` and password: `password` 
+v1.x [demo application](https://laravel-enso.com), use `admin@login.com` & `password` to login.
 
 
 ### Installation Steps
