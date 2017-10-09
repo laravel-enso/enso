@@ -5,7 +5,7 @@
 @section('content')
 
 	<section class="content-header" v-cloak>
-		@include('laravel-enso/menumanager::breadcrumbs')
+		<breadcrumbs></breadcrumbs>
 	</section>
 	<section class="content">
 		<dashboard preferences="{{ $preferences }}" v-cloak>

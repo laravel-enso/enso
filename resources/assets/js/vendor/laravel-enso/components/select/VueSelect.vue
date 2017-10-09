@@ -3,6 +3,7 @@
     <div :id="'vue-select-' + _uid"
         class="vue-select">
         <multiselect :value="value"
+            :internal-search="!isServerSide"
             searchable allow-empty
             :disabled="disabled"
             :multiple="multiple"
@@ -74,11 +75,15 @@
                 type: Object,
                 default: null
             },
+            placeholder: {
+                type: String,
+                default: null
+            },
             labels: {
                 type: Object,
                 default() {
                     return Store ? {
-                        placeholder: Store.labels.selectOption,
+                        placeholder: this.placeholder || Store.labels.placeholder,
                         selected: Store.labels.selected,
                         select: Store.labels.select,
                         deselect: Store.labels.deselect,

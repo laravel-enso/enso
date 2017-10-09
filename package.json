@@ -12,9 +12,9 @@
     "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.16.2",
     "bootstrap-sass": "^3.3.7",
-    "cross-env": "^3.2.3",
+    "cross-env": "^5.0.1",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.4.2",
     "lodash": "^4.17.4",
@@ -42,6 +42,7 @@
   },
   "false": {},
   "dependencies": {
+    "animate.css": "^3.5.2",
     "flatpickr": "^3.0.7",
     "laravel-echo": "^1.3.2",
     "vue-multiselect": "^2.0.2",

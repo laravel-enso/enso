@@ -83,7 +83,6 @@
                     <span>{{ data.submitDelete }}</span>
                 </button>
                 <button type="submit"
-                    :disabled="errors.any()"
                     class="btn btn-primary">
                     <span v-if="data.action === 'post'">{{ data.submitStore }}</span>
                     <span v-else>{{ data.submitUpdate }}</span>
@@ -146,16 +145,17 @@
                 axios[this.data.action](this.data.url, this.formData()).then(response => {
                     this.loading = false;
                     toastr.success(response.data.message);
+                    this.errors.empty();
                     this.$emit(this.data.action);
 
                     if (response.data.redirect) {
                         window.location.href = response.data.redirect;
                     }
                 }).catch(error => {
+                    this.loading = false;
                     this.reportEnsoException(error);
                 }).catch(error=> {
-                    this.errors.set(error.response.data);
-                    this.loading = false;
+                    this.errors.set(error.response.data.errors);
                 });
             },
             formData() {

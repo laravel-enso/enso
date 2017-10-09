@@ -102,13 +102,9 @@
 		},
 
 		watch: {
-			value: {
-				handler(newValue) {
-					this.picker.setDate(newValue);
-				},
-
-				deep: true
-			}
+			value(newValue) {
+				this.picker.setDate(newValue);
+			},
 		},
 
 		mounted() {
