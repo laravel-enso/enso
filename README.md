@@ -18,8 +18,10 @@ Note: Documentation is pending update for version 2.x. Moving forward, we decide
 Check out the official documentation for v1.x [here](https://docs.laravel-enso.com/).
 <!--/h-->
  
-### Demo
-v1.x [demo application](https://laravel-enso.com), use `admin@login.com` & `password` to login.
+### Demos
+Are available below, use `admin@login.com` & `password` to login.
+- v1.x [demo application](https://adminlte.laravel-enso.com)
+- v2.x [demo application](https://laravel-enso.com)
 
 
 ### Installation Steps
