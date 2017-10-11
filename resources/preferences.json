@@ -4,54 +4,47 @@
         "dtStateSave": true,
         "fixedHeader": true,
         "collapsedSidebar": false,
-        "theme": "purple"
+        "theme": "clean"
     },
     "local": {
         "dashboard": {
             "grid": [
                 [{
                     "type": "chart",
-                    "data": {
-                        "type": "bar",
-                        "source": "/dashboard/getBarChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getPieChartData"
                     }
                 }, {
                     "type": "chart",
-                    "data": {
-                        "type": "radar",
-                        "source": "/dashboard/getRadarChartData"
-                    }
-                }, {
-                    "type": "chart",
-                    "data": {
-                        "type": "polarArea",
-                        "source": "/dashboard/getPolarChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getPolarChartData"
                     }
                 }],
                 [{
                     "type": "chart",
-                    "data": {
-                        "type": "pie",
-                        "source": "/dashboard/getPieChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getBarChartData"
                     }
                 }, {
                     "type": "chart",
-                    "data": {
-                        "type": "doughnut",
-                        "source": "/dashboard/getPieChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getBubbleChartData"
                     }
                 }, {
                     "type": "chart",
-                    "data": {
-                        "type": "line",
-                        "source": "/dashboard/getLineChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getLineChartData"
                     }
                 }],
                 [{
                     "type": "chart",
-                    "data": {
-                        "type": "bubble",
-                        "source": "/dashboard/getBubbleChartData"
+                    "meta": {
+                        "source": "/api/dashboard/getRadarChartData"
+                    }
+                }, {
+                    "type": "chart",
+                    "meta": {
+                        "source": "/api/dashboard/getDoughnutChartData"
                     }
                 }]
             ]

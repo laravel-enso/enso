@@ -1,31 +1,26 @@
 {
     "name": "laravel-enso/enso",
-    "description": "Laravel Enso is a solid start for any Laravel Based project",
+    "description": "Laravel Enso can be a solid start for any Laravel Based project",
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0",
-        "barryvdh/laravel-debugbar": "^2.3",
+        "php": ">=7.0.0",
+        "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
-        "laravel-enso/commentsmanager": "1.3.*",
-        "laravel-enso/contacts": "1.3.*",
-        "laravel-enso/core": "1.3.*",
-        "laravel-enso/dataimport": "1.3.*",
-        "laravel-enso/documentsmanager": "1.3.*",
-        "laravel-enso/notifications": "1.3.*",
-        "laravel-enso/rolemanager": "1.3.*",
-        "laravel-enso/vueadminlte": "^1.3",
+        "laravel-enso/commentsmanager": "2.0.*",
+        "laravel-enso/contacts": "2.0.*",
+        "laravel-enso/dataimport": "2.0.*",
+        "laravel-enso/documentsmanager": "2.0.*",
+        "laravel-enso/notifications": "2.0.*",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0",
-        "sentry/sentry-laravel": "^0.8.0"
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",
-        "laracasts/generators": "dev-master",
-        "laravel-enso/testhelper": "1.3.*"
+        "phpunit/phpunit": "^6.2",
+        "laracasts/generators": "dev-master"
     },
     "autoload": {
         "classmap": [
@@ -49,14 +44,14 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate"
+            "php artisan key:generate"
         ],
-        "post-autoload-dump": [
+            "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
+            "php artisan package:discover"
         ]
     },
     "config": {

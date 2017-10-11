@@ -1,12 +1,4 @@
 {
-    "/js/app.js": "/js/app.js?id=8fa4c957299037fad9f9",
-    "/css/app.css": "/css/app.css?id=9980b7a66e2f967e1703",
-    "/css/enso.css": "/css/enso.css?id=e144e814bbc5f9fcb82f",
-    "/css/particles.css": "/css/particles.css?id=749a7c7bd3bdd4dd342c",
-    "/css/auth.css": "/css/auth.css?id=00d98eaf6fe5b3c71134",
-    "/css/error.css": "/css/error.css?id=916c34b86bc34f8f34d2",
-    "/css/welcome.css": "/css/welcome.css?id=96b491431335c5874b4a",
-    "/js/defaults.js": "/js/defaults.js?id=2b9b989cd2af7085ef47",
-    "/js/auth.js": "/js/auth.js?id=a50f313990c89236f199",
-    "/css/all.css": "/css/all.css?id=97ec37cdbb60d44f5b03"
+    "/js/enso.js": "/js/enso.js?id=8abfeae78380f81d4f3c",
+    "/css/enso.css": "/css/enso.css?id=91d125c5d74b6bb49b0c"
 }

@@ -1,0 +1,122 @@
+table.dataTable {
+    margin-bottom: 0.5rem;
+}
+
+td > span.action-buttons {
+	display:inline-flex;
+}
+
+.button.is-small.is-table-button {
+    height: 1.4em;
+    width: 1.4em;
+    font-size: 0.85em;
+}
+
+.tag.is-table-tag {
+	font-size: 0.85rem;
+	height: 1.4em;
+	padding: 6px;
+}
+
+.table.is-narrow th {
+	padding: 0.5rem 0.5rem;
+}
+
+table.dataTable thead th {
+	position: relative;
+	background-image: none !important;
+	cursor: pointer;
+}
+
+table.dataTable thead th, table.dataTable tfoot th {
+	font-weight: bold;
+}
+
+div.dt-buttons {
+	margin-bottom: 3px;
+}
+
+table.dataTable tr td {
+	text-align: center;
+}
+
+div.dataTables_paginate.paging_full_numbers a {
+	font-size: 0.8rem;
+}
+
+div.dataTables_info {
+	font-size: 0.9rem;
+}
+
+table.dataTable {
+	font-size: 1rem;
+}
+
+button.dt-button, div.dt-button, a.dt-button {
+	padding: 0.4em 0.7em;
+}
+
+a.dt-button.buttons-collection.buttons-page-length {
+	padding: 0.22em 0.7em;
+}
+
+tfoot>tr>td>span.totals {
+	font-weight: bold;
+}
+
+table.dataTable thead th.sorting:after, table.dataTable thead th.sorting_asc:after, table.dataTable thead th.sorting_desc:after {
+	position: absolute;
+	top: calc(50% - 8.17px);
+	right: 3px;
+	display: block;
+	font-family: FontAwesome;
+}
+
+table.dataTable thead th.sorting:after {
+	content: "\f0dc";
+	color: #ddd;
+	font-size: 0.8em;
+	padding-top: 0.12em;
+}
+
+table.dataTable thead th.sorting_asc:after {
+	content: "\f0de";
+}
+
+table.dataTable thead th.sorting_desc:after {
+	content: "\f0dd";
+}
+
+table>tbody>tr.selected {
+	font-weight: bold;
+}
+
+div.dataTables_filter input {
+	border: 1px solid #ddd;
+}
+
+div.dataTables_filter label, div.dataTables_length label {
+	font-weight: 400;
+}
+
+div.dataTables_length>label>div.bootstrap-select>button.btn.dropdown-toggle.btn-default {
+	box-shadow: none;
+	border: 1px solid #ddd;
+}
+
+div.dt-button-collection {
+	width: auto;
+}
+
+td.editable {
+	color: #00776c;
+}
+
+div.DTE_Inline div.DTE_Inline_Field div.DTE_Field input, div.DTE_Inline div.DTE_Inline_Buttons div.DTE_Field input {
+	width: 100%;
+	text-align: center;
+}
+
+table .editable {
+	cursor: pointer;
+}

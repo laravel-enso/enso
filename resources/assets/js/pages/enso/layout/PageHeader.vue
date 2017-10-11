@@ -1,0 +1,73 @@
+<template>
+
+	<div class="level has-margin-top-small">
+        <div class="level-left is-hidden-mobile">
+            <div class="level-item">
+                <transition
+                    mode="out-in"
+                    enter-active-class="zoomIn"
+                    leave-active-class="zoomOut">
+                    <p class="title is-5 animated"
+                        id="page-title"
+                        v-if="loaded">
+                        {{ __(title) }}
+                    </p>
+                </transition>
+            </div>
+        </div>
+        <div class="level-right">
+            <div class="level-item">
+                <transition
+                    mode="out-in"
+                    enter-active-class="zoomIn"
+                    leave-active-class="zoomOut">
+                    <breadcrumbs class="animated" id="breadcrumbs"
+                         v-if="loaded">
+                    </breadcrumbs>
+                </transition>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<script>
+
+	import Breadcrumbs from './Breadcrumbs.vue';
+    import { mapGetters } from 'vuex';
+
+	export default {
+		name: 'PageHeader',
+
+        computed: {
+            ...mapGetters('locale', ['__'])
+        },
+
+		components: { Breadcrumbs },
+
+        watch: {
+            title: {
+                handler() {
+                    this.loaded = false;
+                    setTimeout(() => {
+                        this.loaded = true;
+                    }, 350);
+                }
+            }
+        },
+
+        data() {
+            return {
+                loaded: true
+            };
+        },
+
+		props: {
+			title: {
+				type: String,
+				default: null
+			}
+		},
+	};
+
+</script>

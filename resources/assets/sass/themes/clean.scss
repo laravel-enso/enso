@@ -1,0 +1,16 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+$warning: #ff851b;
+$danger: #e50800;
+
+@import "./node_modules/bulma/bulma";
+
+@import "../extensions";
+
+body {
+    background-color: whitesmoke;
+}
+
+.aside {
+	background: #fff;
+}

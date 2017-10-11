@@ -73,7 +73,6 @@ return [
   'timezone' => 'Câmpul trebuie să fie un fus orar valid.',
   'unique'   => 'Câmpul a fost deja folosit.',
   'url'      => 'Câmpul nu este un URL valid.',
-  'disabled' => 'Ne pare rau, contul tau este dezactivat',
   'nin'      => 'CNP invalid',
   'custom'   => [
 

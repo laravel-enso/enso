@@ -45,6 +45,9 @@
         <testsuite name="localisation">
             <directory suffix="Test.php">./vendor/laravel-enso/localisation/tests/features</directory>
         </testsuite>
+        <testsuite name="logmanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/logmanager/tests/features</directory>
+        </testsuite>
         <testsuite name="menumanager">
             <directory suffix="Test.php">./vendor/laravel-enso/menumanager/tests/features</directory>
         </testsuite>

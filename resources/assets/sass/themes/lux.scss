@@ -1,0 +1,11 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/lux/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/lux/overrides";
+
+@import "../extensions";
+
+.aside {
+	background: #ffffff;
+}

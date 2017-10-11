@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use LaravelEnso\Charts\app\Classes\BarChart;
 use LaravelEnso\Charts\app\Classes\BubbleChart;
+use LaravelEnso\Charts\app\Classes\DoughnutChart;
 use LaravelEnso\Charts\app\Classes\LineChart;
 use LaravelEnso\Charts\app\Classes\PieChart;
+use LaravelEnso\Charts\app\Classes\PolarChart;
 use LaravelEnso\Charts\app\Classes\RadarChart;
 
 class DashboardController extends Controller
@@ -14,7 +16,7 @@ class DashboardController extends Controller
     {
         $preferences = json_encode(request()->user()->preferences->local->dashboard);
 
-        return view('dashboard.index', compact('preferences'));
+        return $preferences;
     }
 
     public function getLineChartData()
@@ -27,7 +29,7 @@ class DashboardController extends Controller
             'Revenue' => [15, 29, 60, 31, 26, 45, 44],
         ];
 
-        $chart = new LineChart($labels, $datasets);
+        $chart = new LineChart($labels, $datasets, 'Line Chart');
 
         return $chart->getResponse();
     }
@@ -43,7 +45,7 @@ class DashboardController extends Controller
             'Profit'   => [1250 - 1233, 1730 - 1231, 5300 - 3123],
         ];
 
-        $chart = new BarChart($labels, $datasets);
+        $chart = new BarChart($labels, $datasets, 'Sales');
 
         return $chart->getResponse();
     }
@@ -54,7 +56,18 @@ class DashboardController extends Controller
 
         $datasets = [400, 50, 100];
 
-        $chart = new PieChart($labels, $datasets);
+        $chart = new PieChart($labels, $datasets, 'Pie Chart');
+
+        return $chart->getResponse();
+    }
+
+    public function getDoughnutChartData()
+    {
+        $labels = ['Green', 'Red', 'Azzure'];
+
+        $datasets = [400, 50, 100];
+
+        $chart = new DoughnutChart($labels, $datasets, 'Doughnut Chart');
 
         return $chart->getResponse();
     }
@@ -69,7 +82,7 @@ class DashboardController extends Controller
             '2006' => [28, 48, 40, 19, 96, 27, 100],
         ];
 
-        $chart = new RadarChart($labels, $datasets);
+        $chart = new RadarChart($labels, $datasets, 'Radar Chart');
 
         return $chart->getResponse();
     }
@@ -80,7 +93,7 @@ class DashboardController extends Controller
 
         $datasets = [11, 16, 7, 14, 14];
 
-        $chart = new PieChart($labels, $datasets);
+        $chart = new PolarChart($labels, $datasets, 'Polar Chart');
 
         return $chart->getResponse();
     }
@@ -101,7 +114,7 @@ class DashboardController extends Controller
             2 => [[2010, 44, 2000], [2011, 62, 1500], [2012, 55, 1299], [2013, 39, 4000], [2014, 36, 1000], [2015, 45, 1750]],
         ];
 
-        $chart = new BubbleChart($labels, $datasets);
+        $chart = new BubbleChart($labels, $datasets, 'Bubble Chart');
 
         return $chart->getResponse();
     }

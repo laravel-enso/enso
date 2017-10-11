@@ -34,9 +34,9 @@ Is available [here](https://laravel-enso.com), use `admin@login.com` & `password
 
 5. Login into the project with user: `admin@login.com`, password: `password`
 
-6. (optional) Setup the `config/enso/laravel-enso.php` and the `config/enso/labels.php` files
+6. (optional) Setup the `config/enso/*.php`
 
-7. (optional) `npm install` / `npm run dev`
+7. (optional) `npm install` / `npm run dev` / `hmr` /...
 
 Enjoy!
 

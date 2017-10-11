@@ -1,0 +1,44 @@
+$badge-box-shadow: 0 0 0 .1rem $white !default
+$badge-font-size: $size-7 !default
+$badge-border-radius: 1rem !default
+
+.badge
+  position: relative
+  white-space: nowrap
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-badge-#{$name}
+      &[data-badge]::after, &:not([data-badge])::after
+        background: $color
+        color: $color-invert
+  &[data-badge]::after, &:not([data-badge])::after
+    background: $primary
+    background-clip: padding-box
+    border-radius: $badge-border-radius
+    box-shadow: $badge-box-shadow
+    color: $white
+    content: attr(data-badge)
+    display: inline-block
+    -webkit-transform: translate(-0.2rem, -1rem)
+    -ms-transform: translate(-0.2rem, -1rem)
+    transform: translate(-0.2rem, -1rem)
+  &[data-badge]::after
+    font-size: $badge-font-size
+    height: 1.8rem
+    min-width: 1.8rem
+    padding: .3rem .5rem
+    text-align: center
+    white-space: nowrap
+  &:not([data-badge])::after, &[data-badge=""]::after
+    height: .6rem
+    min-width: .6rem
+    padding: 0
+    width: .6rem
+  &.button::after
+    position: absolute
+    right: 0
+    top: 0
+    -webkit-transform: translate(50%, -50%)
+    -ms-transform: translate(50%, -50%)
+    transform: translate(50%, -50%)

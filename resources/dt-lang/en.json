@@ -8,7 +8,7 @@
     "sLengthMenu":     "Show _MENU_ entries",
     "sLoadingRecords": "Loading...",
     "sProcessing":     "Processing &nbsp&nbsp<i class = 'fa fa-circle-o-notch fa-spin'></i>",
-    "sSearch":         "Search:",
+    "sSearch":         "",
     "sZeroRecords":    "No matching records found",
     "oPaginate": {
         "sFirst":    "First",
@@ -22,7 +22,7 @@
     },
     "buttons": {
         "pageLength": {
-            "_": "<i class='fa fa-bars'></i> %d"
+            "_": "<span class='icon is-small'><i class='fa fa-bars'></i></span> %d"
         }
     }
 }

@@ -2,18 +2,19 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use LaravelEnso\CommentsManager\app\Traits\Comments;
 use LaravelEnso\Core\app\Models\User as Users;
 use LaravelEnso\DocumentsManager\app\Traits\Documents;
 
 class User extends Users
 {
-    use Comments, Documents, Notifiable;
+    use Comments, Documents;
 
     protected $hidden = ['password', 'remember_token'];
 
-    protected $fillable = ['first_name', 'last_name', 'phone', 'is_active', 'role_id'];
+    protected $fillable = ['first_name', 'last_name', 'phone', 'is_active'];
+
+    protected $casts = ['is_active' => 'boolean'];
 
     protected $appends = ['fullName'];
 
