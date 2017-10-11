@@ -8,21 +8,13 @@
 
 &nbsp;
 
-
-Note: Documentation is pending update for version 2.x. Moving forward, we decided to continue developing Enso as a SPA, using Bulma as the CSS framework, for too many reasons to list here :smiley: 
-------
-
-
 <!--h-->
 ### Official Documentation
-Check out the official documentation for v1.x [here](https://docs.laravel-enso.com/).
+Check out the official documentation [here](https://docs.laravel-enso.com/).
 <!--/h-->
  
-### Demos
-Are available below, use `admin@login.com` & `password` to login.
-- v1.x [demo application](https://adminlte.laravel-enso.com)
-- v2.x [demo application](https://laravel-enso.com)
-
+### Demo
+Is available [here](https://adminlte.laravel-enso.com), use `admin@login.com` & `password` to login.
 
 ### Installation Steps
 
@@ -39,6 +31,8 @@ Are available below, use `admin@login.com` & `password` to login.
 6. (optional) Setup the `config/laravel-enso.php` and the `config/labels.php` files
 
 7. (optional) `npm install` / `npm run dev` 
+
+8. (optional) If using Sentry, fill in your DSN in `app.js` and `sentry.blade.php` 
 
 Enjoy!
 
@@ -148,7 +142,7 @@ The service uses the Laravel `__()` translation method/mechanism in order to get
 
 ### Thanks
 
-Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
+Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bootstrap 3.3.7, VueJS 2.x and:
 
 [AdminLTE](https://adminlte.io), [DataTables](https://datatables.net), 
 [Bootswatch Paper](https://bootswatch.com), [Chartjs](http://chartjs.org), 
