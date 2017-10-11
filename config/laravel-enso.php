@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'version' => '1.2.18',
-    'defaultRole' => 'admin',
+    'version'             => '1.2.18',
+    'defaultRole'         => 'admin',
     'formattedTimestamps' => 'd-m-Y',
-    'paths' => [
-        'files' => 'files',
+    'paths'               => [
+        'files'   => 'files',
         'avatars' => 'avatars',
         'imports' => 'imports',
-        'temp' => 'temp',
+        'temp'    => 'temp',
         'exports' => 'exports',
     ],
     'cacheLifetime' => env('CACHE_LIFETIME', 60),

@@ -9,7 +9,7 @@ use LaravelEnso\DocumentsManager\app\Traits\Documents;
 
 class User extends Users
 {
-	use Comments, Documents, Notifiable;
+    use Comments, Documents, Notifiable;
 
     protected $hidden = ['password', 'remember_token'];
 
