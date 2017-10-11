@@ -9,7 +9,7 @@
 | you a convenient way to create models for testing and seeding your
 | database. Just tell the factory how a default model should look.
 |
-*/
+ */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Owner::class, function (Faker\Generator $faker) {
@@ -48,5 +48,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'is_active'                  => 1,
         'email'                      => $this->faker->email,
         'owner_id'                   => factory('App\Owner')->create(),
+    ];
+});
+
+$factory->define(LaravelEnso\Contacts\app\Models\Contact::class, function (Faker\Generator $faker) {
+    return [
+        'contactable_id' => 1,
+        'contactable_type' => 'App\Owner',
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'phone' => $faker->phoneNumber,
+        'email' => $faker->unique()->safeEmail,
+        'created_by' => 2,
+        'is_active' => $faker->numberBetween($min = 0, $max = 1),
     ];
 });

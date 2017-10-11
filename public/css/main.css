@@ -276,14 +276,15 @@ table {
 
 /* end tooltip */
 
-/* environment badge */
+/* environment label */
 
-span.badge.local-env {
-  margin-top: 14px;
-  margin-left: 20px;
+span.local-env {
+  z-index: 2000;
+  position: fixed;
+  top: 14px;
 }
 
-/* end environment badge */
+/* end environment label */
 
 /* stop-impersonating button */
 

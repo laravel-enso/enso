@@ -116,7 +116,3 @@ Vue.component('fileUploader', require('./vendor/laravel-enso/components/filemana
 Vue.component('vueForm', require('./vendor/laravel-enso/components/vueforms/VueForm.vue'));
 
 Vue.component('draggable', require('vuedraggable'));
-
-Vue.component('contactForm', require('./vendor/laravel-enso/components/contacts/ContactForm.vue'));
-Vue.component('contact', require('./vendor/laravel-enso/components/contacts/Contact.vue'));
-Vue.component('contacts', require('./vendor/laravel-enso/components/contacts/Contacts.vue'));

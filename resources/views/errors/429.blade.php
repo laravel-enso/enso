@@ -14,6 +14,7 @@
         <a href="/">home</a>
       </small>
     </div>
+    @include('errors.sentry')
   </div>
 
 @endsection

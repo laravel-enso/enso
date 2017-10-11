@@ -19,7 +19,7 @@
 	                        </label>
 	                    </input>
 	                </td>
-	                <td>
+	                <td v-if="offSwitch">
 	                    <input :name="'radio-' + _uid"
 	                    	@change="update"
 	                    	type="radio"
@@ -58,6 +58,10 @@
   			},
   			value: {
   				required: true
+  			},
+  			offSwitch: {
+  				type: Boolean,
+  				default: true
   			}
   		},
 

@@ -65,3 +65,7 @@ input.toggle:checked + label:after {
 input.toggle:disabled + label:before {
     background: #eee;
 }
+
+input[type="checkbox"]:disabled:after, input[type="checkbox"]:disabled:checked:after {
+    content: unset;
+}

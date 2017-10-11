@@ -12,14 +12,16 @@
     "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.16.2",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.0.1",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.4.2",
     "lodash": "^4.17.4",
+    "pusher-js": "^4.1.0",
     "raven-js": "^3.17.0",
-    "v-tooltip": "^1.0.6",
+    "v-tooltip": "^1.1.6",
     "vue": "^2.4.2",
     "vuedraggable": "^2.14.1"
   },
@@ -32,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://git.xtelecom.ro/mishu/blank.git"
+    "url": "http://git.xtelecom.ro/mishu/enso.git"
   },
   "keywords": [],
   "author": "",
@@ -42,7 +44,6 @@
   },
   "false": {},
   "dependencies": {
-    "animate.css": "^3.5.2",
     "flatpickr": "^3.0.7",
     "laravel-echo": "^1.3.2",
     "vue-multiselect": "^2.0.2",
