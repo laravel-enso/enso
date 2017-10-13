@@ -4,7 +4,7 @@
 [![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
 <!--/h-->
 
-*Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!* Demo at: https://laravel-enso.com For login use: `admin@login.com` & `password`.
+*Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
 
 &nbsp;
 
