@@ -9,7 +9,7 @@ use LaravelEnso\DocumentsManager\app\Traits\Documentable;
 
 class Owner extends Owners
 {
-	use Contactable, Commentable, Documentable;
+    use Contactable, Commentable, Documentable;
 
     protected $fillable = ['name', 'description', 'is_active'];
 

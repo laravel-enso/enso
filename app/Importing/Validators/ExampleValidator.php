@@ -4,7 +4,7 @@ namespace App\Importing\Validators;
 
 use LaravelEnso\DataImport\app\Classes\Validators\AbstractValidator;
 
-class CustomValidator extends AbstractValidator
+class ExampleValidator extends AbstractValidator
 {
     public function run()
     {
