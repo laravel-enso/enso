@@ -1,15 +1,15 @@
-<!--h--> 
+<!--h-->
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
 [![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
 <!--/h-->
 
-*Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
+*Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!* Demo at: https://laravel-enso.com For login use: `admin@login.com` & `password`.
 
 &nbsp;
 
 
-Note: Documentation is pending update. Moving forward, we decided to continue developing Enso as a SPA, using Bulma as the CSS framework, for too many reasons to list here :smiley: 
+Note: Documentation is pending update. Moving forward, we decided to continue developing Enso as a SPA, using Bulma as the CSS framework, for too many reasons to list here :smiley:
 ------
 
 For the v1.x / adminlte version, take a look at the **adminlte** branch.
@@ -18,9 +18,6 @@ For the v1.x / adminlte version, take a look at the **adminlte** branch.
 ### Official Documentation
 Check out the official documentation [here](https://docs.laravel-enso.com/).
 <!--/h-->
- 
-### Demo
-Is available [here](https://laravel-enso.com), use `admin@login.com` & `password` to login.
 
 ### Installation Steps
 
@@ -43,12 +40,12 @@ Enjoy!
 ### With enso you get
 
 - [Customizable and powerful data-tables](https://github.com/laravel-enso/DataTable):
-    - server side, with multi-argument, 
-    - full column search 
-    - sublime snippet for table template 
+    - server side, with multi-argument,
+    - full column search
+    - sublime snippet for table template
     - server-side excel export for every tables - coming soon
 - [Bootstrap select](https://github.com/laravel-enso/Select) - server side builder with parameters conditioning, including pivot parameters
-- Advanced owner / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure 
+- Advanced owner / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure
 - [Log management](https://github.com/laravel-enso/LogManager) -  view, download, clear
 - User [action logger](https://github.com/laravel-enso/ActionLogger), so you can keep track of who's done what
 - User [impersonation](https://github.com/laravel-enso/Impersonate) function, via middleware
@@ -71,9 +68,9 @@ Enjoy!
 
 **fully working in less than 5 minutes!**
 
-&nbsp; 
-&nbsp; 
-&nbsp; 
+&nbsp;
+&nbsp;
+&nbsp;
 
 
 ### Under the Hood
@@ -90,7 +87,7 @@ Enjoy!
 
 #### Middleware & Middleware Groups
 - for the routes within the application, the 'core' middleware group is applied
-- the 'core' group contains the middleware below, presented in the order they're applied: 
+- the 'core' group contains the middleware below, presented in the order they're applied:
     - `verify-active-state` - checks users's status (active/inactive)
     - `action-logger` - logs for each request the user's id, route, url, the HTTP verb and the timestamps
     - `verify-route-access` - authorizes the access to a route
@@ -105,7 +102,7 @@ Enjoy!
 - an owner can have many roles
 - an user has **just one owner** and **just one role**
 - the role of a user may only be one of the roles available for its owner
-- users have an active or inactive status, where inactive users cannot login or make requests into the application (but can set/reset their password) 
+- users have an active or inactive status, where inactive users cannot login or make requests into the application (but can set/reset their password)
 
 #### Preferences
 
@@ -122,7 +119,7 @@ The mechanism allows saving and loading upon every request the user's preference
 #### Translations
 
 A light translation service is available for the front-end, that may be called from any page or VueJS component
-- the service endpoint is:  (GET) `home/getTranslations` 
+- the service endpoint is:  (GET) `home/getTranslations`
 - takes a list of however many string parameters
 - gives back a JSON object, when the property names are the given parameters, and their values are their translated values
 
@@ -133,26 +130,26 @@ The service uses the Laravel `__()` translation method/mechanism in order to get
     - within the configuration file `config/larave-enso.php` various options may be set, such as the folders used for storing uploads, avatars, etc. the caching duration and the timestamps format when displaying them
 
 
-#### Telemetry   
+#### Telemetry
 - the implicit `login` event that Laravel fires on a user's login triggers a listener that stores the user's ip, user-agent and timestamps inside the `logins` table
 
 
 
-#### Exceptions    
+#### Exceptions
 - where needed, `EnsoException` instances are thrown. \EnsoException is also a Facade.
 - depending on the type of the request (ajax or non ajax) a different response is returned
-   
-   
+
+
 
 ### Thanks
 
 Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
 
-[AdminLTE](https://adminlte.io), [DataTables](https://datatables.net), 
-[Bootswatch Paper](https://bootswatch.com), [Chartjs](http://chartjs.org), 
-[Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr), 
-[Particles.js](http://vincentgarreau.com/particles.js), [Nprogress.js](http://ricostacruz.com/nprogress), 
-[Bootstrap Tour](http://bootstraptour.com), [Bootstrap Select](https://silviomoreto.github.io/bootstrap-select), 
+[AdminLTE](https://adminlte.io), [DataTables](https://datatables.net),
+[Bootswatch Paper](https://bootswatch.com), [Chartjs](http://chartjs.org),
+[Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr),
+[Particles.js](http://vincentgarreau.com/particles.js), [Nprogress.js](http://ricostacruz.com/nprogress),
+[Bootstrap Tour](http://bootstraptour.com), [Bootstrap Select](https://silviomoreto.github.io/bootstrap-select),
 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
 
 Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/).

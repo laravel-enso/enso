@@ -1359,16 +1359,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.0.25",
+            "version": "2.0.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "ab6af7bb812f6e9af3fdfc8b398625c1591a81fa"
+                "reference": "c0848461d78bc246f27e987d06d7a8361c7b161d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/ab6af7bb812f6e9af3fdfc8b398625c1591a81fa",
-                "reference": "ab6af7bb812f6e9af3fdfc8b398625c1591a81fa",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c0848461d78bc246f27e987d06d7a8361c7b161d",
+                "reference": "c0848461d78bc246f27e987d06d7a8361c7b161d",
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1451,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2017-10-10T17:52:25+00:00"
+            "time": "2017-10-13T09:08:53+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1526,16 +1526,16 @@
         },
         {
             "name": "laravel-enso/datatable",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataTable.git",
-                "reference": "29e48bb9ea0ec9ddbf57dc89ca9b6f2b70af2948"
+                "reference": "99bfcb5093bee1110f075e94e941d7b2301c382a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/29e48bb9ea0ec9ddbf57dc89ca9b6f2b70af2948",
-                "reference": "29e48bb9ea0ec9ddbf57dc89ca9b6f2b70af2948",
+                "url": "https://api.github.com/repos/laravel-enso/DataTable/zipball/99bfcb5093bee1110f075e94e941d7b2301c382a",
+                "reference": "99bfcb5093bee1110f075e94e941d7b2301c382a",
                 "shasum": ""
             },
             "require": {
@@ -1581,7 +1581,7 @@
                 "datatables.net",
                 "laravel-enso"
             ],
-            "time": "2017-10-10T17:53:01+00:00"
+            "time": "2017-10-13T08:39:03+00:00"
         },
         {
             "name": "laravel-enso/dbsyncmigrations",
