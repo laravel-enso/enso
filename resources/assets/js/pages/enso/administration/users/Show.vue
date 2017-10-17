@@ -36,7 +36,7 @@
 														@upload-successful="$store.commit('setUserAvatar', $event.id)"
 														:url="uploadAvatarLink">
 														<template slot="upload-button"
-															scope="props">
+															slot-scope="props">
 															<button  class="button is-small is-info"
 																@click="props.openFileBrowser">
 																<span class="icon">

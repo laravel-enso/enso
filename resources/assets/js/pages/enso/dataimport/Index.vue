@@ -127,7 +127,7 @@
                                 <span v-for="category in sheet.categories"
                                     :slot="category.name">
                                     <paginate :list="category.issues">
-                                        <template scope="props">
+                                        <template slot-scope="props">
                                             <h5 class="title is-5 has-text-centered">{{ __('Error List') }}</h5>
                                             <ul class="errors has-margin-left-large">
                                                 <li v-for="issue in props.list">

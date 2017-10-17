@@ -1359,16 +1359,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.0.26",
+            "version": "2.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "c0848461d78bc246f27e987d06d7a8361c7b161d"
+                "reference": "462a1878d03988fcd2719981e82a7363b0f7e9fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c0848461d78bc246f27e987d06d7a8361c7b161d",
-                "reference": "c0848461d78bc246f27e987d06d7a8361c7b161d",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/462a1878d03988fcd2719981e82a7363b0f7e9fe",
+                "reference": "462a1878d03988fcd2719981e82a7363b0f7e9fe",
                 "shasum": ""
             },
             "require": {
@@ -1451,20 +1451,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2017-10-13T09:08:53+00:00"
+            "time": "2017-10-17T06:24:04+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.0.10",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "28addb6831483280fe6c2a7b0632c4c66a16aba0"
+                "reference": "959c9347a64c38290afbdc57ff2c1a44d7f256f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/28addb6831483280fe6c2a7b0632c4c66a16aba0",
-                "reference": "28addb6831483280fe6c2a7b0632c4c66a16aba0",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/959c9347a64c38290afbdc57ff2c1a44d7f256f7",
+                "reference": "959c9347a64c38290afbdc57ff2c1a44d7f256f7",
                 "shasum": ""
             },
             "require": {
@@ -1522,7 +1522,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2017-10-10T17:52:42+00:00"
+            "time": "2017-10-17T06:25:32+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -2014,16 +2014,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "10b94f1c0c25fa189b269977bb14e5eb3acb3a8f"
+                "reference": "b2d9bdf1effe7d2369a124c5511ee67609327cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/10b94f1c0c25fa189b269977bb14e5eb3acb3a8f",
-                "reference": "10b94f1c0c25fa189b269977bb14e5eb3acb3a8f",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/b2d9bdf1effe7d2369a124c5511ee67609327cdf",
+                "reference": "b2d9bdf1effe7d2369a124c5511ee67609327cdf",
                 "shasum": ""
             },
             "require": {
@@ -2069,7 +2069,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2017-10-10T17:54:04+00:00"
+            "time": "2017-10-17T06:29:28+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
@@ -2129,16 +2129,16 @@
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "bd733ae5063cb366b86deeffe846fc65beb82d58"
+                "reference": "831e4c93a98eccec73a35162604280dd525efcd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/bd733ae5063cb366b86deeffe846fc65beb82d58",
-                "reference": "bd733ae5063cb366b86deeffe846fc65beb82d58",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/831e4c93a98eccec73a35162604280dd525efcd7",
+                "reference": "831e4c93a98eccec73a35162604280dd525efcd7",
                 "shasum": ""
             },
             "require": {
@@ -2187,7 +2187,7 @@
                 "menu-manager",
                 "menumanager"
             ],
-            "time": "2017-10-10T17:54:33+00:00"
+            "time": "2017-10-13T17:35:42+00:00"
         },
         {
             "name": "laravel-enso/notifications",
@@ -2671,16 +2671,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.0.15",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "279ef52fd731fabb93e583c32a35fb19386b5e8e"
+                "reference": "35768fba777d3d4cff75daa8f72fa9eacc40b69d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/279ef52fd731fabb93e583c32a35fb19386b5e8e",
-                "reference": "279ef52fd731fabb93e583c32a35fb19386b5e8e",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/35768fba777d3d4cff75daa8f72fa9eacc40b69d",
+                "reference": "35768fba777d3d4cff75daa8f72fa9eacc40b69d",
                 "shasum": ""
             },
             "require": {
@@ -2720,20 +2720,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2017-10-09T10:56:45+00:00"
+            "time": "2017-10-17T06:31:43+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.14",
+            "version": "v5.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "26c700eb79e5bb55b59df2c495c9c71f16f43302"
+                "reference": "95efce1e16c82a72f9aab52e96562282e7c35bf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/26c700eb79e5bb55b59df2c495c9c71f16f43302",
-                "reference": "26c700eb79e5bb55b59df2c495c9c71f16f43302",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/95efce1e16c82a72f9aab52e96562282e7c35bf0",
+                "reference": "95efce1e16c82a72f9aab52e96562282e7c35bf0",
                 "shasum": ""
             },
             "require": {
@@ -2852,7 +2852,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-10-03T17:41:03+00:00"
+            "time": "2017-10-16T14:18:46+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3654,16 +3654,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.11",
+            "version": "v0.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0"
+                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b193cd020e8c6b66cea6457826ae005e94e6d2c0",
-                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1502354ebc70d59d8e3a87c325b0eb78a79da25b",
+                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b",
                 "shasum": ""
             },
             "require": {
@@ -3723,7 +3723,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-07-29T19:30:02+00:00"
+            "time": "2017-10-14T17:14:13+00:00"
         },
         {
             "name": "pusher/pusher-php-server",
@@ -4398,16 +4398,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -4419,7 +4419,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -4453,20 +4453,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca"
+                "reference": "265fc96795492430762c29be291a371494ba3a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e85ebdef569b84e8709864e1a290c40f156b30ca",
-                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/265fc96795492430762c29be291a371494ba3a5b",
+                "reference": "265fc96795492430762c29be291a371494ba3a5b",
                 "shasum": ""
             },
             "require": {
@@ -4476,7 +4476,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -4509,20 +4509,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d"
+                "reference": "6e719200c8e540e0c0effeb31f96bdb344b94176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/67925d1cf0b84bd234a83bebf26d4eb281744c6d",
-                "reference": "67925d1cf0b84bd234a83bebf26d4eb281744c6d",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/6e719200c8e540e0c0effeb31f96bdb344b94176",
+                "reference": "6e719200c8e540e0c0effeb31f96bdb344b94176",
                 "shasum": ""
             },
             "require": {
@@ -4531,7 +4531,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -4561,7 +4561,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2017-07-05T15:09:33+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/process",
@@ -5028,16 +5028,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.10",
+            "version": "2.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec"
+                "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
-                "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
+                "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
                 "shasum": ""
             },
             "require": {
@@ -5082,10 +5082,10 @@
                 "exception",
                 "handling",
                 "library",
-                "whoops",
-                "zf2"
+                "throwable",
+                "whoops"
             ],
-            "time": "2017-08-03T18:23:40+00:00"
+            "time": "2017-10-15T13:05:10+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -5896,16 +5896,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.1",
+            "version": "6.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
+                "reference": "06b28548fd2b4a20c3cd6e247dc86331a7d4db13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
-                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/06b28548fd2b4a20c3cd6e247dc86331a7d4db13",
+                "reference": "06b28548fd2b4a20c3cd6e247dc86331a7d4db13",
                 "shasum": ""
             },
             "require": {
@@ -5976,7 +5976,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-07T17:53:53+00:00"
+            "time": "2017-10-16T13:18:59+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

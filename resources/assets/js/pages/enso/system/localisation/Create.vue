@@ -6,7 +6,7 @@
     			<vue-form :data="form"
 	        		class="box animated fadeIn"
 	        		v-if="initialised">
-	        		<template slot="flag" scope="props">
+	        		<template slot="flag" slot-scope="props">
 	                    <input class="input"
 	                    	type="text"
 	                    	disabled>

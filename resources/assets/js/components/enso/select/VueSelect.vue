@@ -22,7 +22,7 @@
             <span slot="noResult">
                 {{ labels.noResult }}
             </span>
-            <template slot="option" scope="props">
+            <template slot="option" slot-scope="props">
                 <span v-html="$options.filters.highlight(optionList[props.option], query)"></span>
             </template>
         </multiselect>

@@ -6,7 +6,7 @@
     			<vue-form :data="form"
 	        		class="box animated fadeIn"
 	        		v-if="initialised">
-	        		<template slot="icon" scope="props">
+	        		<template slot="icon" slot-scope="props">
 	                    <div class="control has-icons-right">
 				            <input class="input"
 				                :class="{ 'is-danger': props.errors.has('icon') }"

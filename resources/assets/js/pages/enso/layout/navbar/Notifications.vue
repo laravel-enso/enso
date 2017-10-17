@@ -168,7 +168,7 @@
 				 	b = event.target.scrollHeight - event.target.clientHeight,
 					c = a / b;
 
-				if (c === 1) {
+				if (c > 0.7) {
 					this.needsUpdate = true;
 					this.getList();
 				}
