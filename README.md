@@ -4,15 +4,13 @@
 [![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
 <!--/h-->
 
-*Hit the ground running when building your new Laravel project with boilerplate and extra functionality out of the box!*
+*Hit the ground running when building your new Laravel SPA project with boilerplate and extra functionality out of the box!*
 
 &nbsp;
 
+[![Screenshot](https://laravel-enso.github.io/enso/screenshots/bulma_cap000_thumb.png)](https://laravel-enso.github.io/enso/videos/bulma_cap000.png)
 
-Note: Documentation is pending update. Moving forward, we decided to continue developing Enso as a SPA, using Bulma as the CSS framework, for too many reasons to list here :smiley:
-------
-
-For the v1.x / adminlte version, take a look at the **adminlte** branch.
+For the v1.x / adminlte version, take a look at the **[adminlte](https://github.com/laravel-enso/Enso/tree/adminlte)** branch.
 
 <!--h-->
 ### Official Documentation
@@ -31,37 +29,46 @@ Check out the official documentation [here](https://docs.laravel-enso.com/).
 
 5. Login into the project with user: `admin@login.com`, password: `password`
 
-6. (optional) Setup the `config/enso/*.php`
+6. (optional) Setup the configuration files as needed, in `config/enso/*.php`
 
 7. (optional) `npm install` / `npm run dev` / `hmr` /...
 
 Enjoy!
 
-### With enso you get
+### With Enso you get
+A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), [Datatables](https://datatables.net/) and more, with features like: 
 
-- [Customizable and powerful data-tables](https://github.com/laravel-enso/DataTable):
+- [Customizable and powerful datatables](https://github.com/laravel-enso/DataTable):
     - server side, with multi-argument,
     - full column search
+    - customizable column visibility
+    - state save for each table, for certain options and preferences, with the option to reset everything to default
+    - automatic action buttons generation, depending on user permissions
+    - custom action buttons as needed
+    - responsive priority setting for columns, when used on smaller screens
+    - beautiful tag rendering for boolean flag columns
+    - easy display of flag/type columns values
+    - server-side excel export for every table
     - sublime snippet for table template
-    - server-side excel export for every tables - coming soon
-- [Bootstrap select](https://github.com/laravel-enso/Select) - server side builder with parameters conditioning, including pivot parameters
-- Advanced owner / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure
+- [Vue select](https://github.com/laravel-enso/Select) - server side builder with parameter conditioning, including pivot parameters, built as a wrapper for [Vue-multiselect](https://github.com/monterail/vue-multiselect)
+- Advanced owners / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure
 - [Log management](https://github.com/laravel-enso/LogManager) -  view, download, clear
 - User [action logger](https://github.com/laravel-enso/ActionLogger), so you can keep track of who's done what
-- User [impersonation](https://github.com/laravel-enso/Impersonate) function, via middleware
-- Bootstrap Tour powered [tutorials](https://github.com/laravel-enso/TutorialManager)
+- User [impersonation](https://github.com/laravel-enso/Impersonate) for easy support and debugging
+- Application interface [tutorials](https://github.com/laravel-enso/TutorialManager) based on the awesome [Intro.js](http://introjs.com) 
 - [Localisation support](https://github.com/laravel-enso/Localisation)
-- [Charts component](https://github.com/laravel-enso/Charts) with server side data builder
+- [Charts component](https://github.com/laravel-enso/Charts) with server side data builder, based on [Chart.js](http://www.chartjs.org)
 - [Comments component](https://github.com/laravel-enso/CommentsManager) with support for tagging users
 - [Documents component](https://github.com/laravel-enso/DocumentsManager) with upload, download and inline view
 - Ability to [track](https://github.com/laravel-enso/TrackWho) who created, updated and deleted models, using traits
-- [File uploader](https://github.com/laravel-enso/FileManager) and file management library with VueJS front end component
+- [File uploader](https://github.com/laravel-enso/FileManager) and file management library
 - [Avatar functionality](https://github.com/laravel-enso/AvatarManager) for all users
 - Ability to track the [different versions of a model](https://github.com/laravel-enso/HistoryTracker) through its lifetime
-- Front-end date-picker, time-picker and type-ahead components VueJS
-- User application preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
+- Front-end date-picker and time-picker, based on [Flatpickr](https://chmln.github.io/flatpickr)
+- Server-side type-ahead
+- User application-wide preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
 - Queueable jobs
-- Push notifications - working out of the box (requires Pusher)
+- Push notifications - working out of the box (requires [Pusher](https://pusher.com))
 - Automatic breadcrumbs generation
 - Application-wide timestamp formatting customization through the configuration file
 - many more helpers and hidden gems
@@ -79,9 +86,8 @@ Enjoy!
  - the standard Laravel authentication is used, via email & password
 
 #### Authorization
-
  - application wide, checking user status: active/inactive. The check is made for every request, via a middleware. The inactive status prevents the user from logging in and making requests. If an user becomes inactive while he's still logged in, at his next request he'll be logged out and redirected to the login page with a notification
- - application-section wide, via the menu visibility, depending on the user's role. The users that don't have access to a certain menu, can't see it. The check is made before each menu redraw. This level doesn't block access to the routes, it just affects the visibility of the menus
+ - application-section wide, via the menu's visibility, depending on the user's role. The users that don't have access to a certain menu, can't see it. This level doesn't block access to the routes, it just affects the visibility of the menus
  - application-section wide, depending on permitted access to routes, which is tied to the user's role and the associated permissions for that role. The check is made for each request, via a middleware. If the user is not allowed on a route a 403 response is given back and a `laravel.log` entry is made.
  - content specific, via gates & policies. The check is made locally, when and where gates & policies are used
 
@@ -102,28 +108,20 @@ Enjoy!
 - an owner can have many roles
 - an user has **just one owner** and **just one role**
 - the role of a user may only be one of the roles available for its owner
-- users have an active or inactive status, where inactive users cannot login or make requests into the application (but can set/reset their password)
+- users have an active or inactive status, where inactive users cannot login or make requests in the application (but can set/reset their password)
 
 #### Preferences
 
-The mechanism allows saving and loading upon every request the user's preferences for several aspects of the application.
-- the preferences can be updated from the right-hand sidebar. From here the user can also reset the preferences to default.
-- the user's preferences are store in the `preferences` table, under `value` column in JSON format.
+The mechanism allows saving and loading of the user's preferences for several aspects of the application.
+- the preferences can be updated from the right-hand sidebar. From there the user can also reset the preferences to default.
+- the user's preferences are stored in the `preferences` table, under `value` column, in JSON format.
 - list of preferences
     - `lang` - the user's language
-    - `theme` - the currently selected theme
-    - `dtStateSave` - flag for saving the state/preferences for each data-table within the application (for up to 90 days)
-    - `fixedHeader` - flag for setting the header fixed or scrollable
-    - `collapsedSidebar` - flag for setting the starting position of the main sidebar extended or collapsed
+    - `theme` - the currently selected theme    
 
 #### Translations
+Are loaded at application load, and refreshed as needed
 
-A light translation service is available for the front-end, that may be called from any page or VueJS component
-- the service endpoint is:  (GET) `home/getTranslations`
-- takes a list of however many string parameters
-- gives back a JSON object, when the property names are the given parameters, and their values are their translated values
-
-The service uses the Laravel `__()` translation method/mechanism in order to get the translated values.
 
 #### Environment
 - config
@@ -136,23 +134,24 @@ The service uses the Laravel `__()` translation method/mechanism in order to get
 
 
 #### Exceptions
-- where needed, `EnsoException` instances are thrown. \EnsoException is also a Facade.
-- depending on the type of the request (ajax or non ajax) a different response is returned
+- when needed, the exceptions thrown are as specific as possible. 
+- a pseudo generic exception, `EnsoException`, is also available. \EnsoException is also a Facade.
+- since requests are supposed to be ajax, JSON responses are given back 
 
 
 
 ### Thanks
 
-Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.4, Bootstrap 3.3.7, Vuejs 2.x and:
+Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bulma 0.6, Vuejs 2.x and:
 
-[AdminLTE](https://adminlte.io), [DataTables](https://datatables.net),
-[Bootswatch Paper](https://bootswatch.com), [Chartjs](http://chartjs.org),
+[DataTables](https://datatables.net),
+[Bulmaswatch](https://jenil.github.io/bulmaswatch/), [Chart.js](http://chartjs.org),
 [Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr),
-[Particles.js](http://vincentgarreau.com/particles.js), [Nprogress.js](http://ricostacruz.com/nprogress),
-[Bootstrap Tour](http://bootstraptour.com), [Bootstrap Select](https://silviomoreto.github.io/bootstrap-select),
-[Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io)
+[Nprogress.js](http://ricostacruz.com/nprogress),
+[Intro.js](http://introjs.com/), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
+[Flatpickr](https://chmln.github.io/flatpickr/)
 
-Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Abdullah Almsaeed](https://adminlte.io/).
+Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Jeremy Thomas](https://bulma.io).
 
 
 <!--h-->
