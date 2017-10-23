@@ -1359,16 +1359,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.0.28",
+            "version": "2.0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "462a1878d03988fcd2719981e82a7363b0f7e9fe"
+                "reference": "6d808283d5d7d74c85863de94b535aa96ee876d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/462a1878d03988fcd2719981e82a7363b0f7e9fe",
-                "reference": "462a1878d03988fcd2719981e82a7363b0f7e9fe",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/6d808283d5d7d74c85863de94b535aa96ee876d0",
+                "reference": "6d808283d5d7d74c85863de94b535aa96ee876d0",
                 "shasum": ""
             },
             "require": {
@@ -1451,20 +1451,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2017-10-17T06:24:04+00:00"
+            "time": "2017-10-20T10:23:08+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.0.12",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "959c9347a64c38290afbdc57ff2c1a44d7f256f7"
+                "reference": "10cfb18c0db6b7e073000906edd18977340f8f8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/959c9347a64c38290afbdc57ff2c1a44d7f256f7",
-                "reference": "959c9347a64c38290afbdc57ff2c1a44d7f256f7",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/10cfb18c0db6b7e073000906edd18977340f8f8d",
+                "reference": "10cfb18c0db6b7e073000906edd18977340f8f8d",
                 "shasum": ""
             },
             "require": {
@@ -1522,7 +1522,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2017-10-17T06:25:32+00:00"
+            "time": "2017-10-22T09:57:05+00:00"
         },
         {
             "name": "laravel-enso/datatable",
@@ -1756,16 +1756,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "fe36b7176e8cccb1e1a987ccd2e72a50028da433"
+                "reference": "6b52f64eaecc67ee54155713626cf67b93fa10b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/fe36b7176e8cccb1e1a987ccd2e72a50028da433",
-                "reference": "fe36b7176e8cccb1e1a987ccd2e72a50028da433",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/6b52f64eaecc67ee54155713626cf67b93fa10b6",
+                "reference": "6b52f64eaecc67ee54155713626cf67b93fa10b6",
                 "shasum": ""
             },
             "require": {
@@ -1808,7 +1808,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2017-10-10T17:53:32+00:00"
+            "time": "2017-10-20T10:22:02+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2129,16 +2129,16 @@
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "831e4c93a98eccec73a35162604280dd525efcd7"
+                "reference": "fa1ba85865bd6a73d9d5645bfceab75f1a51f116"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/831e4c93a98eccec73a35162604280dd525efcd7",
-                "reference": "831e4c93a98eccec73a35162604280dd525efcd7",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/fa1ba85865bd6a73d9d5645bfceab75f1a51f116",
+                "reference": "fa1ba85865bd6a73d9d5645bfceab75f1a51f116",
                 "shasum": ""
             },
             "require": {
@@ -2187,7 +2187,7 @@
                 "menu-manager",
                 "menumanager"
             ],
-            "time": "2017-10-13T17:35:42+00:00"
+            "time": "2017-10-17T06:30:10+00:00"
         },
         {
             "name": "laravel-enso/notifications",
@@ -2249,16 +2249,16 @@
         },
         {
             "name": "laravel-enso/permissionmanager",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "dce833e3b5ee0eb2b15cd6b9b3fb53df224c7f16"
+                "reference": "499f69a5c82c4aecf6ceb1f5c29f7b8fd611aeea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/dce833e3b5ee0eb2b15cd6b9b3fb53df224c7f16",
-                "reference": "dce833e3b5ee0eb2b15cd6b9b3fb53df224c7f16",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/499f69a5c82c4aecf6ceb1f5c29f7b8fd611aeea",
+                "reference": "499f69a5c82c4aecf6ceb1f5c29f7b8fd611aeea",
                 "shasum": ""
             },
             "require": {
@@ -2307,7 +2307,7 @@
                 "laravel-permissions",
                 "permission-manager"
             ],
-            "time": "2017-10-10T17:54:55+00:00"
+            "time": "2017-10-20T10:19:09+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
@@ -2671,16 +2671,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.0.17",
+            "version": "2.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "35768fba777d3d4cff75daa8f72fa9eacc40b69d"
+                "reference": "94636220f527f5a62e85eeb2d541961643ffd3b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/35768fba777d3d4cff75daa8f72fa9eacc40b69d",
-                "reference": "35768fba777d3d4cff75daa8f72fa9eacc40b69d",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/94636220f527f5a62e85eeb2d541961643ffd3b3",
+                "reference": "94636220f527f5a62e85eeb2d541961643ffd3b3",
                 "shasum": ""
             },
             "require": {
@@ -2720,20 +2720,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2017-10-17T06:31:43+00:00"
+            "time": "2017-10-21T06:57:19+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.16",
+            "version": "v5.5.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "95efce1e16c82a72f9aab52e96562282e7c35bf0"
+                "reference": "1cc21baac11551377734b8c17ead17db4c34fe21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/95efce1e16c82a72f9aab52e96562282e7c35bf0",
-                "reference": "95efce1e16c82a72f9aab52e96562282e7c35bf0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1cc21baac11551377734b8c17ead17db4c34fe21",
+                "reference": "1cc21baac11551377734b8c17ead17db4c34fe21",
                 "shasum": ""
             },
             "require": {
@@ -2774,7 +2774,6 @@
                 "illuminate/database": "self.version",
                 "illuminate/encryption": "self.version",
                 "illuminate/events": "self.version",
-                "illuminate/exception": "self.version",
                 "illuminate/filesystem": "self.version",
                 "illuminate/hashing": "self.version",
                 "illuminate/http": "self.version",
@@ -2852,7 +2851,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-10-16T14:18:46+00:00"
+            "time": "2017-10-19T12:50:26+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3654,16 +3653,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.12",
+            "version": "v0.8.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b"
+                "reference": "cdb5593c3684bab74e10fcfffe4a0c8d1c39695d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1502354ebc70d59d8e3a87c325b0eb78a79da25b",
-                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/cdb5593c3684bab74e10fcfffe4a0c8d1c39695d",
+                "reference": "cdb5593c3684bab74e10fcfffe4a0c8d1c39695d",
                 "shasum": ""
             },
             "require": {
@@ -3723,20 +3722,20 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-10-14T17:14:13+00:00"
+            "time": "2017-10-19T06:13:20+00:00"
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "a013bd4190e12422365e559b309f54ec50cbd0dd"
+                "reference": "03d3417748fc70a889c97271e25e282ff1ff0ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/a013bd4190e12422365e559b309f54ec50cbd0dd",
-                "reference": "a013bd4190e12422365e559b309f54ec50cbd0dd",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/03d3417748fc70a889c97271e25e282ff1ff0ae3",
+                "reference": "03d3417748fc70a889c97271e25e282ff1ff0ae3",
                 "shasum": ""
             },
             "require": {
@@ -3775,7 +3774,7 @@
                 "rest",
                 "trigger"
             ],
-            "time": "2017-07-10T09:21:10+00:00"
+            "time": "2017-10-20T11:18:01+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -5293,37 +5292,40 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
-                }
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
             "keywords": [
                 "clone",
                 "copy",
@@ -5331,7 +5333,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-04-12T18:52:22+00:00"
+            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "phar-io/manifest",

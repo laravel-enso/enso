@@ -151,7 +151,7 @@ Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Lar
 [Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr),
 [Nprogress.js](http://ricostacruz.com/nprogress),
 [Intro.js](http://introjs.com/), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
-[Flatpickr](https://chmln.github.io/flatpickr/)
+[Flatpickr](https://chmln.github.io/flatpickr/), [Bulma-Extensions](https://wikiki.github.io/bulma-extensions/overview)
 
 Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Jeremy Thomas](https://bulma.io).
 
