@@ -127,7 +127,8 @@ Are loaded at application load, and refreshed as needed
 
 #### Environment
 - config
-    - within the configuration file `config/larave-enso.php` various options may be set, such as the folders used for storing uploads, avatars, etc. the caching duration and the timestamps format when displaying them
+    - within the configuration enso folder `config/enso` you'll find configuration files for the various laravel-enso packages 
+    - inside 'config.php' various options may be set, such as the folders used for storing uploads, avatars, etc. the caching duration and the timestamps format when displaying them, the app version displayed in the footer and more 
 
 
 #### Telemetry
