@@ -17,7 +17,6 @@ class InsertDefaultUsers extends Migration
                 ['password' => '$2y$10$viKqL0/qom/BCoiqS08N1utwO63oJd3VJo/aTpGBAX9H4R7zUfdVa', 'first_name' => 'Adi', 'last_name' => 'Ocneanu', 'email' => 'aocneanu@gmail.com', 'phone' => null, 'is_active' => 1],
                 ['password' => '$2y$10$/SM/4KgBJF/CErwhftKRVelzRJwGK0puek6/OnBmX/AWN347kXXOe', 'first_name' => 'Mihai', 'last_name' => 'Ocneanu', 'email' => 'mihai.ocneanu@gmail.com', 'phone' => null, 'is_active' => 1],
                 ['password' => '$2y$10$WzZqE23aKS/DbxvE6RjfIu.k4rE44lmvc9jexWjWBmMM.kkr09UJu', 'first_name' => 'Ionut', 'last_name' => 'Pirvulescu', 'email' => 'ionut.pirvulescu@evolution-team.ro', 'phone' => null, 'is_active' => 1],
-                ['password' => '$2y$10$fSaj8y9qIuQpiMOTI6TuwO.a9Idwm628dsjXSg5NJWNw5TAcyndcm', 'first_name' => 'Marian', 'last_name' => 'Ene', 'email' => 'marian.ene@evolution-team.ro', 'phone' => null, 'is_active' => 1],
                 ['password' => '$2y$10$NASxRuBLJySCQOAaCUd./eRCXnVXrhNEZyXW0M.U.mhHsgwqvGbnu', 'first_name' => 'Dorin', 'last_name' => 'Carsin', 'email' => 'dorin.carsin@gmail.com ', 'phone' => null, 'is_active' => 1],
                 ['password' => '$2y$10$ldfV.sKju6vmNSq785wwQus7OlnFgibzWm1hy99K0j5GL12f4o7t6', 'first_name' => 'Cristi', 'last_name' => 'Trif', 'email' => 'cristi@evolution-team.ro', 'phone' => null, 'is_active' => 1],
             ];

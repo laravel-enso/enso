@@ -14,7 +14,9 @@ For the v1.x / adminlte version, take a look at the **[adminlte](https://github.
 
 <!--h-->
 ### Official Documentation
-Check out the official documentation [here](https://docs.laravel-enso.com/).
+
+The documentation for v2.x is in the process of being updated.
+
 <!--/h-->
 
 ### Installation Steps
