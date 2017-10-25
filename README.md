@@ -18,6 +18,7 @@ For the v1.x / adminlte version, take a look at the **[adminlte](https://github.
 ### Official Documentation
 
 The documentation for v2.x is in the process of being updated.
+In the meantime you may check out each package's readme on github.
 
 <!--/h-->
 
@@ -88,6 +89,25 @@ A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](h
 
 #### Authentication
  - the standard Laravel authentication is used, via email & password
+ 
+#### Stateful vs Stateless
+Since we wanted to log data about our users and their requests, as well as check various permissions, the concept of a
+'truly' stateless and secure API backend becomes impossible.
+
+From a security standpoint we did not feel that a RESTful would not be more secure but probably even less safe.
+
+Finally, from our own internal tests we concluded that we had no performance issues related to having the 
+application stateful, especially since we don't aim to build applications of Twitter's scale.
+
+In conclusion, even though at a point during the development we had the back-end set up as an API using JWT, 
+in the end we designed it stateful since session is stored in the DB or in files, depending on your chosen setup.   
+ 
+#### Session management
+- since Enso is built on top of a Laravel back-end, we are using the provided session management
+
+#### Security
+- since Laravel is using HttpOnly cookies and an additional CSRF token, this should provide protection against both XSS and CSRF attacks
+- remember that when working with VueJS, the v-html directive is XSS vulnerable, so it should be used only with sanitized/safe data   
 
 #### Authorization
  - application wide, checking user status: active/inactive. The check is made for every request, via a middleware. The inactive status prevents the user from logging in and making requests. If an user becomes inactive while he's still logged in, at his next request he'll be logged out and redirected to the login page with a notification
