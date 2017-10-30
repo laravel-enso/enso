@@ -1,16 +1,17 @@
-import './bootstrap';
-import './app';
+import './bootstrap'
+import './app'
+import Vue from 'vue'
+import router from './router'
+import store from './store'
+import App from './pages/enso/App.vue'
+import { sync } from 'vuex-router-sync'
 
-import router from './router';
-import store from './store';
-import App from './pages/enso/App.vue';
-import { sync } from 'vuex-router-sync';
+sync(store, router)
 
-sync(store, router);
-
+/* eslint-disable no-new */
 new Vue({
-	el: '#app',
-	router,
-	store,
-    ...App
-});
+  el: '#app',
+  router,
+  store,
+  ...App
+})

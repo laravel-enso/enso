@@ -1,106 +1,109 @@
-import store from '../../../store';
+import store from '../../../store'
 
-var Router = function(name, params, absolute) {
-    this.name = name;
-    this.urlParams = this.normalizeParams(params);
-    this.queryParams = this.normalizeParams(params);
-    this.absolute = absolute === undefined ? true : absolute;
-    this.domain = this.constructDomain();
-    this.url = store.state.routes[this.name].uri.replace(/^\//, '');
+let Router = (name, params, absolute) => {
+  this.name = name
+  this.urlParams = this.normalizeParams(params)
+  this.queryParams = this.normalizeParams(params)
+  this.absolute = absolute === undefined ? true : absolute
+  this.domain = this.constructDomain()
+  this.url = store.state.routes[this.name].uri.replace(/^\//, '')
 
-    String.call(this);
-};
+  String.call(this)
+}
 
-Router.prototype = Object.create(String.prototype);
-Router.prototype.constructor = Router;
+Router.prototype = Object.create(String.prototype)
+Router.prototype.constructor = Router
 
-Router.prototype.normalizeParams = function(params) {
-    if (params === undefined)
-        return {};
+Router.prototype = {
+  normalizeParams: params => {
+    if (params === undefined) return {}
 
-    params = typeof params !== 'object' ? [params] : params;
-    this.numericParamIndices = Array.isArray(params);
+    params = typeof params !== 'object' ? [params] : params
+    this.numericParamIndices = Array.isArray(params)
 
-    return Object.assign({}, params);
-};
-
-Router.prototype.constructDomain = function() {
+    return Object.assign({}, params)
+  },
+  constructDomain: () => {
     if (this.name === undefined) {
-        throw 'Ziggy Error: You must provide a route name';
+      throw Error('Ziggy Error: You must provide a route name')
     } else if (store.state.routes[this.name] === undefined) {
-        throw 'Ziggy Error: route "'+ this.name +'" is not found in the route list';
-    } else if (! this.absolute) {
-        return '/';
+      throw Error(`Ziggy Error: route ${this.name} is not found in the route list`)
+    } else if (!this.absolute) {
+      return '/'
     }
 
-    return (store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/,'') + '/';
-};
+    return (store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/, '') + '/'
+  },
+  with: params => {
+    this.urlParams = this.normalizeParams(params)
 
-Router.prototype.with = function(params) {
-    this.urlParams = this.normalizeParams(params);
+    return this
+  },
+  withQuery: params => {
+    Object.assign(this.queryParams, params)
 
-    return this;
-};
+    return this
+  },
+  constructUrl: () => {
+    let url, tags, paramsArrayKey
 
-Router.prototype.withQuery = function(params) {
-    Object.assign(this.queryParams, params);
+    url = this.domain + this.url
+    tags = this.urlParams
+    paramsArrayKey = 0
 
-    return this;
-};
+    const _ = tag => {
+      let keyName, key
 
-Router.prototype.constructUrl = function() {
-    var url = this.domain + this.url,
-        tags = this.urlParams,
-        paramsArrayKey = 0;
+      keyName = tag.replace(/\{|\}/gi, '').replace(/\?$/, '')
+      key = this.numericParamIndices ? paramsArrayKey : keyName
+      paramsArrayKey++
 
-    return url.replace(
-        /{([^}]+)}/gi,
-        function (tag) {
-            var keyName = tag.replace(/\{|\}/gi, '').replace(/\?$/, ''),
-                key = this.numericParamIndices ? paramsArrayKey : keyName;
+      if (typeof tags[key] !== 'undefined') {
+        delete this.queryParams[key]
 
-            paramsArrayKey++;
-            if (typeof tags[key] !== 'undefined') {
-                delete this.queryParams[key];
-                return tags[key].id || tags[key];
-            }
-            if (tag.indexOf('?') === -1) {
-                throw 'Ziggy Error: "' + keyName + '" key is required for route "' + this.name + '"';
-            } else {
-                return '';
-            }
-        }.bind(this)
-    );
-};
+        return tags[key].id || tags[key]
+      }
 
-Router.prototype.constructQuery = function() {
-    if (Object.keys(this.queryParams).length === 0)
-        return '';
+      if (tag.indexOf('?') === -1) {
+        throw Error(`Ziggy Error: ${keyName} key is required for route ${this.name}`)
+      } else {
+        return ''
+      }
+    }
 
-    var queryString = '?';
+    return url.replace(/{([^}]+)}/gi, _)
+  },
+  constructQuery: () => {
+    let queryString
 
-    Object.keys(this.queryParams).forEach(function(key, i) {
-        queryString = i === 0 ? queryString : queryString + '&';
-        queryString += key + '=' + this.queryParams[key];
-    }.bind(this));
+    queryString = ''
 
-    return queryString;
-};
+    if (Object.keys(this.queryParams).length === 0) return queryString
 
-Router.prototype.toString = function() {
-    this.parse();
-    return this.return;
-};
+    queryString = '?'
 
-Router.prototype.valueOf = function() {
-    this.parse();
-    return this.return;
-};
+    Object.keys(this.queryParams).forEach((key, i) => {
+      queryString = (i === 0)
+        ? queryString
+        : queryString + '&' + key + '=' + this.queryParams[key]
+    })
+    // .bind(this)) uses fat arrow
 
-Router.prototype.parse = function() {
-    this.return = this.constructUrl() + this.constructQuery();
-};
+    return queryString
+  },
+  toString: () => {
+    this.parse()
 
-window.route = function(name, params, absolute) {
-    return new Router(name, params, absolute);
-};
+    return this.return
+  },
+  valueOf: () => {
+    this.parse()
+
+    return this.return
+  },
+  parse: () => {
+    this.return = this.constructUrl() + this.constructQuery()
+  }
+}
+
+window.route = (name, params, absolute) => new Router(name, params, absolute)

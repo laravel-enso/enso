@@ -1,2 +1,2 @@
-require('./filters/numberFormat');
-require('./filters/timeFromNow');
+require('./filters/numberFormat')
+require('./filters/timeFromNow')

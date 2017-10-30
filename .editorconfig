@@ -8,5 +8,5 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{json,php}]
+[*.{css,json,php}]
 indent_size = 4

@@ -10,7 +10,7 @@ $fa-font-path: '~font-awesome/fonts';
 @import './app';
 
 .animated {
-    animation-duration: .4s;
+  animation-duration: .4s;
 }
 
 .toast-top-right {
@@ -23,9 +23,9 @@ $fa-font-path: '~font-awesome/fonts';
 }
 
 .icon.angle[aria-hidden="true"] {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .icon.angle {
-    transition: transform .300s ease;
+  transition: transform .300s ease;
 }
