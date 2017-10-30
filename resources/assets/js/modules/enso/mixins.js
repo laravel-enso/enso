@@ -1,1 +1,1 @@
-require('./mixins/errorHandler');
+require('./mixins/errorHandler')

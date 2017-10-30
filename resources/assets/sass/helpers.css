@@ -1,3 +1,5 @@
+/* create a scss/sass file with a loop */
+
 .has-vertically-centered-content {
     display:flex; align-items: center;
 }

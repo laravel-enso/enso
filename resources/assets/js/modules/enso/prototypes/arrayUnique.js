@@ -1,5 +1,2 @@
-Array.prototype.unique = function() {
-    return this.filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    });
-};
+/* eslint no-extend-native: ["error", { "exceptions": ["Array"] }] */
+if (!Array.prototype.unique) Array.prototype.unique = () => this.filter((value, index, self) => self.indexOf(value) === index)
