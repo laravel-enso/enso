@@ -13,7 +13,7 @@ return [
         'sheet_entries_limit_excedeed' => 'Excedeed the entries limit of',
         'missing_param_from_config'    => 'The following parameter is missing from the config file',
     ],
-    'configs'          => [
+    'configs' => [
         'owners' => [
             'label'             => 'Owners',
             'template'          => 'app/Importing/Templates/owners.json',

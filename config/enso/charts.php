@@ -1,7 +1,7 @@
 <?php
 
     return [
-        'colors'       => [
+        'colors' => [
             'Green'     => '#008000',
             'Red'       => '#FF0000',
             'Blue'      => '#1E90FF',
