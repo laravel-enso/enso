@@ -39,12 +39,17 @@
                 validator(value) {
                     return value <= 8388608;
                 }
+            },
+            params: {
+                type: Object,
+                default: null
             }
         },
 
-        computed: {
-            input() {
-                return this.$el.querySelector('input');
+        data() {
+            return {
+                input: null,
+                formData: new FormData()
             }
         },
 
@@ -54,8 +59,9 @@
             },
             upload() {
                 this.$emit('upload-start');
+                this.setFormData();
 
-                axios.post(this.url, this.getFormData()).then(response => {
+                axios.post(this.url, this.formData).then(response => {
                     this.resetForm();
                     this.$emit('upload-successful', response.data);
                 }).catch(error => {
@@ -64,17 +70,28 @@
                     this.handleError(error);
                 });
             },
-            getFormData() {
-                let formData = new FormData(),
-                    files = this.input.files;
-
+            setFormData() {
+                let files = this.input.files;
+                this.addFiles(files);
+                this.addParams();
+            },
+            addFiles(files) {
                 for (let i = 0; i < files.length; i++) {
                     if (this.sizeCheckPasses(files[i])) {
-                        formData.append("file_" + i, files[i]);
+                        this.formData.append("file_" + i, files[i]);
                     }
                 }
+            },
+            addParams() {
+                if (this.params) {
+                    for (let key in this.params) {
+                        let value = typeof this.params[key] === 'object'
+                            ? JSON.stringify(this.params[key])
+                            : this.params[key];
 
-                return formData;
+                        this.formData.append(key, value);
+                    }
+                }
             },
             sizeCheckPasses(file) {
                 if (file.size > this.fileSizeLimit) {
@@ -87,6 +104,10 @@
             resetForm() {
                 this.$el.reset();
             }
+        },
+
+        mounted() {
+            this.input = this.$el.querySelector('input');
         }
     }
 

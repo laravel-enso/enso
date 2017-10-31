@@ -33,7 +33,7 @@
 		props: {
 			source: {
 				type: String,
-				default: ''
+                required: true,
 			},
 			params: {
 				type: Object,

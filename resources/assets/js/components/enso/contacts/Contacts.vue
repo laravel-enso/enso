@@ -63,14 +63,6 @@
                 type: String,
                 required: true
             },
-            theme: {
-                type: String,
-                default: 'primary'
-            },
-            solid: {
-                type: Boolean,
-                default: false,
-            },
             open: {
                 type: Boolean,
                 default: false

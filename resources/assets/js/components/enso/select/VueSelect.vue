@@ -111,21 +111,6 @@
                 return this.keyMap === 'number'
                     ? Object.keys(this.optionList).map(Number)
                     : Object.keys(this.optionList);
-            },
-            matchedValue() {
-                let self = this;
-
-                if (!this.multiple) {
-                    return this.optionKeys.filter(option => {
-                        return option === self.value;
-                    }).length > 0;
-                }
-
-                return this.optionKeys.filter(option => {
-                    return self.value.filter(val => {
-                        return val === option;
-                    }).length > 0;
-                }).length > 0;
             }
         },
 
@@ -211,9 +196,24 @@
             processOptions(response) {
                 this.optionList = response.data;
 
-                if (!this.query && !this.matchedValue) {
+                if (!this.query && !this.valueIsMatched()) {
                     this.clear();
                 }
+            },
+            valueIsMatched() {
+                let self = this;
+
+                if (!this.multiple) {
+                    return this.optionKeys.filter(option => {
+                        return option === self.value;
+                    }).length > 0;
+                }
+
+                return this.optionKeys.filter(option => {
+                    return self.value.filter(val => {
+                        return val === option;
+                    }).length > 0;
+                }).length > 0;
             },
             customLabel(option) {
                 return this.optionList[option];

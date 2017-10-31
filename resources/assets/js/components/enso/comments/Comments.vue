@@ -55,15 +55,7 @@
         components: { Card, Comment },
 
         props: {
-            theme: {
-                type: String,
-                default: 'primary'
-            },
             open: {
-                type: Boolean,
-                default: false
-            },
-            solid: {
                 type: Boolean,
                 default: false
             },

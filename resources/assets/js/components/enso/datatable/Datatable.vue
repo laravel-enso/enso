@@ -68,14 +68,6 @@
                 type: String,
                 default: null
             },
-            theme: {
-                type: String,
-                default: 'primary'
-            },
-            solid: {
-                type: Boolean,
-                default: false,
-            },
             customRender: {
                 type: Function,
                 default() {
