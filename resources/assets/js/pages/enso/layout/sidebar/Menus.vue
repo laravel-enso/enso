@@ -16,7 +16,7 @@
                 <span class="icon is-small">
                     <i :class="menu.icon"></i>
                 </span>
-                {{ menu.name }}
+                {{ __(menu.name) }}
                 <span class="icon is-small angle is-pulled-right">
                     <i class="fa fa-angle-left"></i>
                 </span>
