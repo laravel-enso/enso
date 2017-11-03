@@ -10,3 +10,4 @@ Homestead.yaml
 npm-debug.log
 .env
 .DS_STORE
+._*
