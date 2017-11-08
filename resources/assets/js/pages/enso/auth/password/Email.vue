@@ -46,57 +46,59 @@
 
 <script>
 
-    export default {
-        name: 'Email',
+export default {
+    name: 'Email',
 
-        props: {
-            appName: {
-                type: String,
-                required: true
-            }
+    props: {
+        appName: {
+            type: String,
+            required: true,
         },
+    },
 
-        data() {
-            return {
-                loading: false,
-                email: null,
-                hasErrors: null,
-                isSuccessful: false
-            };
-        },
+    data() {
+        return {
+            loading: false,
+            email: null,
+            hasErrors: null,
+            isSuccessful: false,
+        };
+    },
 
-        watch: {
-            email: {
-                handler() {
-                    this.hasErrors = false;
-                }
-            }
-        },
-
-        methods: {
-            submit() {
-                this.loading = true;
-                this.isSuccessful = false;
+    watch: {
+        email: {
+            handler() {
                 this.hasErrors = false;
+            },
+        },
+    },
 
-                axios.post('/api/password/email', { email: this.email }).then(response => {
-                    this.loading = false;
-                    this.isSuccessful = true;
-                    toastr.success(response.data.status);
-                }).catch(error => {
-                    this.loading = false;
-                    this.hasErrors = true;
+    methods: {
+        submit() {
+            this.loading = true;
+            this.isSuccessful = false;
+            this.hasErrors = false;
 
-                    let { status, data } = error.response;
+            axios.post('/api/password/email', { email: this.email }).then(({ data }) => {
+                this.loading = false;
+                this.isSuccessful = true;
+                toastr.success(data.status);
+            }).catch((error) => {
+                this.loading = false;
+                this.hasErrors = true;
 
-                    if (status === 422) {
-                        return data.message
-                            ? toastr.error(data.message)
-                            :  toastr.error(data.email);
-                    }
-                });
-            }
-        }
-    };
+                const { status, data } = error.response;
+
+                if (status === 422) {
+                    return data.message
+                        ? toastr.error(data.message)
+                        : toastr.error(data.email);
+                }
+
+                throw error;
+            });
+        },
+    },
+};
 
 </script>

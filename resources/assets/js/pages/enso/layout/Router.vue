@@ -15,8 +15,8 @@
 
 <script>
 
-    export default {
-        name: 'Router'
-    }
+export default {
+    name: 'Router',
+};
 
 </script>

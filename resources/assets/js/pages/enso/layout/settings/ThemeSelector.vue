@@ -43,46 +43,44 @@
 
 <script>
 
-    import { mapState } from 'vuex';
-    import { mapGetters } from 'vuex';
-    import { mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
-    export default {
-        name: 'ThemeSelector',
+export default {
+    name: 'ThemeSelector',
 
-        props: {
-            title: {
-                type: String,
-                required: true
-            }
+    props: {
+        title: {
+            type: String,
+            required: true,
         },
+    },
 
-        computed: {
-            ...mapState('layout', ['themes']),
-            ...mapGetters('layout', ['theme'])
+    computed: {
+        ...mapState('layout', ['themes']),
+        ...mapGetters('layout', ['theme']),
+    },
+
+    data() {
+        return {
+            show: false,
+        };
+    },
+
+    methods: {
+        ...mapActions('layout', ['switchTheme']),
+        hide() {
+            this.show = false;
         },
-
-        data() {
-            return {
-                show: false,
+        update(theme) {
+            if (theme === this.theme) {
+                return;
             }
+
+            this.switchTheme(theme);
+            this.$emit('update');
         },
-
-        methods: {
-            ...mapActions('layout', ['switchTheme']),
-            hide() {
-                this.show = false;
-            },
-            update(theme) {
-                if (theme === this.theme) {
-                    return false;
-                }
-
-                this.switchTheme(theme);
-                this.$emit('update');
-            }
-        }
-    };
+    },
+};
 
 </script>
 

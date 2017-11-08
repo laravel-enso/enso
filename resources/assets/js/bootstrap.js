@@ -1,4 +1,17 @@
-window.$ = window.jQuery = require('jquery');
+import Vue from 'vue';
+import VTooltip from 'vue-directive-tooltip';
+import vClickOutside from 'v-click-outside';
+
+window.Vue = Vue;
+const bus = new Vue({ name: 'Bus' });
+Vue.prototype.$bus = bus;
+Vue.use(VTooltip);
+Vue.use(vClickOutside);
+
+window.jQuery = require('jquery');
+
+window.$ = window.jQuery;
+
 require('datatables.net');
 require('datatables.net-select');
 require('datatables.net-colreorder');
@@ -6,18 +19,6 @@ require('datatables.net-responsive');
 require('datatables.net-buttons');
 require('datatables.net-buttons/js/buttons.colVis.js');
 require('datatables.net-buttons/js/buttons.html5.js');
-
-import Vue from 'vue';
-window.Vue = Vue;
-
-const bus = new Vue({ name: 'Bus' });
-Vue.prototype.$bus = bus;
-
-import VTooltip from 'vue-directive-tooltip';
-Vue.use(VTooltip);
-import vClickOutside from 'v-click-outside';
-Vue.use(vClickOutside);
-
 
 require('at.js');
 require('jquery.caret');
@@ -29,6 +30,7 @@ window.toastr = require('toastr');
 require('toastr/build/toastr.min.css');
 
 window.axios = require('axios');
+
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 require('./modules/enso/plugins/route');

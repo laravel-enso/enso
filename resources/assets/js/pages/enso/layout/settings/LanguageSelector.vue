@@ -50,42 +50,40 @@
 
 <script>
 
-    require('flag-icon-css/css/flag-icon.min.css');
-    import { mapState } from 'vuex';
-    import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
-    export default {
-        name: 'LanguageSelector',
+require('flag-icon-css/css/flag-icon.min.css');
 
-        props: {
-            title: {
-                type: String,
-                required: true
-            }
+export default {
+    name: 'LanguageSelector',
+
+    props: {
+        title: {
+            type: String,
+            required: true,
         },
+    },
 
-        computed: {
-            ...mapState('locale', ['languages']),
-            ...mapGetters('locale',
-                { locale: 'current' }
-            )
+    computed: {
+        ...mapState('locale', ['languages']),
+        ...mapGetters('locale', { locale: 'current' }),
+    },
+
+    data() {
+        return {
+            show: false,
+        };
+    },
+
+    methods: {
+        hide() {
+            this.show = false;
         },
-
-        data() {
-            return {
-                show: false,
-            }
+        update(locale) {
+            this.$store.dispatch('locale/setLocale', locale);
+            this.$emit('update');
         },
-
-        methods: {
-            hide() {
-                this.show = false;
-            },
-            update(locale) {
-                this.$store.dispatch('locale/setLocale', locale);
-                this.$emit('update');
-            }
-        }
-    };
+    },
+};
 
 </script>

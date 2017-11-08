@@ -1,0 +1,28 @@
+module.exports = {
+	env: {
+        browser: true,
+        jquery: true,
+        es6: true,
+    },
+    extends: [
+    	"airbnb-base",
+    	"plugin:vue/recommended"
+    ],
+    plugins: [
+        'vue',
+    ],
+    globals: {
+        _: true,
+        moment: true,
+        axios: true,
+        toastr: true,
+        PageStore: true,
+        route: true,
+    },
+    rules: {
+        indent: ["error", 4],
+        "no-plusplus": 0,
+        "no-underscore-dangle": ["error", { "allow": ["__"] } ],
+        "no-param-reassign": 0
+    }
+};

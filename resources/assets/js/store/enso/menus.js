@@ -1,14 +1,14 @@
 export const menus = {
-	namespaced: true,
+    namespaced: true,
 
     state: {
         list: [],
-        implicit: null
+        implicit: null,
     },
 
     mutations: {
-        set: (state, menus) => state.list = menus,
-        setImplicit: (state, implicit) => state.implicit = implicit,
-        toggle: (state, menu) => menu.expanded = !menu.expanded
-    }
+        set: (state, menuList) => { state.list = menuList; },
+        setImplicit: (state, implicit) => { state.implicit = implicit; },
+        toggle: (state, menu) => { menu.expanded = !menu.expanded; },
+    },
 };

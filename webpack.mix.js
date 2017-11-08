@@ -7,7 +7,7 @@ mix
 	.js('resources/assets/js/enso.js', 'public/js')
 	.sourceMaps()
 
-	.sass('resources/assets/sass/enso.scss', 'public/css')
+	.sass('resources/assets/sass/enso.scss', 'public/css');
 
 	// .sass('resources/assets/sass/themes/cerulean.scss', 'public/themes/cerulean/bulma.min.css')
 	// .sass('resources/assets/sass/themes/clean.scss', 'public/themes/clean/bulma.min.css')
@@ -30,4 +30,4 @@ mix
 	// .sass('resources/assets/sass/themes/superhero.scss', 'public/themes/superhero/bulma.min.css')
 	// .sass('resources/assets/sass/themes/united.scss', 'public/themes/united/bulma.min.css')
 	// .sass('resources/assets/sass/themes/yeti.scss', 'public/themes/yeti/bulma.min.css')
-	.version();
+	// .version();

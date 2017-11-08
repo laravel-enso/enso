@@ -27,33 +27,32 @@
 
 <script>
 
-    import VueAside from '../VueAside.vue';
-    import LanguageSelector from './LanguageSelector.vue';
-    import ThemeSelector from './ThemeSelector.vue';
-    import Tutorial from './Tutorial.vue';
-    import { mapState } from 'vuex';
-    import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
+import VueAside from '../VueAside.vue';
+import LanguageSelector from './LanguageSelector.vue';
+import ThemeSelector from './ThemeSelector.vue';
+import Tutorial from './Tutorial.vue';
 
-	export default {
-		name: 'Settings',
+export default {
+    name: 'Settings',
 
-        computed: {
-            ...mapState(['user']),
-            ...mapGetters('locale', ['__']),
+    computed: {
+        ...mapState(['user']),
+        ...mapGetters('locale', ['__']),
+    },
+
+    components: {
+        VueAside, LanguageSelector, ThemeSelector, Tutorial,
+    },
+
+    methods: {
+        setPreferences() {
+            axios.patch(route('core.preferences.setPreferences', [], false), {
+                global: this.user.preferences.global,
+            }).catch(error => this.handleError(error));
         },
-
-        components: { VueAside, LanguageSelector, ThemeSelector, Tutorial },
-
-        methods: {
-            setPreferences() {
-                axios.patch(route('core.preferences.setPreferences', [], false),
-                    { 'global': this.user.preferences.global }
-                ).catch(error => {
-                    this.handleError(error);
-                });
-            },
-        }
-	};
+    },
+};
 
 </script>
 

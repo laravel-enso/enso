@@ -5,12 +5,13 @@ import { Roles } from './system/roles';
 import { Logs } from './system/logs';
 import { Localisation } from './system/localisation';
 import { Tutorials } from './system/tutorials';
+import RouterView from '../../pages/enso/layout/Router.vue';
 
 export const System = {
     path: '/system',
-    component: require('../../pages/enso/layout/Router.vue'),
+    component: RouterView,
     meta: {
         breadcrumb: 'system',
     },
-    children: [ PermissionGroups, Permissions, Menus, Roles, Logs, Localisation, Tutorials ]
+    children: [PermissionGroups, Permissions, Menus, Roles, Logs, Localisation, Tutorials],
 };

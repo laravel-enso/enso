@@ -30,28 +30,26 @@
 
 <script>
 
-	import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
-	import VueSelect from '../../../../components/enso/select/VueSelect.vue';
+import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
+import VueSelect from '../../../../components/enso/select/VueSelect.vue';
 
-	export default {
-		components: { VueForm, VueSelect },
+export default {
+    components: { VueForm, VueSelect },
 
-		data() {
-			return {
-				initialised: false,
-				form: {},
-				pivotParams: { owners: { id: null} },
-			}
-		},
+    data() {
+        return {
+            initialised: false,
+            form: {},
+            pivotParams: { owners: { id: null } },
+        };
+    },
 
-		created() {
-			axios.get(route(this.$route.name, null, false)).then(response => {
-				this.form = response.data.form;
-				this.initialised = true;
-			}).catch(error => {
-				this.handleError(error);
-			});
-		}
-	};
+    created() {
+        axios.get(route(this.$route.name, null, false)).then(({ data }) => {
+            this.form = data.form;
+            this.initialised = true;
+        }).catch(error => this.handleError(error));
+    },
+};
 
 </script>

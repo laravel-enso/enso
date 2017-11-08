@@ -1,26 +1,26 @@
 <template>
 
-	<div>
-		<page-header :title="__(title)"></page-header>
-		<router></router>
-	</div>
+    <div>
+        <page-header :title="__(title)"></page-header>
+        <router></router>
+    </div>
 
 </template>
 
 <script>
 
-	import Router from './Router.vue';
-	import PageHeader from './PageHeader.vue';
-	import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Router from './Router.vue';
+import PageHeader from './PageHeader.vue';
 
-	export default {
-		components: { Router, PageHeader },
+export default {
+    components: { Router, PageHeader },
 
-		computed: {
-            ...mapGetters('locale', ['__']),
-            title() {
-            	return this.$route.meta.title;
-            }
-        }
-	}
+    computed: {
+        ...mapGetters('locale', ['__']),
+        title() {
+            return this.$route.meta.title;
+        },
+    },
+};
 </script>

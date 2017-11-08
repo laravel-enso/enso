@@ -1,9 +1,11 @@
+import UserCreate from '../../../../pages/enso/administration/users/Create.vue';
+
 export const Create = {
     name: 'administration.users.create',
     path: 'create',
-    component: require('../../../../pages/enso/administration/users/Create.vue'),
+    component: UserCreate,
     meta: {
         breadcrumb: 'create',
-        title: 'Create User'
-    }
+        title: 'Create User',
+    },
 };

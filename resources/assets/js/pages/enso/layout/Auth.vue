@@ -17,33 +17,31 @@
 
 <script>
 
-	import Router from '../layout/Router.vue';
+import Router from '../layout/Router.vue';
 
-	export default {
-		name: 'Auth',
+export default {
+    name: 'Auth',
 
-		components: { Router },
+    components: { Router },
 
-		data() {
-			return {
-				appName: ''
-			}
-		},
+    data() {
+        return {
+            appName: '',
+        };
+    },
 
-		beforeCreate() {
-			if (this.$route.path === '/') {
-				this.$router.replace({ name: 'login' });
-			}
-		},
+    beforeCreate() {
+        if (this.$route.path === '/') {
+            this.$router.replace({ name: 'login' });
+        }
+    },
 
-		created() {
-			axios.get('/api/getAppName').then(({ data }) => {
-				this.appName = data;
-			}).catch(error => {
-				this.handleError(error);
-			});
-		},
-	};
+    created() {
+        axios.get('/api/getAppName').then(({ data }) => {
+            this.appName = data;
+        }).catch(error => this.handleError(error));
+    },
+};
 
 </script>
 

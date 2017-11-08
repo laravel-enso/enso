@@ -26,22 +26,15 @@
 
 <script>
 
-    import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 
-    export default {
-        name: 'AppFooter',
+export default {
+    name: 'AppFooter',
 
-        computed: {
-            ...mapState(['meta'])
-        },
-
-        data() {
-            return {}
-        },
-        methods: {},
-
-        mounted() {}
-    };
+    computed: {
+        ...mapState(['meta']),
+    },
+};
 
 </script>
 

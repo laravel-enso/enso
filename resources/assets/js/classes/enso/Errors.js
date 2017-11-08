@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 class Errors {
     constructor() {
         this.errors = {};
@@ -8,7 +10,7 @@ class Errors {
     }
 
     has(field) {
-        return this.errors.hasOwnProperty(field);
+        return Object.keys(this.errors).includes(field);
     }
 
     get(field) {
@@ -26,9 +28,7 @@ class Errors {
     }
 
     empty() {
-        for (let field in this.errors) {
-            this.clear(field);
-        }
+        Object.keys(this.errors).forEach(field => this.clear(field));
     }
 }
 

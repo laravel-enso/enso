@@ -8,9 +8,9 @@
 
 <script>
 
-	export default {
-		name: 'VueAside',
-	};
+export default {
+    name: 'VueAside',
+};
 
 </script>
 

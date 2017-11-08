@@ -1,5 +1,5 @@
 export const settingsBar = {
-	namespaced: true,
+    namespaced: true,
 
     state: {
         isVisible: false,
@@ -9,5 +9,5 @@ export const settingsBar = {
         toggle: (state) => {
             state.isVisible = !state.isVisible;
         },
-    }
+    },
 };

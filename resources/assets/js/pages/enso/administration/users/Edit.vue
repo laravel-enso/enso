@@ -30,39 +30,35 @@
 
 <script>
 
-	import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
-	import VueSelect from '../../../../components/enso/select/VueSelect.vue';
+import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
+import VueSelect from '../../../../components/enso/select/VueSelect.vue';
 
-	export default {
-		components: { VueForm, VueSelect },
+export default {
+    components: { VueForm, VueSelect },
 
-		data() {
-			return {
-				initialised: false,
-				form: {},
-				pivotParams: { owners: { id: null} },
-			}
-		},
+    data() {
+        return {
+            initialised: false,
+            form: {},
+            pivotParams: { owners: { id: null } },
+        };
+    },
 
-		created() {
-			axios.get(route(this.$route.name, this.$route.params.id, false)).then(response => {
-				this.form = response.data.form;
-				this.initialised = true;
-				this.pivotParams.owners.id = this.getOwnerId();
-			}).catch(error => {
-				this.handleError(error);
-			});
-		},
+    created() {
+        axios.get(route(this.$route.name, this.$route.params.id, false)).then(({ data }) => {
+            this.form = data.form;
+            this.initialised = true;
+            this.pivotParams.owners.id = this.getOwnerId();
+        }).catch(error => this.handleError(error));
+    },
 
-		methods: {
-            getOwnerId() {
-                let attribute = this.form.fields.find(attribute => {
-                    return attribute.column === 'owner_id';
-                });
+    methods: {
+        getOwnerId() {
+            const attribute = this.form.fields.find(attr => attr.column === 'owner_id');
 
-                return attribute.value;
-            }
+            return attribute.value;
         },
-	};
+    },
+};
 
 </script>

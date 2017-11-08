@@ -16,51 +16,51 @@
 
 <script>
 
-	import Auth from './layout/Auth.vue';
-	import Home from'./layout/Home.vue';
-	import AppMain from'./layout/AppMain.vue';
-	import { mapState } from 'vuex';
-	import { mapGetters } from 'vuex';
-	import { mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
+import Auth from './layout/Auth.vue';
+import Home from './layout/Home.vue';
+import AppMain from './layout/AppMain.vue';
 
-	export default {
-		name: 'App',
+export default {
+    name: 'App',
 
-		components: { Auth, Home, AppMain },
+    components: { Auth, Home, AppMain },
 
-		computed: {
-			...mapGetters('auth', ['isAuth']),
-			...mapState(['appIsLoaded']),
-			component() {
-				if (!this.isAuth) {
-					return 'auth';
-				}
+    computed: {
+        ...mapGetters('auth', ['isAuth']),
+        ...mapState(['appIsLoaded']),
+        component() {
+            if (!this.isAuth) {
+                return 'auth';
+            }
 
-				if (this.showHome) {
-					return 'home';
-				}
+            if (this.showHome) {
+                return 'home';
+            }
 
-				if (this.appIsLoaded) {
-					return 'app-main';
-				}
-			}
-		},
+            if (this.appIsLoaded) {
+                return 'app-main';
+            }
 
-		data() {
-			return {
-                showHome: false
-			}
-		},
+            return null;
+        },
+    },
 
-		beforeMount() {
-			if (this.isAuth) {
-				this.setState();
-			}
-		},
+    data() {
+        return {
+            showHome: false,
+        };
+    },
 
-		methods: {
-			...mapActions(['setState']),
-		},
-	};
+    beforeMount() {
+        if (this.isAuth) {
+            this.setState();
+        }
+    },
+
+    methods: {
+        ...mapActions(['setState']),
+    },
+};
 
 </script>

@@ -86,90 +86,90 @@
 
 <script>
 
-    export default {
-        name: 'Email',
+export default {
+    name: 'Email',
 
-        props: {
-            appName: {
-                type: String,
-                required: true
-            }
+    props: {
+        appName: {
+            type: String,
+            required: true,
         },
+    },
 
-        data() {
-            return {
-                loading: false,
-                email: null,
-                password: null,
-                passwordConfirmation: null,
-                token: this.$route.params.token,
-                hasErrors: null,
-                isSuccessful: false,
-            };
-        },
+    data() {
+        return {
+            loading: false,
+            email: null,
+            password: null,
+            passwordConfirmation: null,
+            token: this.$route.params.token,
+            hasErrors: null,
+            isSuccessful: false,
+        };
+    },
 
-        watch: {
-            email: {
-                handler() {
-                    this.hasErrors = false;
-                }
-            },
-            password: {
-                handler() {
-                    this.hasErrors = false;
-                }
-            },
-            passwordConfirmation: {
-                handler() {
-                    this.hasErrors = false;
-                }
-            }
-        },
-
-        methods: {
-            submit() {
-                this.loading = true;
-                this.isSuccessful = false;
+    watch: {
+        email: {
+            handler() {
                 this.hasErrors = false;
+            },
+        },
+        password: {
+            handler() {
+                this.hasErrors = false;
+            },
+        },
+        passwordConfirmation: {
+            handler() {
+                this.hasErrors = false;
+            },
+        },
+    },
 
-                let params = {
-                    email: this.email,
-                    password: this.password,
-                    password_confirmation: this.passwordConfirmation,
-                    token: this.token
-                };
+    methods: {
+        submit() {
+            this.loading = true;
+            this.isSuccessful = false;
+            this.hasErrors = false;
 
-                axios.post('/api/password/reset', params).then(response => {
-                    this.loading = false;
-                    this.isSuccessful = true;
-                    toastr.success(response.data.status);
-                    setTimeout(() => this.$router.push({ name: 'login' }));
-                }).catch(error => {
-                    this.loading = false;
-                    this.hasErrors = true;
+            const params = {
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.passwordConfirmation,
+                token: this.token,
+            };
 
-                    let { status, data } = error.response;
+            axios.post('/api/password/reset', params).then(({ data }) => {
+                this.loading = false;
+                this.isSuccessful = true;
+                toastr.success(data.status);
+                setTimeout(() => this.$router.push({ name: 'login' }));
+            }).catch((error) => {
+                this.loading = false;
+                this.hasErrors = true;
 
-                    if (status === 422) {
-                        if (data.message) {
-                            toastr.error(data.message);
-                        }
+                const { status, data } = error.response;
 
-                        if (data.errors.email) {
-                            toastr.error(data.errors.email);
-                        }
-
-                        if (data.errors.password) {
-                            toastr.error(data.errors.password);
-                        }
-
-                        return;
+                if (status === 422) {
+                    if (data.message) {
+                        toastr.error(data.message);
                     }
 
-                    throw error;
-                });
-            }
-        }
-    };
+                    if (data.errors.email) {
+                        toastr.error(data.errors.email);
+                    }
+
+                    if (data.errors.password) {
+                        toastr.error(data.errors.password);
+                    }
+
+                    return;
+                }
+
+                throw error;
+            });
+        },
+    },
+};
 
 </script>

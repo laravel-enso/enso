@@ -33,41 +33,41 @@
 
 <script>
 
-	import Breadcrumbs from './Breadcrumbs.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Breadcrumbs from './Breadcrumbs.vue';
 
-	export default {
-		name: 'PageHeader',
+export default {
+    name: 'PageHeader',
 
-        computed: {
-            ...mapGetters('locale', ['__'])
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    components: { Breadcrumbs },
+
+    watch: {
+        title: {
+            handler() {
+                this.loaded = false;
+                setTimeout(() => {
+                    this.loaded = true;
+                }, 350);
+            },
         },
+    },
 
-		components: { Breadcrumbs },
+    data() {
+        return {
+            loaded: true,
+        };
+    },
 
-        watch: {
-            title: {
-                handler() {
-                    this.loaded = false;
-                    setTimeout(() => {
-                        this.loaded = true;
-                    }, 350);
-                }
-            }
+    props: {
+        title: {
+            type: String,
+            default: null,
         },
-
-        data() {
-            return {
-                loaded: true
-            };
-        },
-
-		props: {
-			title: {
-				type: String,
-				default: null
-			}
-		},
-	};
+    },
+};
 
 </script>

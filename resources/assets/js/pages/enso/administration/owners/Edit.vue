@@ -24,31 +24,31 @@
 
 <script>
 
-	import Documents from '../../../../components/enso/documents/Documents.vue';
-	import Comments from '../../../../components/enso/comments/Comments.vue';
-	import Contacts from '../../../../components/enso/contacts/Contacts.vue';
-	import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
+import Documents from '../../../../components/enso/documents/Documents.vue';
+import Comments from '../../../../components/enso/comments/Comments.vue';
+import Contacts from '../../../../components/enso/contacts/Contacts.vue';
+import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
 
-	export default {
-		components: { Comments, Contacts, Documents, VueForm },
+export default {
+    components: {
+        Comments, Contacts, Documents, VueForm,
+    },
 
-		data() {
-			return {
-				initialised: false,
-				form: {},
-				owner: {}
-			}
-		},
+    data() {
+        return {
+            initialised: false,
+            form: {},
+            owner: {},
+        };
+    },
 
-		created() {
-			axios.get(route(this.$route.name, this.$route.params.id, false)).then(response => {
-				this.form = response.data.form;
-				this.owner = response.data.owner;
-				this.initialised = true;
-			}).catch(error => {
-				this.handleError(error);
-			});
-		}
-	};
+    created() {
+        axios.get(route(this.$route.name, this.$route.params.id, false)).then(({ data }) => {
+            this.form = data.form;
+            this.owner = data.owner;
+            this.initialised = true;
+        }).catch(error => this.handleError(error));
+    },
+};
 
 </script>

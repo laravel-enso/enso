@@ -20,42 +20,37 @@
 
 <script>
 
-    import { introJs } from 'intro.js';
+import { introJs } from 'intro.js';
 
-	export default {
-		name: 'Tutorial',
+export default {
+    name: 'Tutorial',
 
-        props: {
-            title: {
-                type: String,
-                required: true
-            }
+    props: {
+        title: {
+            type: String,
+            required: true,
         },
+    },
 
-        data() {
-            return {
-                intro: introJs()
-            }
+    data() {
+        return {
+            intro: introJs(),
+        };
+    },
+
+    methods: {
+        get() {
+            axios.get(route('system.tutorials.show', this.$route.name, false)).then(({ data }) => {
+                this.init(data);
+            }).catch(error => this.handleError(error));
         },
-
-        methods: {
-            get() {
-                axios.get(route('system.tutorials.show', this.$route.name, false)).then(response => {
-                    this.init(response.data);
-                }).catch(error => {
-                    this.handleError(error);
-                });
-            },
-            init(steps) {
-                this.$store.commit('layout/settingsBar/toggle');
-                this.intro.setOptions({
-                    steps: steps
-                });
-
-                this.intro.start();
-            }
-        }
-	};
+        init(steps) {
+            this.$store.commit('layout/settingsBar/toggle');
+            this.intro.setOptions({ steps });
+            this.intro.start();
+        },
+    },
+};
 
 </script>
 

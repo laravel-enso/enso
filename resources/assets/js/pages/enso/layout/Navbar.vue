@@ -61,31 +61,31 @@
 
 <script>
 
-    import Notifications from './navbar/Notifications.vue';
-    import { mapState } from 'vuex';
+import { mapState } from 'vuex';
+import Notifications from './navbar/Notifications.vue';
 
-    export default {
-        name: 'Navbar',
+export default {
+    name: 'Navbar',
 
-        components: { Notifications },
+    components: { Notifications },
 
-		props: {
-			envIsLocal: {
-				type: Boolean,
-				default: false
-			}
-		},
-
-        computed: {
-            ...mapState(['meta', 'user'])
+    props: {
+        envIsLocal: {
+            type: Boolean,
+            default: false,
         },
+    },
 
-		methods: {
-            goToProfile() {
-                this.$router.push({ name: 'administration.users.show', params: {id: this.user.id} });
-            }
-        }
-	};
+    computed: {
+        ...mapState(['meta', 'user']),
+    },
+
+    methods: {
+        goToProfile() {
+            this.$router.push({ name: 'administration.users.show', params: { id: this.user.id } });
+        },
+    },
+};
 
 </script>
 
