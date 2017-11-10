@@ -89,87 +89,93 @@
 
 <script>
 
-    import Errors from '../../../classes/enso/Errors.js';
-    import Modal from '../bulma/Modal.vue';
-    import VueSelect from '../select/VueSelect.vue';
-    import Datepicker from '../bulma/Datepicker.vue';
-    import VueFormInput from './VueFormInput.vue';
-    import Overlay from '../bulma/Overlay.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Errors from '../../../classes/enso/Errors.js';
+import Modal from '../bulma/Modal.vue';
+import VueSelect from '../select/VueSelect.vue';
+import Datepicker from '../bulma/Datepicker.vue';
+import VueFormInput from './VueFormInput.vue';
+import Overlay from '../bulma/Overlay.vue';
 
-    export default {
-        components: { Modal, VueSelect, Datepicker, VueFormInput, Overlay },
+export default {
+    components: {
+        Modal, VueSelect, Datepicker, VueFormInput, Overlay,
+    },
 
-        props: {
-            data: {
-                type: Object,
-                required: true
-            }
+    props: {
+        data: {
+            type: Object,
+            required: true,
         },
+    },
 
-        data() {
-            return {
-                loading: false,
-                showModal: false,
-                errors: new Errors()
-            };
+    data() {
+        return {
+            loading: false,
+            showModal: false,
+            errors: new Errors(),
+        };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+        columnSize() {
+            return `is-${parseInt(12 / this.data.columns, 10)}`;
         },
+    },
 
-        computed: {
-            ...mapGetters('locale', ['__']),
-            columnSize() {
-                return 'is-' + parseInt(12/this.data.columns);
-            }
+    methods: {
+        create() {
+            this.$emit('form-create');
+            this.$router.push({ name: this.data.actions.create.route });
         },
+        submit() {
+            this.loading = true;
 
-        methods: {
-            create() {
-                this.$emit('form-create');
-                this.$router.push({ name: this.data.actions.create.route });
-            },
-            submit() {
-                this.loading = true;
+            axios[this.data.method](this.getSubmitRoute(), this.getFormData()).then((response) => {
+                this.loading = false;
+                toastr.success(response.data.message);
+                this.$emit('form-submit');
 
-                axios[this.data.method](this.getSubmitRoute(), this.getFormData()).then(response => {
-                    this.loading = false;
-                    toastr.success(response.data.message);
-                    this.$emit('form-submit');
+                if (this.data.method === 'post') {
+                    this.$router.push({
+                        name: response.data.redirect,
+                        params: { id: response.data.id },
+                    });
+                }
+            }).catch((error) => {
+                this.errors.set(error.response.data.errors);
+                this.loading = false;
+            });
+        },
+        getSubmitRoute() {
+            return this.data.method === 'post'
+                ? route(this.data.actions.store.route, null, false)
+                : route(this.data.actions.update.route, this.data.actions.update.id, false);
+        },
+        getFormData() {
+            return this.data.fields.reduce((object, field) => {
+                object[field.column] = field.value;
+                return object;
+            }, {});
+        },
+        destroy() {
+            this.showModal = false;
+            this.loading = true;
+            const { id, route } = this.data.actions.destroy;
 
-                    if (this.data.method === 'post') {
-                        this.$router.push({ name: response.data.redirect, params: { id: response.data.id } });
-                    }
-                }).catch(error => {
-                    this.errors.set(error.response.data.errors);
-                    this.loading = false;
-                });
-            },
-            getSubmitRoute() {
-                return this.data.method === 'post'
-                    ? route(this.data.actions.store.route, null, false)
-                    : route(this.data.actions.update.route, this.data.actions.update.id, false)
-            },
-            getFormData() {
-                return this.data.fields.reduce((object, field) => {
-                    object[field.column] = field.value;
-                    return object;
-                }, {});
-            },
-            destroy() {
-                this.showModal = false;
-                this.loading = true;
-
-                axios.delete(route(this.data.actions.destroy.route, this.data.actions.destroy.id, false)).then(response => {
-                    this.loading = false;
-                    toastr.success(response.data.message);
-                    this.$emit('form-destroy');
-                    this.$router.push({ name: response.data.redirect });
-                }).catch(error => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
-            }
-        }
-    };
+            axios.delete(route(route, id, false)).then((response) => {
+                this.loading = false;
+                toastr.success(response.data.message);
+                this.$emit('form-destroy');
+                this.$router.push({ name: response.data.redirect });
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+    },
+};
 
 </script>
 

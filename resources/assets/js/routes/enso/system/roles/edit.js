@@ -1,9 +1,11 @@
+import RoleEdit from '../../../../pages/enso/system/roles/Edit.vue';
+
 export const Edit = {
     name: 'system.roles.edit',
     path: ':id/edit',
-    component: require('../../../../pages/enso/system/roles/Edit.vue'),
+    component: RoleEdit,
     meta: {
         breadcrumb: 'edit',
-        title: 'Edit Role'
-    }
+        title: 'Edit Role',
+    },
 };

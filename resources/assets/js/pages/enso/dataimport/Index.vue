@@ -161,124 +161,125 @@
 
 <script>
 
-    import VueSelect from '../../../components/enso/select/VueSelect.vue';
-    import DataTable from '../../../components/enso/datatable/Datatable.vue';
-    import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
-    import Modal from '../../../components/enso/bulma/Modal.vue';
-    import Card from '../../../components/enso/bulma/Card.vue';
-    import Overlay from '../../../components/enso/bulma/Overlay.vue';
-    import Paginate from '../../../components/enso/bulma/Paginate.vue';
-    import Tabs from '../../../components/enso/bulma/Tabs.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import VueSelect from '../../../components/enso/select/VueSelect.vue';
+import DataTable from '../../../components/enso/datatable/Datatable.vue';
+import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
+import Modal from '../../../components/enso/bulma/Modal.vue';
+import Card from '../../../components/enso/bulma/Card.vue';
+import Overlay from '../../../components/enso/bulma/Overlay.vue';
+import Paginate from '../../../components/enso/bulma/Paginate.vue';
+import Tabs from '../../../components/enso/bulma/Tabs.vue';
 
-    export default {
-        components: { VueSelect, DataTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate },
+export default {
+    components: {
+        VueSelect, DataTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate,
+    },
 
-        computed: {
-            ...mapGetters('locale', ['__']),
-            uploadTemplateLink() {
-                return route('import.uploadTemplate', this.importType, false)
-            },
-            downloadTemplateLink() {
-                return route('import.downloadTemplate', this.template.id, false)
-            },
-            uploadImportLink() {
-                return route('import.run', this.importType, false)
-            }
+    computed: {
+        ...mapGetters('locale', ['__']),
+        uploadTemplateLink() {
+            return route('import.uploadTemplate', this.importType, false);
         },
-
-        data() {
-            return {
-                importType: null,
-                summary: null,
-                template: {},
-                showModal: false,
-                loadingTemplate: false,
-                importing: false,
-                importTypes: {}
-            }
+        downloadTemplateLink() {
+            return route('import.downloadTemplate', this.template.id, false);
         },
+        uploadImportLink() {
+            return route('import.run', this.importType, false);
+        },
+    },
 
-        created() {
-            axios.get(route('import.index', [], false)).then(response => {
-                this.importTypes = response.data.importTypes;
-            }).catch(error => {
+    data() {
+        return {
+            importType: null,
+            summary: null,
+            template: {},
+            showModal: false,
+            loadingTemplate: false,
+            importing: false,
+            importTypes: {},
+        };
+    },
+
+    created() {
+        axios.get(route('import.index', [], false)).then((response) => {
+            this.importTypes = response.data.importTypes;
+        }).catch(error => this.handleError(error));
+    },
+
+    methods: {
+        getTemplate() {
+            if (!this.importType) {
+                return;
+            }
+
+            this.loadingTemplate = true;
+
+            axios.get(route('import.getTemplate', this.importType, false)).then((response) => {
+                this.template = response.data;
+                this.loadingTemplate = false;
+            }).catch((error) => {
+                this.loadingTemplate = false;
                 this.handleError(error);
             });
         },
+        deleteTemplate(id) {
+            this.loadingTemplate = true;
+            axios.delete(route('import.deleteTemplate', id, false)).then((response) => {
+                this.template = {};
+                this.showModal = false;
+                toastr.success(response.data.message);
+                this.loadingTemplate = false;
+            }).catch((error) => {
+                this.showModal = false;
+                this.loadingTemplate = false;
+                this.handleError(error);
+            });
+        },
+        getSummary(id) {
+            this.loading = true;
 
-        methods: {
-            getTemplate() {
-                if (!this.importType) {
+            axios.get(route('import.getSummary', id, false)).then((response) => {
+                this.loading = false;
+
+                if (response.data.errors === 0) {
+                    toastr.info('The import has no errors');
                     return;
                 }
 
-                this.loadingTemplate = true;
+                this.summary = response.data;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        getSheetTabs() {
+            return this.summary.issues.reduce((tabs, sheet) => {
+                tabs.push({ label: sheet.name, badge: sheet.categories.length });
 
-                axios.get(route('import.getTemplate', this.importType, false)).then(response => {
-                    this.template = response.data;
-                    this.loadingTemplate = false;
-                }).catch(error => {
-                    this.loadingTemplate = false;
-                    this.handleError(error);
-                });
-            },
-            deleteTemplate(id) {
-                this.loadingTemplate = true;
-                axios.delete(route('import.deleteTemplate', id, false)).then(response => {
-                    this.template = {};
-                    this.showModal = false;
-                    toastr.success(response.data.message);
-                    this.loadingTemplate = false;
-                }).catch(error => {
-                    this.showModal = false;
-                    this.loadingTemplate = false;
-                    this.handleError(error);
-                });
-            },
-            getSummary(id) {
-                this.loading = true;
+                return tabs;
+            }, []);
+        },
+        getCategoryTabs(sheet) {
+            return sheet.categories.reduce((tabs, category) => {
+                tabs.push({ label: category.name, badge: category.issues.length });
 
-                axios.get(route('import.getSummary', id, false)).then(response => {
-                    this.loading = false;
-
-                    if (response.data.errors === 0) {
-                        return toastr.info('The import has no errors');
-                    }
-
-                    this.summary = response.data;
-                }).catch(error => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
-            },
-            getSheetTabs() {
-                return this.summary.issues.reduce((tabs,sheet) => {
-                    tabs.push({'label': sheet.name, 'badge': sheet.categories.length});
-
-                    return tabs;
-                }, []);
-            },
-            getCategoryTabs(sheet) {
-                return sheet.categories.reduce((tabs,sheet) => {
-                    tabs.push({'label': sheet.name, 'badge': sheet.issues.length});
-
-                    return tabs;
-                }, []);
-            },
-            customRender(column, data, type, row, meta) {
-                switch(column) {
-                    case 'successful':
-                        return '<b class="has-text-success">' + data + '</b>';
-                    case 'errors':
-                        return '<b class="has-text-danger">' + data + '</b>';
-                    default:
-                        toastr.warning('render for column ' + column + ' is not defined.' );
-                        return data;
-                }
+                return tabs;
+            }, []);
+        },
+        customRender(column, data) {
+            switch (column) {
+            case 'successful':
+                return `<b class="has-text-success">${data}</b>`;
+            case 'errors':
+                return `<b class="has-text-danger">${data}</b>`;
+            default:
+                toastr.warning(`render for column ${column} is not defined.`);
+                return data;
             }
-        }
-    }
+        },
+    },
+};
 
 </script>
 

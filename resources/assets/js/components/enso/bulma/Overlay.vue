@@ -12,42 +12,42 @@
 
 <script>
 
-	export default {
+export default {
 
-		props: {
-			size: {
-				type: String,
-				default: 'small',
-				validator(value) {
-					return ['small', 'medium', 'large'].includes(value);
-				}
-			},
-			opacity: {
-				type: Boolean,
-				default: true
-			},
-			color: {
-				type: String,
-				default: '#00d1b2'
-			}
-		},
+    props: {
+        size: {
+            type: String,
+            default: 'small',
+            validator(value) {
+                return ['small', 'medium', 'large'].includes(value);
+            },
+        },
+        opacity: {
+            type: Boolean,
+            default: true,
+        },
+        color: {
+            type: String,
+            default: '#00d1b2',
+        },
+    },
 
-		data() {
-			return {
-				overlayColor: {
-					'border': '2px solid ' + this.color,
-					'border-right-color': 'transparent',
-					'border-top-color': 'transparent'
-				}
-			}
-		},
+    data() {
+        return {
+            overlayColor: {
+                border: `2px solid ${this.color}`,
+                'border-right-color': 'transparent',
+                'border-top-color': 'transparent',
+            },
+        };
+    },
 
-		computed: {
-			loaderSize() {
-				return 'is-' + this.size
-			}
-		}
-	};
+    computed: {
+        loaderSize() {
+            return `is-${this.size}`;
+        },
+    },
+};
 
 </script>
 

@@ -25,65 +25,68 @@
 
 <script>
 
-    import Card from '../bulma/Card.vue';
-    import VueForm from './VueForm.vue';
+import Card from '../bulma/Card.vue';
+import VueForm from './VueForm.vue';
 
-    export default {
-        components: { Card, VueForm },
+export default {
+    components: { Card, VueForm },
 
-        props: {
-            data: {
-                type: Object,
-                required: true
-            }
+    props: {
+        data: {
+            type: Object,
+            required: true,
         },
+    },
 
-        data() {
-            return {
-                originalData: this.data.fields.pluck('value')
-            };
+    data() {
+        return {
+            originalData: this.data.fields.pluck('value'),
+        };
+    },
+
+    computed: {
+        hasChanges() {
+            const self = this;
+
+            return this.data.fields.filter((attribute, index) => {
+                if (Array.isArray(attribute.value)) {
+                    return attribute.value.sort().toString()
+                        === self.originalData[index].sort().toString();
+                }
+
+                return !attribute.value && !self.originalData[index]
+                    || (attribute.value && self.originalData[index]
+                    && attribute.value === self.originalData[index]);
+            }).length !== this.data.fields.length;
         },
+    },
 
-        computed: {
-            hasChanges() {
-                let self = this;
+    methods: {
+        setOriginal() {
+            const self = this;
 
-                return this.data.fields.filter((attribute, index) => {
-                    if (Array.isArray(attribute.value)) {
-                        return attribute.value.sort().toString() === self.originalData[index].sort().toString();
-                    }
+            this.data.fields.forEach((attribute, index) => {
+                attribute.value = self.originalData[index];
+            });
 
-                    return !attribute.value && !self.originalData[index] ||
-                        (attribute.value && self.originalData[index]
-                        && attribute.value === self.originalData[index]);
-                }).length !== this.data.fields.length;
-            },
+            this.$refs.form.errors.empty();
         },
+        clear() {
+            this.data.fields.forEach((field) => {
+                if (Array.isArray(field.value)) {
+                    field.value = [];
+                    return;
+                }
 
-        methods: {
-            setOriginal() {
-                let self = this;
+                if (typeof (field.value) === 'boolean') {
+                    field.value = false;
+                    return;
+                }
 
-                this.data.fields.forEach((attribute, index) => {
-                    attribute.value = self.originalData[index];
-                });
-
-                this.$refs.form.errors.empty();
-            },
-            clear() {
-                this.data.fields.forEach(field => {
-                    if (Array.isArray(field.value)) {
-                        return field.value = [];
-                    }
-
-                    if (typeof(field.value) === "boolean") {
-                        return field.value = false;
-                    }
-
-                    field.value = null;
-                });
-            }
-        }
-    };
+                field.value = null;
+            });
+        },
+    },
+};
 
 </script>

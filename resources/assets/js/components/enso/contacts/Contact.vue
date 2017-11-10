@@ -9,7 +9,9 @@
                         {{ contact.first_name }} {{ contact.last_name }}
                         <span class="tag is-pulled-right"
                             :class="contact.is_active ? 'is-success' : 'is-danger'">
-                            <i class="fa fa-check" v-if="contact.is_active"></i>
+                            <i class="fa fa-check"
+                                v-if="contact.is_active">
+                            </i>
                             <i class="fa fa-times" v-else></i>
                         </span>
                     </p>
@@ -60,60 +62,60 @@
 
 <script>
 
-    import ContactForm from './ContactForm.vue';
-    import Card from '../bulma/Card.vue';
-    import Modal from '../bulma/Modal.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import ContactForm from './ContactForm.vue';
+import Card from '../bulma/Card.vue';
+import Modal from '../bulma/Modal.vue';
 
-    export default {
-        name: 'Contact',
+export default {
+    name: 'Contact',
 
-        components: { Card, ContactForm, Modal },
+    components: { Card, ContactForm, Modal },
 
-        props: {
-            contact: {
-                type: Object,
-                required: true
-            },
-            id: {
-                type: Number,
-                required: true
-            },
-            type: {
-                type: String,
-                required: true
-            },
-            index: {
-                type: Number,
-                required: true
-            }
+    props: {
+        contact: {
+            type: Object,
+            required: true,
         },
-
-        computed: {
-            ...mapGetters('locale', ['__'])
+        id: {
+            type: Number,
+            required: true,
         },
-
-        data() {
-            return {
-                showForm: false,
-                showModal: false
-            };
+        type: {
+            type: String,
+            required: true,
         },
+        index: {
+            type: Number,
+            required: true,
+        },
+    },
 
-        methods: {
-            destroy() {
-                this.showModal = false;
-                this.$parent.$parent.loading = true;
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
 
-                axios.delete(route('core.contacts.destroy', this.contact.id, false)).then(response => {
-                    this.$emit('delete', this.index);
-                    this.$parent.$parent.loading = false;
-                }).catch(error => {
-                    this.$parent.$parent.loading = false;
-                    this.handleError(error);
-                });
-            }
-        }
-    }
+    data() {
+        return {
+            showForm: false,
+            showModal: false,
+        };
+    },
+
+    methods: {
+        destroy() { // fixme move in parent
+            this.showModal = false;
+            this.$parent.$parent.loading = true;
+
+            axios.delete(route('core.contacts.destroy', this.contact.id, false)).then(() => {
+                this.$emit('delete', this.index);
+                this.$parent.$parent.loading = false;
+            }).catch((error) => {
+                this.$parent.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
+    },
+};
 
 </script>

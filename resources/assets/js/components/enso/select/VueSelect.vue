@@ -38,210 +38,203 @@
 
 <script>
 
-    import Multiselect from 'vue-multiselect';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Multiselect from 'vue-multiselect';
 
-    export default {
-        components: { Multiselect },
+export default {
+    components: { Multiselect },
 
-        props: {
-            value: {
-                default: null
+    props: {
+        value: {
+            default: null,
+        },
+        source: {
+            type: String,
+            default: null,
+        },
+        options: {
+            type: Object,
+            default() {
+                return {};
             },
-            source: {
-                type: String,
-                default: null
+        },
+        keyMap: {
+            type: String,
+            default: 'number',
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
+        params: {
+            type: Object,
+            default: null,
+        },
+        pivotParams: {
+            type: Object,
+            default: null,
+        },
+        customParams: {
+            type: Object,
+            default: null,
+        },
+        placeholder: {
+            type: String,
+            default: 'Please choose',
+        },
+        labels: {
+            type: Object,
+            default: () => ({
+                selected: 'Selected',
+                select: 'Press enter to select',
+                deselect: 'Press enter to deselect',
+                noResult: 'No Elements Found',
+            }),
+        },
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+        isServerSide() {
+            return this.source !== null;
+        },
+        hasSelection() {
+            return (this.multiple && this.value.length) || (!this.multiple && this.value !== null);
+        },
+        optionKeys() {
+            return this.keyMap === 'number'
+                ? Object.keys(this.optionList).map(Number)
+                : Object.keys(this.optionList);
+        },
+    },
+
+    filters: {
+        highlight(option, query) {
+            query.split(' ').filter(word => word.length).forEach((word) => {
+                option = option.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
+            });
+
+            return option;
+        },
+    },
+
+    watch: {
+        options: {
+            handler() {
+                this.optionList = this.options;
             },
-            options: {
-                type: Object,
-                default() {
-                    return {};
-                }
+            deep: true,
+        },
+        params: {
+            handler() {
+                this.getOptions();
             },
-            keyMap: {
-                type: String,
-                default: 'number'
+            deep: true,
+        },
+        pivotParams: {
+            handler() {
+                this.getOptions();
             },
-            disabled: {
-                type: Boolean,
-                default: false
+            deep: true,
+        },
+        customParams: {
+            handler() {
+                this.getOptions();
             },
-            multiple: {
-                type: Boolean,
-                default: false
+            deep: true,
+        },
+    },
+
+    data() {
+        return {
+            optionList: this.options,
+            loading: false,
+            query: '',
+            i18n: {
+                placeholder: '',
+                selected: '',
+                select: '',
+                deselect: '',
+                noResult: '',
             },
-            params: {
-                type: Object,
-                default: null
-            },
-            pivotParams: {
-                type: Object,
-                default: null
-            },
-            customParams: {
-                type: Object,
-                default: null
-            },
-            placeholder: {
-                type: String,
-                default: 'Please choose'
-            },
-            labels: {
-                type: Object,
-                default() {
-                    return {
-                        selected: 'Selected',
-                        select: 'Press enter to select',
-                        deselect: 'Press enter to deselect',
-                        noResult: 'No Elements Found',
-                    };
-                }
+        };
+    },
+
+    methods: {
+        getOptions() {
+            if (!this.isServerSide) {
+                return;
             }
+
+            this.loading = true;
+
+            axios.get(route(this.source, [], null), {
+                params: this.getParams(),
+            }).then((response) => {
+                this.processOptions(response);
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = true;
+                this.handleError(error);
+            });
         },
-
-        computed: {
-            ...mapGetters('locale', ['__']),
-            isServerSide() {
-                return this.source !== null;
-            },
-            hasSelection() {
-                return (this.multiple && this.value.length) || (!this.multiple && this.value !== null);
-            },
-            optionKeys() {
-                return this.keyMap === 'number'
-                    ? Object.keys(this.optionList).map(Number)
-                    : Object.keys(this.optionList);
-            }
-        },
-
-        filters: {
-            highlight(option, query) {
-                query.split(' ').filter(word => {
-                    return word.length;
-                }).forEach(word => {
-                    option = option.replace(new RegExp('(' + word + ')', 'gi'), '<b>$1</b>')
-                });
-
-                return option;
-            }
-        },
-
-        watch: {
-            options: {
-                handler() {
-                    this.optionList = this.options;
-                },
-                deep: true
-            },
-            params: {
-                handler() {
-                    this.getOptions();
-                },
-                deep: true
-            },
-            pivotParams: {
-                handler() {
-                    this.getOptions();
-                },
-                deep: true
-            },
-            customParams: {
-                handler() {
-                    this.getOptions();
-                },
-                deep: true
-            },
-        },
-
-        data() {
+        getParams() {
             return {
-                optionList: this.options,
-                loading: false,
-                query: "",
-                i18n: {
-                    placeholder: '',
-                    selected: '',
-                    select: '',
-                    deselect: '',
-                    noResult: '',
-                },
+                params: this.params,
+                pivotParams: this.pivotParams,
+                customParams: this.customParams,
+                query: this.query,
+                value: this.value,
             };
         },
+        processOptions(response) {
+            this.optionList = response.data;
 
-        methods: {
-            getOptions() {
-                if (!this.isServerSide) {
-                    return false;
-                }
-
-                this.loading = true;
-
-                axios.get(route(this.source, [], null), {params: this.getParams()}).then(response => {
-                    this.processOptions(response);
-                    this.loading = false;
-                }).catch(error => {
-                    this.loading = true;
-                    this.handleError(error);
-                });
-            },
-            getParams() {
-                return {
-                    params: this.params,
-                    pivotParams: this.pivotParams,
-                    customParams: this.customParams,
-                    query: this.query,
-                    value: this.value
-                };
-            },
-            processOptions(response) {
-                this.optionList = response.data;
-
-                if (!this.query && !this.valueIsMatched()) {
-                    this.clear();
-                }
-            },
-            valueIsMatched() {
-                let self = this;
-
-                if (!this.multiple) {
-                    return this.optionKeys.filter(option => {
-                        return option === self.value;
-                    }).length > 0;
-                }
-
-                return this.optionKeys.filter(option => {
-                    return self.value.filter(val => {
-                        return val === option;
-                    }).length > 0;
-                }).length > 0;
-            },
-            customLabel(option) {
-                return this.optionList[option];
-            },
-            update() {
-                this.$nextTick(() => {
-                    this.$emit('input', this.value);
-                });
-            },
-            clear() {
-                this.$emit('input', this.multiple ? [] : null);
-            },
-            translateLabels() {
-                for (let [key, value] of Object.entries(this.labels)) {
-                    this.i18n[key] = this.__(value);
-                }
-
-                this.i18n.placeholder = this.__(this.placeholder);
+            if (!this.query && !this.valueIsMatched()) {
+                this.clear();
             }
         },
+        valueIsMatched() {
+            const self = this;
 
-        mounted() {
-            if (this.isServerSide) {
-                this.getOptions();
+            if (!this.multiple) {
+                return this.optionKeys.filter(option => option === self.value).length > 0;
             }
-            this.translateLabels();
+
+            return this.optionKeys.filter(option =>
+                self.value.filter(val => val === option).length > 0).length > 0;
         },
-    }
+        customLabel(option) {
+            return this.optionList[option];
+        },
+        update() {
+            this.$nextTick(() => {
+                this.$emit('input', this.value);
+            });
+        },
+        clear() {
+            this.$emit('input', this.multiple ? [] : null);
+        },
+        translateLabels() {
+            Object.entries(this.labels).forEach(([key, value]) => {
+                this.i18n[key] = this.__(value);
+            });
+
+            this.i18n.placeholder = this.__(this.placeholder);
+        },
+    },
+
+    mounted() {
+        if (this.isServerSide) {
+            this.getOptions();
+        }
+        this.translateLabels();
+    },
+};
 
 </script>
 

@@ -1,9 +1,11 @@
+import MenuCreate from '../../../../pages/enso/system/menus/Create.vue';
+
 export const Create = {
     name: 'system.menus.create',
     path: 'create',
-    component: require('../../../../pages/enso/system/menus/Create.vue'),
+    component: MenuCreate,
     meta: {
         breadcrumb: 'create',
-        title: 'Create Menu'
-    }
+        title: 'Create Menu',
+    },
 };

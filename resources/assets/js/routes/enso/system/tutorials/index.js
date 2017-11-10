@@ -1,9 +1,11 @@
+import TutorialsIndex from '../../../../pages/enso/system/tutorials/Index.vue';
+
 export const Index = {
     name: 'system.tutorials.index',
     path: '',
-    component: require('../../../../pages/enso/system/tutorials/Index.vue'),
+    component: TutorialsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Tutorials Index'
+        title: 'Tutorials Index',
     },
 };

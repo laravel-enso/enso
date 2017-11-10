@@ -44,96 +44,95 @@
 
 <script>
 
-    import Card from '../bulma/Card.vue';
-    import Contact from './Contact.vue';
-    import ContactForm from './ContactForm.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Card from '../bulma/Card.vue';
+import Contact from './Contact.vue';
+import ContactForm from './ContactForm.vue';
 
-    export default {
-        name: 'Contacts',
+export default {
+    name: 'Contacts',
 
-        components: { Card, Contact, ContactForm },
+    components: { Card, Contact, ContactForm },
 
-        props: {
-            id: {
-                type: Number,
-                required: true
-            },
-            type: {
-                type: String,
-                required: true
-            },
-            open: {
-                type: Boolean,
-                default: false
-            },
-            title: {
-                type: String,
-                default: null
-            }
+    props: {
+        id: {
+            type: Number,
+            required: true,
         },
-
-        computed: {
-            ...mapGetters('locale', ['__']),
-            filteredContacts() {
-                return this.query
-                    ? this.contacts.filter(contact => {
-                        return contact.first_name.toLowerCase().indexOf(this.query.toLowerCase()) > -1
-                            || contact.last_name.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-                    })
-                    : this.contacts;
-            },
+        type: {
+            type: String,
+            required: true,
         },
+        open: {
+            type: Boolean,
+            default: false,
+        },
+        title: {
+            type: String,
+            default: null,
+        },
+    },
 
-        data() {
+    computed: {
+        ...mapGetters('locale', ['__']),
+        filteredContacts() {
+            return this.query
+                ? this.contacts.filter(contact => contact.first_name.toLowerCase()
+                    .indexOf(this.query.toLowerCase()) > -1
+                    || contact.last_name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                : this.contacts;
+        },
+    },
+
+    data() {
+        return {
+            loading: false,
+            query: '',
+            contacts: [],
+            showForm: false,
+        };
+    },
+
+    methods: {
+        get() {
+            this.loading = true;
+
+            axios.get(route('core.contacts.list', { id: this.id, type: this.type }, false)).then((response) => {
+                this.contacts = response.data;
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        emptyContact() {
             return {
-                loading: false,
-                query: '',
-                contacts: [],
-                showForm: false
-            }
+                first_name: '',
+                last_name: '',
+                email: '',
+                phone: '',
+                obs: '',
+            };
         },
-
-        methods: {
-            get() {
-                this.loading = true;
-
-                axios.get(route('core.contacts.list', { id: this.id, type: this.type }, false)).then(response => {
-                    this.contacts = response.data;
-                    this.loading = false;
-                }).catch(error => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
-            },
-            emptyContact() {
-                return {
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    phone: "",
-                    obs: ""
-                };
-            },
-            create() {
-                if (this.$refs.card.collapsed) {
-                    this.$refs.card.toggle();
-                }
-
-                this.showForm=true;
-            },
-            add(contact) {
-                this.contacts.push(contact);
-            },
-            destroy(index) {
-                this.contacts.splice(index,1);
+        create() {
+            if (this.$refs.card.collapsed) {
+                this.$refs.card.toggle();
             }
-        },
 
-        mounted() {
-            this.get();
-        }
-    }
+            this.showForm = true;
+        },
+        add(contact) {
+            this.contacts.push(contact);
+        },
+        destroy(index) {
+            this.contacts.splice(index, 1);
+        },
+    },
+
+    mounted() {
+        this.get();
+    },
+};
 
 </script>
 

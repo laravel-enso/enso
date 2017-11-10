@@ -24,112 +24,110 @@
 
 <script>
 
-	import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-	export default {
-		name: 'ManagerContent',
+export default {
+    name: 'ManagerContent',
 
-		props: {
-            groupData: {
-                required: true
+    props: {
+        groupData: {
+            required: true,
+        },
+        rolePermissions: {
+            type: Array,
+            required: true,
+        },
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+        permissionIds() {
+            return this.groupData.pluck('id');
+        },
+        status() {
+            if (this.checkedIds.length === this.permissionIds.length) {
+                return 'checked';
+            }
+
+            if (this.checkedIds.length === 0) {
+                return 'unchecked';
+            }
+
+            return 'indeterminate';
+        },
+    },
+
+    watch: {
+        status: {
+            handler() {
+                this.$emit(this.status);
             },
-            rolePermissions: {
-                type: Array,
-                required: true
+        },
+        checkedIds() {
+            this.removeGroupPermissions();
+            this.addCheckedPermissions();
+        },
+    },
+
+    data() {
+        return {
+            checkedIds: [],
+        };
+    },
+
+    created() {
+        this.setCheckedIds();
+    },
+
+    methods: {
+        setCheckedIds() {
+            const self = this;
+            this.checkedIds = this.permissionIds
+                .filter(id => self.rolePermissions.indexOf(id) > -1);
+        },
+        setAllChecked() {
+            this.checkedIds = JSON.parse(JSON.stringify(this.permissionIds));
+            this.checkIfEmpty();
+        },
+        setAllUnchecked() {
+            this.checkedIds = [];
+            this.checkIfEmpty();
+        },
+        getClass(entry) {
+            if (!Object.prototype.hasOwnProperty.call(entry, 'type')) {
+                return null;
+            }
+
+            return entry.type === '1' ? 'has-text-warning' : 'has-text-success';
+        },
+        checkIfEmpty() {
+            if (this.groupData.length === 0) {
+                this.$emit(this.status);
             }
         },
+        removeGroupPermissions() {
+            const self = this;
 
-        computed: {
-            ...mapGetters('locale', ['__']),
-            permissionIds() {
-                return this.groupData.pluck('id');
-            },
-            status() {
-            	if (this.checkedIds.length === this.permissionIds.length) {
-            		return 'checked';
-            	}
+            this.permissionIds.forEach((id) => {
+                const idx = self.rolePermissions.indexOf(id);
 
-            	if (this.checkedIds.length === 0) {
-            		return 'unchecked';
-            	}
-
-            	return 'indeterminate';
-            }
+                if (idx !== -1) {
+                    self.rolePermissions.splice(idx, 1);
+                }
+            });
         },
+        addCheckedPermissions() {
+            const self = this;
 
-        watch: {
-        	status: {
-        		handler() {
-        			this.$emit(this.status);
-        		}
-        	},
-        	checkedIds() {
-        		this.removeGroupPermissions();
-        		this.addCheckedPermissions();
-        	}
+            this.checkedIds.forEach((id) => {
+                self.rolePermissions.push(id);
+            });
         },
+    },
 
-        data() {
-            return {
-                checkedIds: [],
-            }
-        },
-
-        created() {
-            this.setCheckedIds();
-        },
-
-        methods: {
-            setCheckedIds() {
-                let self = this;
-
-                this.checkedIds = this.permissionIds.filter(id => {
-                    return self.rolePermissions.indexOf(id) > -1;
-                });
-            },
-            setAllChecked() {
-            	this.checkedIds = JSON.parse(JSON.stringify(this.permissionIds));
-            	this.checkIfEmpty();
-            },
-            setAllUnchecked() {
-            	this.checkedIds = [];
-            	this.checkIfEmpty();
-            },
-            getClass(entry) {
-        		if (!entry.hasOwnProperty('type')) {
-        			return null;
-        		}
-
-        		return entry.type === '1' ? 'has-text-warning' : 'has-text-success';
-        	},
-        	checkIfEmpty() {
-        		if (this.groupData.length === 0) {
-	        		this.$emit(this.status);
-	        	}
-        	},
-        	removeGroupPermissions() {
-                let self = this;
-
-                this.permissionIds.forEach(id => {
-                    let idx = self.rolePermissions.indexOf(id);
-
-                    if (idx !== -1) {
-                        self.rolePermissions.splice(idx, 1);
-                    }
-                });
-            },
-            addCheckedPermissions() {
-                let self = this;
-
-                this.checkedIds.forEach(id => {
-                    self.rolePermissions.push(id);
-                });
-            },
-        },
-
-        mounted() {
-        	this.checkIfEmpty();
-        }
-    }
+    mounted() {
+        this.checkIfEmpty();
+    },
+};
 
 </script>

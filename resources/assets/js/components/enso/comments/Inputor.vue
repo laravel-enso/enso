@@ -12,57 +12,57 @@
 
 <script>
 
-    export default {
-        props: {
-            comment: {
-                type: Object
-            }
+export default {
+    props: {
+        comment: {
+            type: Object,
         },
+    },
 
-        computed: {
-            hasText() {
-                return this.comment.body.trim();
-            }
+    computed: {
+        hasText() {
+            return this.comment.body.trim();
         },
+    },
 
-        directives: {
-            inputorOnFocus: {
-                inserted(el, binding, vnode) {
-                    $(el).atwho({
-                        at: "@",
-                        searchKey: "fullName",
-                        displayTpl: "<li id='${id}' name='${fullName}'><img src='/api/core/avatars/${avatarId}' alt='User Image' class='atwho'>${fullName}</li>",
-                        insertTpl: "@${fullName}",
-                        acceptSpaceBar: true,
-                        callbacks: {
-                            remoteFilter: _.debounce((query, callback) => {
-                                axios.get(route('core.comments.getTaggableUsers', query, false)).then(response => {
-                                    callback(response.data);
-                                });
-                            }, 200)
-                        }
-                    });
+    directives: {
+        inputorOnFocus: {
+            inserted(el, binding, vnode) {
+                $(el).atwho({
+                    at: '@',
+                    searchKey: 'fullName',
+                    displayTpl: "<li id='${id}' name='${fullName}'><img src='/api/core/avatars/${avatarId}' alt='User Image' class='atwho'>${fullName}</li>",
+                    insertTpl: '@${fullName}',
+                    acceptSpaceBar: true,
+                    callbacks: {
+                        remoteFilter: _.debounce((query, callback) => {
+                            axios.get(route('core.comments.getTaggableUsers', query, false)).then((response) => {
+                                callback(response.data);
+                            });
+                        }, 200),
+                    },
+                });
 
-                    $(el).on('inserted.atwho', (event, li, query) => {
-                        vnode.context.comment.body = el.value;
-                        vnode.context.comment.taggedUserList.push({
-                            'id': $(li).attr('id'),
-                            'fullName': $(li).attr('name')
-                        });
+                $(el).on('inserted.atwho', (event, li) => {
+                    vnode.context.comment.body = el.value;
+                    vnode.context.comment.taggedUserList.push({
+                        id: $(li).attr('id'),
+                        fullName: $(li).attr('name'),
                     });
-                }
+                });
             },
-            unbind(el, binding, vnode) {
-                $(el).atwho('destroy');
-            }
         },
+        unbind(el) {
+            $(el).atwho('destroy');
+        },
+    },
 
-        methods: {
-            focus() {
-                this.$el.focus();
-            }
-        }
-    }
+    methods: {
+        focus() {
+            this.$el.focus();
+        },
+    },
+};
 
 </script>
 

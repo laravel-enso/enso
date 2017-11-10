@@ -32,26 +32,24 @@
 
 <script>
 
-	import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
+import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
 
-	export default {
-		components: { VueForm },
+export default {
+    components: { VueForm },
 
-		data() {
-			return {
-				initialised: false,
-				form: {}
-			}
-		},
+    data() {
+        return {
+            initialised: false,
+            form: {},
+        };
+    },
 
-		created() {
-			axios.get(route(this.$route.name, null, false)).then(response => {
-				this.form = response.data.form;
-				this.initialised = true;
-			}).catch(error => {
-				this.handleError(error);
-            });
-		}
-	};
+    created() {
+        axios.get(route(this.$route.name, null, false)).then((response) => {
+            this.form = response.data.form;
+            this.initialised = true;
+        }).catch(error => this.handleError(error));
+    },
+};
 
 </script>

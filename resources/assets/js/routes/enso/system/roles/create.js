@@ -1,9 +1,11 @@
+import RoleCreate from '../../../../pages/enso/system/roles/Create.vue';
+
 export const Create = {
     name: 'system.roles.create',
     path: 'create',
-    component: require('../../../../pages/enso/system/roles/Create.vue'),
+    component: RoleCreate,
     meta: {
         breadcrumb: 'create',
-        title: 'Create Role'
-    }
+        title: 'Create Role',
+    },
 };

@@ -17,7 +17,8 @@
                     </a>
                     <b>{{ __('wrote this') }}</b>
                     {{ comment.updated_at || comment.created_at | timeFromNow }}
-                    <span class="is-pulled-right" v-if="comment.isEdited">
+                    <span class="is-pulled-right"
+                        v-if="comment.isEdited">
                         {{ __('edited') }}</b>
                     </span>
                 </p>
@@ -33,7 +34,8 @@
                 </inputor>
             </div>
         </div>
-        <div class="media-right" v-if="isNew || isEditing">
+        <div class="media-right"
+            v-if="isNew || isEditing">
             <span v-if="isEditing">
                 <a class="button is-small is-warning"
                     @click="comment.body=originalBody;originalBody=null">
@@ -65,7 +67,8 @@
                 </a>
             </span>
         </div>
-        <div class="media-right" v-if="!isNew && !isEditing">
+        <div class="media-right"
+            v-if="!isNew && !isEditing">
             <div class="level-item"
                 v-if="!isNew && !isEditing">
                     <a class="button is-small is-warning has-margin-right-small"
@@ -94,128 +97,128 @@
 
 <script>
 
-    import Inputor from './Inputor.vue';
-    import Modal from '../bulma/Modal.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Inputor from './Inputor.vue';
+import Modal from '../bulma/Modal.vue';
 
-    export default {
-        name: 'Comment',
+export default {
+    name: 'Comment',
 
-        components: { Inputor, Modal },
+    components: { Inputor, Modal },
 
-        props: {
-            comment: {
-                type: Object
-            },
-            index: {
-                type: Number,
-                default: null
-            },
-            isNew: {
-                type: Boolean,
-                default: false
-            },
-            id: {
-                type: Number,
-            },
-            type: {
-                type: String,
-            }
+    props: {
+        comment: {
+            type: Object,
         },
-
-        computed: {
-            ...mapGetters('locale', ['__']),
-            ...mapGetters(['avatarLink']),
-            highlightTaggedUsers() {
-                let body = this.comment.body;
-
-                this.comment.taggedUserList.forEach(user => {
-                    let highlighted = '<span class="highlight">' + '@' + user.fullName + '</span>';
-                    body = body.replace('@' + user.fullName, highlighted);
-                });
-
-                return body;
-            },
-            isEditing() {
-                return this.originalBody !== null;
-            }
+        index: {
+            type: Number,
+            default: null,
         },
+        isNew: {
+            type: Boolean,
+            default: false,
+        },
+        id: {
+            type: Number,
+        },
+        type: {
+            type: String,
+        },
+    },
 
-        data() {
+    computed: {
+        ...mapGetters('locale', ['__']),
+        ...mapGetters(['avatarLink']),
+        highlightTaggedUsers() {
+            let { body } = this.comment;
+
+            this.comment.taggedUserList.forEach((user) => {
+                const highlighted = `${'<span class="highlight">@'}${user.fullName}</span>`;
+                body = body.replace(`@${user.fullName}`, highlighted);
+            });
+
+            return body;
+        },
+        isEditing() {
+            return this.originalBody !== null;
+        },
+    },
+
+    data() {
+        return {
+            showModal: false,
+            originalBody: null,
+            path: this.$route.path,
+        };
+    },
+
+    methods: {
+        post() { // fixme needs to be moved in parent
+            this.$parent.$parent.loading = true;
+            axios.post(route('core.comments.store', [], false), this.postParams()).then((response) => {
+                this.$emit('add', response.data);
+                this.$parent.$parent.loading = false;
+            }).catch((error) => {
+                this.$parent.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
+        postParams() {
             return {
-                showModal: false,
-                originalBody: null,
-                path: this.$route.path,
+                id: this.id,
+                type: this.type,
+                body: this.comment.body,
+                taggedUserList: this.comment.taggedUserList,
+                path: this.path,
             };
         },
-
-        methods: {
-            post() {
-                this.$parent.$parent.loading = true;
-                axios.post(route('core.comments.store', [], false), this.postParams()).then(response => {
-                    this.$emit('add', response.data)
-                    this.$parent.$parent.loading = false;
-                }).catch(error => {
-                    this.$parent.$parent.loading = false;
-                    this.handleError(error);
-                });
-            },
-            postParams() {
-                return {
-                    id: this.id,
-                    type: this.type,
-                    body: this.comment.body,
-                    taggedUserList: this.comment.taggedUserList,
-                    path: this.path
-                };
-            },
-            update() {
-                if (this.comment.body === this.originalBody) {
-                    this.originalBody = null;
-                    return true;
-                }
-
-                this.$parent.$parent.loading = true;
-                this.syncTaggedUsers();
-                this.comment.path = this.path; //fixme
-
-                axios.patch(route('core.comments.update', this.comment.id, false), this.comment).then(response => {
-                    Object.assign(this.comment, response.data.comment);
-                    this.$parent.$parent.loading = false;
-                    this.originalBody = null;
-                }).catch(error => {
-                    this.$parent.$parent.loading = false;
-                    this.handleError(error);
-                });
-            },
-            syncTaggedUsers() {
-                let self = this;
-
-                this.comment.taggedUserList.forEach(function(user, index) {
-                    if (!self.comment.body.includes(user.fullName)) {
-                        self.comment.taggedUserList.splice(index, 1);
-                    }
-                });
-            },
-            destroy() {
-                this.showModal = false;
-                this.$parent.$parent.loading = true;
-
-                axios.delete(route('core.comments.destroy', this.comment.id, false)).then(response => {
-                    this.$emit('delete', this.index)
-                    this.$parent.$parent.loading = false;
-                }).catch(error => {
-                    this.$parent.$parent.loading = false;
-                    this.handleError(error);
-                });
-            },
-            getAvatarLink(comment) {
-                return this.isNew
-                    ? this.avatarLink
-                    : route('core.avatars.show', comment.owner.avatarId || 'null' , false).toString();
+        update() {
+            if (this.comment.body === this.originalBody) {
+                this.originalBody = null;
+                return;
             }
-        }
-    }
+
+            this.$parent.$parent.loading = true;
+            this.syncTaggedUsers();
+            this.comment.path = this.path; // fixme
+
+            axios.patch(route('core.comments.update', this.comment.id, false), this.comment).then((response) => {
+                Object.assign(this.comment, response.data.comment);
+                this.$parent.$parent.loading = false;
+                this.originalBody = null;
+            }).catch((error) => {
+                this.$parent.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
+        syncTaggedUsers() {
+            const self = this;
+
+            this.comment.taggedUserList.forEach((user, index) => {
+                if (!self.comment.body.includes(user.fullName)) {
+                    self.comment.taggedUserList.splice(index, 1);
+                }
+            });
+        },
+        destroy() { // fixme needs to be moved in parent
+            this.showModal = false;
+            this.$parent.$parent.loading = true;
+
+            axios.delete(route('core.comments.destroy', this.comment.id, false)).then(() => {
+                this.$emit('delete', this.index);
+                this.$parent.$parent.loading = false;
+            }).catch((error) => {
+                this.$parent.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
+        getAvatarLink(comment) {
+            return this.isNew
+                ? this.avatarLink
+                : route('core.avatars.show', comment.owner.avatarId || 'null', false).toString();
+        },
+    },
+};
 
 </script>
 

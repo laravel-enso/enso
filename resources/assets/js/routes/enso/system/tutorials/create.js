@@ -1,9 +1,11 @@
+import TutorialCreate from '../../../../pages/enso/system/tutorials/Create.vue';
+
 export const Create = {
     name: 'system.tutorials.create',
     path: 'create',
-    component: require('../../../../pages/enso/system/tutorials/Create.vue'),
+    component: TutorialCreate,
     meta: {
         breadcrumb: 'create',
-        title: 'Create Tutorial'
-    }
+        title: 'Create Tutorial',
+    },
 };

@@ -23,6 +23,7 @@ module.exports = {
         indent: ["error", 4],
         "no-plusplus": 0,
         "no-underscore-dangle": ["error", { "allow": ["__"] } ],
-        "no-param-reassign": 0
-    }
+        "no-param-reassign": 0,
+        "no-mixed-operators": 0,
+    },
 };

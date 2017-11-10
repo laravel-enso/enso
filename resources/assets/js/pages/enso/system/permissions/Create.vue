@@ -26,15 +26,15 @@
 
 <script>
 
-	import { mapGetters } from 'vuex';
-	import Router from '../../layout/Router.vue';
+import { mapGetters } from 'vuex';
+import Router from '../../layout/Router.vue';
 
-	export default {
-		components: { Router },
+export default {
+    components: { Router },
 
-		computed: {
-			...mapGetters('locale', ['__'])
-		}
-	};
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+};
 
 </script>

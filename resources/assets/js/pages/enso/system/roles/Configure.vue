@@ -33,63 +33,59 @@
 
 <script>
 
-	import CheckboxManager from '../../../../components/enso/rolemanager/CheckboxManager.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import CheckboxManager from '../../../../components/enso/rolemanager/CheckboxManager.vue';
 
-    export default {
-        components: { CheckboxManager },
+export default {
+    components: { CheckboxManager },
 
-        computed: {
-            ...mapGetters('locale', ['__']),
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    data() {
+        return {
+            roleId: this.$route.params.role,
+            role: {},
+            menus: [],
+            permissions: {},
+            roleMenus: [],
+            rolePermissions: [],
+            initialised: false,
+        };
+    },
+
+    created() {
+        this.getPermissions();
+    },
+
+    methods: {
+        getPermissions() {
+            axios.get(route('system.roles.getPermissions', this.roleId, false)).then((response) => {
+                this.setData(response);
+                this.initialised = true;
+            }).catch(error => this.handleError(error));
         },
-
-        data() {
+        setData(response) {
+            this.menus = response.data.menus;
+            this.roleMenus = response.data.roleMenus;
+            this.rolePermissions = response.data.rolePermissions;
+            this.permissions = response.data.permissions;
+            this.role = response.data.role;
+        },
+        update() {
+            axios.post(route('system.roles.setPermissions', [], false), this.postParams()).then((response) => {
+                toastr.success(response.data.message);
+            }).catch(error => this.handleError(error));
+        },
+        postParams() {
             return {
-            	roleId: this.$route.params.role,
-            	role: {},
-                menus: [],
-                permissions: {},
-                roleMenus: [],
-                rolePermissions: [],
-                initialised: false
+                role_id: this.roleId,
+                roleMenus: this.roleMenus,
+                rolePermissions: this.rolePermissions,
             };
         },
-
-        created() {
-            this.getPermissions();
-        },
-
-        methods: {
-            getPermissions() {
-                axios.get(route('system.roles.getPermissions', this.roleId, false)).then(response => {
-                    this.setData(response);
-                    this.initialised = true;
-                }).catch(error => {
-                    this.handleError(error);
-                });
-            },
-            setData(response) {
-                this.menus = response.data.menus;
-                this.roleMenus = response.data.roleMenus;
-                this.rolePermissions = response.data.rolePermissions;
-                this.permissions = response.data.permissions;
-                this.role = response.data.role;
-            },
-            update() {
-                axios.post(route('system.roles.setPermissions', [], false), this.postParams()).then((response) => {
-                    toastr.success(response.data.message);
-                }).catch(error => {
-                    this.handleError(error);
-                });
-            },
-            postParams() {
-                return {
-                    role_id: this.roleId,
-                    roleMenus: this.roleMenus,
-                    rolePermissions: this.rolePermissions,
-                };
-            }
-        }
-    }
+    },
+};
 
 </script>

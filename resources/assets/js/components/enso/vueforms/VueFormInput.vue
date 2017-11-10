@@ -62,18 +62,18 @@
 
 <script>
 
-    export default {
-        props: {
-            field: {
-                type: Object,
-                required: true
-            },
-            hasError: {
-                type: Boolean,
-                default: false
-            }
-        }
-    }
+export default {
+    props: {
+        field: {
+            type: Object,
+            required: true,
+        },
+        hasError: {
+            type: Boolean,
+            default: false,
+        },
+    },
+};
 
 </script>
 

@@ -1,9 +1,11 @@
+import LogsIndex from '../../../../pages/enso/system/logs/Index.vue';
+
 export const Index = {
     name: 'system.logs.index',
     path: '',
-    component: require('../../../../pages/enso/system/logs/Index.vue'),
+    component: LogsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Logs Index'
+        title: 'Logs Index',
     },
 };

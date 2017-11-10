@@ -1,9 +1,11 @@
+import PermissionGroupCreate from '../../../../pages/enso/system/permissionGroups/Create.vue';
+
 export const Create = {
     name: 'system.permissionGroups.create',
     path: 'create',
-    component: require('../../../../pages/enso/system/permissionGroups/Create.vue'),
+    component: PermissionGroupCreate,
     meta: {
         breadcrumb: 'create',
-        title: 'Create Permission Group'
-    }
+        title: 'Create Permission Group',
+    },
 };

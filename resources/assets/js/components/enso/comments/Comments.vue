@@ -11,7 +11,8 @@
         :badge="count"
         :controls="1"
         :footer-items="1">
-        <a slot="control-1" class="card-header-icon">
+        <a slot="control-1"
+            class="card-header-icon">
             <span class="icon is-small"
                 @click="create()">
                 <i class="fa fa-plus-square"></i>
@@ -44,129 +45,128 @@
 
 <script>
 
-    import Card from '../bulma/Card.vue';
-    import Comment from './Comment.vue';
-    import { mapGetters } from 'vuex';
-    import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
+import Card from '../bulma/Card.vue';
+import Comment from './Comment.vue';
 
-    export default {
-        name: 'Comments',
 
-        components: { Card, Comment },
+export default {
+    name: 'Comments',
 
-        props: {
-            open: {
-                type: Boolean,
-                default: false
-            },
-            id: {
-                type: Number,
-                required: true
-            },
-            type: {
-                type: String,
-                required: true
-            },
-            title: {
-                type: String,
-                default: ''
-            },
-            paginate: {
-                type: Number,
-                default: 5
-            }
+    components: { Card, Comment },
+
+    props: {
+        open: {
+            type: Boolean,
+            default: false,
         },
-
-        computed: {
-            ...mapGetters('locale', ['__']),
-            ...mapState(['user']),
-            filteredComments() {
-                return this.query
-                    ? this.comments.filter(comment => {
-                        return comment.body.toLowerCase().indexOf(this.query.toLowerCase()) > -1
-                            || comment.owner.fullName.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-                    })
-                    : this.comments;
-            }
+        id: {
+            type: Number,
+            required: true,
         },
+        type: {
+            type: String,
+            required: true,
+        },
+        title: {
+            type: String,
+            default: '',
+        },
+        paginate: {
+            type: Number,
+            default: 5,
+        },
+    },
 
-        data() {
+    computed: {
+        ...mapGetters('locale', ['__']),
+        ...mapState(['user']),
+        filteredComments() {
+            return this.query
+                ? this.comments.filter(comment => comment.body.toLowerCase()
+                    .indexOf(this.query.toLowerCase()) > -1
+                    || comment.owner.fullName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                : this.comments;
+        },
+    },
+
+    data() {
+        return {
+            comments: [],
+            count: 0,
+            offset: 0,
+            comment: {},
+            loading: false,
+            query: null,
+        };
+    },
+
+    methods: {
+        get() {
+            this.loading = true;
+
+            axios.get(route('core.comments.index', [], false), { params: this.getParams() }).then((response) => {
+                this.comments = this.offset
+                    ? this.comments.concat(response.data.comments)
+                    : response.data.comments;
+
+                this.count = response.data.count;
+                this.offset = this.comments.length;
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        getParams() {
             return {
-                comments: [],
-                count: 0,
-                offset: 0,
-                comment: {},
-                loading: false,
-                query: null
+                id: this.id,
+                type: this.type,
+                offset: this.offset,
+                paginate: this.paginate,
             };
         },
-
-        methods: {
-            get() {
-                this.loading = true;
-
-                axios.get(route('core.comments.index', [], false), { params: this.getParams() }).then(response => {
-                    this.comments = this.offset
-                        ? this.comments.concat(response.data.comments)
-                        : response.data.comments;
-
-                    this.count = response.data.count;
-                    this.offset = this.comments.length;
-                    this.loading = false;
-                }).catch(error => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
-            },
-            getParams() {
-                return {
-                    id: this.id,
-                    type: this.type,
-                    offset: this.offset,
-                    paginate: this.paginate
-                };
-            },
-            refresh() {
-                this.offset = 0;
-                this.get();
-            },
-            emptyComment() {
-                return {
-                    body: '',
-                    taggedUserList: [],
-                    owner: {
-                        avatarId: this.user.avatarId,
-                        fullName: this.user.fullName
-                    }
-                };
-            },
-            create() {
-                if (Object.keys(this.comment).length) {
-                    return false;
-                }
-
-                if (this.$refs.card.collapsed) {
-                    this.$refs.card.toggle();
-                }
-
-                this.comment=this.emptyComment();
-            },
-            add(event) {
-                this.comments.unshift(event.comment);
-                this.count = event.count;
-                this.offset++;
-                this.comment = {};
-            },
-            destroy(index) {
-                this.comments.splice(index,1);
-                this.count--;
-            },
-        },
-
-        mounted() {
+        refresh() {
+            this.offset = 0;
             this.get();
-        }
-    }
+        },
+        emptyComment() {
+            return {
+                body: '',
+                taggedUserList: [],
+                owner: {
+                    avatarId: this.user.avatarId,
+                    fullName: this.user.fullName,
+                },
+            };
+        },
+        create() {
+            if (Object.keys(this.comment).length) {
+                return;
+            }
+
+            if (this.$refs.card.collapsed) {
+                this.$refs.card.toggle();
+            }
+
+            this.comment = this.emptyComment();
+        },
+        add(event) {
+            this.comments.unshift(event.comment);
+            this.count = event.count;
+            this.offset++;
+            this.comment = {};
+        },
+        destroy(index) {
+            this.comments.splice(index, 1);
+            this.count--;
+        },
+    },
+
+    mounted() {
+        this.get();
+    },
+};
 
 </script>
 

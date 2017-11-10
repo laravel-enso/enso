@@ -7,7 +7,8 @@
 			v-if="show"
 			:style="containerStyle">
 			<div class="modal-background"></div>
-			<div class="modal-card" v-if="card">
+			<div class="modal-card"
+				v-if="card">
 				<header class="modal-card-head">
 					<slot name="header">
 					</slot>
@@ -33,7 +34,9 @@
 			<div v-else class="modal-content">
 				<div class="box">
 					<slot name="content">
-						<h5 class="subtitle is-5">{{ __("The selected item is about to be deleted! Are you sure?") }}</h5>
+						<h5 class="subtitle is-5">
+							{{ __("The selected item is about to be deleted! Are you sure?") }}
+						</h5>
 					</slot>
 					<hr>
 					<div class="level">
@@ -67,30 +70,30 @@
 
 <script>
 
-	import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-	export default {
-		props: {
-			show: {
-				type: Boolean,
-				required: true,
-			},
-			containerStyle: {
-				type: Object,
-				default() {
-					return {}
-				}
-			},
-			card: {
-				type: Boolean,
-				default: false
-			}
-		},
+export default {
+    props: {
+        show: {
+            type: Boolean,
+            required: true,
+        },
+        containerStyle: {
+            type: Object,
+            default() {
+                return {};
+            },
+        },
+        card: {
+            type: Boolean,
+            default: false,
+        },
+    },
 
-		computed: {
-			...mapGetters('locale', ['__'])
-		}
-	}
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+};
 
 </script>
 

@@ -1,9 +1,11 @@
+import PermissionsIndex from '../../../../pages/enso/system/permissions/Index.vue';
+
 export const Index = {
     name: 'system.permissions.index',
     path: '',
-    component: require('../../../../pages/enso/system/permissions/Index.vue'),
+    component: PermissionsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Permissions Index'
+        title: 'Permissions Index',
     },
 };

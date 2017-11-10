@@ -6,9 +6,9 @@
         :options="{ group: { name:'menus' }}">
         <transition-group name="list-complete"
             style="display:block; min-height:5px">
-            <li v-for="menu in menus"
+            <li class="sortable-menu list-complete-item"
                 :key="menu.unique_id"
-                class="sortable-menu list-complete-item">
+                v-for="menu in menus">
                     <div>{{ menu.name }}</div>
                 <reorderable-menu :menus="menu.children">
                 </reorderable-menu>
@@ -20,20 +20,20 @@
 
 <script>
 
-    import Draggable from 'vue-draggable';
+import Draggable from 'vue-draggable';
 
-    export default {
-        name: 'ReorderableMenu',
+export default {
+    name: 'ReorderableMenu',
 
-        components: { Draggable },
+    components: { Draggable },
 
-        props: {
-            menus: {
-                type: Array,
-                required: true
-            },
-        }
-    }
+    props: {
+        menus: {
+            type: Array,
+            required: true,
+        },
+    },
+};
 
 </script>
 

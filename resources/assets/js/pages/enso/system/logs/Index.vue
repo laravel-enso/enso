@@ -48,50 +48,48 @@
 
 <script>
 
-    import Card from '../../../../components/enso/bulma/Card.vue';
-    import Modal from '../../../../components/enso/bulma/Modal.vue';
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import Card from '../../../../components/enso/bulma/Card.vue';
+import Modal from '../../../../components/enso/bulma/Modal.vue';
 
-    export default {
-        components: { Card, Modal },
+export default {
+    components: { Card, Modal },
 
-        computed: {
-            ...mapGetters('locale', ['__'])
-        },
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
 
-        data() {
-            return {
-                showModal: false,
-                itemToBeDeleted: null,
-                logs: []
-            };
-        },
+    data() {
+        return {
+            showModal: false,
+            itemToBeDeleted: null,
+            logs: [],
+        };
+    },
 
-        created() {
-            axios.get(route('system.logs.index', [], false)).then(response => {
-                this.logs = response.data.logs;
-            }).catch(error => {
+    created() {
+        axios.get(route('system.logs.index', [], false)).then((response) => {
+            this.logs = response.data.logs;
+        }).catch(error => this.handleError(error));
+    },
+
+    methods: {
+        empty() {
+            axios.delete(route('system.logs.destroy', this.itemToBeDeleted, false).toString()).then((response) => {
+                this.showModal = false;
+                const index = this.logs.findIndex(log => this.itemToBeDeleted === log.name);
+                this.logs.splice(index, 1, response.data.log);
+                this.itemToBeDeleted = null;
+                toastr.success(response.data.message);
+            }).catch((error) => {
+                this.showModal = false;
                 this.handleError(error);
             });
         },
-
-        methods: {
-            empty() {
-                axios.delete(route('system.logs.destroy', this.itemToBeDeleted, false).toString()).then(response => {
-                    this.showModal = false;
-                    let index = this.logs.findIndex(log => this.itemToBeDeleted === log.name);
-                    this.logs.splice(index, 1, response.data.log);
-                    this.itemToBeDeleted = null;
-                    toastr.success(response.data.message);
-                }).catch(error => {
-                    this.showModal = false;
-                    this.handleError(error);
-                });
-            },
-            getDownloadLink(log) {
-                return route('system.logs.download', log, false).toString();
-            }
-        }
-    }
+        getDownloadLink(log) {
+            return route('system.logs.download', log, false).toString();
+        },
+    },
+};
 
 </script>

@@ -127,72 +127,76 @@
 
 <script>
 
-    import { mapGetters } from 'vuex';
-    import Modal from '../bulma/Modal.vue';
+import { mapGetters } from 'vuex';
+import Modal from '../bulma/Modal.vue';
 
-    export default {
-        name: 'ContactForm',
+export default {
+    name: 'ContactForm',
 
-        components: { Modal },
+    components: { Modal },
 
-        props: {
-            show: {
-                type: Boolean,
-                required: true
-            },
-            id: {
-                default: null
-            },
-            type: {
-                type: String,
-                default: ""
-            },
-            contact: {
-                type: Object,
-                required: true
-            }
+    props: {
+        show: {
+            type: Boolean,
+            required: true,
         },
-
-        computed: {
-            ...mapGetters('locale', ['__']),
-            editMode() {
-                return this.contact.id ? true : false;
-            }
+        id: {
+            default: null,
         },
-
-        data() {
-            return {
-                errors: {},
-            };
+        type: {
+            type: String,
+            default: '',
         },
+        contact: {
+            type: Object,
+            required: true,
+        },
+    },
 
-        methods: {
-            save() {
-                return this.editMode ? this.update() : this.store();
-            },
-            store() {
-                axios.post(route('core.contacts.store', [], false), {contact: this.contact, id: this.id, type: this.type}).then(response => {
-                    this.$emit('store', response.data);
-                }).catch(error => {
-                    if (error.response.status === 422) {
-                        this.errors = error.response.data.errors;
-                    }
+    computed: {
+        ...mapGetters('locale', ['__']),
+        editMode() {
+            return !!this.contact.id;
+        },
+    },
 
-                    this.handleError(error);
-                });
-            },
-            update(index) {
-                axios.patch(route('core.contacts.update', this.contact.id, false), {contact: this.contact, id: this.id, type: this.type}).then(response => {
-                    this.$emit('update', this.contact);
-                }).catch(error => {
-                    if (error.response.status === 422) {
-                        this.errors = error.response.data.errors;
-                    }
+    data() {
+        return {
+            errors: {},
+        };
+    },
 
-                    this.handleError(error);
-                });
-            },
-        }
-    }
+    methods: {
+        save() {
+            return this.editMode ? this.update() : this.store();
+        },
+        store() {
+            axios.post(route('core.contacts.store', [], false), {
+                contact: this.contact, id: this.id, type: this.type,
+            }).then(({ data }) => {
+                this.$emit('store', data);
+            }).catch((error) => {
+                if (error.response.status === 422) {
+                    this.errors = error.response.data.errors;
+                }
+
+                this.handleError(error);
+            });
+        },
+        update() {
+            axios.patch(route('core.contacts.update', this.contact.id, false), {
+                contact: this.contact, id: this.id, type: this.type,
+            }).then(() => {
+                this.$emit('update', this.contact);
+            }).catch((error) => {
+                if (error.response.status === 422) {
+                    this.errors = error.response.data.errors;
+                }
+
+                this.handleError(error);
+            });
+        },
+    },
+};
 
 </script>

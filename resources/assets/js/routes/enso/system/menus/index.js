@@ -1,9 +1,11 @@
+import MenusIndex from '../../../../pages/enso/system/menus/Index.vue';
+
 export const Index = {
     name: 'system.menus.index',
     path: '',
-    component: require('../../../../pages/enso/system/menus/Index.vue'),
+    component: MenusIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Menus Index'
+        title: 'Menus Index',
     },
 };

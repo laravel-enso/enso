@@ -24,7 +24,7 @@
             </a>
             <a class="button is-small is-danger"
                 v-if="document.isDeletable"
-                @click="idToBeDeleted = document.id; showModal = true;">
+                @click="$emit('delete')">
                 <span class="icon is-small">
                     <i class="fa fa-trash-o"></i>
                 </span>
@@ -47,60 +47,38 @@
                 </i>
             </span>
         </span>
-        <modal :show="showModal"
-            @cancel-action="showModal = false"
-            @commit-action="destroy()">
-        </modal>
     </span>
 
 </template>
 
 <script>
 
-    import Modal from '../bulma/Modal.vue';
+import Modal from '../bulma/Modal.vue';
 
-    export default {
-        name: 'Document',
+export default {
+    name: 'Document',
 
-        components: { Modal },
+    components: { Modal },
 
-        props: {
-            document: {
-                type: Object,
-                required: true
-            },
-            index: {
-                type: Number,
-                required: true
-            }
+    props: {
+        document: {
+            type: Object,
+            required: true,
         },
-
-        data() {
-            return {
-                showModal: false
-            }
+        index: {
+            type: Number,
+            required: true,
         },
+    },
 
-        methods: {
-            show(id) {
-                window.open(route('core.documents.show', id, false), '_blank').focus();
-            },
-            destroy() {
-                this.showModal = false;
-                this.$parent.$parent.loading = true;
-
-                axios.delete(route('core.documents.destroy', this.document.id, false)).then(() => {
-                    this.$parent.$parent.loading = false;
-                    this.$emit('delete', this.index);
-                }).catch(error => {
-                    this.$parent.$parent.loading = false;
-                    this.handleError(error);
-                });
-            },
-            getDownloadLink(doc) {
-                return route('core.documents.download', doc.id, false);
-            }
-        }
-    }
+    methods: {
+        show(id) {
+            window.open(route('core.documents.show', id, false), '_blank').focus();
+        },
+        getDownloadLink(doc) {
+            return route('core.documents.download', doc.id, false);
+        },
+    },
+};
 
 </script>

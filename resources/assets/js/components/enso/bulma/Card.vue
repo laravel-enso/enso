@@ -1,9 +1,11 @@
 <template>
 
     <div class="card">
-        <header class="card-header" v-if="header">
+        <header class="card-header"
+            v-if="header">
             <p class="card-header-title">
-                <span class="icon is-small has-margin-right-small" v-if="icon">
+                <span class="icon is-small has-margin-right-small"
+                    v-if="icon">
                     <i :class="icon"></i>
                 </span>
                 <span class="is-clickable"
@@ -17,7 +19,6 @@
                 v-if="search">
                 <p class="control has-icons-left">
                 <input type="search"
-                    :id="'search-input-' + _uid"
                     class="input is-small"
                     v-model="query"
                     @input="$emit('query-update', query)">
@@ -74,98 +75,106 @@
 
 <script>
 
-    import Overlay from './Overlay.vue';
+import Overlay from './Overlay.vue';
 
-    export default {
-        name: 'Card',
+export default {
+    name: 'Card',
 
-        components: { Overlay },
+    components: { Overlay },
 
-        props: {
-            open: {
-                type: Boolean,
-                default: true
-            },
-            header: {
-                type: Boolean,
-                default: true
-            },
-            footer: {
-                type: Boolean,
-                default: false
-            },
-            footerItems: {
-                type: Number,
-                default: 0
-            },
-            icon: {
-                type: String,
-                default: null
-            },
-            title: {
-                type: String,
-                default: null
-            },
-            search: {
-                type: Boolean,
-                default: false
-            },
-            badge: {
-                type: Number,
-                default: null
-            },
-            refresh: {
-                type: Boolean,
-                default: false
-            },
-            collapsible: {
-                type: Boolean,
-                default: true
-            },
-            removable: {
-                type: Boolean,
-                default: true
-            },
-            overlay: {
-                type: Boolean,
-                default: false
-            },
-            controls: {
-                type: Number,
-                default: 0
-            },
-            bodyStyle: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }
+    props: {
+        open: {
+            type: Boolean,
+            default: true,
         },
-
-        computed: {
-            searchInput() {
-                return document.getElementById('search-input-' + this._uid);
-            }
+        header: {
+            type: Boolean,
+            default: true,
         },
-
-        data() {
-            return {
-                query: null,
-                collapsed: !this.open,
-            };
+        footer: {
+            type: Boolean,
+            default: false,
         },
-
-        methods: {
-            toggle() {
-                this.$emit('toggle');
-                this.collapsed = !this.collapsed;
-                return this.collapsed ? this.$emit('collapse') : this.$emit('expand');
+        footerItems: {
+            type: Number,
+            default: 0,
+        },
+        icon: {
+            type: String,
+            default: null,
+        },
+        title: {
+            type: String,
+            default: null,
+        },
+        search: {
+            type: Boolean,
+            default: false,
+        },
+        badge: {
+            type: Number,
+            default: null,
+        },
+        refresh: {
+            type: Boolean,
+            default: false,
+        },
+        collapsible: {
+            type: Boolean,
+            default: true,
+        },
+        removable: {
+            type: Boolean,
+            default: true,
+        },
+        overlay: {
+            type: Boolean,
+            default: false,
+        },
+        controls: {
+            type: Number,
+            default: 0,
+        },
+        bodyStyle: {
+            type: Object,
+            default() {
+                return {};
             },
-            focus() {
-                this.searchInput.focus();
-            }
-        }
-    };
+        },
+    },
+
+    computed: {
+        searchInput() {
+            return this.search
+                ? this.$el.querySelector('input[type=search]')
+                : null;
+        },
+    },
+
+    data() {
+        return {
+            query: null,
+            collapsed: !this.open,
+        };
+    },
+
+    methods: {
+        toggle() {
+            this.$emit('toggle');
+            this.collapsed = !this.collapsed;
+
+            return this.collapsed
+                ? this.$emit('collapse')
+                : this.$emit('expand');
+        },
+        focus() {
+            this.searchInput.focus();
+        },
+        clearQuery() {
+            this.query = null;
+        },
+    },
+};
 
 </script>
 
