@@ -151,10 +151,6 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 422) {
-                    if (data.message) {
-                        toastr.error(data.message);
-                    }
-
                     if (data.errors.email) {
                         toastr.error(data.errors.email);
                     }

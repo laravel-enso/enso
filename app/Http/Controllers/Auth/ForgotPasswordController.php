@@ -16,11 +16,6 @@ class ForgotPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function showLinkRequestForm()
-    {
-        return view('laravel-enso/core::auth.passwords.email');
-    }
-
     protected function sendResetLinkResponse($response)
     {
         return ['status' => trans($response)];

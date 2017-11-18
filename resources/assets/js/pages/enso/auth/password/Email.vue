@@ -90,9 +90,8 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 422) {
-                    return data.message
-                        ? toastr.error(data.message)
-                        : toastr.error(data.email);
+                    toastr.error(data.errors.email);
+                    return;
                 }
 
                 throw error;

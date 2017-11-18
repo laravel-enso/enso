@@ -18,13 +18,6 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function showResetForm(Request $request, $token = null)
-    {
-        return view('laravel-enso/core::auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
-    }
-
     protected function sendResetResponse($response)
     {
         return ['status' => trans($response)];

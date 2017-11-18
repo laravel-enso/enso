@@ -20,11 +20,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
-    {
-        return view('laravel-enso/core::auth.login');
-    }
-
     protected function attemptLogin(Request $request)
     {
         $user = User::where('email', '=', request()->input('email'))->first();
@@ -37,7 +32,7 @@ class LoginController extends Controller
             return false;
         }
 
-        if (!$user->is_active) {
+        if ($user->isDisabled()) {
             throw new AuthenticationException(__(config('enso.labels.disabledAccount')));
         }
 
