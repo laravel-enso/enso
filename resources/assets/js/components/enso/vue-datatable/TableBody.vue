@@ -148,4 +148,10 @@ export default {
         padding: 6px;
     }
 
+    .tag.is-table-tag {
+        font-size: 0.8rem;
+        height: 1.4em;
+        padding: 6px;
+    }
+
 </style>
