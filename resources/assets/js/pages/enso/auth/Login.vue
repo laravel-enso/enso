@@ -140,11 +140,13 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 401) {
-                    return toastr.error(data.message);
+                    toastr.error(data.message);
+                    return;
                 }
 
                 if (status === 422) {
-                    return toastr.error(data.email);
+                    toastr.error(data.email);
+                    return;
                 }
 
                 throw error;

@@ -5,7 +5,9 @@
         :icon="icon"
         @refresh="getData"
         :overlay="loading"
-        :controls="1">
+        :controls="1"
+        :removable="removable"
+        @remove="destroy()">
         <a slot="control-1"
             class="card-header-icon">
             <button class="button is-small is-primary is-outlined"
@@ -51,6 +53,7 @@
 
 <script>
 
+import { debounce } from 'lodash';
 import { mapGetters, mapState } from 'vuex';
 import Card from '../bulma/Card.vue';
 import Modal from '../bulma/Modal.vue';
@@ -68,6 +71,10 @@ export default {
         id: {
             type: String,
             default: null,
+        },
+        removable: {
+            type: Boolean,
+            default: false,
         },
         customRender: {
             type: Function,
@@ -250,7 +257,7 @@ export default {
     },
 
     created() {
-        this.getData = _.debounce(this.getData, 500);
+        this.getData = debounce(this.getData, 500);
     },
 
     methods: {
@@ -569,6 +576,9 @@ export default {
                 intervalFilters: JSON.stringify(this.intervalFilters),
                 customParams: JSON.stringify(this.customParams),
             };
+        },
+        destroy() {
+            this.$destroy();
         },
     },
 

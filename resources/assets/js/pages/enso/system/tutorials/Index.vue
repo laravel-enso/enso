@@ -1,27 +1,39 @@
 <template>
 
-    <datatable source="system.tutorials"
+    <vue-table :path="path"
+        :i18n="__"
         :custom-render="customRender"
         id="tutorials">
-    </datatable>
+    </vue-table>
 
 </template>
 
 <script>
 
-import Datatable from '../../../../components/enso/datatable/Datatable.vue';
+import { mapGetters } from 'vuex';
+import VueTable from '../../../../components/enso/vue-datatable/VueTable.vue';
 
 export default {
-    components: { Datatable },
+    components: { VueTable },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    data() {
+        return {
+            path: route('system.tutorials.initTable', [], false),
+        };
+    },
 
     methods: {
-        customRender(column, data) {
-            switch (column) {
+        customRender(row, column) {
+            switch (column.name) {
             case 'placement':
-                return `<span class="tag is-table-tag is-info">${data}</span`;
+                return `<span class="tag is-table-tag is-info">${row[column.name]}</span`;
             default:
-                toastr.warning(`render for column ${column} is not defined.`);
-                return data;
+                toastr.warning(`render for column ${column.name} is not defined.`);
+                return row[column.name];
             }
         },
     },

@@ -25,5 +25,6 @@ module.exports = {
         "no-underscore-dangle": ["error", { "allow": ["__"] } ],
         "no-param-reassign": 0,
         "no-mixed-operators": 0,
+        "func-names": 0,
     },
 };

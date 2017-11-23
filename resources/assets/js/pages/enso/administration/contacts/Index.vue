@@ -1,10 +1,11 @@
 <template>
-	 <div>
-        <datatable source="core.contacts"
+    <div>
+        <vue-table :path="path"
+            :i18n="__"
             @edit-contact="edit"
             ref="contacts"
-	        id="contacts">
-	    </datatable>
+            id="contacts">
+        </vue-table>
         <contact-form :show="showForm"
             v-if="showForm"
             :edit-mode="true"
@@ -19,36 +20,39 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import PageHeader from '../../layout/PageHeader.vue';
-import Datatable from '../../../../components/enso/datatable/Datatable.vue';
+import VueTable from '../../../../components/enso/vue-datatable/VueTable.vue';
 import ContactForm from '../../../../components/enso/contacts/ContactForm.vue';
 
 export default {
-    components: { PageHeader, Datatable, ContactForm },
+    components: { PageHeader, VueTable, ContactForm },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
 
     data() {
         return {
+            path: route('core.contacts.initTable', [], false),
             showForm: false,
             contact: {},
         };
     },
 
     methods: {
-        edit(id) {
-            const data = this.$refs.contacts.dtHandle.data().toArray();
-            const contact = data.find(row => row.DT_RowId === id);
-
+        edit(contact) {
             this.setContact(contact);
             this.showForm = true;
         },
         setContact(contact) {
             Object.assign(this.contact, contact);
-            this.contact.id = contact.DT_RowId;
+            this.contact.id = contact.dtRowId;
             this.contact.is_active = contact.is_active_bool;
         },
         update() {
             this.showForm = false;
-            this.$refs.contacts.dtHandle.ajax.reload();
+            this.$refs.contacts.getData();
         },
     },
 };

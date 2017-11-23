@@ -65,13 +65,14 @@
                 </div>
             </div>
         </div>
-        <data-table class="animated fadeIn"
-            source="import"
+        <vue-table class="animated fadeIn"
+            :path="path"
+            :i18n="__"
             id="imports-table"
             :custom-render="customRender"
-            @get-summary="getSummary($event)"
+            @get-summary="getSummary"
             v-if="!summary">
-        </data-table>
+        </vue-table>
         <div class="columns"
             v-if="summary">
             <div class="column is-half-desktop is-one-third-widescreen is-one-quarter-fullhd animated bounceInLeft">
@@ -163,7 +164,7 @@
 
 import { mapGetters } from 'vuex';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
-import DataTable from '../../../components/enso/datatable/Datatable.vue';
+import VueTable from '../../../components/enso/vue-datatable/VueTable.vue';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
 import Modal from '../../../components/enso/bulma/Modal.vue';
 import Card from '../../../components/enso/bulma/Card.vue';
@@ -173,7 +174,7 @@ import Tabs from '../../../components/enso/bulma/Tabs.vue';
 
 export default {
     components: {
-        VueSelect, DataTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate,
+        VueSelect, VueTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate,
     },
 
     computed: {
@@ -191,6 +192,7 @@ export default {
 
     data() {
         return {
+            path: route('import.initTable', [], false),
             importType: null,
             summary: null,
             template: {},
@@ -236,10 +238,10 @@ export default {
                 this.handleError(error);
             });
         },
-        getSummary(id) {
+        getSummary(row) {
             this.loading = true;
 
-            axios.get(route('import.getSummary', id, false)).then((response) => {
+            axios.get(route('import.getSummary', row.dtRowId, false)).then((response) => {
                 this.loading = false;
 
                 if (response.data.errors === 0) {
@@ -267,15 +269,15 @@ export default {
                 return tabs;
             }, []);
         },
-        customRender(column, data) {
-            switch (column) {
+        customRender(row, column) {
+            switch (column.name) {
             case 'successful':
-                return `<b class="has-text-success">${data}</b>`;
+                return `<b class="has-text-success">${row[column.name]}</b>`;
             case 'errors':
-                return `<b class="has-text-danger">${data}</b>`;
+                return `<b class="has-text-danger">${row[column.name]}</b>`;
             default:
-                toastr.warning(`render for column ${column} is not defined.`);
-                return data;
+                toastr.warning(`render for column ${column.name} is not defined.`);
+                return row[column.name];
             }
         },
     },

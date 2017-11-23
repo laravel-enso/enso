@@ -38,6 +38,7 @@
 
 <script>
 
+import { debounce } from 'lodash';
 import { mapGetters } from 'vuex';
 import Multiselect from 'vue-multiselect';
 
@@ -147,6 +148,10 @@ export default {
             },
             deep: true,
         },
+    },
+
+    created() {
+        this.getOptions = debounce(this.getOptions, 500);
     },
 
     data() {

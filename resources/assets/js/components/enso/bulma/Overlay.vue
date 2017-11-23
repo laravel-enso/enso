@@ -1,10 +1,10 @@
 <template>
 
-	<div class="overlay is-overlay"
-		:class="{ 'opacity': opacity }">
+    <div class="overlay is-overlay"
+        :class="{ 'opacity': opacity }">
         <div class="overlay-loader"
-        	:style="overlayColor"
-        	:class="loaderSize">
+            :style="overlayColor"
+            :class="loaderSize">
         </div>
     </div>
 
@@ -53,8 +53,8 @@ export default {
 
 <style>
 
-	.opacity {
-		background: rgba(255, 255, 255, 0.4);
+    .opacity {
+        background: rgba(255, 255, 255, 0.4);
         display: flex;
     }
 
@@ -63,24 +63,24 @@ export default {
     }
 
     .overlay-loader {
-		-webkit-animation: spinAround 500ms infinite linear;
-		      animation: spinAround 500ms infinite linear;
-		border-radius: 290486px;
-		content: "";
-		display: block;
-		height: 1em;
-		position: relative;
-		width: 1em;
-	}
+        -webkit-animation: spinAround 500ms infinite linear;
+              animation: spinAround 500ms infinite linear;
+        border-radius: 290486px;
+        content: "";
+        display: block;
+        height: 1em;
+        position: relative;
+        width: 1em;
+    }
 
-	.overlay-loader.is-medium {
-		width: 2em;
-		height: 2em;
-	}
+    .overlay-loader.is-medium {
+        width: 2em;
+        height: 2em;
+    }
 
-	.overlay-loader.is-large {
-		width: 3em;
-		height: 3em;
-	}
+    .overlay-loader.is-large {
+        width: 3em;
+        height: 3em;
+    }
 
 </style>

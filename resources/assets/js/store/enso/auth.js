@@ -1,4 +1,3 @@
-import Cookie from 'js-cookie';
 import router from '../../router';
 
 export const auth = {

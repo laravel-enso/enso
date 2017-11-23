@@ -12,6 +12,8 @@
 
 <script>
 
+import { debounce } from 'lodash';
+
 export default {
     props: {
         comment: {
@@ -35,7 +37,7 @@ export default {
                     insertTpl: '@${fullName}',
                     acceptSpaceBar: true,
                     callbacks: {
-                        remoteFilter: _.debounce((query, callback) => {
+                        remoteFilter: debounce((query, callback) => {
                             axios.get(route('core.comments.getTaggableUsers', query, false)).then((response) => {
                                 callback(response.data);
                             });

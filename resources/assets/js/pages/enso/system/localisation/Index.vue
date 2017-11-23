@@ -1,28 +1,39 @@
 <template>
 
-    <datatable source="system.localisation"
+    <vue-table :path="path"
+        :i18n="__"
         :custom-render="customRender"
-        @edit-texts="$router.push({ name: 'system.localisation.editTexts' })"
         id="localisation">
-    </datatable>
+    </vue-table>
 
 </template>
 
 <script>
 
-import Datatable from '../../../../components/enso/datatable/Datatable.vue';
+import { mapGetters } from 'vuex';
+import VueTable from '../../../../components/enso/vue-datatable/VueTable.vue';
 
 export default {
-    components: { Datatable },
+    components: { VueTable },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    data() {
+        return {
+            path: route('system.localisation.initTable', [], false),
+        };
+    },
 
     methods: {
-        customRender(column, data) {
-            switch (column) {
+        customRender(row, column) {
+            switch (column.name) {
             case 'flag':
-                return `<i class="flag-icon ${data}"></i>`;
+                return `<i class="flag-icon ${row[column.name]}"></i>`;
             default:
-                toastr.warning(`render for column ${column} is not defined.`);
-                return data;
+                toastr.warning(`render for column ${column.name} is not defined.`);
+                return row[column.name];
             }
         },
     },

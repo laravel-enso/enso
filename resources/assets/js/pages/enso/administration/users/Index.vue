@@ -1,17 +1,29 @@
 <template>
 
-    <datatable source="administration.users"
+    <vue-table :path="path"
+        :i18n="__"
         id="users">
-    </datatable>
+    </vue-table>
 
 </template>
 
 <script>
 
-import Datatable from '../../../../components/enso/datatable/Datatable.vue';
+import { mapGetters } from 'vuex';
+import VueTable from '../../../../components/enso/vue-datatable/VueTable.vue';
 
 export default {
-    components: { Datatable },
+    components: { VueTable },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    data() {
+        return {
+            path: route('administration.users.initTable', [], false),
+        };
+    },
 };
 
 </script>

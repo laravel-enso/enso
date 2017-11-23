@@ -53,7 +53,7 @@
             </a>
             <span class="card-header-icon"
                 v-if="removable"
-                @click="$emit('remove')">
+                @click="destroy()">
                 <a class="delete is-small"></a>
             </span>
         </header>
@@ -125,7 +125,7 @@ export default {
         },
         removable: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         overlay: {
             type: Boolean,
@@ -172,6 +172,11 @@ export default {
         },
         clearQuery() {
             this.query = null;
+        },
+        destroy() {
+            this.$emit('remove');
+            this.$el.parentNode.removeChild(this.$el);
+            this.$destroy();
         },
     },
 };
