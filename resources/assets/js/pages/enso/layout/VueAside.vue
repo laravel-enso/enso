@@ -1,8 +1,8 @@
 <template>
 
-	<div>
-		<slot></slot>
-	</div>
+    <div>
+        <slot></slot>
+    </div>
 
 </template>
 
@@ -16,7 +16,7 @@ export default {
 
 <style>
 
-	.aside {;
+    .aside {
         position: fixed;
         bottom: 0;
         top: 50px;

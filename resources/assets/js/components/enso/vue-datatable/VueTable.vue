@@ -224,6 +224,7 @@ export default {
             return this.template.columns.reduce((columns, column) => {
                 columns.push({
                     name: column.name,
+                    data: column.data,
                     meta: {
                         searchable: column.meta.searchable,
                         sortable: column.meta.sortable,
