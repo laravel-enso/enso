@@ -26,7 +26,7 @@
                     :key="index"
                     class="dropdown-item"
                     :class="{ 'is-active': column.meta.visible }"
-                    @click="column.meta.visible = !column.meta.visible;">
+                    @click="column.meta.visible = !column.meta.visible;$emit('update-visibility')">
                     {{ column.label }}
                 </a>
             </div>
@@ -78,7 +78,7 @@ export default {
     }
 
     .dropdown-menu.column-visibility-list > .dropdown-content {
-        max-height: 200px;
+        max-height: 300px;
         overflow-y: auto;
     }
 

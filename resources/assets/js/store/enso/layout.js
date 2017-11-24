@@ -14,8 +14,8 @@ export const layout = {
     },
 
     getters: {
-        theme: (state, getters, rootState) => rootState.user.preferences ?
-            rootState.user.preferences.global.theme : null,
+        theme: (state, getters, rootState) => (rootState.user.preferences ?
+            rootState.user.preferences.global.theme : null),
     },
 
     mutations: {

@@ -57,6 +57,7 @@
         "datatables.net-colreorder": "^1.4.1",
         "datatables.net-responsive": "^2.2.0",
         "datatables.net-select": "^1.2.3",
+        "element-resize-detector": "^1.1.12",
         "flag-icon-css": "^2.8.0",
         "flatpickr": "^3.1.5",
         "font-awesome": "^4.7.0",

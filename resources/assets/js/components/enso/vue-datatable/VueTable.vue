@@ -2,31 +2,17 @@
 
     <div class="box"
         v-if="body">
-        <h5 class="title is-5">
-            <span class="icon">
-                <i :class="template.icon"></i>
-            </span>
-            {{ i18n(template.name) }}
-        </h5>
-        <div class="columns table-top-controls">
-            <div class="column">
-                <top-controls :template="template"
-                    :i18n="i18n"
-                    :length="length"
-                    @update-length="length=$event"
-                    @export-data="exportData"
-                    @reload="getData()">
-                </top-controls>
-            </div>
-            <div class="column has-text-right"
-                v-if="body.count">
-                <input class="input table-search-input is-pulled-right"
-                    type="search"
-                    v-model="search"
-                    :placeholder="i18n('Search')">
-            </div>
-        </div>
-        <div class="table-responsive">
+        <top-controls :template="template"
+            class="has-padding-small has-padding-bottom-large"
+            :i18n="i18n"
+            :length="length"
+            @update-length="length=$event"
+            @export-data="exportData"
+            @reload="getData()"
+            v-model="search">
+        </top-controls>
+        <div class="table-responsive"
+            v-responsive>
             <table class="table is-fullwidth vue-data-table"
                 :class="template.style">
                 <table-header :template="template"
@@ -39,6 +25,7 @@
                     :start="start"
                     :i18n="i18n"
                     :custom-render="customRender"
+                    :expanded="expanded"
                     @ajax="ajax"
                     v-if="body.count">
                 </table-body>
@@ -51,7 +38,7 @@
             <overlay size="medium" v-if="loading"></overlay>
         </div>
         <div class="columns table-bottom-controls"
-            v-if="body.count">
+            v-if="body && body.count">
             <div class="column">
                 <records-info :body="body"
                     :i18n="i18n"
@@ -68,7 +55,7 @@
                 </pagination>
             </div>
         </div>
-        <div v-if="!body.count"
+        <div v-if="body && !body.count"
             class="has-text-centered no-records-found">
             {{ i18n('No records were found.') }}
         </div>
@@ -87,12 +74,17 @@ import TableFooter from './TableFooter.vue';
 import RecordsInfo from './RecordsInfo.vue';
 import Pagination from './Pagination.vue';
 import Overlay from '../bulma/Overlay.vue';
+import vResponsive from './responsive/vResponsive';
 
 export default {
     name: 'VueTable',
 
     components: {
         TopControls, TableHeader, TableBody, TableFooter, RecordsInfo, Overlay, Pagination,
+    },
+
+    directives: {
+        responsive: vResponsive,
     },
 
     props: {
@@ -129,20 +121,16 @@ export default {
         },
     },
 
-    computed: {
-        table() {
-            return this.$el.querySelector('table');
-        },
-    },
-
     data() {
         return {
             loading: false,
             template: null,
-            search: null,
+            search: '',
             start: 0,
             body: null,
             length: 0,
+            expanded: [],
+            resize: null,
         };
     },
 
@@ -172,7 +160,7 @@ export default {
     },
 
     created() {
-        this.getData = debounce(this.getData, 500);
+        this.getData = debounce(this.getData, 100);
         this.init();
     },
 
@@ -181,6 +169,7 @@ export default {
             axios.get(this.path).then(({ data }) => {
                 this.template = data.template;
                 [this.length] = this.template.lengthMenu;
+                this.setPreferences();
                 this.getData();
             }).catch((error) => {
                 const { status, data } = error.response;
@@ -192,8 +181,15 @@ export default {
                 this.handleError(error);
             });
         },
+        setPreferences() {
+            this.template.columns.forEach(({ meta }) => {
+                this.$set(meta, 'sort', null);
+                this.$set(meta, 'hidden', false);
+            });
+        },
         getData() {
             this.loading = true;
+            this.expanded = [];
 
             axios.get(this.template.readPath, { params: this.readRequest() }).then(({ data }) => {
                 this.body = data;
@@ -253,10 +249,6 @@ export default {
             this.getData();
         },
     },
-
-    mounted() {
-
-    },
 };
 
 </script>
@@ -277,10 +269,6 @@ export default {
 
     .table-responsive table {
         font-size: 15px;
-    }
-
-    .table-search-input {
-        width: 300px;
     }
 
     div.table-bottom-controls {

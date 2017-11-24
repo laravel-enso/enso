@@ -62,7 +62,7 @@ export default {
                 center: 'fa fa-align-center',
                 left: 'fa fa-align-left',
                 right: 'fa fa-align-right',
-            }
+            },
         };
     },
 
@@ -89,7 +89,7 @@ export default {
     }
 
     .dropdown-menu.alignment-list > .dropdown-content {
-        max-height: 200px;
+        max-height: 300px;
         overflow-y: auto;
     }
 

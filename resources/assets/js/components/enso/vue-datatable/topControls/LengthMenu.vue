@@ -20,9 +20,9 @@
             :class="{ 'fadeIn': show, 'fadeOut': !show }"
             v-if="show">
             <div class="dropdown-content has-text-centered">
-                <a v-for="(value, index) in template.lengthMenu"
+                    <a v-for="(value, index) in template.lengthMenu"
                     :key="index"
-                    class="dropdown-item"
+                        class="dropdown-item"
                     :class="{ 'is-active': value === length }"
                     @click="$emit('update-length', value);show=false">
                     {{ value }}

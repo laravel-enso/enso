@@ -3,14 +3,25 @@
     <tbody>
         <tr v-for="(row, index) in body.data"
             :key="index">
-            <td :class="template.align"
-                v-if="template.crtNo">
-                {{ start + index + 1 }}.
+            <td class="table-crt-no"
+                :class="template.align"
+                v-if="template.crtNo && !isChild(row)">
+                {{ getIndex(row) }}
+                <span class="icon is-small"
+                    v-if="hiddenCount"
+                    @click="toggleExpand(row, index)">
+                    <i class="fa fa-minus-square"
+                        v-if="isExpanded(row)">
+                    </i>
+                    <i class="fa fa-plus-square"
+                        v-else>
+                    </i>
+                </span>
             </td>
             <td :class="template.align"
                 v-for="(column, index) in template.columns"
                 :key="index"
-                v-if="column.meta.visible">
+                v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
                 <span v-if="column.meta.boolean"
                     v-html="row[column.name] ? template.boolean[1] : template.boolean[0]">
                 </span>
@@ -21,7 +32,8 @@
                 <span v-else>{{ row[column.name] }}</span>
             </td>
             <td class="table-actions"
-                :class="template.align">
+                :class="template.align"
+                v-if="!isChild(row)">
                 <span class="table-action-buttons">
                     <a v-for="(button, index) in template.buttons.row"
                         :key="index"
@@ -34,6 +46,17 @@
                         </span>
                     </a>
                 </span>
+            </td>
+            <td :colspan="hiddenColSpan"
+                :class="template.align"
+                v-if="isChild(row)">
+                <ul>
+                    <li class="child-row"
+                        v-for="column in row"
+                        :key="column.label">
+                        <b>{{ column.label }}</b>: {{ column.value }}
+                    </li>
+                </ul>
             </td>
         </tr>
         <modal v-if="modal"
@@ -78,6 +101,24 @@ export default {
             type: Number,
             required: true,
         },
+        expanded: {
+            type: Array,
+            required: true,
+        },
+    },
+
+    computed: {
+        hiddenColumns() {
+            return this.template.columns
+                .filter(column => column.meta.hidden && column.meta.visible);
+        },
+        hiddenCount() {
+            return this.hiddenColumns.length;
+        },
+        hiddenColSpan() {
+            return this.template.columns.length - this.hiddenColumns.length
+                + (this.template.actions ? 2 : 1);
+        },
     },
 
     data() {
@@ -86,6 +127,16 @@ export default {
             row: null,
             button: null,
         };
+    },
+
+    watch: {
+        hiddenCount: {
+            handler(newVal) {
+                if (!newVal) {
+                    this.removeChilds();
+                }
+            },
+        },
     },
 
     methods: {
@@ -120,12 +171,64 @@ export default {
                 this.$router.push({ name: button.route, params: { id: row.dtRowId } });
             }
         },
+        getIndex(row) {
+            return this.body.data.filter(r => !this.isChild(r))
+                .findIndex(r => r.dtRowId === row.dtRowId) + this.start + 1;
+        },
+        isExpanded(row) {
+            return this.expanded.includes(row.dtRowId);
+        },
+        isChild(row) {
+            return Array.isArray(row);
+        },
+        toggleExpand(row, index) {
+            if (!this.isExpanded(row)) {
+                this.expanded.push(row.dtRowId);
+                this.addChildRow(row, index);
+                return;
+            }
+
+            const idx = this.expanded.findIndex(id => id === row.dtRowId);
+            this.expanded.splice(idx, 1);
+            this.body.data.splice(index + 1, 1);
+        },
+        addChildRow(row, index) {
+            const newRow = this.hiddenColumns.reduce((collector, column) => {
+                collector.push({ label: column.label, value: row[column.name] });
+                return collector;
+            }, []);
+
+            this.body.data.splice(index + 1, 0, newRow);
+        },
+        removeChilds() {
+            const indexes = [];
+
+            this.body.data.forEach((row, index) => {
+                if (this.isChild(row)) {
+                    indexes.push(index);
+                }
+            });
+
+            indexes.sort((a, b) => a < b).forEach(index => this.body.data.splice(index, 1));
+
+            this.expanded.splice(0);
+        },
     },
 };
 
 </script>
 
 <style>
+
+    td.table-crt-no {
+        white-space:nowrap;
+        align-content: center;
+    }
+
+    .table-crt-no .fa-plus-square,
+    .table-crt-no .fa-minus-square {
+        cursor: pointer;
+    }
 
     td.table-actions {
         padding: .35em .5em;
@@ -141,17 +244,19 @@ export default {
         font-size: .9em;
     }
 
-    .tag.is-boolean {
-        font-size: 0.8rem;
-        height: 1.4em;
-        width: 1.8em;
-        padding: 6px;
-    }
-
     .tag.is-table-tag {
         font-size: 0.8rem;
+        font-weight: bold;
         height: 1.4em;
-        padding: 6px;
+        padding: 3px;
+    }
+
+    li.child-row:not(:last-child) {
+        border-bottom: 1px solid #efefef;
+    }
+
+    li.child-row {
+        padding: 0.5em 0;
     }
 
 </style>
