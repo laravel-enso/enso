@@ -1,6 +1,6 @@
 import ContactsIndex from '../../../pages/enso/administration/contacts/Index.vue';
 
-export const Contacts = {
+export default {
     name: 'core.contacts.index',
     path: 'contacts',
     component: ContactsIndex,
