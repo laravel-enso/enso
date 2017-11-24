@@ -1,6 +1,6 @@
 import MenuCreate from '../../../../pages/enso/system/menus/Create.vue';
 
-export const Create = {
+export default {
     name: 'system.menus.create',
     path: 'create',
     component: MenuCreate,

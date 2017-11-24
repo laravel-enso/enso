@@ -1,10 +1,10 @@
-import { Index } from './roles/index';
-import { Create } from './roles/create';
-import { Edit } from './roles/edit';
-import { Configure } from './roles/configure';
+import Index from './roles/index';
+import Create from './roles/create';
+import Edit from './roles/edit';
+import Configure from './roles/configure';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Roles = {
+export default {
     path: 'roles',
     component: RouterView,
     meta: {

@@ -1,27 +1,27 @@
 <template>
-	<div>
-		<div class="tabs" :class="alignClass">
-		    <ul>
-	    		<li v-for="(tab, index) in tabs"
-	    			:class="{ 'is-active': index === selected }">
-	    			<a @click="selected=index">
-    					{{ tab.label }}
-    					<span class="tag is-warning has-margin-left-small"
-    						v-if="hasBadges">
-    						{{ tab.badge }}
-    					</span>
-	    			</a>
-	    		</li>
-		    </ul>
-	    </div>
-	    <div v-for="(tab, index) in tabs"
-	    	v-if="tabs.length && selected === index">
-			<slot :name="tab.label"
-				v-if="hasBadges">
-	    	</slot>
-			<slot :name="tab" v-else>
-	    	</slot>
-	    </div>
+    <div>
+        <div class="tabs" :class="alignClass">
+            <ul>
+                <li v-for="(tab, index) in tabs"
+                    :class="{ 'is-active': index === selected }">
+                    <a @click="selected=index">
+                        {{ tab.label }}
+                        <span class="tag is-warning has-margin-left-small"
+                            v-if="hasBadges">
+                            {{ tab.badge }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div v-for="(tab, index) in tabs"
+            v-if="tabs.length && selected === index">
+            <slot :name="tab.label"
+                v-if="hasBadges">
+            </slot>
+            <slot :name="tab" v-else>
+            </slot>
+        </div>
     </div>
 </template>
 

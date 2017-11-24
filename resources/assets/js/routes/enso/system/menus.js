@@ -1,9 +1,9 @@
-import { Index } from './menus/index';
-import { Create } from './menus/create';
-import { Edit } from './menus/edit';
+import Index from './menus/index';
+import Create from './menus/create';
+import Edit from './menus/edit';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Menus = {
+export default {
     path: 'menus',
     component: RouterView,
     meta: {

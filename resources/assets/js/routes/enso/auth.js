@@ -13,7 +13,7 @@ const redirect = (to, from, next) => {
     next();
 };
 
-export const Auth = [{
+export default [{
     name: 'login',
     path: '/login',
     component: Login,

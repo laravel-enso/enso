@@ -1,4 +1,4 @@
-export const navbar = {
+export default {
     namespaced: true,
 
     state: {
@@ -6,8 +6,14 @@ export const navbar = {
     },
 
     mutations: {
-        expand: state => state.isVisible = true,
-        collapse: state => state.isVisible = false,
-        toggle: state => state.isVisible = !state.isVisible,
+        expand: (state) => {
+            state.isVisible = true;
+        },
+        collapse: (state) => {
+            state.isVisible = false;
+        },
+        toggle: (state) => {
+            state.isVisible = !state.isVisible;
+        },
     },
 };

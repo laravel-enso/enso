@@ -1,6 +1,6 @@
 import LocalisationEditTexts from '../../../../pages/enso/system/localisation/EditTexts.vue';
 
-export const EditTexts = {
+export default {
     name: 'system.localisation.editTexts',
     path: 'editTexts',
     component: LocalisationEditTexts,

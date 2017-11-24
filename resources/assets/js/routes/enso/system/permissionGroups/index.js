@@ -1,6 +1,6 @@
 import PermissionGroupsIndex from '../../../../pages/enso/system/permissionGroups/Index.vue';
 
-export const Index = {
+export default {
     name: 'system.permissionGroups.index',
     path: '',
     component: PermissionGroupsIndex,

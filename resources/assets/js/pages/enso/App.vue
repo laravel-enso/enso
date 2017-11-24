@@ -1,16 +1,16 @@
 <template>
 
-	<div id="app">
-		<transition
-			enter-active-class="fadeIn"
-			leave-active-class="fadeOut">
-			<component :is="component"
-				class="animated"
-				@enter-app="showHome=false"
-				@login="showHome=true;setState()">
-			</component>
-		</transition>
-	</div>
+    <div id="app">
+        <transition
+            enter-active-class="fadeIn"
+            leave-active-class="fadeOut">
+            <component :is="component"
+                class="animated"
+                @enter-app="showHome=false"
+                @login="showHome=true;setState()">
+            </component>
+        </transition>
+    </div>
 
 </template>
 

@@ -1,18 +1,18 @@
 <template>
 
-	<article class="message">
-	  	<div class="message-header">
-	    	<p>{{ __("The log file") }} <code>{{ log.name }}</code> {{ __("was last updated") }} {{ log.modified ? log.modified.date : null | timeFromNow }}. {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}</p>
-	    	<button class="delete" aria-label="delete"></button>
-	  	</div>
-	  	<div class="message-body">
-	    	<pre v-hljs v-if="content">
-				<code class="php">
+    <article class="message">
+          <div class="message-header">
+            <p>{{ __("The log file") }} <code>{{ log.name }}</code> {{ __("was last updated") }} {{ log.modified ? log.modified.date : null | timeFromNow }}. {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}</p>
+            <button class="delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body">
+            <pre v-hljs v-if="content">
+                <code class="php">
 {{ content }}
-				</code>
-			</pre>
-	  	</div>
-	</article>
+                </code>
+            </pre>
+          </div>
+    </article>
 
 </template>
 

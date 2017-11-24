@@ -1,6 +1,6 @@
 import OwnerEdit from '../../../../pages/enso/administration/owners/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'administration.owners.edit',
     path: ':id/edit',
     component: OwnerEdit,

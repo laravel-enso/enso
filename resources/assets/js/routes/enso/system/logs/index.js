@@ -1,6 +1,6 @@
 import LogsIndex from '../../../../pages/enso/system/logs/Index.vue';
 
-export const Index = {
+export default {
     name: 'system.logs.index',
     path: '',
     component: LogsIndex,

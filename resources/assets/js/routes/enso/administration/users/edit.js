@@ -1,6 +1,6 @@
 import UserEdit from '../../../../pages/enso/administration/users/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'administration.users.edit',
     path: ':id/edit',
     component: UserEdit,

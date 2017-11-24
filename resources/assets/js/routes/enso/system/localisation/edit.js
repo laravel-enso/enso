@@ -1,6 +1,6 @@
 import LocalisationEdit from '../../../../pages/enso/system/localisation/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'system.localisation.edit',
     path: ':id/edit',
     component: LocalisationEdit,

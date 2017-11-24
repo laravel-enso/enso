@@ -1,4 +1,4 @@
-export const locale = {
+export default {
     namespaced: true,
 
     state: {
@@ -13,11 +13,12 @@ export const locale = {
 
     getters: {
         __: (state, getters, rootState) => (key) => {
-            const lang = rootState.user.preferences.global.lang;
+            const { lang } = rootState.user.preferences.global;
             return state.i18n[lang] ? (state.i18n[lang][key] || key) : key;
         },
-        current: (state, getters, rootState) => rootState.user.preferences ?
-            rootState.user.preferences.global.lang : null,
+        current: (state, getters, rootState) => (rootState.user.preferences ?
+            rootState.user.preferences.global.lang
+            : null),
     },
 
     actions: {

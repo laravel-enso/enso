@@ -1,6 +1,6 @@
 import LogShow from '../../../../pages/enso/system/logs/Show.vue';
 
-export const Show = {
+export default {
     name: 'system.logs.show',
     path: ':id',
     component: LogShow,

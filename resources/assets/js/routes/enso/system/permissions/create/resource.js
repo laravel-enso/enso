@@ -1,6 +1,6 @@
 import ResourceCreate from '../../../../../pages/enso/system/permissions/create/Resource.vue';
 
-export const Resource = {
+export default {
     name: 'system.permissions.createResource',
     path: 'resource',
     component: ResourceCreate,

@@ -1,6 +1,6 @@
 import OwnerCreate from '../../../../pages/enso/administration/owners/Create.vue';
 
-export const Create = {
+export default {
     name: 'administration.owners.create',
     path: 'create',
     component: OwnerCreate,

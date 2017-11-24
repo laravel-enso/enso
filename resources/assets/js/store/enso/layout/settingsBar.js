@@ -1,4 +1,4 @@
-export const settingsBar = {
+export default {
     namespaced: true,
 
     state: {

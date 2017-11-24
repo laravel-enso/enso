@@ -1,6 +1,6 @@
 import TutorialEdit from '../../../../pages/enso/system/tutorials/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'system.tutorials.edit',
     path: ':id/edit',
     component: TutorialEdit,

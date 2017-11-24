@@ -1,8 +1,8 @@
 <template>
 
-	<vue-form :data="form"
-		class="box animated fadeIn"
-		v-if="initialised">
+    <vue-form :data="form"
+        class="box animated fadeIn"
+        v-if="initialised">
     </vue-form>
 
 </template>

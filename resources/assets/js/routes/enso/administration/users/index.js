@@ -1,6 +1,6 @@
 import UsersIndex from '../../../../pages/enso/administration/users/Index.vue';
 
-export const Index = {
+export default {
     name: 'administration.users.index',
     path: '',
     component: UsersIndex,

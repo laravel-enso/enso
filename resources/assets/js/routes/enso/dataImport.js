@@ -1,6 +1,6 @@
 import DataImportIndex from '../../pages/enso/dataimport/Index.vue';
 
-export const DataImport = {
+export default {
     name: 'import.index',
     path: '/import',
     component: DataImportIndex,

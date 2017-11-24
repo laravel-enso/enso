@@ -1,6 +1,6 @@
 import MenuEdit from '../../../../pages/enso/system/menus/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'system.menus.edit',
     path: ':id/edit',
     component: MenuEdit,

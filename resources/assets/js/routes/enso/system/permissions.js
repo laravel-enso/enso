@@ -1,9 +1,9 @@
-import { Index } from './permissions/index';
-import { Create } from './permissions/create';
-import { Edit } from './permissions/edit';
+import Index from './permissions/index';
+import Create from './permissions/create';
+import Edit from './permissions/edit';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Permissions = {
+export default {
     path: 'permissions',
     component: RouterView,
     meta: {

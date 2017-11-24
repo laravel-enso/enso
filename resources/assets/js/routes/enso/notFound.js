@@ -1,6 +1,6 @@
 import NotFound from '../../pages/enso/NotFound.vue';
 
-export const notFound = {
+export default {
     path: '*',
     component: NotFound,
 };

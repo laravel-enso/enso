@@ -1,9 +1,9 @@
-import { Index } from './tutorials/index';
-import { Create } from './tutorials/create';
-import { Edit } from './tutorials/edit';
+import Index from './tutorials/index';
+import Create from './tutorials/create';
+import Edit from './tutorials/edit';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Tutorials = {
+export default {
     path: 'tutorials',
     component: RouterView,
     meta: {

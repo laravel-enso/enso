@@ -1,10 +1,10 @@
 import router from '../../router';
 
-export const auth = {
+export default {
     namespaced: true,
 
     state: {
-        auth: localStorage.hasOwnProperty('auth') && localStorage.getItem('auth'),
+        auth: localStorage.getItem('auth') === 'true',
     },
 
     mutations: {

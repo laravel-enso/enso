@@ -1,6 +1,6 @@
 import PermissionGroupEdit from '../../../../pages/enso/system/permissionGroups/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'system.permissionGroups.edit',
     path: ':id/edit',
     component: PermissionGroupEdit,

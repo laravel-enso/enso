@@ -1,6 +1,6 @@
 import UserShow from '../../../../pages/enso/administration/users/Show.vue';
 
-export const Show = {
+export default {
     name: 'administration.users.show',
     path: ':id',
     component: UserShow,

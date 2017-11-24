@@ -1,6 +1,6 @@
 import OwnersIndex from '../../../../pages/enso/administration/owners/Index.vue';
 
-export const Index = {
+export default {
     name: 'administration.owners.index',
     path: '',
     component: OwnersIndex,

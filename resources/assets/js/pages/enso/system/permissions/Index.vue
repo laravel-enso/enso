@@ -2,7 +2,7 @@
 
     <vue-table :path="path"
         :i18n="__"
-    	:custom-render="customRender"
+        :custom-render="customRender"
         id="permissions">
     </vue-table>
 

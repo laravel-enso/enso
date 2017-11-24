@@ -1,23 +1,23 @@
 <template>
 
     <div class="container">
-    	<div class="columns is-centered">
-    		<div class="column is-three-quarters animated fadeIn"
-    			v-if="initialised">
-    			<vue-form :data="form"
-    				class="box">
-		        </vue-form>
-		        <contacts :id="owner.id"
+        <div class="columns is-centered">
+            <div class="column is-three-quarters animated fadeIn"
+                v-if="initialised">
+                <vue-form :data="form"
+                    class="box">
+                </vue-form>
+                <contacts :id="owner.id"
                     type="owner">
                 </contacts>
-		        <comments :id="owner.id"
+                <comments :id="owner.id"
                     type="owner">
                 </comments>
-		        <documents :id="owner.id"
+                <documents :id="owner.id"
                     type="owner">
                 </documents>
-    		</div>
-    	</div>
+            </div>
+        </div>
     </div>
 
 </template>

@@ -1,9 +1,9 @@
-import { Owners } from './administration/owners';
-import { Users } from './administration/users';
+import Owners from './administration/owners';
+import Users from './administration/users';
 import Contacts from './administration/contacts';
 import RouterView from '../../pages/enso/layout/Router.vue';
 
-export const Administration = {
+export default {
     path: '/administration',
     component: RouterView,
     meta: {

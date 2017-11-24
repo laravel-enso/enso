@@ -8,20 +8,20 @@
                 v-if="initialised">
                 <template slot="icon" slot-scope="props">
                     <div class="control has-icons-right">
-						<input class="input"
-							:class="{ 'is-danger': props.errors.has('icon') }"
-							@keydown="props.errors.clear(props.field.column)"
-							v-model="props.field.value"
-							type="text">
-						<span class="icon is-small is-right"
-							v-if="props.errors.has('icon')">
-							<i class="fa fa-warning"></i>
-						</span>
-						<span class="icon is-small is-right"
-							v-else>
-							<i :class="props.field.value"></i>
-						</span>
-					</div>
+                        <input class="input"
+                            :class="{ 'is-danger': props.errors.has('icon') }"
+                            @keydown="props.errors.clear(props.field.column)"
+                            v-model="props.field.value"
+                            type="text">
+                        <span class="icon is-small is-right"
+                            v-if="props.errors.has('icon')">
+                            <i class="fa fa-warning"></i>
+                        </span>
+                        <span class="icon is-small is-right"
+                            v-else>
+                            <i :class="props.field.value"></i>
+                        </span>
+                    </div>
                     </template>
             </vue-form>
         </div>

@@ -1,29 +1,29 @@
 <template>
 
     <div class="container">
-    	<div class="columns is-centered">
-    		<div class="column is-three-quarters">
-    			<vue-form :data="form"
-    				class="box animated fadeIn"
-    				v-if="initialised">
-	                <template slot="owner_id" slot-scope="props">
-	                    <vue-select name="owner_id"
-	                        v-model="props.field.value"
-	                        @input="pivotParams.owners.id=$event;props.errors.clear(props.field.column)"
-	                        :source="props.field.meta.source">
-	                    </vue-select>
-	                </template>
-	                <template slot="role_id" slot-scope="props">
-	                    <vue-select name="role_id"
-	                        :pivot-params="pivotParams"
-	                        v-model="props.field.value"
-	                        @input="props.errors.clear(props.field.column);"
-	                        :source="props.field.meta.source">
-	                    </vue-select>
-	                </template>
-	            </vue-form>
-    		</div>
-    	</div>
+        <div class="columns is-centered">
+            <div class="column is-three-quarters">
+                <vue-form :data="form"
+                    class="box animated fadeIn"
+                    v-if="initialised">
+                    <template slot="owner_id" slot-scope="props">
+                        <vue-select name="owner_id"
+                            v-model="props.field.value"
+                            @input="pivotParams.owners.id=$event;props.errors.clear(props.field.column)"
+                            :source="props.field.meta.source">
+                        </vue-select>
+                    </template>
+                    <template slot="role_id" slot-scope="props">
+                        <vue-select name="role_id"
+                            :pivot-params="pivotParams"
+                            v-model="props.field.value"
+                            @input="props.errors.clear(props.field.column);"
+                            :source="props.field.meta.source">
+                        </vue-select>
+                    </template>
+                </vue-form>
+            </div>
+        </div>
     </div>
 
 </template>

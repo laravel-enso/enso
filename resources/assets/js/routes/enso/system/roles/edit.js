@@ -1,6 +1,6 @@
 import RoleEdit from '../../../../pages/enso/system/roles/Edit.vue';
 
-export const Edit = {
+export default {
     name: 'system.roles.edit',
     path: ':id/edit',
     component: RoleEdit,

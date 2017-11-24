@@ -48,9 +48,9 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import Card from '../../../../components/enso/bulma/Card.vue';
 import Modal from '../../../../components/enso/bulma/Modal.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     components: { Card, Modal },

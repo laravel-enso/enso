@@ -1,9 +1,11 @@
-export const Dashboard = {
-	name: 'dashboard.index',
-	path: '/dashboard',
-	component: require('../../pages/enso/dashboard/Index.vue'),
-	meta: {
-	    breadcrumb: 'dashboard',
-	    title: 'Dashboard'
-	}
+import DashboardIndex from '../../pages/enso/dashboard/Index.vue';
+
+export default {
+    name: 'dashboard.index',
+    path: '/dashboard',
+    component: DashboardIndex,
+    meta: {
+        breadcrumb: 'dashboard',
+        title: 'Dashboard',
+    },
 };

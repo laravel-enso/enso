@@ -1,6 +1,6 @@
 import store from '../../../store';
 
-var Router = function(name, params, absolute) {
+const Router = function (name, params, absolute) {
     this.name = name;
     this.urlParams = this.normalizeParams(params);
     this.queryParams = this.normalizeParams(params);
@@ -14,9 +14,9 @@ var Router = function(name, params, absolute) {
 Router.prototype = Object.create(String.prototype);
 Router.prototype.constructor = Router;
 
-Router.prototype.normalizeParams = function(params) {
+Router.prototype.normalizeParams = function (params) {
     if (params === undefined)
-        return {};
+        {return {};}
 
     params = typeof params !== 'object' ? [params] : params;
     this.numericParamIndices = Array.isArray(params);
@@ -24,38 +24,38 @@ Router.prototype.normalizeParams = function(params) {
     return Object.assign({}, params);
 };
 
-Router.prototype.constructDomain = function() {
+Router.prototype.constructDomain = function () {
     if (this.name === undefined) {
         throw 'Ziggy Error: You must provide a route name';
     } else if (store.state.routes[this.name] === undefined) {
-        throw 'Ziggy Error: route "'+ this.name +'" is not found in the route list';
-    } else if (! this.absolute) {
+        throw `Ziggy Error: route "${ this.name }" is not found in the route list`;
+    } else if (!this.absolute) {
         return '/';
     }
 
-    return (store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/,'') + '/';
+    return `${(store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/,'')  }/`;
 };
 
-Router.prototype.with = function(params) {
+Router.prototype.with = function (params) {
     this.urlParams = this.normalizeParams(params);
 
     return this;
 };
 
-Router.prototype.withQuery = function(params) {
+Router.prototype.withQuery = function (params) {
     Object.assign(this.queryParams, params);
 
     return this;
 };
 
-Router.prototype.constructUrl = function() {
-    var url = this.domain + this.url,
+Router.prototype.constructUrl = function () {
+    let url = this.domain + this.url,
         tags = this.urlParams,
         paramsArrayKey = 0;
 
     return url.replace(
         /{([^}]+)}/gi,
-        function (tag) {
+        (tag) => {
             var keyName = tag.replace(/\{|\}/gi, '').replace(/\?$/, ''),
                 key = this.numericParamIndices ? paramsArrayKey : keyName;
 
@@ -69,38 +69,38 @@ Router.prototype.constructUrl = function() {
             } else {
                 return '';
             }
-        }.bind(this)
+        },
     );
 };
 
-Router.prototype.constructQuery = function() {
+Router.prototype.constructQuery = function () {
     if (Object.keys(this.queryParams).length === 0)
-        return '';
+        {return '';}
 
-    var queryString = '?';
+    let queryString = '?';
 
-    Object.keys(this.queryParams).forEach(function(key, i) {
+    Object.keys(this.queryParams).forEach((key, i) => {
         queryString = i === 0 ? queryString : queryString + '&';
         queryString += key + '=' + this.queryParams[key];
-    }.bind(this));
+    });
 
     return queryString;
 };
 
-Router.prototype.toString = function() {
+Router.prototype.toString = function () {
     this.parse();
     return this.return;
 };
 
-Router.prototype.valueOf = function() {
+Router.prototype.valueOf = function () {
     this.parse();
     return this.return;
 };
 
-Router.prototype.parse = function() {
+Router.prototype.parse = function () {
     this.return = this.constructUrl() + this.constructQuery();
 };
 
-window.route = function(name, params, absolute) {
+window.route = function (name, params, absolute) {
     return new Router(name, params, absolute);
 };

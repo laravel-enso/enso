@@ -1,8 +1,8 @@
-import { Index } from './logs/index';
-import { Show } from './logs/show';
+import Index from './logs/index';
+import Show from './logs/show';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Logs = {
+export default {
     path: 'logs',
     component: RouterView,
     meta: {

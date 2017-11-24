@@ -1,26 +1,26 @@
 <template>
 
     <div class="container">
-    	<div class="columns is-centered">
-    		<div class="column is-three-quarters">
-    			<vue-form :data="form"
-					class="box animated fadeIn"
-					v-if="initialised">
-					<template slot="flag" slot-scope="props">
-						<div class="control has-icons-right">
-							<input class="input"
-								type="text"
-								disabled
-								:value="props.field.value">
-		                    <span class="icon is-small is-right">
-	                            <i class="is-icon" :class="props.field.value">
-	                            </i>
+        <div class="columns is-centered">
+            <div class="column is-three-quarters">
+                <vue-form :data="form"
+                    class="box animated fadeIn"
+                    v-if="initialised">
+                    <template slot="flag" slot-scope="props">
+                        <div class="control has-icons-right">
+                            <input class="input"
+                                type="text"
+                                disabled
+                                :value="props.field.value">
+                            <span class="icon is-small is-right">
+                                <i class="is-icon" :class="props.field.value">
+                                </i>
                             </span>
-		                </div>
-	                </template>
-			    </vue-form>
-    		</div>
-    	</div>
+                        </div>
+                    </template>
+                </vue-form>
+            </div>
+        </div>
     </div>
 
 </template>

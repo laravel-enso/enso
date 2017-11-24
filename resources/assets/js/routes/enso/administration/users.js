@@ -1,10 +1,10 @@
-import { Index } from './users/index';
-import { Create } from './users/create';
-import { Edit } from './users/edit';
-import { Show } from './users/show';
+import Index from './users/index';
+import Create from './users/create';
+import Edit from './users/edit';
+import Show from './users/show';
 import RouterView from '../../../pages/enso/layout/Router.vue';
 
-export const Users = {
+export default {
     path: 'users',
     component: RouterView,
     meta: {

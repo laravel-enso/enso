@@ -1,6 +1,6 @@
 import MenusIndex from '../../../../pages/enso/system/menus/Index.vue';
 
-export const Index = {
+export default {
     name: 'system.menus.index',
     path: '',
     component: MenusIndex,

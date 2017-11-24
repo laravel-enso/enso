@@ -1,6 +1,6 @@
 import RoleCreate from '../../../../pages/enso/system/roles/Create.vue';
 
-export const Create = {
+export default {
     name: 'system.roles.create',
     path: 'create',
     component: RoleCreate,

@@ -1,4 +1,4 @@
-export const menus = {
+export default {
     namespaced: true,
 
     state: {
