@@ -2682,16 +2682,16 @@
         },
         {
             "name": "laravel-enso/vue-datatable",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "19e80ef7b4424d140446ef96b0af0d920a49bdc1"
+                "reference": "30107c66c88fcb88b14b3ce1aa70808ffa367dfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/19e80ef7b4424d140446ef96b0af0d920a49bdc1",
-                "reference": "19e80ef7b4424d140446ef96b0af0d920a49bdc1",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/30107c66c88fcb88b14b3ce1aa70808ffa367dfd",
+                "reference": "30107c66c88fcb88b14b3ce1aa70808ffa367dfd",
                 "shasum": ""
             },
             "require": {
@@ -2734,20 +2734,20 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2017-11-25T11:44:06+00:00"
+            "time": "2017-11-25T14:58:19+00:00"
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "60c3859be69d4fec159b67d5da7a8746c6ef18a2"
+                "reference": "a2baa8695ba8ce03fb8cbd83005646fc832f5ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/60c3859be69d4fec159b67d5da7a8746c6ef18a2",
-                "reference": "60c3859be69d4fec159b67d5da7a8746c6ef18a2",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/a2baa8695ba8ce03fb8cbd83005646fc832f5ab2",
+                "reference": "a2baa8695ba8ce03fb8cbd83005646fc832f5ab2",
                 "shasum": ""
             },
             "require": {
@@ -2787,7 +2787,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2017-11-24T19:17:58+00:00"
+            "time": "2017-11-25T14:54:40+00:00"
         },
         {
             "name": "laravel/framework",

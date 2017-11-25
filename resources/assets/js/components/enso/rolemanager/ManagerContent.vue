@@ -98,7 +98,7 @@ export default {
                 return null;
             }
 
-            return entry.type === '1' ? 'has-text-warning' : 'has-text-success';
+            return entry.type === 1 ? 'has-text-warning' : 'has-text-success';
         },
         checkIfEmpty() {
             if (this.groupData.length === 0) {

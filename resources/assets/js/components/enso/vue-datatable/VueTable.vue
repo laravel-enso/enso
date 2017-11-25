@@ -1,7 +1,7 @@
 <template>
 
     <div class="box"
-        v-if="body">
+        v-if="initialised">
         <top-controls :template="template"
             class="has-padding-small has-padding-bottom-large"
             :i18n="i18n"
@@ -9,12 +9,14 @@
             @update-length="length=$event"
             @export-data="exportData"
             @reload="getData()"
+            @reset="resetPreferences"
             v-model="search">
         </top-controls>
         <div class="table-responsive"
             v-responsive>
             <table class="table is-fullwidth vue-data-table"
-                :class="template.style">
+                :class="template.style"
+                id="id">
                 <table-header :template="template"
                     :i18n="i18n"
                     @sort-update="getData">
@@ -27,9 +29,9 @@
                     :custom-render="customRender"
                     :expanded="expanded"
                     @ajax="ajax"
-                    v-if="body.count">
+                    v-if="hasContent">
                 </table-body>
-                <table-footer v-if="template.total && body.count"
+                <table-footer v-if="template.total && hasContent"
                     :template="template"
                     :body="body"
                     :i18n="i18n">
@@ -38,7 +40,7 @@
             <overlay size="medium" v-if="loading"></overlay>
         </div>
         <div class="columns table-bottom-controls"
-            v-if="body && body.count">
+            v-if="hasContent">
             <div class="column">
                 <records-info :body="body"
                     :i18n="i18n"
@@ -90,7 +92,7 @@ export default {
     props: {
         id: {
             type: String,
-            default: null,
+            required: true,
         },
         path: {
             type: String,
@@ -121,16 +123,53 @@ export default {
         },
     },
 
+    computed: {
+        preferencesKey() {
+            return `VueTable_${this.id}_preferences`;
+        },
+        preferences() {
+            if (!this.initialised) {
+                return null;
+            }
+
+            return {
+                global: {
+                    length: this.length,
+                    search: this.search,
+                    start: this.start,
+                    filters: this.filters,
+                    intervals: this.intervals,
+                },
+                template: {
+                    sort: this.template.sort,
+                    style: this.template.style,
+                    align: this.template.align,
+                },
+                columns: this.template.columns.reduce((collector, column) => {
+                    collector.push({
+                        sort: column.meta.sort,
+                        visible: column.meta.visible,
+                    });
+
+                    return collector;
+                }, []),
+            };
+        },
+        hasContent() {
+            return this.body && this.body.count;
+        },
+    },
+
     data() {
         return {
             loading: false,
+            initialised: false,
             template: null,
             search: '',
             start: 0,
             body: null,
             length: 0,
             expanded: [],
-            resize: null,
         };
     },
 
@@ -157,6 +196,14 @@ export default {
                 this.filterUpdate();
             },
         },
+        preferences: {
+            handler() {
+                if (this.hasContent) {
+                    this.savePreferences();
+                }
+            },
+            deep: true,
+        },
     },
 
     created() {
@@ -182,10 +229,47 @@ export default {
             });
         },
         setPreferences() {
+            this.setDefaultPreferences();
+
+            if (localStorage.getItem(this.preferencesKey) !== null) {
+                this.setUserPreferences();
+            }
+
+            this.$nextTick(() => {
+                this.initialised = true;
+            });
+        },
+        setDefaultPreferences() {
             this.template.columns.forEach(({ meta }) => {
                 this.$set(meta, 'sort', null);
                 this.$set(meta, 'hidden', false);
             });
+
+            this.$set(this.template, 'sort', false);
+        },
+        setUserPreferences() {
+            const prefs = JSON.parse(localStorage.getItem(this.preferencesKey));
+
+            Object.keys(prefs.global).forEach((key) => {
+                this.$set(this, key, prefs.global[key]);
+            });
+
+            Object.keys(prefs.template).forEach((key) => {
+                this.$set(this.template, key, prefs.template[key]);
+            });
+
+            prefs.columns.forEach((column, index) => {
+                Object.keys(column).forEach((key) => {
+                    this.$set(this.template.columns[index].meta, key, column[key]);
+                });
+            });
+        },
+        savePreferences() {
+            localStorage.setItem(this.preferencesKey, JSON.stringify(this.preferences));
+        },
+        resetPreferences() {
+            localStorage.removeItem(this.preferencesKey);
+            this.init();
         },
         getData() {
             this.loading = true;
@@ -270,6 +354,10 @@ export default {
             }).catch(error => this.reportEnsoException(error));
         },
         filterUpdate() {
+            if (!this.initialised) {
+                return;
+            }
+
             this.start = 0;
             this.getData();
         },

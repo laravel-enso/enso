@@ -3,6 +3,17 @@ class ResponsiveTable {
         this.el = el;
         this.context = context;
         this.hiding = false;
+        this.width = null;
+        this.height = null;
+    }
+
+    updateSize() {
+        this.width = this.el.clientWidth;
+        this.height = this.el.clientHeight;
+    }
+
+    shouldntResize() {
+        return this.width === this.el.clientWidth && this.height !== this.el.clientHeight;
     }
 
     shouldHide() {
@@ -14,7 +25,8 @@ class ResponsiveTable {
     }
 
     hideColumns() {
-        const columns = this.context.template.columns.filter(column => column.meta.visible && !column.meta.hidden);
+        const columns = this.context.template.columns
+            .filter(column => column.meta.visible && !column.meta.hidden);
 
         if (!columns.length) {
             return;
@@ -24,6 +36,7 @@ class ResponsiveTable {
         columns[columns.length - 1].meta.hidden = true;
 
         this.context.$nextTick(() => {
+            this.updateSize();
             this.resize();
         });
     }
@@ -38,14 +51,18 @@ class ResponsiveTable {
         columns[0].meta.hidden = false;
 
         this.context.$nextTick(() => {
+            this.updateSize();
             this.resize();
         });
     }
 
     resize() {
+        if (this.shouldntResize()) {
+            return;
+        }
+
         if (this.shouldHide()) {
             this.hideColumns();
-
             return;
         }
 

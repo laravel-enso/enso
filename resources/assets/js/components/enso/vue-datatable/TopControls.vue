@@ -41,6 +41,12 @@
                         <i class="fa fa-refresh"></i>
                     </span>
                 </button>
+                <button class="button"
+                    @click="$emit('reset')">
+                    <span class="icon is-small">
+                        <i class="fa fa-undo"></i>
+                    </span>
+                </button>
             </div>
             <div class="column has-padding-small is-one-third-desktop has-text-right">
                 <p class="control has-icons-left">
