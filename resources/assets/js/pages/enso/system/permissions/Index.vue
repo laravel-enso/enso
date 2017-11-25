@@ -30,11 +30,11 @@ export default {
         customRender(row, column) {
             switch (column.name) {
             case 'type':
-                return row.isRead ? `<span class="tag is-table-tag is-success">${row[column.name]}</span>`
-                    : `<span class="tag is-table-tag is-warning">${row[column.name]}</span>`;
+                return row.isRead ? `<span class="tag is-table-tag is-success">${this.__(row[column.name])}</span>`
+                    : `<span class="tag is-table-tag is-warning">${this.__(row[column.name])}</span>`;
             default:
                 toastr.warning(`render for column ${column.name} is not defined.`);
-                return row[column.name];
+                return this.__(row[column.name]);
             }
         },
     },

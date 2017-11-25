@@ -9,15 +9,16 @@
                 <i class="fa fa-bell">
                 </i>
             </span>
-            <sup class="has-text-danger notification-count">{{ unreadCount }}</sup>
+            <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
             <overlay v-if="loading"></overlay>
         </a>
-        <div class="navbar-dropdown is-right notification-list"
-            @scroll="computeScrollPosition($event)"
+        <div class="navbar-dropdown is-right"
             v-if="show">
-            <span v-for="notification in notifications">
+            <div class="notification-list"
+                @scroll="computeScrollPosition($event)">
                 <a class="navbar-item"
-                    @click="process(notification)">
+                    @click="markAsRead(notification)"
+                    v-for="notification in notifications">
                     <div class="navbar-content">
                         <p class="is-notification" :class="{ 'is-bold': !notification.read_at }">
                             {{ notification.data.body }}
@@ -27,10 +28,36 @@
                         </p>
                     </div>
                 </a>
-                <hr class="navbar-divider">
-            </span>
-            <a v-if="notifications.length === 0" class="navbar-item">
-                {{ __("You don't have any notifications") }}
+            </div>
+            <hr class="navbar-divider"
+                v-if="notifications.length">
+            <nav class="level navbar-item" v-if="notifications.length">
+                <div class="level-left">
+                    <div class="level-item">
+                        <a class="button is-small is-success"
+                            @click="markAllAsRead">
+                            <span>{{ __("Mark all read") }}</span>
+                            <span class="icon is-small">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <a class="button is-small is-warning has-margin-left-small"
+                            @click="clearAll">
+                            <span>{{ __("Clear all") }}</span>
+                            <span class="icon is-small">
+                                <i class="fa fa-trash-o"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <a v-else class="navbar-item">
+                <span v-if="unreadCount || loading">{{ __("Loading...") }}</span>
+                <span v-else-if="!unreadCount">{{ __("You don't have any notifications") }}</span>
             </a>
         </div>
     </div>
@@ -39,6 +66,7 @@
 
 <script>
 
+import { debounce } from 'lodash';
 import { mapGetters, mapState } from 'vuex';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
@@ -69,6 +97,7 @@ export default {
     },
 
     created() {
+        this.getData = debounce(this.getData, 500);
         this.init();
         this.getCount();
         this.listen();
@@ -78,7 +107,7 @@ export default {
         show: {
             handler() {
                 if (this.show) {
-                    this.getList();
+                    this.getData();
                 }
             },
         },
@@ -93,7 +122,7 @@ export default {
                 this.unreadCount = data;
             }).catch(error => this.handleError(error));
         },
-        getList() {
+        getData() {
             if (!this.needsUpdate || this.loading) {
                 return;
             }
@@ -110,7 +139,7 @@ export default {
                 this.handleError(error);
             });
         },
-        process(notification) {
+        markAsRead(notification) {
             axios.patch(route('core.notifications.markAsRead', notification.id, false).toString()).then(({ data }) => {
                 this.unreadCount = this.unreadCount > 0
                     ? --this.unreadCount
@@ -122,12 +151,10 @@ export default {
         },
         markAllAsRead() {
             axios.patch(route('core.notifications.markAllAsRead', [], false)).then(() => {
-                this.setAllAsRead();
-            }).catch(error => this.handleError(error));
-        },
-        setAllAsRead() {
-            this.notifications.forEach((notification) => {
-                notification.read_at = notification.read_at || moment().format('Y-MM-DD H:mm:s');
+                this.notifications.forEach((notification) => {
+                    notification.read_at = notification.read_at || moment().format('Y-MM-DD H:mm:s');
+                });
+
                 this.unreadCount = 0;
             }).catch(error => this.handleError(error));
         },
@@ -160,7 +187,7 @@ export default {
 
             if (a / b > 0.7) {
                 this.needsUpdate = true;
-                this.getList();
+                this.getData();
             }
         },
     },
@@ -178,7 +205,6 @@ export default {
     div.notification-list {
         width: 300px;
         overflow-x: hidden;
-        min-height: 50px;
         max-height: 400px;
         overflow-y: auto;
     }

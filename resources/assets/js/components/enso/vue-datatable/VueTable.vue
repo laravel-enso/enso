@@ -234,9 +234,34 @@ export default {
             }, []);
         },
         exportData(path) {
-            axios.get(path, { params: this.readRequest() }).then(({ data }) => {
+            axios.get(path, { params: this.exportRequest() }).then(({ data }) => {
                 toastr.success(data.message);
-            }).catch(error => this.handleError(error));
+            }).catch((error) => {
+                const { status, data } = error.response;
+
+                if (status === 555) {
+                    toastr.error(data.message);
+                }
+
+                this.handleError(error);
+            });
+        },
+        exportRequest() {
+            return {
+                name: this.template.name,
+                columns: this.template.columns,
+                meta: {
+                    start: 0,
+                    length: this.body.count,
+                    sort: this.template.sort,
+                    enum: this.template.enum,
+                    total: false,
+                },
+                search: this.search,
+                appends: this.template.appends,
+                filters: this.filters,
+                intervals: this.intervals,
+            };
         },
         ajax(method, path) {
             axios[method.toLowerCase()](path).then(({ data }) => {
