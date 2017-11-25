@@ -166,9 +166,9 @@ export default {
             initialised: false,
             template: null,
             search: '',
-            start: 0,
+            start: null,
             body: null,
-            length: 0,
+            length: null,
             expanded: [],
         };
     },
@@ -215,6 +215,7 @@ export default {
         init() {
             axios.get(this.path).then(({ data }) => {
                 this.template = data.template;
+                this.start = 0;
                 [this.length] = this.template.lengthMenu;
                 this.setPreferences();
                 this.getData();
