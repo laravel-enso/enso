@@ -177,7 +177,7 @@ Are loaded at application load, and refreshed as needed
 
 ### Thanks
 
-Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bulma 0.6, Vuejs 2.x and:
+Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bulma 0.6, Vuejs 2.5 and:
 
 [DataTables](https://datatables.net),
 [Bulmaswatch](https://jenil.github.io/bulmaswatch/), [Chart.js](http://chartjs.org),
