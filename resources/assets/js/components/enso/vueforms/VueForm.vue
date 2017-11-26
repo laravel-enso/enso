@@ -164,7 +164,7 @@ export default {
             this.loading = true;
             const { id, route } = this.data.actions.destroy;
 
-            axios.delete(route(route, id, false)).then((response) => {
+            axios.delete(window.route(route, id, false)).then((response) => {
                 this.loading = false;
                 toastr.success(response.data.message);
                 this.$emit('form-destroy');

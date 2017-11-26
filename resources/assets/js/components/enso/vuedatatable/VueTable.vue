@@ -352,7 +352,7 @@ export default {
             axios[method.toLowerCase()](path).then(({ data }) => {
                 toastr.success(data.message);
                 this.getData();
-            }).catch(error => this.reportEnsoException(error));
+            }).catch(error => this.handleError(error));
         },
         filterUpdate() {
             if (!this.initialised) {
