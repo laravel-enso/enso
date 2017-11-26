@@ -270,6 +270,7 @@ export default {
         },
         resetPreferences() {
             localStorage.removeItem(this.preferencesKey);
+            this.search = '';
             this.init();
         },
         getData() {

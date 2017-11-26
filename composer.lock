@@ -2622,16 +2622,16 @@
         },
         {
             "name": "laravel-enso/tutorialmanager",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TutorialManager.git",
-                "reference": "46e357106f622d542a78433e6b15ba394f0929d4"
+                "reference": "25268b016a97263d35c6931b983d8200842d4d5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/46e357106f622d542a78433e6b15ba394f0929d4",
-                "reference": "46e357106f622d542a78433e6b15ba394f0929d4",
+                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/25268b016a97263d35c6931b983d8200842d4d5f",
+                "reference": "25268b016a97263d35c6931b983d8200842d4d5f",
                 "shasum": ""
             },
             "require": {
@@ -2678,7 +2678,7 @@
                 "tutorial-manager",
                 "tutorialmanager"
             ],
-            "time": "2017-11-26T08:20:30+00:00"
+            "time": "2017-11-26T12:54:16+00:00"
         },
         {
             "name": "laravel-enso/vuecomponents",
@@ -2735,16 +2735,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.0.15",
+            "version": "1.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "dcada5cdca300f76829d6a11136f5f83642b85b9"
+                "reference": "f2f939df6f66fabbd772d2d92ad8bfcf69f57231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/dcada5cdca300f76829d6a11136f5f83642b85b9",
-                "reference": "dcada5cdca300f76829d6a11136f5f83642b85b9",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/f2f939df6f66fabbd772d2d92ad8bfcf69f57231",
+                "reference": "f2f939df6f66fabbd772d2d92ad8bfcf69f57231",
                 "shasum": ""
             },
             "require": {
@@ -2787,7 +2787,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2017-11-26T10:55:00+00:00"
+            "time": "2017-11-26T11:18:42+00:00"
         },
         {
             "name": "laravel/framework",
