@@ -50,7 +50,7 @@
         "at.js": "^1.5.3",
         "axios": "^0.16.2",
         "bulma": "^0.5.3",
-        "bulma-extensions": "^0.4.3",
+        "bulma-extensions": "^0.4.4",
         "bulmaswatch": "^0.5.2",
         "chart.js": "^2.7.1",
         "datatables.net": "^1.10.16",

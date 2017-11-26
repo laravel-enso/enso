@@ -22,7 +22,7 @@ return [
      */
 
     'labels' => [
-        'crtNo'   => '#',
+        'crtNo' => '#',
         'actions' => 'Actions',
     ],
 
@@ -51,53 +51,53 @@ return [
     'buttons' => [
         'global' => [
             'create' => [
-                'icon'        => 'fa fa-plus',
-                'class'       => 'is-success',
+                'icon' => 'fa fa-plus',
+                'class' => 'is-success',
                 'routeSuffix' => 'create',
-                'event'       => 'create',
-                'action'      => 'router',
-                'label'       => 'Create',
+                'event' => 'create',
+                'action' => 'router',
+                'label' => 'Create',
             ],
             'excel' => [
-                'icon'        => 'fa fa-file-excel-o',
-                'class'       => 'is-info',
+                'icon' => 'fa fa-file-excel-o',
+                'class' => 'is-info',
                 'routeSuffix' => 'exportExcel',
-                'event'       => 'export-excel',
-                'action'      => 'export',
-                'label'       => 'Excel',
+                'event' => 'export-excel',
+                'action' => 'export',
+                'label' => 'Excel',
             ],
         ],
         'row' => [
             'show' => [
-                'icon'        => 'fa fa-eye',
-                'class'       => 'is-success',
+                'icon' => 'fa fa-eye',
+                'class' => 'is-success',
                 'routeSuffix' => 'show',
-                'event'       => 'show',
-                'action'      => 'router',
+                'event' => 'show',
+                'action' => 'router',
             ],
             'edit' => [
-                'icon'        => 'fa fa-pencil',
-                'class'       => 'is-warning',
+                'icon' => 'fa fa-pencil',
+                'class' => 'is-warning',
                 'routeSuffix' => 'edit',
-                'event'       => 'edit',
-                'action'      => 'router',
+                'event' => 'edit',
+                'action' => 'router',
             ],
             'destroy' => [
-                'icon'         => 'fa fa-trash',
-                'class'        => 'is-danger',
-                'routeSuffix'  => 'destroy',
-                'event'        => 'destroy',
-                'action'       => 'ajax',
-                'method'       => 'DELETE',
-                'message'      => 'The selected record is about to be deleted. Are you sure?',
+                'icon' => 'fa fa-trash',
+                'class' => 'is-danger',
+                'routeSuffix' => 'destroy',
+                'event' => 'destroy',
+                'action' => 'ajax',
+                'method' => 'DELETE',
+                'message' => 'The selected record is about to be deleted. Are you sure?',
                 'confirmation' => true,
             ],
             'download' => [
-                'icon'        => 'fa fa-cloud-download',
-                'class'       => 'is-primary',
+                'icon' => 'fa fa-cloud-download',
+                'class' => 'is-primary',
                 'routeSuffix' => 'download',
-                'event'       => 'download',
-                'action'      => 'href',
+                'event' => 'download',
+                'action' => 'href',
             ],
         ],
     ],
@@ -116,13 +116,13 @@ return [
             'striped', 'hover', 'bordered', 'center',
         ],
         'mapping' => [
-            'left'     => 'has-text-left',
-            'center'   => 'has-text-centered',
-            'right'    => 'has-text-right',
-            'compact'  => 'is-narrow',
-            'striped'  => 'is-striped',
+            'left' => 'has-text-left',
+            'center' => 'has-text-centered',
+            'right' => 'has-text-right',
+            'compact' => 'is-narrow',
+            'striped' => 'is-striped',
             'bordered' => 'is-bordered',
-            'hover'    => 'is-hoverable',
+            'hover' => 'is-hoverable',
         ],
     ],
 
@@ -137,21 +137,22 @@ return [
 
     'boolean' => [
         false => '<span class="tag is-table-tag is-danger"><span class="icon is-small"><i class="fa fa-times"></i></span></span>',
-        true  => '<span class="tag is-table-tag is-success"><span class="icon is-smalls"><i class="fa fa-check"></i></span></span>',
+        true => '<span class="tag is-table-tag is-success"><span class="icon is-smalls"><i class="fa fa-check"></i></span></span>',
     ],
 
     /*
     |--------------------------------------------------------------------------
     | Export Settings
     |--------------------------------------------------------------------------
-    |
-    | Yahooo
-    |
+    | Path where the temporary files are stored within storage/app folder; row
+    | limit for exports; php max_execution_time; notifications via, email
+    |  will be used anyway for sending the export.
     */
 
     'export' => [
-        'path'             => 'exports',
-        'limit'            => 20000,
+        'path' => 'exports',
+        'limit' => 20000,
         'maxExecutionTime' => 100,
+        'notifications' => ['broadcast', 'database'],
     ],
 ];

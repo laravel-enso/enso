@@ -164,7 +164,7 @@
 
 import { mapGetters } from 'vuex';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
-import VueTable from '../../../components/enso/vue-datatable/VueTable.vue';
+import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
 import Modal from '../../../components/enso/bulma/Modal.vue';
 import Card from '../../../components/enso/bulma/Card.vue';

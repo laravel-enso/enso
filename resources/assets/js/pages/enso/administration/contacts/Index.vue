@@ -22,7 +22,7 @@
 
 import { mapGetters } from 'vuex';
 import PageHeader from '../../layout/PageHeader.vue';
-import VueTable from '../../../../components/enso/vue-datatable/VueTable.vue';
+import VueTable from '../../../../components/enso/vuedatatable/VueTable.vue';
 import ContactForm from '../../../../components/enso/contacts/ContactForm.vue';
 
 export default {

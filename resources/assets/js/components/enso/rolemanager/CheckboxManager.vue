@@ -5,10 +5,14 @@
         ref="card"
         :controls="1">
         <a slot="control-1" class="card-header-icon">
-            <label class="checkbox">
+            <div class="checkbox-manager field">
                 <input type="checkbox"
+                    :id="'checkbox-' + _uid"
+                    :name="'checkbox-' + _uid"
+                    class="is-checkradio is-info"
                     @change="updateBelow">
-            </label>
+                    <label :for="'checkbox-' + _uid"></label>
+            </div>
         </a>
         <div class="has-padding-left-medium has-padding-top-medium has-padding-bottom-medium">
             <checkbox-manager v-for="group in sortedGroups"
@@ -128,3 +132,11 @@ export default {
 };
 
 </script>
+
+<style>
+
+    div.field.checkbox-manager {
+        width: 15px;
+    }
+</style>
+

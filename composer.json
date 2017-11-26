@@ -12,7 +12,6 @@
         "laravel-enso/dataimport": "2.1.*",
         "laravel-enso/documentsmanager": "2.1.*",
         "laravel-enso/notifications": "2.1.*",
-        "laravel-enso/vue-datatable": "1.0.*",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
     },

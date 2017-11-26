@@ -3,20 +3,25 @@
     <div class="columns is-multiline has-padding-medium">
         <div class="column is-half"
             v-for="entry in groupData">
-            <label class="checkbox">
+            <div class="field">
                 <input type="checkbox"
+                    :id="'checkbox-' + entry.name"
+                    :name="'checkbox-' + entry.name"
                     :value="entry.id"
-                    v-model="checkedIds">
-                <span :class="getClass(entry)">
-                    {{ entry.description || entry.name }}
-                </span>
-                <span class="icon has-text-info"
-                    v-if="entry.default">
-                    <i class="is-icon fa fa-exclamation-triangle"
-                        v-tooltip="__('Default')">
-                    </i>
-                </span>
-            </label>
+                    v-model="checkedIds"
+                    class="is-checkradio">
+                    <label :for="'checkbox-' + entry.name">
+                        <span :class="getClass(entry)">
+                            {{ entry.description || entry.name }}
+                        </span>
+                        <span class="icon has-text-info"
+                            v-if="entry.default">
+                            <i class="is-icon fa fa-exclamation-triangle"
+                                v-tooltip="__('Default')">
+                            </i>
+                        </span>
+                    </label>
+            </div>
         </div>
     </div>
 
