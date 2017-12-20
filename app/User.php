@@ -2,8 +2,8 @@
 
 namespace App;
 
-use LaravelEnso\CommentsManager\app\Traits\Comments;
 use LaravelEnso\Core\app\Models\User as Users;
+use LaravelEnso\CommentsManager\app\Traits\Comments;
 use LaravelEnso\DocumentsManager\app\Traits\Documents;
 
 class User extends Users

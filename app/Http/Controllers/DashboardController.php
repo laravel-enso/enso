@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use LaravelEnso\Charts\app\Classes\BarChart;
-use LaravelEnso\Charts\app\Classes\BubbleChart;
-use LaravelEnso\Charts\app\Classes\DoughnutChart;
-use LaravelEnso\Charts\app\Classes\LineChart;
 use LaravelEnso\Charts\app\Classes\PieChart;
+use LaravelEnso\Charts\app\Classes\LineChart;
 use LaravelEnso\Charts\app\Classes\PolarChart;
 use LaravelEnso\Charts\app\Classes\RadarChart;
+use LaravelEnso\Charts\app\Classes\BubbleChart;
+use LaravelEnso\Charts\app\Classes\DoughnutChart;
 
 class DashboardController extends Controller
 {
@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
         $datasets = [
 
-            'Sales'   => [65, 59, 80, 81, 56, 55, 40],
+            'Sales' => [65, 59, 80, 81, 56, 55, 40],
             'Revenue' => [15, 29, 60, 31, 26, 45, 44],
         ];
 
@@ -40,9 +40,9 @@ class DashboardController extends Controller
 
         $datasets = [
 
-            'Vanzari'  => [1233, 1231, 3123],
+            'Vanzari' => [1233, 1231, 3123],
             'Incasari' => [1250, 1730, 5300],
-            'Profit'   => [1250 - 1233, 1730 - 1231, 5300 - 3123],
+            'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
         ];
 
         $chart = new BarChart($labels, $datasets, 'Sales');
