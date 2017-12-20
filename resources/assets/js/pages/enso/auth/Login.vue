@@ -82,7 +82,7 @@
 
 <script>
 
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'Login',
@@ -92,6 +92,10 @@ export default {
             type: String,
             required: true,
         },
+    },
+
+    computed: {
+        ...mapGetters('auth', ['lastRoute']),
     },
 
     data() {
@@ -131,7 +135,14 @@ export default {
                 setTimeout(() => {
                     this.login(this.remember);
                     this.$emit('login');
-                    this.$router.replace('/');
+
+                    if (!this.lastRoute) {
+                        this.$router.replace('/');
+                        return;
+                    }
+
+                    this.$router.replace({ name: this.lastRoute });
+                    this.$store.commit('auth/setLastRoute', null);
                 }, 1000);
             }).catch((error) => {
                 this.loading = false;

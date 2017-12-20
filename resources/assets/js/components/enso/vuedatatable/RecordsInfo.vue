@@ -1,7 +1,7 @@
 <template>
 
     <span class="table-entries-info">
-        {{ `${i18n('From')} ${this.start + 1} ${i18n('to')} ${length <= body.filtered ? length : body.filtered} \
+        {{ `${i18n('From')} ${start + 1} ${i18n('to')} ${(start + length) <= body.filtered ? start + length : body.filtered} \
         ${i18n('of')} ${body.filtered} ${i18n('entries')}` }}
         <span v-if="body.filtered !== body.count">
             {{ `(${i18n('filtered')} ${i18n('from')} ${body.count} \
@@ -33,7 +33,7 @@ export default {
             type: Function,
             required: true,
         },
-    },
+    }
 };
 
 </script>

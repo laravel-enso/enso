@@ -107,6 +107,10 @@ export default {
             type: Object,
             required: true,
         },
+        params: {
+            type: Object,
+            default: null
+        }
     },
 
     data() {
@@ -137,7 +141,7 @@ export default {
                 toastr.success(response.data.message);
                 this.$emit('form-submit');
 
-                if (this.data.method === 'post') {
+                if (response.data.redirect) {
                     this.$router.push({
                         name: response.data.redirect,
                         params: { id: response.data.id },
@@ -157,7 +161,9 @@ export default {
             return this.data.fields.reduce((object, field) => {
                 object[field.column] = field.value;
                 return object;
-            }, {});
+            }, {_params: this.params});
+
+
         },
         destroy() {
             this.showModal = false;

@@ -137,8 +137,6 @@ export default {
                     length: this.length,
                     search: this.search,
                     start: this.start,
-                    filters: this.filters,
-                    intervals: this.intervals,
                 },
                 template: {
                     sort: this.template.sort,
@@ -180,6 +178,12 @@ export default {
             },
         },
         filters: {
+            handler() {
+                this.filterUpdate();
+            },
+            deep: true,
+        },
+        params: {
             handler() {
                 this.filterUpdate();
             },
@@ -347,6 +351,7 @@ export default {
                 appends: this.template.appends,
                 filters: this.filters,
                 intervals: this.intervals,
+                params: this.params,
             };
         },
         ajax(method, path) {

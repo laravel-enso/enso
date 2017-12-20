@@ -33,7 +33,7 @@
             </td>
             <td class="table-actions"
                 :class="template.align"
-                v-if="!isChild(row)">
+                v-if="template.actions && !isChild(row)">
                 <span class="table-action-buttons">
                     <a v-for="(button, index) in template.buttons.row"
                         :key="index"
@@ -168,8 +168,19 @@ export default {
             }
 
             if (button.action === 'router') {
-                this.$router.push({ name: button.route, params: { id: row.dtRowId } });
+                this.$router.push({ name: button.route, params: this.getRouteParams(button, row) });
             }
+        },
+        getRouteParams(button, row) {
+            var params = {
+                id: row.dtRowId
+            }
+
+            if (button.params) {
+                return Object.assign(params, button.params);
+            }
+
+            return params;
         },
         getIndex(row) {
             return this.body.data.filter(r => !this.isChild(r))

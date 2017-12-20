@@ -4,7 +4,7 @@
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>
-        <div class="tabs is-toggle is-fullwidth is-small">
+        <div class="tabs is-toggle is-fullwidth is-small vue-filter">
             <ul>
                 <li :class="{ 'is-active': option.value === value }"
                     v-for="option in options">
@@ -77,4 +77,9 @@ export default {
     .box.vue-filter {
         padding: 0.5rem;
     }
+
+    .tabs.vue-filter {
+        padding-top: 4px;
+    }
+
 </style>

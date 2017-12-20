@@ -1,0 +1,21 @@
+preset: laravel
+
+linting: true
+
+enabled:
+  - strict
+  - unalign_double_arrow
+  - phpdoc_order
+  - phpdoc_separation
+
+disabled:
+  - short_array_syntax
+  - not_operator_with_successor_space
+
+finder:
+  exclude:
+    - "public"
+    - "resources"
+    - "tests"
+  name:
+    - "*.php"

@@ -7,6 +7,7 @@ Vue.mixin({
 
             if (status === 401) {
                 if (this.$store.getters['auth/isAuth']) {
+                    this.$store.commit('auth/setLastRoute', this.$route.name);
                     this.$store.dispatch('auth/logout');
                 }
 

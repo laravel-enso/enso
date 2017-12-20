@@ -1,7 +1,7 @@
 <template>
 
     <div class="overlay is-overlay"
-        :class="{ 'opacity': opacity }">
+        :class="{ 'is-opaque': opacity }">
         <div class="overlay-loader"
             :style="overlayColor"
             :class="loaderSize">
@@ -53,23 +53,26 @@ export default {
 
 <style>
 
-    .opacity {
+    .is-opaque {
         background: rgba(255, 255, 255, 0.4);
+    }
+
+    div.overlay.is-overlay {
         display: flex;
     }
 
-    div.overlay > .overlay-loader {
-        margin: auto;
-    }
-
     .overlay-loader {
+        margin: auto;
         -webkit-animation: spinAround 500ms infinite linear;
-              animation: spinAround 500ms infinite linear;
+        animation: spinAround 500ms infinite linear;
         border-radius: 290486px;
         content: "";
         display: block;
-        height: 1em;
         position: relative;
+    }
+
+    .overlay-loader.is-small {
+        height: 1em;
         width: 1em;
     }
 

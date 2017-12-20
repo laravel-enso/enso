@@ -5,14 +5,17 @@ export default {
 
     state: {
         auth: localStorage.getItem('auth') === 'true',
+        lastRoute: null,
     },
 
     mutations: {
         setAuth: (state, value) => { state.auth = value; },
+        setLastRoute: (state, value) => { state.lastRoute = value; },
     },
 
     getters: {
         isAuth: state => state.auth,
+        lastRoute: state => state.lastRoute,
     },
 
     actions: {
