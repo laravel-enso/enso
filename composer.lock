@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9836ae1c5c7a55a55fe6a1bd7ded7676",
+    "content-hash": "58b7e10a92e845cd80a10864284afee0",
     "packages": [
         {
             "name": "box/spout",
@@ -2392,16 +2392,16 @@
         },
         {
             "name": "laravel-enso/rolemanager",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/RoleManager.git",
-                "reference": "5d02c296771e8744b267c7b8f71048dc11c9503e"
+                "reference": "df6fd19e04ce4def18fb0a9a4bebac6c111fa9e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/5d02c296771e8744b267c7b8f71048dc11c9503e",
-                "reference": "5d02c296771e8744b267c7b8f71048dc11c9503e",
+                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/df6fd19e04ce4def18fb0a9a4bebac6c111fa9e1",
+                "reference": "df6fd19e04ce4def18fb0a9a4bebac6c111fa9e1",
                 "shasum": ""
             },
             "require": {
@@ -2453,7 +2453,7 @@
                 "role-manager",
                 "rolemanager"
             ],
-            "time": "2017-12-20T06:52:06+00:00"
+            "time": "2017-12-20T07:24:08+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -5421,6 +5421,50 @@
                 "laravel"
             ],
             "time": "2017-11-15T07:23:53+00:00"
+        },
+        {
+            "name": "laravel-enso/testhelper",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/TestHelper.git",
+                "reference": "f4040350cf9615ee0b6abb28f2241ba964784abd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/TestHelper/zipball/f4040350cf9615ee0b6abb28f2241ba964784abd",
+                "reference": "f4040350cf9615ee0b6abb28f2241ba964784abd",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.5.*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\TestHelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ionut Pirvulescu",
+                    "email": "ionut.pirvulescu1@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Test helper dependency for Laravel Enso",
+            "homepage": "https://github.com/laravel-enso/TestHelper",
+            "keywords": [
+                "laravel-enso",
+                "laravel-enso-test"
+            ],
+            "time": "2017-12-20T06:54:35+00:00"
         },
         {
             "name": "maximebf/debugbar",

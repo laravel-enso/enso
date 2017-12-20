@@ -32,7 +32,7 @@ class LoginController extends Controller
             return false;
         }
 
-        if (!$user->isDisabled()) {
+        if ($user->isDisabled()) {
             throw new AuthenticationException(__(config('enso.labels.disabledAccount')));
         }
 
