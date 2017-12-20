@@ -32,5 +32,5 @@ mix
 // .sass('resources/assets/sass/themes/yeti.scss', 'public/themes/yeti/bulma.min.css')
 
 if (process.env.NODE_ENV === 'production') {
-    mix.version();
+    // mix.version();
 }
