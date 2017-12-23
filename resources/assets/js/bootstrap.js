@@ -12,14 +12,6 @@ window.jQuery = require('jquery');
 
 window.$ = window.jQuery;
 
-require('datatables.net');
-require('datatables.net-select');
-require('datatables.net-colreorder');
-require('datatables.net-responsive');
-require('datatables.net-buttons');
-require('datatables.net-buttons/js/buttons.colVis.js');
-require('datatables.net-buttons/js/buttons.html5.js');
-
 require('at.js');
 require('jquery.caret');
 require('at.js/dist/css/jquery.atwho.min.css');

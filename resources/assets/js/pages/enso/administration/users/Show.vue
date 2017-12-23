@@ -246,7 +246,7 @@ export default {
             return this.user.id === this.profileUser.id;
         },
         avatarId() {
-            return this.isSelfVisiting ? this.user.avatarId : this.profileUser.avatarId;
+            return this.isSelfVisiting ? this.user.avatarId : this.profileUser.avatar.id;
         },
         avatarLink() {
             return route('core.avatars.show', (this.avatarId || 'null'), false);

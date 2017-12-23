@@ -46,20 +46,20 @@ and logging in with `admin@laravel-enso.com` and `password`.
 Enjoy!
 
 ### With Enso you get
-A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), [Datatables](https://datatables.net/) and more, with features like: 
+A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), and more, with features like: 
 
-- [Customizable and powerful datatables](https://github.com/laravel-enso/DataTable):
-    - server side, with multi-argument,
-    - full column search
+- [Customizable and powerful datatables](https://github.com/laravel-enso/VueDatatable):
+    - JSON templates
+    - server side
+    - multi-argument full column search
     - customizable column visibility
-    - state save for each table, for certain options and preferences, with the option to reset everything to default
+    - state save in localStorage for each table
     - automatic action buttons generation, depending on user permissions
     - custom action buttons as needed
-    - responsive priority setting for columns, when used on smaller screens
     - beautiful tag rendering for boolean flag columns
     - easy display of flag/type columns values
     - server-side excel export for every table
-    - sublime snippet for table template
+    
 - [Vue select](https://github.com/laravel-enso/Select) - server side builder with parameter conditioning, including pivot parameters, built as a wrapper for [Vue-multiselect](https://github.com/monterail/vue-multiselect)
 - Advanced owners / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure
 - [Log management](https://github.com/laravel-enso/LogManager) -  view, download, clear
@@ -179,14 +179,14 @@ Are loaded at application load, and refreshed as needed
 
 Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bulma 0.6, Vuejs 2.5 and:
 
-[DataTables](https://datatables.net),
+[DataTables](https://github.com/laravel-enso/vuedatatable),
 [Bulmaswatch](https://jenil.github.io/bulmaswatch/), [Chart.js](http://chartjs.org),
 [Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr),
 [Nprogress.js](http://ricostacruz.com/nprogress),
 [Intro.js](http://introjs.com/), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
 [Flatpickr](https://chmln.github.io/flatpickr/), [Bulma-Extensions](https://wikiki.github.io/bulma-extensions/overview)
 
-Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/), [Allan Jardine](https://datatables.net) and [Jeremy Thomas](https://bulma.io).
+Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/)and [Jeremy Thomas](https://bulma.io).
 
 <!--h-->
 ### Contributions
