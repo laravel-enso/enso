@@ -15,7 +15,7 @@
                     {{ numberFormat(body.total[template.columns[i].name]) }}
                 </span>
             </td>
-            <td></td>
+            <td v-if="template.actions"></td>
         </tr>
     </tfoot>
 

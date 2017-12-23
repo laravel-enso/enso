@@ -1,6 +1,4 @@
 {
-    "/js/enso.js": "/js/enso.js?id=40b05a3a822caf076a30",
-    "/css/enso.css": "/css/enso.css?id=981c181e08eba9f9aedb",
-    "/js/enso.js.map": "/js/enso.js.map?id=f328c5fff5287b1d92e6",
-    "/css/enso.css.map": "/css/enso.css.map?id=b0527c0a2eeff4d4b869"
+    "/js/enso.js": "/js/enso.js",
+    "/css/enso.css": "/css/enso.css"
 }
