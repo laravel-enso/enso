@@ -37,7 +37,7 @@
                     :i18n="i18n">
                 </table-footer>
             </table>
-            <overlay size="medium" v-if="loading"></overlay>
+            <overlay v-if="loading"></overlay>
         </div>
         <div class="columns table-bottom-controls"
             v-if="hasContent">
@@ -75,7 +75,7 @@ import TableBody from './TableBody.vue';
 import TableFooter from './TableFooter.vue';
 import RecordsInfo from './RecordsInfo.vue';
 import Pagination from './Pagination.vue';
-import Overlay from '../bulma/Overlay.vue';
+import Overlay from './Overlay.vue';
 import vResponsive from './responsive/vResponsive';
 
 export default {
@@ -298,6 +298,7 @@ export default {
                     sort: this.template.sort,
                     total: this.template.total,
                     enum: this.template.enum,
+                    date: this.template.date,
                 },
                 search: this.search,
                 appends: this.template.appends,
@@ -316,6 +317,7 @@ export default {
                         sortable: column.meta.sortable,
                         sort: column.meta.sort,
                         total: column.meta.total,
+                        date: column.meta.date,
                     },
                     enum: column.enum,
                 });
@@ -345,6 +347,7 @@ export default {
                     length: this.body.count,
                     sort: this.template.sort,
                     enum: this.template.enum,
+                    date: this.template.date,
                     total: false,
                 },
                 search: this.search,
