@@ -4,6 +4,10 @@ input.toggle {
   opacity: 0;
 }
 
+.field input.toggle + label {
+    margin-top: 13px;
+}
+
 input.toggle + label {
     display: block;
     cursor: pointer;
