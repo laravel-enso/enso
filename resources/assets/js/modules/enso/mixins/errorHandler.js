@@ -11,11 +11,15 @@ Vue.mixin({
                     this.$store.dispatch('auth/logout');
                 }
 
-                return this.$router.push({ name: 'login' });
+                this.$router.push({ name: 'login' });
+
+                return;
             }
 
             if ([403, 409, 429, 455].includes(status)) {
-                return toastr.error(data.message);
+                toastr.error(data.message);
+
+                return;
             }
 
             throw error;

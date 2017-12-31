@@ -1804,7 +1804,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "LaravelEnso\\FormBuilder\\FormBuilderServiceProvider"
+                        "LaravelEnso\\FormBuilder\\AppServiceProvider"
                     ],
                     "aliases": []
                 }

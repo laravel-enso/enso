@@ -1,21 +1,31 @@
 <template>
 
-    <div class="form-wrapper">
+    <div>
+        <h5 class="title is-5 has-text-centered"
+            v-if="data.title">
+            <span class="icon"
+                v-if="data.icon">
+                <i :class="data.icon"></i>
+            </span>
+            {{ data.title }}
+        </h5>
         <form @submit.prevent="submit()">
             <div class="columns is-multiline">
                 <div v-for="field in data.fields"
                     class="column"
-                    :class="columnSize">
+                    :key="field.name"
+                    :class="columnSize"
+                    v-if="!field.meta.hidden">
                     <div class="field">
                         <label class="label">
                             {{ __(field.label) }}
-                            <p v-if="errors.has(field.column)"
+                            <p v-if="errors.has(field.name)"
                                 class="help is-danger is-pulled-right">
-                                {{ errors.get(field.column) }}
+                                {{ errors.get(field.name) }}
                             </p>
                         </label>
                         <span v-if="field.meta.custom">
-                            <slot :name="field.column"
+                            <slot :name="field.name"
                                 :field="field"
                                 :errors="errors">
                             </slot>
@@ -23,63 +33,91 @@
                         <span v-else>
                             <vue-form-input v-if="field.meta.type === 'input'"
                                 :field="field"
-                                @update="errors.clear(field.column)"
-                                :has-error="errors.has(field.column)">
+                                @update="errors.clear(field.name)"
+                                :has-error="errors.has(field.name)">
                             </vue-form-input>
                             <vue-select v-if="field.meta.type === 'select'"
-                                @input="errors.clear(field.column);"
+                                :has-error="errors.has(field.name)"
+                                @input="errors.clear(field.name);"
                                 v-model="field.value"
                                 :options="field.meta.options"
                                 :source="field.meta.source"
-                                :key-map="field.meta.keyMap"
                                 :multiple="field.meta.multiple"
                                 :disabled="field.meta.disabled">
                             </vue-select>
                             <datepicker v-if="field.meta.type === 'datepicker'"
-                                @input="errors.clear(field.column)"
+                                @input="errors.clear(field.name)"
                                 v-model="field.value"
                                 :format="field.meta.format"
                                 :time="field.meta.time"
                                 :disabled="field.meta.disabled">
                             </datepicker>
                             <datepicker v-if="field.meta.type === 'timepicker'"
-                                @input="errors.clear(field.column)"
+                                @input="errors.clear(field.name)"
                                 v-model="field.value"
                                 :format="field.meta.format"
                                 time-only
                                 :disabled="field.meta.disabled">
                             </datepicker>
-                            <textarea v-if="field.meta.type === 'textarea'"
-                                @input="errors.clear(field.column)"
-                                class="textarea"
-                                v-model="field.value"
-                                :rows="field.meta.rows"
-                                :disabled="field.meta.disabled">
-                            </textarea>
+                            <div class="control has-icons-right"
+                                v-if="field.meta.type === 'textarea'">
+                                <textarea @input="errors.clear(field.name)"
+                                    class="textarea"
+                                    :class="{ 'is-danger': errors.has(field.name) }"
+                                    v-model="field.value"
+                                    :rows="field.meta.rows"
+                                    :disabled="field.meta.disabled">
+                                </textarea>
+                                <span class="icon is-small is-right has-text-danger"
+                                    v-if="errors.has(field.name)">
+                                    <i class="fa fa-warning"></i>
+                                </span>
+                            </div>
                         </span>
                     </div>
                 </div>
             </div>
-            <button class="button is-danger"
+            <button class="button"
                 v-if="data.actions.destroy"
+                :class="data.actions.destroy.button.class"
                 @click.prevent="showModal = true">
-                <span>{{ __(data.actions.destroy.label) }}</span>
+                <span>{{ __(data.actions.destroy.button.label) }}</span>
+                <span class="icon">
+                    <i :class="data.actions.destroy.button.icon"></i>
+                </span>
             </button>
-            <button class="button is-info"
+            <button class="button"
+                :class="data.actions.create.button.class"
                 @click.prevent="create()"
                 v-if="data.actions.create">
-                {{ __(data.actions.create.label) }}
+                <span>{{ __(data.actions.create.button.label) }}</span>
+                <span class="icon">
+                    <i :class="data.actions.create.button.icon"></i>
+                </span>
             </button>
             <button type="submit"
-                class="button is-success is-pulled-right"
-                :class="{ 'is-loading': loading }"
+                class="button is-pulled-right"
+                :class="[data.actions.store ? data.actions.store.button.class : data.actions.update.button.class, { 'is-loading': loading }]"
                 v-if="data.actions.store || data.actions.update">
-                <span v-if="data.actions.store">{{ __(data.actions.store.label) }}</span>
-                <span v-if="data.actions.update">{{ __(data.actions.update.label) }}</span>
+                <span v-if="data.actions.store">
+                    <span>{{ __(data.actions.store.button.label) }}</span>
+                    <span class="icon">
+                        <i :class="data.actions.store.button.icon"></i>
+                    </span>
+                </span>
+                <span v-else-if="data.actions.update">
+                    <span>{{ __(data.actions.update.button.label) }}</span>
+                    <span class="icon">
+                        <i :class="data.actions.update.button.icon"></i>
+                    </span>
+                </span>
             </button>
             <div class="is-clearfix"></div>
         </form>
-        <modal :show="showModal"
+        <modal v-if="data.actions.destroy"
+            :show="showModal"
+            :__="__"
+            :message="data.actions.destroy.button.message"
             @cancel-action="showModal = false"
             @commit-action="destroy()">
         </modal>
@@ -91,15 +129,14 @@
 
 import { mapGetters } from 'vuex';
 import Errors from '../../../classes/enso/Errors.js';
-import Modal from '../bulma/Modal.vue';
+import Modal from './Modal.vue';
 import VueSelect from '../select/VueSelect.vue';
 import Datepicker from '../bulma/Datepicker.vue';
 import VueFormInput from './VueFormInput.vue';
-import Overlay from '../bulma/Overlay.vue';
 
 export default {
     components: {
-        Modal, VueSelect, Datepicker, VueFormInput, Overlay,
+        Modal, VueSelect, Datepicker, VueFormInput,
     },
 
     props: {
@@ -109,8 +146,8 @@ export default {
         },
         params: {
             type: Object,
-            default: null
-        }
+            default: null,
+        },
     },
 
     data() {
@@ -126,55 +163,63 @@ export default {
         columnSize() {
             return `is-${parseInt(12 / this.data.columns, 10)}`;
         },
+        path() {
+            return this.data.method === 'post'
+                ? this.data.actions.store.path
+                : this.data.actions.update.path;
+        },
     },
 
     methods: {
         create() {
-            this.$emit('form-create');
+            this.$emit('create');
             this.$router.push({ name: this.data.actions.create.route });
         },
         submit() {
             this.loading = true;
 
-            axios[this.data.method](this.getSubmitRoute(), this.getFormData()).then((response) => {
+            axios[this.data.method](this.path, this.formData()).then(({ data }) => {
                 this.loading = false;
-                toastr.success(response.data.message);
-                this.$emit('form-submit');
+                toastr.success(data.message);
+                this.$emit('submit');
 
-                if (response.data.redirect) {
+                if (data.redirect) {
                     this.$router.push({
-                        name: response.data.redirect,
-                        params: { id: response.data.id },
+                        name: data.redirect,
+                        params: { id: data.id },
                     });
                 }
             }).catch((error) => {
-                this.errors.set(error.response.data.errors);
+                const { status, data } = error.response;
                 this.loading = false;
+
+                if (status === 422) {
+                    this.errors.set(data.errors);
+
+                    return;
+                }
+
+                this.handleError(error);
             });
         },
-        getSubmitRoute() {
-            return this.data.method === 'post'
-                ? route(this.data.actions.store.route, null, false)
-                : route(this.data.actions.update.route, this.data.actions.update.id, false);
-        },
-        getFormData() {
+        formData() {
             return this.data.fields.reduce((object, field) => {
-                object[field.column] = field.value;
+                object[field.name] = field.value;
                 return object;
-            }, {_params: this.params});
-
-
+            }, { _params: this.params });
         },
         destroy() {
             this.showModal = false;
             this.loading = true;
-            const { id, route } = this.data.actions.destroy;
 
-            axios.delete(window.route(route, id, false)).then((response) => {
+            axios.delete(this.data.actions.destroy.path).then(({ data }) => {
                 this.loading = false;
-                toastr.success(response.data.message);
-                this.$emit('form-destroy');
-                this.$router.push({ name: response.data.redirect });
+                toastr.success(data.message);
+                this.$emit('destroy');
+
+                if (data.redirect) {
+                    this.$router.push({ name: data.redirect });
+                }
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);
@@ -184,11 +229,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    div.form-wrapper {
-        position: relative;
-    }
-
-</style>

@@ -75,7 +75,7 @@
         </vue-table>
         <div class="columns"
             v-if="summary">
-            <div class="column is-half-desktop is-one-third-widescreen is-one-quarter-fullhd animated bounceInLeft">
+            <div class="column is-half-tablet is-one-third-widescreen is-one-quarter-fullhd animated bounceInLeft">
                 <nav class="box panel is-paddingless">
                     <p class="panel-heading">
                         {{ __('Import Summary') }}
@@ -112,7 +112,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="column  animated bounceInRight">
+            <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd animated bounceInRight">
                 <card icon="fa fa-book"
                     :title="__('Error List')"
                     @remove="summary=null"

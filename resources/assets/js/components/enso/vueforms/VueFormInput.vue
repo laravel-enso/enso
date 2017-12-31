@@ -1,7 +1,8 @@
 <template>
 
     <span>
-        <div class="control has-icons-right"
+        <div class="control"
+            :class="{ 'has-icons-right': hasError }"
             v-if="field.meta.content === 'text'">
             <input class="input"
                 :class="{ 'is-danger': hasError }"
@@ -15,7 +16,8 @@
                 <i class="fa fa-warning"></i>
             </span>
         </div>
-        <div class="control has-icons-right"
+        <div class="control"
+            :class="{ 'has-icons-right': hasError }"
             v-if="field.meta.content === 'email'">
             <input class="input"
                 :class="{ 'is-danger': hasError }"
@@ -29,7 +31,8 @@
                 <i class="fa fa-warning"></i>
             </span>
         </div>
-        <div class="control has-icons-right"
+        <div class="control"
+            :class="{ 'has-icons-right': hasError }"
             v-if="field.meta.content === 'number'">
             <input class="input"
                 :class="{ 'is-danger': hasError }"
@@ -47,14 +50,14 @@
             </span>
         </div>
         <span v-if="field.meta.content === 'checkbox'">
-            <input :id="field.column"
+            <input :id="field.name"
                 class="toggle"
                 :readonly="field.meta.readonly"
                 @click="$emit('update')"
                 v-model="field.value"
                 type="checkbox"
                 :disabled="field.meta.disabled">
-            <label :for="field.column" class="toggle-input"><i></i></label>
+            <label :for="field.name" class="toggle-input"><i></i></label>
         </span>
     </span>
 

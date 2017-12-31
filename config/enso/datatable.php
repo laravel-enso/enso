@@ -137,7 +137,7 @@ return [
 
     'boolean' => [
         false => '<span class="tag is-table-tag is-danger"><span class="icon is-small"><i class="fa fa-times"></i></span></span>',
-        true => '<span class="tag is-table-tag is-success"><span class="icon is-smalls"><i class="fa fa-check"></i></span></span>',
+        true => '<span class="tag is-table-tag is-success"><span class="icon is-small"><i class="fa fa-check"></i></span></span>',
     ],
 
     /*

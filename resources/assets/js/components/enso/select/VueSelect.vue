@@ -2,16 +2,18 @@
 
     <div class="vue-select">
         <multiselect :value="value"
-            searchable allow-empty
+            :class="{ 'has-error': hasError }"
+            searchable
+            allow-empty
             :disabled="disabled"
             :internal-search="!isServerSide"
             :multiple="multiple"
             :clear-on-select="!multiple"
             :close-on-select="!multiple"
-            :select-label="i18n.select"
-            :deselect-label="i18n.deselect"
-            :selected-label="i18n.selected"
-            :placeholder="i18n.placeholder"
+            :select-label="__(labels.select)"
+            :deselect-label="__(labels.deselect)"
+            :selected-label="__(labels.selected)"
+            :placeholder="__(labels.placeholder)"
             :loading="loading"
             :options-limit="100"
             :options="optionKeys"
@@ -19,7 +21,7 @@
             @search-change="query=$event;getOptions()"
             @input="$emit('input', $event)">
             <span slot="noResult">
-                {{ labels.noResult }}
+                {{ __(labels.noResult) }}
             </span>
             <template slot="option" slot-scope="props">
                 <span v-html="$options.filters.highlight(optionList[props.option], query)"></span>
@@ -59,15 +61,15 @@ export default {
                 return {};
             },
         },
-        keyMap: {
-            type: String,
-            default: 'number',
-        },
         disabled: {
             type: Boolean,
             default: false,
         },
         multiple: {
+            type: Boolean,
+            default: false,
+        },
+        hasError: {
             type: Boolean,
             default: false,
         },
@@ -107,9 +109,7 @@ export default {
             return (this.multiple && this.value.length) || (!this.multiple && this.value !== null);
         },
         optionKeys() {
-            return this.keyMap === 'number'
-                ? Object.keys(this.optionList).map(Number)
-                : Object.keys(this.optionList);
+            return Object.keys(this.optionList);
         },
     },
 
@@ -159,13 +159,6 @@ export default {
             optionList: this.options,
             loading: false,
             query: '',
-            i18n: {
-                placeholder: '',
-                selected: '',
-                select: '',
-                deselect: '',
-                noResult: '',
-            },
         };
     },
 
@@ -224,20 +217,12 @@ export default {
         clear() {
             this.$emit('input', this.multiple ? [] : null);
         },
-        translateLabels() {
-            Object.entries(this.labels).forEach(([key, value]) => {
-                this.i18n[key] = this.__(value);
-            });
-
-            this.i18n.placeholder = this.__(this.placeholder);
-        },
     },
 
     mounted() {
         if (this.isServerSide) {
             this.getOptions();
         }
-        this.translateLabels();
     },
 };
 
@@ -248,38 +233,18 @@ export default {
 <style>
 
     div.vue-select .multiselect {
-        min-height: 36px;
-    }
-
-    div.vue-select .multiselect__select {
-        height: 34px;
-    }
-
-    div.vue-select .multiselect__tags {
-        border: 1px solid #dbdbdb;
-        border-top-color: rgb(219, 219, 219);
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-right-color: rgb(219, 219, 219);
-        border-right-style: solid;
-        border-right-width: 1px;
-        border-bottom-color: rgb(219, 219, 219);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-left-color: rgb(219, 219, 219);
-        border-left-style: solid;
-        border-left-width: 1px;
-        border-image-source: initial;
-        border-image-slice: initial;
-        border-image-width: initial;
-        border-image-outset: initial;
-        border-image-repeat: initial;
+        max-height: 36px;
     }
 
     div.vue-select .multiselect__tags {
         min-height: 36px;
+        max-height: 36px;
         padding: 4px 40px 0 4px;
         border-radius: 3px;
+    }
+
+    .multiselect.has-error .multiselect__tags {
+        border: 1px solid #e50800;
     }
 
     div.vue-select .multiselect__tag {
@@ -295,6 +260,7 @@ export default {
     div.vue-select input[type=text].multiselect__input {
         box-shadow: none;
         margin-bottom: 4px;
+        margin-top: 2px;
         border-bottom: none;
     }
 
@@ -308,6 +274,15 @@ export default {
         line-height: 16px;
         padding: 10px;
         min-height: 36px;
+    }
+
+    div.vue-select .multiselect__select {
+        width: 34px;
+        height: 34px;
+    }
+
+    div.vue-select .multiselect__select:before {
+        top: 70%;
     }
 
     div.vue-select .multiselect__spinner {
@@ -324,13 +299,13 @@ export default {
 
     .multiselect__clear {
         position: absolute;
-        top: 4px;
-        right: 35px;
+        top: 7px;
+        right: 30px;
         height: 22px;
         width: 22px;
         display: block;
         cursor: pointer;
-        z-index: 2;
+        z-index: 1;
     }
 
     .multiselect__clear:before {
@@ -345,7 +320,7 @@ export default {
         content: "";
         display: block;
         position: absolute;
-        width: 2px;
+        width: 1px;
         height: 16px;
         background: #aaa;
         top: 3px;

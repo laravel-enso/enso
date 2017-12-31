@@ -13,7 +13,7 @@
                             @keydown="props.errors.clear(props.field.column)"
                             v-model="props.field.value"
                             type="text">
-                        <span class="icon is-small is-right"
+                        <span class="icon is-small is-right has-text-danger"
                             v-if="props.errors.has('icon')">
                             <i class="fa fa-warning"></i>
                         </span>
