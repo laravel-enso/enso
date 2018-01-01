@@ -5,7 +5,8 @@ return [
     |--------------------------------------------------------------------------
     | Validations
     |--------------------------------------------------------------------------
-    | This flag sets whether validations are executed in production or local only.
+    | This flag sets whether validations are also executed in production
+    | or only in local/development.
     | Values: 'always/local'
     |
     */
@@ -31,7 +32,9 @@ return [
     | Length menu
     |--------------------------------------------------------------------------
     |
-    | These are the predefined settings for length menu options
+    | These are the predefined settings for the pagination options. If another
+    | set of pagination options is given in a table template, the global
+    | configuration is disregarded for that table.
     |
     */
 
@@ -44,15 +47,16 @@ return [
     | Default Action Buttons
     |--------------------------------------------------------------------------
     | Here is a list of the default action buttons. You can edit any of the
-    | defaults, or add/remove. Global buttons will be displayed above the table
-    | while row buttons on each row. Row buttons will depend on the dtRowId.
+    | defaults, or add/remove. Global buttons will be displayed above the
+    | table while row buttons on each row. Row buttons will depend on
+    | the dtRowId.
      */
 
     'buttons' => [
         'global' => [
             'create' => [
                 'icon' => 'fa fa-plus',
-                'class' => 'is-success',
+                'class' => 'is-info',
                 'routeSuffix' => 'create',
                 'event' => 'create',
                 'action' => 'router',
@@ -60,7 +64,7 @@ return [
             ],
             'excel' => [
                 'icon' => 'fa fa-file-excel-o',
-                'class' => 'is-info',
+                'class' => null,
                 'routeSuffix' => 'exportExcel',
                 'event' => 'export-excel',
                 'action' => 'export',
@@ -107,7 +111,7 @@ return [
     | Style
     |--------------------------------------------------------------------------
     | Style defaults and mapping for your front-end framework. Note: You should
-    | set only one align attribute in default.
+    | set only one align attribute in default list.
     |
     */
 
@@ -131,7 +135,7 @@ return [
     | Boolean
     |--------------------------------------------------------------------------
     |
-    | Render for boolean columns
+    | HTML render code for the boolean type of columns
     |
     */
 
@@ -145,8 +149,8 @@ return [
     | Export Settings
     |--------------------------------------------------------------------------
     | Path where the temporary files are stored within storage/app folder; row
-    | limit for exports; php max_execution_time; notifications via, email
-    |  will be used anyway for sending the export.
+    | limit for exports; php max_execution_time; Note: email notification
+    |  will be used in all cases for sending the export.
     */
 
     'export' => [
@@ -155,4 +159,15 @@ return [
         'maxExecutionTime' => 100,
         'notifications' => ['broadcast', 'database'],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Date format
+    |--------------------------------------------------------------------------
+    | Global date format for date columns. Will use Carbon to parse the columns
+    | marked as date to the desired format.
+    |
+    */
+
+    'dateFormat' => 'd-m-Y',
 ];

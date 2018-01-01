@@ -1,24 +1,45 @@
 <template>
 
     <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
+        <div class="content has-text-centered">
+            <p class="level">
+                <span class="level-item">
                     <strong>
-                        {{ meta.appName }} {{ meta.version }}
-                    </strong>
-                    built with
+                        {{ meta.appName }} v{{ meta.version }}
+                    </strong>&nbsp;built with&nbsp;
                     <span class="icon has-text-danger">
                         <i class="fa fa-heart"></i>
-                    </span> + <a href="https://bulma.io" target="_blank">Bulma</a> + <a href="https://www.vuejs.org" target="_blank">VueJs</a> + <a href="https://www.laravel.com" target="_blank">Laravel</a>
-                </p>
-                <p>
-                    <a class="icon" href="https://github.com/laravel-enso/enso" target="_blank">
-                        <i class="fa fa-github">
-                        </i>
+                    </span>+&nbsp;
+                    <a href="https://bulma.io"
+                        target="_blank">
+                        <img src="/images/bulma-logo.png"
+                            alt="Made with Bulma"
+                            width="80">
+                    </a>&nbsp;+
+                    <a href="https://laravel.com"
+                        target="_blank">
+                        <img src="/images/laravel-badge.png"
+                            alt="Made with Laravel"
+                            width="28"
+                            height="28">
+                    </a>&nbsp;+
+                    <a href="https://vuejs.org"
+                        target="_blank">
+                        <img src="/images/vue-badge.png"
+                            alt="Made with Vue"
+                            width="28"
+                            height="28">
                     </a>
-                </p>
-            </div>
+                </span>
+            </p>
+            <p>
+                <a href="https://github.com/laravel-enso/enso"
+                    target="_blank">
+                    <span class="icon">
+                        <i class="fa fa-github"></i>
+                    </span>
+                </a>
+            </p>
         </div>
     </footer>
 

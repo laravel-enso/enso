@@ -1,15 +1,20 @@
 <template>
 
     <div>
-        <h5 class="title is-5 has-text-centered"
-            v-if="data.title">
+        <h5 class="title is-5"
+            v-if="data.icon || data.title">
             <span class="icon"
                 v-if="data.icon">
                 <i :class="data.icon"></i>
             </span>
-            {{ data.title }}
+            <span
+                v-if="data.title">
+                {{ data.title }}
+            </span>
+            <hr>
         </h5>
-        <form @submit.prevent="submit()">
+        <form @submit.prevent="submit()"
+            class="vue-form">
             <div class="columns is-multiline">
                 <div v-for="field in data.fields"
                     class="column"
@@ -78,6 +83,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <button class="button"
                 v-if="data.actions.destroy"
                 :class="data.actions.destroy.button.class"
@@ -230,3 +236,11 @@ export default {
 };
 
 </script>
+
+<style>
+
+    form.vue-form {
+        margin-bottom: 0;
+    }
+
+</style>

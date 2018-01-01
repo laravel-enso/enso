@@ -73,7 +73,7 @@
         "vue-directive-tooltip": "^1.4.2",
         "vue-multiselect": "^2.0.8",
         "vue-router": "^2.8.1",
-        "vuedraggable": "^2.15.0",
+        "vuedraggable": "^2.16.0",
         "vuex": "^2.5.0",
         "vuex-router-sync": "^4.3.2"
     }
