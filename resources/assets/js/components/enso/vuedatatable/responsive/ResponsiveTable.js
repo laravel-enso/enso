@@ -3,6 +3,17 @@ class ResponsiveTable {
         this.el = el;
         this.context = context;
         this.hiding = false;
+        this.width = null;
+        this.height = null;
+    }
+
+    updateSize() {
+        this.width = this.el.clientWidth;
+        this.height = this.el.clientHeight;
+    }
+
+    shouldntResize() {
+        return this.width === this.el.clientWidth && this.height !== this.el.clientHeight;
     }
 
     shouldHide() {
@@ -24,9 +35,7 @@ class ResponsiveTable {
         this.hiding = true;
         columns[columns.length - 1].meta.hidden = true;
 
-        this.context.$nextTick(() => {
-            this.resize();
-        });
+        this.retryFit();
     }
 
     showColumn() {
@@ -39,12 +48,24 @@ class ResponsiveTable {
 
         columns[0].meta.hidden = false;
 
-        this.context.$nextTick(() => {
-            this.resize();
-        });
+        this.retryFit();
     }
 
     resize() {
+        if (this.shouldntResize()) {
+            return;
+        }
+
+        this.fit();
+    }
+
+    retryFit() {
+        this.context.$nextTick(() => {
+            this.fit();
+        });
+    }
+
+    fit() {
         if (this.shouldHide()) {
             this.hideColumns();
             return;
