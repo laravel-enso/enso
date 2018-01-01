@@ -1,7 +1,6 @@
 <template>
 
-    <div class="container" v-if="initialised">
-
+    <div v-if="initialised">
         <div class="box profile-heading">
             <div class="columns is-multiline">
                 <div class="column is-half-desktop">
@@ -93,7 +92,6 @@
                 </div>
             </div>
         </div>
-
         <div class="columns is-centered">
             <div class="column is-two-thirds-tablet">
                 <div class="box">
@@ -220,7 +218,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 </template>

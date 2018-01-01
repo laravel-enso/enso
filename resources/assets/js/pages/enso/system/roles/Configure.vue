@@ -1,33 +1,31 @@
 <template>
 
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-three-quarters">
-                <div class="animated fadeIn"
-                    v-if="initialised">
-                    <center class="has-padding-bottom-large">
-                        <h5 class="title is-5">{{ role.display_name }}</h5>
-                    </center>
-                    <checkbox-manager :title="__('Menus')"
-                        :role-permissions="roleMenus"
-                        :group-data="menus"
-                        v-if="menus.length">
-                    </checkbox-manager>
+    <div class="columns is-centered">
+        <div class="column is-three-quarters">
+            <div class="animated fadeIn"
+                v-if="initialised">
+                <center class="has-padding-bottom-large">
+                    <h5 class="title is-5">{{ role.display_name }}</h5>
+                </center>
+                <checkbox-manager :title="__('Menus')"
+                    :role-permissions="roleMenus"
+                    :group-data="menus"
+                    v-if="menus.length">
+                </checkbox-manager>
 
-                    <checkbox-manager :title="__('Permisssions')"
-                        :role-permissions="rolePermissions"
-                        :group-data="permissions"
-                        v-if="menus.length">
-                    </checkbox-manager>
-                    <button class="button is-success has-margin-top-large is-pulled-right"
-                        @click="update">
-                        {{ __("Update") }}
-                    </button>
-                    <div class="is-clearfix"></div>
-                </div>
-               </div>
-           </div>
-    </div>
+                <checkbox-manager :title="__('Permisssions')"
+                    :role-permissions="rolePermissions"
+                    :group-data="permissions"
+                    v-if="menus.length">
+                </checkbox-manager>
+                <button class="button is-success has-margin-top-large is-pulled-right"
+                    @click="update">
+                    {{ __("Update") }}
+                </button>
+                <div class="is-clearfix"></div>
+            </div>
+            </div>
+        </div>
 
 </template>
 

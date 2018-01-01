@@ -1,4 +1,5 @@
 <template>
+
     <div class="box">
         <div class="columns is-multiline has-border-bottom">
             <div class="column is-half-tablet">
@@ -95,6 +96,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>

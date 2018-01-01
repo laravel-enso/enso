@@ -41,6 +41,7 @@
                                 @input="errors.clear(field.name);"
                                 v-model="field.value"
                                 :options="field.meta.options"
+                                :key-map="field.meta.keyMap"
                                 :source="field.meta.source"
                                 :multiple="field.meta.multiple"
                                 :disabled="field.meta.disabled">

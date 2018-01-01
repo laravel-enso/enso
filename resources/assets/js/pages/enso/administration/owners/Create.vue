@@ -1,13 +1,11 @@
 <template>
 
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-three-quarters">
-                <vue-form :data="form"
-                    class="box animated fadeIn"
-                    v-if="initialised">
-                </vue-form>
-            </div>
+    <div class="columns is-centered">
+        <div class="column is-three-quarters">
+            <vue-form :data="form"
+                class="box animated fadeIn"
+                v-if="initialised">
+            </vue-form>
         </div>
     </div>
 

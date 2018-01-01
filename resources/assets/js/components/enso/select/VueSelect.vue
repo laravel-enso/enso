@@ -61,6 +61,10 @@ export default {
                 return {};
             },
         },
+        keyMap: {
+            type: String,
+            default: 'number',
+        },
         disabled: {
             type: Boolean,
             default: false,
@@ -109,7 +113,9 @@ export default {
             return (this.multiple && this.value.length) || (!this.multiple && this.value !== null);
         },
         optionKeys() {
-            return Object.keys(this.optionList);
+            return this.keyMap === 'number'
+                ? Object.keys(this.optionList).map(Number)
+                : Object.keys(this.optionList);
         },
     },
 
@@ -286,7 +292,8 @@ export default {
     }
 
     div.vue-select .multiselect__spinner {
-        height: 33px
+        height: 34px;
+        width: 34px;
     }
 
     span.multiselect__tag {
