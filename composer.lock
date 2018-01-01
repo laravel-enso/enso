@@ -1782,16 +1782,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "6b015282ccbd46e45b667aaaf6fe6960c45e5462"
+                "reference": "59c38a7430c76f0cf8972ce3126f0dfd6408fdfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/6b015282ccbd46e45b667aaaf6fe6960c45e5462",
-                "reference": "6b015282ccbd46e45b667aaaf6fe6960c45e5462",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/59c38a7430c76f0cf8972ce3126f0dfd6408fdfe",
+                "reference": "59c38a7430c76f0cf8972ce3126f0dfd6408fdfe",
                 "shasum": ""
             },
             "require": {
@@ -1833,7 +1833,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-01-01T19:44:37+00:00"
+            "time": "2018-01-01T20:03:41+00:00"
         },
         {
             "name": "laravel-enso/helpers",
