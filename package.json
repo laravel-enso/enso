@@ -65,7 +65,7 @@
         "lodash": "^4.17.4",
         "moment": "^2.20.1",
         "nprogress": "^0.2.0",
-        "pusher-js": "^4.2.1",
+        "pusher-js": "^4.2.2",
         "raven-js": "^3.21.0",
         "toastr": "^2.1.4",
         "v-click-outside": "^0.1.4",
