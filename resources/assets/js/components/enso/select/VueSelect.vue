@@ -238,7 +238,8 @@ export default {
 
 <style>
 
-    div.vue-select .multiselect {
+    .vue-select .multiselect {
+        min-height: 36px;
         max-height: 36px;
     }
 
