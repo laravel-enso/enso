@@ -123,15 +123,18 @@
                         icon="fa fa-file-excel-o"
                         :tabs="getSheetTabs()">
                         <span v-for="sheet in summary.issues"
-                            :slot="sheet.name">
+                            :slot="sheet.name"
+                            :key="sheet.name">
                             <tabs :tabs="getCategoryTabs(sheet)">
                                 <span v-for="category in sheet.categories"
-                                    :slot="category.name">
+                                    :slot="category.name"
+                                    :key="category.name">
                                     <paginate :list="category.issues">
                                         <template slot-scope="props">
                                             <h5 class="title is-5 has-text-centered">{{ __('Error List') }}</h5>
                                             <ul class="errors has-margin-left-large">
-                                                <li v-for="issue in props.list">
+                                                <li v-for="(issue, index) in props.list"
+                                                    :key="index">
                                                     <span v-if="issue.column">
                                                         {{ __("Column") }}: <b class="has-text-info">{{ issue.column }}</b>
                                                     </span>
@@ -163,6 +166,7 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import { VTooltip } from 'v-tooltip';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
@@ -176,6 +180,8 @@ export default {
     components: {
         VueSelect, VueTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate,
     },
+
+    directives: { VTooltip },
 
     computed: {
         ...mapGetters('locale', ['__']),

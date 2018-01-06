@@ -1,18 +1,22 @@
 <template>
-
-    <textarea class="textarea is-full-width"
-        @keyup.shift.enter="$emit('save-comment')"
-        v-focus
-        v-inputor-on-focus
-        v-model="comment.body"
-        rows="2">
-    </textarea>
+    <div class="field">
+        <p class="control">
+            <textarea class="textarea vue-comment"
+                @keyup.shift.enter="$emit('save-comment')"
+                v-focus
+                v-inputor-on-focus
+                v-model="comment.body"
+                :placeholder="__('Type a new comment')">
+            </textarea>
+        </p>
+    </div>
 
 </template>
 
 <script>
 
 import { debounce } from 'lodash';
+import { mapGetters } from 'vuex';
 
 export default {
     props: {
@@ -22,6 +26,7 @@ export default {
     },
 
     computed: {
+        ...mapGetters('locale', ['__']),
         hasText() {
             return this.comment.body.trim();
         },
@@ -38,15 +43,15 @@ export default {
                     acceptSpaceBar: true,
                     callbacks: {
                         remoteFilter: debounce((query, callback) => {
-                            axios.get(route('core.comments.getTaggableUsers', query, false)).then((response) => {
-                                callback(response.data);
-                            });
+                            axios.get(route('core.comments.getTaggableUsers', query, false))
+                                .then(({ data }) => callback(data));
                         }, 200),
                     },
                 });
 
                 $(el).on('inserted.atwho', (event, li) => {
                     vnode.context.comment.body = el.value;
+
                     vnode.context.comment.taggedUserList.push({
                         id: $(li).attr('id'),
                         fullName: $(li).attr('name'),
@@ -68,7 +73,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     .atwho-view ul li {
         display: flex;
@@ -79,6 +84,16 @@ export default {
         width: 25px;
         height: 25px;
         margin-right: 5px
+    }
+
+    textarea.vue-comment {
+        resize: none;
+        overflow-y: auto;
+        word-wrap: break-word;
+
+        &:not([rows]) {
+            min-height: 90px;
+        }
     }
 
 </style>

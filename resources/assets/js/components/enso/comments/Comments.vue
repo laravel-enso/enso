@@ -1,16 +1,18 @@
 <template>
 
     <card icon="fa fa-comments-o"
-        refresh search footer
+        refresh
+        footer
+        :search="comments.length > 1"
         :title="title || __('Comments')"
         :overlay="loading"
         @refresh="refresh()"
-        :open="open"
+        :open="open && !isEmpty"
         ref="card"
         @query-update="query = $event"
+        @expand="isEmpty && !comment ? $refs.card.collapse() : null"
         :badge="count"
-        :controls="1"
-        :footer-items="1">
+        :controls="1">
         <a slot="control-1"
             class="card-header-icon">
             <span class="icon is-small"
@@ -22,23 +24,26 @@
             <comment is-new
                 :id="id"
                 :type="type"
-                v-if="Object.keys(comment).length"
+                v-if="comment"
                 :comment="comment"
                 :index="-1"
-                @cancel-add="comment={}"
-                @add="add($event)">
+                @cancel-add="comment = null"
+                @save-comment="add()">
             </comment>
             <comment v-for="(comment, index) in filteredComments"
                 :comment="comment"
                 :index="index"
-                @delete="destroy($event)"
+                @save-comment="update(comment)"
+                @delete="destroy(index)"
                 :key="index">
             </comment>
+            <div class="has-text-centered has-margin-top-large">
+                <button class="button is-white has-text-grey"
+                    @click="get()">
+                    &bull; &bull; &bull;
+                </button>
+            </div>
         </div>
-        <a slot="footer-item-1"
-            @click="get()">
-            {{ __('more') }}
-        </a>
     </card>
 
 </template>
@@ -81,6 +86,9 @@ export default {
     computed: {
         ...mapGetters('locale', ['__']),
         ...mapState(['user']),
+        isEmpty() {
+            return this.count === 0;
+        },
         filteredComments() {
             return this.query
                 ? this.comments.filter(comment => comment.body.toLowerCase()
@@ -95,22 +103,27 @@ export default {
             comments: [],
             count: 0,
             offset: 0,
-            comment: {},
+            comment: null,
             loading: false,
             query: null,
+            path: this.$route.path,
         };
+    },
+
+    created() {
+        this.get();
     },
 
     methods: {
         get() {
             this.loading = true;
 
-            axios.get(route('core.comments.index', [], false), { params: this.getParams() }).then((response) => {
+            axios.get(route('core.comments.index', [], false), { params: this.getParams() }).then(({ data }) => {
                 this.comments = this.offset
-                    ? this.comments.concat(response.data.comments)
-                    : response.data.comments;
+                    ? this.comments.concat(data.comments)
+                    : data.comments;
 
-                this.count = response.data.count;
+                this.count = data.count;
                 this.offset = this.comments.length;
                 this.loading = false;
             }).catch((error) => {
@@ -141,30 +154,75 @@ export default {
             };
         },
         create() {
-            if (Object.keys(this.comment).length) {
+            if (this.comment) {
                 return;
             }
+
+            this.comment = this.emptyComment();
 
             if (this.$refs.card.collapsed) {
                 this.$refs.card.toggle();
             }
-
-            this.comment = this.emptyComment();
         },
-        add(event) {
-            this.comments.unshift(event.comment);
-            this.count = event.count;
-            this.offset++;
-            this.comment = {};
+        add() {
+            if (!this.comment.body.trim()) {
+                return;
+            }
+
+            this.loading = true;
+
+            axios.post(route('core.comments.store', [], false), this.postParams()).then(({ data }) => {
+                this.comments.unshift(data.comment);
+                this.count = data.count;
+                this.offset++;
+                this.comment = null;
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        postParams() {
+            return {
+                id: this.id,
+                type: this.type,
+                body: this.comment.body,
+                taggedUserList: this.comment.taggedUserList,
+                path: this.path,
+            };
+        },
+        update(comment) {
+            this.syncTaggedUsers(comment);
+            comment.path = this.path;
+            this.loading = true;
+
+            axios.patch(route('core.comments.update', comment.id, false), comment).then(({ data }) => {
+                Object.assign(comment, data.comment);
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        syncTaggedUsers(comment) {
+            comment.taggedUserList.forEach((user, index) => {
+                if (!comment.body.includes(user.fullName)) {
+                    comment.taggedUserList.splice(index, 1);
+                }
+            });
         },
         destroy(index) {
-            this.comments.splice(index, 1);
-            this.count--;
-        },
-    },
+            this.loading = true;
 
-    mounted() {
-        this.get();
+            axios.delete(route('core.comments.destroy', this.comments[index].id, false)).then(({ data }) => {
+                this.comments.splice(index, 1);
+                this.count = data.count;
+                this.loading = false;
+            }).catch((error) => {
+                this.$parent.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
     },
 };
 
@@ -173,7 +231,7 @@ export default {
 <style>
 
     .comments-wrapper {
-        max-height: 370px;
+        max-height: 500px;
         overflow-y: auto;
     }
 

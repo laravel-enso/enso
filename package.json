@@ -70,7 +70,7 @@
         "toastr": "^2.1.4",
         "v-click-outside": "^0.1.4",
         "vue": "^2.5.13",
-        "vue-directive-tooltip": "^1.4.2",
+        "v-tooltip": "^2.0.0-rc.25",
         "vue-multiselect": "^2.0.8",
         "vue-router": "^2.8.1",
         "vuedraggable": "^2.16.0",

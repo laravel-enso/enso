@@ -1,11 +1,9 @@
 import Vue from 'vue';
-import VTooltip from 'vue-directive-tooltip';
-import vClickOutside from 'v-click-outside';
+import vClickOutside from 'v-click-outside'; // fixme
 
 window.Vue = Vue;
 const bus = new Vue({ name: 'Bus' });
 Vue.prototype.$bus = bus;
-Vue.use(VTooltip);
 Vue.use(vClickOutside);
 
 window.jQuery = require('jquery');

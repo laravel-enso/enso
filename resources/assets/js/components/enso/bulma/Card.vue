@@ -64,7 +64,8 @@
 
         <footer class="card-footer" v-if="footer && !collapsed">
             <p v-for="i in footerItems"
-                class="card-footer-item">
+                class="card-footer-item"
+                :key="i">
                 <slot :name="'footer-item-' + i"></slot>
             </p>
         </footer>
@@ -166,6 +167,14 @@ export default {
             return this.collapsed
                 ? this.$emit('collapse')
                 : this.$emit('expand');
+        },
+        expand() {
+            this.collapsed = false;
+            this.$emit('expand');
+        },
+        collapse() {
+            this.collapsed = true;
+            this.$emit('collapse');
         },
         focus() {
             this.searchInput.focus();

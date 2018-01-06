@@ -30,9 +30,12 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import { VTooltip } from 'v-tooltip';
 
 export default {
     name: 'ManagerContent',
+
+    directives: { VTooltip },
 
     props: {
         groupData: {

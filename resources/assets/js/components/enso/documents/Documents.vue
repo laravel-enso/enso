@@ -1,13 +1,16 @@
 <template>
 
     <card icon="fa fa-files-o"
-        refresh search
+        refresh
+        :search="documents.length > 1"
         :title="title || __('Documents')"
         :overlay="loading"
         @refresh="get()"
-        :open="open"
+        ref="card"
+        :open="open && !isEmpty"
+        @expand="isEmpty ? $refs.card.collapse() : null"
         @query-update="query = $event"
-        :badge="documents.length"
+        :badge="count"
         :controls="1">
         <a slot="control-1" class="card-header-icon">
             <file-uploader
@@ -16,16 +19,12 @@
                 multiple>
             </file-uploader>
         </a>
-        <div class="documents-wrapper has-padding-medium">
-            <ul>
-                <li class="has-margin-bottom-medium list-document"
-                    v-for="(doc, index) in filteredDocuments">
-                    <document :document="doc"
-                        :index="index"
-                        @delete="deletingIndex = index">
-                    </document>
-                </li>
-            </ul>
+        <div class="documents-wrapper has-padding-medium has-colored-background is-light">
+            <document v-for="(doc, index) in filteredDocuments"
+                :key="index"
+                :doc="doc"
+                @delete="deletingIndex = index">
+            </document>
         </div>
         <modal :show="showModal"
             @cancel-action="deletingIndex = null"
@@ -71,6 +70,12 @@ export default {
 
     computed: {
         ...mapGetters('locale', ['__']),
+        count() {
+            return this.documents.length;
+        },
+        isEmpty() {
+            return this.count === 0;
+        },
         showModal() {
             return this.deletingIndex !== null;
         },
@@ -78,13 +83,10 @@ export default {
             return route('core.documents.upload', [this.type, this.id], false);
         },
         filteredDocuments() {
-            if (this.query) {
-                return this.documents.filter(document => document.original_name
-                    .toLowerCase()
-                    .indexOf(this.query.toLowerCase()) > -1);
-            }
-
-            return this.documents;
+            return this.query
+                ? this.documents.filter(doc => doc.original_name.toLowerCase()
+                    .indexOf(this.query.toLowerCase()) > -1)
+                : this.documents;
         },
     },
 
@@ -95,6 +97,18 @@ export default {
             loading: false,
             deletingIndex: null,
         };
+    },
+
+    watch: {
+        isEmpty() {
+            if (this.isEmpty) {
+                this.$refs.card.collapse();
+            }
+        },
+    },
+
+    created() {
+        this.get();
     },
 
     methods: {
@@ -110,13 +124,11 @@ export default {
             });
         },
         destroy() {
-            this.showModal = false;
             this.loading = true;
 
-            axios.delete(route('core.documents.destroy', this.documents[this.deletingIndex], false)).then(() => {
+            axios.delete(route('core.documents.destroy', [this.documents[this.deletingIndex].id], false)).then(() => {
                 this.loading = false;
                 this.documents.splice(this.deletingIndex, 1);
-                this.count--;
                 this.deletingIndex = null;
             }).catch((error) => {
                 this.loading = false;
@@ -125,10 +137,6 @@ export default {
             });
         },
     },
-
-    mounted() {
-        this.get();
-    },
 };
 
 </script>
@@ -136,16 +144,8 @@ export default {
 <style>
 
     .documents-wrapper {
-        max-height: 370px;
+        max-height: 500px;
         overflow-y: auto;
-    }
-
-    span.action-buttons {
-        width: 50px;
-    }
-
-    li.list-document {
-        border-bottom: 1px solid #eee;
     }
 
 </style>

@@ -3,9 +3,8 @@ $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome.scss';
 
 @import '~animate.css/animate.css';
-@import './helpers';
 @import './libs/ios-switch';
-@import '~vue-directive-tooltip/src/css/index';
+@import './v-tooltip';
 
 @import './app';
 
