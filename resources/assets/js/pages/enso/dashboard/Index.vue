@@ -3,7 +3,8 @@
     <div>
         <div class="columns">
             <div class="column"
-                v-for="column in grid">
+                v-for="(column, index) in grid"
+                :key="index">
                 <chart-card v-for="(element, index) in column"
                     :key="index"
                     :source="element.meta.source"
@@ -17,28 +18,28 @@
 
 <script>
 
-    import PageHeader from '../layout/PageHeader.vue';
-	import ChartCard from '../../../components/enso/charts/ChartCard.vue';
-    import { mapGetters } from 'vuex';
+import PageHeader from '../layout/PageHeader.vue';
+import ChartCard from '../../../components/enso/charts/ChartCard.vue';
+import { mapGetters } from 'vuex';
 
-    export default {
-    	components: { ChartCard, PageHeader },
+export default {
+    components: { ChartCard, PageHeader },
 
-        computed: {
-            ...mapGetters('locale', ['__'])
-        },
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
 
-        data() {
-            return {
-                grid: []
-            }
-        },
+    data() {
+        return {
+            grid: [],
+        };
+    },
 
-        created() {
-        	axios.get(route('dashboard.index', [], false).toString()).then(response => {
-        		this.grid = response.data.grid;
-        	});
-        },
-    }
+    created() {
+        axios.get(route('dashboard.index', [], false).toString()).then((response) => {
+            this.grid = response.data.grid;
+        });
+    },
+};
 
 </script>

@@ -172,9 +172,9 @@ export default {
             }
         },
         getRouteParams(button, row) {
-            var params = {
-                id: row.dtRowId
-            }
+            const params = {
+                id: row.dtRowId,
+            };
 
             if (button.params) {
                 return Object.assign(params, button.params);

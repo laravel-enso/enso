@@ -1,8 +1,8 @@
 <template>
 
-    <div class="level vue-document has-colored-background is-white"
-        @mouseenter="controls = true"
-        @mouseleave="controls = false">
+    <div class="level vue-document"
+        @mouseover="controls = true"
+        @mouseleave="!dialog ? controls = false : null">
         <div class="level-left">
             <div class="level-item">
                 <span class="icon is-small has-margin-right-small">
@@ -16,33 +16,37 @@
         <div class="level-right">
             <transition enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
-                <div class="level-item"
+                <div class="level-item has-text-grey"
                     v-if="controls">
-                    <a class="button is-white has-margin-right-small"
+                    <button class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         @click="show">
                         <span class="icon">
                             <i class="fa fa-eye"></i>
                         </span>
-                    </a>
-                    <a class="button is-white has-margin-right-small"
+                    </button>
+                    <button class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         :href="downloadLink">
                         <span class="icon">
                             <i class="fa fa-cloud-download"></i>
                         </span>
-                    </a>
-                    <a class="button is-white has-margin-right-medium"
+                    </button>
+                    <popover placement="bottom"
                         v-if="doc.isDeletable"
-                        @click="$emit('delete')">
-                        <span class="icon">
-                            <i class="fa fa-trash-o"></i>
-                        </span>
-                    </a>
+                        @confirm="$emit('delete')"
+                        @show="dialog = true"
+                        @hide="dialog = controls = false">
+                        <button class="button is-naked has-margin-right-medium">
+                            <span class="icon">
+                                <i class="fa fa-trash-o"></i>
+                            </span>
+                        </button>
+                    </popover>
                     <v-popover
                         trigger="hover"
                         placement="top">
-                        <span class="icon is-small has-margin-right-small">
+                        <span class="icon has-margin-right-small">
                             <i class="fa fa-info-circle">
                             </i>
                         </span>
@@ -80,12 +84,12 @@
 
 import { VPopover } from 'v-tooltip';
 import { mapGetters } from 'vuex';
-import Modal from '../bulma/Modal.vue';
+import Popover from '../bulma/Popover.vue';
 
 export default {
     name: 'Document',
 
-    components: { Modal, VPopover },
+    components: { VPopover, Popover },
 
     props: {
         doc: {
@@ -97,6 +101,7 @@ export default {
     data() {
         return {
             controls: false,
+            dialog: false,
         };
     },
 
@@ -127,9 +132,9 @@ export default {
         box-shadow: 0ch;
         border-radius: 3px;
         border-left: 3px solid rgb(133, 152, 133);
-        -webkit-box-shadow: 0px 2px 3px -1px rgba(179,179,179,1);
-        -moz-box-shadow: 0px 2px 3px -1px rgba(179,179,179,1);
-        box-shadow: 0px 2px 3px -1px rgba(179,179,179,1);
+        -webkit-box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
+        -moz-box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
+        box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
 
         &:hover {
             border-left: 3px solid rgb(0, 220, 0);

@@ -1,8 +1,8 @@
 <template>
 
     <article class="media"
-        @mouseenter="controls=true"
-        @mouseleave="controls=false">
+        @mouseover="controls = true"
+        @mouseleave="!dialog ? controls = false: null">
         <figure class="media-left">
             <p class="image is-48x48">
                 <img :src="avatar"
@@ -11,63 +11,62 @@
             </p>
         </figure>
         <div class="media-content">
-            <div class="content comment">
-                <div class="has-margin-bottom-small has-text-grey" v-if="!isNew">
-                    <a><b>{{ comment.owner.fullName }}</b></a>
-                    <span>
-                        {{ comment.updated_at || comment.created_at | timeFromNow }}
-                    </span>
-                    <span v-if="comment.isEdited">
-                        &bull; {{ __('edited') }}
-                    </span>
-                    <span class="is-pulled-right"
-                        v-show="!isNew && !isEditing && controls">
-                        <button class="button is-small is-white has-margin-right-small"
-                            v-if="comment.isEditable"
-                            @click="originalBody=comment.body;">
-                            <span class="icon is-small has-text-grey">
-                                <i class="fa fa-pencil"></i>
-                            </span>
-                        </button>
-                        <button class="button is-small is-white"
-                            @click="showModal=true"
-                            v-if="comment.isDeletable">
+            <div class="has-margin-bottom-medium has-text-grey" v-if="!isNew">
+                <a><b>{{ comment.owner.fullName }}</b></a>
+                <span>
+                    {{ comment.updated_at || comment.created_at | timeFromNow }}
+                </span>
+                <span v-if="comment.isEdited">
+                    &bull; {{ __('edited') }}
+                </span>
+                <div class="is-pulled-right is-flex"
+                    v-if="!isNew && !isEditing && controls">
+                    <button class="button is-naked is-small has-margin-right-small"
+                        v-if="comment.isEditable"
+                        @click="originalBody=comment.body;">
+                        <span class="icon is-small has-text-grey">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                    </button>
+                    <popover placement="bottom-end"
+                        v-if="comment.isDeletable"
+                        @confirm="$emit('delete')"
+                        @show="dialog = true"
+                        @hide="dialog = controls = false">
+                        <button class="button is-naked is-small"
+                            @click="dialog=true">
                             <span class="icon is-small has-text-grey">
                                 <i class="fa fa-trash-o"></i>
                             </span>
                         </button>
-                    </span>
+                    </popover>
                 </div>
-                <div v-html="highlightTaggedUsers"
-                    class="comment-body"
-                    v-if="!isEditing && !isNew">
-                </div>
-                <div v-else>
-                    <inputor v-on="$listeners"
-                        :comment="comment">
-                    </inputor>
-                    <div>
-                        <button type="button" class="button is-small is-outlined has-margin-right-small"
-                            @click="isNew ? $emit('cancel-add') : cancelAdd()">
-                            {{ __('Cancel') }}
-                        </button>
-                        <button type="button" class="button is-small is-outlined is-success"
-                            @click="isNew ? $emit('save-comment') : update()">
-                            <span v-if="isNew">
-                                {{ __('Post') }}
-                            </span>
-                            <span v-else>
-                                {{ __('Update') }}
-                            </span>
-                        </button>
-                    </div>
+            </div>
+            <div v-html="highlightTaggedUsers"
+                class="comment-body"
+                v-if="!isEditing && !isNew">
+            </div>
+            <div v-else>
+                <inputor v-on="$listeners"
+                    :comment="comment">
+                </inputor>
+                <div>
+                    <button type="button" class="button is-small is-outlined has-margin-right-small"
+                        @click="isNew ? $emit('cancel-add') : cancelAdd()">
+                        {{ __('Cancel') }}
+                    </button>
+                    <button type="button" class="button is-small is-outlined is-success"
+                        @click="isNew ? $emit('save-comment') : update()">
+                        <span v-if="isNew">
+                            {{ __('Post') }}
+                        </span>
+                        <span v-else>
+                            {{ __('Update') }}
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
-        <modal :show="showModal"
-            @cancel-action="showModal=false"
-            @commit-action="$emit('delete');showModal=false;">
-        </modal>
     </article>
 
 </template>
@@ -76,12 +75,12 @@
 
 import { mapGetters } from 'vuex';
 import Inputor from './Inputor.vue';
-import Modal from '../bulma/Modal.vue';
+import Popover from '../bulma/Popover.vue';
 
 export default {
     name: 'Comment',
 
-    components: { Inputor, Modal },
+    components: { Inputor, Popover },
 
     props: {
         comment: {
@@ -122,8 +121,8 @@ export default {
 
     data() {
         return {
-            showModal: false,
             controls: false,
+            dialog: false,
             originalBody: null,
         };
     },

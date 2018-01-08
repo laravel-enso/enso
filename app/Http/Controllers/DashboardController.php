@@ -24,7 +24,6 @@ class DashboardController extends Controller
         $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
         $datasets = [
-
             'Sales' => [65, 59, 80, 81, 56, 55, 40],
             'Revenue' => [15, 29, 60, 31, 26, 45, 44],
         ];
@@ -39,7 +38,6 @@ class DashboardController extends Controller
         $labels = ['Ian', 'Feb', 'Mar'];
 
         $datasets = [
-
             'Vanzari' => [1233, 1231, 3123],
             'Incasari' => [1250, 1730, 5300],
             'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
@@ -77,7 +75,6 @@ class DashboardController extends Controller
         $labels = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
 
         $datasets = [
-
             '2005' => [65, 59, 90, 81, 56, 55, 40],
             '2006' => [28, 48, 40, 19, 96, 27, 100],
         ];
@@ -101,14 +98,12 @@ class DashboardController extends Controller
     public function getBubbleChartData()
     {
         $labels = [
-
             0 => 'Geneva',
             1 => 'Besel',
             2 => 'Bucharest',
         ];
 
         $datasets = [
-
             0 => [[2010, 59, 4800], [2011, 55, 1800], [2012, 45, 2000], [2013, 58, 4400], [2014, 42, 2900], [2015, 59, 2100]],
             1 => [[2010, 48, 1700], [2011, 67, 1200], [2012, 96, 1233], [2013, 35, 3000], [2014, 45, 2000], [2015, 52, 3300]],
             2 => [[2010, 44, 2000], [2011, 62, 1500], [2012, 55, 1299], [2013, 39, 4000], [2014, 36, 1000], [2015, 45, 1750]],

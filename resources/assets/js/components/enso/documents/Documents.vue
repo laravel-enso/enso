@@ -19,17 +19,13 @@
                 multiple>
             </file-uploader>
         </a>
-        <div class="documents-wrapper has-padding-medium has-colored-background is-light">
+        <div class="documents-wrapper has-padding-medium">
             <document v-for="(doc, index) in filteredDocuments"
                 :key="index"
                 :doc="doc"
-                @delete="deletingIndex = index">
+                @delete="destroy(index)">
             </document>
         </div>
-        <modal :show="showModal"
-            @cancel-action="deletingIndex = null"
-            @commit-action="destroy()">
-        </modal>
     </card>
 
 </template>
@@ -40,14 +36,11 @@ import { mapGetters } from 'vuex';
 import Card from '../bulma/Card.vue';
 import Document from './Document.vue';
 import FileUploader from '../fileuploader/FileUploader.vue';
-import Modal from '../bulma/Modal.vue';
 
 export default {
     name: 'Documents',
 
-    components: {
-        Card, Document, FileUploader, Modal,
-    },
+    components: { Card, Document, FileUploader },
 
     props: {
         open: {
@@ -76,9 +69,6 @@ export default {
         isEmpty() {
             return this.count === 0;
         },
-        showModal() {
-            return this.deletingIndex !== null;
-        },
         uploadLink() {
             return route('core.documents.upload', [this.type, this.id], false);
         },
@@ -95,7 +85,6 @@ export default {
             documents: [],
             query: '',
             loading: false,
-            deletingIndex: null,
         };
     },
 
@@ -123,16 +112,16 @@ export default {
                 this.handleError(error);
             });
         },
-        destroy() {
+        destroy(index) {
             this.loading = true;
 
-            axios.delete(route('core.documents.destroy', [this.documents[this.deletingIndex].id], false)).then(() => {
+            axios.delete(route('core.documents.destroy', [this.documents[index].id], false)).then(() => {
                 this.loading = false;
-                this.documents.splice(this.deletingIndex, 1);
-                this.deletingIndex = null;
+                this.documents.splice(index, 1);
+                index = null;
             }).catch((error) => {
                 this.loading = false;
-                this.deletingIndex = null;
+                index = null;
                 this.handleError(error);
             });
         },

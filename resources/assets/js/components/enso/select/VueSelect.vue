@@ -8,6 +8,7 @@
             :disabled="disabled"
             :internal-search="!isServerSide"
             :multiple="multiple"
+            :taggable="taggable"
             :clear-on-select="!multiple"
             :close-on-select="!multiple"
             :select-label="__(labels.select)"
@@ -19,6 +20,7 @@
             :options="optionKeys"
             :custom-label="customLabel"
             @search-change="query=$event;getOptions()"
+            @tag="$emit('tag', $event)"
             @input="$emit('input', $event)">
             <span slot="noResult">
                 {{ __(labels.noResult) }}
@@ -73,6 +75,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        taggable: {
+            type: Boolean,
+            default: false,
+        },
         hasError: {
             type: Boolean,
             default: false,
@@ -121,6 +127,10 @@ export default {
 
     filters: {
         highlight(option, query) {
+            if (!option) {
+                return option;
+            }
+
             query.split(' ').filter(word => word.length).forEach((word) => {
                 option = option.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
             });
@@ -236,7 +246,7 @@ export default {
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
-<style>
+<style lang="scss">
 
     .vue-select .multiselect {
         min-height: 36px;
@@ -248,6 +258,10 @@ export default {
         max-height: 36px;
         padding: 4px 40px 0 4px;
         border-radius: 3px;
+
+        &:hover {
+                border-color: #b5b5b5;
+        }
     }
 
     .multiselect.has-error .multiselect__tags {

@@ -38,7 +38,7 @@
                 :key="index">
             </comment>
             <div class="has-text-centered has-margin-top-large">
-                <button class="button is-white has-text-grey"
+                <button class="button is-naked has-text-grey"
                     @click="get()">
                     &bull; &bull; &bull;
                 </button>

@@ -10,7 +10,7 @@ return [
         'exists_in_sheet' => 'Value must exist in the sheet',
         'unique_in_column' => 'Value must be unique in its column',
         'duplicate_lines' => 'This sheet lines are doubles',
-        'sheet_entries_limit_excedeed' => 'Excedeed the entries limit of',
+        'sheet_entries_limit_exceeded' => 'Exceeded the entries limit of',
         'missing_param_from_config' => 'The following parameter is missing from the config file',
     ],
     'configs' => [
