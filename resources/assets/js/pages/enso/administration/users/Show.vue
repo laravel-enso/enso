@@ -243,7 +243,11 @@ export default {
             return this.user.id === this.profileUser.id;
         },
         avatarId() {
-            return this.isSelfVisiting ? this.user.avatarId : this.profileUser.avatar.id;
+            if (this.isSelfVisiting) {
+                return this.user.avatarId;
+            }
+
+            return this.profileUser.avatar ? this.profileUser.avatar.id : null;
         },
         avatarLink() {
             return route('core.avatars.show', (this.avatarId || 'null'), false);
