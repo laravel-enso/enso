@@ -1,13 +1,11 @@
+import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
-import Auth from './routes/enso/auth';
-import Dashboard from './routes/enso/dashboard';
-import Administration from './routes/enso/administration';
-import System from './routes/enso/system';
-import DataImport from './routes/enso/dataImport';
-import notFound from './routes/enso/notFound';
+import routeImporter from './modules/importers/routeImporter';
 
-const routes = Auth.concat([Dashboard, Administration, System, DataImport, notFound]);
+Vue.use(Router);
+
+const routes = routeImporter(require.context('./routes', false, /.*\.js$/));
 
 const router = new Router({
     mode: 'history',

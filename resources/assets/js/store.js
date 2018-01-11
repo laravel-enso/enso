@@ -1,20 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
 import router from './router';
-import locale from './store/enso/locale';
-import menus from './store/enso/menus';
-import layout from './store/enso/layout';
-import auth from './store/enso/auth';
+import storeImporter from './modules/importers/storeImporter';
 
 Vue.use(Vuex);
+
+const modules = storeImporter(require.context('./store', false, /.*\.js$/));
 
 export default new Vuex.Store({
     strict: true,
 
-    modules: {
-        locale, menus, layout, auth,
-    },
+    modules,
 
     state: {
         user: {},

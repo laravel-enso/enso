@@ -1,10 +1,10 @@
 module.exports = {
     "root": true,
-    // "parserOptions": {
-    //     "parser": "babel-eslint",
-    //     "ecmaVersion": 2017,
-    //     "sourceType": "module"
-    // },
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
 	env: {
         browser: true,
         jquery: true,
@@ -33,5 +33,6 @@ module.exports = {
         "no-param-reassign": 0,
         "no-mixed-operators": 0,
         "func-names": 0,
+        "no-shadow": 0,
     },
 };

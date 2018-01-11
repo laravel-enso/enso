@@ -1,5 +1,11 @@
 const { mix } = require('laravel-mix');
 
+mix.webpackConfig({
+    output: {
+        publicPath: '/',
+    },
+});
+
 mix
     .copyDirectory('resources/assets/images', 'public/images')
     .copyDirectory('node_modules/flag-icon-css/flags', 'public/fonts/vendor/flag-icon-css/flags')

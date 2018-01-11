@@ -18,6 +18,13 @@
 import { debounce } from 'lodash';
 import { mapGetters } from 'vuex';
 
+window.jQuery = require('jquery');
+
+window.$ = window.jQuery;
+require('at.js');
+require('jquery.caret');
+require('at.js/dist/css/jquery.atwho.min.css');
+
 export default {
     props: {
         comment: {

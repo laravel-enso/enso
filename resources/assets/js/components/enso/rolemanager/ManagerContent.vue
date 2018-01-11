@@ -50,7 +50,7 @@ export default {
     computed: {
         ...mapGetters('locale', ['__']),
         permissionIds() {
-            return this.groupData.pluck('id');
+            return this.groupData.map(group => group.id);
         },
         status() {
             if (this.checkedIds.length === this.permissionIds.length) {

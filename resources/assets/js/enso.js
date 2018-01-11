@@ -1,18 +1,29 @@
 import Vue from 'vue';
-import { sync } from 'vuex-router-sync';
+import axios from 'axios';
+import lodash from 'lodash';
+import moment from 'moment';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
 
-import './bootstrap';
+import './modules/enso/';
 import './app';
 
 import router from './router';
 import store from './store';
-import App from './pages/enso/App.vue';
+import App from './pages/App.vue';
 
-sync(store, router);
+const bus = new Vue({ name: 'Bus' });
+
+Vue.prototype.$bus = bus;
+
+window._ = lodash;
+window.moment = moment;
+window.toastr = toastr;
+window.axios = axios;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 new Vue({
-    el: '#app',
     router,
     store,
     ...App,
-});
+}).$mount('#app');

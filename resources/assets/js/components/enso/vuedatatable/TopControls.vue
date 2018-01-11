@@ -67,7 +67,6 @@
 
 <script>
 
-import vClickOutside from 'v-click-outside';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import Alignment from './topControls/Alignment.vue';
@@ -75,10 +74,6 @@ import StyleSelector from './topControls/StyleSelector.vue';
 
 export default {
     name: 'TopControls',
-
-    directives: {
-        clickOutside: vClickOutside.directive,
-    },
 
     components: {
         LengthMenu, ColumnVisibility, Alignment, StyleSelector,
