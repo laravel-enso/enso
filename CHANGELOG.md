@@ -1,8 +1,10 @@
 ## Enso Changelog
 
-### 2.0.21
+### 2.0.22
 
 Packages update
+
+...
 
 ### 2.0.20
 

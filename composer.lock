@@ -1258,16 +1258,16 @@
         },
         {
             "name": "laravel-enso/charts",
-            "version": "2.1.2",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Charts.git",
-                "reference": "a8b8163613f012e73216e274d28bb036eb0c0e7a"
+                "reference": "02f816b4b576c97d10cd48d4f256fb63ae65365b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/a8b8163613f012e73216e274d28bb036eb0c0e7a",
-                "reference": "a8b8163613f012e73216e274d28bb036eb0c0e7a",
+                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/02f816b4b576c97d10cd48d4f256fb63ae65365b",
+                "reference": "02f816b4b576c97d10cd48d4f256fb63ae65365b",
                 "shasum": ""
             },
             "require": {
@@ -1307,7 +1307,7 @@
                 "charts",
                 "laravel-enso"
             ],
-            "time": "2018-01-06T14:23:41+00:00"
+            "time": "2018-01-11T10:58:47+00:00"
         },
         {
             "name": "laravel-enso/commentsmanager",
@@ -1339,7 +1339,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "LaravelEnso\\CommentsManager\\AppServiceProvider",
+                        "LaravelEnso\\CommentsManager\\CommentsServiceProvider",
                         "LaravelEnso\\CommentsManager\\AuthServiceProvider"
                     ],
                     "aliases": []
