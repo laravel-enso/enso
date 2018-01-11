@@ -20,22 +20,23 @@
 
         <div class="has-padding-medium addresses-wrapper">
             <div class="columns is-multiline">
-                <div class="column is-half-tablet is-one-third-widescreen " v-for="(address, index) in filteredAddresses">
-                    <address-card
-                                  :address="address"
-                                  @default-set="handleDefaultSet"
-                                  @do-edit="handleEdit(address)"
-                                  @do-delete="destroy"
-                                  :index="index"
-                                  :key="index">
+                <div class="column is-half-tablet is-one-third-widescreen"
+                    v-for="(address, index) in filteredAddresses" :key="index">
+                        <address-card
+                            :address="address"
+                            @default-set="handleDefaultSet"
+                            @do-edit="handleEdit(address)"
+                            @do-delete="destroy"
+                            :index="index"
+                            :key="index">
 
-                        <!--card customization template passthrough-->
-                        <template slot="address-card-template" :address="address">
-                            <slot name="address-template" :address="address">
-                            </slot>
-                        </template>
+                            <!--card customization template passthrough-->
+                            <template slot="address-card-template" :address="address">
+                                <slot name="address-template" :address="address">
+                                </slot>
+                            </template>
 
-                    </address-card>
+                        </address-card>
                 </div>
 
             </div>
@@ -46,11 +47,9 @@
             :type="type"
             :id="id"
             ref="modal"
-            @patch="get();form=null"
             @form-close="form=null"
-            @form-submit="get();form=null"
-            @delete="get();form=null"
-            @store="get();form=null">
+            @destroy="get();form=null"
+            @submit="get();form=null">
 
                 <!--form customization elements passthrough-->
                 <template

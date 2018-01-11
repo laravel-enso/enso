@@ -7,6 +7,7 @@
         "php": ">=7.0.0",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
+        "laravel-enso/addressesmanager": "^2.1",
         "laravel-enso/commentsmanager": "2.1.*",
         "laravel-enso/contacts": "2.1.*",
         "laravel-enso/dataimport": "2.1.*",

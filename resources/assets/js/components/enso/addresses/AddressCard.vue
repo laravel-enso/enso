@@ -8,7 +8,7 @@
             <div class="media-content">
 
                 <span class="icon is-large is-pulled-right has-text-success">
-                    <i class="fa fa-2x fa-anchor" v-if="address.is_default" ></i>
+                    <i class="fa fa-2x fa-anchor" v-if="address.is_default" :title="__('Default Address')"></i>
                 </span>
 
                 <!--default slot content will be overwritten if anything is provided-->
@@ -45,66 +45,70 @@
                    @click="setDefault"></i>
             </span>
         </a>
-        <a slot="footer-item-3"  @click="showModal=true">
-            {{__('delete')}}
-        </a>
+        <popover slot="footer-item-3"
+                 placement="bottom-end"
+                 @confirm="destroy"
+                 @show="dialog = true"
+                 @hide="dialog = controls = false">
 
-        <modal :show="showModal"
-            @cancel-action="showModal=false"
-            @commit-action="destroy()">
-        </modal>
+                    <a  @click="dialog=true">
+                        {{__('delete')}}
+                    </a>
+        </popover>
     </card>
 
 </template>
 
 <script>
 
-    import { mapGetters } from 'vuex';
-    import AddressModalForm from './AddressModalForm';
-    import Modal from '../bulma/Modal.vue';
-    import Card from '../bulma/Card.vue';
-    export default {
-        components: {AddressModalForm, Card, Modal},
-        props: {
-            index: {
-                type: Number,
-                required: true
-            },
-            address: {
-                type: Object,
-                required: true
-            },
+import { mapGetters } from 'vuex';
+import AddressModalForm from './AddressModalForm.vue';
+import Modal from '../bulma/Modal.vue';
+import Card from '../bulma/Card.vue';
+import Popover from '../bulma/Popover.vue';
+
+export default {
+    components: { AddressModalForm, Card, Modal, Popover },
+    props: {
+        index: {
+            type: Number,
+            required: true,
         },
-
-        data() {
-            return {
-                form: null,
-                showModal: false
-            };
+        address: {
+            type: Object,
+            required: true,
         },
+    },
 
-        computed: {
-            ...mapGetters('locale', ['__']),
+    data() {
+        return {
+            form: null,
+            showModal: false,
+        };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    methods: {
+
+        setDefault() {
+            axios.get(route('addresses.setDefault', this.address.id, false)).then((response) => {
+                this.$emit('default-set', response.data.message);
+            }).catch((error) => {
+                this.reportEnsoException(error);
+            });
         },
-
-        methods: {
-
-            setDefault() {
-                axios.get(route('addresses.setDefault', this.address.id, false)).then(response => {
-                    this.$emit('default-set', response.data.message);
-                }).catch((error) => {
-                    this.reportEnsoException(error);
-                });
-            },
-            handleEdit() {
-                this.$emit('do-edit');
-            },
-            destroy() {
-                this.showModal = false;
-                this.$emit('do-delete', {index: this.index, id: this.address.id});
-            }
-        }
-    }
+        handleEdit() {
+            this.$emit('do-edit');
+        },
+        destroy() {
+            this.showModal = false;
+            this.$emit('do-delete', { index: this.index, id: this.address.id });
+        },
+    },
+};
 
 </script>
 

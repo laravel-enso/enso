@@ -34,45 +34,42 @@
 
 <script>
 
-    import { mapGetters } from 'vuex';
-    import VueForm from '../vueforms/VueForm';
-    export default {
-        components: {VueForm},
-        props: {
-            form: {
-                type: Object,
-                default: null
-            },
-            id: {
-                type: Number,
-                required: true
-            },
-            type: {
-                type: String,
-                required: true
-            },
-        },
+import { mapGetters } from 'vuex';
+import VueForm from '../vueforms/VueForm.vue';
 
-        computed: {
-            ...mapGetters('locale', ['__']),
-            params() {
-                return {
-                    id: this.id,
-                    type: this.type
-                }
-            }
+export default {
+    components: { VueForm },
+    props: {
+        form: {
+            type: Object,
+            default: null,
         },
+        id: {
+            type: Number,
+            required: true,
+        },
+        type: {
+            type: String,
+            required: true,
+        },
+    },
 
-        data() {
+    computed: {
+        ...mapGetters('locale', ['__']),
+        params() {
             return {
-                errors: {},
+                id: this.id,
+                type: this.type,
             };
         },
+    },
 
-        methods: { },
-
-        mounted: function () {  }
-    }
+    data() {
+        return {
+            errors: {},
+        };
+    },
+};
 
 </script>
 

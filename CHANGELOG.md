@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.0.27
+Addresses module is now included by default and is available in the owner edit page  
+Packages update
+
 ### 2.0.26
 Improved VueForm
 Packages update
