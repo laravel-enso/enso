@@ -156,7 +156,7 @@ export default {
                 }
 
                 if (status === 422) {
-                    toastr.error(data.email);
+                    toastr.error(data.messge);
                     return;
                 }
 
