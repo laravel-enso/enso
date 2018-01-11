@@ -181,7 +181,7 @@ export default {
         VueSelect, VueTable, FileUploader, Card, Modal, Overlay, Tabs, Paginate,
     },
 
-    directives: { VTooltip },
+    directives: { tooltip: VTooltip },
 
     computed: {
         ...mapGetters('locale', ['__']),

@@ -1538,16 +1538,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "d89002b8dcc795bb0c4267b8fef20ecfd5ac9731"
+                "reference": "7d4c96e4ae9cac5bb4a6a7bad0521caf399bf2fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/d89002b8dcc795bb0c4267b8fef20ecfd5ac9731",
-                "reference": "d89002b8dcc795bb0c4267b8fef20ecfd5ac9731",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/7d4c96e4ae9cac5bb4a6a7bad0521caf399bf2fa",
+                "reference": "7d4c96e4ae9cac5bb4a6a7bad0521caf399bf2fa",
                 "shasum": ""
             },
             "require": {
@@ -1605,7 +1605,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-01-11T08:51:16+00:00"
+            "time": "2018-01-11T10:38:50+00:00"
         },
         {
             "name": "laravel-enso/dbsyncmigrations",
@@ -2667,16 +2667,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.0.44",
+            "version": "2.0.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "1cb578b325924bea2a9a9b6f506b61765f08a43f"
+                "reference": "8131a1f9b70064c204d5c9e00d4209be44627ac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/1cb578b325924bea2a9a9b6f506b61765f08a43f",
-                "reference": "1cb578b325924bea2a9a9b6f506b61765f08a43f",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/8131a1f9b70064c204d5c9e00d4209be44627ac3",
+                "reference": "8131a1f9b70064c204d5c9e00d4209be44627ac3",
                 "shasum": ""
             },
             "require": {
@@ -2716,7 +2716,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-01-11T08:43:20+00:00"
+            "time": "2018-01-11T10:40:03+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",

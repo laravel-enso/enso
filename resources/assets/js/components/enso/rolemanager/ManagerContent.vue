@@ -35,7 +35,7 @@ import { VTooltip } from 'v-tooltip';
 export default {
     name: 'ManagerContent',
 
-    directives: { VTooltip },
+    directives: { tooltip: VTooltip },
 
     props: {
         groupData: {
