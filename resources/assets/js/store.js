@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
 import router from './router';
 import storeImporter from './modules/importers/storeImporter';
 
@@ -58,6 +60,13 @@ export default new Vuex.Store({
                 axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrfToken;
                 commit('setRoutes', data.routes);
                 router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
+
+                if (data.ravenKey) {
+                    Raven.config(data.ravenKey)
+                        .addPlugin(RavenVue, Vue)
+                        .install();
+                }
+
                 commit('setLoadedState');
             }).catch((error) => {
                 if (error.response.status === 401) {

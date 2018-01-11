@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '2.0.25',
+    'version' => '2.0.26',
     'defaultRole' => 'admin',
     'defaultRole' => 'admin',
     'phpDateFormat' => 'd-m-Y',
@@ -13,5 +13,6 @@ return [
         'temp' => 'temp',
         'exports' => 'exports',
     ],
+    'ravenKey' => env('RAVEN_DSN', null),
     'cacheLifetime' => env('CACHE_LIFETIME', 60),
 ];

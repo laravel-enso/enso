@@ -6,11 +6,12 @@ import toastr from 'toastr';
 import 'toastr/build/toastr.min.css';
 
 import './modules/enso/';
-import './app';
 
 import router from './router';
 import store from './store';
 import App from './pages/App.vue';
+
+import './app';
 
 const bus = new Vue({ name: 'Bus' });
 

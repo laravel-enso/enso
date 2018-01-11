@@ -86,6 +86,7 @@
             <hr>
             <button class="button"
                 v-if="data.actions.destroy"
+                :disabled="data.actions.destroy.forbidden"
                 :class="data.actions.destroy.button.class"
                 @click.prevent="showModal = true">
                 <span>{{ __(data.actions.destroy.button.label) }}</span>
@@ -96,7 +97,8 @@
             <button class="button"
                 :class="data.actions.create.button.class"
                 @click.prevent="create()"
-                v-if="data.actions.create">
+                v-if="data.actions.create"
+                :disabled="data.actions.create.forbidden">
                 <span>{{ __(data.actions.create.button.label) }}</span>
                 <span class="icon">
                     <i :class="data.actions.create.button.icon"></i>
@@ -104,19 +106,22 @@
             </button>
             <button type="submit"
                 class="button is-pulled-right"
-                :class="[data.actions.store ? data.actions.store.button.class : data.actions.update.button.class, { 'is-loading': loading }]"
-                v-if="data.actions.store || data.actions.update">
-                <span v-if="data.actions.store">
-                    <span>{{ __(data.actions.store.button.label) }}</span>
-                    <span class="icon">
-                        <i :class="data.actions.store.button.icon"></i>
-                    </span>
+                :class="[data.actions.store.button.class, { 'is-loading': loading }]"
+                v-if="data.actions.store"
+                :disabled="data.actions.store.forbidden">
+                <span>{{ __(data.actions.store.button.label) }}</span>
+                <span class="icon">
+                    <i :class="data.actions.store.button.icon"></i>
                 </span>
-                <span v-else-if="data.actions.update">
-                    <span>{{ __(data.actions.update.button.label) }}</span>
-                    <span class="icon">
-                        <i :class="data.actions.update.button.icon"></i>
-                    </span>
+            </button>
+            <button type="submit"
+                class="button is-pulled-right"
+                :class="[data.actions.update.button.class, { 'is-loading': loading }]"
+                v-if="data.actions.update"
+                :disabled="data.actions.update.forbidden">
+                <span>{{ __(data.actions.update.button.label) }}</span>
+                <span class="icon">
+                    <i :class="data.actions.update.button.icon"></i>
                 </span>
             </button>
             <div class="is-clearfix"></div>

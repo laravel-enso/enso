@@ -1440,16 +1440,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.1.22",
+            "version": "2.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "f54c14230f51afb192f3c88f6e0d59136c1d52b2"
+                "reference": "740856a886069dea0fa62cd426bdfa882887648d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/f54c14230f51afb192f3c88f6e0d59136c1d52b2",
-                "reference": "f54c14230f51afb192f3c88f6e0d59136c1d52b2",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/740856a886069dea0fa62cd426bdfa882887648d",
+                "reference": "740856a886069dea0fa62cd426bdfa882887648d",
                 "shasum": ""
             },
             "require": {
@@ -1534,7 +1534,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-01-11T11:16:32+00:00"
+            "time": "2018-01-11T12:27:49+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1782,16 +1782,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "7e2c6442fd1aecc44d425e03bfc5a1776f5dabab"
+                "reference": "506aa0211075ff1c284574f4aad3b0a50c656de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/7e2c6442fd1aecc44d425e03bfc5a1776f5dabab",
-                "reference": "7e2c6442fd1aecc44d425e03bfc5a1776f5dabab",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/506aa0211075ff1c284574f4aad3b0a50c656de3",
+                "reference": "506aa0211075ff1c284574f4aad3b0a50c656de3",
                 "shasum": ""
             },
             "require": {
@@ -1833,7 +1833,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-01-11T08:57:09+00:00"
+            "time": "2018-01-11T12:24:45+00:00"
         },
         {
             "name": "laravel-enso/helpers",
