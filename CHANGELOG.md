@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.0.25
+
+Packages update
+
 ### 2.0.24
 
 Fixes login error toastr
