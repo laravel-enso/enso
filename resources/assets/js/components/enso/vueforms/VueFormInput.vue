@@ -50,14 +50,12 @@
             </span>
         </div>
         <span v-if="field.meta.content === 'checkbox'">
-            <input :id="field.name"
-                class="toggle"
+            <vue-switch v-model="field.value"
+                size="is-large"
+                type="is-success"
                 :readonly="field.meta.readonly"
-                @click="$emit('update')"
-                v-model="field.value"
-                type="checkbox"
-                :disabled="field.meta.disabled">
-            <label :for="field.name" class="toggle-input"><i></i></label>
+                @click="$emit('update')">
+            </vue-switch>
         </span>
     </span>
 
@@ -65,7 +63,11 @@
 
 <script>
 
+import VueSwitch from './VueSwitch.vue';
+
 export default {
+    components: { VueSwitch },
+
     props: {
         field: {
             type: Object,
@@ -79,12 +81,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    div.tile div.field label.switch {
-        display: block;
-        margin-top: 18px;
-    }
-
-</style>

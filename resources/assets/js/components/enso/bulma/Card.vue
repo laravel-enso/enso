@@ -32,7 +32,7 @@
             </slot>
             <a class="card-header-icon"
                 v-if="badge !== null">
-                <span class="tag is-primary">
+                <span class="tag is-link">
                     {{ badge }}
                 </span>
             </a>

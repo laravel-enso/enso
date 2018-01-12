@@ -70,7 +70,7 @@
         "raven-js": "^3.21.0",
         "toastr": "^2.1.4",
         "v-click-outside": "^0.1.4",
-        "v-tooltip": "^2.0.0-rc.25",
+        "v-tooltip": "^2.0.0-rc.26",
         "vue": "^2.5.13",
         "vue-multiselect": "^2.0.8",
         "vue-router": "^2.8.1",

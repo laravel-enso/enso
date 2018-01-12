@@ -259,7 +259,7 @@ export default {
         font-size: 0.8rem;
         font-weight: bold;
         height: 1.4em;
-        padding: 3px;
+        padding: 7px;
     }
 
     li.child-row:not(:last-child) {
