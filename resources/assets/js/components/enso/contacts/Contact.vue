@@ -36,26 +36,20 @@
                 </div>
             </div>
             <a slot="footer-item-1"
-                 @click="showForm=true">
+                 @click="handleEdit">
                 {{ __('edit') }}
             </a>
-            <a slot="footer-item-2"
-                 @click="showModal=true">
-                {{ __('delete') }}
-            </a>
+            <popover slot="footer-item-2"
+                     placement="bottom-end"
+                     @confirm="destroy"
+                     @show="dialog = true"
+                     @hide="dialog = controls = false">
+
+                <a  @click="dialog=true">
+                    {{__('delete')}}
+                </a>
+            </popover>
         </card>
-        <contact-form :show="showForm"
-            v-if="showForm"
-            :contact="Object.assign({}, contact)"
-            :type="type"
-            :id="id"
-            @update="Object.assign(contact, $event);showForm=false"
-            @closed="showForm=false">
-        </contact-form>
-        <modal :show="showModal"
-            @cancel-action="showModal=false"
-            @commit-action="destroy()">
-        </modal>
     </div>
 
 </template>
@@ -65,28 +59,20 @@
 import { mapGetters } from 'vuex';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
-import Modal from '../bulma/Modal.vue';
+import Popover from '../bulma/Popover.vue';
 
 export default {
     name: 'Contact',
 
-    components: { Card, ContactForm, Modal },
+    components: { Card, ContactForm, Popover },
 
     props: {
-        contact: {
-            type: Object,
-            required: true,
-        },
-        id: {
-            type: Number,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: true,
-        },
         index: {
             type: Number,
+            required: true,
+        },
+        contact: {
+            type: Object,
             required: true,
         },
     },
@@ -97,23 +83,15 @@ export default {
 
     data() {
         return {
-            showForm: false,
-            showModal: false,
         };
     },
 
     methods: {
-        destroy() { // fixme move in parent
-            this.showModal = false;
-            this.$parent.$parent.loading = true;
-
-            axios.delete(route('core.contacts.destroy', this.contact.id, false)).then(() => {
-                this.$emit('delete', this.index);
-                this.$parent.$parent.loading = false;
-            }).catch((error) => {
-                this.$parent.$parent.loading = false;
-                this.handleError(error);
-            });
+        handleEdit() {
+            this.$emit('do-edit');
+        },
+        destroy() {
+            this.$emit('do-delete', { index: this.index, id: this.contact.id });
         },
     },
 };

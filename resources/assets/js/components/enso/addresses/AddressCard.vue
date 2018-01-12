@@ -63,12 +63,11 @@
 
 import { mapGetters } from 'vuex';
 import AddressModalForm from './AddressModalForm.vue';
-import Modal from '../bulma/Modal.vue';
 import Card from '../bulma/Card.vue';
 import Popover from '../bulma/Popover.vue';
 
 export default {
-    components: { AddressModalForm, Card, Modal, Popover },
+    components: { AddressModalForm, Card, Popover },
     props: {
         index: {
             type: Number,
@@ -82,8 +81,6 @@ export default {
 
     data() {
         return {
-            form: null,
-            showModal: false,
         };
     },
 
@@ -104,7 +101,6 @@ export default {
             this.$emit('do-edit');
         },
         destroy() {
-            this.showModal = false;
             this.$emit('do-delete', { index: this.index, id: this.address.id });
         },
     },

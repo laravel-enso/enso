@@ -1,5 +1,16 @@
 ## Enso Changelog
 
+### 2.0.29
+Various small fixes and cleanup for addresses
+
+Upgraded the contacts component to use the vue-form. New routes and permissions 
+were added and contacts structure migration has been changed (new edit and create permissions) 
+
+To upgrade, the following steps are necessary:
+* edit the migrations table record 2017_01_01_148000_create_structure_for_contacts, and set a high batch, say 999
+* execute once `php artisan migrate:rollback` (so only THAT migration will be rolled back)
+* execute `php artisan migrate`, so the new permissions will be inserted
+
 ### 2.0.28
 
 Upgrades the ios-switch to a new vue-switch component that is hosted in the formbuilder package

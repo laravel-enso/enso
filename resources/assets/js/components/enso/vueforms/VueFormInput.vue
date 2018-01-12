@@ -53,7 +53,7 @@
             <vue-switch v-model="field.value"
                 size="is-large"
                 type="is-success"
-                :readonly="field.meta.readonly"
+                :disabled="field.meta.disabled || field.meta.readonly"
                 @click="$emit('update')">
             </vue-switch>
         </span>

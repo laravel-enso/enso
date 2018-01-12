@@ -18,25 +18,28 @@
         </a>
         <div class="has-padding-medium contacts-wrapper">
             <div class="columns is-multiline">
+                <contact-form
+                        v-if="showForm"
+                        :action="action"
+                        :contactId="editingContactId"
+                        :type="type"
+                        :id="id"
+                        @form-close="showForm=false"
+                        @destroy="get(); showForm=false"
+                        @submit="get();showForm=false">
+                </contact-form>
+
                 <contact v-for="(contact, index) in filteredContacts"
                     class="column is-half-tablet is-one-third-widescreen"
                     :key="index"
                     :contact="contact"
-                    @delete="destroy($event)"
-                    @edit="edit($event)"
+                     @do-edit="handleEdit(contact)"
+                     @do-delete="destroy"
                     :index="index"
                     :type="type"
                     :id="id">
                 </contact>
             </div>
-            <contact-form :show="showForm"
-                v-if="showForm"
-                :contact="emptyContact()"
-                :type="type"
-                :id="id"
-                @closed="showForm=false"
-                @store="add($event);showForm=false">
-            </contact-form>
         </div>
     </card>
 
@@ -90,6 +93,8 @@ export default {
             query: '',
             contacts: [],
             showForm: false,
+            action: null,
+            editingContactId: null,
         };
     },
 
@@ -105,27 +110,30 @@ export default {
                 this.handleError(error);
             });
         },
-        emptyContact() {
-            return {
-                first_name: '',
-                last_name: '',
-                email: '',
-                phone: '',
-                obs: '',
-            };
-        },
         create() {
             if (this.$refs.card.collapsed) {
                 this.$refs.card.toggle();
             }
 
+            this.action = 'create';
             this.showForm = true;
         },
         add(contact) {
             this.contacts.push(contact);
         },
-        destroy(index) {
-            this.contacts.splice(index, 1);
+        destroy(payload) {
+            axios.delete(route('core.contacts.destroy', payload.id, false)).then(() => {
+                this.$parent.loading = false;
+                this.contacts.splice(payload.index, 1);
+            }).catch((error) => {
+                this.$parent.loading = false;
+                this.handleError(error);
+            });
+        },
+        handleEdit(contact) {
+            this.action = 'edit';
+            this.editingContactId = contact.id;
+            this.showForm = true;
         },
     },
 
