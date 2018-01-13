@@ -1,8 +1,9 @@
 ## Enso Changelog
 
-### 2.0.31
+### 2.0.32
 
 Package updates
+...
 
 ### 2.0.30
 

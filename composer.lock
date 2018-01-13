@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "213edc91e5b004588a175cdb31227d8f",
+    "content-hash": "f68ed94f564fd5ba1fa8c8ee3ece30a9",
     "packages": [
         {
             "name": "box/spout",
@@ -1197,16 +1197,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.1.9",
+            "version": "2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "c6a67ca2545c2505e09b68ea93ede209dd06d0d8"
+                "reference": "b44296776b9dc91acdf7d05fb192cac8c3788cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/c6a67ca2545c2505e09b68ea93ede209dd06d0d8",
-                "reference": "c6a67ca2545c2505e09b68ea93ede209dd06d0d8",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/b44296776b9dc91acdf7d05fb192cac8c3788cc0",
+                "reference": "b44296776b9dc91acdf7d05fb192cac8c3788cc0",
                 "shasum": ""
             },
             "require": {
@@ -1256,7 +1256,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-01-13T12:34:44+00:00"
+            "time": "2018-01-13T14:01:26+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
