@@ -27,3 +27,8 @@ $fa-font-path: '~font-awesome/fonts';
 .icon.angle {
     transition: transform .300s ease;
 }
+
+.button.is-naked {
+    background: 0;
+    border: none;
+}

@@ -2,21 +2,21 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters animated fadeIn"
-             v-if="initialised">
+            v-if="initialised">
             <vue-form :data="form"
-                      class="box">
+                class="box">
             </vue-form>
             <contacts :id="owner.id"
-                      type="owner">
+                type="owner">
             </contacts>
             <comments :id="owner.id"
-                      type="owner">
+                type="owner">
             </comments>
             <documents :id="owner.id"
-                       type="owner">
+                type="owner">
             </documents>
             <addresses :id="owner.id"
-                       type="owner">
+                type="owner">
             </addresses>
         </div>
     </div>
@@ -26,14 +26,14 @@
 <script>
 
 import Documents from '../../../components/enso/documents/Documents.vue';
-import Addresses from '../../../components/enso/addresses/Addresses.vue';
 import Comments from '../../../components/enso/comments/Comments.vue';
 import Contacts from '../../../components/enso/contacts/Contacts.vue';
+import Addresses from '../../../components/enso/addresses/Addresses.vue';
 import VueForm from '../../../components/enso/vueforms/VueForm.vue';
 
 export default {
     components: {
-        Comments, Contacts, Documents, VueForm, Addresses,
+        Comments, Contacts, Documents, Addresses, VueForm,
     },
 
     data() {

@@ -2,6 +2,6 @@
 
 return [
     'contactables' => [
-        'owner' => 'App\Owner',
+        'owner' => App\Owner::class,
     ],
 ];

@@ -3,6 +3,6 @@
 return [
     'editableTimeLimitInHours' => 24,
     'commentables' => [
-        'owner' => 'App\Owner',
+        'owner' => App\Owner::class,
     ],
 ];
