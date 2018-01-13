@@ -3,11 +3,9 @@
         <div class="modal is-active">
             <div class="modal-background"></div>
             <div class="modal-content">
-
-                <span class="icon is-pulled-right">
-                  <i class="fa fa-times close-button" @click="close"></i>
-                </span>
-
+                <a class="delete is-pulled-right has-margin-top-medium has-margin-right-medium"
+                    @click="close">
+                </a>
                 <vue-form
                         @destroy="$emit('destroy')"
                         @submit="$emit('submit')"
@@ -16,7 +14,6 @@
                         :params="params"
                         :data="form">
                 </vue-form>
-
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
@@ -96,19 +93,3 @@ export default {
 };
 
 </script>
-
-<style>
-    .close-button {
-        z-index: 1;
-        position: relative;
-        cursor: hand;
-    }
-
-    .modal.is-active {
-        z-index: 1100;
-    }
-
-    .modal-content {
-        width: 80%;
-    }
-</style>

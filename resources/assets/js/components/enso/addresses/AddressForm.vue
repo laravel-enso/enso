@@ -3,6 +3,7 @@
     <transition enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut">
         <div class="modal is-active">
+            <div class="modal-background"></div>
             <div class="modal-content">
                 <a class="delete is-pulled-right has-margin-top-medium has-margin-right-medium"
                     @click="$emit('form-close')">
