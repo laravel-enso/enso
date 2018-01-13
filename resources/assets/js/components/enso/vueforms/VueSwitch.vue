@@ -1,15 +1,13 @@
 <template>
 
-    <label class="vue-switch" :class="[size, type, { 'checked': value }]">
-        <input
-        ref="input"
-        type="checkbox"
-        class="checkbox"
-        v-model="checked"
-        @change="$emit('input', checked)"
-        :disabled="disabled"
-        :required="required"
-        :checked="value">
+    <label class="vue-switch" :class="[size, type, { 'checked': value, 'disabled': disabled }]">
+        <input type="checkbox"
+            class="checkbox"
+            v-model="checked"
+            @change="$emit('input', checked)"
+            :disabled="disabled"
+            :required="required"
+            :checked="value">
     </label>
 
 </template>
@@ -20,6 +18,7 @@ const sizes = ['is-small', 'is-medium', 'is-large'];
 const types = ['is-primary', 'is-warning', 'is-danger', 'is-success', 'is-info'];
 
 export default {
+    name: 'VueSwitch',
 
     props: {
         disabled: {
@@ -78,6 +77,9 @@ export default {
 
     input {
         opacity: 0;
+        display: inline-flex;
+        width: 100%;
+        height: 100%;
     }
 
     position: relative;
@@ -131,6 +133,12 @@ export default {
             &.checked {
                 border-color: $color;
                 background-color: $color;
+
+                &.disabled {
+                    border-color: lighten($color, 25%);
+                    background-color: lighten($color, 25%);
+                    cursor: not-allowed;
+                }
             }
         }
     }
@@ -145,4 +153,5 @@ export default {
         --height: $size-large;
     }
 }
+
 </style>

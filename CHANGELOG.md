@@ -1,5 +1,15 @@
 ## Enso Changelog
 
+### 2.0.30
+
+refactors the addresses routes
+
+To upgrade do the following steps:
+* update the migration batch number for `2017_12_07_150655_create_structure_for_addresses` to the latest batch + 1
+* run `php artisan migrate:rollback`
+* run `php artisan migrate`
+* ensure that all the roles have the permissions set correctly
+
 ### 2.0.29
 Various small fixes and cleanup for addresses
 
@@ -10,6 +20,7 @@ To upgrade, the following steps are necessary:
 * edit the migrations table record 2017_01_01_148000_create_structure_for_contacts, and set a high batch, say 999
 * execute once `php artisan migrate:rollback` (so only THAT migration will be rolled back)
 * execute `php artisan migrate`, so the new permissions will be inserted
+* ensure that all the roles have the permissions set correctly
 
 ### 2.0.28
 
