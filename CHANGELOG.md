@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+#### 2.0.34
+
+Package updates
+
 ### 2.0.33
 
 #### Core
