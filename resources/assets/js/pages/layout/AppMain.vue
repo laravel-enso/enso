@@ -28,7 +28,7 @@
 
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import Nprogress from '../../components/enso/nprogress/Nprogress.vue';
-import Navbar from './Navbar.vue';
+import Navbar from './navbar/Navbar.vue';
 import Sidebar from './sidebar/Sidebar.vue';
 import Settings from './settings/Settings.vue';
 import AppFooter from './AppFooter.vue';
@@ -68,18 +68,19 @@ export default {
     },
 
     methods: {
-        ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile']),
+        ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
         ...mapActions(['setState']),
         addTabletBreakpointListener() {
             const { body } = document;
-            const TabletWidth = 1007;
-            const MobileWidth = 768;
+            const TabletMaxWidth = 1023;
+            const MobileMaxWidth = 768;
 
             const handler = () => {
                 if (!document.hidden) {
                     const rect = body.getBoundingClientRect();
-                    this.setIsTablet(rect.width <= TabletWidth);
-                    this.setIsMobile(rect.width <= MobileWidth);
+                    this.setIsTablet(rect.width <= TabletMaxWidth);
+                    this.setIsMobile(rect.width <= MobileMaxWidth);
+                    this.setIsTouch(rect.width <= TabletMaxWidth || rect.width <= MobileMaxWidth);
                 }
             };
 
@@ -114,7 +115,7 @@ export default {
 
     .app-main {
         opacity: 1;
-        transition: opacity .25s ease;
+        transition: opacity .5s ease;
     }
 
     .app-main.lights-off {
@@ -123,13 +124,13 @@ export default {
 
     .main-content {
         position: relative;
-        padding-top: 50px;
+        z-index: 1;
+        margin-top: 50px;
         margin-left: 180px;
-        transition: margin .5s ease;
-        transition: padding-top .25s ease;
+        transition: margin .5s;
     }
 
-    @media screen and (max-width: 1007px) {
+    @media screen and (max-width: 1023px) {
         .main-content {
             margin-left: 0;
         }

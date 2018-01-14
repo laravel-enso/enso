@@ -103,7 +103,7 @@ export default {
             password: null,
             passwordConfirmation: null,
             token: this.$route.params.token,
-            hasErrors: null,
+            hasErrors: false,
             isSuccessful: false,
         };
     },
@@ -151,13 +151,19 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 422) {
-                    if (data.errors.email) {
-                        toastr.error(data.errors.email);
+                    if (data.errors) {
+                        if (data.errors.email) {
+                            toastr.error(data.errors.email);
+                        }
+
+                        if (data.errors.password) {
+                            toastr.error(data.errors.password);
+                        }
+
+                        return;
                     }
 
-                    if (data.errors.password) {
-                        toastr.error(data.errors.password);
-                    }
+                    toastr.error(data.message);
 
                     return;
                 }

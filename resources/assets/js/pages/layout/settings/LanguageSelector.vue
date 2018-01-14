@@ -1,5 +1,5 @@
 <template>
-    <div class="level">
+    <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
                 {{ title }}

@@ -1,6 +1,6 @@
 <template>
 
-	<vue-aside class="aside settings">
+    <vue-aside class="settings">
         <p class="menu-label has-text-centered">
             {{ __("Settings") }}
         </p>
@@ -58,12 +58,16 @@ export default {
 
 <style>
 
-    .aside.settings {
+    div.aside.settings {
         right: 0;
     }
 
     li.settings-item .level-item {
         padding: 6px;
+    }
+
+    li.settings-item .level-right .level-item {
+        margin-right: unset;
     }
 
     .aside .dropdown .dropdown-menu {

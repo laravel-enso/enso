@@ -1,6 +1,6 @@
 <template>
 
-    <div class="level settings">
+    <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
                 {{ title }}
@@ -8,7 +8,7 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-            	<span class="button is-info is-small"
+                <span class="button is-info is-small"
                     @click="get()">
                     <i class="is-icon fa fa-question is-clickable"></i>
                 </span>

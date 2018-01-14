@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+#### 2.0.35
+
+Lots of visual improvements and layout fixes.
+Adds profile menu link on touch devices.
+
 #### 2.0.34
 
 Package updates

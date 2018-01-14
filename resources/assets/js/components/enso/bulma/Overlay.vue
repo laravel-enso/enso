@@ -13,6 +13,7 @@
 <script>
 
 export default {
+    name: 'Overlay',
 
     props: {
         size: {

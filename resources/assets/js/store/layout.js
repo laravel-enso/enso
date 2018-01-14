@@ -7,6 +7,7 @@ export const state = {
     lightsOff: false,
     isMobile: false,
     isTablet: false,
+    isTouch: false,
 };
 
 export const getters = {
@@ -18,7 +19,7 @@ export const getters = {
 export const mutations = {
     setThemes: (state, themes) => { state.themes = themes; },
     setThemeParams() {
-        const height = document.getElementById('app-navbar').clientHeight;
+        const height = document.querySelector('.app-navbar').clientHeight;
         const menuAside = document.querySelector('.menu.aside');
         const settingsAside = document.querySelector('.settings.aside');
         const mainContent = document.querySelector('section.main-content');
@@ -27,7 +28,7 @@ export const mutations = {
 
         menuAside.style.top = `${height}px`;
         settingsAside.style.top = `${height}px`;
-        mainContent.style['padding-top'] = `${height}px`;
+        mainContent.style['margin-top'] = `${height}px`;
         pageContent.style['min-height'] = `${window.innerHeight - height - footer.clientHeight}px`;
     },
     toggleLights(state) {
@@ -35,6 +36,7 @@ export const mutations = {
     },
     setIsMobile: (state, isMobile) => { state.isMobile = isMobile; },
     setIsTablet: (state, isTablet) => { state.isTablet = isTablet; },
+    setIsTouch: (state, isTouch) => { state.isTouch = isTouch; },
 };
 
 export const actions = {

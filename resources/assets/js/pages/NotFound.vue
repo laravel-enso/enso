@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="error-container">
-            <div class="error-title">404</div>
+        <div class="error-container has-text-grey">
+            <div class="error-title">Page Not Found</div>
         </div>
     </div>
 </template>
@@ -20,25 +20,12 @@ export default {
         display:flex;
         justify-content: center;
         align-items: center;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        color: #6e7679;
+        height: 50%;
         font-weight: 100;
-        font-family: 'Raleway', sans-serif;
     }
 
     .error-title {
-        font-size: 90px;
-    }
-
-    .error-content {
-        font-size: 40px;
-    }
-
-    .error-details {
-        font-size: 30px;
+        font-size: 5rem;
     }
 
 </style>

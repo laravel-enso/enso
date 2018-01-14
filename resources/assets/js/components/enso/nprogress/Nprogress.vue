@@ -1,13 +1,14 @@
-<template></template>
+<template>
+
+    <div></div>
+
+</template>
 
 <script>
 
 import nprogress from 'nprogress';
 
-nprogress.configure({
-    template: '<div class="bar" role="bar"><div class="peg"></div></div>',
-    showSpinner: false,
-});
+nprogress.configure({ showSpinner: false });
 
 export default {
     name: 'Nprogress',
@@ -15,73 +16,73 @@ export default {
     data() {
         return {
             nprogress,
-            latency: 50,
-            requests: null,
-            responses: null,
+            latency: 100,
+            requests: 0,
+            responses: 0,
         };
     },
 
     created() {
-        this.init();
-
-        axios.interceptors.request.use((config) => {
-            this.addRequest();
-            return config;
-        });
-
-        axios.interceptors.response.use((response) => {
-            this.addResponse();
-            return response;
-        }, (error) => {
-            this.addResponse();
-            return Promise.reject(error);
-        });
-
-        this.$router.beforeEach((route, from, next) => {
-            this.addRequest();
-            next();
-        });
-
-        this.$router.afterEach(() => {
-            const self = this;
-            setTimeout(() => self.addResponse(), 1000);
-        });
+        this.setAxios();
+        this.setRouter();
+        this.listen();
     },
 
     methods: {
-        init() {
+        setAxios() {
+            axios.interceptors.request.use((config) => {
+                this.incRequests();
+                return config;
+            });
+
+            axios.interceptors.response.use((response) => {
+                this.incResponses();
+                return response;
+            }, (error) => {
+                this.incResponses();
+                return Promise.reject(error);
+            });
+        },
+        setRouter() {
+            this.$router.beforeEach((route, from, next) => {
+                this.incRequests();
+                next();
+            });
+
+            this.$router.afterEach(() => {
+                const self = this;
+                setTimeout(() => self.incResponses(), 1200);
+            });
+        },
+        listen() {
+            this.$bus.$on('nprogress-add-request', () => this.incRequests());
+            this.$bus.$on('nprogress-add-response', () => this.incResponses());
+            this.$bus.$on('nprogress-done', () => this.done());
+        },
+        reset() {
             this.requests = 0;
             this.responses = 0;
         },
-
         done() {
             this.nprogress.done();
-            this.init();
+            this.reset();
         },
-
-        addRequest() {
+        incRequests() {
             this.requests++;
             this.update();
         },
-
-        addResponse() {
+        incResponses() {
             setTimeout(() => {
                 this.responses++;
+
                 return this.responses >= this.requests
                     ? this.done()
                     : this.update();
             }, this.latency);
         },
-
         update() {
-            this.nprogress.set((this.responses / this.requests) - 0.1);
+            this.nprogress.set(this.responses / this.requests - 0.1);
         },
-    },
-
-    mounted() {
-        this.$bus.$on('nprogress-add-request', () => this.addRequest());
-        this.$bus.$on('nprogress-add-response', () => this.addResponse());
-        this.$bus.$on('nprogress-done', () => this.done());
     },
 };
 
@@ -89,23 +90,19 @@ export default {
 
 <style>
 
-    #nprogress {
-        pointer-events: none;
-    }
-
     #nprogress .bar {
         background: #f44336;
-        box-shadow: 0 1px 5px #888888;
+        box-shadow: 0 0 5px #f44336;
         position: fixed;
         z-index: 1051;
         top: 0;
         left: 0;
         width: 100%;
-        height: 3px;
+        height: 2px;
     }
 
     #nprogress .peg {
-        display: block;
+        display:block;
         position: absolute;
         right: 0px;
         width: 100px;

@@ -66,7 +66,7 @@ export default {
         z-index: 1;
     }
 
-    @media screen and (max-width: 1007px) {
+    @media screen and (max-width: 1023px) {
         .footer {
             margin-left: 0;
         }

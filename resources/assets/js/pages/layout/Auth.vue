@@ -30,12 +30,6 @@ export default {
         };
     },
 
-    beforeCreate() {
-        if (this.$route.path === '/') {
-            this.$router.replace({ name: 'login' });
-        }
-    },
-
     created() {
         axios.get('/api/getAppName').then(({ data }) => {
             this.appName = data;

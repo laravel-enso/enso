@@ -60,7 +60,7 @@ export default {
         return {
             loading: false,
             email: null,
-            hasErrors: null,
+            hasErrors: false,
             isSuccessful: false,
         };
     },
@@ -90,7 +90,16 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 422) {
-                    toastr.error(data.errors.email);
+                    if (data.errors) {
+                        if (data.errors.email) {
+                            toastr.error(data.errors.email);
+                        }
+
+                        return;
+                    }
+
+                    toastr.error(data.message);
+
                     return;
                 }
 

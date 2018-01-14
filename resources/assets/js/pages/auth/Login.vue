@@ -104,7 +104,7 @@ export default {
             email: '',
             password: '',
             remember: false,
-            hasErrors: null,
+            hasErrors: false,
             isSuccessful: false,
         };
     },
@@ -133,7 +133,7 @@ export default {
                 this.loading = false;
                 this.isSuccessful = true;
                 setTimeout(() => {
-                    this.login(this.remember);
+                    this.login();
                     this.$emit('login');
 
                     if (!this.lastRoute) {
@@ -156,7 +156,7 @@ export default {
                 }
 
                 if (status === 422) {
-                    toastr.error(data.messge);
+                    toastr.error(data.message);
                     return;
                 }
 

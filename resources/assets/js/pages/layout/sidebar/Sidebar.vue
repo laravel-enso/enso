@@ -1,6 +1,6 @@
 <template>
 
-    <vue-aside class="menu aside">
+    <vue-aside class="menu">
         <p class="menu-label has-text-centered">
             {{ __("Main Menu") }}
         </p>
@@ -14,13 +14,13 @@
 <script>
 
 import { mapGetters, mapState, mapMutations } from 'vuex';
-import VueAside from '../VueAside.vue';
 import Menus from './Menus.vue';
+import VueAside from '../VueAside.vue';
 
 export default {
     name: 'Sidebar',
 
-    components: { VueAside, Menus },
+    components: { Menus, VueAside },
 
     computed: {
         ...mapGetters('locale', ['__']),
@@ -37,7 +37,7 @@ export default {
             const self = this;
 
             menus.forEach((menu) => {
-                if (menu.children.length && self.hasSelectedChild(menu)) {
+                if (self.hasSelectedChild(menu)) {
                     self.toggle(menu);
                     self.expandMenu(menu.children);
                 }
@@ -54,9 +54,7 @@ export default {
 
                 if (active) return;
 
-                if (child.children.length) {
-                    active = self.hasSelectedChild(child);
-                }
+                active = self.hasSelectedChild(child);
             });
 
             return active;
@@ -64,19 +62,11 @@ export default {
         isActive(menu) {
             return this.$route.matched.map(route => route.name).includes(menu.link) ||
                 (this.$route.matched.length > 1
-                    && this.$route.matched.map(route => route.path)[this.$route.matched.length - 2] ===
-                    `/${menu.link.split('.').slice(0, -1).join('/')}`
+                    && this.$route.matched.map(route =>
+                        route.path)[this.$route.matched.length - 2] === `/${menu.link.split('.').slice(0, -1).join('/')}`
                 );
         },
     },
 };
 
 </script>
-
-<style>
-
-    .aside.menu {
-        left: 0;
-    }
-
-</style>

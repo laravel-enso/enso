@@ -1,6 +1,6 @@
 <template>
 
-	<div class="level has-margin-top-small">
+    <div class="level">
         <div class="level-left is-hidden-mobile">
             <div class="level-item">
                 <transition

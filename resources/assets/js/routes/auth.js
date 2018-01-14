@@ -1,5 +1,4 @@
 import store from '../store';
-import router from '../router';
 
 const Login = () => import('../pages/auth/Login.vue');
 const Email = () => import('../pages/auth/password/Email.vue');
@@ -7,10 +6,9 @@ const Reset = () => import('../pages/auth/password/Reset.vue');
 
 const redirect = (to, from, next) => {
     if (store.getters['auth/isAuth']) {
-        router.replace({
-            path: '/',
-        });
+        next({ path: '/' });
     }
+
     next();
 };
 
