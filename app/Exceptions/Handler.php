@@ -3,12 +3,13 @@
 namespace App\Exceptions;
 
 use Exception;
+use LaravelEnso\Helpers\app\Exceptions\EnsoException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
     protected $dontReport = [
-        \LaravelEnso\Core\app\Exceptions\EnsoException::class,
+        EnsoException::class,
     ];
 
     protected $dontFlash = [

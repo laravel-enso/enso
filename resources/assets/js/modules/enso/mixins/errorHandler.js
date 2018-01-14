@@ -14,7 +14,7 @@ Vue.mixin({
                 return this.$router.push({ name: 'login' });
             }
 
-            if ([403, 409, 429, 455].includes(status)) {
+            if ([403, 409, 429, 555].includes(status)) {
                 return toastr.error(data.message);
             }
 

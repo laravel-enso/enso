@@ -25,13 +25,13 @@
                             <i class="fa fa-eye"></i>
                         </span>
                     </button>
-                    <button class="button is-naked has-margin-right-small"
+                    <a class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         :href="downloadLink">
                         <span class="icon">
                             <i class="fa fa-cloud-download"></i>
                         </span>
-                    </button>
+                    </a>
                     <popover placement="bottom"
                         v-if="doc.isDeletable"
                         @confirm="$emit('delete')"

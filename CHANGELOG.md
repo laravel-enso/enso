@@ -1,5 +1,41 @@
 ## Enso Changelog
 
+### 2.0.33
+
+#### Core
+The custom code for all Enso Exceptions is now 555 instead of 455.
+Removes unused `ProfilePageController` structure.
+Renames `LogsSuccessfulLoginListener` to `LoginLoggerListener`
+Fixes redirect to login page after logout
+
+#### DataImport
+Refactors the config. Refactor error reporting and adds missing translations.
+
+#### FileManager
+Updates the folder structure to follow Laravel format. Improves the interface of the `FileManager` class.
+
+#### Helpers
+Updates the folder structure to follow Laravel format.
+Moves `EnsoException` class to the Helpers package.
+`EnsoException` is excepted from the Handler's report method and therefor is extended by all the project's custom exceptions.
+
+#### Select
+Refactors the main class
+
+#### VueComponents
+Fixes the file uploader when consecutive multiple uploads are needed
+Fixes documents download
+
+#### General
+Adds custom exceptions that extend `EnsoException` were the latter was previously used. Improves the error reporting  localisation.
+Refactor and clean up code in migrations, Controllers / Services.
+
+
+#### Upgrade instructions:   
+ - remove manually the `administration.users.updateProfile` route from the permissions menu
+ - rename the dataimport config file from `importing.php` to `imports.php`. Remove `validationLabels` entry from `imports.php`. Place configs at the parent level - follow the format of the config from the package.
+ - update the namespace for the classes provided by the helpers package: `Obj`, `Enum`, `IsActive` trait and `EnsoException`
+
 ### 2.0.32
 
 Package updates

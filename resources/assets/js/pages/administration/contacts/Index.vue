@@ -8,9 +8,9 @@
         </vue-table>
         <contact-form :show="showForm"
             v-if="showForm"
-            :edit-mode="true"
-            :contact="contact"
-            @closed="showForm=false;contact={};"
+            action="edit"
+            :contact-id="contact.id"
+            @form-close="showForm=false;contact={};$refs.contacts.getData()"
             @update="update()">
         </contact-form>
     </div>

@@ -25,6 +25,6 @@ export const actions = {
         commit('setAuth', false);
         localStorage.removeItem('auth');
         commit('setMeta', {}, { root: true });
-        router.replace({ name: 'login' });
+        router.push({ name: 'login' });
     },
 };

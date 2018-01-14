@@ -15,7 +15,6 @@
                         :data="form">
                 </vue-form>
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </transition>
 </template>
@@ -62,12 +61,16 @@ export default {
         },
     },
 
+    created() {
+        this[this.action]();
+    },
+
     methods: {
         close() {
             this.form = null;
             this.$emit('form-close');
         },
-        getEditForm() {
+        edit() {
             axios.get(route('core.contacts.edit', this.contactId, false)).then(({ data }) => {
                 this.$emit('form-loaded', data);
                 this.form = data.editForm;
@@ -75,7 +78,7 @@ export default {
                 this.handleError(error);
             });
         },
-        getCreateForm() {
+        create() {
             const params = { contactable_id: this.id, contactable_type: this.type };
             axios.get(route('core.contacts.create', params, false)).then(({ data }) => {
                 this.form = data.createForm;
@@ -83,12 +86,6 @@ export default {
                 this.handleError(error);
             });
         },
-    },
-
-    mounted() {
-        this.$nextTick(() => {
-            this.action === 'create' ? this.getCreateForm() : this.getEditForm();
-        });
     },
 };
 

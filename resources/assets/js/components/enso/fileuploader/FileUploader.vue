@@ -7,6 +7,7 @@
                 <input :multiple="multiple"
                     class="file-input hidden"
                     type="file"
+                    ref="input"
                     @change="upload">
                     <slot name="upload-button"
                         :open-file-browser="openFileBrowser"
@@ -53,23 +54,23 @@ export default {
 
     methods: {
         openFileBrowser() {
-            this.input.click();
+            this.$refs.input.click();
         },
         upload() {
             this.$emit('upload-start');
             this.setFormData();
 
             axios.post(this.url, this.formData).then((response) => {
-                this.resetForm();
+                this.reset();
                 this.$emit('upload-successful', response.data);
             }).catch((error) => {
-                this.resetForm();
+                this.reset();
                 this.$emit('upload-error');
                 this.handleError(error);
             });
         },
         setFormData() {
-            const { files } = this.input;
+            const { files } = this.$refs.input;
             this.addFiles(files);
             this.addParams();
         },
@@ -99,13 +100,10 @@ export default {
 
             return true;
         },
-        resetForm() {
+        reset() {
             this.$el.reset();
+            this.formData = new FormData();
         },
-    },
-
-    mounted() {
-        this.input = this.$el.querySelector('input');
     },
 };
 

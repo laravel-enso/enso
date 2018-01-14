@@ -148,7 +148,7 @@ export default {
                 this.get();
             }).catch((error) => {
                 this.loading = false;
-                this.reportEnsoException(error);
+                this.handleError(error);
             });
         },
         get() {

@@ -172,7 +172,6 @@ Are loaded at application load, and refreshed as needed
 &nbsp;
 #### Exceptions
 - when needed, the exceptions thrown are as specific as possible. 
-- a pseudo generic exception, `EnsoException`, is also available. \EnsoException is also a Facade.
 - since requests are supposed to be ajax, JSON responses are given back 
 
 ### Thanks
