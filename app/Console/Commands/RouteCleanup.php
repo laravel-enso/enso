@@ -21,7 +21,7 @@ class RouteCleanup extends Command
     {
         Permission::whereIn('name', $this->permissions)->each(function ($permission) {
             $permission->update([
-                'name' => str_replace('getOptionList', 'selectOptions', $permission->name)
+                'name' => str_replace('getOptionList', 'selectOptions', $permission->name),
             ]);
         });
 
