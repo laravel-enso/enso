@@ -3,8 +3,7 @@
     <tbody>
         <tr v-for="(row, index) in body.data"
             :key="index">
-            <td
-                :class="template.align"
+            <td :class="template.align"
                 v-if="template.crtNo && !isChild(row)">
                 <div class="table-crt-no">
                     {{ getIndex(row) }}
