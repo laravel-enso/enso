@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.3
+Fixes VueDatatable nrcrt alignment.
+
 ### 2.1.2
 Package updates
 

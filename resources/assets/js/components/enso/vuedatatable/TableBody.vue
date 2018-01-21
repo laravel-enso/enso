@@ -6,16 +6,18 @@
             <td :class="template.align"
                 v-if="template.crtNo && !isChild(row)">
                 <div class="table-crt-no">
-                    {{ getIndex(row) }}
+                    <span class="crt-no-label">
+                        {{ getIndex(row) }}
+                    </span>
                     <span class="hidden-controls"
                         v-if="hiddenCount"
                         @click="toggleExpand(row, index)">
                         <span class="icon is-small"
-                            v-if="isExpanded(row)">
+                            v-show="isExpanded(row)">
                             <i class="fas fa-minus-square"></i>
                         </span>
                         <span class="icon is-small"
-                            v-else>
+                            v-show="!isExpanded(row)">
                             <i class="fas fa-plus-square"></i>
                         </span>
                     </span>
@@ -237,6 +239,10 @@ export default {
     div.table-crt-no {
         white-space:nowrap;
         display: flex;
+
+        .crt-no-label {
+            margin: auto;
+        }
 
         .hidden-controls {
             cursor: pointer;
