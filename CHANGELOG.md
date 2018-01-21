@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.1
+Fixes Role.php permissions and menus syncing.
+Upgrades VueDatatable to the fa5 version.
+
 ### 2.1.0
 
 #### General
