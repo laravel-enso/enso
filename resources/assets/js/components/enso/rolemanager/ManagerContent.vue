@@ -2,7 +2,8 @@
 
     <div class="columns is-multiline has-padding-medium">
         <div class="column is-half"
-            v-for="entry in groupData">
+            v-for="(entry, index) in groupData"
+                :key="index">
             <div class="field">
                 <input type="checkbox"
                     :id="'checkbox-' + entry.name"
@@ -15,10 +16,9 @@
                             {{ entry.description || entry.name }}
                         </span>
                         <span class="icon has-text-info"
-                            v-if="entry.default">
-                            <i class="is-icon fa fa-exclamation-triangle"
-                                v-tooltip="__('Default')">
-                            </i>
+                            v-if="entry.default"
+                            v-tooltip="__('Default')">
+                            <i class="is-icon fas fa-exclamation-triangle"></i>
                         </span>
                     </label>
             </div>

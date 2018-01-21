@@ -2,7 +2,7 @@
     <a class="navbar-item"
         @click="$store.commit('layout/settingsBar/toggle')">
         <span class="icon is-small">
-            <i class="fa fa-gears">
+            <i class="fas fa-cogs">
             </i>
         </span>
     </a>

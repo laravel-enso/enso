@@ -14,7 +14,7 @@
                             type="text">
                         <span class="icon is-small is-right"
                             v-if="props.errors.has('icon')">
-                            <i class="fa fa-warning"></i>
+                            <i class="fas fa-exclamation-triangle"></i>
                         </span>
                         <span class="icon is-small is-right"
                             v-else>

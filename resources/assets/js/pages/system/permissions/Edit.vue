@@ -26,8 +26,8 @@ export default {
     },
 
     created() {
-        axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
-            this.form = response.data.form;
+        axios.get(route(this.$route.name, this.$route.params.id, false)).then(({ data }) => {
+            this.form = data.form;
             this.initialised = true;
         }).catch(error => this.handleError(error));
     },

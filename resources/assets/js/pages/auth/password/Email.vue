@@ -17,15 +17,15 @@
                         placeholder="Email"
                         v-model="email">
                     <span class="icon is-small is-left">
-                        <i class="fa fa-envelope"></i>
+                        <i class="fas fa-envelope"></i>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fa fa-check"></i>
+                        <i class="fas fa-check"></i>
                     </span>
                     <span class="icon is-small is-right has-text-error"
                         v-if="hasErrors">
-                        <i class="fa fa-warning has-text-danger"></i>
+                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
                     </span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     type="submit"
                     @click.prevent="submit()">
                     <span class="icon is-small">
-                        <i class="fa fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                     <span>Send a reset passworkd link</span>
                 </button>

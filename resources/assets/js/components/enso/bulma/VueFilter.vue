@@ -7,7 +7,8 @@
         <div class="tabs is-toggle is-fullwidth is-small vue-filter">
             <ul>
                 <li :class="{ 'is-active': option.value === value }"
-                    v-for="option in options">
+                    v-for="(option, index) in options"
+                    :key="index">
                     <a v-html="option.label"
                         @click="update(option.value)">
                     </a>
@@ -17,7 +18,7 @@
                     <a @click="update(null)">
                         <span class="icon is-small"
                             :class="{ 'has-text-danger': value === null, 'has-text-success': value !== null }">
-                            <i class="fa fa-power-off"></i>
+                            <i class="fas fa-power-off"></i>
                         </span>
                         <span>{{ __('Off') }}</span>
                     </a>

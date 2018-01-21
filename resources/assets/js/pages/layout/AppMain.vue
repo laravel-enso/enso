@@ -111,15 +111,15 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     .app-main {
-        opacity: 1;
-        transition: opacity .5s ease;
-    }
+        &.lights-off {
+            opacity: 0;
+        }
 
-    .app-main.lights-off {
-        opacity: 0;
+        opacity: 1;
+        transition: opacity .1s ease;
     }
 
     .main-content {

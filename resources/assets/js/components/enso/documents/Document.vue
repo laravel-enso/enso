@@ -6,7 +6,7 @@
         <div class="level-left">
             <div class="level-item">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fa fa-file-o"></i>
+                    <i class="fas fa-file"></i>
                 </span>
                 <span>
                     {{ doc.original_name }}
@@ -22,14 +22,14 @@
                         v-if="doc.isDownloadable"
                         @click="show">
                         <span class="icon">
-                            <i class="fa fa-eye"></i>
+                            <i class="fas fa-eye"></i>
                         </span>
                     </button>
                     <a class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         :href="downloadLink">
                         <span class="icon">
-                            <i class="fa fa-cloud-download"></i>
+                            <i class="fas fa-cloud-download-alt"></i>
                         </span>
                     </a>
                     <popover placement="bottom"
@@ -39,7 +39,7 @@
                         @hide="dialog = controls = false">
                         <button class="button is-naked has-margin-right-medium">
                             <span class="icon">
-                                <i class="fa fa-trash-o"></i>
+                                <i class="fas fa-trash-alt"></i>
                             </span>
                         </button>
                     </popover>
@@ -47,26 +47,26 @@
                         trigger="hover"
                         placement="top">
                         <span class="icon has-margin-right-small">
-                            <i class="fa fa-info-circle">
+                            <i class="fas fa-info-circle">
                             </i>
                         </span>
                         <template slot="popover">
                             <div class="info">
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fa fa-user"></i>
+                                        <i class="fas fa-user"></i>
                                     </span>
                                     {{ doc.owner.fullName }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fa fa-calendar"></i>
+                                        <i class="fas fa-calendar-alt"></i>
                                     </span>
                                     {{ this.$options.filters.timeFromNow(this.doc.created_at) }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fa fa-database"></i>
+                                        <i class="fas fa-database"></i>
                                     </span>
                                     {{ this.$options.filters.numberFormat(this.doc.size) }} Kb
                                 </p>

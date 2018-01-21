@@ -14,6 +14,10 @@ class Owner extends Owners
 
     protected $fillable = ['name', 'description', 'is_active'];
 
+    protected $attributes = ['is_active' => false];
+
+    protected $casts = ['is_active' => 'boolean'];
+
     public function users()
     {
         return $this->hasMany('App\User');

@@ -14,12 +14,21 @@
                 <span>
                     {{ i18n(column.label) }}
                     <span class="table-header-controls">
-                        <span class="icon is-small"
+                        <span class="sorter"
                             @click="toggleSort($event, column)"
                             v-if="column.meta.sortable">
-                            <i v-if="!column.meta.sort" class="fa fa-sort"></i>
-                            <i v-else-if="column.meta.sort === 'ASC'" class="fa fa-sort-asc"></i>
-                            <i v-else class="fa fa-sort-desc"></i>
+                            <span class="icon is-small"
+                                v-show="!column.meta.sort">
+                                <i class="fas fa-sort fa-xs"></i>
+                            </span>
+                            <span class="icon is-small"
+                                v-show="column.meta.sort === 'ASC'">
+                                <i class="fas fa-sort-up fa-xs"></i>
+                            </span>
+                            <span class="icon is-small"
+                                v-show="column.meta.sort === 'DESC'">
+                                <i class="fas fa-sort-down fa-xs"></i>
+                            </span>
                         </span>
                         <a class="delete is-small"
                             v-if="column.meta.sort"
@@ -84,21 +93,22 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     th.vue-table-header {
         white-space:nowrap;
         align-content: center;
     }
 
-    .table-header-controls .fa-sort,
-    .table-header-controls .fa-times {
-        font-weigth: 100;
-        opacity: 0.4;
-    }
+    .table-header-controls {
+        .sorter {
+            cursor: pointer;
+            opacity: 0.5;
 
-    .table-header-controls .fa-times:hover {
-        opacity: 1;
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 
 </style>

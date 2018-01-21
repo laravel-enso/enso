@@ -8,33 +8,19 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <div class="dropdown is-right"
-                    v-click-outside="hide"
-                    :class="{ 'is-active': show }"
-                    @click="show=!show">
-                    <div class="dropdown-trigger">
-                        <button class="button theme-selector"
-                            aria-haspopup="true"
-                            aria-controls="dropdown-menu">
-                            <span>{{ theme }}</span>
-                            <span class="icon angle is-small"
-                                 :aria-hidden="show">
-                                <i class="fa fa-angle-up"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" role="menu">
-                        <div class="dropdown-content theme-list has-text-centered">
-                            <a v-for="(href, key) in themes"
-                                :key="key"
-                                class="dropdown-item"
-                                :class="{ 'is-active': key === theme }"
-                                @click="update(key)">
-                                {{ key }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <dropdown class="is-right"
+                    :height="250">
+                    <span slot="label">
+                        {{ theme }}
+                    </span>
+                    <a v-for="(href, key) in themes"
+                        :key="key"
+                        class="dropdown-item"
+                        :class="{ 'is-active': key === theme }"
+                        @click="update(key)">
+                        {{ key }}
+                    </a>
+                </dropdown>
             </div>
         </div>
     </div>
@@ -44,14 +30,12 @@
 <script>
 
 import { mapState, mapGetters, mapActions } from 'vuex';
-import vClickOutside from 'v-click-outside';
+import Dropdown from '../../../components/enso/bulma/Dropdown.vue';
 
 export default {
     name: 'ThemeSelector',
 
-    directives: {
-        clickOutside: vClickOutside.directive,
-    },
+    components: { Dropdown },
 
     props: {
         title: {
@@ -65,17 +49,8 @@ export default {
         ...mapGetters('layout', ['theme']),
     },
 
-    data() {
-        return {
-            show: false,
-        };
-    },
-
     methods: {
         ...mapActions('layout', ['switchTheme']),
-        hide() {
-            this.show = false;
-        },
         update(theme) {
             if (theme === this.theme) {
                 return;

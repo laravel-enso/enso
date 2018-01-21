@@ -25,7 +25,7 @@
                         v-if="comment.isEditable"
                         @click="originalBody=comment.body;">
                         <span class="icon is-small has-text-grey">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fas fa-pencil-alt"></i>
                         </span>
                     </button>
                     <popover placement="bottom-end"
@@ -36,7 +36,7 @@
                         <button class="button is-naked is-small"
                             @click="dialog=true">
                             <span class="icon is-small has-text-grey">
-                                <i class="fa fa-trash-o"></i>
+                                <i class="fas fa-trash-alt"></i>
                             </span>
                         </button>
                     </popover>

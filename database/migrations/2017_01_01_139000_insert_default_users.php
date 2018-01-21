@@ -39,11 +39,8 @@ class InsertDefaultUsers extends Migration
 
     private function create(array $user, Owner $owner, Role $role)
     {
-        $password = $user['password'];
-        $email = $user['email'];
         $user = new User($user);
-        $user->password = $password;
-        $user->email = $email;
+        $user->password = $user['password'];
         $user->owner_id = $owner->id;
         $user->role_id = $role->id;
         $user->save();

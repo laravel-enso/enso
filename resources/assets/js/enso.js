@@ -13,6 +13,8 @@ import App from './pages/App.vue';
 
 import './app';
 
+require('./fontawesome/js/fontawesome-all');
+
 const bus = new Vue({ name: 'Bus' });
 
 Vue.prototype.$bus = bus;

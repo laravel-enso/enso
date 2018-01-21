@@ -27,13 +27,13 @@ export default {
     },
 
     methods: {
-        customRender(row, column) {
-            switch (column.name) {
+        customRender(row, { name }) {
+            switch (name) {
             case 'placement':
-                return `<span class="tag is-table-tag is-info">${row[column.name]}</span`;
+                return `<span class="tag is-table-tag is-info">${row[name]}</span`;
             default:
-                toastr.warning(`render for column ${column.name} is not defined.`);
-                return row[column.name];
+                toastr.warning(`render for column ${name} is not defined.`);
+                return row[name];
             }
         },
     },

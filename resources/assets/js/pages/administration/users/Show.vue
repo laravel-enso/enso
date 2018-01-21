@@ -25,7 +25,7 @@
                                                         v-if="avatarId"
                                                         @click="deleteAvatar">
                                                         <span class="icon">
-                                                            <i class="fa fa-trash-o"></i>
+                                                            <i class="fas fa-trash-alt"></i>
                                                         </span>
                                                         <span>
                                                             {{ __('Avatar') }}
@@ -39,7 +39,7 @@
                                                             <button  class="button is-small is-info"
                                                                 @click="props.openFileBrowser">
                                                                 <span class="icon">
-                                                                    <i class="fa fa-upload"></i>
+                                                                    <i class="fas fa-upload"></i>
                                                                 </span>
                                                                 <span>
                                                                     {{ __('Avatar') }}
@@ -52,7 +52,7 @@
                                                     <button class="button is-small is-danger"
                                                         @click="logout()">
                                                         <span class="icon">
-                                                            <i class="fa fa-sign-out"></i>
+                                                            <i class="fas fa-sign-out-alt"></i>
                                                         </span>
                                                         <span>
                                                             {{ __('Log Out') }}
@@ -95,7 +95,7 @@
         <div class="columns is-centered">
             <div class="column is-two-thirds-tablet">
                 <div class="box">
-                    <nav class="pagination is-small has-margin-bottom-large" role="navigation" aria-label="pagination">
+                    <nav class="pagination is-small has-margin-bottom-large">
                         <a class="pagination-previous"
                             @click="getPage(profileUser.timeline.current_page - 1)"
                             :disabled="profileUser.timeline.prev_page_url===null">
@@ -107,7 +107,8 @@
                             {{ __('Next') }}
                         </a>
                         <ul class="pagination-list" v-if="isShort">
-                            <li v-for="i in profileUser.timeline.last_page">
+                            <li v-for="i in profileUser.timeline.last_page"
+                                :key="i">
                                 <a class="pagination-link"
                                     :class="{ 'is-current': profileUser.timeline.current_page === i}"
                                     @click="getPage(i)">
@@ -183,7 +184,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <ul class="timeline">
+                    <ul class="timeline has-padding-large">
                         <div v-for="(actions, day) in timeline"
                             class="timeline-content"
                             :key="day">
@@ -216,7 +217,7 @@
                         <li class="timeline-item"
                             v-else>
                             <div class="timeline-marker is-icon">
-                                <i class="fa fa-fw fa-ellipsis-h"></i>
+                                <i class="fas fa-fw fa-ellipsis-h"></i>
                             </div>
                         </li>
                     </ul>
@@ -324,10 +325,10 @@ export default {
             return moment(timestamp).format('H:mm');
         },
         getIcon(action) {
-            if (action.indexOf('index') > 0) return 'fa fa-eye has-text-success';
-            if (action.indexOf('create') > 0) return 'fa fa-plus has-text-warning';
-            if (action.indexOf('edit') > 0) return 'fa fa-pencil has-text-warning';
-            return 'fa fa-trash-o has-text-danger';
+            if (action.indexOf('index') > 0) return 'fas fa-eye has-text-success';
+            if (action.indexOf('create') > 0) return 'fas fa-plus has-text-warning';
+            if (action.indexOf('edit') > 0) return 'fas fa-pencil-alt has-text-warning';
+            return 'fas fa-trash-alt has-text-danger';
         },
         getPage(page) {
             axios.get(this.paginationUrl + page).then(({ data }) => {

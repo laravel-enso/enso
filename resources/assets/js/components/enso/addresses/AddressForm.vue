@@ -14,9 +14,9 @@
                     v-on="$listeners">
                     <template v-for="field in form.fields"
                         v-if="field.meta.custom"
-                        :slot="field.column"
+                        :slot="field.name"
                         slot-scope="props">
-                        <slot :name="props.field.column"
+                        <slot :name="props.field.name"
                             :field="props.field"
                             :errors="props.errors">
                         </slot>
@@ -30,16 +30,11 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import VueForm from '../vueforms/VueForm.vue';
 
 export default {
     components: { VueForm },
     props: {
-        form: {
-            type: Object,
-            default: null,
-        },
         id: {
             type: Number,
             required: true,
@@ -48,10 +43,13 @@ export default {
             type: String,
             required: true,
         },
+        form: {
+            type: Object,
+            default: null,
+        },
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         params() {
             return {
                 id: this.id,

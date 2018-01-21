@@ -15,7 +15,7 @@
                 @keydown.esc="update('')"
                 @blur="dropdown=false">
             <span class="icon is-small is-left">
-                <i class="fa fa-search"></i>
+                <i class="fas fa-search"></i>
             </span>
         </div>
         <div class="dropdown typeahead"

@@ -299,6 +299,7 @@ export default {
                     total: this.template.total,
                     enum: this.template.enum,
                     date: this.template.date,
+                    actions: this.template.actions,
                 },
                 search: this.search,
                 appends: this.template.appends,

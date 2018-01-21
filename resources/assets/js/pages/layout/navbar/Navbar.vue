@@ -13,14 +13,14 @@
             <a class="navbar-item is-hidden-desktop"
                 @click="$store.commit('layout/navbar/toggle')">
                 <span class="icon is-small">
-                    <i class="fa fa-bars"></i>
+                    <i class="fas fa-bars"></i>
                 </span>
             </a>
             <div class="navbar-item"
                 v-if="envIsLocal">
                 <span class="tag is-warning">
                     <span class="icon is-small">
-                        <i class="fa fa-code"></i>
+                        <i class="fas fa-code"></i>
                     </span>
                 </span>
             </div>
@@ -30,10 +30,10 @@
                     @click="$bus.$emit('stop-impersonating')"
                     v-tooltip="__('Impersonating')">
                     <span class="icon is-small">
-                        <i class="fa fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                     <span class="icon is-small">
-                        <i class="fa fa-times"></i>
+                        <i class="fas fa-times"></i>
                     </span>
                 </button>
             </div>

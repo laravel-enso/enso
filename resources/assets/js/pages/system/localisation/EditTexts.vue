@@ -29,7 +29,7 @@
                                     v-model="query"
                                     @keyup.enter="isNewKey ? addKey() : focusIt(null)">
                                 <span class="icon is-small is-right">
-                                    <i class="fa fa-search"></i>
+                                    <i class="fas fa-search"></i>
                                 </span>
                             </p>
                         </div>
@@ -87,7 +87,7 @@
                             </p>
                             <p class="control">
                                 <a class="button">
-                                    <i class="icon fa fa-trash-o has-text-danger"
+                                    <i class="icon fas fa-trash-alt has-text-danger"
                                         @click="removeKey(key)">
                                     </i>
                                 </a>

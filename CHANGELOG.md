@@ -1,5 +1,34 @@
 ## Enso Changelog
 
+### 2.1.0
+
+#### General
+This version brings a major BE refactor for all the packages.
+The separation between the M and the C in MVC is much clearer now.
+Routes cleanup.
+The vue components that were hosted in the generic `laravel-enso/vuecomponents` package and were belonging to specific packages where moved accordingly.
+The BE tests are up to date.
+Frontend refactor for all dropdowns.
+Upgrades icons to Font Awesome 5 in the whole project / packages.
+
+Note: If you have this project already, after pulling the current version and before installing the new packages two commands will run automatically to ensure route compatibility and font awesome icon upgrade for the legacy db table `menus` (composer.json -> "pre-install-cmd")
+
+#### Formbuilder
+Slighly refactored and brings a dedicated `ModelForm` object.
+Docs update comming soon.
+
+#### Select
+All the properties were renamed.
+
+#### Filemanager
+Improves the interface.
+
+#### VueDatatables
+Dropdowns refactored.
+
+#### Vuecomponents
+Introduces the `Dropdown` component for bulma.
+
 #### 2.0.35
 
 Lots of visual improvements and layout fixes.

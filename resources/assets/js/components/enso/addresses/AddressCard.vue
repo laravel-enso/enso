@@ -6,7 +6,7 @@
         <div class="media has-padding-medium">
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success">
-                    <i class="fa fa-anchor"
+                    <i class="fas fa-anchor"
                         v-tooltip="__('default')"
                         v-if="address.is_default">
                     </i>
@@ -28,13 +28,13 @@
                     <span v-if="address.administrative_area"> {{ address.administrative_area }},</span>
                     <br>
                     <span class="icon">
-                        <i class="fa fa-globe"></i>
+                        <i class="fas fa-globe"></i>
                     </span>
                     {{ address.country_name }}
                     <br>
                     <span class="icon"
                         v-if="address.obs">
-                        <i class="fa fa-sticky-note"></i>
+                        <i class="fas fa-sticky-note"></i>
                     </span>
                      {{ address.obs }}
                 </slot>
@@ -47,7 +47,7 @@
         <a slot="footer-item-2" >
             <span class="icon"
                 @click="$emit('set-default')">
-                <i class="fa fa-anchor"></i>
+                <i class="fas fa-anchor"></i>
             </span>
         </a>
         <popover slot="footer-item-3"

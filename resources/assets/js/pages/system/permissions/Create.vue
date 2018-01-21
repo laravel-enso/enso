@@ -2,21 +2,10 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <div class="tabs">
-                    <ul>
-                    <li :class="{ 'is-active' : $router.currentRoute.name === 'system.permissions.create' }">
-                        <a @click="$router.push({ name: 'system.permissions.create' })">
-                            {{ __('Permission') }}
-                        </a>
-                    </li>
-                    <li :class="{ 'is-active' : $router.currentRoute.name === 'system.permissions.createResource' }">
-                        <a @click="$router.push({ name: 'system.permissions.createResource' })">
-                            {{ __('Resource') }}
-                        </a>
-                    </li>
-                    </ul>
-            </div>
-            <router></router>
+            <vue-form :data="form"
+                class="box animated fadeIn"
+                v-if="initialised">
+            </vue-form>
         </div>
     </div>
 
@@ -24,14 +13,23 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
-import Router from '../../layout/Router.vue';
+import VueForm from '../../../components/enso/vueforms/VueForm.vue';
 
 export default {
-    components: { Router },
+    components: { VueForm },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
+    data() {
+        return {
+            initialised: false,
+            form: {},
+        };
+    },
+
+    created() {
+        axios.get(route('system.permissions.create', null, false)).then(({ data }) => {
+            this.form = data.form;
+            this.initialised = true;
+        }).catch(error => this.handleError(error));
     },
 };
 

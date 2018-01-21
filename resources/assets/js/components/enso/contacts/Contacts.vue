@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fa fa-address-card-o"
+    <card icon="fas fa-address-card"
         refresh search
         :title="title || __('Contacts')"
         :overlay="loading"
@@ -10,35 +10,36 @@
         @query-update="query = $event"
         :badge="contacts.length"
         :controls="1">
-        <a slot="control-1" class="card-header-icon">
-            <span class="icon is-small"
-                @click="create()">
-                <i class="fa fa-plus-square"></i>
+        <a slot="control-1" class="card-header-icon"
+            @click="create()">
+            <span class="icon is-small">
+                <i class="fas fa-plus-square"></i>
             </span>
         </a>
         <div class="has-padding-medium contacts-wrapper">
             <div class="columns is-multiline">
                 <contact-form
-                        v-if="showForm"
-                        :action="action"
-                        :contactId="editingContactId"
-                        :type="type"
-                        :id="id"
-                        @form-close="showForm=false"
-                        @destroy="get(); showForm=false"
-                        @submit="get();showForm=false">
+                    v-if="form"
+                    :id="id"
+                    :type="type"
+                    :form="form"
+                    @form-close="form=false"
+                    @destroy="get(); form=false"
+                    @submit="get();form=false">
                 </contact-form>
 
-                <contact v-for="(contact, index) in filteredContacts"
-                    class="column is-half-tablet is-one-third-widescreen"
-                    :key="index"
-                    :contact="contact"
-                     @do-edit="handleEdit(contact)"
-                     @do-delete="destroy"
-                    :index="index"
-                    :type="type"
-                    :id="id">
-                </contact>
+                <div class="column is-half-tablet is-one-third-widescreen"
+                    v-for="(contact, index) in filteredContacts"
+                    :key="index">
+                    <contact
+                        :contact="contact"
+                        @edit="edit(contact)"
+                        @delete="destroy(contact, index)"
+                        :index="index"
+                        :type="type"
+                        :id="id">
+                    </contact>
+                </div>
             </div>
         </div>
     </card>
@@ -92,18 +93,31 @@ export default {
             loading: false,
             query: '',
             contacts: [],
-            showForm: false,
-            action: null,
-            editingContactId: null,
+            form: null,
         };
+    },
+
+    created() {
+        this.get();
     },
 
     methods: {
         get() {
             this.loading = true;
 
-            axios.get(route('core.contacts.list', { id: this.id, type: this.type }, false)).then((response) => {
-                this.contacts = response.data;
+            axios.get(route('core.contacts.index', { id: this.id, type: this.type }, false)).then(({ data }) => {
+                this.contacts = data;
+                this.loading = false;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
+        destroy(contact, index) {
+            this.loading = true;
+
+            axios.delete(route('core.contacts.destroy', contact.id, false)).then(() => {
+                this.contacts.splice(index, 1);
                 this.loading = false;
             }).catch((error) => {
                 this.loading = false;
@@ -111,34 +125,33 @@ export default {
             });
         },
         create() {
+            this.loading = true;
+
             if (this.$refs.card.collapsed) {
                 this.$refs.card.toggle();
             }
 
-            this.action = 'create';
-            this.showForm = true;
-        },
-        add(contact) {
-            this.contacts.push(contact);
-        },
-        destroy(payload) {
-            axios.delete(route('core.contacts.destroy', payload.id, false)).then(() => {
-                this.$parent.loading = false;
-                this.contacts.splice(payload.index, 1);
+            const params = { contactable_id: this.id, contactable_type: this.type };
+
+            axios.get(route('core.contacts.create', params, false)).then(({ data }) => {
+                this.loading = false;
+                this.form = data.form;
             }).catch((error) => {
-                this.$parent.loading = false;
+                this.loading = false;
                 this.handleError(error);
             });
         },
-        handleEdit(contact) {
-            this.action = 'edit';
-            this.editingContactId = contact.id;
-            this.showForm = true;
-        },
-    },
+        edit(contact) {
+            this.loading = true;
 
-    mounted() {
-        this.get();
+            axios.get(route('core.contacts.edit', contact.id, false)).then(({ data }) => {
+                this.loading = false;
+                this.form = data.form;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
     },
 };
 

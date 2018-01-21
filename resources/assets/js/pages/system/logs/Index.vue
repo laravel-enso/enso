@@ -4,7 +4,7 @@
         <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
             v-for="(log, index) in logs"
             :key="index">
-            <card icon="fa fa-terminal"
+            <card icon="fas fa-terminal"
                 :removable="false"
                 :collapsible="false"
                 :title="log.name"
@@ -13,20 +13,22 @@
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
                         @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
-                        <i class="fa fa-eye"></i>
+                        <i class="fas fa-eye"></i>
                     </span>
                 </a>
                 <a slot="control-1" class="card-header-icon">
                     <a class="icon is-small has-text-info"
                         :href="getDownloadLink(log.name)">
-                        <i class="fa fa-cloud-download"></i>
+                        <i class="fas fa-cloud-download-alt"></i>
                     </a>
                 </a>
                 <a slot="control-1" class="card-header-icon">
-                    <span class="icon is-small has-text-danger"
-                        @click="showModal=true;itemToBeDeleted=log.name">
-                        <i class="fa fa-trash-o"></i>
-                    </span>
+                    <popover placement="bottom"
+                        @confirm="empty(log)">
+                        <span class="icon is-small has-text-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                    </popover>
                 </a>
                 <div class="has-padding-large">
                     <p>
@@ -40,10 +42,6 @@
                 </div>
             </card>
         </div>
-        <modal :show="showModal"
-            @cancel-action="showModal=false;itemToBeDeleted=null"
-            @commit-action="empty()">
-        </modal>
     </div>
 
 </template>
@@ -52,10 +50,10 @@
 
 import { mapGetters } from 'vuex';
 import Card from '../../../components/enso/bulma/Card.vue';
-import Modal from '../../../components/enso/bulma/Modal.vue';
+import Popover from '../../../components/enso/bulma/Popover.vue';
 
 export default {
-    components: { Card, Modal },
+    components: { Card, Popover },
 
     computed: {
         ...mapGetters('locale', ['__']),
@@ -63,30 +61,23 @@ export default {
 
     data() {
         return {
-            showModal: false,
-            itemToBeDeleted: null,
             logs: [],
         };
     },
 
     created() {
-        axios.get(route('system.logs.index', [], false)).then((response) => {
-            this.logs = response.data.logs;
+        axios.get(route('system.logs.index', [], false)).then(({ data }) => {
+            this.logs = data.logs;
         }).catch(error => this.handleError(error));
     },
 
     methods: {
-        empty() {
-            axios.delete(route('system.logs.destroy', this.itemToBeDeleted, false).toString()).then((response) => {
-                this.showModal = false;
-                const index = this.logs.findIndex(log => this.itemToBeDeleted === log.name);
-                this.logs.splice(index, 1, response.data.log);
-                this.itemToBeDeleted = null;
-                toastr.success(response.data.message);
-            }).catch((error) => {
-                this.showModal = false;
-                this.handleError(error);
-            });
+        empty(log) {
+            axios.delete(route('system.logs.destroy', log.name, false).toString()).then(({ data }) => {
+                const index = this.logs.findIndex(item => log.name === item.name);
+                this.logs.splice(index, 1, data.log);
+                toastr.success(data.message);
+            }).catch(error => this.handleError(error));
         },
         getDownloadLink(log) {
             return route('system.logs.download', log, false).toString();

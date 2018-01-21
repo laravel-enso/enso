@@ -20,13 +20,13 @@ import Card from '../bulma/Card.vue';
 import Chart from './Chart.vue';
 
 const icons = {
-    bar: 'fa fa-bar-chart',
-    pie: 'fa fa-pie-chart',
-    line: 'fa fa-line-chart',
-    radar: 'fa fa-area-chart',
-    polarArea: 'fa fa-circle-o-notch',
-    doughnut: 'fa fa-pie-chart',
-    bubble: 'fa fa-circle-thin',
+    bar: 'fas fa-chart-bar',
+    pie: 'fas fa-chart-pie',
+    line: 'fas fa-chart-line',
+    radar: 'fas fa-chart-area',
+    polarArea: 'fas fa-circle-notch',
+    doughnut: 'fas fa-chart-pie',
+    bubble: 'fas fa-circle',
 };
 
 export default {

@@ -57,6 +57,10 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "php artisan package:discover"
         ],
+        "pre-install-cmd": [
+            "php artisan enso:route-cleanup",
+            "php artisan enso:fa-upgrade"
+        ],
         "post-update-cmd": [
             "php artisan vendor:publish --force --tag='enso-assets'"
         ]

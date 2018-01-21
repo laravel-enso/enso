@@ -44,25 +44,26 @@ export default new Vuex.Store({
     actions: {
         setState({ commit, dispatch }) {
             axios.get('/api/core/init').then(({ data }) => {
-                commit('setUser', data.user);
-                commit('setImpersonating', data.impersonating);
-                commit('menus/set', data.menus);
-                commit('menus/setImplicit', data.implicitMenu);
-                commit('locale/setLanguages', data.languages);
-                commit('locale/setI18n', data.i18n);
-                dispatch('locale/setLocale', data.user.preferences.global.lang);
-                commit('layout/setThemes', data.themes);
-                commit('setMeta', data.meta);
+                const { state } = data;
+                commit('setUser', state.user);
+                commit('setImpersonating', state.impersonating);
+                commit('menus/set', state.menus);
+                commit('menus/setImplicit', state.implicitMenu);
+                commit('locale/setLanguages', state.languages);
+                commit('locale/setI18n', state.i18n);
+                dispatch('locale/setLocale', state.user.preferences.global.lang);
+                commit('layout/setThemes', state.themes);
+                commit('setMeta', state.meta);
                 dispatch('layout/setTheme');
                 window.Laravel = {
-                    csrfToken: data.csrfToken,
+                    csrfToken: state.csrfToken,
                 };
-                axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrfToken;
-                commit('setRoutes', data.routes);
-                router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
+                axios.defaults.headers.common['X-CSRF-TOKEN'] = state.csrfToken;
+                commit('setRoutes', state.routes);
+                router.addRoutes([{ path: '/', redirect: { name: state.implicitMenu.link } }]);
 
-                if (data.ravenKey) {
-                    Raven.config(data.ravenKey)
+                if (state.ravenKey) {
+                    Raven.config(state.ravenKey)
                         .addPlugin(RavenVue, Vue)
                         .install();
                 }

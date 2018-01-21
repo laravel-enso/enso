@@ -3,20 +3,24 @@
     <tbody>
         <tr v-for="(row, index) in body.data"
             :key="index">
-            <td class="table-crt-no"
+            <td
                 :class="template.align"
                 v-if="template.crtNo && !isChild(row)">
-                {{ getIndex(row) }}
-                <span class="icon is-small"
-                    v-if="hiddenCount"
-                    @click="toggleExpand(row, index)">
-                    <i class="fa fa-minus-square"
-                        v-if="isExpanded(row)">
-                    </i>
-                    <i class="fa fa-plus-square"
-                        v-else>
-                    </i>
-                </span>
+                <div class="table-crt-no">
+                    {{ getIndex(row) }}
+                    <span class="hidden-controls"
+                        v-if="hiddenCount"
+                        @click="toggleExpand(row, index)">
+                        <span class="icon is-small"
+                            v-if="isExpanded(row)">
+                            <i class="fas fa-minus-square"></i>
+                        </span>
+                        <span class="icon is-small"
+                            v-else>
+                            <i class="fas fa-plus-square"></i>
+                        </span>
+                    </span>
+                </div>
             </td>
             <td :class="template.align"
                 v-for="(column, index) in template.columns"
@@ -229,37 +233,31 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    td.table-crt-no {
+    div.table-crt-no {
         white-space:nowrap;
-        align-content: center;
-    }
+        display: flex;
 
-    .table-crt-no .fa-plus-square,
-    .table-crt-no .fa-minus-square {
-        cursor: pointer;
+        .hidden-controls {
+            cursor: pointer;
+            margin-left: auto;
+            margin-top: 0.1em;
+        }
     }
 
     td.table-actions {
         padding: .35em .5em;
-    }
 
-    span.table-action-buttons {
-        display: inline-flex;
-    }
+        span.table-action-buttons {
+            display: inline-flex;
+        }
 
-    .button.is-small.is-table-button {
-        height: 1.6em;
-        width: 1.6em;
-        font-size: .9em;
-    }
-
-    .tag.is-table-tag {
-        font-size: 0.8rem;
-        font-weight: bold;
-        height: 1.4em;
-        padding: 7px;
+        .button.is-small.is-table-button {
+            height: 1.6em;
+            width: 1.6em;
+            font-size: .9em;
+        }
     }
 
     li.child-row:not(:last-child) {

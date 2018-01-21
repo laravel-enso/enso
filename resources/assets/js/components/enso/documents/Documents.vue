@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fa fa-files-o"
+    <card icon="fas fa-copy"
         refresh
         :search="documents.length > 1"
         :title="title || __('Documents')"

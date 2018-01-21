@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fa fa-comments-o"
+    <card icon="fas fa-comments"
         refresh
         footer
         :search="comments.length > 1"
@@ -17,7 +17,7 @@
             class="card-header-icon">
             <span class="icon is-small"
                 @click="create()">
-                <i class="fa fa-plus-square"></i>
+                <i class="fas fa-plus-square"></i>
             </span>
         </a>
         <div class="has-padding-medium comments-wrapper">

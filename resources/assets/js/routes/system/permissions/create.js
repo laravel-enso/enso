@@ -1,13 +1,11 @@
-import Permission from './create/permission';
-import Resource from './create/resource';
-
-const PermissionsCreate = () => import('../../../pages/system/permissions/Create.vue');
+const PermissionCreate = () => import('../../../pages/system/permissions/Create.vue');
 
 export default {
-    path: '',
-    component: PermissionsCreate,
+    name: 'system.permissions.create',
+    path: 'create',
+    component: PermissionCreate,
     meta: {
         breadcrumb: 'create',
+        title: 'Create Permission',
     },
-    children: [Permission, Resource],
 };

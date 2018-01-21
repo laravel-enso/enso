@@ -23,7 +23,7 @@
                     v-model="query"
                     @input="$emit('query-update', query)">
                 <span class="icon is-small is-left">
-                    <i class="fa fa-search"></i>
+                    <i class="fas fa-search"></i>
                 </span>
                 </p>
             </div>
@@ -40,7 +40,7 @@
                 v-if="refresh">
                 <span class="icon is-small"
                     @click="$emit('refresh')">
-                    <i class="fa fa-refresh"></i>
+                    <i class="fas fa-sync"></i>
                 </span>
             </a>
             <a class="card-header-icon"
@@ -48,7 +48,7 @@
                 <span class="icon angle"
                     :aria-hidden="collapsed"
                     @click="toggle()">
-                    <i class="fa fa-angle-down"></i>
+                    <i class="fas fa-angle-down"></i>
                 </span>
             </a>
             <span class="card-header-icon"

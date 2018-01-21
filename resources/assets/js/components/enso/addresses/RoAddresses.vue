@@ -6,7 +6,7 @@
             v-on="$listeners">
 
         <!--customized card content-->
-        <template slot="address-template" slot-scope="props">
+        <template slot="address" slot-scope="props">
             <span v-if="props.address.street_type">{{props.address.street_type}}</span>
             <span v-if="props.address.street">{{props.address.street}}</span>
             <span v-if="props.address.number">{{__('Number')}}: {{ props.address.number }}</span>
@@ -30,7 +30,7 @@
         <template slot="county_id" slot-scope="props">
             <vue-select name="county_id"
                         v-model="props.field.value"
-                        @input="params.county_id=$event;props.errors.clear(props.field.column);"
+                        @input="params.county_id=$event;props.errors.clear(props.field.name);"
                         :options="props.field.meta.options">
             </vue-select>
         </template>
@@ -38,7 +38,7 @@
             <vue-select name="locality_id"
                         :params="params"
                         v-model="props.field.value"
-                        @input="props.errors.clear(props.field.column);"
+                        @input="props.errors.clear(props.field.name);"
                         :source="props.field.meta.source">
             </vue-select>
         </template>
@@ -47,34 +47,35 @@
 </template>
 <script>
 
-    import { mapGetters } from 'vuex';
-    import Addresses from './Addresses';
-    import VueSelect from '../select/VueSelect';
+import { mapGetters } from 'vuex';
+import Addresses from './Addresses.vue';
+import VueSelect from '../select/VueSelect.vue';
 
-    export default {
-        components: {Addresses, VueSelect},
-        data() {
-            return {
-                params: {
-                    county_id: null
-                }
-            };
-        },
-        computed: {
-            ...mapGetters('locale', ['__']),
-        },
-        methods: {
-            getCountyId(formData) {
-                let attribute = formData.editForm.fields.find(attribute => {
-                    return attribute.column === 'county_id';
-                });
-
-                return attribute.value;
+export default {
+    components: { Addresses, VueSelect },
+    data() {
+        return {
+            params: {
+                county_id: null,
             },
-            setCountyId(formData) {
-                this.params.county_id = this.getCountyId(formData);
-            }
-        }
-    }
+        };
+    },
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+    methods: {
+        getCountyId(form) {
+            debugger;
+            const attribute = form.fields.find((attribute) => {
+                return attribute.name === 'county_id';
+            });
+
+            return attribute.value;
+        },
+        setCountyId(formData) {
+            this.params.county_id = this.getCountyId(formData);
+        },
+    },
+};
 
 </script>

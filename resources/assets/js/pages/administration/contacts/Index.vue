@@ -6,12 +6,12 @@
             ref="contacts"
             id="contacts">
         </vue-table>
-        <contact-form :show="showForm"
-            v-if="showForm"
-            action="edit"
-            :contact-id="contact.id"
-            @form-close="showForm=false;contact={};$refs.contacts.getData()"
-            @update="update()">
+        <contact-form
+            v-if="form"
+            :form="form"
+            @form-close="form=null"
+            @destroy="$refs.contacts.getData(); form=null"
+            @submit="$refs.contacts.getData();form=null">
         </contact-form>
     </div>
 
@@ -34,24 +34,21 @@ export default {
     data() {
         return {
             path: route('core.contacts.initTable', [], false),
-            showForm: false,
+            form: null,
             contact: {},
         };
     },
 
     methods: {
         edit(contact) {
-            this.setContact(contact);
-            this.showForm = true;
-        },
-        setContact(contact) {
-            Object.assign(this.contact, contact);
-            this.contact.id = contact.dtRowId;
-            this.contact.is_active = contact.is_active_bool;
-        },
-        update() {
-            this.showForm = false;
-            this.$refs.contacts.getData();
+            this.$refs.contacts.loading = true;
+            axios.get(route('core.contacts.edit', contact.dtRowId, false)).then(({ data }) => {
+                this.$refs.contacts.loading = false;
+                this.form = data.form;
+            }).catch((error) => {
+                this.$refs.contacts.loading = false;
+                this.handleError(error);
+            });
         },
     },
 };

@@ -1,7 +1,4 @@
 @import '~font-awesome/scss/_variables.scss';
-$fa-font-path: '~font-awesome/fonts';
-@import '~font-awesome/scss/font-awesome.scss';
-
 @import '~animate.css/animate.css';
 @import './v-tooltip';
 
@@ -20,15 +17,26 @@ $fa-font-path: '~font-awesome/fonts';
   top: 70px !important;
 }
 
-.icon.angle[aria-hidden="true"] {
-    transform: rotate(180deg);
+.button.is-naked {
+    background: 0;
+    border: none;
 }
 
 .icon.angle {
     transition: transform .300s ease;
+
+    &[aria-hidden="true"] {
+        transform: rotate(180deg);
+    }
+
+    &[aria-expanded="true"] {
+        transform: rotate(-180deg);
+    }
 }
 
-.button.is-naked {
-    background: 0;
-    border: none;
+.tag.is-table-tag {
+    font-size: 0.8rem;
+    font-weight: bold;
+    height: 1.4em;
+    padding: 7px;
 }

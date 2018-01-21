@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fa fa-map-signs"
+    <card icon="fas fa-map-signs"
         refresh
         :search="addresses.length > 1"
         :title="title || __('Addresses')"
@@ -14,7 +14,7 @@
         <a slot="control-1" class="card-header-icon">
             <span class="icon is-small"
                   @click="create()">
-                <i class="fa fa-plus-square"></i>
+                <i class="fas fa-plus-square"></i>
             </span>
         </a>
         <div class="has-padding-medium addresses-wrapper">
@@ -35,18 +35,19 @@
                 </div>
             </div>
         </div>
-        <address-form v-if="form"
-            :form="form"
-            :type="type"
+        <address-form
+            v-if="form"
             :id="id"
+            :type="type"
+            :form="form"
             @form-close="form=null"
             @destroy="get();form=null"
             @submit="get();form=null">
             <template v-for="field in form.fields"
                 v-if="field.meta.custom"
-                :slot="field.column"
+                :slot="field.name"
                 slot-scope="props">
-                <slot :name="props.field.column"
+                <slot :name="props.field.name"
                     :field="props.field"
                     :errors="props.errors">
                 </slot>
@@ -117,8 +118,9 @@ export default {
         edit(address) {
             this.loading = true;
 
-            axios.get(route('addresses.edit', address.id, false)).then(({ data }) => {
+            axios.get(route('core.addresses.edit', address.id, false)).then(({ data }) => {
                 this.form = data.form;
+                this.$emit('form-loaded', this.form);
                 this.loading = false;
             }).catch((error) => {
                 this.loading = false;
@@ -133,9 +135,10 @@ export default {
             const params = { addressable_id: this.id, addressable_type: this.type };
             this.loading = true;
 
-            axios.get(route('addresses.create', params, false)).then(({ data }) => {
-                this.loading = false;
+            axios.get(route('core.addresses.create', params, false)).then(({ data }) => {
                 this.form = data.form;
+                this.$emit('form-loaded', this.form);
+                this.loading = false;
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);
@@ -144,7 +147,7 @@ export default {
         setDefault(address) {
             this.loading = true;
 
-            axios.patch(route('addresses.setDefault', address.id, false)).then(() => {
+            axios.patch(route('core.addresses.setDefault', address.id, false)).then(() => {
                 this.get();
             }).catch((error) => {
                 this.loading = false;
@@ -154,7 +157,7 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('addresses.index', { id: this.id, type: this.type }, false)).then((response) => {
+            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false)).then((response) => {
                 this.addresses = response.data;
                 this.loading = false;
             }).catch((error) => {
@@ -165,7 +168,7 @@ export default {
         destroy(address, index) {
             this.loading = true;
 
-            axios.delete(route('addresses.destroy', address.id, false)).then(() => {
+            axios.delete(route('core.addresses.destroy', address.id, false)).then(() => {
                 this.loading = false;
                 this.addresses.splice(index, 1);
             }).catch((error) => {

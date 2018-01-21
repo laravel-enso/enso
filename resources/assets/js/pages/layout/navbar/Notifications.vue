@@ -6,7 +6,7 @@
         <a class="navbar-link"
             @click="show=!show">
             <span class="icon is-small">
-                <i class="fa fa-bell">
+                <i class="fas fa-bell">
                 </i>
             </span>
             <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
@@ -39,7 +39,7 @@
                             @click="markAllAsRead">
                             <span>{{ __("Mark all read") }}</span>
                             <span class="icon is-small">
-                                <i class="fa fa-check"></i>
+                                <i class="fas fa-check"></i>
                             </span>
                         </a>
                     </div>
@@ -50,7 +50,7 @@
                             @click="clearAll">
                             <span>{{ __("Clear all") }}</span>
                             <span class="icon is-small">
-                                <i class="fa fa-trash-o"></i>
+                                <i class="fas fa-trash-alt"></i>
                             </span>
                         </a>
                     </div>

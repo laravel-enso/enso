@@ -10,10 +10,10 @@
                 class="input control"
                 :disabled="disabled">
             <span class="icon is-small is-right">
-                <i class="fa fa-clock-o"
+                <i class="fas fa-clock"
                     v-if="timeOnly">
                 </i>
-                <i class="fa fa-calendar" v-else></i>
+                <i class="fas fa-calendar-alt" v-else></i>
             </span>
         </div>
     </div>
@@ -35,9 +35,9 @@ export default {
             required: true,
             default: null,
             validate(value) {
-                    return value === null || typeof value === 'string'
+                return value === null || typeof value === 'string'
                         || value instanceof Date || value instanceof Array;
-                },
+            },
         },
         name: {
             type: String,

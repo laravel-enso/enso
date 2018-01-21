@@ -8,10 +8,12 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <span class="button is-info is-small"
+                <button class="button is-small is-info"
                     @click="get()">
-                    <i class="is-icon fa fa-question is-clickable"></i>
-                </span>
+                    <span class="icon is-small">
+                        <i class="fas fa-question"></i>
+                    </span>
+                </button>
             </div>
         </div>
     </div>

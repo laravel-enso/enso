@@ -23,28 +23,28 @@ return [
 
     'buttons' => [
         'create' => [
-            'icon' => 'fa fa-plus',
+            'icon' => 'fas fa-plus',
             'class' => 'is-info',
             'event' => 'create',
             'action' => 'router',
             'label' => 'Create',
         ],
         'store' => [
-            'icon' => 'fa fa-check',
+            'icon' => 'fas fa-check',
             'class' => 'is-success',
             'event' => 'store',
             'action' => 'router',
             'label' => 'Save',
         ],
         'update' => [
-            'icon' => 'fa fa-check',
+            'icon' => 'fas fa-check',
             'class' => 'is-success',
             'event' => 'update',
             'action' => 'router',
             'label' => 'Update',
         ],
         'destroy' => [
-            'icon' => 'fa fa-trash',
+            'icon' => 'fas fa-trash-alt',
             'class' => 'is-danger',
             'event' => 'destroy',
             'action' => 'ajax',

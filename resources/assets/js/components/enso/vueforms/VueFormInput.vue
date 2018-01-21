@@ -13,7 +13,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fa fa-warning"></i>
+                <i class="fas fa-exclamation-triangle"></i>
             </span>
         </div>
         <div class="control"
@@ -28,7 +28,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fa fa-warning"></i>
+                <i class="fas fa-exclamation-triangle"></i>
             </span>
         </div>
         <div class="control"
@@ -46,7 +46,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fa fa-warning"></i>
+                <i class="fas fa-exclamation-triangle"></i>
             </span>
         </div>
         <span v-if="field.meta.content === 'checkbox'">

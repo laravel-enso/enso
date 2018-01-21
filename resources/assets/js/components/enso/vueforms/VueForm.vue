@@ -76,7 +76,7 @@
                                 </textarea>
                                 <span class="icon is-small is-right has-text-danger"
                                     v-if="errors.has(field.name)">
-                                    <i class="fa fa-warning"></i>
+                                    <i class="fas fa-exclamation-triangle"></i>
                                 </span>
                             </div>
                         </span>
@@ -140,13 +140,15 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import Errors from '../../../classes/enso/Errors.js';
+import Errors from './classes/Errors';
 import Modal from './Modal.vue';
-import VueSelect from '../select/VueSelect.vue';
-import Datepicker from '../bulma/Datepicker.vue';
+import VueSelect from './VueSelect.vue';
+import Datepicker from './Datepicker.vue';
 import VueFormInput from './VueFormInput.vue';
 
 export default {
+    name: 'VueForm',
+
     components: {
         Modal, VueSelect, Datepicker, VueFormInput,
     },

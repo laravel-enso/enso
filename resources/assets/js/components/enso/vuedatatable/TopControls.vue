@@ -38,13 +38,13 @@
                 <button class="button"
                     @click="$emit('reload')">
                     <span class="icon is-small">
-                        <i class="fa fa-refresh"></i>
+                        <i class="fas fa-sync"></i>
                     </span>
                 </button>
                 <button class="button"
                     @click="$emit('reset')">
                     <span class="icon is-small">
-                        <i class="fa fa-undo"></i>
+                        <i class="fas fa-undo"></i>
                     </span>
                 </button>
             </div>
@@ -56,7 +56,7 @@
                         @input="$emit('input', $event.target.value)"
                         :placeholder="i18n('Search')">
                     <span class="icon is-small is-left">
-                        <i class="fa fa-search"></i>
+                        <i class="fas fa-search"></i>
                     </span>
                 </p>
             </div>

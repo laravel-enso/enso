@@ -1,24 +1,25 @@
 <template>
-    <ul class="collapsible-menu">
-        <li v-for="menu in menus">
+    <ul class="menu-list">
+        <li v-for="(menu, index) in menus"
+            :key="index">
             <router-link v-if="!menu.children.length"
                 :to="{ name: menu.link }"
                 :class="{ 'is-active': isActive(menu) }">
-                <span class="icon is-small">
+                <span class="icon is-small has-margin-right-small">
                     <i :class="menu.icon"></i>
                 </span>
                 {{ __(menu.name) }}
             </router-link>
 
             <a v-if="menu.children.length"
-                @click="toggle(menu)"
-                :aria-expanded="menu.expanded">
-                <span class="icon is-small">
+                @click="toggle(menu)">
+                <span class="icon is-small has-margin-right-small">
                     <i :class="menu.icon"></i>
                 </span>
                 {{ menu.name }}
-                <span class="icon is-small angle is-pulled-right">
-                    <i class="fa fa-angle-left"></i>
+                <span class="icon is-small angle is-pulled-right"
+                    :aria-expanded="menu.expanded">
+                    <i class="fas fa-angle-up"></i>
                 </span>
             </a>
 
@@ -99,30 +100,26 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    .menu-list li > ul {
-        margin: 0 0 0 8px;
-        padding-left: 0;
-    }
-
-    .menu-list a {
-        padding: 0.5em 0.5em;
-    }
-
-    .main-menu .icon.angle {
-        right: 5px;
-        transition: transform .300s ease;
-    }
-
-    .menu-list a[aria-expanded="true"] .icon.angle {
-        transform: rotate(-90deg);
-    }
-
-    .collapsible-menu {
+    .menu-list {
         transition: height .400s ease;
         display: block;
         overflow-y: hidden;
+
+        a {
+            display: flex;
+            padding: 0.5em 0.5em;
+        }
+
+        li > ul {
+            margin: 0 0 0 8px;
+            padding-left: 0;
+        }
+
+        .icon.angle {
+            margin-left: auto;
+        }
     }
 
 </style>

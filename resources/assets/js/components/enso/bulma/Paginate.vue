@@ -11,18 +11,19 @@
                         aria-controls="dropdown-menu"
                         @click="open=!open">
                         <span class="icon is-small has-margin-right-small">
-                            <i class="fa fa-bars"></i>
+                            <i class="fas fa-bars"></i>
                         </span>
                         {{ pageLength }}
                         <span class="icon is-small angle"
                             :aria-hidden="!open">
-                            <i class="fa fa-angle-down"></i>
+                            <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
                 </div>
                 <div class="dropdown-menu paginate" role="menu">
                     <div class="dropdown-content has-text-centered">
-                        <a v-for="length in lengths"
+                        <a v-for="(length, index) in lengths"
+                            :key="index"
                             class="dropdown-item"
                             href="#"
                             :class="{ 'is-active': length == pageLength }"
@@ -34,21 +35,27 @@
             </div>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fa fa-eye"></i>
+                    <i class="fas fa-eye"></i>
                 </span>
                 {{ start }} -> {{ offset }} / {{ records }}
             </a>
             <a class="pagination-previous"
                 @click="previous">
+                <span class="icon is-small">
+                    <i class="fas fa-angle-left"></i>
+                </span>
             </a>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fa fa-file-text-o"></i>
+                    <i class="fas fa-file-alt"></i>
                 </span>
                  {{ current }} / {{ pages }}
             </a>
             <a class="pagination-next"
-                @click="next">>
+                @click="next">
+                <span class="icon is-small">
+                    <i class="fas fa-angle-right"></i>
+                </span>
             </a>
         </div>
         <div class="is-clearfix has-margin-bottom-medium"></div>
