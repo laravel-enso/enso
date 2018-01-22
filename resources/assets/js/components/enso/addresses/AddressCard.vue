@@ -5,10 +5,10 @@
         :footer-items="3">
         <div class="media has-padding-medium">
             <div class="media-content">
-                <span class="icon is-pulled-right has-text-success">
-                    <i class="fas fa-anchor"
-                        v-tooltip="__('default')"
-                        v-if="address.is_default">
+                <span class="icon is-pulled-right has-text-success"
+                    v-if="address.is_default"
+                    v-tooltip="__('default')">
+                    <i class="fas fa-anchor">
                     </i>
                 </span>
                 <slot name="address" :address="address">

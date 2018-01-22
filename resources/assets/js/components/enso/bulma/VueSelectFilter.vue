@@ -14,7 +14,7 @@
 
 <script>
 
-import VueSelect from '../select/VueSelect.vue';
+import VueSelect from '../vueforms/VueSelect.vue';
 
 export default {
     components: { VueSelect },

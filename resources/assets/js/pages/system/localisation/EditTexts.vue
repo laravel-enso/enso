@@ -1,79 +1,79 @@
 <template>
 
-    <div class="box">
-        <div class="columns is-multiline has-border-bottom">
-            <div class="column is-half-tablet">
-                <div class="columns is-multiline">
-                    <div class="column is-half-tablet">
-                        <vue-select :options="locales"
-                            v-model="selectedLocale"
-                            @input="getLangFile()"
-                            :placeholder="__('Choose language')">
-                        </vue-select>
-                    </div>
-                    <div class="column is-half-tablet has-text-right animated fadeIn is-hidden-mobile"
-                        v-if="selectedLocale">
-                        <p class="has-padding-top-small">
-                            <b>{{ keysCount }}</b> {{ __('keys found') }}
-                        </p>
-                    </div>
-                    <div class="column animated fadeIn"
-                        v-if="selectedLocale">
-                        <div class="field">
-                            <p class="control has-icons-right">
-                                <input type="search"
-                                    class="input"
-                                    v-focus
-                                    v-select-on-focus
-                                    :placeholder="__('Search')"
-                                    v-model="query"
-                                    @keyup.enter="isNewKey ? addKey() : focusIt(null)">
-                                <span class="icon is-small is-right">
-                                    <i class="fas fa-search"></i>
-                                </span>
+    <div class="container">
+        <div class="box">
+            <div class="columns is-multiline">
+                <div class="column">
+                    <div class="columns is-multiline">
+                        <div class="column is-half">
+                            <vue-select :options="locales"
+                                v-model="selectedLocale"
+                                @input="getLangFile()"
+                                :placeholder="__('Choose language')">
+                            </vue-select>
+                        </div>
+                        <div class="column is-half has-text-right animated fadeIn is-hidden-mobile"
+                            v-if="selectedLocale">
+                            <p class="has-padding-top-small">
+                                <b>{{ keysCount }}</b> {{ __('keys found') }}
                             </p>
+                        </div>
+                        <div class="column animated fadeIn"
+                            v-if="selectedLocale">
+                            <div class="field">
+                                <p class="control has-icons-right">
+                                    <input type="search"
+                                        class="input"
+                                        v-focus
+                                        v-select-on-focus
+                                        :placeholder="__('Search')"
+                                        v-model="query"
+                                        @keyup.enter="isNewKey ? addKey() : focusIt(null)">
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="columns is-mobile has-text-centered">
+                        <div class="column">
+                            <button class="button is-success is-fullwidth"
+                                v-if="isNewKey"
+                                @click="addKey()">
+                                {{ __('Add Key') }}
+                            </button>
+                        </div>
+                        <div class="column">
+                            <button @click="saveLangFile()"
+                                v-if="selectedLocale"
+                                class="button is-success is-fullwidth"
+                                :class="{ 'is-loading': loading }">
+                                {{ __('Update') }}
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="column is-half-tablet">
-                <div class="columns is-mobile has-text-centered">
-                    <div class="column is-half">
-                        <button class="button is-success is-fullwidth"
-                            v-if="isNewKey"
-                            @click="addKey()">
-                            {{ __('Add Key') }}
-                        </button>
-                    </div>
-                    <div class="column is-half">
-                        <button @click="saveLangFile()"
-                            v-if="selectedLocale"
-                            class="button is-success is-fullwidth"
-                            :class="{ 'is-loading': loading }">
-                            {{ __('Update') }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="column columns is-hidden-mobile"
-                v-if="selectedLocale">
-                <div class="column is-half has-text-centered">
-                    <h5 class="title is-5">{{ __('Key') }}</h5>
-                </div>
-                <div class="column is-half has-text-centered">
-                    <h5 class="title is-5">{{ __('Value') }}</h5>
-                </div>
-            </div>
         </div>
-        <div class="translations"
-            :style="transDiv"
+        <div class="box"
             v-if="selectedLocale">
-            <div class="column"
-                v-for="(key, index) in filteredKeys"
-                :key="index">
-                <div class="columns">
+            <div class="columns is-hidden-mobile has-shadow-bottom">
+                <div class="column is-half has-text-centered">
+                    <h6 class="title is-6">{{ __('Key') }}</h6>
+                </div>
+                <div class="column is-half has-text-centered">
+                    <h6 class="title is-6">{{ __('Value') }}</h6>
+                </div>
+            </div>
+            <div :style="styleObject">
+                <div class="columns"
+                    :key="index"
+                    v-for="(key, index) in filteredKeys">
                     <div class="column is-half">
-                        <input type="text" class="input" disabled :value="key">
+                        <input type="text" class="input" readonly :value="key">
                     </div>
                     <div class="column is-half">
                         <div class="field has-addons">
@@ -86,10 +86,11 @@
                                     @keyup.enter="focusIt('search-input')">
                             </p>
                             <p class="control">
-                                <a class="button">
-                                    <i class="icon fas fa-trash-alt has-text-danger"
-                                        @click="removeKey(key)">
-                                    </i>
+                                <a class="button is-outlined is-danger"
+                                    @click="removeKey(key)">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </span>
                                 </a>
                             </p>
                         </div>
@@ -104,7 +105,7 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
-import VueSelect from '../../../components/enso/select/VueSelect.vue';
+import VueSelect from '../../../components/enso/vueforms/VueSelect.vue';
 
 export default {
     components: { VueSelect },
@@ -123,10 +124,11 @@ export default {
     computed: {
         ...mapState('layout', ['isMobile']),
         ...mapGetters('locale', ['__']),
-        transDiv() {
+        styleObject() {
             return {
                 'max-height': this.boxHeight,
                 'overflow-y': 'auto',
+                'overflow-x': 'hidden',
             };
         },
         langKeys() {
@@ -171,9 +173,15 @@ export default {
 
     methods: {
         init() {
-            axios.get(route('system.localisation.editTexts', [], false)).then((response) => {
-                this.locales = response.data.locales;
-            }).catch(error => this.handleError(error));
+            this.loading = true;
+
+            axios.get(route('system.localisation.editTexts', [], false)).then(({ data }) => {
+                this.loading = false;
+                this.locales = data.locales;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error)
+            });
         },
         getLangFile() {
             if (!this.selectedLocale) {
@@ -181,18 +189,24 @@ export default {
                 return;
             }
 
-            axios.get(route('system.localisation.getLangFile', this.selectedLocale, false)).then((response) => {
-                this.langFile = response.data;
-            }).catch(error => this.handleError(error));
+            this.loading = true;
+
+            axios.get(route('system.localisation.getLangFile', this.selectedLocale, false)).then(({ data }) => {
+                this.loading = false;
+                this.langFile = data;
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error)
+            });
         },
         saveLangFile() {
             this.loading = true;
 
             axios.patch(route('system.localisation.saveLangFile', this.selectedLocale, false).toString(), {
                 langFile: this.langFile,
-            }).then((response) => {
+            }).then(({ data }) => {
                 this.loading = false;
-                toastr.success(response.data.message);
+                toastr.success(data.message);
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);
@@ -213,7 +227,7 @@ export default {
             });
         },
         setBoxHeight() {
-            this.boxHeight = document.body.clientHeight - (this.isMobile ? 372 : 340);
+            this.boxHeight = document.body.clientHeight - (this.isMobile ? 420 : 388);
         },
     },
 };
@@ -222,8 +236,10 @@ export default {
 
 <style>
 
-    .has-border-bottom {
-        border-bottom: 1px solid lightgray;
+    .has-shadow-bottom {
+        -webkit-box-shadow: 0px 3px 5px -4px lightgray;
+        -moz-box-shadow: 0px 3px 5px -4px lightgray;
+        box-shadow: 0px 3px 5px -4px lightgray;
     }
 
 </style>

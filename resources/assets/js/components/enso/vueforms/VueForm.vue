@@ -49,7 +49,8 @@
                                 :key-map="field.meta.keyMap"
                                 :source="field.meta.source"
                                 :multiple="field.meta.multiple"
-                                :disabled="field.meta.disabled">
+                                :disabled="field.meta.disabled"
+                                :placeholder="field.meta.placeholder">
                             </vue-select>
                             <datepicker v-if="field.meta.type === 'datepicker'"
                                 @input="errors.clear(field.name)"

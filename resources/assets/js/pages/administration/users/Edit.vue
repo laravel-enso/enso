@@ -33,7 +33,7 @@
 <script>
 
 import VueForm from '../../../components/enso/vueforms/VueForm.vue';
-import VueSelect from '../../../components/enso/select/VueSelect.vue';
+import VueSelect from '../../../components/enso/vueforms/VueSelect.vue';
 
 export default {
     components: { VueForm, VueSelect },

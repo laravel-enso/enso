@@ -14,7 +14,7 @@
             :select-label="__(labels.select)"
             :deselect-label="__(labels.deselect)"
             :selected-label="__(labels.selected)"
-            :placeholder="__(labels.placeholder)"
+            :placeholder="__(placeholder)"
             :loading="loading"
             :options-limit="100"
             :options="optionKeys"

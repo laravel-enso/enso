@@ -167,7 +167,7 @@
 
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
-import VueSelect from '../../components/enso/select/VueSelect.vue';
+import VueSelect from '../../components/enso/vueforms/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
 import Modal from '../../components/enso/bulma/Modal.vue';

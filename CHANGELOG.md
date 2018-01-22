@@ -1,5 +1,12 @@
 ## Enso Changelog
 
+### 2.1.5
+Adds placeholder attribute for select field in formbuilder.
+Fixes placeholder prop for VueSelect.
+Refactors lolcalisation text edit vue.
+Fixes routes in AddressesManager.
+Package updates.
+
 ### 2.1.4
 Updates npm dependencies / compiles.
 Fixes Select List Option builder merging problem.
