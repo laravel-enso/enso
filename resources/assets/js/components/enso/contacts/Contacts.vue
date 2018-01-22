@@ -1,22 +1,23 @@
 <template>
 
     <card icon="fas fa-address-card"
-        refresh search
+        refresh
+        :search="contacts.length > 1"
         :title="title || __('Contacts')"
         :overlay="loading"
         @refresh="get()"
-        :open="open"
+        :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
-        :badge="contacts.length"
+        :badge="count"
         :controls="1">
-        <a slot="control-1" class="card-header-icon"
+        <card-control slot="control-1"
             @click="create()">
             <span class="icon is-small">
                 <i class="fas fa-plus-square"></i>
             </span>
-        </a>
-        <div class="has-padding-medium contacts-wrapper">
+        </card-control>
+        <div class="has-padding-medium wrapper">
             <div class="columns is-multiline">
                 <contact-form
                     v-if="form"
@@ -50,13 +51,16 @@
 
 import { mapGetters } from 'vuex';
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import Contact from './Contact.vue';
 import ContactForm from './ContactForm.vue';
 
 export default {
     name: 'Contacts',
 
-    components: { Card, Contact, ContactForm },
+    components: {
+        Card, CardControl, Contact, ContactForm,
+    },
 
     props: {
         id: {
@@ -85,6 +89,12 @@ export default {
                     .indexOf(this.query.toLowerCase()) > -1
                     || contact.last_name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.contacts;
+        },
+        count() {
+            return this.contacts.length;
+        },
+        isEmpty() {
+            return this.count === 0;
         },
     },
 
@@ -157,9 +167,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .contacts-wrapper {
+    .wrapper {
         max-height: 415px;
         overflow-y: auto;
     }

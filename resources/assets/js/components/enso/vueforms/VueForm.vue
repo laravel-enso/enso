@@ -245,10 +245,16 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    form.vue-form {
+    .vue-form {
         margin-bottom: 0;
+    }
+
+    .title {
+        .icon {
+            vertical-align: text-bottom;
+        }
     }
 
 </style>

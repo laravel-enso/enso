@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.6
+Upgrades the card vue component.
+Minor layout fixes for vuedatatable and formbuilder.
+
 ### 2.1.5
 Adds placeholder attribute for select field in formbuilder.
 Fixes placeholder prop for VueSelect.

@@ -123,3 +123,11 @@ export default {
 
 </script>
 
+<style lang="scss" scoped>
+
+    .title {
+        .icon {
+            vertical-align: text-bottom;
+        }
+    }
+</style>

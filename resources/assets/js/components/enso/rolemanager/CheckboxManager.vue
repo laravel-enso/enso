@@ -1,22 +1,21 @@
 <template>
 
     <card :title="title"
-        :open="false"
+        collapsed
         ref="card"
         :controls="1">
-        <a slot="control-1" class="card-header-icon">
-            <div class="checkbox-manager field">
+        <card-control slot="control-1">
+            <div class="field">
                 <input type="checkbox"
                     :id="'checkbox-' + _uid"
                     :name="'checkbox-' + _uid"
                     class="is-checkradio is-info"
                     @change="updateBelow">
-                    <label :for="'checkbox-' + _uid"></label>
+                <label :for="'checkbox-' + _uid"></label>
             </div>
-        </a>
-        <div class="has-padding-left-medium has-padding-top-medium has-padding-bottom-medium">
+        </card-control>
+        <div class="has-padding-medium">
             <checkbox-manager v-for="group in sortedGroups"
-                v-if="groupCount"
                 ref="children"
                 :title="group"
                 :key="group"
@@ -40,12 +39,13 @@
 <script>
 
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import ManagerContent from './ManagerContent.vue';
 
 export default {
     name: 'CheckboxManager',
 
-    components: { Card, ManagerContent },
+    components: { Card, CardControl, ManagerContent },
 
     props: {
         title: {
@@ -65,11 +65,8 @@ export default {
         isRoot() {
             return Array.isArray(this.groupData);
         },
-        groupCount() {
-            return this.isRoot ? null : Object.keys(this.groupData).length;
-        },
         sortedGroups() {
-            return this.isRoot ? null : Object.keys(this.groupData).sort();
+            return this.isRoot ? [] : Object.keys(this.groupData).sort();
         },
         checkbox() {
             return this.$el.querySelector('input[type=checkbox]');
@@ -133,10 +130,10 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    div.field.checkbox-manager {
+    .field {
         width: 15px;
     }
-</style>
 
+</style>

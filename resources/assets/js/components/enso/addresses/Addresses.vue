@@ -6,18 +6,18 @@
         :title="title || __('Addresses')"
         :overlay="loading"
         @refresh="get()"
-        :open="open"
+        :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
-        :badge="addresses.length"
+        :badge="count"
         :controls="1">
-        <a slot="control-1" class="card-header-icon">
+        <card-control slot="control-1">
             <span class="icon is-small"
-                  @click="create()">
+                @click="create()">
                 <i class="fas fa-plus-square"></i>
             </span>
-        </a>
-        <div class="has-padding-medium addresses-wrapper">
+        </card-control>
+        <div class="has-padding-medium wrapper">
             <div class="columns is-multiline">
                 <div class="column is-half-tablet is-one-third-widescreen"
                     v-for="(address, index) in filteredAddresses"
@@ -27,8 +27,10 @@
                         @edit="edit(address)"
                         @destroy="destroy(address, index)"
                         :key="index">
-                        <template slot="address" :address="address">
-                            <slot name="address" :address="address">
+                        <template slot="address"
+                            :address="address">
+                            <slot name="address"
+                                :address="address">
                             </slot>
                         </template>
                     </address-card>
@@ -61,13 +63,16 @@
 
 import { mapGetters } from 'vuex';
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import AddressCard from './AddressCard.vue';
 import AddressForm from './AddressForm.vue';
 
 export default {
     name: 'Addresses',
 
-    components: { AddressCard, AddressForm, Card },
+    components: {
+        Card, CardControl, AddressCard, AddressForm,
+    },
 
     props: {
         id: {
@@ -97,6 +102,12 @@ export default {
                     || address.street.toLowerCase().indexOf(this.query.toLowerCase()) > -1
                     || address.number.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.addresses;
+        },
+        count() {
+            return this.addresses.length;
+        },
+        isEmpty() {
+            return this.count === 0;
         },
     },
 
@@ -181,9 +192,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .addresses-wrapper {
+    .wrapper {
         max-height: 430px;
         overflow-y: auto;
     }

@@ -5,31 +5,29 @@
             v-for="(log, index) in logs"
             :key="index">
             <card icon="fas fa-terminal"
-                :removable="false"
-                :collapsible="false"
                 :title="log.name"
                 :controls="3">
-                <a slot="control-1" class="card-header-icon"
+                <card-control slot="control-1"
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
                         @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
                         <i class="fas fa-eye"></i>
                     </span>
-                </a>
-                <a slot="control-1" class="card-header-icon">
+                </card-control>
+                <card-control slot="control-2">
                     <a class="icon is-small has-text-info"
                         :href="getDownloadLink(log.name)">
                         <i class="fas fa-cloud-download-alt"></i>
                     </a>
-                </a>
-                <a slot="control-1" class="card-header-icon">
+                </card-control>
+                <card-control slot="control-3">
                     <popover placement="bottom"
                         @confirm="empty(log)">
                         <span class="icon is-small has-text-danger">
                             <i class="fas fa-trash-alt"></i>
                         </span>
                     </popover>
-                </a>
+                </card-control>
                 <div class="has-padding-large">
                     <p>
                         <span>{{ __("Last updated") }}</span>
@@ -50,10 +48,11 @@
 
 import { mapGetters } from 'vuex';
 import Card from '../../../components/enso/bulma/Card.vue';
+import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
 
 export default {
-    components: { Card, Popover },
+    components: { Card, CardControl, Popover },
 
     computed: {
         ...mapGetters('locale', ['__']),

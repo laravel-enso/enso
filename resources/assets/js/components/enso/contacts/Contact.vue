@@ -1,16 +1,15 @@
 <template>
-    <card :header="false"
-        footer
-        :footer-items="2">
-        <div class="contact-template has-padding-medium">
+    <card fixed>
+        <div class="template has-padding-medium">
             <p class="title is-5">
                 {{ contact.first_name }} {{ contact.last_name }}
-                <span class="tag is-pulled-right"
-                        :class="contact.is_active ? 'is-success' : 'is-danger'">
-                    <i class="fas fa-check"
-                        v-if="contact.is_active">
-                    </i>
-                    <i class="fas fa-times" v-else></i>
+                <span class="tag is-success is-pulled-right"
+                    v-if="contact.is_active">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span class="tag is-danger is-pulled-right"
+                    v-else>
+                    <i class="fas fa-times"></i>
                 </span>
             </p>
             <p>
@@ -36,13 +35,18 @@
             </p>
         </div>
 
-        <a slot="footer-item-1"
-            @click="$emit('edit')">
-            {{ __('edit') }}
-        </a>
-        <popover slot="footer-item-2" @confirm="$emit('delete')">
-            <a>{{__('delete')}}</a>
-        </popover>
+        <card-footer slot="footer">
+            <card-footer-item>
+                <a @click="$emit('edit')">
+                    {{ __('edit') }}
+                </a>
+            </card-footer-item>
+            <card-footer-item>
+                <popover @confirm="$emit('delete')">
+                    <a>{{__('delete')}}</a>
+                </popover>
+            </card-footer-item>
+        </card-footer>
     </card>
 
 </template>
@@ -52,12 +56,16 @@
 import { mapGetters } from 'vuex';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
+import CardFooter from '../bulma/CardFooter.vue';
+import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
 
 export default {
     name: 'Contact',
 
-    components: { Card, ContactForm, Popover },
+    components: {
+        Card, CardFooter, CardFooterItem, ContactForm, Popover,
+    },
 
     props: {
         contact: {
@@ -75,7 +83,7 @@ export default {
 
 <style scoped>
 
-    .contact-template {
+    .template {
         height: 9em;
     }
 

@@ -7,19 +7,19 @@
         :overlay="loading"
         @refresh="get()"
         ref="card"
-        :open="open && !isEmpty"
+        :collapsed="!open || isEmpty"
         @expand="isEmpty ? $refs.card.collapse() : null"
         @query-update="query = $event"
         :badge="count"
         :controls="1">
-        <a slot="control-1" class="card-header-icon">
+        <card-control slot="control-1">
             <file-uploader
                 @upload-successful="get()"
                 :url="uploadLink"
                 multiple>
             </file-uploader>
-        </a>
-        <div class="documents-wrapper has-padding-medium">
+        </card-control>
+        <div class="wrapper has-padding-medium">
             <document v-for="(doc, index) in filteredDocuments"
                 :key="index"
                 :doc="doc"
@@ -34,13 +34,16 @@
 
 import { mapGetters } from 'vuex';
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import Document from './Document.vue';
 import FileUploader from '../fileuploader/FileUploader.vue';
 
 export default {
     name: 'Documents',
 
-    components: { Card, Document, FileUploader },
+    components: {
+        Card, CardControl, Document, FileUploader,
+    },
 
     props: {
         open: {
@@ -130,9 +133,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .documents-wrapper {
+    .wrapper {
         max-height: 500px;
         overflow-y: auto;
     }

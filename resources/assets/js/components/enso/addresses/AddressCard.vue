@@ -1,8 +1,6 @@
 <template>
 
-    <card :header="false"
-        footer
-        :footer-items="3">
+    <card fixed>
         <div class="media has-padding-medium">
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success"
@@ -40,20 +38,25 @@
                 </slot>
             </div>
         </div>
-
-        <a slot="footer-item-1" @click="$emit('edit')">
-            {{__('edit')}}
-        </a>
-        <a slot="footer-item-2" >
-            <span class="icon"
-                @click="$emit('set-default')">
-                <i class="fas fa-anchor"></i>
-            </span>
-        </a>
-        <popover slot="footer-item-3"
-            @confirm="$emit('destroy')">
-            <a>{{__('delete')}}</a>
-        </popover>
+        <card-footer slot="footer">
+            <card-footer-item>
+                <a @click="$emit('edit')">
+                    {{__('edit')}}
+                </a>
+            </card-footer-item>
+            <card-footer-item>
+                <a @click="$emit('set-default')">
+                    <span class="icon">
+                        <i class="fas fa-anchor"></i>
+                    </span>
+                </a>
+            </card-footer-item>
+            <card-footer-item>
+                <popover @confirm="$emit('destroy')">
+                    <a>{{__('delete')}}</a>
+                </popover>
+            </card-footer-item>
+        </card-footer>
     </card>
 
 </template>
@@ -63,10 +66,14 @@
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import Card from '../bulma/Card.vue';
+import CardFooter from '../bulma/CardFooter.vue';
+import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
 
 export default {
-    components: { Card, Popover },
+    components: {
+        Card, CardFooter, CardFooterItem, Popover,
+    },
 
     directives: { tooltip: VTooltip },
 

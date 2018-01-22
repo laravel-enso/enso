@@ -2,25 +2,23 @@
 
     <card icon="fas fa-comments"
         refresh
-        footer
         :search="comments.length > 1"
         :title="title || __('Comments')"
         :overlay="loading"
         @refresh="refresh()"
-        :open="open && !isEmpty"
+        :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
         @expand="isEmpty && !comment ? $refs.card.collapse() : null"
         :badge="count"
         :controls="1">
-        <a slot="control-1"
-            class="card-header-icon">
-            <span class="icon is-small"
-                @click="create()">
+        <card-control slot="control-1"
+            @click="create()">
+            <span class="icon is-small">
                 <i class="fas fa-plus-square"></i>
             </span>
-        </a>
-        <div class="has-padding-medium comments-wrapper">
+        </card-control>
+        <div class="has-padding-medium wrapper">
             <comment is-new
                 :id="id"
                 :type="type"
@@ -52,13 +50,14 @@
 
 import { mapGetters, mapState } from 'vuex';
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import Comment from './Comment.vue';
 
 
 export default {
     name: 'Comments',
 
-    components: { Card, Comment },
+    components: { Card, CardControl, Comment },
 
     props: {
         open: {
@@ -228,9 +227,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .comments-wrapper {
+    .wrapper {
         max-height: 500px;
         overflow-y: auto;
     }

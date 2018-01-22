@@ -1,9 +1,10 @@
 <template>
-    <card :title="config.title"
+    <card header
+        :title="config.title"
         :icon="icon"
+        refresh
         @refresh="get"
-        :overlay="loading"
-        refresh header>
+        :overlay="loading">
         <chart :data="config.data"
             class="has-padding-medium"
             :options="config.options"
