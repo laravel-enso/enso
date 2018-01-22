@@ -1197,16 +1197,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.1.19",
+            "version": "2.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "f166eb742143a2b2107bc003f29fa92a69f56af1"
+                "reference": "6b03ee1f3e4640ae69f4b6e15a6bc6367b1d10cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/f166eb742143a2b2107bc003f29fa92a69f56af1",
-                "reference": "f166eb742143a2b2107bc003f29fa92a69f56af1",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/6b03ee1f3e4640ae69f4b6e15a6bc6367b1d10cb",
+                "reference": "6b03ee1f3e4640ae69f4b6e15a6bc6367b1d10cb",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1257,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-01-21T16:30:53+00:00"
+            "time": "2018-01-22T09:51:41+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -2465,16 +2465,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "42782a1023c931b09a56e55a2b8b56dea807c69d"
+                "reference": "16d147e526ea22c623233b0e279124936c3f9e7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/42782a1023c931b09a56e55a2b8b56dea807c69d",
-                "reference": "42782a1023c931b09a56e55a2b8b56dea807c69d",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/16d147e526ea22c623233b0e279124936c3f9e7a",
+                "reference": "16d147e526ea22c623233b0e279124936c3f9e7a",
                 "shasum": ""
             },
             "require": {
@@ -2514,7 +2514,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-01-21T06:28:43+00:00"
+            "time": "2018-01-22T09:44:59+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",

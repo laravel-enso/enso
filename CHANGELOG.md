@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+### 2.1.4
+Updates npm dependencies / compiles.
+Fixes Select List Option builder merging problem.
+Fixes Addresses published form path.
+
 ### 2.1.3
 Fixes VueDatatable nrcrt alignment.
 
