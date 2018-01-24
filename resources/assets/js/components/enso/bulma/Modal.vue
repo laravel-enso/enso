@@ -2,10 +2,7 @@
 
     <transition enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut">
-        <div class="modal"
-            :class="{ 'is-active': show }"
-            v-if="show"
-            :style="containerStyle">
+        <div :class="['modal', { 'is-active': show }]">
             <div class="modal-background"></div>
             <div class="modal-card"
                 v-if="card">
@@ -21,11 +18,11 @@
                 <footer class="modal-card-foot">
                     <slot name="footer">
                         <button class="button"
-                              @click="$emit('cancel-action')">
+                              @click="$emit('cancel')">
                               {{ __("Cancel") }}
                           </button>
                           <button class="button is-success"
-                            @click="$emit('commit-action')">
+                            @click="$emit('commit')">
                             {{ __("Yes") }}
                         </button>
                     </slot>
@@ -45,11 +42,11 @@
                             <div class="level-item">
                                 <slot name="controls">
                                     <button class="button is-success"
-                                          @click="$emit('cancel-action')">
+                                          @click="$emit('cancel')">
                                           {{ __("Cancel") }}
-                                      </button>
-                                      <button class="button is-danger has-margin-left-small"
-                                        @click="$emit('commit-action')">
+                                    </button>
+                                    <button class="button is-danger has-margin-left-small"
+                                        @click="$emit('commit')">
                                         {{ __("Yes") }}
                                     </button>
                                 </slot>
@@ -60,7 +57,7 @@
             </div>
             <button class="modal-close is-large"
                 aria-label="close"
-                @click="$emit('cancel-action')"
+                @click="$emit('cancel')"
                 v-if="!card">
             </button>
         </div>
@@ -104,7 +101,7 @@ export default {
     }
 
     .modal.is-active {
-        z-index: 1100;
+        z-index: 10;
     }
 
 </style>

@@ -155,8 +155,8 @@
             </div>
         </div>
         <modal :show="showModal"
-            @cancel-action="showModal = false"
-            @commit-action="deleteTemplate(template.id)">
+            @cancel="showModal = false"
+            @commit="deleteTemplate(template.id)">
         </modal>
     </div>
 

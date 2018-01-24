@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.8
+The overlay is now red, as Nprogress.
+Package updates
+
 ### 2.1.7
 
 #### General

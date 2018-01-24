@@ -18,8 +18,7 @@
                 <fa icon="search"></fa>
             </span>
         </div>
-        <div class="dropdown typeahead"
-            :class="{ 'is-active': showDropdown }">
+        <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                     <a href="#" class="dropdown-item"
@@ -137,7 +136,7 @@ export default {
 
             this.loading = true;
 
-            axios.get(this.source, { params: this.getParams() }).then((response) => {
+            axios.get(this.source, { params: this.params() }).then((response) => {
                 this.hideDropdown = false;
                 this.items = response.data;
                 this.loading = false;
@@ -146,7 +145,7 @@ export default {
                 this.handleError(error);
             });
         },
-        getParams() {
+        params() {
             return {
                 query: this.value,
                 length: this.length,

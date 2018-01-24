@@ -8,7 +8,7 @@
             :key="index"
                 class="dropdown-item"
             :class="{ 'is-active': value === length }"
-            @click="$emit('update-length', value);show=false">
+            @click="$emit('update-length', value)">
             {{ value }}
         </a>
     </dropdown>

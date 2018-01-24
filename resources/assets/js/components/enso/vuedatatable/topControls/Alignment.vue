@@ -9,7 +9,7 @@
             :key="key"
             class="dropdown-item"
             :class="{ 'is-active': template.align === value }"
-            @click="template.align = value;show=false">
+            @click="template.align = value">
             <span class="icon is-small">
                 <fa :icon="icons[key]"></fa>
             </span>
@@ -40,7 +40,6 @@ export default {
 
     data() {
         return {
-            show: false,
             icons: {
                 center: faAlignCenter,
                 left: faAlignLeft,

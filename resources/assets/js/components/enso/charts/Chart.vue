@@ -86,9 +86,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    canvas.chart-js {
+    .chart-js {
         max-width: 100%;
   }
 

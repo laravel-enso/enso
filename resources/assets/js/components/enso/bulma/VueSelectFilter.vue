@@ -29,9 +29,9 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .box.vue-filter {
+    .vue-filter {
         padding: 0.5rem;
     }
 

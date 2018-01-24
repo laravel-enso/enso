@@ -131,8 +131,8 @@
             :show="showModal"
             :__="__"
             :message="data.actions.destroy.button.message"
-            @cancel-action="showModal = false"
-            @commit-action="destroy()">
+            @cancel="showModal = false"
+            @commit="destroy()">
         </modal>
     </div>
 

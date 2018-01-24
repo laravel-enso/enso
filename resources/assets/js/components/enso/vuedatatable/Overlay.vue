@@ -1,9 +1,7 @@
 <template>
 
-    <div class="vdt-overlay is-overlay">
-        <div class="vdt-overlay-loader"
-            :style="overlay">
-        </div>
+    <div class="overlay is-overlay">
+        <div class="overlay-loader"></div>
     </div>
 
 </template>
@@ -12,37 +10,28 @@
 
 export default {
     name: 'Overlay',
-
-    computed: {
-        overlay() {
-            return {
-                border: '2px solid #00d1b2',
-                'border-right-color': 'transparent',
-                'border-top-color': 'transparent',
-            };
-        },
-    },
 };
 
 </script>
 
-<style>
+<style scoped>
 
-    .vdt-overlay {
+    .overlay {
         background: rgba(255, 255, 255, 0.4);
         display: flex;
     }
 
-    .vdt-overlay-loader {
+    .overlay-loader {
         margin: auto;
         -webkit-animation: spinAround 500ms infinite linear;
         animation: spinAround 500ms infinite linear;
-        border-radius: 290486px;
+        border-radius: 50%;
         content: "";
-        display: block;
-        position: relative;
         width: 2em;
         height: 2em;
+        border: 2px solid#f44336;
+        border-right-color: transparent;
+        border-top-color: transparent;
     }
 
 </style>

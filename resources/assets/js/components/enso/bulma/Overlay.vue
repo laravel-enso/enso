@@ -1,7 +1,7 @@
 <template>
 
     <div class="overlay is-overlay"
-        :class="{ 'is-opaque': opacity }">
+        :class="{ 'is-opaque': !transparent }">
         <div class="overlay-loader"
             :style="overlayColor"
             :class="loaderSize">
@@ -23,13 +23,13 @@ export default {
                 return ['small', 'medium', 'large'].includes(value);
             },
         },
-        opacity: {
+        transparent: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         color: {
             type: String,
-            default: '#00d1b2',
+            default: '#f44336',
         },
     },
 
@@ -52,39 +52,37 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
     .is-opaque {
         background: rgba(255, 255, 255, 0.4);
     }
 
-    div.overlay.is-overlay {
+    .overlay.is-overlay {
         display: flex;
-    }
 
-    .overlay-loader {
-        margin: auto;
-        -webkit-animation: spinAround 500ms infinite linear;
-        animation: spinAround 500ms infinite linear;
-        border-radius: 290486px;
-        content: "";
-        display: block;
-        position: relative;
-    }
+        .overlay-loader {
+            margin: auto;
+            -webkit-animation: spinAround 500ms infinite linear;
+            animation: spinAround 500ms infinite linear;
+            border-radius: 50%;
+            content: "";
 
-    .overlay-loader.is-small {
-        height: 1em;
-        width: 1em;
-    }
+            &.is-small {
+                height: 1em;
+                width: 1em;
+            }
 
-    .overlay-loader.is-medium {
-        width: 2em;
-        height: 2em;
-    }
+            &.is-medium {
+                width: 2em;
+                height: 2em;
+            }
 
-    .overlay-loader.is-large {
-        width: 3em;
-        height: 3em;
+            &.is-large {
+                width: 3em;
+                height: 3em;
+            }
+        }
     }
 
 </style>

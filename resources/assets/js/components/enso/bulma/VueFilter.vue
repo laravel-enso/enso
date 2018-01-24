@@ -4,7 +4,7 @@
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>
-        <div class="tabs is-toggle is-fullwidth is-small vue-filter">
+        <div class="tabs is-toggle is-fullwidth is-small filter-tabs">
             <ul>
                 <li :class="{ 'is-active': option.value === value }"
                     v-for="(option, index) in options"
@@ -17,7 +17,7 @@
                     v-if="offSwitch">
                     <a @click="update(null)">
                         <span class="icon is-small"
-                            :class="{ 'has-text-danger': value === null, 'has-text-success': value !== null }">
+                            :class="value === null ? 'has-text-danger' : 'has-text-success'">
                             <fa icon="power-off"></fa>
                         </span>
                         <span>{{ __('Off') }}</span>
@@ -54,7 +54,7 @@ export default {
         },
         offSwitch: {
             type: Boolean,
-            default: true,
+            default: false,
         },
     },
 
@@ -77,13 +77,13 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-    .box.vue-filter {
+    .vue-filter {
         padding: 0.5rem;
     }
 
-    .tabs.vue-filter {
+    .filter-tabs {
         padding-top: 4px;
     }
 
