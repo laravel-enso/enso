@@ -11,13 +11,13 @@
             <button class="button is-small is-success has-margin-right-medium"
                 @click="$refs.dialog.hide();$emit('confirm')">
                 <span class="icon is-small">
-                    <i class="fas fa-check"></i>
+                    <fa icon="check"></fa>
                 </span>
             </button>
             <button class="button is-small is-danger"
                 @click="$refs.dialog.hide();$emit('cancel')">
                 <span class="icon is-small">
-                    <i class="fas fa-times"></i>
+                    <fa icon="times"></fa>
                 </span>
             </button>
         </template>
@@ -28,6 +28,10 @@
 <script>
 
 import { VPopover } from 'v-tooltip';
+import fontawesome from '@fortawesome/fontawesome';
+import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faCheck, faTimes);
 
 const positions = [
     'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start',

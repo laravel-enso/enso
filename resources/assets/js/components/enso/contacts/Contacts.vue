@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fas fa-address-card"
+    <card :icon="icon"
         refresh
         :search="contacts.length > 1"
         :title="title || __('Contacts')"
@@ -14,7 +14,7 @@
         <card-control slot="control-1"
             @click="create()">
             <span class="icon is-small">
-                <i class="fas fa-plus-square"></i>
+                <fa icon="plus-square"></fa>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -50,10 +50,14 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faAddressCard, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Contact from './Contact.vue';
 import ContactForm from './ContactForm.vue';
+
+fontawesome.library.add(faAddressCard, faPlusSquare);
 
 export default {
     name: 'Contacts',
@@ -95,6 +99,9 @@ export default {
         },
         isEmpty() {
             return this.count === 0;
+        },
+        icon() {
+            return faAddressCard;
         },
     },
 

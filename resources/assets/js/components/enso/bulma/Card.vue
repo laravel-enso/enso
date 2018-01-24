@@ -6,7 +6,7 @@
             <p class="card-header-title">
                 <span class="icon is-small has-margin-right-small"
                     v-if="icon">
-                    <i :class="icon"></i>
+                    <fa :icon="icon"></fa>
                 </span>
                 <span class="is-clickable"
                     @click="toggle()"
@@ -23,7 +23,7 @@
                         v-model="query"
                         @input="$emit('query-update', query)">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-search"></i>
+                        <fa icon="search"></fa>
                     </span>
                 </p>
             </div>
@@ -40,7 +40,7 @@
                 v-if="refresh"
                 @click="$emit('refresh')">
                 <span class="icon is-small">
-                    <i class="fas fa-sync"></i>
+                    <fa icon="sync"></fa>
                 </span>
             </card-control>
             <card-control
@@ -48,7 +48,7 @@
                 @click="toggle()">
                 <span class="icon angle"
                     :aria-hidden="!expanded">
-                    <i class="fas fa-angle-down"></i>
+                    <fa icon="angle-down"></fa>
                 </span>
             </card-control>
             <card-control
@@ -71,8 +71,12 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faSearch, faSync, faAngleDown } from '@fortawesome/fontawesome-free-solid';
 import CardControl from './CardControl.vue';
 import Overlay from './Overlay.vue';
+
+fontawesome.library.add(faSearch, faSync, faAngleDown);
 
 export default {
     name: 'Card',
@@ -85,8 +89,10 @@ export default {
             default: false,
         },
         icon: {
-            type: String,
-            default: null,
+            type: Object,
+            default() {
+                return null;
+            },
         },
         title: {
             type: String,

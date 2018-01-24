@@ -3,7 +3,7 @@
     <dropdown>
         <span slot="label"
             class="icon is-small">
-            <i class="fas fa-align-justify"></i>
+            <fa icon="align-justify"></fa>
         </span>
         <a v-for="(value, key) in template.aligns"
             :key="key"
@@ -11,7 +11,7 @@
             :class="{ 'is-active': template.align === value }"
             @click="template.align = value;show=false">
             <span class="icon is-small">
-                <i :class="icons[key]"></i>
+                <fa :icon="icons[key]"></fa>
             </span>
         </a>
     </dropdown>
@@ -20,7 +20,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faAlignJustify, faAlignCenter, faAlignLeft, faAlignRight } from '@fortawesome/fontawesome-free-solid';
 import Dropdown from './Dropdown.vue';
+
+fontawesome.library.add(faAlignJustify, faAlignCenter, faAlignLeft, faAlignRight);
 
 export default {
     name: 'Alignment',
@@ -38,9 +42,9 @@ export default {
         return {
             show: false,
             icons: {
-                center: 'fas fa-align-center',
-                left: 'fas fa-align-left',
-                right: 'fas fa-align-right',
+                center: faAlignCenter,
+                left: faAlignLeft,
+                right: faAlignRight,
             },
         };
     },

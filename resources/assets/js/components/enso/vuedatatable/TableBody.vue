@@ -12,13 +12,8 @@
                     <span class="hidden-controls"
                         v-if="hiddenCount"
                         @click="toggleExpand(row, index)">
-                        <span class="icon is-small"
-                            v-show="isExpanded(row)">
-                            <i class="fas fa-minus-square"></i>
-                        </span>
-                        <span class="icon is-small"
-                            v-show="!isExpanded(row)">
-                            <i class="fas fa-plus-square"></i>
+                        <span class="icon is-small">
+                            <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
                         </span>
                     </span>
                 </div>
@@ -28,7 +23,11 @@
                 :key="index"
                 v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
                 <span v-if="column.meta.boolean"
-                    v-html="row[column.name] ? template.boolean[1] : template.boolean[0]">
+                    class="tag is-table-tag"
+                    :class="row[column.name] ? 'is-success' : 'is-danger'">
+                    <span class="icon is-small">
+                        <fa :icon="row[column.name] ? 'check' : 'times'"></fa>
+                    </span>
                 </span>
                 <span v-else-if="column.meta.render"
                     v-html="customRender(row, column)">
@@ -47,7 +46,7 @@
                         :href="button.action === 'href' ? getPath(button, row.dtRowId) : null"
                         @click="button.confirmation ? showModal(button, row) : doAction(button, row)">
                         <span class="icon is-small">
-                            <i :class="button.icon"></i>
+                            <fa :icon="button.icon"></fa>
                         </span>
                     </a>
                 </span>
@@ -77,13 +76,16 @@
 
 <script>
 
-import TableBody from './TableBody.vue';
+import fontawesome from '@fortawesome/fontawesome';
+import { faMinusSquare, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
 import Modal from './Modal.vue';
+
+fontawesome.library.add(faMinusSquare, faPlusSquare);
 
 export default {
     name: 'TableBody',
 
-    components: { TableBody, Modal },
+    components: { Modal },
 
     props: {
         template: {

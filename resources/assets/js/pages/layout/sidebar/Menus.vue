@@ -6,7 +6,7 @@
                 :to="{ name: menu.link }"
                 :class="{ 'is-active': isActive(menu) }">
                 <span class="icon is-small has-margin-right-small">
-                    <i :class="menu.icon"></i>
+                    <fa :icon="menu.icon" fixed-width></fa>
                 </span>
                 {{ __(menu.name) }}
             </router-link>
@@ -14,12 +14,12 @@
             <a v-if="menu.children.length"
                 @click="toggle(menu)">
                 <span class="icon is-small has-margin-right-small">
-                    <i :class="menu.icon"></i>
+                    <fa :icon="menu.icon" fixed-width></fa>
                 </span>
                 {{ menu.name }}
                 <span class="icon is-small angle is-pulled-right"
                     :aria-expanded="menu.expanded">
-                    <i class="fas fa-angle-up"></i>
+                    <fa icon="angle-up" fixed-width></fa>
                 </span>
             </a>
 
@@ -39,6 +39,7 @@
 <script>
 
 import { mapGetters, mapMutations } from 'vuex';
+import './icons';
 
 export default {
     name: 'Menus',

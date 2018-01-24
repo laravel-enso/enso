@@ -17,17 +17,25 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle,
+} from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import Chart from './Chart.vue';
 
+fontawesome.library.add([
+    faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle,
+]);
+
 const icons = {
-    bar: 'fas fa-chart-bar',
-    pie: 'fas fa-chart-pie',
-    line: 'fas fa-chart-line',
-    radar: 'fas fa-chart-area',
-    polarArea: 'fas fa-circle-notch',
-    doughnut: 'fas fa-chart-pie',
-    bubble: 'fas fa-circle',
+    bar: faChartBar,
+    pie: faChartPie,
+    line: faChartLine,
+    radar: faChartArea,
+    polarArea: faCircleNotch,
+    doughnut: faChartPie,
+    bubble: faCircle,
 };
 
 export default {

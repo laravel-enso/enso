@@ -5,7 +5,7 @@
             v-if="data.icon || data.title">
             <span class="icon"
                 v-if="data.icon">
-                <i :class="data.icon"></i>
+                <fa :icon="data.icon"></fa>
             </span>
             <span
                 v-if="data.title">
@@ -77,7 +77,7 @@
                                 </textarea>
                                 <span class="icon is-small is-right has-text-danger"
                                     v-if="errors.has(field.name)">
-                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <fa icon="exclamation-triangle"></fa>
                                 </span>
                             </div>
                         </span>
@@ -92,7 +92,7 @@
                 @click.prevent="showModal = true">
                 <span>{{ __(data.actions.destroy.button.label) }}</span>
                 <span class="icon">
-                    <i :class="data.actions.destroy.button.icon"></i>
+                    <fa :icon="data.actions.destroy.button.icon"></fa>
                 </span>
             </button>
             <button class="button"
@@ -102,7 +102,7 @@
                 :disabled="data.actions.create.forbidden">
                 <span>{{ __(data.actions.create.button.label) }}</span>
                 <span class="icon">
-                    <i :class="data.actions.create.button.icon"></i>
+                    <fa :icon="data.actions.create.button.icon"></fa>
                 </span>
             </button>
             <button type="submit"
@@ -112,7 +112,7 @@
                 :disabled="data.actions.store.forbidden">
                 <span>{{ __(data.actions.store.button.label) }}</span>
                 <span class="icon">
-                    <i :class="data.actions.store.button.icon"></i>
+                    <fa :icon="data.actions.store.button.icon"></fa>
                 </span>
             </button>
             <button type="submit"
@@ -122,7 +122,7 @@
                 :disabled="data.actions.update.forbidden">
                 <span>{{ __(data.actions.update.button.label) }}</span>
                 <span class="icon">
-                    <i :class="data.actions.update.button.icon"></i>
+                    <fa :icon="data.actions.update.button.icon"></fa>
                 </span>
             </button>
             <div class="is-clearfix"></div>
@@ -141,11 +141,15 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
 import VueSelect from './VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 import VueFormInput from './VueFormInput.vue';
+
+fontawesome.library.add(faExclamationTriangle);
 
 export default {
     name: 'VueForm',

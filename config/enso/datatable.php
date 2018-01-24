@@ -55,7 +55,7 @@ return [
     'buttons' => [
         'global' => [
             'create' => [
-                'icon' => 'fas fa-plus',
+                'icon' => 'plus',
                 'class' => 'is-success',
                 'routeSuffix' => 'create',
                 'event' => 'create',
@@ -63,7 +63,7 @@ return [
                 'label' => 'Create',
             ],
             'excel' => [
-                'icon' => 'far fa-file-excel',
+                'icon' => 'file-excel',
                 'class' => null,
                 'routeSuffix' => 'exportExcel',
                 'event' => 'export-excel',
@@ -73,21 +73,21 @@ return [
         ],
         'row' => [
             'show' => [
-                'icon' => 'fas fa-eye',
+                'icon' => 'eye',
                 'class' => 'is-success',
                 'routeSuffix' => 'show',
                 'event' => 'show',
                 'action' => 'router',
             ],
             'edit' => [
-                'icon' => 'fas fa-pencil-alt',
+                'icon' => 'pencil-alt',
                 'class' => 'is-warning',
                 'routeSuffix' => 'edit',
                 'event' => 'edit',
                 'action' => 'router',
             ],
             'destroy' => [
-                'icon' => 'fas fa-trash-alt',
+                'icon' => 'trash-alt',
                 'class' => 'is-danger',
                 'routeSuffix' => 'destroy',
                 'event' => 'destroy',
@@ -97,7 +97,7 @@ return [
                 'confirmation' => true,
             ],
             'download' => [
-                'icon' => 'fas fa-cloud-download-alt',
+                'icon' => 'cloud-download-alt',
                 'class' => 'is-primary',
                 'routeSuffix' => 'download',
                 'event' => 'download',
@@ -128,20 +128,6 @@ return [
             'bordered' => 'is-bordered',
             'hover' => 'is-hoverable',
         ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Boolean
-    |--------------------------------------------------------------------------
-    |
-    | HTML render code for the boolean type of columns
-    |
-    */
-
-    'boolean' => [
-        false => '<span class="tag is-table-tag is-danger"><span class="icon is-small"><i class="fas fa-times"></i></span></span>',
-        true => '<span class="tag is-table-tag is-success"><span class="icon is-small"><i class="fas fa-check"></i></span></span>',
     ],
 
     /*

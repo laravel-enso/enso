@@ -17,17 +17,8 @@
                         <span class="sorter"
                             @click="toggleSort($event, column)"
                             v-if="column.meta.sortable">
-                            <span class="icon is-small"
-                                v-show="!column.meta.sort">
-                                <i class="fas fa-sort fa-xs"></i>
-                            </span>
-                            <span class="icon is-small"
-                                v-show="column.meta.sort === 'ASC'">
-                                <i class="fas fa-sort-up fa-xs"></i>
-                            </span>
-                            <span class="icon is-small"
-                                v-show="column.meta.sort === 'DESC'">
-                                <i class="fas fa-sort-down fa-xs"></i>
+                            <span class="icon is-small">
+                                <fa :icon="sortIcon(column.meta.sort)" size="xs"></fa>
                             </span>
                         </span>
                         <a class="delete is-small"
@@ -48,6 +39,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faSort, faSortUp, faSortDown } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faSort, faSortUp, faSortDown);
+
 export default {
     name: 'Header',
 
@@ -63,6 +59,13 @@ export default {
     },
 
     methods: {
+        sortIcon(sort) {
+            if (!sort) return faSort;
+
+            return sort === 'ASC'
+                ? faSortUp
+                : faSortDown;
+        },
         toggleSort(event, { meta }) {
             const { sort } = meta;
 

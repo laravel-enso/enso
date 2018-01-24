@@ -18,7 +18,7 @@
                     <a @click="update(null)">
                         <span class="icon is-small"
                             :class="{ 'has-text-danger': value === null, 'has-text-success': value !== null }">
-                            <i class="fas fa-power-off"></i>
+                            <fa icon="power-off"></fa>
                         </span>
                         <span>{{ __('Off') }}</span>
                     </a>
@@ -32,6 +32,10 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faPowerOff } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faPowerOff);
 
 export default {
     props: {

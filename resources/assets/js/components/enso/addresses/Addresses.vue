@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fas fa-map-signs"
+    <card :icon="icon"
         refresh
         :search="addresses.length > 1"
         :title="title || __('Addresses')"
@@ -14,7 +14,7 @@
         <card-control slot="control-1">
             <span class="icon is-small"
                 @click="create()">
-                <i class="fas fa-plus-square"></i>
+                <fa icon="plus-square"></fa>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -62,10 +62,14 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faMapSigns, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import AddressCard from './AddressCard.vue';
 import AddressForm from './AddressForm.vue';
+
+fontawesome.library.add(faMapSigns, faPlusSquare);
 
 export default {
     name: 'Addresses',
@@ -109,6 +113,9 @@ export default {
         isEmpty() {
             return this.count === 0;
         },
+        icon() {
+            return faMapSigns;
+        },
     },
 
     data() {
@@ -139,7 +146,7 @@ export default {
             });
         },
         create() {
-            if (this.$refs.card.collapsed) {
+            if (!this.$refs.card.expanded) {
                 this.$refs.card.toggle();
             }
 

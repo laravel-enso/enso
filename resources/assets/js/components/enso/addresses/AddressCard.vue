@@ -6,18 +6,17 @@
                 <span class="icon is-pulled-right has-text-success"
                     v-if="address.is_default"
                     v-tooltip="__('default')">
-                    <i class="fas fa-anchor">
-                    </i>
+                    <fa icon="anchor"></fa>
                 </span>
                 <slot name="address" :address="address">
                     <span v-if="address.number">{{ address.number }}</span>
                     <span v-if="address.street">{{ address.street }}</span>
-                    <span v-if="address.street_type">{{ address.street_type }},</span>
+                    <span v-if="address.street_type">{{ __(address.street_type) }},</span>
                     <br>
-                    <span v-if="address.building"><span class="has-text-grey">{{__('Building')}}: </span>{{ address.building }},</span>
-                    <span v-if="address.entry"><span class="has-text-grey">{{__('Entry')}}: </span>{{ address.entry }},</span>
-                    <span v-if="address.floor"><span class="has-text-grey">{{__('Floor')}}: </span>{{ address.floor }},</span>
-                    <span v-if="address.apartment"><span class="has-text-grey">{{__('Apartment')}}: </span>{{ address.apartment }},</span>
+                    <span v-if="address.building"><span class="has-text-grey">{{__(address.building_type)}} </span>{{ address.building }},</span>
+                    <span v-if="address.entry"><span class="has-text-grey">{{__('Entry')}} </span>{{ address.entry }},</span>
+                    <span v-if="address.floor"><span class="has-text-grey">{{__('Floor')}} </span>{{ address.floor }},</span>
+                    <span v-if="address.apartment"><span class="has-text-grey">{{__('Apartment')}} </span>{{ address.apartment }},</span>
                     <br>
                     <span v-if="address.sub_administrative_area">{{ address.sub_administrative_area }},</span>
                     <span v-if="address.city">{{ address.city }},</span>
@@ -26,13 +25,13 @@
                     <span v-if="address.administrative_area"> {{ address.administrative_area }},</span>
                     <br>
                     <span class="icon">
-                        <i class="fas fa-globe"></i>
+                        <fa icon="globe"></fa>
                     </span>
                     {{ address.country_name }}
                     <br>
                     <span class="icon"
                         v-if="address.obs">
-                        <i class="fas fa-sticky-note"></i>
+                        <fa icon="sticky-note"></fa>
                     </span>
                      {{ address.obs }}
                 </slot>
@@ -47,7 +46,7 @@
             <card-footer-item>
                 <a @click="$emit('set-default')">
                     <span class="icon">
-                        <i class="fas fa-anchor"></i>
+                        <fa icon="anchor"></fa>
                     </span>
                 </a>
             </card-footer-item>
@@ -65,10 +64,14 @@
 
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
+import fontawesome from '@fortawesome/fontawesome';
+import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
 import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
+
+fontawesome.library.add(faAnchor, faGlobe, faStickyNote);
 
 export default {
     components: {
@@ -90,3 +93,9 @@ export default {
 };
 
 </script>
+
+<style scoped>
+    .media-content {
+        min-height: 148px;
+    }
+</style>

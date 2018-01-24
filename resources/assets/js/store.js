@@ -43,7 +43,7 @@ export default new Vuex.Store({
 
     actions: {
         setState({ commit, dispatch }) {
-            axios.get('/api/core/init').then(({ data }) => {
+            axios.get('/api/core').then(({ data }) => {
                 const { state } = data;
                 commit('setUser', state.user);
                 commit('setImpersonating', state.impersonating);

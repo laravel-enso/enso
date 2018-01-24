@@ -3,7 +3,8 @@
         <div class="tabs" :class="alignClass">
             <ul>
                 <li v-for="(tab, index) in tabs"
-                    :class="{ 'is-active': index === selected }">
+                    :class="{ 'is-active': index === selected }"
+                    :key="index">
                     <a @click="selected=index">
                         {{ tab.label }}
                         <span class="tag is-warning has-margin-left-small"
@@ -15,7 +16,8 @@
             </ul>
         </div>
         <div v-for="(tab, index) in tabs"
-            v-if="tabs.length && selected === index">
+            v-if="tabs.length && selected === index"
+            :key="index">
             <slot :name="tab.label"
                 v-if="hasBadges">
             </slot>
@@ -48,10 +50,6 @@ export default {
         active: {
             type: Number,
             default: 0,
-        },
-        icon: {
-            type: String,
-            default: null,
         },
     },
 

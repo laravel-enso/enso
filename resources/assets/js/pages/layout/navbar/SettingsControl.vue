@@ -2,8 +2,21 @@
     <a class="navbar-item"
         @click="$store.commit('layout/settingsBar/toggle')">
         <span class="icon is-small">
-            <i class="fas fa-cogs">
-            </i>
+            <fa icon="cogs"></fa>
         </span>
     </a>
 </template>
+
+<script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import { faCogs } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faCogs);
+
+export default {
+    name: 'SettingsControl',
+};
+
+</script>
+

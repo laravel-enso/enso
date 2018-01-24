@@ -18,15 +18,15 @@
                         v-model="email"
                         @keypress.down="hasErrors=false">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <fa icon="envelope"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right has-text-error"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -39,15 +39,15 @@
                         v-model="password"
                         @keypress.down="hasErrors=false">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                        <fa icon="lock"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                     type="submit"
                     @click.prevent="submit()">
                     <span class="icon is-small">
-                        <i class="fas fa-user"></i>
+                        <fa icon="user"></fa>
                     </span>
                     <span>Login</span>
                 </button>
@@ -83,6 +83,14 @@
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
+} from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add([
+    faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
+]);
 
 export default {
     name: 'Login',

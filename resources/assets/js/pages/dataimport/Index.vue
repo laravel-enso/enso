@@ -24,7 +24,7 @@
                             class="button is-info">
                             <span>{{ __('Upload Template') }}</span>
                             <span class="icon is-small">
-                                <i class="fas fa-upload"></i>
+                                <fa icon="upload"></fa>
                             </span>
                         </a>
                     </file-uploader>
@@ -34,7 +34,7 @@
                         :href="downloadTemplateLink">
                         <span>{{ __('Download Template') }}</span>
                         <span class="icon is-small">
-                            <i class="fas fa-download"></i>
+                            <fa icon="download"></fa>
                         </span>
                     </a>
                     <a class="button is-danger animated fadeIn"
@@ -42,7 +42,7 @@
                         @click="showModal = true">
                         <span>{{ __('Delete Template') }}</span>
                         <span class="icon is-small">
-                            <i class="fas fa-trash-alt"></i>
+                            <fa icon="trash-alt"></fa>
                         </span>
                     </a>
                 </div>
@@ -57,7 +57,7 @@
                             class="button is-success">
                             <span>{{ __('Start Import') }}</span>
                             <span class="icon is-small">
-                                <i class="fas fa-upload"></i>
+                                <fa icon="upload"></fa>
                             </span>
                         </a>
                     </file-uploader>
@@ -82,25 +82,25 @@
                     </p>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <i class="fas fa-file-excel"></i>
+                            <fa icon="file-excel"></fa>
                         </span>
                         {{ __('File') }}:&emsp;<span class="has-text-info">{{ summary.fileName }}</span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <fa icon="calendar-alt"></fa>
                         </span>
                         {{ __('Created at') }}:&emsp;<span class="has-text-info">{{ summary.date }}, {{ summary.time }}</span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-success">
-                            <i class="fas fa-check"></i>
+                            <fa icon="check"></fa>
                         </span>
                         {{ __('Imported Entries') }}:&emsp;<span class="has-text-success">{{ summary.successful }}</span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-danger">
-                            <i class="fas fa-times"></i>
+                            <fa icon="times"></fa>
                         </span>
                         {{ __('Errors') }}:&emsp;<span class="has-text-danger">{{ summary.errors }}</span>
                     </a>
@@ -113,14 +113,13 @@
                 </nav>
             </div>
             <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd animated bounceInRight">
-                <card icon="fas fa-book"
+                <card :icon="icon"
                     :title="__('Error List')"
                     @remove="summary=null"
                     v-if="summary.errors > 0">
                     <tabs class="has-padding-medium"
                         title="__('Summary')"
                         align="right"
-                        icon="fas fa-file-excel"
                         :tabs="getSheetTabs()">
                         <span v-for="sheet in summary.issues"
                             :slot="sheet.name"
@@ -167,6 +166,11 @@
 
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faUpload, faDownload, faTrashAlt, faFileExcel,
+    faCalendarAlt, faCheck, faTimes, faBook,
+} from '@fortawesome/fontawesome-free-solid';
 import VueSelect from '../../components/enso/vueforms/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
@@ -175,6 +179,11 @@ import Card from '../../components/enso/bulma/Card.vue';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 import Paginate from '../../components/enso/bulma/Paginate.vue';
 import Tabs from '../../components/enso/bulma/Tabs.vue';
+
+fontawesome.library.add([
+    faUpload, faDownload, faTrashAlt, faFileExcel,
+    faCalendarAlt, faCheck, faTimes, faBook,
+]);
 
 export default {
     components: {
@@ -193,6 +202,9 @@ export default {
         },
         uploadImportLink() {
             return route('import.run', this.importType, false);
+        },
+        icon() {
+            return faBook;
         },
     },
 

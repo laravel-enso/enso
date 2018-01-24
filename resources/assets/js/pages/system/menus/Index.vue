@@ -2,7 +2,6 @@
 
         <vue-table :path="path"
             :i18n="__"
-            :custom-render="customRender"
             id="menus">
         </vue-table>
 
@@ -24,18 +23,6 @@ export default {
         return {
             path: route('system.menus.initTable', [], false),
         };
-    },
-
-    methods: {
-        customRender(row, column) {
-            switch (column.name) {
-            case 'icon':
-                return `<i class="${row[column.name]}"></i>`;
-            default:
-                toastr.warning(`render for column ${column.name} is not defined.`);
-                return row[column.name];
-            }
-        },
     },
 };
 

@@ -25,7 +25,7 @@
                                                         v-if="avatarId"
                                                         @click="deleteAvatar">
                                                         <span class="icon">
-                                                            <i class="fas fa-trash-alt"></i>
+                                                            <fa icon="trash-alt"></fa>
                                                         </span>
                                                         <span>
                                                             {{ __('Avatar') }}
@@ -39,7 +39,7 @@
                                                             <button  class="button is-small is-info"
                                                                 @click="props.openFileBrowser">
                                                                 <span class="icon">
-                                                                    <i class="fas fa-upload"></i>
+                                                                    <fa icon="upload"></fa>
                                                                 </span>
                                                                 <span>
                                                                     {{ __('Avatar') }}
@@ -52,7 +52,7 @@
                                                     <button class="button is-small is-danger"
                                                         @click="logout()">
                                                         <span class="icon">
-                                                            <i class="fas fa-sign-out-alt"></i>
+                                                            <fa icon="sign-out-alt"></fa>
                                                         </span>
                                                         <span>
                                                             {{ __('Log Out') }}
@@ -201,8 +201,9 @@
                             <li class="timeline-item"
                                 v-for="(action, index) in actions"
                                 :key="index">
-                                <div class="timeline-marker is-icon">
-                                    <i :class="getIcon(action.route)"></i>
+                                <div class="timeline-marker is-icon"
+                                    :class="getClass(action.route)">
+                                    <fa :icon="getIcon(action.route)" size="xs"></fa>
                                 </div>
                                 <div class="timeline-content">
                                     <p class="heading">{{ getHRDate(action.created_at) }} {{ getHRTime(action.created_at) }}</p>
@@ -217,7 +218,7 @@
                         <li class="timeline-item"
                             v-else>
                             <div class="timeline-marker is-icon">
-                                <i class="fas fa-fw fa-ellipsis-h"></i>
+                                <fa icon="ellipsis-h" size="xs"></fa>
                             </div>
                         </li>
                     </ul>
@@ -231,7 +232,17 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
+    faEye, faPlus, faPencilAlt,
+} from '@fortawesome/fontawesome-free-solid';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
+
+fontawesome.library.add([
+    faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
+    faEye, faPlus, faPencilAlt,
+]);
 
 export default {
     components: { FileUploader },
@@ -325,10 +336,16 @@ export default {
             return moment(timestamp).format('H:mm');
         },
         getIcon(action) {
-            if (action.indexOf('index') > 0) return 'fas fa-eye has-text-success';
-            if (action.indexOf('create') > 0) return 'fas fa-plus has-text-warning';
-            if (action.indexOf('edit') > 0) return 'fas fa-pencil-alt has-text-warning';
-            return 'fas fa-trash-alt has-text-danger';
+            if (action.indexOf('index') > 0) return faEye;
+            if (action.indexOf('create') > 0) return faPlus;
+            if (action.indexOf('edit') > 0) return faPencilAlt;
+            return faTrashAlt;
+        },
+        getClass(action) {
+            if (action.indexOf('index') > 0) return 'has-text-success';
+            if (action.indexOf('create') > 0) return 'has-text-warning';
+            if (action.indexOf('edit') > 0) return 'has-text-warning';
+            return 'has-text-danger';
         },
         getPage(page) {
             axios.get(this.paginationUrl + page).then(({ data }) => {

@@ -30,7 +30,7 @@
                                         v-model="query"
                                         @keyup.enter="isNewKey ? addKey() : focusIt(null)">
                                     <span class="icon is-small is-right">
-                                        <i class="fas fa-search"></i>
+                                        <fa icon="search"></fa>
                                     </span>
                                 </p>
                             </div>
@@ -89,7 +89,7 @@
                                 <a class="button is-outlined is-danger"
                                     @click="removeKey(key)">
                                     <span class="icon is-small">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <fa icon="trash-alt"></fa>
                                     </span>
                                 </a>
                             </p>
@@ -105,7 +105,11 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faSearch, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import VueSelect from '../../../components/enso/vueforms/VueSelect.vue';
+
+fontawesome.library.add(faSearch, faTrashAlt);
 
 export default {
     components: { VueSelect },

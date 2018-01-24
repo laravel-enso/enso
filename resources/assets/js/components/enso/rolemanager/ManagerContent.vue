@@ -15,10 +15,10 @@
                         <span :class="getClass(entry)">
                             {{ entry.description || entry.name }}
                         </span>
-                        <span class="icon has-text-info"
+                        <span class="icon is-small has-text-info has-margin-left-medium"
                             v-if="entry.default"
                             v-tooltip="__('Default')">
-                            <i class="is-icon fas fa-exclamation-triangle"></i>
+                            <fa icon="exclamation-triangle"></fa>
                         </span>
                     </label>
             </div>
@@ -31,6 +31,10 @@
 
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
+import fontawesome from '@fortawesome/fontawesome';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faExclamationTriangle);
 
 export default {
     name: 'ManagerContent',

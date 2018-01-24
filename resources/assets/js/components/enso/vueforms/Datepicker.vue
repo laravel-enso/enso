@@ -10,10 +10,10 @@
                 class="input control"
                 :disabled="disabled">
             <span class="icon is-small is-right">
-                <i class="fas fa-clock"
+                <fa icon="clock"
                     v-if="timeOnly">
-                </i>
-                <i class="fas fa-calendar-alt" v-else></i>
+                </fa>
+                <fa icon="calendar-alt" v-else></fa>
             </span>
         </div>
     </div>
@@ -23,6 +23,10 @@
 <script>
 
 import Flatpickr from 'flatpickr';
+import fontawesome from '@fortawesome/fontawesome';
+import { faClock, faCalendarAlt } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faClock, faCalendarAlt);
 
 // const FlatpickrL10ns = {
 //     ro: require('flatpickr/dist/l10n/ro.js').ro,

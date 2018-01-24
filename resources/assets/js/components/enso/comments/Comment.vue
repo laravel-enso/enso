@@ -25,7 +25,7 @@
                         v-if="comment.isEditable"
                         @click="originalBody=comment.body;">
                         <span class="icon is-small has-text-grey">
-                            <i class="fas fa-pencil-alt"></i>
+                            <fa icon="pencil-alt"></fa>
                         </span>
                     </button>
                     <popover placement="bottom-end"
@@ -36,7 +36,7 @@
                         <button class="button is-naked is-small"
                             @click="dialog=true">
                             <span class="icon is-small has-text-grey">
-                                <i class="fas fa-trash-alt"></i>
+                                <fa icon="trash-alt"></fa>
                             </span>
                         </button>
                     </popover>
@@ -74,8 +74,12 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import Inputor from './Inputor.vue';
 import Popover from '../bulma/Popover.vue';
+
+fontawesome.library.add(faPencilAlt, faTrashAlt);
 
 export default {
     name: 'Comment',

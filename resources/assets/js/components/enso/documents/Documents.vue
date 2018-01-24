@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fas fa-copy"
+    <card :icon="icon"
         refresh
         :search="documents.length > 1"
         :title="title || __('Documents')"
@@ -33,10 +33,14 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faCopy } from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Document from './Document.vue';
 import FileUploader from '../fileuploader/FileUploader.vue';
+
+fontawesome.library.add(faCopy);
 
 export default {
     name: 'Documents',
@@ -80,6 +84,9 @@ export default {
                 ? this.documents.filter(doc => doc.original_name.toLowerCase()
                     .indexOf(this.query.toLowerCase()) > -1)
                 : this.documents;
+        },
+        icon() {
+            return faCopy;
         },
     },
 

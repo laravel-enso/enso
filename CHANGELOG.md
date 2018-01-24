@@ -1,5 +1,16 @@
 ## Enso Changelog
 
+### 2.1.7
+
+#### General
+Registers globally the FontAwesomeIcon as 'fa'. It can be used anywhere in the project with `<fa icon="icon"></fa>`, as long as the needed icon is imported in that file.
+Adds a new file where new menu icons should be registered `resources/assets/js/pages/layout/sidebar/icons/app`
+Includes a command that will run automatically and update all the icons from the `menus` table to the new format.
+Updates all the form & table json templates to work with fa5 icons.
+
+#### VueDatatable & FormBuilder
+Changes the config file to work with the new style of including fa5 icons. Be sure to overwrite / update the old config file!
+
 ### 2.1.6
 Upgrades the card vue component.
 Minor layout fixes for vuedatatable and formbuilder.

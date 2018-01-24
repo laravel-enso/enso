@@ -11,7 +11,7 @@
                 <slot name="label"></slot>
                 <span class="icon is-small angle"
                         :aria-hidden="!show">
-                    <i class="fas fa-angle-down"></i>
+                    <fa icon="angle-down"></fa>
                 </span>
             </button>
         </div>
@@ -32,6 +32,10 @@
 <script>
 
 import vClickOutside from 'v-click-outside';
+import fontawesome from '@fortawesome/fontawesome';
+import { faAngleDown } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faAngleDown);
 
 export default {
     name: 'Dropdown',

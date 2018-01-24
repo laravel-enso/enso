@@ -8,7 +8,7 @@
                         {{ meta.appName }} v{{ meta.version }}
                     </strong>built with
                     <span class="icon has-text-danger has-margin-left-small has-margin-right-small">
-                        <i class="fas fa-heart"></i>
+                        <fa icon="heart"></fa>
                     </span>+
                     <a href="https://bulma.io"
                         class="has-margin-left-small has-margin-right-small"
@@ -38,7 +38,7 @@
                 <a href="https://github.com/laravel-enso/enso"
                     target="_blank">
                     <span class="icon">
-                        <i class="fab fa-github"></i>
+                        <fa :icon="['fab', 'github']"></fa>
                     </span>
                 </a>
             </p>
@@ -50,6 +50,11 @@
 <script>
 
 import { mapState } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faHeart } from '@fortawesome/fontawesome-free-solid';
+import { faGithub } from '@fortawesome/fontawesome-free-brands';
+
+fontawesome.library.add(faHeart, faGithub);
 
 export default {
     name: 'AppFooter',

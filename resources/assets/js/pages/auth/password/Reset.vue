@@ -17,15 +17,15 @@
                         placeholder="Email"
                         v-model="email">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <fa icon="envelope"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right has-text-error"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -37,15 +37,15 @@
                         placeholder="Password"
                         v-model="password">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                        <fa icon="lock"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -57,15 +57,15 @@
                         placeholder="Repeat Password"
                         v-model="passwordConfirmation">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                        <fa icon="lock"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     type="submit"
                     @click.prevent="submit()">
                     <span class="icon is-small">
-                        <i class="fas fa-lock"></i>
+                        <fa icon="lock"></fa>
                     </span>
                     <span>Login</span>
                 </button>
@@ -85,6 +85,13 @@
 </template>
 
 <script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faEnvelope, faCheck, faExclamationTriangle, faLock,
+} from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faEnvelope, faCheck, faExclamationTriangle, faLock);
 
 export default {
     name: 'Email',

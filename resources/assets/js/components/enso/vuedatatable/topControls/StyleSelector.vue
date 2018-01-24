@@ -3,7 +3,7 @@
     <dropdown class="is-right">
         <span slot="label"
             class="icon is-small">
-            <i class="fas fa-table"></i>
+            <fa icon="table"></fa>
         </span>
         <a v-for="(style, key) in template.styles"
             :key="key"
@@ -18,7 +18,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faTable } from '@fortawesome/fontawesome-free-solid';
 import Dropdown from './Dropdown.vue';
+
+fontawesome.library.add(faTable);
 
 export default {
     name: 'StyleSelector',

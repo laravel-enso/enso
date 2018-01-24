@@ -5,7 +5,7 @@
             <div class="column has-padding-small is-half is-hidden-mobile">
                 <h5 class="title is-5">
                     <span class="icon">
-                        <i :class="template.icon"></i>
+                        <fa :icon="template.icon"></fa>
                     </span>
                     {{ i18n(template.name) }}
                 </h5>
@@ -19,7 +19,7 @@
                     @click="doAction(button)">
                     <span>{{ i18n(button.label) }}</span>
                     <span class="icon is-small">
-                        <i :class="button.icon"></i>
+                        <fa :icon="button.icon"></fa>
                     </span>
                 </button>
             </div>
@@ -38,13 +38,13 @@
                 <button class="button"
                     @click="$emit('reload')">
                     <span class="icon is-small">
-                        <i class="fas fa-sync"></i>
+                        <fa icon="sync"></fa>
                     </span>
                 </button>
                 <button class="button"
                     @click="$emit('reset')">
                     <span class="icon is-small">
-                        <i class="fas fa-undo"></i>
+                        <fa icon="undo"></fa>
                     </span>
                 </button>
             </div>
@@ -56,7 +56,7 @@
                         @input="$emit('input', $event.target.value)"
                         :placeholder="i18n('Search')">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-search"></i>
+                        <fa icon="search"></fa>
                     </span>
                 </p>
             </div>
@@ -67,10 +67,14 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faSync, faUndo, faSearch } from '@fortawesome/fontawesome-free-solid';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import Alignment from './topControls/Alignment.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
+
+fontawesome.library.add(faSync, faUndo, faSearch);
 
 export default {
     name: 'TopControls',

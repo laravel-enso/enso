@@ -4,32 +4,28 @@
             <p class="title is-5">
                 {{ contact.first_name }} {{ contact.last_name }}
                 <span class="tag is-success is-pulled-right"
-                    v-if="contact.is_active">
-                    <i class="fas fa-check"></i>
-                </span>
-                <span class="tag is-danger is-pulled-right"
-                    v-else>
-                    <i class="fas fa-times"></i>
+                    :class="contact.is_active ? 'is-success' : 'is-danger'">
+                    <fa :icon="contact.is_active ? 'check' : 'times'"></fa>
                 </span>
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.email">
-                    <i class="fas fa-envelope"></i>
+                    <fa icon="envelope"></fa>
                 </span>
                 {{ contact.email }}
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.phone">
-                    <i class="fas fa-phone"></i>
+                    <fa icon="phone"></fa>
                 </span>
                 {{ contact.phone }}
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.obs">
-                    <i class="fas fa-sticky-note "></i>
+                    <fa icon="sticky-note "></fa>
                 </span>
                 {{ contact.obs }}
             </p>
@@ -54,11 +50,19 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faCheck, faTimes, faEnvelope, faPhone, faStickyNote,
+} from '@fortawesome/fontawesome-free-solid';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
 import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
+
+fontawesome.library.add([
+    faCheck, faTimes, faEnvelope, faPhone, faStickyNote,
+]);
 
 export default {
     name: 'Contact',

@@ -13,14 +13,14 @@
             <a class="navbar-item is-hidden-desktop"
                 @click="$store.commit('layout/navbar/toggle')">
                 <span class="icon is-small">
-                    <i class="fas fa-bars"></i>
+                    <fa icon="bars"></fa>
                 </span>
             </a>
             <div class="navbar-item"
                 v-if="envIsLocal">
                 <span class="tag is-warning">
                     <span class="icon is-small">
-                        <i class="fas fa-code"></i>
+                        <fa icon="code"></fa>
                     </span>
                 </span>
             </div>
@@ -30,15 +30,16 @@
                     @click="$bus.$emit('stop-impersonating')"
                     v-tooltip="__('Impersonating')">
                     <span class="icon is-small">
-                        <i class="fas fa-user"></i>
+                        <fa icon="user"></fa>
                     </span>
                     <span class="icon is-small">
-                        <i class="fas fa-times"></i>
+                        <fa icon="times"></fa>
                     </span>
                 </button>
             </div>
             <profile-control class="is-aligned-right"
-                v-if="isTouch"></profile-control>
+                v-if="isTouch">
+            </profile-control>
             </profile-control>
             <settings-control v-if="isTouch"></settings-control>
         </div>
@@ -58,9 +59,14 @@
 
 import { mapState, mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
+import fontawesome from '@fortawesome/fontawesome';
+import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid';
+
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';
 import ProfileControl from './ProfileControl.vue';
+
+fontawesome.library.add(faBars, faCode, faUser, faTimes);
 
 export default {
     name: 'Navbar',

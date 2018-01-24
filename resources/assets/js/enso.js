@@ -2,6 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import lodash from 'lodash';
 import moment from 'moment';
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import toastr from 'toastr';
 import 'toastr/build/toastr.min.css';
 
@@ -13,7 +14,7 @@ import App from './pages/App.vue';
 
 import './app';
 
-require('./fontawesome/js/fontawesome-all');
+Vue.component('fa', FontAwesomeIcon);
 
 const bus = new Vue({ name: 'Bus' });
 

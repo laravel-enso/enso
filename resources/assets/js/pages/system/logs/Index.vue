@@ -4,27 +4,27 @@
         <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
             v-for="(log, index) in logs"
             :key="index">
-            <card icon="fas fa-terminal"
+            <card :icon="icon"
                 :title="log.name"
                 :controls="3">
                 <card-control slot="control-1"
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
                         @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
-                        <i class="fas fa-eye"></i>
+                        <fa icon="eye"></fa>
                     </span>
                 </card-control>
                 <card-control slot="control-2">
                     <a class="icon is-small has-text-info"
                         :href="getDownloadLink(log.name)">
-                        <i class="fas fa-cloud-download-alt"></i>
+                        <fa icon="cloud-download-alt"></fa>
                     </a>
                 </card-control>
                 <card-control slot="control-3">
                     <popover placement="bottom"
                         @confirm="empty(log)">
                         <span class="icon is-small has-text-danger">
-                            <i class="fas fa-trash-alt"></i>
+                            <fa icon="trash-alt"></fa>
                         </span>
                     </popover>
                 </card-control>
@@ -47,15 +47,24 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { 
+    faTerminal, faEye, faCloudDownloadAlt, faTrashAlt 
+} from '@fortawesome/fontawesome-free-solid';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
+
+fontawesome.library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
 
 export default {
     components: { Card, CardControl, Popover },
 
     computed: {
         ...mapGetters('locale', ['__']),
+        icon() {
+            return faTerminal;
+        },
     },
 
     data() {

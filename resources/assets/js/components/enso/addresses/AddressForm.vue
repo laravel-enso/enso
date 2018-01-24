@@ -30,7 +30,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faLocationArrow } from '@fortawesome/fontawesome-free-solid';
 import VueForm from '../vueforms/VueForm.vue';
+
+fontawesome.library.add(faLocationArrow);
 
 export default {
     components: { VueForm },

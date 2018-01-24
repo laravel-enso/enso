@@ -6,8 +6,7 @@
         <a class="navbar-link"
             @click="show=!show">
             <span class="icon is-small">
-                <i class="fas fa-bell">
-                </i>
+                <fa icon="bell"></fa>
             </span>
             <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
             <overlay v-if="loading"></overlay>
@@ -39,7 +38,7 @@
                             @click="markAllAsRead">
                             <span>{{ __("Mark all read") }}</span>
                             <span class="icon is-small">
-                                <i class="fas fa-check"></i>
+                                <fa icon="check"></fa>
                             </span>
                         </a>
                     </div>
@@ -50,7 +49,7 @@
                             @click="clearAll">
                             <span>{{ __("Clear all") }}</span>
                             <span class="icon is-small">
-                                <i class="fas fa-trash-alt"></i>
+                                <fa icon="trash-alt"></fa>
                             </span>
                         </a>
                     </div>
@@ -72,7 +71,11 @@ import { mapGetters, mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
+import fontawesome from '@fortawesome/fontawesome';
+import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
+
+fontawesome.library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
 
 export default {
     name: 'Notifications',

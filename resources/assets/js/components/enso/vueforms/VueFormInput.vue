@@ -13,7 +13,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fas fa-exclamation-triangle"></i>
+                <fa icon="exclamation-triangle"></fa>
             </span>
         </div>
         <div class="control"
@@ -28,7 +28,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fas fa-exclamation-triangle"></i>
+                <fa icon="exclamation-triangle"></fa>
             </span>
         </div>
         <div class="control"
@@ -46,7 +46,7 @@
                 :disabled="field.meta.disabled">
             <span class="icon is-small is-right has-text-danger"
                 v-if="hasError">
-                <i class="fas fa-exclamation-triangle"></i>
+                <fa icon="exclamation-triangle"></fa>
             </span>
         </div>
         <span v-if="field.meta.content === 'checkbox'">
@@ -63,7 +63,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
 import VueSwitch from './VueSwitch.vue';
+
+fontawesome.library.add(faExclamationTriangle);
 
 export default {
     components: { VueSwitch },

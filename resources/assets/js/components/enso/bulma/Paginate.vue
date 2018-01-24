@@ -11,12 +11,12 @@
                         aria-controls="dropdown-menu"
                         @click="open=!open">
                         <span class="icon is-small has-margin-right-small">
-                            <i class="fas fa-bars"></i>
+                            <fa icon="bars"></fa>
                         </span>
                         {{ pageLength }}
                         <span class="icon is-small angle"
                             :aria-hidden="!open">
-                            <i class="fas fa-angle-down"></i>
+                            <fa icon="angle-down"></fa>
                         </span>
                     </a>
                 </div>
@@ -35,26 +35,26 @@
             </div>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fas fa-eye"></i>
+                    <fa icon="eye"></fa>
                 </span>
                 {{ start }} -> {{ offset }} / {{ records }}
             </a>
             <a class="pagination-previous"
                 @click="previous">
                 <span class="icon is-small">
-                    <i class="fas fa-angle-left"></i>
+                    <fa icon="angle-left"></fa>
                 </span>
             </a>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fas fa-file-alt"></i>
+                    <fa icon="file-alt"></fa>
                 </span>
                  {{ current }} / {{ pages }}
             </a>
             <a class="pagination-next"
                 @click="next">
                 <span class="icon is-small">
-                    <i class="fas fa-angle-right"></i>
+                    <fa icon="angle-right"></fa>
                 </span>
             </a>
         </div>
@@ -66,6 +66,15 @@
 </template>
 
 <script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
+} from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add([
+    faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
+]);
 
 export default {
     props: {

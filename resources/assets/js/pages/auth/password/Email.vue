@@ -17,15 +17,15 @@
                         placeholder="Email"
                         v-model="email">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <fa icon="envelope"></fa>
                     </span>
                     <span class="icon is-small is-right has-text-success"
                         v-if="isSuccessful">
-                        <i class="fas fa-check"></i>
+                        <fa icon="check"></fa>
                     </span>
-                    <span class="icon is-small is-right has-text-error"
+                    <span class="icon is-small is-right has-text-danger"
                         v-if="hasErrors">
-                        <i class="fas fa-exclamation-triangle has-text-danger"></i>
+                        <fa icon="exclamation-triangle"></fa>
                     </span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     type="submit"
                     @click.prevent="submit()">
                     <span class="icon is-small">
-                        <i class="fas fa-user"></i>
+                        <fa icon="user"></fa>
                     </span>
                     <span>Send a reset passworkd link</span>
                 </button>
@@ -45,6 +45,13 @@
 </template>
 
 <script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faEnvelope, faCheck, faExclamationTriangle, faUser,
+} from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faEnvelope, faCheck, faExclamationTriangle, faUser);
 
 export default {
     name: 'Email',

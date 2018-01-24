@@ -1,6 +1,6 @@
 <template>
 
-    <card icon="fas fa-comments"
+    <card :icon="icon"
         refresh
         :search="comments.length > 1"
         :title="title || __('Comments')"
@@ -15,7 +15,7 @@
         <card-control slot="control-1"
             @click="create()">
             <span class="icon is-small">
-                <i class="fas fa-plus-square"></i>
+                <fa icon="plus-square"></fa>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -49,10 +49,13 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Comment from './Comment.vue';
 
+fontawesome.library.add(faComments, faPlusSquare);
 
 export default {
     name: 'Comments',
@@ -94,6 +97,9 @@ export default {
                     .indexOf(this.query.toLowerCase()) > -1
                     || comment.owner.fullName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.comments;
+        },
+        icon() {
+            return faComments;
         },
     },
 

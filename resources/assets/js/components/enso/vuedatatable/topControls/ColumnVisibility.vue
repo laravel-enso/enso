@@ -3,7 +3,7 @@
     <dropdown>
         <span slot="label"
             class="icon is-small">
-            <i class="fas fa-eye"></i>
+            <fa icon="eye"></fa>
         </span>
         <a v-for="(column, index) in template.columns"
             :key="index"
@@ -18,7 +18,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faEye } from '@fortawesome/fontawesome-free-solid';
 import Dropdown from './Dropdown.vue';
+
+fontawesome.library.add(faEye);
 
 export default {
     name: 'ColumnVisibility',

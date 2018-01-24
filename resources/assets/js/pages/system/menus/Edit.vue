@@ -14,11 +14,7 @@
                             type="text">
                         <span class="icon is-small is-right"
                             v-if="props.errors.has('icon')">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </span>
-                        <span class="icon is-small is-right"
-                            v-else>
-                            <i :class="props.field.value"></i>
+                            <fa icon="exclamation-triangle"></fa>
                         </span>
                     </div>
                 </template>
@@ -30,7 +26,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
 import VueForm from '../../../components/enso/vueforms/VueForm.vue';
+
+fontawesome.library.add(faExclamationTriangle);
 
 export default {
     components: { VueForm },

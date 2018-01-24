@@ -25,13 +25,12 @@ class RouteCleanup extends Command
             ]);
         });
 
-        $permission = Permission::whereName('core.contacts.list')->first();
+        Permission::whereName('core.init')->update(['name' => 'core.index']);
 
-        if (!$permission) {
-            return;
-        }
-
-        $permission->roles()->sync([]);
-        $permission->delete();
+        $permission = Permission::whereName('core.contacts.list')
+            ->each(function ($permission) {
+                $permission->roles()->sync([]);
+                $permission->delete();
+            });
     }
 }

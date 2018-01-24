@@ -15,7 +15,7 @@
                 @keydown.esc="update('')"
                 @blur="dropdown=false">
             <span class="icon is-small is-left">
-                <i class="fas fa-search"></i>
+                <fa icon="search"></fa>
             </span>
         </div>
         <div class="dropdown typeahead"
@@ -40,6 +40,10 @@
 <script>
 
 import { debounce } from 'lodash';
+import fontawesome from '@fortawesome/fontawesome';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faSearch);
 
 export default {
     name: 'Typeahead',

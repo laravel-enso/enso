@@ -13,7 +13,7 @@
                         :open-file-browser="openFileBrowser"
                         @click="openFileBrowser">
                         <a class="icon is-small">
-                            <i class="fas fa-upload"></i>
+                            <fa icon="upload"></fa>
                         </a>
                     </slot>
             </label>
@@ -23,6 +23,11 @@
 </template>
 
 <script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import { faUpload } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faUpload);
 
 export default {
     props: {

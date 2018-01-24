@@ -6,7 +6,7 @@
         <div class="level-left">
             <div class="level-item">
                 <span class="icon is-small has-margin-right-small">
-                    <i class="fas fa-file"></i>
+                    <fa icon="file"></fa>
                 </span>
                 <span>
                     {{ doc.original_name }}
@@ -22,14 +22,14 @@
                         v-if="doc.isDownloadable"
                         @click="show">
                         <span class="icon">
-                            <i class="fas fa-eye"></i>
+                            <fa icon="eye"></fa>
                         </span>
                     </button>
                     <a class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         :href="downloadLink">
                         <span class="icon">
-                            <i class="fas fa-cloud-download-alt"></i>
+                            <fa icon="cloud-download-alt"></fa>
                         </span>
                     </a>
                     <popover placement="bottom"
@@ -39,7 +39,7 @@
                         @hide="dialog = controls = false">
                         <button class="button is-naked has-margin-right-medium">
                             <span class="icon">
-                                <i class="fas fa-trash-alt"></i>
+                                <fa icon="trash-alt"></fa>
                             </span>
                         </button>
                     </popover>
@@ -47,26 +47,25 @@
                         trigger="hover"
                         placement="top">
                         <span class="icon has-margin-right-small">
-                            <i class="fas fa-info-circle">
-                            </i>
+                            <fa icon="info-circle"></fa>
                         </span>
                         <template slot="popover">
                             <div class="info">
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fas fa-user"></i>
+                                        <fa icon="user"></fa>
                                     </span>
                                     {{ doc.owner.fullName }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fas fa-calendar-alt"></i>
+                                        <fa icon="calendar-alt"></fa>
                                     </span>
                                     {{ this.$options.filters.timeFromNow(this.doc.created_at) }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
-                                        <i class="fas fa-database"></i>
+                                        <fa icon="database"></fa>
                                     </span>
                                     {{ this.$options.filters.numberFormat(this.doc.size) }} Kb
                                 </p>
@@ -84,7 +83,17 @@
 
 import { VPopover } from 'v-tooltip';
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt,
+    faInfoCircle, faUser, faCalendarAlt, faDatabase,
+} from '@fortawesome/fontawesome-free-solid';
 import Popover from '../bulma/Popover.vue';
+
+fontawesome.library.add([
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt,
+    faInfoCircle, faUser, faCalendarAlt, faDatabase,
+]);
 
 export default {
     name: 'Document',
