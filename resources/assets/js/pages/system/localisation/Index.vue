@@ -11,7 +11,11 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faEdit } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
+
+fontawesome.library.add(faEdit);
 
 export default {
     components: { VueTable },

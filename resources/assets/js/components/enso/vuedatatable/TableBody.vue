@@ -77,10 +77,14 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faMinusSquare, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import {
+    faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Modal from './Modal.vue';
 
-fontawesome.library.add(faMinusSquare, faPlusSquare);
+fontawesome.library.add([
+    faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
+]);
 
 export default {
     name: 'TableBody',

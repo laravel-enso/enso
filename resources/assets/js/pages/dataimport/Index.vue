@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div class="box animated fadeIn"
+        <div class="box"
             v-if="!summary">
             <div class="columns">
                 <div class="column is-one-third">

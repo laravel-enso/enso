@@ -31,6 +31,15 @@
 
 import Vue from 'vue';
 
+import fontawesome from '@fortawesome/fontawesome';
+import {
+    faArrowCircleRight, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle,
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
+
+fontawesome.library.add([
+    faArrowCircleRight, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle,
+]);
+
 const types = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
 const positions = ['left', 'right', 'center'];
 const icons = {
@@ -202,6 +211,9 @@ export default {
             position: relative;
             z-index: 9999;
             position: relative;
+            -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
+            -moz-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
+            box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
 
             .message-header {
 

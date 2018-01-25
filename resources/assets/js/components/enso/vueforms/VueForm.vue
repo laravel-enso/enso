@@ -142,14 +142,16 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import {
+    faTrashAlt, faPlus, faCheck, faExclamationTriangle,
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
 import VueSelect from './VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 import VueFormInput from './VueFormInput.vue';
 
-fontawesome.library.add(faExclamationTriangle);
+fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle);
 
 export default {
     name: 'VueForm',
