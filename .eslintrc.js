@@ -18,11 +18,8 @@ module.exports = {
         'vue',
     ],
     globals: {
-        _: true,
         moment: true,
         axios: true,
-        toastr: true,
-        PageStore: true,
         route: true,
     },
     rules: {

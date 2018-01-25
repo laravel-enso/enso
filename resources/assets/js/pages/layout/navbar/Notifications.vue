@@ -71,6 +71,7 @@ import { mapGetters, mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
+import { format } from 'date-fns';
 import fontawesome from '@fortawesome/fontawesome';
 import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
@@ -161,7 +162,7 @@ export default {
         markAllAsRead() {
             axios.patch(route('core.notifications.markAllAsRead', [], false)).then(() => {
                 this.notifications.forEach((notification) => {
-                    notification.read_at = notification.read_at || moment().format('Y-MM-DD H:mm:s');
+                    notification.read_at = notification.read_at || format(new Date(), 'Y-MM-DD H:mm:s');
                 });
 
                 this.unreadCount = 0;

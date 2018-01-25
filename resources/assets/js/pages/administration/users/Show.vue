@@ -16,7 +16,7 @@
                                     <div>
                                         <p class="title is-3">{{ profileUser.fullName }}</p>
                                         <p>{{ __('role') }}: {{ profileUser.role.name }}</p>
-                                        <p>{{ __('since') }}: {{ profileUser.created_at }}</p>
+                                        <p>{{ __('since') }}: {{ profileUser.created_at | timeFromNow }}</p>
                                         <p class="has-margin-top-small">
                                             <div class="level user-controls"
                                                 v-if="isSelfVisiting">
@@ -232,6 +232,7 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
+import { format } from 'date-fns';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
@@ -327,13 +328,13 @@ export default {
             }).catch(error => this.handleError(error));
         },
         getDay(timestamp) {
-            return moment(timestamp).calendar().split(' ')[0];
+            return format(timestamp, 'dddd');
         },
         getHRDate(timestamp) {
-            return moment(timestamp).format(this.meta.dateFormat);
+            return format(timestamp, this.meta.dateFormat);
         },
         getHRTime(timestamp) {
-            return moment(timestamp).format('H:mm');
+            return format(timestamp, 'H:mm');
         },
         getIcon(action) {
             if (action.indexOf('index') > 0) return faEye;

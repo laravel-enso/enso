@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import axios from 'axios';
-import moment from 'moment';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faListAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -28,7 +27,6 @@ Vue.use(Toastr, {
 const bus = new Vue({ name: 'Bus' });
 Vue.prototype.$bus = bus;
 
-window.moment = moment;
 window.axios = axios;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

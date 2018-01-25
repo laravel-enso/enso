@@ -21,6 +21,5 @@ export const getters = {
 export const actions = {
     setLocale({ commit }, selectedLocale) {
         commit('setLocale', selectedLocale, { root: true });
-        moment.locale(selectedLocale);
     },
 };

@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.11
+Replaced `moment.js` with the great `date-fns`.
+
 ### 2.1.10
 Imports missing icons.
 Adds shadow to the toastr.
