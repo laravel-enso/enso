@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.10
+Imports missing icons.
+Adds shadow to the toastr.
+
 ### 2.1.9
 We're both happy and sad...
 Happy because we have finally ditched the old `toastr` lib ($. dependent) and replaced it with our new toastr/message component.
