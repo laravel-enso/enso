@@ -1,5 +1,11 @@
 ## Enso Changelog
 
+### 2.1.9
+We're both happy and sad...
+Happy because we have finally ditched the old `toastr` lib ($. dependent) and replaced it with our new toastr/message component.
+Sad because this introduces a small breaking change. If you still want to use the old toastr you will have to include it yourself (hopefully not)., or you can just replace all the `toastr.${type}` occurencies with `this.$toastr.${type}` and go *nouveau* :).
+This version also fixes the fa5 import - it now uses the `shakable.es` resource.
+
 ### 2.1.8
 The overlay is now red, as Nprogress.
 Package updates

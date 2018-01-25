@@ -60,7 +60,7 @@
 import { mapState, mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid';
+import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';
