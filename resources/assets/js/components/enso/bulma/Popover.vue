@@ -29,7 +29,7 @@
 
 import { VPopover } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid';
+import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faCheck, faTimes);
 

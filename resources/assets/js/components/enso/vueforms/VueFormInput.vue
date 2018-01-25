@@ -64,7 +64,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueSwitch from './VueSwitch.vue';
 
 fontawesome.library.add(faExclamationTriangle);

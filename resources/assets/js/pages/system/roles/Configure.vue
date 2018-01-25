@@ -73,7 +73,7 @@ export default {
         },
         update() {
             axios.post(route('system.roles.setPermissions', [this.roleId], false), this.postParams()).then(({ data }) => {
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
             }).catch(error => this.handleError(error));
         },
         postParams() {

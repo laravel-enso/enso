@@ -10,7 +10,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faCogs } from '@fortawesome/fontawesome-free-solid';
+import { faCogs } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faCogs);
 

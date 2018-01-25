@@ -72,7 +72,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faSearch, faSync, faAngleDown } from '@fortawesome/fontawesome-free-solid';
+import { faSearch, faSync, faAngleDown } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import CardControl from './CardControl.vue';
 import Overlay from './Overlay.vue';
 

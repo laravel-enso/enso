@@ -50,7 +50,7 @@
 
 import { mapGetters, mapState } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
+import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Comment from './Comment.vue';

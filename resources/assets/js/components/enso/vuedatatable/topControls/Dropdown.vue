@@ -33,7 +33,7 @@
 
 import vClickOutside from 'v-click-outside';
 import fontawesome from '@fortawesome/fontawesome';
-import { faAngleDown } from '@fortawesome/fontawesome-free-solid';
+import { faAngleDown } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faAngleDown);
 

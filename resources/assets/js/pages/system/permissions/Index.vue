@@ -33,7 +33,7 @@ export default {
                 return row.isRead ? `<span class="tag is-table-tag is-success">${this.__(row[column.name])}</span>`
                     : `<span class="tag is-table-tag is-warning">${this.__(row[column.name])}</span>`;
             default:
-                toastr.warning(`render for column ${column.name} is not defined.`);
+                this.$toastr.warning(`render for column ${column.name} is not defined.`);
                 return this.__(row[column.name]);
             }
         },

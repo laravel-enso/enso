@@ -87,7 +87,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import {
     faFile, faEye, faCloudDownloadAlt, faTrashAlt,
     faInfoCircle, faUser, faCalendarAlt, faDatabase,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Popover from '../bulma/Popover.vue';
 
 fontawesome.library.add([

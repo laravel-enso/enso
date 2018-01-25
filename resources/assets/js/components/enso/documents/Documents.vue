@@ -34,7 +34,7 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faCopy } from '@fortawesome/fontawesome-free-solid';
+import { faCopy } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Document from './Document.vue';

@@ -86,7 +86,7 @@ import { mapGetters, mapActions } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add([
     faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
@@ -159,12 +159,12 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 401) {
-                    toastr.error(data.message);
+                    this.$toastr.error(data.message);
                     return;
                 }
 
                 if (status === 422) {
-                    toastr.error(data.message);
+                    this.$toastr.error(data.message);
                     return;
                 }
 

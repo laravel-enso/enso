@@ -49,7 +49,7 @@
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faEnvelope, faCheck, faExclamationTriangle, faUser,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faEnvelope, faCheck, faExclamationTriangle, faUser);
 
@@ -89,7 +89,7 @@ export default {
             axios.post('/api/password/email', { email: this.email }).then(({ data }) => {
                 this.loading = false;
                 this.isSuccessful = true;
-                toastr.success(data.status);
+                this.$toastr.success(data.status);
             }).catch((error) => {
                 this.loading = false;
                 this.hasErrors = true;
@@ -99,13 +99,13 @@ export default {
                 if (status === 422) {
                     if (data.errors) {
                         if (data.errors.email) {
-                            toastr.error(data.errors.email);
+                            this.$toastr.error(data.errors.email);
                         }
 
                         return;
                     }
 
-                    toastr.error(data.message);
+                    this.$toastr.error(data.message);
 
                     return;
                 }

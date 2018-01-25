@@ -19,7 +19,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faTable } from '@fortawesome/fontawesome-free-solid';
+import { faTable } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Dropdown from './Dropdown.vue';
 
 fontawesome.library.add(faTable);

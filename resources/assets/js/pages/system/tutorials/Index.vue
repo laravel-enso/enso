@@ -32,7 +32,7 @@ export default {
             case 'placement':
                 return `<span class="tag is-table-tag is-info">${row[name]}</span`;
             default:
-                toastr.warning(`render for column ${name} is not defined.`);
+                this.$toastr.warning(`render for column ${name} is not defined.`);
                 return row[name];
             }
         },

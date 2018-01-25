@@ -72,7 +72,7 @@ import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
 import fontawesome from '@fortawesome/fontawesome';
-import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid';
+import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
 
 fontawesome.library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
@@ -187,7 +187,7 @@ export default {
                 self.unreadCount++;
                 self.needsUpdate = true;
                 self.offset = 0;
-                toastr.info(this.__('You just got a notification...'));
+                this.$toastr.info(this.__('You just got a notification...'));
             });
         },
         computeScrollPosition(event) {

@@ -65,7 +65,7 @@
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/fontawesome-free-solid';
+import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
 import CardFooterItem from '../bulma/CardFooterItem.vue';

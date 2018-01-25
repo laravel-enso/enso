@@ -40,7 +40,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faSort, faSortUp, faSortDown } from '@fortawesome/fontawesome-free-solid';
+import { faSort, faSortUp, faSortDown } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faSort, faSortUp, faSortDown);
 

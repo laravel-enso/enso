@@ -40,7 +40,7 @@
 
 import { debounce } from 'lodash';
 import fontawesome from '@fortawesome/fontawesome';
-import { faSearch } from '@fortawesome/fontawesome-free-solid';
+import { faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faSearch);
 

@@ -57,7 +57,7 @@
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Dropdown from './Dropdown.vue';
 
 fontawesome.library.add([

@@ -67,7 +67,6 @@
 
 <script>
 
-import toastr from 'toastr';
 import { debounce } from 'lodash';
 import TopControls from './TopControls.vue';
 import TableHeader from './TableHeader.vue';
@@ -113,7 +112,7 @@ export default {
         customRender: {
             type: Function,
             default: (row, column) => {
-                toastr.warning(`'Custom render function is missing for column: ${column.name}'`);
+                this.$toastr.warning(`'Custom render function is missing for column: ${column.name}'`);
                 return row[column.name];
             },
         },
@@ -227,7 +226,7 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 555) {
-                    toastr.error(data.message);
+                    this.$toastr.error(data.message);
                 }
 
                 this.handleError(error);
@@ -328,12 +327,12 @@ export default {
         },
         exportData(path) {
             axios.get(path, { params: this.exportRequest() }).then(({ data }) => {
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
             }).catch((error) => {
                 const { status, data } = error.response;
 
                 if (status === 555) {
-                    toastr.error(data.message);
+                    this.$toastr.error(data.message);
                 }
 
                 this.handleError(error);
@@ -360,7 +359,7 @@ export default {
         },
         ajax(method, path) {
             axios[method.toLowerCase()](path).then(({ data }) => {
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
                 this.getData();
             }).catch(error => this.handleError(error));
         },

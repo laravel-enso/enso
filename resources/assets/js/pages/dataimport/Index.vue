@@ -170,7 +170,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import {
     faUpload, faDownload, faTrashAlt, faFileExcel,
     faCalendarAlt, faCheck, faTimes, faBook,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueSelect from '../../components/enso/vueforms/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
@@ -248,7 +248,7 @@ export default {
             axios.delete(route('import.deleteTemplate', id, false)).then(({ data }) => {
                 this.template = {};
                 this.showModal = false;
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
                 this.loadingTemplate = false;
             }).catch((error) => {
                 this.showModal = false;
@@ -263,7 +263,7 @@ export default {
                 this.loading = false;
 
                 if (data.errors === 0) {
-                    toastr.info('The import has no errors');
+                    this.$toastr.info('The import has no errors');
                     return;
                 }
 
@@ -294,7 +294,7 @@ export default {
             case 'errors':
                 return `<b class="has-text-danger">${row[column.name]}</b>`;
             default:
-                toastr.warning(`render for column ${column.name} is not defined.`);
+                this.$toastr.warning(`render for column ${column.name} is not defined.`);
                 return row[column.name];
             }
         },

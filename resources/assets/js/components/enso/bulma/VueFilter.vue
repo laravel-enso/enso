@@ -33,7 +33,7 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faPowerOff } from '@fortawesome/fontawesome-free-solid';
+import { faPowerOff } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faPowerOff);
 

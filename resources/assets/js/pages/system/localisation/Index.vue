@@ -32,7 +32,7 @@ export default {
             case 'flag':
                 return `<i class="flag-icon ${row[column.name]}"></i>`;
             default:
-                toastr.warning(`render for column ${column.name} is not defined.`);
+                this.$toastr.warning(`render for column ${column.name} is not defined.`);
                 return row[column.name];
             }
         },

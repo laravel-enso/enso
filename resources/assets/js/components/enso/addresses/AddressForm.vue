@@ -31,7 +31,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faLocationArrow } from '@fortawesome/fontawesome-free-solid';
+import { faLocationArrow } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueForm from '../vueforms/VueForm.vue';
 
 fontawesome.library.add(faLocationArrow);

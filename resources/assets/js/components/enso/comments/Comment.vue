@@ -75,7 +75,7 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Inputor from './Inputor.vue';
 import Popover from '../bulma/Popover.vue';
 

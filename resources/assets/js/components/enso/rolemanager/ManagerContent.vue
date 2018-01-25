@@ -32,7 +32,7 @@
 import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faExclamationTriangle);
 

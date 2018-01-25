@@ -24,7 +24,7 @@
 
 import Flatpickr from 'flatpickr';
 import fontawesome from '@fortawesome/fontawesome';
-import { faClock, faCalendarAlt } from '@fortawesome/fontawesome-free-solid';
+import { faClock, faCalendarAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faClock, faCalendarAlt);
 

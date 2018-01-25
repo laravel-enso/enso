@@ -236,7 +236,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
     faEye, faPlus, faPencilAlt,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
 
 fontawesome.library.add([

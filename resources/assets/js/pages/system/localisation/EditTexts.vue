@@ -106,7 +106,7 @@
 
 import { mapGetters, mapState } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faSearch, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
+import { faSearch, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueSelect from '../../../components/enso/vueforms/VueSelect.vue';
 
 fontawesome.library.add(faSearch, faTrashAlt);
@@ -184,7 +184,7 @@ export default {
                 this.locales = data.locales;
             }).catch((error) => {
                 this.loading = false;
-                this.handleError(error)
+                this.handleError(error);
             });
         },
         getLangFile() {
@@ -200,7 +200,7 @@ export default {
                 this.langFile = data;
             }).catch((error) => {
                 this.loading = false;
-                this.handleError(error)
+                this.handleError(error);
             });
         },
         saveLangFile() {
@@ -210,7 +210,7 @@ export default {
                 langFile: this.langFile,
             }).then(({ data }) => {
                 this.loading = false;
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);

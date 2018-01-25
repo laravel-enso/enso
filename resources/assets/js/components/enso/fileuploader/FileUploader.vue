@@ -25,7 +25,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faUpload } from '@fortawesome/fontawesome-free-solid';
+import { faUpload } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faUpload);
 
@@ -99,7 +99,7 @@ export default {
         },
         sizeCheckPasses(file) {
             if (file.size > this.fileSizeLimit) {
-                toastr.warning(`File size Limit of ${this.fileSizeLimit} Kb excedeed by ${file.name}`);
+                this.$toastr.warning(`File size Limit of ${this.fileSizeLimit} Kb excedeed by ${file.name}`);
                 return false;
             }
 

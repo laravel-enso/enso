@@ -51,7 +51,7 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faAddressCard, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
+import { faAddressCard, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Contact from './Contact.vue';

@@ -51,8 +51,8 @@
 
 import { mapState } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faHeart } from '@fortawesome/fontawesome-free-solid';
-import { faGithub } from '@fortawesome/fontawesome-free-brands';
+import { faHeart } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es';
 
 fontawesome.library.add(faHeart, faGithub);
 

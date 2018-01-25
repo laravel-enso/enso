@@ -27,7 +27,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueForm from '../../../components/enso/vueforms/VueForm.vue';
 
 fontawesome.library.add(faExclamationTriangle);

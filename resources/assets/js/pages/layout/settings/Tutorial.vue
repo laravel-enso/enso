@@ -24,7 +24,7 @@
 
 import { introJs } from 'intro.js';
 import fontawesome from '@fortawesome/fontawesome';
-import { faQuestion } from '@fortawesome/fontawesome-free-solid';
+import { faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faQuestion);
 

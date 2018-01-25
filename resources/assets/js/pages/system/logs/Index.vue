@@ -48,9 +48,9 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { 
-    faTerminal, faEye, faCloudDownloadAlt, faTrashAlt 
-} from '@fortawesome/fontawesome-free-solid';
+import {
+    faTerminal, faEye, faCloudDownloadAlt, faTrashAlt,
+} from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
@@ -84,7 +84,7 @@ export default {
             axios.delete(route('system.logs.destroy', log.name, false).toString()).then(({ data }) => {
                 const index = this.logs.findIndex(item => log.name === item.name);
                 this.logs.splice(index, 1, data.log);
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
             }).catch(error => this.handleError(error));
         },
         getDownloadLink(log) {

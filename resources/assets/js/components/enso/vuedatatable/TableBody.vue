@@ -77,7 +77,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faMinusSquare, faPlusSquare } from '@fortawesome/fontawesome-free-solid';
+import { faMinusSquare, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Modal from './Modal.vue';
 
 fontawesome.library.add(faMinusSquare, faPlusSquare);

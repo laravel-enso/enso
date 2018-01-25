@@ -142,7 +142,7 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
 import VueSelect from './VueSelect.vue';
@@ -199,7 +199,7 @@ export default {
 
             axios[this.data.method](this.path, this.formData()).then(({ data }) => {
                 this.loading = false;
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
                 this.$emit('submit');
 
                 if (data.redirect) {
@@ -233,7 +233,7 @@ export default {
 
             axios.delete(this.data.actions.destroy.path).then(({ data }) => {
                 this.loading = false;
-                toastr.success(data.message);
+                this.$toastr.success(data.message);
                 this.$emit('destroy');
 
                 if (data.redirect) {

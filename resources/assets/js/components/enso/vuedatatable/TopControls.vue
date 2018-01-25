@@ -68,7 +68,7 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faSync, faUndo, faSearch } from '@fortawesome/fontawesome-free-solid';
+import { faSync, faUndo, faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import Alignment from './topControls/Alignment.vue';
