@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.12
+Packages update
+
 ### 2.1.11
 Replaced `moment.js` with the great `date-fns`.
 

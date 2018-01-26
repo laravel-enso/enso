@@ -25,7 +25,7 @@
             <p>
                 <span class="icon is-small"
                     v-if="contact.obs">
-                    <fa icon="sticky-note "></fa>
+                    <fa icon="sticky-note"></fa>
                 </span>
                 {{ contact.obs }}
             </p>

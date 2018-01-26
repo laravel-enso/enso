@@ -1440,16 +1440,16 @@
         },
         {
             "name": "laravel-enso/contacts",
-            "version": "2.1.21",
+            "version": "2.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Contacts.git",
-                "reference": "659cbceba2eddfc2b7be5e3a103af82c50a955ef"
+                "reference": "f3792371bc5a469bcdb4fd4be7d9f253f129b2be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/659cbceba2eddfc2b7be5e3a103af82c50a955ef",
-                "reference": "659cbceba2eddfc2b7be5e3a103af82c50a955ef",
+                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/f3792371bc5a469bcdb4fd4be7d9f253f129b2be",
+                "reference": "f3792371bc5a469bcdb4fd4be7d9f253f129b2be",
                 "shasum": ""
             },
             "require": {
@@ -1503,7 +1503,7 @@
                 "contacts",
                 "laravel-enso"
             ],
-            "time": "2018-01-25T15:48:19+00:00"
+            "time": "2018-01-26T06:11:00+00:00"
         },
         {
             "name": "laravel-enso/core",
@@ -3320,16 +3320,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda"
+                "reference": "e57b3a09784f846411aa7ed664eedb73e3399078"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/579f4ce846734a1cf55d6a531d00ca07a43e3cda",
-                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e57b3a09784f846411aa7ed664eedb73e3399078",
+                "reference": "e57b3a09784f846411aa7ed664eedb73e3399078",
                 "shasum": ""
             },
             "require": {
@@ -3367,7 +3367,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-12-26T14:43:21+00:00"
+            "time": "2018-01-25T21:31:33+00:00"
         },
         {
             "name": "paragonie/random_compat",
