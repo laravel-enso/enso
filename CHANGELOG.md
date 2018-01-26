@@ -8,8 +8,6 @@ Update to the core package AddressesManager to 2.2.0, which now uses the list of
 
 Note that since the old list and the new list are different, this is a breaking change for the existing addresses (backup your data).
 
-To update, just update your packages/addressesmanager.
-
 ### 2.1.12
 Packages update
 
