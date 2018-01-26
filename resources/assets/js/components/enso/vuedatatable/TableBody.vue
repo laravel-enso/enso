@@ -1,76 +1,79 @@
 <template>
 
-    <tbody>
-        <tr v-for="(row, index) in body.data"
-            :key="index">
-            <td :class="template.align"
-                v-if="template.crtNo && !isChild(row)">
-                <div class="table-crt-no">
-                    <span class="crt-no-label">
-                        {{ getIndex(row) }}
-                    </span>
-                    <span class="hidden-controls"
-                        v-if="hiddenCount"
-                        @click="toggleExpand(row, index)">
-                        <span class="icon is-small">
-                            <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
-                        </span>
-                    </span>
-                </div>
-            </td>
-            <td :class="template.align"
-                v-for="(column, index) in template.columns"
-                :key="index"
-                v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
-                <span v-if="column.meta.boolean"
-                    class="tag is-table-tag"
-                    :class="row[column.name] ? 'is-success' : 'is-danger'">
+<tbody>
+    <tr v-for="(row, index) in body.data"
+        :key="index">
+        <td :class="template.align"
+            v-if="template.crtNo && !isChild(row)">
+            <div class="table-crt-no">
+                <span class="crt-no-label">
+                    {{ getIndex(row) }}
+                </span>
+                <span class="hidden-controls"
+                    v-if="hiddenCount"
+                    @click="toggleExpand(row, index)">
                     <span class="icon is-small">
-                        <fa :icon="row[column.name] ? 'check' : 'times'"></fa>
+                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
                     </span>
                 </span>
-                <span v-else-if="column.meta.render"
-                    v-html="customRender(row, column)">
+            </div>
+        </td>
+        <td :class="template.align"
+            v-for="(column, index) in template.columns"
+            :key="index"
+            v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
+            <span v-if="column.meta.boolean"
+                class="tag is-table-tag"
+                :class="row[column.name] ? 'is-success' : 'is-danger'">
+                <span class="icon is-small">
+                    <fa :icon="row[column.name] ? 'check' : 'times'"></fa>
                 </span>
-                <span v-else-if="column.meta.translation">{{ i18n(row[column.name]) }}</span>
-                <span v-else>{{ row[column.name] }}</span>
-            </td>
-            <td class="table-actions"
-                :class="template.align"
-                v-if="template.actions && !isChild(row)">
-                <span class="table-action-buttons">
-                    <a v-for="(button, index) in template.buttons.row"
-                        :key="index"
-                        class="button is-small is-table-button has-margin-left-small"
-                        :class="button.class"
-                        :href="button.action === 'href' ? getPath(button, row.dtRowId) : null"
-                        @click="button.confirmation ? showModal(button, row) : doAction(button, row)">
-                        <span class="icon is-small">
-                            <fa :icon="button.icon"></fa>
-                        </span>
-                    </a>
-                </span>
-            </td>
-            <td :colspan="hiddenColSpan"
-                :class="template.align"
-                v-if="isChild(row)">
-                <ul>
-                    <li class="child-row"
-                        v-for="column in row"
-                        :key="column.label">
-                        <b>{{ column.label }}</b>: {{ column.value }}
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <modal v-if="modal"
-            :show="modal"
-            :i18n="i18n"
-            :message="button.message"
-            @cancel="closeModal()"
-            @commit="doAction(button, row)">
-        </modal>
-    </tbody>
+            </span>
+            <span v-else-if="column.meta.icon">
+                <fa :icon="row[column.name]"></fa>
+            </span>
+            <span v-else-if="column.meta.render"
+                v-html="customRender(row, column)">
+            </span>
+            <span v-else-if="column.meta.translation">{{ i18n(row[column.name]) }}</span>
+            <span v-else>{{ row[column.name] }}</span>
+        </td>
+        <td class="table-actions"
+            :class="template.align"
+            v-if="template.actions && !isChild(row)">
+            <span class="table-action-buttons">
+                <a v-for="(button, index) in template.buttons.row"
+                    :key="index"
+                    class="button is-small is-table-button has-margin-left-small"
+                    :class="button.class"
+                    :href="button.action === 'href' ? getPath(button, row.dtRowId) : null"
+                    @click="button.confirmation ? showModal(button, row) : doAction(button, row)">
+                    <span class="icon is-small">
+                        <fa :icon="button.icon"></fa>
+                    </span>
+                </a>
+            </span>
+        </td>
+        <td :colspan="hiddenColSpan"
+            :class="template.align"
+            v-if="isChild(row)">
+            <ul>
+                <li class="child-row"
+                    v-for="column in row"
+                    :key="column.label">
+                    <b>{{ column.label }}</b>: {{ column.value }}
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <modal v-if="modal"
+        :show="modal"
+        :i18n="i18n"
+        :message="button.message"
+        @cancel="closeModal()"
+        @commit="doAction(button, row)">
+    </modal>
+</tbody>
 
 </template>
 
@@ -128,7 +131,7 @@ export default {
         },
         hiddenColSpan() {
             return this.template.columns.length - this.hiddenColumns.length
-                + (this.template.actions ? 2 : 1);
+            + (this.template.actions ? 2 : 1);
         },
     },
 
@@ -242,41 +245,41 @@ export default {
 
 <style lang="scss" scoped>
 
-    div.table-crt-no {
-        white-space:nowrap;
-        display: flex;
+div.table-crt-no {
+    white-space:nowrap;
+    display: flex;
 
-        .crt-no-label {
-            margin: auto;
-        }
-
-        .hidden-controls {
-            cursor: pointer;
-            margin-left: auto;
-            margin-top: 0.1em;
-        }
+    .crt-no-label {
+        margin: auto;
     }
 
-    td.table-actions {
-        padding: .35em .5em;
+    .hidden-controls {
+        cursor: pointer;
+        margin-left: auto;
+        margin-top: 0.1em;
+    }
+}
 
-        span.table-action-buttons {
-            display: inline-flex;
-        }
+td.table-actions {
+    padding: .35em .5em;
 
-        .button.is-small.is-table-button {
-            height: 1.6em;
-            width: 1.6em;
-            font-size: .9em;
-        }
+    span.table-action-buttons {
+        display: inline-flex;
     }
 
-    li.child-row:not(:last-child) {
-        border-bottom: 1px solid #efefef;
+    .button.is-small.is-table-button {
+        height: 1.6em;
+        width: 1.6em;
+        font-size: .9em;
     }
+}
 
-    li.child-row {
-        padding: 0.5em 0;
-    }
+li.child-row:not(:last-child) {
+    border-bottom: 1px solid #efefef;
+}
+
+li.child-row {
+    padding: 0.5em 0;
+}
 
 </style>

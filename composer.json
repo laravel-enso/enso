@@ -7,7 +7,7 @@
         "php": ">=7.1.0",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
-        "laravel-enso/addressesmanager": "2.1.*",
+        "laravel-enso/addressesmanager": "2.2.*",
         "laravel-enso/commentsmanager": "2.1.*",
         "laravel-enso/contacts": "2.1.*",
         "laravel-enso/dataimport": "2.1.*",
@@ -62,6 +62,8 @@
             "php artisan enso:fa-upgrade"
         ],
         "post-update-cmd": [
+            "php artisan enso:migrate --countries ",
+            "php artisan enso:migrate --buildingType ",
             "php artisan vendor:publish --force --tag='enso-assets'"
         ]
     },

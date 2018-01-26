@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bead6e895016b6328057022d82e35507",
+    "content-hash": "524328e0d1721d1e3b0e9387a17591f9",
     "packages": [
         {
             "name": "box/spout",
@@ -1197,16 +1197,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.1.27",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "97f928bea771802f4de186ae243dc8b1b53fc355"
+                "reference": "2cfa7b72a09c1e5e7744beb4e234d77c64e8228c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/97f928bea771802f4de186ae243dc8b1b53fc355",
-                "reference": "97f928bea771802f4de186ae243dc8b1b53fc355",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/2cfa7b72a09c1e5e7744beb4e234d77c64e8228c",
+                "reference": "2cfa7b72a09c1e5e7744beb4e234d77c64e8228c",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1257,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-01-25T15:46:33+00:00"
+            "time": "2018-01-26T13:45:05+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -2172,16 +2172,16 @@
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "2.1.19",
+            "version": "2.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "10efa216a57f2f0a7c3d80af682dcd6fdf83f9b6"
+                "reference": "578d70e94009eb40fefc64a5143d31bfc2f8f6fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/10efa216a57f2f0a7c3d80af682dcd6fdf83f9b6",
-                "reference": "10efa216a57f2f0a7c3d80af682dcd6fdf83f9b6",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/578d70e94009eb40fefc64a5143d31bfc2f8f6fb",
+                "reference": "578d70e94009eb40fefc64a5143d31bfc2f8f6fb",
                 "shasum": ""
             },
             "require": {
@@ -2230,7 +2230,7 @@
                 "menu-manager",
                 "menumanager"
             ],
-            "time": "2018-01-25T15:57:14+00:00"
+            "time": "2018-01-26T12:38:58+00:00"
         },
         {
             "name": "laravel-enso/notifications",
@@ -2731,16 +2731,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.0.45",
+            "version": "1.0.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "c4120bb6fdcccfe1f88da349a60c273069eb5f74"
+                "reference": "dfbd4cc17d75a3584d4f0caa143172974cec276a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/c4120bb6fdcccfe1f88da349a60c273069eb5f74",
-                "reference": "c4120bb6fdcccfe1f88da349a60c273069eb5f74",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/dfbd4cc17d75a3584d4f0caa143172974cec276a",
+                "reference": "dfbd4cc17d75a3584d4f0caa143172974cec276a",
                 "shasum": ""
             },
             "require": {
@@ -2783,7 +2783,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-01-25T17:28:17+00:00"
+            "time": "2018-01-26T12:38:18+00:00"
         },
         {
             "name": "laravel/framework",
