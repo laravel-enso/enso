@@ -5,8 +5,8 @@
             <div class="level-item">
                 <transition
                     mode="out-in"
-                    enter-active-class="zoomIn"
-                    leave-active-class="zoomOut">
+                    enter-active-class="fadeIn"
+                    leave-active-class="fadeOut">
                     <p class="title is-5 animated"
                         id="page-title"
                         v-if="loaded">
@@ -19,8 +19,8 @@
             <div class="level-item">
                 <transition
                     mode="out-in"
-                    enter-active-class="zoomIn"
-                    leave-active-class="zoomOut">
+                    enter-active-class="fadeInRight"
+                    leave-active-class="fadeOutRight">
                     <breadcrumbs class="animated" id="breadcrumbs"
                          v-if="loaded">
                     </breadcrumbs>

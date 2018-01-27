@@ -70,8 +70,4 @@ export default {
         margin-right: unset;
     }
 
-    .aside .dropdown .dropdown-menu {
-        min-width: 4rem;
-    }
-
 </style>

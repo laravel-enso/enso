@@ -63,7 +63,12 @@ export default {
         collapsed() {
             if (this.collapsed) {
                 const height = this.$el.scrollHeight;
-                this.$el.style.height = 0;
+
+                if (!this.$el.style.height) {
+                    this.$el.style.height = `${height}px`;
+                }
+
+                setTimeout(() => { this.$el.style.height = 0; }, 1);
                 this.$emit('shrink', height);
                 return;
             }

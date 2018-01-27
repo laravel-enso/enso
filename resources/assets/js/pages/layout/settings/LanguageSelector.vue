@@ -7,7 +7,7 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <dropdown :height="250">
+                <dropdown :height="220">
                     <span slot="label"
                         class="icon is-small is-pulled-right">
                         <i :class="['flag-icon', languages[locale]]"></i>

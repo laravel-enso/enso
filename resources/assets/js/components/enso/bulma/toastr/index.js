@@ -1,7 +1,7 @@
-import Message from './Message.vue';
+import Notification from './Notification.vue';
 
 let defaults = {
-    duration: 3000,
+    duration: 4000,
     closeButton: true,
     container: 'toastr-wrapper',
     position: 'right',
@@ -9,30 +9,33 @@ let defaults = {
 
 export default {
     install(Vue, options) {
-        const Toastr = Vue.extend(Message);
+        const Toastr = Vue.extend(Notification);
 
         defaults = Object.assign(defaults, options);
 
         Vue.prototype.$toastr = {
-            default(message, title) {
-                this.mount('default', message, title);
+            message(message, title, duration) {
+                this.mount('message', message, title, duration);
             },
-            success(message, title) {
-                this.mount('success', message, title);
+            primary(message, title, duration) {
+                this.mount('primary', message, title, duration);
             },
-            warning(message, title) {
-                this.mount('warning', message, title);
+            success(message, title, duration) {
+                this.mount('success', message, title, duration);
             },
-            info(message, title) {
-                this.mount('info', message, title);
+            warning(message, title, duration) {
+                this.mount('warning', message, title, duration);
             },
-            error(message, title) {
-                this.mount('danger', message, title);
+            info(message, title, duration) {
+                this.mount('info', message, title, duration);
             },
-            mount(type, message, title) {
+            error(message, title, duration) {
+                this.mount('danger', message, title, duration);
+            },
+            mount(type, message, title, duration = defaults.duration) {
                 (new Toastr({
                     propsData: {
-                        ...defaults, type, message, title,
+                        ...defaults, type, message, title, duration,
                     },
                 })).$mount();
             },

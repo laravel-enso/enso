@@ -6,7 +6,7 @@
         </span>
         <a v-for="(value, index) in template.lengthMenu"
             :key="index"
-                class="dropdown-item"
+            class="dropdown-item"
             :class="{ 'is-active': value === length }"
             @click="$emit('update-length', value)">
             {{ value }}

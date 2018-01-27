@@ -9,7 +9,7 @@
         <div class="level-right">
             <div class="level-item">
                 <dropdown class="is-right"
-                    :height="250">
+                    :height="220">
                     <span slot="label">
                         {{ theme }}
                     </span>
@@ -63,11 +63,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    .dropdown-content.theme-list {
-        max-height: 185px;
-        overflow-y: auto;
-    }
-</style>

@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.15
+Transitions are now fixed / more consistent.
+The new toastr uses now Bulma's `notification` class instead of `message`.
+
 ### 2.1.14
 
 Adds collapse animation for card.

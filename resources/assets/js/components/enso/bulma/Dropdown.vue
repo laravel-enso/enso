@@ -1,13 +1,10 @@
 <template>
 
-    <div class="dropdown"
-        v-click-outside="hide"
-        :class="{ 'is-active': show }">
+    <div class="dropdown is-active"
+        v-click-outside="hide">
         <div class="dropdown-trigger"
             @click="show=!show">
-            <button class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu">
+            <button class="button">
                 <slot name="label"></slot>
                 <span class="icon is-small angle"
                         :aria-hidden="!show">
@@ -15,16 +12,18 @@
                 </span>
             </button>
         </div>
-        <div class="dropdown-menu animated"
-            role="menu"
-            :class="{ 'fadeIn': show, 'fadeOut': !show }"
-            v-if="show"
-            :style="widthStyle">
-            <div class="dropdown-content has-text-centered"
-                :style="[widthStyle, heightStyle]">
-                <slot></slot>
+        <transition appear
+            enter-active-class="fadeIn"
+            leave-active-class="fadeOut">
+            <div class="animated dropdown-menu menu-list"
+                v-if="show"
+                :style="widthStyle">
+                <div class="dropdown-content has-text-centered"
+                    :style="[widthStyle, heightStyle]">
+                    <slot></slot>
+                </div>
             </div>
-        </div>
+        </transition>
     </div>
 
 </template>
@@ -85,17 +84,8 @@ export default {
 
 <style lang="scss" scoped>
 
-    .dropdown-menu {
-        min-width: unset;
-
-        .dropdown-content {
-            min-width: unset;
-            overflow-y: auto;
-
-            a.dropdown-item {
-                padding: .375rem 1rem;
-            }
-        }
+    .dropdown-content {
+        overflow-y: auto;
     }
 
     .icon.angle {

@@ -1507,16 +1507,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.1.45",
+            "version": "2.1.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "96cbcbe8f0bd96f1053b50dc0a2f0ce96e57c51e"
+                "reference": "c6c0d192176b987f5ba2c2c79501fbe99918e4fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/96cbcbe8f0bd96f1053b50dc0a2f0ce96e57c51e",
-                "reference": "96cbcbe8f0bd96f1053b50dc0a2f0ce96e57c51e",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c6c0d192176b987f5ba2c2c79501fbe99918e4fc",
+                "reference": "c6c0d192176b987f5ba2c2c79501fbe99918e4fc",
                 "shasum": ""
             },
             "require": {
@@ -1594,7 +1594,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-01-27T14:47:13+00:00"
+            "time": "2018-01-27T17:22:18+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2678,16 +2678,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.7",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "6af0d499eb7b04e5978eb6da7ea42156923bdf7e"
+                "reference": "828b75a38fa527fb50a7147983c6c7afa34abc57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/6af0d499eb7b04e5978eb6da7ea42156923bdf7e",
-                "reference": "6af0d499eb7b04e5978eb6da7ea42156923bdf7e",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/828b75a38fa527fb50a7147983c6c7afa34abc57",
+                "reference": "828b75a38fa527fb50a7147983c6c7afa34abc57",
                 "shasum": ""
             },
             "require": {
@@ -2727,20 +2727,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-01-27T13:46:21+00:00"
+            "time": "2018-01-27T17:21:09+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.0.48",
+            "version": "1.0.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "0e802eb2236660e74b6b1826bcdd7a6322b4460c"
+                "reference": "249bfc3d8f83e669d8f49681dc35acf80fb64284"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/0e802eb2236660e74b6b1826bcdd7a6322b4460c",
-                "reference": "0e802eb2236660e74b6b1826bcdd7a6322b4460c",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/249bfc3d8f83e669d8f49681dc35acf80fb64284",
+                "reference": "249bfc3d8f83e669d8f49681dc35acf80fb64284",
                 "shasum": ""
             },
             "require": {
@@ -2783,7 +2783,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-01-27T13:48:23+00:00"
+            "time": "2018-01-27T17:21:38+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2984,16 +2984,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.41",
+            "version": "1.0.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f400aa98912c561ba625ea4065031b7a41e5a155"
+                "reference": "09eabc54e199950041aef258a85847676496fe8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f400aa98912c561ba625ea4065031b7a41e5a155",
-                "reference": "f400aa98912c561ba625ea4065031b7a41e5a155",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/09eabc54e199950041aef258a85847676496fe8e",
+                "reference": "09eabc54e199950041aef258a85847676496fe8e",
                 "shasum": ""
             },
             "require": {
@@ -3004,12 +3004,13 @@
             },
             "require-dev": {
                 "ext-fileinfo": "*",
-                "mockery/mockery": "~0.9",
-                "phpspec/phpspec": "^2.2",
-                "phpunit/phpunit": "~4.8"
+                "phpspec/phpspec": "^3.4",
+                "phpunit/phpunit": "^5.7"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
+                "ext-ftp": "Allows you to use FTP server storage",
+                "ext-openssl": "Allows you to use FTPS server storage",
                 "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
                 "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
                 "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
@@ -3063,7 +3064,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-08-06T17:41:04+00:00"
+            "time": "2018-01-27T16:03:56+00:00"
         },
         {
             "name": "maatwebsite/excel",
