@@ -13,7 +13,7 @@ Packages update
 Update to the core package AddressesManager to 2.2.0, which now uses the list of countries from 
 [webpatser/laravel-countries](https://github.com/webpatser/laravel-countries).
 
-Note that since the old list and the new list are different, this is a breaking change for the existing addresses (backup your data).
+Note that since the old list and the new list are different, this is a breaking change for the existing addresses (backup your data before upgrading). We include a command that will setup the new countries table for you post-install.
 
 ### 2.1.12
 Packages update
