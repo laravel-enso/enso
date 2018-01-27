@@ -1,5 +1,11 @@
 ## Enso Changelog
 
+### 2.1.13
+Adds collapse animation for card.
+Adds `extendedDocumentTitle` option to the `enso/config.php`. If this is set true it concats the app's name to the `document.title`. `document.title` is now translated.
+Adds `icon` and `clickable` meta attributes for vudedatatable. `icon` is for rendering fa5 icons, while `clickable` can be used to customize behaviour when clicking specific cells from the table. The docs for vuedatatable will be extended soon to cover the new options.
+Removes `favicon.ico` and `logo.svg` from the publishable resources. Now you can replace those with custom ones.
+
 ### 2.1.12
 Packages update
 

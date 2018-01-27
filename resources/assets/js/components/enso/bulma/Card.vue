@@ -58,7 +58,8 @@
             </card-control>
         </header>
 
-        <div class="card-content is-paddingless" v-show="expanded">
+        <div class="card-content is-paddingless"
+            :style="contentStyle">
             <slot></slot>
         </div>
 
@@ -84,6 +85,10 @@ export default {
     components: { CardControl, Overlay },
 
     props: {
+        nested: {
+            type: Boolean,
+            default: false,
+        },
         collapsed: {
             type: Boolean,
             default: false,
@@ -139,6 +144,14 @@ export default {
                 || this.badge || this.refresh || !this.fixed
                 || this.removable || this.controls;
         },
+        content() {
+            return this.$el.querySelector('.card-content');
+        },
+        contentStyle() {
+            return this.collapsed
+                ? { 'max-height': 0 }
+                : null;
+        },
     },
 
     data() {
@@ -151,19 +164,43 @@ export default {
     methods: {
         toggle() {
             this.$emit('toggle');
-            this.expanded = !this.expanded;
 
-            return this.collapsed
-                ? this.$emit('collapse')
-                : this.$emit('expand');
+            if (this.expanded) {
+                this.collapse();
+                return;
+            }
+
+            this.expand();
         },
         expand() {
-            this.expanded = true;
+            if (this.nested) {
+                this.$emit('extend', this.content.scrollHeight);
+            }
+
             this.$emit('expand');
+            this.content.style['max-height'] = `${this.content.scrollHeight}px`;
+            this.expanded = true;
         },
         collapse() {
-            this.expanded = false;
+            if (!this.content.style['max-height']) {
+                this.content.style['max-height'] = `${this.content.scrollHeight}px`;
+            }
+
+            if (this.nested) {
+                this.$emit('shrink', this.content.scrollHeight);
+            }
+
             this.$emit('collapse');
+            setTimeout(() => { this.content.style['max-height'] = 0; }, 1);
+            this.expanded = false;
+        },
+        shrink(height) {
+            this.content.style['max-height'] = `${parseInt(this.content.style['max-height'], 10) - height}px`;
+            return this.$emit('shrink', height);
+        },
+        extend(height) {
+            this.content.style['max-height'] = `${parseInt(this.content.style['max-height'], 10) + height}px`;
+            return this.$emit('extend', height);
         },
         focus() {
             this.searchInput.focus();
@@ -182,6 +219,11 @@ export default {
 </script>
 
 <style scoped>
+
+    .card-content {
+        transition: max-height .400s ease;
+        overflow-y: hidden;
+    }
 
     .icon.angle[aria-hidden="true"] {
         transform: rotate(180deg);

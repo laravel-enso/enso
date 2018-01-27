@@ -13,10 +13,6 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.title !== from.meta.title) {
-        document.title = to.meta.title;
-    }
-
     if (!to.meta.guestGuard && !store.getters['auth/isAuth']) {
         next({ name: 'login' });
     }

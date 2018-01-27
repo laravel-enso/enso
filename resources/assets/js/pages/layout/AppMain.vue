@@ -11,7 +11,7 @@
         </sidebar>
         <section class="main-content">
             <div class="container is-fluid page-content is-marginless">
-                <page-header :title="__($route.meta.title)"></page-header>
+                <page-header :title="$route.meta.title"></page-header>
                 <router></router>
             </div>
         </section>
@@ -26,7 +26,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import Nprogress from '../../components/enso/nprogress/Nprogress.vue';
 import Navbar from './navbar/Navbar.vue';
 import Sidebar from './sidebar/Sidebar.vue';
@@ -43,9 +43,8 @@ export default {
     },
 
     computed: {
-        ...mapState(['appIsLoaded', 'user', 'menus', 'meta']),
+        ...mapState(['meta']),
         ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'navbar', 'settingsBar']),
-        ...mapGetters('locale', ['__']),
     },
 
     watch: {

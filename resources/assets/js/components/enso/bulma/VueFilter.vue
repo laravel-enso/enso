@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li :class="{ 'is-active': value === null }"
-                    v-if="offSwitch">
+                    v-if="!hideOff">
                     <a @click="update(null)">
                         <span class="icon is-small"
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
@@ -52,7 +52,7 @@ export default {
         value: {
             required: true,
         },
-        offSwitch: {
+        hideOff: {
             type: Boolean,
             default: false,
         },

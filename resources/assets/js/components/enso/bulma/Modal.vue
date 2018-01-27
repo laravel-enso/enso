@@ -75,12 +75,6 @@ export default {
             type: Boolean,
             required: true,
         },
-        containerStyle: {
-            type: Object,
-            default() {
-                return {};
-            },
-        },
         card: {
             type: Boolean,
             default: false,

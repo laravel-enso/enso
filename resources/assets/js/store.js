@@ -42,7 +42,7 @@ export default new Vuex.Store({
     },
 
     actions: {
-        setState({ commit, dispatch }) {
+        setState({ commit, dispatch, getters }) {
             axios.get('/api/core').then(({ data }) => {
                 const { state } = data;
                 commit('setUser', state.user);
@@ -67,6 +67,19 @@ export default new Vuex.Store({
                         .addPlugin(RavenVue, Vue)
                         .install();
                 }
+
+                const documentTilePrefix = state.meta.extendedDocumentTitle
+                    ? `${state.meta.appName} | `
+                    : '';
+                const __ = getters['locale/__'];
+
+                router.beforeEach((to, from, next) => {
+                    if (to.meta.title !== from.meta.title) {
+                        document.title = documentTilePrefix + __(to.meta.title);
+                    }
+
+                    next();
+                });
 
                 commit('setLoadedState');
             }).catch((error) => {

@@ -2,8 +2,11 @@
 
     <card :title="title"
         collapsed
+        :nested="nested"
         ref="card"
-        :controls="1">
+        :controls="1"
+        @shrink="$emit('shrink', $event)"
+        @extend="$emit('extend', $event)">
         <card-control slot="control-1">
             <div class="field">
                 <input type="checkbox"
@@ -17,6 +20,9 @@
         <div class="has-padding-medium">
             <checkbox-manager v-for="group in sortedGroups"
                 ref="children"
+                nested
+                @shrink="$refs.card.shrink($event)"
+                @extend="$refs.card.extend($event)"
                 :title="group"
                 :key="group"
                 :group-data="groupData[group]"
@@ -58,6 +64,10 @@ export default {
         rolePermissions: {
             type: Array,
             required: true,
+        },
+        nested: {
+            type: Boolean,
+            default: false,
         },
     },
 

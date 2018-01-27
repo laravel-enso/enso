@@ -8,8 +8,6 @@ export default {
 
         table.resize();
 
-        erd.listenTo(el, () => {
-            table.resize();
-        });
+        erd.listenTo(el, () => table.resize());
     },
 };
