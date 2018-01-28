@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+### 2.1.16
+Laravel Enso just got rid of jQuery, for good by replacing `atwho`, the latest dependency that was relying on jQuery, with a brand new custom component.
+Fixes error reporting in auth views.
+Adds zxcvbn for measuring password complexity.
+
 ### 2.1.15
 Transitions are now fixed / more consistent.
 The new toastr uses now Bulma's `notification` class instead of `message`.

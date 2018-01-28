@@ -50,7 +50,7 @@
                 <inputor v-on="$listeners"
                     :comment="comment">
                 </inputor>
-                <div>
+                <div class="has-margin-top-medium">
                     <button type="button" class="button is-small is-outlined has-margin-right-small"
                         @click="isNew ? $emit('cancel-add') : cancelAdd()">
                         {{ __('Cancel') }}
@@ -112,7 +112,7 @@ export default {
             let { body } = this.comment;
 
             this.comment.taggedUserList.forEach((user) => {
-                const highlighted = `${'<span class="highlight">@'}${user.fullName}</span>`;
+                const highlighted = `${'<span class="has-text-info">@'}${user.fullName}</span>`;
                 body = body.replace(`@${user.fullName}`, highlighted);
             });
 
@@ -159,18 +159,18 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
     img.avatar {
         border: 1px solid orangered;
     }
 
-    span.highlight {
-        color: #3097d1;
-    }
-
     span.comment-body {
         word-break: break-all;
+    }
+
+    .media-content {
+        overflow: unset;
     }
 
 </style>

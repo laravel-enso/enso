@@ -63,6 +63,12 @@ A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](h
     - beautiful tag rendering for boolean flag columns
     - easy display of flag/type columns values
     - server-side excel export for every table
+
+- [Beautiful forms](https://github.com/laravel-enso/Formbuilder):
+    - JSON templates
+    - server side
+    - validation
+    - customizable
     
 - [Vue select](https://github.com/laravel-enso/Select) - server side builder with parameter conditioning, including pivot parameters, built as a wrapper for [Vue-multiselect](https://github.com/monterail/vue-multiselect)
 - Advanced owners / [roles](https://github.com/laravel-enso/RoleManager) / [permissions](https://github.com/laravel-enso/PermissionManager) structure
@@ -182,12 +188,11 @@ Are loaded at application load, and refreshed as needed
 
 Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.5, Bulma 0.6, Vuejs 2.5 and:
 
-[DataTables](https://github.com/laravel-enso/vuedatatable),
-[Bulmaswatch](https://jenil.github.io/bulmaswatch/), [Chart.js](http://chartjs.org),
-[Font awesome](http://fontawesome.io), [Toastr.js](http://codeseven.github.io/toastr),
-[Nprogress.js](http://ricostacruz.com/nprogress),
-[Intro.js](http://introjs.com/), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
-[Flatpickr](https://chmln.github.io/flatpickr/), [Bulma-Extensions](https://wikiki.github.io/bulma-extensions/overview)
+[Vue Router](https://router.vuejs.org/en), [Vuex](https://vuex.vuejs.org/en/), [Axios](https://github.com/axios/axios),
+[Font awesome 5](https://fontawesome.com), [Animate.css](https://daneden.github.io/animate.css/), 
+[Bulmaswatch](https://jenil.github.io/bulmaswatch), [Bulma-Extensions](https://wikiki.github.io/bulma-extensions/overview),
+[Nprogress.js](http://ricostacruz.com/nprogress), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
+[Intro.js](http://introjs.com/),  [Chart.js](http://chartjs.org), [Flatpickr](https://chmln.github.io/flatpickr/), 
 
 Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/)and [Jeremy Thomas](https://bulma.io).
 

@@ -47,6 +47,18 @@
                         v-if="hasErrors">
                         <fa icon="exclamation-triangle"></fa>
                     </span>
+                    <p class="help">
+                        <svg width="100%" height="5" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            v-if="hasPassword">
+                            <rect v-for="i in 5"
+                                width="15%"
+                                height="4"
+                                :stroke="i <= score + 1 ? 'green' : 'orangered'"
+                                stroke-width="4"
+                                :x="2.5 + (i-1) * 15 + (i-1) * 5 + '%'"
+                                :key="i"/>
+                        </svg>
+                    </p>
                 </div>
             </div>
             <div class="field">
@@ -67,6 +79,10 @@
                         v-if="hasErrors">
                         <fa icon="exclamation-triangle"></fa>
                     </span>
+                    <span class="icon is-small is-right has-text-success"
+                        v-if="match && !hasErrors">
+                        <fa icon="check"></fa>
+                    </span>
                 </div>
             </div>
             <div class="field">
@@ -86,6 +102,7 @@
 
 <script>
 
+import zxcvbn from 'zxcvbn';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faEnvelope, faCheck, faExclamationTriangle, faLock,
@@ -113,6 +130,20 @@ export default {
             hasErrors: false,
             isSuccessful: false,
         };
+    },
+
+    computed: {
+        hasPassword() {
+            return this.password !== null && this.password.length;
+        },
+        match() {
+            return this.hasPassword && this.password === this.passwordConfirmation;
+        },
+        score() {
+            return this.hasPassword
+                ? zxcvbn(this.password).score
+                : 6;
+        },
     },
 
     watch: {
@@ -158,25 +189,27 @@ export default {
                 const { status, data } = error.response;
 
                 if (status === 422) {
-                    if (data.errors) {
-                        if (data.errors.email) {
-                            this.$toastr.error(data.errors.email);
-                        }
-
-                        if (data.errors.password) {
-                            this.$toastr.error(data.errors.password);
-                        }
-
-                        return;
-                    }
-
-                    this.$toastr.error(data.message);
-
+                    this.reportLoginError(data);
                     return;
                 }
 
                 throw error;
             });
+        },
+        reportLoginError(data) {
+            if (data.errors) {
+                if (data.errors.email) {
+                    this.$toastr.error(data.errors.email[0]);
+                }
+
+                if (data.errors.password) {
+                    this.$toastr.error(data.errors.password[0]);
+                }
+
+                return;
+            }
+
+            this.$toastr.error(data.message);
         },
     },
 };

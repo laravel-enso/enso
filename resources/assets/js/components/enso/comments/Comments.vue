@@ -165,7 +165,7 @@ export default {
 
             this.comment = this.emptyComment();
 
-            if (this.$refs.card.collapsed) {
+            if (!this.$refs.card.expanded) {
                 this.$refs.card.toggle();
             }
         },

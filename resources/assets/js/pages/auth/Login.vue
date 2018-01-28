@@ -164,12 +164,27 @@ export default {
                 }
 
                 if (status === 422) {
-                    this.$toastr.error(data.message);
+                    this.reportLoginError(data);
                     return;
                 }
 
                 throw error;
             });
+        },
+        reportLoginError(data) {
+            if (data.errors) {
+                if (data.errors.email) {
+                    this.$toastr.error(data.errors.email);
+                }
+
+                if (data.errors && data.errors.password) {
+                    this.$toastr.error(data.errors.password[0]);
+                }
+
+                return;
+            }
+
+            this.$toastr.error(data.message);
         },
     },
 };

@@ -10,6 +10,10 @@ export const mutations = {
 
 export const getters = {
     __: (state, getters, rootState) => (key) => {
+        if (!rootState.user.preferences) {
+            return key;
+        }
+
         const { lang } = rootState.user.preferences.global;
         return state.i18n[lang] ? (state.i18n[lang][key] || key) : key;
     },

@@ -144,7 +144,7 @@ export default {
         create() {
             this.loading = true;
 
-            if (this.$refs.card.collapsed) {
+            if (!this.$refs.card.expanded) {
                 this.$refs.card.toggle();
             }
 
