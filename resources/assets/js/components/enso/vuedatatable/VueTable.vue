@@ -10,6 +10,7 @@
             @export-data="exportData"
             @reload="getData()"
             @reset="resetPreferences"
+            v-on="$listeners"
             v-model="search">
         </top-controls>
         <div class="table-responsive"

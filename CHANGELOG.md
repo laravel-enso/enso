@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.17
+Adds showcase for VueDatatable. The example Will be updated further.
+
 ### 2.1.16
 Laravel Enso just got rid of jQuery, for good by replacing `atwho`, the latest dependency that was relying on jQuery, with a brand new custom component.
 Fixes error reporting in auth views.
