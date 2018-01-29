@@ -37,7 +37,7 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 2. Run in the project folder `composer install`
 
-3. Configure `.env` file. Run `php artisan key:generate`
+3. Configure the `.env` file. Run `php artisan key:generate`
 
 4. Run `php artisan migrate`
 
@@ -49,8 +49,15 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 Enjoy!
 
+IMPORTANT NOTE: Due to laravel mix limitations, when using `hmr`,  
+you need to comment lines 3-to-7 inside `webpack.mix.js` in order for it to work correctly. 
+Don't forget to uncomment them back when building without hot module replacement.
+
 ### With Enso you get
-A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), and more, with features like: 
+A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, 
+[Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), 
+all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), 
+with features like: 
 
 - [Customizable and powerful datatables](https://github.com/laravel-enso/VueDatatable):
     - JSON templates
@@ -86,7 +93,7 @@ A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](h
 - Ability to track the [different versions of a model](https://github.com/laravel-enso/HistoryTracker) through its lifetime
 - Front-end date-picker and time-picker, based on [Flatpickr](https://chmln.github.io/flatpickr)
 - Server-side type-ahead
-- User application-wide preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
+- User, application-wide preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
 - Queueable jobs
 - Push notifications - working out of the box (requires [Pusher](https://pusher.com))
 - Automatic breadcrumbs generation
@@ -181,7 +188,7 @@ Are loaded at application load, and refreshed as needed
 
 &nbsp;
 #### Exceptions
-- when needed, the exceptions thrown are as specific as possible. 
+- when needed, the exceptions thrown are as specific as possible
 - since requests are supposed to be ajax, JSON responses are given back 
 
 ### Thanks
@@ -194,7 +201,7 @@ Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Lar
 [Nprogress.js](http://ricostacruz.com/nprogress), [Vue-multiselect](https://github.com/monterail/vue-multiselect),
 [Intro.js](http://introjs.com/),  [Chart.js](http://chartjs.org), [Flatpickr](https://chmln.github.io/flatpickr/), 
 
-Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/)and [Jeremy Thomas](https://bulma.io).
+Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/) and [Jeremy Thomas](https://bulma.io).
 
 <!--h-->
 ### Contributions
