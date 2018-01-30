@@ -7,7 +7,7 @@
             :env-is-local="meta.env === 'local'">
         </navbar>
         <sidebar class="animated"
-            :class="{ 'slideInLeft': navbar.isVisible, 'slideOutLeft': !navbar.isVisible }">
+            :class="navbar.isVisible ? 'slideInLeft' : 'slideOutLeft'">
         </sidebar>
         <section class="main-content">
             <div class="container is-fluid page-content is-marginless">

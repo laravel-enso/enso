@@ -93,88 +93,118 @@
                     @destroy="$toastr.error('You just pressed Delete', 'Event')"
                     id="example">
                 </vue-table>
-
-                <tabs alignment="centered">
-                    <tab-panel id="front end">
-                        <tabs alignment="centered">
-                            <tab-panel id="vue-table">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.vueTable')
+                <div class="has-text-centered has-margin-large">
+                    <button class="button is-outlined is-info"
+                        @click="showCode = !showCode">
+                        <span v-if="showCode">
+                            Hide Code
+                        </span>
+                        <span v-else>
+                            Show Code
+                        </span>
+                    </button>
+                </div>
+                <transition appear
+                    enter-active-class="zoomIn"
+                    leave-active-class="zoomOut">
+                    <tabs class="animated"
+                        alignment="centered"
+                        v-if="showCode">
+                        <tab-panel id="front end">
+                            <tabs alignment="centered">
+                                <tab-panel id="vue-table">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.vueTable')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="vue-filter">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.vueFilter')
+                                </tab-panel>
+                                <tab-panel id="vue-filter">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.vueFilter')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="vue-select-filter">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.vueSelectFilter')
+                                </tab-panel>
+                                <tab-panel id="vue-select-filter">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.vueSelectFilter')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="date-interval-filter">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.dateIntervalFilter')
+                                </tab-panel>
+                                <tab-panel id="date-interval-filter">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.dateIntervalFilter')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="interval-filter">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.intervalFilter')
+                                </tab-panel>
+                                <tab-panel id="interval-filter">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.intervalFilter')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="example.js">
-                                <div class="columns">
-                                    <div class="column is-three-fifths is-offset-one-fifth">
-                                        @include('examples.partials.exampleJs')
+                                </tab-panel>
+                                <tab-panel id="example.js">
+                                    <div class="columns">
+                                        <div class="column is-three-fifths is-offset-one-fifth">
+                                            @include('examples.partials.exampleJs')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                        </tabs>
-                    </tab-panel>
-                    <tab-panel id="back end">
-                        <tabs alignment="centered">
-                            <tab-panel id="routes">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.routes')
+                                </tab-panel>
+                            </tabs>
+                        </tab-panel>
+                        <tab-panel id="back end">
+                            <tabs alignment="centered">
+                                <tab-panel id="routes">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.routes')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="model">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.model')
+                                </tab-panel>
+                                <tab-panel id="model">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.model')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="controller">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.controller')
+                                </tab-panel>
+                                <tab-panel id="controller">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.controller')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                            <tab-panel id="template">
-                                <div class="columns">
-                                    <div class="column is-half is-offset-one-quarter">
-                                        @include('examples.partials.template')
+                                </tab-panel>
+                                <tab-panel id="template">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.template')
+                                        </div>
                                     </div>
-                                </div>
-                            </tab-panel>
-                        </tabs>
-                    </tab-panel>
-                </tabs>
+                                </tab-panel>
+                            </tabs>
+                        </tab-panel>
+                    </tabs>
+                </transition>
             </div>
+                <footer class="footer">
+                <div class="container">
+                    <div class="content has-text-centered">
+                        <p><strong>Vue Datatable</strong> from <a href="https://laravel-enso.com">Laravel Enso</a></p>
+                        <p>
+                            <a href="https://github.com/laravel-enso/enso" target="_blank">
+                                <span class="icon" style="color: #333;">
+                                    <fa :icon="['fab', 'github']" size="lg"></fa>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

@@ -9,7 +9,7 @@
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a @click="active = index">
+                    <a @click="setActive(index)">
                         <slot name="label"
                             :tab="tab">
                             {{ tab }}
@@ -67,6 +67,20 @@ export default {
             tabs: [],
             active: this.default,
         };
+    },
+
+    methods: {
+        setActive(index) {
+            this.active = null;
+
+            setTimeout(() => {
+                if (this.active === index) {
+                    return;
+                }
+
+                this.active = index;
+            }, 500);
+        },
     },
 };
 

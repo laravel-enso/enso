@@ -1,9 +1,13 @@
 <template>
 
-    <div class="animated fadeIn"
-        v-if="active">
-        <slot></slot>
-    </div>
+    <transition appear
+        enter-active-class="fadeIn"
+        leave-active-class="fadeOut">
+        <div class="animated"
+            v-if="active">
+            <slot></slot>
+        </div>
+    </transition>
 
 </template>
 

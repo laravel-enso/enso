@@ -34638,6 +34638,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
     data: function data() {
         return {
+            showCode: false,
             activeOptions: [{ value: true, label: 'check', class: 'has-text-success' }, { value: false, label: 'times', class: 'has-text-danger' }],
             seniorityOptions: {
                 1: 'Assistant',
@@ -71932,6 +71933,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             tabs: [],
             active: this.default
         };
+    },
+
+
+    methods: {
+        setActive: function setActive(index) {
+            var _this = this;
+
+            this.active = null;
+
+            setTimeout(function () {
+                if (_this.active === index) {
+                    return;
+                }
+
+                _this.active = index;
+            }, 500);
+        }
     }
 });
 
@@ -71972,7 +71990,7 @@ var render = function() {
                     {
                       on: {
                         click: function($event) {
-                          _vm.active = index
+                          _vm.setActive(index)
                         }
                       }
                     },
@@ -72075,6 +72093,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -72109,9 +72131,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.active
-    ? _c("div", { staticClass: "animated fadeIn" }, [_vm._t("default")], 2)
-    : _vm._e()
+  return _c(
+    "transition",
+    {
+      attrs: {
+        appear: "",
+        "enter-active-class": "fadeIn",
+        "leave-active-class": "fadeOut"
+      }
+    },
+    [
+      _vm.active
+        ? _c("div", { staticClass: "animated" }, [_vm._t("default")], 2)
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

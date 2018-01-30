@@ -40,6 +40,7 @@ new Vue({
 
     data() {
         return {
+            showCode: false,
             activeOptions: [
                 { value: true, label: 'check', class: 'has-text-success' },
                 { value: false, label: 'times', class: 'has-text-danger' },
