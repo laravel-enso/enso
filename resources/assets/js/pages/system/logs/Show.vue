@@ -28,6 +28,7 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import '../../../modules/enso/directives/hljs';
 
 export default {
     computed: {

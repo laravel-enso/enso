@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faVuejs } from '@fortawesome/fontawesome-free-brands/shakable.es';
+import { faVuejs, faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es';
 import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import store from './store';
 import VueTable from './components/enso/vuedatatable/VueTable.vue';
@@ -11,10 +11,13 @@ import VueSelectFilter from './components/enso/bulma/VueSelectFilter.vue';
 import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
 import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
 import Toastr from './components/enso/bulma/toastr';
+import './modules/enso/directives/hljs';
 
 import './modules/enso/mixins/errorHandler';
 
-fontawesome.library.add(faVuejs, faCheck, faTimes);
+require('highlight.js/styles/atom-one-light.css');
+
+fontawesome.library.add(faVuejs, faGithub, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
 
@@ -28,6 +31,8 @@ window.axios = axios;
 
 new Vue({
     store,
+
+    comments: true,
 
     components: {
         VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter,
@@ -69,9 +74,7 @@ new Vue({
     },
 
     methods: {
-        __(val) {
-            return val;
-        },
+
         customRender(row, column) {
             switch (column.name) {
             case 'project':
