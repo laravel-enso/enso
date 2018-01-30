@@ -255,7 +255,6 @@ export default {
 
     div.vue-select .multiselect__tags {
         min-height: 36px;
-        max-height: 36px;
         padding: 4px 40px 0 4px;
         border-radius: 3px;
 
