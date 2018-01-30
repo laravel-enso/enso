@@ -10,6 +10,8 @@ import VueFilter from './components/enso/bulma/VueFilter.vue';
 import VueSelectFilter from './components/enso/bulma/VueSelectFilter.vue';
 import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
 import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
+import Tabs from './components/enso/bulma/Tabs.vue';
+import TabPanel from './components/enso/bulma/TabPanel.vue';
 import Toastr from './components/enso/bulma/toastr';
 import './modules/enso/directives/hljs';
 
@@ -33,7 +35,7 @@ new Vue({
     comments: true,
 
     components: {
-        VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter,
+        VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter, Tabs, TabPanel,
     },
 
     data() {

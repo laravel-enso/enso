@@ -178,7 +178,7 @@ import Modal from '../../components/enso/bulma/Modal.vue';
 import Card from '../../components/enso/bulma/Card.vue';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 import Paginate from '../../components/enso/bulma/Paginate.vue';
-import Tabs from '../../components/enso/bulma/Tabs.vue';
+import Tabs from './Tabs.vue';
 
 fontawesome.library.add([
     faUpload, faDownload, faTrashAlt, faFileExcel,

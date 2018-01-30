@@ -92,366 +92,87 @@
                     @destroy="$toastr.error('You just pressed Delete', 'Event')"
                     id="example">
                 </vue-table>
-                <div class="columns is-multiline">
-                    <div class="column is-half">
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            vue-table component
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-vue-table path="/examples/table/init"
-    :custom-render="customRender"
-    :filters="filters"
-    :intervals="intervals"
-    @excel="$toastr.info('You just pressed Excel', 'Event')"
-    @create="$toastr.success('You just pressed Create', 'Event')"
-    @edit="$toastr.warning('You just pressed Edit', 'Event')"
-    @destroy="$toastr.error('You just pressed Delete', 'Event')"
-    id="example"
-vue-table
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            vue-filter component
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-vue-filter :options="activeOptions"
-    icons
-    title="Active"
-    v-model="filters.examples.is_active"
-vue-filter
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            vue-select-filter component
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-vue-select-filter title="Seniority"
-    :options="seniorityOptions"
-    v-model="filters.examples.seniority"
-vue-select-filter
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            date-interval-filter component
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-date-interval-filter
-    title="Hired Between"
-    :min="intervals.examples.hired_at.min"
-    @update-min="intervals.examples.hired_at.min = $event"
-    :max="intervals.examples.hired_at.max"
-    @update-max="intervals.examples.hired_at.max = $event"
-date-interval-filter
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            interval-filter component
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-interval-filter
-    title="Salary"
-    type="number"
-    :min="intervals.examples.salary.min"
-    @update-min="intervals.examples.salary.min = $event"
-    :max="intervals.examples.salary.max"
-    @update-max="intervals.examples.salary.max = $event"
-interval-filter
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            exampleTable.json template
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="json">
-{
-    "routePrefix": "examples.table",
-    "readSuffix": "data",
-    "writeSuffix": null,
-    "name": "Enso Vue Datatable Example",
-    "icon": ["fab", "vuejs"],
-    "crtNo": true,
-    "buttons": [
-        {
-            "type": "global",
-            "icon": "file-excel",
-            "class": "is-outlined",
-            "event": "excel",
-            "label": "Excel"
-        },
-        {
-            "type": "global",
-            "icon": "plus",
-            "class": "is-success",
-            "event": "create",
-            "label": "Create"
-        },
-        {
-            "type": "row",
-            "icon": "pencil-alt",
-            "class": "is-warning",
-            "event": "edit"
-        },
-        {
-            "type": "row",
-            "icon": "trash-alt",
-            "class": "is-danger",
-            "event": "destroy",
-            "confirmation" : true,
-            "message" : "This is you custom confirmation. Are you sure?"
-        }
-    ],
-    "columns": [
-        {
-            "label": "Name",
-            "name": "name",
-            "data": "examples.name",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
-        }, {
-            "label": "Position",
-            "name": "position",
-            "data": "examples.position",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
-        }, {
-            "label": "Seniority",
-            "name": "seniority",
-            "data": "examples.seniority",
-            "meta": [
-                "sortable"
-            ]
-        }, {
-            "label": "Project",
-            "name": "project",
-            "data": "examples.project",
-            "meta": [
-                "searchable",
-                "sortable",
-                "render"
-            ]
-        }, {
-            "label": "Salary",
-            "name": "salary",
-            "data": "examples.salary",
-            "meta": [
-                "searchable",
-                "sortable",
-                "total"
-            ]
-        }, {
-            "label": "Taxes",
-            "name": "taxes",
-            "data": "examples.taxes",
-            "meta": [
-                "searchable",
-                "sortable",
-                "total"
-            ]
-        }, {
-            "label": "Active",
-            "name": "is_active",
-            "data": "examples.is_active",
-            "meta": [
-                "boolean",
-                "sortable"
-            ]
-        }, {
-            "label": "Hired Since",
-            "name": "hired_at",
-            "data": "examples.hired_at",
-            "meta": [
-                "date",
-                "sortable"
-            ]
-        }
-    ]
-}
-                            </code>
-                        </pre>
-                    </div>
-                    <div class="column is-half">
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            routes
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="php">
-Route::namespace('Examples')
-    ->prefix('examples')->as('examples.')
-    ->group(function () {
-        Route::view('table', 'examples.table')->name('table');
 
-        Route::prefix('table')->as('table.')
-            ->group(function () {
-                Route::get('init', 'TableController@init')
-                    ->name('init');
-                Route::get('data', 'TableController@data')
-                    ->name('data');
-            });
-    });
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            model
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code>
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Example extends Model
-{
-    protected $casts = ['is_active' => 'boolean'];
-}
-
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            controller
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="php">
-namespace App\Http\Controllers\Examples;
-
-use App\Example;
-use App\Http\Controllers\Controller;
-use LaravelEnso\VueDatatable\app\Traits\Datatable;
-
-class TableController extends Controller
-{
-    use Datatable;
-
-    private const Template = __DIR__.'/exampleTable.json';
-
-    public function query()
-    {
-        return Example::select(\DB::raw(
-            'id as "dtRowId", name, position, seniority, project,
-            salary, taxes, is_active, hired_at'
-        ));
-    }
-}
-                            </code>
-                        </pre>
-                        <h5 class="title is-5 has-text-centered is-marginless">
-                            example.js file
-                        </h5>
-                        <pre class="is-paddingless"
-                            v-hljs>
-                            <code class="js">
-import Vue from 'vue';
-import axios from 'axios';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faVuejs } from '@fortawesome/fontawesome-free-brands/shakable.es';
-import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import store from './store';
-import VueTable from './components/enso/vuedatatable/VueTable.vue';
-import VueFilter from './components/enso/bulma/VueFilter.vue';
-import VueSelectFilter from './components/enso/bulma/VueSelectFilter.vue';
-import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
-import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
-import Toastr from './components/enso/bulma/toastr';
-import './modules/enso/directives/hljs';
-
-import './modules/enso/mixins/errorHandler';
-
-require('highlight.js/styles/atom-one-light.css');
-
-fontawesome.library.add(faVuejs, faCheck, faTimes);
-
-Vue.component('fa', FontAwesomeIcon);
-
-Vue.use(Toastr, {
-    position: 'right',
-    duration: 3000,
-    closeButton: true,
-});
-
-window.axios = axios;
-
-new Vue({
-    store,
-
-    components: {
-        VueTable, VueFilter, VueSelectFilter,
-        IntervalFilter, DateIntervalFilter,
-    },
-
-    data() {
-        return {
-            activeOptions: [
-                { value: true, label: 'check', class: 'has-text-success' },
-                { value: false, label: 'times', class: 'has-text-danger' },
-            ],
-            seniorityOptions: {
-                1: 'Assistant',
-                2: 'Associate',
-                3: 'Staff Member',
-                4: 'Senior',
-                5: 'Partner',
-            },
-            filters: {
-                examples: {
-                    is_active: null,
-                    seniority: null,
-                },
-            },
-            intervals: {
-                examples: {
-                    hired_at: {
-                        min: null,
-                        max: null,
-                        dbDateFormat: 'Y-m-d',
-                    },
-                    salary: {
-                        min: null,
-                        max: null,
-                    },
-                },
-            },
-        };
-    },
-
-    methods: {
-
-        customRender(row, column) {
-            switch (column.name) {
-            case 'project':
-                if (row.project === 'Enso SPA') return `<span class="tag is-table-tag is-success">${row[column.name]}</span>`;
-
-                return row.project === 'AdminLTE'
-                    ? `<span class="tag is-table-tag is-info">${row[column.name]}</span>`
-                    : `<span class="tag is-table-tag is-danger">${row[column.name]}</span>`;
-            default:
-                this.$toastr.warning(`render for column ${column.name} is not defined.`);
-                return this.row[column.name];
-            }
-        },
-    },
-}).$mount('#app');
-                            </code>
-                        </pre>
-                    </div>
-                </div>
+                <tabs alignment="centered">
+                    <tab-panel id="front end">
+                        <tabs alignment="centered">
+                            <tab-panel id="vue-table">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.vueTable')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="vue-filter">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.vueFilter')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="vue-select-filter">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.vueSelectFilter')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="date-interval-filter">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.dateIntervalFilter')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="interval-filter">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.intervalFilter')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="example.js">
+                                <div class="columns">
+                                    <div class="column is-three-fifths is-offset-one-fifth">
+                                        @include('examples.partials.exampleJs')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                        </tabs>
+                    </tab-panel>
+                    <tab-panel id="back end">
+                        <tabs alignment="centered">
+                            <tab-panel id="routes">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.routes')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="model">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.model')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="controller">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.controller')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                            <tab-panel id="template">
+                                <div class="columns">
+                                    <div class="column is-half is-offset-one-quarter">
+                                        @include('examples.partials.template')
+                                    </div>
+                                </div>
+                            </tab-panel>
+                        </tabs>
+                    </tab-panel>
+                </tabs>
             </div>
         </div>
 

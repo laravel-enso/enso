@@ -15,7 +15,7 @@
                             v-if="icons">
                             <fa :icon="option.label"></fa>
                         </span>
-                        <span v-else
+                        <span class="filter-label" v-else
                             :class="option.class">
                             {{ option.label }}
                         </span>
@@ -28,7 +28,7 @@
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
                             <fa icon="power-off"></fa>
                         </span>
-                        <span>{{ offLabel }}</span>
+                        <span class="filter-label">{{ offLabel }}</span>
                     </a>
                 </li>
             </ul>
@@ -103,6 +103,10 @@ export default {
 
     .filter-tabs {
         padding-top: 4px;
+    }
+
+    .filter-label {
+        font-size: 0.9em;
     }
 
 </style>

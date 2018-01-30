@@ -1,29 +1,24 @@
 <template>
     <div>
-        <div class="tabs" :class="alignClass">
+        <div :class="[
+            'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
+            { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
+            { 'is-fullwidth': fullwidth }
+        ]">
             <ul>
                 <li v-for="(tab, index) in tabs"
-                    :class="{ 'is-active': index === selected }"
+                    :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a @click="selected=index">
-                        {{ tab.label }}
-                        <span class="tag is-warning has-margin-left-small"
-                            v-if="hasBadges">
-                            {{ tab.badge }}
-                        </span>
+                    <a @click="active = index">
+                        <slot name="label"
+                            :tab="tab">
+                            {{ tab }}
+                        </slot>
                     </a>
                 </li>
             </ul>
         </div>
-        <div v-for="(tab, index) in tabs"
-            v-if="tabs.length && selected === index"
-            :key="index">
-            <slot :name="tab.label"
-                v-if="hasBadges">
-            </slot>
-            <slot :name="tab" v-else>
-            </slot>
-        </div>
+        <slot></slot>
     </div>
 </template>
 
@@ -31,40 +26,46 @@
 
 export default {
     props: {
-        title: {
-            type: String,
-            default: null,
-        },
-        align: {
+        alignment: {
             type: String,
             default: 'left',
-            validator: value => ['left', 'center', 'right'].includes(value),
+            validator: value => ['left', 'centered', 'right'].includes(value),
         },
-        tabs: {
-            type: Array,
-            required: true,
-            default() {
-                return [];
-            },
+        size: {
+            type: String,
+            default: 'normal',
+            validator: value => ['normal', 'small', 'medium', 'large'].includes(value),
         },
-        active: {
+        boxed: {
+            type: Boolean,
+            default: false,
+        },
+        toggle: {
+            type: Boolean,
+            default: false,
+        },
+        toggleRounded: {
+            type: Boolean,
+            default: false,
+        },
+        fullwidth: {
+            type: Boolean,
+            default: false,
+        },
+        default: {
             type: Number,
             default: 0,
         },
-    },
-
-    computed: {
-        hasBadges() {
-            return this.tabs.length > 0 && this.tabs[0] instanceof Object;
-        },
-        alignClass() {
-            return `is-${this.align}`;
+        label: {
+            type: String,
+            default: '',
         },
     },
 
     data() {
         return {
-            selected: this.active,
+            tabs: [],
+            active: this.default,
         };
     },
 };
