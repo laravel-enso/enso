@@ -9,8 +9,16 @@
                 <li :class="{ 'is-active': option.value === value }"
                     v-for="(option, index) in options"
                     :key="index">
-                    <a v-html="option.label"
-                        @click="update(option.value)">
+                    <a @click="update(option.value)">
+                        <span class="icon is-small"
+                            :class="option.class"
+                            v-if="icons">
+                            <fa :icon="option.label"></fa>
+                        </span>
+                        <span v-else
+                            :class="option.class">
+                            {{ option.label }}
+                        </span>
                     </a>
                 </li>
                 <li :class="{ 'is-active': value === null }"
@@ -20,7 +28,7 @@
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
                             <fa icon="power-off"></fa>
                         </span>
-                        <span>{{ __('Off') }}</span>
+                        <span>{{ offLabel }}</span>
                     </a>
                 </li>
             </ul>
@@ -38,10 +46,20 @@ import { faPowerOff } from '@fortawesome/fontawesome-free-solid/shakable.es';
 fontawesome.library.add(faPowerOff);
 
 export default {
+    name: 'VueFilter',
+
     props: {
         title: {
             type: String,
             default: null,
+        },
+        offLabel: {
+            type: String,
+            default: 'Off',
+        },
+        icons: {
+            type: Boolean,
+            default: false,
         },
         options: {
             type: Array,

@@ -30,7 +30,9 @@
             "type": "row",
             "icon": "trash-alt",
             "class": "is-danger",
-            "event": "destroy"
+            "event": "destroy",
+            "confirmation" : true,
+            "message" : "This is you custom confirmation. Are you sure?"
         }
     ],
     "columns": [
@@ -55,7 +57,6 @@
             "name": "seniority",
             "data": "examples.seniority",
             "meta": [
-                "searchable",
                 "sortable"
             ]
         }, {
@@ -91,6 +92,14 @@
             "data": "examples.is_active",
             "meta": [
                 "boolean",
+                "sortable"
+            ]
+        }, {
+            "label": "Hired Since",
+            "name": "hired_at",
+            "data": "examples.hired_at",
+            "meta": [
+                "date",
                 "sortable"
             ]
         }

@@ -1,21 +1,22 @@
 <template>
 
-    <div class="flatpickr">
-        <div class="control has-icons-right">
-            <input type="text"
-                :placeholder="placeholder"
-                :id="'date-input-' + _uid"
-                :name="name"
-                :value="value"
-                class="input control"
-                :disabled="disabled">
-            <span class="icon is-small is-right">
-                <fa icon="clock"
-                    v-if="timeOnly">
-                </fa>
-                <fa icon="calendar-alt" v-else></fa>
-            </span>
-        </div>
+    <div class="control has-icons-left has-icons-right">
+        <input class="input control"
+            type="text"
+            :placeholder="placeholder"
+            :name="name"
+            :value="value"
+            :disabled="disabled">
+        <span class="icon is-small is-left">
+            <fa icon="clock"
+                v-if="timeOnly">
+            </fa>
+            <fa icon="calendar-alt" v-else></fa>
+        </span>
+        <span class="clear"
+            v-if="value"
+            @click="picker.clear()">
+        </span>
     </div>
 
 </template>
@@ -115,10 +116,36 @@ export default {
 
 <style src="flatpickr/dist/themes/material_green.css"></style>
 
-<style>
+<style lang="scss" scoped>
 
-    a.input-button {
+    .clear {
+        &:before {
+            transform: rotate(45deg);
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+        }
+
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        height: 22px;
+        width: 22px;
+        display: block;
         cursor: pointer;
+        z-index: 1;
+    }
+
+    .clear:after, .clear:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 16px;
+        background: #aaa;
+        top: 3px;
+        right: 10px;
     }
 
 </style>

@@ -17,6 +17,7 @@ class CreateExamplesTable extends Migration
             $table->integer('salary');
             $table->decimal('taxes', 6, 2);
             $table->boolean('is_active');
+            $table->date('hired_at');
             $table->timestamps();
         });
     }

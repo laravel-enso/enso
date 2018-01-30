@@ -21,8 +21,44 @@
                 </div>
             </nav>
             <div class="container has-margin-top-large">
+                <div class="columns">
+                    <div class="column is-one-fifth">
+                        <vue-filter :options="activeOptions"
+                            icons
+                            title="Active"
+                            v-model="filters.examples.is_active">
+                        </vue-filter>
+                    </div>
+                    <div class="column is-one-fifth">
+                        <vue-select-filter title="Seniority"
+                            :options="seniorityOptions"
+                            v-model="filters.examples.seniority">
+                        </vue-select-filter>
+                    </div>
+                    <div class="column is-two-fifths">
+                        <date-interval-filter
+                            title="Hired Between"
+                            :min="intervals.examples.hired_at.min"
+                            @update-min="intervals.examples.hired_at.min = $event"
+                            :max="intervals.examples.hired_at.max"
+                            @update-max="intervals.examples.hired_at.max = $event">
+                        </date-interval-filter>
+                    </div>
+                    <div class="column is-one-fifth">
+                        <interval-filter
+                            title="Salary"
+                            type="number"
+                            :min="intervals.examples.salary.min"
+                            @update-min="intervals.examples.salary.min = $event"
+                            :max="intervals.examples.salary.max"
+                            @update-max="intervals.examples.salary.max = $event">
+                        </interval-filter>
+                    </div>
+                </div>
                 <vue-table path="/examples/table/init"
                     :custom-render="customRender"
+                    :filters="filters"
+                    :intervals="intervals"
                     @excel="$toastr.info('You just pressed Excel', 'Event')"
                     @create="$toastr.success('You just pressed Create', 'Event')"
                     @edit="$toastr.warning('You just pressed Edit', 'Event')"

@@ -16,22 +16,8 @@ class TableController extends Controller
     public function query()
     {
         return Example::select(\DB::raw(
-            'id as "dtRowId", name, position, seniority, project, salary, taxes, is_active'
+            'id as "dtRowId", name, position, seniority, project,
+            salary, taxes, is_active, hired_at'
         ));
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function edit()
-    {
-        //
-    }
-
-    public function delete()
-    {
-        //
     }
 }

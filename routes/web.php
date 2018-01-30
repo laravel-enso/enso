@@ -5,8 +5,6 @@ Route::namespace('Examples')
     ->group(function () {
         Route::view('table', 'examples.table')->name('table');
 
-        Route::resource('table', 'TableController', ['only' => ['create', 'edit', 'destroy']]);
-
         Route::prefix('table')->as('table.')
             ->group(function () {
                 Route::get('init', 'TableController@init')->name('init');
