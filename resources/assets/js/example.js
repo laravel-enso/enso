@@ -15,8 +15,6 @@ import './modules/enso/directives/hljs';
 
 import './modules/enso/mixins/errorHandler';
 
-require('highlight.js/styles/atom-one-light.css');
-
 fontawesome.library.add(faVuejs, faGithub, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
@@ -90,3 +88,5 @@ new Vue({
         },
     },
 }).$mount('#app');
+
+require('highlight.js/styles/atom-one-dark.css');

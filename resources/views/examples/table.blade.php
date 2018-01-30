@@ -6,6 +6,7 @@
         <link rel="icon" href="/favicon.ico"/>
         <link id="theme" rel="stylesheet" type="text/css" href="/themes/clean/bulma.min.css">
         <link href="{{ mix('css/enso.css') }}" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
 
@@ -93,6 +94,9 @@
                 </vue-table>
                 <div class="columns is-multiline">
                     <div class="column is-half">
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            vue-table component
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="js">
@@ -108,6 +112,9 @@ vue-table path="/examples/table/init"
 vue-table
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            vue-filter component
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="js">
@@ -118,6 +125,9 @@ vue-filter :options="activeOptions"
 vue-filter
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            vue-select-filter component
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="js">
@@ -127,6 +137,9 @@ vue-select-filter title="Seniority"
 vue-select-filter
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            date-interval-filter component
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="js">
@@ -139,6 +152,9 @@ date-interval-filter
 date-interval-filter
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            interval-filter component
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="js">
@@ -152,10 +168,12 @@ interval-filter
 interval-filter
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            exampleTable.json template
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="json">
-// exampleTable.json
 {
     "routePrefix": "examples.table",
     "readSuffix": "data",
@@ -267,10 +285,12 @@ interval-filter
                         </pre>
                     </div>
                     <div class="column is-half">
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            routes
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="php">
-// routes/web.php
 Route::namespace('Examples')
     ->prefix('examples')->as('examples.')
     ->group(function () {
@@ -286,10 +306,12 @@ Route::namespace('Examples')
     });
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            model
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code>
-// Example.php
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -301,10 +323,12 @@ class Example extends Model
 
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            controller
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
                             <code class="php">
-// TableController.php
 namespace App\Http\Controllers\Examples;
 
 use App\Example;
@@ -327,10 +351,12 @@ class TableController extends Controller
 }
                             </code>
                         </pre>
+                        <h5 class="title is-5 has-text-centered is-marginless">
+                            example.js file
+                        </h5>
                         <pre class="is-paddingless"
                             v-hljs>
-                            <code class="php">
-// example.js
+                            <code class="js">
 import Vue from 'vue';
 import axios from 'axios';
 import fontawesome from '@fortawesome/fontawesome';

@@ -32,7 +32,7 @@
             "class": "is-danger",
             "event": "destroy",
             "confirmation" : true,
-            "message" : "This is you custom confirmation. Are you sure?"
+            "message" : "This is yourf custom confirmation. Are you sure?"
         }
     ],
     "columns": [
