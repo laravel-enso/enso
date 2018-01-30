@@ -17,7 +17,6 @@ import './app';
 fontawesome.library.add(faListAlt, faGithub);
 
 Vue.component('fa', FontAwesomeIcon);
-
 Vue.use(Toastr, {
     i18n: store.getters['locale/__'],
     position: 'right',

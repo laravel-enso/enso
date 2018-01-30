@@ -248,105 +248,104 @@ export default {
 
 <style lang="scss">
 
-    .vue-select .multiselect {
-        min-height: 36px;
-        max-height: 36px;
-    }
+    .vue-select {
+        .multiselect {
+            min-height: 36px;
 
-    div.vue-select .multiselect__tags {
-        min-height: 36px;
-        max-height: 36px;
-        padding: 4px 40px 0 4px;
-        border-radius: 3px;
+            &.has-error .multiselect__tags {
+                border: 1px solid #e50800;
+            }
 
-        &:hover {
-                border-color: #b5b5b5;
+            .multiselect__tags {
+                min-height: 36px;
+                padding: 4px 40px 0 4px;
+                border-radius: 3px;
+
+                &:hover {
+                    border-color: #b5b5b5;
+                }
+
+                .multiselect__input {
+                    box-shadow: none;
+                    margin-bottom: 4px;
+                    margin-top: 2px;
+                    border-bottom: none;
+                    font-size: 16px;
+                }
+
+                .multiselect__single {
+                    font-size: 16px;
+                }
+
+                .multiselect__spinner {
+                    height: 33px;
+                    width: 34px;
+                }
+
+                .multiselect__tag {
+                    font-size: 16px;
+                    border-radius: 3px;
+                    margin-bottom: 4px;
+                    padding: 5px 26px 5px 10px;
+
+                    .multiselect__tag-icon {
+                        border-radius: 3px;
+                        line-height: 24px;
+                    }
+                }
+
+                .multiselect__select {
+                    width: 34px;
+                    height: 34px;
+
+                    &:before {
+                        top: 70%;
+                    }
+                }
+            }
+
+            .multiselect__clear {
+                position: absolute;
+                top: 7px;
+                right: 30px;
+                height: 22px;
+                width: 22px;
+                display: block;
+                cursor: pointer;
+                z-index: 1;
+
+                &:before {
+                    transform: rotate(45deg);
+                }
+
+                &:after {
+                    transform: rotate(-45deg);
+                }
+
+                &:after, &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 1px;
+                    height: 16px;
+                    background: #aaa;
+                    top: 3px;
+                    right: 10px;
+                }
+            }
+
+            .multiselect__content-wrapper {
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+
+                .multiselect__option,
+                .multiselect__option:after {
+                    line-height: 16px;
+                    padding: 10px;
+                    min-height: 36px;
+                }
+            }
         }
-    }
-
-    .multiselect.has-error .multiselect__tags {
-        border: 1px solid #e50800;
-    }
-
-    div.vue-select .multiselect__tag {
-        border-radius: 3px;
-        margin-bottom: 4px;
-    }
-
-    div.vue-select .multiselect__tag-icon {
-        border-radius: 3px;
-        line-height: 24px;
-    }
-
-    div.vue-select input[type=text].multiselect__input {
-        box-shadow: none;
-        margin-bottom: 4px;
-        margin-top: 2px;
-        border-bottom: none;
-    }
-
-    div.vue-select .multiselect__content-wrapper {
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
-
-    div.vue-select .multiselect__option,
-    div.vue-select .multiselect__option:after {
-        line-height: 16px;
-        padding: 10px;
-        min-height: 36px;
-    }
-
-    div.vue-select .multiselect__select {
-        width: 34px;
-        height: 34px;
-    }
-
-    div.vue-select .multiselect__select:before {
-        top: 70%;
-    }
-
-    div.vue-select .multiselect__spinner {
-        height: 34px;
-        width: 34px;
-    }
-
-    span.multiselect__tag {
-        padding: 5px 26px 5px 10px;
-    }
-
-    .multiselect, .multiselect__input, .multiselect__single {
-        font-size: 16px;
-    }
-
-    .multiselect__clear {
-        position: absolute;
-        top: 7px;
-        right: 30px;
-        height: 22px;
-        width: 22px;
-        display: block;
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .multiselect__clear:before {
-        transform: rotate(45deg);
-    }
-
-    .multiselect__clear:after {
-        transform: rotate(-45deg);
-    }
-
-    .multiselect__clear:after, .multiselect__clear:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 1px;
-        height: 16px;
-        background: #aaa;
-        top: 3px;
-        right: 10px;
     }
 
 </style>

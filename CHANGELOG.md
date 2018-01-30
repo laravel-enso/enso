@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.18
+Packages update.
+Fixes VueSelect css.
+
 ### 2.1.17
 Adds showcase for VueDatatable. The example Will be updated further.
 
