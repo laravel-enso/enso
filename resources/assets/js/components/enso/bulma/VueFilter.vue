@@ -95,18 +95,18 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
     .vue-filter {
-        padding: 0.5rem;
-    }
+        padding: 0.5em;
 
-    .filter-tabs {
-        padding-top: 4px;
-    }
+        .filter-tabs {
+            padding-top: 0.5em;
 
-    .filter-label {
-        font-size: 0.9em;
+            .filter-label {
+                font-size: 0.9em;
+            }
+        }
     }
 
 </style>
