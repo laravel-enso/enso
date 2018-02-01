@@ -50,12 +50,14 @@
             "data": "examples.position",
             "meta": [
                 "searchable",
-                "sortable"
+                "sortable",
+                "clickable"
             ]
         }, {
             "label": "Seniority",
             "name": "seniority",
             "data": "examples.seniority",
+            "enum": "App\\Http\\Controllers\\Examples\\SeniorityEnum",
             "meta": [
                 "sortable"
             ]

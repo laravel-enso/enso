@@ -11,7 +11,7 @@ import VueSelectFilter from './components/enso/bulma/VueSelectFilter.vue';
 import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
 import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
 import Tabs from './components/enso/bulma/Tabs.vue';
-import TabPanel from './components/enso/bulma/TabPanel.vue';
+import Tab from './components/enso/bulma/Tab.vue';
 import Toastr from './components/enso/bulma/toastr';
 import './modules/enso/directives/hljs';
 
@@ -35,7 +35,7 @@ new Vue({
     comments: true,
 
     components: {
-        VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter, Tabs, TabPanel,
+        VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter, Tabs, Tab,
     },
 
     data() {
@@ -88,6 +88,9 @@ new Vue({
                 this.$toastr.warning(`render for column ${column.name} is not defined.`);
                 return this.row[column.name];
             }
+        },
+        clicked(column, row) {
+            this.$toastr.info(`You just clicked "${row[column.name]}" on column "${column.name}"`, 'Click Event');
         },
     },
 }).$mount('#app');

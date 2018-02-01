@@ -16,7 +16,7 @@
             :selected-label="__(labels.selected)"
             :placeholder="__(placeholder)"
             :loading="loading"
-            :options-limit="100"
+            :options-limit="optionsLimit"
             :options="optionKeys"
             :custom-label="customLabel"
             @search-change="query=$event;getOptions()"
@@ -63,6 +63,10 @@ export default {
                 return {};
             },
         },
+        optionsLimit: {
+            type: Number,
+            default: 100,
+        },
         keyMap: {
             type: String,
             default: 'number',
@@ -108,6 +112,14 @@ export default {
                 noResult: 'No Elements Found',
             }),
         },
+    },
+
+    data() {
+        return {
+            optionList: this.options,
+            loading: false,
+            query: '',
+        };
     },
 
     computed: {
@@ -170,14 +182,6 @@ export default {
         this.getOptions = debounce(this.getOptions, 500);
     },
 
-    data() {
-        return {
-            optionList: this.options,
-            loading: false,
-            query: '',
-        };
-    },
-
     methods: {
         getOptions() {
             if (!this.isServerSide) {
@@ -203,6 +207,7 @@ export default {
                 customParams: this.customParams,
                 query: this.query,
                 value: this.value,
+                limit: this.optionsLimit,
             };
         },
         processOptions(response) {

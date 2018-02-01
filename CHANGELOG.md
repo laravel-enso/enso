@@ -1,5 +1,12 @@
 ## Enso Changelog
 
+### 2.1.19
+Adds Tabs/Tab vue components.
+Makes Notifications sticky.
+Improves example page.
+Adds `optionsLimit` prop to VueSelect.
+Fixes bugs.
+
 ### 2.1.18
 Packages update.
 Fixes VueSelect css.

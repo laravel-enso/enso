@@ -9,7 +9,7 @@
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a @click="setActive(index)">
+                    <a @click="setActive(index, tab)">
                         <slot name="label"
                             :tab="tab">
                             {{ tab }}
@@ -25,6 +25,8 @@
 <script>
 
 export default {
+    name: 'Tab',
+
     props: {
         alignment: {
             type: String,
@@ -52,32 +54,24 @@ export default {
             type: Boolean,
             default: false,
         },
-        default: {
-            type: Number,
-            default: 0,
-        },
-        label: {
-            type: String,
-            default: '',
-        },
     },
 
     data() {
         return {
             tabs: [],
-            active: this.default,
+            active: 0,
         };
     },
 
     methods: {
-        setActive(index) {
+        setActive(index, tab) {
+            if (this.active === index && !tab.active) {
+                return;
+            }
+
             this.active = null;
 
             setTimeout(() => {
-                if (this.active === index) {
-                    return;
-                }
-
                 this.active = index;
             }, 500);
         },

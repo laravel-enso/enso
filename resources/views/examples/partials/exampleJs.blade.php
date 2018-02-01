@@ -90,6 +90,9 @@ new Vue({
                 return this.row[column.name];
             }
         },
+        clicked(column, row) {
+            this.$toastr.info(`You just clicked "${row[column.name]}" on column "${column.name}"`, 'Click Event');
+        },
     },
 }).$mount('#app');
     </code>

@@ -35,7 +35,7 @@
             "class": "is-danger",
             "event": "destroy",
             "confirmation" : true,
-            "message" : "This is you custom confirmation. Are you sure?"
+            "message" : "This is your custom confirmation. Are you sure?"
         }
     ],
     "columns": [
@@ -53,12 +53,14 @@
             "data": "examples.position",
             "meta": [
                 "searchable",
-                "sortable"
+                "sortable",
+                "clickable"
             ]
         }, {
             "label": "Seniority",
             "name": "seniority",
             "data": "examples.seniority",
+            "enum": "App\\Http\\Controllers\\Examples\\SeniorityEnum",
             "meta": [
                 "sortable"
             ]

@@ -68,14 +68,15 @@ export default new Vuex.Store({
                         .install();
                 }
 
-                const documentTilePrefix = state.meta.extendedDocumentTitle
-                    ? `${state.meta.appName} | `
+                const appName = state.meta.extendedDocumentTitle
+                    ? ` | ${state.meta.appName}`
                     : '';
+
                 const __ = getters['locale/__'];
 
                 router.beforeEach((to, from, next) => {
                     if (to.meta.title !== from.meta.title) {
-                        document.title = documentTilePrefix + __(to.meta.title);
+                        document.title = __(to.meta.title) + appName;
                     }
 
                     next();

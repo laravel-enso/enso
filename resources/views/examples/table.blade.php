@@ -87,6 +87,7 @@
                     :custom-render="customRender"
                     :filters="filters"
                     :intervals="intervals"
+                    @clicked="clicked"
                     @excel="$toastr.info('You just pressed Excel', 'Event')"
                     @create="$toastr.success('You just pressed Create', 'Event')"
                     @edit="$toastr.warning('You just pressed Edit', 'Event')"
@@ -110,84 +111,104 @@
                     <tabs class="animated"
                         alignment="centered"
                         v-if="showCode">
-                        <tab-panel id="front end">
+                        <span slot="label" slot-scope="props">
+                            @{{ props.tab.label }}
+                            <span :class="[ 'tag', props.tab.class ]">@{{ props.tab.tag }}</span>
+                        </span>
+                        <tab :id="{ label: 'front end', class: 'is-info', tag: 'mixt' }">
                             <tabs alignment="centered">
-                                <tab-panel id="vue-table">
+                                <span slot="label" slot-scope="props">
+                                    @{{ props.tab.label }}
+                                    <span :class="[ 'tag', props.tab.class ]">@{{ props.tab.tag }}</span>
+                                </span>
+                                <tab :id="{ label: 'vue-table', class: 'is-warning', tag: 'req' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.vueTable')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="vue-filter">
+                                </tab>
+                                <tab :id="{ label: 'vue-filter', class: 'is-success', tag: 'opt' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.vueFilter')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="vue-select-filter">
+                                </tab>
+                                <tab :id="{ label: 'vue-select-filter', class: 'is-success', tag: 'opt' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.vueSelectFilter')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="date-interval-filter">
+                                </tab>
+                                <tab :id="{ label: 'date-interval-filter', class: 'is-success', tag: 'opt', active: false }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.dateIntervalFilter')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="interval-filter">
+                                </tab>
+                                <tab :id="{ label: 'interval-filter', class: 'is-success', tag: 'opt' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.intervalFilter')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="example.js">
+                                </tab>
+                                <tab :id="{ label: 'example.js', class: 'is-info', tag: 'info' }">
                                     <div class="columns">
                                         <div class="column is-three-fifths is-offset-one-fifth">
                                             @include('examples.partials.exampleJs')
                                         </div>
                                     </div>
-                                </tab-panel>
+                                </tab>
                             </tabs>
-                        </tab-panel>
-                        <tab-panel id="back end">
+                        </tab>
+                        <tab :id="{ label: 'back end', class: 'is-info', tag: 'mixt' }">
                             <tabs alignment="centered">
-                                <tab-panel id="routes">
+                                <span slot="label" slot-scope="props">
+                                    @{{ props.tab.label }}
+                                    <span :class="[ 'tag', props.tab.class ]">@{{ props.tab.tag }}</span>
+                                </span>
+                                <tab :id="{ label: 'routes', class: 'is-warning', tag: 'req' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.routes')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="model">
+                                </tab>
+                                <tab :id="{ label: 'model', class: 'is-warning', tag: 'req' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.model')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="controller">
+                                </tab>
+                            <tab :id="{ label: 'controller', class: 'is-warning', tag: 'req' }"
+                                    active>
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.controller')
                                         </div>
                                     </div>
-                                </tab-panel>
-                                <tab-panel id="template">
+                                </tab>
+                                <tab :id="{ label: 'template', class: 'is-warning', tag: 'req' }">
                                     <div class="columns">
                                         <div class="column is-half is-offset-one-quarter">
                                             @include('examples.partials.template')
                                         </div>
                                     </div>
-                                </tab-panel>
+                                </tab>
+                                <tab :id="{ label: 'enum', class: 'is-success', tag: 'opt' }">
+                                    <div class="columns">
+                                        <div class="column is-half is-offset-one-quarter">
+                                            @include('examples.partials.enum')
+                                        </div>
+                                    </div>
+                                </tab>
                             </tabs>
-                        </tab-panel>
+                        </tab>
                     </tabs>
                 </transition>
             </div>

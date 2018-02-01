@@ -3,9 +3,16 @@
     <transition appear
         :enter-active-class="enterClass"
         :leave-active-class="leaveClass"
+        @after-enter="hoverable = true"
         @after-leave="destroy">
-        <div :class="['box notification toastr animated', type ? `is-${type}` : '']"
-            v-if="show">
+        <div :class="[
+            'box notification toastr animated',
+            { 'highlight': hover },
+            type ? `is-${type}` : ''
+        ]"
+            v-if="show || hover"
+            @mouseenter="startHover"
+            @mouseleave="stopHover">
             <button class="delete"
                 @click="close()"
                 v-if="closeButton">
@@ -108,7 +115,9 @@ export default {
         return {
             wrapper: null,
             icons,
+            hoverable: false,
             show: true,
+            hover: false,
         };
     },
 
@@ -167,17 +176,35 @@ export default {
     mounted() {
         this.wrapper.$el.appendChild(this.$el);
         delete this.wrapper;
-        this.timer = setTimeout(() => this.close(), this.duration);
+        this.timer = setTimeout(() => this.hide(), this.duration);
     },
 
     methods: {
-        close() {
+        hide() {
             clearTimeout(this.timer);
+            this.hoverable = false;
+            this.show = false;
+        },
+
+        close() {
+            this.hover = false;
             this.show = false;
         },
 
         destroy() {
             this.$destroy();
+        },
+        startHover() {
+            if (!this.hoverable && !this.show) {
+                return;
+            }
+
+            this.hover = true;
+            clearTimeout(this.timer);
+        },
+        stopHover() {
+            this.hover = false;
+            this.timer = setTimeout(() => this.hide(), this.duration);
         },
     },
 };
@@ -219,6 +246,13 @@ export default {
             -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
             -moz-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
             box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
+
+            &.highlight {
+                -webkit-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
+                -moz-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
+                box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
+                z-index: 10000;
+            }
         }
     }
 

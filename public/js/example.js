@@ -16206,12 +16206,13 @@ var modules = Object(__WEBPACK_IMPORTED_MODULE_5__modules_importers_storeImporte
                     __WEBPACK_IMPORTED_MODULE_2_raven_js___default.a.config(state.ravenKey).addPlugin(__WEBPACK_IMPORTED_MODULE_3_raven_js_plugins_vue___default.a, __WEBPACK_IMPORTED_MODULE_0_vue___default.a).install();
                 }
 
-                var documentTilePrefix = state.meta.extendedDocumentTitle ? state.meta.appName + ' | ' : '';
+                var appName = state.meta.extendedDocumentTitle ? ' | ' + state.meta.appName : '';
+
                 var __ = getters['locale/__'];
 
                 __WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */].beforeEach(function (to, from, next) {
                     if (to.meta.title !== from.meta.title) {
-                        document.title = documentTilePrefix + __(to.meta.title);
+                        document.title = __(to.meta.title) + appName;
                     }
 
                     next();
@@ -34591,8 +34592,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_enso_bulma_DateIntervalFilter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_enso_bulma_DateIntervalFilter_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_enso_bulma_Tabs_vue__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_enso_bulma_Tabs_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_enso_bulma_Tabs_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_TabPanel_vue__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_TabPanel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_TabPanel_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_Tab_vue__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_Tab_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_Tab_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_enso_bulma_toastr__ = __webpack_require__(423);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_enso_directives_hljs__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_enso_mixins_errorHandler__ = __webpack_require__(429);
@@ -34633,7 +34634,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     comments: true,
 
     components: {
-        VueTable: __WEBPACK_IMPORTED_MODULE_7__components_enso_vuedatatable_VueTable_vue___default.a, VueFilter: __WEBPACK_IMPORTED_MODULE_8__components_enso_bulma_VueFilter_vue___default.a, VueSelectFilter: __WEBPACK_IMPORTED_MODULE_9__components_enso_bulma_VueSelectFilter_vue___default.a, IntervalFilter: __WEBPACK_IMPORTED_MODULE_10__components_enso_bulma_IntervalFilter_vue___default.a, DateIntervalFilter: __WEBPACK_IMPORTED_MODULE_11__components_enso_bulma_DateIntervalFilter_vue___default.a, Tabs: __WEBPACK_IMPORTED_MODULE_12__components_enso_bulma_Tabs_vue___default.a, TabPanel: __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_TabPanel_vue___default.a
+        VueTable: __WEBPACK_IMPORTED_MODULE_7__components_enso_vuedatatable_VueTable_vue___default.a, VueFilter: __WEBPACK_IMPORTED_MODULE_8__components_enso_bulma_VueFilter_vue___default.a, VueSelectFilter: __WEBPACK_IMPORTED_MODULE_9__components_enso_bulma_VueSelectFilter_vue___default.a, IntervalFilter: __WEBPACK_IMPORTED_MODULE_10__components_enso_bulma_IntervalFilter_vue___default.a, DateIntervalFilter: __WEBPACK_IMPORTED_MODULE_11__components_enso_bulma_DateIntervalFilter_vue___default.a, Tabs: __WEBPACK_IMPORTED_MODULE_12__components_enso_bulma_Tabs_vue___default.a, Tab: __WEBPACK_IMPORTED_MODULE_13__components_enso_bulma_Tab_vue___default.a
     },
 
     data: function data() {
@@ -34681,6 +34682,9 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
                     this.$toastr.warning('render for column ' + column.name + ' is not defined.');
                     return this.row[column.name];
             }
+        },
+        clicked: function clicked(column, row) {
+            this.$toastr.info('You just clicked "' + row[column.name] + '" on column "' + column.name + '"', 'Click Event');
         }
     }
 }).$mount('#app');
@@ -49145,6 +49149,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return {};
             }
         },
+        optionsLimit: {
+            type: Number,
+            default: 100
+        },
         keyMap: {
             type: String,
             default: 'number'
@@ -49193,6 +49201,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
         }
     },
+
+    data: function data() {
+        return {
+            optionList: this.options,
+            loading: false,
+            query: ''
+        };
+    },
+
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])('locale', ['__']), {
         isServerSide: function isServerSide() {
@@ -49256,13 +49273,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     created: function created() {
         this.getOptions = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["debounce"])(this.getOptions, 500);
     },
-    data: function data() {
-        return {
-            optionList: this.options,
-            loading: false,
-            query: ''
-        };
-    },
 
 
     methods: {
@@ -49291,7 +49301,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 pivotParams: this.pivotParams,
                 customParams: this.customParams,
                 query: this.query,
-                value: this.value
+                value: this.value,
+                limit: this.optionsLimit
             };
         },
         processOptions: function processOptions(response) {
@@ -49375,7 +49386,7 @@ var render = function() {
             "selected-label": _vm.__(_vm.labels.selected),
             placeholder: _vm.__(_vm.placeholder),
             loading: _vm.loading,
-            "options-limit": 100,
+            "options-limit": _vm.optionsLimit,
             options: _vm.optionKeys,
             "custom-label": _vm.customLabel
           },
@@ -71887,6 +71898,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'Tab',
+
     props: {
         alignment: {
             type: String,
@@ -71917,36 +71930,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fullwidth: {
             type: Boolean,
             default: false
-        },
-        default: {
-            type: Number,
-            default: 0
-        },
-        label: {
-            type: String,
-            default: ''
         }
     },
 
     data: function data() {
         return {
             tabs: [],
-            active: this.default
+            active: 0
         };
     },
 
 
     methods: {
-        setActive: function setActive(index) {
+        setActive: function setActive(index, tab) {
             var _this = this;
+
+            if (this.active === index && !tab.active) {
+                return;
+            }
 
             this.active = null;
 
             setTimeout(function () {
-                if (_this.active === index) {
-                    return;
-                }
-
                 _this.active = index;
             }, 500);
         }
@@ -71990,7 +71995,7 @@ var render = function() {
                     {
                       on: {
                         click: function($event) {
-                          _vm.setActive(index)
+                          _vm.setActive(index, tab)
                         }
                       }
                     },
@@ -72057,7 +72062,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/enso/bulma/TabPanel.vue"
+Component.options.__file = "resources/assets/js/components/enso/bulma/Tab.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72066,9 +72071,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d6edad58", Component.options)
+    hotAPI.createRecord("data-v-0abddcc0", Component.options)
   } else {
-    hotAPI.reload("data-v-d6edad58", Component.options)
+    hotAPI.reload("data-v-0abddcc0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72097,9 +72102,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'Tab',
 
     props: {
         id: {
@@ -72109,17 +72116,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
-        active: function active() {
+        index: function index() {
             var _this = this;
 
             return this.$parent.tabs.findIndex(function (tab) {
                 return JSON.stringify(tab) === JSON.stringify(_this.id);
-            }) === this.$parent.active;
+            });
+        },
+        active: function active() {
+            return this.index === this.$parent.active;
         }
     },
 
     created: function created() {
         this.$parent.tabs.push(this.id);
+    },
+    beforeDestroy: function beforeDestroy() {
+        this.$parent.tabs.splice(this.index, 1);
     }
 });
 
@@ -72136,6 +72149,7 @@ var render = function() {
     {
       attrs: {
         appear: "",
+        duration: 500,
         "enter-active-class": "fadeIn",
         "leave-active-class": "fadeOut"
       }
@@ -72153,7 +72167,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d6edad58", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0abddcc0", module.exports)
   }
 }
 
@@ -72298,7 +72312,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.toastr-wrapper {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  z-index: 9999;\n  pointer-events: none;\n  top: 2em;\n}\n.toastr-wrapper.left {\n    margin-right: auto;\n    left: 2em;\n}\n.toastr-wrapper.right {\n    margin-left: auto;\n    right: 2em;\n}\n.toastr-wrapper.center {\n    margin-left: calc(50% - 150px);\n}\n.toastr-wrapper .box.toastr.notification {\n    width: 300px;\n    padding: 12px;\n    margin-bottom: 6px;\n    pointer-events: auto;\n    position: relative;\n    z-index: 9999;\n    position: relative;\n    -webkit-box-shadow: 0px 0px 5px 1px #858585;\n    box-shadow: 0px 0px 5px 1px #858585;\n}\n", ""]);
+exports.push([module.i, "\n.toastr-wrapper {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  z-index: 9999;\n  pointer-events: none;\n  top: 2em;\n}\n.toastr-wrapper.left {\n    margin-right: auto;\n    left: 2em;\n}\n.toastr-wrapper.right {\n    margin-left: auto;\n    right: 2em;\n}\n.toastr-wrapper.center {\n    margin-left: calc(50% - 150px);\n}\n.toastr-wrapper .box.toastr.notification {\n    width: 300px;\n    padding: 12px;\n    margin-bottom: 6px;\n    pointer-events: auto;\n    position: relative;\n    z-index: 9999;\n    position: relative;\n    -webkit-box-shadow: 0px 0px 5px 1px #858585;\n    box-shadow: 0px 0px 5px 1px #858585;\n}\n.toastr-wrapper .box.toastr.notification.highlight {\n      -webkit-box-shadow: 0px 0px 15px 1px #858585;\n      box-shadow: 0px 0px 15px 1px #858585;\n      z-index: 10000;\n}\n", ""]);
 
 // exports
 
@@ -72313,6 +72327,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_fontawesome__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fortawesome_fontawesome_free_solid_shakable_es__ = __webpack_require__(6);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -72427,7 +72448,9 @@ var titles = {
         return {
             wrapper: null,
             icons: icons,
-            show: true
+            hoverable: false,
+            show: true,
+            hover: false
         };
     },
 
@@ -72486,18 +72509,38 @@ var titles = {
         this.wrapper.$el.appendChild(this.$el);
         delete this.wrapper;
         this.timer = setTimeout(function () {
-            return _this.close();
+            return _this.hide();
         }, this.duration);
     },
 
 
     methods: {
-        close: function close() {
+        hide: function hide() {
             clearTimeout(this.timer);
+            this.show = false;
+        },
+        close: function close() {
+            this.hover = false;
             this.show = false;
         },
         destroy: function destroy() {
             this.$destroy();
+        },
+        startHover: function startHover() {
+            if (!this.hoverable && !this.show) {
+                return;
+            }
+
+            this.hover = true;
+            clearTimeout(this.timer);
+        },
+        stopHover: function stopHover() {
+            var _this2 = this;
+
+            this.hover = false;
+            this.timer = setTimeout(function () {
+                return _this2.hide();
+            }, this.duration);
         }
     }
 });
@@ -72518,17 +72561,24 @@ var render = function() {
         "enter-active-class": _vm.enterClass,
         "leave-active-class": _vm.leaveClass
       },
-      on: { "after-leave": _vm.destroy }
+      on: {
+        "after-enter": function($event) {
+          _vm.hoverable = true
+        },
+        "after-leave": _vm.destroy
+      }
     },
     [
-      _vm.show
+      _vm.show || _vm.hover
         ? _c(
             "div",
             {
               class: [
                 "box notification toastr animated",
+                { highlight: _vm.hover },
                 _vm.type ? "is-" + _vm.type : ""
-              ]
+              ],
+              on: { mouseenter: _vm.startHover, mouseleave: _vm.stopHover }
             },
             [
               _vm.closeButton
