@@ -130,13 +130,11 @@ export default {
         enterClass() {
             return `bounceIn${this.direction}`;
         },
-
         leaveClass() {
             return this.position === 'center'
                 ? 'bounceOutUp'
                 : `bounceOut${this.direction}`;
         },
-
         icon() {
             return this.icons[this.type];
         },
@@ -251,7 +249,6 @@ export default {
                 -webkit-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
                 -moz-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
                 box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
-                z-index: 10000;
             }
         }
     }

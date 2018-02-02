@@ -1,4 +1,7 @@
 ## Enso Changelog
+### 2.1.20
+Fixes `core.index` route.
+Packages update.
 
 ### 2.1.19
 Adds Tabs/Tab vue components.

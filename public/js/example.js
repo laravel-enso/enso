@@ -72312,7 +72312,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.toastr-wrapper {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  z-index: 9999;\n  pointer-events: none;\n  top: 2em;\n}\n.toastr-wrapper.left {\n    margin-right: auto;\n    left: 2em;\n}\n.toastr-wrapper.right {\n    margin-left: auto;\n    right: 2em;\n}\n.toastr-wrapper.center {\n    margin-left: calc(50% - 150px);\n}\n.toastr-wrapper .box.toastr.notification {\n    width: 300px;\n    padding: 12px;\n    margin-bottom: 6px;\n    pointer-events: auto;\n    position: relative;\n    z-index: 9999;\n    position: relative;\n    -webkit-box-shadow: 0px 0px 5px 1px #858585;\n    box-shadow: 0px 0px 5px 1px #858585;\n}\n.toastr-wrapper .box.toastr.notification.highlight {\n      -webkit-box-shadow: 0px 0px 15px 1px #858585;\n      box-shadow: 0px 0px 15px 1px #858585;\n      z-index: 10000;\n}\n", ""]);
+exports.push([module.i, "\n.toastr-wrapper {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  z-index: 9999;\n  pointer-events: none;\n  top: 2em;\n}\n.toastr-wrapper.left {\n    margin-right: auto;\n    left: 2em;\n}\n.toastr-wrapper.right {\n    margin-left: auto;\n    right: 2em;\n}\n.toastr-wrapper.center {\n    margin-left: calc(50% - 150px);\n}\n.toastr-wrapper .box.toastr.notification {\n    width: 300px;\n    padding: 12px;\n    margin-bottom: 6px;\n    pointer-events: auto;\n    position: relative;\n    z-index: 9999;\n    position: relative;\n    -webkit-box-shadow: 0px 0px 5px 1px #858585;\n    box-shadow: 0px 0px 5px 1px #858585;\n}\n.toastr-wrapper .box.toastr.notification.highlight {\n      -webkit-box-shadow: 0px 0px 15px 1px #858585;\n      box-shadow: 0px 0px 15px 1px #858585;\n}\n", ""]);
 
 // exports
 
@@ -72517,6 +72517,7 @@ var titles = {
     methods: {
         hide: function hide() {
             clearTimeout(this.timer);
+            this.hoverable = false;
             this.show = false;
         },
         close: function close() {

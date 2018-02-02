@@ -1197,16 +1197,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "2cfa7b72a09c1e5e7744beb4e234d77c64e8228c"
+                "reference": "b34385f015409d819ad0fa46aabd966883b4a7dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/2cfa7b72a09c1e5e7744beb4e234d77c64e8228c",
-                "reference": "2cfa7b72a09c1e5e7744beb4e234d77c64e8228c",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/b34385f015409d819ad0fa46aabd966883b4a7dd",
+                "reference": "b34385f015409d819ad0fa46aabd966883b4a7dd",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1257,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-01-26T13:45:05+00:00"
+            "time": "2018-02-02T10:51:46+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -1507,16 +1507,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.1.50",
+            "version": "2.1.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "e3c30d3a5ea86a72c6bff041596c097b9ec5c7d8"
+                "reference": "01861fa174d16c052e229e1e50e6666e544c02b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/e3c30d3a5ea86a72c6bff041596c097b9ec5c7d8",
-                "reference": "e3c30d3a5ea86a72c6bff041596c097b9ec5c7d8",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/01861fa174d16c052e229e1e50e6666e544c02b6",
+                "reference": "01861fa174d16c052e229e1e50e6666e544c02b6",
                 "shasum": ""
             },
             "require": {
@@ -1594,7 +1594,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-02-01T13:09:32+00:00"
+            "time": "2018-02-02T11:12:49+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2051,16 +2051,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "2.1.20",
+            "version": "2.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "a3a2b355aef390927eda33562d60c024140d7d67"
+                "reference": "523a4efc2a89ffc1cb07b02cb5035bd659fc1401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/a3a2b355aef390927eda33562d60c024140d7d67",
-                "reference": "a3a2b355aef390927eda33562d60c024140d7d67",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/523a4efc2a89ffc1cb07b02cb5035bd659fc1401",
+                "reference": "523a4efc2a89ffc1cb07b02cb5035bd659fc1401",
                 "shasum": ""
             },
             "require": {
@@ -2108,7 +2108,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2018-01-25T17:30:46+00:00"
+            "time": "2018-02-01T16:42:44+00:00"
         },
         {
             "name": "laravel-enso/logmanager",

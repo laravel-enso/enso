@@ -174,7 +174,7 @@ export default {
         reportLoginError(data) {
             if (data.errors) {
                 if (data.errors.email) {
-                    this.$toastr.error(data.errors.email);
+                    this.$toastr.error(data.errors.email[0]);
                 }
 
                 if (data.errors && data.errors.password) {
