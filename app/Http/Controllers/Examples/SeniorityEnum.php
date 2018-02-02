@@ -1,4 +1,5 @@
 <?php
+
 //please ignore the namespace ;)
 
 namespace App\Http\Controllers\Examples;
