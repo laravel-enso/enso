@@ -2,7 +2,8 @@
 
     <div>
         <div :class="['pagination pull-right', {'with-border': border}]">
-            <div :class="['dropdown', {'is-active': open}]">
+            <div :class="['dropdown', {'is-active': open}]"
+                v-if="pages > 1">
                 <dropdown class="is-right">
                     <span slot="label">
                         <span class="icon is-small has-margin-right-small">

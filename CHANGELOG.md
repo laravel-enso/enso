@@ -1,4 +1,9 @@
 ## Enso Changelog
+### 2.1.21
+Major update in DataImport. Improves interface, replaces Maatwebsite/Excel with Bos/Spout. The packages is now faster and cleaner.
+Updates documentation for most of the packages.
+Note: Unfortunately we tagged wrongly "laravel-enso/menumanager" with 2.1.29 instead of 2.1.21. If you have the project already installed please correct this manually.
+
 ### 2.1.20
 Fixes `core.index` route.
 Packages update.

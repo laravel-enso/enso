@@ -70,6 +70,8 @@
 import { mapGetters } from 'vuex';
 
 export default {
+    name: 'Modal',
+
     props: {
         show: {
             type: Boolean,
