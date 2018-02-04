@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a468a5de5dd68063b2705de3f2c666eb",
+    "content-hash": "fc2cd0e8f41e2386606c2b2a7a92fe05",
     "packages": [
         {
             "name": "box/spout",
@@ -2114,7 +2114,7 @@
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "2.1.29",
+            "version": "2.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
