@@ -147,7 +147,7 @@ import {
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
-import VueSelect from './VueSelect.vue';
+import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 import VueFormInput from './VueFormInput.vue';
 

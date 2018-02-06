@@ -188,7 +188,7 @@ import {
     faUpload, faDownload, faTrashAlt, faFileExcel,
     faCalendarAlt, faClock, faCheck, faTimes, faBook,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import VueSelect from '../../components/enso/vueforms/VueSelect.vue';
+import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
 import Modal from '../../components/enso/bulma/Modal.vue';

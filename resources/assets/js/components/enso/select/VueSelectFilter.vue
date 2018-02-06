@@ -15,7 +15,7 @@
 
 <script>
 
-import VueSelect from '../vueforms/VueSelect.vue';
+import VueSelect from './VueSelect.vue';
 
 export default {
     name: 'VueSelectFilter',

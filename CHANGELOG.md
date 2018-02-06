@@ -1,4 +1,16 @@
 ## Enso Changelog
+
+### 2.1.22
+Extracted the `VueSelect.vue` and `VueSelectFilter.vue` to the Select package.
+Packages update.
+
+Note: the Vue components move means that you should update throughout your pages/components the import path to the 
+select components and then delete the leftover components from the `vueforms` and `bulma` folders respectively: 
+ 
+...`/vueforms/VueSelect.vue` to ...`/select/VueSelect.vue`
+...`/bulma/VueSelectFilter.vue` to ...`/select/VueSelectFilter.vue`
+
+
 ### 2.1.21
 Major update in DataImport. Improves interface, replaces Maatwebsite/Excel with Bos/Spout. The packages is now faster and cleaner.
 Updates documentation for most of the packages.

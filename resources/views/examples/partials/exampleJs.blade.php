@@ -10,7 +10,7 @@ import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.e
 import store from './store';
 import VueTable from './components/enso/vuedatatable/VueTable.vue';
 import VueFilter from './components/enso/bulma/VueFilter.vue';
-import VueSelectFilter from './components/enso/bulma/VueSelectFilter.vue';
+import VueSelectFilter from './components/enso/select/VueSelectFilter.vue';
 import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
 import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
 import Toastr from './components/enso/bulma/toastr';

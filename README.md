@@ -53,6 +53,21 @@ IMPORTANT NOTE: Due to laravel mix limitations, when using `hmr`,
 you need to comment lines 3-to-7 inside `webpack.mix.js` in order for it to work correctly. 
 Don't forget to uncomment them back when building without hot module replacement.
 
+### Using Enso for Your Project
+
+1. Follow the steps above to install & setup
+2. If you find Enso suited for building a project with it, delete the .git folder, run `git init`, 
+and use a dedicated repo for your custom project
+4. Develop
+5. To update run `composer update` / `npm update` and compile
+6. Breaking changes in the dependencies? Update your custom code then update the new versions in `composer.json` and run `composer update`
+7. Need another new project ? Start again from the first step
+
+Note: When we must make breaking changes to the packages, we increase the minor version. 
+Due to how dependencies are defined, composer will not update the dependencies for you in that case, 
+that's why you need to look at the changelog, be aware of the changes, update your code and then manually update 
+the dependencies' minor version, so that you can continue to receive updates.  
+
 ### With Enso you get
 A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, 
 [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), 
