@@ -21,8 +21,12 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import fontawesome from '@fortawesome/fontawesome';
+import { faAddressCard } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 import ContactForm from '../../../components/enso/contacts/ContactForm.vue';
+
+fontawesome.library.add(faAddressCard);
 
 export default {
     components: { VueTable, ContactForm },

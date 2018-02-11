@@ -25,6 +25,12 @@ export default {
 
     components: { Auth, Home, AppMain },
 
+    data() {
+        return {
+            showHome: false,
+        };
+    },
+
     computed: {
         ...mapGetters('auth', ['isAuth']),
         ...mapState(['appIsLoaded']),
@@ -43,12 +49,6 @@ export default {
 
             return null;
         },
-    },
-
-    data() {
-        return {
-            showHome: false,
-        };
     },
 
     beforeMount() {

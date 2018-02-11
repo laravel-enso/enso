@@ -242,7 +242,6 @@ export default {
 
     .has-shadow-bottom {
         -webkit-box-shadow: 0px 3px 5px -4px lightgray;
-        -moz-box-shadow: 0px 3px 5px -4px lightgray;
         box-shadow: 0px 3px 5px -4px lightgray;
     }
 

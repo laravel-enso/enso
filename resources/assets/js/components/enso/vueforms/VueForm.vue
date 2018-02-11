@@ -1,25 +1,22 @@
 <template>
 
-    <div>
+    <div class="box">
         <h5 class="title is-5"
             v-if="data.icon || data.title">
             <span class="icon"
                 v-if="data.icon">
                 <fa :icon="data.icon"></fa>
             </span>
-            <span
-                v-if="data.title">
+            <span v-if="data.title">
                 {{ data.title }}
             </span>
-            <hr>
         </h5>
-        <form @submit.prevent="submit()"
-            class="vue-form">
+        <form class="is-marginless"
+            @submit.prevent="submit()">
             <div class="columns is-multiline">
                 <div v-for="field in data.fields"
-                    class="column"
+                    :class="['column', columnSize]"
                     :key="field.name"
-                    :class="columnSize"
                     v-if="!field.meta.hidden">
                     <div class="field">
                         <label class="label">
@@ -36,11 +33,32 @@
                             </slot>
                         </span>
                         <span v-else>
-                            <vue-form-input v-if="field.meta.type === 'input'"
-                                :field="field"
-                                @update="errors.clear(field.name)"
-                                :has-error="errors.has(field.name)">
-                            </vue-form-input>
+                            <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
+                                v-if="field.meta.type === 'input' && field.meta.content !== 'checkbox'">
+                                <input
+                                    class="input"
+                                    v-model="field.value"
+                                    :type="field.meta.content"
+                                    :class="{ 'is-danger': errors.has(field.name) }"
+                                    :readonly="field.meta.readonly"
+                                    :disabled="field.meta.disabled"
+                                    @keydown="$emit('update');"
+                                    @input="errors.clear(field.name);"
+                                    :step="field.meta.step"
+                                    :min="field.meta.min"
+                                    :max="field.meta.max">
+                                <span class="icon is-small is-right has-text-danger"
+                                    v-if="errors.has(field.name)">
+                                    <fa icon="exclamation-triangle"></fa>
+                                </span>
+                            </div>
+                            <vue-switch v-if="field.meta.type === 'input' && field.meta.content === 'checkbox'"
+                                v-model="field.value"
+                                size="is-large"
+                                type="is-success"
+                                :disabled="field.meta.disabled || field.meta.readonly"
+                                @click="$emit('update')">
+                            </vue-switch>
                             <vue-select v-if="field.meta.type === 'select'"
                                 :has-error="errors.has(field.name)"
                                 @input="errors.clear(field.name);"
@@ -84,7 +102,6 @@
                     </div>
                 </div>
             </div>
-            <hr>
             <button class="button"
                 v-if="data.actions.destroy"
                 :disabled="data.actions.destroy.forbidden"
@@ -106,20 +123,20 @@
                 </span>
             </button>
             <button type="submit"
+                v-if="data.actions.store"
                 class="button is-pulled-right"
                 :class="[data.actions.store.button.class, { 'is-loading': loading }]"
-                v-if="data.actions.store"
-                :disabled="data.actions.store.forbidden">
+                :disabled="data.actions.store.forbidden || errors.any()">
                 <span>{{ __(data.actions.store.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.store.button.icon"></fa>
                 </span>
             </button>
             <button type="submit"
+                v-if="data.actions.update"
                 class="button is-pulled-right"
                 :class="[data.actions.update.button.class, { 'is-loading': loading }]"
-                v-if="data.actions.update"
-                :disabled="data.actions.update.forbidden">
+                :disabled="data.actions.update.forbidden || errors.any()">
                 <span>{{ __(data.actions.update.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.update.button.icon"></fa>
@@ -143,21 +160,21 @@
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
-    faTrashAlt, faPlus, faCheck, faExclamationTriangle,
+    faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
+import VueSwitch from './VueSwitch.vue';
 import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
-import VueFormInput from './VueFormInput.vue';
 
-fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle);
+fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo);
 
 export default {
     name: 'VueForm',
 
     components: {
-        Modal, VueSelect, Datepicker, VueFormInput,
+        VueSwitch, Modal, VueSelect, Datepicker,
     },
 
     props: {
@@ -252,10 +269,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-    .vue-form {
-        margin-bottom: 0;
-    }
 
     .title {
         .icon {

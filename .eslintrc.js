@@ -24,6 +24,8 @@ module.exports = {
     },
     rules: {
         indent: ["error", 4],
+        "vue/html-indent": 0,
+        "vue/html-self-closing": 0,
         "no-plusplus": 0,
         "no-debugger": 0,
         "no-underscore-dangle": ["error", { "allow": ["__"] } ],
@@ -31,5 +33,6 @@ module.exports = {
         "no-mixed-operators": 0,
         "func-names": 0,
         "no-shadow": 0,
+        "vue/max-attributes-per-line": 0
     },
 };

@@ -57,8 +57,12 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "php artisan package:discover"
         ],
+        "post-install-cmd": [
+            "php artisan enso:update-user-agent"
+        ],
         "post-update-cmd": [
-            "php artisan vendor:publish --force --tag='enso-assets'"
+            "php artisan vendor:publish --force --tag='enso-assets'",
+            "php artisan enso:update-user-agent"
         ]
     },
     "config": {

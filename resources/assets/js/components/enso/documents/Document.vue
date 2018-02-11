@@ -1,6 +1,6 @@
 <template>
 
-    <div class="level vue-document"
+    <div class="level vue-document has-shadow hover"
         @mouseover="controls = true"
         @mouseleave="!dialog ? controls = false : null">
         <div class="level-left">
@@ -61,13 +61,13 @@
                                     <span class="icon is-small">
                                         <fa icon="calendar-alt"></fa>
                                     </span>
-                                    {{ this.$options.filters.timeFromNow(this.doc.created_at) }}
+                                    {{ $options.filters.timeFromNow(doc.created_at) }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
                                         <fa icon="database"></fa>
                                     </span>
-                                    {{ this.$options.filters.numberFormat(this.doc.size) }} Kb
+                                    {{ $options.filters.numberFormat(doc.size) }} Kb
                                 </p>
                             </div>
                         </template>
@@ -141,9 +141,6 @@ export default {
         box-shadow: 0ch;
         border-radius: 3px;
         border-left: 3px solid rgb(133, 152, 133);
-        -webkit-box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
-        -moz-box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
-        box-shadow: 0px 0px 4px 0px rgba(179,179,179,1);
 
         &:hover {
             border-left: 3px solid rgb(0, 220, 0);

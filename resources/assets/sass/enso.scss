@@ -1,19 +1,11 @@
 @import '~animate.css/animate.css';
 @import './v-tooltip';
 
+@import './helpers';
 @import './app';
 
 .animated {
     animation-duration: .5s;
-}
-
-.toast-top-right {
-  top: 70px !important;
-  right: 5px;
-}
-
-.toast-top-center {
-  top: 70px !important;
 }
 
 .button.is-naked {

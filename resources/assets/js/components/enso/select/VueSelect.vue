@@ -278,7 +278,7 @@ export default {
                     font-size: 16px;
                 }
 
-                .multiselect__single {
+                  .multiselect__single {
                     font-size: 16px;
                 }
 
@@ -342,6 +342,10 @@ export default {
             .multiselect__content-wrapper {
                 border-bottom-left-radius: 3px;
                 border-bottom-right-radius: 3px;
+
+                .multiselect__content {
+                    font-size: 16px;
+                }
 
                 .multiselect__option,
                 .multiselect__option:after {

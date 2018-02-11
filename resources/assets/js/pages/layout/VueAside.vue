@@ -1,6 +1,6 @@
 <template>
 
-    <div class="aside">
+    <div class="aside has-shadow">
         <slot></slot>
     </div>
 
@@ -27,9 +27,6 @@ export default {
         padding-top: 20px;
         padding-bottom: 20px;
         width: 180px;
-        -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-        -moz-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-        box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
         font-size: 0.9em;
         max-height: 100vh;
         z-index: 2;

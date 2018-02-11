@@ -23,13 +23,10 @@ export const mutations = {
         const menuAside = document.querySelector('.menu.aside');
         const settingsAside = document.querySelector('.settings.aside');
         const mainContent = document.querySelector('section.main-content');
-        const pageContent = document.querySelector('.container.page-content');
-        const footer = document.querySelector('.footer.footer');
 
         menuAside.style.top = `${height}px`;
         settingsAside.style.top = `${height}px`;
         mainContent.style['margin-top'] = `${height}px`;
-        pageContent.style['min-height'] = `${window.innerHeight - height - footer.clientHeight}px`;
     },
     toggleLights(state) {
         state.lightsOff = !state.lightsOff;

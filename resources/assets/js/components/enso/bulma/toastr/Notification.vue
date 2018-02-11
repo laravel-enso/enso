@@ -241,14 +241,12 @@ export default {
             position: relative;
             z-index: 9999;
             position: relative;
-            -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-            -moz-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-            box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
+            -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
+            box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
 
             &.highlight {
-                -webkit-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
-                -moz-box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
-                box-shadow: 0px 0px 15px 1px rgba(133,133,133,1);
+                -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
+                box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
             }
         }
     }

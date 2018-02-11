@@ -1,10 +1,10 @@
 <template>
 
-    <nav class="navbar app-navbar">
+    <nav class="navbar app-navbar has-shadow">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
                 <figure class="image is-24x24">
-                    <img src="/images/logo.svg"></img>
+                    <img src="/images/logo.svg">
                 </figure>
                 <h4 class="title is-4 has-margin-left-small">
                     {{ meta.appName }}
@@ -39,7 +39,6 @@
             </div>
             <profile-control class="is-aligned-right"
                 v-if="isTouch">
-            </profile-control>
             </profile-control>
             <settings-control v-if="isTouch"></settings-control>
         </div>
@@ -97,9 +96,6 @@ export default {
         position: fixed;
         min-width: 100%;
         top: 0px;
-        -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-        -moz-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-        box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
         z-index: 3;
     }
 

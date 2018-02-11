@@ -1,5 +1,12 @@
 ## Enso Changelog
 
+### 2.1.23
+Fixes the `user_agent` column from the `logins` table, now its text. We use a command for this that executes at `post-cmd-install`/`post-cmd-update`.
+Improves shadow for navbar / sidebar / settings bar.
+Improves sticky footer, now uses flex instead of js.
+Updates `dataimport` to the new version that uses `box/spout` instead of `Maatwebsite/Laravel-Excel`. There are breaking changes here, please read the `dataimport` docs.
+Updates packages.
+
 ### 2.1.22
 Extracted the `VueSelect.vue` and `VueSelectFilter.vue` to the Select package.
 Packages update.

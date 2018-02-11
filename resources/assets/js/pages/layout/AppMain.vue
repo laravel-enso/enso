@@ -66,6 +66,10 @@ export default {
         this.addTabletBreakpointListener();
     },
 
+    mounted() {
+        setTimeout(() => this.setThemeParams(), 501);
+    },
+
     methods: {
         ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
         ...mapActions(['setState']),
@@ -102,10 +106,6 @@ export default {
             }).catch(error => this.handleError(error));
         },
     },
-
-    mounted() {
-        setTimeout(() => this.setThemeParams(), 501);
-    },
 };
 
 </script>
@@ -113,16 +113,20 @@ export default {
 <style lang="scss">
 
     .app-main {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        opacity: 1;
+        transition: opacity .3s ease;
+
         &.lights-off {
             opacity: 0;
         }
-
-        opacity: 1;
-        transition: opacity .1s ease;
     }
 
     .main-content {
         position: relative;
+        flex: 1;
         z-index: 1;
         margin-top: 50px;
         margin-left: 180px;
