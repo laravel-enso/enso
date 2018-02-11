@@ -5,23 +5,23 @@
             <vue-form :data="form"
                 class="box animated fadeIn"
                 v-if="initialised">
-                <template slot="owner_id" slot-scope="props">
+                <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select name="owner_id"
-                        v-model="props.field.value"
-                        :key-map="props.field.meta.keyMap"
-                        :has-error="props.errors.has(props.field.name)"
-                        @input="pivotParams.owners.id=$event;props.errors.clear(props.field.name)"
-                        :source="props.field.meta.source">
+                        v-model="field.value"
+                        :key-map="field.meta.keyMap"
+                        :has-error="errors.has(field.name)"
+                        @input="pivotParams.owners.id=$event;errors.clear(field.name)"
+                        :source="field.meta.source">
                     </vue-select>
                 </template>
-                <template slot="role_id" slot-scope="props">
+                <template slot="role_id" slot-scope="{ field, errors }">
                     <vue-select name="role_id"
                         :pivot-params="pivotParams"
-                        v-model="props.field.value"
-                        :key-map="props.field.meta.keyMap"
-                        :has-error="props.errors.has(props.field.name)"
-                        @input="props.errors.clear(props.field.name);"
-                        :source="props.field.meta.source">
+                        v-model="field.value"
+                        :key-map="field.meta.keyMap"
+                        :has-error="errors.has(field.name)"
+                        @input="errors.clear(field.name);"
+                        :source="field.meta.source">
                     </vue-select>
                 </template>
             </vue-form>

@@ -14,7 +14,7 @@
         :controls="1">
         <card-control slot="control-1">
             <file-uploader
-                @upload-successful="get()"
+                @upload-successful="get();"
                 :url="uploadLink"
                 multiple>
             </file-uploader>
@@ -68,6 +68,14 @@ export default {
         },
     },
 
+    data() {
+        return {
+            documents: [],
+            query: '',
+            loading: false,
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         count() {
@@ -90,14 +98,6 @@ export default {
         },
     },
 
-    data() {
-        return {
-            documents: [],
-            query: '',
-            loading: false,
-        };
-    },
-
     watch: {
         isEmpty() {
             if (this.isEmpty) {
@@ -117,6 +117,7 @@ export default {
             axios.get(route('core.documents.index', [this.type, this.id], false)).then(({ data }) => {
                 this.documents = data;
                 this.loading = false;
+                this.$refs.card.resize();
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);

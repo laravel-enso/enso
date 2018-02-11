@@ -5,14 +5,14 @@
             <vue-form :data="form"
                 class="box animated fadeIn"
                 v-if="initialised">
-                <template slot="flag" slot-scope="props">
+                <template slot="flag" slot-scope="{ field }">
                     <div class="control has-icons-right">
                         <input class="input"
                             type="text"
-                            disabled
-                            :value="props.field.value">
+                            readonly
+                            :value="field.value">
                         <span class="icon is-small is-right">
-                            <i class="is-icon" :class="props.field.value">
+                            <i class="is-icon" :class="field.value">
                             </i>
                         </span>
                     </div>

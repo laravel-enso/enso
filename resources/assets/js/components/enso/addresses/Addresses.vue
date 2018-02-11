@@ -48,10 +48,10 @@
             <template v-for="field in form.fields"
                 v-if="field.meta.custom"
                 :slot="field.name"
-                slot-scope="props">
-                <slot :name="props.field.name"
-                    :field="props.field"
-                    :errors="props.errors">
+                slot-scope="{ field, errors }">
+                <slot :name="field.name"
+                    :field="field"
+                    :errors="errors">
                 </slot>
             </template>
         </address-form>
@@ -97,6 +97,15 @@ export default {
         },
     },
 
+    data() {
+        return {
+            loading: false,
+            query: '',
+            addresses: [],
+            form: null,
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         filteredAddresses() {
@@ -118,21 +127,23 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loading: false,
-            query: '',
-            addresses: [],
-            form: null,
-        };
-    },
-
     created() {
         this.get();
     },
 
     methods: {
+        get() {
+            this.loading = true;
 
+            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false)).then((response) => {
+                this.addresses = response.data;
+                this.loading = false;
+                this.$refs.card.resize();
+            }).catch((error) => {
+                this.loading = false;
+                this.handleError(error);
+            });
+        },
         edit(address) {
             this.loading = true;
 
@@ -167,17 +178,6 @@ export default {
 
             axios.patch(route('core.addresses.setDefault', address.id, false)).then(() => {
                 this.get();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
-        },
-        get() {
-            this.loading = true;
-
-            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false)).then((response) => {
-                this.addresses = response.data;
-                this.loading = false;
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);

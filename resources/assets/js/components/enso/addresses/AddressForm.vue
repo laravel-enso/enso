@@ -15,10 +15,10 @@
                     <template v-for="field in form.fields"
                         v-if="field.meta.custom"
                         :slot="field.name"
-                        slot-scope="props">
-                        <slot :name="props.field.name"
-                            :field="props.field"
-                            :errors="props.errors">
+                        slot-scope="{ field, errors}">
+                        <slot :name="field.name"
+                            :field="field"
+                            :errors="errors">
                         </slot>
                     </template>
                 </vue-form>

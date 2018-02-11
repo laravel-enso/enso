@@ -1,8 +1,6 @@
 <template>
 
-    <div class="level vue-document has-shadow hover"
-        @mouseover="controls = true"
-        @mouseleave="!dialog ? controls = false : null">
+    <div class="level vue-document has-shadow hover">
         <div class="level-left">
             <div class="level-item">
                 <span class="icon is-small has-margin-right-small">
@@ -16,8 +14,7 @@
         <div class="level-right">
             <transition enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
-                <div class="level-item has-text-grey"
-                    v-if="controls">
+                <div class="level-item has-text-grey">
                     <button class="button is-naked has-margin-right-small"
                         v-if="doc.isDownloadable"
                         @click="show">
@@ -34,9 +31,7 @@
                     </a>
                     <popover placement="bottom"
                         v-if="doc.isDeletable"
-                        @confirm="$emit('delete')"
-                        @show="dialog = true"
-                        @hide="dialog = controls = false">
+                        @confirm="$emit('delete')">
                         <button class="button is-naked has-margin-right-medium">
                             <span class="icon">
                                 <fa icon="trash-alt"></fa>
@@ -105,13 +100,6 @@ export default {
             type: Object,
             required: true,
         },
-    },
-
-    data() {
-        return {
-            controls: false,
-            dialog: false,
-        };
     },
 
     computed: {

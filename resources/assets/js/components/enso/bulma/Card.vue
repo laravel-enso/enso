@@ -133,6 +133,13 @@ export default {
         },
     },
 
+    data() {
+        return {
+            query: null,
+            expanded: !this.collapsed,
+        };
+    },
+
     computed: {
         searchInput() {
             return this.search
@@ -152,13 +159,6 @@ export default {
                 ? { 'max-height': 0 }
                 : null;
         },
-    },
-
-    data() {
-        return {
-            query: null,
-            expanded: !this.collapsed,
-        };
     },
 
     methods: {
@@ -193,6 +193,21 @@ export default {
             this.$emit('collapse');
             setTimeout(() => { this.content.style['max-height'] = 0; }, 1);
             this.expanded = false;
+        },
+        resize() {
+            if (!this.expanded) {
+                return;
+            }
+
+            const currentHeight = parseInt(this.content.style['max-height'], 10);
+
+            this.$nextTick(() => {
+                if (this.nested) {
+                    this.$emit('extend', this.content.scrollHeight - currentHeight);
+                }
+
+                this.content.style['max-height'] = `${this.content.scrollHeight}px`;
+            });
         },
         shrink(height) {
             this.content.style['max-height'] = `${parseInt(this.content.style['max-height'], 10) - height}px`;

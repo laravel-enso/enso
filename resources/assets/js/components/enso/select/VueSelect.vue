@@ -25,10 +25,10 @@
             <span slot="noResult">
                 {{ __(labels.noResult) }}
             </span>
-            <template slot="option" slot-scope="props">
-                <span v-html="$options.filters.highlight(optionList[props.option], query)"></span>
+            <template slot="option" slot-scope="{ option }">
+                <span v-html="$options.filters.highlight(optionList[option], query)"></span>
             </template>
-            <template slot="clear" slot-scope="props"
+            <template slot="clear"
                 v-if="!disabled">
                 <div class="multiselect__clear"
                     v-if="hasSelection"

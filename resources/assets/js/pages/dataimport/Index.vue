@@ -146,10 +146,10 @@
                                     :key="category"
                                     :id="category">
                                     <paginate :list="issues">
-                                        <template slot-scope="props">
+                                        <template slot-scope="{ list }">
                                             <h5 class="title is-5 has-text-centered">{{ __('Issues') }}</h5>
                                             <ul class="issues has-margin-left-large">
-                                                <li v-for="(issue, index) in props.list"
+                                                <li v-for="(issue, index) in list"
                                                     :key="index">
                                                     <span v-if="issue.column">
                                                         {{ __("Column") }}: <b class="has-text-warning">{{ issue.column }}</b>

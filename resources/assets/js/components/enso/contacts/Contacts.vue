@@ -125,6 +125,7 @@ export default {
             axios.get(route('core.contacts.index', { id: this.id, type: this.type }, false)).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
+                this.$refs.card.resize();
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);

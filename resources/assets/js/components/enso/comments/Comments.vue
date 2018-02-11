@@ -85,6 +85,18 @@ export default {
         },
     },
 
+    data() {
+        return {
+            comments: [],
+            count: 0,
+            offset: 0,
+            comment: null,
+            loading: false,
+            query: null,
+            path: this.$route.path,
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         ...mapState(['user']),
@@ -103,18 +115,6 @@ export default {
         },
     },
 
-    data() {
-        return {
-            comments: [],
-            count: 0,
-            offset: 0,
-            comment: null,
-            loading: false,
-            query: null,
-            path: this.$route.path,
-        };
-    },
-
     created() {
         this.get();
     },
@@ -131,6 +131,7 @@ export default {
                 this.count = data.count;
                 this.offset = this.comments.length;
                 this.loading = false;
+                this.$refs.card.resize();
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);

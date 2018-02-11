@@ -31,8 +31,9 @@
 <script>
 
 import { mapState, mapGetters } from 'vuex';
-import 'flag-icon-css/css/flag-icon.min.css';
 import Dropdown from '../../../components/enso/bulma/Dropdown.vue';
+
+require('../../../../sass/flags.scss');
 
 export default {
     name: 'LanguageSelector',
@@ -60,3 +61,4 @@ export default {
 };
 
 </script>
+

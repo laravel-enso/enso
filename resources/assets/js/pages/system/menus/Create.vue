@@ -5,15 +5,15 @@
             <vue-form :data="form"
                 class="box animated fadeIn"
                 v-if="initialised">
-                <template slot="icon" slot-scope="props">
+                <template slot="icon" slot-scope="{ field, errors }">
                     <div class="control has-icons-right">
                         <input class="input"
-                            :class="{ 'is-danger': props.errors.has('icon') }"
-                            @keydown="props.errors.clear(props.field.name)"
-                            v-model="props.field.value"
+                            :class="{ 'is-danger': errors.has('icon') }"
+                            @keydown="errors.clear(field.name)"
+                            v-model="field.value"
                             type="text">
                         <span class="icon is-small is-right"
-                            v-if="props.errors.has('icon')">
+                            v-if="errors.has('icon')">
                             <fa icon="exclamation-triangle"></fa>
                         </span>
                     </div>

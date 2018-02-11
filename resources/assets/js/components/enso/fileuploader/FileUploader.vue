@@ -26,6 +26,7 @@
 
 import fontawesome from '@fortawesome/fontawesome';
 import { faUpload } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { lastDayOfMonth } from 'date-fns';
 
 fontawesome.library.add(faUpload);
 
@@ -48,12 +49,17 @@ export default {
             type: Object,
             default: null,
         },
+        fileKey: {
+            type: String,
+            default: 'file',
+        },
     },
 
     data() {
         return {
             input: null,
             formData: new FormData(),
+            succesfull: 0,
         };
     },
 
@@ -65,25 +71,52 @@ export default {
             this.$emit('upload-start');
             this.setFormData();
 
+            if (this.succesfull === 0) {
+                return;
+            }
+
             axios.post(this.url, this.formData).then((response) => {
                 this.reset();
                 this.$emit('upload-successful', response.data);
             }).catch((error) => {
                 this.reset();
                 this.$emit('upload-error');
+                const { data, status } = error.response;
+
+                if (status === 422) {
+                    Object.keys(data.errors)
+                        .forEach(key => this.$toastr.error(data.errors[key][0]));
+                    return;
+                }
+
                 this.handleError(error);
             });
         },
         setFormData() {
             const { files } = this.$refs.input;
             this.addFiles(files);
-            this.addParams();
+
+            if (this.succesfull > 0) {
+                this.addParams();
+            }
         },
         addFiles(files) {
+            if (!this.multiple) {
+                this.addFile(this.fileKey, files[0]);
+                return;
+            }
+
             for (let i = 0; i < files.length; i++) {
                 if (this.sizeCheckPasses(files[i])) {
-                    this.formData.append(`file_${i}`, files[i]);
+                    this.addFile(`${this.fileKey}_${i}`, files[i]);
+                    this.succesfull++;
                 }
+            }
+        },
+        addFile(key, file) {
+            if (this.sizeCheckPasses(file)) {
+                this.formData.append(key, file);
+                this.succesfull++;
             }
         },
         addParams() {
@@ -108,6 +141,7 @@ export default {
         reset() {
             this.$el.reset();
             this.formData = new FormData();
+            this.succesfull = 0;
         },
     },
 };

@@ -1,5 +1,13 @@
 ## Enso Changelog
 
+### 2.1.24
+Upgrades Laravel to 5.6 :). All the files from the local project are updated too.
+Upgrades `laravel-mix` to 2.0.
+Improves the `imagetransformer` package. Now uses for optimization `spatie/image-optimizer`. Adds `width` and `height` public methods.
+Improves the use of `flags-icon-css`. The project now includes only the needed flags...
+Improves the `fileuploader.vue` component - adds validation errors reporting (422).
+Fixes bugs.
+
 ### 2.1.23
 Fixes the `user_agent` column from the `logins` table, now its text. We use a command for this that executes at `post-cmd-install`/`post-cmd-update`.
 Improves shadow for navbar / sidebar / settings bar.

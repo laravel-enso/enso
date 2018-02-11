@@ -8,7 +8,6 @@ mix.webpackConfig({
 
 mix
     .copyDirectory('resources/assets/images', 'public/images')
-    .copyDirectory('node_modules/flag-icon-css/flags', 'public/fonts/vendor/flag-icon-css/flags')
 
     .js('resources/assets/js/example.js', 'public/js')
     .js('resources/assets/js/enso.js', 'public/js')
