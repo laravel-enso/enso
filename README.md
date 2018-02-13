@@ -69,7 +69,7 @@ that's why you need to look at the changelog, be aware of the changes, update yo
 the dependencies' minor version, so that you can continue to receive updates.  
 
 ### With Enso you get
-A solid starting project, based on [Laravel](https://laravel.com) 5.5, [VueJS](https://vuejs.org) 2, 
+A solid starting project, based on [Laravel](https://laravel.com) 5.6, [VueJS](https://vuejs.org) 2, 
 [Bulma](https://bulma.io), integrated themes from [Bulmaswatch](https://jenil.github.io/bulmaswatch), 
 all the VueJS goodies such as [VueEx](https://vuex.vuejs.org/en) and [VueRouter](https://router.vuejs.org/en), 
 with features like: 
@@ -205,6 +205,23 @@ Are loaded at application load, and refreshed as needed
 #### Exceptions
 - when needed, the exceptions thrown are as specific as possible
 - since requests are supposed to be ajax, JSON responses are given back 
+
+### Usage Notes
+Please note that because we want to keep the compiled size down, throughout the enso ecosystem, 
+icons are imported selectively.
+
+What this means for you is that the necessary icons should be imported inside your components/pages. 
+If you want to import FA icons globally (not recommended) the place to include them is: 
+
+`resources/assets/js/app.js`
+
+For menus, icons should be imported in:
+`assest/js/pages/layout/sidebar/icons/app.js`
+
+For languages, flag icons should be imported in:
+`resources/assets/sass/app.scss`
+
+(you may use `flags.scss` as a reference)
 
 ### Thanks
 
