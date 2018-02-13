@@ -219,7 +219,9 @@ For menus, icons should be imported in:
 `assest/js/pages/layout/sidebar/icons/app.js`
 
 For languages, flag icons should be imported in:
-`resources/assets/sass/flags.scss`
+`resources/assets/sass/app.scss`
+
+(you may use `flags.scss` as a reference)
 
 ### Thanks
 
