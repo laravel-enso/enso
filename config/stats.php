@@ -8,7 +8,7 @@ return [
         base_path('app'),
         base_path('database'),
         base_path('tests'),
-        base_path('vendor/laravel-enso')
+        base_path('vendor/laravel-enso'),
     ],
 
     /*
