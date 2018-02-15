@@ -158,11 +158,18 @@ export default {
         content() {
             return this.$el.querySelector('.card-content');
         },
+        maxHeight() {
+            return this.collapsed
+                ? { 'max-height': 0 }
+                : {};
+        },
+        overflowY() {
+            return this.scrollable || !this.expanded
+                ? { 'overflow-y': 'hidden' }
+                : {};
+        },
         contentStyle() {
-            return {
-                'max-height': this.collapsed ? 0 : null,
-                'overflow-y': this.scrollable ? 'hidden' : null,
-            };
+            return Object.assign({}, this.maxHeight, this.overflowY);
         },
     },
 
@@ -184,7 +191,7 @@ export default {
 
             this.$emit('expand');
             this.content.style['max-height'] = `${this.content.scrollHeight}px`;
-            this.expanded = true;
+            setTimeout(() => { this.expanded = true; }, 400);
         },
         collapse() {
             if (!this.content.style['max-height']) {

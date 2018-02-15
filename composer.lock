@@ -2719,16 +2719,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.25",
+            "version": "2.1.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "61f831d8c202777214e67a0f18c008b9e7192571"
+                "reference": "55b798423dc9afbd2d6e55dac461f0baa46ad47b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/61f831d8c202777214e67a0f18c008b9e7192571",
-                "reference": "61f831d8c202777214e67a0f18c008b9e7192571",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/55b798423dc9afbd2d6e55dac461f0baa46ad47b",
+                "reference": "55b798423dc9afbd2d6e55dac461f0baa46ad47b",
                 "shasum": ""
             },
             "type": "library",
@@ -2764,7 +2764,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-02-15T13:54:13+00:00"
+            "time": "2018-02-15T19:30:31+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",

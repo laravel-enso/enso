@@ -1,7 +1,7 @@
 <pre class="is-paddingless"
     v-hljs>
     <code class="js">
-interval-filter
+interval-filter class="box"
     title="Salary"
     type="number"
     :min="intervals.examples.salary.min"

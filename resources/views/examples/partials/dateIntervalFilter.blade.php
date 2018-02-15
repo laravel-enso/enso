@@ -1,7 +1,7 @@
 <pre class="is-paddingless"
     v-hljs>
     <code class="js">
-date-interval-filter
+date-interval-filter class="box"
     title="Hired Between"
     :min="intervals.examples.hired_at.min"
     @update-min="intervals.examples.hired_at.min = $event"
