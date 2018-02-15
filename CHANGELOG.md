@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.26
+The app is now managed by Forge. Adds Horizon & Redis for jobs, cache.
+
 ### 2.1.25
 Adds favicon notifications. Dont forget to npm install --save `favico.js`
 Refactors `vuecomponents`. We don't want to enforce unnecessary classes where we can avoid it.
