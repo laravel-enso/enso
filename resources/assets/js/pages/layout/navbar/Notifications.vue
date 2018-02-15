@@ -24,7 +24,9 @@
                             {{ notification.data.body }}
                         </p>
                         <p>
-                            <small class="has-text-info">{{ notification.created_at | timeFromNow }}</small>
+                            <small class="has-text-info">
+                                {{ notification.created_at | timeFromNow }}
+                            </small>
                         </p>
                     </div>
                 </a>
@@ -71,6 +73,7 @@ import { mapGetters, mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
+import Favico from 'favico.js';
 import { format } from 'date-fns';
 import fontawesome from '@fortawesome/fontawesome';
 import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -87,13 +90,11 @@ export default {
 
     components: { Overlay },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-        ...mapState(['user', 'meta']),
-    },
-
     data() {
         return {
+            favico: new Favico({
+                animation: 'popFade',
+            }),
             limit: 200,
             notifications: [],
             unreadCount: 0,
@@ -106,21 +107,27 @@ export default {
         };
     },
 
+    computed: {
+        ...mapGetters('locale', ['__']),
+        ...mapState(['user', 'meta']),
+    },
+
+    watch: {
+        unreadCount(val) {
+            this.favico.badge(val);
+        },
+        show() {
+            if (this.show) {
+                this.getData();
+            }
+        },
+    },
+
     created() {
         this.getData = debounce(this.getData, 500);
         this.init();
         this.getCount();
         this.listen();
-    },
-
-    watch: {
-        show: {
-            handler() {
-                if (this.show) {
-                    this.getData();
-                }
-            },
-        },
     },
 
     methods: {

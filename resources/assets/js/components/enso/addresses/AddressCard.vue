@@ -13,10 +13,10 @@
                     <span v-if="address.street">{{ address.street }}</span>
                     <span v-if="address.street_type">{{ __(address.street_type) }},</span>
                     <br>
-                    <span v-if="address.building"><span class="has-text-grey">{{__(address.building_type)}} </span>{{ address.building }},</span>
-                    <span v-if="address.entry"><span class="has-text-grey">{{__('Entry')}} </span>{{ address.entry }},</span>
-                    <span v-if="address.floor"><span class="has-text-grey">{{__('Floor')}} </span>{{ address.floor }},</span>
-                    <span v-if="address.apartment"><span class="has-text-grey">{{__('Apartment')}} </span>{{ address.apartment }},</span>
+                    <span v-if="address.building"><span class="has-text-grey">{{ __(address.building_type) }} </span>{{ address.building }},</span>
+                    <span v-if="address.entry"><span class="has-text-grey">{{ __('Entry') }} </span>{{ address.entry }},</span>
+                    <span v-if="address.floor"><span class="has-text-grey">{{ __('Floor') }} </span>{{ address.floor }},</span>
+                    <span v-if="address.apartment"><span class="has-text-grey">{{ __('Apartment') }} </span>{{ address.apartment }},</span>
                     <br>
                     <span v-if="address.sub_administrative_area">{{ address.sub_administrative_area }},</span>
                     <span v-if="address.city">{{ address.city }},</span>
@@ -40,7 +40,7 @@
         <card-footer slot="footer">
             <card-footer-item>
                 <a @click="$emit('edit')">
-                    {{__('edit')}}
+                    {{ __('edit') }}
                 </a>
             </card-footer-item>
             <card-footer-item>
@@ -52,7 +52,7 @@
             </card-footer-item>
             <card-footer-item>
                 <popover @confirm="$emit('destroy')">
-                    <a>{{__('delete')}}</a>
+                    <a>{{ __('delete') }}</a>
                 </popover>
             </card-footer-item>
         </card-footer>

@@ -131,6 +131,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        scrollable: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -155,9 +159,10 @@ export default {
             return this.$el.querySelector('.card-content');
         },
         contentStyle() {
-            return this.collapsed
-                ? { 'max-height': 0 }
-                : null;
+            return {
+                'max-height': this.collapsed ? 0 : null,
+                'overflow-y': this.scrollable ? 'hidden' : null,
+            };
         },
     },
 
@@ -237,7 +242,6 @@ export default {
 
     .card-content {
         transition: max-height .400s ease;
-        overflow-y: hidden;
     }
 
     .icon.angle[aria-hidden="true"] {

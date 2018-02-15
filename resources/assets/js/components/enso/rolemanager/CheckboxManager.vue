@@ -2,6 +2,7 @@
 
     <card :title="title"
         collapsed
+        scrollable
         :nested="nested"
         ref="card"
         :controls="1"

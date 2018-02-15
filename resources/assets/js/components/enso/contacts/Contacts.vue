@@ -2,6 +2,7 @@
 
     <card :icon="icon"
         refresh
+        scrollable
         :search="contacts.length > 1"
         :title="title || __('Contacts')"
         :overlay="loading"
@@ -85,6 +86,15 @@ export default {
         },
     },
 
+    data() {
+        return {
+            loading: false,
+            query: '',
+            contacts: [],
+            form: null,
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         filteredContacts() {
@@ -103,15 +113,6 @@ export default {
         icon() {
             return faAddressCard;
         },
-    },
-
-    data() {
-        return {
-            loading: false,
-            query: '',
-            contacts: [],
-            form: null,
-        };
     },
 
     created() {

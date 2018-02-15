@@ -1,6 +1,7 @@
 <template>
     <div>
-        <vue-table :path="path"
+        <vue-table class="box"
+            :path="path"
             :i18n="__"
             @edit-contact="edit"
             ref="contacts"

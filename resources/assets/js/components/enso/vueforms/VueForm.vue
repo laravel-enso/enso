@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box">
+    <div>
         <h5 class="title is-5"
             v-if="data.icon || data.title">
             <span class="icon"

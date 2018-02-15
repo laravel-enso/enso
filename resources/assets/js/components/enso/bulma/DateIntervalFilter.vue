@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box date-interval-filter">
+    <div class="date-interval-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>

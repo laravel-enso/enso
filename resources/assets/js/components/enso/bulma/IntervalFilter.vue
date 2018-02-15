@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box interval-filter">
+    <div class="interval-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>

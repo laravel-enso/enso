@@ -2,6 +2,7 @@
 
     <card :icon="icon"
         refresh
+        scrollable
         :search="comments.length > 1"
         :title="title || __('Comments')"
         :overlay="loading"

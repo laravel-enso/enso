@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="initialised">
+    <div v-if="profile">
         <div class="box profile-heading">
             <div class="columns is-multiline">
                 <div class="column is-half-desktop">
@@ -14,9 +14,9 @@
                             <div class="level">
                                 <div class="level-item has-padding-top-small">
                                     <div>
-                                        <p class="title is-3">{{ profileUser.fullName }}</p>
-                                        <p>{{ __('role') }}: {{ profileUser.role.name }}</p>
-                                        <p>{{ __('since') }}: {{ profileUser.created_at | timeFromNow }}</p>
+                                        <p class="title is-3">{{ profile.fullName }}</p>
+                                        <p>{{ __('role') }}: {{ profile.role.name }}</p>
+                                        <p>{{ __('since') }}: {{ profile.created_at | timeFromNow }}</p>
                                         <p class="has-margin-top-small">
                                             </p><div class="level user-controls"
                                                 v-if="isSelfVisiting">
@@ -63,7 +63,7 @@
                                             </div>
                                             <div v-else>
                                                 <button class="button is-small is-warning"
-                                                    @click="$bus.$emit('start-impersonating', profileUser.id)"
+                                                    @click="$bus.$emit('start-impersonating', profile.id)"
                                                     v-if="!$store.state.impersonating">
                                                     {{ __('Impersonate') }}
                                                 </button>
@@ -78,15 +78,15 @@
                 <div class="column is-half-desktop">
                     <div class="columns is-mobile">
                         <div class="column has-text-centered">
-                          <p class="stat-value">{{ profileUser.loginCount }}</p>
+                          <p class="stat-value">{{ profile.loginCount }}</p>
                           <p class="stat-key">{{ __('logins') }}</p>
                         </div>
                         <div class="column has-text-centered has-lateral-borders">
-                          <p class="stat-value">{{ profileUser.actionLogCount }}</p>
+                          <p class="stat-value">{{ profile.actionLogCount }}</p>
                           <p class="stat-key">{{ __('actions') }}</p>
                         </div>
                         <div class="column has-text-centered">
-                          <p class="stat-value">{{ profileUser.rating }}</p>
+                          <p class="stat-value">{{ profile.rating }}</p>
                           <p class="stat-key">{{ __('rating') }}</p>
                         </div>
                     </div>
@@ -98,20 +98,20 @@
                 <div class="box">
                     <nav class="pagination is-small has-margin-bottom-large">
                         <a class="pagination-previous"
-                            @click="getPage(profileUser.timeline.current_page - 1)"
-                            :disabled="profileUser.timeline.prev_page_url===null">
+                            @click="getPage(profile.timeline.current_page - 1)"
+                            :disabled="profile.timeline.prev_page_url===null">
                             {{ __('Previous') }}
                         </a>
                         <a class="pagination-next"
-                            @click="getPage(profileUser.timeline.current_page + 1)"
-                            :disabled="profileUser.timeline.next_page_url===null">
+                            @click="getPage(profile.timeline.current_page + 1)"
+                            :disabled="profile.timeline.next_page_url===null">
                             {{ __('Next') }}
                         </a>
                         <ul class="pagination-list" v-if="isShort">
-                            <li v-for="i in profileUser.timeline.last_page"
+                            <li v-for="i in profile.timeline.last_page"
                                 :key="i">
                                 <a class="pagination-link"
-                                    :class="{ 'is-current': profileUser.timeline.current_page === i}"
+                                    :class="{ 'is-current': profile.timeline.current_page === i}"
                                     @click="getPage(i)">
                                     {{ i }}
                                 </a>
@@ -121,7 +121,7 @@
                             <li v-for="i in 3"
                                 :key="i">
                                 <a class="pagination-link"
-                                    :class="{ 'is-current': profileUser.timeline.current_page === i}"
+                                    :class="{ 'is-current': profile.timeline.current_page === i}"
                                     @click="getPage(i)">
                                     {{ i }}
                                 </a>
@@ -129,8 +129,8 @@
                             <li><span class="pagination-ellipsis">&hellip;</span></li>
                             <li>
                                 <a class="pagination-link"
-                                    @click="getPage(profileUser.timeline.last_page)">
-                                    {{ profileUser.timeline.last_page }}
+                                    @click="getPage(profile.timeline.last_page)">
+                                    {{ profile.timeline.last_page }}
                                 </a>
                             </li>
                         </ul>
@@ -144,26 +144,26 @@
                             <li><span class="pagination-ellipsis">&hellip;</span></li>
                             <li>
                                 <a class="pagination-link"
-                                    @click="getPage(profileUser.timeline.current_page - 1)">
-                                    {{ profileUser.timeline.current_page - 1 }}
+                                    @click="getPage(profile.timeline.current_page - 1)">
+                                    {{ profile.timeline.current_page - 1 }}
                                 </a>
                             </li>
                             <li>
                                 <a class="pagination-link is-current">
-                                    {{ profileUser.timeline.current_page }}
+                                    {{ profile.timeline.current_page }}
                                 </a>
                             </li>
                             <li>
                                 <a class="pagination-link"
-                                    @click="getPage(profileUser.timeline.current_page + 1)">
-                                    {{ profileUser.timeline.current_page + 1 }}
+                                    @click="getPage(profile.timeline.current_page + 1)">
+                                    {{ profile.timeline.current_page + 1 }}
                                 </a>
                             </li>
                             <li><span class="pagination-ellipsis">&hellip;</span></li>
                             <li>
                                 <a class="pagination-link"
-                                    @click="getPage(profileUser.timeline.last_page)">
-                                    {{ profileUser.timeline.last_page }}
+                                    @click="getPage(profile.timeline.last_page)">
+                                    {{ profile.timeline.last_page }}
                                 </a>
                             </li>
                         </ul>
@@ -178,9 +178,9 @@
                             <li v-for="i in 3"
                                 :key="i">
                                 <a class="pagination-link"
-                                    :class="{ 'is-current': profileUser.timeline.current_page === profileUser.timeline.last_page - 3 + i}"
-                                    @click="getPage(profileUser.timeline.last_page - 3 + i)">
-                                    {{ profileUser.timeline.last_page - 3 + i }}
+                                    :class="{ 'is-current': profile.timeline.current_page === profile.timeline.last_page - 3 + i}"
+                                    @click="getPage(profile.timeline.last_page - 3 + i)">
+                                    {{ profile.timeline.last_page - 3 + i }}
                                 </a>
                             </li>
                         </ul>
@@ -213,7 +213,7 @@
                             </li>
                         </div>
                         <li class="timeline-header"
-                            v-if="profileUser.timeline.current_page === profileUser.timeline.last_page">
+                            v-if="profile.timeline.current_page === profile.timeline.last_page">
                             <span class="tag is-medium is-primary">{{ __('End') }}</span>
                         </li>
                         <li class="timeline-item"
@@ -249,6 +249,12 @@ fontawesome.library.add([
 export default {
     components: { FileUploader },
 
+    data() {
+        return {
+            profile: null,
+        };
+    },
+
     computed: {
         ...mapGetters('locale', {
             __: '__',
@@ -259,20 +265,20 @@ export default {
             return route('core.avatars.store', [], false);
         },
         isSelfVisiting() {
-            return this.user.id === this.profileUser.id;
+            return this.user.id === this.profile.id;
         },
         avatarId() {
             if (this.isSelfVisiting) {
                 return this.user.avatarId;
             }
 
-            return this.profileUser.avatar ? this.profileUser.avatar.id : null;
+            return this.profile.avatar ? this.profile.avatar.id : null;
         },
         avatarLink() {
             return route('core.avatars.show', (this.avatarId || 'null'), false);
         },
         timeline() {
-            const actions = this.profileUser.timeline.data;
+            const actions = this.profile.timeline.data;
 
             return actions.map(action => action.created_at).reduce((days, record) => {
                 days.push(this.getDay(record));
@@ -285,34 +291,27 @@ export default {
                 }, {});
         },
         isShort() {
-            return this.profileUser.timeline.last_page <= 5;
+            return this.profile.timeline.last_page <= 5;
         },
         isAtStart() {
-            return this.profileUser.timeline.current_page <= 2;
+            return this.profile.timeline.current_page <= 2;
         },
         isAtEnd() {
-            return this.profileUser.timeline.last_page
-                - this.profileUser.timeline.current_page <= 2;
+            return this.profile.timeline.last_page
+                - this.profile.timeline.current_page <= 2;
         },
         hasMiddle() {
             return !this.isAtStart && !this.isAtEnd;
         },
         paginationUrl() {
-            return `${route('administration.users.show', [this.profileUser.id], false)}?page=`;
+            return `${route('administration.users.show', [this.profile.id], false)}?page=`;
         },
-    },
-
-    data() {
-        return {
-            initialised: false,
-            profileUser: {},
-        };
     },
 
     watch: {
         locale: {
             handler() {
-                this.getPage(this.profileUser.timeline.current_page);
+                this.getPage(this.profile.timeline.current_page);
             },
         },
     },
@@ -351,15 +350,14 @@ export default {
         },
         getPage(page) {
             axios.get(this.paginationUrl + page).then(({ data }) => {
-                this.profileUser = data.user;
+                this.profile = data.user;
             }).catch(error => this.handleError(error));
         },
     },
 
     mounted() {
         axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
-            this.profileUser = response.data.user;
-            this.initialised = true;
+            this.profile = response.data.user;
         }).catch(error => this.handleError(error));
     },
 };

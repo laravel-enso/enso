@@ -1,6 +1,7 @@
 <template>
 
-    <vue-table :path="path"
+    <vue-table class="box"
+        :path="path"
         :i18n="__"
         :custom-render="customRender"
         id="tutorials">
@@ -16,14 +17,14 @@ import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 export default {
     components: { VueTable },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             path: route('system.tutorials.initTable', [], false),
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     methods: {

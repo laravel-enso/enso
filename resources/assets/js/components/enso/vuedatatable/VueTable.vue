@@ -1,7 +1,6 @@
 <template>
 
-    <div class="box"
-        v-if="initialised">
+    <div v-if="initialised">
         <top-controls :template="template"
             class="has-padding-small has-padding-bottom-large"
             :i18n="i18n"
@@ -123,6 +122,19 @@ export default {
         },
     },
 
+    data() {
+        return {
+            loading: false,
+            initialised: false,
+            template: null,
+            search: '',
+            start: null,
+            body: null,
+            length: null,
+            expanded: [],
+        };
+    },
+
     computed: {
         preferencesKey() {
             return `VueTable_${this.id}_preferences`;
@@ -156,19 +168,6 @@ export default {
         hasContent() {
             return this.body && this.body.count;
         },
-    },
-
-    data() {
-        return {
-            loading: false,
-            initialised: false,
-            template: null,
-            search: '',
-            start: null,
-            body: null,
-            length: null,
-            expanded: [],
-        };
     },
 
     watch: {
@@ -228,6 +227,7 @@ export default {
 
                 if (status === 555) {
                     this.$toastr.error(data.message);
+                    return;
                 }
 
                 this.handleError(error);

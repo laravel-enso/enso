@@ -4,12 +4,12 @@
         :icon="icon"
         refresh
         @refresh="get"
-        :overlay="loading">
+        :overlay="loading"
+        v-if="config">
         <chart :data="config.data"
             class="has-padding-medium"
             :options="config.options"
-            :type="config.type"
-            v-if="initialised">
+            :type="config.type">
         </chart>
     </card>
 
@@ -54,24 +54,22 @@ export default {
         },
     },
 
+    data() {
+        return {
+            loading: false,
+            config: null,
+            icons,
+        };
+    },
+
     computed: {
         icon() {
             return this.icons[this.config.type];
         },
     },
 
-    data() {
-        return {
-            initialised: false,
-            loading: false,
-            config: {
-                type: null,
-                data: {},
-                options: null,
-                title: 'Chart',
-            },
-            icons,
-        };
+    mounted() {
+        this.get();
     },
 
     methods: {
@@ -81,16 +79,11 @@ export default {
             axios.get(this.source, { params: this.params }).then((response) => {
                 this.config = response.data;
                 this.loading = false;
-                this.initialised = this.initialised || true;
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);
             });
         },
-    },
-
-    mounted() {
-        this.get();
     },
 };
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box vue-filter">
+    <div class="vue-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>

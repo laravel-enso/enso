@@ -51,20 +51,22 @@
             <div class="container has-margin-top-large">
                 <div class="columns">
                     <div class="column is-one-fifth">
-                        <vue-filter :options="activeOptions"
+                        <vue-filter class="box"
+                            :options="activeOptions"
                             icons
                             title="Active"
                             v-model="filters.examples.is_active">
                         </vue-filter>
                     </div>
                     <div class="column is-one-fifth">
-                        <vue-select-filter title="Seniority"
+                        <vue-select-filter class="box"
+                            title="Seniority"
                             :options="seniorityOptions"
                             v-model="filters.examples.seniority">
                         </vue-select-filter>
                     </div>
                     <div class="column is-two-fifths">
-                        <date-interval-filter
+                        <date-interval-filter class="box"
                             title="Hired Between"
                             :min="intervals.examples.hired_at.min"
                             @update-min="intervals.examples.hired_at.min = $event"
@@ -73,7 +75,7 @@
                         </date-interval-filter>
                     </div>
                     <div class="column is-one-fifth">
-                        <interval-filter
+                        <interval-filter class="box"
                             title="Salary"
                             type="number"
                             :min="intervals.examples.salary.min"
@@ -83,7 +85,8 @@
                         </interval-filter>
                     </div>
                 </div>
-                <vue-table path="/examples/table/init"
+                <vue-table class="box"
+                    path="/examples/table/init"
                     :custom-render="customRender"
                     :filters="filters"
                     :intervals="intervals"

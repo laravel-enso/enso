@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * List of folders to be analyzed.
      */
@@ -9,6 +8,7 @@ return [
         base_path('app'),
         base_path('database'),
         base_path('tests'),
+        base_path('vendor/laravel-enso')
     ],
 
     /*
@@ -40,7 +40,7 @@ return [
      * If none of the default strategies fit for your usecase, you can
      * write your own class which implements the RejectionStrategy Contract.
      */
-    'rejection_strategy' => \Wnx\LaravelStats\RejectionStrategies\RejectVendorClasses::class,
+    'rejection_strategy' => \Wnx\LaravelStats\RejectionStrategies\RejectInternalClasses::class,
 
     /*
      * Namespaces which should be ignored.
@@ -55,5 +55,4 @@ return [
         'Illuminate',
         'Symfony',
     ],
-
 ];

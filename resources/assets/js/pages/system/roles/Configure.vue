@@ -3,20 +3,20 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters">
             <div class="animated fadeIn"
-                v-if="initialised">
+                v-if="data">
                 <center class="has-padding-bottom-large">
-                    <h5 class="title is-5">{{ role.display_name }}</h5>
+                    <h5 class="title is-5">{{ data.role.display_name }}</h5>
                 </center>
                 <checkbox-manager :title="__('Menus')"
-                    :role-permissions="roleMenus"
-                    :group-data="menus"
-                    v-if="menus.length">
+                    :role-permissions="data.roleMenus"
+                    :group-data="data.menus"
+                    v-if="data.menus.length">
                 </checkbox-manager>
 
                 <checkbox-manager :title="__('Permisssions')"
-                    :role-permissions="rolePermissions"
-                    :group-data="permissions"
-                    v-if="menus.length">
+                    :role-permissions="data.rolePermissions"
+                    :group-data="data.permissions"
+                    v-if="data.menus.length">
                 </checkbox-manager>
                 <button class="button is-success has-margin-top-large is-pulled-right"
                     @click="update">
@@ -37,20 +37,15 @@ import CheckboxManager from '../../../components/enso/rolemanager/CheckboxManage
 export default {
     components: { CheckboxManager },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             roleId: this.$route.params.role,
-            role: {},
-            menus: [],
-            permissions: {},
-            roleMenus: [],
-            rolePermissions: [],
-            initialised: false,
+            data: null,
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     created() {
@@ -60,16 +55,8 @@ export default {
     methods: {
         get() {
             axios.get(route('system.roles.getPermissions', [this.roleId], false)).then(({ data }) => {
-                this.set(data);
-                this.initialised = true;
+                this.data = data;
             }).catch(error => this.handleError(error));
-        },
-        set(data) {
-            this.menus = data.menus;
-            this.roleMenus = data.roleMenus;
-            this.rolePermissions = data.rolePermissions;
-            this.permissions = data.permissions;
-            this.role = data.role;
         },
         update() {
             axios.post(route('system.roles.setPermissions', [this.roleId], false), this.postParams()).then(({ data }) => {
@@ -78,8 +65,8 @@ export default {
         },
         postParams() {
             return {
-                roleMenus: this.roleMenus,
-                rolePermissions: this.rolePermissions,
+                roleMenus: this.data.roleMenus,
+                rolePermissions: this.data.rolePermissions,
             };
         },
     },

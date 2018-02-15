@@ -2,10 +2,9 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <vue-form :data="form"
-                class="box animated fadeIn"
-                v-if="initialised">
-            </vue-form>
+            <vue-form-ss class="box animated fadeIn"
+                :params="[$route.name, null, false]">
+            </vue-form-ss>
         </div>
     </div>
 
@@ -13,24 +12,10 @@
 
 <script>
 
-import VueForm from '../../../components/enso/vueforms/VueForm.vue';
+import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 
 export default {
-    components: { VueForm },
-
-    data() {
-        return {
-            initialised: false,
-            form: {},
-        };
-    },
-
-    created() {
-        axios.get(route('system.permissions.create', null, false)).then(({ data }) => {
-            this.form = data.form;
-            this.initialised = true;
-        }).catch(error => this.handleError(error));
-    },
+    components: { VueFormSs },
 };
 
 </script>

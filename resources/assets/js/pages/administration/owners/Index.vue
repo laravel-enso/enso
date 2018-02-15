@@ -1,6 +1,7 @@
 <template>
 
-    <vue-table :path="path"
+    <vue-table class="box"
+        :path="path"
         :i18n="__"
         id="owners">
     </vue-table>

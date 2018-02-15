@@ -2,6 +2,7 @@
 
     <card :icon="icon"
         refresh
+        scrollable
         :search="documents.length > 1"
         :title="title || __('Documents')"
         :overlay="loading"

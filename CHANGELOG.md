@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+### 2.1.25
+Adds favicon notifications. Dont forget to npm install --save `favico.js`
+Refactors `vuecomponents`. We don't want to enforce unnecessary classes where we can avoid it.
+Adds to the `formbuilder` a new wrapper `<vue-form-ss>` that handles the ajax request for the form object. Adds a bunch of helpers methods for the builder. The documentatio will be updated soon, until then you can check any of the forms from the project. `laravel-enso/formbuilder#11'
+
 ### 2.1.24
 Upgrades Laravel to 5.6 :). All the files from the local project are updated too.
 Upgrades `laravel-mix` to 2.0.

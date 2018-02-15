@@ -44,7 +44,7 @@ export default {
 <style>
 
     nav.breadcrumb > ul > li > a {
-        padding: 0 10;
+        padding: 0 0.8rem;
         font-size: 0.8rem;
     }
 

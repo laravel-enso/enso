@@ -2,6 +2,7 @@
 
     <card :icon="icon"
         refresh
+        scrollable
         :search="addresses.length > 1"
         :title="title || __('Addresses')"
         :overlay="loading"

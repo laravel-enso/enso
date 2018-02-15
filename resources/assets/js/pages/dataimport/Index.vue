@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <vue-table class="animated fadeIn"
+        <vue-table class="box animated fadeIn"
             :path="path"
             :i18n="__"
             id="imports-table"

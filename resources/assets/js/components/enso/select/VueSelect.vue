@@ -49,8 +49,23 @@ import Multiselect from 'vue-multiselect';
 export default {
     components: { Multiselect },
 
+    filters: {
+        highlight(option, query) {
+            if (!option) {
+                return option;
+            }
+
+            query.split(' ').filter(word => word.length).forEach((word) => {
+                option = option.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
+            });
+
+            return option;
+        },
+    },
+
     props: {
         value: {
+            type: [Array, String, Number],
             default: null,
         },
         source: {
@@ -137,20 +152,6 @@ export default {
         },
     },
 
-    filters: {
-        highlight(option, query) {
-            if (!option) {
-                return option;
-            }
-
-            query.split(' ').filter(word => word.length).forEach((word) => {
-                option = option.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
-            });
-
-            return option;
-        },
-    },
-
     watch: {
         options: {
             handler() {
@@ -180,6 +181,12 @@ export default {
 
     created() {
         this.getOptions = debounce(this.getOptions, 500);
+    },
+
+    mounted() {
+        if (this.isServerSide) {
+            this.getOptions();
+        }
     },
 
     methods: {
@@ -239,12 +246,6 @@ export default {
             this.$emit('input', this.multiple ? [] : null);
         },
     },
-
-    mounted() {
-        if (this.isServerSide) {
-            this.getOptions();
-        }
-    },
 };
 
 </script>
@@ -259,6 +260,15 @@ export default {
 
             &.has-error .multiselect__tags {
                 border: 1px solid #e50800;
+            }
+
+            .multiselect__select {
+                width: 34px;
+                height: 34px;
+
+                &:before {
+                    top: 70%;
+                }
             }
 
             .multiselect__tags {
@@ -278,7 +288,7 @@ export default {
                     font-size: 16px;
                 }
 
-                  .multiselect__single {
+                .multiselect__single {
                     font-size: 16px;
                 }
 
@@ -296,15 +306,6 @@ export default {
                     .multiselect__tag-icon {
                         border-radius: 3px;
                         line-height: 24px;
-                    }
-                }
-
-                .multiselect__select {
-                    width: 34px;
-                    height: 34px;
-
-                    &:before {
-                        top: 70%;
                     }
                 }
             }

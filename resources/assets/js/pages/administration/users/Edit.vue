@@ -2,9 +2,10 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <vue-form :data="form"
-                class="box animated fadeIn"
-                v-if="initialised">
+            <vue-form-ss class="box animated fadeIn"
+                :params="[$route.name, $route.params.id, false]"
+                ref="form"
+                @loaded="pivotParams.owners.id = getOwnerId()">
                 <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select name="owner_id"
                         v-model="field.value"
@@ -24,7 +25,7 @@
                         :source="field.meta.source">
                     </vue-select>
                 </template>
-            </vue-form>
+            </vue-form-ss>
         </div>
     </div>
 
@@ -32,33 +33,22 @@
 
 <script>
 
-import VueForm from '../../../components/enso/vueforms/VueForm.vue';
+import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
 
 export default {
-    components: { VueForm, VueSelect },
+    components: { VueFormSs, VueSelect },
 
     data() {
         return {
-            initialised: false,
-            form: {},
             pivotParams: { owners: { id: null } },
         };
     },
 
-    created() {
-        axios.get(route(this.$route.name, this.$route.params.id, false)).then(({ data }) => {
-            this.form = data.form;
-            this.pivotParams.owners.id = this.getOwnerId();
-            this.initialised = true;
-        }).catch(error => this.handleError(error));
-    },
-
     methods: {
         getOwnerId() {
-            const attribute = this.form.fields.find(({ name }) => name === 'owner_id');
-
-            return attribute.value;
+            return this.$refs.form.data.fields
+                .find(({ name }) => name === 'owner_id').value;
         },
     },
 };

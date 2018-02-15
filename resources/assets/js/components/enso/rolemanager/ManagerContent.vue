@@ -43,6 +43,7 @@ export default {
 
     props: {
         groupData: {
+            type: Array,
             required: true,
         },
         rolePermissions: {

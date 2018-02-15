@@ -7,8 +7,7 @@
                 <a class="delete is-pulled-right has-margin-top-medium has-margin-right-medium"
                     @click="$emit('form-close')">
                 </a>
-                <vue-form
-                    class="box"
+                <vue-form class="box"
                     @destroy="$emit('destroy')"
                     @submit="$emit('submit')"
                     :params="params"
