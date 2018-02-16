@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.28
+Adds back Sentry.
+
 ### 2.1.27
 Fixes `vuedatatable` bug when building buttons for users w/o permissions.
 Fixes user create form default value for the role select.
