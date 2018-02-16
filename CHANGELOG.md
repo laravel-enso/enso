@@ -1,5 +1,9 @@
 ## Enso Changelog
 
+### 2.1.27
+Fixes `vuedatatable` bug when building buttons for users w/o permissions.
+Fixes user create form default value for the role select.
+
 ### 2.1.26
 The app is now managed by Forge. Adds Horizon & Redis for jobs, cache.
 
