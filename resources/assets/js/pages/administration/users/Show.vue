@@ -17,58 +17,54 @@
                                         <p class="title is-3">{{ profile.fullName }}</p>
                                         <p>{{ __('role') }}: {{ profile.role.name }}</p>
                                         <p>{{ __('since') }}: {{ profile.created_at | timeFromNow }}</p>
-                                        <p class="has-margin-top-small">
-                                            </p><div class="level user-controls"
-                                                v-if="isSelfVisiting">
-                                                <div class="level-left">
-                                                    <button class="button is-small is-warning"
-                                                        v-if="avatarId"
-                                                        @click="deleteAvatar">
+                                        <div class="user-controls has-margin-top-small"
+                                            v-if="isSelfVisiting">
+
+                                            <button class="button is-small is-warning"
+                                                v-if="avatarId"
+                                                @click="deleteAvatar">
+                                                <span class="icon">
+                                                    <fa icon="trash-alt"></fa>
+                                                </span>
+                                                <span>
+                                                    {{ __('Avatar') }}
+                                                </span>
+                                            </button>
+                                            <file-uploader v-if="!avatarId"
+                                                @upload-successful="$store.commit('setUserAvatar', $event.id)"
+                                                :url="uploadAvatarLink"
+                                                file-key="avatar">
+                                                <template slot="upload-button"
+                                                    slot-scope="{ openFileBrowser }">
+                                                    <button class="button is-small is-info"
+                                                        @click="openFileBrowser">
                                                         <span class="icon">
-                                                            <fa icon="trash-alt"></fa>
+                                                            <fa icon="upload"></fa>
                                                         </span>
                                                         <span>
                                                             {{ __('Avatar') }}
                                                         </span>
                                                     </button>
-                                                    <file-uploader v-if="!avatarId"
-                                                        @upload-successful="$store.commit('setUserAvatar', $event.id)"
-                                                        :url="uploadAvatarLink"
-                                                        file-key="avatar">
-                                                        <template slot="upload-button"
-                                                            slot-scope="{ openFileBrowser }">
-                                                            <button class="button is-small is-info"
-                                                                @click="openFileBrowser">
-                                                                <span class="icon">
-                                                                    <fa icon="upload"></fa>
-                                                                </span>
-                                                                <span>
-                                                                    {{ __('Avatar') }}
-                                                                </span>
-                                                            </button>
-                                                        </template>
-                                                    </file-uploader>
-                                                </div>
-                                                <div class="level-right">
-                                                    <button class="button is-small is-danger"
-                                                        @click="logout()">
-                                                        <span class="icon">
-                                                            <fa icon="sign-out-alt"></fa>
-                                                        </span>
-                                                        <span>
-                                                            {{ __('Log Out') }}
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div v-else>
-                                                <button class="button is-small is-warning"
-                                                    @click="$bus.$emit('start-impersonating', profile.id)"
-                                                    v-if="!$store.state.impersonating">
-                                                    {{ __('Impersonate') }}
-                                                </button>
-                                            </div>
-                                        </p>
+                                                </template>
+                                            </file-uploader>
+                                            <button class="button is-small is-danger is-pulled-right"
+                                                @click="logout()">
+                                                <span class="icon">
+                                                    <fa icon="sign-out-alt"></fa>
+                                                </span>
+                                                <span>
+                                                    {{ __('Log Out') }}
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="has-margin-top-small"
+                                            v-else>
+                                            <button class="button is-small is-warning"
+                                                @click="$bus.$emit('start-impersonating', profile.id)"
+                                                v-if="!$store.state.impersonating">
+                                                {{ __('Impersonate') }}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +203,9 @@
                                     <fa :icon="getIcon(action.route)" size="xs"></fa>
                                 </div>
                                 <div class="timeline-content">
-                                    <p class="heading">{{ getHRDate(action.created_at) }} {{ getHRTime(action.created_at) }}</p>
+                                    <p class="heading">
+                                        {{ getHRDate(action.created_at) }} {{ getHRTime(action.created_at) }}
+                                    </p>
                                     <p>{{ action.permission.description }}</p>
                                 </div>
                             </li>
@@ -233,7 +231,7 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
-import { format } from 'date-fns';
+import { format } from 'date-fns/esm';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
@@ -316,6 +314,12 @@ export default {
         },
     },
 
+    mounted() {
+        axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
+            this.profile = response.data.user;
+        }).catch(error => this.handleError(error));
+    },
+
     methods: {
         deleteAvatar() {
             axios.delete(route('core.avatars.destroy', this.user.avatarId, false)).then(() => {
@@ -353,12 +357,6 @@ export default {
                 this.profile = data.user;
             }).catch(error => this.handleError(error));
         },
-    },
-
-    mounted() {
-        axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
-            this.profile = response.data.user;
-        }).catch(error => this.handleError(error));
     },
 };
 

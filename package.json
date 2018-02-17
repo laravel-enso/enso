@@ -55,7 +55,7 @@
         "bulma-extensions": "^0.4.4",
         "bulmaswatch": "^0.5.2",
         "chart.js": "^2.7.1",
-        "date-fns": "^1.29.0",
+        "date-fns": "^2.0.0-alpha.7",
         "element-resize-detector": "^1.1.13",
         "favico.js": "^0.3.10",
         "flag-icon-css": "^2.9.0",

@@ -89,6 +89,7 @@ export default {
     props: {
         comment: {
             type: Object,
+            required: true,
         },
         index: {
             type: Number,
@@ -98,6 +99,14 @@ export default {
             type: Boolean,
             default: false,
         },
+    },
+
+    data() {
+        return {
+            controls: false,
+            dialog: false,
+            originalBody: null,
+        };
     },
 
     computed: {
@@ -121,14 +130,6 @@ export default {
         isEditing() {
             return this.originalBody !== null;
         },
-    },
-
-    data() {
-        return {
-            controls: false,
-            dialog: false,
-            originalBody: null,
-        };
     },
 
     methods: {

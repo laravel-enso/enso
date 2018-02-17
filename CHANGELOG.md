@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.29
+Upgrades date-fns to v2.0.0.alpha.7 to make full use of tree-shaking.
+
 ### 2.1.28
 Adds back Sentry.
 

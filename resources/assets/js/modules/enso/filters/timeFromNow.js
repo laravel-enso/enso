@@ -1,4 +1,4 @@
 import Vue from 'vue';
-import { distanceInWordsToNow } from 'date-fns';
+import { formatDistance } from 'date-fns/esm';
 
-Vue.filter('timeFromNow', value => distanceInWordsToNow(value));
+Vue.filter('timeFromNow', value => formatDistance(value, new Date()));

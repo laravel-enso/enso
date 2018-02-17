@@ -26,7 +26,6 @@
 
 import fontawesome from '@fortawesome/fontawesome';
 import { faUpload } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import { lastDayOfMonth } from 'date-fns';
 
 fontawesome.library.add(faUpload);
 

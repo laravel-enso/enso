@@ -1419,16 +1419,16 @@
         },
         {
             "name": "laravel-enso/commentsmanager",
-            "version": "2.1.25",
+            "version": "2.1.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/CommentsManager.git",
-                "reference": "dc531cc3d459f4e28943e37953c3140fb55ac91e"
+                "reference": "92f5ebd91d7a0c80193df31ea7e26497306ac7b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/dc531cc3d459f4e28943e37953c3140fb55ac91e",
-                "reference": "dc531cc3d459f4e28943e37953c3140fb55ac91e",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/92f5ebd91d7a0c80193df31ea7e26497306ac7b5",
+                "reference": "92f5ebd91d7a0c80193df31ea7e26497306ac7b5",
                 "shasum": ""
             },
             "require": {
@@ -1478,7 +1478,7 @@
                 "commentsmanager",
                 "laravel-enso"
             ],
-            "time": "2018-02-15T13:10:32+00:00"
+            "time": "2018-02-17T06:29:07+00:00"
         },
         {
             "name": "laravel-enso/contacts",
@@ -1549,16 +1549,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.1.65",
+            "version": "2.1.66",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "d3310a8a274222daa706fb9e977a24712a89a6f8"
+                "reference": "d8a08bed126d60a4e525f6f7e680cf9d035aca63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d3310a8a274222daa706fb9e977a24712a89a6f8",
-                "reference": "d3310a8a274222daa706fb9e977a24712a89a6f8",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d8a08bed126d60a4e525f6f7e680cf9d035aca63",
+                "reference": "d8a08bed126d60a4e525f6f7e680cf9d035aca63",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-02-16T07:55:49+00:00"
+            "time": "2018-02-17T06:38:53+00:00"
         },
         {
             "name": "laravel-enso/dataimport",

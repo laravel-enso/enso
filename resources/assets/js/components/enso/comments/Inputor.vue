@@ -59,6 +59,7 @@ export default {
     props: {
         comment: {
             type: Object,
+            required: true,
         },
     },
 
