@@ -25,7 +25,7 @@ export default {
     }
 
     .error-title {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 
 </style>

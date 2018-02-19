@@ -20,6 +20,15 @@ Vue.mixin({
                 return;
             }
 
+            if (status === 404) {
+                this.$router.push({ name: 'notFound' });
+                return;
+            }
+
+            if (status === 503) {
+                window.location.reload();
+            }
+
             throw error;
         },
     },

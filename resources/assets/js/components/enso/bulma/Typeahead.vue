@@ -3,7 +3,7 @@
     <div>
         <div class="control has-icons-left"
             :class="{ 'is-loading': loading }">
-            <input class="input" type="text"
+            <input class="input" :type="loading ? 'text' : 'search'"
                 :class="{ 'is-danger': hasError }"
                 :disabled="disabled"
                 :placeholder="placeholder"
@@ -29,6 +29,15 @@
                         @mousemove="position = index"
                         v-html="$options.filters.highlight(item[label], value)">
                     </a>
+                    <a href="#" class="dropdown-item"
+                        v-if="!items.length">
+                        <span v-if="loading">
+                            {{ searching }}
+                        </span>
+                        <span v-else>
+                            {{ notResults }}
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -46,6 +55,16 @@ fontawesome.library.add(faSearch);
 
 export default {
     name: 'Typeahead',
+
+    filters: {
+        highlight(item, value) {
+            value.split(' ').filter(word => word.length).forEach((word) => {
+                item = item.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
+            });
+
+            return item;
+        },
+    },
 
     props: {
         disabled: {
@@ -72,6 +91,14 @@ export default {
             type: String,
             default: 'What are you searching for today?',
         },
+        notResults: {
+            type: String,
+            default: 'No results found matching the criteria...',
+        },
+        searching: {
+            type: String,
+            default: 'Searching...',
+        },
         validator: {
             type: Boolean,
             default: false,
@@ -88,23 +115,6 @@ export default {
         },
     },
 
-    computed: {
-        hasError() {
-            return this.validator && this.value && !this.regExp.test(this.value);
-        },
-        showDropdown() {
-            return !this.hideDropdown && this.value && !this.hasError && this.items.length > 0;
-        },
-    },
-
-    watch: {
-        value() {
-            if (!this.value) {
-                this.items = [];
-            }
-        },
-    },
-
     data() {
         return {
             position: 0,
@@ -114,13 +124,20 @@ export default {
         };
     },
 
-    filters: {
-        highlight(item, value) {
-            value.split(' ').filter(word => word.length).forEach((word) => {
-                item = item.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
-            });
+    computed: {
+        hasError() {
+            return this.validator && this.value && !this.regExp.test(this.value);
+        },
+        showDropdown() {
+            return !this.hideDropdown && this.value && !this.hasError;
+        },
+    },
 
-            return item;
+    watch: {
+        value() {
+            if (!this.value) {
+                this.items = [];
+            }
         },
     },
 
@@ -136,7 +153,9 @@ export default {
 
             this.loading = true;
 
-            axios.get(this.source, { params: this.params() }).then((response) => {
+            axios.get(this.source, {
+                params: { query: this.value, length: this.length, params: this.params },
+            }).then((response) => {
                 this.hideDropdown = false;
                 this.items = response.data;
                 this.loading = false;
@@ -145,19 +164,12 @@ export default {
                 this.handleError(error);
             });
         },
-        params() {
-            return {
-                query: this.value,
-                length: this.length,
-                params: this.params,
-            };
-        },
         update(value) {
             this.$emit('selected', this.items[this.position]);
             this.$emit('input', value);
         },
         hit() {
-            if (this.showDropdown) {
+            if (this.showDropdown && this.items.length) {
                 this.update(this.items[this.position][this.label]);
                 this.$emit('update', this.items[this.position]);
                 this.hideDropdown = true;

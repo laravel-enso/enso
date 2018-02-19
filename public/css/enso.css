@@ -3737,18 +3737,6 @@
   cursor: pointer;
 }
 
-.navbar.has-shadow,
-.has-shadow {
-  -webkit-box-shadow: 0 2px 3px rgba(128, 127, 127, 0.3);
-  box-shadow: 0 2px 3px rgba(128, 127, 127, 0.3);
-}
-
-.navbar.has-shadow.hover:hover,
-.has-shadow.hover:hover {
-  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.3);
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.3);
-}
-
 .animated {
   -webkit-animation-duration: .5s;
           animation-duration: .5s;

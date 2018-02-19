@@ -22,24 +22,15 @@
             v-for="(column, index) in template.columns"
             :key="index"
             v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
-            <span :class="{ 'is-clickable': column.meta.clickable }"
-                @click="clicked(column, row)">
-                <span v-if="column.meta.boolean"
-                    class="tag is-table-tag"
-                    :class="row[column.name] ? 'is-success' : 'is-danger'">
-                    <span class="icon is-small">
-                        <fa :icon="row[column.name] ? 'check' : 'times'"></fa>
-                    </span>
-                </span>
-                <span v-else-if="column.meta.icon && row[column.name]">
-                    <fa :icon="row[column.name]"></fa>
-                </span>
-                <span v-else-if="column.meta.render"
+            <table-cell :i18n="i18n"
+                :column="column"
+                :value="row[column.name]"
+                @clicked="clicked(row, column)">
+                <span slot="custom-render"
+                    v-if="column.meta.render"
                     v-html="customRender(row, column)">
                 </span>
-                <span v-else-if="column.meta.translation">{{ i18n(row[column.name]) }}</span>
-                <span v-else>{{ row[column.name] }}</span>
-            </span>
+            </table-cell>
         </td>
         <td class="table-actions"
             :class="template.align"
@@ -62,9 +53,18 @@
             v-if="isChild(row)">
             <ul>
                 <li class="child-row"
-                    v-for="column in row"
-                    :key="column.label">
-                    <b>{{ column.label }}</b>: {{ column.value }}
+                    v-for="(item, index) in row"
+                    :key="index">
+                    <b>{{ item.column.label }}</b>:
+                    <table-cell :i18n="i18n"
+                        :column="item.column"
+                        :value="item.value"
+                        @clicked="clicked(body.data[item.index], item.column)">
+                        <span slot="custom-render"
+                            v-if="item.column.meta.render"
+                            v-html="customRender(body.data[item.index], item.column)">
+                        </span>
+                    </table-cell>
                 </li>
             </ul>
         </td>
@@ -86,6 +86,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import {
     faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import TableCell from './TableCell.vue';
 import Modal from './Modal.vue';
 
 fontawesome.library.add([
@@ -95,7 +96,7 @@ fontawesome.library.add([
 export default {
     name: 'TableBody',
 
-    components: { Modal },
+    components: { TableCell, Modal },
 
     props: {
         template: {
@@ -124,6 +125,14 @@ export default {
         },
     },
 
+    data() {
+        return {
+            modal: false,
+            row: null,
+            button: null,
+        };
+    },
+
     computed: {
         hiddenColumns() {
             return this.template.columns
@@ -136,14 +145,6 @@ export default {
             return this.template.columns.length - this.hiddenColumns.length
             + (this.template.actions ? 2 : 1);
         },
-    },
-
-    data() {
-        return {
-            modal: false,
-            row: null,
-            button: null,
-        };
     },
 
     watch: {
@@ -169,11 +170,6 @@ export default {
             this.modal = false;
             this.row = null;
             this.button = null;
-        },
-        clicked(column, row) {
-            if (column.meta.clickable) {
-                this.$emit('clicked', column, row);
-            }
         },
         doAction(button, row) {
             if (this.modal) {
@@ -227,7 +223,7 @@ export default {
         },
         addChildRow(row, index) {
             const newRow = this.hiddenColumns.reduce((collector, column) => {
-                collector.push({ label: column.label, value: row[column.name] });
+                collector.push({ column, value: row[column.name], index });
                 return collector;
             }, []);
 
@@ -245,6 +241,11 @@ export default {
             indexes.sort((a, b) => a < b).forEach(index => this.body.data.splice(index, 1));
 
             this.expanded.splice(0);
+        },
+        clicked(row, column) {
+            if (column.meta.clickable) {
+                this.$emit('clicked', column, row);
+            }
         },
     },
 };

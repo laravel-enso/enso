@@ -17,14 +17,14 @@ import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 export default {
     components: { VueTable },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             path: route('system.permissions.initTable', [], false),
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     methods: {
