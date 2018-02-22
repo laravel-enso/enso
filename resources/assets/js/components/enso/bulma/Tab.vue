@@ -22,6 +22,10 @@ export default {
             type: [String, Object],
             required: true,
         },
+        default: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     computed: {
@@ -36,6 +40,10 @@ export default {
 
     created() {
         this.$parent.tabs.push(this.id);
+
+        if (this.default) {
+            this.$parent.setActive(this.index);
+        }
     },
 
     beforeDestroy() {

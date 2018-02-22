@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.31
+Adds Brazillian Portuguese localisation.
+
 ### 2.1.30
 Updates all dependencies.
 Improves vuedatatable's hidden columns.
