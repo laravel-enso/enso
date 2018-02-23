@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+### 2.1.32
+Updates Laravel to 5.6.5.
+Updates composer / npm packages.
+Fixes the shadow for sidebars.
+
 ### 2.1.31
 Adds Brazillian Portuguese localisation.
 

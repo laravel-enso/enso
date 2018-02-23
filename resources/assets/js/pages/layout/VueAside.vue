@@ -1,6 +1,6 @@
 <template>
 
-    <div class="aside has-shadow">
+    <div class="aside">
         <slot></slot>
     </div>
 
@@ -32,6 +32,8 @@ export default {
         z-index: 2;
         overflow-y: auto;
         overflow-x: hidden;
+        -webkit-box-shadow: 0 2px 3px hsla(0,0%,4%,.1);
+        box-shadow: 0 2px 3px hsla(0,0%,4%,.1);
     }
 
 </style>

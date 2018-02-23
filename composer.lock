@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "690c5d12f7a9111436f41e5893401714",
+    "content-hash": "4d1e5b21108ee97052b29b375bc2acea",
     "packages": [
         {
             "name": "box/spout",
@@ -1549,16 +1549,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.1.70",
+            "version": "2.1.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "283ca29e719e164518b5f3fde605bd3931aee1a6"
+                "reference": "602f4b31e66b858d21a3517d0c544ef2c51a7596"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/283ca29e719e164518b5f3fde605bd3931aee1a6",
-                "reference": "283ca29e719e164518b5f3fde605bd3931aee1a6",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/602f4b31e66b858d21a3517d0c544ef2c51a7596",
+                "reference": "602f4b31e66b858d21a3517d0c544ef2c51a7596",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-02-22T07:18:58+00:00"
+            "time": "2018-02-23T21:03:22+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2824,16 +2824,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.4",
+            "version": "v5.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ca5ce9e559e1a8f6455f0fbc42638e6e066f73de"
+                "reference": "2e68209991e15aca1382ef9a3443d13f2e0d8755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ca5ce9e559e1a8f6455f0fbc42638e6e066f73de",
-                "reference": "ca5ce9e559e1a8f6455f0fbc42638e6e066f73de",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2e68209991e15aca1382ef9a3443d13f2e0d8755",
+                "reference": "2e68209991e15aca1382ef9a3443d13f2e0d8755",
                 "shasum": ""
             },
             "require": {
@@ -2955,7 +2955,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-02-21T14:41:25+00:00"
+            "time": "2018-02-22T19:21:38+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3979,16 +3979,16 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "12eacb85a70158f64d60f39d32a2a86d84ff6b89"
+                "reference": "73906c29290baf047727ba5c1df6d7a3f1e3df22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/12eacb85a70158f64d60f39d32a2a86d84ff6b89",
-                "reference": "12eacb85a70158f64d60f39d32a2a86d84ff6b89",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/73906c29290baf047727ba5c1df6d7a3f1e3df22",
+                "reference": "73906c29290baf047727ba5c1df6d7a3f1e3df22",
                 "shasum": ""
             },
             "require": {
@@ -4024,7 +4024,7 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2018-02-08T14:45:11+00:00"
+            "time": "2018-02-22T18:36:53+00:00"
         },
         {
             "name": "spatie/laravel-image-optimizer",
