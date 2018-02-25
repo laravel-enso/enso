@@ -84,31 +84,46 @@
                         <span class="panel-icon has-text-info">
                             <fa icon="file-excel"></fa>
                         </span>
-                        {{ __('File') }}:&emsp;<span class="has-text-info">{{ summary.filename }}</span>
+                        {{ __('File') }}:&emsp;
+                        <span class="has-text-info">
+                            {{ summary.filename }}
+                        </span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
                             <fa icon="calendar-alt"></fa>
                         </span>
-                        {{ __('Date') }}:&emsp;<span class="has-text-info">{{ summary.date }}</span>
+                        {{ __('Date') }}:&emsp;
+                        <span class="has-text-info">
+                            {{ summary.date }}
+                        </span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
                             <fa icon="clock"></fa>
                         </span>
-                        {{ __('Time') }}:&emsp;<span class="has-text-info">{{ summary.time }}</span>
+                        {{ __('Time') }}:&emsp;
+                        <span class="has-text-info">
+                            {{ summary.time }}
+                        </span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-success">
                             <fa icon="check"></fa>
                         </span>
-                        {{ __('Imported Entries') }}:&emsp;<span class="has-text-success">{{ summary.successful }}</span>
+                        {{ __('Imported Entries') }}:&emsp;
+                        <span class="has-text-success">
+                            {{ summary.successful }}
+                        </span>
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-danger">
                             <fa icon="times"></fa>
                         </span>
-                        {{ __('Issues') }}:&emsp;<span class="has-text-danger">{{ summary.issues }}</span>
+                        {{ __('Issues') }}:&emsp;
+                        <span class="has-text-danger">
+                            {{ summary.issues }}
+                        </span>
                     </a>
                     <div class="panel-block">
                         <button class="button is-info is-outlined is-fullwidth"
@@ -147,18 +162,29 @@
                                     :id="category">
                                     <paginate :list="issues">
                                         <template slot-scope="{ list }">
-                                            <h5 class="title is-5 has-text-centered">{{ __('Issues') }}</h5>
+                                            <h5 class="title is-5 has-text-centered">
+                                                {{ __('Issues') }}
+                                            </h5>
                                             <ul class="issues has-margin-left-large">
                                                 <li v-for="(issue, index) in list"
                                                     :key="index">
                                                     <span v-if="issue.column">
-                                                        {{ __("Column") }}: <b class="has-text-warning">{{ issue.column }}</b>
+                                                        {{ __("Column") }}:
+                                                        <b class="has-text-warning">
+                                                            {{ issue.column }}
+                                                        </b>
                                                     </span>
                                                     <span v-if="issue.rowNumber">
-                                                        {{ __("Line") }}: <b class="has-text-warning">{{ issue.rowNumber }}</b>
+                                                        {{ __("Line") }}:
+                                                        <b class="has-text-warning">
+                                                            {{ issue.rowNumber }}
+                                                        </b>
                                                     </span>
                                                     <span v-if="issue.value">
-                                                        {{ __("Value") }}: <b class="has-text-danger">{{ issue.value }}</b>
+                                                        {{ __("Value") }}:
+                                                        <b class="has-text-danger">
+                                                            {{ issue.value }}
+                                                        </b>
                                                     </span>
                                                 </li>
                                             </ul>
@@ -210,6 +236,19 @@ export default {
 
     directives: { tooltip: VTooltip },
 
+    data() {
+        return {
+            path: route('import.initTable', [], false),
+            importType: null,
+            summary: null,
+            template: null,
+            showModal: false,
+            loadingTemplate: false,
+            importing: false,
+            importTypes: {},
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         templateLink() {
@@ -224,19 +263,6 @@ export default {
         icon() {
             return faBook;
         },
-    },
-
-    data() {
-        return {
-            path: route('import.initTable', [], false),
-            importType: null,
-            summary: null,
-            template: null,
-            showModal: false,
-            loadingTemplate: false,
-            importing: false,
-            importTypes: {},
-        };
     },
 
     created() {

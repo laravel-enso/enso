@@ -40,9 +40,8 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faSort, faSortUp, faSortDown, faPlus, faFileExcel,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faSort, faSortUp, faSortDown, faPlus, faFileExcel }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faSort, faSortUp, faSortDown, faPlus, faFileExcel);
 

@@ -3742,15 +3742,6 @@
           animation-duration: .5s;
 }
 
-.toast-top-right {
-  top: 70px !important;
-  right: 5px;
-}
-
-.toast-top-center {
-  top: 70px !important;
-}
-
 .button.is-naked {
   background: 0;
   border: none;

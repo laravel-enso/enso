@@ -2,11 +2,10 @@
     <a class="navbar-item"
         @click="goToProfile()">
         <img :src="$store.getters.avatarLink">
-            <span class="has-margin-left-small"
-                v-if="!isTouch">
-                {{ $store.state.user.first_name }}
-            </span>
-        </img>
+        <span class="has-margin-left-small"
+            v-if="!isTouch">
+            {{ $store.state.user.first_name }}
+        </span>
     </a>
 </template>
 

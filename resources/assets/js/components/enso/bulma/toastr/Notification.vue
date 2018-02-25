@@ -43,9 +43,8 @@
 import Vue from 'vue';
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faComment, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faComment, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add([
     faComment, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle,

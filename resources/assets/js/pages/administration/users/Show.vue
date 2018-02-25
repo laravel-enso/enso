@@ -328,7 +328,8 @@ export default {
         },
         logout() {
             axios.post(route('logout', [], false).toString()).then(() => {
-                this.$store.dispatch('auth/logout');
+                this.$store.commit('auth/logout');
+                this.$router.push({ path: '/' });
             }).catch(error => this.handleError(error));
         },
         getDay(timestamp) {

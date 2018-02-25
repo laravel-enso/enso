@@ -18,9 +18,8 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
 import Chart from './Chart.vue';
 

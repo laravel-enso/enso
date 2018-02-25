@@ -37,6 +37,7 @@ fontawesome.library.add(faClock, faCalendarAlt);
 export default {
     props: {
         value: {
+            type: null,
             required: true,
             default: null,
             validate(value) {

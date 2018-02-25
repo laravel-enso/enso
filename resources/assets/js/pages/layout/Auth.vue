@@ -4,10 +4,7 @@
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-mobile is-centered">
-                    <router
-                        :app-name="appName"
-                        @login="$emit('login')">
-                    </router>
+                    <router></router>
                 </div>
             </div>
         </div>
@@ -17,6 +14,7 @@
 
 <script>
 
+import { mapState, mapMutations } from 'vuex';
 import Router from '../layout/Router.vue';
 
 export default {
@@ -24,16 +22,23 @@ export default {
 
     components: { Router },
 
-    data() {
-        return {
-            appName: '',
-        };
+    computed: {
+        ...mapState(['meta']),
+        ...mapState('auth', ['lastRoute']),
     },
 
     created() {
-        axios.get('/api/getAppName').then(({ data }) => {
-            this.appName = data;
+        if (!this.$route || !this.$route.meta.guestGuard) {
+            this.$router.push({ name: 'login' });
+        }
+
+        axios.get('/api/getMeta').then(({ data }) => {
+            this.setMeta(data);
         }).catch(error => this.handleError(error));
+    },
+
+    methods: {
+        ...mapMutations(['setMeta']),
     },
 };
 

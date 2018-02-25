@@ -5,7 +5,7 @@ const Email = () => import('../pages/auth/password/Email.vue');
 const Reset = () => import('../pages/auth/password/Reset.vue');
 
 const redirect = (to, from, next) => {
-    if (store.getters['auth/isAuth']) {
+    if (store.state.auth.isAuth) {
         next({ path: '/' });
     }
 

@@ -54,6 +54,12 @@ export default {
         },
     },
 
+    data() {
+        return {
+            show: false,
+        };
+    },
+
     computed: {
         widthStyle() {
             return {
@@ -65,12 +71,6 @@ export default {
                 'max-height': `${this.height}px`,
             };
         },
-    },
-
-    data() {
-        return {
-            show: false,
-        };
     },
 
     methods: {

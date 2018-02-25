@@ -21,9 +21,8 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faAlignJustify, faAlignCenter, faAlignLeft, faAlignRight,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faAlignJustify, faAlignCenter, faAlignLeft, faAlignRight }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Dropdown from './Dropdown.vue';
 
 fontawesome.library.add(faAlignJustify, faAlignCenter, faAlignLeft, faAlignRight);

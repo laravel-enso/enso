@@ -1,5 +1,10 @@
 ## Enso Changelog
 
+### 2.1.33
+Major refactor for routing.
+Fixes #34, #38.
+Renames init route `getAppName` => `getMeta`
+
 ### 2.1.32
 Updates Laravel to 5.6.5.
 Updates composer / npm packages.

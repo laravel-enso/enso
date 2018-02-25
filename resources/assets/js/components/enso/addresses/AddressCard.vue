@@ -13,16 +13,44 @@
                     <span v-if="address.street">{{ address.street }}</span>
                     <span v-if="address.street_type">{{ __(address.street_type) }},</span>
                     <br>
-                    <span v-if="address.building"><span class="has-text-grey">{{ __(address.building_type) }} </span>{{ address.building }},</span>
-                    <span v-if="address.entry"><span class="has-text-grey">{{ __('Entry') }} </span>{{ address.entry }},</span>
-                    <span v-if="address.floor"><span class="has-text-grey">{{ __('Floor') }} </span>{{ address.floor }},</span>
-                    <span v-if="address.apartment"><span class="has-text-grey">{{ __('Apartment') }} </span>{{ address.apartment }},</span>
+                    <span v-if="address.building">
+                        <span class="has-text-grey">
+                            {{ __(address.building_type) }}
+                        </span>
+                        {{ address.building }},
+                    </span>
+                    <span v-if="address.entry">
+                        <span class="has-text-grey">
+                            {{ __('Entry') }}
+                        </span>
+                        {{ address.entry }},
+                    </span>
+                    <span v-if="address.floor">
+                        <span class="has-text-grey">
+                            {{ __('Floor') }}
+                        </span>
+                        {{ address.floor }},
+                    </span>
+                    <span v-if="address.apartment">
+                        <span class="has-text-grey">
+                            {{ __('Apartment') }}
+                        </span>
+                        {{ address.apartment }},
+                    </span>
                     <br>
-                    <span v-if="address.sub_administrative_area">{{ address.sub_administrative_area }},</span>
-                    <span v-if="address.city">{{ address.city }},</span>
+                    <span v-if="address.sub_administrative_area">
+                        {{ address.sub_administrative_area }},
+                    </span>
+                    <span v-if="address.city">
+                        {{ address.city }},
+                    </span>
                     <br>
-                    <span v-if="address.postal_area">{{ address.postal_area }},</span>
-                    <span v-if="address.administrative_area"> {{ address.administrative_area }},</span>
+                    <span v-if="address.postal_area">
+                        {{ address.postal_area }},
+                    </span>
+                    <span v-if="address.administrative_area">
+                        {{ address.administrative_area }},
+                    </span>
                     <br>
                     <span class="icon">
                         <fa icon="globe"></fa>

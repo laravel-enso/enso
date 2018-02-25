@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/getAppName', function () {
-    return config('app.name');
-})->name('getAppName');
+Route::get('/getMeta', function () {
+    return ['appName' => config('app.name')];
+})->name('getMeta');
 
 Route::namespace('Auth')
     ->group(function () {

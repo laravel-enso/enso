@@ -15,8 +15,7 @@ Router.prototype = Object.create(String.prototype);
 Router.prototype.constructor = Router;
 
 Router.prototype.normalizeParams = function (params) {
-    if (params === undefined)
-        {return {};}
+    if (params === undefined) { return {}; }
 
     params = typeof params !== 'object' ? [params] : params;
     this.numericParamIndices = Array.isArray(params);
@@ -26,14 +25,14 @@ Router.prototype.normalizeParams = function (params) {
 
 Router.prototype.constructDomain = function () {
     if (this.name === undefined) {
-        throw 'Ziggy Error: You must provide a route name';
+        throw new Error('Ziggy Error: You must provide a route name');
     } else if (store.state.routes[this.name] === undefined) {
-        throw `Ziggy Error: route "${ this.name }" is not found in the route list`;
+        throw new Error(`Ziggy Error: route "${this.name}" is not found in the route list`);
     } else if (!this.absolute) {
         return '/';
     }
 
-    return `${(store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/,'')  }/`;
+    return `${(store.state.routes[this.name].domain || store.state.meta).replace(/\/+$/, '')}/`;
 };
 
 Router.prototype.with = function (params) {
@@ -49,15 +48,15 @@ Router.prototype.withQuery = function (params) {
 };
 
 Router.prototype.constructUrl = function () {
-    let url = this.domain + this.url,
-        tags = this.urlParams,
-        paramsArrayKey = 0;
+    const url = this.domain + this.url;
+    const tags = this.urlParams;
+    let paramsArrayKey = 0;
 
     return url.replace(
         /{([^}]+)}/gi,
         (tag) => {
-            var keyName = tag.replace(/\{|\}/gi, '').replace(/\?$/, ''),
-                key = this.numericParamIndices ? paramsArrayKey : keyName;
+            const keyName = tag.replace(/\{|\}/gi, '').replace(/\?$/, '');
+            const key = this.numericParamIndices ? paramsArrayKey : keyName;
 
             paramsArrayKey++;
             if (typeof tags[key] !== 'undefined') {
@@ -65,7 +64,7 @@ Router.prototype.constructUrl = function () {
                 return tags[key].id || tags[key];
             }
             if (tag.indexOf('?') === -1) {
-                throw 'Ziggy Error: "' + keyName + '" key is required for route "' + this.name + '"';
+                throw new Error(`Ziggy Error: "${keyName}" key is required for route "${this.name}"`);
             } else {
                 return '';
             }
@@ -74,14 +73,13 @@ Router.prototype.constructUrl = function () {
 };
 
 Router.prototype.constructQuery = function () {
-    if (Object.keys(this.queryParams).length === 0)
-        {return '';}
+    if (Object.keys(this.queryParams).length === 0) { return ''; }
 
     let queryString = '?';
 
     Object.keys(this.queryParams).forEach((key, i) => {
-        queryString = i === 0 ? queryString : queryString + '&';
-        queryString += key + '=' + this.queryParams[key];
+        queryString = i === 0 ? queryString : `${queryString}&`;
+        queryString += `${key}=${this.queryParams[key]}`;
     });
 
     return queryString;

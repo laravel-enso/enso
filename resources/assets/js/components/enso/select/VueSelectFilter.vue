@@ -28,6 +28,7 @@ export default {
             default: null,
         },
         value: {
+            type: null,
             default: null,
         },
     },

@@ -1,13 +1,9 @@
 <template>
 
-    <transition
-        mode="out-in"
+    <transition mode="out-in"
         enter-active-class="fadeIn"
         leave-active-class="fadeOut">
-        <router-view :key="$route.fullPath"
-            :class="{ 'animated': !$route.meta.notAnimated }"
-            v-bind="$attrs"
-            v-on="$listeners">
+        <router-view class="animated">
         </router-view>
     </transition>
 

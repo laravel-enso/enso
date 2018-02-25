@@ -13,7 +13,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    if (!to.meta.guestGuard && !store.getters['auth/isAuth']) {
+    if (!to.meta.guestGuard && !store.state.auth.isAuth) {
         next({ name: 'login' });
     }
 

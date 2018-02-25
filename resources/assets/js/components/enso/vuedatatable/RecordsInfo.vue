@@ -1,11 +1,9 @@
 <template>
 
     <span class="table-entries-info">
-        {{ `${i18n('From')} ${start + 1} ${i18n('to')} ${(start + length) <= body.filtered ? start + length : body.filtered} \
-        ${i18n('of')} ${body.filtered} ${i18n('entries')}` }}
+        {{ recordsInfo }}
         <span v-if="body.filtered !== body.count">
-            {{ `(${i18n('filtered')} ${i18n('from')} ${body.count} \
-            ${i18n('total')} ${i18n('records')})` }}
+            {{ filteredInfo }}
         </span>
     </span>
 
@@ -32,6 +30,18 @@ export default {
         i18n: {
             type: Function,
             required: true,
+        },
+    },
+
+    computed: {
+        recordsInfo() {
+            return `${this.i18n('From')} ${this.start + 1} ${this.i18n('to')} \
+            ${(this.start + this.length) <= this.body.filtered ? this.start + this.length : this.body.filtered} \
+            ${this.i18n('of')} ${this.body.filtered} ${this.i18n('entries')}`;
+        },
+        filteredInfo() {
+            return `(${this.i18n('filtered')} ${this.i18n('from')} ${this.body.count} \
+            ${this.i18n('total')} ${this.i18n('records')})`;
         },
     },
 };

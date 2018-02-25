@@ -45,16 +45,16 @@ export default {
         },
     },
 
-    watch: {
-        value(value) {
-            this.checked = value;
-        },
-    },
-
     data() {
         return {
             checked: this.value,
         };
+    },
+
+    watch: {
+        value(value) {
+            this.checked = value;
+        },
     },
 };
 

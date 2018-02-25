@@ -15,15 +15,15 @@ export default new Vuex.Store({
     modules,
 
     state: {
+        isInitialised: false,
         user: {},
         impersonating: null,
         meta: {},
-        appIsLoaded: false,
         routes: {},
     },
 
     getters: {
-        avatarLink: state => (state.appIsLoaded
+        avatarLink: state => (state.isInitialised
             ? route('core.avatars.show', (state.user.avatarId || 'null'), false).toString()
             : '#'),
     },
@@ -37,12 +37,21 @@ export default new Vuex.Store({
             state.user.preferences.global.lang = selectedLocale;
         },
         setMeta: (state, meta) => { state.meta = meta; },
-        setLoadedState: (state) => { state.appIsLoaded = true; },
+        initialise: (state, value) => { state.isInitialised = value; },
         setRoutes: (state, routes) => { state.routes = routes; },
+        setCsrfToken: (state, token) => {
+            state.meta.csrfToken = token;
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+            window.Laravel = {
+                csrfToken: token,
+            };
+        },
     },
 
     actions: {
-        setState({ commit, dispatch, getters }) {
+        initialise({ commit, dispatch }) {
+            commit('initialise', false);
+
             axios.get('/api/core').then(({ data }) => {
                 const { state } = data;
                 commit('setUser', state.user);
@@ -55,37 +64,20 @@ export default new Vuex.Store({
                 commit('layout/setThemes', state.themes);
                 commit('setMeta', state.meta);
                 dispatch('layout/setTheme');
-                window.Laravel = {
-                    csrfToken: state.csrfToken,
-                };
-                axios.defaults.headers.common['X-CSRF-TOKEN'] = state.csrfToken;
+                commit('setCsrfToken', state.meta.csrfToken);
                 commit('setRoutes', state.routes);
                 router.addRoutes([{ path: '/', redirect: { name: state.implicitMenu.link } }]);
 
                 if (state.ravenKey) {
-                    Raven.config(state.ravenKey)
+                    Raven.config(state.meta.ravenKey)
                         .addPlugin(RavenVue, Vue)
                         .install();
                 }
 
-                const appName = state.meta.extendedDocumentTitle
-                    ? ` | ${state.meta.appName}`
-                    : '';
-
-                const __ = getters['locale/__'];
-
-                router.beforeEach((to, from, next) => {
-                    if (to.meta.title !== from.meta.title) {
-                        document.title = __(to.meta.title) + appName;
-                    }
-
-                    next();
-                });
-
-                commit('setLoadedState');
+                commit('initialise', true);
             }).catch((error) => {
                 if (error.response.status === 401) {
-                    dispatch('auth/logout', false);
+                    commit('auth/logout');
                 }
             });
         },

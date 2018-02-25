@@ -83,9 +83,8 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import TableCell from './TableCell.vue';
 import Modal from './Modal.vue';
 

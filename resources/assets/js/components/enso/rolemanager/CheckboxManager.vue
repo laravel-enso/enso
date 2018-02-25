@@ -60,6 +60,7 @@ export default {
             required: true,
         },
         groupData: {
+            type: [Array, Object],
             required: true,
         },
         rolePermissions: {

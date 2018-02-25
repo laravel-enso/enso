@@ -56,9 +56,8 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Dropdown from './Dropdown.vue';
 
 fontawesome.library.add([
@@ -91,6 +90,14 @@ export default {
         },
     },
 
+    data() {
+        return {
+            pageLength: this.length,
+            open: false,
+            current: 1,
+        };
+    },
+
     computed: {
         computedList() {
             return this.list.filter((el, index) => index >= this.start - 1
@@ -118,13 +125,6 @@ export default {
         },
     },
 
-    data() {
-        return {
-            pageLength: this.length,
-            open: false,
-            current: 1,
-        };
-    },
     methods: {
         next() {
             if (this.current < this.pages) {
@@ -142,8 +142,6 @@ export default {
             this.open = false;
         },
     },
-
-    mounted() {},
 };
 
 </script>

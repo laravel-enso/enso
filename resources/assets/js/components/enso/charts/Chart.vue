@@ -2,7 +2,7 @@
 
     <canvas class="chart-js"
         width="400"
-        :height="400/this.heightDivider">
+        :height="400/heightDivider">
     </canvas>
 
 </template>
@@ -51,6 +51,14 @@ export default {
         },
     },
 
+    mounted() {
+        this.init();
+    },
+
+    beforeDestroy() {
+        this.chart.destroy();
+    },
+
     methods: {
         init() {
             this.chart = new Chart(this.$el, {
@@ -73,14 +81,6 @@ export default {
 
             this.chart.update();
         },
-    },
-
-    mounted() {
-        this.init();
-    },
-
-    beforeDestroy() {
-        this.chart.destroy();
     },
 };
 

@@ -68,6 +68,7 @@ export default {
             },
         },
         value: {
+            type: null,
             required: true,
         },
         hideOff: {
@@ -76,14 +77,14 @@ export default {
         },
     },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             internalValue: this.value,
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     methods: {

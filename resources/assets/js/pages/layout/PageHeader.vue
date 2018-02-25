@@ -39,20 +39,12 @@ import Breadcrumbs from './Breadcrumbs.vue';
 export default {
     name: 'PageHeader',
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     components: { Breadcrumbs },
 
-    watch: {
+    props: {
         title: {
-            handler() {
-                this.loaded = false;
-                setTimeout(() => {
-                    this.loaded = true;
-                }, 350);
-            },
+            type: String,
+            default: null,
         },
     },
 
@@ -62,10 +54,18 @@ export default {
         };
     },
 
-    props: {
+    computed: {
+        ...mapGetters('locale', ['__']),
+    },
+
+    watch: {
         title: {
-            type: String,
-            default: null,
+            handler() {
+                this.loaded = false;
+                setTimeout(() => {
+                    this.loaded = true;
+                }, 350);
+            },
         },
     },
 };

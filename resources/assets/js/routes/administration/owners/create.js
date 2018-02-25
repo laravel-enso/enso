@@ -7,6 +7,5 @@ export default {
     meta: {
         breadcrumb: 'create',
         title: 'Create Owner',
-        notAnimated: true,
     },
 };

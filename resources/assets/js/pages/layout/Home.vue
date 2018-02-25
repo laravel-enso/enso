@@ -8,16 +8,15 @@
                     color="#dbdbdb"
                     size="large">
                 </overlay>
-                <div class="title is-1 inspiring animated fadeInDown"
-                     v-if="!loading">
-                    {{ meta.quote }}
+                <div v-if="!loading">
+                    <div class="title is-1 inspiring animated fadeInDown">
+                        {{ meta.quote }}
+                    </div>
+                    <button class="animated fadeInRightBig button is-outlined"
+                        @click="$bus.$emit('enter-app')">
+                        {{ __('Enter the application') }}
+                    </button>
                 </div>
-
-                <button class="animated fadeInRightBig button is-outlined"
-                    @click="$emit('enter-app')"
-                    v-if="!loading">
-                    {{ __('Enter the application') }}
-                </button>
             </div>
         </div>
     </section>
@@ -26,7 +25,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 
 export default {
@@ -34,35 +33,34 @@ export default {
 
     components: { Overlay },
 
-    computed: {
-        ...mapState(['meta', 'appIsLoaded']),
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             loading: true,
         };
     },
 
-    watch: {
-        appIsLoaded: {
-            handler: 'endLoadingState',
-        },
+    computed: {
+        ...mapState(['meta']),
+        ...mapState(['isInitialised']),
+        ...mapGetters('locale', ['__']),
     },
 
-    methods: {
-        endLoadingState() {
-            if (this.appIsLoaded) {
+    watch: {
+        isInitialised(initialised) {
+            if (initialised) {
                 setTimeout(() => {
                     this.loading = false;
-                }, 500);
+                }, 250);
             }
         },
     },
 
-    mounted() {
-        this.endLoadingState();
+    created() {
+        this.initialise();
+    },
+
+    methods: {
+        ...mapActions(['initialise']),
     },
 };
 

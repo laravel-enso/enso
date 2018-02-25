@@ -52,6 +52,12 @@ export default {
         },
     },
 
+    data() {
+        return {
+            checkedIds: [],
+        };
+    },
+
     computed: {
         ...mapGetters('locale', ['__']),
         permissionIds() {
@@ -82,14 +88,12 @@ export default {
         },
     },
 
-    data() {
-        return {
-            checkedIds: [],
-        };
-    },
-
     created() {
         this.setCheckedIds();
+    },
+
+    mounted() {
+        this.checkIfEmpty();
     },
 
     methods: {
@@ -136,10 +140,6 @@ export default {
                 self.rolePermissions.push(id);
             });
         },
-    },
-
-    mounted() {
-        this.checkIfEmpty();
     },
 };
 

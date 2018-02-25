@@ -37,9 +37,11 @@ export default {
             default: null,
         },
         min: {
+            type: null,
             required: true,
         },
         max: {
+            type: null,
             required: true,
         },
     },

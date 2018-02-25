@@ -52,12 +52,12 @@
                                     <fa icon="exclamation-triangle"></fa>
                                 </span>
                             </div>
-                            <vue-switch v-if="field.meta.type === 'input' && field.meta.content === 'checkbox'"
-                                v-model="field.value"
+                            <vue-switch v-model="field.value"
                                 size="is-large"
                                 type="is-success"
                                 :disabled="field.meta.disabled || field.meta.readonly"
-                                @click="$emit('update')">
+                                @click="$emit('update')"
+                                v-if="field.meta.type === 'input' && field.meta.content === 'checkbox'">
                             </vue-switch>
                             <vue-select v-if="field.meta.type === 'select'"
                                 :has-error="errors.has(field.name)"
@@ -159,9 +159,8 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
 import VueSwitch from './VueSwitch.vue';

@@ -5,7 +5,7 @@
             <figure class="image is-24x24 logo">
                 <img src="/images/logo.svg"/>
             </figure>
-            {{ appName }}
+            {{ meta.appName }}
         </h3>
         <form class="has-margin-bottom-medium"
             @submit.prevent="submit()">
@@ -102,11 +102,10 @@
 
 <script>
 
+import { mapState } from 'vuex';
 import zxcvbn from 'zxcvbn';
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faEnvelope, faCheck, faExclamationTriangle, faLock,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faEnvelope, faCheck, faExclamationTriangle, faLock } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faEnvelope, faCheck, faExclamationTriangle, faLock);
 
@@ -133,6 +132,7 @@ export default {
     },
 
     computed: {
+        ...mapState(['meta']),
         hasPassword() {
             return this.password !== null && this.password.length;
         },

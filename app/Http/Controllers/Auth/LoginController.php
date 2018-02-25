@@ -45,6 +45,7 @@ class LoginController extends Controller
     {
         return response()->json([
             'auth' => auth()->check(),
+            'csrfToken' => csrf_token(),
         ]);
     }
 

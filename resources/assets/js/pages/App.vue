@@ -4,9 +4,7 @@
         <transition enter-active-class="fadeIn"
             leave-active-class="fadeOut">
             <component :is="component"
-                class="animated"
-                @enter-app="showHome = false"
-                @login="showHome = true; setState()">
+                class="animated">
             </component>
         </transition>
     </div>
@@ -15,7 +13,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import Auth from './layout/Auth.vue';
 import Home from './layout/Home.vue';
 import AppMain from './layout/AppMain.vue';
@@ -27,38 +25,61 @@ export default {
 
     data() {
         return {
-            showHome: false,
+            enterApp: false,
         };
     },
 
     computed: {
-        ...mapGetters('auth', ['isAuth']),
-        ...mapState(['appIsLoaded']),
+        ...mapState(['meta']),
+        ...mapState('auth', ['isAuth', 'lastRoute']),
+        ...mapGetters('locale', ['__']),
         component() {
             if (!this.isAuth) {
                 return 'auth';
             }
 
-            if (this.showHome) {
+            if (!this.enterApp) {
                 return 'home';
             }
 
-            if (this.appIsLoaded) {
-                return 'app-main';
-            }
-
-            return null;
+            return 'app-main';
         },
     },
 
-    beforeMount() {
-        if (this.isAuth) {
-            this.setState();
-        }
+    watch: {
+        isAuth(authenticated) {
+            if (!authenticated) {
+                this.enterApp = false;
+            }
+        },
+    },
+
+    created() {
+        this.$router.afterEach((to) => {
+            document.title = this.component === 'home'
+                ? this.documentTitle('Home')
+                : this.documentTitle(to.meta.title);
+        });
+
+        this.$bus.$on('enter-app', () => {
+            this.enterApp = true;
+
+            if (this.lastRoute) {
+                this.$router.push({ name: this.lastRoute.name, params: this.lastRoute.params });
+                this.setLastRoute(null);
+            }
+        });
     },
 
     methods: {
-        ...mapActions(['setState']),
+        ...mapMutations('auth', ['setLastRoute']),
+        documentTitle(value) {
+            const title = this.meta.extendedDocumentTitle
+                ? `value | ${this.meta.appName}`
+                : value;
+
+            return this.__(title);
+        },
     },
 };
 

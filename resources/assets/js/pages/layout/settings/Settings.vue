@@ -36,13 +36,13 @@ import Tutorial from './Tutorial.vue';
 export default {
     name: 'Settings',
 
+    components: {
+        VueAside, LanguageSelector, ThemeSelector, Tutorial,
+    },
+
     computed: {
         ...mapState(['user']),
         ...mapGetters('locale', ['__']),
-    },
-
-    components: {
-        VueAside, LanguageSelector, ThemeSelector, Tutorial,
     },
 
     methods: {

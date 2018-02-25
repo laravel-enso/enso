@@ -25,14 +25,14 @@ import ChartCard from '../../components/enso/charts/ChartCard.vue';
 export default {
     components: { ChartCard, PageHeader },
 
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
-
     data() {
         return {
             grid: [],
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     created() {

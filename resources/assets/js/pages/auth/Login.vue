@@ -5,7 +5,7 @@
             <figure class="image is-24x24 logo">
                 <img src="/images/logo.svg"/>
             </figure>
-            {{ appName }}
+            {{ meta.appName }}
         </h3>
         <form class="has-margin-bottom-medium"
             @submit.prevent="submit()">
@@ -82,11 +82,9 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faEnvelope, faCheck, faExclamationTriangle, faLock, faUser } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add([
     faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
@@ -94,17 +92,6 @@ fontawesome.library.add([
 
 export default {
     name: 'Login',
-
-    props: {
-        appName: {
-            type: String,
-            required: true,
-        },
-    },
-
-    computed: {
-        ...mapGetters('auth', ['lastRoute']),
-    },
 
     data() {
         return {
@@ -115,6 +102,11 @@ export default {
             hasErrors: false,
             isSuccessful: false,
         };
+    },
+
+    computed: {
+        ...mapState(['meta']),
+        ...mapState('auth', ['isInitialised']),
     },
 
     watch: {
@@ -131,45 +123,39 @@ export default {
     },
 
     methods: {
-        ...mapActions('auth', ['login']),
+        ...mapMutations('auth', ['login']),
         submit() {
             this.loading = true;
             this.isSuccessful = false;
             this.hasErrors = false;
 
-            axios.post('/api/login', { email: this.email, password: this.password }).then(() => {
-                this.loading = false;
-                this.isSuccessful = true;
-                setTimeout(() => {
-                    this.login();
-                    this.$emit('login');
+            axios.post('/api/login', { email: this.email, password: this.password })
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.isSuccessful = true;
+                    setTimeout(() => {
+                        this.login();
+                        this.$router.push({ path: '/' });
+                        this.$store.commit('setCsrfToken', data.csrfToken);
+                    }, 300);
+                }).catch((error) => {
+                    this.loading = false;
+                    this.hasErrors = true;
 
-                    if (!this.lastRoute) {
-                        this.$router.replace('/');
+                    const { status, data } = error.response;
+
+                    if (status === 401) {
+                        this.$toastr.error(data.message);
                         return;
                     }
 
-                    this.$router.replace({ name: this.lastRoute });
-                    this.$store.commit('auth/setLastRoute', null);
-                }, 1000);
-            }).catch((error) => {
-                this.loading = false;
-                this.hasErrors = true;
+                    if (status === 422) {
+                        this.reportLoginError(data);
+                        return;
+                    }
 
-                const { status, data } = error.response;
-
-                if (status === 401) {
-                    this.$toastr.error(data.message);
-                    return;
-                }
-
-                if (status === 422) {
-                    this.reportLoginError(data);
-                    return;
-                }
-
-                throw error;
-            });
+                    throw error;
+                });
         },
         reportLoginError(data) {
             if (data.errors) {

@@ -39,7 +39,7 @@
             </card-footer-item>
             <card-footer-item>
                 <popover @confirm="$emit('delete')">
-                    <a>{{__('delete')}}</a>
+                    <a>{{ __('delete') }}</a>
                 </popover>
             </card-footer-item>
         </card-footer>
@@ -51,9 +51,8 @@
 
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
-import {
-    faCheck, faTimes, faEnvelope, faPhone, faStickyNote,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faCheck, faTimes, faEnvelope, faPhone, faStickyNote }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
