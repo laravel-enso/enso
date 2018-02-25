@@ -1,7 +1,8 @@
 ## Enso Changelog
 
 ### 2.1.33
-Major refactor for routing.
+Vue Routing refactor.
+Vue files refactor to be compliant with eslint@4.3.0
 Fixes #34, #38.
 Renames init route `getAppName` => `getMeta`
 
