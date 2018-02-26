@@ -1,4 +1,6 @@
 ## Enso Changelog
+### 2.1.35
+Adds `is_active` to languages table. A command will run "post-install" / "post-update".
 
 ### 2.1.34
 Fixes the z-index problem for select / filters clear control.
