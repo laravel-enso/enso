@@ -85,7 +85,6 @@ export default {
         width: 22px;
         display: block;
         cursor: pointer;
-        z-index: 1;
     }
 
     .clear:after, .clear:before {

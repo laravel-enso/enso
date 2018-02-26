@@ -3,8 +3,8 @@
     <div class="vue-select">
         <multiselect :value="value"
             :class="{ 'has-error': hasError }"
-            searchable
             allow-empty
+            searchable
             :disabled="disabled"
             :internal-search="!isServerSide"
             :multiple="multiple"
@@ -31,8 +31,8 @@
             <template slot="clear"
                 v-if="!disabled">
                 <div class="multiselect__clear"
-                    v-if="hasSelection"
-                    @mousedown.prevent.stop="clear()">
+                    @mousedown.prevent.stop="clear()"
+                    v-if="hasSelection">
                 </div>
             </template>
         </multiselect>
@@ -286,6 +286,7 @@ export default {
                     margin-top: 2px;
                     border-bottom: none;
                     font-size: 16px;
+                    width: calc(100% - 10px);
                 }
 
                 .multiselect__single {
@@ -318,7 +319,6 @@ export default {
                 width: 22px;
                 display: block;
                 cursor: pointer;
-                z-index: 1;
 
                 &:before {
                     transform: rotate(45deg);

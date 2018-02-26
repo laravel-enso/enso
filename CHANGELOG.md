@@ -1,5 +1,8 @@
 ## Enso Changelog
 
+### 2.1.34
+Fixes the z-index problem for select / filters clear control.
+
 ### 2.1.33
 Vue Routing refactor.
 Vue files refactor to be compliant with eslint@4.3.0

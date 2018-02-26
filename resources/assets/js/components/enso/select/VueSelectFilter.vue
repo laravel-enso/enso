@@ -4,10 +4,9 @@
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>
-        <vue-select
-            v-on="$listeners"
+        <vue-select :value="value"
             v-bind="$attrs"
-            :value="value">
+            v-on="$listeners">
         </vue-select>
     </div>
 
