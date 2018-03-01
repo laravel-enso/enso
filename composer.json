@@ -65,7 +65,11 @@
             "php artisan package:discover"
         ],
         "post-update-cmd": [
-            "php artisan vendor:publish --force --tag='enso-assets'"
+            "php artisan vendor:publish --force --tag='enso-assets'",
+            "php artisan enso:update-localisation"
+        ],
+        "post-install-cmd": [
+            "php artisan enso:update-localisation"
         ]
     },
     "config": {
