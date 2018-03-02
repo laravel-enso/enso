@@ -8,7 +8,6 @@
                     <vue-select :options="importTypes"
                         v-model="importType"
                         @input="getTemplate"
-                        key-map="string"
                         ref="importTypeSelect">
                     </vue-select>
                 </div>
@@ -245,7 +244,7 @@ export default {
             showModal: false,
             loadingTemplate: false,
             importing: false,
-            importTypes: {},
+            importTypes: [],
         };
     },
 

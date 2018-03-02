@@ -70,7 +70,6 @@ export default {
 
     .footer {
         margin-left: 180px;
-        z-index: 1;
     }
 
     @media screen and (max-width: 1023px) {

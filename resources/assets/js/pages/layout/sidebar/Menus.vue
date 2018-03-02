@@ -16,7 +16,7 @@
                 <span class="icon is-small has-margin-right-small">
                     <fa :icon="menu.icon" fixed-width></fa>
                 </span>
-                {{ menu.name }}
+                {{ __(menu.name) }}
                 <span class="icon is-small angle is-pulled-right"
                     :aria-expanded="menu.expanded">
                     <fa icon="angle-up" fixed-width></fa>

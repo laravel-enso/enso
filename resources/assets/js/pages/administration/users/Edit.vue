@@ -9,7 +9,6 @@
                 <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select name="owner_id"
                         v-model="field.value"
-                        :key-map="field.meta.keyMap"
                         :has-error="errors.has(field.name)"
                         @input="pivotParams.owners.id=$event;errors.clear(field.name)"
                         :source="field.meta.source">
@@ -19,7 +18,6 @@
                     <vue-select name="role_id"
                         :pivot-params="pivotParams"
                         v-model="field.value"
-                        :key-map="field.meta.keyMap"
                         :has-error="errors.has(field.name)"
                         @input="errors.clear(field.name);"
                         :source="field.meta.source">
