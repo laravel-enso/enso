@@ -1,5 +1,12 @@
 ## Enso Changelog
 
+### 2.2.0
+Removes vue-multiselect dependency. VueSelect has been rebuild from scratch and is now bulma themed. The option list builder has been upgraded too. Helpers/Enum has now an select() method that maps the $data to the expected format. VueSelect now uses an array of objects with the following format: [{id: 3, name: 'Label'}]. Select docs will be updated soon.
+Upgrades the whole project for VueSelect, including the example page.
+Fixes laravel-enso/vuedatatable#53
+Fixes laravel-enso/enso#54
+Fixes laravel-core/core#41
+
 ### 2.1.35
 Adds `is_active` to languages table. A command will run "post-install" / "post-update".
 Footer is now customizable larvel-enso/enso#52.

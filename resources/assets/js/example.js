@@ -45,13 +45,13 @@ new Vue({
                 { value: true, label: 'check', class: 'has-text-success' },
                 { value: false, label: 'times', class: 'has-text-danger' },
             ],
-            seniorityOptions: {
-                1: 'Assistant',
-                2: 'Associate',
-                3: 'Staff Member',
-                4: 'Senior',
-                5: 'Partner',
-            },
+            seniorityOptions: [
+                { id: 1, name: 'Assistant' },
+                { id: 2, name: 'Associate' },
+                { id: 3, name: 'Staff Member' },
+                { id: 4, name: 'Senior' },
+                { id: 5, name: 'Partner' },
+            ],
             filters: {
                 examples: {
                     is_active: null,

@@ -56,9 +56,7 @@ export default {
 
     created() {
         this.$router.afterEach((to) => {
-            document.title = this.component === 'home'
-                ? this.documentTitle('Home')
-                : this.documentTitle(to.meta.title);
+            document.title = this.documentTitle(to.meta.title);
         });
 
         this.$bus.$on('enter-app', () => {
@@ -75,7 +73,7 @@ export default {
         ...mapMutations('auth', ['setLastRoute']),
         documentTitle(value) {
             const title = this.meta.extendedDocumentTitle
-                ? `value | ${this.meta.appName}`
+                ? `${value} | ${this.meta.appName}`
                 : value;
 
             return this.__(title);

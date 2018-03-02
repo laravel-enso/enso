@@ -117,7 +117,7 @@ export default {
     data() {
         return {
             langFile: {},
-            locales: {},
+            locales: [],
             selectedLocale: null,
             query: null,
             boxHeight: 0,

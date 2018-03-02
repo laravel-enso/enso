@@ -1,41 +1,74 @@
 <template>
 
-    <div class="vue-select">
-        <multiselect :value="value"
-            :class="{ 'has-error': hasError }"
-            allow-empty
-            searchable
-            :disabled="disabled"
-            :internal-search="!isServerSide"
-            :multiple="multiple"
-            :taggable="taggable"
-            :clear-on-select="!multiple"
-            :close-on-select="!multiple"
-            :select-label="__(labels.select)"
-            :deselect-label="__(labels.deselect)"
-            :selected-label="__(labels.selected)"
-            :placeholder="__(placeholder)"
-            :loading="loading"
-            :options-limit="optionsLimit"
-            :options="optionKeys"
-            :custom-label="customLabel"
-            @search-change="query=$event;getOptions()"
-            @tag="$emit('tag', $event)"
-            @input="$emit('input', $event)">
-            <span slot="noResult">
-                {{ __(labels.noResult) }}
-            </span>
-            <template slot="option" slot-scope="{ option }">
-                <span v-html="$options.filters.highlight(optionList[option], query)"></span>
-            </template>
-            <template slot="clear"
-                v-if="!disabled">
-                <div class="multiselect__clear"
-                    @mousedown.prevent.stop="clear()"
-                    v-if="hasSelection">
+    <div :class="['dropdown', { 'is-active': dropdown }]"
+        :disabled="disabled"
+        v-click-outside="hideDropdown">
+        <div :class="['dropdown-trigger', { 'is-danger': hasError }]">
+            <div class="button"
+                tabindex="0"
+                @click="showDropdown"
+                @focus="showDropdown">
+                <div class="select-value">
+                    <span v-if="multiple">
+                        <tag v-for="(option, index) in selected"
+                            :label="option[label]"
+                            :key="index"
+                            @remove="remove(option)">
+                        </tag>
+                    </span>
+                    <span v-if="!dropdown && !(multiple && hasSelection)">
+                        {{ hasSelection
+                            ? selected
+                            : (optionList.length > 0 ? placeholder : labels.noOptions)
+                        }}
+                    </span>
+                    <input class="input select-input" type="text"
+                        v-focus
+                        :placeholder="placeholder"
+                        :v-model="query"
+                        @input="search"
+                        v-if="dropdown"
+                        @keydown.esc="hideDropdown"
+                        @keydown.down="onKeyDown"
+                        @keydown.up="onKeyUp"
+                        @keydown.tab="hideDropdown"
+                        @keydown.enter.prevent="hit(optionList[position][trackBy])">
+                    <span class="is-loading"
+                        v-if="loading">
+                    </span>
+                    <a class="delete is-small"
+                        v-if="!loading && hasSelection"
+                        @mousedown.prevent.self="clear">
+                    </a>
+                    <span class="icon is-small angle"
+                        :aria-hidden="dropdown">
+                        <fa icon="angle-up"></fa>
+                    </span>
                 </div>
-            </template>
-        </multiselect>
+            </div>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                <a class="dropdown-item"
+                    v-for="(option, index) in filteredOptions"
+                    :key="index"
+                    :class="{ 'is-active': position === index }"
+                    @mousemove="position = index"
+                    @click="hit(option[trackBy])">
+                    <span v-html="highlight(option[label])"></span>
+                    <span :class="[
+                        'label tag', isSelected(option) ? 'is-warning' : 'is-success'
+                    ]" v-if="index === position">
+                        <span v-if="isSelected(option)">{{ labels.deselect }}</span>
+                        <span v-else>{{ labels.select }}</span>
+                    </span>
+                    <span class="icon is-small selected has-text-success"
+                        v-else-if="isSelected(option)">
+                        <fa icon="check"></fa>
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -44,53 +77,50 @@
 
 import { debounce } from 'lodash';
 import { mapGetters } from 'vuex';
-import Multiselect from 'vue-multiselect';
+import vClickOutside from 'v-click-outside';
+import fontawesome from '@fortawesome/fontawesome';
+import { faCheck, faAngleUp }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
+import Tag from './Tag.vue';
+
+fontawesome.library.add([faCheck, faAngleUp]);
 
 export default {
-    components: { Multiselect },
+    name: 'VueSelect',
 
-    filters: {
-        highlight(option, query) {
-            if (!option) {
-                return option;
-            }
-
-            query.split(' ').filter(word => word.length).forEach((word) => {
-                option = option.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
-            });
-
-            return option;
+    directives: {
+        clickOutside: vClickOutside.directive,
+        focus: {
+            inserted: el => el.focus(),
         },
     },
 
+    components: { Tag },
+
     props: {
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
         value: {
-            type: [Array, String, Number],
-            default: null,
+            type: null,
+            default: this.multiple ? [] : null,
         },
         source: {
             type: String,
             default: null,
         },
         options: {
-            type: Object,
+            type: Array,
             default() {
-                return {};
+                return [];
             },
         },
         optionsLimit: {
             type: Number,
             default: 100,
         },
-        keyMap: {
-            type: String,
-            default: 'number',
-        },
         disabled: {
-            type: Boolean,
-            default: false,
-        },
-        multiple: {
             type: Boolean,
             default: false,
         },
@@ -121,11 +151,20 @@ export default {
         labels: {
             type: Object,
             default: () => ({
-                selected: 'Selected',
-                select: 'Press enter to select',
-                deselect: 'Press enter to deselect',
-                noResult: 'No Elements Found',
+                selected: 'selected',
+                select: 'select',
+                deselect: 'deselect',
+                noOptions: 'No options available',
             }),
+        },
+
+        trackBy: {
+            type: String,
+            default: 'id',
+        },
+        label: {
+            type: String,
+            default: 'name',
         },
     },
 
@@ -134,6 +173,8 @@ export default {
             optionList: this.options,
             loading: false,
             query: '',
+            dropdown: false,
+            position: null,
         };
     },
 
@@ -143,54 +184,73 @@ export default {
             return this.source !== null;
         },
         hasSelection() {
-            return (this.multiple && this.value.length) || (!this.multiple && this.value !== null);
+            return (this.multiple && this.value.length !== 0)
+                || (!this.multiple && this.value !== null);
         },
-        optionKeys() {
-            return this.keyMap === 'number'
-                ? Object.keys(this.optionList).map(Number)
-                : Object.keys(this.optionList);
+        selected() {
+            if (!this.multiple) {
+                return this.optionList.find(option =>
+                    option[this.trackBy] === this.value)[this.label];
+            }
+
+            return this.optionList.filter(option =>
+                this.value.find(item => item === option[this.trackBy]));
+        },
+        selectedIndex() {
+            return this.optionList.findIndex(option => option[this.trackBy] === this.value);
+        },
+        selectedOption() {
+            return this.selectedIndex >= 0
+                ? this.optionList[this.selectedIndex][this.label]
+                : null;
+        },
+        filteredOptions() {
+            return this.query
+                ? this.optionList.filter(option =>
+                    option[this.label].toLowerCase()
+                        .indexOf(this.query.toLowerCase()) >= 0)
+                : this.optionList;
         },
     },
 
     watch: {
-        options: {
-            handler() {
-                this.optionList = this.options;
-            },
-            deep: true,
-        },
         params: {
             handler() {
-                this.getOptions();
+                this.getData();
             },
             deep: true,
         },
         pivotParams: {
             handler() {
-                this.getOptions();
+                this.getData();
             },
             deep: true,
         },
         customParams: {
             handler() {
-                this.getOptions();
+                this.getData();
             },
             deep: true,
+        },
+        options: {
+            handler() {
+                this.optionList = this.options;
+            },
         },
     },
 
     created() {
-        this.getOptions = debounce(this.getOptions, 500);
+        this.getData = debounce(this.getData, 500);
     },
 
     mounted() {
         if (this.isServerSide) {
-            this.getOptions();
+            this.getData();
         }
     },
 
     methods: {
-        getOptions() {
+        getData() {
             if (!this.isServerSide) {
                 return;
             }
@@ -203,7 +263,7 @@ export default {
                 this.processOptions(response);
                 this.loading = false;
             }).catch((error) => {
-                this.loading = true;
+                this.loading = false;
                 this.handleError(error);
             });
         },
@@ -217,25 +277,26 @@ export default {
                 limit: this.optionsLimit,
             };
         },
-        processOptions(response) {
-            this.optionList = response.data;
+        processOptions({ data }) {
+            this.optionList = data;
 
             if (!this.query && !this.valueIsMatched()) {
                 this.clear();
             }
+
+            if (this.optionList.length === 0) {
+                this.hideDropdown();
+            }
         },
         valueIsMatched() {
-            const self = this;
-
             if (!this.multiple) {
-                return this.optionKeys.filter(option => option === self.value).length > 0;
+                return this.optionList
+                    .filter(option => option[this.trackBy] === this.value).length > 0;
             }
 
-            return this.optionKeys.filter(option =>
-                self.value.filter(val => val === option).length > 0).length > 0;
-        },
-        customLabel(option) {
-            return this.optionList[option];
+            return this.optionList.filter(option =>
+                this.value
+                    .filter(val => val === option[this.trackBy]).length > 0).length > 0;
         },
         update() {
             this.$nextTick(() => {
@@ -245,114 +306,185 @@ export default {
         clear() {
             this.$emit('input', this.multiple ? [] : null);
         },
+        hit(value) {
+            if (!this.multiple) {
+                this.hideDropdown();
+                this.$emit('input', this.value === value ? null : value);
+                return;
+            }
+
+            const newValue = this.value;
+            const index = newValue.findIndex(option => option === value);
+            if (index >= 0) {
+                newValue.splice(index, 1);
+            } else {
+                newValue.push(value);
+            }
+
+            this.$el.querySelector('input').focus();
+            this.$emit('input', newValue);
+        },
+        showDropdown() {
+            if (this.optionList.length === 0) {
+                return;
+            }
+            this.dropdown = true;
+        },
+        hideDropdown() {
+            this.query = null;
+            this.dropdown = false;
+            this.position = null;
+        },
+        highlight(label) {
+            return label.replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>');
+        },
+        search(event) {
+            this.query = event.target.value;
+            this.getData();
+        },
+        remove(option) {
+            const index = this.value.findIndex(item => item[this.trackBy] === option[this.trackBy]);
+            this.value.splice(index, 1);
+        },
+        isSelected(option) {
+            return this.multiple
+                ? this.value.findIndex(item => item === option[this.trackBy]) >= 0
+                : this.value !== null && this.value === option[this.trackBy];
+        },
+        onKeyDown() {
+            if (this.position === this.optionList.length - 1) {
+                return;
+            }
+
+            this.position = this.position !== null ? ++this.position : 0;
+        },
+        onKeyUp() {
+            if (this.position === 0) {
+                return;
+            }
+
+            this.position = this.position !== null ? --this.position : null;
+        },
     },
 };
 
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style lang="scss" scoped>
 
-<style lang="scss">
+    .icon.angle {
+        transition: transform .300s ease;
 
-    .vue-select {
-        .multiselect {
-            min-height: 36px;
+        &[aria-hidden="true"] {
+            transform: rotate(180deg);
+        }
+    }
 
-            &.has-error .multiselect__tags {
-                border: 1px solid #e50800;
-            }
+    .dropdown {
+        position: relative;
+        width: 100%;
 
-            .multiselect__select {
-                width: 34px;
-                height: 34px;
+        .dropdown-trigger {
+            width: 100%;
 
-                &:before {
-                    top: 70%;
+            &.is-danger {
+                .button {
+                    border-color: #e50800;
+                    border-top-color: rgb(229, 8, 0);
+                    border-right-color: rgb(229, 8, 0);
+                    border-bottom-color: rgb(229, 8, 0);
+                    border-left-color: rgb(229, 8, 0);
                 }
             }
 
-            .multiselect__tags {
-                min-height: 36px;
-                padding: 4px 40px 0 4px;
-                border-radius: 3px;
+            .button {
+                justify-content: flex-start;
+                width: 100%;
+                min-height: 2.25em;
+                height: auto;
+                align-items: baseline;
+                padding: calc(.375em - 1px) calc(.625em - 1px);
+                padding-top: calc(0.375em - 1px);
+                padding-right: calc(0.625em - 1px);
+                padding-bottom: calc(0.375em - 1px);
+                padding-left: calc(0.625em - 1px);
 
-                &:hover {
-                    border-color: #b5b5b5;
-                }
+                .select-value {
+                    max-width: calc(100% - 2.5em);
+                    white-space: normal;
+                    text-align: left;
 
-                .multiselect__input {
-                    box-shadow: none;
-                    margin-bottom: 4px;
-                    margin-top: 2px;
-                    border-bottom: none;
-                    font-size: 16px;
-                    width: calc(100% - 10px);
-                }
+                    .select-input {
+                        border: 0;
+                        height: 1.5em;
+                        box-shadow: unset;
+                        -webkit-box-shadow: unset;
+                        width: fit-content;
+                        padding: unset;
+                    }
 
-                .multiselect__single {
-                    font-size: 16px;
-                }
+                    .angle {
+                        position: absolute;
+                        top: 0.25rem;
+                        right: 0.6rem;
+                    }
 
-                .multiselect__spinner {
-                    height: 33px;
-                    width: 34px;
-                }
+                    .delete {
+                        position: absolute;
+                        right: 1.7rem;
+                        top: 0.55rem;
+                    }
 
-                .multiselect__tag {
-                    font-size: 16px;
-                    border-radius: 3px;
-                    margin-bottom: 4px;
-                    padding: 5px 26px 5px 10px;
-
-                    .multiselect__tag-icon {
-                        border-radius: 3px;
-                        line-height: 24px;
+                    .is-loading {
+                        -webkit-animation: spinAround .5s infinite linear;
+                        animation: spinAround .5s infinite linear;
+                        border: 2px solid #dbdbdb;
+                        border-radius: 290486px;
+                        border-right-color: transparent;
+                        border-top-color: transparent;
+                        content: "";
+                        display: block;
+                        height: 1em;
+                        position: relative;
+                        width: 1em;
+                        position: absolute!important;
+                        right: 1.7rem;
+                        top: .55em;
+                        z-index: 4;
                     }
                 }
             }
+        }
 
-            .multiselect__clear {
-                position: absolute;
-                top: 7px;
-                right: 30px;
-                height: 22px;
-                width: 22px;
-                display: block;
-                cursor: pointer;
+        .control {
+            width: 100%;
+        }
 
-                &:before {
-                    transform: rotate(45deg);
-                }
+        .dropdown-menu {
+            width: 100%;
 
-                &:after {
-                    transform: rotate(-45deg);
-                }
+            .dropdown-content {
+                max-height: 13rem;
+                overflow-y: auto;
 
-                &:after, &:before {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    width: 1px;
-                    height: 16px;
-                    background: #aaa;
-                    top: 3px;
-                    right: 10px;
-                }
-            }
+                a.dropdown-item {
+                    text-overflow: ellipsis;
+                    overflow-x: hidden;
+                    padding-right: 2rem;
 
-            .multiselect__content-wrapper {
-                border-bottom-left-radius: 3px;
-                border-bottom-right-radius: 3px;
+                    .label.tag {
+                        position: absolute;
+                        padding: 0.3rem;
+                        height: 1.3rem;
+                        z-index: 1;
+                        right: 1rem;
+                    }
 
-                .multiselect__content {
-                    font-size: 16px;
-                }
-
-                .multiselect__option,
-                .multiselect__option:after {
-                    line-height: 16px;
-                    padding: 10px;
-                    min-height: 36px;
+                    .icon.selected {
+                        position: absolute;
+                        z-index: 1;
+                        right: 1rem;
+                    }
                 }
             }
         }
