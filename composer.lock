@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "249fe17a816a6a98b0984c7240f35030",
+    "content-hash": "690c5d12f7a9111436f41e5893401714",
     "packages": [
         {
             "name": "box/spout",
@@ -2332,16 +2332,16 @@
         },
         {
             "name": "laravel-enso/permissionmanager",
-            "version": "2.1.26",
+            "version": "2.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "dd308e4cc20446f55663d2983046b08375111974"
+                "reference": "39dfe33ae71da5c03d220ed429dc79962faf7722"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/dd308e4cc20446f55663d2983046b08375111974",
-                "reference": "dd308e4cc20446f55663d2983046b08375111974",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/39dfe33ae71da5c03d220ed429dc79962faf7722",
+                "reference": "39dfe33ae71da5c03d220ed429dc79962faf7722",
                 "shasum": ""
             },
             "require": {
@@ -2391,7 +2391,7 @@
                 "laravel-permissions",
                 "permission-manager"
             ],
-            "time": "2018-03-02T20:50:58+00:00"
+            "time": "2018-03-03T09:58:05+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
@@ -2505,16 +2505,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "d1ab8424bd85d600c34f405c669bb5050cb55909"
+                "reference": "224881ddc0779e1e8ba79f212b09d9f653757d31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/d1ab8424bd85d600c34f405c669bb5050cb55909",
-                "reference": "d1ab8424bd85d600c34f405c669bb5050cb55909",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/224881ddc0779e1e8ba79f212b09d9f653757d31",
+                "reference": "224881ddc0779e1e8ba79f212b09d9f653757d31",
                 "shasum": ""
             },
             "require": {
@@ -2555,7 +2555,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-03-02T22:00:41+00:00"
+            "time": "2018-03-03T09:57:29+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
@@ -5165,16 +5165,16 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "34659fcb48ef35fc27c09ded46ac79b25ee95d2f"
+                "reference": "e4cbf937b422bd2ce5ff9929e77592eb8188dbe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/34659fcb48ef35fc27c09ded46ac79b25ee95d2f",
-                "reference": "34659fcb48ef35fc27c09ded46ac79b25ee95d2f",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/e4cbf937b422bd2ce5ff9929e77592eb8188dbe6",
+                "reference": "e4cbf937b422bd2ce5ff9929e77592eb8188dbe6",
                 "shasum": ""
             },
             "require": {
@@ -5210,7 +5210,7 @@
                 "printer",
                 "result-printer"
             ],
-            "time": "2018-02-04T21:48:07+00:00"
+            "time": "2018-03-02T23:02:03+00:00"
         },
         {
             "name": "doctrine/instantiator",

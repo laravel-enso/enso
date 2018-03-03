@@ -26,11 +26,11 @@
                         v-focus
                         :placeholder="placeholder"
                         :v-model="query"
-                        @input="search"
+                        @input="getData()"
                         v-if="dropdown"
                         @keydown.esc="hideDropdown"
-                        @keydown.down="onKeyDown"
-                        @keydown.up="onKeyUp"
+                        @keydown.down="keyDown"
+                        @keydown.up="keyUp"
                         @keydown.tab="hideDropdown"
                         @keydown.enter.prevent="hit(optionList[position][trackBy])">
                     <span class="is-loading"
@@ -67,6 +67,10 @@
                         <fa icon="check"></fa>
                     </span>
                 </a>
+                <a class="dropdown-item"
+                    v-if="filteredOptions.length === 0">
+                    {{ labels.noResults }}
+                </a>
             </div>
         </div>
     </div>
@@ -102,10 +106,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        value: {
-            type: null,
-            default: this.multiple ? [] : null,
-        },
         source: {
             type: String,
             default: null,
@@ -115,6 +115,18 @@ export default {
             default() {
                 return [];
             },
+        },
+        trackBy: {
+            type: String,
+            default: 'id',
+        },
+        label: {
+            type: String,
+            default: 'name',
+        },
+        value: {
+            type: null,
+            default: this.multiple ? [] : null,
         },
         optionsLimit: {
             type: Number,
@@ -155,16 +167,8 @@ export default {
                 select: 'select',
                 deselect: 'deselect',
                 noOptions: 'No options available',
+                noResults: 'No search results found',
             }),
-        },
-
-        trackBy: {
-            type: String,
-            default: 'id',
-        },
-        label: {
-            type: String,
-            default: 'name',
         },
     },
 
@@ -183,11 +187,21 @@ export default {
         isServerSide() {
             return this.source !== null;
         },
+        filteredOptions() {
+            return this.query
+                ? this.optionList.filter(option =>
+                    option[this.label].toLowerCase()
+                        .indexOf(this.query.toLowerCase()) >= 0)
+                : this.optionList;
+        },
         hasSelection() {
             return (this.multiple && this.value.length !== 0)
                 || (!this.multiple && this.value !== null);
         },
         selected() {
+            if (this.optionList.length === 0) {
+                return null;
+            }
             if (!this.multiple) {
                 return this.optionList.find(option =>
                     option[this.trackBy] === this.value)[this.label];
@@ -196,24 +210,15 @@ export default {
             return this.optionList.filter(option =>
                 this.value.find(item => item === option[this.trackBy]));
         },
-        selectedIndex() {
-            return this.optionList.findIndex(option => option[this.trackBy] === this.value);
-        },
-        selectedOption() {
-            return this.selectedIndex >= 0
-                ? this.optionList[this.selectedIndex][this.label]
-                : null;
-        },
-        filteredOptions() {
-            return this.query
-                ? this.optionList.filter(option =>
-                    option[this.label].toLowerCase()
-                        .indexOf(this.query.toLowerCase()) >= 0)
-                : this.optionList;
-        },
     },
 
     watch: {
+        options: {
+            handler() {
+                this.optionList = this.options;
+            },
+            deep: true,
+        },
         params: {
             handler() {
                 this.getData();
@@ -232,21 +237,11 @@ export default {
             },
             deep: true,
         },
-        options: {
-            handler() {
-                this.optionList = this.options;
-            },
-        },
     },
 
     created() {
         this.getData = debounce(this.getData, 500);
-    },
-
-    mounted() {
-        if (this.isServerSide) {
-            this.getData();
-        }
+        this.getData();
     },
 
     methods: {
@@ -274,7 +269,7 @@ export default {
                 customParams: this.customParams,
                 query: this.query,
                 value: this.value,
-                limit: this.optionsLimit,
+                optionsLimit: this.optionsLimit,
             };
         },
         processOptions({ data }) {
@@ -282,10 +277,6 @@ export default {
 
             if (!this.query && !this.valueIsMatched()) {
                 this.clear();
-            }
-
-            if (this.optionList.length === 0) {
-                this.hideDropdown();
             }
         },
         valueIsMatched() {
@@ -298,13 +289,16 @@ export default {
                 this.value
                     .filter(val => val === option[this.trackBy]).length > 0).length > 0;
         },
-        update() {
-            this.$nextTick(() => {
-                this.$emit('input', this.value);
-            });
+        showDropdown() {
+            if (this.optionList.length === 0) {
+                return;
+            }
+            this.dropdown = true;
         },
-        clear() {
-            this.$emit('input', this.multiple ? [] : null);
+        hideDropdown() {
+            this.query = null;
+            this.dropdown = false;
+            this.position = null;
         },
         hit(value) {
             if (!this.multiple) {
@@ -324,26 +318,15 @@ export default {
             this.$el.querySelector('input').focus();
             this.$emit('input', newValue);
         },
-        showDropdown() {
-            if (this.optionList.length === 0) {
-                return;
-            }
-            this.dropdown = true;
-        },
-        hideDropdown() {
-            this.query = null;
-            this.dropdown = false;
-            this.position = null;
+        clear() {
+            this.$emit('input', this.multiple ? [] : null);
         },
         highlight(label) {
             return label.replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>');
         },
-        search(event) {
-            this.query = event.target.value;
-            this.getData();
-        },
         remove(option) {
-            const index = this.value.findIndex(item => item[this.trackBy] === option[this.trackBy]);
+            const index = this.value
+                .findIndex(item => item[this.trackBy] === option[this.trackBy]);
             this.value.splice(index, 1);
         },
         isSelected(option) {
@@ -351,19 +334,47 @@ export default {
                 ? this.value.findIndex(item => item === option[this.trackBy]) >= 0
                 : this.value !== null && this.value === option[this.trackBy];
         },
-        onKeyDown() {
+        keyDown() {
             if (this.position === this.optionList.length - 1) {
                 return;
             }
 
-            this.position = this.position !== null ? ++this.position : 0;
+            this.position = this.position !== null
+                ? ++this.position
+                : 0;
+
+            this.scroll();
         },
-        onKeyUp() {
+        keyUp() {
             if (this.position === 0) {
                 return;
             }
 
-            this.position = this.position !== null ? --this.position : null;
+            this.position = this.position !== null
+                ? --this.position
+                : null;
+
+            this.scroll();
+        },
+        scroll() {
+            const dropdown = this.dropdownSelector();
+            const option = this.optionSelector();
+            if (option.offsetTop < dropdown.scrollTop) {
+                dropdown.scrollTop -= (dropdown.scrollTop - option.offsetTop);
+                return;
+            }
+
+            const dropdownBottom = dropdown.scrollTop + dropdown.clientHeight;
+            const optionBottom = option.offsetTop + option.clientHeight;
+            if (optionBottom > dropdownBottom) {
+                dropdown.scrollTop += (optionBottom - dropdownBottom);
+            }
+        },
+        dropdownSelector() {
+            return this.$el.querySelector('.dropdown-content');
+        },
+        optionSelector() {
+            return this.$el.querySelectorAll('.dropdown-item')[this.position];
         },
     },
 };
