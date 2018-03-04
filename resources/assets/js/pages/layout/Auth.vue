@@ -28,7 +28,7 @@ export default {
     },
 
     created() {
-        if (!this.$route || !this.$route.meta.guestGuard) {
+        if (!this.$route.meta.guestGuard) {
             this.$router.push({ name: 'login' });
         }
 

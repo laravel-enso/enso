@@ -111,10 +111,7 @@ export default {
         },
         customRender: {
             type: Function,
-            default: (row, column) => {
-                this.$toastr.warning(`'Custom render function is missing for column: ${column.name}'`);
-                return row[column.name];
-            },
+            default: (row, column) => row[column.name],
         },
         i18n: {
             type: Function,

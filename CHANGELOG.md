@@ -1,4 +1,7 @@
 ## Enso Changelog
+### 2.2.2
+Packages updates. Bug fixes
+
 ### 2.2.1
 Fixes bug in VueSelect & adds auto scroll when using keyboard navigation.
 

@@ -335,7 +335,7 @@ export default {
                 : this.value !== null && this.value === option[this.trackBy];
         },
         keyDown() {
-            if (this.position === this.optionList.length - 1) {
+            if (this.loading || this.position === this.optionList.length - 1) {
                 return;
             }
 
@@ -346,14 +346,11 @@ export default {
             this.scroll();
         },
         keyUp() {
-            if (this.position === 0) {
+            if (this.loading || !this.position) {
                 return;
             }
 
-            this.position = this.position !== null
-                ? --this.position
-                : null;
-
+            this.position--;
             this.scroll();
         },
         scroll() {

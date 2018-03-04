@@ -20,6 +20,6 @@ class Owner extends Owners
 
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany(User::class);
     }
 }
