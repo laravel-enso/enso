@@ -331,6 +331,7 @@ export default {
 
                 if (status === 555) {
                     this.$toastr.error(data.message);
+                    return;
                 }
 
                 this.handleError(error);
@@ -342,7 +343,7 @@ export default {
                 columns: this.template.columns,
                 meta: {
                     start: 0,
-                    length: this.body.count,
+                    length: this.body.filtered,
                     sort: this.template.sort,
                     enum: this.template.enum,
                     date: this.template.date,
