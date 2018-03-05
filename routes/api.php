@@ -37,3 +37,41 @@ Route::middleware(['auth'])
         Route::get('getBubbleChartData', 'DashboardController@getBubbleChartData')
             ->name('getBubbleChartData');
     });
+
+Route::middleware(['auth', 'core'])
+    ->group(function () {
+        Route::namespace('Administration')
+            ->prefix('administration')->as('administration.')
+            ->group(function () {
+                Route::namespace('Owner')
+                    ->prefix('owners')->as('owners.')
+                    ->group(function () {
+                        Route::get('initTable', 'OwnerTableController@init')
+                            ->name('initTable');
+                        Route::get('getTableData', 'OwnerTableController@data')
+                            ->name('getTableData');
+                        Route::get('exportExcel', 'OwnerTableController@excel')
+                            ->name('exportExcel');
+
+                        Route::get('selectOptions', 'OwnerSelectController@options')
+                            ->name('selectOptions');
+                    });
+
+                Route::resource('owners', 'Owner\OwnerController', ['except' => ['show']]);
+
+                Route::namespace('User')
+                    ->prefix('users')->as('users.')
+                    ->group(function () {
+                        Route::get('initTable', 'UserTableController@init')
+                            ->name('initTable');
+                        Route::get('getTableData', 'UserTableController@data')
+                            ->name('getTableData');
+                        Route::get('exportExcel', 'UserTableController@excel')
+                            ->name('exportExcel');
+                        Route::get('selectOptions', 'UserSelectController@options')
+                            ->name('selectOptions');
+                    });
+
+                Route::resource('users', 'User\UserController');
+            });
+    });

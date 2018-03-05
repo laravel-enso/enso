@@ -1,4 +1,7 @@
 ## Enso Changelog
+### 2.3.0
+Please follow the upgrade [instructions](https://github.com/laravel-enso/Enso/issues/62)
+
 ### 2.2.2
 Packages updates. Bug fixes
 

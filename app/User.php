@@ -10,8 +10,6 @@ class User extends Users
 {
     use Comments, Documents;
 
-    private const AdminRoleId = 1;
-
     protected $hidden = ['password', 'remember_token'];
 
     protected $fillable = ['first_name', 'last_name', 'phone', 'is_active', 'email', 'owner_id', 'role_id'];
