@@ -72,7 +72,7 @@ export default {
 
     methods: {
         ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
-        ...mapActions(['setState']),
+        ...mapActions(['initialise']),
         addTabletBreakpointListener() {
             const { body } = document;
             const TabletMaxWidth = 1023;
@@ -96,13 +96,13 @@ export default {
         startImpersonating(id) {
             axios.get(route('core.impersonate.start', id, false)).then((response) => {
                 this.$toastr.warning(response.data.message);
-                this.setState();
+                this.initialise();
             }).catch(error => this.handleError(error));
         },
         stopImpersonating() {
             axios.get(route('core.impersonate.stop', [], false)).then((response) => {
                 this.$toastr.info(response.data.message);
-                this.setState();
+                this.initialise();
             }).catch(error => this.handleError(error));
         },
     },

@@ -13,7 +13,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import Auth from './layout/Auth.vue';
 import Home from './layout/Home.vue';
 import AppMain from './layout/AppMain.vue';
@@ -25,7 +25,7 @@ export default {
 
     data() {
         return {
-            enterApp: false,
+            showHome: true,
         };
     },
 
@@ -38,7 +38,7 @@ export default {
                 return 'auth';
             }
 
-            if (!this.enterApp) {
+            if (this.showHome) {
                 return 'home';
             }
 
@@ -49,34 +49,48 @@ export default {
     watch: {
         isAuth(authenticated) {
             if (!authenticated) {
-                this.enterApp = false;
+                this.showHome = true;
+                this.$router.push({ path: '/' });
+                return;
             }
+
+            this.initialise();
         },
     },
 
     created() {
-        this.$router.afterEach((to) => {
-            document.title = this.documentTitle(to.meta.title);
-        });
+        if (this.isAuth) {
+            this.initialise();
+        }
 
-        this.$bus.$on('enter-app', () => {
-            this.enterApp = true;
-
-            if (this.lastRoute) {
-                this.$router.push({ name: this.lastRoute.name, params: this.lastRoute.params });
-                this.setLastRoute(null);
-            }
-        });
+        this.setDocumentTitleUpdator();
+        this.addEnterAppListener();
     },
 
     methods: {
+        ...mapActions(['initialise']),
         ...mapMutations('auth', ['setLastRoute']),
+        setDocumentTitleUpdator() {
+            this.$router.afterEach((to) => {
+                document.title = this.documentTitle(to.meta.title);
+            });
+        },
         documentTitle(value) {
             const title = this.meta.extendedDocumentTitle
                 ? `${value} | ${this.meta.appName}`
                 : value;
 
             return this.__(title);
+        },
+        addEnterAppListener() {
+            this.$bus.$on('enter-app', () => {
+                this.showHome = false;
+
+                if (this.lastRoute) {
+                    this.$router.push({ name: this.lastRoute.name, params: this.lastRoute.params });
+                    this.setLastRoute(null);
+                }
+            });
         },
     },
 };

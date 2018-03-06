@@ -4,62 +4,59 @@ class ResponsiveTable {
         this.context = context;
         this.hiding = false;
         this.width = null;
-        this.height = null;
     }
 
     updateSize() {
-        this.width = this.el.clientWidth;
-        this.height = this.el.clientHeight;
+        this.width = this.el.offsetWidth;
     }
 
-    shouldntResize() {
-        return this.width === this.el.clientWidth && this.height !== this.el.clientHeight;
+    shouldResize() {
+        return this.width !== this.el.offsetWidth;
     }
 
     shouldHide() {
-        return this.el.clientWidth < this.el.scrollWidth;
+        return this.el.offsetWidth < this.el.scrollWidth;
     }
 
-    shouldUnhide() {
-        return this.el.clientWidth === this.el.scrollWidth && !this.hiding;
+    shouldShow() {
+        return this.el.offsetWidth === this.el.scrollWidth;
     }
 
     hideColumns() {
-        const columns = this.context.template.columns
-            .filter(column => column.meta.visible && !column.meta.hidden);
+        const column = this.context.template.columns
+            .filter(column => column.meta.visible && !column.meta.hidden)
+            .pop();
 
-        if (!columns.length) {
+        if (!column) {
             return;
         }
 
         this.hiding = true;
-        columns[columns.length - 1].meta.hidden = true;
-
+        column.meta.hidden = true;
         this.retryFit();
     }
 
     showColumn() {
-        const columns = this.context.template.columns
-            .filter(column => column.meta.hidden);
+        const column = this.context.template.columns
+            .find(column => column.meta.hidden);
 
-        if (!columns.length) {
+        if (!column) {
             return;
         }
 
-        columns[0].meta.hidden = false;
-
+        column.meta.hidden = false;
         this.retryFit();
     }
 
     resize() {
-        if (this.shouldntResize()) {
-            return;
+        if (this.shouldResize()) {
+            this.fit();
         }
-
-        this.fit();
     }
 
     retryFit() {
+        this.updateSize();
+
         this.context.$nextTick(() => {
             this.fit();
         });
@@ -76,7 +73,7 @@ class ResponsiveTable {
             return;
         }
 
-        if (this.shouldUnhide()) {
+        if (this.shouldShow()) {
             this.showColumn();
         }
     }

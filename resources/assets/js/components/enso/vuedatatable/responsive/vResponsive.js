@@ -10,4 +10,8 @@ export default {
 
         erd.listenTo(el, () => table.resize());
     },
+    unbind(el) {
+        const erd = resizeDetector({ strategy: 'scroll' });
+        erd.removeAllListeners(el);
+    },
 };

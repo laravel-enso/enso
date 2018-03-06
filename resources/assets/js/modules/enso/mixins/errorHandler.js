@@ -4,9 +4,13 @@ Vue.mixin({
     methods: {
         handleError(error) {
             const { status, data } = error.response;
-            if (status === 401 && this.$store.state.auth.isAuth) {
-                this.$store.commit('auth/logout');
-                this.$store.commit('auth/setLastRoute', this.$route);
+
+            if (status === 401) {
+                if (this.$store.state.auth.isAuth) {
+                    this.$store.commit('auth/logout');
+                    this.$store.commit('auth/setLastRoute', this.$route);
+                }
+
                 return;
             }
 

@@ -8,7 +8,7 @@
                     color="#dbdbdb"
                     size="large">
                 </overlay>
-                <div v-if="!loading">
+                <div v-if="!loading && showQuote">
                     <div class="title is-1 inspiring animated fadeInDown">
                         {{ meta.quote }}
                     </div>
@@ -25,7 +25,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 
 export default {
@@ -41,26 +41,32 @@ export default {
 
     computed: {
         ...mapState(['meta']),
-        ...mapState(['isInitialised']),
+        ...mapState(['isInitialised', 'showQuote']),
         ...mapGetters('locale', ['__']),
     },
 
     watch: {
-        isInitialised(initialised) {
-            if (initialised) {
-                setTimeout(() => {
-                    this.loading = false;
-                }, 250);
-            }
+        isInitialised() {
+            this.enterApp();
         },
     },
 
-    created() {
-        this.initialise();
-    },
-
     methods: {
-        ...mapActions(['initialise']),
+        enterApp() {
+            if (!this.isInitialised) {
+                return;
+            }
+
+            if (this.showQuote) {
+                setTimeout(() => {
+                    this.loading = false;
+                }, 200);
+                return;
+            }
+
+            this.loading = false;
+            this.$bus.$emit('enter-app');
+        },
     },
 };
 

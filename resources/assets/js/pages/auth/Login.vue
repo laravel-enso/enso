@@ -124,6 +124,7 @@ export default {
 
     methods: {
         ...mapMutations('auth', ['login']),
+        ...mapMutations(['setShowQuote', 'setCsrfToken']),
         submit() {
             this.loading = true;
             this.isSuccessful = false;
@@ -133,11 +134,12 @@ export default {
                 .then(({ data }) => {
                     this.loading = false;
                     this.isSuccessful = true;
+                    this.setShowQuote(true);
+                    this.setCsrfToken(data.csrfToken);
                     setTimeout(() => {
                         this.login();
                         this.$router.push({ path: '/' });
-                        this.$store.commit('setCsrfToken', data.csrfToken);
-                    }, 300);
+                    }, 200);
                 }).catch((error) => {
                     this.loading = false;
                     this.hasErrors = true;

@@ -16,6 +16,7 @@ export default new Vuex.Store({
 
     state: {
         isInitialised: false,
+        showQuote: false,
         user: {},
         impersonating: null,
         meta: {},
@@ -38,6 +39,7 @@ export default new Vuex.Store({
         },
         setMeta: (state, meta) => { state.meta = meta; },
         initialise: (state, value) => { state.isInitialised = value; },
+        setShowQuote: (state, value) => { state.showQuote = value; },
         setRoutes: (state, routes) => { state.routes = routes; },
         setCsrfToken: (state, token) => {
             state.meta.csrfToken = token;

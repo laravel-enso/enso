@@ -1,4 +1,16 @@
-## Enso Changelog
+## Laravel Enso's Changelog
+
+### 2.3.1
+Fixes laravel-enso/vuedatatable#29.
+Fixes laravel-enso/enso#63.
+Fixes laravel-enso/enso#56
+
+Puts all the auth routes to the except array for `VerifyCsrfToken` middleware
+```
+protected $except = ['api/login', 'api/password/email', 'api/password/reset'];
+```
+(you should do this step manually for existing projects)
+
 ### 2.3.0
 Please follow the upgrade [instructions](https://github.com/laravel-enso/Enso/issues/62)
 

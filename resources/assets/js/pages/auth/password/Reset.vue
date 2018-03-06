@@ -48,16 +48,23 @@
                         <fa icon="exclamation-triangle"></fa>
                     </span>
                     <p class="help">
-                        <svg width="100%" height="5" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            v-if="hasPassword">
-                            <rect v-for="i in 5"
-                                width="15%"
-                                height="4"
-                                :stroke="i <= score + 1 ? 'green' : 'orangered'"
-                                stroke-width="4"
-                                :x="2.5 + (i-1) * 15 + (i-1) * 5 + '%'"
-                                :key="i"/>
-                        </svg>
+                        <transition enter-active-class="zoomIn"
+                            leave-active-class="zoomOut">
+                            <svg class="animated"
+                                width="100%"
+                                height="5"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                v-if="hasPassword">
+                                <rect v-for="i in 5"
+                                    width="15%"
+                                    height="4"
+                                    :stroke="i <= score + 1 ? 'green' : 'orangered'"
+                                    stroke-width="4"
+                                    :x="2.5 + (i-1) * 15 + (i-1) * 5 + '%'"
+                                    :key="i"/>
+                            </svg>
+                        </transition>
                     </p>
                 </div>
             </div>
@@ -93,7 +100,7 @@
                     <span class="icon is-small">
                         <fa icon="lock"></fa>
                     </span>
-                    <span>Login</span>
+                    <span>Set password</span>
                 </button>
             </div>
         </form>
@@ -105,19 +112,13 @@
 import { mapState } from 'vuex';
 import zxcvbn from 'zxcvbn';
 import fontawesome from '@fortawesome/fontawesome';
-import { faEnvelope, faCheck, faExclamationTriangle, faLock } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faEnvelope, faCheck, faExclamationTriangle, faLock }
+    from '@fortawesome/fontawesome-free-solid/shakable.es';
 
 fontawesome.library.add(faEnvelope, faCheck, faExclamationTriangle, faLock);
 
 export default {
-    name: 'Email',
-
-    props: {
-        appName: {
-            type: String,
-            required: true,
-        },
-    },
+    name: 'Reset',
 
     data() {
         return {
