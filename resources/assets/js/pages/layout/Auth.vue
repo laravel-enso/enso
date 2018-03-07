@@ -4,7 +4,7 @@
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-centered">
-                    <router></router>
+                    <router v-if="$route.meta.guestGuard"></router>
                 </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
 ## Laravel Enso's Changelog
+### 2.3.2
+Fixes laravel-enso/enso#64
 
 ### 2.3.1
 Fixes laravel-enso/vuedatatable#29.
