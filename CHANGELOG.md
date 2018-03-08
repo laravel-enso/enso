@@ -1,4 +1,8 @@
 ## Laravel Enso's Changelog
+### 2.3.3
+Fixes laravel-enso/enso#66
+Adds mongolian language
+
 ### 2.3.2
 Fixes laravel-enso/enso#64
 

@@ -25,7 +25,7 @@
                     <input class="input select-input" type="text"
                         v-focus
                         :placeholder="placeholder"
-                        :v-model="query"
+                        v-model="query"
                         @input="getData()"
                         v-if="dropdown"
                         @keydown.esc="hideDropdown"
