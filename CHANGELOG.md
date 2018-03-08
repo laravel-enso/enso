@@ -1,4 +1,8 @@
 ## Laravel Enso's Changelog
+### 2.3.4
+Improves the main modal component. Now the component uses a render function to make the modal a direct child of the body.
+Upgrades the modal for vuedatatable and formbuilder.
+
 ### 2.3.3
 Fixes laravel-enso/enso#66
 Adds mongolian language

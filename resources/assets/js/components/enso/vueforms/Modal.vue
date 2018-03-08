@@ -1,40 +1,39 @@
 <template>
 
-    <transition enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut">
-        <div :class="['modal', { 'is-active': show }]">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <h5 class="subtitle is-5">
-                        {{ __(message || "Are you sure ?") }}
-                    </h5>
-                    <hr>
-                    <div class="level">
-                        <div class="level-left"></div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <button class="button is-success"
-                                    @click="$emit('cancel')">
-                                    {{ __("Cancel") }}
-                                </button>
-                                <button class="button is-danger has-margin-left-small"
-                                    @click="$emit('commit')">
-                                    {{ __("Yes") }}
-                                </button>
-                            </div>
-                        </div>
+    <modal v-on="$listeners"
+        :show="show">
+        <div class="box">
+            <h5 class="subtitle is-5">
+                {{ __(message || "Are you sure ?") }}
+            </h5>
+            <hr>
+            <div class="level">
+                <div class="level-left"></div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <button class="button is-success"
+                            @click="$emit('close')">
+                            {{ __("Cancel") }}
+                        </button>
+                        <button class="button is-danger has-margin-left-small"
+                            @click="$emit('commit')">
+                            {{ __("Yes") }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </transition>
+    </modal>
 
 </template>
 
 <script>
 
+import Modal from '../../../components/enso/bulma/Modal.vue';
+
 export default {
+    components: { Modal },
+
     props: {
         show: {
             type: Boolean,
@@ -52,11 +51,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    .modal.is-active {
-        z-index: 10;
-    }
-
-</style>

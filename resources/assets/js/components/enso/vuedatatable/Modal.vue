@@ -1,40 +1,39 @@
 <template>
 
-    <transition enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut">
-        <div :class="['modal', { 'is-active': show }]">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <h5 class="subtitle is-5">
-                        {{ i18n(message || "Are you sure that you want to perform this action?") }}
-                    </h5>
-                    <hr>
-                    <div class="level">
-                        <div class="level-left"></div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <button class="button is-success"
-                                    @click="$emit('cancel')">
-                                    {{ i18n("Cancel") }}
-                                </button>
-                                <button class="button is-danger has-margin-left-small"
-                                    @click="$emit('commit')">
-                                    {{ i18n("Yes") }}
-                                </button>
-                            </div>
-                        </div>
+    <modal v-on="$listeners"
+        :show="show">
+        <div class="box">
+            <h5 class="subtitle is-5">
+                {{ i18n(message || "Are you sure that you want to perform this action?") }}
+            </h5>
+            <hr>
+            <div class="level">
+                <div class="level-left"></div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <button class="button is-success"
+                            @click="$emit('close')">
+                            {{ i18n("Cancel") }}
+                        </button>
+                        <button class="button is-danger has-margin-left-small"
+                            @click="$emit('commit')">
+                            {{ i18n("Yes") }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </transition>
+    </modal>
 
 </template>
 
 <script>
 
+import Modal from '../../../components/enso/bulma/Modal.vue';
+
 export default {
+    components: { Modal },
+
     props: {
         show: {
             type: Boolean,

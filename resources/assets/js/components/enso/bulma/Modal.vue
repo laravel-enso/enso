@@ -1,63 +1,28 @@
 <template>
 
-    <transition enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut">
-        <div :class="['modal', { 'is-active': show }]">
+    <transition enter-active-class="fadeIn"
+        leave-active-class="fadeOut">
+        <div :class="['modal animated', { 'is-active': show }]"
+            v-if="show">
             <div class="modal-background"></div>
             <div class="modal-card"
                 v-if="card">
                 <header class="modal-card-head">
-                    <slot name="header">
-                    </slot>
+                    <slot name="header"></slot>
                 </header>
                 <section class="modal-card-body">
-                    <slot name="body">
-                        {{ __("The selected item is about to be deleted! Are you sure?") }}
-                    </slot>
+                    <slot name="body"></slot>
                 </section>
                 <footer class="modal-card-foot">
-                    <slot name="footer">
-                        <button class="button"
-                              @click="$emit('cancel')">
-                              {{ __("Cancel") }}
-                          </button>
-                          <button class="button is-success"
-                            @click="$emit('commit')">
-                            {{ __("Yes") }}
-                        </button>
-                    </slot>
+                    <slot name="footer"></slot>
                 </footer>
             </div>
             <div v-else class="modal-content">
-                <div class="box">
-                    <slot name="content">
-                        <h5 class="subtitle is-5">
-                            {{ __("The selected item is about to be deleted! Are you sure?") }}
-                        </h5>
-                    </slot>
-                    <hr>
-                    <div class="level">
-                        <div class="level-left"></div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <slot name="controls">
-                                    <button class="button is-success"
-                                          @click="$emit('cancel')">
-                                          {{ __("Cancel") }}
-                                    </button>
-                                    <button class="button is-danger has-margin-left-small"
-                                        @click="$emit('commit')">
-                                        {{ __("Yes") }}
-                                    </button>
-                                </slot>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <slot></slot>
             </div>
             <button class="modal-close is-large"
                 aria-label="close"
-                @click="$emit('cancel')"
+                @click="$emit('close')"
                 v-if="!card">
             </button>
         </div>
@@ -67,7 +32,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
+import Vue from 'vue';
 
 export default {
     name: 'Modal',
@@ -81,23 +46,60 @@ export default {
             type: Boolean,
             default: false,
         },
+        container: {
+            type: String,
+            default: 'modal-wrapper',
+        },
+    },
+
+    data() {
+        return {
+            wrapper: null,
+        };
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
+        containerSelector() {
+            return `.${this.container}`;
+        },
+    },
+
+    created() {
+        const wrapper = document.querySelector(this.containerSelector);
+
+        if (!wrapper) {
+            const ModalWrapper = Vue.extend({
+                name: 'ModalWrapper',
+                render(h) {
+                    return h('div', {
+                        class: `${this.container}`,
+                    });
+                },
+            });
+
+            this.wrapper = new ModalWrapper().$mount();
+            document.body.appendChild(this.wrapper.$el);
+        } else {
+            this.wrapper = wrapper.__vue__;
+        }
+    },
+
+    mounted() {
+        this.wrapper.$el.appendChild(this.$el);
+        document.addEventListener('keydown', this.closeOnEsc);
+    },
+
+    beforeDestroy() {
+        document.removeEventListener('keydown', this.closeOnEsc);
+    },
+
+    methods: {
+        closeOnEsc(e) {
+            if (this.show && e.keyCode === 27) {
+                this.$emit('close');
+            }
+        },
     },
 };
 
 </script>
-
-<style>
-
-    footer.modal-card-foot {
-        justify-content: flex-end;
-    }
-
-    .modal.is-active {
-        z-index: 10;
-    }
-
-</style>

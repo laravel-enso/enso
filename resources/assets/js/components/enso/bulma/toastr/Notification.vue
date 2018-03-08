@@ -4,7 +4,7 @@
         :enter-active-class="enterClass"
         :leave-active-class="leaveClass"
         @after-enter="hoverable = true"
-        @after-leave="destroy">
+        @after-leave="$destroy()">
         <div :class="[
             'box notification toastr animated',
             { 'highlight': hover },
@@ -172,7 +172,6 @@ export default {
 
     mounted() {
         this.wrapper.$el.appendChild(this.$el);
-        delete this.wrapper;
         this.timer = setTimeout(() => this.hide(), this.duration);
     },
 
@@ -182,14 +181,9 @@ export default {
             this.hoverable = false;
             this.show = false;
         },
-
         close() {
             this.hover = false;
             this.show = false;
-        },
-
-        destroy() {
-            this.$destroy();
         },
         startHover() {
             if (!this.hoverable && !this.show) {

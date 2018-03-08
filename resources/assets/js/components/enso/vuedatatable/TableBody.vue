@@ -73,7 +73,7 @@
         :show="modal"
         :i18n="i18n"
         :message="button.message"
-        @cancel="closeModal()"
+        @close="closeModal()"
         @commit="doAction(button, row)">
     </modal>
 </tbody>

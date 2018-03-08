@@ -30,7 +30,7 @@
                     @submit="get();form=false">
                 </contact-form>
 
-                <div class="column is-half-tablet is-one-third-widescreen"
+                <div class="column is-half-desktop is-one-third-widescreen"
                     v-for="(contact, index) in filteredContacts"
                     :key="index">
                     <contact
