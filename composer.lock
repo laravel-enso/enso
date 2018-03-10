@@ -1482,16 +1482,16 @@
         },
         {
             "name": "laravel-enso/contacts",
-            "version": "2.1.33",
+            "version": "2.1.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Contacts.git",
-                "reference": "335a7728b44dc28823bbfce4c9a17b9fc1ff9e90"
+                "reference": "f2d74d93219903de35980dffda62cf2302368ca4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/335a7728b44dc28823bbfce4c9a17b9fc1ff9e90",
-                "reference": "335a7728b44dc28823bbfce4c9a17b9fc1ff9e90",
+                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/f2d74d93219903de35980dffda62cf2302368ca4",
+                "reference": "f2d74d93219903de35980dffda62cf2302368ca4",
                 "shasum": ""
             },
             "require": {
@@ -1545,20 +1545,20 @@
                 "contacts",
                 "laravel-enso"
             ],
-            "time": "2018-03-08T11:06:54+00:00"
+            "time": "2018-03-09T09:51:27+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "495f4bb2bc7b72686fc8c4029836796824353ced"
+                "reference": "18995bf92943308e5b8a43ef35c37f5e1f0fe506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/495f4bb2bc7b72686fc8c4029836796824353ced",
-                "reference": "495f4bb2bc7b72686fc8c4029836796824353ced",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/18995bf92943308e5b8a43ef35c37f5e1f0fe506",
+                "reference": "18995bf92943308e5b8a43ef35c37f5e1f0fe506",
                 "shasum": ""
             },
             "require": {
@@ -1635,7 +1635,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-03-08T05:59:40+00:00"
+            "time": "2018-03-10T01:05:21+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2719,16 +2719,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.31",
+            "version": "2.1.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "c324e6bea3c00cf76fec9b197a87e483e8cc9eb8"
+                "reference": "2bf73de133ebe2428752d731fdd2b613645be5ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/c324e6bea3c00cf76fec9b197a87e483e8cc9eb8",
-                "reference": "c324e6bea3c00cf76fec9b197a87e483e8cc9eb8",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/2bf73de133ebe2428752d731fdd2b613645be5ce",
+                "reference": "2bf73de133ebe2428752d731fdd2b613645be5ce",
                 "shasum": ""
             },
             "type": "library",
@@ -2764,7 +2764,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-03-08T11:08:28+00:00"
+            "time": "2018-03-08T12:13:56+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
@@ -2825,16 +2825,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.9",
+            "version": "v5.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a"
+                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/98fdbb098cf52a74441fe949be121c18e3dbbe6a",
-                "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
                 "shasum": ""
             },
             "require": {
@@ -2845,7 +2845,7 @@
                 "ext-openssl": "*",
                 "league/flysystem": "~1.0",
                 "monolog/monolog": "~1.12",
-                "nesbot/carbon": "^1.22.1",
+                "nesbot/carbon": "^1.24.1",
                 "php": "^7.1.3",
                 "psr/container": "~1.0",
                 "psr/simple-cache": "^1.0",
@@ -2959,7 +2959,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-07T14:04:49+00:00"
+            "time": "2018-03-09T16:53:27+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3031,16 +3031,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8"
+                "reference": "94f6daf2131508cebd11cd6f8632ba586d7ecc41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
-                "reference": "eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/94f6daf2131508cebd11cd6f8632ba586d7ecc41",
+                "reference": "94f6daf2131508cebd11cd6f8632ba586d7ecc41",
                 "shasum": ""
             },
             "require": {
@@ -3090,7 +3090,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2018-03-06T13:48:07+00:00"
+            "time": "2018-03-06T17:34:36+00:00"
         },
         {
             "name": "league/flysystem",
@@ -3256,20 +3256,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
+                "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -3305,7 +3305,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-09T15:49:34+00:00"
         },
         {
             "name": "nikic/php-parser",

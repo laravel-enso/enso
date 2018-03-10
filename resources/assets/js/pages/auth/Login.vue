@@ -1,81 +1,84 @@
 <template>
 
-    <div class="column box login">
-        <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
-            <figure class="image is-24x24 logo">
-                <img src="/images/logo.svg"/>
-            </figure>
-            {{ meta.appName }}
-        </h3>
-        <form class="has-margin-bottom-medium"
-            @submit.prevent="submit()">
-            <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input"
-                        :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
-                        type="email"
-                        placeholder="Email"
-                        v-model="email"
-                        @keypress.down="hasErrors=false">
-                    <span class="icon is-small is-left">
-                        <fa icon="envelope"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="isSuccessful">
-                        <fa icon="check"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-danger"
-                        v-if="hasErrors">
-                        <fa icon="exclamation-triangle"></fa>
-                    </span>
+    <div class="column login">
+        <div class="box has-padding-medium">
+            <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
+                <figure class="image is-24x24 logo">
+                    <img src="/images/logo.svg"/>
+                </figure>
+                {{ meta.appName }}
+            </h3>
+            <form class="has-margin-bottom-medium"
+                @submit.prevent="submit()">
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input"
+                            :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
+                            type="email"
+                            placeholder="Email"
+                            v-model="email"
+                            @keypress.down="hasErrors=false">
+                        <span class="icon is-small is-left">
+                            <fa icon="envelope"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="isSuccessful">
+                            <fa icon="check"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-danger"
+                            v-if="hasErrors">
+                            <fa icon="exclamation-triangle"></fa>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input"
-                        :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
-                        type="password"
-                        placeholder="Password"
-                        v-model="password"
-                        @keypress.down="hasErrors=false">
-                    <span class="icon is-small is-left">
-                        <fa icon="lock"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="isSuccessful">
-                        <fa icon="check"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-danger"
-                        v-if="hasErrors">
-                        <fa icon="exclamation-triangle"></fa>
-                    </span>
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input"
+                            :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
+                            type="password"
+                            placeholder="Password"
+                            v-model="password"
+                            @keypress.down="hasErrors=false">
+                        <span class="icon is-small is-left">
+                            <fa icon="lock"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="isSuccessful">
+                            <fa icon="check"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-danger"
+                            v-if="hasErrors">
+                            <fa icon="exclamation-triangle"></fa>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                    <label class="checkbox">
-                      <input type="checkbox"
-                        v-model="remember">
-                      Remember me
-                    </label>
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                        <input type="checkbox"
+                            v-model="remember">
+                        Remember me
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <button class="button is-primary is-fullwidth"
-                    :class="{ 'is-loading': loading }"
-                    type="submit"
-                    @click.prevent="submit()">
-                    <span class="icon is-small">
-                        <fa icon="user"></fa>
-                    </span>
-                    <span>Login</span>
-                </button>
-            </div>
-        </form>
-        <router-link :to="{ name: 'password.email' }"
-            class="is-pulled-right">
-            Forgot password
-        </router-link>
+                <div class="field">
+                    <button class="button is-primary is-fullwidth"
+                        :class="{ 'is-loading': loading }"
+                        type="submit"
+                        @click.prevent="submit()">
+                        <span class="icon is-small">
+                            <fa icon="user"></fa>
+                        </span>
+                        <span>Login</span>
+                    </button>
+                </div>
+            </form>
+            <router-link :to="{ name: 'password.email' }"
+                class="is-pulled-right">
+                Forgot password
+            </router-link>
+            <div class="is-clearfix"></div>
+        </div>
     </div>
 
 </template>

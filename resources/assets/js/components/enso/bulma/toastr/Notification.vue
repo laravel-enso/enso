@@ -158,7 +158,7 @@ export default {
                 name: 'ToastrWrapper',
                 render(h) {
                     return h('div', {
-                        class: `${containerClass}`,
+                        class: containerClass,
                     });
                 },
             });

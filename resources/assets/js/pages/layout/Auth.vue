@@ -42,7 +42,7 @@ export default {
 
 <style>
 
-    .box.login {
+    .column.login {
          max-width: 400px;
     }
 

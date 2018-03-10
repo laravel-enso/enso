@@ -11,79 +11,81 @@
                             </div>
                         </div>
                         <div class="column">
-                            <div class="level">
-                                <div class="level-item has-padding-top-small">
-                                    <div>
-                                        <p class="title is-3">{{ profile.fullName }}</p>
-                                        <p>{{ __('role') }}: {{ profile.role.name }}</p>
-                                        <p>{{ __('since') }}: {{ profile.created_at | timeFromNow }}</p>
-                                        <div class="user-controls has-margin-top-small"
-                                            v-if="isSelfVisiting">
-
-                                            <button class="button is-small is-warning"
-                                                v-if="avatarId"
-                                                @click="deleteAvatar">
-                                                <span class="icon">
-                                                    <fa icon="trash-alt"></fa>
-                                                </span>
-                                                <span>
-                                                    {{ __('Avatar') }}
-                                                </span>
-                                            </button>
-                                            <file-uploader v-if="!avatarId"
-                                                @upload-successful="$store.commit('setUserAvatar', $event.id)"
-                                                :url="uploadAvatarLink"
-                                                file-key="avatar">
-                                                <template slot="upload-button"
-                                                    slot-scope="{ openFileBrowser }">
-                                                    <button class="button is-small is-info"
-                                                        @click="openFileBrowser">
-                                                        <span class="icon">
-                                                            <fa icon="upload"></fa>
-                                                        </span>
-                                                        <span>
-                                                            {{ __('Avatar') }}
-                                                        </span>
-                                                    </button>
-                                                </template>
-                                            </file-uploader>
-                                            <button class="button is-small is-danger is-pulled-right"
-                                                @click="logout()">
-                                                <span class="icon">
-                                                    <fa icon="sign-out-alt"></fa>
-                                                </span>
-                                                <span>
-                                                    {{ __('Log Out') }}
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <div class="has-margin-top-small"
-                                            v-else>
-                                            <button class="button is-small is-warning"
-                                                @click="$bus.$emit('start-impersonating', profile.id)"
-                                                v-if="!$store.state.impersonating">
-                                                {{ __('Impersonate') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <p class="title is-4 has-padding-top-medium">
+                                {{ profile.fullName }}
+                            </p>
+                            <p class="subtitle is-5">
+                                {{ __('role') }}: {{ profile.role.name }}
+                            </p>
+                            <div class="user-controls has-margin-top-small"
+                                v-if="isSelfVisiting">
+                                <button class="button is-small is-warning"
+                                    v-if="avatarId"
+                                    @click="deleteAvatar">
+                                    <span class="icon">
+                                        <fa icon="trash-alt"></fa>
+                                    </span>
+                                    <span class="is-hidden-mobile">
+                                        {{ __('Avatar') }}
+                                    </span>
+                                </button>
+                                <file-uploader v-if="!avatarId"
+                                    @upload-successful="$store.commit('setUserAvatar', $event.id)"
+                                    :url="uploadAvatarLink"
+                                    file-key="avatar">
+                                    <template slot="upload-button"
+                                        slot-scope="{ openFileBrowser }">
+                                        <button class="button is-small is-info"
+                                            @click="openFileBrowser">
+                                            <span class="icon">
+                                                <fa icon="upload"></fa>
+                                            </span>
+                                            <span class="is-hidden-mobile">
+                                                {{ __('Avatar') }}
+                                            </span>
+                                        </button>
+                                    </template>
+                                </file-uploader>
+                                <button class="button is-small is-danger is-pulled-right"
+                                    @click="logout()">
+                                    <span class="icon">
+                                        <fa icon="sign-out-alt"></fa>
+                                    </span>
+                                    <span>
+                                        {{ __('Log Out') }}
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="has-margin-top-small"
+                                v-else>
+                                <button class="button is-small is-warning"
+                                    @click="$bus.$emit('start-impersonating', profile.id)"
+                                    v-if="!$store.state.impersonating">
+                                    {{ __('Impersonate') }}
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="column is-half-desktop">
-                    <div class="columns is-mobile">
-                        <div class="column has-text-centered">
-                          <p class="stat-value">{{ profile.loginCount }}</p>
-                          <p class="stat-key">{{ __('logins') }}</p>
+                    <div class="level is-mobile has-margin-top-medium">
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="stat-value">{{ profile.loginCount }}</p>
+                                <p class="stat-key">{{ __('logins') }}</p>
+                            </div>
                         </div>
-                        <div class="column has-text-centered has-lateral-borders">
-                          <p class="stat-value">{{ profile.actionLogCount }}</p>
-                          <p class="stat-key">{{ __('actions') }}</p>
+                        <div class="level-item has-text-centered has-lateral-borders">
+                            <div>
+                                <p class="stat-value">{{ profile.actionLogCount }}</p>
+                                <p class="stat-key">{{ __('actions') }}</p>
+                            </div>
                         </div>
-                        <div class="column has-text-centered">
-                          <p class="stat-value">{{ profile.rating }}</p>
-                          <p class="stat-key">{{ __('rating') }}</p>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="stat-value">{{ profile.rating }}</p>
+                                <p class="stat-key">{{ __('rating') }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -370,7 +372,7 @@ export default {
     }
 
     .stat-value {
-        font-size: 3em;
+        font-size: 2em;
         padding-top: 12px;
     }
 

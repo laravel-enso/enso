@@ -1,109 +1,111 @@
 <template>
 
-    <div class="column box login">
-        <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
-            <figure class="image is-24x24 logo">
-                <img src="/images/logo.svg"/>
-            </figure>
-            {{ meta.appName }}
-        </h3>
-        <form class="has-margin-bottom-medium"
-            @submit.prevent="submit()">
-            <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input"
-                        :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
-                        type="email"
-                        placeholder="Email"
-                        v-model="email">
-                    <span class="icon is-small is-left">
-                        <fa icon="envelope"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="isSuccessful">
-                        <fa icon="check"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-danger"
-                        v-if="hasErrors">
-                        <fa icon="exclamation-triangle"></fa>
-                    </span>
+    <div class="column login">
+        <div class="box has-padding-medium">
+            <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
+                <figure class="image is-24x24 logo">
+                    <img src="/images/logo.svg"/>
+                </figure>
+                {{ meta.appName }}
+            </h3>
+            <form class="has-margin-bottom-medium"
+                @submit.prevent="submit()">
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input"
+                            :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
+                            type="email"
+                            placeholder="Email"
+                            v-model="email">
+                        <span class="icon is-small is-left">
+                            <fa icon="envelope"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="isSuccessful">
+                            <fa icon="check"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-danger"
+                            v-if="hasErrors">
+                            <fa icon="exclamation-triangle"></fa>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input"
-                        :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
-                        type="password"
-                        placeholder="Password"
-                        v-model="password">
-                    <span class="icon is-small is-left">
-                        <fa icon="lock"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="isSuccessful">
-                        <fa icon="check"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-danger"
-                        v-if="hasErrors">
-                        <fa icon="exclamation-triangle"></fa>
-                    </span>
-                    <p class="help">
-                        <transition enter-active-class="zoomIn"
-                            leave-active-class="zoomOut">
-                            <svg class="animated"
-                                width="100%"
-                                height="5"
-                                version="1.1"
-                                xmlns="http://www.w3.org/2000/svg"
-                                v-if="hasPassword">
-                                <rect v-for="i in 5"
-                                    width="15%"
-                                    height="4"
-                                    :stroke="i <= score + 1 ? 'green' : 'orangered'"
-                                    stroke-width="4"
-                                    :x="2.5 + (i-1) * 15 + (i-1) * 5 + '%'"
-                                    :key="i"/>
-                            </svg>
-                        </transition>
-                    </p>
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input"
+                            :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
+                            type="password"
+                            placeholder="Password"
+                            v-model="password">
+                        <span class="icon is-small is-left">
+                            <fa icon="lock"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="isSuccessful">
+                            <fa icon="check"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-danger"
+                            v-if="hasErrors">
+                            <fa icon="exclamation-triangle"></fa>
+                        </span>
+                        <p class="help">
+                            <transition enter-active-class="zoomIn"
+                                leave-active-class="zoomOut">
+                                <svg class="animated"
+                                    width="100%"
+                                    height="5"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    v-if="hasPassword">
+                                    <rect v-for="i in 5"
+                                        width="15%"
+                                        height="4"
+                                        :stroke="i <= score + 1 ? 'green' : 'orangered'"
+                                        stroke-width="4"
+                                        :x="2.5 + (i-1) * 15 + (i-1) * 5 + '%'"
+                                        :key="i"/>
+                                </svg>
+                            </transition>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input"
-                        :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
-                        type="password"
-                        placeholder="Repeat Password"
-                        v-model="passwordConfirmation">
-                    <span class="icon is-small is-left">
-                        <fa icon="lock"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="isSuccessful">
-                        <fa icon="check"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-danger"
-                        v-if="hasErrors">
-                        <fa icon="exclamation-triangle"></fa>
-                    </span>
-                    <span class="icon is-small is-right has-text-success"
-                        v-if="match && !hasErrors">
-                        <fa icon="check"></fa>
-                    </span>
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input"
+                            :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
+                            type="password"
+                            placeholder="Repeat Password"
+                            v-model="passwordConfirmation">
+                        <span class="icon is-small is-left">
+                            <fa icon="lock"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="isSuccessful">
+                            <fa icon="check"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-danger"
+                            v-if="hasErrors">
+                            <fa icon="exclamation-triangle"></fa>
+                        </span>
+                        <span class="icon is-small is-right has-text-success"
+                            v-if="match && !hasErrors">
+                            <fa icon="check"></fa>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <button class="button is-primary is-fullwidth"
-                    :class="{ 'is-loading': loading }"
-                    type="submit"
-                    @click.prevent="submit()">
-                    <span class="icon is-small">
-                        <fa icon="lock"></fa>
-                    </span>
-                    <span>Set password</span>
-                </button>
-            </div>
-        </form>
+                <div class="field">
+                    <button class="button is-primary is-fullwidth"
+                        :class="{ 'is-loading': loading }"
+                        type="submit"
+                        @click.prevent="submit()">
+                        <span class="icon is-small">
+                            <fa icon="lock"></fa>
+                        </span>
+                        <span>Set password</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 

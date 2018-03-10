@@ -68,11 +68,12 @@ export default {
         const wrapper = document.querySelector(this.containerSelector);
 
         if (!wrapper) {
+            const { container } = this;
             const ModalWrapper = Vue.extend({
                 name: 'ModalWrapper',
                 render(h) {
                     return h('div', {
-                        class: `${this.container}`,
+                        class: container,
                     });
                 },
             });
