@@ -19,17 +19,37 @@
             </div>
         </td>
         <td :class="template.align"
-            v-for="(column, index) in template.columns"
-            :key="index"
-            v-if="column.meta.visible && !column.meta.hidden && !isChild(row)">
+            v-for="(column, idx) in template.columns"
+            :key="idx"
+            v-if="
+                column.meta.visible && !column.meta.hidden
+                && !column.meta.rogue && !isChild(row)
+            ">
             <table-cell :i18n="i18n"
+                :hidden-controls="cascadesHiddenControls && idx === 0"
                 :column="column"
                 :value="row[column.name]"
                 @clicked="clicked(row, column)">
+                <span slot="hidden-controls"
+                    class="hidden-controls"
+                    v-if="cascadesHiddenControls && idx === 0"
+                    @click="toggleExpand(row, index)">
+                    <span class="icon is-small">
+                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
+                    </span>
+                </span>
                 <span slot="custom-render"
                     v-if="column.meta.render"
                     v-html="customRender(row, column)">
                 </span>
+                <template :slot="column.name"
+                    v-if="column.meta.slot"
+                    slot-scope="{ column, value }">
+                    <slot :name="column.name"
+                        :column="column"
+                        :value="value">
+                    </slot>
+                </template>
             </table-cell>
         </td>
         <td class="table-actions"
@@ -54,7 +74,8 @@
             <ul>
                 <li class="child-row"
                     v-for="(item, index) in row"
-                    :key="index">
+                    :key="index"
+                    v-if="!item.column.meta.rogue">
                     <b>{{ item.column.label }}</b>:
                     <table-cell :i18n="i18n"
                         :column="item.column"
@@ -64,6 +85,14 @@
                             v-if="item.column.meta.render"
                             v-html="customRender(body.data[item.index], item.column)">
                         </span>
+                        <template :slot="item.column.name"
+                            v-if="item.column.meta.slot"
+                            slot-scope="{ column, value }">
+                            <slot :name="column.name"
+                                :column="column"
+                                :value="value">
+                            </slot>
+                        </template>
                     </table-cell>
                 </li>
             </ul>
@@ -143,6 +172,9 @@ export default {
         hiddenColSpan() {
             return this.template.columns.length - this.hiddenColumns.length
             + (this.template.actions ? 2 : 1);
+        },
+        cascadesHiddenControls() {
+            return !this.template.crtNo && this.hiddenCount > 0;
         },
     },
 
@@ -260,12 +292,12 @@ div.table-crt-no {
     .crt-no-label {
         margin: auto;
     }
+}
 
-    .hidden-controls {
-        cursor: pointer;
-        margin-left: auto;
-        margin-top: 0.1em;
-    }
+.hidden-controls {
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 0.1em;
 }
 
 td.table-actions {

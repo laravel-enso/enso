@@ -26,8 +26,12 @@
                         :key="index"
                         :class="{ 'is-active': position === index }"
                         @mousedown.prevent="hit"
-                        @mousemove="position = index"
-                        v-html="$options.filters.highlight(item[label], value)">
+                        @mousemove="position = index">
+                        <slot name="option"
+                            :highlight="highlight"
+                            :item="item">
+                            <span v-html="highlight(item[label])"></span>
+                        </slot>
                     </a>
                     <a href="#" class="dropdown-item"
                         v-if="!items.length">
@@ -57,13 +61,7 @@ export default {
     name: 'Typeahead',
 
     filters: {
-        highlight(item, value) {
-            value.split(' ').filter(word => word.length).forEach((word) => {
-                item = item.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
-            });
 
-            return item;
-        },
     },
 
     props: {
@@ -184,6 +182,13 @@ export default {
             if (this.position < this.items.length - 1) {
                 this.position++;
             }
+        },
+        highlight(item) {
+            this.value.split(' ').filter(word => word.length).forEach((word) => {
+                item = item.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
+            });
+
+            return item;
         },
     },
 };

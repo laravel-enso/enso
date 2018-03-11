@@ -2,7 +2,7 @@
 
     <tfoot>
         <tr>
-            <td></td>
+            <td v-if="template.crtNo"></td>
             <td class="has-text-centered has-text-weight-bold"
                 v-if="template.columns[0].meta.visible && !template.columns[0].meta.hidden">
                 {{ i18n("Total") }}
@@ -10,7 +10,7 @@
             <td class="has-text-centered has-text-weight-bold"
                 v-for="i in template.columns.length - 1"
                 :key="i"
-                v-if="template.columns[i].meta.visible && !template.columns[i].meta.hidden">
+                v-if="template.columns[i].meta.visible && !template.columns[i].meta.hidden && !template.columns[i].meta.rogue">
                 <span v-if="template.columns[i].meta.total">
                     {{ numberFormat(body.total[template.columns[i].name]) }}
                 </span>

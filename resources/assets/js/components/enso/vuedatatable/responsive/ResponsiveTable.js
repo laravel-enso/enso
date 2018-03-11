@@ -24,7 +24,7 @@ class ResponsiveTable {
 
     hideColumns() {
         const column = this.context.template.columns
-            .filter(column => column.meta.visible && !column.meta.hidden)
+            .filter(column => column.meta.visible && !column.meta.hidden && !column.meta.rogue)
             .pop();
 
         if (!column) {
@@ -49,15 +49,16 @@ class ResponsiveTable {
     }
 
     resize() {
-        if (this.shouldResize()) {
-            this.fit();
-        }
+        this.context.$nextTick(() => {
+            if (this.shouldResize()) {
+                this.fit();
+            }
+        });
     }
 
     retryFit() {
-        this.updateSize();
-
         this.context.$nextTick(() => {
+            this.updateSize();
             this.fit();
         });
     }

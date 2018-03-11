@@ -1,17 +1,19 @@
 import resizeDetector from 'element-resize-detector';
 import ResponsiveTable from './ResponsiveTable';
 
+const erd = resizeDetector({ strategy: 'scroll' });
+let table = null;
+
 export default {
     inserted: (el, binding, { context }) => {
-        const table = new ResponsiveTable(el, context);
-        const erd = resizeDetector({ strategy: 'scroll' });
-
-        table.resize();
-
+        table = new ResponsiveTable(el, context);
         erd.listenTo(el, () => table.resize());
+    },
+    componentUpdated: () => {
+        table.resize();
     },
     unbind(el) {
         const erd = resizeDetector({ strategy: 'scroll' });
-        erd.removeAllListeners(el);
+        erd.uninstall(el);
     },
 };

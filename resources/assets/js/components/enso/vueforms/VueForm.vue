@@ -21,6 +21,11 @@
                     <div class="field">
                         <label class="label">
                             {{ __(field.label) }}
+                            <span class="icon is-small has-text-info"
+                                v-if="field.meta.tooltip"
+                                v-tooltip="field.meta.tooltip">
+                                <fa icon="info" size="xs"></fa>
+                            </span>
                             <p v-if="errors.has(field.name)"
                                 class="help is-danger is-pulled-right">
                                 {{ errors.get(field.name) }}
@@ -159,8 +164,9 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo }
+import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
@@ -168,10 +174,12 @@ import VueSwitch from './VueSwitch.vue';
 import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 
-fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo);
+fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo);
 
 export default {
     name: 'VueForm',
+
+    directives: { tooltip: VTooltip },
 
     components: {
         VueSwitch, Modal, VueSelect, Datepicker,

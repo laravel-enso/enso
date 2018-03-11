@@ -1,4 +1,17 @@
 ## Laravel Enso's Changelog
+
+### 2.3.6
+Adds hungarian language
+Improves the the typeahead / laravel-enso/vuecomponents#12
+Fixes the dataimport layout / laravel-enso/dataimport#13
+Fixes the vuetable total when is crtNo is missing / laravel-enso/vuedatatable#32
+Fixes the vuetable hidden controls when missing crtNo / laravel-enso/vuedatatable#36
+Adds to the vuetable ability to have a scoped slot when using the `slot` meta attribute. The slot can be accessed using the name of the column. The props available are the `column` object and the `value` / laravel-enso/vuedatatable#34
+Adds rogue columns to vuetable / laravel-enso/vuedatatable#33
+Adds tooltips for vuetable header / laravel-enso/vuedatatable#31
+Adds tooltips for vueform labels / laravel-enso/formbuilder#18
+Improves the vuetable reponsiveness directive.
+
 ### 2.3.5
 Closes laravel-enso/core#43, #44.
 Fixes a modal and notification wrappers classes.

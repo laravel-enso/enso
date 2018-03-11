@@ -11,7 +11,7 @@
                         ref="importTypeSelect">
                     </vue-select>
                 </div>
-                <div class="column has-text-centered has-padding-medium"
+                <div class="column has-padding-medium"
                     v-if="importType">
                     <file-uploader class="animated fadeIn"
                         v-if="!template"
@@ -44,23 +44,20 @@
                             <fa icon="trash-alt"></fa>
                         </span>
                     </a>
-                </div>
-                <div class="column animated fadeIn"
-                    v-if="importType">
                     <file-uploader class="is-pulled-right"
                         @upload-start=" importing = true"
                         @upload-successful="summary = $event;importing = false"
                         @upload-error="importing = false;importType = null"
-                        :url="importLink">
+                        :url="importLink"
+                        v-if="importType">
                         <a slot="upload-button"
                             :class="['button is-success', { 'is-loading': importing }]">
-                            <span>{{ __('Start Import') }}</span>
+                            <span>{{ __('Import') }}</span>
                             <span class="icon is-small">
                                 <fa icon="upload"></fa>
                             </span>
                         </a>
                     </file-uploader>
-                    <div class="is-clearfix"></div>
                 </div>
             </div>
         </div>

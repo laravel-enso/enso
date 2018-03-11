@@ -30,6 +30,15 @@
                     :expanded="expanded"
                     @ajax="ajax"
                     v-if="hasContent">
+                    <template v-for="column in template.columns"
+                        :slot="column.name"
+                        v-if="column.meta.slot"
+                        slot-scope="{ column, value }">
+                        <slot :name="column.name"
+                            :column="column"
+                            :value="value">
+                        </slot>
+                    </template>
                 </table-body>
                 <table-footer v-if="template.total && hasContent"
                     :template="template"
