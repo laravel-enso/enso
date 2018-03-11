@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.3.8
+Improves the vuetable responsive calculation strategy.
+Adds clear-button for typeahead.
+
+### 2.3.7
+Replaces the lib for detecting table resize.
+Fixes lodash imports all over the project.
+
 ### 2.3.6
 Adds hungarian language
 Improves the the typeahead / laravel-enso/vuecomponents#12

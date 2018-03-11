@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <div class="control has-icons-left"
+        <div class="control has-icons-left has-icons-right"
             :class="{ 'is-loading': loading }">
-            <input class="input" :type="loading ? 'text' : 'search'"
+            <input class="input" type="text"
                 :class="{ 'is-danger': hasError }"
                 :disabled="disabled"
                 :placeholder="placeholder"
@@ -16,6 +16,11 @@
                 @blur="dropdown=false">
             <span class="icon is-small is-left">
                 <fa icon="search"></fa>
+            </span>
+            <span class="icon is-small is-right clear-button"
+                v-if="value && !loading"
+                @click="$emit('input', null)">
+                <a class="delete is-small"></a>
             </span>
         </div>
         <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
@@ -51,7 +56,7 @@
 
 <script>
 
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import fontawesome from '@fortawesome/fontawesome';
 import { faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
 
@@ -209,6 +214,10 @@ export default {
                 overflow-x: hidden;
             }
         }
+    }
+
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
     }
 
 </style>

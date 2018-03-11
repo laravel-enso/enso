@@ -44,7 +44,7 @@
 
 <script>
 
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { mapGetters } from 'vuex';
 import getCaretCoordinates from 'textarea-caret';
 import vClickOutside from 'v-click-outside';

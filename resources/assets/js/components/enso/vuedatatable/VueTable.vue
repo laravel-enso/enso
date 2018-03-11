@@ -76,7 +76,7 @@
 
 <script>
 
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import TopControls from './TopControls.vue';
 import TableHeader from './TableHeader.vue';
 import TableBody from './TableBody.vue';

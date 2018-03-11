@@ -68,7 +68,7 @@
 
 <script>
 
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { mapGetters, mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
