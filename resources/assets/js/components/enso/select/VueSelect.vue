@@ -19,7 +19,7 @@
                     <span v-if="!dropdown && !(multiple && hasSelection)">
                         {{ hasSelection
                             ? selected
-                            : (optionList.length > 0 ? placeholder : labels.noOptions)
+                            : (optionList.length > 0 ? i18n(placeholder) : i18n(labels.noOptions))
                         }}
                     </span>
                     <input class="input select-input" type="text"
@@ -59,8 +59,8 @@
                     <span :class="[
                         'label tag', isSelected(option) ? 'is-warning' : 'is-success'
                     ]" v-if="index === position">
-                        <span v-if="isSelected(option)">{{ labels.deselect }}</span>
-                        <span v-else>{{ labels.select }}</span>
+                        <span v-if="isSelected(option)">{{ i18n(labels.deselect) }}</span>
+                        <span v-else>{{ i18n(labels.select) }}</span>
                     </span>
                     <span class="icon is-small selected has-text-success"
                         v-else-if="isSelected(option)">
@@ -69,7 +69,7 @@
                 </a>
                 <a class="dropdown-item"
                     v-if="filteredOptions.length === 0">
-                    {{ labels.noResults }}
+                    {{ i18n(labels.noResults) }}
                 </a>
             </div>
         </div>
@@ -163,12 +163,19 @@ export default {
         labels: {
             type: Object,
             default: () => ({
-                selected: 'selected',
                 select: 'select',
                 deselect: 'deselect',
                 noOptions: 'No options available',
                 noResults: 'No search results found',
             }),
+        },
+        i18n: {
+            type: Function,
+            default: value => value,
+        },
+        debounce: {
+            type: Number,
+            default: 300,
         },
     },
 
@@ -240,7 +247,7 @@ export default {
     },
 
     created() {
-        this.getData = debounce(this.getData, 500);
+        this.getData = debounce(this.getData, this.debounce);
         this.getData();
     },
 
@@ -335,7 +342,7 @@ export default {
                 : this.value !== null && this.value === option[this.trackBy];
         },
         keyDown() {
-            if (this.loading || this.position === this.optionList.length - 1) {
+            if (this.loading || this.position === this.filteredOptions.length - 1) {
                 return;
             }
 

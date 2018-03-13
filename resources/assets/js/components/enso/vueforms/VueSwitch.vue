@@ -73,7 +73,7 @@ export default {
 }
 
 .vue-switch {
-    --height: $size-normal;
+    --height: 1rem;
 
     input {
         opacity: 0;
@@ -144,13 +144,13 @@ export default {
     }
 
     &.is-small {
-        --height: $size-small;
+        --height: 0.75rem;
     }
     &.is-medium {
-        --height: $size-medium;
+        --height: 1.25rem;
     }
     &.is-large {
-        --height: $size-large;
+        --height: 1.5rem;
     }
 }
 

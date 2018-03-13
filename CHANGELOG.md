@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.3.9
+Breanking change: The `$class` property from the vue select controllers is now changed to `$model`. You need to update this for `UserSelectController`.
+Adds localisation and debounce props for the vueselect component.
+Fixes laravel-enso/formbuilder#19
+Fixes laravel-enso/vuedatatable#38
+Updates all npm and composer packages
+
 ### 2.3.8
 Improves the vuetable responsive calculation strategy.
 Adds clear-button for typeahead.

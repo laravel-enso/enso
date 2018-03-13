@@ -7,6 +7,7 @@
                     <div class="columns is-multiline">
                         <div class="column is-half">
                             <vue-select :options="locales"
+                                :i18n="__"
                                 v-model="selectedLocale"
                                 @input="getLangFile()"
                                 :placeholder="__('Choose language')">

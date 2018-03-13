@@ -39,7 +39,10 @@
                         </span>
                         <span v-else>
                             <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
-                                v-if="field.meta.type === 'input' && field.meta.content !== 'checkbox'">
+                                v-if="
+                                    field.meta.type === 'input'
+                                    && field.meta.content !== 'checkbox'
+                                ">
                                 <input
                                     class="input"
                                     v-model="field.value"
@@ -62,12 +65,16 @@
                                 type="is-success"
                                 :disabled="field.meta.disabled || field.meta.readonly"
                                 @click="$emit('update')"
-                                v-if="field.meta.type === 'input' && field.meta.content === 'checkbox'">
+                                v-if="
+                                    field.meta.type === 'input'
+                                    && field.meta.content === 'checkbox'
+                                ">
                             </vue-switch>
                             <vue-select v-if="field.meta.type === 'select'"
-                                :has-error="errors.has(field.name)"
-                                @input="errors.clear(field.name);"
                                 v-model="field.value"
+                                @input="errors.clear(field.name);"
+                                :i18n="__"
+                                :has-error="errors.has(field.name)"
                                 :label="field.meta.label || 'name'"
                                 :track-by="field.meta.trackBy || 'id'"
                                 :options="field.meta.options"

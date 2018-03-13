@@ -59,7 +59,7 @@ export default {
     data() {
         return {
             tabs: [],
-            active: null,
+            active: 0,
         };
     },
 

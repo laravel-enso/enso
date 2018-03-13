@@ -109,7 +109,7 @@ export default {
         regExp: {
             type: RegExp,
             default() {
-                return /^[A-Za-z0-9 _-]*[A-Za-z0-9 _-]*$/;
+                return /^.*$/;
             },
         },
         value: {

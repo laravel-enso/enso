@@ -42,14 +42,13 @@
                     v-if="column.meta.render"
                     v-html="customRender(row, column)">
                 </span>
-                <template :slot="column.name"
-                    v-if="column.meta.slot"
-                    slot-scope="{ column, value }">
+                <span :slot="column.name"
+                    v-if="column.meta.slot">
                     <slot :name="column.name"
-                        :column="column"
-                        :value="value">
+                        :row="row"
+                        :column="column">
                     </slot>
-                </template>
+                </span>
             </table-cell>
         </td>
         <td class="table-actions"
@@ -85,14 +84,13 @@
                             v-if="item.column.meta.render"
                             v-html="customRender(body.data[item.index], item.column)">
                         </span>
-                        <template :slot="item.column.name"
-                            v-if="item.column.meta.slot"
-                            slot-scope="{ column, value }">
-                            <slot :name="column.name"
-                                :column="column"
-                                :value="value">
+                        <span :slot="item.column.name"
+                            v-if="item.column.meta.slot">
+                            <slot :name="item.column.name"
+                                :row="row"
+                                :column="item.column">
                             </slot>
-                        </template>
+                        </span>
                     </table-cell>
                 </li>
             </ul>

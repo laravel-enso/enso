@@ -7,7 +7,7 @@
                 ref="form"
                 @loaded="pivotParams.owners.id = getOwnerId()">
                 <template slot="owner_id" slot-scope="{ field, errors }">
-                    <vue-select name="owner_id"
+                    <vue-select :i18n="__"
                         v-model="field.value"
                         :has-error="errors.has(field.name)"
                         @input="pivotParams.owners.id=$event;errors.clear(field.name)"
@@ -15,7 +15,7 @@
                     </vue-select>
                 </template>
                 <template slot="role_id" slot-scope="{ field, errors }">
-                    <vue-select name="role_id"
+                    <vue-select :i18n="__"
                         :pivot-params="pivotParams"
                         v-model="field.value"
                         :has-error="errors.has(field.name)"
@@ -31,6 +31,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
 
@@ -41,6 +42,10 @@ export default {
         return {
             pivotParams: { owners: { id: null } },
         };
+    },
+
+    computed: {
+        ...mapGetters('locale', ['__']),
     },
 
     methods: {
