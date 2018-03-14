@@ -48,14 +48,14 @@ new Vue({
             seniorityOptions: [
                 { id: 1, name: 'Assistant' },
                 { id: 2, name: 'Associate' },
-                { id: 3, name: 'Staff Member' },
+                { id: 3, name: 'Staff' },
                 { id: 4, name: 'Senior' },
                 { id: 5, name: 'Partner' },
             ],
             filters: {
                 examples: {
                     is_active: null,
-                    seniority: null,
+                    seniority: [],
                 },
             },
             intervals: {

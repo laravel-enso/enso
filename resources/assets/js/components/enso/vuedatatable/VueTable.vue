@@ -5,6 +5,7 @@
             class="has-padding-small has-padding-bottom-large"
             :i18n="i18n"
             :length="length"
+            :loading="loading"
             @update-length="length=$event"
             @export-data="exportData"
             @reload="getData()"

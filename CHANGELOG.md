@@ -1,7 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.3.10
+Improves the vuetable to handle array values for its external filters
+Upgrades the clear control for all input elements to bulma's default.
+
 ### 2.3.9
-Breanking change: The `$class` property from the vue select controllers is now changed to `$model`. You need to update this for `UserSelectController`.
+Small breaking change: The `$class` property from the vue select controllers is now changed to `$model`. You need to update this for `UserSelectController`.
 Adds localisation and debounce props for the vueselect component.
 Fixes laravel-enso/formbuilder#19
 Fixes laravel-enso/vuedatatable#38

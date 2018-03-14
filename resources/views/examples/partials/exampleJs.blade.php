@@ -56,7 +56,7 @@ new Vue({
             filters: {
                 examples: {
                     is_active: null,
-                    seniority: null,
+                    seniority: [],
                 },
             },
             intervals: {

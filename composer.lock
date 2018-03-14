@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "92ac761aa8781652e7af40f881b6caa5",
+    "content-hash": "926002a1ce2283e7e3abfb2cca12b2f7",
     "packages": [
         {
             "name": "box/spout",
@@ -1830,16 +1830,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.4.7",
+            "version": "2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "bba6e2ac7f4f35ef9844cc915d3b5da0cded5dad"
+                "reference": "5e046fb77e18ca6a1ec0e5750eb32ef02cd62235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/bba6e2ac7f4f35ef9844cc915d3b5da0cded5dad",
-                "reference": "bba6e2ac7f4f35ef9844cc915d3b5da0cded5dad",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/5e046fb77e18ca6a1ec0e5750eb32ef02cd62235",
+                "reference": "5e046fb77e18ca6a1ec0e5750eb32ef02cd62235",
                 "shasum": ""
             },
             "require": {
@@ -1882,7 +1882,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-03-13T17:16:43+00:00"
+            "time": "2018-03-14T10:19:18+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2509,16 +2509,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "b1ede4187d5f9e40db3043285ea9779e3e97f151"
+                "reference": "c8c3709bf1e6e541d9147e45b845b7bb9904ccc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/b1ede4187d5f9e40db3043285ea9779e3e97f151",
-                "reference": "b1ede4187d5f9e40db3043285ea9779e3e97f151",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/c8c3709bf1e6e541d9147e45b845b7bb9904ccc6",
+                "reference": "c8c3709bf1e6e541d9147e45b845b7bb9904ccc6",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-03-13T15:51:30+00:00"
+            "time": "2018-03-14T10:12:54+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
@@ -2721,16 +2721,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.37",
+            "version": "2.1.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "60b5020c016c2e3cf10fa63800f178842f7974c5"
+                "reference": "0f93e34554babda61256edfc3ff6df01725943ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/60b5020c016c2e3cf10fa63800f178842f7974c5",
-                "reference": "60b5020c016c2e3cf10fa63800f178842f7974c5",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/0f93e34554babda61256edfc3ff6df01725943ba",
+                "reference": "0f93e34554babda61256edfc3ff6df01725943ba",
                 "shasum": ""
             },
             "type": "library",
@@ -2766,20 +2766,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-03-13T16:52:20+00:00"
+            "time": "2018-03-14T10:18:50+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.0.75",
+            "version": "1.0.76",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "5769158808b6f2d1628d32e2156b8314b6c3d40c"
+                "reference": "9ecd504628eb1e73369c6ebe915517e5578195f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/5769158808b6f2d1628d32e2156b8314b6c3d40c",
-                "reference": "5769158808b6f2d1628d32e2156b8314b6c3d40c",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/9ecd504628eb1e73369c6ebe915517e5578195f3",
+                "reference": "9ecd504628eb1e73369c6ebe915517e5578195f3",
                 "shasum": ""
             },
             "require": {
@@ -2823,7 +2823,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-03-13T17:44:22+00:00"
+            "time": "2018-03-14T10:11:35+00:00"
         },
         {
             "name": "laravel/framework",

@@ -49,14 +49,19 @@
                 </button>
             </div>
             <div class="column has-padding-small is-one-third-desktop has-text-right">
-                <p class="control has-icons-left">
-                    <input class="input table-search-input has-text-centered"
-                        type="search"
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input has-text-centered"
+                        type="text"
                         :value="value"
                         @input="$emit('input', $event.target.value)"
                         :placeholder="i18n('Search')">
                     <span class="icon is-small is-left">
                         <fa icon="search"></fa>
+                    </span>
+                    <span class="icon is-small is-right clear-button"
+                        v-if="value && !loading"
+                        @click="$emit('input', null)">
+                        <a class="delete is-small"></a>
                     </span>
                 </p>
             </div>
@@ -100,6 +105,10 @@ export default {
             type: String,
             required: true,
         },
+        loading: {
+            type: Boolean,
+            required: true,
+        },
     },
 
     data() {
@@ -134,4 +143,9 @@ export default {
             vertical-align: text-bottom;
         }
     }
+
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
+    }
+
 </style>

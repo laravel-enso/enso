@@ -12,9 +12,10 @@
                         placeholder="Min"
                         :value="min"
                         @input="$emit('update-min', $event.target.value || null)">
-                    <span class="clear"
+                    <span class="icon is-small is-right clear-button"
                         v-if="min"
                         @click="$emit('update-min', null)">
+                        <a class="delete is-small"></a>
                     </span>
                 </div>
             </div>
@@ -25,9 +26,10 @@
                         placeholder="Max"
                         :value="max"
                         @input="$emit('update-max', $event.target.value || null)">
-                    <span class="clear"
+                    <span class="icon is-small is-right clear-button"
                         v-if="max"
                         @click="$emit('update-max', null)">
+                        <a class="delete is-small"></a>
                     </span>
                 </div>
             </div>
@@ -69,33 +71,8 @@ export default {
         padding: 0.5rem;
     }
 
-    .clear {
-        &:before {
-            transform: rotate(45deg);
-        }
-
-        &:after {
-            transform: rotate(-45deg);
-        }
-
-        position: absolute;
-        top: 7px;
-        right: 10px;
-        height: 22px;
-        width: 22px;
-        display: block;
-        cursor: pointer;
-    }
-
-    .clear:after, .clear:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 1px;
-        height: 16px;
-        background: #aaa;
-        top: 3px;
-        right: 10px;
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
     }
 
 </style>

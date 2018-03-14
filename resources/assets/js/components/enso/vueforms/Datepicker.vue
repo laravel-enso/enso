@@ -13,9 +13,10 @@
             </fa>
             <fa icon="calendar-alt" v-else></fa>
         </span>
-        <span class="clear"
+        <span class="icon is-small is-right clear-button"
             v-if="value"
             @click="picker.clear()">
+            <a class="delete is-small"></a>
         </span>
     </div>
 
@@ -119,33 +120,8 @@ export default {
 
 <style lang="scss" scoped>
 
-    .clear {
-        &:before {
-            transform: rotate(45deg);
-        }
-
-        &:after {
-            transform: rotate(-45deg);
-        }
-
-        position: absolute;
-        top: 7px;
-        right: 10px;
-        height: 22px;
-        width: 22px;
-        display: block;
-        cursor: pointer;
-    }
-
-    .clear:after, .clear:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 1px;
-        height: 16px;
-        background: #aaa;
-        top: 3px;
-        right: 10px;
+    .control.has-icons-right .icon.clear-button {
+        pointer-events: all;
     }
 
 </style>
