@@ -32,7 +32,7 @@
                         @keydown.down="keyDown"
                         @keydown.up="keyUp"
                         @keydown.tab="hideDropdown"
-                        @keydown.enter.prevent="hit(optionList[position][trackBy])">
+                        @keydown.enter.prevent="hit()">
                     <span class="is-loading"
                         v-if="loading">
                     </span>
@@ -54,7 +54,7 @@
                     :key="index"
                     :class="{ 'is-active': position === index }"
                     @mousemove="position = index"
-                    @click="hit(option[trackBy])">
+                    @click="hit()">
                     <span v-html="highlight(option[label])"></span>
                     <span :class="[
                         'label tag', isSelected(option) ? 'is-warning' : 'is-success'
@@ -300,17 +300,25 @@ export default {
             if (this.optionList.length === 0) {
                 return;
             }
+
             this.dropdown = true;
+            this.position = 0;
         },
         hideDropdown() {
             this.query = null;
             this.dropdown = false;
             this.position = null;
         },
-        hit(value) {
+        hit() {
+            if (this.filteredOptions.length === 0) {
+                return;
+            }
+
+            const value = this.filteredOptions[this.position][this.trackBy];
+
             if (!this.multiple) {
                 this.hideDropdown();
-                this.$emit('input', this.value === value ? null : value);
+                this.$emit('input', value);
                 return;
             }
 
@@ -342,7 +350,9 @@ export default {
                 : this.value !== null && this.value === option[this.trackBy];
         },
         keyDown() {
-            if (this.loading || this.position === this.filteredOptions.length - 1) {
+            if (this.filteredOptions.length === 0
+                || this.loading
+                || this.position === this.filteredOptions.length - 1) {
                 return;
             }
 
@@ -363,6 +373,7 @@ export default {
         scroll() {
             const dropdown = this.dropdownSelector();
             const option = this.optionSelector();
+
             if (option.offsetTop < dropdown.scrollTop) {
                 dropdown.scrollTop -= (dropdown.scrollTop - option.offsetTop);
                 return;
@@ -370,6 +381,7 @@ export default {
 
             const dropdownBottom = dropdown.scrollTop + dropdown.clientHeight;
             const optionBottom = option.offsetTop + option.clientHeight;
+
             if (optionBottom > dropdownBottom) {
                 dropdown.scrollTop += (optionBottom - dropdownBottom);
             }

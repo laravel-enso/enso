@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "926002a1ce2283e7e3abfb2cca12b2f7",
+    "content-hash": "92ac761aa8781652e7af40f881b6caa5",
     "packages": [
         {
             "name": "box/spout",
@@ -1550,16 +1550,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.2.7",
+            "version": "2.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "c20575f5e09b46140b927dbd2406613856f03142"
+                "reference": "d4274cd9dbf558f491a050785bb4a42592a68c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c20575f5e09b46140b927dbd2406613856f03142",
-                "reference": "c20575f5e09b46140b927dbd2406613856f03142",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d4274cd9dbf558f491a050785bb4a42592a68c0d",
+                "reference": "d4274cd9dbf558f491a050785bb4a42592a68c0d",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-03-11T06:57:15+00:00"
+            "time": "2018-03-15T13:39:53+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2509,16 +2509,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "c8c3709bf1e6e541d9147e45b845b7bb9904ccc6"
+                "reference": "6a52dbb7d2fcbfa394fc3d4c76b0fda98e257042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/c8c3709bf1e6e541d9147e45b845b7bb9904ccc6",
-                "reference": "c8c3709bf1e6e541d9147e45b845b7bb9904ccc6",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/6a52dbb7d2fcbfa394fc3d4c76b0fda98e257042",
+                "reference": "6a52dbb7d2fcbfa394fc3d4c76b0fda98e257042",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-03-14T10:12:54+00:00"
+            "time": "2018-03-15T07:24:30+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
@@ -2827,16 +2827,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.11",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73"
+                "reference": "82d8165d1ea86bdd81ddfa1db9343fa19e7d1450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
-                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/82d8165d1ea86bdd81ddfa1db9343fa19e7d1450",
+                "reference": "82d8165d1ea86bdd81ddfa1db9343fa19e7d1450",
                 "shasum": ""
             },
             "require": {
@@ -2845,7 +2845,7 @@
                 "erusev/parsedown": "~1.7",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "league/flysystem": "~1.0",
+                "league/flysystem": "^1.0.8",
                 "monolog/monolog": "~1.12",
                 "nesbot/carbon": "^1.24.1",
                 "php": "^7.1.3",
@@ -2961,7 +2961,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-09T16:53:27+00:00"
+            "time": "2018-03-14T17:29:38+00:00"
         },
         {
             "name": "laravel/horizon",

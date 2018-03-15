@@ -1,5 +1,5 @@
 <template>
-    <a class="navbar-item"
+    <a class="navbar-item settings"
         @click="$store.commit('layout/settingsBar/toggle')">
         <span class="icon is-small">
             <fa icon="cogs"></fa>

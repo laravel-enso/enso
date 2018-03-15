@@ -1,6 +1,6 @@
 <template>
 
-    <div class="navbar-item has-dropdown"
+    <div class="navbar-item has-dropdown notifications"
         v-click-outside="hide"
         :class="{ 'is-active': show }">
         <a class="navbar-link"

@@ -1,5 +1,5 @@
 <template>
-    <a class="navbar-item"
+    <a class="navbar-item user-profile"
         @click="goToProfile()">
         <img :src="$store.getters.avatarLink">
         <span class="has-margin-left-small"
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex';
 
 export default {

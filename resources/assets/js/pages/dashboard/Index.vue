@@ -1,16 +1,14 @@
 <template>
 
-    <div>
-        <div class="columns">
-            <div class="column"
-                v-for="(column, index) in grid"
-                :key="index">
-                <chart-card v-for="(element, index) in column"
-                    :key="index"
-                    :source="element.meta.source"
-                    class="has-margin-bottom-small">
-                </chart-card>
-            </div>
+    <div class="columns">
+        <div class="column"
+            v-for="(column, index) in grid"
+            :key="index">
+            <chart-card v-for="(element, index) in column"
+                :key="index"
+                :source="element.meta.source"
+                class="has-margin-bottom-small">
+            </chart-card>
         </div>
     </div>
 

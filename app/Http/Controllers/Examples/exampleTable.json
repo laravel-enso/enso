@@ -4,7 +4,7 @@
     "writeSuffix": null,
     "name": "Enso Vue Datatable Example",
     "icon": ["fab", "vuejs"],
-    "crtNo": false,
+    "crtNo": true,
     "buttons": [
         {
             "type": "global",

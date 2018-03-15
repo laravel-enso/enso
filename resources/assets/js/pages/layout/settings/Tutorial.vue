@@ -52,7 +52,7 @@ export default {
         },
         init(steps) {
             this.$store.commit('layout/settingsBar/toggle');
-            this.intro.setOptions({ steps });
+            this.intro.setOptions({ steps, highlightClass: 'intro-highlight', showStepNumbers: false });
             this.intro.start();
         },
     },
@@ -61,3 +61,12 @@ export default {
 </script>
 
 <style src="intro.js/introjs.css"></style>
+
+<style>
+
+    .intro-highlight {
+        opacity: 0.5;
+    }
+
+</style>
+

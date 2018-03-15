@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.3.11
+Adds tutorials examples
+
 ### 2.3.10
 Improves the vuetable to handle array values for its external filters
 Upgrades the clear control for all input elements to bulma's default.
