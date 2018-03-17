@@ -65,4 +65,15 @@ return [
     */
 
     'authorize' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Divider title placement
+    |--------------------------------------------------------------------------
+    | When using multiple sections you have the option to have a divider
+    | and a title. This option specifies the position of the title.
+    | Available options: 'left', 'center', 'right'.
+    */
+
+    'dividerTitlePlacement' => 'center',
 ];

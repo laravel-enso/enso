@@ -39,9 +39,9 @@ export default {
 
     computed: {
         customFields() {
-            return this.data
-                ? this.data.fields.filter(field => field.meta.custom)
-                : null;
+            return this.data.sections
+                .reduce((fields, section) => fields
+                    .concat(section.fields.filter(field => field.meta.custom)), []);
         },
     },
 
@@ -50,6 +50,14 @@ export default {
             this.data = data.form;
             this.$emit('loaded');
         }).catch(error => this.handleError(error));
+    },
+
+    methods: {
+        field(field) {
+            return this.data.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
+        },
     },
 
 };

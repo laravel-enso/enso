@@ -25,7 +25,7 @@
                     :id="id"
                     :type="type"
                     :form="form"
-                    @form-close="form=false"
+                    @close="form = null"
                     @destroy="get(); form=false"
                     @submit="get();form=false">
                 </contact-form>

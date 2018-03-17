@@ -38,18 +38,18 @@
                 </div>
             </div>
         </div>
-        <address-form
-            v-if="form"
+        <address-form v-if="form"
             :id="id"
             :type="type"
             :form="form"
-            @form-close="form=null"
-            @destroy="get();form=null"
-            @submit="get();form=null">
-            <template v-for="field in form.fields"
+            @close="form = null"
+            @destroy="get();form = null"
+            @submit="get();form = null"
+            ref="form">
+            <template v-for="field in customFields"
                 v-if="field.meta.custom"
                 :slot="field.name"
-                slot-scope="{ field, errors }">
+                slot-scope="{ field, errors}">
                 <slot :name="field.name"
                     :field="field"
                     :errors="errors">
@@ -126,6 +126,11 @@ export default {
         icon() {
             return faMapSigns;
         },
+        customFields() {
+            return this.form.sections
+                .reduce((fields, section) => fields
+                    .concat(section.fields.filter(field => field.meta.custom)), []);
+        },
     },
 
     created() {
@@ -136,26 +141,28 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false)).then((response) => {
-                this.addresses = response.data;
-                this.loading = false;
-                this.$refs.card.resize();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false))
+                .then((response) => {
+                    this.addresses = response.data;
+                    this.loading = false;
+                    this.$refs.card.resize();
+                }).catch((error) => {
+                    this.loading = false;
+                    this.handleError(error);
+                });
         },
         edit(address) {
             this.loading = true;
 
-            axios.get(route('core.addresses.edit', address.id, false)).then(({ data }) => {
-                this.form = data.form;
-                this.$emit('form-loaded', this.form);
-                this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('core.addresses.edit', address.id, false))
+                .then(({ data }) => {
+                    this.form = data.form;
+                    this.$emit('form-loaded', this.form);
+                    this.loading = false;
+                }).catch((error) => {
+                    this.loading = false;
+                    this.handleError(error);
+                });
         },
         create() {
             if (!this.$refs.card.expanded) {

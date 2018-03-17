@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.3.12
+Breaking change: Upgrades the form builder to support sections. Beware, you will have to upgrade all the templates and wrapt the current `columns` / `fields` attributes in an `sections` array with at least one object (for only one section). Please look at the template.json example to understand the new structure. [another example](https://github.com/laravel-enso/FormBuilder/issues/9#issuecomment-373896117). Don't forget to also publish the new `forms.php` config file.
+Fixes a bug when clearing the vuetable search field.
+Updates all composer and npm dependencies.
+
 ### 2.3.11
 Adds tutorials examples
 

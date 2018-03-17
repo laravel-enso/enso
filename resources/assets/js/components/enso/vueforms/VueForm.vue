@@ -13,9 +13,17 @@
         </h5>
         <form class="is-marginless"
             @submit.prevent="submit()">
-            <div class="columns is-multiline">
-                <div v-for="field in data.fields"
-                    :class="['column', columnSize]"
+            <div class="columns is-multiline"
+                v-for="(section, index) in data.sections"
+                :key="index">
+                <div class="column is-12"
+                    v-if="section.divider">
+                    <divider :title="__(section.title)"
+                        :placement="data.dividerTitlePlacement">
+                    </divider>
+                </div>
+                <div v-for="field in section.fields"
+                    :class="['column', columnSize(section.columns)]"
                     :key="field.name"
                     v-if="!field.meta.hidden">
                     <div class="field">
@@ -175,6 +183,7 @@ import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
+import Divider from './Divider.vue';
 import Errors from './classes/Errors';
 import Modal from './Modal.vue';
 import VueSwitch from './VueSwitch.vue';
@@ -189,7 +198,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        VueSwitch, Modal, VueSelect, Datepicker,
+        Divider, VueSwitch, Modal, VueSelect, Datepicker,
     },
 
     props: {
@@ -213,9 +222,6 @@ export default {
 
     computed: {
         ...mapGetters('locale', ['__']),
-        columnSize() {
-            return `is-${parseInt(12 / this.data.columns, 10)}`;
-        },
         path() {
             return this.data.method === 'post'
                 ? this.data.actions.store.path
@@ -224,6 +230,9 @@ export default {
     },
 
     methods: {
+        columnSize(columns) {
+            return `is-${parseInt(12 / columns, 10)}`;
+        },
         create() {
             this.$emit('create');
             this.$router.push({ name: this.data.actions.create.route });
@@ -256,10 +265,13 @@ export default {
             });
         },
         formData() {
-            return this.data.fields.reduce((object, field) => {
-                object[field.name] = field.value;
-                return object;
-            }, { _params: this.params });
+            return this.data.sections
+                .reduce((fields, section) => fields
+                    .concat(section.fields), [])
+                .reduce((object, field) => {
+                    object[field.name] = field.value;
+                    return object;
+                }, { _params: this.params });
         },
         destroy() {
             this.modal = false;
@@ -277,6 +289,11 @@ export default {
                 this.loading = false;
                 this.handleError(error);
             });
+        },
+        field(field) {
+            return this.data.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
         },
     },
 };

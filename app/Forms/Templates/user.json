@@ -1,67 +1,69 @@
 {
-    "columns": "2",
     "routePrefix": "administration.users",
-    "fields": [{
-        "label": "First Name",
-        "name": "first_name",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Last Name",
-        "name": "last_name",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Email",
-        "name": "email",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "email"
-        }
-    }, {
-        "label": "Phone Number",
-        "name": "phone",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Entity",
-        "name": "owner_id",
-        "value": null,
-        "meta": {
-            "custom": true,
-            "type": "select",
-            "multiple": false,
-            "options": [],
-            "source": "administration.owners.selectOptions"
-        }
-    }, {
-        "label": "Role",
-        "name": "role_id",
-        "value": null,
-        "meta": {
-            "custom": true,
-            "type": "select",
-            "multiple": false,
-            "options": [],
-            "source": "system.roles.selectOptions"
-        }
-    }, {
-        "label": "Active",
-        "name": "is_active",
-        "value": false,
-        "meta": {
-            "type": "input",
-            "content": "checkbox"
-        }
+    "sections": [{
+        "columns": "2",
+        "fields": [{
+            "label": "First Name",
+            "name": "first_name",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Last Name",
+            "name": "last_name",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Email",
+            "name": "email",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "email"
+            }
+        }, {
+            "label": "Phone Number",
+            "name": "phone",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Entity",
+            "name": "owner_id",
+            "value": null,
+            "meta": {
+                "custom": true,
+                "type": "select",
+                "multiple": false,
+                "options": [],
+                "source": "administration.owners.selectOptions"
+            }
+        }, {
+            "label": "Role",
+            "name": "role_id",
+            "value": null,
+            "meta": {
+                "custom": true,
+                "type": "select",
+                "multiple": false,
+                "options": [],
+                "source": "system.roles.selectOptions"
+            }
+        }, {
+            "label": "Active",
+            "name": "is_active",
+            "value": false,
+            "meta": {
+                "type": "input",
+                "content": "checkbox"
+            }
+        }]
     }]
 }

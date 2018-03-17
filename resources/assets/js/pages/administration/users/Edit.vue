@@ -5,7 +5,7 @@
             <vue-form-ss class="box animated fadeIn"
                 :params="[$route.name, $route.params.id, false]"
                 ref="form"
-                @loaded="pivotParams.owners.id = getOwnerId()">
+                @loaded="pivotParams.owners.id = $refs.form.field('owner_id').value">
                 <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select :i18n="__"
                         v-model="field.value"
@@ -46,13 +46,6 @@ export default {
 
     computed: {
         ...mapGetters('locale', ['__']),
-    },
-
-    methods: {
-        getOwnerId() {
-            return this.$refs.form.data.fields
-                .find(({ name }) => name === 'owner_id').value;
-        },
     },
 };
 

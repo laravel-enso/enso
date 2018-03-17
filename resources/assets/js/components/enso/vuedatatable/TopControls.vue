@@ -60,7 +60,7 @@
                     </span>
                     <span class="icon is-small is-right clear-button"
                         v-if="value && !loading"
-                        @click="$emit('input', null)">
+                        @click="$emit('input', '')">
                         <a class="delete is-small"></a>
                     </span>
                 </p>

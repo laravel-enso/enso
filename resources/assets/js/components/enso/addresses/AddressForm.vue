@@ -1,30 +1,22 @@
 <template>
 
-    <transition enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut">
-        <div class="modal is-active">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <a class="delete is-pulled-right has-margin-top-medium has-margin-right-medium"
-                    @click="$emit('form-close')">
-                </a>
-                <vue-form class="box"
-                    :data="form"
-                    :params="params"
-                    v-on="$listeners">
-                    <template v-for="field in form.fields"
-                        v-if="field.meta.custom"
-                        :slot="field.name"
-                        slot-scope="{ field, errors}">
-                        <slot :name="field.name"
-                            :field="field"
-                            :errors="errors">
-                        </slot>
-                    </template>
-                </vue-form>
-            </div>
-        </div>
-    </transition>
+    <modal v-on="$listeners"
+        :show="true">
+        <vue-form class="box"
+            :data="form"
+            :params="params"
+            v-on="$listeners">
+            <template v-for="field in customFields"
+                v-if="field.meta.custom"
+                :slot="field.name"
+                slot-scope="{ field, errors}">
+                <slot :name="field.name"
+                    :field="field"
+                    :errors="errors">
+                </slot>
+            </template>
+        </vue-form>
+    </modal>
 
 </template>
 
@@ -33,11 +25,12 @@
 import fontawesome from '@fortawesome/fontawesome';
 import { faLocationArrow } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueForm from '../vueforms/VueForm.vue';
+import Modal from '../bulma/Modal.vue';
 
 fontawesome.library.add(faLocationArrow);
 
 export default {
-    components: { VueForm },
+    components: { Modal, VueForm },
     props: {
         id: {
             type: Number,
@@ -60,12 +53,17 @@ export default {
                 type: this.type,
             };
         },
+        customFields() {
+            return this.form.sections
+                .reduce((fields, section) => fields
+                    .concat(section.fields.filter(field => field.meta.custom)), []);
+        },
     },
 };
 
 </script>
 
-<style scoped>
+<style>
 
     .modal-content {
         width: 70%;

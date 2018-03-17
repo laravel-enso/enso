@@ -1,31 +1,23 @@
 <template>
-    <transition enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut">
-        <div class="modal is-active">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <a class="delete is-pulled-right has-margin-top-medium has-margin-right-medium"
-                    @click="$emit('form-close')">
-                </a>
-                <vue-form class="box"
-                    @destroy="$emit('destroy')"
-                    @submit="$emit('submit')"
-                    :params="params"
-                    :data="form">
-                </vue-form>
-            </div>
-        </div>
-    </transition>
+    <modal v-on="$listeners"
+        :show="true">
+        <vue-form class="box"
+            v-on="$listeners"
+            :params="params"
+            :data="form">
+        </vue-form>
+    </modal>
 </template>
 
 <script>
 
+import Modal from '../bulma/Modal.vue';
 import VueForm from '../vueforms/VueForm.vue';
 
 export default {
     name: 'ContactForm',
 
-    components: { VueForm },
+    components: { Modal, VueForm },
 
     props: {
         id: {
