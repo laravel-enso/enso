@@ -1,9 +1,9 @@
 <template>
 
     <span class="table-entries-info">
-        {{ recordsInfo }}
-        <span v-if="body.filtered !== body.count">
-            {{ filteredInfo }}
+        {{ chunkInfo }}
+        <span v-if="body.filters">
+            {{ fromInfo }}
         </span>
     </span>
 
@@ -19,10 +19,6 @@ export default {
             type: Number,
             required: true,
         },
-        length: {
-            type: Number,
-            required: true,
-        },
         body: {
             type: Object,
             required: true,
@@ -34,12 +30,28 @@ export default {
     },
 
     computed: {
-        recordsInfo() {
-            return `${this.i18n('From')} ${this.start + 1} ${this.i18n('to')} \
-            ${(this.start + this.length) <= this.body.filtered ? this.start + this.length : this.body.filtered} \
-            ${this.i18n('of')} ${this.body.filtered} ${this.i18n('entries')}`;
+        hasRecords() {
+            return this.body.data.length > 0;
+        },
+        startInfo() {
+            return this.hasRecords
+                ? this.start + 1
+                : 0;
         },
         filteredInfo() {
+            return this.body.filters
+                ? `${this.i18n('of')} ${this.body.fullRecordInfo ? this.body.filtered : '...'} \
+                 ${this.i18n('entries')}`
+                : `${this.i18n('of')} ${this.body.count} ${this.i18n('entries')}`;
+        },
+        chunkInfo() {
+            return this.hasRecords
+                ? `${this.i18n('From')} ${this.startInfo} ${this.i18n('to')} \
+                ${this.start + this.body.data.length} \
+                ${this.filteredInfo}`
+                : this.i18n('No records were found');
+        },
+        fromInfo() {
             return `(${this.i18n('filtered')} ${this.i18n('from')} ${this.body.count} \
             ${this.i18n('total')} ${this.i18n('records')})`;
         },

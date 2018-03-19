@@ -47,6 +47,13 @@
                         <fa icon="undo"></fa>
                     </span>
                 </button>
+                <button class="button"
+                    @click="$emit('request-full-info')"
+                    v-if="info">
+                    <span class="icon is-small has-text-info">
+                        <fa icon="info-circle"></fa>
+                    </span>
+                </button>
             </div>
             <div class="column has-padding-small is-one-third-desktop has-text-right">
                 <p class="control has-icons-left has-icons-right">
@@ -73,13 +80,13 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faSync, faUndo, faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faSync, faUndo, faSearch, faInfoCircle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import Alignment from './topControls/Alignment.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
 
-fontawesome.library.add(faSync, faUndo, faSearch);
+fontawesome.library.add(faSync, faUndo, faSearch, faInfoCircle);
 
 export default {
     name: 'TopControls',
@@ -103,6 +110,10 @@ export default {
         },
         value: {
             type: String,
+            required: true,
+        },
+        info: {
+            type: Boolean,
             required: true,
         },
         loading: {

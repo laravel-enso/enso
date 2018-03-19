@@ -23,7 +23,11 @@
                     </divider>
                 </div>
                 <div v-for="field in section.fields"
-                    :class="['column', columnSize(section.columns)]"
+                    :class="[ 'column',
+                        section.columns !== 'custom'
+                            ? columnSize(section.columns)
+                            : `is-${field.column}`
+                    ]"
                     :key="field.name"
                     v-if="!field.meta.hidden">
                     <div class="field">

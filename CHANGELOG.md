@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.3.14
+Greatly improves the datatables performance for big databases. The package can now handle tens of millions of records by using the new `fullInfoRecordLimit` config option. Read more in the docs.
+Improves vuecomponents, vuetable and vueform.
+Updates composer and npm dependecies.
+
+### 2.3.13
+Adds custom layout for form sections.
+Fixes laravel-enso/select #11.
+
 ### 2.3.12
 Breaking change: Upgrades the form builder to support sections. Beware, you will have to upgrade all the templates and wrapt the current `columns` / `fields` attributes in an `sections` array with at least one object (for only one section). Please look at the template.json example to understand the new structure. [another example](https://github.com/laravel-enso/FormBuilder/issues/9#issuecomment-373896117). Don't forget to also publish the new `forms.php` config file.
 Fixes a bug when clearing the vuetable search field.

@@ -156,4 +156,15 @@ return [
     */
 
     'dateFormat' => 'd-m-Y',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Detailed information record limit
+    |--------------------------------------------------------------------------
+    | Sometimes the table handles hundreds of millions of records. By setting
+    | an upper limit for detailed information the permformance can be
+    | greatly improved. The info can still be called on demand.
+    */
+
+    'fullInfoRecordLimit' => 100000,
 ];
