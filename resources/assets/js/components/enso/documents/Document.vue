@@ -77,7 +77,6 @@
 <script>
 
 import { VPopover } from 'v-tooltip';
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faFile, faEye, faCloudDownloadAlt, faTrashAlt,
@@ -103,7 +102,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         downloadLink() {
             return route('core.documents.download', this.doc.id, false);
         },

@@ -110,7 +110,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         ...mapGetters(['avatarLink']),
         avatar() {
             return this.isNew

@@ -2,7 +2,6 @@
 
     <vue-table class="box"
         :path="path"
-        :i18n="__"
         :custom-render="customRender"
         id="tutorials">
     </vue-table>
@@ -11,7 +10,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
 export default {
@@ -21,10 +19,6 @@ export default {
         return {
             path: route('system.tutorials.initTable', [], false),
         };
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 
     methods: {

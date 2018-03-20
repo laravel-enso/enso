@@ -80,7 +80,6 @@
 <script>
 
 import debounce from 'lodash/debounce';
-import { mapGetters } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import fontawesome from '@fortawesome/fontawesome';
 import { faCheck, faAngleUp }
@@ -171,7 +170,11 @@ export default {
         },
         i18n: {
             type: Function,
-            default: value => value,
+            default(key) {
+                return typeof this.__ === 'function'
+                    ? this.__(key)
+                    : key;
+            },
         },
         debounce: {
             type: Number,
@@ -190,7 +193,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         isServerSide() {
             return this.source !== null;
         },

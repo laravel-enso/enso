@@ -18,7 +18,7 @@
                 :key="index">
                 <div class="column is-12"
                     v-if="section.divider">
-                    <divider :title="__(section.title)"
+                    <divider :title="i18n(section.title)"
                         :placement="data.dividerTitlePlacement">
                     </divider>
                 </div>
@@ -32,7 +32,7 @@
                     v-if="!field.meta.hidden">
                     <div class="field">
                         <label class="label">
-                            {{ __(field.label) }}
+                            {{ i18n(field.label) }}
                             <span class="icon is-small has-text-info"
                                 v-if="field.meta.tooltip"
                                 v-tooltip="field.meta.tooltip">
@@ -85,7 +85,7 @@
                             <vue-select v-if="field.meta.type === 'select'"
                                 v-model="field.value"
                                 @input="errors.clear(field.name);"
-                                :i18n="__"
+                                :i18n="i18n"
                                 :has-error="errors.has(field.name)"
                                 :label="field.meta.label || 'name'"
                                 :track-by="field.meta.trackBy || 'id'"
@@ -132,7 +132,7 @@
                 :disabled="data.actions.destroy.forbidden"
                 :class="data.actions.destroy.button.class"
                 @click.prevent="modal = true">
-                <span>{{ __(data.actions.destroy.button.label) }}</span>
+                <span>{{ i18n(data.actions.destroy.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.destroy.button.icon"></fa>
                 </span>
@@ -142,7 +142,7 @@
                 @click.prevent="create()"
                 v-if="data.actions.create"
                 :disabled="data.actions.create.forbidden">
-                <span>{{ __(data.actions.create.button.label) }}</span>
+                <span>{{ i18n(data.actions.create.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.create.button.icon"></fa>
                 </span>
@@ -152,7 +152,7 @@
                 class="button is-pulled-right"
                 :class="[data.actions.store.button.class, { 'is-loading': loading }]"
                 :disabled="data.actions.store.forbidden || errors.any()">
-                <span>{{ __(data.actions.store.button.label) }}</span>
+                <span>{{ i18n(data.actions.store.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.store.button.icon"></fa>
                 </span>
@@ -162,7 +162,7 @@
                 class="button is-pulled-right"
                 :class="[data.actions.update.button.class, { 'is-loading': loading }]"
                 :disabled="data.actions.update.forbidden || errors.any()">
-                <span>{{ __(data.actions.update.button.label) }}</span>
+                <span>{{ i18n(data.actions.update.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.update.button.icon"></fa>
                 </span>
@@ -171,7 +171,7 @@
         </form>
         <modal v-if="data.actions.destroy"
             :show="modal"
-            :__="__"
+            :i18n="i18n"
             :message="data.actions.destroy.button.message"
             @close="modal = false"
             @commit="destroy()">
@@ -182,7 +182,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
@@ -214,6 +213,14 @@ export default {
             type: Object,
             default: null,
         },
+        i18n: {
+            type: Function,
+            default(key) {
+                return typeof this.__ === 'function'
+                    ? this.__(key)
+                    : key;
+            },
+        },
     },
 
     data() {
@@ -225,7 +232,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         path() {
             return this.data.method === 'post'
                 ? this.data.actions.store.path

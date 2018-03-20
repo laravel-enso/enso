@@ -31,7 +31,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import CheckboxManager from '../../../components/enso/rolemanager/CheckboxManager.vue';
 
 export default {
@@ -42,10 +41,6 @@ export default {
             roleId: this.$route.params.role,
             data: null,
         };
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 
     created() {

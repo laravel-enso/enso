@@ -2,7 +2,6 @@
 
     <vue-table class="box"
         :path="path"
-        :i18n="__"
         id="users">
     </vue-table>
 
@@ -10,7 +9,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
 export default {
@@ -20,10 +18,6 @@ export default {
         return {
             path: route('administration.users.initTable', [], false),
         };
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 };
 

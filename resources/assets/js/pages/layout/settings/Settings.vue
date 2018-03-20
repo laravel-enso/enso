@@ -27,7 +27,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import VueAside from '../VueAside.vue';
 import LanguageSelector from './LanguageSelector.vue';
 import ThemeSelector from './ThemeSelector.vue';
@@ -42,7 +42,6 @@ export default {
 
     computed: {
         ...mapState(['user']),
-        ...mapGetters('locale', ['__']),
     },
 
     methods: {

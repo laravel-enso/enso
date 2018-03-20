@@ -23,13 +23,10 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
-
 export default {
     name: 'Breadrumbs',
 
     computed: {
-        ...mapGetters('locale', ['__']),
         breadcrumbs() {
             return this.$route.matched.reduce((breadcrumbs, element) => {
                 breadcrumbs.push({ name: element.meta.breadcrumb, route: element.meta.route });

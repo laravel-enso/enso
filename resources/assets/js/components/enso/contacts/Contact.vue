@@ -49,7 +49,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faCheck, faTimes, faEnvelope, faPhone, faStickyNote }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -75,10 +74,6 @@ export default {
             type: Object,
             required: true,
         },
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 };
 

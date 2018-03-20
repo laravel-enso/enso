@@ -2,7 +2,6 @@
 
     <vue-table class="box"
         :path="path"
-        :i18n="__"
         id="permissionGroups">
     </vue-table>
 
@@ -15,10 +14,6 @@ import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
 export default {
     components: { VueTable },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
 
     data() {
         return {

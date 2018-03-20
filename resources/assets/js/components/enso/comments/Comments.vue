@@ -49,7 +49,7 @@
 
 <script>
 
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
@@ -99,7 +99,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         ...mapState(['user']),
         isEmpty() {
             return this.count === 0;

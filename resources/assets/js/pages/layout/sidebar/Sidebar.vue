@@ -13,7 +13,7 @@
 
 <script>
 
-import { mapGetters, mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import Menus from './Menus.vue';
 import VueAside from '../VueAside.vue';
 
@@ -23,7 +23,6 @@ export default {
     components: { Menus, VueAside },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         ...mapState('menus', { menus: 'list' }),
     },
 

@@ -62,7 +62,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faMapSigns, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
@@ -108,7 +107,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         filteredAddresses() {
             return this.query
                 ? this.addresses.filter(address =>

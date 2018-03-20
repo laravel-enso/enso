@@ -11,8 +11,8 @@
                 {{ __(menu.name) }}
             </router-link>
 
-            <a v-if="menu.children.length"
-                @click="toggle(menu)">
+            <a @click="toggle(menu)"
+                v-if="menu.children.length">
                 <span class="icon is-small has-margin-right-small">
                     <fa :icon="menu.icon" fixed-width></fa>
                 </span>
@@ -24,11 +24,11 @@
             </a>
 
             <menus :menus="menu.children"
-                v-if="menu.children.length"
                 @shrink="shrink"
                 @extend="extend"
                 :collapsed="!menu.expanded"
-                @select="$emit('select', $event)">
+                @select="$emit('select', $event)"
+                v-if="menu.children.length">
             </menus>
 
         </li>
@@ -38,7 +38,7 @@
 
 <script>
 
-import { mapGetters, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 import './icons';
 
 export default {
@@ -53,10 +53,6 @@ export default {
             type: Boolean,
             default: false,
         },
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 
     watch: {

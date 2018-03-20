@@ -2,17 +2,15 @@
     <div>
         <vue-table class="box"
             :path="path"
-            :i18n="__"
             @edit-contact="edit"
             ref="contacts"
             id="contacts">
         </vue-table>
-        <contact-form
-            v-if="form"
-            :form="form"
+        <contact-form :form="form"
             @form-close="form=null"
             @destroy="$refs.contacts.getData(); form=null"
-            @submit="$refs.contacts.getData();form=null">
+            @submit="$refs.contacts.getData();form=null"
+            v-if="form">
         </contact-form>
     </div>
 
@@ -21,7 +19,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faAddressCard } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
@@ -31,10 +28,6 @@ fontawesome.library.add(faAddressCard);
 
 export default {
     components: { VueTable, ContactForm },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
 
     data() {
         return {

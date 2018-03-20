@@ -5,9 +5,8 @@
             v-if="!summary">
             <div class="columns">
                 <div class="column is-one-third">
-                    <vue-select :options="importTypes"
-                        :i18n="__"
-                        v-model="importType"
+                    <vue-select v-model="importType"
+                        :options="importTypes"
                         @input="getTemplate"
                         ref="importTypeSelect">
                     </vue-select>
@@ -64,7 +63,6 @@
         </div>
         <vue-table class="box animated fadeIn"
             :path="path"
-            :i18n="__"
             id="imports-table"
             :custom-render="customRender"
             @get-summary="getSummary"
@@ -205,7 +203,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import {
@@ -248,7 +245,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         templateLink() {
             return route('import.uploadTemplate', this.importType, false);
         },

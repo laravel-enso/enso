@@ -7,7 +7,6 @@
                     <div class="columns is-multiline">
                         <div class="column is-half">
                             <vue-select :options="locales"
-                                :i18n="__"
                                 v-model="selectedLocale"
                                 @input="getLangFile()"
                                 :placeholder="__('Choose language')">
@@ -105,7 +104,7 @@
 
 <script>
 
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faSearch, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
@@ -128,7 +127,6 @@ export default {
 
     computed: {
         ...mapState('layout', ['isMobile']),
-        ...mapGetters('locale', ['__']),
         styleObject() {
             return {
                 'max-height': this.boxHeight,

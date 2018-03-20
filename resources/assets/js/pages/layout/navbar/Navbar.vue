@@ -56,7 +56,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -82,7 +82,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         ...mapState(['meta']),
         ...mapState('layout', ['isTouch']),
     },

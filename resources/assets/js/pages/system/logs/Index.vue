@@ -46,7 +46,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTerminal, faEye, faCloudDownloadAlt, faTrashAlt,
@@ -61,7 +60,6 @@ export default {
     components: { Card, CardControl, Popover },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         icon() {
             return faTerminal;
         },

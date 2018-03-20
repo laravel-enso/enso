@@ -33,7 +33,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import Breadcrumbs from './Breadcrumbs.vue';
 
 export default {
@@ -52,10 +51,6 @@ export default {
         return {
             loaded: true,
         };
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 
     watch: {

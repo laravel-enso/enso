@@ -29,7 +29,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -59,7 +58,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         permissionIds() {
             return this.groupData.map(group => group.id);
         },

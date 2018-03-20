@@ -16,7 +16,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import PageHeader from '../layout/PageHeader.vue';
 import ChartCard from '../../components/enso/charts/ChartCard.vue';
 
@@ -27,10 +26,6 @@ export default {
         return {
             grid: [],
         };
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 
     created() {

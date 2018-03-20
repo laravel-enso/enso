@@ -33,7 +33,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faCopy } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
@@ -78,7 +77,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         count() {
             return this.documents.length;
         },

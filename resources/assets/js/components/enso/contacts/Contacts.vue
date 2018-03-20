@@ -50,7 +50,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faAddressCard, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
@@ -96,7 +95,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         filteredContacts() {
             return this.query
                 ? this.contacts.filter(contact => contact.first_name.toLowerCase()

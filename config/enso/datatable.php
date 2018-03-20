@@ -167,4 +167,15 @@ return [
     */
 
     'fullInfoRecordLimit' => 100000,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Debounce Rate
+    |--------------------------------------------------------------------------
+    |
+    | Configure the debounce for the serverside requests. Use a higher value for
+    | a bigger table.
+    */
+
+    'debounce' => 100,
 ];

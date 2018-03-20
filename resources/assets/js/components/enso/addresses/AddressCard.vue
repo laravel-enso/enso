@@ -90,7 +90,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -113,10 +112,6 @@ export default {
             type: Object,
             required: true,
         },
-    },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
     },
 };
 

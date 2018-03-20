@@ -69,7 +69,7 @@
 <script>
 
 import debounce from 'lodash/debounce';
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
@@ -108,7 +108,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         ...mapState(['user', 'meta']),
     },
 

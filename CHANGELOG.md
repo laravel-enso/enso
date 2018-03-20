@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.4.0
+Refactors the enso.js file into dedicated modules.
+Adds to the Vue prototype the `__` helper from localisation. Refactors the whole project to use the new helper - removes the mapGetters(['locale/__'])
+Improves VueTable, VueForm and VueSelect to autodetect if the new `__` helper is available. This way we don't need to pass the helper every time.
+Prepares the FE for the new auto-add-missing-key feature discussed [here](https://github.com/laravel-enso/Core/pull/45)
+Moves the `debounce` prop for vuedatatable in the backend. Now `debounce` is a config option with a default of 100 (ms) that can be configured for everytable in its template.
+To upgrade be sure that in your composer.json you have "laravel-enso/core": "2.3.*",
+
 ### 2.3.15
 Brings back the ValidateUserRequest / ValidateOwnerRequest (deleted by mistake).
 Updates composer and npm dependecies.

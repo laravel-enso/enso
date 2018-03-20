@@ -130,11 +130,11 @@ export default {
         },
         i18n: {
             type: Function,
-            default: value => value,
-        },
-        debounce: {
-            type: Number,
-            default: 100,
+            default(key) {
+                return typeof this.__ === 'function'
+                    ? this.__(key)
+                    : key;
+            },
         },
     },
 
@@ -227,7 +227,6 @@ export default {
     },
 
     created() {
-        this.getData = debounce(this.getData, this.debounce);
         this.init();
     },
 
@@ -237,6 +236,7 @@ export default {
                 this.template = data.template;
                 this.start = 0;
                 [this.length] = this.template.lengthMenu;
+                this.getData = debounce(this.getData, this.template.debounce);
                 this.setPreferences();
                 this.getData();
             }).catch((error) => {

@@ -13,7 +13,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import Auth from './layout/Auth.vue';
 import Home from './layout/Home.vue';
 import AppMain from './layout/AppMain.vue';
@@ -32,7 +32,6 @@ export default {
     computed: {
         ...mapState(['meta']),
         ...mapState('auth', ['isAuth', 'lastRoute']),
-        ...mapGetters('locale', ['__']),
         component() {
             if (!this.isAuth) {
                 return 'auth';

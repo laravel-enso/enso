@@ -4,7 +4,7 @@
         :show="show">
         <div class="box">
             <h5 class="subtitle is-5">
-                {{ __(message || "Are you sure ?") }}
+                {{ i18n(message || "Are you sure ?") }}
             </h5>
             <hr>
             <div class="level">
@@ -13,11 +13,11 @@
                     <div class="level-item">
                         <button class="button is-success"
                             @click="$emit('close')">
-                            {{ __("Cancel") }}
+                            {{ i18n("Cancel") }}
                         </button>
                         <button class="button is-danger has-margin-left-small"
                             @click="$emit('commit')">
-                            {{ __("Yes") }}
+                            {{ i18n("Yes") }}
                         </button>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ export default {
             type: String,
             default: null,
         },
-        __: {
+        i18n: {
             type: Function,
             required: true,
         },

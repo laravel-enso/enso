@@ -45,7 +45,6 @@
 <script>
 
 import debounce from 'lodash/debounce';
-import { mapGetters } from 'vuex';
 import getCaretCoordinates from 'textarea-caret';
 import vClickOutside from 'v-click-outside';
 
@@ -72,7 +71,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', ['__']),
         hasText() {
             return this.comment.body.trim();
         },

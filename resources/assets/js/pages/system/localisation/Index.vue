@@ -2,7 +2,6 @@
 
     <vue-table class="box"
         :path="path"
-        :i18n="__"
         :custom-render="customRender"
         id="localisation">
     </vue-table>
@@ -11,7 +10,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faEdit } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
@@ -20,10 +18,6 @@ fontawesome.library.add(faEdit);
 
 export default {
     components: { VueTable },
-
-    computed: {
-        ...mapGetters('locale', ['__']),
-    },
 
     data() {
         return {

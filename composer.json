@@ -11,7 +11,7 @@
         "laravel-enso/addressesmanager": "2.2.*",
         "laravel-enso/commentsmanager": "2.1.*",
         "laravel-enso/contacts": "2.1.*",
-        "laravel-enso/core": "2.2.*",
+        "laravel-enso/core": "2.3.*",
         "laravel-enso/dataimport": "2.2.*",
         "laravel-enso/documentsmanager": "2.1.*",
         "laravel-enso/notifications": "2.1.*",

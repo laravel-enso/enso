@@ -25,7 +25,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 
 export default {
@@ -42,7 +42,6 @@ export default {
     computed: {
         ...mapState(['meta']),
         ...mapState(['isInitialised', 'showQuote']),
-        ...mapGetters('locale', ['__']),
     },
 
     watch: {
