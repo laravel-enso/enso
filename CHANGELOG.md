@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.3.15
+Brings back the ValidateUserRequest / ValidateOwnerRequest (deleted by mistake).
+Updates composer and npm dependecies.
+
 ### 2.3.14
 Greatly improves the datatables performance for big databases. The package can now handle tens of millions of records by using the new `fullInfoRecordLimit` config option. Read more in the docs.
 Improves vuecomponents, vuetable and vueform.

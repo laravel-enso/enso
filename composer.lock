@@ -2509,16 +2509,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.4.4",
+            "version": "2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "53484529c4b9a73be89a05be59f86d40f5f728f3"
+                "reference": "4dd029e5cac21169679526f0262af6d7d5d955cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/53484529c4b9a73be89a05be59f86d40f5f728f3",
-                "reference": "53484529c4b9a73be89a05be59f86d40f5f728f3",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/4dd029e5cac21169679526f0262af6d7d5d955cc",
+                "reference": "4dd029e5cac21169679526f0262af6d7d5d955cc",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-03-17T09:37:32+00:00"
+            "time": "2018-03-19T18:09:41+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",

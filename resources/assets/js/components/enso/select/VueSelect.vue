@@ -302,6 +302,7 @@ export default {
             }
 
             this.dropdown = true;
+            this.$nextTick(() => this.$el.querySelector('input').focus());
             this.position = 0;
         },
         hideDropdown() {
