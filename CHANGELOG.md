@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.4.1
+Fixes #76.
+Adds filter for missing translation in Localisation/EditTexts
+
 ### 2.4.0
 Refactors the enso.js file into dedicated modules.
 Adds to the Vue prototype the `__` helper from localisation. Refactors the whole project to use the new helper - removes the mapGetters(['locale/__'])

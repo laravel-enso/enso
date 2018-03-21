@@ -3,7 +3,7 @@ import store from '../../../store';
 
 const __ = store.getters['locale/__'];
 
-const missingKey = (key) => {
+const addMissingKey = (key) => {
     if (store.state.meta.env === 'local') {
         // axios.patch('/api/system/localisation/addLangKey', { langKey: key });
         store.commit('locale/addKey', key);
@@ -13,13 +13,15 @@ const missingKey = (key) => {
 };
 
 Vue.prototype.__ = (key) => {
-    if (!store.state.user.preferences) {
+    if (!store.state.isInitialised) {
         return key;
     }
 
     const translation = __(key);
 
-    return typeof translation === 'undefined'
-        ? missingKey(key)
-        : translation;
+    if (typeof translation === 'undefined') {
+        addMissingKey(key);
+    }
+
+    return translation || key;
 };
