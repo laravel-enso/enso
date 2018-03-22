@@ -1550,16 +1550,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "7bd4ded15e7d812b31d27bfacb999d3dc289c4d8"
+                "reference": "ef97f36eca2d5f9069f7119d8e2550cba7d0b112"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/7bd4ded15e7d812b31d27bfacb999d3dc289c4d8",
-                "reference": "7bd4ded15e7d812b31d27bfacb999d3dc289c4d8",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/ef97f36eca2d5f9069f7119d8e2550cba7d0b112",
+                "reference": "ef97f36eca2d5f9069f7119d8e2550cba7d0b112",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-03-21T07:52:15+00:00"
+            "time": "2018-03-22T16:57:15+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1830,16 +1830,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "a9b32bdb7431b308ec77033e0b0e8fccf9eeed9e"
+                "reference": "05bbb11a7ad2735903755784f0543d3c9a1bc9b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/a9b32bdb7431b308ec77033e0b0e8fccf9eeed9e",
-                "reference": "a9b32bdb7431b308ec77033e0b0e8fccf9eeed9e",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/05bbb11a7ad2735903755784f0543d3c9a1bc9b6",
+                "reference": "05bbb11a7ad2735903755784f0543d3c9a1bc9b6",
                 "shasum": ""
             },
             "require": {
@@ -1882,7 +1882,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-03-20T19:10:32+00:00"
+            "time": "2018-03-21T18:55:37+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2035,16 +2035,16 @@
         },
         {
             "name": "laravel-enso/impersonate",
-            "version": "2.1.6",
+            "version": "2.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Impersonate.git",
-                "reference": "30968b1017bf7917d7c67c30b28a71c2471d19a0"
+                "reference": "ab2b5ad22bd83f95f8561f85305c750edfa64090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/30968b1017bf7917d7c67c30b28a71c2471d19a0",
-                "reference": "30968b1017bf7917d7c67c30b28a71c2471d19a0",
+                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/ab2b5ad22bd83f95f8561f85305c750edfa64090",
+                "reference": "ab2b5ad22bd83f95f8561f85305c750edfa64090",
                 "shasum": ""
             },
             "require": {
@@ -2089,7 +2089,7 @@
                 "impersonate-users",
                 "laravel-enso"
             ],
-            "time": "2018-03-20T19:09:04+00:00"
+            "time": "2018-03-22T16:29:21+00:00"
         },
         {
             "name": "laravel-enso/localisation",

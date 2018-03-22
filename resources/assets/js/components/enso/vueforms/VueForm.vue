@@ -55,18 +55,17 @@
                                     field.meta.type === 'input'
                                     && field.meta.content !== 'checkbox'
                                 ">
-                                <input
-                                    class="input"
+                                <input :class="['input', { 'is-danger': errors.has(field.name) }]"
                                     v-model="field.value"
                                     :type="field.meta.content"
-                                    :class="{ 'is-danger': errors.has(field.name) }"
                                     :readonly="field.meta.readonly"
                                     :disabled="field.meta.disabled"
-                                    @keydown="$emit('update');"
-                                    @input="errors.clear(field.name);"
+                                    :placeholder="field.meta.placeholder"
                                     :step="field.meta.step"
                                     :min="field.meta.min"
-                                    :max="field.meta.max">
+                                    :max="field.meta.max"
+                                    @keydown="$emit('update');"
+                                    @input="errors.clear(field.name);">
                                 <span class="icon is-small is-right has-text-danger"
                                     v-if="errors.has(field.name)">
                                     <fa icon="exclamation-triangle"></fa>
@@ -95,28 +94,31 @@
                                 :disabled="field.meta.disabled"
                                 :placeholder="field.meta.placeholder">
                             </vue-select>
-                            <datepicker v-if="field.meta.type === 'datepicker'"
-                                @input="errors.clear(field.name)"
-                                v-model="field.value"
+                            <datepicker v-model="field.value"
                                 :format="field.meta.format"
                                 :time="field.meta.time"
-                                :disabled="field.meta.disabled">
-                            </datepicker>
-                            <datepicker v-if="field.meta.type === 'timepicker'"
+                                :disabled="field.meta.disabled"
+                                :placeholder="field.meta.placeholder"
                                 @input="errors.clear(field.name)"
-                                v-model="field.value"
+                                @keydown="$emit('update');"
+                                v-if="field.meta.type === 'datepicker'">
+                            </datepicker>
+                            <datepicker v-model="field.value"
                                 :format="field.meta.format"
                                 time-only
-                                :disabled="field.meta.disabled">
+                                :disabled="field.meta.disabled"
+                                :placeholder="field.meta.placeholder"
+                                @input="errors.clear(field.name)"
+                                v-if="field.meta.type === 'timepicker'">
                             </datepicker>
                             <div class="control has-icons-right"
                                 v-if="field.meta.type === 'textarea'">
-                                <textarea @input="errors.clear(field.name)"
-                                    class="textarea"
-                                    :class="{ 'is-danger': errors.has(field.name) }"
+                                <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
                                     v-model="field.value"
+                                    :placeholder="field.meta.placeholder"
                                     :rows="field.meta.rows"
-                                    :disabled="field.meta.disabled">
+                                    :disabled="field.meta.disabled"
+                                    @input="errors.clear(field.name)">
                                 </textarea>
                                 <span class="icon is-small is-right has-text-danger"
                                     v-if="errors.has(field.name)">

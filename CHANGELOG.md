@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.4.2
+Changes the warning class to bulma's default.
+Updates packages.
+Fixes laravel-enso/impersonate#3
+Fixes laravel-enso/core#46. Adds UserPolicy. For existing project you should do the following steps:
+- copy App\Policies\UserPolicy
+- update App\Providers\AuthServiceProvider
+- update App\Http\Controllers\Administration\UserController (update and destroy methods).
+
 ### 2.4.1
 Fixes #76.
 Adds filter for missing translation in Localisation/EditTexts

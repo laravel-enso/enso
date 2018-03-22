@@ -45,6 +45,8 @@ class UserController extends Controller
 
     public function update(ValidateUserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $user->update($request->all());
 
         return ['message' => __(config('enso.labels.savedChanges'))];
@@ -52,6 +54,8 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $this->authorize('update', $user);
+
         $user->delete();
 
         return [
