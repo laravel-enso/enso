@@ -7,7 +7,7 @@
             id="contacts">
         </vue-table>
         <contact-form :form="form"
-            @form-close="form=null"
+            @close="form=null"
             @destroy="$refs.contacts.getData(); form=null"
             @submit="$refs.contacts.getData();form=null"
             v-if="form">

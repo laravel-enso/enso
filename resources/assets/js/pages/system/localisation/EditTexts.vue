@@ -58,6 +58,14 @@
                     <div class="columns is-mobile has-text-right"
                         v-if="selectedLocale">
                         <div class="column">
+                            <label class="label">{{ __('Core') }}
+                                <vue-switch class="has-margin-left-medium has-margin-right-medium"
+                                    v-model="filterCore"
+                                    size="is-large">
+                                </vue-switch>{{ __('App') }}
+                            </label>
+                        </div>
+                        <div class="column">
                             <label class="label">{{ __('Only missing') }}
                                 <vue-switch class="has-margin-left-medium"
                                     v-model="filterMissing"
@@ -129,12 +137,14 @@ export default {
     data() {
         return {
             langFile: {},
+            originalLangFile: {},
             locales: [],
             selectedLocale: null,
             query: null,
             boxHeight: 0,
             loading: false,
             filterMissing: false,
+            filterCore: true,
         };
     },
 
@@ -149,7 +159,7 @@ export default {
         },
         langKeys() {
             return this.filterMissing
-                ? Object.keys(this.langFile).filter(key => !this.langFile[key])
+                ? Object.keys(this.originalLangFile).filter(key => !this.originalLangFile[key])
                 : Object.keys(this.langFile);
         },
         sortedKeys() {
@@ -176,12 +186,18 @@ export default {
         keysCount() {
             return this.langKeys.length;
         },
+        subDir() {
+            return this.filterCore ? 'app' : 'enso';
+        },
     },
 
     watch: {
         isMobile: {
             handler: 'setBoxHeight',
         },
+        filterCore: {
+            handler: 'getLangFile',
+        }
     },
 
     created() {
@@ -204,14 +220,19 @@ export default {
         getLangFile() {
             if (!this.selectedLocale) {
                 this.langFile = {};
+                this.updateOriginal();
                 return;
             }
 
             this.loading = true;
 
-            axios.get(route('system.localisation.getLangFile', this.selectedLocale, false)).then(({ data }) => {
+            axios.get(route('system.localisation.getLangFile', {
+                subDir: this.subDir,
+                language: this.selectedLocale,
+            }, false)).then(({ data }) => {
                 this.loading = false;
                 this.langFile = data;
+                this.updateOriginal();
             }).catch((error) => {
                 this.loading = false;
                 this.handleError(error);
@@ -220,10 +241,14 @@ export default {
         saveLangFile() {
             this.loading = true;
 
-            axios.patch(route('system.localisation.saveLangFile', this.selectedLocale, false).toString(), {
+            axios.patch(route('system.localisation.saveLangFile', {
+                subDir: this.subDir,
+                language: this.selectedLocale
+            }, false).toString(), {
                 langFile: this.langFile,
             }).then(({ data }) => {
                 this.loading = false;
+                console.log(data.message);
                 this.$toastr.success(data.message);
             }).catch((error) => {
                 this.loading = false;
@@ -232,10 +257,12 @@ export default {
         },
         addKey() {
             this.$set(this.langFile, this.query, null);
+            this.updateOriginal();
             this.focusIt();
         },
         removeKey(key) {
             this.$delete(this.langFile, key);
+            this.updateOriginal();
         },
         focusIt(id = null) {
             id = id || this.query;
@@ -247,6 +274,9 @@ export default {
         setBoxHeight() {
             this.boxHeight = document.body.clientHeight - (this.isMobile ? 420 : 388);
         },
+        updateOriginal() {
+            this.originalLangFile = JSON.parse(JSON.stringify(this.langFile));
+        }
     },
 };
 

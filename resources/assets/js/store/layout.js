@@ -47,4 +47,8 @@ export const actions = {
         setTimeout(() => commit('toggleLights'), 500);
         setTimeout(() => commit('setThemeParams'), 501);
     },
+    setMenuState({ commit }, menuState) {
+        commit('setMenuState', menuState, { root: true });
+        commit('navbar/update', menuState);
+    },
 };

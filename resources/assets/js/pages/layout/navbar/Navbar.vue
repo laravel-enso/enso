@@ -6,18 +6,19 @@
                 <figure class="image is-24x24">
                     <img src="/images/logo.svg">
                 </figure>
-                <h4 class="title is-4 has-margin-left-small">
+                <h4 class="title is-4 has-margin-left-small"
+                    v-if="navbar.isExpanded">
                     {{ meta.appName }}
                 </h4>
             </a>
-            <a class="navbar-item is-hidden-desktop"
-                @click="$store.commit('layout/navbar/toggle')">
+            <a class="navbar-item"
+                @click="$store.commit('layout/navbar/toggle', isTouch)">
                 <span class="icon is-small">
                     <fa icon="bars"></fa>
                 </span>
             </a>
             <div class="navbar-item"
-                v-if="envIsLocal">
+                v-if="meta.env === 'local'">
                 <span class="tag is-warning">
                     <span class="icon is-small">
                         <fa icon="code"></fa>
@@ -74,16 +75,9 @@ export default {
 
     components: { Notifications, SettingsControl, ProfileControl },
 
-    props: {
-        envIsLocal: {
-            type: Boolean,
-            default: false,
-        },
-    },
-
     computed: {
         ...mapState(['meta']),
-        ...mapState('layout', ['isTouch']),
+        ...mapState('layout', ['isTouch', 'navbar']),
     },
 };
 

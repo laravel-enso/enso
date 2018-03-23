@@ -4,8 +4,8 @@ import store from '../../../store';
 const __ = store.getters['locale/__'];
 
 const addMissingKey = (key) => {
-    if (store.state.meta.env === 'local') {
-        // axios.patch('/api/system/localisation/addLangKey', { langKey: key });
+    if (store.state.locale.keyCollector) {
+        axios.patch('/api/system/localisation/addKey', { langKey: key });
         store.commit('locale/addKey', key);
     }
 

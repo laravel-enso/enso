@@ -1,6 +1,7 @@
 export const state = {
     i18n: {},
     languages: [],
+    keyCollector: false,
 };
 
 export const mutations = {
@@ -11,6 +12,7 @@ export const mutations = {
             state.i18n[lang][key] = '';
         });
     },
+    setKeyCollector: (state, status) => { state.keyCollector = status; },
 };
 
 export const getters = {

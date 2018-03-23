@@ -28,7 +28,7 @@
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
                             <fa icon="power-off"></fa>
                         </span>
-                        <span class="filter-label">{{ offLabel }}</span>
+                        <span class="filter-label" v-if="!icons">{{ offLabel }}</span>
                     </a>
                 </li>
             </ul>

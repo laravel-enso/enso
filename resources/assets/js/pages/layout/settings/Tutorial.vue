@@ -3,7 +3,7 @@
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
-                {{ title }}
+                {{ __('Tutorial') }}
             </div>
         </div>
         <div class="level-right">
@@ -30,13 +30,6 @@ fontawesome.library.add(faQuestion);
 
 export default {
     name: 'Tutorial',
-
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
-    },
 
     data() {
         return {

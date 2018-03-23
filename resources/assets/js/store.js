@@ -34,6 +34,9 @@ export default new Vuex.Store({
         setImpersonating: (state, impersonating) => { state.impersonating = impersonating; },
         setUserAvatar: (state, avatarId) => { state.user.avatarId = avatarId; },
         setTheme: (state, theme) => { state.user.preferences.global.theme = theme; },
+        setMenuState: (state, menuState) => {
+            state.user.preferences.global.expandedMenu = menuState;
+        },
         setLocale: (state, selectedLocale) => {
             state.user.preferences.global.lang = selectedLocale;
         },
@@ -62,6 +65,7 @@ export default new Vuex.Store({
                 commit('menus/setImplicit', state.implicitMenu);
                 commit('locale/setLanguages', state.languages);
                 commit('locale/setI18n', state.i18n);
+                commit('layout/navbar/update', state.user.preferences.global.expandedMenu);
                 dispatch('locale/setLocale', state.user.preferences.global.lang);
                 commit('layout/setThemes', state.themes);
                 commit('setMeta', state.meta);

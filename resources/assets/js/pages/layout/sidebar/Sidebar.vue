@@ -2,7 +2,7 @@
 
     <vue-aside class="menu">
         <p class="menu-label has-text-centered">
-            {{ __("Main Menu") }}
+            {{ __("Menu") }}
         </p>
         <menus class="menu-list"
             :menus="menus">
@@ -24,6 +24,7 @@ export default {
 
     computed: {
         ...mapState('menus', { menus: 'list' }),
+        ...mapState('layout', ['navbar']),
     },
 
     beforeMount() {

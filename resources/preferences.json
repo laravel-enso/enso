@@ -2,8 +2,7 @@
     "global": {
         "lang": "en",
         "dtStateSave": true,
-        "fixedHeader": true,
-        "collapsedSidebar": false,
+        "expandedMenu": true,
         "theme": "clean"
     },
     "local": {

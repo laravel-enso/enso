@@ -3,7 +3,7 @@
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
-                {{ title }}
+                {{ __('Theme') }}
             </div>
         </div>
         <div class="level-right">
@@ -36,13 +36,6 @@ export default {
     name: 'ThemeSelector',
 
     components: { Dropdown },
-
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
-    },
 
     computed: {
         ...mapState('layout', ['themes']),

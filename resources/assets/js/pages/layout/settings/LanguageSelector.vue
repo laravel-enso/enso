@@ -2,7 +2,7 @@
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
-                {{ title }}
+                {{ __('Language') }}
             </div>
         </div>
         <div class="level-right">
@@ -30,7 +30,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Dropdown from '../../../components/enso/bulma/Dropdown.vue';
 
 require('../../../../sass/flags.scss');
@@ -40,21 +40,15 @@ export default {
 
     components: { Dropdown },
 
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
-    },
-
     computed: {
         ...mapState('locale', ['languages']),
         ...mapGetters('locale', { locale: 'current' }),
     },
 
     methods: {
+        ...mapActions('locale', ['setLocale']),
         update(locale) {
-            this.$store.dispatch('locale/setLocale', locale);
+            this.setLocale(locale);
             this.$emit('update');
         },
     },

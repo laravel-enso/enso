@@ -106,7 +106,11 @@ export default {
         },
         i18n: {
             type: Function,
-            default: val => val,
+            default(key) {
+                return typeof this.__ === 'function'
+                    ? this.__(key)
+                    : key;
+            },
         },
     },
 

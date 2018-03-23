@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.5.0
+Adds collapsible menu.
+Adds switch in the settings bar for menu state. The state is saved in user's preferences.
+Closes laravel-enso/localisation#15
+For existing project:
+- update "composer.json" to require "laravel-enso/core" 2.4.*;
+- run `php artisan vendor:publish --force` and choose the following tags:
+    "core-preferences", "localisation-assets", "localisation-config", "localisation-lang-files"
+- run `php artisan localisation:merge` to make sure that you have the newest lang files.
+- run `php artisan localisation:add-route` for the new auto-collection-of-the-missing-keys ;)
+- truncate the preferences table.
+
 ### 2.4.2
 Changes the warning class to bulma's default.
 Updates packages.

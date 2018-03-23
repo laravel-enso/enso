@@ -1,11 +1,10 @@
 <template>
 
     <vue-filter icons
-        off-label=""
-        :value="value"
-        :options="options"
-        v-bind="$attrs"
-        v-on="$listeners">
+            :options="options"
+            :value="value"
+            v-bind="$attrs"
+            v-on="$listeners">
     </vue-filter>
 
 </template>
@@ -13,6 +12,7 @@
 <script>
 
 import VueFilter from '../bulma/VueFilter.vue';
+
 
 export default {
     name: 'BooleanFilter',
