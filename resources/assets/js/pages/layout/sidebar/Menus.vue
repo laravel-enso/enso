@@ -5,12 +5,12 @@
             <router-link v-if="!menu.children.length"
                 :to="{ name: menu.link }"
                 :class="{ 'is-active': isActive(menu) }">
-                <span class="icon is-small">
+                <span class="icon is-small" style="display: inline-block">
                     <fa :icon="menu.icon"></fa>
                 </span>
-                <transition enter-active-class="fadeInLeftBig"
-                    leave-active-class="fadeOutLeftBig">
-                    <span class="animated has-margin-left-small"
+                <transition enter-active-class="zoomIn"
+                    leave-active-class="zoomOut">
+                    <span class="animated has-margin-left-small menu-hiding-label"
                         v-if="navbar.isExpanded">
                         {{ __(menu.name) }}
                     </span>
@@ -25,12 +25,12 @@
 
             <a @click="toggle(menu)"
                 v-if="menu.children.length">
-                <span class="icon is-small">
+                <span class="icon is-small" style="display: inline-block">
                     <fa :icon="menu.icon"></fa>
                 </span>
-                <transition enter-active-class="fadeInLeftBig"
-                    leave-active-class="fadeOutLeftBig">
-                    <span class="animated has-margin-left-small"
+                <transition enter-active-class="zoomIn"
+                    leave-active-class="zoomOut">
+                    <span class="animated has-margin-left-small menu-hiding-label"
                         v-if="navbar.isExpanded">
                         {{ __(menu.name) }}
                     </span>
@@ -138,9 +138,14 @@ export default {
         transition: height .400s ease;
         display: block;
         overflow-y: auto;
+        overflow-x: hidden;
 
         a {
             display: flex;
+        }
+
+        .menu-hiding-label {
+             white-space: nowrap;
         }
 
         .dropdown-content {

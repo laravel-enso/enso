@@ -248,7 +248,6 @@ export default {
                 langFile: this.langFile,
             }).then(({ data }) => {
                 this.loading = false;
-                console.log(data.message);
                 this.$toastr.success(data.message);
             }).catch((error) => {
                 this.loading = false;

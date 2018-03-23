@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.5.1
+Fix menu overflow-x.
+
 ### 2.5.0
 Adds collapsible menu.
 Adds switch in the settings bar for menu state. The state is saved in user's preferences.
