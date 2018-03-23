@@ -21,96 +21,75 @@ class DashboardController extends Controller
 
     public function getLineChartData()
     {
-        $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-        $datasets = [
-            'Sales' => [65, 59, 80, 81, 56, 55, 40],
-            'Revenue' => [15, 29, 60, 31, 26, 45, 44],
-        ];
-
-        $chart = new LineChart($labels, $datasets, 'Line Chart');
-
-        return $chart->getResponse();
+        return (new LineChart())
+            ->title('Income')
+            ->labels(['January', 'February', 'March', 'April', 'May', 'June', 'July'])
+            ->datasets([
+                'Sales' => [65, 59, 80, 81, 26, 25, 10],
+                'Revenue' => [15, 29, 60, 31, 56, 65, 44],
+            ])->fill()
+            ->get();
     }
 
     public function getBarChartData()
     {
-        $labels = ['Ian', 'Feb', 'Mar'];
-
-        $datasets = [
-            'Vanzari' => [1233, 1231, 3123],
-            'Incasari' => [1250, 1730, 5300],
-            'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
-        ];
-
-        $chart = new BarChart($labels, $datasets, 'Sales');
-
-        return $chart->getResponse();
+        return (new BarChart())
+            ->title('Sales')
+            ->labels(['Ian', 'Feb', 'Mar'])
+            ->datasets([
+                'Vanzari' => [1233, 1231, 3123],
+                'Incasari' => [1250, 1730, 5300],
+                'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
+            ])->get();
     }
 
     public function getPieChartData()
     {
-        $labels = ['Green', 'Red', 'Azzure'];
-
-        $datasets = [400, 50, 100];
-
-        $chart = new PieChart($labels, $datasets, 'Pie Chart');
-
-        return $chart->getResponse();
+        return (new PieChart())
+            ->title('Pie Chart')
+            ->labels(['Green', 'Red', 'Azzure'])
+            ->datasets([400, 50, 100])
+            ->get();
     }
 
     public function getDoughnutChartData()
     {
-        $labels = ['Green', 'Red', 'Azzure'];
-
-        $datasets = [400, 50, 100];
-
-        $chart = new DoughnutChart($labels, $datasets, 'Doughnut Chart');
-
-        return $chart->getResponse();
+        return (new DoughnutChart())
+            ->title('Doughnut Chart')
+            ->labels(['Green', 'Red', 'Azzure'])
+            ->datasets([400, 50, 100])
+            ->get();
     }
 
     public function getRadarChartData()
     {
-        $labels = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
-
-        $datasets = [
+        return (new RadarChart())
+            ->title('Radar Chart')
+            ->labels(['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'])
+            ->datasets([
             '2005' => [65, 59, 90, 81, 56, 55, 40],
             '2006' => [28, 48, 40, 19, 96, 27, 100],
-        ];
-
-        $chart = new RadarChart($labels, $datasets, 'Radar Chart');
-
-        return $chart->getResponse();
+            ])->get();
     }
 
     public function getPolarChartData()
     {
-        $labels = ['Green', 'Red', 'Azzure', 'Portocaliu', 'Bleu'];
-
-        $datasets = [11, 16, 7, 14, 14];
-
-        $chart = new PolarChart($labels, $datasets, 'Polar Chart');
-
-        return $chart->getResponse();
+        return (new PolarChart())
+            ->title('Polar Chart')
+            ->labels(['Green', 'Red', 'Azzure', 'Portocaliu', 'Bleu'])
+            ->datasets([11, 16, 7, 14, 14])
+            ->get();
     }
 
     public function getBubbleChartData()
     {
-        $labels = [
-            0 => 'Geneva',
-            1 => 'Besel',
-            2 => 'Bucharest',
-        ];
-
-        $datasets = [
-            0 => [[2010, 59, 4800], [2011, 55, 1800], [2012, 45, 2000], [2013, 58, 4400], [2014, 42, 2900], [2015, 59, 2100]],
-            1 => [[2010, 48, 1700], [2011, 67, 1200], [2012, 96, 1233], [2013, 35, 3000], [2014, 45, 2000], [2015, 52, 3300]],
-            2 => [[2010, 44, 2000], [2011, 62, 1500], [2012, 55, 1299], [2013, 39, 4000], [2014, 36, 1000], [2015, 45, 1750]],
-        ];
-
-        $chart = new BubbleChart($labels, $datasets, 'Bubble Chart');
-
-        return $chart->getResponse();
+        return (new BubbleChart())
+            ->title('Bubble Chart')
+            ->labels(['Geneva', 'Besel', 'Bucharest'])
+            ->datasets([
+                0 => [[1010, 59, 4800], [2011, 55, 1800], [1012, 45, 2000], [413, 58, 4400]],
+                1 => [[2010, 48, 1700], [1211, 67, 1200], [2012, 96, 1233], [813, 35, 3000]],
+                2 => [[1510, 44, 2000], [811, 62, 1500], [212, 55, 1299], [1213, 39, 4000]],
+            ])->get();
     }
 }

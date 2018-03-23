@@ -1,8 +1,6 @@
 <template>
 
-    <canvas class="chart-js"
-        width="400"
-        :height="400/heightDivider">
+    <canvas class="chart-js">
     </canvas>
 
 </template>
@@ -10,6 +8,11 @@
 <script>
 
 import Chart from 'chart.js';
+import 'chartjs-plugin-datalabels';
+
+// Chart.defaults.global.plugins.datalabels.formatter = value => `${format(value)}m`;
+
+Chart.scaleService.updateScaleDefaults('linear', { ticks: { min: 0 } });
 
 const types = ['line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut', 'bubble'];
 
@@ -25,7 +28,6 @@ export default {
         data: {
             type: Object,
             required: true,
-            default: () => ({}),
         },
         options: {
             type: Object,
@@ -37,12 +39,6 @@ export default {
         return {
             chart: null,
         };
-    },
-
-    computed: {
-        heightDivider() {
-            return ['line', 'bar', 'bubble'].includes(this.type) ? 2 : 1;
-        },
     },
 
     watch: {
@@ -64,7 +60,27 @@ export default {
             this.chart = new Chart(this.$el, {
                 type: this.type,
                 data: this.data,
-                options: this.options,
+                options: {
+                    tooltips: false,
+                    plugins: {
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            borderRadius: 3,
+                            padding: 2,
+                            color: 'white',
+                            font: {
+                                style: 'bold',
+                            },
+                            display(context) {
+                                const { chart } = context;
+                                const meta = chart.getDatasetMeta(context.datasetIndex);
+                                return !meta.hidden;
+                            },
+                        },
+                    },
+                    ...this.options,
+                },
             });
         },
         update() {
@@ -75,11 +91,15 @@ export default {
 
             const self = this;
 
-            this.chart.data.datasets.forEach((dataset, index) => {
-                dataset.data = self.data.datasets[index].data;
-            });
+            this.chart.data.datasets
+                .forEach((dataset, index) => {
+                    dataset.data = self.data.datasets[index].data;
+                });
 
             this.chart.update();
+        },
+        svg() {
+            return this.$el.toDataURL('image/jpg');
         },
     },
 };

@@ -256,10 +256,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', {
-            __: '__',
-            locale: 'current',
-        }),
+        ...mapGetters('locale', { locale: 'current' }),
         ...mapState(['user', 'meta']),
         uploadAvatarLink() {
             return route('core.avatars.store', [], false);

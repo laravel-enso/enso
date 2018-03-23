@@ -8,8 +8,6 @@ const addMissingKey = (key) => {
         axios.patch('/api/system/localisation/addKey', { langKey: key });
         store.commit('locale/addKey', key);
     }
-
-    return key;
 };
 
 Vue.prototype.__ = (key) => {

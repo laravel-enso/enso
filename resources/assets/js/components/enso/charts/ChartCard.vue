@@ -5,11 +5,20 @@
         refresh
         @refresh="get"
         :overlay="loading"
-        v-if="config">
+        v-if="config"
+        :controls="1">
+        <card-control slot="control-1">
+            <span class="icon is-small download"
+                @click="download">
+                <fa icon="download">
+                </fa>
+            </span>
+        </card-control>
         <chart :data="config.data"
             class="has-padding-medium"
             :options="config.options"
-            :type="config.type">
+            :type="config.type"
+            ref="chart">
         </chart>
     </card>
 
@@ -17,14 +26,16 @@
 
 <script>
 
+import { saveAs } from 'file-saver';
 import fontawesome from '@fortawesome/fontawesome';
-import { faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle }
+import { faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle, faDownload }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Card from '../bulma/Card.vue';
+import CardControl from '../bulma/CardControl.vue';
 import Chart from './Chart.vue';
 
 fontawesome.library.add([
-    faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle,
+    faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle, faDownload,
 ]);
 
 const icons = {
@@ -40,7 +51,7 @@ const icons = {
 export default {
     name: 'ChartCard',
 
-    components: { Card, Chart },
+    components: { Card, CardControl, Chart },
 
     props: {
         source: {
@@ -82,6 +93,10 @@ export default {
                 this.loading = false;
                 this.handleError(error);
             });
+        },
+        download() {
+            this.$refs.chart.$el
+                .toBlob(blob => saveAs(blob, `${this.config.title}.png`));
         },
     },
 };

@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.5.2
+Finally updates the charts lib. To upgrade run `npm install --save chartjs-plugin-datalabels file-saver`.
+Add to composer.json requirements: "laravel-enso/charts": "2.2.*".
+Copy from the demo project the updated `DashboardController`.
+Improves the "select" package by adding the `trackBy` property in the BE. laravel-enso/select#13.
+Fixes laravel-enso/localisation#28
+
 ### 2.5.1
 Fix menu overflow-x.
 
