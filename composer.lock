@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a15b6abcf8524e9899aab91ab0bd17b",
+    "content-hash": "c1ec558b68e790659692198197a05083",
     "packages": [
         {
             "name": "box/spout",
@@ -1550,16 +1550,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.4.6",
+            "version": "2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "a1b344eb8fbbe305376abcab5227f01e8d54c717"
+                "reference": "91168dcd88f1f219791debbcb9cade026107a313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/a1b344eb8fbbe305376abcab5227f01e8d54c717",
-                "reference": "a1b344eb8fbbe305376abcab5227f01e8d54c717",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/91168dcd88f1f219791debbcb9cade026107a313",
+                "reference": "91168dcd88f1f219791debbcb9cade026107a313",
                 "shasum": ""
             },
             "require": {
@@ -1635,7 +1635,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-03-23T18:47:26+00:00"
+            "time": "2018-03-24T09:34:55+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2092,16 +2092,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Localisation.git",
-                "reference": "b2dc2202b81a0d655226bf24c9c17fe9166067d0"
+                "reference": "b2ef5b10bc614af917fc963497b850e2da4274cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/b2dc2202b81a0d655226bf24c9c17fe9166067d0",
-                "reference": "b2dc2202b81a0d655226bf24c9c17fe9166067d0",
+                "url": "https://api.github.com/repos/laravel-enso/Localisation/zipball/b2ef5b10bc614af917fc963497b850e2da4274cc",
+                "reference": "b2ef5b10bc614af917fc963497b850e2da4274cc",
                 "shasum": ""
             },
             "require": {
@@ -2149,7 +2149,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2018-03-23T18:51:33+00:00"
+            "time": "2018-03-24T10:04:07+00:00"
         },
         {
             "name": "laravel-enso/logmanager",
@@ -5170,21 +5170,21 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.6.1",
+            "version": "0.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "e4cbf937b422bd2ce5ff9929e77592eb8188dbe6"
+                "reference": "cb9bf244b62392909ee61ee174874de137fe698a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/e4cbf937b422bd2ce5ff9929e77592eb8188dbe6",
-                "reference": "e4cbf937b422bd2ce5ff9929e77592eb8188dbe6",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/cb9bf244b62392909ee61ee174874de137fe698a",
+                "reference": "cb9bf244b62392909ee61ee174874de137fe698a",
                 "shasum": ""
             },
             "require": {
                 "hassankhan/config": "^0.10.0",
-                "php": "^7.1",
+                "php": "^7.0",
                 "symfony/yaml": "^2.7|^3.0|^4.0"
             },
             "require-dev": {
@@ -5215,7 +5215,7 @@
                 "printer",
                 "result-printer"
             ],
-            "time": "2018-03-02T23:02:03+00:00"
+            "time": "2018-03-23T23:03:37+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -5488,57 +5488,6 @@
             "time": "2016-02-11T16:21:17+00:00"
         },
         {
-            "name": "laracasts/generators",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
-                "reference": "8d99c3f9891abce5cc84d5d1d4a7c26cf514ab6e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/8d99c3f9891abce5cc84d5d1d4a7c26cf514ab6e",
-                "reference": "8d99c3f9891abce5cc84d5d1d4a7c26cf514ab6e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "~2.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laracasts\\Generators\\GeneratorsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laracasts\\Generators\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeffrey Way",
-                    "email": "jeffrey@laracasts.com"
-                }
-            ],
-            "description": "Extend Laravel 5's generators.",
-            "keywords": [
-                "generators",
-                "laravel"
-            ],
-            "time": "2017-11-15T07:23:53+00:00"
-        },
-        {
             "name": "laravel-enso/testhelper",
             "version": "1.4.5",
             "source": {
@@ -5755,26 +5704,27 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v1.1.22",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "236609bd5a067587f600bc55c5d683b840798b22"
+                "reference": "245958b02c6a9edf24627380f368333ac5413a51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/236609bd5a067587f600bc55c5d683b840798b22",
-                "reference": "236609bd5a067587f600bc55c5d683b840798b22",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/245958b02c6a9edf24627380f368333ac5413a51",
+                "reference": "245958b02c6a9edf24627380f368333ac5413a51",
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "^2.1.4",
+                "jakub-onderka/php-console-highlighter": "0.3.*",
                 "php": "^7.1",
                 "symfony/console": "~2.8|~3.3|~4.0"
             },
             "require-dev": {
-                "laravel/framework": "5.5.*",
-                "phpunit/phpunit": "~6.5"
+                "laravel/framework": "5.6.*",
+                "phpunit/phpunit": "~7.0"
             },
             "type": "library",
             "extra": {
@@ -5812,7 +5762,7 @@
                 "php",
                 "symfony"
             ],
-            "time": "2018-02-07T10:42:20+00:00"
+            "time": "2018-03-21T20:11:24+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7168,49 +7118,6 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "symfony/thanks",
-            "version": "v1.0.68",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/thanks.git",
-                "reference": "9474ce305253c2f0bc20322ff8e9973cf25c9a94"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/thanks/zipball/9474ce305253c2f0bc20322ff8e9973cf25c9a94",
-                "reference": "9474ce305253c2f0bc20322ff8e9973cf25c9a94",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.5.9|^7.0.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "class": "Symfony\\Thanks\\Thanks"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Thanks\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                }
-            ],
-            "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
-            "time": "2018-02-02T13:47:40+00:00"
-        },
-        {
             "name": "symfony/yaml",
             "version": "v4.0.6",
             "source": {
@@ -7463,9 +7370,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laracasts/generators": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

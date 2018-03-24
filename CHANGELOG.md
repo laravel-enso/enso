@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.5.3
+Adds enso json lang files to the assets that are published after every composer update. Executes the localisation:merge command after each composer update.
+Updates major versions for npm / composer packages.
+For existing projects: be sure that you copy the "post-update-cmd" section from laravel-enso/enso/composer.json to your composer.json.
+
 ### 2.5.2
 Finally updates the charts lib. To upgrade run `npm install --save chartjs-plugin-datalabels file-saver`.
 Add to composer.json requirements: "laravel-enso/charts": "2.2.*".
