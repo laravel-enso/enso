@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.5.4
+Adds "php artisan vendor:publish --tag='localisation-lang-files'" to composer.json "post-update-cmd". Please add this to existing projects by hand. This is needed to publish that laravel's native lang files when new languages are added.
+Removes the auto merge when a new key is added.
+Adds a Merge button for localisation that runs `php artisan localisation:merge`. This is available only in `env=local`.
+Renames the localisation command from add-route to add-routes, as now it's responsibile for adding the merge route too.
+Update composer / npm packages.
+And finally adds an issue template for the github repo!
+
 ### 2.5.3
 Adds enso json lang files to the assets that are published after every composer update. Executes the localisation:merge command after each composer update.
 Updates major versions for npm / composer packages.
@@ -19,7 +27,7 @@ Fix menu overflow-x.
 Adds collapsible menu.
 Adds switch in the settings bar for menu state. The state is saved in user's preferences.
 Closes laravel-enso/localisation#15
-For existing project:
+For existing projects:
 - update "composer.json" to require "laravel-enso/core" 2.4.*;
 - run `php artisan vendor:publish --force` and choose the following tags:
     "core-preferences", "localisation-assets", "localisation-config", "localisation-lang-files"
@@ -31,7 +39,7 @@ For existing project:
 Changes the warning class to bulma's default.
 Updates packages.
 Fixes laravel-enso/impersonate#3
-Fixes laravel-enso/core#46. Adds UserPolicy. For existing project you should do the following steps:
+Fixes laravel-enso/core#46. Adds UserPolicy. For existing projects you should do the following steps:
 - copy App\Policies\UserPolicy
 - update App\Providers\AuthServiceProvider
 - update App\Http\Controllers\Administration\UserController (update and destroy methods).

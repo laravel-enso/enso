@@ -39,16 +39,23 @@
                 </div>
                 <div class="column">
                     <div class="columns is-mobile has-text-centered">
-                        <div class="column">
+                        <div class="column is-half">
                             <button class="button is-success is-fullwidth"
                                 v-if="isNewKey"
                                 @click="addKey()">
                                 {{ __('Add Key') }}
                             </button>
                         </div>
-                        <div class="column">
+                        <div class="column is-half"
+                            v-if="!selectedLocale && meta.env === 'local'">
+                            <button class="button is-warning"
+                                @click="merge()">
+                                {{ __('Merge all localisation files') }}
+                            </button>
+                        </div>
+                        <div class="column is-half"
+                            v-if="selectedLocale">
                             <button @click="saveLangFile()"
-                                v-if="selectedLocale"
                                 class="button is-success is-fullwidth"
                                 :class="{ 'is-loading': loading }">
                                 {{ __('Update') }}
@@ -150,6 +157,7 @@ export default {
 
     computed: {
         ...mapState('layout', ['isMobile']),
+        ...mapState(['meta']),
         styleObject() {
             return {
                 'max-height': this.boxHeight,
@@ -197,7 +205,7 @@ export default {
         },
         filterCore: {
             handler: 'getLangFile',
-        }
+        },
     },
 
     created() {
@@ -243,7 +251,7 @@ export default {
 
             axios.patch(route('system.localisation.saveLangFile', {
                 subDir: this.subDir,
-                language: this.selectedLocale
+                language: this.selectedLocale,
             }, false).toString(), {
                 langFile: this.langFile,
             }).then(({ data }) => {
@@ -275,6 +283,16 @@ export default {
         },
         updateOriginal() {
             this.originalLangFile = JSON.parse(JSON.stringify(this.langFile));
+        },
+        merge() {
+            axios.patch(route('system.localisation.merge', [], false).toString())
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.$toastr.success(data.message);
+                }).catch((error) => {
+                    this.loading = false;
+                    this.handleError(error);
+                });
         }
     },
 };

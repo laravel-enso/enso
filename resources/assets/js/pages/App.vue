@@ -76,10 +76,10 @@ export default {
         },
         documentTitle(value) {
             const title = this.meta.extendedDocumentTitle
-                ? `${value} | ${this.meta.appName}`
-                : value;
+                ? `${this.__(value)} | ${this.meta.appName}`
+                : this.__(value);
 
-            return this.__(title);
+            return title;
         },
         addEnterAppListener() {
             this.$bus.$on('enter-app', () => {
