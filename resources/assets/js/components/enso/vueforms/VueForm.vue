@@ -60,7 +60,7 @@
                                     :type="field.meta.content"
                                     :readonly="field.meta.readonly"
                                     :disabled="field.meta.disabled"
-                                    :placeholder="field.meta.placeholder"
+                                    :placeholder="i18n(field.meta.placeholder)"
                                     :step="field.meta.step"
                                     :min="field.meta.min"
                                     :max="field.meta.max"
@@ -92,13 +92,14 @@
                                 :source="field.meta.source"
                                 :multiple="field.meta.multiple"
                                 :disabled="field.meta.disabled"
-                                :placeholder="field.meta.placeholder">
+                                :placeholder="i18n(field.meta.placeholder)">
                             </vue-select>
                             <datepicker v-model="field.value"
                                 :format="field.meta.format"
                                 :time="field.meta.time"
                                 :disabled="field.meta.disabled"
-                                :placeholder="field.meta.placeholder"
+                                :placeholder="i18n(field.meta.placeholder)"
+                                :locale="locale"
                                 @input="errors.clear(field.name)"
                                 @keydown="$emit('update');"
                                 v-if="field.meta.type === 'datepicker'">
@@ -107,7 +108,7 @@
                                 :format="field.meta.format"
                                 time-only
                                 :disabled="field.meta.disabled"
-                                :placeholder="field.meta.placeholder"
+                                :placeholder="i18n(field.meta.placeholder)"
                                 @input="errors.clear(field.name)"
                                 v-if="field.meta.type === 'timepicker'">
                             </datepicker>
@@ -115,7 +116,7 @@
                                 v-if="field.meta.type === 'textarea'">
                                 <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
                                     v-model="field.value"
-                                    :placeholder="field.meta.placeholder"
+                                    :placeholder="i18n(field.meta.placeholder)"
                                     :rows="field.meta.rows"
                                     :disabled="field.meta.disabled"
                                     @input="errors.clear(field.name)">
@@ -222,6 +223,10 @@ export default {
                     ? this.__(key)
                     : key;
             },
+        },
+        locale: {
+            type: String,
+            default: 'en',
         },
     },
 

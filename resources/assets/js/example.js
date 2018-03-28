@@ -75,7 +75,6 @@ new Vue({
     },
 
     methods: {
-
         customRender(row, column) {
             switch (column.name) {
             case 'project':

@@ -8,6 +8,7 @@
             <div class="column">
                 <datepicker :format="format"
                     :value="min"
+                    :locale="locale"
                     :placeholder="minLabel"
                     @input="$emit('update-min', $event || null)">
                 </datepicker>
@@ -15,6 +16,7 @@
             <div class="column">
                 <datepicker :format="format"
                     :value="max"
+                    :locale="locale"
                     :placeholder="maxLabel"
                     @input="$emit('update-max', $event || null)">
                 </datepicker>
@@ -49,6 +51,10 @@ export default {
         format: {
             type: String,
             default: 'd-m-Y',
+        },
+        locale: {
+            type: String,
+            default: 'en',
         },
         minLabel: {
             type: String,

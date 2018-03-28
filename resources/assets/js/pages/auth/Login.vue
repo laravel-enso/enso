@@ -15,7 +15,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="email"
-                            placeholder="Email"
+                            placeholder="meta.i18n['Email']"
                             v-model="email"
                             @keypress.down="hasErrors=false">
                         <span class="icon is-small is-left">
@@ -36,7 +36,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="password"
-                            placeholder="Password"
+                            placeholder="meta.i18n['Password']"
                             v-model="password"
                             @keypress.down="hasErrors=false">
                         <span class="icon is-small is-left">
@@ -57,7 +57,7 @@
                         <label class="checkbox">
                         <input type="checkbox"
                             v-model="remember">
-                        Remember me
+                            {{ meta.i18n['Remember me'] }}
                         </label>
                     </div>
                 </div>
@@ -69,13 +69,13 @@
                         <span class="icon is-small">
                             <fa icon="user"></fa>
                         </span>
-                        <span>Login</span>
+                        <span>{{ meta.i18n['Login'] }}</span>
                     </button>
                 </div>
             </form>
             <router-link :to="{ name: 'password.email' }"
                 class="is-pulled-right">
-                Forgot password
+                {{ meta.i18n['Forgot password'] }}
             </router-link>
             <div class="is-clearfix"></div>
         </div>

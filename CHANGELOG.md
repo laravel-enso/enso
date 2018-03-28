@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.5.5
+
+Adds localisation for the auth pages.
+Adds localisation for the datepicker component.
+Existing projects upgrade: - remove from `routes/api.php` the `getMeta` route (lines 3 to 5)
+```
+Route::get('/getMeta', function () {
+    return ['appName' => config('app.name')];
+})->name('getMeta');
+```
+
+
 ### 2.5.4
 Adds "php artisan vendor:publish --tag='localisation-lang-files'" to composer.json "post-update-cmd". Please add this to existing projects by hand. This is needed to publish that laravel's native lang files when new languages are added.
 Removes the auto merge when a new key is added.

@@ -9,7 +9,8 @@
                 <div class="control has-icons-right">
                     <input class="input control"
                         :type="type"
-                        placeholder="Min"
+                        :placeholder="minLabel"
+                        :locale="locale"
                         :value="min"
                         @input="$emit('update-min', $event.target.value || null)">
                     <span class="icon is-small is-right clear-button"
@@ -23,7 +24,8 @@
                 <div class="control has-icons-right">
                     <input class="input control"
                         :type="type"
-                        placeholder="Max"
+                        :placeholder="maxLabel"
+                        :locale="locale"
                         :value="max"
                         @input="$emit('update-max', $event.target.value || null)">
                     <span class="icon is-small is-right clear-button"
@@ -59,6 +61,18 @@ export default {
         max: {
             type: null,
             required: true,
+        },
+        locale: {
+            type: String,
+            default: 'en',
+        },
+        minLabel: {
+            type: String,
+            default: 'Min',
+        },
+        maxLabel: {
+            type: String,
+            default: 'Max',
         },
     },
 };

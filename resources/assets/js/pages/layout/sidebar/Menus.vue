@@ -137,7 +137,7 @@ export default {
     .menu-list {
         transition: height .400s ease;
         display: block;
-        overflow-y: auto;
+        overflow-y: hidden;
         overflow-x: hidden;
 
         a {

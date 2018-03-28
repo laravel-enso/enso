@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/getMeta', function () {
-    return ['appName' => config('app.name')];
-})->name('getMeta');
-
 Route::namespace('Auth')
     ->group(function () {
         Route::post('login', 'LoginController@login')

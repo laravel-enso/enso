@@ -25,6 +25,7 @@ export default {
         width: 180px;
         font-size: 0.85em;
         max-height: 100vh;
+        overflow-x: auto;
         z-index: 2;
         -webkit-box-shadow: 0 2px 3px hsla(0,0%,4%,.1);
         box-shadow: 0 2px 3px hsla(0,0%,4%,.1);

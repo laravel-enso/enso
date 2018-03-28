@@ -848,16 +848,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.1",
+            "version": "6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "49e42e6539f775e80c74086a710a882e1d5a8111"
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/49e42e6539f775e80c74086a710a882e1d5a8111",
-                "reference": "49e42e6539f775e80c74086a710a882e1d5a8111",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
                 "shasum": ""
             },
             "require": {
@@ -909,7 +909,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-03-26T12:06:26+00:00"
+            "time": "2018-03-26T16:33:04+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1550,16 +1550,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.4.9",
+            "version": "2.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "2793cc934f90bc196e2b882acfe6f5cbc936972f"
+                "reference": "50da5bd85e66aec832c37615fa2004581b3acab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2793cc934f90bc196e2b882acfe6f5cbc936972f",
-                "reference": "2793cc934f90bc196e2b882acfe6f5cbc936972f",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/50da5bd85e66aec832c37615fa2004581b3acab4",
+                "reference": "50da5bd85e66aec832c37615fa2004581b3acab4",
                 "shasum": ""
             },
             "require": {
@@ -1635,7 +1635,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-03-26T14:27:41+00:00"
+            "time": "2018-03-28T07:24:46+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1829,16 +1829,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "05bbb11a7ad2735903755784f0543d3c9a1bc9b6"
+                "reference": "8e0eb1a0d84aad48b2c00fa01d42086d4ec68dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/05bbb11a7ad2735903755784f0543d3c9a1bc9b6",
-                "reference": "05bbb11a7ad2735903755784f0543d3c9a1bc9b6",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/8e0eb1a0d84aad48b2c00fa01d42086d4ec68dec",
+                "reference": "8e0eb1a0d84aad48b2c00fa01d42086d4ec68dec",
                 "shasum": ""
             },
             "require": {
@@ -1881,7 +1881,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-03-21T18:55:37+00:00"
+            "time": "2018-03-28T06:26:29+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2720,16 +2720,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.43",
+            "version": "2.1.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "12bcac2106a2bd34ef522af1befd4bf773a5fbaa"
+                "reference": "7725cc81b37fb3fa08e27eb1627c0f4fa3afe04d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/12bcac2106a2bd34ef522af1befd4bf773a5fbaa",
-                "reference": "12bcac2106a2bd34ef522af1befd4bf773a5fbaa",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/7725cc81b37fb3fa08e27eb1627c0f4fa3afe04d",
+                "reference": "7725cc81b37fb3fa08e27eb1627c0f4fa3afe04d",
                 "shasum": ""
             },
             "type": "library",
@@ -2765,7 +2765,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-03-23T12:57:08+00:00"
+            "time": "2018-03-28T06:25:12+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
@@ -6381,16 +6381,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.0.2",
+            "version": "7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9"
+                "reference": "536f4d853c12d8189963435088e8ff7c0daeab2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
-                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/536f4d853c12d8189963435088e8ff7c0daeab2e",
+                "reference": "536f4d853c12d8189963435088e8ff7c0daeab2e",
                 "shasum": ""
             },
             "require": {
@@ -6404,7 +6404,7 @@
                 "phar-io/version": "^1.0",
                 "php": "^7.1",
                 "phpspec/prophecy": "^1.7",
-                "phpunit/php-code-coverage": "^6.0",
+                "phpunit/php-code-coverage": "^6.0.1",
                 "phpunit/php-file-iterator": "^1.4.3",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.0",
@@ -6457,7 +6457,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-02-26T07:03:12+00:00"
+            "time": "2018-03-26T07:36:48+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

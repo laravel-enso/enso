@@ -27,13 +27,9 @@
 import Flatpickr from 'flatpickr';
 import fontawesome from '@fortawesome/fontawesome';
 import { faClock, faCalendarAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import i18n from './flatpickrLocale';
 
 fontawesome.library.add(faClock, faCalendarAlt);
-
-// const FlatpickrL10ns = {
-//     ro: require('flatpickr/dist/l10n/ro.js').ro,
-// };
-// Flatpickr.localize(FlatpickrL10ns[Store.user.preferences.global.lang]); //fixme
 
 export default {
     props: {
@@ -60,7 +56,7 @@ export default {
         },
         placeholder: {
             type: String,
-            default: 'Select Date', // fixme
+            default: 'Select Date',
         },
         disabled: {
             type: Boolean,
@@ -73,6 +69,11 @@ export default {
         inputClass: {
             type: String,
             default: 'form-control',
+        },
+        locale: {
+            type: String,
+            default: 'en',
+            validator: val => Object.keys(i18n).includes(val),
         },
     },
 
@@ -103,14 +104,32 @@ export default {
         value(newValue) {
             this.picker.setDate(newValue);
         },
+        locale(locale) {
+            this.destroy();
+            Flatpickr.localize(i18n[locale]);
+            this.init();
+        },
+    },
+
+    created() {
+        Flatpickr.localize(i18n[this.locale]);
     },
 
     mounted() {
-        this.picker = new Flatpickr(this.$el.querySelector('input'), this.config);
+        this.init();
     },
 
     beforeDestroy() {
-        this.picker.destroy();
+        this.destroy();
+    },
+
+    methods: {
+        init() {
+            this.picker = new Flatpickr(this.$el.querySelector('input'), this.config);
+        },
+        destroy() {
+            this.picker.destroy();
+        },
     },
 };
 
