@@ -54,7 +54,7 @@
                     :key="index"
                     :class="{ 'is-active': position === index }"
                     @mousemove="position = index"
-                    @click="hit()">
+                    @click.prevent="hit()">
                     <span v-html="highlight(option[label])"></span>
                     <span :class="[
                         'label tag', isSelected(option) ? 'is-warning' : 'is-success'

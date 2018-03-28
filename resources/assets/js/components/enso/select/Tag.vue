@@ -1,9 +1,9 @@
 <template>
     <span class="tag is-primary">
         {{ label }}
-        <button class="delete is-small"
-            @click.prevent.stop="$emit('remove')">
-        </button>
+        <a class="delete is-small"
+            @click="$emit('remove')">
+        </a>
     </span>
 </template>
 

@@ -10,7 +10,12 @@ Route::get('/getMeta', function () {
     return ['appName' => config('app.name')];
 })->name('getMeta');
 ```
-
+Bug Fixes:
+    - laravel-enso/formbuilder#24
+    - laravel-enso/contacts#10
+    - laravel-enso/permissionmanager#14
+    - laravel-enso/localisation #35
+    - laravel-enso/localisation #36
 
 ### 2.5.4
 Adds "php artisan vendor:publish --tag='localisation-lang-files'" to composer.json "post-update-cmd". Please add this to existing projects by hand. This is needed to publish that laravel's native lang files when new languages are added.

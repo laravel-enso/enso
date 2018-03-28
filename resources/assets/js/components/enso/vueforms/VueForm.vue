@@ -130,26 +130,26 @@
                     </div>
                 </div>
             </div>
-            <button class="button"
+            <a class="button"
                 v-if="data.actions.destroy"
                 :disabled="data.actions.destroy.forbidden"
                 :class="data.actions.destroy.button.class"
-                @click.prevent="modal = true">
+                @click="modal = true">
                 <span>{{ i18n(data.actions.destroy.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.destroy.button.icon"></fa>
                 </span>
-            </button>
-            <button class="button"
+            </a>
+            <a class="button"
                 :class="data.actions.create.button.class"
-                @click.prevent="create()"
+                @click="create()"
                 v-if="data.actions.create"
                 :disabled="data.actions.create.forbidden">
                 <span>{{ i18n(data.actions.create.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.create.button.icon"></fa>
                 </span>
-            </button>
+            </a>
             <button type="submit"
                 v-if="data.actions.store"
                 class="button is-pulled-right"
