@@ -15,7 +15,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="email"
-                            placeholder="meta.i18n['Email']"
+                            :placeholder="meta.i18n['Email']"
                             v-model="email">
                         <span class="icon is-small is-left">
                             <fa icon="envelope"></fa>
@@ -35,7 +35,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="password"
-                            placeholder="meta.i18n['Password']"
+                            :placeholder="meta.i18n['Password']"
                             v-model="password">
                         <span class="icon is-small is-left">
                             <fa icon="lock"></fa>
@@ -74,7 +74,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="password"
-                            placeholder="meta.i18n['Repeat Password']"
+                            :placeholder="meta.i18n['Repeat Password']"
                             v-model="passwordConfirmation">
                         <span class="icon is-small is-left">
                             <fa icon="lock"></fa>

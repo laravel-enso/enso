@@ -15,7 +15,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="email"
-                            placeholder="meta.i18n['Email']"
+                            :placeholder="meta.i18n['Email']"
                             v-model="email">
                         <span class="icon is-small is-left">
                             <fa icon="envelope"></fa>

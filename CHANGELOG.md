@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.5.6
+Fixes laravel-enso/localisation#38
+
 ### 2.5.5
 
 Adds localisation for the auth pages.

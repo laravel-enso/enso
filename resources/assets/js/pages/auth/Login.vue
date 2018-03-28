@@ -15,7 +15,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="email"
-                            placeholder="meta.i18n['Email']"
+                            :placeholder="meta.i18n['Email']"
                             v-model="email"
                             @keypress.down="hasErrors=false">
                         <span class="icon is-small is-left">
@@ -36,7 +36,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="password"
-                            placeholder="meta.i18n['Password']"
+                            :placeholder="meta.i18n['Password']"
                             v-model="password"
                             @keypress.down="hasErrors=false">
                         <span class="icon is-small is-left">
