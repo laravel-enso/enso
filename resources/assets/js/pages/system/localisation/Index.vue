@@ -2,8 +2,11 @@
 
     <vue-table class="box"
         :path="path"
-        :custom-render="customRender"
         id="localisation">
+        <i slot="flag"
+            slot-scope="{ row, column }"
+            :class="row['flag']">
+        </i>
     </vue-table>
 
 </template>
@@ -23,18 +26,6 @@ export default {
         return {
             path: route('system.localisation.initTable', [], false),
         };
-    },
-
-    methods: {
-        customRender(row, column) {
-            switch (column.name) {
-            case 'flag':
-                return `<i class="flag-icon ${row[column.name]}"></i>`;
-            default:
-                this.$toastr.warning(`render for column ${column.name} is not defined.`);
-                return row[column.name];
-            }
-        },
     },
 };
 

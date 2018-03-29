@@ -1,5 +1,5 @@
 <template>
-    <span class="tag is-primary">
+    <span class="tag is-link">
         {{ label }}
         <a class="delete is-small"
             @click="$emit('remove')">

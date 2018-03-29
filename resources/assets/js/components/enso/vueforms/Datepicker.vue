@@ -32,6 +32,8 @@ import i18n from './flatpickrLocale';
 fontawesome.library.add(faClock, faCalendarAlt);
 
 export default {
+    name: 'Datepicker',
+
     props: {
         value: {
             type: null,
@@ -69,10 +71,6 @@ export default {
         format: {
             type: String,
             default: 'd-m-Y',
-        },
-        inputClass: {
-            type: String,
-            default: 'form-control',
         },
         locale: {
             type: String,
@@ -139,9 +137,7 @@ export default {
 
 </script>
 
-<style src="flatpickr/dist/themes/material_green.css"></style>
-
-<style lang="scss" scoped>
+<style lang="scss">
 
     .control.has-icons-right .icon.clear-button {
         pointer-events: all;

@@ -18,7 +18,7 @@
                 </span>
             </div>
         </td>
-        <td :class="template.align"
+        <td :class="column.money ? 'is-money' : template.align"
             v-for="(column, idx) in template.columns"
             :key="idx"
             v-if="
@@ -323,6 +323,12 @@ li.child-row {
 .is-clickable {
     cursor: pointer;
     text-decoration: underline dotted;
+}
+
+.is-money {
+    white-space: pre;
+    text-align: right;
+    font-family: monospace;
 }
 
 </style>

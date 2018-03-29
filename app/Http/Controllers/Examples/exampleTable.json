@@ -68,7 +68,7 @@
             "meta": [
                 "searchable",
                 "sortable",
-                "render"
+                "slot"
             ]
         }, {
             "label": "Salary",

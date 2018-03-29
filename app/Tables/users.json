@@ -29,7 +29,8 @@
             "label": "Phone",
             "name": "phone",
             "data": "users.phone",
-            "meta": ["searchable","sortable"]
+            "meta": ["searchable","sortable", "total"],
+            "money": {}
         },
         {
             "label": "Email",

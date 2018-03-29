@@ -1,11 +1,5 @@
 const { mix } = require('laravel-mix');
 
-mix.webpackConfig({
-    output: {
-        publicPath: '/',
-    },
-});
-
 mix
     .copyDirectory('resources/assets/images', 'public/images')
 

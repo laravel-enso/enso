@@ -76,20 +76,6 @@ new Vue({
     },
 
     methods: {
-
-        customRender(row, column) {
-            switch (column.name) {
-            case 'project':
-                if (row.project === 'Enso SPA') return `<span class="tag is-table-tag is-success">${row[column.name]}</span>`;
-
-                return row.project === 'AdminLTE'
-                    ? `<span class="tag is-table-tag is-info">${row[column.name]}</span>`
-                    : `<span class="tag is-table-tag is-danger">${row[column.name]}</span>`;
-            default:
-                this.$toastr.warning(`render for column ${column.name} is not defined.`);
-                return this.row[column.name];
-            }
-        },
         clicked(column, row) {
             this.$toastr.info(`You just clicked "${row[column.name]}" on column "${column.name}"`, 'Click Event');
         },

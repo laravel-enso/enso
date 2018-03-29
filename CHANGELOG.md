@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.5.8
+Upgrades the system for switching themes.
+Integrates the flatpickr themes with bulmaswatch, closes laravel-enso/formbuilder#25.
+Refactors all old customRender functions to the new slot, in vue-table.
+Updates composer / npm depedencies.
+Changes the tag color for multiple select to info.
+
 ### 2.5.7
 Adds money type for the formbuilder and vuedatatable packages. To upgrade you need to `npm install --save accounting-js`. The docs will be updated soon.
 Changes the `__` from being defined extending the prototype to a mixin. This allows cleaner auto-detecting for the independend components.

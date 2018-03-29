@@ -64,9 +64,18 @@
         <vue-table class="box animated fadeIn"
             :path="path"
             id="imports-table"
-            :custom-render="customRender"
             @get-summary="getSummary"
             v-if="!summary">
+            <b slot="successful"
+            slot-scope="{ row }"
+            class="has-text-success">
+                {{ row['successful'] }}
+            </b>
+            <b slot="issues"
+            slot-scope="{ row }"
+            class="has-text-danger">
+                {{ row['issues'] }}
+            </b>
         </vue-table>
         <div class="columns"
             v-if="summary">
@@ -310,17 +319,6 @@ export default {
                 this.loading = false;
                 this.handleError(error);
             });
-        },
-        customRender(row, column) {
-            switch (column.name) {
-            case 'successful':
-                return `<b class="has-text-success">${row[column.name]}</b>`;
-            case 'issues':
-                return `<b class="has-text-danger">${row[column.name]}</b>`;
-            default:
-                this.$toastr.warning(`render for column ${column.name} is not defined.`);
-                return row[column.name];
-            }
         },
     },
 };

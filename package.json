@@ -53,7 +53,7 @@
         "animate.css": "^3.6.1",
         "axios": "^0.17",
         "bulma": "^0.6.2",
-        "bulma-extensions": "^1.0.0",
+        "bulma-extensions": "^1.0.14",
         "bulmaswatch": "^0.6.2",
         "chart.js": "^2.7.2",
         "chartjs-plugin-datalabels": "^0.3.0",
