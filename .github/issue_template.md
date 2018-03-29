@@ -4,7 +4,8 @@ This is  a **bug | feature request**.
 <!-- Make sure that everything is checked below: -->
 ### Prerequisites
 * [ ] Are you running the latest version?
-* [ ] Are you reporting to the correct repository? (enso is made up of many specialized packages: https://github.com/laravel-enso)
+* [ ] Are you reporting to the correct repository?
+(enso is made of many specialized packages: https://github.com/laravel-enso)
 * [ ] Did you check the documentation?
 * [ ] Did you perform a cursory search?
 

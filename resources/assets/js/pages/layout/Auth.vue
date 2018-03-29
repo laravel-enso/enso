@@ -29,12 +29,18 @@ export default {
 
     created() {
         axios.get('/api/getMeta').then(({ data }) => {
-            this.setMeta(data);
+            const { meta, i18n } = data;
+            this.setMeta(meta);
+            this.setI18n(i18n);
+            const lang = Object.keys(i18n).shift();
+            this.setUser({ preferences: { global: { lang } } });
         }).catch(error => this.handleError(error));
     },
 
     methods: {
         ...mapMutations(['setMeta']),
+        ...mapMutations('locale', ['setI18n']),
+        ...mapMutations(['setUser']),
     },
 };
 

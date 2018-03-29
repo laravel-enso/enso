@@ -171,7 +171,7 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return typeof this.__ === 'function'
+                return Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },

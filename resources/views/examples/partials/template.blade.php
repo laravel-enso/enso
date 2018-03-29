@@ -81,7 +81,8 @@
                 "searchable",
                 "sortable",
                 "total"
-            ]
+            ],
+            "money": {}
         }, {
             "label": "Taxes",
             "name": "taxes",
@@ -90,7 +91,8 @@
                 "searchable",
                 "sortable",
                 "total"
-            ]
+            ],
+            "money": {}
         }, {
             "label": "Active",
             "name": "is_active",

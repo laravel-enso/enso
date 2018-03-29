@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.5.7
+Adds money type for the formbuilder and vuedatatable packages. To upgrade you need to `npm install --save accounting-js`. The docs will be updated soon.
+Changes the `__` from being defined extending the prototype to a mixin. This allows cleaner auto-detecting for the independend components.
+Adds the `weekdays` prop to datepicker.
+Closes:
+    - laravel-enso/vuedatatables#1
+    - laravel-enso/enso#86
+
 ### 2.5.6
 Fixes laravel-enso/localisation#38
 

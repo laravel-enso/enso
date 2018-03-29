@@ -62,6 +62,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        weekNumbers: {
+            type: Boolean,
+            default: false,
+        },
         format: {
             type: String,
             default: 'd-m-Y',
@@ -86,7 +90,7 @@ export default {
     computed: {
         config(self = this) {
             return {
-                weekNumbers: false,
+                weekNumbers: this.weekNumbers,
                 defaultDate: this.value,
                 dateFormat: this.format,
                 allowInput: false,

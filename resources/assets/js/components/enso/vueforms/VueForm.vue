@@ -34,99 +34,109 @@
                         <label class="label">
                             {{ i18n(field.label) }}
                             <span class="icon is-small has-text-info"
-                                v-if="field.meta.tooltip"
-                                v-tooltip="field.meta.tooltip">
+                                v-tooltip="field.meta.tooltip"
+                                v-if="field.meta.tooltip">
                                 <fa icon="info" size="xs"></fa>
                             </span>
-                            <p v-if="errors.has(field.name)"
-                                class="help is-danger is-pulled-right">
+                            <p class="help is-danger is-pulled-right"
+                                v-if="errors.has(field.name)">
                                 {{ errors.get(field.name) }}
                             </p>
                         </label>
-                        <span v-if="field.meta.custom">
-                            <slot :name="field.name"
-                                :field="field"
-                                :errors="errors">
-                            </slot>
-                        </span>
-                        <span v-else>
-                            <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
-                                v-if="
-                                    field.meta.type === 'input'
-                                    && field.meta.content !== 'checkbox'
-                                ">
-                                <input :class="['input', { 'is-danger': errors.has(field.name) }]"
-                                    v-model="field.value"
-                                    :type="field.meta.content"
-                                    :readonly="field.meta.readonly"
-                                    :disabled="field.meta.disabled"
-                                    :placeholder="i18n(field.meta.placeholder)"
-                                    :step="field.meta.step"
-                                    :min="field.meta.min"
-                                    :max="field.meta.max"
-                                    @keydown="$emit('update');"
-                                    @input="errors.clear(field.name);">
-                                <span class="icon is-small is-right has-text-danger"
-                                    v-if="errors.has(field.name)">
-                                    <fa icon="exclamation-triangle"></fa>
-                                </span>
-                            </div>
-                            <vue-switch v-model="field.value"
-                                size="is-large"
-                                type="is-success"
-                                :disabled="field.meta.disabled || field.meta.readonly"
-                                @click="$emit('update')"
-                                v-if="
-                                    field.meta.type === 'input'
-                                    && field.meta.content === 'checkbox'
-                                ">
-                            </vue-switch>
-                            <vue-select v-if="field.meta.type === 'select'"
+                        <slot :name="field.name"
+                            :field="field"
+                            :errors="errors"
+                            v-if="field.meta.custom">
+                        </slot>
+                        <vue-switch v-model="field.value"
+                            size="is-large"
+                            type="is-success"
+                            :disabled="field.meta.disabled || field.meta.readonly"
+                            @click="$emit('update')"
+                            v-else-if="
+                                field.meta.type === 'input'
+                                && field.meta.content === 'checkbox'
+                            ">
+                        </vue-switch>
+                        <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
+                            v-else-if="field.meta.type === 'input'">
+                            <money :class="['input', { 'is-danger': errors.has(field.name) }]"
                                 v-model="field.value"
-                                @input="errors.clear(field.name);"
-                                :i18n="i18n"
-                                :has-error="errors.has(field.name)"
-                                :label="field.meta.label || 'name'"
-                                :track-by="field.meta.trackBy || 'id'"
-                                :options="field.meta.options"
-                                :source="field.meta.source"
-                                :multiple="field.meta.multiple"
-                                :disabled="field.meta.disabled"
-                                :placeholder="i18n(field.meta.placeholder)">
-                            </vue-select>
-                            <datepicker v-model="field.value"
-                                :format="field.meta.format"
-                                :time="field.meta.time"
+                                :readonly="field.meta.readonly"
                                 :disabled="field.meta.disabled"
                                 :placeholder="i18n(field.meta.placeholder)"
-                                :locale="locale"
-                                @input="errors.clear(field.name)"
+                                :symbol="field.meta.symbol"
+                                :precision="field.meta.precision"
+                                :thousand="field.meta.thousand"
+                                :positive="field.meta.positive"
+                                :negative="field.meta.negative"
+                                :zero="field.meta.zero"
                                 @keydown="$emit('update');"
-                                v-if="field.meta.type === 'datepicker'">
-                            </datepicker>
-                            <datepicker v-model="field.value"
-                                :format="field.meta.format"
-                                time-only
+                                @input="errors.clear(field.name);"
+                                v-if="field.meta.content === 'money'">
+                            </money>
+                            <input :class="['input', { 'is-danger': errors.has(field.name) }]"
+                                v-model="field.value"
+                                :type="field.meta.content"
+                                :readonly="field.meta.readonly"
                                 :disabled="field.meta.disabled"
                                 :placeholder="i18n(field.meta.placeholder)"
-                                @input="errors.clear(field.name)"
-                                v-if="field.meta.type === 'timepicker'">
-                            </datepicker>
-                            <div class="control has-icons-right"
-                                v-if="field.meta.type === 'textarea'">
-                                <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
-                                    v-model="field.value"
-                                    :placeholder="i18n(field.meta.placeholder)"
-                                    :rows="field.meta.rows"
-                                    :disabled="field.meta.disabled"
-                                    @input="errors.clear(field.name)">
-                                </textarea>
-                                <span class="icon is-small is-right has-text-danger"
-                                    v-if="errors.has(field.name)">
-                                    <fa icon="exclamation-triangle"></fa>
-                                </span>
-                            </div>
-                        </span>
+                                :step="field.meta.step"
+                                :min="field.meta.min"
+                                :max="field.meta.max"
+                                @keydown="$emit('update');"
+                                @input="errors.clear(field.name);"
+                                v-else-if="field.meta.type === 'input'">
+                            <span class="icon is-small is-right has-text-danger"
+                                v-if="errors.has(field.name)">
+                                <fa icon="exclamation-triangle"></fa>
+                            </span>
+                        </div>
+                        <vue-select v-model="field.value"
+                            @input="errors.clear(field.name);"
+                            :i18n="i18n"
+                            :has-error="errors.has(field.name)"
+                            :label="field.meta.label || 'name'"
+                            :track-by="field.meta.trackBy || 'id'"
+                            :options="field.meta.options"
+                            :source="field.meta.source"
+                            :multiple="field.meta.multiple"
+                            :disabled="field.meta.disabled"
+                            :placeholder="i18n(field.meta.placeholder)"
+                            v-else-if="field.meta.type === 'select'">
+                        </vue-select>
+                        <datepicker v-model="field.value"
+                            :format="field.meta.format"
+                            :time="field.meta.time"
+                            :disabled="field.meta.disabled"
+                            :placeholder="i18n(field.meta.placeholder)"
+                            :locale="locale"
+                            @input="errors.clear(field.name)"
+                            @keydown="$emit('update');"
+                            v-else-if="field.meta.type === 'datepicker'">
+                        </datepicker>
+                        <datepicker v-model="field.value"
+                            :format="field.meta.format"
+                            time-only
+                            :disabled="field.meta.disabled"
+                            :placeholder="i18n(field.meta.placeholder)"
+                            @input="errors.clear(field.name)"
+                            v-else-if="field.meta.type === 'timepicker'">
+                        </datepicker>
+                        <div class="control has-icons-right"
+                            v-else-if="field.meta.type === 'textarea'">
+                            <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
+                                v-model="field.value"
+                                :placeholder="i18n(field.meta.placeholder)"
+                                :rows="field.meta.rows"
+                                :disabled="field.meta.disabled"
+                                @input="errors.clear(field.name)">
+                            </textarea>
+                            <span class="icon is-small is-right has-text-danger"
+                                v-if="errors.has(field.name)">
+                                <fa icon="exclamation-triangle"></fa>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,6 +205,7 @@ import Modal from './Modal.vue';
 import VueSwitch from './VueSwitch.vue';
 import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
+import Money from './Money.vue';
 
 fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo);
 
@@ -204,7 +215,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        Divider, VueSwitch, Modal, VueSelect, Datepicker,
+        Divider, VueSwitch, Modal, VueSelect, Datepicker, Money,
     },
 
     props: {
@@ -219,7 +230,7 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return typeof this.__ === 'function'
+                return Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },

@@ -15,7 +15,7 @@
                         <input class="input"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             type="email"
-                            :placeholder="meta.i18n['Email']"
+                            :placeholder="__('Email')"
                             v-model="email">
                         <span class="icon is-small is-left">
                             <fa icon="envelope"></fa>
@@ -38,7 +38,7 @@
                         <span class="icon is-small">
                             <fa icon="user"></fa>
                         </span>
-                        <span>{{ meta.i18n['Send a reset passworkd link'] }}</span>
+                        <span>{{ __('Send a reset passworkd link') }}</span>
                     </button>
                 </div>
             </form>

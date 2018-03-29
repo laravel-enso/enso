@@ -83,6 +83,7 @@
 <script>
 
 import debounce from 'lodash/debounce';
+import accounting from 'accounting-js';
 import TopControls from './TopControls.vue';
 import TableHeader from './TableHeader.vue';
 import TableBody from './TableBody.vue';
@@ -131,7 +132,7 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return typeof this.__ === 'function'
+                return Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },
@@ -318,7 +319,9 @@ export default {
                     return;
                 }
 
-                this.body = data;
+                this.body = this.template.money
+                    ? this.processMoney(data)
+                    : data;
             }).catch((error) => {
                 this.handleError(error);
                 this.loading = false;
@@ -361,6 +364,25 @@ export default {
 
                 return columns;
             }, []);
+        },
+        processMoney(body) {
+            this.template.columns
+                .filter(column => column.money)
+                .forEach((column) => {
+                    let money = body.data.map(row => row[column.name]);
+                    money = accounting.formatColumn(money, column.money);
+                    body.data = body.data.map((row, index) => {
+                        row[column.name] = money[index];
+                        return row;
+                    });
+
+                    if (this.template.total && body.total.hasOwnProperty(column.name)) {
+                        body.total[column.name] = accounting
+                            .formatMoney(body.total[column.name], column.money);
+                    }
+                });
+
+            return body;
         },
         exportData(path) {
             axios.get(path, { params: this.exportRequest() }).then(({ data }) => {
