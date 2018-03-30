@@ -369,7 +369,7 @@ export default {
             this.template.columns
                 .filter(column => column.money)
                 .forEach((column) => {
-                    let money = body.data.map(row => row[column.name]);
+                    let money = body.data.map(row => parseFloat(row[column.name]) || 0);
                     money = accounting.formatColumn(money, column.money);
                     body.data = body.data.map((row, index) => {
                         row[column.name] = money[index];

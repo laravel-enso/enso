@@ -68,6 +68,7 @@
                                 :symbol="field.meta.symbol"
                                 :precision="field.meta.precision"
                                 :thousand="field.meta.thousand"
+                                :decimal="field.meta.decimal"
                                 :positive="field.meta.positive"
                                 :negative="field.meta.negative"
                                 :zero="field.meta.zero"

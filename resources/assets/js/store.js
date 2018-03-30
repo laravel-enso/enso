@@ -27,6 +27,7 @@ export default new Vuex.Store({
         avatarLink: state => (state.isInitialised
             ? route('core.avatars.show', (state.user.avatarId || 'null'), false).toString()
             : '#'),
+        routes: state => state.routes,
     },
 
     mutations: {

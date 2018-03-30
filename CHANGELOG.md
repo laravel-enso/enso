@@ -1,5 +1,19 @@
 ## Laravel Enso's Changelog
 
+### 2.5.9
+Adds a global helper for the FE called `canAccess(route)` than can be used to conditionally display sensible elements in the UI. The helper returns a boolean, and matches the allowed permissions for the user's role.
+Allows full configuration over the theme list. You can add, remove or comment themes from `enso/themes.php`. From this version the config for themes is not merged anymore with the default one.
+Updates the default datepicker theme to light, in the clean theme.
+Improves the new `money` component.
+Improves `vue-table` handling of `money` type.
+Closes: laravel-enso/vuedatatable#46
+Closes: laravel-enso/vuedatatable#47
+Existing projects:
+    - run `php artisan cleanup:permissions` to remove `core.home` (not used anymore).
+And since v2.5.8, but missed in the changelog:
+    - make sure that you get the new webpack.min.js file from this repo.
+    - uncomment lines 12 - 32 and run `npm run prod` to compile and minimize all the themes, and after comment the lines back
+
 ### 2.5.8
 Upgrades the system for switching themes.
 Integrates the flatpickr themes with bulmaswatch, closes laravel-enso/formbuilder#25.

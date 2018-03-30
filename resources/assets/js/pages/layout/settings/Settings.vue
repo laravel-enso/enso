@@ -5,11 +5,13 @@
             {{ __("Settings") }}
         </p>
         <ul class="menu-list">
-            <li class="settings-item">
+            <li class="settings-item"
+                v-if="multipleLanguages">
                 <language-selector @update="setPreferences">
                 </language-selector>
             </li>
-            <li class="settings-item">
+            <li class="settings-item"
+                v-if="multipleThemes">
                 <theme-selector @update="setPreferences">
                 </theme-selector>
             </li>
@@ -17,10 +19,10 @@
                 <menu-state @update="setPreferences">
                 </menu-state>
             </li>
-            <li class="settings-item">
+            <li class="settings-item"
+                v-if="canAccess('system.tutorials.show')">
                 <tutorial></tutorial>
             </li>
-            <hr v-if="meta.env === 'local'">
             <li class="settings-item">
                 <key-collector v-if="meta.env === 'local'"></key-collector>
             </li>
@@ -49,6 +51,14 @@ export default {
     computed: {
         ...mapState(['user']),
         ...mapState(['meta']),
+        ...mapState('layout', ['themes']),
+        ...mapState('locale', ['languages']),
+        multipleThemes() {
+            return Object.keys(this.themes).length > 1;
+        },
+        multipleLanguages() {
+            return Object.keys(this.languages).length > 1;
+        },
     },
 
     methods: {
