@@ -9,9 +9,15 @@
                     <fa icon="anchor"></fa>
                 </span>
                 <slot name="address" :address="address">
-                    <span v-if="address.number">{{ address.number }}</span>
-                    <span v-if="address.street">{{ address.street }}</span>
-                    <span v-if="address.street_type">{{ __(address.street_type) }},</span>
+                    <span v-if="address.number">
+                        {{ address.number }}
+                    </span>
+                    <span v-if="address.street">
+                        {{ address.street }}
+                    </span>
+                    <span v-if="address.street_type">
+                        {{ __(address.street_type) }},
+                    </span>
                     <br>
                     <span v-if="address.building">
                         <span class="has-text-grey">
@@ -101,6 +107,8 @@ import Popover from '../bulma/Popover.vue';
 fontawesome.library.add(faAnchor, faGlobe, faStickyNote);
 
 export default {
+    name: 'AddressesCard',
+
     components: {
         Card, CardFooter, CardFooterItem, Popover,
     },
@@ -118,7 +126,9 @@ export default {
 </script>
 
 <style scoped>
+
     .media-content {
         min-height: 148px;
     }
+
 </style>

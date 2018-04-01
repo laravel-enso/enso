@@ -121,25 +121,23 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('core.contacts.index', { id: this.id, type: this.type }, false)).then(({ data }) => {
+            axios.get(
+                route('core.contacts.index'),
+                { params: { id: this.id, type: this.type } },
+            ).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
                 this.$refs.card.resize();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         destroy(contact, index) {
             this.loading = true;
 
-            axios.delete(route('core.contacts.destroy', contact.id, false)).then(() => {
-                this.contacts.splice(index, 1);
-                this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.delete(route('core.contacts.destroy', contact.id))
+                .then(() => {
+                    this.contacts.splice(index, 1);
+                    this.loading = false;
+                }).catch(error => this.handleError(error));
         },
         create() {
             this.loading = true;
@@ -150,24 +148,20 @@ export default {
 
             const params = { contactable_id: this.id, contactable_type: this.type };
 
-            axios.get(route('core.contacts.create', params, false)).then(({ data }) => {
-                this.loading = false;
-                this.form = data.form;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('core.contacts.create', params))
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.form = data.form;
+                }).catch(error => this.handleError(error));
         },
         edit(contact) {
             this.loading = true;
 
-            axios.get(route('core.contacts.edit', contact.id, false)).then(({ data }) => {
-                this.loading = false;
-                this.form = data.form;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('core.contacts.edit', contact.id))
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.form = data.form;
+                }).catch(error => this.handleError(error));
         },
     },
 };

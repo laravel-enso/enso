@@ -1,4 +1,5 @@
 <template>
+
     <div class="atwho-wrapper"
         @keyup="filter"
         @keydown.up="onUp"
@@ -96,12 +97,13 @@ export default {
 
     methods: {
         fetch() {
-            axios.get(route('core.comments.getTaggableUsers', this.query, false)).then(({ data }) => {
-                this.items = data;
-                if (this.items.length) {
-                    this.position = 0;
-                }
-            });
+            axios.get(route('core.comments.getTaggableUsers', this.query))
+                .then(({ data }) => {
+                    this.items = data;
+                    if (this.items.length) {
+                        this.position = 0;
+                    }
+                }).catch(error => this.handleError(error));
         },
         filter(event) {
             const arg = this.comment.body

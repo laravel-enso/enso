@@ -233,13 +233,13 @@
 <script>
 
 import { mapGetters, mapState } from 'vuex';
-import { format } from 'date-fns/esm';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
     faEye, faPlus, faPencilAlt,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
+import format from '../../../modules/enso/plugins/date-fns/format';
 
 fontawesome.library.add([
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
@@ -259,7 +259,7 @@ export default {
         ...mapGetters('locale', { locale: 'current' }),
         ...mapState(['user', 'meta']),
         uploadAvatarLink() {
-            return route('core.avatars.store', [], false);
+            return route('core.avatars.store');
         },
         isSelfVisiting() {
             return this.user.id === this.profile.id;
@@ -272,7 +272,7 @@ export default {
             return this.profile.avatar ? this.profile.avatar.id : null;
         },
         avatarLink() {
-            return route('core.avatars.show', (this.avatarId || 'null'), false);
+            return route('core.avatars.show', (this.avatarId || 'null'));
         },
         timeline() {
             const actions = this.profile.timeline.data;
@@ -301,7 +301,7 @@ export default {
             return !this.isAtStart && !this.isAtEnd;
         },
         paginationUrl() {
-            return `${route('administration.users.show', [this.profile.id], false)}?page=`;
+            return `${route('administration.users.show', this.profile.id)}?page=`;
         },
     },
 
@@ -314,19 +314,21 @@ export default {
     },
 
     mounted() {
-        axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
-            this.profile = response.data.user;
-        }).catch(error => this.handleError(error));
+        axios.get(route(this.$route.name, this.$route.params.id))
+            .then((response) => {
+                this.profile = response.data.user;
+            }).catch(error => this.handleError(error));
     },
 
     methods: {
         deleteAvatar() {
-            axios.delete(route('core.avatars.destroy', this.user.avatarId, false)).then(() => {
-                this.$store.commit('setUserAvatar', null);
-            }).catch(error => this.handleError(error));
+            axios.delete(route('core.avatars.destroy', this.user.avatarId))
+                .then(() => {
+                    this.$store.commit('setUserAvatar', null);
+                }).catch(error => this.handleError(error));
         },
         logout() {
-            axios.post(route('logout', [], false).toString()).then(() => {
+            axios.post(route('logout')).then(() => {
                 this.$store.commit('auth/logout');
             }).catch(error => this.handleError(error));
         },

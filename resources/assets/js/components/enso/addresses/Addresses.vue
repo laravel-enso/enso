@@ -1,6 +1,6 @@
 <template>
 
-    <card :icon="icon"
+    <card icon="map-signs"
         refresh
         scrollable
         :search="addresses.length > 1"
@@ -38,18 +38,19 @@
                 </div>
             </div>
         </div>
-        <address-form v-if="form"
+        <address-form
             :id="id"
             :type="type"
             :form="form"
             @close="form = null"
             @destroy="get();form = null"
             @submit="get();form = null"
-            ref="form">
+            ref="form"
+            v-if="form">
             <template v-for="field in customFields"
-                v-if="field.meta.custom"
                 :slot="field.name"
-                slot-scope="{ field, errors}">
+                slot-scope="{ field, errors }"
+                v-if="field.meta.custom">
                 <slot :name="field.name"
                     :field="field"
                     :errors="errors">
@@ -108,11 +109,13 @@ export default {
 
     computed: {
         filteredAddresses() {
-            return this.query
+            const query = this.query.toLowerCase();
+
+            return query
                 ? this.addresses.filter(address =>
-                    address.city.toLowerCase().indexOf(this.query.toLowerCase()) > -1
-                    || address.street.toLowerCase().indexOf(this.query.toLowerCase()) > -1
-                    || address.number.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                    address.city.toLowerCase().indexOf(query) > -1
+                    || address.street.toLowerCase().indexOf(query) > -1
+                    || address.number.toLowerCase().indexOf(query) > -1)
                 : this.addresses;
         },
         count() {
@@ -120,9 +123,6 @@ export default {
         },
         isEmpty() {
             return this.count === 0;
-        },
-        icon() {
-            return faMapSigns;
         },
         customFields() {
             return this.form.sections
@@ -139,28 +139,24 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('core.addresses.index', { id: this.id, type: this.type }, false))
-                .then((response) => {
-                    this.addresses = response.data;
-                    this.loading = false;
-                    this.$refs.card.resize();
-                }).catch((error) => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
+            axios.get(
+                route('core.addresses.index'),
+                { params: { id: this.id, type: this.type } },
+            ).then((response) => {
+                this.addresses = response.data;
+                this.loading = false;
+                this.$refs.card.resize();
+            }).catch(error => this.handleError(error));
         },
         edit(address) {
             this.loading = true;
 
-            axios.get(route('core.addresses.edit', address.id, false))
+            axios.get(route('core.addresses.edit', address.id))
                 .then(({ data }) => {
                     this.form = data.form;
                     this.$emit('form-loaded', this.form);
                     this.loading = false;
-                }).catch((error) => {
-                    this.loading = false;
-                    this.handleError(error);
-                });
+                }).catch(error => this.handleError(error));
         },
         create() {
             if (!this.$refs.card.expanded) {
@@ -170,35 +166,26 @@ export default {
             const params = { addressable_id: this.id, addressable_type: this.type };
             this.loading = true;
 
-            axios.get(route('core.addresses.create', params, false)).then(({ data }) => {
+            axios.get(route('core.addresses.create', params)).then(({ data }) => {
                 this.form = data.form;
                 this.$emit('form-loaded', this.form);
                 this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         setDefault(address) {
             this.loading = true;
 
-            axios.patch(route('core.addresses.setDefault', address.id, false)).then(() => {
+            axios.patch(route('core.addresses.setDefault', address.id)).then(() => {
                 this.get();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         destroy(address, index) {
             this.loading = true;
 
-            axios.delete(route('core.addresses.destroy', address.id, false)).then(() => {
+            axios.delete(route('core.addresses.destroy', address.id)).then(() => {
                 this.loading = false;
                 this.addresses.splice(index, 1);
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
     },
 };

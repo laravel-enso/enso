@@ -31,7 +31,7 @@ export default {
 
     data() {
         return {
-            path: route('core.contacts.initTable', [], false),
+            path: route('core.contacts.initTable'),
             form: null,
             contact: {},
         };
@@ -40,13 +40,14 @@ export default {
     methods: {
         edit(contact) {
             this.$refs.contacts.loading = true;
-            axios.get(route('core.contacts.edit', contact.dtRowId, false)).then(({ data }) => {
-                this.$refs.contacts.loading = false;
-                this.form = data.form;
-            }).catch((error) => {
-                this.$refs.contacts.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('core.contacts.edit', contact.dtRowId))
+                .then(({ data }) => {
+                    this.$refs.contacts.loading = false;
+                    this.form = data.form;
+                }).catch((error) => {
+                    this.$refs.contacts.loading = false;
+                    this.handleError(error);
+                });
         },
     },
 };

@@ -30,7 +30,10 @@ import Modal from '../bulma/Modal.vue';
 fontawesome.library.add(faLocationArrow);
 
 export default {
+    name: 'AddressForm',
+
     components: { Modal, VueForm },
+
     props: {
         id: {
             type: Number,

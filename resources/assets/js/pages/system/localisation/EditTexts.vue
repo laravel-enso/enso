@@ -172,8 +172,14 @@ export default {
         },
         sortedKeys() {
             return this.langKeys.sort((a, b) => {
-                if (a.toLowerCase() < b.toLowerCase()) return -1;
-                if (a.toLowerCase() > b.toLowerCase()) return 1;
+                if (a.toLowerCase() < b.toLowerCase()) {
+                    return -1;
+                }
+
+                if (a.toLowerCase() > b.toLowerCase()) {
+                    return 1;
+                }
+
                 return 0;
             });
         },
@@ -217,13 +223,11 @@ export default {
         init() {
             this.loading = true;
 
-            axios.get(route('system.localisation.editTexts', [], false)).then(({ data }) => {
-                this.loading = false;
-                this.locales = data.locales;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(route('system.localisation.editTexts'))
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.locales = data.locales;
+                }).catch(error => this.handleError(error));
         },
         getLangFile() {
             if (!this.selectedLocale) {
@@ -237,14 +241,11 @@ export default {
             axios.get(route('system.localisation.getLangFile', {
                 subDir: this.subDir,
                 language: this.selectedLocale,
-            }, false)).then(({ data }) => {
+            })).then(({ data }) => {
                 this.loading = false;
                 this.langFile = data;
                 this.updateOriginal();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         saveLangFile() {
             this.loading = true;
@@ -252,15 +253,12 @@ export default {
             axios.patch(route('system.localisation.saveLangFile', {
                 subDir: this.subDir,
                 language: this.selectedLocale,
-            }, false).toString(), {
+            }), {
                 langFile: this.langFile,
             }).then(({ data }) => {
                 this.loading = false;
                 this.$toastr.success(data.message);
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch((error) => this.handleError(error));
         },
         addKey() {
             this.$set(this.langFile, this.query, null);
@@ -285,7 +283,7 @@ export default {
             this.originalLangFile = JSON.parse(JSON.stringify(this.langFile));
         },
         merge() {
-            axios.patch(route('system.localisation.merge', [], false).toString())
+            axios.patch(route('system.localisation.merge'))
                 .then(({ data }) => {
                     this.loading = false;
                     this.$toastr.success(data.message);
@@ -293,7 +291,7 @@ export default {
                     this.loading = false;
                     this.handleError(error);
                 });
-        }
+        },
     },
 };
 

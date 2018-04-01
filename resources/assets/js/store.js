@@ -25,7 +25,7 @@ export default new Vuex.Store({
 
     getters: {
         avatarLink: state => (state.isInitialised
-            ? route('core.avatars.show', (state.user.avatarId || 'null'), false).toString()
+            ? route('core.avatars.show', state.user.avatarId || 'null')
             : '#'),
         routes: state => state.routes,
     },

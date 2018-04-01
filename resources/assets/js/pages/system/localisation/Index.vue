@@ -24,7 +24,7 @@ export default {
 
     data() {
         return {
-            path: route('system.localisation.initTable', [], false),
+            path: route('system.localisation.initTable'),
         };
     },
 };

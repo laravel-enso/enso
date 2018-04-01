@@ -17,7 +17,7 @@ export default {
 
     data() {
         return {
-            path: route('system.permissionGroups.initTable', [], false),
+            path: route('system.permissionGroups.initTable'),
         };
     },
 };

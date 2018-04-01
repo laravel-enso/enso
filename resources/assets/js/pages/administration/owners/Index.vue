@@ -16,7 +16,7 @@ export default {
 
     data() {
         return {
-            path: route('administration.owners.initTable', [], false),
+            path: route('administration.owners.initTable'),
         };
     },
 };

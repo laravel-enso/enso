@@ -1,5 +1,20 @@
 ## Laravel Enso's Changelog
 
+### 2.6.0
+Replaces `tightenco/ziggy` with an own implementation of the `route` helper. The new helper returns the directly the name route (string). Docs will be updated soon.
+Improves the mechanism for switching themes.
+Adds i18n support for date-fns. You can use the wrapper from `resources/assets/js/modules/enso/plugins/date-fns`.
+Removes the global filter `timeFromNow`. Use instead the `formatDistance` wrapper from the above plugins dir.
+Adds adds in the ajax errorHandler `loading = false` if the property exists.
+The Card component now accepts both String and Object type for the icon prop.
+The vue select autodetects if there is a global function `route` available. If the helper is present, the `source` prop is expected to be a named route and if not, an uri. (only when using the component with serverside)
+Adds a dedicated modal for dataimport.
+Existing projects:
+    - Run `php artisan enso:permissions:update`
+    - The new implementation for `route` should be compatible with ziggy's in most of the cases, but please test carrefully after upgrade
+    - don't forget to replace all occurencies of `timeFromNow`
+    - update in `composer.json`: "laravel-enso/core": "2.5.*"
+
 ### 2.5.9
 Adds a global helper for the FE called `canAccess(route)` than can be used to conditionally display sensible elements in the UI. The helper returns a boolean, and matches the allowed permissions for the user's role.
 Allows full configuration over the theme list. You can add, remove or comment themes from `enso/themes.php`. From this version the config for themes is not merged anymore with the default one.

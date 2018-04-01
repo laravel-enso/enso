@@ -38,7 +38,7 @@
                     </a>
                     <a class="button is-danger animated fadeIn"
                         v-if="template"
-                        @click="showModal = true">
+                        @click="modal = true">
                         <span>{{ __('Delete Template') }}</span>
                         <span class="icon is-small">
                             <fa icon="trash-alt"></fa>
@@ -202,9 +202,10 @@
                 </card>
             </div>
         </div>
-        <modal :show="showModal"
-            @cancel="showModal = false"
-            @commit="deleteTemplate(template.id)">
+        <modal :show="modal"
+            @close="modal = false"
+            :i18n="__"
+            @commit="deleteTemplate(template.id); modal = false">
         </modal>
     </div>
 
@@ -221,7 +222,7 @@ import {
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
-import Modal from '../../components/enso/bulma/Modal.vue';
+import Modal from './Modal.vue';
 import Card from '../../components/enso/bulma/Card.vue';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 import Paginate from '../../components/enso/bulma/Paginate.vue';
@@ -242,11 +243,11 @@ export default {
 
     data() {
         return {
-            path: route('import.initTable', [], false),
+            path: route('import.initTable'),
             importType: null,
             summary: null,
             template: null,
-            showModal: false,
+            modal: false,
             loadingTemplate: false,
             importing: false,
             importTypes: [],
@@ -255,13 +256,13 @@ export default {
 
     computed: {
         templateLink() {
-            return route('import.uploadTemplate', this.importType, false);
+            return route('import.uploadTemplate', this.importType);
         },
         downloadLink() {
-            return route('import.downloadTemplate', this.template.id, false);
+            return route('import.downloadTemplate', this.template.id);
         },
         importLink() {
-            return route('import.run', this.importType, false);
+            return route('import.run', this.importType);
         },
         icon() {
             return faBook;
@@ -269,9 +270,10 @@ export default {
     },
 
     created() {
-        axios.get(route('import.index', [], false)).then(({ data }) => {
-            this.importTypes = data.importTypes;
-        }).catch(error => this.handleError(error));
+        axios.get(route('import.index'))
+            .then(({ data }) => {
+                this.importTypes = data.importTypes;
+            }).catch(error => this.handleError(error));
     },
 
     methods: {
@@ -282,43 +284,43 @@ export default {
 
             this.loadingTemplate = true;
 
-            axios.get(route('import.getTemplate', this.importType, false)).then(({ data }) => {
-                this.template = data;
-                this.loadingTemplate = false;
-            }).catch((error) => {
-                this.loadingTemplate = false;
-                this.handleError(error);
-            });
+            axios.get(route('import.getTemplate', this.importType))
+                .then(({ data }) => {
+                    this.template = data;
+                    this.loadingTemplate = false;
+                }).catch((error) => {
+                    this.loadingTemplate = false;
+                    this.handleError(error);
+                });
         },
         deleteTemplate(id) {
             this.loadingTemplate = true;
-            axios.delete(route('import.deleteTemplate', id, false)).then(({ data }) => {
-                this.template = null;
-                this.showModal = false;
-                this.$toastr.success(data.message);
-                this.loadingTemplate = false;
-            }).catch((error) => {
-                this.showModal = false;
-                this.loadingTemplate = false;
-                this.handleError(error);
-            });
+            axios.delete(route('import.deleteTemplate', id))
+                .then(({ data }) => {
+                    this.template = null;
+                    this.modal = false;
+                    this.$toastr.success(data.message);
+                    this.loadingTemplate = false;
+                }).catch((error) => {
+                    this.modal = false;
+                    this.loadingTemplate = false;
+                    this.handleError(error);
+                });
         },
         getSummary(row) {
             this.loading = true;
 
-            axios.get(route('import.getSummary', row.dtRowId, false)).then(({ data }) => {
-                this.loading = false;
+            axios.get(route('import.getSummary', row.dtRowId))
+                .then(({ data }) => {
+                    this.loading = false;
 
-                if (data.issues === 0) {
-                    this.$toastr.info('The import has no issues');
-                    return;
-                }
+                    if (data.issues === 0) {
+                        this.$toastr.info('The import has no issues');
+                        return;
+                    }
 
-                this.summary = data;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+                    this.summary = data;
+                }).catch(error => this.handleError(error));
         },
     },
 };

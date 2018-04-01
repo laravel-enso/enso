@@ -7,9 +7,7 @@
             slot-scope="{ row }"
             :class="[
                 'tag is-table-tag',
-                row.isRead
-                    ? 'is-success'
-                    : 'is-warning'
+                row.isRead ? 'is-success' : 'is-warning'
             ]">
                 {{ row['type'] }}
         </span>
@@ -19,6 +17,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
 export default {
@@ -26,7 +25,7 @@ export default {
 
     data() {
         return {
-            path: route('system.permissions.initTable', [], false),
+            path: route('system.permissionGroups.initTable'),
         };
     },
 };

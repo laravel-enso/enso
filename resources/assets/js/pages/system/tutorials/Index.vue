@@ -21,7 +21,7 @@ export default {
 
     data() {
         return {
-            path: route('system.tutorials.initTable', [], false),
+            path: route('system.tutorials.initTable'),
         };
     },
 };

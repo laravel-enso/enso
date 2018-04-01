@@ -95,10 +95,8 @@ export default {
             default: false,
         },
         icon: {
-            type: Object,
-            default() {
-                return null;
-            },
+            type: [Object, String],
+            default: null,
         },
         title: {
             type: String,

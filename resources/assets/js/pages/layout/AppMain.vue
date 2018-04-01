@@ -1,9 +1,9 @@
 <template>
 
     <transition enter-active-class="fadeIn"
-        leave-active-class="fadeOut"
-        v-if="lightsOn">
-        <div class="app-main">
+        leave-active-class="fadeOut">
+        <div class="app-main"
+            v-show="lightsOn">
             <nprogress></nprogress>
             <navbar class="animated slideInDown">
             </navbar>
@@ -105,16 +105,18 @@ export default {
             handler();
         },
         startImpersonating(id) {
-            axios.get(route('core.impersonate.start', id, false)).then((response) => {
-                this.$toastr.warning(response.data.message);
-                this.initialise();
-            }).catch(error => this.handleError(error));
+            axios.get(route('core.impersonate.start', id))
+                .then((response) => {
+                    this.$toastr.warning(response.data.message);
+                    this.initialise();
+                }).catch(error => this.handleError(error));
         },
         stopImpersonating() {
-            axios.get(route('core.impersonate.stop', [], false)).then((response) => {
-                this.$toastr.info(response.data.message);
-                this.initialise();
-            }).catch(error => this.handleError(error));
+            axios.get(route('core.impersonate.stop'))
+                .then((response) => {
+                    this.$toastr.info(response.data.message);
+                    this.initialise();
+                }).catch(error => this.handleError(error));
         },
     },
 };

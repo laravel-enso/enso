@@ -43,9 +43,13 @@ export const actions = {
     switchTheme({ commit, dispatch }, theme) {
         commit('setTheme', theme, { root: true });
         commit('toggleLights');
-        setTimeout(() => dispatch('setTheme'), 300);
-        setTimeout(() => commit('toggleLights'), 500);
-        setTimeout(() => commit('setThemeParams'), 501);
+        setTimeout(() => {
+            dispatch('setTheme');
+            setTimeout(() => {
+                commit('toggleLights');
+                setTimeout(() => commit('setThemeParams'), 501);
+            }, 1000);
+        }, 500);
     },
     setMenuState({ commit }, menuState) {
         commit('setMenuState', menuState, { root: true });

@@ -29,7 +29,7 @@ export default {
     },
 
     created() {
-        axios.get(route('dashboard.index', [], false).toString()).then((response) => {
+        axios.get(route('dashboard.index')).then((response) => {
             this.grid = response.data.grid;
         });
     },

@@ -3,6 +3,10 @@ import Vue from 'vue';
 Vue.mixin({
     methods: {
         handleError(error) {
+            if (this.hasOwnProperty('loading')) {
+                this.loading = false;
+            }
+
             const { status, data } = error.response;
 
             if (status === 401) {

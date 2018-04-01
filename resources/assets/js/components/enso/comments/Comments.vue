@@ -123,7 +123,10 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('core.comments.index', [], false), { params: this.getParams() }).then(({ data }) => {
+            axios.get(
+                route('core.comments.index'),
+                { params: this.getParams() },
+            ).then(({ data }) => {
                 this.comments = this.offset
                     ? this.comments.concat(data.comments)
                     : data.comments;
@@ -132,10 +135,7 @@ export default {
                 this.offset = this.comments.length;
                 this.loading = false;
                 this.$refs.card.resize();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         getParams() {
             return {
@@ -177,16 +177,16 @@ export default {
 
             this.loading = true;
 
-            axios.post(route('core.comments.store', [], false), this.postParams()).then(({ data }) => {
+            axios.post(
+                route('core.comments.store'),
+                this.postParams(),
+            ).then(({ data }) => {
                 this.comments.unshift(data.comment);
                 this.count = data.count;
                 this.offset++;
                 this.comment = null;
                 this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         postParams() {
             return {
@@ -202,13 +202,13 @@ export default {
             comment.path = this.path;
             this.loading = true;
 
-            axios.patch(route('core.comments.update', comment.id, false), comment).then(({ data }) => {
+            axios.patch(
+                route('core.comments.update', comment.id),
+                comment,
+            ).then(({ data }) => {
                 Object.assign(comment, data.comment);
                 this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         syncTaggedUsers(comment) {
             comment.taggedUserList.forEach((user, index) => {
@@ -220,14 +220,12 @@ export default {
         destroy(index) {
             this.loading = true;
 
-            axios.delete(route('core.comments.destroy', this.comments[index].id, false)).then(({ data }) => {
-                this.comments.splice(index, 1);
-                this.count = data.count;
-                this.loading = false;
-            }).catch((error) => {
-                this.$parent.$parent.loading = false;
-                this.handleError(error);
-            });
+            axios.delete(route('core.comments.destroy', this.comments[index].id))
+                .then(({ data }) => {
+                    this.comments.splice(index, 1);
+                    this.count = data.count;
+                    this.loading = false;
+                }).catch(error => this.handleError(error));
         },
     },
 };

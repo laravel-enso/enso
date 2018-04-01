@@ -16,7 +16,7 @@ export default {
 
     data() {
         return {
-            path: route('system.menus.initTable', [], false),
+            path: route('system.menus.initTable'),
         };
     },
 };

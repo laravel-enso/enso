@@ -49,12 +49,16 @@ export default {
 
     methods: {
         get() {
-            axios.get(route('system.roles.getPermissions', [this.roleId], false)).then(({ data }) => {
-                this.data = data;
-            }).catch(error => this.handleError(error));
+            axios.get(route('system.roles.getPermissions', this.roleId))
+                .then(({ data }) => {
+                    this.data = data;
+                }).catch(error => this.handleError(error));
         },
         update() {
-            axios.post(route('system.roles.setPermissions', [this.roleId], false), this.postParams()).then(({ data }) => {
+            axios.post(
+                route('system.roles.setPermissions', this.roleId),
+                this.postParams(),
+            ).then(({ data }) => {
                 this.$toastr.success(data.message);
             }).catch(error => this.handleError(error));
         },

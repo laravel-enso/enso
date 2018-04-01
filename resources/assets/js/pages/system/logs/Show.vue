@@ -6,7 +6,7 @@
             <p>{{ __("The log file") }}
                 <code>{{ log.name }}</code>
                 {{ __("was last updated") }}
-                {{ log.modified ? log.modified.date : null | timeFromNow }}.
+                {{ log.modified ? timeFromNow(log.modified.date) : null }}.
                 {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}
             </p>
             <button class="delete"
@@ -27,6 +27,7 @@
 
 <script>
 
+import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 import '../../../modules/enso/directives/hljs';
 
 export default {
@@ -38,9 +39,16 @@ export default {
     },
 
     created() {
-        axios.get(route('system.logs.show', this.$route.params.id, false)).then(({ data }) => {
-            this.log = data.log;
-        }).catch(error => this.handleError(error));
+        axios.get(route('system.logs.show', this.$route.params.id))
+            .then(({ data }) => {
+                this.log = data.log;
+            }).catch(error => this.handleError(error));
+    },
+
+    methods: {
+        timeFromNow(date) {
+            return formatDistance(date);
+        },
     },
 };
 

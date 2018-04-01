@@ -39,7 +39,7 @@ export default {
 
     methods: {
         get() {
-            axios.get(route('system.tutorials.show', this.$route.name, false)).then(({ data }) => {
+            axios.get(route('system.tutorials.show', this.$route.name)).then(({ data }) => {
                 this.init(data);
             }).catch(error => this.handleError(error));
         },

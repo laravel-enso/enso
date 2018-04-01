@@ -84,7 +84,7 @@ export default {
             return this.count === 0;
         },
         uploadLink() {
-            return route('core.documents.upload', [this.type, this.id], false);
+            return route('core.documents.store', [this.type, this.id]);
         },
         filteredDocuments() {
             return this.query
@@ -113,14 +113,14 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(route('core.documents.index', [this.type, this.id], false)).then(({ data }) => {
+            axios.get(
+                route('core.documents.index'),
+                { params: { type: this.type, id: this.id } },
+            ).then(({ data }) => {
                 this.documents = data;
                 this.loading = false;
                 this.$refs.card.resize();
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         destroy(index) {
             this.loading = true;

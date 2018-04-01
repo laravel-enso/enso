@@ -17,14 +17,16 @@ export default {
 
     data() {
         return {
-            path: route('system.roles.initTable', [], false),
+            path: route('system.roles.initTable'),
         };
     },
 
     methods: {
         redirect($event) {
-            this.$router
-                .push({ name: 'system.roles.configure', params: { role: $event.dtRowId } });
+            this.$router.push({
+                name: 'system.roles.configure',
+                params: { role: $event.dtRowId },
+            });
         },
     },
 };

@@ -16,7 +16,7 @@ export default {
 
     data() {
         return {
-            path: route('administration.users.initTable', [], false),
+            path: route('administration.users.initTable'),
         };
     },
 };

@@ -7,16 +7,23 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class CleanupPermissions extends Command
 {
-    protected $signature = 'cleanup:permissions';
+    protected $signature = 'enso:permissions:update';
 
-    protected $description = 'This command will clean unused permissions';
+    protected $description = 'This command will update permissions';
 
     public function handle()
     {
-        $permission = Permission::whereName('core.home')->first();
+        $this->removeCoreHome();
+        $this->updateDocumentsStore();
+    }
+
+    private function removeCoreHome()
+    {
+        $permission = Permission::whereName('core.home')
+            ->first();
 
         if (!$permission) {
-            $this->info('Permissions already cleaned');
+            $this->info('Permission "core.home" already cleaned');
 
             return;
         }
@@ -24,6 +31,22 @@ class CleanupPermissions extends Command
         $permission->roles()->detach();
         $permission->delete();
 
-        $this->info('Permissions cleanup was successful');
+        $this->info('Permission "core.home" was successfully removed');
+    }
+
+    private function updateDocumentsStore()
+    {
+        $permission = Permission::whereName('core.documents.upload')
+            ->first();
+
+        if (!$permission) {
+            $this->info('Permission "core.documents.upload" was already updated');
+
+            return;
+        }
+
+        $permission->update(['name' => 'core.documents.store']);
+
+        $this->info('Permission "core.documents.store" was successfuly updated');
     }
 }
