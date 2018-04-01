@@ -310,22 +310,23 @@ export default {
             this.loading = true;
             this.expanded = [];
 
-            axios.get(this.template.readPath, { params: this.readRequest() }).then(({ data }) => {
-                this.loading = false;
-                this.forceInfo = false;
+            axios.get(this.template.readPath, { params: this.readRequest() })
+                .then(({ data }) => {
+                    this.loading = false;
+                    this.forceInfo = false;
 
-                if (data.data.length === 0 && this.start > 0) {
-                    this.start -= this.length;
-                    return;
-                }
+                    if (data.data.length === 0 && this.start > 0) {
+                        this.start -= this.length;
+                        return;
+                    }
 
-                this.body = this.template.money
-                    ? this.processMoney(data)
-                    : data;
-            }).catch((error) => {
-                this.handleError(error);
-                this.loading = false;
-            });
+                    this.body = this.template.money
+                        ? this.processMoney(data)
+                        : data;
+                }).catch((error) => {
+                    this.handleError(error);
+                    this.loading = false;
+                });
         },
         readRequest() {
             return {
@@ -385,18 +386,17 @@ export default {
             return body;
         },
         exportData(path) {
-            axios.get(path, { params: this.exportRequest() }).then(({ data }) => {
-                this.$toastr.success(data.message);
-            }).catch((error) => {
-                const { status, data } = error.response;
+            axios.get(path, { params: this.exportRequest() })
+                .catch((error) => {
+                    const { status, data } = error.response;
 
-                if (status === 555) {
-                    this.$toastr.error(data.message);
-                    return;
-                }
+                    if (status === 555) {
+                        this.$toastr.error(data.message);
+                        return;
+                    }
 
-                this.handleError(error);
-            });
+                    this.handleError(error);
+                });
         },
         exportRequest() {
             return {

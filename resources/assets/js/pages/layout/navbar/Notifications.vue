@@ -194,11 +194,11 @@ export default {
         },
         listen() {
             const self = this;
-            this.Echo.private(`App.User.${this.user.id}`).notification(() => {
+            this.Echo.private(`App.User.${this.user.id}`).notification((notification) => {
                 self.unreadCount++;
                 self.needsUpdate = true;
                 self.offset = 0;
-                this.$toastr.info(this.__('You just got a notification...'));
+                this.$toastr[notification.level](notification.body);
             });
         },
         computeScrollPosition(event) {

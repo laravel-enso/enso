@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 
-class CleanupPermissions extends Command
+class PermissionsUpdate extends Command
 {
     protected $signature = 'enso:permissions:update';
 

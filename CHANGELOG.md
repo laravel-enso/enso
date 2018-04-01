@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.6.2
+Improves notifications for vuedatable and comment tags.
+Closes laravel-enso/vuedatatable#27
+
 ### 2.6.1
 Fixes i18n import for date-fns.
 
@@ -13,6 +17,7 @@ The Card component now accepts both String and Object type for the icon prop.
 The vue select autodetects if there is a global function `route` available. If the helper is present, the `source` prop is expected to be a named route and if not, an uri. (only when using the component with serverside)
 Adds a dedicated modal for dataimport.
 Existing projects:
+    - Copy the `PermissionsUpdate` command from the latest release
     - Run `php artisan enso:permissions:update`
     - The new implementation for `route` should be compatible with ziggy's in most of the cases, but please test carrefully after upgrade
     - don't forget to replace all occurencies of `timeFromNow`

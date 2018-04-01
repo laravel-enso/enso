@@ -35,7 +35,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "http://git.xtelecom.ro/mishu/blank.git"
+        "url": "http://github.com/laravel-enso/enso"
     },
     "keywords": [],
     "author": "",
