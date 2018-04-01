@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.6.1
+Fixes i18n import for date-fns.
+
 ### 2.6.0
 Replaces `tightenco/ziggy` with an own implementation of the `route` helper. The new helper returns the directly the name route (string). Docs will be updated soon.
 Improves the mechanism for switching themes.
