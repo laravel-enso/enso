@@ -11,12 +11,12 @@
                 <contacts :id="$refs.form.data.params.owner_id"
                     type="owner">
                 </contacts>
-                <comments :id="$refs.form.data.params.owner_id"
+                <comments-card :id="$refs.form.data.params.owner_id"
                     type="owner">
-                </comments>
-                <documents :id="$refs.form.data.params.owner_id"
+                </comments-card>
+                <documents-card :id="$refs.form.data.params.owner_id"
                     type="owner">
-                </documents>
+                </documents-card>
                 <addresses :id="$refs.form.data.params.owner_id"
                     type="owner">
                 </addresses>
@@ -28,15 +28,15 @@
 
 <script>
 
-import Documents from '../../../components/enso/documents/Documents.vue';
-import Comments from '../../../components/enso/comments/Comments.vue';
+import DocumentsCard from '../../../components/enso/documents/DocumentsCard.vue';
+import CommentsCard from '../../../components/enso/comments/CommentsCard.vue';
 import Contacts from '../../../components/enso/contacts/Contacts.vue';
 import Addresses from '../../../components/enso/addresses/Addresses.vue';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 
 export default {
     components: {
-        Comments, Contacts, Documents, Addresses, VueFormSs,
+        CommentsCard, Contacts, DocumentsCard, Addresses, VueFormSs,
     },
 
     data() {

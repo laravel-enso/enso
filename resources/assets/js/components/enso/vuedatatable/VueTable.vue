@@ -323,6 +323,8 @@ export default {
                     this.body = this.template.money
                         ? this.processMoney(data)
                         : data;
+
+                    this.$emit('draw');
                 }).catch((error) => {
                     this.handleError(error);
                     this.loading = false;
@@ -417,10 +419,13 @@ export default {
                 params: this.params,
             };
         },
-        ajax(method, path) {
+        ajax(method, path, postEvent) {
             axios[method.toLowerCase()](path).then(({ data }) => {
                 this.$toastr.success(data.message);
                 this.getData();
+                if (postEvent) {
+                    this.$emit(postEvent);
+                }
             }).catch(error => this.handleError(error));
         },
         filterUpdate() {

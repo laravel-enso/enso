@@ -218,7 +218,7 @@ export default {
             }
 
             return this.optionList.filter(option =>
-                this.value.find(item => item === option[this.trackBy]));
+                this.value.includes(option[this.trackBy]));
         },
     },
 

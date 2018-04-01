@@ -1,73 +1,43 @@
 <template>
 
-    <card :icon="icon"
-        refresh
-        scrollable
-        :search="comments.length > 1"
-        :title="title || __('Comments')"
-        :overlay="loading"
-        @refresh="refresh()"
-        :collapsed="!open || isEmpty"
-        ref="card"
-        @query-update="query = $event"
-        @expand="isEmpty && !comment ? $refs.card.collapse() : null"
-        :badge="count"
-        :controls="1">
-        <card-control slot="control-1"
-            @click="create()">
-            <span class="icon is-small">
-                <fa icon="plus-square"></fa>
-            </span>
-        </card-control>
-        <div class="has-padding-medium wrapper">
-            <comment is-new
-                :id="id"
-                :type="type"
-                v-if="comment"
-                :comment="comment"
-                :index="-1"
-                @cancel-add="comment = null"
-                @save-comment="add()">
-            </comment>
-            <comment v-for="(comment, index) in filteredComments"
-                :comment="comment"
-                :index="index"
-                @save-comment="update(comment)"
-                @delete="destroy(index)"
-                :key="index">
-            </comment>
-            <div class="has-text-centered has-margin-top-large">
-                <button class="button is-naked has-text-grey"
-                    @click="get()">
-                    &bull; &bull; &bull;
-                </button>
-            </div>
+    <div>
+        <comment is-new
+            :id="id"
+            :type="type"
+            v-if="comment"
+            :comment="comment"
+            :index="-1"
+            @cancel-add="comment = null"
+            @save-comment="add()">
+        </comment>
+        <comment v-for="(comment, index) in filteredComments"
+            :comment="comment"
+            :index="index"
+            @save-comment="update(comment)"
+            @delete="destroy(index)"
+            :key="index">
+        </comment>
+        <div class="has-text-centered has-margin-top-large">
+            <button class="button is-naked has-text-grey"
+                @click="get()">
+                &bull; &bull; &bull;
+            </button>
         </div>
-    </card>
+    </div>
 
 </template>
 
 <script>
 
 import { mapState } from 'vuex';
-import fontawesome from '@fortawesome/fontawesome';
-import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import Card from '../bulma/Card.vue';
-import CardControl from '../bulma/CardControl.vue';
 import Comment from './Comment.vue';
-
-fontawesome.library.add(faComments, faPlusSquare);
 
 export default {
     name: 'Comments',
 
-    components: { Card, CardControl, Comment },
+    components: { Comment },
 
     props: {
-        open: {
-            type: Boolean,
-            default: false,
-        },
         id: {
             type: Number,
             required: true,
@@ -76,13 +46,13 @@ export default {
             type: String,
             required: true,
         },
-        title: {
-            type: String,
-            default: '',
-        },
         paginate: {
             type: Number,
             default: 5,
+        },
+        query: {
+            type: String,
+            default: null,
         },
     },
 
@@ -93,25 +63,18 @@ export default {
             offset: 0,
             comment: null,
             loading: false,
-            query: null,
             path: this.$route.path,
         };
     },
 
     computed: {
         ...mapState(['user']),
-        isEmpty() {
-            return this.count === 0;
-        },
         filteredComments() {
             return this.query
                 ? this.comments.filter(comment => comment.body.toLowerCase()
                     .indexOf(this.query.toLowerCase()) > -1
                     || comment.owner.fullName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.comments;
-        },
-        icon() {
-            return faComments;
         },
     },
 
@@ -134,7 +97,7 @@ export default {
                 this.count = data.count;
                 this.offset = this.comments.length;
                 this.loading = false;
-                this.$refs.card.resize();
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         getParams() {
@@ -165,10 +128,6 @@ export default {
             }
 
             this.comment = this.emptyComment();
-
-            if (!this.$refs.card.expanded) {
-                this.$refs.card.toggle();
-            }
         },
         add() {
             if (!this.comment.body.trim()) {
@@ -186,6 +145,7 @@ export default {
                 this.offset++;
                 this.comment = null;
                 this.loading = false;
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         postParams() {
@@ -225,6 +185,7 @@ export default {
                     this.comments.splice(index, 1);
                     this.count = data.count;
                     this.loading = false;
+                    this.$emit('update');
                 }).catch(error => this.handleError(error));
         },
     },

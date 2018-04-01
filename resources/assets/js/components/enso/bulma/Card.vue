@@ -95,7 +95,7 @@ export default {
             default: false,
         },
         icon: {
-            type: [Object, String],
+            type: [Object, Array, String],
             default: null,
         },
         title: {

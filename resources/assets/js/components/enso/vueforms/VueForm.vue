@@ -34,7 +34,7 @@
                         <label class="label">
                             {{ i18n(field.label) }}
                             <span class="icon is-small has-text-info"
-                                v-tooltip="field.meta.tooltip"
+                                v-tooltip="i18n(field.meta.tooltip)"
                                 v-if="field.meta.tooltip">
                                 <fa icon="info" size="xs"></fa>
                             </span>

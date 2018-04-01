@@ -210,7 +210,7 @@ export default {
             }
 
             if (button.action === 'ajax') {
-                this.$emit('ajax', button.method, this.getPath(button, row.dtRowId));
+                this.$emit('ajax', button.method, this.getPath(button, row.dtRowId), button.postEvent);
                 return;
             }
 

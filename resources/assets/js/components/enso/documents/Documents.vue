@@ -1,59 +1,24 @@
 <template>
 
-    <card :icon="icon"
-        refresh
-        scrollable
-        :search="documents.length > 1"
-        :title="title || __('Documents')"
-        :overlay="loading"
-        @refresh="get()"
-        ref="card"
-        :collapsed="!open || isEmpty"
-        @expand="isEmpty ? $refs.card.collapse() : null"
-        @query-update="query = $event"
-        :badge="count"
-        :controls="1">
-        <card-control slot="control-1">
-            <file-uploader
-                @upload-successful="get();"
-                :url="uploadLink"
-                multiple>
-            </file-uploader>
-        </card-control>
-        <div class="wrapper has-padding-medium">
-            <document v-for="(doc, index) in filteredDocuments"
-                :key="index"
-                :doc="doc"
-                @delete="destroy(index)">
-            </document>
-        </div>
-    </card>
-
+    <div>
+        <document v-for="(doc, index) in filteredDocuments"
+            :key="index"
+            :doc="doc"
+            @delete="destroy(index)">
+        </document>
+    </div>
 </template>
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faCopy } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import Card from '../bulma/Card.vue';
-import CardControl from '../bulma/CardControl.vue';
 import Document from './Document.vue';
-import FileUploader from '../fileuploader/FileUploader.vue';
-
-fontawesome.library.add(faCopy);
 
 export default {
     name: 'Documents',
 
-    components: {
-        Card, CardControl, Document, FileUploader,
-    },
+    components: { Document },
 
     props: {
-        open: {
-            type: Boolean,
-            default: false,
-        },
         id: {
             type: Number,
             required: true,
@@ -62,27 +27,20 @@ export default {
             type: String,
             required: true,
         },
-        title: {
+        query: {
             type: String,
-            default: '',
+            default: null,
         },
     },
 
     data() {
         return {
             documents: [],
-            query: '',
             loading: false,
         };
     },
 
     computed: {
-        count() {
-            return this.documents.length;
-        },
-        isEmpty() {
-            return this.count === 0;
-        },
         uploadLink() {
             return route('core.documents.store', [this.type, this.id]);
         },
@@ -92,16 +50,14 @@ export default {
                     .indexOf(this.query.toLowerCase()) > -1)
                 : this.documents;
         },
-        icon() {
-            return faCopy;
+        count() {
+            return this.documents.length;
         },
     },
 
     watch: {
-        isEmpty() {
-            if (this.isEmpty) {
-                this.$refs.card.collapse();
-            }
+        documents() {
+            this.$emit('update');
         },
     },
 
@@ -119,7 +75,6 @@ export default {
             ).then(({ data }) => {
                 this.documents = data;
                 this.loading = false;
-                this.$refs.card.resize();
             }).catch(error => this.handleError(error));
         },
         destroy(index) {
@@ -139,12 +94,3 @@ export default {
 };
 
 </script>
-
-<style scoped>
-
-    .wrapper {
-        max-height: 500px;
-        overflow-y: auto;
-    }
-
-</style>

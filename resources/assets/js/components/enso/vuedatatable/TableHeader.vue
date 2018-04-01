@@ -14,7 +14,7 @@
                 <span class="table-header-controls">
                     <span class="icon is-small has-text-info"
                         v-if="column.tooltip"
-                        v-tooltip="column.tooltip">
+                        v-tooltip="i18n(column.tooltip)">
                         <fa icon="info" size="xs"></fa>
                     </span>
                     <span class="sorter"

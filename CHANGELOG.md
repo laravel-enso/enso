@@ -1,7 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.6.3
+Splits Documents.vue in two separate components. Now we have DocumentsCard as a wrapper and Documents.vue for custom implementations. The same for Comments.vue.
+
+Upgrading existing projects:
+    - Update in your composer.json: "laravel-enso/commentsmanager": "2.2.*" and "laravel-enso/documentsmanager": "2.2.*",
+    - Update owners\Edit.vue from this repo, and any other views that use the updated components.
+
 ### 2.6.2
 Improves notifications for vuedatable and comment tags.
+
 Closes laravel-enso/vuedatatable#27
 
 ### 2.6.1
@@ -9,45 +17,67 @@ Fixes i18n import for date-fns.
 
 ### 2.6.0
 Replaces `tightenco/ziggy` with an own implementation of the `route` helper. The new helper returns the directly the name route (string). Docs will be updated soon.
+
 Improves the mechanism for switching themes.
+
 Adds i18n support for date-fns. You can use the wrapper from `resources/assets/js/modules/enso/plugins/date-fns`.
+
 Removes the global filter `timeFromNow`. Use instead the `formatDistance` wrapper from the above plugins dir.
+
 Adds adds in the ajax errorHandler `loading = false` if the property exists.
+
 The Card component now accepts both String and Object type for the icon prop.
+
 The vue select autodetects if there is a global function `route` available. If the helper is present, the `source` prop is expected to be a named route and if not, an uri. (only when using the component with serverside)
+
 Adds a dedicated modal for dataimport.
+
 Existing projects:
     - Copy the `PermissionsUpdate` command from the latest release
     - Run `php artisan enso:permissions:update`
-    - The new implementation for `route` should be compatible with ziggy's in most of the cases, but please test carrefully after upgrade
+    - The new implementation for `route` should be compatible with ziggy's in most of the cases, but please test carefully after upgrade
     - don't forget to replace all occurencies of `timeFromNow`
     - update in `composer.json`: "laravel-enso/core": "2.5.*"
 
 ### 2.5.9
 Adds a global helper for the FE called `canAccess(route)` than can be used to conditionally display sensible elements in the UI. The helper returns a boolean, and matches the allowed permissions for the user's role.
+
 Allows full configuration over the theme list. You can add, remove or comment themes from `enso/themes.php`. From this version the config for themes is not merged anymore with the default one.
+
 Updates the default datepicker theme to light, in the clean theme.
 Improves the new `money` component.
+
 Improves `vue-table` handling of `money` type.
-Closes: laravel-enso/vuedatatable#46
-Closes: laravel-enso/vuedatatable#47
+
+Closes: 
+    - laravel-enso/vuedatatable#46
+    - laravel-enso/vuedatatable#47
+
 Existing projects:
     - run `php artisan cleanup:permissions` to remove `core.home` (not used anymore).
+
 And since v2.5.8, but missed in the changelog:
     - make sure that you get the new webpack.min.js file from this repo.
     - uncomment lines 12 - 32 and run `npm run prod` to compile and minimize all the themes, and after comment the lines back
 
 ### 2.5.8
 Upgrades the system for switching themes.
+
 Integrates the flatpickr themes with bulmaswatch, closes laravel-enso/formbuilder#25.
+
 Refactors all old customRender functions to the new slot, in vue-table.
+
 Updates composer / npm depedencies.
+
 Changes the tag color for multiple select to info.
 
 ### 2.5.7
 Adds money type for the formbuilder and vuedatatable packages. To upgrade you need to `npm install --save accounting-js`. The docs will be updated soon.
+
 Changes the `__` from being defined extending the prototype to a mixin. This allows cleaner auto-detecting for the independend components.
+
 Adds the `weekdays` prop to datepicker.
+
 Closes:
     - laravel-enso/vuedatatables#1
     - laravel-enso/enso#86
@@ -58,13 +88,17 @@ Fixes laravel-enso/localisation#38
 ### 2.5.5
 
 Adds localisation for the auth pages.
+
 Adds localisation for the datepicker component.
+
 Existing projects upgrade: - remove from `routes/api.php` the `getMeta` route (lines 3 to 5)
+
 ```
 Route::get('/getMeta', function () {
     return ['appName' => config('app.name')];
 })->name('getMeta');
 ```
+
 Bug Fixes:
     - laravel-enso/formbuilder#24
     - laravel-enso/contacts#10
@@ -74,22 +108,33 @@ Bug Fixes:
 
 ### 2.5.4
 Adds "php artisan vendor:publish --tag='localisation-lang-files'" to composer.json "post-update-cmd". Please add this to existing projects by hand. This is needed to publish that laravel's native lang files when new languages are added.
+
 Removes the auto merge when a new key is added.
+
 Adds a Merge button for localisation that runs `php artisan localisation:merge`. This is available only in `env=local`.
+
 Renames the localisation command from add-route to add-routes, as now it's responsibile for adding the merge route too.
+
 Update composer / npm packages.
+
 And finally adds an issue template for the github repo!
 
 ### 2.5.3
 Adds enso json lang files to the assets that are published after every composer update. Executes the localisation:merge command after each composer update.
+
 Updates major versions for npm / composer packages.
+
 For existing projects: be sure that you copy the "post-update-cmd" section from laravel-enso/enso/composer.json to your composer.json.
 
 ### 2.5.2
 Finally updates the charts lib. To upgrade run `npm install --save chartjs-plugin-datalabels file-saver`.
+
 Add to composer.json requirements: "laravel-enso/charts": "2.2.*".
+
 Copy from the demo project the updated `DashboardController`.
+
 Improves the "select" package by adding the `trackBy` property in the BE. laravel-enso/select#13.
+
 Fixes laravel-enso/localisation#28
 
 ### 2.5.1
@@ -97,8 +142,11 @@ Fix menu overflow-x.
 
 ### 2.5.0
 Adds collapsible menu.
+
 Adds switch in the settings bar for menu state. The state is saved in user's preferences.
+
 Closes laravel-enso/localisation#15
+
 For existing projects:
 - update "composer.json" to require "laravel-enso/core" 2.4.*;
 - run `php artisan vendor:publish --force` and choose the following tags:
@@ -109,41 +157,58 @@ For existing projects:
 
 ### 2.4.2
 Changes the warning class to bulma's default.
+
 Updates packages.
-Fixes laravel-enso/impersonate#3
-Fixes laravel-enso/core#46. Adds UserPolicy. For existing projects you should do the following steps:
+
+Fixes:
+    - laravel-enso/impersonate#3
+    -laravel-enso/core#46. Adds UserPolicy. For existing projects you should do the following steps:
+
+Existing Projects:
 - copy App\Policies\UserPolicy
 - update App\Providers\AuthServiceProvider
 - update App\Http\Controllers\Administration\UserController (update and destroy methods).
 
 ### 2.4.1
 Fixes #76.
+
 Adds filter for missing translation in Localisation/EditTexts
 
 ### 2.4.0
 Refactors the enso.js file into dedicated modules.
+
 Adds to the Vue prototype the `__` helper from localisation. Refactors the whole project to use the new helper - removes the mapGetters(['locale/__'])
+
 Improves VueTable, VueForm and VueSelect to autodetect if the new `__` helper is available. This way we don't need to pass the helper every time.
+
 Prepares the FE for the new auto-add-missing-key feature discussed [here](https://github.com/laravel-enso/Core/pull/45)
+
 Moves the `debounce` prop for vuedatatable in the backend. Now `debounce` is a config option with a default of 100 (ms) that can be configured for everytable in its template.
+
 To upgrade be sure that in your composer.json you have "laravel-enso/core": "2.3.*",
 
 ### 2.3.15
 Brings back the ValidateUserRequest / ValidateOwnerRequest (deleted by mistake).
+
 Updates composer and npm dependecies.
 
 ### 2.3.14
 Greatly improves the datatables performance for big databases. The package can now handle tens of millions of records by using the new `fullInfoRecordLimit` config option. Read more in the docs.
+
 Improves vuecomponents, vuetable and vueform.
+
 Updates composer and npm dependecies.
 
 ### 2.3.13
 Adds custom layout for form sections.
+
 Fixes laravel-enso/select #11.
 
 ### 2.3.12
 Breaking change: Upgrades the form builder to support sections. Beware, you will have to upgrade all the templates and wrapt the current `columns` / `fields` attributes in an `sections` array with at least one object (for only one section). Please look at the template.json example to understand the new structure. [another example](https://github.com/laravel-enso/FormBuilder/issues/9#issuecomment-373896117). Don't forget to also publish the new `forms.php` config file.
+
 Fixes a bug when clearing the vuetable search field.
+
 Updates all composer and npm dependencies.
 
 ### 2.3.11
@@ -151,45 +216,64 @@ Adds tutorials examples
 
 ### 2.3.10
 Improves the vuetable to handle array values for its external filters
+
 Upgrades the clear control for all input elements to bulma's default.
 
 ### 2.3.9
 Small breaking change: The `$class` property from the vue select controllers is now changed to `$model`. You need to update this for `UserSelectController`.
+
 Adds localisation and debounce props for the vueselect component.
-Fixes laravel-enso/formbuilder#19
-Fixes laravel-enso/vuedatatable#38
+
+Fixes:
+    - laravel-enso/formbuilder#19
+    - laravel-enso/vuedatatable#38
+
 Updates all npm and composer packages
 
 ### 2.3.8
 Improves the vuetable responsive calculation strategy.
+
 Adds clear-button for typeahead.
 
 ### 2.3.7
 Replaces the lib for detecting table resize.
+
 Fixes lodash imports all over the project.
 
 ### 2.3.6
 Adds hungarian language
+
 Improves the the typeahead / laravel-enso/vuecomponents#12
+
 Fixes the dataimport layout / laravel-enso/dataimport#13
+
 Fixes the vuetable total when is crtNo is missing / laravel-enso/vuedatatable#32
+\
 Fixes the vuetable hidden controls when missing crtNo / laravel-enso/vuedatatable#36
+
 Adds to the vuetable ability to have a scoped slot when using the `slot` meta attribute. The slot can be accessed using the name of the column. The props available are the `column` object and the `value` / laravel-enso/vuedatatable#34
+
 Adds rogue columns to vuetable / laravel-enso/vuedatatable#33
+
 Adds tooltips for vuetable header / laravel-enso/vuedatatable#31
+
 Adds tooltips for vueform labels / laravel-enso/formbuilder#18
+
 Improves the vuetable reponsiveness directive.
 
 ### 2.3.5
 Closes laravel-enso/core#43, #44.
+
 Fixes a modal and notification wrappers classes.
 
 ### 2.3.4
 Improves the main modal component. Now the component uses a render function to make the modal a direct child of the body.
+
 Upgrades the modal for vuedatatable and formbuilder.
 
 ### 2.3.3
 Fixes laravel-enso/enso#66
+
 Adds mongolian language
 
 ### 2.3.2
@@ -197,13 +281,17 @@ Fixes laravel-enso/enso#64
 
 ### 2.3.1
 Fixes laravel-enso/vuedatatable#29.
+
 Fixes laravel-enso/enso#63.
+
 Fixes laravel-enso/enso#56
 
 Puts all the auth routes to the except array for `VerifyCsrfToken` middleware
+
 ```
 protected $except = ['api/login', 'api/password/email', 'api/password/reset'];
 ```
+
 (you should do this step manually for existing projects)
 
 ### 2.3.0
@@ -217,14 +305,19 @@ Fixes bug in VueSelect & adds auto scroll when using keyboard navigation.
 
 ### 2.2.0
 Removes vue-multiselect dependency. VueSelect has been rebuild from scratch and is now bulma themed. The option list builder has been upgraded too. Helpers/Enum has now an select() method that maps the $data to the expected format. VueSelect now uses an array of objects with the following format: [{id: 3, name: 'Label'}]. Select docs will be updated soon.
+
 Upgrades the whole project for VueSelect, including the example page.
-Fixes laravel-enso/vuedatatable#53
-Fixes laravel-enso/enso#54
-Fixes laravel-core/core#41
+
+Fixes:
+    - laravel-enso/vuedatatable#53
+    - laravel-enso/enso#54
+    - laravel-core/core#41
 
 ### 2.1.35
 Adds `is_active` to languages table. A command will run "post-install" / "post-update".
+
 Footer is now customizable larvel-enso/enso#52.
+
 Adds Arabic Language.
 
 ### 2.1.34
@@ -232,13 +325,18 @@ Fixes the z-index problem for select / filters clear control.
 
 ### 2.1.33
 Vue Routing refactor.
+
 Vue files refactor to be compliant with eslint@4.3.0
+
 Fixes #34, #38.
+
 Renames init route `getAppName` => `getMeta`
 
 ### 2.1.32
 Updates Laravel to 5.6.5.
+
 Updates composer / npm packages.
+
 Fixes the shadow for sidebars.
 
 ### 2.1.31
@@ -246,7 +344,9 @@ Adds Brazillian Portuguese localisation.
 
 ### 2.1.30
 Updates all dependencies.
+
 Improves vuedatatable's hidden columns.
+
 Improves the typeahead component.
 Fixes bug.
 
@@ -258,6 +358,7 @@ Adds back Sentry.
 
 ### 2.1.27
 Fixes `vuedatatable` bug when building buttons for users w/o permissions.
+
 Fixes user create form default value for the role select.
 
 ### 2.1.26
@@ -265,22 +366,33 @@ The app is now managed by Forge. Adds Horizon & Redis for jobs, cache.
 
 ### 2.1.25
 Adds favicon notifications. Dont forget to npm install --save `favico.js`
+
 Refactors `vuecomponents`. We don't want to enforce unnecessary classes where we can avoid it.
+
 Adds to the `formbuilder` a new wrapper `<vue-form-ss>` that handles the ajax request for the form object. Adds a bunch of helpers methods for the builder. The documentatio will be updated soon, until then you can check any of the forms from the project. `laravel-enso/formbuilder#11'
 
 ### 2.1.24
 Upgrades Laravel to 5.6 :). All the files from the local project are updated too.
+
 Upgrades `laravel-mix` to 2.0.
+
 Improves the `imagetransformer` package. Now uses for optimization `spatie/image-optimizer`. Adds `width` and `height` public methods.
+
 Improves the use of `flags-icon-css`. The project now includes only the needed flags...
+
 Improves the `fileuploader.vue` component - adds validation errors reporting (422).
+
 Fixes bugs.
 
 ### 2.1.23
 Fixes the `user_agent` column from the `logins` table, now its text. We use a command for this that executes at `post-cmd-install`/`post-cmd-update`.
+
 Improves shadow for navbar / sidebar / settings bar.
+
 Improves sticky footer, now uses flex instead of js.
+
 Updates `dataimport` to the new version that uses `box/spout` instead of `Maatwebsite/Laravel-Excel`. There are breaking changes here, please read the `dataimport` docs.
+
 Updates packages.
 
 ### 2.1.22
@@ -291,28 +403,38 @@ Note: the Vue components move means that you should update throughout your pages
 select components and then delete the leftover components from the `vueforms` and `bulma` folders respectively: 
  
 ...`/vueforms/VueSelect.vue` to ...`/select/VueSelect.vue`
+
 ...`/bulma/VueSelectFilter.vue` to ...`/select/VueSelectFilter.vue`
 
 
 ### 2.1.21
 Major update in DataImport. Improves interface, replaces Maatwebsite/Excel with Bos/Spout. The packages is now faster and cleaner.
+
 Updates documentation for most of the packages.
+
 Update composer and npm packages.
+
 Note: Unfortunately we tagged wrongly "laravel-enso/menumanager" with 2.1.29 instead of 2.1.21. If you have the project already installed please correct this manually.
 
 ### 2.1.20
 Fixes `core.index` route.
+
 Packages update.
 
 ### 2.1.19
 Adds Tabs/Tab vue components.
+
 Makes Notifications sticky.
+
 Improves example page.
+
 Adds `optionsLimit` prop to VueSelect.
+
 Fixes bugs.
 
 ### 2.1.18
 Packages update.
+
 Fixes VueSelect css.
 
 ### 2.1.17
@@ -320,19 +442,26 @@ Adds showcase for VueDatatable. The example Will be updated further.
 
 ### 2.1.16
 Laravel Enso just got rid of jQuery, for good by replacing `atwho`, the latest dependency that was relying on jQuery, with a brand new custom component.
+
 Fixes error reporting in auth views.
+
 Adds zxcvbn for measuring password complexity.
 
 ### 2.1.15
 Transitions are now fixed / more consistent.
+
 The new toastr uses now Bulma's `notification` class instead of `message`.
 
 ### 2.1.14
 
 Adds collapse animation for card.
+
 Adds `extendedDocumentTitle` option to the `enso/config.php`. If this is set true it concats the app's name to the `document.title`. `document.title` is now translated.
+
 Adds `icon` and `clickable` meta attributes for vudedatatable. `icon` is for rendering fa5 icons, while `clickable` can be used to customize behaviour when clicking specific cells from the table. The docs for vuedatatable will be extended soon to cover the new options.
+
 Removes `favicon.ico` and `logo.svg` from the publishable resources. Now you can replace those with custom ones.
+
 Packages update
 
 ### 2.1.13
@@ -350,24 +479,32 @@ Replaced `moment.js` with the great `date-fns`.
 
 ### 2.1.10
 Imports missing icons.
+
 Adds shadow to the toastr.
 
 ### 2.1.9
 We're both happy and sad...
+
 Happy because we have finally ditched the old `toastr` lib ($. dependent) and replaced it with our new toastr/message component.
+
 Sad because this introduces a small breaking change. If you still want to use the old toastr you will have to include it yourself (hopefully not)., or you can just replace all the `toastr.${type}` occurencies with `this.$toastr.${type}` and go *nouveau* :).
+
 This version also fixes the fa5 import - it now uses the `shakable.es` resource.
 
 ### 2.1.8
 The overlay is now red, as Nprogress.
+
 Package updates
 
 ### 2.1.7
 
 #### General
 Registers globally the FontAwesomeIcon as 'fa'. It can be used anywhere in the project with `<fa icon="icon"></fa>`, as long as the needed icon is imported in that file.
+
 Adds a new file where new menu icons should be registered `resources/assets/js/pages/layout/sidebar/icons/app`
+
 Includes a command that will run automatically and update all the icons from the `menus` table to the new format.
+
 Updates all the form & table json templates to work with fa5 icons.
 
 #### VueDatatable & FormBuilder
@@ -375,18 +512,25 @@ Changes the config file to work with the new style of including fa5 icons. Be su
 
 ### 2.1.6
 Upgrades the card vue component.
+
 Minor layout fixes for vuedatatable and formbuilder.
 
 ### 2.1.5
 Adds placeholder attribute for select field in formbuilder.
+
 Fixes placeholder prop for VueSelect.
+
 Refactors lolcalisation text edit vue.
+
 Fixes routes in AddressesManager.
+
 Package updates.
 
 ### 2.1.4
 Updates npm dependencies / compiles.
+
 Fixes Select List Option builder merging problem.
+
 Fixes Addresses published form path.
 
 ### 2.1.3
@@ -397,23 +541,31 @@ Package updates
 
 ### 2.1.1
 Fixes Role.php permissions and menus syncing.
+
 Upgrades VueDatatable to the fa5 version.
 
 ### 2.1.0
 
 #### General
 This version brings a major BE refactor for all the packages.
+
 The separation between the M and the C in MVC is much clearer now.
+
 Routes cleanup.
+
 The vue components that were hosted in the generic `laravel-enso/vuecomponents` package and were belonging to specific packages where moved accordingly.
+
 The BE tests are up to date.
+
 Frontend refactor for all dropdowns.
+
 Upgrades icons to Font Awesome 5 in the whole project / packages.
 
 Note: If you have this project already, after pulling the current version and before installing the new packages two commands will run automatically to ensure route compatibility and font awesome icon upgrade for the legacy db table `menus` (composer.json -> "pre-install-cmd")
 
 #### Formbuilder
 Slighly refactored and brings a dedicated `ModelForm` object.
+
 Docs update comming soon.
 
 #### Select
@@ -431,6 +583,7 @@ Introduces the `Dropdown` component for bulma.
 #### 2.0.35
 
 Lots of visual improvements and layout fixes.
+
 Adds profile menu link on touch devices.
 
 #### 2.0.34
@@ -441,8 +594,11 @@ Package updates
 
 #### Core
 The custom code for all Enso Exceptions is now 555 instead of 455.
+
 Removes unused `ProfilePageController` structure.
+
 Renames `LogsSuccessfulLoginListener` to `LoginLoggerListener`
+
 Fixes redirect to login page after logout
 
 #### DataImport
@@ -453,7 +609,9 @@ Updates the folder structure to follow Laravel format. Improves the interface of
 
 #### Helpers
 Updates the folder structure to follow Laravel format.
+
 Moves `EnsoException` class to the Helpers package.
+
 `EnsoException` is excepted from the Handler's report method and therefor is extended by all the project's custom exceptions.
 
 #### Select
@@ -461,10 +619,12 @@ Refactors the main class
 
 #### VueComponents
 Fixes the file uploader when consecutive multiple uploads are needed
+
 Fixes documents download
 
 #### General
 Adds custom exceptions that extend `EnsoException` were the latter was previously used. Improves the error reporting  localisation.
+
 Refactor and clean up code in migrations, Controllers / Services.
 
 
@@ -507,15 +667,18 @@ Upgrades the ios-switch to a new vue-switch component that is hosted in the form
 
 ### 2.0.27
 Addresses module is now included by default and is available in the owner edit page  
+
 Packages update
 
 ### 2.0.26
 Improved VueForm
+
 Packages update
 
 ### 2.0.24
 
 Fixes login error toastr
+
 Packages update
 
 ...
