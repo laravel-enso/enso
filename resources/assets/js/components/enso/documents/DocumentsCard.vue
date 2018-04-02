@@ -5,11 +5,13 @@
         scrollable
         :search="count > 1"
         :title="title || __('Documents')"
-        :overlay="$refs.documents ? $refs.documents.loading : true"
+        :overlay="$refs.documents && $refs.documents.loading"
         @refresh="$refs.documents.get()"
         ref="card"
         :collapsed="!open || isEmpty"
-        @expand="isEmpty ? $refs.card.collapse() : null"
+        @expand="isEmpty
+            ? $refs.card.collapse()
+            : null"
         @query-update="query = $event"
         :badge="count"
         :controls="1">
@@ -24,7 +26,7 @@
             <documents :id="id"
                 :type="type"
                 :query="query"
-                @update="count = $refs.documents.count"
+                @update="count = $refs.documents.count; $refs.card.resize()"
                 ref="documents">
             </documents>
         </div>

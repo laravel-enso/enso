@@ -10,6 +10,9 @@
         :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
+        @expand="isEmpty
+            ? $refs.card.collapse()
+            : null"
         :badge="count"
         :controls="1">
         <card-control slot="control-1">

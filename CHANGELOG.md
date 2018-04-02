@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.6.4
+Fixes bug in DocumentsCard / CommentsCard with loading flag.
+
+Updates composer and npm packages.
+
 ### 2.6.3
 Splits Documents.vue in two separate components. Now we have DocumentsCard as a wrapper and Documents.vue for custom implementations. The same for Comments.vue.
 

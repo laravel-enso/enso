@@ -5,7 +5,7 @@
         scrollable
         :search="count > 1"
         :title="title || __('Comments')"
-        :overlay="$refs.comments ? $refs.comments.loading : true"
+        :overlay="$refs.comments && $refs.comments.loading"
         @refresh="$refs.comments.refresh()"
         :collapsed="!open || isEmpty"
         ref="card"

@@ -168,6 +168,7 @@ export default {
             ).then(({ data }) => {
                 Object.assign(comment, data.comment);
                 this.loading = false;
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         syncTaggedUsers(comment) {

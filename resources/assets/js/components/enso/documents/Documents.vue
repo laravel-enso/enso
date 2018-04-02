@@ -55,12 +55,6 @@ export default {
         },
     },
 
-    watch: {
-        documents() {
-            this.$emit('update');
-        },
-    },
-
     created() {
         this.get();
     },
@@ -75,6 +69,7 @@ export default {
             ).then(({ data }) => {
                 this.documents = data;
                 this.loading = false;
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         destroy(index) {
@@ -84,6 +79,7 @@ export default {
                 this.loading = false;
                 this.documents.splice(index, 1);
                 index = null;
+                this.$emit('update');
             }).catch((error) => {
                 this.loading = false;
                 index = null;
