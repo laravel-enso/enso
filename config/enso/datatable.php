@@ -95,7 +95,7 @@ return [
                 'method' => 'DELETE',
                 'message' => 'The selected record is about to be deleted. Are you sure?',
                 'confirmation' => true,
-                'postEvent' => 'destroyed'
+                'postEvent' => 'destroyed',
             ],
             'download' => [
                 'icon' => 'cloud-download-alt',
