@@ -3,6 +3,8 @@
 ### 2.6.4
 Fixes bug in DocumentsCard / CommentsCard with loading flag.
 
+Fixes the collapsed menu label.
+
 Updates composer and npm packages.
 
 ### 2.6.3
