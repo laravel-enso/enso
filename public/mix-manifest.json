@@ -1,5 +1,6 @@
 {
     "/js/enso.js": "/js/enso.js",
-    "/js/example.js": "/js/example.js",
-    "/css/enso.css": "/css/enso.css"
+    "/js/tableExample.js": "/js/tableExample.js",
+    "/css/enso.css": "/css/enso.css",
+    "/js/selectExample.js": "/js/selectExample.js"
 }
