@@ -8,13 +8,13 @@ use LaravelEnso\FormBuilder\app\Classes\Form;
 
 class OwnerForm
 {
-    private const FormPath = __DIR__.'/../Templates/owner.json';
+    private const TemplatePath = __DIR__.'/../Templates/owner.json';
 
     private $form;
 
     public function __construct()
     {
-        $this->form = new Form(self::FormPath);
+        $this->form = new Form(self::TemplatePath);
     }
 
     public function create()

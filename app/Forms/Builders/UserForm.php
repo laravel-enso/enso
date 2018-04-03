@@ -7,13 +7,13 @@ use LaravelEnso\FormBuilder\app\Classes\Form;
 
 class UserForm
 {
-    private const FormPath = __DIR__.'/../Templates/user.json';
+    private const TemplatePath = __DIR__.'/../Templates/user.json';
 
     private $form;
 
     public function __construct()
     {
-        $this->form = new Form(self::FormPath);
+        $this->form = new Form(self::TemplatePath);
     }
 
     public function create()

@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.6.5
+Updates vuedatatable to 1.1.x. This version separates the query from the Table controller in a dedicated ModelTable class. Now the Tables folder follows the structure from the Forms folder, with two subfolders, Builder and Templates. The readme will be updated soon, meanwhile you can check examples from the project.
+
+For exising projects:
+    - update in the composer.json "laravel-enso/vuedatatable": "1.1.*"
+    - copy the UserTableController and OwnerTableController from this repo
+    - copy the app/Tables folder from this repo
+    - refactor all exising tables following the new style
+
 ### 2.6.4
 Fixes bug in DocumentsCard / CommentsCard with loading flag.
 

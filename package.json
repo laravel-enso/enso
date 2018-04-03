@@ -70,7 +70,7 @@
         "lodash": "^4.17.5",
         "npm": "^5.8.0",
         "nprogress": "^0.2.0",
-        "popper.js": "^1.14.1",
+        "popper.js": "^1.14.2",
         "pusher-js": "^4.2.2",
         "raven-js": "^3.24.0",
         "textarea-caret": "^3.1.0",

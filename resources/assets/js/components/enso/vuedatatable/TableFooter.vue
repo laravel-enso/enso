@@ -12,7 +12,9 @@
             </td>
             <td :class="[
                 'has-text-weight-bold',
-                { 'is-money': template.columns[i].money }
+                template.columns[i].money
+                    ? 'is-money'
+                    : 'has-text-centered'
             ]"
                 v-for="i in template.columns.length - 1"
                 :key="i"

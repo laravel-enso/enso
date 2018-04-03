@@ -367,5 +367,15 @@
     "Merge all localisation files": "Alle Sprachdateien zusammenf\u00fcgen",
     "You are not authorized to perform this action": "Sie d\u00fcrfen diese Aktion nicht durchf\u00fchren",
     "You will find attached the requested report.": "Der angeforderte Report befindet sich im Anhang.",
-    "Thank you for using our application!": "Vielen Dank, dass Sie unser Service nutzen!"
+    "Thank you for using our application!": "Vielen Dank, dass Sie unser Service nutzen!",
+    "Warning": "Warnung",
+    "Impersonating": "Imitieren von",
+    "Impersonate": "Imitieren",
+    "Welcome Back": "Willkommen zur\u00fcck",
+    "Please set or reset your password by clicking the button below.": "Sie k\u00f6nnen Ihr Passwort zur\u00fccksetzen indem Sie auf den unten stehenden Link klicken.",
+    "Direct Link": "Link",
+    "Reset Password Notification": "Passwort zur\u00fccksetzen",
+    "Export Notification": "Export Benachrichtung",
+    "Table": "Tabelle",
+    "Export emailed": "Export per Mail gesendet"
 }

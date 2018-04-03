@@ -1,18 +1,20 @@
 <template>
 
     <div>
-        <div class="box"
+        <div class="columns"
             v-if="!summary">
-            <div class="columns">
-                <div class="column is-one-third">
+            <div class="column is-4 is-9-tablet is-12-mobile">
+                <div class="">
                     <vue-select v-model="importType"
                         :options="importTypes"
                         @input="getTemplate"
                         ref="importTypeSelect">
                     </vue-select>
                 </div>
-                <div class="column has-padding-medium"
-                    v-if="importType">
+            </div>
+            <div class="column is-hidden-touch is-6 has-padding-medium has-text-centered"
+                v-if="importType">
+                <div class="">
                     <file-uploader class="animated fadeIn"
                         v-if="!template"
                         :url="templateLink"
@@ -44,8 +46,12 @@
                             <fa icon="trash-alt"></fa>
                         </span>
                     </a>
-                    <file-uploader class="is-pulled-right"
-                        @upload-start=" importing = true"
+                </div>
+            </div>
+            <div class="column has-padding-medium has-text-centered"
+                v-if="importType">
+                <div class="">
+                    <file-uploader @upload-start=" importing = true"
                         @upload-successful="summary = $event;importing = false"
                         @upload-error="importing = false;importType = null"
                         :url="importLink"
