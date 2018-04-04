@@ -9,7 +9,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
 export default {

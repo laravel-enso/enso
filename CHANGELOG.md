@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.6.6
+Fixes the permissions index table.
+
 ### 2.6.5
 Updates vuedatatable to 1.1.x. This version separates the query from the Table controller in a dedicated ModelTable class. Now the Tables folder follows the structure from the Forms folder, with two subfolders, Builder and Templates. The readme will be updated soon, meanwhile you can check examples from the project.
 
