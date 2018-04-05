@@ -207,7 +207,7 @@ Are loaded at application load, and refreshed as needed
 - since requests are supposed to be ajax, JSON responses are given back 
 
 ### Usage Notes
-Please note that because we want to keep the compiled size down, throughout the enso ecosystem, 
+Please note that because we want to keep the compiled size down, throughout the Enso ecosystem, 
 icons are imported selectively.
 
 What this means for you is that the necessary icons should be imported inside your components/pages. 
@@ -222,6 +222,11 @@ For languages, flag icons should be imported in:
 `resources/assets/sass/app.scss`
 
 (you may use `flags.scss` as a reference)
+
+### Adding translations or a new language
+If you want to add a new language, there are a few steps involved, so please check out 
+the [relevant section](https://github.com/laravel-enso/Localisation#contributing-a-new-language) of 
+the [localisation](https://github.com/laravel-enso/Localisation) package.
 
 ### Thanks
 
