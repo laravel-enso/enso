@@ -16,12 +16,7 @@ class UserPolicy
         }
     }
 
-    public function update(User $user, User $targetUser)
-    {
-        return !$targetUser->isAdmin();
-    }
-
-    public function destroy(User $user, User $targetUser)
+    public function handle(User $user, User $targetUser)
     {
         return !$targetUser->isAdmin();
     }

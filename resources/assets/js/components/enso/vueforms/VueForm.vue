@@ -112,6 +112,7 @@
                             :disabled="field.meta.disabled"
                             :placeholder="i18n(field.meta.placeholder)"
                             :locale="locale"
+                            :is-danger="errors.has(field.name)"
                             @input="errors.clear(field.name)"
                             @keydown="$emit('update');"
                             v-else-if="field.meta.type === 'datepicker'">
@@ -149,6 +150,16 @@
                 <span>{{ i18n(data.actions.destroy.button.label) }}</span>
                 <span class="icon">
                     <fa :icon="data.actions.destroy.button.icon"></fa>
+                </span>
+            </a>
+            <a class="button"
+                :class="data.actions.show.button.class"
+                @click="show()"
+                v-if="data.actions.show"
+                :disabled="data.actions.show.forbidden">
+                <span>{{ i18n(data.actions.show.button.label) }}</span>
+                <span class="icon">
+                    <fa :icon="data.actions.show.button.icon"></fa>
                 </span>
             </a>
             <a class="button"
@@ -261,6 +272,11 @@ export default {
     methods: {
         columnSize(columns) {
             return `is-${parseInt(12 / columns, 10)}`;
+        },
+        show() {
+            const { show } = this.data.actions;
+            this.$emit('show');
+            this.$router.push({ name: show.route, params: { id: show.id } });
         },
         create() {
             this.$emit('create');

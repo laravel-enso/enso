@@ -49,7 +49,8 @@
                         <div class="column is-half"
                             v-if="!selectedLocale && meta.env === 'local'">
                             <button class="button is-warning"
-                                @click="merge()">
+                                @click="merge()"
+                                v-if="canAccess('system.localisation.merge')">
                                 {{ __('Merge all localisation files') }}
                             </button>
                         </div>

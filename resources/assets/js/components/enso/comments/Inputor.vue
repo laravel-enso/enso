@@ -1,6 +1,6 @@
 <template>
 
-    <div class="atwho-wrapper"
+    <div class="animated zoomIn atwho-wrapper"
         @keyup="filter"
         @keydown.up="onUp"
         @keydown.down="onDown"

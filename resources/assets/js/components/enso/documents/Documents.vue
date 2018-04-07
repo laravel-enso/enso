@@ -1,7 +1,8 @@
 <template>
 
     <div>
-        <document v-for="(doc, index) in filteredDocuments"
+        <document class="animated fadeInDown"
+            v-for="(doc, index) in filteredDocuments"
             :key="index"
             :doc="doc"
             @delete="destroy(index)">

@@ -4,9 +4,10 @@
         <p class="menu-label has-text-centered">
             {{ __("Menu") }}
         </p>
-        <menus class="menu-list"
-            :menus="menus">
-        </menus>
+        <div class="menu-wrapper">
+            <menus :menus="menus">
+            </menus>
+        </div>
     </vue-aside>
 
 </template>
@@ -70,3 +71,13 @@ export default {
 };
 
 </script>
+
+<style>
+
+    .menu-wrapper {
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+    }
+
+</style>
+

@@ -1,5 +1,24 @@
 ## Laravel Enso's Changelog
 
+### 2.6.7
+
+#### Enhancements:
+- Adds a "view" button to `vue-form`. Please read https://github.com/laravel-enso/FormBuilder/issues/30
+- improves the file uploader scoped slot
+- adds `disabled` state for tabs
+- adds `is-danger` and `is-warning` boolean props for `datepicker`
+- adds animations to comments & documents.
+- sets vue-filter's `off-label` default to "".
+- enhances and also fixes :), the `UserPolicy` and `UserController`. For existing projects you should copy the two files from this repo.
+- implemented the new FE helper`canAccess` where there was the case
+
+#### Fixes:
+- scroll bug for the menu.
+- dataimport index layout.
+- various other small bugs.
+
+#### Updates composer and npm packages.
+
 ### 2.6.6
 Fixes the permissions index table.
 

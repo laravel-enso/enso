@@ -9,7 +9,8 @@
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a @click="setActive(index)">
+                    <a @click="setActive(index)"
+                        :disabled="tab.disabled">
                         <slot name="label"
                             :tab="tab">
                             {{ tab }}
@@ -25,7 +26,7 @@
 <script>
 
 export default {
-    name: 'Tab',
+    name: 'Tabs',
 
     props: {
         alignment: {
@@ -65,7 +66,7 @@ export default {
 
     methods: {
         setActive(index) {
-            if (this.active === index) {
+            if (this.active === index || this.tabs[index].disabled) {
                 return;
             }
 
@@ -79,3 +80,13 @@ export default {
 };
 
 </script>
+
+<style lang="scss" scoped>
+
+    a[disabled] {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
+</style>
+

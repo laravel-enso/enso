@@ -1,7 +1,11 @@
 <template>
 
     <div class="control has-icons-left has-icons-right">
-        <input class="input control"
+        <input :class="[
+            'input control',
+            { 'is-danger': isDanger },
+            { 'is-warning': isWarning }
+        ]"
             type="text"
             :placeholder="placeholder"
             :name="name"
@@ -14,7 +18,7 @@
             <fa icon="calendar-alt" v-else></fa>
         </span>
         <span class="icon is-small is-right clear-button"
-            v-if="value"
+            v-if="value && !disabled"
             @click="picker.clear()">
             <a class="delete is-small"></a>
         </span>
@@ -76,6 +80,14 @@ export default {
             type: String,
             default: 'en',
             validator: val => Object.keys(i18n).includes(val),
+        },
+        isDanger: {
+            type: Boolean,
+            default: false,
+        },
+        isWarning: {
+            type: Boolean,
+            default: false,
         },
     },
 

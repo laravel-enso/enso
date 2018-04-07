@@ -7,7 +7,7 @@
                     <fa icon="file"></fa>
                 </span>
                 <span>
-                    {{ doc.original_name }}
+                    {{ shortName(doc.original_name) }}
                 </span>
             </div>
         </div>
@@ -117,6 +117,11 @@ export default {
         },
         timeFromNow(date) {
             return formatDistance(date);
+        },
+        shortName(name) {
+            return name.length > 20
+                ? `${name.substring(0, 20)}...`
+                : name;
         },
     },
 };

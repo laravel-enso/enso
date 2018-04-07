@@ -60,7 +60,10 @@
                                 v-else>
                                 <button class="button is-small is-warning"
                                     @click="$bus.$emit('start-impersonating', profile.id)"
-                                    v-if="!$store.state.impersonating">
+                                    v-if="
+                                        canAccess('core.impersonate.start')
+                                        && !$store.state.impersonating
+                                    ">
                                     {{ __('Impersonate') }}
                                 </button>
                             </div>

@@ -2,22 +2,18 @@
 
     <form class="file-upload is-marginless"
         @submit.prevent>
-        <div class="file">
-            <label class="file-label">
-                <input :multiple="multiple"
-                    class="file-input hidden"
-                    type="file"
-                    ref="input"
-                    @change="upload">
-                    <slot name="upload-button"
-                        :open-file-browser="openFileBrowser"
-                        @click="openFileBrowser">
-                        <a class="icon is-small">
-                            <fa icon="upload"></fa>
-                        </a>
-                    </slot>
-            </label>
-        </div>
+        <input :multiple="multiple"
+            class="file-input hidden"
+            type="file"
+            ref="input"
+            @change="upload">
+        <slot name="upload-button"
+            :open-file-browser="openFileBrowser">
+            <a class="icon is-small"
+                @click="openFileBrowser">
+                <fa icon="upload"></fa>
+            </a>
+        </slot>
     </form>
 
 </template>

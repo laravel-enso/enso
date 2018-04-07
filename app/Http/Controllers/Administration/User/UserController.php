@@ -20,7 +20,11 @@ class UserController extends Controller
 
     public function store(ValidateUserRequest $request)
     {
-        $user = User::create($request->all());
+        $user = new User($request->all());
+
+        $this->authorize('handle', $user);
+
+        $user->save();
 
         $this->sendResetLinkEmail($request);
 
@@ -45,16 +49,18 @@ class UserController extends Controller
 
     public function update(ValidateUserRequest $request, User $user)
     {
-        $this->authorize('update', $user);
+        $user->fill($request->all());
 
-        $user->update($request->all());
+        $this->authorize('handle', $user);
+
+        $user->save();
 
         return ['message' => __(config('enso.labels.savedChanges'))];
     }
 
     public function destroy(User $user)
     {
-        $this->authorize('update', $user);
+        $this->authorize('handle', $user);
 
         $user->delete();
 

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '2.6.6',
+    'version' => '2.6.7',
     'defaultRole' => 'admin',
     'phpDateFormat' => 'd-m-Y',
     'jsDateFormat' => 'DD-MM-YYYY',

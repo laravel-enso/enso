@@ -28,7 +28,7 @@
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
                             <fa icon="power-off"></fa>
                         </span>
-                        <span class="filter-label" v-if="!icons">{{ offLabel }}</span>
+                        <span class="filter-label" v-if="!icons && offLabel">{{ offLabel }}</span>
                     </a>
                 </li>
             </ul>
@@ -54,7 +54,7 @@ export default {
         },
         offLabel: {
             type: String,
-            default: 'Off',
+            default: '',
         },
         icons: {
             type: Boolean,

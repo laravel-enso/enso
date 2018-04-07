@@ -19,7 +19,8 @@
                     v-if="data.menus.length">
                 </checkbox-manager>
                 <button class="button is-success has-margin-top-large is-pulled-right"
-                    @click="update">
+                    @click="update"
+                    :disabled="!canAccess('system.roles.setPermissions')">
                     {{ __("Update") }}
                 </button>
                 <div class="is-clearfix"></div>

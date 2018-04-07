@@ -34,6 +34,7 @@ module.exports = {
         "no-mixed-operators": 0,
         "func-names": 0,
         "no-shadow": 0,
-        "vue/max-attributes-per-line": 0
+        "vue/max-attributes-per-line": 0,
+        "no-return-assign": ["error", "except-parens"]
     },
 };

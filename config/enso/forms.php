@@ -29,6 +29,13 @@ return [
             'action' => 'router',
             'label' => 'Create',
         ],
+        'show' => [
+            'icon' => 'eye',
+            'class' => 'is-success',
+            'event' => 'show',
+            'action' => 'router',
+            'label' => 'Show',
+        ],
         'store' => [
             'icon' => 'check',
             'class' => 'is-success',
