@@ -11,6 +11,7 @@
 - sets vue-filter's `off-label` default to "".
 - enhances and also fixes :), the `UserPolicy` and `UserController`. For existing projects you should copy the two files from this repo.
 - implemented the new FE helper`canAccess` where there was the case
+- removes `app.scss` from the core packages. This file is the entry point for the local project's scss customization.
 
 #### Fixes:
 - scroll bug for the menu.

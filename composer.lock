@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.5.10",
+            "version": "2.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "48209e496d6ea5b90ce4ad974c98ac64384403f8"
+                "reference": "2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/48209e496d6ea5b90ce4ad974c98ac64384403f8",
-                "reference": "48209e496d6ea5b90ce4ad974c98ac64384403f8",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90",
+                "reference": "2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-04-07T15:32:19+00:00"
+            "time": "2018-04-07T16:08:51+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
