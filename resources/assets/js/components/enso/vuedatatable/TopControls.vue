@@ -17,9 +17,13 @@
                     :key="button.label"
                     :href="button.action === 'href' ? button.path : null"
                     @click="doAction(button)">
-                    <span>{{ i18n(button.label) }}</span>
+                    <span class="is-hidden-mobile">
+                        {{ i18n(button.label) }}
+                    </span>
                     <span class="icon is-small">
                         <fa :icon="button.icon"></fa>
+                    </span>
+                    <span class="is-hidden-mobile">
                     </span>
                 </button>
             </div>
@@ -31,9 +35,11 @@
                 <column-visibility :template="template"
                     v-on="$listeners">
                 </column-visibility>
-                <style-selector :template="template">
+                <style-selector :template="template"
+                    class="is-hidden-mobile">
                 </style-selector>
-                <alignment :template="template">
+                <alignment :template="template"
+                    class="is-hidden-mobile">
                 </alignment>
                 <button class="button"
                     @click="$emit('reload')">

@@ -2,7 +2,7 @@
 
     <div class="control has-icons-left has-icons-right">
         <input :class="[
-            'input control',
+            'input',
             { 'is-danger': isDanger },
             { 'is-warning': isWarning }
         ]"

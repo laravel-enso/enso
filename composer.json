@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
-        "codedungeon/phpunit-result-printer": "^0.11.0",
+        "codedungeon/phpunit-result-printer": "^0.13.0",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
         "laracasts/generators": "^1.1",

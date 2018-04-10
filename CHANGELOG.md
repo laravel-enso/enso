@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.6.8
+
+#### Fixes
+- the notification/toastr overflow-x.
+- money bug where was not updated on `value` change from parent
+
+#### Enhancements:
+- improves the `vue-form` and `vue-table` mobile layout by removing the text labels from global buttons.
+- adds `is-reverse-moble` helper for columns.
+
+#### Updates composer and npm packages.
+
 ### 2.6.7
 
 #### Enhancements:

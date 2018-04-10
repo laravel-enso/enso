@@ -84,6 +84,10 @@ export default {
         };
     },
 
+    watch: {
+        value: 'format',
+    },
+
     created() {
         this.isNumeric = typeof this.value === 'number';
         this.format();

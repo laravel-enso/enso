@@ -147,9 +147,13 @@
                 :disabled="data.actions.destroy.forbidden"
                 :class="data.actions.destroy.button.class"
                 @click="modal = true">
-                <span>{{ i18n(data.actions.destroy.button.label) }}</span>
+                <span class="is-hidden-mobile">
+                    {{ i18n(data.actions.destroy.button.label) }}
+                </span>
                 <span class="icon">
                     <fa :icon="data.actions.destroy.button.icon"></fa>
+                </span>
+                <span class="is-hidden-mobile">
                 </span>
             </a>
             <a class="button"
@@ -157,9 +161,13 @@
                 @click="show()"
                 v-if="data.actions.show"
                 :disabled="data.actions.show.forbidden">
-                <span>{{ i18n(data.actions.show.button.label) }}</span>
+                <span class="is-hidden-mobile">
+                    {{ i18n(data.actions.show.button.label) }}
+                </span>
                 <span class="icon">
                     <fa :icon="data.actions.show.button.icon"></fa>
+                </span>
+                <span class="is-hidden-mobile">
                 </span>
             </a>
             <a class="button"
@@ -167,9 +175,13 @@
                 @click="create()"
                 v-if="data.actions.create"
                 :disabled="data.actions.create.forbidden">
-                <span>{{ i18n(data.actions.create.button.label) }}</span>
+                <span class="is-hidden-mobile">
+                    {{ i18n(data.actions.create.button.label) }}
+                </span>
                 <span class="icon">
                     <fa :icon="data.actions.create.button.icon"></fa>
+                </span>
+                <span class="is-hidden-mobile">
                 </span>
             </a>
             <button type="submit"
@@ -177,9 +189,13 @@
                 class="button is-pulled-right"
                 :class="[data.actions.store.button.class, { 'is-loading': loading }]"
                 :disabled="data.actions.store.forbidden || errors.any()">
-                <span>{{ i18n(data.actions.store.button.label) }}</span>
+                <span class="is-hidden-mobile">
+                    {{ i18n(data.actions.store.button.label) }}
+                </span>
                 <span class="icon">
                     <fa :icon="data.actions.store.button.icon"></fa>
+                </span>
+                <span class="is-hidden-mobile">
                 </span>
             </button>
             <button type="submit"
@@ -187,9 +203,13 @@
                 class="button is-pulled-right"
                 :class="[data.actions.update.button.class, { 'is-loading': loading }]"
                 :disabled="data.actions.update.forbidden || errors.any()">
-                <span>{{ i18n(data.actions.update.button.label) }}</span>
+                <span class="is-hidden-mobile">
+                    {{ i18n(data.actions.update.button.label) }}
+                </span>
                 <span class="icon">
                     <fa :icon="data.actions.update.button.icon"></fa>
+                </span>
+                <span class="is-hidden-mobile">
                 </span>
             </button>
             <div class="is-clearfix"></div>
@@ -209,7 +229,7 @@
 
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
+import { faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Divider from './Divider.vue';
 import Errors from './classes/Errors';
@@ -219,7 +239,7 @@ import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 import Money from './Money.vue';
 
-fontawesome.library.add(faTrashAlt, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo);
+fontawesome.library.add(faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo);
 
 export default {
     name: 'VueForm',

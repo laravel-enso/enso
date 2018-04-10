@@ -238,6 +238,7 @@ export default {
             position: relative;
             z-index: 9999;
             position: relative;
+            overflow-x: hidden;
             -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
             box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9656e4bd1ac7121f1603681ddcc08da",
+    "content-hash": "0e194288def0ec9fefda7827425ed74b",
     "packages": [
         {
             "name": "box/spout",
@@ -448,16 +448,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "f76bf5ef631cec551a86c2291fc749534febebf1"
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f76bf5ef631cec551a86c2291fc749534febebf1",
-                "reference": "f76bf5ef631cec551a86c2291fc749534febebf1",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/11037b4352c008373561dc6fc836834eed80c3b5",
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5",
                 "shasum": ""
             },
             "require": {
@@ -519,7 +519,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2018-04-01T23:33:17+00:00"
+            "time": "2018-04-07T18:44:18+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.5.11",
+            "version": "2.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90"
+                "reference": "08d7222278e48afeaed1a4bcbf39b8393f587e2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90",
-                "reference": "2c6b3d4c5d4981898f3cc9522e4fb13dffb53e90",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/08d7222278e48afeaed1a4bcbf39b8393f587e2c",
+                "reference": "08d7222278e48afeaed1a4bcbf39b8393f587e2c",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-04-07T16:08:51+00:00"
+            "time": "2018-04-09T11:44:09+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1830,16 +1830,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.5.21",
+            "version": "2.5.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "8a500dea22b1eaf4d77363e11d757b67792f9281"
+                "reference": "ebbdade399e9afb7fd3e1f074b231bcb87d9730e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/8a500dea22b1eaf4d77363e11d757b67792f9281",
-                "reference": "8a500dea22b1eaf4d77363e11d757b67792f9281",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/ebbdade399e9afb7fd3e1f074b231bcb87d9730e",
+                "reference": "ebbdade399e9afb7fd3e1f074b231bcb87d9730e",
                 "shasum": ""
             },
             "require": {
@@ -1882,7 +1882,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-04-06T14:41:33+00:00"
+            "time": "2018-04-09T10:37:35+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2721,16 +2721,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.1.50",
+            "version": "2.1.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "505c7b5eccfd44df05924fcca4a11ed24e2309af"
+                "reference": "39747768859e92117e789b73232d87186368593f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/505c7b5eccfd44df05924fcca4a11ed24e2309af",
-                "reference": "505c7b5eccfd44df05924fcca4a11ed24e2309af",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/39747768859e92117e789b73232d87186368593f",
+                "reference": "39747768859e92117e789b73232d87186368593f",
                 "shasum": ""
             },
             "type": "library",
@@ -2766,20 +2766,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-04-06T14:08:59+00:00"
+            "time": "2018-04-10T05:51:49+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "a12e8a7cd467127087315daa67fc0e697ccdf402"
+                "reference": "d32e105487e21d3d4a15c5bddc1be06faab4bf0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/a12e8a7cd467127087315daa67fc0e697ccdf402",
-                "reference": "a12e8a7cd467127087315daa67fc0e697ccdf402",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/d32e105487e21d3d4a15c5bddc1be06faab4bf0b",
+                "reference": "d32e105487e21d3d4a15c5bddc1be06faab4bf0b",
                 "shasum": ""
             },
             "require": {
@@ -2823,20 +2823,20 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-04-05T06:11:30+00:00"
+            "time": "2018-04-09T07:15:00+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.15",
+            "version": "v5.6.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "baa42cf6bdd942523fafece21ec16a1843c6db0f"
+                "reference": "fcdbc791bc3e113ada38ab0a1147141fb9ec2b16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/baa42cf6bdd942523fafece21ec16a1843c6db0f",
-                "reference": "baa42cf6bdd942523fafece21ec16a1843c6db0f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/fcdbc791bc3e113ada38ab0a1147141fb9ec2b16",
+                "reference": "fcdbc791bc3e113ada38ab0a1147141fb9ec2b16",
                 "shasum": ""
             },
             "require": {
@@ -2901,6 +2901,7 @@
                 "aws/aws-sdk-php": "~3.0",
                 "doctrine/dbal": "~2.6",
                 "filp/whoops": "^2.1.4",
+                "league/flysystem-cached-adapter": "~1.0",
                 "mockery/mockery": "~1.0",
                 "moontoast/math": "^1.1",
                 "orchestra/testbench-core": "3.6.*",
@@ -2919,7 +2920,7 @@
                 "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~6.0).",
                 "laravel/tinker": "Required to use the tinker console command (~1.0).",
                 "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
-                "league/flysystem-cached-adapter": "Required to use Flysystem caching (~1.0).",
+                "league/flysystem-cached-adapter": "Required to use the Flysystem cache (~1.0).",
                 "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
                 "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (~1.0).",
                 "nexmo/client": "Required to use the Nexmo transport (~1.0).",
@@ -2961,7 +2962,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-30T13:29:58+00:00"
+            "time": "2018-04-09T16:07:04+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -5165,16 +5166,16 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.11.4",
+            "version": "0.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "9a9a5cf126d9bf2adf74163a7ea9ad7dc12a1d3c"
+                "reference": "482fe11008dd26cd44343fcfb69e7a1de650379b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/9a9a5cf126d9bf2adf74163a7ea9ad7dc12a1d3c",
-                "reference": "9a9a5cf126d9bf2adf74163a7ea9ad7dc12a1d3c",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/482fe11008dd26cd44343fcfb69e7a1de650379b",
+                "reference": "482fe11008dd26cd44343fcfb69e7a1de650379b",
                 "shasum": ""
             },
             "require": {
@@ -5184,7 +5185,7 @@
                 "symfony/yaml": "^2.7|^3.0|^4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=7.0",
+                "phpunit/phpunit": "7.0.3",
                 "spatie/phpunit-watcher": "^1.5"
             },
             "type": "library",
@@ -5212,7 +5213,7 @@
                 "result-printer",
                 "testing"
             ],
-            "time": "2018-04-04T23:47:54+00:00"
+            "time": "2018-04-07T18:30:09+00:00"
         },
         {
             "name": "doctrine/instantiator",

@@ -3,6 +3,16 @@
     align-items: center;
 }
 
+@media screen and (max-width: 769px) {
+    .columns.is-reverse-mobile {
+        flex-direction: column-reverse;
+        display: flex;
+        .column {
+            width: 100%; 
+        }
+    }
+}
+
 .has-margin-small {
     margin: 6px;
 }

@@ -75,7 +75,7 @@
                     v-for="(item, index) in row"
                     :key="index"
                     v-if="!item.column.meta.rogue">
-                    <b>{{ item.column.label }}</b>:
+                    <b>{{ i18n(item.column.label) }}</b>:
                     <table-cell :i18n="i18n"
                         :column="item.column"
                         :value="item.value"
