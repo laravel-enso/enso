@@ -1,7 +1,7 @@
 <!--h-->
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
-[![Stories in In Progress](https://badge.waffle.io/laravel-enso/Enso.png?label=in%20progress&title=In%20Progress)](https://waffle.io/laravel-enso/Enso)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/laravel-enso/Enso.svg?columns=all)](https://waffle.io/laravel-enso/Enso)
 <!--/h-->
 
 *Hit the ground running when building your new Laravel SPA project with boilerplate and extra functionality out of the box!*

@@ -22,8 +22,7 @@
             </div>
             <button class="modal-close is-large"
                 aria-label="close"
-                @click="$emit('close')"
-                v-if="!card">
+                @click="$emit('close')">
             </button>
         </div>
     </transition>

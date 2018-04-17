@@ -26,13 +26,17 @@
         "codedungeon/phpunit-result-printer": "^0.13.0",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
-        "laracasts/generators": "^1.1",
+        "laracasts/generators": "dev-develop",
         "laravel-enso/testhelper": "1.4.*",
         "mockery/mockery": "1.*",
         "nunomaduro/collision": "^2.0.0",
         "phpunit/phpunit": "^7.0",
         "wnx/laravel-stats": "^1.6"
     },
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/bogdankharchenko/Laravel-5-Generators-Extended"
+    }],
     "autoload": {
         "classmap": [
             "database/seeds",

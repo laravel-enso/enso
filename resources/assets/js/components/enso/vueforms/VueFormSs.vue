@@ -57,13 +57,16 @@ export default {
     },
 
     created() {
-        axios.get(route(...this.params)).then(({ data }) => {
-            this.data = data.form;
-            this.$emit('loaded');
-        }).catch(error => this.handleError(error));
+        this.get();
     },
 
     methods: {
+        get() {
+            axios.get(route(...this.params)).then(({ data }) => {
+                this.data = data.form;
+                this.$emit('loaded');
+            }).catch(error => this.handleError(error));
+        },
         field(field) {
             return this.data.sections
                 .reduce((fields, section) => fields.concat(section.fields), [])

@@ -8,8 +8,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :placeholder="placeholder"
-        @blur="format()"
-        @input="onInput"
+        @blur="update"
         @focus="money = value"
         ref="money"
         type="tel"
@@ -107,8 +106,9 @@ export default {
                 },
             });
         },
-        onInput(event) {
-            let value = event.target.value.split(',').join('.');
+        update(event) {
+            let value = event.target.value.split(this.decimal).join('.');
+
             value = this.isNumeric
                 ? this.round(value)
                 : this.round(value).toFixed(this.precision);

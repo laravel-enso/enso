@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.6.9
+
+Improves the Enum class by adding an optional attributes method that can be used to set the default `$data` array.
+
+Adds "actions" to `vue-table`. Now you can define a global button responsible for a custom action for all the filtered rows. Check the docs for more details
+
+Improves the `vue-form` sections. Adds `show` helper. `show`, `hide`, `disable`, `readonly` can take now an array of fields too.
+
+Fixes the modal's close button when using the card version.
+
+Adds disabled state for `vue-select`
+
 ### 2.6.8
 
 #### Fixes

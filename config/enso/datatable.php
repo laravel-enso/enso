@@ -70,6 +70,16 @@ return [
                 'action' => 'export',
                 'label' => 'Excel',
             ],
+            'action' => [
+                'icon' => 'check',
+                'class' => null,
+                'routeSuffix' => 'action',
+                'event' => 'custom-action',
+                'postEvent' => 'custom-action-done',
+                'action' => 'ajax',
+                'method' => 'PATCH',
+                'label' => 'Action',
+            ],
         ],
         'row' => [
             'show' => [

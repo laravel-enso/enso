@@ -15,7 +15,8 @@
             @submit.prevent="submit()">
             <div class="columns is-multiline"
                 v-for="(section, index) in data.sections"
-                :key="index">
+                :key="index"
+                v-if="hasFields(section)">
                 <div class="column is-12"
                     v-if="section.divider">
                     <divider :title="i18n(section.title)"
@@ -53,6 +54,7 @@
                             type="is-success"
                             :disabled="field.meta.disabled || field.meta.readonly"
                             @click="$emit('update')"
+                            @input="errors.clear(field.name)"
                             v-else-if="
                                 field.meta.type === 'input'
                                 && field.meta.content === 'checkbox'
@@ -73,7 +75,7 @@
                                 :negative="field.meta.negative"
                                 :zero="field.meta.zero"
                                 @keydown="$emit('update');"
-                                @input="errors.clear(field.name);"
+                                @input="errors.clear(field.name)"
                                 v-if="field.meta.content === 'money'">
                             </money>
                             <input :class="['input', { 'is-danger': errors.has(field.name) }]"
@@ -86,7 +88,7 @@
                                 :min="field.meta.min"
                                 :max="field.meta.max"
                                 @keydown="$emit('update');"
-                                @input="errors.clear(field.name);"
+                                @input="errors.clear(field.name)"
                                 v-else-if="field.meta.type === 'input'">
                             <span class="icon is-small is-right has-text-danger"
                                 v-if="errors.has(field.name)">
@@ -94,7 +96,7 @@
                             </span>
                         </div>
                         <vue-select v-model="field.value"
-                            @input="errors.clear(field.name);"
+                            @input="errors.clear(field.name)"
                             :i18n="i18n"
                             :has-error="errors.has(field.name)"
                             :label="field.meta.label || 'name'"
@@ -359,6 +361,9 @@ export default {
             return this.data.sections
                 .reduce((fields, section) => fields.concat(section.fields), [])
                 .find(item => item.name === field);
+        },
+        hasFields(section) {
+            return section.fields.find(field => !field.meta.hidden) !== undefined;
         },
     },
 };

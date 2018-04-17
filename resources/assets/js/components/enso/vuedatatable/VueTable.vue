@@ -9,6 +9,7 @@
             :info="body !== null && !body.fullRecordInfo"
             @update-length="length=$event"
             @export-data="exportData"
+            @action="action"
             @reload="getData()"
             @reset="resetPreferences"
             @request-full-info="forceInfo = true; getData()"
@@ -427,6 +428,22 @@ export default {
                     this.$emit(postEvent);
                 }
             }).catch(error => this.handleError(error));
+        },
+        action(method, path, postEvent) {
+            this.loading = true;
+
+            const params = method === 'GET'
+                ? { params: this.readRequest() }
+                : this.readRequest();
+
+            axios[method.toLowerCase()](path, params)
+                .then(() => {
+                    this.loading = false;
+
+                    if (postEvent) {
+                        this.$emit(postEvent);
+                    }
+                }).catch(error => this.handleError(error));
         },
         filterUpdate() {
             if (!this.initialised) {
