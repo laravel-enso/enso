@@ -12,8 +12,7 @@
                 slot-scope="{ field, errors}">
                 <slot :name="field.name"
                     :field="field"
-                    :errors="errors">
-                </slot>
+                    :errors="errors"/>
             </template>
         </vue-form>
     </modal>

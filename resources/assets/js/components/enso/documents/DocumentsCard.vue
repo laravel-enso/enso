@@ -19,16 +19,14 @@
             <file-uploader
                 @upload-successful="$refs.documents.get();"
                 :url="uploadLink"
-                multiple>
-            </file-uploader>
+                multiple/>
         </card-control>
         <div class="wrapper has-padding-medium">
             <documents :id="id"
                 :type="type"
                 :query="query"
                 @update="count = $refs.documents.count; $refs.card.resize()"
-                ref="documents">
-            </documents>
+                ref="documents"/>
         </div>
     </card>
 

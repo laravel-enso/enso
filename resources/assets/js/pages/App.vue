@@ -4,8 +4,7 @@
         <transition enter-active-class="fadeIn"
             leave-active-class="fadeOut">
             <component :is="component"
-                class="animated">
-            </component>
+                class="animated"/>
         </transition>
     </div>
 

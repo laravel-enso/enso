@@ -4,7 +4,7 @@
         <div class="box has-padding-medium">
             <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
                 <figure class="image is-24x24 logo">
-                    <img src="/images/logo.svg"/>
+                    <img src="/images/logo.svg">
                 </figure>
                 {{ meta.appName }}
             </h3>
@@ -18,15 +18,15 @@
                             :placeholder="__('Email')"
                             v-model="email">
                         <span class="icon is-small is-left">
-                            <fa icon="envelope"></fa>
+                            <fa icon="envelope"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="isSuccessful">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         <span class="icon is-small is-right has-text-danger"
                             v-if="hasErrors">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                     </div>
                 </div>
@@ -38,15 +38,15 @@
                             :placeholder="__('Password')"
                             v-model="password">
                         <span class="icon is-small is-left">
-                            <fa icon="lock"></fa>
+                            <fa icon="lock"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="isSuccessful">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         <span class="icon is-small is-right has-text-danger"
                             v-if="hasErrors">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                         <p class="help">
                             <transition enter-active-class="zoomIn"
@@ -77,19 +77,19 @@
                             :placeholder="__('Repeat Password')"
                             v-model="passwordConfirmation">
                         <span class="icon is-small is-left">
-                            <fa icon="lock"></fa>
+                            <fa icon="lock"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="isSuccessful">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         <span class="icon is-small is-right has-text-danger"
                             v-if="hasErrors">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="match && !hasErrors">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                         type="submit"
                         @click.prevent="submit()">
                         <span class="icon is-small">
-                            <fa icon="lock"></fa>
+                            <fa icon="lock"/>
                         </span>
                         <span>{{ __('Set password') }}</span>
                     </button>

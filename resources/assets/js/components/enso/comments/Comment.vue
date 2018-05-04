@@ -25,7 +25,7 @@
                         v-if="comment.isEditable"
                         @click="originalBody=comment.body;">
                         <span class="icon is-small has-text-grey">
-                            <fa icon="pencil-alt"></fa>
+                            <fa icon="pencil-alt"/>
                         </span>
                     </button>
                     <popover placement="bottom-end"
@@ -36,7 +36,7 @@
                         <button class="button is-naked is-small"
                             @click="dialog=true">
                             <span class="icon is-small has-text-grey">
-                                <fa icon="trash-alt"></fa>
+                                <fa icon="trash-alt"/>
                             </span>
                         </button>
                     </popover>
@@ -44,12 +44,10 @@
             </div>
             <div v-html="highlightTaggedUsers"
                 class="comment-body"
-                v-if="!isEditing && !isNew">
-            </div>
+                v-if="!isEditing && !isNew"/>
             <div v-else>
                 <inputor v-on="$listeners"
-                    :comment="comment">
-                </inputor>
+                    :comment="comment"/>
                 <div class="has-margin-top-medium">
                     <button type="button" class="button is-small is-outlined has-margin-right-small"
                         @click="isNew ? $emit('cancel-add') : cancelAdd()">

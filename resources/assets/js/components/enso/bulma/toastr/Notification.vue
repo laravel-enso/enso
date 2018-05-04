@@ -15,12 +15,11 @@
             @mouseleave="stopHover">
             <button class="delete"
                 @click="close()"
-                v-if="closeButton">
-            </button>
+                v-if="closeButton"/>
              <article class="media">
                 <div class="media-left">
                     <span class="icon is-large">
-                        <fa :icon="icons[type]" size="2x"></fa>
+                        <fa :icon="icons[type]" size="2x"/>
                     </span>
                 </div>
                 <div class="media-content">

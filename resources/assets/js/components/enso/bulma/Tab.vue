@@ -6,7 +6,7 @@
         leave-active-class="fadeOut">
         <div class="animated"
             v-if="active">
-            <slot></slot>
+            <slot/>
         </div>
     </transition>
 
@@ -42,11 +42,26 @@ export default {
         },
     },
 
+    watch: {
+        disabled(value) {
+            if (value) {
+                this.$parent.disable(this.index);
+                return;
+            }
+
+            this.$parent.enable(this.index);
+        },
+    },
+
     created() {
         this.$parent.tabs.push(this.id);
 
         if (this.default) {
             this.$parent.setActive(this.index);
+        }
+
+        if (this.disabled) {
+            this.$parent.disable(this.index);
         }
     },
 

@@ -13,7 +13,7 @@
                         <span class="icon is-small"
                             :class="option.class"
                             v-if="icons">
-                            <fa :icon="option.label"></fa>
+                            <fa :icon="option.label"/>
                         </span>
                         <span class="filter-label" v-else
                             :class="option.class">
@@ -26,7 +26,7 @@
                     <a @click="update(null)">
                         <span class="icon is-small"
                             :class="value === null ? 'has-text-danger' : 'has-text-success'">
-                            <fa icon="power-off"></fa>
+                            <fa icon="power-off"/>
                         </span>
                         <span class="filter-label" v-if="!icons && offLabel">{{ offLabel }}</span>
                     </a>

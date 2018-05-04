@@ -11,20 +11,20 @@
                     v-if="log.canBeSeen">
                     <span class="icon is-small has-text-success"
                         @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
-                        <fa icon="eye"></fa>
+                        <fa icon="eye"/>
                     </span>
                 </card-control>
                 <card-control slot="control-2">
                     <a class="icon is-small has-text-info"
                         :href="getDownloadLink(log.name)">
-                        <fa icon="cloud-download-alt"></fa>
+                        <fa icon="cloud-download-alt"/>
                     </a>
                 </card-control>
                 <card-control slot="control-3">
                     <popover placement="bottom"
                         @confirm="empty(log)">
                         <span class="icon is-small has-text-danger">
-                            <fa icon="trash-alt"></fa>
+                            <fa icon="trash-alt"/>
                         </span>
                     </popover>
                 </card-control>

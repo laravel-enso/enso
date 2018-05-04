@@ -4,26 +4,25 @@
         leave-active-class="fadeOut">
         <div :class="['modal animated', { 'is-active': show }]"
             v-if="show">
-            <div class="modal-background"></div>
+            <div class="modal-background"/>
             <div class="modal-card"
                 v-if="card">
                 <header class="modal-card-head">
-                    <slot name="header"></slot>
+                    <slot name="header"/>
                 </header>
                 <section class="modal-card-body">
-                    <slot name="body"></slot>
+                    <slot name="body"/>
                 </section>
                 <footer class="modal-card-foot">
-                    <slot name="footer"></slot>
+                    <slot name="footer"/>
                 </footer>
             </div>
             <div v-else class="modal-content">
-                <slot></slot>
+                <slot/>
             </div>
             <button class="modal-close is-large"
                 aria-label="close"
-                @click="$emit('close')">
-            </button>
+                @click="$emit('close')"/>
         </div>
     </transition>
 

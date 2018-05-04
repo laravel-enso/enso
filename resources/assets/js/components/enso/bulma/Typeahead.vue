@@ -15,12 +15,12 @@
                 @keydown.esc="update('')"
                 @blur="dropdown=false">
             <span class="icon is-small is-left">
-                <fa icon="search"></fa>
+                <fa icon="search"/>
             </span>
             <span class="icon is-small is-right clear-button"
                 v-if="value && !loading"
                 @click="$emit('input', null)">
-                <a class="delete is-small"></a>
+                <a class="delete is-small"/>
             </span>
         </div>
         <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
@@ -35,7 +35,7 @@
                         <slot name="option"
                             :highlight="highlight"
                             :item="item">
-                            <span v-html="highlight(item[label])"></span>
+                            <span v-html="highlight(item[label])"/>
                         </slot>
                     </a>
                     <a href="#" class="dropdown-item"

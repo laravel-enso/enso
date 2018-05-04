@@ -14,14 +14,14 @@
             <a class="navbar-item"
                 @click="$store.commit('layout/navbar/toggle', isTouch)">
                 <span class="icon is-small">
-                    <fa icon="bars"></fa>
+                    <fa icon="bars"/>
                 </span>
             </a>
             <div class="navbar-item"
                 v-if="meta.env === 'local'">
                 <span class="tag is-warning">
                     <span class="icon is-small">
-                        <fa icon="code"></fa>
+                        <fa icon="code"/>
                     </span>
                 </span>
             </div>
@@ -31,24 +31,23 @@
                     @click="$bus.$emit('stop-impersonating')"
                     v-tooltip="__('Impersonating')">
                     <span class="icon is-small">
-                        <fa icon="user"></fa>
+                        <fa icon="user"/>
                     </span>
                     <span class="icon is-small">
-                        <fa icon="times"></fa>
+                        <fa icon="times"/>
                     </span>
                 </button>
             </div>
             <profile-control class="is-aligned-right"
-                v-if="isTouch">
-            </profile-control>
-            <settings-control v-if="isTouch"></settings-control>
+                v-if="isTouch"/>
+            <settings-control v-if="isTouch"/>
         </div>
         <div class="navbar-menu">
             <div class="navbar-end"
                 v-if="!isTouch">
-                <notifications></notifications>
-                <profile-control></profile-control>
-                <settings-control></settings-control>
+                <notifications/>
+                <profile-control/>
+                <settings-control/>
             </div>
         </div>
     </nav>

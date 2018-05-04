@@ -8,15 +8,13 @@
             :comment="comment"
             :index="-1"
             @cancel-add="comment = null"
-            @save-comment="add()">
-        </comment>
+            @save-comment="add()"/>
         <comment v-for="(comment, index) in filteredComments"
             :comment="comment"
             :index="index"
             @save-comment="update(comment)"
             @delete="destroy(index)"
-            :key="index">
-        </comment>
+            :key="index"/>
         <div class="has-text-centered has-margin-top-large">
             <button class="button is-naked has-text-grey"
                 @click="get()">

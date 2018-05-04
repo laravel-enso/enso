@@ -22,8 +22,7 @@
                         </div>
                         <div class="media-content">
                             <div class="content"
-                                v-html="highlight(item.fullName)">
-                            </div>
+                                v-html="highlight(item.fullName)"/>
                         </div>
                     </article>
                 </a>
@@ -35,8 +34,7 @@
                     @keyup.shift.enter="$emit('save-comment')"
                     v-focus
                     v-model="comment.body"
-                    :placeholder="__('Type a new comment')">
-                </textarea>
+                    :placeholder="__('Type a new comment')"/>
             </p>
         </div>
     </div>

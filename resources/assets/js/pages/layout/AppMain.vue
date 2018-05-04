@@ -4,29 +4,25 @@
         leave-active-class="fadeOut">
         <div class="app-main"
             v-show="lightsOn">
-            <nprogress></nprogress>
-            <navbar class="animated slideInDown">
-            </navbar>
+            <nprogress/>
+            <navbar class="animated slideInDown"/>
             <transition enter-active-class="slideInLeft"
                 leave-active-class="slideOutLeft">
                 <sidebar :class="[
                     'animated',
                     navbar.isVisible ? 'slideInLeft' : 'slideOutLeft',
                     { 'is-collapsed' : !navbar.isExpanded }
-                ]" v-if="navbar.isVisible">
-                </sidebar>
+                ]" v-if="navbar.isVisible"/>
             </transition>
             <section :class="['main-content', navbar.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
                 <div class="container is-fluid page-content is-marginless">
-                    <page-header :title="$route.meta.title"></page-header>
-                    <router></router>
+                    <page-header :title="$route.meta.title"/>
+                    <router/>
                 </div>
             </section>
             <settings class="animated"
-                :class="settingsBar.isVisible ? 'slideInRight': 'slideOutRight'">
-            </settings>
-            <app-footer class="animated slideInUp">
-            </app-footer>
+                :class="settingsBar.isVisible ? 'slideInRight': 'slideOutRight'"/>
+            <app-footer class="animated slideInUp"/>
         </div>
     </transition>
 

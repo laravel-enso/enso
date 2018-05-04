@@ -5,10 +5,10 @@
         <div class="dropdown-trigger"
             @click="show=!show">
             <button class="button">
-                <slot name="label"></slot>
+                <slot name="label"/>
                 <span class="icon is-small angle"
                         :aria-hidden="!show">
-                    <fa icon="angle-down"></fa>
+                    <fa icon="angle-down"/>
                 </span>
             </button>
         </div>
@@ -20,7 +20,7 @@
                 :style="widthStyle">
                 <div class="dropdown-content has-text-centered"
                     :style="[widthStyle, heightStyle]">
-                    <slot></slot>
+                    <slot/>
                 </div>
             </div>
         </transition>

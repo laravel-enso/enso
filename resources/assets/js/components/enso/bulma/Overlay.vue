@@ -4,8 +4,7 @@
         :class="{ 'is-opaque': !transparent }">
         <div class="overlay-loader"
             :style="overlayColor"
-            :class="loaderSize">
-        </div>
+            :class="loaderSize"/>
     </div>
 
 </template>

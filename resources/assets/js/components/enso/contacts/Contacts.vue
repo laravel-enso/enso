@@ -18,7 +18,7 @@
         <card-control slot="control-1"
             @click="create()">
             <span class="icon is-small">
-                <fa icon="plus-square"></fa>
+                <fa icon="plus-square"/>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -30,8 +30,7 @@
                     :form="form"
                     @close="form = null"
                     @destroy="get(); form=false"
-                    @submit="get();form=false">
-                </contact-form>
+                    @submit="get();form=false"/>
 
                 <div class="column is-half-widescreen is-one-third-fullhd"
                     v-for="(contact, index) in filteredContacts"
@@ -42,8 +41,7 @@
                         @delete="destroy(contact, index)"
                         :index="index"
                         :type="type"
-                        :id="id">
-                    </contact>
+                        :id="id"/>
                 </div>
             </div>
         </div>

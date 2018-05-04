@@ -7,24 +7,21 @@
         <ul class="menu-list">
             <li class="settings-item"
                 v-if="multipleLanguages">
-                <language-selector @update="setPreferences">
-                </language-selector>
+                <language-selector @update="setPreferences"/>
             </li>
             <li class="settings-item"
                 v-if="multipleThemes">
-                <theme-selector @update="setPreferences">
-                </theme-selector>
+                <theme-selector @update="setPreferences"/>
             </li>
             <li class="settings-item has-margin-bottom-small">
-                <menu-state @update="setPreferences">
-                </menu-state>
+                <menu-state @update="setPreferences"/>
             </li>
             <li class="settings-item"
                 v-if="canAccess('system.tutorials.show')">
-                <tutorial></tutorial>
+                <tutorial/>
             </li>
             <li class="settings-item">
-                <key-collector v-if="meta.env === 'local'"></key-collector>
+                <key-collector v-if="meta.env === 'local'"/>
             </li>
         </ul>
     </vue-aside>

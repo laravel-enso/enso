@@ -6,10 +6,10 @@
         <a class="navbar-link"
             @click="show=!show">
             <span class="icon is-small">
-                <fa icon="bell"></fa>
+                <fa icon="bell"/>
             </span>
             <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
-            <overlay v-if="loading"></overlay>
+            <overlay v-if="loading"/>
         </a>
         <div class="navbar-dropdown is-right"
             v-if="show">
@@ -40,7 +40,7 @@
                             @click="markAllAsRead">
                             <span>{{ __("Mark all read") }}</span>
                             <span class="icon is-small">
-                                <fa icon="check"></fa>
+                                <fa icon="check"/>
                             </span>
                         </a>
                     </div>
@@ -51,7 +51,7 @@
                             @click="clearAll">
                             <span>{{ __("Clear all") }}</span>
                             <span class="icon is-small">
-                                <fa icon="trash-alt"></fa>
+                                <fa icon="trash-alt"/>
                             </span>
                         </a>
                     </div>

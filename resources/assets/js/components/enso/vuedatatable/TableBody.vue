@@ -13,7 +13,7 @@
                     v-if="hiddenCount"
                     @click="toggleExpand(row, index)">
                     <span class="icon is-small">
-                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
+                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"/>
                     </span>
                 </span>
             </div>
@@ -35,19 +35,17 @@
                     v-if="cascadesHiddenControls && idx === 0"
                     @click="toggleExpand(row, index)">
                     <span class="icon is-small">
-                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"></fa>
+                        <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"/>
                     </span>
                 </span>
                 <span slot="custom-render"
                     v-if="column.meta.render"
-                    v-html="customRender(row, column)">
-                </span>
+                    v-html="customRender(row, column)"/>
                 <span :slot="column.name"
                     v-if="column.meta.slot">
                     <slot :name="column.name"
                         :row="row"
-                        :column="column">
-                    </slot>
+                        :column="column"/>
                 </span>
             </table-cell>
         </td>
@@ -62,7 +60,7 @@
                     :href="button.action === 'href' ? getPath(button, row.dtRowId) : null"
                     @click="button.confirmation ? showModal(button, row) : doAction(button, row)">
                     <span class="icon is-small">
-                        <fa :icon="button.icon"></fa>
+                        <fa :icon="button.icon"/>
                     </span>
                 </a>
             </span>
@@ -82,14 +80,12 @@
                         @clicked="clicked(body.data[item.index], item.column)">
                         <span slot="custom-render"
                             v-if="item.column.meta.render"
-                            v-html="customRender(body.data[item.index], item.column)">
-                        </span>
+                            v-html="customRender(body.data[item.index], item.column)"/>
                         <span :slot="item.column.name"
                             v-if="item.column.meta.slot">
                             <slot :name="item.column.name"
                                 :row="row"
-                                :column="item.column">
-                            </slot>
+                                :column="item.column"/>
                         </span>
                     </table-cell>
                 </li>
@@ -101,8 +97,7 @@
         :i18n="i18n"
         :message="button.message"
         @close="closeModal()"
-        @commit="doAction(button, row)">
-    </modal>
+        @commit="doAction(button, row)"/>
 </tbody>
 
 </template>

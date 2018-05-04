@@ -5,8 +5,7 @@
             {{ __("Menu") }}
         </p>
         <div class="menu-wrapper">
-            <menus :menus="menus">
-            </menus>
+            <menus :menus="menus"/>
         </div>
     </vue-aside>
 

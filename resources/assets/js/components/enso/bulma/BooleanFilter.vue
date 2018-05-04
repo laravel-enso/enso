@@ -4,8 +4,7 @@
             :options="options"
             :value="value"
             v-bind="$attrs"
-            v-on="$listeners">
-    </vue-filter>
+            v-on="$listeners"/>
 
 </template>
 

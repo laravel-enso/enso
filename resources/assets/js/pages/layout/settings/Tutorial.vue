@@ -11,7 +11,7 @@
                 <button class="button is-small is-info"
                     @click="get()">
                     <span class="icon is-small">
-                        <fa icon="question"></fa>
+                        <fa icon="question"/>
                     </span>
                 </button>
             </div>
@@ -22,9 +22,10 @@
 
 <script>
 
-import { introJs } from 'intro.js';
 import fontawesome from '@fortawesome/fontawesome';
 import { faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
+
+const introJs = require('intro.js');
 
 fontawesome.library.add(faQuestion);
 

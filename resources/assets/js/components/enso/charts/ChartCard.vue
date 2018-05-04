@@ -10,16 +10,14 @@
         <card-control slot="control-1">
             <span class="icon is-small download"
                 @click="download">
-                <fa icon="download">
-                </fa>
+                <fa icon="download"/>
             </span>
         </card-control>
         <chart :data="config.data"
             class="has-padding-medium"
             :options="config.options"
             :type="config.type"
-            ref="chart">
-        </chart>
+            ref="chart"/>
     </card>
 
 </template>

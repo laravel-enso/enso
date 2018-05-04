@@ -10,7 +10,7 @@
                     :class="{ 'is-active': index === active }"
                     :key="index">
                     <a @click="setActive(index)"
-                        :disabled="tab.disabled">
+                        :disabled="disabled.includes(index)">
                         <slot name="label"
                             :tab="tab">
                             {{ tab }}
@@ -19,7 +19,7 @@
                 </li>
             </ul>
         </div>
-        <slot></slot>
+        <slot/>
     </div>
 </template>
 
@@ -61,12 +61,13 @@ export default {
         return {
             tabs: [],
             active: 0,
+            disabled: [],
         };
     },
 
     methods: {
         setActive(index) {
-            if (this.active === index || this.tabs[index].disabled) {
+            if (this.active === index || this.disabled.includes(index)) {
                 return;
             }
 
@@ -75,6 +76,19 @@ export default {
             setTimeout(() => {
                 this.active = index;
             }, 500);
+        },
+        disable(index) {
+            if (!this.disabled.includes(index)) {
+                this.disabled.push(index);
+            }
+        },
+        enable(index) {
+            const position = this.disabled
+                .findIndex(position => position === index);
+
+            if (position >= 0) {
+                this.disabled.splice(position, 1);
+            }
         },
     },
 };

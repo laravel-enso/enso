@@ -11,7 +11,7 @@
             :open-file-browser="openFileBrowser">
             <a class="icon is-small"
                 @click="openFileBrowser">
-                <fa icon="upload"></fa>
+                <fa icon="upload"/>
             </a>
         </slot>
     </form>

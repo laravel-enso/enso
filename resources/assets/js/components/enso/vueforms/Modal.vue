@@ -8,7 +8,7 @@
             </h5>
             <hr>
             <div class="level">
-                <div class="level-left"></div>
+                <div class="level-left"/>
                 <div class="level-right">
                     <div class="level-item">
                         <button class="button is-success"

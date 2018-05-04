@@ -7,7 +7,7 @@
                 <dropdown class="is-right">
                     <span slot="label">
                         <span class="icon is-small has-margin-right-small">
-                            <fa icon="bars"></fa>
+                            <fa icon="bars"/>
                         </span>
                         {{ pageLength }}
                     </span>
@@ -23,32 +23,31 @@
             </div>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <fa icon="eye"></fa>
+                    <fa icon="eye"/>
                 </span>
                 {{ start }} -> {{ offset }} / {{ records }}
             </a>
             <a class="pagination-previous"
                 @click="previous">
                 <span class="icon is-small">
-                    <fa icon="angle-left"></fa>
+                    <fa icon="angle-left"/>
                 </span>
             </a>
             <a class="pagination-link">
                 <span class="icon is-small has-margin-right-small">
-                    <fa icon="file-alt"></fa>
+                    <fa icon="file-alt"/>
                 </span>
                  {{ current }} / {{ pages }}
             </a>
             <a class="pagination-next"
                 @click="next">
                 <span class="icon is-small">
-                    <fa icon="angle-right"></fa>
+                    <fa icon="angle-right"/>
                 </span>
             </a>
         </div>
-        <div class="is-clearfix has-margin-bottom-medium"></div>
-        <slot :list="computedList">
-        </slot>
+        <div class="is-clearfix has-margin-bottom-medium"/>
+        <slot :list="computedList"/>
     </div>
 
 </template>

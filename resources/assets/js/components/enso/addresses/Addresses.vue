@@ -18,7 +18,7 @@
         <card-control slot="control-1">
             <span class="icon is-small"
                 @click="create()">
-                <fa icon="plus-square"></fa>
+                <fa icon="plus-square"/>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -34,8 +34,7 @@
                         <template slot="address"
                             :address="address">
                             <slot name="address"
-                                :address="address">
-                            </slot>
+                                :address="address"/>
                         </template>
                     </address-card>
                 </div>
@@ -56,8 +55,7 @@
                 v-if="field.meta.custom">
                 <slot :name="field.name"
                     :field="field"
-                    :errors="errors">
-                </slot>
+                    :errors="errors"/>
             </template>
         </address-form>
     </card>

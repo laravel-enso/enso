@@ -6,7 +6,7 @@
             <p class="card-header-title">
                 <span class="icon is-small has-margin-right-small"
                     v-if="icon">
-                    <fa :icon="icon"></fa>
+                    <fa :icon="icon"/>
                 </span>
                 <span class="is-clickable"
                     @click="toggle()"
@@ -23,13 +23,12 @@
                         v-model="query"
                         @input="$emit('query-update', query)">
                     <span class="icon is-small is-left">
-                        <fa icon="search"></fa>
+                        <fa icon="search"/>
                     </span>
                 </p>
             </div>
             <slot v-for="i in controls"
-                :name="'control-' + i">
-            </slot>
+                :name="'control-' + i"/>
             <card-control
                 v-if="badge !== null">
                 <span class="tag is-link">
@@ -40,7 +39,7 @@
                 v-if="refresh"
                 @click="$emit('refresh')">
                 <span class="icon is-small">
-                    <fa icon="sync"></fa>
+                    <fa icon="sync"/>
                 </span>
             </card-control>
             <card-control
@@ -48,24 +47,24 @@
                 @click="toggle()">
                 <span class="icon angle"
                     :aria-hidden="!expanded">
-                    <fa icon="angle-down"></fa>
+                    <fa icon="angle-down"/>
                 </span>
             </card-control>
             <card-control
                 v-if="removable"
                 @click="destroy()">
-                <a class="delete is-small"></a>
+                <a class="delete is-small"/>
             </card-control>
         </header>
 
         <div class="card-content is-paddingless"
             :style="contentStyle">
-            <slot></slot>
+            <slot/>
         </div>
 
-        <slot name="footer"></slot>
+        <slot name="footer"/>
 
-        <overlay size="medium" v-if="overlay"></overlay>
+        <overlay size="medium" v-if="overlay"/>
     </div>
 
 </template>

@@ -5,27 +5,27 @@
                 {{ contact.first_name }} {{ contact.last_name }}
                 <span class="tag is-success is-pulled-right"
                     :class="contact.is_active ? 'is-success' : 'is-danger'">
-                    <fa :icon="contact.is_active ? 'check' : 'times'"></fa>
+                    <fa :icon="contact.is_active ? 'check' : 'times'"/>
                 </span>
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.email">
-                    <fa icon="envelope"></fa>
+                    <fa icon="envelope"/>
                 </span>
                 {{ contact.email }}
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.phone">
-                    <fa icon="phone"></fa>
+                    <fa icon="phone"/>
                 </span>
                 {{ contact.phone }}
             </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.obs">
-                    <fa icon="sticky-note"></fa>
+                    <fa icon="sticky-note"/>
                 </span>
                 {{ contact.obs }}
             </p>

@@ -10,8 +10,7 @@
             <div class="level-item">
                 <vue-switch size="is-medium"
                     v-model="isExpanded"
-                    @input="update">
-                </vue-switch>
+                    @input="update"/>
             </div>
         </div>
     </div>

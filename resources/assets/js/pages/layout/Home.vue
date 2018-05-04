@@ -6,8 +6,7 @@
                 <overlay v-if="loading"
                     :opacity="false"
                     color="#dbdbdb"
-                    size="large">
-                </overlay>
+                    size="large"/>
                 <div v-if="!loading && showQuote">
                     <div class="title is-1 inspiring animated fadeInDown">
                         {{ meta.quote }}

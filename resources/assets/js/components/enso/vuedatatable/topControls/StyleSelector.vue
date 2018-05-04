@@ -3,7 +3,7 @@
     <dropdown class="is-right">
         <span slot="label"
             class="icon is-small">
-            <fa icon="table"></fa>
+            <fa icon="table"/>
         </span>
         <a v-for="(style, key) in template.styles"
             :key="key"

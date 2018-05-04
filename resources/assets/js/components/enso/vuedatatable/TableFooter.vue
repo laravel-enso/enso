@@ -2,7 +2,7 @@
 
     <tfoot>
         <tr>
-            <td v-if="template.crtNo"></td>
+            <td v-if="template.crtNo"/>
             <td class="has-text-centered has-text-weight-bold"
                 v-if="
                     template.columns[0].meta.visible
@@ -33,7 +33,7 @@
                     </span>
                 </span>
             </td>
-            <td v-if="template.actions"></td>
+            <td v-if="template.actions"/>
         </tr>
     </tfoot>
 

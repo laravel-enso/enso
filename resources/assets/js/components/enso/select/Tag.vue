@@ -2,8 +2,7 @@
     <span class="tag is-link">
         {{ label }}
         <a class="delete is-small"
-            @click="$emit('remove')">
-        </a>
+            @click="$emit('remove')"/>
     </span>
 </template>
 

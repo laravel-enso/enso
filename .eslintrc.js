@@ -25,7 +25,6 @@ module.exports = {
     rules: {
         indent: ["error", 4],
         "vue/html-indent": 0,
-        "vue/html-self-closing": 0,
         'vue/attributes-order': 0,
         "no-plusplus": 0,
         "no-debugger": 0,

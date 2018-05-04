@@ -4,14 +4,12 @@
             :path="path"
             @edit-contact="edit"
             ref="contacts"
-            id="contacts">
-        </vue-table>
+            id="contacts"/>
         <contact-form :form="form"
             @close="form=null"
             @destroy="$refs.contacts.getData(); form=null"
             @submit="$refs.contacts.getData();form=null"
-            v-if="form">
-        </contact-form>
+            v-if="form"/>
     </div>
 
 

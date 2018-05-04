@@ -1,5 +1,22 @@
 ## Laravel Enso's Changelog
 
+### 2.6.10
+
+#### Updates
+
+- updates IntroJS use.
+
+#### Fixes
+
+- fixes disabled state for vue-select
+- fixes laravel-enso/enso#92
+- fixes laravel-enso/formbuilder#35
+- hides sections w/o visible fields in formbuilder
+- adds reactive min/max to datepicker
+- improves dataimport for some edge cases
+
+#### Updates composer and npm packages.
+
 ### 2.6.9
 
 Improves the Enum class by adding an optional attributes method that can be used to set the default `$data` array.

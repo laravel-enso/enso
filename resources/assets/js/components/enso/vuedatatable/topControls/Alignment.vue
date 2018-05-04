@@ -3,7 +3,7 @@
     <dropdown>
         <span slot="label"
             class="icon is-small">
-            <fa icon="align-justify"></fa>
+            <fa icon="align-justify"/>
         </span>
         <a v-for="(value, key) in template.aligns"
             :key="key"
@@ -11,7 +11,7 @@
             :class="{ 'is-active': template.align === value }"
             @click="template.align = value">
             <span class="icon is-small">
-                <fa :icon="icons[key]"></fa>
+                <fa :icon="icons[key]"/>
             </span>
         </a>
     </dropdown>

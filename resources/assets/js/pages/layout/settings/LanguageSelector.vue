@@ -10,7 +10,7 @@
                 <dropdown :height="220">
                     <span slot="label"
                         class="icon is-small is-pulled-right">
-                        <i :class="languages[locale]"></i>
+                        <i :class="languages[locale]"/>
                     </span>
                     <a v-for="(flag, lang) in languages"
                         class="dropdown-item"
@@ -18,7 +18,7 @@
                         :class="{ 'is-active': flag === languages[locale] }"
                         @click="update(lang)">
                         <span class="icon is-small">
-                            <i :class="flag"></i>
+                            <i :class="flag"/>
                         </span>
                     </a>
                 </dropdown>

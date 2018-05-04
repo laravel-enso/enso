@@ -10,16 +10,14 @@
                     :value="min"
                     :locale="locale"
                     :placeholder="minLabel"
-                    @input="$emit('update-min', $event || null)">
-                </datepicker>
+                    @input="$emit('update-min', $event || null)"/>
             </div>
             <div class="column">
                 <datepicker :format="format"
                     :value="max"
                     :locale="locale"
                     :placeholder="maxLabel"
-                    @input="$emit('update-max', $event || null)">
-                </datepicker>
+                    @input="$emit('update-max', $event || null)"/>
             </div>
         </div>
     </div>

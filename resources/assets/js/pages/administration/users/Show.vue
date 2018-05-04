@@ -23,7 +23,7 @@
                                     v-if="avatarId"
                                     @click="deleteAvatar">
                                     <span class="icon">
-                                        <fa icon="trash-alt"></fa>
+                                        <fa icon="trash-alt"/>
                                     </span>
                                     <span class="is-hidden-mobile">
                                         {{ __('Avatar') }}
@@ -38,7 +38,7 @@
                                         <button class="button is-small is-info"
                                             @click="openFileBrowser">
                                             <span class="icon">
-                                                <fa icon="upload"></fa>
+                                                <fa icon="upload"/>
                                             </span>
                                             <span class="is-hidden-mobile">
                                                 {{ __('Avatar') }}
@@ -49,7 +49,7 @@
                                 <button class="button is-small is-danger is-pulled-right"
                                     @click="logout()">
                                     <span class="icon">
-                                        <fa icon="sign-out-alt"></fa>
+                                        <fa icon="sign-out-alt"/>
                                     </span>
                                     <span>
                                         {{ __('Log Out') }}
@@ -205,7 +205,7 @@
                                 :key="index">
                                 <div class="timeline-marker is-icon"
                                     :class="getClass(action.route)">
-                                    <fa :icon="getIcon(action.route)" size="xs"></fa>
+                                    <fa :icon="getIcon(action.route)" size="xs"/>
                                 </div>
                                 <div class="timeline-content">
                                     <p class="heading">
@@ -222,7 +222,7 @@
                         <li class="timeline-item"
                             v-else>
                             <div class="timeline-marker is-icon">
-                                <fa icon="ellipsis-h" size="xs"></fa>
+                                <fa icon="ellipsis-h" size="xs"/>
                             </div>
                         </li>
                     </ul>

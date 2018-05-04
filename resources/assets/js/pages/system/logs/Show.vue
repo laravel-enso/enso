@@ -10,8 +10,7 @@
                 {{ __("Current file size is") }} {{ log.size }} {{ __("MB") }}
             </p>
             <button class="delete"
-                @click="$router.push({ name: 'system.logs.index' })">
-            </button>
+                @click="$router.push({ name: 'system.logs.index' })"/>
         </div>
         <div class="message-body"
             v-if="log">

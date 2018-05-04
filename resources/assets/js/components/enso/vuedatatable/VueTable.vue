@@ -14,8 +14,7 @@
             @reset="resetPreferences"
             @request-full-info="forceInfo = true; getData()"
             v-on="$listeners"
-            v-model="search">
-        </top-controls>
+            v-model="search"/>
         <div class="table-responsive"
             v-responsive>
             <table class="table is-fullwidth vue-data-table"
@@ -23,8 +22,7 @@
                 id="id">
                 <table-header :template="template"
                     :i18n="i18n"
-                    @sort-update="getData">
-                </table-header>
+                    @sort-update="getData"/>
                 <table-body :template="template"
                     v-on="$listeners"
                     :body="body"
@@ -48,18 +46,16 @@
                 <table-footer v-if="template.total && hasContent && body.fullRecordInfo"
                     :template="template"
                     :body="body"
-                    :i18n="i18n">
-                </table-footer>
+                    :i18n="i18n"/>
             </table>
-            <overlay v-if="loading"></overlay>
+            <overlay v-if="loading"/>
         </div>
         <div class="columns table-bottom-controls"
             v-if="hasContent">
             <div class="column">
                 <records-info :body="body"
                     :i18n="i18n"
-                    :start="start">
-                </records-info>
+                    :start="start"/>
             </div>
             <div class="column is-narrow has-text-right">
                 <pagination :loading="loading"
@@ -69,8 +65,7 @@
                     :i18n="i18n"
                     :extended="body.fullRecordInfo"
                     @jump-to="start = $event;getData()"
-                    v-if="body.data.length > 0">
-                </pagination>
+                    v-if="body.data.length > 0"/>
             </div>
         </div>
         <div v-if="body && !body.count"

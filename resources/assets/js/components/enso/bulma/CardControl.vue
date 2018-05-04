@@ -2,7 +2,7 @@
 
     <a class="card-header-icon"
         v-on="$listeners">
-        <slot></slot>
+        <slot/>
     </a>
 
 </template>

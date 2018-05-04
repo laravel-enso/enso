@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div>
         <div class="box">
             <div class="columns is-multiline">
                 <div class="column">
@@ -39,7 +39,8 @@
                 </div>
                 <div class="column">
                     <div class="columns is-mobile has-text-centered">
-                        <div class="column is-half">
+                        <div class="column is-half"
+                            v-if="selectedLocale">
                             <button class="button is-success is-fullwidth"
                                 v-if="isNewKey"
                                 @click="addKey()">

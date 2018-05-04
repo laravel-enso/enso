@@ -1,8 +1,7 @@
 <template>
 
     <div :class="['divider', placement]"
-        :data-title="title">
-    </div>
+        :data-title="title"/>
 
 </template>
 

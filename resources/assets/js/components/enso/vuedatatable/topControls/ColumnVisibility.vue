@@ -3,7 +3,7 @@
     <dropdown>
         <span slot="label"
             class="icon is-small">
-            <fa icon="eye"></fa>
+            <fa icon="eye"/>
         </span>
         <a v-for="(column, index) in template.columns"
             :key="index"

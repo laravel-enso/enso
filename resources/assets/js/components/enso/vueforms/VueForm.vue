@@ -5,7 +5,7 @@
             v-if="data.icon || data.title">
             <span class="icon"
                 v-if="data.icon">
-                <fa :icon="data.icon"></fa>
+                <fa :icon="data.icon"/>
             </span>
             <span v-if="data.title">
                 {{ data.title }}
@@ -20,8 +20,7 @@
                 <div class="column is-12"
                     v-if="section.divider">
                     <divider :title="i18n(section.title)"
-                        :placement="data.dividerTitlePlacement">
-                    </divider>
+                        :placement="data.dividerTitlePlacement"/>
                 </div>
                 <div v-for="field in section.fields"
                     :class="[ 'column',
@@ -37,7 +36,7 @@
                             <span class="icon is-small has-text-info"
                                 v-tooltip="i18n(field.meta.tooltip)"
                                 v-if="field.meta.tooltip">
-                                <fa icon="info" size="xs"></fa>
+                                <fa icon="info" size="xs"/>
                             </span>
                             <p class="help is-danger is-pulled-right"
                                 v-if="errors.has(field.name)">
@@ -47,8 +46,7 @@
                         <slot :name="field.name"
                             :field="field"
                             :errors="errors"
-                            v-if="field.meta.custom">
-                        </slot>
+                            v-if="field.meta.custom"/>
                         <vue-switch v-model="field.value"
                             size="is-large"
                             type="is-success"
@@ -58,8 +56,7 @@
                             v-else-if="
                                 field.meta.type === 'input'
                                 && field.meta.content === 'checkbox'
-                            ">
-                        </vue-switch>
+                            "/>
                         <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
                             v-else-if="field.meta.type === 'input'">
                             <money :class="['input', { 'is-danger': errors.has(field.name) }]"
@@ -76,8 +73,7 @@
                                 :zero="field.meta.zero"
                                 @keydown="$emit('update');"
                                 @input="errors.clear(field.name)"
-                                v-if="field.meta.content === 'money'">
-                            </money>
+                                v-if="field.meta.content === 'money'"/>
                             <input :class="['input', { 'is-danger': errors.has(field.name) }]"
                                 v-model="field.value"
                                 :type="field.meta.content"
@@ -92,7 +88,7 @@
                                 v-else-if="field.meta.type === 'input'">
                             <span class="icon is-small is-right has-text-danger"
                                 v-if="errors.has(field.name)">
-                                <fa icon="exclamation-triangle"></fa>
+                                <fa icon="exclamation-triangle"/>
                             </span>
                         </div>
                         <vue-select v-model="field.value"
@@ -106,8 +102,7 @@
                             :multiple="field.meta.multiple"
                             :disabled="field.meta.disabled"
                             :placeholder="i18n(field.meta.placeholder)"
-                            v-else-if="field.meta.type === 'select'">
-                        </vue-select>
+                            v-else-if="field.meta.type === 'select'"/>
                         <datepicker v-model="field.value"
                             :format="field.meta.format"
                             :time="field.meta.time"
@@ -117,16 +112,14 @@
                             :is-danger="errors.has(field.name)"
                             @input="errors.clear(field.name)"
                             @keydown="$emit('update');"
-                            v-else-if="field.meta.type === 'datepicker'">
-                        </datepicker>
+                            v-else-if="field.meta.type === 'datepicker'"/>
                         <datepicker v-model="field.value"
                             :format="field.meta.format"
                             time-only
                             :disabled="field.meta.disabled"
                             :placeholder="i18n(field.meta.placeholder)"
                             @input="errors.clear(field.name)"
-                            v-else-if="field.meta.type === 'timepicker'">
-                        </datepicker>
+                            v-else-if="field.meta.type === 'timepicker'"/>
                         <div class="control has-icons-right"
                             v-else-if="field.meta.type === 'textarea'">
                             <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
@@ -134,11 +127,10 @@
                                 :placeholder="i18n(field.meta.placeholder)"
                                 :rows="field.meta.rows"
                                 :disabled="field.meta.disabled"
-                                @input="errors.clear(field.name)">
-                            </textarea>
+                                @input="errors.clear(field.name)"/>
                             <span class="icon is-small is-right has-text-danger"
                                 v-if="errors.has(field.name)">
-                                <fa icon="exclamation-triangle"></fa>
+                                <fa icon="exclamation-triangle"/>
                             </span>
                         </div>
                     </div>
@@ -153,10 +145,9 @@
                     {{ i18n(data.actions.destroy.button.label) }}
                 </span>
                 <span class="icon">
-                    <fa :icon="data.actions.destroy.button.icon"></fa>
+                    <fa :icon="data.actions.destroy.button.icon"/>
                 </span>
-                <span class="is-hidden-mobile">
-                </span>
+                <span class="is-hidden-mobile"/>
             </a>
             <a class="button"
                 :class="data.actions.show.button.class"
@@ -167,10 +158,9 @@
                     {{ i18n(data.actions.show.button.label) }}
                 </span>
                 <span class="icon">
-                    <fa :icon="data.actions.show.button.icon"></fa>
+                    <fa :icon="data.actions.show.button.icon"/>
                 </span>
-                <span class="is-hidden-mobile">
-                </span>
+                <span class="is-hidden-mobile"/>
             </a>
             <a class="button"
                 :class="data.actions.create.button.class"
@@ -181,10 +171,9 @@
                     {{ i18n(data.actions.create.button.label) }}
                 </span>
                 <span class="icon">
-                    <fa :icon="data.actions.create.button.icon"></fa>
+                    <fa :icon="data.actions.create.button.icon"/>
                 </span>
-                <span class="is-hidden-mobile">
-                </span>
+                <span class="is-hidden-mobile"/>
             </a>
             <button type="submit"
                 v-if="data.actions.store"
@@ -195,10 +184,9 @@
                     {{ i18n(data.actions.store.button.label) }}
                 </span>
                 <span class="icon">
-                    <fa :icon="data.actions.store.button.icon"></fa>
+                    <fa :icon="data.actions.store.button.icon"/>
                 </span>
-                <span class="is-hidden-mobile">
-                </span>
+                <span class="is-hidden-mobile"/>
             </button>
             <button type="submit"
                 v-if="data.actions.update"
@@ -209,20 +197,18 @@
                     {{ i18n(data.actions.update.button.label) }}
                 </span>
                 <span class="icon">
-                    <fa :icon="data.actions.update.button.icon"></fa>
+                    <fa :icon="data.actions.update.button.icon"/>
                 </span>
-                <span class="is-hidden-mobile">
-                </span>
+                <span class="is-hidden-mobile"/>
             </button>
-            <div class="is-clearfix"></div>
+            <div class="is-clearfix"/>
         </form>
         <modal v-if="data.actions.destroy"
             :show="modal"
             :i18n="i18n"
             :message="data.actions.destroy.button.message"
             @close="modal = false"
-            @commit="destroy()">
-        </modal>
+            @commit="destroy()"/>
     </div>
 
 </template>

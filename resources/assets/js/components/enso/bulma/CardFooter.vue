@@ -1,7 +1,7 @@
 <template>
 
     <footer class="card-footer">
-        <slot></slot>
+        <slot/>
     </footer>
 
 </template>

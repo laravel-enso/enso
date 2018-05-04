@@ -13,8 +13,7 @@
                         <tag v-for="(option, index) in selected"
                             :label="option[label]"
                             :key="index"
-                            @remove="remove(option[trackBy])">
-                        </tag>
+                            @remove="remove(option[trackBy])"/>
                     </span>
                     <span v-if="!dropdown && !(multiple && hasSelection)">
                         {{ hasSelection
@@ -34,15 +33,13 @@
                         @keydown.tab="hideDropdown"
                         @keydown.enter.prevent="hit()">
                     <span class="is-loading"
-                        v-if="loading">
-                    </span>
+                        v-if="loading"/>
                     <a class="delete is-small"
                         v-if="!loading && hasSelection && !disabled"
-                        @mousedown.prevent.self="clear">
-                    </a>
+                        @mousedown.prevent.self="clear"/>
                     <span class="icon is-small angle"
                         :aria-hidden="dropdown">
-                        <fa icon="angle-up"></fa>
+                        <fa icon="angle-up"/>
                     </span>
                 </div>
             </div>
@@ -55,7 +52,7 @@
                     :class="{ 'is-active': position === index }"
                     @mousemove="position = index"
                     @click.prevent="hit()">
-                    <span v-html="highlight(option[label])"></span>
+                    <span v-html="highlight(option[label])"/>
                     <span :class="[
                         'label tag', isSelected(option) ? 'is-warning' : 'is-success'
                     ]" v-if="index === position">
@@ -64,7 +61,7 @@
                     </span>
                     <span class="icon is-small selected has-text-success"
                         v-else-if="isSelected(option)">
-                        <fa icon="check"></fa>
+                        <fa icon="check"/>
                     </span>
                 </a>
                 <a class="dropdown-item"

@@ -16,7 +16,7 @@
                     <span class="icon is-small is-right clear-button"
                         v-if="min"
                         @click="$emit('update-min', null)">
-                        <a class="delete is-small"></a>
+                        <a class="delete is-small"/>
                     </span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <span class="icon is-small is-right clear-button"
                         v-if="max"
                         @click="$emit('update-max', null)">
-                        <a class="delete is-small"></a>
+                        <a class="delete is-small"/>
                     </span>
                 </div>
             </div>

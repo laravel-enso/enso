@@ -19,7 +19,7 @@
         <card-control slot="control-1"
             @click="$refs.comments.create(); $refs.card.expand()">
             <span class="icon is-small">
-                <fa icon="plus-square"></fa>
+                <fa icon="plus-square"/>
             </span>
         </card-control>
         <div class="has-padding-medium wrapper">
@@ -29,8 +29,7 @@
                 :paginate="paginate"
                 @update="count = $refs.comments.count;
                     $refs.card.expanded ? $refs.card.resize() : null;"
-                ref="comments">
-            </comments>
+                ref="comments"/>
         </div>
     </card>
 

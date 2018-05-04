@@ -4,8 +4,7 @@
         <vue-form class="box"
             v-on="$listeners"
             :params="params"
-            :data="form">
-        </vue-form>
+            :data="form"/>
     </modal>
 </template>
 

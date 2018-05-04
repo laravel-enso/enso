@@ -4,7 +4,7 @@
         <div class="box has-padding-medium">
             <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
                 <figure class="image is-24x24 logo">
-                    <img src="/images/logo.svg"/>
+                    <img src="/images/logo.svg">
                 </figure>
                 {{ meta.appName }}
             </h3>
@@ -20,15 +20,15 @@
                             @keypress.down="hasErrors=false"
                             v-focus>
                         <span class="icon is-small is-left">
-                            <fa icon="envelope"></fa>
+                            <fa icon="envelope"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="isSuccessful">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         <span class="icon is-small is-right has-text-danger"
                             v-if="hasErrors">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                     </div>
                 </div>
@@ -41,15 +41,15 @@
                             v-model="password"
                             @keypress.down="hasErrors=false">
                         <span class="icon is-small is-left">
-                            <fa icon="lock"></fa>
+                            <fa icon="lock"/>
                         </span>
                         <span class="icon is-small is-right has-text-success"
                             v-if="isSuccessful">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         <span class="icon is-small is-right has-text-danger"
                             v-if="hasErrors">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         type="submit"
                         @click.prevent="submit()">
                         <span class="icon is-small">
-                            <fa icon="user"></fa>
+                            <fa icon="user"/>
                         </span>
                         <span>{{ __('Login') }}</span>
                     </button>
@@ -78,7 +78,7 @@
                 class="is-pulled-right">
                 {{ __('Forgot password') }}
             </router-link>
-            <div class="is-clearfix"></div>
+            <div class="is-clearfix"/>
         </div>
     </div>
 

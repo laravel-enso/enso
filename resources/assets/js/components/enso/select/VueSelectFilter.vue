@@ -6,8 +6,7 @@
         </div>
         <vue-select :value="value"
             v-bind="$attrs"
-            v-on="$listeners">
-        </vue-select>
+            v-on="$listeners"/>
     </div>
 
 </template>

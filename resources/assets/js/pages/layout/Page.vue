@@ -1,8 +1,8 @@
 <template>
 
     <div>
-        <page-header :title="__(title)"></page-header>
-        <router></router>
+        <page-header :title="__(title)"/>
+        <router/>
     </div>
 
 </template>

@@ -5,8 +5,7 @@
             v-for="(doc, index) in filteredDocuments"
             :key="index"
             :doc="doc"
-            @delete="destroy(index)">
-        </document>
+            @delete="destroy(index)"/>
     </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
 
-    <canvas class="chart-js">
-    </canvas>
+    <canvas class="chart-js"/>
 
 </template>
 

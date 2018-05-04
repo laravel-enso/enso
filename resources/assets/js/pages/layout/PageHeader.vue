@@ -22,8 +22,7 @@
                     enter-active-class="fadeInRight"
                     leave-active-class="fadeOutRight">
                     <breadcrumbs class="animated" id="breadcrumbs"
-                         v-if="loaded">
-                    </breadcrumbs>
+                         v-if="loaded"/>
                 </transition>
             </div>
         </div>

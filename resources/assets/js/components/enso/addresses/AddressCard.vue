@@ -6,7 +6,7 @@
                 <span class="icon is-pulled-right has-text-success"
                     v-if="address.is_default"
                     v-tooltip="__('default')">
-                    <fa icon="anchor"></fa>
+                    <fa icon="anchor"/>
                 </span>
                 <slot name="address" :address="address">
                     <span v-if="address.number">
@@ -59,13 +59,13 @@
                     </span>
                     <br>
                     <span class="icon">
-                        <fa icon="globe"></fa>
+                        <fa icon="globe"/>
                     </span>
                     {{ address.country_name }}
                     <br>
                     <span class="icon"
                         v-if="address.obs">
-                        <fa icon="sticky-note"></fa>
+                        <fa icon="sticky-note"/>
                     </span>
                      {{ address.obs }}
                 </slot>
@@ -80,7 +80,7 @@
             <card-footer-item>
                 <a @click="$emit('set-default')">
                     <span class="icon">
-                        <fa icon="anchor"></fa>
+                        <fa icon="anchor"/>
                     </span>
                 </a>
             </card-footer-item>

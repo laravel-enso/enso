@@ -10,8 +10,7 @@
             <div class="level-item">
                 <vue-switch size="is-medium"
                     v-model="collect"
-                    @input="setKeyCollector(collect);">
-                </vue-switch>
+                    @input="setKeyCollector(collect);"/>
             </div>
         </div>
     </div>

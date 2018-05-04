@@ -6,7 +6,7 @@
                 :to="{ name: menu.link }"
                 :class="{ 'is-active': isActive(menu) }">
                 <span class="icon is-small" style="display: inline-block">
-                    <fa :icon="menu.icon"></fa>
+                    <fa :icon="menu.icon"/>
                 </span>
                 <transition enter-active-class="zoomIn"
                     leave-active-class="zoomOut">
@@ -26,7 +26,7 @@
             <a @click="toggle(menu)"
                 v-if="menu.children.length">
                 <span class="icon is-small" style="display: inline-block">
-                    <fa :icon="menu.icon"></fa>
+                    <fa :icon="menu.icon"/>
                 </span>
                 <transition enter-active-class="zoomIn"
                     leave-active-class="zoomOut">
@@ -37,7 +37,7 @@
                 </transition>
                 <span class="icon is-small angle is-pulled-right"
                     :aria-expanded="menu.expanded">
-                    <fa icon="angle-up"></fa>
+                    <fa icon="angle-up"/>
                 </span>
                 <div class="dropdown-content">
                     <div class="dropdown-item"
@@ -52,8 +52,7 @@
                 @extend="extend"
                 :collapsed="!menu.expanded"
                 @select="$emit('select', $event)"
-                v-if="menu.children.length">
-            </menus>
+                v-if="menu.children.length"/>
 
         </li>
     </ul>

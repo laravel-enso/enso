@@ -5,7 +5,7 @@
             <div class="column has-padding-small is-half is-hidden-mobile">
                 <h5 class="title is-5">
                     <span class="icon">
-                        <fa :icon="template.icon"></fa>
+                        <fa :icon="template.icon"/>
                     </span>
                     {{ i18n(template.name) }}
                 </h5>
@@ -21,43 +21,38 @@
                         {{ i18n(button.label) }}
                     </span>
                     <span class="icon is-small">
-                        <fa :icon="button.icon"></fa>
+                        <fa :icon="button.icon"/>
                     </span>
-                    <span class="is-hidden-mobile">
-                    </span>
+                    <span class="is-hidden-mobile"/>
                 </button>
             </div>
             <div class="column has-padding-small is-two-thirds-desktop has-text-centered-mobile">
                 <length-menu :template="template"
                     :length="length"
-                    v-on="$listeners">
-                </length-menu>
+                    v-on="$listeners"/>
                 <column-visibility :template="template"
-                    v-on="$listeners">
-                </column-visibility>
+                    v-on="$listeners"/>
                 <style-selector :template="template"
-                    class="is-hidden-mobile">
-                </style-selector>
+                    class="is-hidden-mobile"/>
                 <alignment :template="template"
-                    class="is-hidden-mobile">
-                </alignment>
+                    class="is-hidden-mobile"/>
                 <button class="button"
                     @click="$emit('reload')">
                     <span class="icon is-small">
-                        <fa icon="sync"></fa>
+                        <fa icon="sync"/>
                     </span>
                 </button>
                 <button class="button"
                     @click="$emit('reset')">
                     <span class="icon is-small">
-                        <fa icon="undo"></fa>
+                        <fa icon="undo"/>
                     </span>
                 </button>
                 <button class="button"
                     @click="$emit('request-full-info')"
                     v-if="info">
                     <span class="icon is-small has-text-info">
-                        <fa icon="info-circle"></fa>
+                        <fa icon="info-circle"/>
                     </span>
                 </button>
             </div>
@@ -69,12 +64,12 @@
                         @input="$emit('input', $event.target.value)"
                         :placeholder="i18n('Search')">
                     <span class="icon is-small is-left">
-                        <fa icon="search"></fa>
+                        <fa icon="search"/>
                     </span>
                     <span class="icon is-small is-right clear-button"
                         v-if="value && !loading"
                         @click="$emit('input', '')">
-                        <a class="delete is-small"></a>
+                        <a class="delete is-small"/>
                     </span>
                 </p>
             </div>
