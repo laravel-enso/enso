@@ -111,6 +111,7 @@ with features like:
 - User, application-wide preferences - every user has the ability to choose his theme (from 10 variants), set the menu style, app language and more
 - Queueable jobs
 - Push notifications - working out of the box (requires [Pusher](https://pusher.com))
+- Beautiful email notifications, that can published and customized to your heart's desire
 - Automatic breadcrumbs generation
 - Application-wide timestamp formatting customization through the configuration file
 - many more helpers and hidden gems
@@ -227,6 +228,14 @@ For languages, flag icons should be imported in:
 If you want to add a new language, there are a few steps involved, so please check out 
 the [relevant section](https://github.com/laravel-enso/Localisation#contributing-a-new-language) of 
 the [localisation](https://github.com/laravel-enso/Localisation) package.
+
+### Customizing the email templates
+By default, Enso comes with a few templates for the email notifications used out of the box.
+If you need to create other templates or change the existing ones, a good starting point is to publish
+the existing templates, using the `php artisan vendor:publish --tag=email-templates` artisan command.
+
+The blade templates will be published in the  `resources/views/vendor/laravel-enso` folder.
+You'll find the template layout and partials in the `core` folder and sub-folders.   
 
 ### Thanks
 
