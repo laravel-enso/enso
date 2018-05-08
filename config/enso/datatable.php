@@ -73,12 +73,14 @@ return [
             'action' => [
                 'icon' => 'check',
                 'class' => null,
-                'routeSuffix' => 'action',
+                'routeSuffix' => 'create',
                 'event' => 'custom-action',
                 'postEvent' => 'custom-action-done',
                 'action' => 'ajax',
                 'method' => 'PATCH',
                 'label' => 'Action',
+                'message' => 'Custom Action. Are you sure?',
+                'confirmation' => true,
             ],
         ],
         'row' => [

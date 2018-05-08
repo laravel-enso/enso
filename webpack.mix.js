@@ -1,6 +1,11 @@
 const { mix } = require('laravel-mix');
 
 mix
+    .options({
+        hmrOptions: {
+            port: '3030',
+        },
+    })
     .copyDirectory('resources/assets/images', 'public/images')
 
     .js('resources/assets/js/tableExample.js', 'public/js')

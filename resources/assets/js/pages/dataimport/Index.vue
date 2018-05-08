@@ -8,7 +8,8 @@
                     <vue-select v-model="importType"
                         :options="importTypes"
                         @input="getTemplate"
-                        ref="importTypeSelect"/>
+                        ref="importTypeSelect">
+                    </vue-select>
                 </div>
             </div>
             <div class="column is-hidden-touch is-6 has-padding-medium has-text-centered"
@@ -26,7 +27,7 @@
                             @click="openFileBrowser">
                             <span>{{ __('Upload Template') }}</span>
                             <span class="icon is-small">
-                                <fa icon="upload"/>
+                                <fa icon="upload"></fa>
                             </span>
                         </a>
                     </file-uploader>
@@ -36,7 +37,7 @@
                         :href="downloadLink">
                         <span>{{ __('Download Template') }}</span>
                         <span class="icon is-small">
-                            <fa icon="download"/>
+                            <fa icon="download"></fa>
                         </span>
                     </a>
                     <a class="button is-danger animated fadeIn"
@@ -45,7 +46,7 @@
                         :disabled="!canAccess('import.deleteTemplate')">
                         <span>{{ __('Delete Template') }}</span>
                         <span class="icon is-small">
-                            <fa icon="trash-alt"/>
+                            <fa icon="trash-alt"></fa>
                         </span>
                     </a>
                 </div>
@@ -64,7 +65,7 @@
                             :class="['button is-success', { 'is-loading': importing }]">
                             <span>{{ __('Import') }}</span>
                             <span class="icon is-small">
-                                <fa icon="upload"/>
+                                <fa icon="upload"></fa>
                             </span>
                         </a>
                     </file-uploader>
@@ -96,7 +97,7 @@
                     </p>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="file-excel"/>
+                            <fa icon="file-excel"></fa>
                         </span>
                         {{ __('File') }}:&emsp;
                         <span class="has-text-info">
@@ -105,7 +106,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="calendar-alt"/>
+                            <fa icon="calendar-alt"></fa>
                         </span>
                         {{ __('Date') }}:&emsp;
                         <span class="has-text-info">
@@ -114,7 +115,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="clock"/>
+                            <fa icon="clock"></fa>
                         </span>
                         {{ __('Time') }}:&emsp;
                         <span class="has-text-info">
@@ -123,7 +124,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-success">
-                            <fa icon="check"/>
+                            <fa icon="check"></fa>
                         </span>
                         {{ __('Imported Entries') }}:&emsp;
                         <span class="has-text-success">
@@ -132,7 +133,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-danger">
-                            <fa icon="times"/>
+                            <fa icon="times"></fa>
                         </span>
                         {{ __('Issues') }}:&emsp;
                         <span class="has-text-danger">
@@ -215,7 +216,8 @@
         <modal :show="modal"
             @close="modal = false"
             :i18n="__"
-            @commit="deleteTemplate(template.id); modal = false"/>
+            @commit="deleteTemplate(template.id); modal = false">
+        </modal>
     </div>
 
 </template>

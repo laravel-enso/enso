@@ -7,8 +7,7 @@
             <chart-card v-for="(element, index) in column"
                 :key="index"
                 :source="element.meta.source"
-                class="has-margin-bottom-small">
-            </chart-card>
+                class="has-margin-bottom-small"/>
         </div>
     </div>
 

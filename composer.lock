@@ -1422,16 +1422,16 @@
         },
         {
             "name": "laravel-enso/commentsmanager",
-            "version": "2.2.4",
+            "version": "2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/CommentsManager.git",
-                "reference": "35cae0714c9562734921d27c3391b4488de2bb5c"
+                "reference": "0272d5c0afbd4f9e0103f83902314d46aaad40ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/35cae0714c9562734921d27c3391b4488de2bb5c",
-                "reference": "35cae0714c9562734921d27c3391b4488de2bb5c",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/0272d5c0afbd4f9e0103f83902314d46aaad40ba",
+                "reference": "0272d5c0afbd4f9e0103f83902314d46aaad40ba",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1481,7 @@
                 "commentsmanager",
                 "laravel-enso"
             ],
-            "time": "2018-04-23T15:32:58+00:00"
+            "time": "2018-05-08T08:32:50+00:00"
         },
         {
             "name": "laravel-enso/contacts",
@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.5.16",
+            "version": "2.5.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "fdecc0d92f392643ea75a7804260df54fe9879eb"
+                "reference": "1089947c8f79f9bc0398753986133e2d34795d6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/fdecc0d92f392643ea75a7804260df54fe9879eb",
-                "reference": "fdecc0d92f392643ea75a7804260df54fe9879eb",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/1089947c8f79f9bc0398753986133e2d34795d6f",
+                "reference": "1089947c8f79f9bc0398753986133e2d34795d6f",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-05-04T07:21:51+00:00"
+            "time": "2018-05-08T08:22:19+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2770,16 +2770,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.1.8",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "bf7d157a998e3f7d7d0d2cf2b4bd5aab70762ac9"
+                "reference": "fe2e0262048fc48f4cd11b2854f574b15b446881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/bf7d157a998e3f7d7d0d2cf2b4bd5aab70762ac9",
-                "reference": "bf7d157a998e3f7d7d0d2cf2b4bd5aab70762ac9",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/fe2e0262048fc48f4cd11b2854f574b15b446881",
+                "reference": "fe2e0262048fc48f4cd11b2854f574b15b446881",
                 "shasum": ""
             },
             "require": {
@@ -2823,7 +2823,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-04-23T15:55:13+00:00"
+            "time": "2018-05-08T10:37:56+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3097,16 +3097,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.44",
+            "version": "1.0.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "168dbe519737221dc87d17385cde33073881fd02"
+                "reference": "a99f94e63b512d75f851b181afcdf0ee9ebef7e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/168dbe519737221dc87d17385cde33073881fd02",
-                "reference": "168dbe519737221dc87d17385cde33073881fd02",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a99f94e63b512d75f851b181afcdf0ee9ebef7e6",
+                "reference": "a99f94e63b512d75f851b181afcdf0ee9ebef7e6",
                 "shasum": ""
             },
             "require": {
@@ -3177,7 +3177,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-04-06T09:58:14+00:00"
+            "time": "2018-05-07T08:44:23+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5637,16 +5637,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "1bac8c362b12f522fdd1f1fa3556284c91affa38"
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/1bac8c362b12f522fdd1f1fa3556284c91affa38",
-                "reference": "1bac8c362b12f522fdd1f1fa3556284c91affa38",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/99e29d3596b16dabe4982548527d5ddf90232e99",
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99",
                 "shasum": ""
             },
             "require": {
@@ -5655,7 +5655,8 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7|~6.1"
+                "phpdocumentor/phpdocumentor": "^2.9",
+                "phpunit/phpunit": "~5.7.10|~6.5"
             },
             "type": "library",
             "extra": {
@@ -5684,8 +5685,8 @@
                     "homepage": "http://davedevelopment.co.uk"
                 }
             ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-            "homepage": "http://github.com/mockery/mockery",
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
             "keywords": [
                 "BDD",
                 "TDD",
@@ -5698,7 +5699,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-10-06T16:20:43+00:00"
+            "time": "2018-05-08T08:54:48+00:00"
         },
         {
             "name": "myclabs/deep-copy",

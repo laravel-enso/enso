@@ -16,7 +16,7 @@
                     :class="button.class"
                     :key="button.label"
                     :href="button.action === 'href' ? button.path : null"
-                    @click="doAction(button)">
+                    @click="button.confirmation ? showModal(button) : doAction(button)">
                     <span class="is-hidden-mobile">
                         {{ i18n(button.label) }}
                     </span>
@@ -74,6 +74,12 @@
                 </p>
             </div>
         </div>
+        <modal v-if="modal"
+            :show="modal"
+            :i18n="i18n"
+            :message="button.message"
+            @close="closeModal()"
+            @commit="doAction(button)"/>
     </div>
 
 </template>
@@ -86,6 +92,7 @@ import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import Alignment from './topControls/Alignment.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
+import Modal from './Modal.vue';
 
 fontawesome.library.add(faSync, faUndo, faSearch, faInfoCircle);
 
@@ -93,7 +100,7 @@ export default {
     name: 'TopControls',
 
     components: {
-        LengthMenu, ColumnVisibility, Alignment, StyleSelector,
+        LengthMenu, ColumnVisibility, Alignment, StyleSelector, Modal,
     },
 
     props: {
@@ -127,11 +134,25 @@ export default {
         return {
             lengthMenu: false,
             columnVisibility: false,
+            modal: false,
+            button: null,
         };
     },
 
     methods: {
+        showModal(button) {
+            this.button = button;
+            this.modal = true;
+        },
+        closeModal() {
+            this.modal = false;
+            this.button = null;
+        },
         doAction(button) {
+            if (this.modal) {
+                this.closeModal();
+            }
+
             this.$emit(button.event);
 
             if (button.action === 'export') {

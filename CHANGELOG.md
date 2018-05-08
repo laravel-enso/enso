@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.6.11
+Adds mail templates concept - https://github.com/laravel-enso/Core/issues/56#issuecomment-387168277
+Moves the users / owners migrations from core to enso
+Closes laravel-enso/vuedatatable#59
+
+#### Updates composer and npm packages.
+
 ### 2.6.10
 
 #### Updates

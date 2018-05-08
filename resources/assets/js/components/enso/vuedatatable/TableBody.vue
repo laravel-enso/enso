@@ -197,7 +197,7 @@ export default {
         },
         doAction(button, row) {
             if (this.modal) {
-                this.modal = false;
+                this.closeModal();
             }
 
             if (button.event) {
