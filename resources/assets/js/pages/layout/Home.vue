@@ -62,7 +62,6 @@ export default {
                 return;
             }
 
-            this.loading = false;
             this.$bus.$emit('enter-app');
         },
     },

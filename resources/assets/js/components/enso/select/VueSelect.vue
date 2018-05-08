@@ -54,8 +54,8 @@
                     @click.prevent="hit()">
                     <span v-html="highlight(option[label])"/>
                     <span :class="[
-                        'label tag', isSelected(option) ? 'is-warning' : 'is-success'
-                    ]" v-if="index === position">
+                            'label tag', isSelected(option) ? 'is-warning' : 'is-success'
+                        ]" v-if="index === position">
                         <span v-if="isSelected(option)">{{ i18n(labels.deselect) }}</span>
                         <span v-else>{{ i18n(labels.select) }}</span>
                     </span>
@@ -65,8 +65,13 @@
                     </span>
                 </a>
                 <a class="dropdown-item"
-                    v-if="filteredOptions.length === 0">
+                    v-if="filteredOptions.length === 0"
+                    @click="taggable ? $emit('add-tag', query) : null">
                     {{ i18n(labels.noResults) }}
+                    <span class="label tag is-info"
+                        v-if="taggable">
+                        {{ i18n(labels.addTag) }}
+                    </span>
                 </a>
             </div>
         </div>
@@ -163,6 +168,7 @@ export default {
                 deselect: 'deselect',
                 noOptions: 'No options available',
                 noResults: 'No search results found',
+                addTag: 'Add option',
             }),
         },
         i18n: {

@@ -1,9 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.6.12
+- adds taggable to vue-select - closes laravel-enso/select#14
+- fixes laravel-enso/enso#80
+- fixes laravel-enso/dataimport#59
+- closes laravel-enso/vuedatatable#60
+
 ### 2.6.11
-Adds mail templates concept - https://github.com/laravel-enso/Core/issues/56#issuecomment-387168277
-Moves the users / owners migrations from core to enso
-Closes laravel-enso/vuedatatable#59
+- adds mail templates concept - https://github.com/laravel-enso/Core/issues/56#issuecomment-387168277
+- moves the users / owners migrations from core to enso
+- closes laravel-enso/vuedatatable#59
 
 #### Updates composer and npm packages.
 

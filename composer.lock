@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.5.20",
+            "version": "2.5.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "1089947c8f79f9bc0398753986133e2d34795d6f"
+                "reference": "928bdd0b0019b4d53269c68d96189dd7221176ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/1089947c8f79f9bc0398753986133e2d34795d6f",
-                "reference": "1089947c8f79f9bc0398753986133e2d34795d6f",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/928bdd0b0019b4d53269c68d96189dd7221176ca",
+                "reference": "928bdd0b0019b4d53269c68d96189dd7221176ca",
                 "shasum": ""
             },
             "require": {
@@ -1636,20 +1636,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-05-08T08:22:19+00:00"
+            "time": "2018-05-08T12:24:15+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.2.22",
+            "version": "2.2.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "61b0d9063abc9c7f09139161b630af75db8bd56f"
+                "reference": "e23d0c663e44e8ea6f4d891ff218990c2db760b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/61b0d9063abc9c7f09139161b630af75db8bd56f",
-                "reference": "61b0d9063abc9c7f09139161b630af75db8bd56f",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/e23d0c663e44e8ea6f4d891ff218990c2db760b3",
+                "reference": "e23d0c663e44e8ea6f4d891ff218990c2db760b3",
                 "shasum": ""
             },
             "require": {
@@ -1708,7 +1708,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-04-23T15:38:28+00:00"
+            "time": "2018-05-08T11:19:27+00:00"
         },
         {
             "name": "laravel-enso/documentsmanager",
@@ -2509,16 +2509,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.4.15",
+            "version": "2.4.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "dfc3cfb94b1aba169572f76c7b50c2d9385e0f95"
+                "reference": "c42c8a412479becc91dba76421d10584d3d7003a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/dfc3cfb94b1aba169572f76c7b50c2d9385e0f95",
-                "reference": "dfc3cfb94b1aba169572f76c7b50c2d9385e0f95",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/c42c8a412479becc91dba76421d10584d3d7003a",
+                "reference": "c42c8a412479becc91dba76421d10584d3d7003a",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-04-23T15:50:42+00:00"
+            "time": "2018-05-08T12:15:36+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
