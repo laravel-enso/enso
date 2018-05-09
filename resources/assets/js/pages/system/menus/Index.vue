@@ -2,7 +2,8 @@
 
         <vue-table class="box"
             :path="path"
-            id="menus"/>
+            id="menus">
+        </vue-table>
 
 </template>
 

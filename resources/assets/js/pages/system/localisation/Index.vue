@@ -5,8 +5,7 @@
         id="localisation">
         <i slot="flag"
             slot-scope="{ row, column }"
-            :class="row['flag']">
-        </i>
+            :class="row['flag']"/>
     </vue-table>
 
 </template>

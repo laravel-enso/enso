@@ -9,8 +9,7 @@
                             <vue-select :options="locales"
                                 v-model="selectedLocale"
                                 @input="getLangFile()"
-                                :placeholder="__('Choose language')">
-                            </vue-select>
+                                :placeholder="__('Choose language')"/>
                         </div>
                         <div class="column is-half has-text-right animated fadeIn is-hidden-mobile"
                             v-if="selectedLocale">
@@ -30,7 +29,7 @@
                                         v-model="query"
                                         @keyup.enter="isNewKey ? addKey() : focusIt(null)">
                                     <span class="icon is-small is-left">
-                                        <fa icon="search"></fa>
+                                        <fa icon="search"/>
                                     </span>
                                 </p>
                             </div>
@@ -70,16 +69,15 @@
                             <label class="label">{{ __('Core') }}
                                 <vue-switch class="has-margin-left-medium has-margin-right-medium"
                                     v-model="filterCore"
-                                    size="is-large">
-                                </vue-switch>{{ __('App') }}
+                                    size="is-large"/>
+                                {{ __('App') }}
                             </label>
                         </div>
                         <div class="column">
                             <label class="label">{{ __('Only missing') }}
                                 <vue-switch class="has-margin-left-medium"
                                     v-model="filterMissing"
-                                    size="is-large">
-                                </vue-switch>
+                                    size="is-large"/>
                             </label>
                         </div>
                     </div>
@@ -117,7 +115,7 @@
                                 <a class="button is-outlined is-danger"
                                     @click="removeKey(key)">
                                     <span class="icon is-small">
-                                        <fa icon="trash-alt"></fa>
+                                        <fa icon="trash-alt"/>
                                     </span>
                                 </a>
                             </p>

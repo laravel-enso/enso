@@ -11,8 +11,7 @@
                             readonly
                             :value="field.value">
                         <span class="icon is-small is-right">
-                            <i class="is-icon" :class="field.value">
-                            </i>
+                            <i class="is-icon" :class="field.value"/>
                         </span>
                     </div>
                 </template>

@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.6.13
+- repairs the tests, closes laravel-enso/enso#97
+- splits the factories into dedicated files
+
 ### 2.6.12
 - adds taggable to vue-select - closes laravel-enso/select#14
 - fixes laravel-enso/enso#80

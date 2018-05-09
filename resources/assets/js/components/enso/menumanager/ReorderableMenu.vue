@@ -10,7 +10,8 @@
                 :key="menu.unique_id"
                 v-for="menu in menus">
                     <div>{{ menu.name }}</div>
-                <reorderable-menu :menus="menu.children"/>
+                <reorderable-menu :menus="menu.children">
+                </reorderable-menu>
             </li>
         </transition-group>
     </draggable>

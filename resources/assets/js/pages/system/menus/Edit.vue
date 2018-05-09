@@ -13,7 +13,7 @@
                             type="text">
                         <span class="icon is-small is-right"
                             v-if="errors.has('icon')">
-                            <fa icon="exclamation-triangle"/>
+                            <fa icon="exclamation-triangle"></fa>
                         </span>
                     </div>
                 </template>
