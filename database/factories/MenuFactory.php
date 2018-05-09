@@ -10,6 +10,6 @@ $factory->define(Menu::class, function (Faker $faker) {
         'icon' => $faker->word,
         'link' => null,
         'has_children' => 0,
-        'order' => 999
+        'order' => 999,
     ];
 });
