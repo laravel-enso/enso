@@ -10,11 +10,11 @@
                 leave-active-class="slideOutLeft">
                 <sidebar :class="[
                     'animated',
-                    navbar.isVisible ? 'slideInLeft' : 'slideOutLeft',
-                    { 'is-collapsed' : !navbar.isExpanded }
-                ]" v-if="navbar.isVisible"/>
+                    menu.isVisible ? 'slideInLeft' : 'slideOutLeft',
+                    { 'is-collapsed' : !menu.isExpanded }
+                ]" v-if="menu.isVisible"/>
             </transition>
-            <section :class="['main-content', navbar.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
+            <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
                 <div class="container is-fluid page-content is-marginless">
                     <page-header :title="$route.meta.title"/>
                     <router/>
@@ -48,7 +48,7 @@ export default {
 
     computed: {
         ...mapState(['meta']),
-        ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'navbar', 'settingsBar']),
+        ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'menu', 'settingsBar']),
         lightsOn() {
             return !this.lightsOff;
         },
@@ -58,8 +58,8 @@ export default {
         isTablet: {
             handler() {
                 return this.isTablet
-                    ? this.$store.commit('layout/navbar/hide')
-                    : this.$store.commit('layout/navbar/show');
+                    ? this.hideMenu()
+                    : this.showMenu();
             },
         },
     },
@@ -79,6 +79,7 @@ export default {
 
     methods: {
         ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
+        ...mapMutations('layout/menu', { showMenu: 'show', hideMenu: 'hide' }),
         ...mapActions(['initialise']),
         addTabletBreakpointListener() {
             const { body } = document;

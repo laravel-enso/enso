@@ -16,7 +16,7 @@
                         class="dropdown-item"
                         :key="lang"
                         :class="{ 'is-active': flag === languages[locale] }"
-                        @click="update(lang)">
+                        @click="setLang(lang)">
                         <span class="icon is-small">
                             <i :class="flag"/>
                         </span>
@@ -41,16 +41,12 @@ export default {
     components: { Dropdown },
 
     computed: {
-        ...mapState('locale', ['languages']),
-        ...mapGetters('locale', { locale: 'current' }),
+        ...mapState('localisation', ['languages']),
+        ...mapGetters('preferences', { locale: 'lang' }),
     },
 
     methods: {
-        ...mapActions('locale', ['setLocale']),
-        update(locale) {
-            this.setLocale(locale);
-            this.$emit('update');
-        },
+        ...mapActions('preferences', ['setLang']),
     },
 };
 

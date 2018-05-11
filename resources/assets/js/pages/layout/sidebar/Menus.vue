@@ -11,13 +11,13 @@
                 <transition enter-active-class="zoomIn"
                     leave-active-class="zoomOut">
                     <span class="animated has-margin-left-small menu-hiding-label"
-                        v-if="navbar.isExpanded">
+                        v-if="isExpanded">
                         {{ __(menu.name) }}
                     </span>
                 </transition>
                 <div class="dropdown-content">
                     <div class="dropdown-item"
-                        v-if="!navbar.isExpanded">
+                        v-if="!isExpanded">
                         {{ menu.name }}
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <transition enter-active-class="zoomIn"
                     leave-active-class="zoomOut">
                     <span class="animated has-margin-left-small menu-hiding-label"
-                        v-if="navbar.isExpanded">
+                        v-if="isExpanded">
                         {{ __(menu.name) }}
                     </span>
                 </transition>
@@ -41,7 +41,7 @@
                 </span>
                 <div class="dropdown-content">
                     <div class="dropdown-item"
-                        v-if="!navbar.isExpanded">
+                        v-if="!isExpanded">
                         {{ menu.name }}
                     </div>
                 </div>
@@ -61,7 +61,7 @@
 
 <script>
 
-import { mapMutations, mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import './icons';
 
 export default {
@@ -79,7 +79,7 @@ export default {
     },
 
     computed: {
-        ...mapState('layout', ['navbar']),
+        ...mapState('layout/menu', ['isExpanded']),
     },
 
     watch: {

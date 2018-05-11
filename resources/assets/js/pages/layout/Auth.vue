@@ -39,7 +39,7 @@ export default {
 
     methods: {
         ...mapMutations(['setMeta']),
-        ...mapMutations('locale', ['setI18n']),
+        ...mapMutations('localisation', ['setI18n']),
         ...mapMutations(['setUser']),
     },
 };

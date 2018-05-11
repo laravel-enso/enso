@@ -7,12 +7,12 @@
                     <img src="/images/logo.svg">
                 </figure>
                 <h4 class="title is-4 has-margin-left-small"
-                    v-if="navbar.isExpanded">
+                    v-if="menu.isExpanded">
                     {{ meta.appName }}
                 </h4>
             </a>
             <a class="navbar-item"
-                @click="$store.commit('layout/navbar/toggle', isTouch)">
+                @click="toggleMenu(isTouch)">
                 <span class="icon is-small">
                     <fa icon="bars"/>
                 </span>
@@ -26,7 +26,7 @@
                 </span>
             </div>
             <div class="navbar-item"
-                v-if="$store.state.impersonating">
+                v-if="impersonating">
                 <button class="button is-small is-warning"
                     @click="$bus.$emit('stop-impersonating')"
                     v-tooltip="__('Impersonating')">
@@ -56,7 +56,7 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -75,8 +75,12 @@ export default {
     components: { Notifications, SettingsControl, ProfileControl },
 
     computed: {
-        ...mapState(['meta']),
-        ...mapState('layout', ['isTouch', 'navbar']),
+        ...mapState(['meta', 'impersonating']),
+        ...mapState('layout', ['isTouch', 'menu']),
+    },
+
+    methods: {
+        ...mapMutations('layout/menu', { toggleMenu: 'toggle' }),
     },
 };
 

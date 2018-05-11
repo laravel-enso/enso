@@ -12,13 +12,6 @@ use LaravelEnso\Charts\app\Classes\DoughnutChart;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
-        $preferences = json_encode(request()->user()->preferences->local->dashboard);
-
-        return $preferences;
-    }
-
     public function getLineChartData()
     {
         return (new LineChart())

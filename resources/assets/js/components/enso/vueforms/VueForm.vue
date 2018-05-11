@@ -8,7 +8,7 @@
                 <fa :icon="data.icon"/>
             </span>
             <span v-if="data.title">
-                {{ data.title }}
+                {{ i18n(data.title) }}
             </span>
         </h5>
         <form class="is-marginless"

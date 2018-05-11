@@ -88,6 +88,8 @@ export default {
                     this.$router.push({ name: this.lastRoute.name, params: this.lastRoute.params });
                     this.setLastRoute(null);
                 }
+
+                document.title = this.documentTitle(this.$route.meta.title);
             });
         },
     },

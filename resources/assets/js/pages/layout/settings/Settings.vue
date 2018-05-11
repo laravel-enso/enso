@@ -7,14 +7,14 @@
         <ul class="menu-list">
             <li class="settings-item"
                 v-if="multipleLanguages">
-                <language-selector @update="setPreferences"/>
+                <language-selector/>
             </li>
             <li class="settings-item"
                 v-if="multipleThemes">
-                <theme-selector @update="setPreferences"/>
+                <theme-selector/>
             </li>
             <li class="settings-item has-margin-bottom-small">
-                <menu-state @update="setPreferences"/>
+                <menu-state/>
             </li>
             <li class="settings-item"
                 v-if="canAccess('system.tutorials.show')">
@@ -49,21 +49,12 @@ export default {
         ...mapState(['user']),
         ...mapState(['meta']),
         ...mapState('layout', ['themes']),
-        ...mapState('locale', ['languages']),
+        ...mapState('localisation', ['languages']),
         multipleThemes() {
             return Object.keys(this.themes).length > 1;
         },
         multipleLanguages() {
             return Object.keys(this.languages).length > 1;
-        },
-    },
-
-    methods: {
-        setPreferences() {
-            axios.patch(
-                route('core.preferences.setPreferences'),
-                { global: this.user.preferences.global },
-            ).catch(error => this.handleError(error));
         },
     },
 };

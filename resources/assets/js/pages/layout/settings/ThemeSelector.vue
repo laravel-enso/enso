@@ -17,7 +17,7 @@
                         :key="key"
                         class="dropdown-item"
                         :class="{ 'is-active': key === theme }"
-                        @click="update(key)">
+                        @click="setTheme(key)">
                         {{ key }}
                     </a>
                 </dropdown>
@@ -39,19 +39,11 @@ export default {
 
     computed: {
         ...mapState('layout', ['themes']),
-        ...mapGetters('layout', ['theme']),
+        ...mapGetters('preferences', ['theme']),
     },
 
     methods: {
-        ...mapActions('layout', ['switchTheme']),
-        update(theme) {
-            if (theme === this.theme) {
-                return;
-            }
-
-            this.switchTheme(theme);
-            this.$emit('update');
-        },
+        ...mapActions('preferences', ['setTheme']),
     },
 };
 

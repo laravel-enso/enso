@@ -1,7 +1,7 @@
 <template>
 
     <vue-form :data="data"
-        :locale="$store.state.user.preferences.global.lang"
+        :locale="locale"
         v-if="data"
         ref="form">
         <template v-for="field in customFields"
@@ -34,7 +34,7 @@ export default {
             default() {
                 let locale = 'en';
                 try {
-                    locale = this.$store.state.user.preferences.global.lang;
+                    locale = this.$store.preferences.global.lang;
                 } catch (e) {}
                 return locale;
             },

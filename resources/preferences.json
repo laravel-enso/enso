@@ -6,7 +6,7 @@
         "theme": "clean"
     },
     "local": {
-        "dashboard": {
+        "dashboard.index": {
             "grid": [
                 [{
                     "type": "chart",

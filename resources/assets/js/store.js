@@ -34,13 +34,6 @@ export default new Vuex.Store({
         setUser: (state, user) => { state.user = user; },
         setImpersonating: (state, impersonating) => { state.impersonating = impersonating; },
         setUserAvatar: (state, avatarId) => { state.user.avatarId = avatarId; },
-        setTheme: (state, theme) => { state.user.preferences.global.theme = theme; },
-        setMenuState: (state, menuState) => {
-            state.user.preferences.global.expandedMenu = menuState;
-        },
-        setLocale: (state, selectedLocale) => {
-            state.user.preferences.global.lang = selectedLocale;
-        },
         setMeta: (state, meta) => { state.meta = meta; },
         initialise: (state, value) => { state.isInitialised = value; },
         setShowQuote: (state, value) => { state.showQuote = value; },
@@ -55,22 +48,21 @@ export default new Vuex.Store({
     },
 
     actions: {
-        initialise({ commit, dispatch }) {
+        initialise({ commit }) {
             commit('initialise', false);
 
             axios.get('/api/core').then(({ data }) => {
                 const { state } = data;
                 commit('setUser', state.user);
+                commit('preferences/set', state.preferences);
                 commit('setImpersonating', state.impersonating);
                 commit('menus/set', state.menus);
                 commit('menus/setImplicit', state.implicitMenu);
-                commit('locale/setLanguages', state.languages);
-                commit('locale/setI18n', state.i18n);
-                commit('layout/navbar/update', state.user.preferences.global.expandedMenu);
-                dispatch('locale/setLocale', state.user.preferences.global.lang);
+                commit('localisation/setLanguages', state.languages);
+                commit('localisation/setI18n', state.i18n);
                 commit('layout/setThemes', state.themes);
+                commit('layout/menu/update', state.preferences.global.expandedMenu);
                 commit('setMeta', state.meta);
-                dispatch('layout/setTheme');
                 commit('setCsrfToken', state.meta.csrfToken);
                 commit('setRoutes', state.routes);
                 router.addRoutes([{ path: '/', redirect: { name: state.implicitMenu.link } }]);

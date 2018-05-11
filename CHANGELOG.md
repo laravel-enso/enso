@@ -1,5 +1,23 @@
 ## Laravel Enso's Changelog
 
+### 2.7.0
+We finally decided to start refactoring the store.
+
+#### Breaking Changes:
+- refines user preferences. Now we have the ability to store local prefs using the view's route name. Docs will be updated soon.
+- refactors the store modules
+    - `locale.js` was renamed to `localisation.js` 
+    - `preferences.js` is now responsible for everything related
+    - `navbar.js` was renamed to `menu.js`
+
+#### Upgrade steps:
+- run `php artisan enso:clear-preferences` to truncate the preferences table
+- update composer.json requirement for "laravel-enso/core" : "2.6.*"
+- run composer update
+
+#### Updates composer and npm packages.
+- Bulma 0.7.1 ;)
+
 ### 2.6.13
 - repairs the tests, closes laravel-enso/enso#97
 - splits the factories into dedicated files

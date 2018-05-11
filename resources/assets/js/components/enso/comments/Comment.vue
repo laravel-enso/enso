@@ -54,6 +54,9 @@
                         {{ __('Cancel') }}
                     </button>
                     <button type="button" class="button is-small is-outlined is-success"
+                        v-tooltip.left="{
+                            content: __('You can also save by pressing SHIFT + Enter after typing'),
+                            delay: 800}"
                         @click="isNew ? $emit('save-comment') : update()">
                         <span v-if="isNew">
                             {{ __('Post') }}
@@ -71,6 +74,7 @@
 
 <script>
 
+import { VTooltip } from 'v-tooltip';
 import { mapGetters } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
@@ -84,6 +88,8 @@ export default {
     name: 'Comment',
 
     components: { Inputor, Popover },
+
+    directives: { tooltip: VTooltip },
 
     props: {
         comment: {

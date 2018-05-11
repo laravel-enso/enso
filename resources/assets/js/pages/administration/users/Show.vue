@@ -30,7 +30,7 @@
                                     </span>
                                 </button>
                                 <file-uploader v-if="!avatarId"
-                                    @upload-successful="$store.commit('setUserAvatar', $event.id)"
+                                    @upload-successful="setUserAvatar($event.id)"
                                     :url="uploadAvatarLink"
                                     file-key="avatar">
                                     <template slot="upload-button"
@@ -62,7 +62,7 @@
                                     @click="$bus.$emit('start-impersonating', profile.id)"
                                     v-if="
                                         canAccess('core.impersonate.start')
-                                        && !$store.state.impersonating
+                                        && !impersonating
                                     ">
                                     {{ __('Impersonate') }}
                                 </button>
@@ -235,7 +235,7 @@
 
 <script>
 
-import { mapGetters, mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
@@ -259,8 +259,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters('locale', { locale: 'current' }),
-        ...mapState(['user', 'meta']),
+        ...mapState(['user', 'meta', 'impersonating']),
         uploadAvatarLink() {
             return route('core.avatars.store');
         },
@@ -324,11 +323,11 @@ export default {
     },
 
     methods: {
+        ...mapMutations(['setUserAvatar']),
         deleteAvatar() {
             axios.delete(route('core.avatars.destroy', this.user.avatarId))
-                .then(() => {
-                    this.$store.commit('setUserAvatar', null);
-                }).catch(error => this.handleError(error));
+                .then(() => this.setUserAvatar(null))
+                .catch(error => this.handleError(error));
         },
         logout() {
             axios.post(route('logout')).then(() => {

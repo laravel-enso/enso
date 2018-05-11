@@ -15,22 +15,18 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import PageHeader from '../layout/PageHeader.vue';
 import ChartCard from '../../components/enso/charts/ChartCard.vue';
 
 export default {
     components: { ChartCard, PageHeader },
 
-    data() {
-        return {
-            grid: [],
-        };
-    },
-
-    created() {
-        axios.get(route('dashboard.index')).then((response) => {
-            this.grid = response.data.grid;
-        });
+    computed: {
+        ...mapGetters('preferences', { preferences: 'local' }),
+        grid() {
+            return this.preferences(this.$route.name).grid;
+        },
     },
 };
 

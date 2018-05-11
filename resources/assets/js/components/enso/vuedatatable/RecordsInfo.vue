@@ -52,8 +52,7 @@ export default {
                 : this.i18n('No records were found');
         },
         fromInfo() {
-            return `(${this.i18n('filtered')} ${this.i18n('from')} ${this.body.count} \
-            ${this.i18n('total')} ${this.i18n('records')})`;
+            return `(${this.i18n('filtered from')} ${this.body.count} ${this.i18n('total records')}`;
         },
     },
 };

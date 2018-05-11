@@ -34,11 +34,11 @@ export default {
     },
 
     computed: {
-        ...mapState('locale', ['keyCollector']),
+        ...mapState('localisation', ['keyCollector']),
     },
 
     methods: {
-        ...mapMutations('locale', ['setKeyCollector']),
+        ...mapMutations('localisation', ['setKeyCollector']),
     },
 };
 
