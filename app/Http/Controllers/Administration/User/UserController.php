@@ -29,7 +29,7 @@ class UserController extends Controller
         $this->sendResetLinkEmail($request);
 
         return [
-            'message' => __('The user was created!'),
+            'message' => __('The user was successfully created'),
             'redirect' => 'administration.users.edit',
             'id' => $user->id,
         ];
@@ -55,7 +55,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return ['message' => __(config('enso.labels.savedChanges'))];
+        return ['message' => __('The user was successfully updated')];
     }
 
     public function destroy(User $user)
@@ -65,7 +65,7 @@ class UserController extends Controller
         $user->delete();
 
         return [
-            'message' => __(config('enso.labels.successfulOperation')),
+            'message' => __('The user was successfully deleted'),
             'redirect' => 'administration.users.index',
         ];
     }

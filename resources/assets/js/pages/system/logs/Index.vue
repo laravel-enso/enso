@@ -72,7 +72,7 @@ export default {
 
     created() {
         axios.get(route('system.logs.index')).then(({ data }) => {
-            this.logs = data.logs;
+            this.logs = data;
         }).catch(error => this.handleError(error));
     },
 

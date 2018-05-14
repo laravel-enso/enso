@@ -52,23 +52,22 @@ export default new Vuex.Store({
             commit('initialise', false);
 
             axios.get('/api/core').then(({ data }) => {
-                const { state } = data;
-                commit('setUser', state.user);
-                commit('preferences/set', state.preferences);
-                commit('setImpersonating', state.impersonating);
-                commit('menus/set', state.menus);
-                commit('menus/setImplicit', state.implicitMenu);
-                commit('localisation/setLanguages', state.languages);
-                commit('localisation/setI18n', state.i18n);
-                commit('layout/setThemes', state.themes);
-                commit('layout/menu/update', state.preferences.global.expandedMenu);
-                commit('setMeta', state.meta);
-                commit('setCsrfToken', state.meta.csrfToken);
-                commit('setRoutes', state.routes);
-                router.addRoutes([{ path: '/', redirect: { name: state.implicitMenu.link } }]);
+                commit('setUser', data.user);
+                commit('preferences/set', data.preferences);
+                commit('setImpersonating', data.impersonating);
+                commit('menus/set', data.menus);
+                commit('menus/setImplicit', data.implicitMenu);
+                commit('localisation/setLanguages', data.languages);
+                commit('localisation/setI18n', data.i18n);
+                commit('layout/setThemes', data.themes);
+                commit('layout/menu/update', data.preferences.global.expandedMenu);
+                commit('setMeta', data.meta);
+                commit('setCsrfToken', data.meta.csrfToken);
+                commit('setRoutes', data.routes);
+                router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
 
-                if (state.ravenKey) {
-                    Raven.config(state.meta.ravenKey)
+                if (data.ravenKey) {
+                    Raven.config(data.meta.ravenKey)
                         .addPlugin(RavenVue, Vue)
                         .install();
                 }

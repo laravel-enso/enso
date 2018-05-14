@@ -8,7 +8,7 @@
                         {{ meta.appName }} v{{ meta.version }}
                     </strong>built with
                     <span class="icon has-text-danger has-margin-left-small has-margin-right-small">
-                        <fa icon="heart"></fa>
+                        <fa icon="heart"/>
                     </span>+
                     <a href="https://bulma.io"
                         class="has-margin-left-small has-margin-right-small"
@@ -38,7 +38,7 @@
                 <a href="https://github.com/laravel-enso/enso"
                     target="_blank">
                     <span class="icon">
-                        <fa :icon="['fab', 'github']"></fa>
+                        <fa :icon="['fab', 'github']"/>
                     </span>
                 </a>
             </p>

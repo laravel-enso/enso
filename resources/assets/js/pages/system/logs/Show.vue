@@ -40,7 +40,7 @@ export default {
     created() {
         axios.get(route('system.logs.show', this.$route.params.id))
             .then(({ data }) => {
-                this.log = data.log;
+                this.log = data;
             }).catch(error => this.handleError(error));
     },
 

@@ -226,7 +226,7 @@ export default {
             axios.get(route('system.localisation.editTexts'))
                 .then(({ data }) => {
                     this.loading = false;
-                    this.locales = data.locales;
+                    this.locales = data;
                 }).catch(error => this.handleError(error));
         },
         getLangFile() {

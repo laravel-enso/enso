@@ -15,23 +15,23 @@ Route::namespace('Auth')
 Route::middleware(['auth'])
     ->prefix('dashboard')->as('dashboard.')
     ->group(function () {
-        Route::get('', 'DashboardController@index')
+        Route::get('', 'ChartController@index')
             ->name('index')
             ->middleware('core');
-        Route::get('getLineChartData', 'DashboardController@getLineChartData')
-            ->name('getLineChartData');
-        Route::get('getBarChartData', 'DashboardController@getBarChartData')
-            ->name('getBarChartData');
-        Route::get('getPieChartData', 'DashboardController@getPieChartData')
-            ->name('getPieChartData');
-        Route::get('getDoughnutChartData', 'DashboardController@getDoughnutChartData')
-            ->name('getDoughnutChartData');
-        Route::get('getRadarChartData', 'DashboardController@getRadarChartData')
-            ->name('getRadarChartData');
-        Route::get('getPolarChartData', 'DashboardController@getPolarChartData')
-            ->name('getPolarChartData');
-        Route::get('getBubbleChartData', 'DashboardController@getBubbleChartData')
-            ->name('getBubbleChartData');
+        Route::get('line', 'ChartController@line')
+            ->name('line');
+        Route::get('bar', 'ChartController@bar')
+            ->name('bar');
+        Route::get('pie', 'ChartController@pie')
+            ->name('pie');
+        Route::get('doughnut', 'ChartController@doughnut')
+            ->name('doughnut');
+        Route::get('radar', 'ChartController@radar')
+            ->name('radar');
+        Route::get('polar', 'ChartController@polar')
+            ->name('polar');
+        Route::get('bubble', 'ChartController@bubble')
+            ->name('bubble');
     });
 
 Route::middleware(['auth', 'core'])

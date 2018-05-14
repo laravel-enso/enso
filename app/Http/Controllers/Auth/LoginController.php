@@ -33,7 +33,9 @@ class LoginController extends Controller
         }
 
         if ($user->isDisabled()) {
-            throw new AuthenticationException(__(config('enso.labels.disabledAccount')));
+            throw new AuthenticationException(__(
+                'Your account has been disabled. Please contact the administrator'
+            ));
         }
 
         auth()->login($user, request()->input('remember'));

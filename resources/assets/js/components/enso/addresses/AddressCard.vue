@@ -4,8 +4,8 @@
         <div class="media has-padding-medium">
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success"
-                    v-if="address.is_default"
-                    v-tooltip="__('default')">
+                    v-tooltip="__('default')"
+                    v-if="address.is_default">
                     <fa icon="anchor"/>
                 </span>
                 <slot name="address" :address="address">

@@ -3,7 +3,7 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters">
             <vue-form-ss class="box animated fadeIn"
-                :params="[$route.name, null, false]">
+                :route-params="[$route.name, null, false]">
                 <template slot="icon" slot-scope="{ field, errors }">
                     <div class="control has-icons-right">
                         <input class="input"
@@ -13,7 +13,7 @@
                             type="text">
                         <span class="icon is-small is-right"
                             v-if="errors.has('icon')">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                     </div>
                 </template>

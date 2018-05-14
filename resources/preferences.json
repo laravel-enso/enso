@@ -11,39 +11,39 @@
                 [{
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getPieChartData"
+                        "source": "/api/dashboard/pie"
                     }
                 }, {
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getPolarChartData"
+                        "source": "/api/dashboard/polar"
                     }
                 }],
                 [{
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getBarChartData"
+                        "source": "/api/dashboard/bar"
                     }
                 }, {
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getBubbleChartData"
+                        "source": "/api/dashboard/bubble"
                     }
                 }, {
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getLineChartData"
+                        "source": "/api/dashboard/line"
                     }
                 }],
                 [{
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getRadarChartData"
+                        "source": "/api/dashboard/radar"
                     }
                 }, {
                     "type": "chart",
                     "meta": {
-                        "source": "/api/dashboard/getDoughnutChartData"
+                        "source": "/api/dashboard/doughnut"
                     }
                 }]
             ]

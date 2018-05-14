@@ -179,7 +179,10 @@
                             <li v-for="i in 3"
                                 :key="i">
                                 <a class="pagination-link"
-                                    :class="{ 'is-current': profile.timeline.current_page === profile.timeline.last_page - 3 + i}"
+                                    :class="{
+                                        'is-current': profile.timeline.current_page
+                                            === profile.timeline.last_page - 3 + i
+                                    }"
                                     @click="getPage(profile.timeline.last_page - 3 + i)">
                                     {{ profile.timeline.last_page - 3 + i }}
                                 </a>
@@ -209,7 +212,8 @@
                                 </div>
                                 <div class="timeline-content">
                                     <p class="heading">
-                                        {{ getHRDate(action.created_at) }} {{ getHRTime(action.created_at) }}
+                                        {{ getHRDate(action.created_at) }}
+                                        {{ getHRTime(action.created_at) }}
                                     </p>
                                     <p>{{ action.permission.description }}</p>
                                 </div>

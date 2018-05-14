@@ -1,5 +1,35 @@
 ## Laravel Enso's Changelog
 
+### 2.7.1
+- implements `Responsable` contract in the whole project
+- refactors the BE
+
+Upgrade instructions and detailed changes:
+
+#### Enso
+    - renamed the `DashboardController` to `ChartController` and shortened all the routes / methods names for charts. Copy from a fresh project the 'app\Http\Controllers\ChartController.php' and remove the old `DashboardController.php`
+    - update the `routes/api.php` to reflect the changes. Check `api.php` from a fresh project to see the exact changes.
+    - update requirement in composer.json: "laravel-enso/core": "2.7.*",
+    - update requirement in composer.json: "laravel-enso/charts": "2.3.*",
+
+#### Core
+    - run `php artisan enso:clear-permissions'
+    - publish the new preferences.json from the core package
+    
+#### Charts
+    - Charts implements now the `Responsable` contract. You don't need to call `get()` anymore in your controller
+
+#### Comments
+    - rename `editableTimeLimitInHours` to `editableTimeLimit` in `config/comments.php`
+
+#### Documents
+    - rename `editableTimeLimitInHours` to `editableTimeLimit` in `config/documents.php`
+
+#### Forms
+    - adds `route-params` prop that replaces the functionality of the old `params`
+    - the old `params` prop is now and object and it's passed down to `vue-form`.
+    - update the owner / user views (create / edit) accordingly, and the other files from your project where you are using `vue-form-ss`
+
 ### 2.7.0
 We finally decided to start refactoring the store.
 

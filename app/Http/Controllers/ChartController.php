@@ -10,9 +10,9 @@ use LaravelEnso\Charts\app\Classes\RadarChart;
 use LaravelEnso\Charts\app\Classes\BubbleChart;
 use LaravelEnso\Charts\app\Classes\DoughnutChart;
 
-class DashboardController extends Controller
+class ChartController extends Controller
 {
-    public function getLineChartData()
+    public function line()
     {
         return (new LineChart())
             ->title('Income')
@@ -20,11 +20,10 @@ class DashboardController extends Controller
             ->datasets([
                 'Sales' => [65, 59, 80, 81, 26, 25, 10],
                 'Revenue' => [15, 29, 60, 31, 56, 65, 44],
-            ])->fill()
-            ->get();
+            ])->fill();
     }
 
-    public function getBarChartData()
+    public function bar()
     {
         return (new BarChart())
             ->title('Sales')
@@ -33,28 +32,26 @@ class DashboardController extends Controller
                 'Vanzari' => [1233, 1231, 3123],
                 'Incasari' => [1250, 1730, 5300],
                 'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
-            ])->get();
+            ]);
     }
 
-    public function getPieChartData()
+    public function pie()
     {
         return (new PieChart())
             ->title('Pie Chart')
             ->labels(['Green', 'Red', 'Azzure'])
-            ->datasets([400, 50, 100])
-            ->get();
+            ->datasets([400, 50, 100]);
     }
 
-    public function getDoughnutChartData()
+    public function doughnut()
     {
         return (new DoughnutChart())
             ->title('Doughnut Chart')
             ->labels(['Green', 'Red', 'Azzure'])
-            ->datasets([400, 50, 100])
-            ->get();
+            ->datasets([400, 50, 100]);
     }
 
-    public function getRadarChartData()
+    public function radar()
     {
         return (new RadarChart())
             ->title('Radar Chart')
@@ -62,19 +59,18 @@ class DashboardController extends Controller
             ->datasets([
             '2005' => [65, 59, 90, 81, 56, 55, 40],
             '2006' => [28, 48, 40, 19, 96, 27, 100],
-            ])->get();
+            ]);
     }
 
-    public function getPolarChartData()
+    public function polar()
     {
         return (new PolarChart())
             ->title('Polar Chart')
             ->labels(['Green', 'Red', 'Azzure', 'Portocaliu', 'Bleu'])
-            ->datasets([11, 16, 7, 14, 14])
-            ->get();
+            ->datasets([11, 16, 7, 14, 14]);
     }
 
-    public function getBubbleChartData()
+    public function bubble()
     {
         return (new BubbleChart())
             ->title('Bubble Chart')
@@ -83,6 +79,6 @@ class DashboardController extends Controller
                 0 => [[1010, 59, 4800], [2011, 55, 1800], [1012, 45, 2000], [413, 58, 4400]],
                 1 => [[2010, 48, 1700], [1211, 67, 1200], [2012, 96, 1233], [813, 35, 3000]],
                 2 => [[1510, 44, 2000], [811, 62, 1500], [212, 55, 1299], [1213, 39, 4000]],
-            ])->get();
+            ]);
     }
 }

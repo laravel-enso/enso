@@ -3,21 +3,19 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters">
             <vue-form-ss class="box animated fadeIn"
-                :params="[$route.name, null, false]">
+                :route-params="[$route.name, null, false]">
                 <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :has-error="errors.has(field.name)"
                         @input="pivotParams.owners.id=$event;errors.clear(field.name)"
-                        :source="field.meta.source">
-                    </vue-select>
+                        :source="field.meta.source"/>
                 </template>
                 <template slot="role_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :pivot-params="pivotParams"
                         :has-error="errors.has(field.name)"
                         @input="errors.clear(field.name);"
-                        :source="field.meta.source">
-                    </vue-select>
+                        :source="field.meta.source"/>
                 </template>
             </vue-form-ss>
         </div>

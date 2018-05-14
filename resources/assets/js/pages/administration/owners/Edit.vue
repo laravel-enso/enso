@@ -3,23 +3,18 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters animated fadeIn">
             <vue-form-ss class="box animated fadeIn"
-                :params="[$route.name, $route.params.id, false]"
+                :route-params="[$route.name, $route.params.id, false]"
                 @loaded="initialised = true"
-                ref="form">
-            </vue-form-ss>
+                ref="form"/>
             <div v-if="initialised">
                 <contacts :id="$refs.form.data.params.owner_id"
-                    type="owner">
-                </contacts>
+                    type="owner"/>
                 <comments-card :id="$refs.form.data.params.owner_id"
-                    type="owner">
-                </comments-card>
+                    type="owner"/>
                 <documents-card :id="$refs.form.data.params.owner_id"
-                    type="owner">
-                </documents-card>
+                    type="owner"/>
                 <addresses :id="$refs.form.data.params.owner_id"
-                    type="owner">
-                </addresses>
+                    type="owner"/>
             </div>
         </div>
     </div>

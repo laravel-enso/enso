@@ -22,7 +22,7 @@ class OwnerController extends Controller
         );
 
         return [
-            'message' => __('The entity was created!'),
+            'message' => __('The owner was successfully created'),
             'redirect' => 'administration.owners.edit',
             'id' => $owner->id,
         ];
@@ -40,7 +40,7 @@ class OwnerController extends Controller
             $request->get('roleList')
         );
 
-        return ['message' => __(config('enso.labels.savedChanges'))];
+        return ['message' => __('The owner was successfully updated')];
     }
 
     public function destroy(Owner $owner)
@@ -48,7 +48,7 @@ class OwnerController extends Controller
         $owner->delete();
 
         return [
-            'message' => __(config('enso.labels.successfulOperation')),
+            'message' => __('The owner was successfully deleted'),
             'redirect' => 'administration.owners.index',
         ];
     }

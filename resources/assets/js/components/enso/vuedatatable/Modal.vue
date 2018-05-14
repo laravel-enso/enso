@@ -11,7 +11,7 @@
                 <div class="level-left"/>
                 <div class="level-right">
                     <div class="level-item">
-                        <button class="button is-success"
+                        <button class="button is-outlined"
                             @click="$emit('close')">
                             {{ i18n("Cancel") }}
                         </button>

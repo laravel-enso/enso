@@ -7,49 +7,45 @@
                 <div class="">
                     <vue-select v-model="importType"
                         :options="importTypes"
-                        @input="getTemplate"
-                        ref="importTypeSelect">
-                    </vue-select>
+                        @input="getTemplate"/>
                 </div>
             </div>
             <div class="column is-hidden-touch is-6 has-padding-medium has-text-centered"
                 v-if="importType">
-                <div class="">
-                    <file-uploader class="animated fadeIn"
-                        v-if="!template"
-                        :url="templateLink"
-                        @upload-start="loadingTemplate=true"
-                        @upload-successful="template = $event;loadingTemplate = false"
-                        @upload-error="loadingTemplate=false">
-                        <a slot="upload-button"
-                            class="button is-info"
-                            slot-scope="{ openFileBrowser }"
-                            @click="openFileBrowser">
-                            <span>{{ __('Upload Template') }}</span>
-                            <span class="icon is-small">
-                                <fa icon="upload"></fa>
-                            </span>
-                        </a>
-                    </file-uploader>
-                    <a class="button is-info animated fadeIn has-margin-right-small"
-                        v-if="template"
-                        v-tooltip="template.original_name"
-                        :href="downloadLink">
-                        <span>{{ __('Download Template') }}</span>
+                <file-uploader class="animated fadeIn"
+                    v-if="!template"
+                    :url="templateLink"
+                    @upload-start="loadingTemplate=true"
+                    @upload-successful="template = $event;loadingTemplate = false"
+                    @upload-error="loadingTemplate=false">
+                    <a slot="upload-button"
+                        class="button is-info"
+                        slot-scope="{ openFileBrowser }"
+                        @click="openFileBrowser">
+                        <span>{{ __('Upload Template') }}</span>
                         <span class="icon is-small">
-                            <fa icon="download"></fa>
+                            <fa icon="upload"/>
                         </span>
                     </a>
-                    <a class="button is-danger animated fadeIn"
-                        @click="modal = true"
-                        v-if="template"
-                        :disabled="!canAccess('import.deleteTemplate')">
-                        <span>{{ __('Delete Template') }}</span>
-                        <span class="icon is-small">
-                            <fa icon="trash-alt"></fa>
-                        </span>
-                    </a>
-                </div>
+                </file-uploader>
+                <a class="button is-info animated fadeIn has-margin-right-small"
+                    v-if="template"
+                    v-tooltip="template.original_name"
+                    :href="downloadLink">
+                    <span>{{ __('Download Template') }}</span>
+                    <span class="icon is-small">
+                        <fa icon="download"/>
+                    </span>
+                </a>
+                <a class="button is-danger animated fadeIn"
+                    @click="modal = true"
+                    v-if="template"
+                    :disabled="!canAccess('import.deleteTemplate')">
+                    <span>{{ __('Delete Template') }}</span>
+                    <span class="icon is-small">
+                        <fa icon="trash-alt"/>
+                    </span>
+                </a>
             </div>
             <div class="column has-padding-medium has-text-centered"
                 v-if="importType">
@@ -65,7 +61,7 @@
                             :class="['button is-success', { 'is-loading': importing }]">
                             <span>{{ __('Import') }}</span>
                             <span class="icon is-small">
-                                <fa icon="upload"></fa>
+                                <fa icon="upload"/>
                             </span>
                         </a>
                     </file-uploader>
@@ -97,7 +93,7 @@
                     </p>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="file-excel"></fa>
+                            <fa icon="file-excel"/>
                         </span>
                         {{ __('File') }}:&emsp;
                         <span class="has-text-info">
@@ -106,7 +102,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="calendar-alt"></fa>
+                            <fa icon="calendar-alt"/>
                         </span>
                         {{ __('Date') }}:&emsp;
                         <span class="has-text-info">
@@ -115,7 +111,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-info">
-                            <fa icon="clock"></fa>
+                            <fa icon="clock"/>
                         </span>
                         {{ __('Time') }}:&emsp;
                         <span class="has-text-info">
@@ -124,7 +120,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-success">
-                            <fa icon="check"></fa>
+                            <fa icon="check"/>
                         </span>
                         {{ __('Imported Entries') }}:&emsp;
                         <span class="has-text-success">
@@ -133,7 +129,7 @@
                     </a>
                     <a class="panel-block">
                         <span class="panel-icon has-text-danger">
-                            <fa icon="times"></fa>
+                            <fa icon="times"/>
                         </span>
                         {{ __('Issues') }}:&emsp;
                         <span class="has-text-danger">
@@ -216,8 +212,7 @@
         <modal :show="modal"
             @close="modal = false"
             :i18n="__"
-            @commit="deleteTemplate(template.id); modal = false">
-        </modal>
+            @commit="deleteTemplate(template.id); modal = false"/>
     </div>
 
 </template>
@@ -267,13 +262,16 @@ export default {
 
     computed: {
         templateLink() {
-            return route('import.uploadTemplate', this.importType);
+            return this.importType
+                && route('import.uploadTemplate', this.importType);
         },
         downloadLink() {
-            return route('import.downloadTemplate', this.template.id);
+            return this.template
+                && route('import.downloadTemplate', this.template.id);
         },
         importLink() {
-            return route('import.run', this.importType);
+            return this.importType
+                && route('import.run', this.importType);
         },
         icon() {
             return faBook;

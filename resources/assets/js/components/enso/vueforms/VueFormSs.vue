@@ -2,6 +2,7 @@
 
     <vue-form :data="data"
         :locale="locale"
+        :params="params"
         v-if="data"
         ref="form">
         <template v-for="field in customFields"
@@ -25,9 +26,13 @@ export default {
     components: { VueForm },
 
     props: {
-        params: {
+        routeParams: {
             type: Array,
             required: true,
+        },
+        params: {
+            type: Object,
+            default: null,
         },
         locale: {
             type: String,
@@ -61,7 +66,7 @@ export default {
 
     methods: {
         get() {
-            axios.get(route(...this.params)).then(({ data }) => {
+            axios.get(route(...this.routeParams)).then(({ data }) => {
                 this.data = data.form;
                 this.$emit('loaded');
             }).catch(error => this.handleError(error));
