@@ -237,6 +237,9 @@ the existing templates, using the `php artisan vendor:publish --tag=email-templa
 The blade templates will be published in the  `resources/views/vendor/laravel-enso` folder.
 You'll find the template layout and partials in the `core` folder and sub-folders.   
 
+By default, the Mailtrap [token variable](https://documentation.mailgun.com/en/latest/user_manual.html#tracking-unsubscribes) is used for the unsubscribe link. 
+You may customize the footer partial to use the desired token.  
+
 ### Thanks
 
 Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.6.x, Bulma 0.6.x, Vuejs 2.5.x and:
