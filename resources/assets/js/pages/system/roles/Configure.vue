@@ -13,7 +13,7 @@
                     v-if="data.menus.length">
                 </checkbox-manager>
 
-                <checkbox-manager :title="__('Permisssions')"
+                <checkbox-manager :title="__('Permissions')"
                     :role-permissions="data.rolePermissions"
                     :group-data="data.permissions"
                     v-if="data.menus.length">
