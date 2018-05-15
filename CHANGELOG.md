@@ -13,7 +13,7 @@ Upgrade instructions and detailed changes:
     - update requirement in composer.json: "laravel-enso/charts": "2.3.*",
 
 #### Core
-    - run `php artisan enso:clear-permissions'
+    - run `php artisan enso:clear-preferences'
     - publish the new preferences.json from the core package
     
 #### Charts
