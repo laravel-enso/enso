@@ -13,6 +13,6 @@ class UserSelectController extends Controller
     protected $model = User::class;
 
     protected $queryAttributes = [
-        'first_name', 'last_name', 'email', 'phone'
+        'first_name', 'last_name', 'email', 'phone',
     ];
 }
