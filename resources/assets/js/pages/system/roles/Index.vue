@@ -3,8 +3,7 @@
     <vue-table class="box"
         :path="path"
         id="roles"
-        @configure-role="redirect">
-    </vue-table>
+        @configure-role="redirect"/>
 
 </template>
 

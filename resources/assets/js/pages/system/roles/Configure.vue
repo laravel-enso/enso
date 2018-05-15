@@ -10,20 +10,18 @@
                 <checkbox-manager :title="__('Menus')"
                     :role-permissions="data.roleMenus"
                     :group-data="data.menus"
-                    v-if="data.menus.length">
-                </checkbox-manager>
+                    v-if="data.menus.length"/>
 
-                <checkbox-manager :title="__('Permisssions')"
+                <checkbox-manager :title="__('Permissions')"
                     :role-permissions="data.rolePermissions"
                     :group-data="data.permissions"
-                    v-if="data.menus.length">
-                </checkbox-manager>
+                    v-if="data.menus.length"/>
                 <button class="button is-success has-margin-top-large is-pulled-right"
                     @click="update"
                     :disabled="!canAccess('system.roles.setPermissions')">
                     {{ __("Update") }}
                 </button>
-                <div class="is-clearfix"></div>
+                <div class="is-clearfix"/>
             </div>
             </div>
         </div>

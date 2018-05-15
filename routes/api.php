@@ -15,9 +15,6 @@ Route::namespace('Auth')
 Route::middleware(['auth'])
     ->prefix('dashboard')->as('dashboard.')
     ->group(function () {
-        Route::get('', 'ChartController@index')
-            ->name('index')
-            ->middleware('core');
         Route::get('line', 'ChartController@line')
             ->name('line');
         Route::get('bar', 'ChartController@bar')

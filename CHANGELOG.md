@@ -1,4 +1,10 @@
 ## Laravel Enso's Changelog
+### 2.7.2
+- refines the `Responsable` implementation
+
+Upgrade instructions:
+
+- Copy from a fresh project the 'app\Http\Controllers\ChartController.php'. Copy the `resources/assets/js/pages/dashboard/Index.vue` component as well, if you didn't already for v2.7.1. Sorry about that, but what I did to the poor charts was an abomination and I had to roll it back.
 
 ### 2.7.1
 - implements `Responsable` contract in the whole project
@@ -7,14 +13,14 @@
 Upgrade instructions and detailed changes:
 
 #### Enso
-    - renamed the `DashboardController` to `ChartController` and shortened all the routes / methods names for charts. Copy from a fresh project the 'app\Http\Controllers\ChartController.php' and remove the old `DashboardController.php`
+    - renamed the `DashboardController` to `ChartController` and shortened all the routes / methods names for charts. Copy from a fresh project the 'app\Http\Controllers\ChartController.php' and remove the old `DashboardController.php`. Copy the `resources/assets/js/pages/dashboard/Index/vue` component as well.
     - update the `routes/api.php` to reflect the changes. Check `api.php` from a fresh project to see the exact changes.
     - update requirement in composer.json: "laravel-enso/core": "2.7.*",
     - update requirement in composer.json: "laravel-enso/charts": "2.3.*",
 
 #### Core
-    - run `php artisan enso:clear-permissions'
-    - publish the new preferences.json from the core package
+    - run `php artisan enso:clear-preferences'
+    - publish the new preferences.json from the core package (with --force)
     
 #### Charts
     - Charts implements now the `Responsable` contract. You don't need to call `get()` anymore in your controller

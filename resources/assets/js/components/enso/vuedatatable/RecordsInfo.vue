@@ -52,7 +52,7 @@ export default {
                 : this.i18n('No records were found');
         },
         fromInfo() {
-            return `(${this.i18n('filtered from')} ${this.body.count} ${this.i18n('total records')}`;
+            return `(${this.i18n('filtered from')} ${this.body.count} ${this.i18n('total records')})`;
         },
     },
 };

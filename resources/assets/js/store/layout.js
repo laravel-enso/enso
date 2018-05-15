@@ -3,7 +3,7 @@ import storeImporter from '../modules/importers/storeImporter';
 export const modules = storeImporter(require.context('./layout', false, /.*\.js$/));
 
 export const state = {
-    themes: [],
+    themes: {},
     lightsOff: false,
     isMobile: false,
     isTablet: false,
@@ -37,12 +37,13 @@ export const mutations = {
 };
 
 export const actions = {
-    setTheme({ state, getters }) {
-        document.getElementById('theme').setAttribute('href', state.themes[getters.theme]);
+    setTheme({ state, rootGetters }) {
+        document.getElementById('theme')
+            .setAttribute('href', state.themes[rootGetters['preferences/theme']]);
     },
-    switchTheme({ commit, dispatch, rootGetters }) {
-        commit('setTheme', rootGetters['preferences/theme'], { root: true });
+    switchTheme({ commit, dispatch }) {
         commit('toggleLights');
+        commit('setTheme');
         setTimeout(() => {
             dispatch('setTheme').then(() => {
                 setTimeout(() => {

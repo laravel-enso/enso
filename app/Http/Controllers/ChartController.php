@@ -20,7 +20,8 @@ class ChartController extends Controller
             ->datasets([
                 'Sales' => [65, 59, 80, 81, 26, 25, 10],
                 'Revenue' => [15, 29, 60, 31, 56, 65, 44],
-            ])->fill();
+            ])->fill()
+            ->get();
     }
 
     public function bar()
@@ -32,7 +33,7 @@ class ChartController extends Controller
                 'Vanzari' => [1233, 1231, 3123],
                 'Incasari' => [1250, 1730, 5300],
                 'Profit' => [1250 - 1233, 1730 - 1231, 5300 - 3123],
-            ]);
+            ])->get();
     }
 
     public function pie()
@@ -40,7 +41,8 @@ class ChartController extends Controller
         return (new PieChart())
             ->title('Pie Chart')
             ->labels(['Green', 'Red', 'Azzure'])
-            ->datasets([400, 50, 100]);
+            ->datasets([400, 50, 100])
+            ->get();
     }
 
     public function doughnut()
@@ -48,7 +50,8 @@ class ChartController extends Controller
         return (new DoughnutChart())
             ->title('Doughnut Chart')
             ->labels(['Green', 'Red', 'Azzure'])
-            ->datasets([400, 50, 100]);
+            ->datasets([400, 50, 100])
+            ->get();
     }
 
     public function radar()
@@ -59,7 +62,7 @@ class ChartController extends Controller
             ->datasets([
             '2005' => [65, 59, 90, 81, 56, 55, 40],
             '2006' => [28, 48, 40, 19, 96, 27, 100],
-            ]);
+            ])->get();
     }
 
     public function polar()
@@ -67,7 +70,8 @@ class ChartController extends Controller
         return (new PolarChart())
             ->title('Polar Chart')
             ->labels(['Green', 'Red', 'Azzure', 'Portocaliu', 'Bleu'])
-            ->datasets([11, 16, 7, 14, 14]);
+            ->datasets([11, 16, 7, 14, 14])
+            ->get();
     }
 
     public function bubble()
@@ -79,6 +83,6 @@ class ChartController extends Controller
                 0 => [[1010, 59, 4800], [2011, 55, 1800], [1012, 45, 2000], [413, 58, 4400]],
                 1 => [[2010, 48, 1700], [1211, 67, 1200], [2012, 96, 1233], [813, 35, 3000]],
                 2 => [[1510, 44, 2000], [811, 62, 1500], [212, 55, 1299], [1213, 39, 4000]],
-            ]);
+            ])->get();
     }
 }

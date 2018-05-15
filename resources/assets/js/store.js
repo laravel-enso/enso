@@ -48,7 +48,7 @@ export default new Vuex.Store({
     },
 
     actions: {
-        initialise({ commit }) {
+        initialise({ commit, dispatch }) {
             commit('initialise', false);
 
             axios.get('/api/core').then(({ data }) => {
@@ -64,6 +64,7 @@ export default new Vuex.Store({
                 commit('setMeta', data.meta);
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
+                dispatch('layout/setTheme');
                 router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
 
                 if (data.ravenKey) {

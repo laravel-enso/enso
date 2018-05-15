@@ -38,7 +38,7 @@
                         <span class="icon is-small">
                             <fa icon="user"/>
                         </span>
-                        <span>{{ __('Send a reset passworkd link') }}</span>
+                        <span>{{ __('Send a reset password link') }}</span>
                     </button>
                 </div>
             </form>
