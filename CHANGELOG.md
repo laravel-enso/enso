@@ -1,6 +1,10 @@
 ## Laravel Enso's Changelog
 ### 2.7.2
 - refines the `Responsable` implementation
+- adds `config('enso.config.ownerModel')` option to the config. By default it point to `App\Owner` class
+- updates all the packages to use the new `ownerModel` option in config
+- refactors the structuremanager package
+- fixes a bug in tutorial.vue
 
 Upgrade instructions:
 

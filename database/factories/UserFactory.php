@@ -1,7 +1,6 @@
 <?php
 
 use App\User;
-use App\Owner;
 use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
@@ -12,6 +11,6 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'is_active' => 1,
         'email' => $faker->email,
-        'owner_id' => factory(Owner::class)->create(),
+        'owner_id' => factory(config('enso.config.ownerModel'))->create(),
     ];
 });

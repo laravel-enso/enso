@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.7.3",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "1644c660983b7c3a23431f9d702873c85cfa0ba6"
+                "reference": "8e2f86c3a32be732b8974d69ccc2e3560e6b40f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/1644c660983b7c3a23431f9d702873c85cfa0ba6",
-                "reference": "1644c660983b7c3a23431f9d702873c85cfa0ba6",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/8e2f86c3a32be732b8974d69ccc2e3560e6b40f7",
+                "reference": "8e2f86c3a32be732b8974d69ccc2e3560e6b40f7",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-05-15T14:45:01+00:00"
+            "time": "2018-05-18T11:02:41+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2444,16 +2444,16 @@
         },
         {
             "name": "laravel-enso/rolemanager",
-            "version": "2.2.25",
+            "version": "2.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/RoleManager.git",
-                "reference": "5031a25f5fd7fe93ecc6f3e0c87c278fdd9776eb"
+                "reference": "61fcaff49466e5b64aceee0f77d459e6e3623590"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/5031a25f5fd7fe93ecc6f3e0c87c278fdd9776eb",
-                "reference": "5031a25f5fd7fe93ecc6f3e0c87c278fdd9776eb",
+                "url": "https://api.github.com/repos/laravel-enso/RoleManager/zipball/61fcaff49466e5b64aceee0f77d459e6e3623590",
+                "reference": "61fcaff49466e5b64aceee0f77d459e6e3623590",
                 "shasum": ""
             },
             "require": {
@@ -2505,7 +2505,7 @@
                 "role-manager",
                 "rolemanager"
             ],
-            "time": "2018-05-15T13:20:03+00:00"
+            "time": "2018-05-18T11:05:15+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -2563,16 +2563,16 @@
         },
         {
             "name": "laravel-enso/structuremanager",
-            "version": "2.1.9",
+            "version": "2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/StructureManager.git",
-                "reference": "885c1e337b78aff62e4290357844864be77a9c07"
+                "reference": "922ab8965fd5b730c3edfa470b6c190fd2757e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/885c1e337b78aff62e4290357844864be77a9c07",
-                "reference": "885c1e337b78aff62e4290357844864be77a9c07",
+                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/922ab8965fd5b730c3edfa470b6c190fd2757e17",
+                "reference": "922ab8965fd5b730c3edfa470b6c190fd2757e17",
                 "shasum": ""
             },
             "require": {
@@ -2607,7 +2607,7 @@
                 "laravel-enso",
                 "structuremanager"
             ],
-            "time": "2018-05-14T18:15:41+00:00"
+            "time": "2018-05-18T06:20:33+00:00"
         },
         {
             "name": "laravel-enso/trackwho",
@@ -2659,16 +2659,16 @@
         },
         {
             "name": "laravel-enso/tutorialmanager",
-            "version": "2.1.43",
+            "version": "2.1.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TutorialManager.git",
-                "reference": "017c5f46cba5686f714a4bb1552bec58b119beab"
+                "reference": "11682a914d50c999b4e8f2a26a94f215722963ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/017c5f46cba5686f714a4bb1552bec58b119beab",
-                "reference": "017c5f46cba5686f714a4bb1552bec58b119beab",
+                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/11682a914d50c999b4e8f2a26a94f215722963ad",
+                "reference": "11682a914d50c999b4e8f2a26a94f215722963ad",
                 "shasum": ""
             },
             "require": {
@@ -2717,7 +2717,7 @@
                 "tutorial-manager",
                 "tutorialmanager"
             ],
-            "time": "2018-05-15T14:25:59+00:00"
+            "time": "2018-05-18T06:16:21+00:00"
         },
         {
             "name": "laravel-enso/vuecomponents",
@@ -3034,16 +3034,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "b22fe905fcefdffae76b011e27c7ac09e07e052b"
+                "reference": "e3086ee8cb1f54a39ae8dcb72d1c37d10128997d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/b22fe905fcefdffae76b011e27c7ac09e07e052b",
-                "reference": "b22fe905fcefdffae76b011e27c7ac09e07e052b",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/e3086ee8cb1f54a39ae8dcb72d1c37d10128997d",
+                "reference": "e3086ee8cb1f54a39ae8dcb72d1c37d10128997d",
                 "shasum": ""
             },
             "require": {
@@ -3093,7 +3093,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2018-04-16T12:10:37+00:00"
+            "time": "2018-05-17T13:42:07+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4036,16 +4036,16 @@
         },
         {
             "name": "spatie/laravel-image-optimizer",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-image-optimizer.git",
-                "reference": "6dd6644240db119fe3c60aafd4b0513937b588af"
+                "reference": "f98d1a8e90851ed0384b46f9b692297d47688a0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-image-optimizer/zipball/6dd6644240db119fe3c60aafd4b0513937b588af",
-                "reference": "6dd6644240db119fe3c60aafd4b0513937b588af",
+                "url": "https://api.github.com/repos/spatie/laravel-image-optimizer/zipball/f98d1a8e90851ed0384b46f9b692297d47688a0c",
+                "reference": "f98d1a8e90851ed0384b46f9b692297d47688a0c",
                 "shasum": ""
             },
             "require": {
@@ -4091,7 +4091,7 @@
                 "laravel-image-optimizer",
                 "spatie"
             ],
-            "time": "2018-02-08T13:45:21+00:00"
+            "time": "2018-05-16T14:07:07+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5123,16 +5123,16 @@
         },
         {
             "name": "codedungeon/php-cli-colors",
-            "version": "1.10.3",
+            "version": "1.10.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/php-cli-colors.git",
-                "reference": "1beb5c21b21b2c125aff26a75caf02fcec12571f"
+                "reference": "5649ef76ec0c9ed626e95bf40fdfaf4b8efcf79b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/php-cli-colors/zipball/1beb5c21b21b2c125aff26a75caf02fcec12571f",
-                "reference": "1beb5c21b21b2c125aff26a75caf02fcec12571f",
+                "url": "https://api.github.com/repos/mikeerickson/php-cli-colors/zipball/5649ef76ec0c9ed626e95bf40fdfaf4b8efcf79b",
+                "reference": "5649ef76ec0c9ed626e95bf40fdfaf4b8efcf79b",
                 "shasum": ""
             },
             "require-dev": {
@@ -5163,7 +5163,7 @@
                 "package",
                 "php"
             ],
-            "time": "2017-09-12T17:12:52+00:00"
+            "time": "2018-05-17T01:34:14+00:00"
         },
         {
             "name": "codedungeon/phpunit-result-printer",
