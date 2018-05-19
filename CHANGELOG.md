@@ -1,4 +1,11 @@
 ## Laravel Enso's Changelog
+### 2.7.3
+- the new structuremanager has now validations for all properties.
+- all the tests are updated to use the new `ownerModel` option from the config.
+
+Upgrade instructions:
+- be sure that every `create_structure_migration` in your project that creates a menu has in the menu array the `order` key. You can default it to 999.
+
 ### 2.7.2
 - refines the `Responsable` implementation
 - adds `config('enso.config.ownerModel')` option to the config. By default it point to `App\Owner` class
