@@ -1,4 +1,16 @@
 ## Laravel Enso's Changelog
+
+### 2.7.4
+- adds temporary link generation to Documents. To use this feature do the following steps:
+    - run `php artisan enso:update-documents-permissions`
+    - and after attach the desired roles to the new `core.documents.link` permission
+    - you also have to add to the `documents.php` config file the new `linkExpiration` option
+    - make sure that you have the lastest `app/Http/Kernel.php` file, or add `'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,` to the `protected $routeMiddleware` array
+- fixes localisation in auth views
+- adds `disable-clear` prop to vue-select
+- in structuremanager the created / deletion is wrapped now in transactions; adds generic exception when attribute validation in not passed
+- removes the old and unused `config/enso/labels.php`. Make sure that you seach your whole project for `config('enso.labels` and clean everything up.
+
 ### 2.7.3
 - the new structuremanager has now validations for all properties.
 - all the tests are updated to use the new `ownerModel` option from the config.

@@ -33,14 +33,14 @@ export default {
             this.setMeta(meta);
             this.setI18n(i18n);
             const lang = Object.keys(i18n).shift();
-            this.setUser({ preferences: { global: { lang } } });
+            this.lang(lang);
         }).catch(error => this.handleError(error));
     },
 
     methods: {
         ...mapMutations(['setMeta']),
         ...mapMutations('localisation', ['setI18n']),
-        ...mapMutations(['setUser']),
+        ...mapMutations('preferences', ['lang']),
     },
 };
 

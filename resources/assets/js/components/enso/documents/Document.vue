@@ -16,14 +16,21 @@
                 leave-active-class="animated fadeOut">
                 <div class="level-item has-text-grey">
                     <button class="button is-naked"
-                        v-if="doc.isDownloadable"
+                        v-if="doc.isAccessible"
+                        @click="link">
+                        <span class="icon">
+                            <fa icon="link"/>
+                        </span>
+                    </button>
+                    <button class="button is-naked"
+                        v-if="doc.isAccessible"
                         @click="show">
                         <span class="icon">
                             <fa icon="eye"/>
                         </span>
                     </button>
                     <a class="button is-naked"
-                        v-if="doc.isDownloadable"
+                        v-if="doc.isAccessible"
                         :href="downloadLink">
                         <span class="icon">
                             <fa icon="cloud-download-alt"/>
@@ -79,14 +86,14 @@
 import { VPopover } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
 import {
-    faFile, faEye, faCloudDownloadAlt, faTrashAlt,
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
     faInfoCircle, faUser, faCalendarAlt, faDatabase,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
 fontawesome.library.add([
-    faFile, faEye, faCloudDownloadAlt, faTrashAlt,
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
     faInfoCircle, faUser, faCalendarAlt, faDatabase,
 ]);
 
@@ -112,6 +119,11 @@ export default {
     },
 
     methods: {
+        link() {
+            axios.get(route('core.documents.link', this.doc.id))
+                .then(({ data }) => window.prompt('Copy to clipboard: Ctrl+C / CMD+C then Enter', data.link))
+                .catch(error => this.handleError(error));
+        },
         show() {
             window.open(this.openLink, '_blank').focus();
         },

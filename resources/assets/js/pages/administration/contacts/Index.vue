@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <vue-table class="box"
             :path="path"
@@ -11,7 +12,6 @@
             @submit="$refs.contacts.getData();form=null"
             v-if="form"/>
     </div>
-
 
 </template>
 

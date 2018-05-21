@@ -35,7 +35,7 @@
                     <span class="is-loading"
                         v-if="loading"/>
                     <a class="delete is-small"
-                        v-if="!loading && hasSelection && !disabled"
+                        v-if="!disableClear && !loading && hasSelection && !disabled"
                         @mousedown.prevent.self="clear"/>
                     <span class="icon is-small angle"
                         :aria-hidden="dropdown">
@@ -138,6 +138,10 @@ export default {
             default: false,
         },
         taggable: {
+            type: Boolean,
+            default: false,
+        },
+        disableClear: {
             type: Boolean,
             default: false,
         },

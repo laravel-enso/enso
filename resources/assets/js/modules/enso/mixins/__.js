@@ -4,10 +4,8 @@ import store from '../../../store';
 const __ = store.getters['localisation/__'];
 
 const addMissingKey = (key) => {
-    if (store.state.localisation.keyCollector) {
-        axios.patch('/api/system/localisation/addKey', { langKey: key });
-        store.commit('localisation/addKey', key);
-    }
+    axios.patch('/api/system/localisation/addKey', { langKey: key });
+    store.commit('localisation/addKey', key);
 };
 
 Vue.mixin({
@@ -19,7 +17,8 @@ Vue.mixin({
 
             const translation = __(key);
 
-            if (typeof translation === 'undefined') {
+            if (typeof translation === 'undefined'
+                && store.state.localisation.keyCollector) {
                 addMissingKey(key);
             }
 
