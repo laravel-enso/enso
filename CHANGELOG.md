@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.7.5
+- removes the created_by column in addressesmanager
+- upgrades the share link modal for documents
+- updates all composer / npm  packages
+
+For existing projects first update your `composer.json` to require:`"laravel-enso/addressesmanager": "2.3.*"` and after updating run `php artisan enso:addresses:drop-created-by` to drop the fk/column.
+
 ### 2.7.4
 - adds temporary link generation to Documents. To use this feature do the following steps:
     - run `php artisan enso:update-documents-permissions`

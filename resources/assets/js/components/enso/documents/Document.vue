@@ -76,6 +76,9 @@
                     </v-popover>
                 </div>
             </transition>
+            <modal :show="temporaryLink !== ''"
+                :link="temporaryLink"
+                @close="temporaryLink = ''"/>
         </div>
     </div>
 
@@ -91,6 +94,7 @@ import {
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
+import Modal from './Modal.vue';
 
 fontawesome.library.add([
     faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -100,13 +104,19 @@ fontawesome.library.add([
 export default {
     name: 'Document',
 
-    components: { VPopover, Popover },
+    components: { VPopover, Popover, Modal },
 
     props: {
         doc: {
             type: Object,
             required: true,
         },
+    },
+
+    data() {
+        return {
+            temporaryLink: '',
+        };
     },
 
     computed: {
@@ -121,7 +131,7 @@ export default {
     methods: {
         link() {
             axios.get(route('core.documents.link', this.doc.id))
-                .then(({ data }) => window.prompt('Copy to clipboard: Ctrl+C / CMD+C then Enter', data.link))
+                .then(({ data }) => (this.temporaryLink = data.link))
                 .catch(error => this.handleError(error));
         },
         show() {
