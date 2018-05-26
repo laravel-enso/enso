@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.7.6
+
+- fixes missing login redirect
+- removes the obsolete created_by column in laravel-enso/contacts
+For existing projects first update your `composer.json` to require:`"laravel-enso/contacts": "2.2.*"` and after updating run `php artisan enso:contacts:drop-created-by` to drop the fk/column.
+
 ### 2.7.5
 - removes the created_by column in addressesmanager
 - upgrades the share link modal for documents

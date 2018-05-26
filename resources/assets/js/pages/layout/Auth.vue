@@ -34,6 +34,7 @@ export default {
             this.setI18n(i18n);
             const lang = Object.keys(i18n).shift();
             this.lang(lang);
+            this.$router.push({ name: 'login' });
         }).catch(error => this.handleError(error));
     },
 

@@ -268,7 +268,7 @@ export default {
         },
         clicked(row, column) {
             if (column.meta.clickable) {
-                this.$emit('clicked', column, row);
+                this.$emit('clicked', { column, row });
             }
         },
     },
