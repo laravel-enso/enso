@@ -1,9 +1,30 @@
 ## Laravel Enso's Changelog
 
+### 2.7.7
+- adds the ability to set a local state in the same request that builds Enso's state, by using the new config option `stateBuilder`. To use this feature point `stateBuilder` to a class that implements `LaravelEnso\Core\app\Contracts\StateBuilder` contract, and then make sure that you have the `resources/assets/js/localState.js` plugin, that should look like this:
+    ```
+    export default (context, state) => {
+        // initalise the local state
+    };
+    ```
+    where `state` is the what your local `StateBuilder` is returning.
+- refactors `GuestController` by adding a `GuestState` Response
+- adds the new laravel-enso/versioning package
+- improves compatibility with PostgreSQL by renaming columns that are named with reserved words:
+    - renames the "order" column to "order_index" in "menus" and "tutorials" tables
+    - renames in "permissions" table the "default" column to "is_default"
+
+Upgrade instructions:
+- update `composer.json` to require `"laravel-enso/core": "2.8.*"`
+- run `composer update`
+- run `php artisan enso:db-rename-reserved` to update the database tables (`permissions`, `tutorials`, `menus`).
+- update all your structure migrations (including Dashboard) / db seeders the columns accordingly `["order" => "order_index", "default" => "is_default"]`
+
 ### 2.7.6
 
 - fixes missing login redirect
 - removes the obsolete created_by column in laravel-enso/contacts
+
 For existing projects first update your `composer.json` to require:`"laravel-enso/contacts": "2.2.*"` and after updating run `php artisan enso:contacts:drop-created-by` to drop the fk/column.
 
 ### 2.7.5

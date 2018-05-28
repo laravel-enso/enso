@@ -4,6 +4,7 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import router from './router';
 import storeImporter from './modules/importers/storeImporter';
+import localState from './localState';
 
 Vue.use(Vuex);
 
@@ -64,7 +65,6 @@ export default new Vuex.Store({
                 commit('setMeta', data.meta);
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
-                dispatch('layout/setTheme');
                 router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
 
                 if (data.ravenKey) {
@@ -73,12 +73,22 @@ export default new Vuex.Store({
                         .install();
                 }
 
-                commit('initialise', true);
+                dispatch('layout/setTheme')
+                    .then(() => {
+                        if (data.local) {
+                            dispatch('setLocalState', data.local);
+                        }
+
+                        commit('initialise', true);
+                    });
             }).catch((error) => {
                 if (error.response.status === 401) {
                     commit('auth/logout');
                 }
             });
+        },
+        setLocalState(context, state) {
+            localState(context, state);
         },
     },
 });
