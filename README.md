@@ -114,6 +114,8 @@ with features like:
 - Beautiful email notifications, that can published and customized to your heart's desire
 - Automatic breadcrumbs generation
 - Application-wide timestamp formatting customization through the configuration file
+- Separate front-end state support, so that it's easier to keep your application's logic and data separated from enso's
+- Optimistic concurrency control with versioning, via the [Versioning](https://github.com/laravel-enso/Versioning) package
 - many more helpers and hidden gems
 
 **fully working in less than 5 minutes!**
@@ -239,6 +241,29 @@ You'll find the template layout and partials in the `core` folder and sub-folder
 
 By default, the Mailtrap [token variable](https://documentation.mailgun.com/en/latest/user_manual.html#tracking-unsubscribes) is used for the unsubscribe link. 
 You may customize the footer partial to use the desired token.  
+
+### Separate front-end state support
+When developing an application on top of Enso, it makes sense to keep your app state data separate from the core Enso state. 
+In order to achieve this, you need to customize just 2 files, one for each layer.
+
+#### Back-End
+- you need a `StateBuilder` implementation class, 
+that should be given as a value for the `enso.config.stateBuilder` configuration parameter 
+- by default, the `App\Classes\LocalState` is provided as blank template
+- the additional state data is returned to the front end via the same response (`/core/api`) as the core Enso state data
+
+#### Front-End
+As you may need to initialize or otherwise process the local state data received from the back-end, 
+`resources/assets/js/localState.js` holds the entry point method you can customize and add logic to.
+
+Here you'll have access to the Vuex `context` object and your local `state` data, received from the back-end. 
+
+### Enso Artisan commands
+When updating Enso and introducing possibly breaking changes, we might make available various Artisan commands, 
+meant to make the update easier.
+You can see the list of currently available commands by running `php artisan enso` 
+and remember to always consult the changelog.
+ 
 
 ### Thanks
 
