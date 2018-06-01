@@ -232,7 +232,7 @@ the [localisation](https://github.com/laravel-enso/Localisation) package.
 ### Customizing the email templates
 By default, Enso comes with a few templates for the email notifications used out of the box.
 If you need to create other templates or change the existing ones, a good starting point is to publish
-the existing templates, using the `php artisan vendor:publish --tag=email-templates` artisan command.
+the existing templates, using the `php artisan vendor:publish --tag=enso-mail` artisan command.
 
 The blade templates will be published in the  `resources/views/vendor/laravel-enso` folder.
 You'll find the template layout and partials in the `core` folder and sub-folders.   

@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.7.8
+- improves the mail templates
+- adds to `config/enso/config.php` the following keys that are used for links in all the email notifications:
+    - 'facebook' => ''
+    - 'googleplus' => ''
+    - 'twitter' => ''
+
+To make use of the new templates in an existing project do the following steps:
+    - publish the assets with `php artisan vendor:publish --tag=enso-mail-assets` (with `--force` if needed)
+    - add the keys mentioned above to the `config/enso/config.php` file
+    - update in `config/mail.php` the key `markdown.theme` from `default` to `enso`
+
 ### 2.7.7
 - adds the ability to set a local state in the same request that builds Enso's state, by using the new config option `stateBuilder`. To use this feature point `stateBuilder` to a class that implements `LaravelEnso\Core\app\Contracts\StateBuilder` contract, and then make sure that you have the `resources/assets/js/localState.js` plugin, that should look like this:
     ```

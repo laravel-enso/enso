@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
@@ -113,11 +112,10 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        'theme' => 'enso',
 
         'paths' => [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];

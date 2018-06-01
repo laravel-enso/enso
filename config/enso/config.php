@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'version' => '2.7.7',
+    'version' => '2.7.8',
+    'facebook' => '',
+    'googleplus' => '',
+    'twitter' => 'https://twitter.com',
     'stateBuilder' => 'App\Classes\LocalState',
     'ownerModel' => 'App\Owner',
     'defaultRole' => 'admin',
