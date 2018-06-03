@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.7.9
+- improves `laravel-enso/versioning` - read the updated documentation. It's a breaking change so be sure to update the code accordingly, and then in composer.json also update the require for `"laravel-enso/versioning": "1.1.*"`
+- fixes a bug in auth.vue
+
 ### 2.7.8
 - improves the mail templates
 - adds to `config/enso/config.php` the following keys that are used for links in all the email notifications:

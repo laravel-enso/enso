@@ -76,6 +76,15 @@ export default {
         },
     },
 
+    watch: {
+        params: {
+            handler() {
+                this.get();
+            },
+            deep: true,
+        },
+    },
+
     mounted() {
         this.get();
     },

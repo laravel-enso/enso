@@ -16,7 +16,7 @@
         "laravel-enso/dataimport": "2.2.*",
         "laravel-enso/documentsmanager": "2.2.*",
         "laravel-enso/notifications": "2.1.*",
-        "laravel-enso/versioning": "1.0.*",
+        "laravel-enso/versioning": "1.1.*",
         "laravel/framework": "5.6.*",
         "laravel/horizon": "^1.2",
         "laravel/tinker": "~1.0",
@@ -24,7 +24,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
-        "codedungeon/phpunit-result-printer": "^0.13.0",
+        "codedungeon/phpunit-result-printer": "^0.19.0",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
         "laracasts/generators": "dev-develop",

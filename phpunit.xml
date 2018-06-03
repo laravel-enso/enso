@@ -61,14 +61,17 @@
         <testsuite name="rememberable">
             <directory suffix="Test.php">./vendor/laravel-enso/rememberable/tests/features</directory>
         </testsuite>
+        <testsuite name="rolemanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/rolemanager/tests/features</directory>
+        </testsuite>
         <testsuite name="trackwho">
             <directory suffix="Test.php">./vendor/laravel-enso/trackwho/tests/features</directory>
         </testsuite>
         <testsuite name="tutorialmanager">
             <directory suffix="Test.php">./vendor/laravel-enso/tutorialmanager/tests/features</directory>
         </testsuite>
-        <testsuite name="rolemanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/rolemanager/tests/features</directory>
+        <testsuite name="versioning">
+            <directory suffix="Test.php">./vendor/laravel-enso/versioning/tests/features</directory>
         </testsuite>
     </testsuites>
     <filter>
