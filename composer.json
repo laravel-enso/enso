@@ -15,6 +15,7 @@
         "laravel-enso/core": "2.8.*",
         "laravel-enso/dataimport": "2.2.*",
         "laravel-enso/documentsmanager": "2.2.*",
+        "laravel-enso/howtovideos": "^2.0",
         "laravel-enso/notifications": "2.1.*",
         "laravel-enso/versioning": "1.1.*",
         "laravel/framework": "5.6.*",
@@ -44,7 +45,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LaravelEnso\\HowToVideos\\": "vendor/laravel-enso/howtovideos/src"
         }
     },
     "autoload-dev": {

@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.7.10
+We finally ported the 'How To Videos' menu from to the SPA version of Enso.
+
+To use it in an existing project:
+- run `composer update`
+- run `composer require laravel-enso/howtovideos`
+- run `php artisan vendor:publish --tag=howToVideos-storage`
+- add in your `config/enso/config.php`, to the `paths` array the following entry: `'howToVideos' => 'howToVideos'`
+
 ### 2.7.9
 - improves `laravel-enso/versioning` - read the updated documentation. It's a breaking change so be sure to update the code accordingly, and then in composer.json also update the require for `"laravel-enso/versioning": "1.1.*"`
 - fixes a bug in auth.vue

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '2.7.9',
+    'version' => '2.7.10',
     'facebook' => '',
     'googleplus' => '',
     'twitter' => 'https://twitter.com',
@@ -16,6 +16,7 @@ return [
         'imports' => 'imports',
         'temp' => 'temp',
         'exports' => 'exports',
+        'howToVideos' => 'howToVideos',
     ],
     'ravenKey' => env('RAVEN_DSN', null),
     'cacheLifetime' => env('CACHE_LIFETIME', 60),

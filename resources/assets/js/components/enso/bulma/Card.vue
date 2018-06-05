@@ -245,6 +245,12 @@ export default {
 
 <style scoped>
 
+    .card-header-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .card-content {
         transition: max-height .400s ease;
     }

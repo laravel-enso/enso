@@ -1,6 +1,5 @@
 <template>
-    <card header
-        :title="config.title"
+    <card :title="config.title"
         :icon="icon"
         refresh
         @refresh="get"
