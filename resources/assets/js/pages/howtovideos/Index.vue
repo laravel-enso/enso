@@ -9,8 +9,7 @@
                         v-focus
                         type="text"
                         :placeholder="__('video name')"
-                        v-model="video.name"
-                        ref="nameInput">
+                        v-model="video.name">
                 </div>
                 <div class="control is-expanded">
                     <input class="input"
@@ -18,16 +17,18 @@
                         :placeholder="__('video description')"
                         v-model="video.description">
                 </div>
-                <div class="control animated fadeIn">
+                <div class="control animated fadeIn"
+                    v-if="video.name">
                     <file-uploader :url="uploadLink"
                         :params="video"
-                        @upload-successful="reset(); getVideos()"
+                        :file-size-limit="20000000"
                         file-key="video"
+                        @upload-successful="reset(); getVideos()"
                         v-if="addingVideo">
                         <div slot="upload-button"
-                            slot-scope="{ openFileBrowser }"
-                            @click="openFileBrowser">
-                            <div class="file">
+                            slot-scope="{ openFileBrowser }">
+                            <div class="file"
+                                @click="openFileBrowser">
                                 <label class="file-label">
                                     <span class="file-cta">
                                         <span class="file-icon">
@@ -65,8 +66,8 @@
                     :key="index">
                     <how-to-video :video="vid"
                         :tags="tags"
-                        @start-tagging="video = vid; tagging = true"
-                        @stop-tagging="video = vid; tagging = false; update()"
+                        @start-tagging="video = vid; taggingId = video.id"
+                        @stop-tagging="video = vid; taggingId = null; update()"
                         @delete="videos.splice(index, 1)"
                         @update="video = vid; update()"
                         @edit="video = vid; editingVideo = true;"/>
@@ -79,7 +80,7 @@
                 @click="addingVideo = true"
                 v-if="canAccess('howTo.videos.store')">
                 <span>
-                    {{ __('Add Video') }}
+                    {{ __('Add video') }}
                 </span>
                 <span class="icon is-small">
                     <fa icon="plus"/>
@@ -138,26 +139,24 @@
                 <input class="input"
                     type="text"
                     v-model="query"
+                    @keypress.enter="addTag"
                     v-else>
-                <div class="has-margin-top-medium">
-                    <span :class="[
-                        'tag has-margin-small is-clickable',
-                         { 'is-warning' : tag.selected }
-                    ]"
+                <div class="field is-grouped is-grouped-multiline has-margin-top-medium">
+                    <div class="control"
                         v-for="tag in filteredTags"
-                        @click="
-                            tagging
-                                ? video.tagList.push(tag.id)
-                                : tag.selected = !tag.selected
-                        "
                         :key="tag.id">
-                        <span class="has-margin-right-small">
-                            {{ tag.name }}
-                        </span>
-                        <a class="delete is-small"
-                            @click="deleteTag(tag.id)"
-                            v-if="canAccess('howTo.tags.destroy') && !tagging"/>
-                    </span>
+                        <div class="tags has-addons">
+                            <span :class="['tag is-clickable', { 'is-warning' : tag.selected }]"
+                                @click="taggingId
+                                    ? video.tagList.push(tag.id)
+                                    : tag.selected = !tag.selected">
+                                {{ tag.name }}
+                            </span>
+                            <a class="tag is-delete"
+                                @click="deleteTag(tag.id)"
+                                v-if="canAccess('howTo.tags.destroy') && !taggingId"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,7 +187,7 @@ export default {
             },
             addingVideo: false,
             editingVideo: false,
-            tagging: false,
+            taggingId: null,
             editingTag: false,
         };
     },
@@ -198,7 +197,11 @@ export default {
             return route('howTo.videos.store');
         },
         filteredVideos() {
-            return this.selectedTags.length === 0 || this.tagging
+            if (this.taggingId) {
+                return this.videos.filter(({ id }) => id === this.taggingId);
+            }
+
+            return this.selectedTags.length === 0
                 ? this.videos
                 : this.videos.filter(({ tagList }) =>
                     tagList.filter(tagId =>
@@ -248,7 +251,7 @@ export default {
 
             this.addingVideo = false;
             this.editingVideo = false;
-            this.tagging = false;
+            this.taggingId = null;
             this.editingTag = false;
         },
         tagVideo(tagMode) {
@@ -266,6 +269,10 @@ export default {
             });
         },
         addTag() {
+            if (!this.tagIsNew) {
+                return;
+            }
+
             axios.post(route('howTo.tags.store'), { name: this.query })
                 .then(({ data }) => {
                     this.tags.push(data);

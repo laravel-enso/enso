@@ -45,8 +45,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "LaravelEnso\\HowToVideos\\": "vendor/laravel-enso/howtovideos/src"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

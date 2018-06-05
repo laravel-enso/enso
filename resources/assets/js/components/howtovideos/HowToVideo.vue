@@ -61,20 +61,24 @@
         <div slot="footer"
             class="card-footer">
             <div class="card-footer-item">
+                <div class="field is-grouped is-grouped-multiline"
+                    v-if="video.tagList.length">
+                    <div class="control"
+                        v-for="(tag, index) in tagList"
+                        :key="index">
+                        <div class="tags has-addons">
+                            <span class="tag">
+                                {{ tag.name }}
+                            </span>
+                            <a class="tag is-delete"
+                                 @click="removeTag(tag)"
+                                v-if="canAccess('howTo.videos.update') && tagging"/>
+                        </div>
+                    </div>
+                </div>
                 <span class="tag"
-                    v-if="!video.tagList.length">
-                    {{ __('untagged') }}
-                </span>
-                <span class="tag has-margin-right-small"
-                    v-for="(tag, index) in tagList"
-                    :key="index"
                     v-else>
-                    <span class="has-margin-right-small">
-                        {{ tag.name }}
-                    </span>
-                    <a class="delete is-small"
-                        @click="removeTag(tag)"
-                        v-if="canAccess('howTo.videos.update') && tagging"/>
+                    {{ __('untagged') }}
                 </span>
             </div>
         </div>
@@ -165,7 +169,7 @@ export default {
                 }).catch(error => this.handleError(error));
         },
         removeTag(tag) {
-            const index = this.video.tagList.findIndex(({ id }) => id === tag.id);
+            const index = this.video.tagList.findIndex(id => id === tag.id);
             this.video.tagList.splice(index, 1);
         },
     },

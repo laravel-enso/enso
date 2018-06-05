@@ -1981,16 +1981,16 @@
         },
         {
             "name": "laravel-enso/howtovideos",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/HowToVideos.git",
-                "reference": "8919714c47b99b2a35a8762666afa8ef14b8712f"
+                "reference": "38ed010acf3d7bb43c01d3e6e2f126b4d174ee20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/HowToVideos/zipball/8919714c47b99b2a35a8762666afa8ef14b8712f",
-                "reference": "8919714c47b99b2a35a8762666afa8ef14b8712f",
+                "url": "https://api.github.com/repos/laravel-enso/HowToVideos/zipball/38ed010acf3d7bb43c01d3e6e2f126b4d174ee20",
+                "reference": "38ed010acf3d7bb43c01d3e6e2f126b4d174ee20",
                 "shasum": ""
             },
             "require": {
@@ -2036,7 +2036,7 @@
                 "laravel-enso",
                 "vidoes"
             ],
-            "time": "2018-06-05T09:08:56+00:00"
+            "time": "2018-06-05T11:23:54+00:00"
         },
         {
             "name": "laravel-enso/imagetransformer",

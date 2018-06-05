@@ -3,11 +3,14 @@
 ### 2.7.10
 We finally ported the 'How To Videos' menu from to the SPA version of Enso.
 
-To use it in an existing project:
-- run `composer update`
-- run `composer require laravel-enso/howtovideos`
-- run `php artisan vendor:publish --tag=howToVideos-storage`
+To use it in an existing project do the following steps:
+- `composer update`
+- `composer require laravel-enso/howtovideos`
+- `php artisan vendor:publish --tag=howToVideos-storage`
+- `npm install --save vue-video-player`
+- compile
 - add in your `config/enso/config.php`, to the `paths` array the following entry: `'howToVideos' => 'howToVideos'`
+- add in `storage/app/.gitignore` => `!howToVideos/`
 
 ### 2.7.9
 - improves `laravel-enso/versioning` - read the updated documentation. It's a breaking change so be sure to update the code accordingly, and then in composer.json also update the require for `"laravel-enso/versioning": "1.1.*"`
