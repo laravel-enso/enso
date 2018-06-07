@@ -95,6 +95,8 @@ export default {
                     dataset.data = self.data.datasets[index].data;
                 });
 
+            this.chart.data.labels = self.data.labels;
+
             this.chart.update();
         },
         svg() {

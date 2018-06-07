@@ -1245,16 +1245,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "18ee00f1010b98494fc813e00b110da2b21a32a3"
+                "reference": "9b2714437dcce206340ca75702360dd3f3cb7359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/18ee00f1010b98494fc813e00b110da2b21a32a3",
-                "reference": "18ee00f1010b98494fc813e00b110da2b21a32a3",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/9b2714437dcce206340ca75702360dd3f3cb7359",
+                "reference": "9b2714437dcce206340ca75702360dd3f3cb7359",
                 "shasum": ""
             },
             "require": {
@@ -1304,7 +1304,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-06-06T12:06:36+00:00"
+            "time": "2018-06-07T13:45:05+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -1369,16 +1369,16 @@
         },
         {
             "name": "laravel-enso/charts",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Charts.git",
-                "reference": "5da7c5dfff1f006ae4ade304a0a217bb5f58ef16"
+                "reference": "3eb896db19538153ca74b62e8179666d67cdead6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/5da7c5dfff1f006ae4ade304a0a217bb5f58ef16",
-                "reference": "5da7c5dfff1f006ae4ade304a0a217bb5f58ef16",
+                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/3eb896db19538153ca74b62e8179666d67cdead6",
+                "reference": "3eb896db19538153ca74b62e8179666d67cdead6",
                 "shasum": ""
             },
             "require": {
@@ -1418,7 +1418,7 @@
                 "charts",
                 "laravel-enso"
             ],
-            "time": "2018-06-06T07:18:04+00:00"
+            "time": "2018-06-07T12:01:29+00:00"
         },
         {
             "name": "laravel-enso/commentsmanager",
