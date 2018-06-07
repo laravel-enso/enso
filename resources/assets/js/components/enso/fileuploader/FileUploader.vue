@@ -37,8 +37,7 @@ export default {
         },
         fileSizeLimit: {
             type: Number,
-            default: 8388608,
-            validator: value => value <= 8388608,
+            default: 20000000,
         },
         params: {
             type: Object,

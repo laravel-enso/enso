@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.7.12
+- fixes the publishing path for `HowToVideo.vue`
+- fixes keys in `Documents.vue`
+- refactors CommentsManager with a breaking change.
+To update an existing project first change the composer requirement to : "laravel-enso/commentsmanager": "2.3.*", and after the update run `php artisan enso:enso:comments:update-table`
+
 ### 2.7.11
 General BE refactor.
 

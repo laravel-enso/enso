@@ -50,6 +50,9 @@ export default {
         count() {
             return this.documents.length;
         },
+        uploadLink() {
+            return route('core.documents.store');
+        },
     },
 
     created() {
@@ -60,10 +63,9 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(
-                route('core.documents.index'),
-                { params: { type: this.type, id: this.id } },
-            ).then(({ data }) => {
+            axios.get(route('core.documents.index'), {
+                params: { documentable_type: this.type, documentable_id: this.id },
+            }).then(({ data }) => {
                 this.documents = data;
                 this.loading = false;
                 this.$emit('update');

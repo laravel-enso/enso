@@ -16,7 +16,7 @@
                 <span>
                     {{ timeFromNow(comment.updated_at || comment.created_at) }}
                 </span>
-                <span v-if="comment.isEdited">
+                <span v-if="comment.updated_by">
                     &bull; {{ __('edited') }}
                 </span>
                 <div class="is-pulled-right is-flex"

@@ -181,7 +181,7 @@ export default {
 
     .card-footer {
         white-space: nowrap;
-        overflow: scroll;
+        overflow: auto;
         text-overflow: ellipsis;
     }
 

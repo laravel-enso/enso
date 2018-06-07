@@ -100,8 +100,8 @@ export default {
         },
         getParams() {
             return {
-                id: this.id,
-                type: this.type,
+                commentable_id: this.id,
+                commentable_type: this.type,
                 offset: this.offset,
                 paginate: this.paginate,
             };
@@ -148,8 +148,8 @@ export default {
         },
         postParams() {
             return {
-                id: this.id,
-                type: this.type,
+                commentable_id: this.id,
+                commentable_type: this.type,
                 body: this.comment.body,
                 taggedUserList: this.comment.taggedUserList,
                 path: this.path,

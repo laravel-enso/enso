@@ -81,7 +81,7 @@ export default {
             return this.count === 0;
         },
         uploadLink() {
-            return route('core.documents.store', [this.type, this.id]);
+            return route('core.documents.store');
         },
         icon() {
             return faCopy;
