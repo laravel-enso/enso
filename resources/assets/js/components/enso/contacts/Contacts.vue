@@ -122,10 +122,9 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(
-                route('core.contacts.index'),
-                { params: { id: this.id, type: this.type } },
-            ).then(({ data }) => {
+            axios.get(route('core.contacts.index'), {
+                params: { contactable_id: this.id, contactable_type: this.type },
+            }).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
                 this.$refs.card.resize();

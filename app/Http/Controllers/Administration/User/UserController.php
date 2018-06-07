@@ -49,9 +49,9 @@ class UserController extends Controller
 
     public function update(ValidateUserRequest $request, User $user)
     {
-        $user->fill($request->all());
-
         $this->authorize('handle', $user);
+
+        $user->fill($request->all());
 
         $user->save();
 

@@ -51,8 +51,8 @@ export default {
     computed: {
         params() {
             return {
-                id: this.id,
-                type: this.type,
+                addressable_id: this.id,
+                addressable_type: this.type,
             };
         },
         customFields() {

@@ -142,9 +142,9 @@ export default {
 
             axios.get(
                 route('core.addresses.index'),
-                { params: { id: this.id, type: this.type } },
-            ).then((response) => {
-                this.addresses = response.data;
+                { params: { addressable_id: this.id, addressable_type: this.type } },
+            ).then(({ data }) => {
+                this.addresses = data;
                 this.loading = false;
                 this.$refs.card.resize();
             }).catch(error => this.handleError(error));

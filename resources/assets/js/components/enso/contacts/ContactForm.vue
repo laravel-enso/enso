@@ -36,8 +36,8 @@ export default {
     computed: {
         params() {
             return {
-                id: this.id,
-                type: this.type,
+                contactable_id: this.id,
+                contactable_type: this.type,
             };
         },
     },

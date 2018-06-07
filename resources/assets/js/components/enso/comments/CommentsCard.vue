@@ -17,7 +17,7 @@
         :badge="count"
         :controls="1">
         <card-control slot="control-1"
-            @click="$refs.comments.create(); $refs.card.expand()">
+            @click="addComment()">
             <span class="icon is-small">
                 <fa icon="plus-square"/>
             </span>
@@ -87,6 +87,13 @@ export default {
     computed: {
         isEmpty() {
             return this.count === 0;
+        },
+    },
+
+    methods: {
+        addComment() {
+            this.$refs.comments.create();
+            this.$nextTick(() => this.$refs.card.expand());
         },
     },
 };

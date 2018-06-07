@@ -22,6 +22,8 @@ class User extends Users
 
     public function owner()
     {
-        return $this->belongsTo(config('enso.config.ownerModel'));
+        return $this->belongsTo(
+            config('enso.config.ownerModel')
+        );
     }
 }

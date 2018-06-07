@@ -10,9 +10,10 @@ class UserSelectController extends Controller
 {
     use OptionsBuilder;
 
-    protected $model = User::class;
+    protected $queryAttributes = ['first_name', 'last_name', 'email', 'phone'];
 
-    protected $queryAttributes = [
-        'first_name', 'last_name', 'email', 'phone',
-    ];
+    public function query()
+    {
+        return User::active();
+    }
 }

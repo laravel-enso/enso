@@ -14,10 +14,10 @@ class ValidateUserRequest extends FormRequest
 
     public function rules()
     {
-        $user = $this->route('user');
         $emailUnique = Rule::unique('users', 'email');
-        $emailUnique = (request()->getMethod() === 'PATCH')
-            ? $emailUnique->ignore($user->id)
+
+        $emailUnique = ($this->method() === 'PATCH')
+            ? $emailUnique->ignore($this->route('user')->id)
             : $emailUnique;
 
         return [
@@ -27,11 +27,7 @@ class ValidateUserRequest extends FormRequest
             'role_id' => 'required|exists:roles,id',
             'owner_id' => 'required|exists:owners,id',
             'phone' => 'max:30',
-            'email' => [
-                'email',
-                'required',
-                $emailUnique,
-            ],
+            'email' => ['email', 'required', $emailUnique],
         ];
     }
 }

@@ -41,9 +41,6 @@ export default {
     },
 
     computed: {
-        uploadLink() {
-            return route('core.documents.store', [this.type, this.id]);
-        },
         filteredDocuments() {
             return this.query
                 ? this.documents.filter(doc => doc.original_name.toLowerCase()

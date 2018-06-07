@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.7.11
+General BE refactor.
+
+Steps for upgrade:
+- update in your composer.json file the requirement for core: `"laravel-enso/core": "2.9.*"`
+- `php artisan enso:update-action-logs-table`
+- `composer update`
+- `php artisan vendor:publish --tag=charts-config --force` for an updated color list.
+- optionally list of files with small refactors which can be manually replaced from a fresh project: 'UserController.php', 'UserSelectController.php', 'ValidateOwnerRequest.php', 'ValidateUserRequest.php', 'User.php'
+
 ### 2.7.10
 We finally ported the 'How To Videos' menu from to the SPA version of Enso.
 

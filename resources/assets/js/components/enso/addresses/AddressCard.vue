@@ -77,7 +77,7 @@
                     {{ __('edit') }}
                 </a>
             </card-footer-item>
-            <card-footer-item>
+            <card-footer-item v-if="!address.is_default">
                 <a @click="$emit('set-default')">
                     <span class="icon">
                         <fa icon="anchor"/>
