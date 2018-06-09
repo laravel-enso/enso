@@ -28,14 +28,14 @@ export default {
     },
 
     created() {
-        axios.get('/api/getMeta').then(({ data }) => {
+        axios.get('/api/meta').then(({ data }) => {
             const { meta, i18n } = data;
             this.setMeta(meta);
             this.setI18n(i18n);
             const lang = Object.keys(i18n).shift();
             this.lang(lang);
 
-            if (!this.$route.path.includes('/password/reset/')) {
+            if (!window.location.pathname.includes('/password/reset/')) {
                 this.$router.push({ name: 'login' });
             }
         }).catch(error => this.handleError(error));

@@ -28,7 +28,7 @@ export default new Vuex.Store({
         avatarLink: state => (state.isInitialised
             ? route('core.avatars.show', state.user.avatarId || 'null')
             : '#'),
-        routes: state => state.routes,
+        routes: state => Object.keys(state.routes),
     },
 
     mutations: {
@@ -39,6 +39,13 @@ export default new Vuex.Store({
         initialise: (state, value) => { state.isInitialised = value; },
         setShowQuote: (state, value) => { state.showQuote = value; },
         setRoutes: (state, routes) => { state.routes = routes; },
+        setDefaultRoute: (state, route) => {
+            router.addRoutes([{
+                name: 'default',
+                path: '/',
+                redirect: { name: route },
+            }]);
+        },
         setCsrfToken: (state, token) => {
             state.meta.csrfToken = token;
             axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
@@ -65,7 +72,7 @@ export default new Vuex.Store({
                 commit('setMeta', data.meta);
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
-                router.addRoutes([{ path: '/', redirect: { name: data.implicitMenu.link } }]);
+                commit('setDefaultRoute', data.implicitMenu.link);
 
                 if (data.ravenKey) {
                     Raven.config(data.meta.ravenKey)

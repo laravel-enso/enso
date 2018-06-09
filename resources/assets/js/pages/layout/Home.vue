@@ -45,16 +45,14 @@ export default {
 
     watch: {
         isInitialised() {
-            this.enterApp();
+            if (this.isInitialised) {
+                this.enterApp();
+            }
         },
     },
 
     methods: {
         enterApp() {
-            if (!this.isInitialised) {
-                return;
-            }
-
             if (this.showQuote) {
                 setTimeout(() => {
                     this.loading = false;

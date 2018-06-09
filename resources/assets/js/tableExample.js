@@ -75,7 +75,7 @@ new Vue({
     },
 
     methods: {
-        clicked(column, row) {
+        clicked({ column, row }) {
             this.$toastr.info(`You just clicked "${row[column.name]}" on column "${column.name}"`, 'Click Event');
         },
     },

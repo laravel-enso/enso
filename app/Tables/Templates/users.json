@@ -5,7 +5,7 @@
     "name": "Registered Users",
     "icon": "users",
     "crtNo": true,
-    "buttons": ["excel", "create", "action", "show", "edit", "destroy"],
+    "buttons": ["excel", "create", "show", "edit", "destroy"],
     "columns": [
         {
             "label": "Entity",

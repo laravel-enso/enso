@@ -1,6 +1,6 @@
 <template>
 
-    <span :class="{ 'is-clickable': column.meta.clickable }"
+    <span :class="{ 'is-clickable has-text-info': column.meta.clickable }"
         @click="$emit('clicked')">
         <slot name="hidden-controls" v-if="hiddenControls"/>
         <span v-if="column.meta.boolean"
@@ -51,3 +51,11 @@ export default {
 };
 
 </script>
+
+<style lang="scss" scoped>
+
+    .is-clickable {
+        cursor: pointer;
+    }
+
+</style>

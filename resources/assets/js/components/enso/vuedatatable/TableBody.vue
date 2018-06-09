@@ -315,11 +315,6 @@ li.child-row {
     padding: 0.5em 0;
 }
 
-.is-clickable {
-    cursor: pointer;
-    text-decoration: underline dotted;
-}
-
 .is-money {
     white-space: pre;
     text-align: right;
