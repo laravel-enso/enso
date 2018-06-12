@@ -46,7 +46,7 @@ To upgrade a project do the following:
             - `VueAside.vue`
         - `App.vue`
         - `NotFound.vue`
-        - `Router.vue`
+        - `Router.vue` -> Update the path to this file in all the routes / pages that use the Router
         - `Unauthorized.vue`
 
 * remove the old `js/pages/layout` with all its content
