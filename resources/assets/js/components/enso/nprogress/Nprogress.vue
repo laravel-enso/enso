@@ -45,7 +45,7 @@ export default {
             this.timer = setTimeout(() => {
                 nprogress.done();
                 this.reset();
-            }, this.latency * 10);
+            }, this.latency * 6);
         },
         incRequests() {
             this.requests++;

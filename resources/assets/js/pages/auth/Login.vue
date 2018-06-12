@@ -26,7 +26,6 @@ export default {
             this.setCsrfToken(data.csrfToken);
             setTimeout(() => {
                 this.login();
-                this.$router.push({ path: '/' });
                 this.showHome();
             }, 200);
         },

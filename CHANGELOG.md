@@ -27,16 +27,13 @@ Changes overview:
 - tree permission builder refactor for the back-end role configurator
 - added logic to handle front-end only permissions, with no corresponding back-end routes
 
-For an existing project the upgrade estimated time is ~ 5min.
-
-*We are currently testing the upgrade steps in our projects to see if we missed anything*
+For an existing project the upgrade estimated time is ~ 5min. **TESTED**
 
 To upgrade a project do the following:
-* update `composer.json` for the new core version to `2.10.*`
+* update `composer.json` for the new core version to `2.10.*` (please double check all the enso requirements against a composer.json from a fresh project)
 * run `composer update`
 * run `php artisan enso:add-missing-permissions`
 * make sure to manually add to the permissions table all the FE-only permissions and attach them to the according roles
-* run `npm run dev`
 * following is the reorganized structure (read with care!!!) of the core application layout files:
     - `js/core` 
         - `structure`: the structural sub-components of the app
@@ -86,6 +83,7 @@ To upgrade a project do the following:
         - `js/routes/administration/users.js`
     - the above files have been updated and need to be copied from the Enso repository,  overwriting the existing files
 
+* run `npm run dev`
 * sync the routes in `routes/api.php` with the ones from a fresh project
 
 ### 2.7.12

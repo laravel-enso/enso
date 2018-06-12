@@ -4,7 +4,7 @@ import auth from './before/auth';
 import allow from './before/allow';
 import nprogress from './before/nprogress';
 
-export default (from, to, next) => {
+export default (to, from, next) => {
     nprogress();
     if (store.state.auth.isAuth) {
         auth(to, from, next);
