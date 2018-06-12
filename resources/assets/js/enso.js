@@ -4,7 +4,7 @@ import './modules/enso/';
 
 import router from './router';
 import store from './store';
-import App from './pages/App.vue';
+import App from './core/App.vue';
 
 import './app';
 

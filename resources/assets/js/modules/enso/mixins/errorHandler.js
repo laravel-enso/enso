@@ -11,11 +11,12 @@ Vue.mixin({
 
             if (status === 401) {
                 if (this.$store.state.auth.isAuth) {
-                    this.$store.commit('auth/logout');
                     this.$store.commit('auth/setLastRoute', this.$route);
+                    this.$store.commit('initialise', false);
+                    this.$store.commit('auth/logout');
+                    this.$router.push({ name: 'login' });
+                    return;
                 }
-
-                return;
             }
 
             if ([403, 409, 429, 555].includes(status)) {

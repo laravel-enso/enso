@@ -1,5 +1,96 @@
 ## Laravel Enso's Changelog
 
+## Laravel Enso's Changelog
+
+
+### 2.8.0
+This release is one of the biggest upgrades in a long time
+- better organization for the FE files
+- tons of bugs fixed on both the FE and the BE
+- heavy refactoring
+- flows optimisation
+
+Changes overview:
+- separated site layouts: `Auth`, `Home`, `Default`
+- better management of transitions between different UI stages, such as authentication to main
+- optimizations to the app routing 
+- middleware is now used for the router; The users access will be filtered in the front-end too, based on their permissions; This means that all the FE permissions must be present in the `permissions` table and attached to the according roles. In the near future you'll be able to also add your own middleware too
+- improved nprogress usage - applied through a router middleware 
+- all layouts show the loading progress bar
+- easier access to the nprogress object via the router, previous management via events has been removed as is no longer necessary
+- refactored the authentication pages with the reuse of common elements
+- the login, password reset and home pages are also themed
+- resolved a situation where the login form would not be visible until refresh
+- resolved visual issues during theme loading 
+- improved the 'Page not found' page; added the 'Unauthorized' page
+- improved title management for pages with a dedicated middleware, fixed issue where the title was missing in some scenarios and also translation issues
+- addressed a role configurator bug when having more than one menu with the same name
+- moved the logic for handling missing translation keys to the store `localisation` module
+- many other front-end cleanup & optimizations 
+- tree permission builder refactor for the back-end role configurator
+- added logic to handle front-end only permissions, with no corresponding back-end routes
+
+For an existing project the upgrade estimated time is ~ 5min.
+
+*We are currently testing the upgrade steps in our projects to see if we missed anything*
+
+To upgrade a project do the following:
+* update `composer.json` for the new core version to `2.10.*`
+* run `composer update`
+* run `php artisan enso:add-missing-permissions`
+* make sure to manually add to the permissions table all the FE-only permissions and attach them to the according roles
+* run `npm run dev`
+* following is the reorganized structure (read with care!!!) of the core application layout files:
+    - `js/core` 
+        - `structure`: the structural sub-components of the app
+            - `navbar` (top)
+            - `sidebar` (left) -> bring your own `/icons/app.js` file under this folder
+            - `settings` (right sidebar)
+            - `AppFooter.vue`: -> use your own file or copy it from a fresh project
+            - `Breadcrumbs.vue`
+            - `PageHeader.vue`
+            - `VueAside.vue`
+        - `App.vue`
+        - `NotFound.vue`
+        - `Router.vue`
+        - `Unauthorized.vue`
+
+* nprogress usage
+    - if using the nprogess events, replace old logic as these events have been removed:
+        - `nprogress-add-request`
+        - `nprogress-add-response`
+        - `nprogress-done`
+    - the nprogress instance is now directly available in the Vue root instance with `this.$router.app.$nprogress` with `incRequests()` / `incResponses()` methods
+
+* middleware
+    - the referenced files are:
+        - `js/middleware/before/allow.js` -> used for restricting access on forbidden routes
+        - `js/middleware/before/auth.js`
+        - `js/middleware/before/nprogress.js`
+        - `js/middleware/before/guest.js`
+        - `js/middleware/after/nprogress.js`
+        - `js/middleware/after/documentTitle.js`        
+    
+* authentication pages/components, will be published automatically on update
+    - the referenced files are:
+        - `js/pages/auth/AuthForm.vue`
+        - `js/pages/auth/Login.vue`
+        - `js/pages/auth/password/Email.vue`
+        - `js/pages/auth/password/Reset.vue`
+    
+* dashboard
+    - the referenced file is:
+        - `js/pages/dashboard/Index.vue` -> it needs to be copied from the Enso repository, overwriting the existing file
+
+* administration routes
+    - the referenced files are:
+        - `js/routes/administration.js`
+        - `js/routes/administration/owners.js`
+        - `js/routes/administration/users.js`
+    - the above files have been updated and need to be copied from the Enso repository,  overwriting the existing files
+
+* sync the routes in `routes/api.php` with the ones from a fresh project
+
 ### 2.7.12
 - fixes the publishing path for `HowToVideo.vue`
 - fixes keys in `Documents.vue`

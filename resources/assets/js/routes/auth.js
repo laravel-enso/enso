@@ -7,9 +7,9 @@ const Reset = () => import('../pages/auth/password/Reset.vue');
 const redirect = (to, from, next) => {
     if (store.state.auth.isAuth) {
         next({ path: '/' });
+    } else {
+        next();
     }
-
-    next();
 };
 
 export default [{

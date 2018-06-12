@@ -3,8 +3,7 @@
     <div class="level">
         <div class="level-left is-hidden-mobile">
             <div class="level-item">
-                <transition
-                    mode="out-in"
+                <transition mode="out-in"
                     enter-active-class="fadeIn"
                     leave-active-class="fadeOut">
                     <p class="title is-5 animated"

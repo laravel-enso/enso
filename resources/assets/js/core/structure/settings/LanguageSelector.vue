@@ -16,7 +16,7 @@
                         class="dropdown-item"
                         :key="lang"
                         :class="{ 'is-active': flag === languages[locale] }"
-                        @click="setLang(lang)">
+                        @click="setLang(lang);updateTitle()">
                         <span class="icon is-small">
                             <i :class="flag"/>
                         </span>
@@ -43,10 +43,14 @@ export default {
     computed: {
         ...mapState('localisation', ['languages']),
         ...mapGetters('preferences', { locale: 'lang' }),
+        ...mapGetters('localisation', ['documentTitle']),
     },
 
     methods: {
         ...mapActions('preferences', ['setLang']),
+        updateTitle() {
+            document.title = this.documentTitle(this.$route.meta.title);
+        },
     },
 };
 

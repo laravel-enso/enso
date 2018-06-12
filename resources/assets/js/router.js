@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from './store';
 import routeImporter from './modules/importers/routeImporter';
+import before from './middleware/before';
+import after from './middleware/after';
 
 Vue.use(Router);
 
@@ -12,12 +13,7 @@ const router = new Router({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-    if (!to.meta.guestGuard && !store.state.auth.isAuth) {
-        next({ name: 'login' });
-    }
-
-    next();
-});
+router.beforeEach(before);
+router.afterEach(after);
 
 export default router;

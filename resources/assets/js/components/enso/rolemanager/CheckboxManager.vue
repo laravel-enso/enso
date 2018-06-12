@@ -15,7 +15,7 @@
                     :name="'checkbox-' + _uid"
                     class="is-checkradio is-info"
                     @change="updateBelow">
-                <label :for="'checkbox-' + _uid"></label>
+                <label :for="'checkbox-' + _uid"/>
             </div>
         </card-control>
         <div class="has-padding-medium">
@@ -28,16 +28,14 @@
                 :key="group"
                 :group-data="groupData[group]"
                 :role-permissions="rolePermissions"
-                @update="update">
-            </checkbox-manager>
+                @update="update"/>
             <manager-content v-if="isRoot"
                 ref="content"
                 :group-data="groupData"
                 :role-permissions="rolePermissions"
                 @checked="setChecked"
                 @indeterminate="setIndeterminate"
-                @unchecked="setUnchecked">
-            </manager-content>
+                @unchecked="setUnchecked"/>
         </div>
     </card>
 

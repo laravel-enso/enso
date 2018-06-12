@@ -41,7 +41,6 @@ export default new Vuex.Store({
         setRoutes: (state, routes) => { state.routes = routes; },
         setDefaultRoute: (state, route) => {
             router.addRoutes([{
-                name: 'default',
                 path: '/',
                 redirect: { name: route },
             }]);
@@ -85,8 +84,7 @@ export default new Vuex.Store({
                         if (data.local) {
                             dispatch('setLocalState', data.local);
                         }
-
-                        commit('initialise', true);
+                        setTimeout(() => commit('initialise', true), 200);
                     });
             }).catch((error) => {
                 if (error.response.status === 401) {

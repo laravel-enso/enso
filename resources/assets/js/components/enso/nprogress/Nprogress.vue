@@ -1,7 +1,5 @@
 <template>
-
     <div/>
-
 </template>
 
 <script>
@@ -15,57 +13,39 @@ export default {
 
     data() {
         return {
-            nprogress,
             latency: 100,
             requests: 0,
             responses: 0,
+            routing: false,
+            routingTimer: false,
+            timer: null,
         };
     },
 
-    created() {
-        this.setAxios();
-        this.setRouter();
-        this.listen();
+    computed: {
+        progress() {
+            return this.requests
+                ? this.responses / this.requests - 0.1
+                : 0;
+        },
+        shouldStop() {
+            return this.responses >= this.requests;
+        },
     },
 
     methods: {
-        setAxios() {
-            axios.interceptors.request.use((config) => {
-                this.incRequests();
-                return config;
-            });
-
-            axios.interceptors.response.use((response) => {
-                this.incResponses();
-                return response;
-            }, (error) => {
-                this.incResponses();
-                return Promise.reject(error);
-            });
-        },
-        setRouter() {
-            this.$router.beforeEach((route, from, next) => {
-                this.incRequests();
-                next();
-            });
-
-            this.$router.afterEach(() => {
-                const self = this;
-                setTimeout(() => self.incResponses(), 1200);
-            });
-        },
-        listen() {
-            this.$bus.$on('nprogress-add-request', () => this.incRequests());
-            this.$bus.$on('nprogress-add-response', () => this.incResponses());
-            this.$bus.$on('nprogress-done', () => this.done());
-        },
         reset() {
             this.requests = 0;
             this.responses = 0;
+            this.routing = false;
         },
         done() {
-            this.nprogress.done();
-            this.reset();
+            clearTimeout(this.timer);
+
+            this.timer = setTimeout(() => {
+                nprogress.done();
+                this.reset();
+            }, this.latency * 10);
         },
         incRequests() {
             this.requests++;
@@ -74,14 +54,29 @@ export default {
         incResponses() {
             setTimeout(() => {
                 this.responses++;
-
-                return this.responses >= this.requests
-                    ? this.done()
-                    : this.update();
+                this.update();
             }, this.latency);
         },
+        startRouting() {
+            if (!this.routing) {
+                this.routing = true;
+                this.incRequests();
+            }
+        },
+        stopRouting() {
+            clearTimeout(this.routingTimer);
+
+            this.routingTimer = setTimeout(() => {
+                this.routing = false;
+                this.incResponses();
+            }, this.latency * 6);
+        },
         update() {
-            this.nprogress.set(this.responses / this.requests - 0.1);
+            nprogress.set(this.progress);
+
+            if (this.shouldStop) {
+                this.done();
+            }
         },
     },
 };

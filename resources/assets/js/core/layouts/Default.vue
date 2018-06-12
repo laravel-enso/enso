@@ -4,7 +4,6 @@
         leave-active-class="fadeOut">
         <div class="app-main"
             v-show="lightsOn">
-            <nprogress/>
             <navbar class="animated slideInDown"/>
             <transition enter-active-class="slideInLeft"
                 leave-active-class="slideOutLeft">
@@ -17,7 +16,7 @@
             <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
                 <div class="container is-fluid page-content is-marginless">
                     <page-header :title="$route.meta.title"/>
-                    <router/>
+                    <router v-if="isInitialised"/>
                 </div>
             </section>
             <settings class="animated"
@@ -32,22 +31,22 @@
 
 import { mapState, mapMutations, mapActions } from 'vuex';
 import Nprogress from '../../components/enso/nprogress/Nprogress.vue';
-import Navbar from './navbar/Navbar.vue';
-import Sidebar from './sidebar/Sidebar.vue';
-import Settings from './settings/Settings.vue';
-import AppFooter from './AppFooter.vue';
-import Router from './Router.vue';
-import PageHeader from './PageHeader.vue';
+import Navbar from '../structure/navbar/Navbar.vue';
+import Sidebar from '../structure/sidebar/Sidebar.vue';
+import Settings from '../structure/settings/Settings.vue';
+import AppFooter from '../structure/AppFooter.vue';
+import Router from '../Router.vue';
+import PageHeader from '../structure/PageHeader.vue';
 
 export default {
-    name: 'AppMain',
+    name: 'Default',
 
     components: {
         Nprogress, Navbar, Sidebar, Settings, AppFooter, Router, PageHeader,
     },
 
     computed: {
-        ...mapState(['meta']),
+        ...mapState(['meta', 'isInitialised']),
         ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'menu', 'settingsBar']),
         lightsOn() {
             return !this.lightsOff;
@@ -70,7 +69,7 @@ export default {
     },
 
     beforeMount() {
-        this.addTabletBreakpointListener();
+        this.addTouchBreakpointsListeners();
     },
 
     mounted() {
@@ -81,7 +80,7 @@ export default {
         ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
         ...mapMutations('layout/menu', { showMenu: 'show', hideMenu: 'hide' }),
         ...mapActions(['initialise']),
-        addTabletBreakpointListener() {
+        addTouchBreakpointsListeners() {
             const { body } = document;
             const TabletMaxWidth = 1023;
             const MobileMaxWidth = 768;

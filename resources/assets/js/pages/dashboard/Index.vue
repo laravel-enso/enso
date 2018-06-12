@@ -16,11 +16,10 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import PageHeader from '../layout/PageHeader.vue';
 import ChartCard from '../../components/enso/charts/ChartCard.vue';
 
 export default {
-    components: { ChartCard, PageHeader },
+    components: { ChartCard },
 
     computed: {
         ...mapGetters('preferences', { preferences: 'local' }),

@@ -16,10 +16,22 @@ export const mutations = {
 };
 
 export const getters = {
+    isInitialised: state => Object.keys(state.i18n).length > 0,
     __: (state, getters, rootState, rootGetters) => (key) => {
         const lang = rootGetters['preferences/lang'];
         return state.i18n[lang]
             ? state.i18n[lang][key]
             : key;
+    },
+    documentTitle: (state, getters, rootState) =>
+        title => (rootState.meta.extendedDocumentTitle
+            ? `${getters.__(title)} | ${rootState.meta.appName}`
+            : getters.__(title)),
+};
+
+export const actions = {
+    addMissingKey({ commit }, key) {
+        axios.patch(route('system.localisation.addKey'), { langKey: key });
+        commit('addKey', key);
     },
 };

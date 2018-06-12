@@ -3,6 +3,7 @@ import storeImporter from '../modules/importers/storeImporter';
 export const modules = storeImporter(require.context('./layout', false, /.*\.js$/));
 
 export const state = {
+    home: true,
     themes: {},
     lightsOff: false,
     isMobile: false,
@@ -10,7 +11,21 @@ export const state = {
     isTouch: false,
 };
 
+export const getters = {
+    current: (state, commit, rootState) => {
+        if (!rootState.auth.isAuth) {
+            return 'auth';
+        }
+
+        return state.home
+            ? 'home'
+            : 'default';
+    },
+};
+
 export const mutations = {
+    showHome: (state) => { state.home = true; },
+    hideHome: (state) => { state.home = false; },
     setThemes: (state, themes) => { state.themes = themes; },
     setThemeParams() {
         const height = document.querySelector('.app-navbar').clientHeight;
@@ -37,13 +52,23 @@ export const mutations = {
 };
 
 export const actions = {
-    setTheme({ state, rootGetters }) {
+    setTheme({ state, rootGetters }, theme = null) {
         document.getElementById('theme')
-            .setAttribute('href', state.themes[rootGetters['preferences/theme']]);
+            .setAttribute('href', theme || state.themes[rootGetters['preferences/theme']]);
+
+        if (!theme) {
+            localStorage.setItem('theme', state.themes[rootGetters['preferences/theme']]);
+        }
+    },
+    setInitialTheme({ dispatch }) {
+        const theme = localStorage.getItem('theme');
+
+        if (theme) {
+            dispatch('setTheme', theme);
+        }
     },
     switchTheme({ commit, dispatch }) {
         commit('toggleLights');
-        commit('setTheme');
         setTimeout(() => {
             dispatch('setTheme').then(() => {
                 setTimeout(() => {

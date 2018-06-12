@@ -14,7 +14,7 @@
 
                 <checkbox-manager :title="__('Permissions')"
                     :role-permissions="data.rolePermissions"
-                    :group-data="data.permissions"
+                    :group-data="data.permissionTree"
                     v-if="data.menus.length"/>
                 <button class="button is-success has-margin-top-large is-pulled-right"
                     @click="update"

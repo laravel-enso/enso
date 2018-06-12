@@ -6,19 +6,19 @@
                 :key="index">
             <div class="field">
                 <input type="checkbox"
-                    :id="'checkbox-' + entry.name"
-                    :name="'checkbox-' + entry.name"
+                    :id="'checkbox-' + _uid + '-' + entry.id"
+                    :name="'checkbox-' + _uid + '-' + entry.id"
                     :value="entry.id"
                     v-model="checkedIds"
                     class="is-checkradio">
-                    <label :for="'checkbox-' + entry.name">
+                    <label :for="'checkbox-' + _uid + '-' + entry.id">
                         <span :class="getClass(entry)">
                             {{ entry.description || entry.name }}
                         </span>
                         <span class="icon is-small has-text-info has-margin-left-medium"
                             v-if="entry.default"
                             v-tooltip="__('Default')">
-                            <fa icon="exclamation-triangle"></fa>
+                            <fa icon="exclamation-triangle"/>
                         </span>
                     </label>
             </div>

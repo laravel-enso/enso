@@ -50,7 +50,7 @@ Route::middleware(['auth', 'core'])
                             ->name('selectOptions');
                     });
 
-                Route::resource('owners', 'Owner\OwnerController', ['except' => ['show']]);
+                Route::resource('owners', 'Owner\OwnerController', ['except' => ['show', 'index']]);
 
                 Route::namespace('User')
                     ->prefix('users')->as('users.')
@@ -65,6 +65,6 @@ Route::middleware(['auth', 'core'])
                             ->name('selectOptions');
                     });
 
-                Route::resource('users', 'User\UserController');
+                Route::resource('users', 'User\UserController', ['except' => ['index']]);
             });
     });

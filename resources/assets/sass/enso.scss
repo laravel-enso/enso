@@ -4,6 +4,10 @@
 @import './helpers';
 @import './app';
 
+[v-cloak] {
+    display: none;
+}
+
 .animated {
     animation-duration: .5s;
 }

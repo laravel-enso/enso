@@ -12,7 +12,7 @@
         "laravel-enso/charts": "2.3.*",
         "laravel-enso/commentsmanager": "2.3.*",
         "laravel-enso/contacts": "2.2.*",
-        "laravel-enso/core": "2.9.*",
+        "laravel-enso/core": "2.10.*",
         "laravel-enso/dataimport": "2.2.*",
         "laravel-enso/documentsmanager": "2.2.*",
         "laravel-enso/howtovideos": "^2.0",

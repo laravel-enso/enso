@@ -1,7 +1,7 @@
 import routeImporter from '../../modules/importers/routeImporter';
 
 const routes = routeImporter(require.context('./permissionGroups', false, /.*\.js$/));
-const RouterView = () => import('../../pages/layout/Router.vue');
+const RouterView = () => import('../../core/Router.vue');
 
 export default {
     path: 'permissionGroups',

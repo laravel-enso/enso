@@ -69,7 +69,7 @@ class ChartController extends Controller
     {
         return (new PolarChart())
             ->title('Polar Chart')
-            ->labels(['Green', 'Red', 'Azzure', 'Portocaliu', 'Bleu'])
+            ->labels(['Green', 'Red', 'Azzure', 'Portocaliu', 'Purple'])
             ->datasets([11, 16, 7, 14, 14])
             ->get();
     }

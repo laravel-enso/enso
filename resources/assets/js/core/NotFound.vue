@@ -1,12 +1,23 @@
 <template>
     <div class="container">
         <div class="error-container has-text-grey">
-            <div class="error-title">Page Not Found</div>
+            <div class="error-title">
+                {{ __('Page Not Found') }}
+                <fa class="has-text-warning"
+                    icon="exclamation-triangle"/>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
+import fontawesome from '@fortawesome/fontawesome';
+import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
+
+fontawesome.library.add([
+    faExclamationTriangle,
+]);
 
 export default {
     name: 'NotFound',

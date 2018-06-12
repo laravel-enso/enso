@@ -47,7 +47,7 @@
                                     </template>
                                 </file-uploader>
                                 <button class="button is-small is-danger is-pulled-right"
-                                    @click="logout()">
+                                    @click="exit()">
                                     <span class="icon">
                                         <fa icon="sign-out-alt"/>
                                     </span>
@@ -239,7 +239,7 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
     faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
@@ -264,6 +264,7 @@ export default {
 
     computed: {
         ...mapState(['user', 'meta', 'impersonating']),
+        ...mapState('auth', ['isAuth']),
         uploadAvatarLink() {
             return route('core.avatars.store');
         },
@@ -319,24 +320,34 @@ export default {
         },
     },
 
-    mounted() {
-        axios.get(route(this.$route.name, this.$route.params.id))
-            .then((response) => {
-                this.profile = response.data.user;
-            }).catch(error => this.handleError(error));
+    created() {
+        if (this.isAuth) {
+            this.getProfile();
+        }
     },
 
     methods: {
-        ...mapMutations(['setUserAvatar']),
+        ...mapMutations(['setUserAvatar', 'initialise']),
+        getProfile() {
+            axios.get(route(this.$route.name, this.$route.params.id))
+                .then((response) => {
+                    this.profile = response.data.user;
+                }).catch(error => this.handleError(error));
+        },
         deleteAvatar() {
             axios.delete(route('core.avatars.destroy', this.user.avatarId))
                 .then(() => this.setUserAvatar(null))
                 .catch(error => this.handleError(error));
         },
-        logout() {
-            axios.post(route('logout')).then(() => {
+        exit() {
+            axios.post('/api/logout').then(() => {
+                this.profile = null;
+                this.$store.commit('initialise', false);
                 this.$store.commit('auth/logout');
-            }).catch(error => this.handleError(error));
+                this.$router.push({ name: 'login' });
+            }).catch((error) => {
+                this.handleError(error);
+            });
         },
         getDay(timestamp) {
             return format(timestamp, 'dddd');
