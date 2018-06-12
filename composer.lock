@@ -2394,16 +2394,16 @@
         },
         {
             "name": "laravel-enso/permissionmanager",
-            "version": "2.1.48",
+            "version": "2.1.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "f59d976201873c4bf153f34fb2a2571299eb2244"
+                "reference": "414956804798c8f668b8e23c12e5f966da18083f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/f59d976201873c4bf153f34fb2a2571299eb2244",
-                "reference": "f59d976201873c4bf153f34fb2a2571299eb2244",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/414956804798c8f668b8e23c12e5f966da18083f",
+                "reference": "414956804798c8f668b8e23c12e5f966da18083f",
                 "shasum": ""
             },
             "require": {
@@ -2453,7 +2453,7 @@
                 "laravel-permissions",
                 "permission-manager"
             ],
-            "time": "2018-06-12T05:03:53+00:00"
+            "time": "2018-06-12T05:32:01+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
