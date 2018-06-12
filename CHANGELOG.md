@@ -40,7 +40,7 @@ To upgrade a project do the following:
             - `navbar` (top)
             - `sidebar` (left) -> bring your own `/icons/app.js` file under this folder
             - `settings` (right sidebar)
-            - `AppFooter.vue`: -> use your own file or copy it from a fresh project
+            - `AppFooter.vue`: -> use your own file
             - `Breadcrumbs.vue`
             - `PageHeader.vue`
             - `VueAside.vue`
@@ -48,6 +48,8 @@ To upgrade a project do the following:
         - `NotFound.vue`
         - `Router.vue`
         - `Unauthorized.vue`
+
+* remove the old `js/pages/layout` with all its content
 
 * nprogress usage
     - if using the nprogess events, replace old logic as these events have been removed:
