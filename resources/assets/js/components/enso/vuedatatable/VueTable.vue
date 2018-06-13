@@ -306,28 +306,30 @@ export default {
             this.loading = true;
             this.expanded = [];
 
-            axios.get(this.template.readPath, { params: this.readRequest() })
-                .then(({ data }) => {
-                    this.loading = false;
-                    this.forceInfo = false;
+            axios[this.template.method.toLowerCase()](
+                this.template.readPath,
+                this.readRequest(),
+            ).then(({ data }) => {
+                this.loading = false;
+                this.forceInfo = false;
 
-                    if (data.data.length === 0 && this.start > 0) {
-                        this.start -= this.length;
-                        return;
-                    }
+                if (data.data.length === 0 && this.start > 0) {
+                    this.start -= this.length;
+                    return;
+                }
 
-                    this.body = this.template.money
-                        ? this.processMoney(data)
-                        : data;
+                this.body = this.template.money
+                    ? this.processMoney(data)
+                    : data;
 
-                    this.$emit('draw');
-                }).catch((error) => {
-                    this.handleError(error);
-                    this.loading = false;
-                });
+                this.$emit('draw');
+            }).catch((error) => {
+                this.handleError(error);
+                this.loading = false;
+            });
         },
-        readRequest() {
-            return {
+        readRequest(method = null) {
+            const params = {
                 columns: this.requestColumns(),
                 meta: {
                     start: this.start,
@@ -345,6 +347,12 @@ export default {
                 intervals: this.intervals,
                 params: this.params,
             };
+
+            method = method || this.template.method;
+
+            return method === 'GET'
+                ? { params }
+                : params;
         },
         requestColumns() {
             return this.template.columns.reduce((columns, column) => {
@@ -384,20 +392,22 @@ export default {
             return body;
         },
         exportData(path) {
-            axios.get(path, { params: this.exportRequest() })
-                .catch((error) => {
-                    const { status, data } = error.response;
+            axios[this.template.method.toLowerCase()](
+                path,
+                this.exportRequest(),
+            ).catch((error) => {
+                const { status, data } = error.response;
 
-                    if (status === 555) {
-                        this.$toastr.error(data.message);
-                        return;
-                    }
+                if (status === 555) {
+                    this.$toastr.error(data.message);
+                    return;
+                }
 
-                    this.handleError(error);
-                });
+                this.handleError(error);
+            });
         },
         exportRequest() {
-            return {
+            const params = {
                 name: this.template.name,
                 columns: this.template.columns,
                 meta: {
@@ -414,6 +424,10 @@ export default {
                 intervals: this.intervals,
                 params: this.params,
             };
+
+            return this.template.method === 'GET'
+                ? { params }
+                : params;
         },
         ajax(method, path, postEvent) {
             axios[method.toLowerCase()](path).then(({ data }) => {
@@ -427,11 +441,7 @@ export default {
         action(method, path, postEvent) {
             this.loading = true;
 
-            const params = method === 'GET'
-                ? { params: this.readRequest() }
-                : this.readRequest();
-
-            axios[method.toLowerCase()](path, params)
+            axios[method.toLowerCase()](path, this.readRequest(method))
                 .then(() => {
                     this.loading = false;
 

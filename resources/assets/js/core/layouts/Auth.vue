@@ -48,8 +48,14 @@ export default {
                 this.setRoutes(routes);
                 const lang = Object.keys(i18n).shift();
                 this.lang(lang);
+                this.route();
                 this.initialised = true;
             }).catch(error => this.handleError(error));
+        },
+        route() {
+            if (!this.$route.meta.guestGuard) {
+                this.$router.push({ name: 'login' });
+            }
         },
     },
 };

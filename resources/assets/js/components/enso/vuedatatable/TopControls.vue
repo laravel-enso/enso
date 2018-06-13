@@ -153,7 +153,9 @@ export default {
                 this.closeModal();
             }
 
-            this.$emit(button.event);
+            if (button.event) {
+                this.$emit(button.event);
+            }
 
             if (button.action === 'export') {
                 this.$emit('export-data', button.path);

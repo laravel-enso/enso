@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.8.1
+- fixes a routing problem for the login page.
+- updates packages
+
 ### 2.8.0
 This release is one of the biggest upgrades in a long time
 - better organization for the FE files

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'version' => '2.8.0',
-    'facebook' => '',
-    'googleplus' => '',
+    'version' => '2.8.1',
+    'facebook' => 'https://facebook.com',
+    'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',
     'stateBuilder' => 'App\Classes\LocalState',
     'ownerModel' => 'App\Owner',

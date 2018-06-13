@@ -1552,16 +1552,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.10.2",
+            "version": "2.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "96a3e876d4cb169ecc17d5e21d3c752654d4083c"
+                "reference": "b5ebbf6d9660ba50d09c6adf164e8a993b57d7b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/96a3e876d4cb169ecc17d5e21d3c752654d4083c",
-                "reference": "96a3e876d4cb169ecc17d5e21d3c752654d4083c",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/b5ebbf6d9660ba50d09c6adf164e8a993b57d7b5",
+                "reference": "b5ebbf6d9660ba50d09c6adf164e8a993b57d7b5",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-06-12T10:16:36+00:00"
+            "time": "2018-06-13T06:08:07+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2882,16 +2882,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.1.23",
+            "version": "1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "bcf5c26dd2c111a1ff4a8c59732de563bda7bb03"
+                "reference": "f87e141c32baeff57f1c7ef6b0b0c5210fbeb7d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/bcf5c26dd2c111a1ff4a8c59732de563bda7bb03",
-                "reference": "bcf5c26dd2c111a1ff4a8c59732de563bda7bb03",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/f87e141c32baeff57f1c7ef6b0b0c5210fbeb7d6",
+                "reference": "f87e141c32baeff57f1c7ef6b0b0c5210fbeb7d6",
                 "shasum": ""
             },
             "require": {
@@ -2935,20 +2935,20 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-06-12T09:19:58+00:00"
+            "time": "2018-06-13T06:09:48+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.24",
+            "version": "v5.6.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "56290edeb0d8051826d40b4cbd8ed3c30348b2b5"
+                "reference": "a15efe4fbcd6b38ea76edc5c8939ffde4f4c7b7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/56290edeb0d8051826d40b4cbd8ed3c30348b2b5",
-                "reference": "56290edeb0d8051826d40b4cbd8ed3c30348b2b5",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a15efe4fbcd6b38ea76edc5c8939ffde4f4c7b7f",
+                "reference": "a15efe4fbcd6b38ea76edc5c8939ffde4f4c7b7f",
                 "shasum": ""
             },
             "require": {
@@ -3074,7 +3074,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-06-04T14:51:03+00:00"
+            "time": "2018-06-12T14:39:24+00:00"
         },
         {
             "name": "laravel/horizon",

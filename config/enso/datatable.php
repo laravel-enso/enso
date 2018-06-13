@@ -73,7 +73,7 @@ return [
             'action' => [
                 'icon' => 'check',
                 'class' => null,
-                'routeSuffix' => 'create',
+                'routeSuffix' => 'action',
                 'event' => 'custom-action',
                 'postEvent' => 'custom-action-done',
                 'action' => 'ajax',
@@ -191,4 +191,16 @@ return [
     */
 
     'debounce' => 100,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method
+    |--------------------------------------------------------------------------
+    |
+    | If you're working with larger tables sometimes the URI can get too long
+    | and you may run in a 414 Exception. This flag allows to globally
+    | configure the request method for fetching data.
+    */
+
+    'method' => 'GET',
 ];
