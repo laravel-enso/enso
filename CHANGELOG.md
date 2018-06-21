@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.8.3
+
+- adds `align` attribute for columns in vuedatatable templates
+- removes the old alignment functionality from the FE
+- removes the deprecated `customRender` function prop in favour of `slot` || `class`
+
 ### 2.8.2
 
 #### Improvements
@@ -20,7 +26,7 @@
 - make the `loading` boolean flag available in scoped slots
 - fixes a bug when exporting with rogue columns
 
-##### Formbuilder
+#### Formbuilder
 - adds `Number` to vueswitch's `value` type
 
 ### 2.8.1

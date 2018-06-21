@@ -3,7 +3,7 @@
     <tfoot>
         <tr>
             <td v-if="template.crtNo"/>
-            <td class="has-text-centered has-text-weight-bold"
+            <td class="has-text-centered is-bold"
                 v-if="
                     template.columns[0].meta.visible
                     && !template.columns[0].meta.hidden
@@ -11,10 +11,11 @@
                 {{ i18n("Total") }}
             </td>
             <td :class="[
-                'has-text-weight-bold',
-                template.columns[i].money
-                    ? 'is-money'
-                    : 'has-text-centered'
+                'is-bold',
+                { 'is-money' : template.columns[i].money },
+                template.columns[i].align
+                    ? template.aligns[template.columns[i].align]
+                    : template.align
             ]"
                 v-for="i in template.columns.length - 1"
                 :key="i"
@@ -24,13 +25,11 @@
                     && !template.columns[i].meta.rogue
                 ">
                 <span v-if="template.columns[i].meta.total">
-                    <span v-if="template.columns[i].money">
-                        {{ body.total[template.columns[i].name] }}
-                    </span>
-                    <span :class="template.align"
-                        v-else>
-                        {{ numberFormat(body.total[template.columns[i].name]) }}
-                    </span>
+                    {{
+                        template.columns[i].money
+                            ? body.total[template.columns[i].name]
+                            : numberFormat(body.total[template.columns[i].name])
+                    }}
                 </span>
             </td>
             <td v-if="template.actions"/>
@@ -77,9 +76,8 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
     .is-money {
-        text-align: right;
         font-family: monospace;
     }
 </style>

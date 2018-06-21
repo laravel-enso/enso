@@ -11,7 +11,10 @@
                     {{ i18n(template.name) }}
                 </h5>
             </div>
-            <div class="column has-padding-small is-half has-text-right-tablet has-text-centered-mobile">
+            <div class="
+                column has-padding-small is-half has-text-right-tablet
+                has-text-centered-mobile
+                ">
                 <button class="button has-margin-left-small"
                     v-for="button in template.buttons.global"
                     :class="button.class"
@@ -34,8 +37,6 @@
                 <column-visibility :template="template"
                     v-on="$listeners"/>
                 <style-selector :template="template"
-                    class="is-hidden-mobile"/>
-                <alignment :template="template"
                     class="is-hidden-mobile"/>
                 <button class="button"
                     @click="$emit('reload')">
@@ -91,7 +92,6 @@ import fontawesome from '@fortawesome/fontawesome';
 import { faSync, faUndo, faSearch, faInfoCircle } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
-import Alignment from './topControls/Alignment.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
 import Modal from './Modal.vue';
 
@@ -101,7 +101,7 @@ export default {
     name: 'TopControls',
 
     components: {
-        LengthMenu, ColumnVisibility, Alignment, StyleSelector, Modal,
+        LengthMenu, ColumnVisibility, StyleSelector, Modal,
     },
 
     props: {

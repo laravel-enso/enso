@@ -28,7 +28,6 @@
                     :body="body"
                     :start="start"
                     :i18n="i18n"
-                    :custom-render="customRender"
                     :expanded="expanded"
                     @ajax="ajax"
                     v-if="hasContent">
@@ -121,10 +120,6 @@ export default {
         intervals: {
             type: Object,
             default: null,
-        },
-        customRender: {
-            type: Function,
-            default: (row, column) => row[column.name],
         },
         i18n: {
             type: Function,

@@ -6,7 +6,12 @@
                 v-if="template.crtNo">
                 {{ i18n(template.labels.crtNo) }}
             </th>
-            <th :class="['vue-table-header', template.align]"
+            <th :class="[
+                    'vue-table-header',
+                    column.align
+                        ? template.aligns[column.align]
+                        : template.align
+                ]"
                 v-for="column in template.columns"
                 :key="column.label"
                 v-if="column.meta.visible && !column.meta.hidden && !column.meta.rogue">
