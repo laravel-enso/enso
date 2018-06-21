@@ -4,7 +4,8 @@
         <div class="columns is-multiline">
             <div class="column has-padding-small is-half is-hidden-mobile">
                 <h5 class="title is-5">
-                    <span class="icon">
+                    <span class="icon"
+                        v-if="template.icon">
                         <fa :icon="template.icon"/>
                     </span>
                     {{ i18n(template.name) }}

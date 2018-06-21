@@ -1,5 +1,28 @@
 ## Laravel Enso's Changelog
 
+### 2.8.2
+
+#### Improvements
+
+- upgrades composer and npm dependencies
+
+#### Core
+- adds jessenger/date as a requirement
+- adds `showQuote` flag to `config/enso/config.php` which allows disabling the qoute from the home page
+- after password reset the user is redirected to the login page
+
+#### Localisation
+- integrates jessenger/date with the `SetLanguage` middleware.
+
+#### Vuedatatable
+- adds a `request()` getter in table builders classes
+- adds a `class` option for columns in template
+- make the `loading` boolean flag available in scoped slots
+- fixes a bug when exporting with rogue columns
+
+##### Formbuilder
+- adds `Number` to vueswitch's `value` type
+
 ### 2.8.1
 - fixes a routing problem for the login page.
 - updates packages

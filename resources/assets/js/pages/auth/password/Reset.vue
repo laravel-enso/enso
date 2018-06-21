@@ -3,7 +3,7 @@
         <auth-form is-reset
             action="Set a new password"
             route="password.reset"
-            @success="$toastr.success($event.status)">
+            @success="success">
             <p slot="password-strength"
                 slot-scope="{ hasPassword, password }"
                 class="help">
@@ -48,6 +48,12 @@ export default {
             return hasPassword
                 ? zxcvbn(password).score
                 : 6;
+        },
+        success({ status }) {
+            this.$toastr.success(status);
+
+            setTimeout(() =>
+                this.$router.push({ name: 'login' }), 350);
         },
     },
 };

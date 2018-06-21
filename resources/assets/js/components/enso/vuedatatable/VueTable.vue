@@ -38,7 +38,8 @@
                         slot-scope="{ row, column }">
                         <slot :name="column.name"
                             :column="column"
-                            :row="row">
+                            :row="row"
+                            :loading="loading">
                             {{ row[column.name] }}
                         </slot>
                     </template>

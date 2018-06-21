@@ -18,7 +18,7 @@
                 </span>
             </div>
         </td>
-        <td :class="column.money ? 'is-money' : template.align"
+        <td :class="[column.class, column.money ? 'is-money' : template.align]"
             v-for="(column, idx) in template.columns"
             :key="idx"
             v-if="

@@ -40,7 +40,7 @@ export default {
             validator: value => sizes.includes(value),
         },
         value: {
-            type: Boolean,
+            type: [Boolean, Number],
             required: true,
         },
     },

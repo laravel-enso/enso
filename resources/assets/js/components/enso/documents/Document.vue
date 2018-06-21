@@ -16,7 +16,7 @@
                 leave-active-class="animated fadeOut">
                 <div class="level-item has-text-grey">
                     <button class="button is-naked"
-                        v-if="doc.isAccessible"
+                        v-if="doc.isAccessible && canAccess('core.documents.link')"
                         @click="link">
                         <span class="icon">
                             <fa icon="link"/>

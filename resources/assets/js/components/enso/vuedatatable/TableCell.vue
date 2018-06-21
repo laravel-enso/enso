@@ -1,7 +1,7 @@
 <template>
 
     <span :class="{ 'is-clickable has-text-info': column.meta.clickable }"
-        @click="$emit('clicked')">
+         @click="column.meta.clickable ? $emit('clicked') : null">
         <slot name="hidden-controls" v-if="hiddenControls"/>
         <span v-if="column.meta.boolean"
             class="tag is-table-tag"
