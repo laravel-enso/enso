@@ -49,10 +49,6 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 Enjoy!
 
-IMPORTANT NOTE: Due to laravel mix limitations, when using `hmr`,  
-you need to comment lines 3-to-7 inside `webpack.mix.js` in order for it to work correctly. 
-Don't forget to uncomment them back when building without hot module replacement.
-
 ### Using Enso for Your Project
 
 1. Follow the steps above to install & setup
