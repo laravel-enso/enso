@@ -1,5 +1,22 @@
 ## Laravel Enso's Changelog
 
+### 2.8.4
+
+#### Core
+- refactors the FE menu initialisation
+- fixes a bug when toggling menu visibility for touch devices
+
+#### Charts
+- add support for vertical labels & removes skipping labels
+- fully reactive when datasets / labels change, including in structure
+
+#### VueDatatable
+- adds auth()->onceUsingId() for export jobs, useful for authorization
+- fixes the `align` attribute for hidden columns in responsive mode
+
+#### General
+- updates composer and npm dependencies
+
 ### 2.8.3
 
 - adds `align` attribute for columns in vuedatatable templates

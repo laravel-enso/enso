@@ -69,11 +69,7 @@
             </span>
         </td>
         <td :colspan="hiddenColSpan"
-            :class="
-                column.align
-                    ? template.aligns[column.align]
-                    : template.align
-            "
+            :class="template.align"
             v-if="isChild(row)">
             <ul>
                 <li class="child-row"

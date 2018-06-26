@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '2.8.3',
+    'version' => '2.8.4',
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',

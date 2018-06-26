@@ -5,7 +5,8 @@
             {{ __("Menu") }}
         </p>
         <div class="menu-wrapper">
-            <menus :menus="menus"/>
+            <menus :menus="menus"
+                :is-active="isActive"/>
         </div>
     </vue-aside>
 
@@ -28,43 +29,40 @@ export default {
     },
 
     beforeMount() {
-        this.expandMenu(this.menus);
+        this.checkActiveChildren(this.menus);
     },
 
     methods: {
-        ...mapMutations('menus', ['toggle']),
-        expandMenu(menus) {
-            const self = this;
+        ...mapMutations('menus', ['expand']),
+        checkActiveChildren(menus) {
+            const menu = menus.find(menu => this.hasActiveChild(menu));
 
-            menus.forEach((menu) => {
-                if (self.hasSelectedChild(menu)) {
-                    self.toggle(menu);
-                    self.expandMenu(menu.children);
-                }
-            });
+            if (menu) {
+                this.expand(menu);
+                this.checkActiveChildren(menu.children);
+            }
         },
-        hasSelectedChild(menu) {
-            const self = this;
-            let active = false;
-
-            menu.children.forEach((child) => {
-                if (active) return;
-
-                active = self.isActive(child);
-
-                if (active) return;
-
-                active = self.hasSelectedChild(child);
-            });
-
-            return active;
+        hasActiveChild(menu) {
+            return menu.children
+                .find(child => this.isActive(child) || this.hasActiveChild(child))
+                    !== undefined;
         },
         isActive(menu) {
-            return this.$route.matched.map(route => route.name).includes(menu.link) ||
-                (this.$route.matched.length > 1
-                    && this.$route.matched.map(route =>
-                        route.path)[this.$route.matched.length - 2] === `/${menu.link.split('.').slice(0, -1).join('/')}`
-                );
+            return menu.link !== null && (
+                this.routeNameMatches(menu)
+                    || this.routePathMatches(menu)
+            );
+        },
+        routeNameMatches({ link }) {
+            return this.$route.matched
+                .map(route => route.name)
+                .includes(link);
+        },
+        routePathMatches({ link }) {
+            return this.$route.matched.length > 1
+                    && this.$route.matched
+                        .map(route => route.path)[this.$route.matched.length - 2]
+                            === `/${link.split('.').slice(0, -1).join('/')}`;
         },
     },
 };

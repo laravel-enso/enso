@@ -160,10 +160,7 @@ export default {
         markAsRead(notification) {
             axios.patch(route('core.notifications.markAsRead', notification.id))
                 .then(({ data }) => {
-                    this.unreadCount = this.unreadCount > 0
-                        ? --this.unreadCount
-                        : this.unreadCount; // fixme
-
+                    this.unreadCount = Math.max(--this.unreadCount, 0);
                     notification.read_at = data.read_at;
                     this.$router.push({ path: notification.data.path });
                 }).catch(error => this.handleError(error));

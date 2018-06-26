@@ -48,6 +48,7 @@
             </a>
 
             <menus :menus="menu.children"
+                :is-active="isActive"
                 @shrink="shrink"
                 @extend="extend"
                 :collapsed="!menu.expanded"
@@ -70,6 +71,10 @@ export default {
     props: {
         menus: {
             type: Array,
+            required: true,
+        },
+        isActive: {
+            type: Function,
             required: true,
         },
         collapsed: {
@@ -109,15 +114,6 @@ export default {
 
     methods: {
         ...mapMutations('menus', ['toggle']),
-        isActive(menu) {
-            return this.$route.matched.map(route => route.name)
-                .includes(menu.link) ||
-                    (this.$route.matched.length > 1
-                        && this.$route.matched
-                            .map(route => route.path)[this.$route.matched.length - 2]
-                                === `/${menu.link.split('.').slice(0, -1).join('/')}`
-                    );
-        },
         shrink(height) {
             this.$el.style.height = `${parseInt(this.$el.style.height, 10) - height}px`;
             return this.$emit('shrink', height);

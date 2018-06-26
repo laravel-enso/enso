@@ -92,13 +92,14 @@ export default {
         get() {
             this.loading = true;
 
-            axios.get(this.source, { params: this.params }).then((response) => {
-                this.config = response.data;
-                this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            axios.get(this.source, { params: this.params })
+                .then(({ data }) => {
+                    this.config = data;
+                    this.loading = false;
+                }).catch((error) => {
+                    this.loading = false;
+                    this.handleError(error);
+                });
         },
         download() {
             this.$refs.chart.$el
