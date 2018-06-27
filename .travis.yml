@@ -1,10 +1,16 @@
+script:
+  - phpunit
+
+after_success:
+  - chmod +x ./.deploy.sh; ./.deploy.sh
+
 language: php
 
 php:
   - 7.2
 
 before_script:
-  - cp .env.travis .env
+  - cp .env.example .env
   - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
@@ -28,9 +34,3 @@ addons:
 dist: trusty
 
 sudo: required
-
-script:
-  - phpunit
-
-after_success:
-  - chmod +x ./.deploy.sh; ./.deploy.sh
