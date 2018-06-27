@@ -5,13 +5,14 @@ php:
 
 before_script:
   - cp .env.travis .env
+  - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
   - php artisan migrate
 
 
 before_install:
-  - mysql -e 'CREATE DATABASE enso;'
+  - mysql -e 'create database enso;'
 
 services:
   - mysql
@@ -31,5 +32,5 @@ sudo: required
 script:
   - phpunit
 
-notifications:
-email: false
+after_success:
+  - chmod +x ./.deploy.sh; ./.deploy.sh
