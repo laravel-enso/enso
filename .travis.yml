@@ -4,20 +4,14 @@ php:
   - 7.2
 
 before_script:
-  - cp .env.example .env
-  - composer self-update
-  - composer install --prefer-source --no-interaction
+  - cp .env.travis .env
+  - composer install --no-interaction
   - php artisan key:generate
-  - php artisan migrate:fresh
+  - php artisan migrate
 
 
 before_install:
-  - mysql -e 'CREATE DATABASE homestead;'
-  - npm install
-  - npm run dev
-
-script:
-  - phpunit
+  - mysql -e 'CREATE DATABASE enso;'
 
 services:
   - mysql
@@ -33,6 +27,9 @@ addons:
 dist: trusty
 
 sudo: required
+
+script:
+  - phpunit
 
 notifications:
 email: false
