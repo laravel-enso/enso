@@ -1,0 +1,38 @@
+language: php
+
+php:
+  - 7.2
+
+before_script:
+  - cp .env.example .env
+  - composer self-update
+  - composer install --prefer-source --no-interaction
+  - php artisan key:generate
+  - php artisan migrate:fresh
+
+
+before_install:
+  - mysql -e 'CREATE DATABASE homestead;'
+  - npm install
+  - npm run dev
+
+script:
+  - phpunit
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
+dist: trusty
+
+sudo: required
+
+notifications:
+email: false
