@@ -163,16 +163,16 @@ export default {
                 template: {
                     sort: this.template.sort,
                     style: this.template.style,
-                    align: this.template.align,
                 },
-                columns: this.template.columns.reduce((collector, column) => {
-                    collector.push({
-                        sort: column.meta.sort,
-                        visible: column.meta.visible,
-                    });
+                columns: this.template.columns
+                    .reduce((collector, column) => {
+                        collector.push({
+                            sort: column.meta.sort,
+                            visible: column.meta.visible,
+                        });
 
-                    return collector;
-                }, []),
+                        return collector;
+                    }, []),
             };
         },
         hasContent() {
@@ -310,7 +310,8 @@ export default {
                 this.forceInfo = false;
 
                 if (data.data.length === 0 && this.start > 0) {
-                    this.start -= this.length;
+                    this.start = 0;
+                    this.getData();
                     return;
                 }
 

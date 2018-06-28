@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.8.5
+
+- brings back the `webpack.mix.js` file
+- fixes a bug in vuedatatable when saved start position is > total filtered
+
 ### 2.8.4
 
 #### Core
