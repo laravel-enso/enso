@@ -114,6 +114,7 @@ export default {
                 : this.round(value).toFixed(this.precision);
 
             this.$emit('input', value);
+            this.format();
         },
         round(value) {
             const factor = 10 ** this.precision;

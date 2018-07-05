@@ -16,10 +16,7 @@ class OwnerController extends Controller
 
     public function store(ValidateOwnerRequest $request, Owner $owner)
     {
-        $owner = $owner->storeWithRoles(
-            $request->all(),
-            $request->get('roleList')
-        );
+        $owner = $owner->storeWithRoles($request->validated());
 
         return [
             'message' => __('The owner was successfully created'),
@@ -35,10 +32,7 @@ class OwnerController extends Controller
 
     public function update(ValidateOwnerRequest $request, Owner $owner)
     {
-        $owner->updateWithRoles(
-            $request->all(),
-            $request->get('roleList')
-        );
+        $owner->updateWithRoles($request->validated());
 
         return ['message' => __('The owner was successfully updated')];
     }

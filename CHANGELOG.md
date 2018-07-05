@@ -1,5 +1,68 @@
 ## Laravel Enso's Changelog
 
+### 2.8.6
+
+Pay attention, has one breaking change. See the upgrade section below.
+
+#### Contacts
+- removes the obsolete `DropCreatedBy` command for contacts
+- add the position field to the form & table
+- moves the observations under a hoverable info icon
+- changes the observations form field to a textarea
+
+#### Comments
+
+- removes the obsolete `UpdateCommentsTable` command for comments
+- raises the pagination default from 5 to 100
+
+#### Core
+ 
+- removes the obsolete `DBRenameReserved` command
+
+#### DocumentsManager
+
+- removes the obsolete `UpdateDocumentsPermissions` command
+- adds authorization for link generation
+
+#### FormBuilder
+
+- adds the `resize` boolean template attribute for textareas in formbuilder
+- moves the validation error messages under the field
+
+#### RoleManager
+
+- refactors the `HasRoles` trait - breaking change
+
+#### PermissionsManager
+
+- removes the obsolete `AddMissingPermissions` command
+
+#### StructureManager
+
+- finally adds a CLI for handling new structures. This is work in progress so what you see is what you get :)
+To play with it run `php artisan enso:make:structure`.
+
+#### General
+
+- updates composer and npm dependencies
+
+#### Upgrade an existing project
+
+- Replace in your project's OwnerController file form
+```
+$owner->updateWithRoles(
+    $request->all(),
+    $request->get('roleList')
+);
+```
+
+to
+
+```
+$owner->updateWithRoles($request->validated());
+```
+
+and do the same for `storeWithRoles`
 ### 2.8.5
 
 - brings back the `webpack.mix.js` file

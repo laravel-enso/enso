@@ -38,10 +38,6 @@
                                 v-if="field.meta.tooltip">
                                 <fa icon="info" size="xs"/>
                             </span>
-                            <p class="help is-danger is-pulled-right"
-                                v-if="errors.has(field.name)">
-                                {{ errors.get(field.name) }}
-                            </p>
                         </label>
                         <slot :name="field.name"
                             :field="field"
@@ -122,7 +118,11 @@
                             v-else-if="field.meta.type === 'timepicker'"/>
                         <div class="control has-icons-right"
                             v-else-if="field.meta.type === 'textarea'">
-                            <textarea :class="['textarea', { 'is-danger': errors.has(field.name) }]"
+                            <textarea :class="[
+                                    'textarea',
+                                    { 'is-danger': errors.has(field.name) },
+                                    { 'fixed': !field.meta.resize }
+                                ]"
                                 v-model="field.value"
                                 :placeholder="i18n(field.meta.placeholder)"
                                 :rows="field.meta.rows"
@@ -133,6 +133,10 @@
                                 <fa icon="exclamation-triangle"/>
                             </span>
                         </div>
+                        <p class="help is-danger"
+                            v-if="errors.has(field.name)">
+                            {{ errors.get(field.name) }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -362,6 +366,10 @@ export default {
         .icon {
             vertical-align: text-bottom;
         }
+    }
+
+    .fixed {
+        resize: none;
     }
 
 </style>

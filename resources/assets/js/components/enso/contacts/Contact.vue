@@ -8,6 +8,9 @@
                     <fa :icon="contact.is_active ? 'check' : 'times'"/>
                 </span>
             </p>
+            <p class="subtitle is-5">
+                {{ contact.position }}
+            </p>
             <p>
                 <span class="icon is-small"
                     v-if="contact.email">
@@ -21,13 +24,11 @@
                     <fa icon="phone"/>
                 </span>
                 {{ contact.phone }}
-            </p>
-            <p>
-                <span class="icon is-small"
+                <span class="icon has-text-info is-pulled-right"
+                    v-tooltip="contact.obs"
                     v-if="contact.obs">
-                    <fa icon="sticky-note"/>
+                    <fa icon="info-circle" size="lg"/>
                 </span>
-                {{ contact.obs }}
             </p>
         </div>
 
@@ -49,8 +50,9 @@
 
 <script>
 
+import { VTooltip } from 'v-tooltip';
 import fontawesome from '@fortawesome/fontawesome';
-import { faCheck, faTimes, faEnvelope, faPhone, faStickyNote }
+import { faCheck, faTimes, faEnvelope, faPhone, faInfoCircle }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
@@ -59,11 +61,13 @@ import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
 
 fontawesome.library.add([
-    faCheck, faTimes, faEnvelope, faPhone, faStickyNote,
+    faCheck, faTimes, faEnvelope, faPhone, faInfoCircle,
 ]);
 
 export default {
     name: 'Contact',
+
+    directives: { tooltip: VTooltip },
 
     components: {
         Card, CardFooter, CardFooterItem, ContactForm, Popover,

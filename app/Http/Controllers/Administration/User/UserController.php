@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function store(ValidateUserRequest $request)
     {
-        $user = new User($request->all());
+        $user = new User($request->validated());
 
         $this->authorize('handle', $user);
 
@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $this->authorize('handle', $user);
 
-        $user->fill($request->all());
+        $user->fill($request->validated());
 
         $user->save();
 
