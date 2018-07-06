@@ -24,7 +24,7 @@ class ValidateOwnerRequest extends FormRequest
             'name' => ['required', $nameUnique],
             'is_active' => 'boolean',
             'description' => 'nullable',
-            'roleList' => 'array'
+            'roleList' => 'array',
         ];
     }
 }
