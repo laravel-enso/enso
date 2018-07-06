@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "71471cea95d6ae349a9db51e0dad49db",
+    "content-hash": "88dcce68e534679f9f7e7cca801c80ec",
     "packages": [
         {
             "name": "box/spout",
@@ -1617,16 +1617,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.10.14",
+            "version": "2.10.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "04daef87596ebf1724ecbf2ac16b1f58a9523106"
+                "reference": "bc636a4a397e5c2c88ae26fd7eb70ec46cde8a81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/04daef87596ebf1724ecbf2ac16b1f58a9523106",
-                "reference": "04daef87596ebf1724ecbf2ac16b1f58a9523106",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/bc636a4a397e5c2c88ae26fd7eb70ec46cde8a81",
+                "reference": "bc636a4a397e5c2c88ae26fd7eb70ec46cde8a81",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1702,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-07-05T17:17:01+00:00"
+            "time": "2018-07-06T05:18:25+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
