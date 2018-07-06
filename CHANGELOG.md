@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.8.7
+
+- compiles all the themes with latest bulma & bulma-extensions
+- fixes navbar shadow
+
 ### 2.8.6
 
 Pay attention, has one breaking change. See the upgrade section below.

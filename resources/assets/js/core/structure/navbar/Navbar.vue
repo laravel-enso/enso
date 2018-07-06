@@ -86,13 +86,18 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     .navbar {
         position: fixed;
         min-width: 100%;
         top: 0px;
         z-index: 3;
+
+        &.has-shadow {
+            -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
+            box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
+        }
     }
 
     .navbar-item.is-aligned-right {
