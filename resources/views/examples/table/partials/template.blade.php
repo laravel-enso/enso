@@ -4,7 +4,6 @@
 {
     "routePrefix": "examples.table",
     "readSuffix": "data",
-    "writeSuffix": null,
     "name": "Enso Vue Datatable Example",
     "icon": ["fab", "vuejs"],
     "crtNo": true,

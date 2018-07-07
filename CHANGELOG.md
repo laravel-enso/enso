@@ -2,9 +2,13 @@
 
 ### 2.8.8
 
+#### VueDatatable
+
+NOTE: we removed the unused `writeSuffix` template attribute. Make sure that you remove it from all the existing templates.
+
 #### StructureManager
 
-Finalizes the implementation for `php artisan enso:make:migration`, a CLI designed to help creating new ready for production Enso structures in minutes.
+Finalizes the implementation for `php artisan enso:make:structure` - a CLI designed to help creating new ready for production Enso structures in minutes.
 
 From the CLI you easily generate the following files:
 
@@ -23,6 +27,7 @@ From the CLI you easily generate the following files:
     - controller
 - select structure
     - controller
+
 and the needed backend routes (api.php)
 
 #### RoleManager

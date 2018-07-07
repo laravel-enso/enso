@@ -1,7 +1,6 @@
 {
     "routePrefix": "administration.owners",
     "readSuffix": "getTableData",
-    "writeSuffix": null,
     "name": "Registered Entities",
     "icon": "list-alt",
     "crtNo": true,

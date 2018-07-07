@@ -1,7 +1,6 @@
 {
     "routePrefix": "administration.users",
     "readSuffix": "getTableData",
-    "writeSuffix": null,
     "name": "Registered Users",
     "icon": "users",
     "crtNo": true,
