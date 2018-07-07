@@ -9,7 +9,11 @@
 
 <script>
 
+import fontawesome from '@fortawesome/fontawesome';
+import { faFileAlt, faSlidersH } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
+
+fontawesome.library.add([faFileAlt, faSlidersH]);
 
 export default {
     components: { VueTable },

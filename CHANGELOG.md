@@ -1,5 +1,38 @@
 ## Laravel Enso's Changelog
 
+### 2.8.8
+
+#### StructureManager
+
+Finalizes the implementation for `php artisan enso:make:migration`, a CLI designed to help creating new ready for production Enso structures in minutes.
+
+From the CLI you easily generate the following files:
+
+- model
+- `create_structure_for_model` migration
+- front-end route files for crud actions `index`, `create`, `edit`, `show`
+- crud views boilerplate
+- form structure:
+    - builder
+    - json template boilerplate
+    - request validator,
+    - controller
+- table structure:
+    - builder
+    - json template boilerplate
+    - controller
+- select structure
+    - controller
+and the needed backend routes (api.php)
+
+#### RoleManager
+
+Adds the new system that allows roles management in development with the posibility to easily sync them with the live instance of the app though a seeder.
+
+To run the syncronization, after generating each config file run on the live instance `php artisan db:seed --class=RoleSeeder.php
+
+To use this run `php artisan enso:roles:add-missing-permission` after upgrading, and publish the [seeder]in your local project: `php artisan vendor-publish --tag=roles-seeder`
+
 ### 2.8.7
 
 - compiles all the themes with latest bulma & bulma-extensions
