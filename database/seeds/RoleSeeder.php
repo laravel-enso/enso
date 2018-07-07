@@ -26,7 +26,7 @@ class RoleSeeder extends Seeder
             ['name' => $config['role']['name']],
             [
                 'display_name' => $config['role']['display_name'],
-                'menu_id' => $this->menuId($config)
+                'menu_id' => $this->menuId($config),
             ]
         );
 
