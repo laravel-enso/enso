@@ -117,6 +117,9 @@ with features like:
 
 **fully working in less than 5 minutes!**
 
+You may then use the [Structure Manager CLI](https://github.com/laravel-enso/StructureManager#cli-details) to quickly 
+create models, migrations, permissions as well as select, form and table resources.
+
 &nbsp;
 &nbsp;
 &nbsp;
