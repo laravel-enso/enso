@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.8.9
+
+- adds validations to structure manager's CLI
+- updates the breadcrumbs for bulma 0.7.*
+- improves the Enum, now it can handle constants
+- fixes the comment manager dropdown (atwho)
+- sets the card position to static (card.vue)
+- fixes dataimport summary loading bug
+
 ### 2.8.8
 
 #### VueDatatable

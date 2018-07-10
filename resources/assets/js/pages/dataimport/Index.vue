@@ -145,12 +145,9 @@
                 </nav>
             </div>
             <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd">
-                <card class=" animated bounceInRight"
+                <card class="animated bounceInRight"
                     :icon="icon"
-                    :title="__('Issues')"
-                    removable
-                    @remove="summary = null"
-                    v-if="summary.issues">
+                    :title="__('Issues')">
                     <tabs class="has-padding-medium"
                         alignment="right">
                         <tab v-for="(issues, category) in summary.structureIssues"

@@ -49,11 +49,11 @@
                 <inputor v-on="$listeners"
                     :comment="comment"/>
                 <div class="has-margin-top-medium">
-                    <button type="button" class="button is-small is-outlined has-margin-right-small"
+                    <button class="button is-small is-outlined has-margin-right-small action"
                         @click="isNew ? $emit('cancel-add') : cancelAdd()">
                         {{ __('Cancel') }}
                     </button>
-                    <button type="button" class="button is-small is-outlined is-success"
+                    <button class="button is-small is-outlined is-success action"
                         v-tooltip.left="{
                             content: __('You can also save by pressing SHIFT + Enter after typing'),
                             delay: 800}"
@@ -180,6 +180,10 @@ export default {
 
     .media-content {
         overflow: unset;
+    }
+
+    .button.action {
+        position: inherit;
     }
 
 </style>

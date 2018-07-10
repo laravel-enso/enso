@@ -245,6 +245,10 @@ export default {
 
 <style scoped>
 
+    .card {
+        position: static;
+    }
+
     .card-header-title {
         white-space: nowrap;
         overflow: hidden;

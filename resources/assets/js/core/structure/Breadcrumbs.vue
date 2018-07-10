@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="breadcrumb has-dot-separator">
+    <nav class="breadcrumb is-small has-dot-separator">
         <ul>
             <li v-for="(breadcrumb, index) in breadcrumbs"
                 :class="{ 'is-active': breadcrumb.name === $route.meta.breadcrumb }"
@@ -39,11 +39,6 @@ export default {
 </script>
 
 <style>
-
-    nav.breadcrumb > ul > li > a {
-        padding: 0 0.8rem;
-        font-size: 0.8rem;
-    }
 
     breadcrumb a.is-disabled:hover {
         color: inherit;
