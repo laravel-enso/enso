@@ -2,11 +2,11 @@
 
     <nav class="navbar app-navbar has-shadow">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item logo" href="#">
                 <figure class="image is-24x24">
                     <img src="/images/logo.svg">
                 </figure>
-                <h4 class="title is-4 has-margin-left-small"
+                <h4 class="title is-4 animated has-margin-left-small"
                     v-if="menu.isExpanded">
                     {{ meta.appName }}
                 </h4>
@@ -14,7 +14,8 @@
             <a class="navbar-item"
                 @click="toggleMenu(isTouch)">
                 <span class="icon is-small">
-                    <fa icon="bars"/>
+                    <fa icon="bars"
+                        :class="{ 'rotate': !menu.isExpanded }"/>
                 </span>
             </a>
             <div class="navbar-item"
@@ -98,10 +99,18 @@ export default {
             -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
             box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
         }
-    }
 
-    .navbar-item.is-aligned-right {
-        margin-left: auto;
+        .fa-bars {
+            transition: transform .300s;
+
+            &.rotate {
+                transform: rotate(90deg);
+            }
+        }
+
+        .navbar-item.is-aligned-right {
+            margin-left: auto;
+        }
     }
 
 </style>

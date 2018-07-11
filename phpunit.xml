@@ -10,6 +10,9 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
+        <testsuite name="local">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
         <testsuite name="actionlogger">
             <directory suffix="Test.php">./vendor/laravel-enso/actionlogger/tests/features</directory>
         </testsuite>
@@ -24,9 +27,6 @@
         </testsuite>
         <testsuite name="contacts">
             <directory suffix="Test.php">./vendor/laravel-enso/contacts/tests/features</directory>
-        </testsuite>
-        <testsuite name="core">
-            <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
         </testsuite>
         <testsuite name="dataimport">
             <directory suffix="Test.php">./vendor/laravel-enso/dataimport/tests/features</directory>

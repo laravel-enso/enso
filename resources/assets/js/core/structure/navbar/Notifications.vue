@@ -3,7 +3,7 @@
     <div class="navbar-item has-dropdown notifications"
         v-click-outside="hide"
         :class="{ 'is-active': show }">
-        <a class="navbar-link"
+        <a :class="['navbar-link', { 'rotate': show }]"
             @click="show=!show">
             <span class="icon is-small">
                 <fa icon="bell"/>
@@ -215,7 +215,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
     sup.notification-count {
         font-size: 0.75em;
@@ -233,6 +233,17 @@ export default {
         white-space: normal;
         width: 268px;
         overflow-x: hidden;
+    }
+
+    .navbar-link {
+        &:after {
+            transform: rotate(135deg);
+            transition: transform .300s ease;
+        }
+
+        &.rotate:after {
+            transform: rotate(-45deg);
+        }
     }
 
 </style>

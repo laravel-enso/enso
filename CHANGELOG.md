@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+# 2.8.10
+
+- adds animated hamburger for the main menu
+- animates the notification dropdown arrow
+- moves the Owner & User Tests in the local project & updates the phpunit.xml (**NOTE** you will have to do this yourself in an existing project)
+- fixes laravel-enso/vuedatatable#67
+
 ### 2.8.9
 
 - adds validations to structure manager's CLI
