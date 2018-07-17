@@ -1,7 +1,8 @@
 <template>
     <a class="navbar-item user-profile"
         @click="goToProfile()">
-        <img :src="$store.getters.avatarLink">
+        <img class="is-rounded"
+            :src="$store.getters.avatarLink">
         <span class="has-margin-left-small"
             v-if="!isTouch">
             {{ $store.state.user.first_name }}
@@ -28,3 +29,9 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+    img.is-rounded {
+        border-radius: 290486px;
+    }
+</style>

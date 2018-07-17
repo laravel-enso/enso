@@ -25,7 +25,6 @@
                         v-focus
                         :placeholder="i18n(placeholder)"
                         v-model="query"
-                        @input="getData()"
                         v-if="dropdown"
                         @keydown.esc="hideDropdown"
                         @keydown.down="keyDown"
@@ -235,6 +234,11 @@ export default {
                 this.optionList = this.options;
             },
             deep: true,
+        },
+        query: {
+            handler() {
+                this.getData();
+            },
         },
         params: {
             handler() {

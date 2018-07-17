@@ -1,6 +1,14 @@
 ## Laravel Enso's Changelog
 
-# 2.8.10
+### 2.8.11
+
+- adds `laravolt/avatar` for creating default avatars. Avatars can be "refreshed" now
+- vuedatatable: adds `dateFormat` template attribute for individual columns
+- improves the overall flow for the structuremanager CLI
+- fixes / improves tests (adds tests for structuremanager)
+- fixes an edge case bug in vueselect multiple when clicking outside of the dropdown with no options selected
+
+### 2.8.10
 
 - adds animated hamburger for the main menu
 - animates the notification dropdown arrow

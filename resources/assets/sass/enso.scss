@@ -15,6 +15,9 @@
 .button.is-naked {
     background: 0;
     border: none;
+    &:focus {
+        box-shadow: unset;
+    }
 }
 
 .icon.angle {

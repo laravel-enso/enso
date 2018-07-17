@@ -5,9 +5,8 @@
         @mouseleave="!dialog ? controls = false: null">
         <figure class="media-left">
             <p class="image is-48x48">
-                <img :src="avatar"
-                    alt="User Avatar"
-                    class="avatar">
+                <img class="is-rounded"
+                    :src="avatar">
             </p>
         </figure>
         <div class="media-content">
@@ -169,10 +168,6 @@ export default {
 </script>
 
 <style scoped>
-
-    img.avatar {
-        border: 1px solid orangered;
-    }
 
     span.comment-body {
         word-break: break-all;

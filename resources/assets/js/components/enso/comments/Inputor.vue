@@ -17,7 +17,8 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-24x24">
-                                <img :src="'/api/core/avatars/' + item.id" alt="Image">
+                                <img class="is-rounded"
+                                    :src="'/api/core/avatars/' + item.id">
                             </figure>
                         </div>
                         <div class="media-content">

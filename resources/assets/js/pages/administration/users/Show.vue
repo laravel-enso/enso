@@ -7,7 +7,8 @@
                     <div class="columns is-mobile">
                         <div class="column is-narrow">
                             <div class="image is-128x128">
-                                <img :src="avatarLink">
+                                <img class="is-rounded"
+                                    :src="avatarLink">
                             </div>
                         </div>
                         <div class="column">
@@ -23,14 +24,13 @@
                                     v-if="avatarId"
                                     @click="deleteAvatar">
                                     <span class="icon">
-                                        <fa icon="trash-alt"/>
+                                        <fa icon="sync-alt"/>
                                     </span>
                                     <span class="is-hidden-mobile">
                                         {{ __('Avatar') }}
                                     </span>
                                 </button>
-                                <file-uploader v-if="!avatarId"
-                                    @upload-successful="setUserAvatar($event.id)"
+                                <file-uploader @upload-successful="setUserAvatar($event.id)"
                                     :url="uploadAvatarLink"
                                     file-key="avatar">
                                     <template slot="upload-button"
@@ -242,15 +242,15 @@
 import { mapState, mapMutations } from 'vuex';
 import fontawesome from '@fortawesome/fontawesome';
 import {
-    faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
-    faEye, faPlus, faPencilAlt,
+    faSyncAlt, faTrashAlt, faUpload, faSignOutAlt,
+    faEllipsisH, faEye, faPlus, faPencilAlt,
 } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 
 fontawesome.library.add([
-    faTrashAlt, faUpload, faSignOutAlt, faEllipsisH,
-    faEye, faPlus, faPencilAlt,
+    faSyncAlt, faTrashAlt, faUpload, faSignOutAlt,
+    faEllipsisH, faEye, faPlus, faPencilAlt,
 ]);
 
 export default {
@@ -336,7 +336,7 @@ export default {
         },
         deleteAvatar() {
             axios.delete(route('core.avatars.destroy', this.user.avatarId))
-                .then(() => this.setUserAvatar(null))
+                .then(({ data }) => this.setUserAvatar(data))
                 .catch(error => this.handleError(error));
         },
         exit() {

@@ -3753,6 +3753,10 @@
   cursor: pointer;
 }
 
+.has-text-muted {
+  opacity: 0.7;
+}
+
 [v-cloak] {
   display: none;
 }
@@ -3765,6 +3769,11 @@
 .button.is-naked {
   background: 0;
   border: none;
+}
+
+.button.is-naked:focus {
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .icon.angle {
