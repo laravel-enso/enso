@@ -35,8 +35,8 @@ class OwnerTest extends TestCase
         $owner = config('enso.config.ownerModel')::whereName($postParams['name'])->first();
 
         $response->assertStatus(200)
-            ->assertJson([
-                'message' => 'The owner was successfully created',
+            ->assertJsonStructure(['message'])
+            ->assertJsonFragment([
                 'redirect' => 'administration.owners.edit',
                 'id' => $owner->id,
             ]);
@@ -62,7 +62,7 @@ class OwnerTest extends TestCase
 
         $this->patch(route('administration.owners.update', $owner->id, false), $owner->toArray())
             ->assertStatus(200)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', $owner->fresh()->name);
     }

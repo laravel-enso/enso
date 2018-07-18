@@ -40,8 +40,8 @@ class UserTest extends TestCase
         $user = User::whereFirstName($postParams['first_name'])->first(['id']);
 
         $response->assertStatus(200)
-            ->assertJson([
-                'message' => 'The user was successfully created',
+            ->assertJsonStructure(['message'])
+            ->assertJsonFragment([
                 'redirect' => 'administration.users.edit',
                 'id' => $user->id,
             ]);
@@ -67,7 +67,7 @@ class UserTest extends TestCase
 
         $this->patch(route('administration.users.update', $user->id, false), $user->toArray())
             ->assertStatus(200)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', $user->fresh()->last_name);
     }
