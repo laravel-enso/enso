@@ -4,7 +4,8 @@
             {{ label }}
         </span>
         <a class="tag is-delete"
-            @click="$emit('remove')"/>
+            @click="$emit('remove')"
+            v-if="!disabled"/>
     </div>
 </template>
 
@@ -15,7 +16,11 @@ export default {
     props: {
         label: {
             type: String,
-            default: null,
+            required: true,
+        },
+        disabled: {
+            type: Boolean,
+            required: true,
         },
     },
 };
@@ -27,15 +32,18 @@ export default {
             margin-bottom: 0;
         }
 
+        &:not(:first-child) {
+            margin-left: 0.3em;
+        }
+
         .tag {
             padding: 0.5em;
             height: 1.4em;
             font-size: 1em;
-            margin: 0.05em 0.1em 0.05em;
+            margin: 0.05em 0 0.05em;
 
             &:not(body).is-delete {
                 width: 1.4em;
-                margin-right: 0.2em;
             }
         }
     }

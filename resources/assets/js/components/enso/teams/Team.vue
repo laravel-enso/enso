@@ -8,7 +8,7 @@
         <info-item>
             <label slot="left"
                 class="label">
-                {{ __('Team Name') }}:
+                {{ __('Team') }}:
             </label>
             <div slot="right"
                 class="field has-addons">
@@ -94,14 +94,14 @@
 
 <script>
 import fontawesome from '@fortawesome/fontawesome';
-import { faPlus, faBan, faPencilAlt, faTrash, faCheck }
+import { faBan, faPencilAlt, faTrash, faCheck }
     from '@fortawesome/fontawesome-free-solid/shakable.es';
 import { VTooltip } from 'v-tooltip';
 import InfoBox from '../bulma/InfoBox.vue';
 import InfoItem from '../bulma/InfoItem.vue';
 import VueSelect from '../select/VueSelect.vue';
 
-fontawesome.library.add([faPlus, faBan, faPencilAlt, faTrash, faCheck]);
+fontawesome.library.add([faBan, faPencilAlt, faTrash, faCheck]);
 export default {
     name: 'Team',
 
@@ -163,7 +163,7 @@ export default {
 <style lang="scss" scoped>
 
     .team-name {
-        width: 170px;
+        width: 150px;
     }
 
     .avatar-list {

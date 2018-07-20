@@ -13,6 +13,7 @@
                         v-if="multiple">
                         <div class="control">
                             <tag v-for="(option, index) in selected"
+                                :disabled="disabled"
                                 :label="option[label]"
                                 :key="index"
                                 @remove="remove(option[trackBy])"/>
@@ -329,7 +330,7 @@ export default {
             this.position = 0;
         },
         hideDropdown() {
-            this.query = null;
+            this.query = '';
             this.dropdown = false;
             this.position = null;
         },

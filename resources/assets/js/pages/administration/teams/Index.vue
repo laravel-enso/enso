@@ -12,12 +12,15 @@
                     {{ __('New team') }}
                 </span>
             </button>
-            <div class="control has-icons-right is-pulled-right"
+            <div class="control has-icons-left has-icons-right is-pulled-right"
                 v-if="teams.length > 3">
                 <input class="team-search input"
                     type="text"
                     :placeholder="__('Filter teams')"
                     v-model="query">
+                <span class="icon is-small is-left">
+                    <fa icon="search"/>
+                </span>
                 <span class="icon is-small is-right clear-button"
                     v-if="query"
                     @click="query = null">
@@ -52,10 +55,10 @@
 <script>
 
 import fontawesome from '@fortawesome/fontawesome';
-import { faPlus } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faPlus, faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
 import Team from '../../../components/enso/teams/Team.vue';
 
-fontawesome.library.add([faPlus]);
+fontawesome.library.add([faPlus, faSearch]);
 
 export default {
     components: { Team },
@@ -72,7 +75,7 @@ export default {
         filteredTeams() {
             return this.query
                 ? this.teams.filter(({ name }) =>
-                    name.indexOf(this.query) > -1)
+                    name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.teams;
         },
     },
@@ -107,8 +110,8 @@ export default {
             pointer-events: all;
         }
 
-        input.teams-search {
-            width: 180px;
+        input.team-search {
+            width: 150px;
         }
     }
 

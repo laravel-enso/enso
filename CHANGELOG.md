@@ -4,6 +4,9 @@
 
 - upgrades the vue select to use Bulma's tag list in multiselect mode
 - adds teams management. User can now be organized in teams. To enable the teams menu run `php artisan migrate`
+- fixes the login redirect bug when session is expired and page is reloaded
+- fixes inconsistency in vueSelect when the query became `null` instead of `''`, and unwanted requests were made
+- hides the delete button for tags when the component is disabled
 
 ### 2.8.12
 - updates json assertions in tests to work with Laravel's latest changes (laravel/framework#b41330319e954852d62bf955ca201ae371c29bce)

@@ -12,8 +12,8 @@
                 </h5>
             </div>
             <div class="
-                column has-padding-small is-half has-text-right-tablet
-                has-text-centered-mobile
+                    column is-half has-text-centered-mobile
+                    has-padding-small has-text-right-tablet
                 ">
                 <button class="button has-margin-left-small"
                     v-for="button in template.buttons.global"
@@ -58,7 +58,8 @@
                     </span>
                 </button>
             </div>
-            <div class="column has-padding-small is-one-third-desktop has-text-right">
+            <div class="column has-padding-small is-one-third-desktop has-text-right"
+                v-if="template.searchable">
                 <p class="control has-icons-left has-icons-right">
                     <input class="input has-text-centered"
                         type="text"
