@@ -23,10 +23,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        overlay: {
-            type: Boolean,
-            default: false,
-        },
     },
 };
 
@@ -38,10 +34,11 @@ export default {
 @import '~bulma/sass/utilities/derived-variables.sass';
 
 .box {
-    border-top: 4px solid $grey;
+    border-top: 2px solid $white;
     -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
     box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
     transition: border-color .75s ease;
+    position: relative;
 
     &.is-info {
         border-color: $info;

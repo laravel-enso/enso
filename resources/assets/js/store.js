@@ -89,6 +89,7 @@ export default new Vuex.Store({
             }).catch((error) => {
                 if (error.response.status === 401) {
                     commit('auth/logout');
+                    router.push({ name: 'login' });
                 }
             });
         },

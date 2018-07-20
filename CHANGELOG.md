@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.8.13
+
+- upgrades the vue select to use Bulma's tag list in multiselect mode
+- adds teams management. User can now be organized in teams. To enable the teams menu run `php artisan migrate`
+
 ### 2.8.12
 - updates json assertions in tests to work with Laravel's latest changes (laravel/framework#b41330319e954852d62bf955ca201ae371c29bce)
 - You should manually update the `OwnerTest` & `UserTest` in existing projects.

@@ -1,9 +1,11 @@
 <template>
-    <span class="tag is-link">
-        {{ label }}
-        <a class="delete is-small"
+    <div class="tags has-addons">
+        <span class="tag is-link">
+            {{ label }}
+        </span>
+        <a class="tag is-delete"
             @click="$emit('remove')"/>
-    </span>
+    </div>
 </template>
 
 <script>
@@ -20,18 +22,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .tag {
-        padding: 0.5rem;
-        height: 1.4rem;
-        font-size: 1rem;
-        margin: 0.05rem 0.1rem 0.05rem;
-
-        .delete {
-            margin-left: 0.2rem;
+    .tags {
+        &:last-child {
+            margin-bottom: 0;
         }
 
-        &:last {
-            margin-right:auto;
+        .tag {
+            padding: 0.5em;
+            height: 1.4em;
+            font-size: 1em;
+            margin: 0.05em 0.1em 0.05em;
+
+            &:not(body).is-delete {
+                width: 1.4em;
+                margin-right: 0.2em;
+            }
         }
     }
+
 </style>

@@ -9,12 +9,15 @@
                 @click="showDropdown"
                 @focus="showDropdown">
                 <div class="select-value">
-                    <span v-if="multiple">
-                        <tag v-for="(option, index) in selected"
-                            :label="option[label]"
-                            :key="index"
-                            @remove="remove(option[trackBy])"/>
-                    </span>
+                    <div class="field is-grouped is-grouped-multiline"
+                        v-if="multiple">
+                        <div class="control">
+                            <tag v-for="(option, index) in selected"
+                                :label="option[label]"
+                                :key="index"
+                                @remove="remove(option[trackBy])"/>
+                        </div>
+                    </div>
                     <span v-if="!dropdown && !(multiple && hasSelection)">
                         {{ hasSelection
                             ? selected
@@ -464,6 +467,18 @@ export default {
                     white-space: normal;
                     text-align: left;
 
+                    .field.is-grouped.is-grouped-multiline {
+                        .control:last-child,
+                        .control:not(:last-child) {
+                            margin-bottom: 0;
+                            display: contents;
+
+                            .tags:not(:last-child) {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
                     .select-input {
                         border: 0;
                         height: 1.5em;
@@ -471,6 +486,7 @@ export default {
                         -webkit-box-shadow: unset;
                         width: fit-content;
                         padding: unset;
+                        margin-left: 0.2em;
                     }
 
                     .angle {

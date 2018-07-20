@@ -61,6 +61,7 @@ Route::middleware(['auth', 'core'])
                             ->name('getTableData');
                         Route::get('exportExcel', 'UserTableController@excel')
                             ->name('exportExcel');
+
                         Route::get('selectOptions', 'UserSelectController@options')
                             ->name('selectOptions');
                     });
