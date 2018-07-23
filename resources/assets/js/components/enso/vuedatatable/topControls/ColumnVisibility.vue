@@ -5,7 +5,7 @@
             class="icon is-small">
             <fa icon="eye"/>
         </span>
-        <a v-for="(column, index) in template.columns"
+        <a v-for="(column, index) in visibleColumns"
             :key="index"
             class="dropdown-item"
             :class="{ 'is-active': column.meta.visible }"
@@ -33,6 +33,13 @@ export default {
         template: {
             type: Object,
             required: true,
+        },
+    },
+
+    computed: {
+        visibleColumns() {
+            return this.template.columns
+                .filter(({ meta }) => !meta.rogue);
         },
     },
 };

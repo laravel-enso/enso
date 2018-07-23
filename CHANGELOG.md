@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.8.14
+
+- we have just launched the new docuementation [website](https://docs.laravel-enso.com)
+- on touch devices the menu hides once an option is selected
+- refactor in menu drawing, the code is now DRY
+- fixes bug in dataimport for rows that were ending in null cells
+- cleans deprecated commands
+- composer and node dependencies update
+
 ### 2.8.13
 
 - upgrades the vue select to use Bulma's tag list in multiselect mode
@@ -9,6 +18,7 @@
 - hides the delete button for tags when the component is disabled
 
 ### 2.8.12
+
 - updates json assertions in tests to work with Laravel's latest changes (laravel/framework#b41330319e954852d62bf955ca201ae371c29bce)
 - You should manually update the `OwnerTest` & `UserTest` in existing projects.
 - adds `InfoBox` and `InfoItem` in `vuecomponents`

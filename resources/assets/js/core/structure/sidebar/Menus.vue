@@ -2,59 +2,14 @@
     <ul class="menu-list">
         <li v-for="(menu, index) in menus"
             :key="index">
-            <router-link v-if="!menu.children.length"
-                :to="{ name: menu.link }"
-                :class="{ 'is-active': isActive(menu) }">
-                <span class="icon is-small" style="display: inline-block">
-                    <fa :icon="menu.icon"/>
-                </span>
-                <transition enter-active-class="zoomIn"
-                    leave-active-class="zoomOut">
-                    <span class="animated has-margin-left-small menu-hiding-label"
-                        v-if="isExpanded">
-                        {{ __(menu.name) }}
-                    </span>
-                </transition>
-                <div class="dropdown-content">
-                    <div class="dropdown-item"
-                        v-if="!isExpanded">
-                        {{ menu.name }}
-                    </div>
-                </div>
-            </router-link>
-
-            <a @click="toggle(menu)"
-                v-if="menu.children.length">
-                <span class="icon is-small" style="display: inline-block">
-                    <fa :icon="menu.icon"/>
-                </span>
-                <transition enter-active-class="zoomIn"
-                    leave-active-class="zoomOut">
-                    <span class="animated has-margin-left-small menu-hiding-label"
-                        v-if="isExpanded">
-                        {{ __(menu.name) }}
-                    </span>
-                </transition>
-                <span class="icon is-small angle is-pulled-right"
-                    :aria-expanded="menu.expanded">
-                    <fa icon="angle-up"/>
-                </span>
-                <div class="dropdown-content">
-                    <div class="dropdown-item"
-                        v-if="!isExpanded">
-                        {{ menu.name }}
-                    </div>
-                </div>
-            </a>
-
+            <menu-item :class="{ 'is-active': isActive(menu) }"
+                :menu="menu"/>
             <menus :menus="menu.children"
                 :is-active="isActive"
                 @shrink="shrink"
                 @extend="extend"
                 :collapsed="!menu.expanded"
-                @select="$emit('select', $event)"
                 v-if="menu.children.length"/>
-
         </li>
     </ul>
 
@@ -62,11 +17,14 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex';
+import MenuItem from './MenuItem.vue';
+
 import './icons';
 
 export default {
     name: 'Menus',
+
+    components: { MenuItem },
 
     props: {
         menus: {
@@ -81,10 +39,6 @@ export default {
             type: Boolean,
             default: false,
         },
-    },
-
-    computed: {
-        ...mapState('layout/menu', ['isExpanded']),
     },
 
     watch: {
@@ -113,14 +67,13 @@ export default {
     },
 
     methods: {
-        ...mapMutations('menus', ['toggle']),
         shrink(height) {
             this.$el.style.height = `${parseInt(this.$el.style.height, 10) - height}px`;
-            return this.$emit('shrink', height);
+            this.$emit('shrink', height);
         },
         extend(height) {
             this.$el.style.height = `${height + parseInt(this.$el.style.height, 10)}px`;
-            return this.$emit('extend', height);
+            this.$emit('extend', height);
         },
     },
 };
@@ -130,40 +83,14 @@ export default {
 <style lang="scss" scoped>
 
     .menu-list {
-        transition: height .400s ease;
+        transition: height .333s ease;
         display: block;
         overflow-y: hidden;
         overflow-x: hidden;
 
-        a {
-            display: flex;
-        }
-
-        .menu-hiding-label {
-             white-space: nowrap;
-        }
-
-        .dropdown-content {
-            display: none;
-            white-space: nowrap;
-            padding-bottom: 0;
-            padding-top: 0;
-            margin-top: -9px;
-            position: fixed;
-            left: 55px
-        }
-
-        a:hover > div.dropdown-content {
-            display: block;
-        }
-
         li > ul {
             margin: 0 0 0 .5rem;
             padding-left: 0;
-        }
-
-        .icon.angle {
-            margin-left: auto;
         }
     }
 

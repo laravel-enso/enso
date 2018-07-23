@@ -118,7 +118,7 @@ export default {
         avatar() {
             return this.isNew
                 ? this.avatarLink
-                : route('core.avatars.show', this.comment.owner.avatarId || 'null');
+                : route('core.avatars.show', this.comment.owner.avatarId);
         },
         highlightTaggedUsers() {
             let { body } = this.comment;

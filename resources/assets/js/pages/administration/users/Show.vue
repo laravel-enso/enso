@@ -272,14 +272,12 @@ export default {
             return this.user.id === this.profile.id;
         },
         avatarId() {
-            if (this.isSelfVisiting) {
-                return this.user.avatarId;
-            }
-
-            return this.profile.avatar ? this.profile.avatar.id : null;
+            return this.isSelfVisiting
+                ? this.user.avatarId
+                : this.profile.avatarId;
         },
         avatarLink() {
-            return route('core.avatars.show', (this.avatarId || 'null'));
+            return route('core.avatars.show', this.avatarId);
         },
         timeline() {
             const actions = this.profile.timeline.data;

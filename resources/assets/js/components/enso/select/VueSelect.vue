@@ -16,7 +16,7 @@
                                 :disabled="disabled"
                                 :label="option[label]"
                                 :key="index"
-                                @remove="remove(option[trackBy])"/>
+                                @remove="remove(option[trackBy]); $emit('remove', option)"/>
                         </div>
                     </div>
                     <span v-if="!dropdown && !(multiple && hasSelection)">
