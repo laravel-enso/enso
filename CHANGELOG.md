@@ -24,9 +24,9 @@ Upgrade steps:
 - replace in your whole project:
     - `import fontawesome from '@fortawesome/fontawesome'` with `import { library } from '@fortawesome/fontawesome-svg-core'`
     - `import FontAwesomeIcon from` with `import { FontAwesomeIcon } from`
-    - `@fortawesome/free-regular-svg-icons` with `@fortawesome/free-regular-svg-icons`
-    - `@fortawesome/free-solid-svg-icons` with `@fortawesome/free-solid-svg-icons`
-    - `@fortawesome/free-brands-svg-icons` with `@fortawesome/free-brands-svg-icons`
+    - `@fortawesome/fontawesome-free-regular/shakable.es` with `@fortawesome/free-regular-svg-icons`
+    - `@fortawesome/fontawesome-free-solid/shakable.es` with `@fortawesome/free-solid-svg-icons`
+    - `@fortawesome/fontawesome-free-brands/shakable.es` with `@fortawesome/free-brands-svg-icons`
     - `fontawesome.library.add` with `library.add`
 
 ### 2.8.14
