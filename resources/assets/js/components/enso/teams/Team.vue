@@ -93,15 +93,15 @@
 </template>
 
 <script>
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBan, faPencilAlt, faTrash, faCheck }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import InfoBox from '../bulma/InfoBox.vue';
 import InfoItem from '../bulma/InfoItem.vue';
 import VueSelect from '../select/VueSelect.vue';
 
-fontawesome.library.add([faBan, faPencilAlt, faTrash, faCheck]);
+library.add([faBan, faPencilAlt, faTrash, faCheck]);
 export default {
     name: 'Team',
 

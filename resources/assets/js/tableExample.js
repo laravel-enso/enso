@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import axios from 'axios';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faVuejs, faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es';
-import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { faVuejs, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import store from './store';
 import VueTable from './components/enso/vuedatatable/VueTable.vue';
 import VueFilter from './components/enso/bulma/VueFilter.vue';
@@ -17,7 +17,7 @@ import './modules/enso/directives/hljs';
 
 import './modules/enso/mixins/errorHandler';
 
-fontawesome.library.add(faVuejs, faGithub, faCheck, faTimes);
+library.add(faVuejs, faGithub, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
 

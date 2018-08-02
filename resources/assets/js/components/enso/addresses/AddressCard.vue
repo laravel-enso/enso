@@ -97,14 +97,14 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
-import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
 import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
 
-fontawesome.library.add(faAnchor, faGlobe, faStickyNote);
+library.add(faAnchor, faGlobe, faStickyNote);
 
 export default {
     name: 'AddressesCard',

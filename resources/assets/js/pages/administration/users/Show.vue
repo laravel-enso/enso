@@ -240,15 +240,15 @@
 <script>
 
 import { mapState, mapMutations } from 'vuex';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faSyncAlt, faTrashAlt, faUpload, faSignOutAlt,
     faEllipsisH, faEye, faPlus, faPencilAlt,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+} from '@fortawesome/free-solid-svg-icons';
 import FileUploader from '../../../components/enso/fileuploader/FileUploader.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 
-fontawesome.library.add([
+library.add([
     faSyncAlt, faTrashAlt, faUpload, faSignOutAlt,
     faEllipsisH, faEye, faPlus, faPencilAlt,
 ]);

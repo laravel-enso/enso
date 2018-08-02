@@ -31,10 +31,10 @@
 <script>
 
 import vClickOutside from 'v-click-outside';
-import fontawesome from '@fortawesome/fontawesome';
-import { faAngleDown } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faAngleDown);
+library.add(faAngleDown);
 
 export default {
     name: 'Dropdown',

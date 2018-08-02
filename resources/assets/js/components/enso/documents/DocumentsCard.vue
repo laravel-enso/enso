@@ -34,14 +34,14 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faCopy } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Documents from './Documents.vue';
 import FileUploader from '../fileuploader/FileUploader.vue';
 
-fontawesome.library.add(faCopy);
+library.add(faCopy);
 
 export default {
     name: 'DocumentsCard',

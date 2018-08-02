@@ -104,13 +104,13 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import TableCell from './TableCell.vue';
 import Modal from './Modal.vue';
 
-fontawesome.library.add([
+library.add([
     faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
 ]);
 

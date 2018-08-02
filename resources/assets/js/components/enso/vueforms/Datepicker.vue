@@ -28,11 +28,11 @@
 <script>
 
 import Flatpickr from 'flatpickr';
-import fontawesome from '@fortawesome/fontawesome';
-import { faClock, faCalendarAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faClock, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import i18n from './flatpickrLocale';
 
-fontawesome.library.add(faClock, faCalendarAlt);
+library.add(faClock, faCalendarAlt);
 
 export default {
     name: 'Datepicker',

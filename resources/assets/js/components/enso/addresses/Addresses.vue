@@ -64,14 +64,14 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faMapSigns, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faMapSigns, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import AddressCard from './AddressCard.vue';
 import AddressForm from './AddressForm.vue';
 
-fontawesome.library.add(faMapSigns, faPlusSquare);
+library.add(faMapSigns, faPlusSquare);
 
 export default {
     name: 'Addresses',

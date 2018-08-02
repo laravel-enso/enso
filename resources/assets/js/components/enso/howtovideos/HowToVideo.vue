@@ -91,15 +91,15 @@ import { VTooltip } from 'v-tooltip';
 import { videoPlayer } from 'vue-video-player';
 import 'video.js/dist/video-js.css';
 import 'vue-video-player/src/custom-theme.css';
-import fontawesome from '@fortawesome/fontawesome';
-import { faInfo, faTags, faInfoCircle } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import { faTrashAlt, faEdit, faImage } from '@fortawesome/fontawesome-free-regular/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faInfo, faTags, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faEdit, faImage } from '@fortawesome/free-regular-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Popover from '../bulma/Popover.vue';
 import FileUploader from '../fileuploader/FileUploader.vue';
 
-fontawesome.library.add([faTrashAlt, faInfo, faTags, faEdit, faImage, faInfoCircle]);
+library.add([faTrashAlt, faInfo, faTags, faEdit, faImage, faInfoCircle]);
 
 export default {
     name: 'HowToVideo',

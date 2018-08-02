@@ -18,11 +18,11 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faTable } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTable } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown.vue';
 
-fontawesome.library.add(faTable);
+library.add(faTable);
 
 export default {
     name: 'StyleSelector',

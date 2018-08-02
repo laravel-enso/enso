@@ -12,14 +12,6 @@
     animation-duration: .5s;
 }
 
-.button.is-naked {
-    background: 0;
-    border: none;
-    &:focus {
-        box-shadow: unset;
-    }
-}
-
 .icon.angle {
     transition: transform .300s ease;
 
@@ -30,23 +22,6 @@
     &[aria-expanded="true"] {
         transform: rotate(-180deg);
     }
-}
-
-@media screen and (max-width: 769px) {
-    .columns.is-reverse-mobile {
-        flex-direction: column-reverse;
-        display: flex;
-        .column {
-            width: 100%; 
-        }
-    }
-}
-
-.tag.is-table-tag {
-    font-size: 0.8rem;
-    font-weight: bold;
-    height: 1.4em;
-    padding: 7px;
 }
 
 .footer {

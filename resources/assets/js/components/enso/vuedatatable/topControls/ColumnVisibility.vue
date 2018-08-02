@@ -18,11 +18,11 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faEye } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown.vue';
 
-fontawesome.library.add(faEye);
+library.add(faEye);
 
 export default {
     name: 'ColumnVisibility',

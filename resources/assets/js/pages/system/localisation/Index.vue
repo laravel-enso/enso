@@ -12,11 +12,11 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faEdit } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 
-fontawesome.library.add(faEdit);
+library.add(faEdit);
 
 export default {
     components: { VueTable },

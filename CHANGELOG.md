@@ -1,8 +1,37 @@
 ## Laravel Enso's Changelog
 
+### 2.8.15
+
+- updates documentation
+- updates composer and npm dependencies
+- Breaking Change: updates fontawesome to 5.2.x. Please read FA [upgrade instructions](https://github.com/FortAwesome/Font-Awesome/blob/master/UPGRADING.md#50x-to-510)
+
+Upgrade steps:
+- update in `composer.json`:
+    - core: `"laravel-enso/core": "2.11.*",`
+    - charts: "laravel-enso/charts": "2.4.*",
+- run composer update
+- update in your packages.json file the fontawesome deps (replace the old with):
+```json
+"@fortawesome/fontawesome-free": "^5.2.0",
+"@fortawesome/fontawesome-svg-core": "^1.2.2",
+"@fortawesome/free-brands-svg-icons": "^5.2.0",
+"@fortawesome/free-regular-svg-icons": "^5.2.0",
+"@fortawesome/free-solid-svg-icons": "^5.2.0",
+"@fortawesome/vue-fontawesome": "^0.1.1",
+```
+
+- replace in your whole project:
+    - `import fontawesome from '@fortawesome/fontawesome'` with `import { library } from '@fortawesome/fontawesome-svg-core'`
+    - `import FontAwesomeIcon from` with `import { FontAwesomeIcon } from`
+    - `@fortawesome/free-regular-svg-icons` with `@fortawesome/free-regular-svg-icons`
+    - `@fortawesome/free-solid-svg-icons` with `@fortawesome/free-solid-svg-icons`
+    - `@fortawesome/free-brands-svg-icons` with `@fortawesome/free-brands-svg-icons`
+    - `fontawesome.library.add` with `library.add`
+
 ### 2.8.14
 
-- we have just launched the new docuementation [website](https://docs.laravel-enso.com)
+- we have just launched the new documentation [website](https://docs.laravel-enso.com)
 - on touch devices the menu hides once an option is selected
 - refactor in menu drawing, the code is now DRY
 - fixes bug in dataimport for rows that were ending in null cells

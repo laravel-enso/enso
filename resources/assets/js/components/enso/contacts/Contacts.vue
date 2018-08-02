@@ -51,14 +51,14 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faAddressCard, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAddressCard, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Contact from './Contact.vue';
 import ContactForm from './ContactForm.vue';
 
-fontawesome.library.add(faAddressCard, faPlusSquare);
+library.add(faAddressCard, faPlusSquare);
 
 export default {
     name: 'Contacts',

@@ -46,14 +46,14 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-fontawesome.library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
+library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
 
 export default {
     components: { Card, CardControl, Popover },

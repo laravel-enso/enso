@@ -3,10 +3,10 @@
     <code class="js">
 import Vue from 'vue';
 import axios from 'axios';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faVuejs } from '@fortawesome/fontawesome-free-brands/shakable.es';
-import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faVuejs } from '@fortawesome/free-brands-svg-icons';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import store from './store';
 import VueTable from './components/enso/vuedatatable/VueTable.vue';
 import VueFilter from './components/enso/bulma/VueFilter.vue';
@@ -20,7 +20,7 @@ import './modules/enso/mixins/errorHandler';
 
 require('highlight.js/styles/atom-one-light.css');
 
-fontawesome.library.add(faVuejs, faCheck, faTimes);
+library.add(faVuejs, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
 

@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faListAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
-import { faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faListAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-fontawesome.library.add(faListAlt, faGithub);
+library.add(faListAlt, faGithub);
 
 Vue.component('fa', FontAwesomeIcon);

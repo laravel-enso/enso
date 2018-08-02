@@ -22,12 +22,12 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 const introJs = require('intro.js');
 
-fontawesome.library.add(faQuestion);
+library.add(faQuestion);
 
 export default {
     name: 'Tutorial',

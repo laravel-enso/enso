@@ -231,6 +231,10 @@ export default {
                 [this.length] = this.template.lengthMenu;
                 this.getData = debounce(this.getData, this.template.debounce);
                 this.setPreferences();
+                this.$nextTick(() => {
+                    this.initialised = true;
+                    this.$emit('initialised');
+                });
                 this.getData();
             }).catch((error) => {
                 const { status, data } = error.response;
@@ -246,10 +250,6 @@ export default {
         setPreferences() {
             this.setDefaultPreferences();
             this.checkSavedPreferences();
-
-            this.$nextTick(() => {
-                this.initialised = true;
-            });
         },
         checkSavedPreferences() {
             if (localStorage.getItem(this.preferencesKey) === null) {

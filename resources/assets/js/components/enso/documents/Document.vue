@@ -87,16 +87,16 @@
 <script>
 
 import { VPopover } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
     faInfoCircle, faUser, faCalendarAlt, faDatabase,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+} from '@fortawesome/free-solid-svg-icons';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 import Modal from './Modal.vue';
 
-fontawesome.library.add([
+library.add([
     faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
     faInfoCircle, faUser, faCalendarAlt, faDatabase,
 ]);

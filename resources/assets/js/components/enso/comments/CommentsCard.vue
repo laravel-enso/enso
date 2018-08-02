@@ -37,13 +37,13 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faComments, faPlusSquare } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faComments, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Comments from './Comments.vue';
 
-fontawesome.library.add(faComments, faPlusSquare);
+library.add(faComments, faPlusSquare);
 
 export default {
     name: 'CommentsCard',

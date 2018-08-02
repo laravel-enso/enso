@@ -74,13 +74,13 @@ import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
 import Favico from 'favico.js';
-import fontawesome from '@fortawesome/fontawesome';
-import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-fontawesome.library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
+library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
 
 export default {
     name: 'Notifications',

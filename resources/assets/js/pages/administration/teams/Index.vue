@@ -54,11 +54,11 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faPlus, faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Team from '../../../components/enso/teams/Team.vue';
 
-fontawesome.library.add([faPlus, faSearch]);
+library.add([faPlus, faSearch]);
 
 export default {
     components: { Team },

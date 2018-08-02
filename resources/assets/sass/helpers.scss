@@ -144,3 +144,11 @@
 .has-text-muted {
     opacity: 0.7;
 }
+
+.button.is-naked {
+    background: 0;
+    border: none;
+    &:focus {
+        box-shadow: unset;
+    }
+}

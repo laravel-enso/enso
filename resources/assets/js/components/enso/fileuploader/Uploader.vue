@@ -24,12 +24,12 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUpload }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import FileUploader from './FileUploader.vue';
 
-fontawesome.library.add(faUpload);
+library.add(faUpload);
 
 export default {
     name: 'Uploader',

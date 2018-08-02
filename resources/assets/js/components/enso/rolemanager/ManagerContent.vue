@@ -30,10 +30,10 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
-import { faExclamationTriangle } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faExclamationTriangle);
+library.add(faExclamationTriangle);
 
 export default {
     name: 'ManagerContent',

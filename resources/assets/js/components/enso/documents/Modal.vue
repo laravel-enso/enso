@@ -26,11 +26,11 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faCopy } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../../components/enso/bulma/Modal.vue';
 
-fontawesome.library.add(faCopy);
+library.add(faCopy);
 
 export default {
     components: { Modal },

@@ -24,14 +24,14 @@
 <script>
 
 import { saveAs } from 'file-saver';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle, faDownload }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Chart from './Chart.vue';
 
-fontawesome.library.add([
+library.add([
     faChartBar, faChartPie, faChartLine, faChartArea, faCircleNotch, faCircle, faDownload,
 ]);
 

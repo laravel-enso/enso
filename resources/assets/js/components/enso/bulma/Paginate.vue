@@ -54,12 +54,12 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown.vue';
 
-fontawesome.library.add([
+library.add([
     faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
 ]);
 

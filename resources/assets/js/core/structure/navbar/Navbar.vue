@@ -59,14 +59,14 @@
 
 import { mapState, mapMutations } from 'vuex';
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
-import { faBars, faCode, faUser, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBars, faCode, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';
 import ProfileControl from './ProfileControl.vue';
 
-fontawesome.library.add(faBars, faCode, faUser, faTimes);
+library.add(faBars, faCode, faUser, faTimes);
 
 export default {
     name: 'Navbar',

@@ -75,13 +75,13 @@
 
 import { VTooltip } from 'v-tooltip';
 import { mapGetters } from 'vuex';
-import fontawesome from '@fortawesome/fontawesome';
-import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Inputor from './Inputor.vue';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-fontawesome.library.add(faPencilAlt, faTrashAlt);
+library.add(faPencilAlt, faTrashAlt);
 
 export default {
     name: 'Comment',

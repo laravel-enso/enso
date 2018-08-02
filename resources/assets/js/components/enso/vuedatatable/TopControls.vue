@@ -89,14 +89,14 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faSync, faUndo, faSearch, faInfoCircle } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSync, faUndo, faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
 import Modal from './Modal.vue';
 
-fontawesome.library.add(faSync, faUndo, faSearch, faInfoCircle);
+library.add(faSync, faUndo, faSearch, faInfoCircle);
 
 export default {
     name: 'TopControls',

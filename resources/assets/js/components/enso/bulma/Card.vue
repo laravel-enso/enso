@@ -71,13 +71,13 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSync, faAngleDown }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import CardControl from './CardControl.vue';
 import Overlay from './Overlay.vue';
 
-fontawesome.library.add(faSearch, faSync, faAngleDown);
+library.add(faSearch, faSync, faAngleDown);
 
 export default {
     name: 'Card',

@@ -46,12 +46,12 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo);
+library.add(faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo);
 
 export default {
     name: 'Header',

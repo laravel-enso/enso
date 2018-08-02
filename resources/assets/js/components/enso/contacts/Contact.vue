@@ -51,16 +51,16 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faTimes, faEnvelope, faPhone, faInfoCircle }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import ContactForm from './ContactForm.vue';
 import Card from '../bulma/Card.vue';
 import CardFooter from '../bulma/CardFooter.vue';
 import CardFooterItem from '../bulma/CardFooterItem.vue';
 import Popover from '../bulma/Popover.vue';
 
-fontawesome.library.add([
+library.add([
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle,
 ]);
 

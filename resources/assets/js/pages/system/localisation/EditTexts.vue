@@ -131,12 +131,12 @@
 <script>
 
 import { mapState } from 'vuex';
-import fontawesome from '@fortawesome/fontawesome';
-import { faSearch, faTrashAlt } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../../components/enso/select/VueSelect.vue';
 import VueSwitch from '../../../components/enso/vueforms/VueSwitch.vue';
 
-fontawesome.library.add(faSearch, faTrashAlt);
+library.add(faSearch, faTrashAlt);
 
 export default {
     components: { VueSelect, VueSwitch },

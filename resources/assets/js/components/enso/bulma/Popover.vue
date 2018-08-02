@@ -28,10 +28,10 @@
 <script>
 
 import { VPopover } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
-import { faCheck, faTimes } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faCheck, faTimes);
+library.add(faCheck, faTimes);
 
 const positions = [
     'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start',

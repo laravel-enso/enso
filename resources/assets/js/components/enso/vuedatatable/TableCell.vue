@@ -58,4 +58,11 @@ export default {
         cursor: pointer;
     }
 
+    .tag.is-table-tag {
+        font-size: 0.8rem;
+        font-weight: bold;
+        height: 1.4em;
+        padding: 7px;
+    }
+
 </style>

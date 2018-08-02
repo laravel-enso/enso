@@ -116,10 +116,10 @@
 <script>
 
 import { mapState } from 'vuex';
-import fontawesome from '@fortawesome/fontawesome';
-import { faEnvelope, faCheck, faExclamationTriangle, faLock, faUser } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faCheck, faExclamationTriangle, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add([
+library.add([
     faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
 ]);
 

@@ -1,9 +1,9 @@
-// import fontawesome from '@fortawesome/fontawesome';
+// import { library } from '@fortawesome/fontawesome-svg-core';
 
-// import { } from '@fortawesome/fontawesome-free-regular/shakable.es'
+// import { } from '@fortawesome/free-regular-svg-icons'
 
-// import { } from '@fortawesome/fontawesome-free-solid/shakable.es';
+// import { } from '@fortawesome/free-solid-svg-icons';
 
-// import { } from '@fortawesome/fontawesome-free-brands/shakable.es';
+// import { } from '@fortawesome/free-brands-svg-icons';
 
-// fontawesome.library.add([]);
+// library.add([]);

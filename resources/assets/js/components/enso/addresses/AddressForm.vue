@@ -21,12 +21,12 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faLocationArrow } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import VueForm from '../vueforms/VueForm.vue';
 import Modal from '../bulma/Modal.vue';
 
-fontawesome.library.add(faLocationArrow);
+library.add(faLocationArrow);
 
 export default {
     name: 'AddressForm',

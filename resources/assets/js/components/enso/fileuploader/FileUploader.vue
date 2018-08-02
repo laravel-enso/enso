@@ -20,10 +20,10 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faUpload } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faUpload);
+library.add(faUpload);
 
 export default {
     props: {

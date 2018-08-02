@@ -217,11 +217,11 @@
 <script>
 
 import { VTooltip } from 'v-tooltip';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faUpload, faDownload, faTrashAlt, faFileExcel,
     faCalendarAlt, faClock, faCheck, faTimes, faBook,
-} from '@fortawesome/fontawesome-free-solid/shakable.es';
+} from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
@@ -232,7 +232,7 @@ import Paginate from '../../components/enso/bulma/Paginate.vue';
 import Tabs from '../../components/enso/bulma/Tabs.vue';
 import Tab from '../../components/enso/bulma/Tab.vue';
 
-fontawesome.library.add([
+library.add([
     faUpload, faDownload, faTrashAlt, faFileExcel,
     faCalendarAlt, faClock, faCheck, faTimes, faBook,
 ]);

@@ -9,15 +9,25 @@
                 @click="showDropdown"
                 @focus="showDropdown">
                 <div class="select-value">
-                    <div class="field is-grouped is-grouped-multiline"
-                        v-if="multiple">
-                        <div class="control">
+                    <div class="field is-grouped is-grouped-multiline">
+                        <div class="control"
+                            v-if="multiple">
                             <tag v-for="(option, index) in selected"
                                 :disabled="disabled"
                                 :label="option[label]"
                                 :key="index"
                                 @remove="remove(option[trackBy]); $emit('remove', option)"/>
                         </div>
+                        <input class="input select-input" type="text"
+                            v-focus
+                            :placeholder="i18n(placeholder)"
+                            v-model="query"
+                            @keydown.esc="hideDropdown"
+                            @keydown.down="keyDown"
+                            @keydown.up="keyUp"
+                            @keydown.tab="hideDropdown"
+                            @keydown.enter.prevent="hit()"
+                            v-if="dropdown">
                     </div>
                     <span v-if="!dropdown && !(multiple && hasSelection)">
                         {{ hasSelection
@@ -25,16 +35,6 @@
                             : (optionList.length > 0 ? i18n(placeholder) : i18n(labels.noOptions))
                         }}
                     </span>
-                    <input class="input select-input" type="text"
-                        v-focus
-                        :placeholder="i18n(placeholder)"
-                        v-model="query"
-                        v-if="dropdown"
-                        @keydown.esc="hideDropdown"
-                        @keydown.down="keyDown"
-                        @keydown.up="keyUp"
-                        @keydown.tab="hideDropdown"
-                        @keydown.enter.prevent="hit()">
                     <span class="is-loading"
                         v-if="loading"/>
                     <a class="delete is-small"
@@ -86,12 +86,12 @@
 
 import debounce from 'lodash/debounce';
 import vClickOutside from 'v-click-outside';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faAngleUp }
-    from '@fortawesome/fontawesome-free-solid/shakable.es';
+    from '@fortawesome/free-solid-svg-icons';
 import Tag from './Tag.vue';
 
-fontawesome.library.add([faCheck, faAngleUp]);
+library.add([faCheck, faAngleUp]);
 
 export default {
     name: 'VueSelect',
@@ -469,6 +469,15 @@ export default {
                     text-align: left;
 
                     .field.is-grouped.is-grouped-multiline {
+                        .select-input {
+                            border: 0;
+                            height: 1.4em;
+                            margin-top: 0.05em;
+                            box-shadow: unset;
+                            -webkit-box-shadow: unset;
+                            width: fit-content;
+                        }
+
                         .control:last-child,
                         .control:not(:last-child) {
                             margin-bottom: 0;
@@ -478,16 +487,6 @@ export default {
                                 margin-bottom: 0;
                             }
                         }
-                    }
-
-                    .select-input {
-                        border: 0;
-                        height: 1.5em;
-                        box-shadow: unset;
-                        -webkit-box-shadow: unset;
-                        width: fit-content;
-                        padding: unset;
-                        margin-left: 0.2em;
                     }
 
                     .angle {

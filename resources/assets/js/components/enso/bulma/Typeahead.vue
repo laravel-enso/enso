@@ -57,10 +57,10 @@
 <script>
 
 import debounce from 'lodash/debounce';
-import fontawesome from '@fortawesome/fontawesome';
-import { faSearch } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faSearch);
+library.add(faSearch);
 
 export default {
     name: 'Typeahead',

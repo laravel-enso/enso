@@ -39,10 +39,10 @@
 
 <script>
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faPowerOff } from '@fortawesome/fontawesome-free-solid/shakable.es';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
-fontawesome.library.add(faPowerOff);
+library.add(faPowerOff);
 
 export default {
     name: 'VueFilter',
