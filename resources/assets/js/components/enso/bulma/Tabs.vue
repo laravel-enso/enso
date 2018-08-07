@@ -75,6 +75,7 @@ export default {
 
             setTimeout(() => {
                 this.active = index;
+                this.$emit('selected', this.tabs[this.active]);
             }, 500);
         },
         disable(index) {

@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.8.16
+
+- bugfixes
+- dependencies update
+
 ### 2.8.15
 
 - updates documentation
