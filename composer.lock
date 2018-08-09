@@ -1544,16 +1544,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.11.2",
+            "version": "2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "c9c1e13acd2496299bbe36cb43e75978c5b8ba60"
+                "reference": "d30b047f24b5749a9fee283e66775ca739656dd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c9c1e13acd2496299bbe36cb43e75978c5b8ba60",
-                "reference": "c9c1e13acd2496299bbe36cb43e75978c5b8ba60",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d30b047f24b5749a9fee283e66775ca739656dd5",
+                "reference": "d30b047f24b5749a9fee283e66775ca739656dd5",
                 "shasum": ""
             },
             "require": {
@@ -1629,7 +1629,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-08-02T07:09:22+00:00"
+            "time": "2018-08-09T06:53:30+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2941,16 +2941,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.29",
+            "version": "v5.6.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "acc6b5c54ab196d3358f60acc5f55d9ebaaccc02"
+                "reference": "b11fbad84cd90d109c6d817ff3c9af428746edfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/acc6b5c54ab196d3358f60acc5f55d9ebaaccc02",
-                "reference": "acc6b5c54ab196d3358f60acc5f55d9ebaaccc02",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b11fbad84cd90d109c6d817ff3c9af428746edfd",
+                "reference": "b11fbad84cd90d109c6d817ff3c9af428746edfd",
                 "shasum": ""
             },
             "require": {
@@ -3076,7 +3076,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-07-26T16:01:26+00:00"
+            "time": "2018-08-08T20:56:17+00:00"
         },
         {
             "name": "laravel/horizon",

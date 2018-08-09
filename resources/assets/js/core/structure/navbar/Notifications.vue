@@ -1,11 +1,18 @@
 <template>
 
-    <div class="navbar-item has-dropdown notifications"
-        v-click-outside="hide"
-        :class="{ 'is-active': show }">
+    <div :class="['navbar-item notifications', { 'has-dropdown': !isTouch }, { 'is-active': show }]"
+        v-click-outside="hide">
+        <span v-if="isTouch" class="is-clickable">
+            <span class="icon">
+                <fa icon="bell"/>
+            </span>
+            <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
+            <overlay v-if="loading"/>
+        </span>
         <a :class="['navbar-link', { 'rotate': show }]"
-            @click="show=!show">
-            <span class="icon is-small">
+            @click="show = !show"
+            v-else>
+            <span class="icon">
                 <fa icon="bell"/>
             </span>
             <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
@@ -110,6 +117,7 @@ export default {
 
     computed: {
         ...mapState(['user', 'meta']),
+        ...mapState('layout', ['isTouch']),
     },
 
     watch: {

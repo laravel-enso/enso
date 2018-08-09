@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.8.17
+
+- upgrades Laravel to 5.6.31
+- adds `app/Http/Middleware/CheckForMaintenanceMode.php` to the project. In an existing project you should copy it by hand if needed.
+- improves the `users/Show.vue` controls
+- improves the navbar, adds notifications indicator - WIP
+
 ### 2.8.16
 
 - bugfixes

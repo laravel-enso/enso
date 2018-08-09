@@ -20,13 +20,13 @@
                             </p>
                             <div class="user-controls has-margin-top-small"
                                 v-if="isSelfVisiting">
-                                <button class="button is-small is-warning"
+                                <button class="button is-warning"
                                     v-if="avatarId"
                                     @click="deleteAvatar">
                                     <span class="icon">
                                         <fa icon="sync-alt"/>
                                     </span>
-                                    <span class="is-hidden-mobile">
+                                    <span v-if="!isTouch">
                                         {{ __('Avatar') }}
                                     </span>
                                 </button>
@@ -35,30 +35,30 @@
                                     file-key="avatar">
                                     <template slot="upload-button"
                                         slot-scope="{ openFileBrowser }">
-                                        <button class="button is-small is-info"
+                                        <button class="button is-info"
                                             @click="openFileBrowser">
                                             <span class="icon">
                                                 <fa icon="upload"/>
                                             </span>
-                                            <span class="is-hidden-mobile">
+                                            <span v-if="!isTouch">
                                                 {{ __('Avatar') }}
                                             </span>
                                         </button>
                                     </template>
                                 </file-uploader>
-                                <button class="button is-small is-danger is-pulled-right"
+                                <button class="button is-danger is-pulled-right"
                                     @click="exit()">
                                     <span class="icon">
                                         <fa icon="sign-out-alt"/>
                                     </span>
-                                    <span>
+                                    <span v-if="!isTouch">
                                         {{ __('Log Out') }}
                                     </span>
                                 </button>
                             </div>
                             <div class="has-margin-top-small"
                                 v-else>
-                                <button class="button is-small is-warning"
+                                <button class="button is-warning"
                                     @click="$bus.$emit('start-impersonating', profile.id)"
                                     v-if="
                                         canAccess('core.impersonate.start')
@@ -265,6 +265,7 @@ export default {
     computed: {
         ...mapState(['user', 'meta', 'impersonating']),
         ...mapState('auth', ['isAuth']),
+        ...mapState('layout', ['isTouch']),
         uploadAvatarLink() {
             return route('core.avatars.store');
         },

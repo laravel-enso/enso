@@ -39,9 +39,12 @@
                     </span>
                 </button>
             </div>
-            <profile-control class="is-aligned-right"
-                v-if="isTouch"/>
-            <settings-control v-if="isTouch"/>
+            <div class="is-pulled-right is-flex"
+                v-if="isTouch">
+                <notifications/>
+                <profile-control/>
+                <settings-control/>
+            </div>
         </div>
         <div class="navbar-menu">
             <div class="navbar-end"
@@ -108,7 +111,7 @@ export default {
             }
         }
 
-        .navbar-item.is-aligned-right {
+        .is-pulled-right {
             margin-left: auto;
         }
     }
