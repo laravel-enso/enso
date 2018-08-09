@@ -31,6 +31,10 @@
                             : numberFormat(body.total[visibleColumns[i].name])
                     }}
                 </span>
+                <slot :name="`${visibleColumns[i].name}_custom_total`"
+                    v-else-if="visibleColumns[i].meta.customTotal">
+                    {{ `${visibleColumns[i].name}_custom_total` }}
+                </slot>
             </td>
             <td v-if="template.actions"/>
         </tr>
@@ -56,12 +60,9 @@ export default {
             type: Function,
             required: true,
         },
-    },
-
-    computed: {
-        visibleColumns() {
-            return this.template.columns
-                .filter(({ meta }) => !meta.rogue);
+        visibleColumns: {
+            type: Array,
+            required: true,
         },
     },
 

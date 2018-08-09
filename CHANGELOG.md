@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.8.18
+
+- adds custom totals in VueTable.
+
 ### 2.8.17
 
 - upgrades Laravel to 5.6.31

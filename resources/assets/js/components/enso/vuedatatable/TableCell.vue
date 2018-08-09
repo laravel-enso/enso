@@ -13,12 +13,8 @@
         <span v-else-if="column.meta.icon && value">
             <fa :icon="value"/>
         </span>
-        <span v-else-if="column.meta.render">
-            <slot name="custom-render"/>
-        </span>
-        <span v-else-if="column.meta.slot">
-            <slot :name="column.name"/>
-        </span>
+        <slot :name="column.name"
+            v-else-if="column.meta.slot"/>
         <span v-else-if="column.meta.translation">{{ i18n(value) }}</span>
         <span v-else>{{ value }}</span>
     </span>

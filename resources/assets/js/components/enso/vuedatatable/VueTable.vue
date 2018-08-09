@@ -46,7 +46,16 @@
                 <table-footer v-if="template.total && hasContent && body.fullRecordInfo"
                     :template="template"
                     :body="body"
-                    :i18n="i18n"/>
+                    :i18n="i18n"
+                    :visible-columns="visibleColumns">
+                    <template v-for="i in visibleColumns.length - 1"
+                        :slot="`${visibleColumns[i].name}_custom_total`"
+                        v-if="visibleColumns[i].meta.customTotal">
+                        <slot :name="`${visibleColumns[i].name}_custom_total`"
+                            :total="body ? body.total : []"
+                            :column="visibleColumns[i]">{{ `${visibleColumns[i].name}_custom_total` }}</slot>
+                    </template>
+                </table-footer>
             </table>
             <overlay v-if="loading"/>
         </div>
@@ -177,6 +186,10 @@ export default {
         },
         hasContent() {
             return this.body && this.body.count;
+        },
+        visibleColumns() {
+            return this.template.columns
+                .filter(({ meta }) => !meta.rogue);
         },
     },
 
