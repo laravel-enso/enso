@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Owner;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\Core\app\Models\User as Users;
 use LaravelEnso\ActivityLog\app\Traits\LogActivity;
