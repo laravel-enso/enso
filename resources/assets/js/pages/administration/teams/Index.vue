@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div>
+        <div v-if="initialised">
             <button class="button is-success has-margin-bottom-large"
                 @click="team=factory()"
                 :disabled="team">
@@ -28,7 +28,16 @@
                 </span>
             </div>
         </div>
-        <div class="columns is-multiline">
+        <h4 class="title is-4 has-text-centered"
+            v-if="!initialised && loading">
+            {{ __('Loading') }}
+            <span class="icon is-small has-margin-left-medium">
+                <fa icon="spinner"
+                    size="xs"
+                    spin/>
+            </span>
+        </h4>
+        <div class="columns is-multiline" v-else>
             <div class="column is-one-third-widescreen is-half-tablet"
                 v-if="team">
                 <team :team="team"
@@ -55,16 +64,17 @@
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Team from '../../../components/enso/teams/Team.vue';
 
-library.add([faPlus, faSearch]);
+library.add(faPlus, faSearch, faSpinner);
 
 export default {
     components: { Team },
 
     data() {
         return {
+            initialised: false,
             teams: [],
             team: null,
             query: null,
@@ -86,8 +96,14 @@ export default {
 
     methods: {
         get() {
+            this.loading = true;
+
             axios.get(route('administration.teams.index'))
-                .then(({ data }) => (this.teams = data))
+                .then(({ data }) => {
+                    this.teams = data;
+                    this.loading = false;
+                    this.initialised = true;
+                })
                 .catch(error => this.handleError(error));
         },
         factory() {

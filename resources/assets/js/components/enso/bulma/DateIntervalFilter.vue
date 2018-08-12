@@ -4,7 +4,7 @@
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>
-        <div class="columns">
+        <div class="columns is-mobile">
             <div class="column">
                 <datepicker :format="format"
                     :value="min"

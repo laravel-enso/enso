@@ -2,13 +2,16 @@
 
 namespace App;
 
+use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\Core\app\Models\User as Users;
+use LaravelEnso\ActivityLog\app\Enums\Roles;
 use LaravelEnso\CommentsManager\app\Traits\Comments;
+use LaravelEnso\ActivityLog\app\Traits\LogActivity;
 use LaravelEnso\DocumentsManager\app\Traits\Documents;
 
 class User extends Users
 {
-    use Comments, Documents;
+    use Comments, Documents, LogActivity;
 
     protected $hidden = ['password', 'remember_token'];
 
@@ -19,6 +22,13 @@ class User extends Users
     protected $appends = ['fullName'];
 
     protected $casts = ['is_active' => 'boolean'];
+
+    protected $loggableLabel = 'fullName';
+
+    protected $loggable = [
+        'first_name', 'last_name', 'phone', 'email', 'owner_id', 'role_id' => [Role::class, 'name'],
+        'is_active' => 'active state',
+    ];
 
     public function owner()
     {

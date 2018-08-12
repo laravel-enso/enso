@@ -1,11 +1,18 @@
 <?php
 
+use App\Owner;
+
 return [
     'deletableTimeLimit' => 60 * 60,
     'linkExpiration' => 60 * 60 * 24,
     'imageWidth' => 2048,
     'imageHeight' => 2048,
     'documentables' => [
-        'owner' => App\Owner::class,
+        'owner' => Owner::class,
     ],
+    'loggableMorph' => [
+        'documentable' => [
+            Owner::class => 'name'
+        ]
+    ]
 ];

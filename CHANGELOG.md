@@ -1,5 +1,18 @@
 ## Laravel Enso's Changelog
 
+### 2.8.19
+
+- improves the Teams menu
+- adds the new Activity Log menu.
+
+Now you can audit your user's activity within the application from the new menu.
+
+To upgrade an existing project update in your `composer.json`: "laravel-enso/core": "2.12.*" and after the update run the migrations. If you want smarter logging for contacts, addresses, comments & documents update their configs matching the ones from a blank project.
+
+The documentation will be updated soon.
+
+Meanwhile, take a look at the new `LogActivity` trait. For examples peek at the `User` model from a blank project and for polymorphic relations at the `Comment` model from the `CommentsManager` packages.
+
 ### 2.8.18
 
 - adds custom totals in VueTable.

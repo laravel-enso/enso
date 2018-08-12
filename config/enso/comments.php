@@ -1,8 +1,15 @@
 <?php
 
+use App\Owner;
+
 return [
     'editableTimeLimit' => 24 * 60 * 60,
     'commentables' => [
-        'owner' => App\Owner::class,
+        'owner' => Owner::class,
     ],
+    'loggableMorph' => [
+        'commentable' => [
+            Owner::class => 'name'
+        ]
+    ]
 ];

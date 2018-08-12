@@ -4,7 +4,7 @@
         <div class="has-text-centered">
             <b>{{ title }}</b>
         </div>
-        <div class="columns">
+        <div class="columns is-mobile">
             <div class="column">
                 <div class="control has-icons-right">
                     <input class="input control"

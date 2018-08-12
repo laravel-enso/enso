@@ -1,8 +1,10 @@
 <?php
 
+use App\Owner;
+
 return [
     'addressables' => [
-        'owner' => App\Owner::class,
+        'owner' => Owner::class,
     ],
     'streetTypes' => [
         'Street' => 'Street',
@@ -22,4 +24,9 @@ return [
         'city' => 'required',
         'country_id' => 'required',
     ],
+    'loggableMorph' => [
+        'addressable' => [
+            Owner::class => 'name'
+        ]
+    ]
 ];

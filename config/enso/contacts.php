@@ -1,7 +1,14 @@
 <?php
 
+use App\Owner;
+
 return [
     'contactables' => [
-        'owner' => App\Owner::class,
+        'owner' => Owner::class,
     ],
+    'loggableMorph' => [
+        'contactable' => [
+            Owner::class => 'name'
+        ]
+    ]
 ];

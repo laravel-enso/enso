@@ -306,7 +306,7 @@ export default {
         processOptions({ data }) {
             this.optionList = data;
 
-            if (!this.query && !this.valueIsMatched()) {
+            if (!this.query && !this.valueIsMatched() && this.hasSelection) {
                 this.clear();
             }
         },

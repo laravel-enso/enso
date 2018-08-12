@@ -8,36 +8,47 @@
         <info-item>
             <label slot="left"
                 class="label">
-                {{ __('Team') }}:
+                <input class="input team-name"
+                    v-model="team.name"
+                    v-if="edit">
+                <strong v-else>{{ team.name }}</strong>
             </label>
             <div slot="right"
-                class="field has-addons">
-                <div class="control">
-                    <input class="input has-text-centered team-name"
-                        :readonly="!edit"
-                        v-model="team.name">
-                </div>
-                <div class="control">
-                    <a class="button"
-                        v-if="!edit"
-                        @click="edit = true">
+                class="has-text-right">
+                <a class="button is-naked animated fadeIn"
+                    v-if="!edit"
+                    @click="edit = true">
+                    <span class="icon">
+                        <fa icon="pencil-alt" size="sm"/>
+                    </span>
+                </a>
+                <span class="animated fadeIn"
+                    v-else>
+                    <a class="button is-naked is-outlined"
+                        @click="$emit('cancel');edit = false">
                         <span class="icon">
-                            <fa icon="pencil-alt" size="sm"/>
+                            <fa icon="ban"/>
                         </span>
                     </a>
-                    <button class="button"
+                    <a class="button is-naked is-success is-outlined"
                         :disabled="!team.name"
-                        @click="store();edit = false"
-                        v-else>
+                        @click="store();edit = false">
                         <span class="icon">
                             <fa icon="check" size="sm"/>
                         </span>
-                    </button>
-                </div>
+                    </a>
+                    <a class="button is-naked is-danger is-outlined"
+                        @click="destroy"
+                        v-if="team.id !== null">
+                        <span class="icon">
+                            <fa icon="trash"/>
+                        </span>
+                    </a>
+                </span>
             </div>
         </info-item>
         <div class="is-flex avatar-list">
-            <figure class="image is-24x24 has-margin-right-small has-margin-bottom-small"
+            <figure class="image is-32x32 has-margin-right-small has-margin-bottom-small"
                 v-for="user in team.users"
                 :key="user.id"
                 v-tooltip="user.fullName">
@@ -64,31 +75,6 @@
                     label="fullName"/>
             </div>
         </transition>
-        <info-item>
-            <div slot="left"
-                v-if="edit">
-                <button class="button is-small is-outlined"
-                    @click="$emit('cancel');edit = false">
-                    <span>
-                        {{ __('Cancel') }}
-                    </span>
-                    <span class="icon is-small">
-                        <fa icon="ban"/>
-                    </span>
-                </button>
-            </div>
-            <button slot="right"
-                class="button is-small is-danger is-outlined"
-                @click="destroy"
-                v-if="edit && team.id !== null">
-                <span>
-                    {{ __('Delete') }}
-                </span>
-                <span class="icon is-small">
-                    <fa icon="trash"/>
-                </span>
-            </button>
-        </info-item>
     </info-box>
 </template>
 
@@ -163,11 +149,44 @@ export default {
 <style lang="scss" scoped>
 
     .team-name {
-        width: 150px;
+        width: 200px;
+
+        border-top: unset;
+        border-left: unset;
+        border-right: unset;
+        box-shadow: unset;
+
+        &:focus {
+            box-shadow: unset;
+        }
     }
 
     .avatar-list {
+        margin-left: 1em;
         flex-flow: wrap;
+
+        figure {
+            transition: margin 0.2s;
+            -webkit-transition: margin 0.2s;
+            transition: transform .2s;
+            -webkit-transition: transform 0.2s;
+            margin-left: -1em;
+
+            &:hover {
+                margin-left: -0.5em;
+                margin-right: 1em;
+                transform: scale(1.3);
+                z-index: 2;
+            }
+
+            img {
+                border: 2px solid #f4f6fb;
+
+                &:hover {
+                    border: none;
+                }
+            }
+        }
     }
 
 </style>
