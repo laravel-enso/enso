@@ -11,7 +11,7 @@ use LaravelEnso\DocumentsManager\app\Traits\Documentable;
 
 class Owner extends Owners
 {
-    use LogActivity, Contactable, Commentable, Documentable, Addressable;
+    use Contactable, Commentable, Documentable, Addressable, LogActivity;
 
     protected $fillable = ['name', 'description', 'is_active'];
 

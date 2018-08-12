@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Owner;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\Core\app\Models\User as Users;
 use LaravelEnso\ActivityLog\app\Traits\LogActivity;
@@ -25,8 +26,8 @@ class User extends Users
     protected $loggableLabel = 'fullName';
 
     protected $loggable = [
-        'first_name', 'last_name', 'phone', 'email', 'owner_id', 'role_id' => [Role::class, 'name'],
-        'is_active' => 'active state',
+        'first_name', 'last_name', 'phone', 'email', 'owner_id' => [Owner::class, 'name'],
+        'role_id' => [Role::class, 'name'], 'is_active' => 'active state',
     ];
 
     public function owner()

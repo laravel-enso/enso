@@ -2145,16 +2145,16 @@
         },
         {
             "name": "laravel-enso/impersonate",
-            "version": "2.2.6",
+            "version": "2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Impersonate.git",
-                "reference": "9512c9e375ae4e33d8ad1f00c498c416c6295310"
+                "reference": "86da3d11dfcd7638fdb4716024616af03d741184"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/9512c9e375ae4e33d8ad1f00c498c416c6295310",
-                "reference": "9512c9e375ae4e33d8ad1f00c498c416c6295310",
+                "url": "https://api.github.com/repos/laravel-enso/Impersonate/zipball/86da3d11dfcd7638fdb4716024616af03d741184",
+                "reference": "86da3d11dfcd7638fdb4716024616af03d741184",
                 "shasum": ""
             },
             "require": {
@@ -2199,7 +2199,7 @@
                 "impersonate-users",
                 "laravel-enso"
             ],
-            "time": "2018-08-11T11:13:32+00:00"
+            "time": "2018-08-12T11:47:10+00:00"
         },
         {
             "name": "laravel-enso/localisation",
@@ -2730,16 +2730,16 @@
         },
         {
             "name": "laravel-enso/trackwho",
-            "version": "1.5.5",
+            "version": "1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TrackWho.git",
-                "reference": "e1392e305da38666d246f5bd0c1bcc32aa0d9189"
+                "reference": "3c0f3abfa9b787985050c5797a4292263a801da9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TrackWho/zipball/e1392e305da38666d246f5bd0c1bcc32aa0d9189",
-                "reference": "e1392e305da38666d246f5bd0c1bcc32aa0d9189",
+                "url": "https://api.github.com/repos/laravel-enso/TrackWho/zipball/3c0f3abfa9b787985050c5797a4292263a801da9",
+                "reference": "3c0f3abfa9b787985050c5797a4292263a801da9",
                 "shasum": ""
             },
             "require": {
@@ -2774,7 +2774,7 @@
                 "track-who",
                 "trackwho"
             ],
-            "time": "2018-07-27T15:02:42+00:00"
+            "time": "2018-08-12T11:49:08+00:00"
         },
         {
             "name": "laravel-enso/tutorialmanager",
@@ -5842,16 +5842,16 @@
         },
         {
             "name": "laravel-enso/testhelper",
-            "version": "1.4.9",
+            "version": "1.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TestHelper.git",
-                "reference": "619f05131b832750fbeae8840191a310ac56328e"
+                "reference": "cd59b13d3990fa156ff51cc76f0b5aea35a0a36c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TestHelper/zipball/619f05131b832750fbeae8840191a310ac56328e",
-                "reference": "619f05131b832750fbeae8840191a310ac56328e",
+                "url": "https://api.github.com/repos/laravel-enso/TestHelper/zipball/cd59b13d3990fa156ff51cc76f0b5aea35a0a36c",
+                "reference": "cd59b13d3990fa156ff51cc76f0b5aea35a0a36c",
                 "shasum": ""
             },
             "require": {
@@ -5882,7 +5882,7 @@
                 "laravel-enso",
                 "laravel-enso-test"
             ],
-            "time": "2018-07-27T15:00:18+00:00"
+            "time": "2018-08-12T11:49:51+00:00"
         },
         {
             "name": "maximebf/debugbar",
