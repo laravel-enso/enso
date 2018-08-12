@@ -1471,16 +1471,16 @@
         },
         {
             "name": "laravel-enso/commentsmanager",
-            "version": "2.3.14",
+            "version": "2.3.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/CommentsManager.git",
-                "reference": "c35b3de8e0dc0094fc1621636b620be0ebfdb243"
+                "reference": "4721757600ffa081d95eeca2c0069eeb3919941f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/c35b3de8e0dc0094fc1621636b620be0ebfdb243",
-                "reference": "c35b3de8e0dc0094fc1621636b620be0ebfdb243",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/4721757600ffa081d95eeca2c0069eeb3919941f",
+                "reference": "4721757600ffa081d95eeca2c0069eeb3919941f",
                 "shasum": ""
             },
             "require": {
@@ -1530,7 +1530,7 @@
                 "commentsmanager",
                 "laravel-enso"
             ],
-            "time": "2018-08-12T09:08:00+00:00"
+            "time": "2018-08-12T12:27:39+00:00"
         },
         {
             "name": "laravel-enso/contacts",
