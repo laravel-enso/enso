@@ -9,7 +9,7 @@ return [
     ],
     'loggableMorph' => [
         'commentable' => [
-            Owner::class => 'name'
-        ]
-    ]
+            Owner::class => 'name',
+        ],
+    ],
 ];

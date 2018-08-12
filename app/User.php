@@ -4,9 +4,8 @@ namespace App;
 
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\Core\app\Models\User as Users;
-use LaravelEnso\ActivityLog\app\Enums\Roles;
-use LaravelEnso\CommentsManager\app\Traits\Comments;
 use LaravelEnso\ActivityLog\app\Traits\LogActivity;
+use LaravelEnso\CommentsManager\app\Traits\Comments;
 use LaravelEnso\DocumentsManager\app\Traits\Documents;
 
 class User extends Users

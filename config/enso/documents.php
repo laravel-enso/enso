@@ -12,7 +12,7 @@ return [
     ],
     'loggableMorph' => [
         'documentable' => [
-            Owner::class => 'name'
-        ]
-    ]
+            Owner::class => 'name',
+        ],
+    ],
 ];

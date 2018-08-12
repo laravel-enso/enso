@@ -8,7 +8,7 @@ return [
     ],
     'loggableMorph' => [
         'contactable' => [
-            Owner::class => 'name'
-        ]
-    ]
+            Owner::class => 'name',
+        ],
+    ],
 ];

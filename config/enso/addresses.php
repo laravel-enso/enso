@@ -26,7 +26,7 @@ return [
     ],
     'loggableMorph' => [
         'addressable' => [
-            Owner::class => 'name'
-        ]
-    ]
+            Owner::class => 'name',
+        ],
+    ],
 ];
