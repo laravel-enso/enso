@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.8.20
+
+- adds the `Support Services` & `Sponsor` sections
+- fixes a bug related to activitLog's FE route
+- updates composer.json and packages.json dependencies
+
 ### 2.8.19
 
 - improves the Teams menu

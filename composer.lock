@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0f5368e6bdc6c39e764b6e1f77fa74d",
+    "content-hash": "8d335a5f499066ca64dbde8d9105774d",
     "packages": [
         {
             "name": "box/spout",
@@ -1236,16 +1236,16 @@
         },
         {
             "name": "laravel-enso/activitylog",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActivityLog.git",
-                "reference": "16559a0fc30f2a40cee729f4a1bff03649fe3908"
+                "reference": "12ccfa2d140f3b4b5c54cb47512743d08820e189"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/16559a0fc30f2a40cee729f4a1bff03649fe3908",
-                "reference": "16559a0fc30f2a40cee729f4a1bff03649fe3908",
+                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/12ccfa2d140f3b4b5c54cb47512743d08820e189",
+                "reference": "12ccfa2d140f3b4b5c54cb47512743d08820e189",
                 "shasum": ""
             },
             "require": {
@@ -1289,7 +1289,7 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2018-08-12T09:38:29+00:00"
+            "time": "2018-08-13T09:47:17+00:00"
         },
         {
             "name": "laravel-enso/addressesmanager",
@@ -4162,32 +4162,33 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "0.8.0",
+            "version": "0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "4ca94ed3ba6d79ad049957be574a738a3478f94c"
+                "reference": "f55655404dcb0b39efc5ca1662efff221b52b01d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/4ca94ed3ba6d79ad049957be574a738a3478f94c",
-                "reference": "4ca94ed3ba6d79ad049957be574a738a3478f94c",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/f55655404dcb0b39efc5ca1662efff221b52b01d",
+                "reference": "f55655404dcb0b39efc5ca1662efff221b52b01d",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.*|5.*",
-                "php": ">=5.3.0",
-                "sentry/sentry": ">=1.7.0"
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "php": "^5.4||^7.0",
+                "sentry/sentry": "^1.9.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.8.0",
-                "orchestra/testbench": "3.*",
-                "phpunit/phpunit": "^4.6.6"
+                "friendsofphp/php-cs-fixer": "2.2.*",
+                "laravel/framework": "5.6.*",
+                "orchestra/testbench": "3.6.*",
+                "phpunit/phpunit": "7.0.*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.8.x-dev"
+                    "dev-master": "0.9.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -4221,7 +4222,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2017-08-11T17:29:14+00:00"
+            "time": "2018-07-18T08:22:32+00:00"
         },
         {
             "name": "spatie/image-optimizer",
