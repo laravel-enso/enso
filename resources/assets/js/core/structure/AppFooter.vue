@@ -35,6 +35,17 @@
                     </a>
                 </span>
             </p>
+            <p class="level">
+                <span class="level-item">
+                    <strong>Backed by:</strong>
+                    <a href="https://earthlink.ro"
+                        target="_blank">
+                        <figure class="image earthlink">
+                            <img src="https://www.earthlink.ro/images/logos/logo.png">
+                        </figure>
+                    </a>
+                </span>
+            </p>
             <p>
                 <a href="https://github.com/laravel-enso/enso"
                     target="_blank">
@@ -67,10 +78,16 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
     .footer {
         margin-left: 180px;
+
+        figure.image.earthlink {
+            width: 112px;
+            margin-left: 1em;
+            margin-right: 1em;
+        }
     }
 
     @media screen and (max-width: 1023px) {

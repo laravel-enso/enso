@@ -87,7 +87,7 @@ are welcome. Pull requests are great, but issues are good too.
 
 ### Sponsor (*new*)
 
-This project's main sponsor is [Earthlink](https://www.earthlink.ro)
+This project is backed by [Earthlink](https://www.earthlink.ro)
 
 ### License
 
