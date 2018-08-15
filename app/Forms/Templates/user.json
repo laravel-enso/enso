@@ -35,6 +35,23 @@
                 "content": "text"
             }
         }, {
+            "label": "New Password",
+            "name": "password",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "password"
+            }
+        }, 
+        {
+            "label": "Password Confirmation",
+            "name": "password_confirmation",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "password"
+            }
+        }, {
             "label": "Entity",
             "name": "owner_id",
             "value": null,

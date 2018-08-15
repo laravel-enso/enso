@@ -23,6 +23,7 @@ class UserForm
 
     public function edit(User $user)
     {
+        unset($user->password);
         return $this->form->edit($user);
     }
 }

@@ -28,6 +28,7 @@ class ValidateUserRequest extends FormRequest
             'owner_id' => 'required|exists:owners,id',
             'phone' => 'max:30',
             'email' => ['email', 'required', $emailUnique],
+            'password' => 'nullable|min:6|confirmed',
         ];
     }
 }
