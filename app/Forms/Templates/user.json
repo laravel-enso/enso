@@ -57,6 +57,27 @@
                 "source": "system.roles.selectOptions"
             }
         }, {
+            "label": "New Password",
+            "name": "password",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "password",
+                "hidden": "true",
+                "custom": "true"
+            }
+        },
+        {
+            "label": "Password Confirmation",
+            "name": "password_confirmation",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "password",
+                "hidden": "true",
+                "custom": "true"
+            }
+        }, {
             "label": "Active",
             "name": "is_active",
             "value": false,

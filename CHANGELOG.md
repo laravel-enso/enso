@@ -1,5 +1,18 @@
 ## Laravel Enso's Changelog
 
+### 2.8.21
+
+- adds ability to change the password from the user form. Users can change only their own password.
+
+To upgrade an existing project you will have to copy by hand from a fresh Enso project the following files:
+
+- `app/Forms/Builders/UserForm.php`
+- `app/Forms/Templates/user.json`
+- `app/Http/Controllers/Administration/User/UserController.php`
+- `app/Http/Requests/ValidateUserRequest.php`
+- `app/Policies/UserPolicy.php`
+- `resources/assets/js/pages/administration/users/Edit.vue`
+
 ### 2.8.20
 
 - adds the `Support Services` & `Sponsor` sections

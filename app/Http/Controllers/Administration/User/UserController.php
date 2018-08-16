@@ -51,9 +51,12 @@ class UserController extends Controller
     {
         $this->authorize('handle', $user);
 
-        $user->fill($request->validated());
+        if ($request->filled('password')) {
+            $this->authorize('change-password', $user);
+            $user->password = bcrypt($request->get('password'));
+        }
 
-        $user->save();
+        $user->update($request->validated());
 
         return ['message' => __('The user was successfully updated')];
     }

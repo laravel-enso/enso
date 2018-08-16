@@ -9,15 +9,13 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        if ($user->isAdmin()) {
-            return true;
-        }
-    }
-
     public function handle(User $user, User $targetUser)
     {
-        return !$targetUser->isAdmin();
+        return $user->isAdmin() || !$targetUser->isAdmin();
+    }
+
+    public function changePassword(User $user, User $targetUser)
+    {
+        return $user->id === $targetUser->id;
     }
 }
