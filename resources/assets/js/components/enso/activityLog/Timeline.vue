@@ -111,9 +111,15 @@ export default {
 
 <style lang="scss" scoped>
 
-    .timeline .timeline-header {
-        max-width: 12em;
-        width: unset;
+    .timeline.is-centered {
+        .timeline-header {
+            max-width: 12em;
+            width: unset;
+        }
+
+        .timeline-item .timeline-content {
+            align-items: flex-start;
+        }
     }
 
 </style>

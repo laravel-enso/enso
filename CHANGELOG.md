@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.8.22
+
+- improves user `show` page
+- adds `.is-raised` helper
+- adds link to author's profile in activity log
+
 ### 2.8.21
 
 - adds ability to change the password from the user form. Users can change only their own password.

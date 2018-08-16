@@ -8,7 +8,10 @@
         <div class="event">
             <p class="heading">{{ event.time }}</p>
             <p>
-                <span class="author">{{ event.author.name }}</span>
+                <a class="author"
+                    @click="goToProfile(event.author)">
+                    {{ event.author.name }}
+                </a>
                 <span v-if="event.action.type === 4">{{ __(event.message) }}</span>
                 <span v-else>{{ __(event.action.label) }}</span>
                 <span v-if="event.action.type === 4">{{ __('on') }}</span>
@@ -45,6 +48,9 @@ export default {
     methods: {
         avatar({ avatarId }) {
             return route('core.avatars.show', avatarId);
+        },
+        goToProfile({ id }) {
+            this.$router.push({ name: 'administration.users.show', params: { id } });
         },
     },
 };

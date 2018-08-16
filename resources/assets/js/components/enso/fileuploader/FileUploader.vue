@@ -144,10 +144,6 @@ export default {
 
 <style>
 
-    form.file-upload {
-        display: inline-table;
-    }
-
     button.file-upload {
         background: transparent;
     }
