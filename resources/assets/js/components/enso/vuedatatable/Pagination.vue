@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="table-pagination pagination is-small"
+    <nav class="pagination is-small"
         role="navigation"
         aria-label="pagination">
         <a class="pagination-previous"
@@ -140,10 +140,11 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    nav.table-navigation {
-        max-width: 425px;
+    .pagination {
+        padding: 0.75em;
+        margin: 0;
     }
 
 </style>

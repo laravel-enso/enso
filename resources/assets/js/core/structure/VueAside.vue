@@ -14,7 +14,7 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     div.aside {
         position: fixed;

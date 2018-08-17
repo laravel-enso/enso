@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters animated fadeIn">
-            <vue-form-ss class="box animated fadeIn"
+            <vue-form-ss class="box is-raised animated fadeIn"
                 :route-params="[$route.name, $route.params.id, false]"
                 @loaded="initialised = true"
                 ref="form"/>

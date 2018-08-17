@@ -1,8 +1,6 @@
 {
     "routePrefix": "administration.users",
     "readSuffix": "getTableData",
-    "name": "Registered Users",
-    "icon": "users",
     "crtNo": true,
     "buttons": ["excel", "create", "show", "edit", "destroy"],
     "columns": [

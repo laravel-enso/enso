@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar app-navbar has-shadow">
+    <nav class="navbar app-navbar">
         <div class="navbar-brand">
             <a class="navbar-item logo" href="#">
                 <figure class="image is-24x24">
@@ -90,7 +90,7 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     .navbar {
         position: fixed;
@@ -98,10 +98,8 @@ export default {
         top: 0px;
         z-index: 3;
 
-        &.has-shadow {
-            -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
-            box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
-        }
+        -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
+        box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
 
         .fa-bars {
             transition: transform .300s;

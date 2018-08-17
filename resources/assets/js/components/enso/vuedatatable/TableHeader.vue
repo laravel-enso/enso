@@ -1,8 +1,8 @@
 <template>
 
     <thead>
-        <tr :class="template.style">
-            <th :class="template.align"
+        <tr :class="['has-background-light', template.style]">
+            <th :class="['vue-table-header', template.align]"
                 v-if="template.crtNo">
                 {{ i18n(template.labels.crtNo) }}
             </th>
@@ -34,7 +34,7 @@
                         @click="clearColumnSort(column)"/>
                 </span>
             </th>
-            <th :class="template.align"
+            <th :class="['vue-table-header', template.align]"
                 v-if="template.actions">
                 {{ i18n(template.labels.actions) }}
             </th>
@@ -54,7 +54,7 @@ import { faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo }
 library.add(faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo);
 
 export default {
-    name: 'Header',
+    name: 'TableHeader',
 
     directives: { tooltip: VTooltip },
 
@@ -107,10 +107,10 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     th.vue-table-header {
-        white-space:nowrap;
+        white-space: nowrap;
         align-content: center;
     }
 

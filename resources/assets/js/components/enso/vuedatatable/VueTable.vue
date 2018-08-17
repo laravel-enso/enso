@@ -1,8 +1,8 @@
 <template>
 
-    <div v-if="initialised">
+    <div class="table-wrapper"
+        v-if="initialised">
         <top-controls :template="template"
-            class="has-padding-small has-padding-bottom-large"
             :i18n="i18n"
             :length="length"
             :loading="loading"
@@ -17,7 +17,7 @@
             v-model="search"/>
         <div class="table-responsive"
             v-responsive>
-            <table class="table is-fullwidth vue-data-table"
+            <table class="table is-fullwidth is-marginless"
                 :class="template.style"
                 id="id">
                 <table-header :template="template"
@@ -59,26 +59,16 @@
             </table>
             <overlay v-if="loading"/>
         </div>
-        <div class="columns table-bottom-controls"
-            v-if="hasContent">
-            <div class="column">
-                <records-info :body="body"
-                    :i18n="i18n"
-                    :start="start"/>
-            </div>
-            <div class="column is-narrow has-text-right">
-                <pagination :loading="loading"
-                    :start="start"
-                    :length="length"
-                    :records="body.filtered"
-                    :i18n="i18n"
-                    :extended="body.fullRecordInfo"
-                    @jump-to="start = $event;getData()"
-                    v-if="body.data.length > 0"/>
-            </div>
-        </div>
-        <div v-if="body && !body.count"
-            class="has-text-centered no-records-found">
+        <bottom-controls class="bottom-controls"
+            :body="body"
+            :i18n="i18n"
+            :loading="loading"
+            :start="start"
+            :length="length"
+            @jump-to="start = $event;getData()"
+            v-if="hasContent"/>
+        <div class="has-text-centered no-records-found"
+            v-if="isEmpty">
             {{ i18n('No records were found') }}
         </div>
     </div>
@@ -93,8 +83,8 @@ import TopControls from './TopControls.vue';
 import TableHeader from './TableHeader.vue';
 import TableBody from './TableBody.vue';
 import TableFooter from './TableFooter.vue';
-import RecordsInfo from './RecordsInfo.vue';
-import Pagination from './Pagination.vue';
+import BottomControls from './BottomControls.vue';
+
 import Overlay from './Overlay.vue';
 import vResponsive from './responsive/vResponsive';
 
@@ -102,7 +92,7 @@ export default {
     name: 'VueTable',
 
     components: {
-        TopControls, TableHeader, TableBody, TableFooter, RecordsInfo, Overlay, Pagination,
+        TopControls, TableHeader, TableBody, TableFooter, Overlay, BottomControls,
     },
 
     directives: {
@@ -183,6 +173,9 @@ export default {
                         return collector;
                     }, []),
             };
+        },
+        isEmpty() {
+            return this.body && !this.body.count;
         },
         hasContent() {
             return this.body && this.body.count;
@@ -473,30 +466,37 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    .table.vue-data-table {
-        margin-bottom: 0;
-    }
+    .table-wrapper {
 
-    .table-responsive {
-        position: relative;
-        display: block;
-        width: 100%;
-        min-height: .01%;
-        overflow-x: auto;
-    }
+        &.is-rounded {
+            border-radius: 0.5em;
 
-    .table-responsive table {
-        font-size: 15px;
-    }
+            .top-controls {
+                border-radius: 0.5em 0.5em 0 0;
+            }
 
-    div.table-bottom-controls {
-        margin-top: .5rem;
-    }
+            .bottom-controls {
+                border-radius: 0 0 0.5em 0.5em;
+            }
+        }
 
-    div.no-records-found {
-        margin-top: 20px;
+        .table-responsive {
+            position: relative;
+            display: block;
+            width: 100%;
+            min-height: .01%;
+            overflow-x: auto;
+
+            .table {
+                font-size: 0.95em;
+            }
+        }
+
+        .no-records-found {
+            padding: 1em;
+        }
     }
 
 </style>

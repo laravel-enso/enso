@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <vue-table class="box animated fadeIn"
+        <vue-table class="is-raised is-rounded animated fadeIn"
             :path="path"
             id="imports-table"
             @get-summary="getSummary"

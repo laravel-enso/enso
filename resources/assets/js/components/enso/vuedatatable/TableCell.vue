@@ -58,7 +58,7 @@ export default {
         font-size: 0.8rem;
         font-weight: bold;
         height: 1.4em;
-        padding: 7px;
+        padding: 0.5em;
     }
 
 </style>

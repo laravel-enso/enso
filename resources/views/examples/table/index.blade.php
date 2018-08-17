@@ -92,7 +92,7 @@
                         </interval-filter>
                     </div>
                 </div>
-                <vue-table class="box"
+                <vue-table class="is-raised is-rounded"
                     path="/examples/table/init"
                     :filters="filters"
                     :intervals="intervals"

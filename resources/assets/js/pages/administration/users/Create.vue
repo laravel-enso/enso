@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <vue-form-ss class="box animated fadeIn"
+            <vue-form-ss class="box is-raised animated fadeIn"
                 :route-params="[$route.name, null, false]">
                 <template slot="owner_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"

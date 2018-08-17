@@ -5,7 +5,7 @@
         :key="index">
         <td :class="template.align"
             v-if="template.crtNo && !isChild(row)">
-            <div class="table-crt-no">
+            <div class="crt-no">
                 <span class="crt-no-label">
                     {{ getIndex(row) }}
                 </span>
@@ -274,7 +274,7 @@ export default {
 
 <style lang="scss" scoped>
 
-div.table-crt-no {
+.crt-no {
     white-space:nowrap;
     display: flex;
 
@@ -296,10 +296,27 @@ td.table-actions {
         display: inline-flex;
     }
 
-    .button.is-small.is-table-button {
-        height: 1.6em;
-        width: 1.6em;
-        font-size: .9em;
+    .button.is-small {
+        &.is-table-button {
+            height: 1.6em;
+            width: 1.6em;
+            font-size: .9em;
+        }
+
+        &.is-row-button {
+            background: 0;
+            border: none;
+            opacity: 0.6;
+            transition: opacity ease 0.3s;
+
+            &:focus {
+                box-shadow: unset;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }
 

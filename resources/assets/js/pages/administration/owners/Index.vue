@@ -1,6 +1,6 @@
 <template>
 
-    <vue-table class="box"
+    <vue-table class="box is-paddingless is-raised is-rounded"
         :path="path"
         id="owners"/>
 

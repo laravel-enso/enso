@@ -2,7 +2,8 @@
     <article class="media">
         <figure class="media-left has-margin-top-small">
             <p class="image is-32x32">
-                <img :src="avatar(event.author)">
+                <img class="is-rounded"
+                    :src="avatar(event.author)">
             </p>
         </figure>
         <div class="event">

@@ -56,7 +56,7 @@ return [
         'global' => [
             'create' => [
                 'icon' => 'plus',
-                'class' => 'is-success',
+                'class' => null,
                 'routeSuffix' => 'create',
                 'event' => 'create',
                 'action' => 'router',
@@ -86,21 +86,21 @@ return [
         'row' => [
             'show' => [
                 'icon' => 'eye',
-                'class' => 'is-success',
+                'class' => 'is-row-button',
                 'routeSuffix' => 'show',
                 'event' => 'show',
                 'action' => 'router',
             ],
             'edit' => [
                 'icon' => 'pencil-alt',
-                'class' => 'is-warning',
+                'class' => 'is-row-button',
                 'routeSuffix' => 'edit',
                 'event' => 'edit',
                 'action' => 'router',
             ],
             'destroy' => [
                 'icon' => 'trash-alt',
-                'class' => 'is-danger',
+                'class' => 'is-row-button',
                 'routeSuffix' => 'destroy',
                 'event' => 'destroy',
                 'action' => 'ajax',
@@ -111,7 +111,7 @@ return [
             ],
             'download' => [
                 'icon' => 'cloud-download-alt',
-                'class' => 'is-primary',
+                'class' => 'is-row-button',
                 'routeSuffix' => 'download',
                 'event' => 'download',
                 'action' => 'href',
@@ -129,9 +129,7 @@ return [
     */
 
     'style' => [
-        'default' => [
-            'striped', 'hover', 'bordered', 'center',
-        ],
+        'default' => ['hover', 'center'],
         'mapping' => [
             'left' => 'has-text-left',
             'center' => 'has-text-centered',

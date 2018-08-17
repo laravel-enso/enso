@@ -1,36 +1,11 @@
 <template>
 
-    <div>
+    <div class="top-controls has-background-light">
         <div class="columns is-multiline">
-            <div class="column has-padding-small is-half is-hidden-mobile">
-                <h5 class="title is-5">
-                    <span class="icon"
-                        v-if="template.icon">
-                        <fa :icon="template.icon"/>
-                    </span>
-                    {{ i18n(template.name) }}
-                </h5>
-            </div>
             <div class="
-                    column is-half has-text-centered-mobile
-                    has-padding-small has-text-right-tablet
+                    column has-padding-small is-one-third-desktop
+                    is-half-tablet has-text-centered-mobile table-controls
                 ">
-                <button class="button has-margin-left-small"
-                    v-for="button in template.buttons.global"
-                    :class="button.class"
-                    :key="button.label"
-                    :href="button.action === 'href' ? button.path : null"
-                    @click="button.confirmation ? showModal(button) : doAction(button)">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(button.label) }}
-                    </span>
-                    <span class="icon is-small">
-                        <fa :icon="button.icon"/>
-                    </span>
-                    <span class="is-hidden-mobile"/>
-                </button>
-            </div>
-            <div class="column has-padding-small is-two-thirds-desktop has-text-centered-mobile">
                 <length-menu :template="template"
                     :length="length"
                     v-on="$listeners"/>
@@ -58,10 +33,29 @@
                     </span>
                 </button>
             </div>
-            <div class="column has-padding-small is-one-third-desktop has-text-right"
+            <div class="
+                    column is-one-third-desktop is-half-tablet has-text-right-tablet
+                    has-text-centered-mobile has-padding-small table-buttons
+                ">
+                <button class="button has-margin-left-small"
+                    v-for="button in template.buttons.global"
+                    :class="button.class"
+                    :key="button.label"
+                    :href="button.action === 'href' ? button.path : null"
+                    @click="button.confirmation ? showModal(button) : doAction(button)">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(button.label) }}
+                    </span>
+                    <span class="icon is-small">
+                        <fa :icon="button.icon"/>
+                    </span>
+                    <span class="is-hidden-mobile"/>
+                </button>
+            </div>
+            <div class="column has-padding-small is-one-third-desktop search-input"
                 v-if="template.searchable">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input has-text-centered"
+                    <input class="input has-text-centered is-rounded"
                         type="text"
                         :value="value"
                         @input="$emit('input', $event.target.value)"
@@ -180,14 +174,27 @@ export default {
 
 <style lang="scss" scoped>
 
-    .title {
-        .icon {
-            vertical-align: text-bottom;
-        }
-    }
+    .top-controls {
+        padding: 1em;
+        padding-bottom: 1.5em;
 
-    .control.has-icons-right .icon.clear-button {
-        pointer-events: all;
+        .control.has-icons-right .icon.clear-button {
+            pointer-events: all;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .table-controls {
+                order: 1;
+            }
+
+            .search-input {
+                order: 2;
+            }
+
+            .table-buttons {
+                order: 3;
+            }
+        }
     }
 
 </style>

@@ -3,7 +3,6 @@
         { 'is-danger': edit && !team.id },
         { 'is-warning': edit && team.id },
         { 'is-info': !edit && team.users.length === 0 },
-
     ]">
         <info-item>
             <label slot="left"

@@ -1,6 +1,6 @@
 <template>
 
-    <vue-table class="box"
+    <vue-table class="is-rounded is-raised"
         :path="path"
         id="permissions">
         <span slot="type"

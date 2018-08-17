@@ -3897,8 +3897,8 @@
 }
 
 .is-raised {
-  -webkit-box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 2px 18px 0 rgba(42, 51, 83, 0.12), 0 5px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 18px 0 rgba(42, 51, 83, 0.12), 0 5px 8px rgba(0, 0, 0, 0.06);
 }
 
 .raises-on-hover {
@@ -3909,8 +3909,8 @@
 }
 
 .raises-on-hover:hover {
-  -webkit-box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 2px 18px 0 rgba(42, 51, 83, 0.12), 0 5px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 18px 0 rgba(42, 51, 83, 0.12), 0 5px 8px rgba(0, 0, 0, 0.06);
   opacity: 0.95;
 }
 

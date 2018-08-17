@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <vue-table class="box"
+        <vue-table class="is-raised is-rounded"
             :path="path"
             @edit-contact="edit"
             ref="contacts"

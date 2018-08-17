@@ -1,11 +1,11 @@
 <template>
 
-    <span class="table-entries-info">
+    <div class="records-info has-text-centered-touch">
         {{ chunkInfo }}
         <span v-if="body.filters">
             {{ fromInfo }}
         </span>
-    </span>
+    </div>
 
 </template>
 
@@ -59,10 +59,11 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-    .table-entries-info {
-        font-size: 15px;
+    .records-info {
+        font-size: 0.9em;
+        padding: 1em;
     }
 
 </style>

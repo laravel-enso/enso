@@ -1,7 +1,7 @@
 <pre class="is-paddingless"
     v-hljs>
     <code class="js">
-vue-table class="box"
+vue-table class="is-raised is-rounded"
     path="/examples/table/init"
     :filters="filters"
     :intervals="intervals"

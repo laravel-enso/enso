@@ -1,9 +1,8 @@
 <template>
 
-    <vue-table class="box"
+    <vue-table class="is-raised is-rounded"
         :path="path"
-        id="permissionGroups">
-    </vue-table>
+        id="permissionGroups"/>
 
 </template>
 

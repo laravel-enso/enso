@@ -1,8 +1,6 @@
 {
     "routePrefix": "administration.owners",
     "readSuffix": "getTableData",
-    "name": "Registered Entities",
-    "icon": "list-alt",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
