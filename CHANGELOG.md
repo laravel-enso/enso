@@ -8,8 +8,9 @@ Upgrade steps to make your current project look like the demo.
     - update in `datatable.php`
         - **row** button classes to `is-row-button` (optional, old classes still work)
         - **global** button classes to null (optional)
+        - `'style' => [ 'default' => ['hover', 'center'] ... ]`
     - update in all custom buttons in your templates, if it's the case
-    - remove the `icon` & `title` props from all your table templates
+    - remove the `icon` & `name` props from all your table templates
     - replace all `vue-table` components class from `box` to `is-raised is-rounded`
     - add to all `vue-form` components `is-raised` class
     - compile all themes (uncomment everything from webpack.mix.js and run `yarn production` / `npm run prod`)
