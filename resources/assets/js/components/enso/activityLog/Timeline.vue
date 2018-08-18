@@ -111,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 
-    .timeline.is-centered {
+    .timeline {
         .timeline-header {
             max-width: 12em;
             width: unset;

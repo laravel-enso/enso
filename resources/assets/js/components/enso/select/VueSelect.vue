@@ -474,6 +474,7 @@ export default {
                             height: 1.4em;
                             margin-top: 0.05em;
                             box-shadow: unset;
+                            padding: 0;
                             -webkit-box-shadow: unset;
                             width: fit-content;
                         }

@@ -4,11 +4,11 @@ export const state = {
 };
 
 export const mutations = {
-    login() {
+    login(state) {
         state.isAuth = true;
         localStorage.setItem('isAuth', true);
     },
-    logout() {
+    logout(state) {
         state.isAuth = false;
         localStorage.setItem('isAuth', false);
     },

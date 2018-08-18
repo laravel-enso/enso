@@ -7,7 +7,7 @@
                     <img src="/images/logo.svg">
                 </figure>
                 <h4 class="title is-4 animated has-margin-left-small"
-                    v-if="menu.isExpanded">
+                    v-if="menu.isExpanded && !isMobile">
                     {{ meta.appName }}
                 </h4>
             </a>
@@ -15,7 +15,7 @@
                 @click="toggleMenu(isTouch)">
                 <span class="icon is-small">
                     <fa icon="bars"
-                        :class="{ 'rotate': !menu.isExpanded }"/>
+                        :class="{ 'rotate': !menu.isExpanded || !menu.isVisible }"/>
                 </span>
             </a>
             <div class="navbar-item"
@@ -80,7 +80,7 @@ export default {
 
     computed: {
         ...mapState(['meta', 'impersonating']),
-        ...mapState('layout', ['isTouch', 'menu']),
+        ...mapState('layout', ['isMobile', 'isTouch', 'menu']),
     },
 
     methods: {

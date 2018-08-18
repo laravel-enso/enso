@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.8.25
+
+#### Bug Fixes
+- VueSelect's search input padding
+- ActivityLog's timeline background
+- rotation of the burger on mobile devices
+- missing args in store module `auth.js`
+
 ### 2.8.24
 
 - fixes table export file name
