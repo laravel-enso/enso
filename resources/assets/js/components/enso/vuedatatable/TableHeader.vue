@@ -15,7 +15,14 @@
                 v-for="column in template.columns"
                 :key="column.label"
                 v-if="column.meta.visible && !column.meta.hidden && !column.meta.rogue">
-                {{ i18n(column.label) }}
+                <span class="is-clickable"
+                    @click="toggleSort($event, column)"
+                    v-if="column.meta.sortable">
+                    {{ i18n(column.label) }}
+                </span>
+                <span v-else>
+                    {{ i18n(column.label) }}
+                </span>
                 <span class="table-header-controls">
                     <span class="icon is-small has-text-info"
                         v-if="column.tooltip"
@@ -112,15 +119,19 @@ export default {
     th.vue-table-header {
         white-space: nowrap;
         align-content: center;
-    }
 
-    .table-header-controls {
-        .sorter {
+        .is-clickable {
             cursor: pointer;
-            opacity: 0.5;
+        }
 
-            &:hover {
-                opacity: 1;
+        .table-header-controls {
+            .sorter {
+                cursor: pointer;
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }

@@ -9,7 +9,7 @@
                 'tag is-table-tag',
                 row.isRead ? 'is-success' : 'is-warning'
             ]">
-                {{ row['type'] }}
+                {{ row.type }}
         </span>
     </vue-table>
 

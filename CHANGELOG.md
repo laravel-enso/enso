@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.8.26
+
+#### Bug Fixes / Improvements for VueTable
+
+- header label is now clickable for sortable columns
+- overlay is moved to cover the whole component
+- fixes slots for hidden columns in responsive mode
+- auto refreshes the hidden columns in expanded rows on resize
+
 ### 2.8.25
 
 #### Bug Fixes

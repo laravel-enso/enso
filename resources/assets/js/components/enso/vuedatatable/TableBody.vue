@@ -84,7 +84,7 @@
                         <span :slot="item.column.name"
                             v-if="item.column.meta.slot">
                             <slot :name="item.column.name"
-                                :row="row"
+                                :row="body.data[item.rowIndex]"
                                 :column="item.column"/>
                         </span>
                     </table-cell>
@@ -159,8 +159,9 @@ export default {
             return this.hiddenColumns.length;
         },
         hiddenColSpan() {
-            return this.template.columns.length - this.hiddenColumns.length
-            + (this.template.actions ? 2 : 1);
+            return this.template.columns.length
+                - this.hiddenColumns.length
+                + (this.template.actions ? 2 : 1);
         },
         cascadesHiddenControls() {
             return !this.template.crtNo && this.hiddenCount > 0;
@@ -172,7 +173,10 @@ export default {
             handler(newVal) {
                 if (!newVal) {
                     this.removeChilds();
+                    return;
                 }
+
+                this.refreshExpanded();
             },
         },
     },
@@ -243,22 +247,26 @@ export default {
         },
         addChildRow(row, index) {
             const newRow = this.hiddenColumns.reduce((collector, column) => {
-                collector.push({ column, value: row[column.name], index });
+                collector.push({ column, value: row[column.name], rowIndex: index });
                 return collector;
             }, []);
 
             this.body.data.splice(index + 1, 0, newRow);
         },
-        removeChilds() {
-            const indexes = [];
-
+        refreshExpanded() {
             this.body.data.forEach((row, index) => {
+                this.toggleExpand(row, index);
+                this.toggleExpand(row, index);
+            });
+        },
+        removeChilds() {
+            this.body.data.reduce((indexes, row, index) => {
                 if (this.isChild(row)) {
                     indexes.push(index);
                 }
-            });
-
-            indexes.sort((a, b) => a < b).forEach(index => this.body.data.splice(index, 1));
+                return indexes;
+            }, []).sort((a, b) => a < b)
+                .forEach(index => this.body.data.splice(index, 1));
 
             this.expanded.splice(0);
         },

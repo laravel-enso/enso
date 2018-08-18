@@ -2446,16 +2446,16 @@
         },
         {
             "name": "laravel-enso/permissionmanager",
-            "version": "2.1.62",
+            "version": "2.1.63",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/PermissionManager.git",
-                "reference": "fb2beb22f02d14068507b4ed993125836f7e0117"
+                "reference": "2a29c7588dfde34c7c26542f08a31db0e8d85b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/fb2beb22f02d14068507b4ed993125836f7e0117",
-                "reference": "fb2beb22f02d14068507b4ed993125836f7e0117",
+                "url": "https://api.github.com/repos/laravel-enso/PermissionManager/zipball/2a29c7588dfde34c7c26542f08a31db0e8d85b2f",
+                "reference": "2a29c7588dfde34c7c26542f08a31db0e8d85b2f",
                 "shasum": ""
             },
             "require": {
@@ -2505,7 +2505,7 @@
                 "laravel-permissions",
                 "permission-manager"
             ],
-            "time": "2018-08-17T09:57:37+00:00"
+            "time": "2018-08-18T18:33:29+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
@@ -2942,16 +2942,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.1",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "8a9e43283752d8c630db10d9ffecfa5e7810b871"
+                "reference": "3b981e8d1446703b89487f744e7c76fcc105baf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/8a9e43283752d8c630db10d9ffecfa5e7810b871",
-                "reference": "8a9e43283752d8c630db10d9ffecfa5e7810b871",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/3b981e8d1446703b89487f744e7c76fcc105baf5",
+                "reference": "3b981e8d1446703b89487f744e7c76fcc105baf5",
                 "shasum": ""
             },
             "require": {
@@ -2995,7 +2995,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-18T07:22:26+00:00"
+            "time": "2018-08-18T18:32:39+00:00"
         },
         {
             "name": "laravel/framework",

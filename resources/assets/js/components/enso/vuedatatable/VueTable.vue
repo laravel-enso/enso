@@ -57,7 +57,6 @@
                     </template>
                 </table-footer>
             </table>
-            <overlay v-if="loading"/>
         </div>
         <bottom-controls class="bottom-controls"
             :body="body"
@@ -71,6 +70,7 @@
             v-if="isEmpty">
             {{ i18n('No records were found') }}
         </div>
+        <overlay v-if="loading"/>
     </div>
 
 </template>
