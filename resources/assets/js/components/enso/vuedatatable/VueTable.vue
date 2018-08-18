@@ -411,7 +411,7 @@ export default {
         },
         exportRequest() {
             const params = {
-                name: this.template.name,
+                name: this.id,
                 columns: this.template.columns,
                 meta: {
                     start: 0,

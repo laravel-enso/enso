@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.8.24
+
+- fixes table export file name
+
 ### 2.8.23
 
 - major redesign of vue-table component. The title / icon props were removed.
@@ -10,7 +14,7 @@ Upgrade steps to make your current project look like the demo.
         - **global** button classes to null (optional)
         - `'style' => [ 'default' => ['hover', 'center'] ... ]`
     - update in all custom buttons in your templates, if it's the case
-    - remove the `icon` & `name` props from all your table templates
+    - remove the `icon` prop from all your table templates
     - replace all `vue-table` components class from `box` to `is-raised is-rounded`
     - add to all `vue-form` components `is-raised` class
     - compile all themes (uncomment everything from webpack.mix.js and run `yarn production` / `npm run prod`)
