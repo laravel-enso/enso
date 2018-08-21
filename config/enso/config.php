@@ -20,5 +20,6 @@ return [
     ],
     'ravenKey' => env('RAVEN_DSN', null),
     'cacheLifetime' => env('CACHE_LIFETIME', 60),
+    'ensoApiToken' => env('ENSO_API_TOKEN', null),
     'extendedDocumentTitle' => false,
 ];

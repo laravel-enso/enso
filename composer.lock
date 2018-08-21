@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d335a5f499066ca64dbde8d9105774d",
+    "content-hash": "46ffb0c8f4661f96063d07020e63c84b",
     "packages": [
         {
             "name": "box/spout",
@@ -1600,6 +1600,69 @@
             "time": "2018-08-17T09:52:26+00:00"
         },
         {
+            "name": "laravel-enso/controlpanelapi",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/ControlPanelApi.git",
+                "reference": "a7cec333e700cab4762763fe9b673484208117ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/ControlPanelApi/zipball/a7cec333e700cab4762763fe9b673484208117ae",
+                "reference": "a7cec333e700cab4762763fe9b673484208117ae",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "2.12.*",
+                "laravel-enso/helpers": "1.7.*",
+                "laravel-enso/structuremanager": "2.2.*",
+                "laravel/framework": "5.6.*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEnso\\ControlPanelApi\\AppServiceProvider",
+                        "LaravelEnso\\ControlPanelApi\\AuthServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\ControlPanelApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Ocneanu",
+                    "email": "aocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mihai Ocneanu",
+                    "email": "mihai.ocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Control Panel API for Laravel Enso",
+            "keywords": [
+                "api",
+                "controlpanel",
+                "laravel",
+                "laravel-enso"
+            ],
+            "time": "2018-08-21T05:08:09+00:00"
+        },
+        {
             "name": "laravel-enso/core",
             "version": "2.12.7",
             "source": {
@@ -1937,16 +2000,16 @@
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "1.7.12",
+            "version": "1.7.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Helpers.git",
-                "reference": "daa7c78c9341f60ffc1515f175215eb104a5d500"
+                "reference": "bb83edcf309934fbf3ce36adb6905f9da8a20ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/daa7c78c9341f60ffc1515f175215eb104a5d500",
-                "reference": "daa7c78c9341f60ffc1515f175215eb104a5d500",
+                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/bb83edcf309934fbf3ce36adb6905f9da8a20ded",
+                "reference": "bb83edcf309934fbf3ce36adb6905f9da8a20ded",
                 "shasum": ""
             },
             "require": {
@@ -1983,7 +2046,7 @@
                 "helpers",
                 "laravel-enso"
             ],
-            "time": "2018-07-27T14:13:02+00:00"
+            "time": "2018-08-20T16:36:19+00:00"
         },
         {
             "name": "laravel-enso/historytracker",
@@ -2893,16 +2956,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "b9cc979b1d0d4025203be837dc1c88b9431a2300"
+                "reference": "5450157650b7e88e8b492dd4232ef45ce1ecdcb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/b9cc979b1d0d4025203be837dc1c88b9431a2300",
-                "reference": "b9cc979b1d0d4025203be837dc1c88b9431a2300",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/5450157650b7e88e8b492dd4232ef45ce1ecdcb5",
+                "reference": "5450157650b7e88e8b492dd4232ef45ce1ecdcb5",
                 "shasum": ""
             },
             "type": "library",
@@ -2938,20 +3001,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-08-16T13:48:06+00:00"
+            "time": "2018-08-20T16:39:38+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.4",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "3b981e8d1446703b89487f744e7c76fcc105baf5"
+                "reference": "883fd5142afdd4ec5054463a1419c90129c7873c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/3b981e8d1446703b89487f744e7c76fcc105baf5",
-                "reference": "3b981e8d1446703b89487f744e7c76fcc105baf5",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/883fd5142afdd4ec5054463a1419c90129c7873c",
+                "reference": "883fd5142afdd4ec5054463a1419c90129c7873c",
                 "shasum": ""
             },
             "require": {
@@ -2995,7 +3058,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-18T18:32:39+00:00"
+            "time": "2018-08-20T10:36:55+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4181,16 +4244,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "1.9.1",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "7ebc06dcab248bdf12e807bed3b308ef9c8a6ebf"
+                "reference": "6b4c80ee1f5d9d5ab5bae949f4eb5d758a0bf64b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/7ebc06dcab248bdf12e807bed3b308ef9c8a6ebf",
-                "reference": "7ebc06dcab248bdf12e807bed3b308ef9c8a6ebf",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/6b4c80ee1f5d9d5ab5bae949f4eb5d758a0bf64b",
+                "reference": "6b4c80ee1f5d9d5ab5bae949f4eb5d758a0bf64b",
                 "shasum": ""
             },
             "require": {
@@ -4241,7 +4304,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2018-06-19T15:02:57+00:00"
+            "time": "2018-08-18T19:41:03+00:00"
         },
         {
             "name": "sentry/sentry-laravel",

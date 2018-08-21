@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -42,7 +41,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'api',
+            'driver' => 'token',
             'provider' => 'users',
         ],
     ],
@@ -98,5 +97,4 @@ return [
             'expire' => 60,
         ],
     ],
-
 ];

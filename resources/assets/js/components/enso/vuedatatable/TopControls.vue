@@ -52,9 +52,9 @@
                     <span class="is-hidden-mobile"/>
                 </button>
             </div>
-            <div class="column has-padding-small is-one-third-desktop search-input"
-                v-if="template.searchable">
-                <p class="control has-icons-left has-icons-right">
+            <div class="column has-padding-small is-one-third-desktop search-input">
+                <p class="control has-icons-left has-icons-right"
+                    v-if="template.searchable">
                     <input class="input has-text-centered is-rounded"
                         type="text"
                         :value="value"

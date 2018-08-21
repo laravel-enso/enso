@@ -246,7 +246,7 @@ export default {
 <style scoped>
 
     .card {
-        position: static;
+        position: relative;
     }
 
     .card-header-title {

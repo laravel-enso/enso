@@ -7,6 +7,6 @@ use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
 class CheckForMaintenanceMode extends Middleware
 {
     protected $except = [
-        //
+        'token/*'
     ];
 }
