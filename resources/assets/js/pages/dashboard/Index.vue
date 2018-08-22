@@ -4,10 +4,10 @@
         <div class="column"
             v-for="(column, index) in grid"
             :key="index">
-            <chart-card v-for="(element, index) in column"
+            <chart-card class="is-raised has-margin-bottom-large"
+                v-for="(element, index) in column"
                 :key="index"
-                :source="element.meta.source"
-                class="has-margin-bottom-small"/>
+                :source="element.meta.source"/>
         </div>
     </div>
 

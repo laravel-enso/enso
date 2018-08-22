@@ -123,7 +123,8 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return Object.keys(this.$options.methods).includes('__')
+                return this.$options.methods &&
+                    Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },

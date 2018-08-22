@@ -2,7 +2,8 @@
 
     <div :class="['navbar-item notifications', { 'has-dropdown': !isTouch }, { 'is-active': show }]"
         v-click-outside="hide">
-        <span v-if="isTouch" class="is-clickable">
+        <span v-if="isTouch" class="is-clickable"
+             @click="$emit('adsfasfd'); $router.push({'name': 'core.notifications.index'})">
             <span class="icon">
                 <fa icon="bell"/>
             </span>
@@ -28,6 +29,8 @@
                     :key="index">
                     <div class="navbar-content">
                         <p class="is-notification" :class="{ 'is-bold': !notification.read_at }">
+                            <fa :icon="notification.data.icon"
+                                v-if="notification.data.icon"/>
                             {{ notification.data.body }}
                         </p>
                         <p>
@@ -43,22 +46,22 @@
             <nav class="level navbar-item" v-if="notifications.length">
                 <div class="level-left">
                     <div class="level-item">
-                        <a class="button is-small is-success"
-                            @click="markAllAsRead">
-                            <span>{{ __("Mark all read") }}</span>
+                        <a class="button is-small is-info has-margin-left-small"
+                            @click="$router.push({'name': 'core.notifications.index'})">
+                            <span>{{ __("See all") }}</span>
                             <span class="icon is-small">
-                                <fa icon="check"/>
+                                <fa icon="eye"/>
                             </span>
                         </a>
                     </div>
                 </div>
                 <div class="level-right">
                     <div class="level-item">
-                        <a class="button is-small is-warning has-margin-left-small"
-                            @click="clearAll">
-                            <span>{{ __("Clear all") }}</span>
+                        <a class="button is-small is-success"
+                            @click="markAllAsRead">
+                            <span>{{ __("Mark all as read") }}</span>
                             <span class="icon is-small">
-                                <fa icon="trash-alt"/>
+                                <fa icon="check"/>
                             </span>
                         </a>
                     </div>
@@ -82,12 +85,14 @@ import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
 import Favico from 'favico.js';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCheck, faEye, faCogs, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
+import './icons';
+
+library.add(faBell, faCheck, faEye, faCogs, faQuestion);
 
 export default {
     name: 'Notifications',
@@ -136,6 +141,7 @@ export default {
         this.init();
         this.getCount();
         this.listen();
+        this.addBusListeners();
     },
 
     methods: {
@@ -170,18 +176,24 @@ export default {
                 .then(({ data }) => {
                     this.unreadCount = Math.max(--this.unreadCount, 0);
                     notification.read_at = data.read_at;
-                    this.$router.push({ path: notification.data.path });
+
+                    if (notification.data.path && notification.data.path !== '#') {
+                        this.$router.push({ path: notification.data.path });
+                    }
                 }).catch(error => this.handleError(error));
         },
         markAllAsRead() {
             axios.patch(route('core.notifications.markAllAsRead'))
                 .then(() => {
-                    this.notifications.forEach((notification) => {
-                        notification.read_at = notification.read_at || format(new Date(), 'Y-MM-DD H:mm:s');
-                    });
-
-                    this.unreadCount = 0;
+                    this.readAll();
                 }).catch(error => this.handleError(error));
+        },
+        readAll() {
+            this.notifications.forEach((notification) => {
+                notification.read_at = notification.read_at || format(new Date(), 'Y-MM-DD H:mm:s');
+            });
+
+            this.unreadCount = 0;
         },
         clearAll() {
             axios.patch(route('core.notifications.clearAll')).then(() => {
@@ -217,6 +229,23 @@ export default {
         },
         timeFromNow(date) {
             return formatDistance(date);
+        },
+        addBusListeners() {
+            this.$bus.$on('notification-read', (notification) => {
+                this.unreadCount = Math.max(--this.unreadCount, 0);
+                const existing = this.notifications.find(({ id }) => id === notification.id);
+
+                if (existing) {
+                    existing.read_at = notification.read_at;
+                }
+            });
+
+            this.$bus.$on('read-all-notifications', () => this.readAll());
+
+            this.$bus.$on('clear-all-notifications', () => {
+                this.notifications = [];
+                this.unreadCount = 0;
+            });
         },
     },
 };

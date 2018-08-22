@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.8.27
+
+#### Notifications improvements
+
+- adds a notifications index page that allows control over notifications from mobile devices too
+- adds an icon attribute in the notification array
+- to upgrade an existing project run `php artisan enso:notifications:add-missing-permission`
+
 ### 2.8.26
 
 #### Bug Fixes / Improvements for VueTable
