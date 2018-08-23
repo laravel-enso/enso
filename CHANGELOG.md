@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.8.28
+- fixes a series of small bugs in stub filling for StructureMigration
+- adds "selectable" to the vue table - check the [example table](https://www.laravel-enso.com/examples/table)
+- improves the form build when having an edit form. Now you can mutate field values for edit forms too with the `values()` method using the fluent syntax
+- updates all composer & npm dependencies
+
 ### 2.8.27
 
 #### Notifications improvements

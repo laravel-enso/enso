@@ -1,9 +1,11 @@
 <template>
+
     <div class="columns is-gapless has-background-light">
         <div class="column">
             <records-info :body="body"
                 :i18n="i18n"
-                :start="start"/>
+                :start="start"
+                :selected="selected"/>
         </div>
         <div class="column is-narrow has-text-right">
             <pagination :loading="loading"
@@ -16,6 +18,7 @@
                 v-if="hasEntries"/>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -47,6 +50,10 @@ export default {
         },
         loading: {
             type: Boolean,
+            required: true,
+        },
+        selected: {
+            type: Array,
             required: true,
         },
     },

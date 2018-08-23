@@ -1,9 +1,8 @@
 {
     "routePrefix": "examples.table",
     "readSuffix": "data",
-    "name": "Enso Vue Datatable Example",
-    "icon": ["fab", "vuejs"],
     "crtNo": true,
+    "selectable": true,
     "buttons": [
         {
             "type": "global",

@@ -22,14 +22,20 @@
                 id="id">
                 <table-header :template="template"
                     :i18n="i18n"
-                    @sort-update="getData"/>
+                    @sort-update="getData"
+                    @select-page="selectPage"
+                    ref="header"
+                    v-if="hasContent"/>
                 <table-body :template="template"
                     v-on="$listeners"
                     :body="body"
                     :start="start"
                     :i18n="i18n"
                     :expanded="expanded"
+                    :selected="selected"
                     @ajax="ajax"
+                    @update-selected="updateSelectedFlag()"
+                    ref="body"
                     v-if="hasContent">
                     <template v-for="column in template.columns"
                         :slot="column.name"
@@ -65,7 +71,8 @@
             :loading="loading"
             :start="start"
             :length="length"
-            @jump-to="start = $event;getData()"
+            :selected="selected"
+            @jump-to="start = $event; getData()"
             v-if="hasContent"/>
         <div class="has-text-centered no-records-found"
             v-if="isEmpty">
@@ -84,7 +91,6 @@ import TableHeader from './TableHeader.vue';
 import TableBody from './TableBody.vue';
 import TableFooter from './TableFooter.vue';
 import BottomControls from './BottomControls.vue';
-
 import Overlay from './Overlay.vue';
 import vResponsive from './responsive/vResponsive';
 
@@ -142,6 +148,7 @@ export default {
             length: null,
             expanded: [],
             forceInfo: false,
+            selected: [],
         };
     },
 
@@ -153,7 +160,6 @@ export default {
             if (!this.initialised) {
                 return null;
             }
-
             return {
                 global: {
                     length: this.length,
@@ -170,7 +176,6 @@ export default {
                             sort: column.meta.sort,
                             visible: column.meta.visible,
                         });
-
                         return collector;
                     }, []),
             };
@@ -238,10 +243,12 @@ export default {
                 [this.length] = this.template.lengthMenu;
                 this.getData = debounce(this.getData, this.template.debounce);
                 this.setPreferences();
+
                 this.$nextTick(() => {
                     this.initialised = true;
                     this.$emit('initialised');
                 });
+
                 this.getData();
             }).catch((error) => {
                 const { status, data } = error.response;
@@ -284,13 +291,11 @@ export default {
             Object.keys(prefs.global).forEach((key) => {
                 this.$set(this, key, prefs.global[key]);
             });
-
             Object.keys(prefs.template).forEach((key) => {
                 if (this.template[key] !== undefined) {
                     this.$set(this.template, key, prefs.template[key]);
                 }
             });
-
             prefs.columns.forEach((column, index) => {
                 Object.keys(column).forEach((key) => {
                     this.$set(this.template.columns[index].meta, key, column[key]);
@@ -326,6 +331,8 @@ export default {
                     ? this.processMoney(data)
                     : data;
 
+                this.$nextTick(() => this.updateSelectedFlag());
+
                 this.$emit('draw');
             }).catch((error) => {
                 this.handleError(error);
@@ -350,6 +357,7 @@ export default {
                 filters: this.filters,
                 intervals: this.intervals,
                 params: this.params,
+                selected: this.selected,
             };
 
             method = method || this.template.method;
@@ -382,6 +390,7 @@ export default {
                 .forEach((column) => {
                     let money = body.data.map(row => parseFloat(row[column.name]) || 0);
                     money = accounting.formatColumn(money, column.money);
+
                     body.data = body.data.map((row, index) => {
                         row[column.name] = money[index];
                         return row;
@@ -437,6 +446,7 @@ export default {
             axios[method.toLowerCase()](path).then(({ data }) => {
                 this.$toastr.success(data.message);
                 this.getData();
+
                 if (postEvent) {
                     this.$emit(postEvent);
                 }
@@ -462,12 +472,21 @@ export default {
             this.start = 0;
             this.getData();
         },
+        selectPage(state) {
+            this.$refs.body.selectPage(state);
+        },
+        updateSelectedFlag() {
+            const selected = this.body.data.filter(row =>
+                this.selected.findIndex(id => id === row.dtRowId) === -1)
+                .length === 0;
+
+            this.$refs.header.updateSelectedFlag(selected);
+        },
     },
 };
-
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
     .table-wrapper {
 
@@ -492,6 +511,10 @@ export default {
 
             .table {
                 font-size: 0.95em;
+
+                td, th {
+                    vertical-align: middle;
+                }
             }
         }
 

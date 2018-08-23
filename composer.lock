@@ -1945,16 +1945,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.7.2",
+            "version": "2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "9959efb70667e85eb78157ba8c793afc9035a3f7"
+                "reference": "ff0010c57b915e390b306dbb2b49601c3d3425e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/9959efb70667e85eb78157ba8c793afc9035a3f7",
-                "reference": "9959efb70667e85eb78157ba8c793afc9035a3f7",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/ff0010c57b915e390b306dbb2b49601c3d3425e6",
+                "reference": "ff0010c57b915e390b306dbb2b49601c3d3425e6",
                 "shasum": ""
             },
             "require": {
@@ -1997,7 +1997,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-08-16T06:12:07+00:00"
+            "time": "2018-08-23T14:39:44+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2738,16 +2738,16 @@
         },
         {
             "name": "laravel-enso/structuremanager",
-            "version": "2.2.34",
+            "version": "2.2.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/StructureManager.git",
-                "reference": "4f5c7dc3b3a8536becfe40ba3739819f087a5aa1"
+                "reference": "0fb699aa77243342f94f01201d4ae726d644e485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/4f5c7dc3b3a8536becfe40ba3739819f087a5aa1",
-                "reference": "4f5c7dc3b3a8536becfe40ba3739819f087a5aa1",
+                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/0fb699aa77243342f94f01201d4ae726d644e485",
+                "reference": "0fb699aa77243342f94f01201d4ae726d644e485",
                 "shasum": ""
             },
             "require": {
@@ -2790,7 +2790,7 @@
                 "laravel-enso",
                 "structuremanager"
             ],
-            "time": "2018-08-21T09:24:53+00:00"
+            "time": "2018-08-23T14:46:31+00:00"
         },
         {
             "name": "laravel-enso/trackwho",
@@ -3006,16 +3006,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.10",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "c1141f57e01865f31d30824823e94f00422ceda1"
+                "reference": "02ea0d46dd97d81c5f55aa9dc71c42fc278010a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/c1141f57e01865f31d30824823e94f00422ceda1",
-                "reference": "c1141f57e01865f31d30824823e94f00422ceda1",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/02ea0d46dd97d81c5f55aa9dc71c42fc278010a1",
+                "reference": "02ea0d46dd97d81c5f55aa9dc71c42fc278010a1",
                 "shasum": ""
             },
             "require": {
@@ -3059,7 +3059,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-22T11:11:27+00:00"
+            "time": "2018-08-23T11:21:42+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5888,16 +5888,16 @@
         },
         {
             "name": "hassankhan/config",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hassankhan/config.git",
-                "reference": "2065b1ff1e937dd93f72073667be59dcc53e6966"
+                "reference": "930556337783acfd95bde723354119178db01d10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hassankhan/config/zipball/2065b1ff1e937dd93f72073667be59dcc53e6966",
-                "reference": "2065b1ff1e937dd93f72073667be59dcc53e6966",
+                "url": "https://api.github.com/repos/hassankhan/config/zipball/930556337783acfd95bde723354119178db01d10",
+                "reference": "930556337783acfd95bde723354119178db01d10",
                 "shasum": ""
             },
             "require": {
@@ -5907,10 +5907,10 @@
                 "phpunit/phpunit": "~4.0",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "~2.2",
-                "symfony/yaml": "~2.5"
+                "symfony/yaml": "~3.4"
             },
             "suggest": {
-                "symfony/yaml": "~2.5"
+                "symfony/yaml": "~3.4"
             },
             "type": "library",
             "autoload": {
@@ -5942,7 +5942,7 @@
                 "yaml",
                 "yml"
             ],
-            "time": "2018-03-31T13:21:58+00:00"
+            "time": "2018-08-22T14:18:52+00:00"
         },
         {
             "name": "laracasts/generators",

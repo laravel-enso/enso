@@ -3,6 +3,14 @@
     <thead>
         <tr :class="['has-background-light', template.style]">
             <th :class="['vue-table-header', template.align]"
+                v-if="template.selectable">
+                <label class="checkbox">
+                    <input type="checkbox"
+                        v-model="pageSelected"
+                        @change="$emit('select-page', pageSelected)">
+                </label>
+            </th>
+            <th :class="['vue-table-header', template.align]"
                 v-if="template.crtNo">
                 {{ i18n(template.labels.crtNo) }}
             </th>
@@ -54,7 +62,6 @@
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-
 import { faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo }
     from '@fortawesome/free-solid-svg-icons';
 
@@ -76,9 +83,17 @@ export default {
         },
     },
 
+    data() {
+        return {
+            pageSelected: false,
+        };
+    },
+
     methods: {
         sortIcon(sort) {
-            if (!sort) return faSort;
+            if (!sort) {
+                return faSort;
+            }
 
             return sort === 'ASC'
                 ? faSortUp
@@ -109,9 +124,11 @@ export default {
                 meta.sort = null;
             });
         },
+        updateSelectedFlag(state) {
+            this.pageSelected = state;
+        },
     },
 };
-
 </script>
 
 <style lang="scss" scoped>
