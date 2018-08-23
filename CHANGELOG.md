@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.8.29
+- adds ability to delete individual notifications
+- for existing projects run `php artisan enso:notification:add-missing-permissions`
+
 ### 2.8.28
 - fixes a series of small bugs in stub filling for StructureMigration
 - adds "selectable" to the vue table - check the [example table](https://www.laravel-enso.com/examples/table)

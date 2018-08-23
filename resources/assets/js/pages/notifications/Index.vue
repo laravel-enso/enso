@@ -1,10 +1,17 @@
 <template>
 
     <div>
-        <h4 class="title is-5 has-text-centered"
-            v-if="!loading && !notifications.length">
-            {{ __("You don't have any notifications") }}
-        </h4>
+        <div class="has-text-centered"
+            v-if="!initialised && loading">
+            <h4 class="title is-4 has-text-centered">
+                {{ __('Loading') }}
+                <span class="icon is-small has-margin-left-medium">
+                    <fa icon="spinner"
+                        size="xs"
+                        spin/>
+                </span>
+            </h4>
+        </div>
         <div class="columns is-centered"
             v-if="notifications.length">
             <div class="column is-half-desktop">
@@ -51,13 +58,25 @@
                             </span>
                             <span class="is-pulled-right">
                                 {{ timeFromNow(notification.created_at) }}
+                                <a class="delete has-margin-left-medium"
+                                    @click="clear(notification, index)"/>
                             </span>
                             <span class="is-clearfix"/>
                         </div>
                     </li>
                 </ul>
+                <div class="has-text-centered has-margin-top-large">
+                    <button :class="['button animated fadeIn', {'is-loading': loading}]"
+                        @click="getData">
+                        {{ __('Load more') }}
+                    </button>
+                </div>
             </div>
         </div>
+        <h4 class="title is-5 has-text-centered"
+            v-else-if="initialised && !notifications.length">
+            {{ __("You don't have any notifications") }}
+        </h4>
     </div>
 
 </template>
@@ -77,6 +96,7 @@ export default {
 
     data() {
         return {
+            initialised: false,
             limit: 200,
             notifications: [],
             offset: 0,
@@ -106,6 +126,7 @@ export default {
                 'core.notifications.getList',
                 [this.offset, this.limit],
             )).then(({ data }) => {
+                this.initialised = true;
                 this.notifications = this.offset ? this.notifications.concat(data) : data;
                 this.offset = this.notifications.length;
                 this.loading = false;
@@ -140,6 +161,12 @@ export default {
             axios.patch(route('core.notifications.clearAll')).then(() => {
                 this.notifications = [];
                 this.$bus.$emit('clear-all-notifications');
+            }).catch(error => this.handleError(error));
+        },
+        clear(notification, index) {
+            axios.delete(route('core.notifications.clear', notification.id)).then(() => {
+                this.notifications.splice(index, 1);
+                this.$bus.$emit('clear-notification', notification);
             }).catch(error => this.handleError(error));
         },
         timeFromNow(date) {

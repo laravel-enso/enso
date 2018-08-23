@@ -242,6 +242,18 @@ export default {
 
             this.$bus.$on('read-all-notifications', () => this.readAll());
 
+            this.$bus.$on('clear-notification', (notification) => {
+                const index = this.notifications.findIndex(({ id }) => id === notification.id);
+
+                if (!notification.read_at) {
+                    this.unreadCount = Math.max(--this.unreadCount, 0);
+                }
+
+                if (index >= 0) {
+                    this.notifications.splice(index, 1);
+                }
+            });
+
             this.$bus.$on('clear-all-notifications', () => {
                 this.notifications = [];
                 this.unreadCount = 0;

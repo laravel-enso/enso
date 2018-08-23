@@ -3,6 +3,7 @@
     <tfoot>
         <tr>
             <td v-if="template.crtNo"/>
+            <td v-if="template.selectable"/>
             <td class="has-text-centered is-bold"
                 v-if="
                     template.columns[0].meta.visible

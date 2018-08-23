@@ -1665,16 +1665,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.12.9",
+            "version": "2.12.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "fb59cbdcde6e8faf61617119f6e6576a37b83b7a"
+                "reference": "13249b93379d3a2910398b2072a82ac70601c799"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/fb59cbdcde6e8faf61617119f6e6576a37b83b7a",
-                "reference": "fb59cbdcde6e8faf61617119f6e6576a37b83b7a",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/13249b93379d3a2910398b2072a82ac70601c799",
+                "reference": "13249b93379d3a2910398b2072a82ac70601c799",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-08-22T11:33:27+00:00"
+            "time": "2018-08-23T16:10:35+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -2451,16 +2451,16 @@
         },
         {
             "name": "laravel-enso/notifications",
-            "version": "2.1.17",
+            "version": "2.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Notifications.git",
-                "reference": "53bec07d8e8e7ac78f21f2c3c68f00a5cab65d8a"
+                "reference": "064f5897ad50a0710ff210b56cc6669e77a082c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Notifications/zipball/53bec07d8e8e7ac78f21f2c3c68f00a5cab65d8a",
-                "reference": "53bec07d8e8e7ac78f21f2c3c68f00a5cab65d8a",
+                "url": "https://api.github.com/repos/laravel-enso/Notifications/zipball/064f5897ad50a0710ff210b56cc6669e77a082c4",
+                "reference": "064f5897ad50a0710ff210b56cc6669e77a082c4",
                 "shasum": ""
             },
             "require": {
@@ -2506,7 +2506,7 @@
                 "notifications",
                 "push-notifications"
             ],
-            "time": "2018-08-22T11:26:31+00:00"
+            "time": "2018-08-23T16:11:09+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",
@@ -3006,16 +3006,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.12",
+            "version": "1.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "e8121dd549605473264875b8a800c9ae9ffb0553"
+                "reference": "0fb4cd3b74c5e34273aa3d57f3785c4de1d44bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/e8121dd549605473264875b8a800c9ae9ffb0553",
-                "reference": "e8121dd549605473264875b8a800c9ae9ffb0553",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/0fb4cd3b74c5e34273aa3d57f3785c4de1d44bef",
+                "reference": "0fb4cd3b74c5e34273aa3d57f3785c4de1d44bef",
                 "shasum": ""
             },
             "require": {
@@ -3059,7 +3059,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-23T15:30:24+00:00"
+            "time": "2018-08-23T15:45:24+00:00"
         },
         {
             "name": "laravel/framework",
