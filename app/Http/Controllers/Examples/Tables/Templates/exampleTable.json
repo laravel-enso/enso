@@ -14,20 +14,20 @@
         {
             "type": "global",
             "icon": "plus",
-            "class": "is-success",
+            "class": "is-info",
             "event": "create",
             "label": "Create"
         },
         {
             "type": "row",
             "icon": "pencil-alt",
-            "class": "is-warning",
+            "class": "is-naked",
             "event": "edit"
         },
         {
             "type": "row",
             "icon": "trash-alt",
-            "class": "is-danger",
+            "class": "is-naked",
             "event": "destroy",
             "confirmation" : true,
             "message" : "This is your custom confirmation. Are you sure?"
