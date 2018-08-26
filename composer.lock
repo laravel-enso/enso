@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "1f1d621cd4acbccd22ee8cbd4b776a9d",
@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.13.0",
+            "version": "2.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "be261911f6bd1b8b6976106f563749519e07cae7"
+                "reference": "bca24d6020b70841141689811276072bcce491ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/be261911f6bd1b8b6976106f563749519e07cae7",
-                "reference": "be261911f6bd1b8b6976106f563749519e07cae7",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/bca24d6020b70841141689811276072bcce491ed",
+                "reference": "bca24d6020b70841141689811276072bcce491ed",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-08-26T11:36:52+00:00"
+            "time": "2018-08-26T13:07:06+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
