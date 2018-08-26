@@ -3008,16 +3008,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.17",
+            "version": "1.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "7b9c1f326de4e886d22e5c24e48615f4b4c57b28"
+                "reference": "9eda655307b92000ae9d9ba13f7a178507931368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/7b9c1f326de4e886d22e5c24e48615f4b4c57b28",
-                "reference": "7b9c1f326de4e886d22e5c24e48615f4b4c57b28",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/9eda655307b92000ae9d9ba13f7a178507931368",
+                "reference": "9eda655307b92000ae9d9ba13f7a178507931368",
                 "shasum": ""
             },
             "require": {
@@ -3061,7 +3061,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T11:51:03+00:00"
+            "time": "2018-08-26T19:27:25+00:00"
         },
         {
             "name": "laravel/framework",

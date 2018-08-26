@@ -476,6 +476,10 @@ export default {
             this.$refs.body.selectPage(state);
         },
         updateSelectedFlag() {
+            if (!this.$refs.header) {
+                return;
+            }
+
             const selected = this.body.data.filter(row =>
                 this.selected.findIndex(id => id === row.dtRowId) === -1)
                 .length === 0;
