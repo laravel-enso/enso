@@ -9,7 +9,7 @@
             "label": "",
             "name": "avatarId",
             "data": "users.avatarId",
-            "meta": "slot",
+            "meta": ["slot"],
             "class": "is-paddingless"
         },
         {
