@@ -1357,16 +1357,16 @@
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "4e06b27a61b0b7c821554d53b7ff6864c07d0968"
+                "reference": "b1a3d080cc0e1539a4cb3a4cdaa8190102cf5070"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/4e06b27a61b0b7c821554d53b7ff6864c07d0968",
-                "reference": "4e06b27a61b0b7c821554d53b7ff6864c07d0968",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/b1a3d080cc0e1539a4cb3a4cdaa8190102cf5070",
+                "reference": "b1a3d080cc0e1539a4cb3a4cdaa8190102cf5070",
                 "shasum": ""
             },
             "require": {
@@ -1415,7 +1415,7 @@
                 "avatarmanager",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T11:17:19+00:00"
+            "time": "2018-08-26T12:25:41+00:00"
         },
         {
             "name": "laravel-enso/charts",
