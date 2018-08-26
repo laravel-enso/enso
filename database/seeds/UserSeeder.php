@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$06TrEefmqWBO7xghm2PUzeF/O0wcawFUv8TKYq.NF6Dsa0Pnmd/F2',
             'role_id' => Role::whereName('admin')->first()->id,
             'owner_id' => Owner::whereName('Admin')->first()->id,
-            'is_active' => true
+            'is_active' => true,
         ]);
     }
 }
