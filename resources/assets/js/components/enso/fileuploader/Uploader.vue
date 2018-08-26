@@ -11,8 +11,8 @@
                         <span class="file-icon">
                             <fa :icon="['fal', 'upload']"/>
                         </span>
-                        <span class="file-label is-hidden-tablet-only">
-                            {{ __('File(s)') }}…
+                        <span class="file-label">
+                            {{ __(label) }}…
                         </span>
                     </span>
                 </label>
@@ -35,5 +35,13 @@ export default {
     name: 'Uploader',
 
     components: { FileUploader },
+
+    computed: {
+        label() {
+            return this.multiple
+                ? 'Files'
+                : 'File';
+        },
+    },
 };
 </script>

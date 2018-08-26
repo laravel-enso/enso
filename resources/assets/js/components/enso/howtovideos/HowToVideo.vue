@@ -10,11 +10,11 @@
             </span>
         </card-control>
         <card-control slot="control-2"
-            v-if="!video.poster_saved_name && canAccess('howTo.posters.store')">
+            v-if="!video.poster && canAccess('howTo.posters.store')">
             <file-uploader :url="uploadLink"
                 :params="{ videoId: video.id }"
                 file-key="poster"
-                @upload-successful="video.poster_saved_name = $event.saved_name">
+                @upload-successful="video.poster = $event">
                 <span class="icon"
                     slot="upload-button"
                     slot-scope="{ openFileBrowser }"
@@ -38,7 +38,7 @@
             </span>
         </card-control>
         <card-control slot="control-5"
-            v-if="canAccess('howTo.posters.destroy') && video.poster_saved_name">
+            v-if="canAccess('howTo.posters.destroy') && video.poster">
             <popover @confirm="destroyPoster"
                 v-tooltip="__('Remove poster')">
                 <span class="icon is-small">
@@ -148,17 +148,16 @@ export default {
                     type: 'video/mp4',
                     src: route('howTo.videos.show', this.video.id),
                 }],
-                poster: this.video.poster_saved_name
-                    ? route('howTo.posters.show', this.video.id)
+                poster: this.video.poster
+                    ? route('howTo.posters.show', this.video.poster.id)
                     : '',
             };
         },
         destroyPoster() {
-            axios.delete(route('howTo.posters.destroy', this.video.id))
+            axios.delete(route('howTo.posters.destroy', this.video.poster.id))
                 .then(({ data }) => {
                     this.$toastr.success(data.message);
-                    this.video.poster_saved_name = null;
-                    this.video.poster_original_name = null;
+                    this.video.poster = null;
                 }).catch(error => this.handleError(error));
         },
         destroyVideo() {

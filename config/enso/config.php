@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '2.8.29',
+    'version' => '2.9.0',
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',
@@ -14,7 +14,6 @@ return [
         'files' => 'files',
         'avatars' => 'avatars',
         'imports' => 'imports',
-        'temp' => 'temp',
         'exports' => 'exports',
         'howToVideos' => 'howToVideos',
     ],

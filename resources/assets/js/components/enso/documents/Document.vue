@@ -7,7 +7,7 @@
                     <fa icon="file"/>
                 </span>
                 <span>
-                    {{ shortName(doc.original_name) }}
+                    {{ shortName(doc.file.original_name) }}
                 </span>
             </div>
         </div>
@@ -57,7 +57,7 @@
                                     <span class="icon is-small">
                                         <fa icon="user"/>
                                     </span>
-                                    {{ doc.owner.fullName }}
+                                    {{ doc.file.owner.name }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
@@ -69,7 +69,7 @@
                                     <span class="icon is-small">
                                         <fa icon="database"/>
                                     </span>
-                                    {{ $options.filters.numberFormat(doc.size) }} Kb
+                                    {{ $options.filters.numberFormat(doc.file.size) }} Kb
                                 </p>
                             </div>
                         </template>

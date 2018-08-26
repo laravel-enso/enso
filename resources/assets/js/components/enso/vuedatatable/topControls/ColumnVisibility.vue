@@ -10,7 +10,7 @@
             class="dropdown-item"
             :class="{ 'is-active': column.meta.visible }"
             @click="column.meta.visible = !column.meta.visible;$emit('update-visibility')">
-            {{ column.label }}
+            {{ i18n(column.label) }}
         </a>
     </dropdown>
 
@@ -32,6 +32,10 @@ export default {
     props: {
         template: {
             type: Object,
+            required: true,
+        },
+        i18n: {
+            type: Function,
             required: true,
         },
     },

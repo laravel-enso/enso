@@ -24,7 +24,7 @@
                                                 v-if="isSelfVisiting">
                                                 <button class="button is-fullwidth is-warning"
                                                     v-if="avatarId"
-                                                    @click="deleteAvatar">
+                                                    @click="updateAvatar">
                                                     <span class="icon">
                                                         <fa icon="sync-alt"/>
                                                     </span>
@@ -171,9 +171,9 @@ export default {
                 .then(response => (this.profile = response.data.user))
                 .catch(error => this.handleError(error));
         },
-        deleteAvatar() {
-            axios.delete(route('core.avatars.destroy', this.user.avatarId))
-                .then(({ data }) => this.setUserAvatar(data))
+        updateAvatar() {
+            axios.patch(route('core.avatars.update', this.user.avatarId))
+                .then(({ data }) => this.setUserAvatar(data.avatarId))
                 .catch(error => this.handleError(error));
         },
         exit() {

@@ -10,6 +10,7 @@
                     :length="length"
                     v-on="$listeners"/>
                 <column-visibility :template="template"
+                    :i18n="i18n"
                     v-on="$listeners"/>
                 <style-selector :template="template"
                     class="is-hidden-mobile"/>

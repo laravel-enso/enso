@@ -2,12 +2,12 @@
 
 use App\User;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\TestHelper\app\Traits\SignIn;
-use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelEnso\TestHelper\app\Traits\TestDataTable;
-use Tests\TestCase;
+use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
 
 class OwnerTest extends TestCase
 {
@@ -22,7 +22,10 @@ class OwnerTest extends TestCase
         parent::setUp();
 
         // $this->withoutExceptionHandling();
-        $this->signIn(User::first());
+
+        $this->seed()
+            ->signIn(User::first());
+
         $this->role = Role::first(['id']);
         $this->faker = Factory::create();
     }
@@ -31,8 +34,14 @@ class OwnerTest extends TestCase
     public function store()
     {
         $postParams = $this->postParams();
-        $response = $this->post(route('administration.owners.store', [], false), $postParams);
-        $owner = config('enso.config.ownerModel')::whereName($postParams['name'])->first();
+
+        $response = $this->post(
+            route('administration.owners.store', [], false),
+            $postParams
+        );
+
+        $owner = config('enso.config.ownerModel')::whereName($postParams['name'])
+                    ->first();
 
         $response->assertStatus(200)
             ->assertJsonStructure(['message'])
@@ -46,6 +55,7 @@ class OwnerTest extends TestCase
     public function edit()
     {
         $postParams = $this->postParams();
+
         $owner = config('enso.config.ownerModel')::create($postParams);
 
         $this->get(route('administration.owners.edit', $owner->id, false))
@@ -57,12 +67,17 @@ class OwnerTest extends TestCase
     public function update()
     {
         $postParams = $this->postParams();
-        $owner = config('enso.config.ownerModel')::create($postParams)->append(['roleList']);
+
+        $owner = config('enso.config.ownerModel')::create($postParams)
+                    ->append(['roleList']);
+
         $owner->name = 'edited';
 
-        $this->patch(route('administration.owners.update', $owner->id, false), $owner->toArray())
-            ->assertStatus(200)
-            ->assertJsonStructure(['message']);
+        $this->patch(
+                route('administration.owners.update', $owner->id, false),
+                $owner->toArray()
+        )->assertStatus(200)
+        ->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', $owner->fresh()->name);
     }
@@ -71,6 +86,7 @@ class OwnerTest extends TestCase
     public function destroy()
     {
         $postParams = $this->postParams();
+
         $owner = config('enso.config.ownerModel')::create($postParams);
 
         $this->delete(route('administration.owners.destroy', $owner->id, false))
@@ -84,7 +100,9 @@ class OwnerTest extends TestCase
     public function cant_destroy_if_has_users_attached()
     {
         $postParams = $this->postParams();
+
         $owner = config('enso.config.ownerModel')::create($postParams);
+
         $this->attachUser($owner);
 
         $this->delete(route('administration.owners.destroy', $owner->id, false))
@@ -95,16 +113,15 @@ class OwnerTest extends TestCase
 
     private function attachUser($owner)
     {
-        $user = new User([
+        $owner->users()->create([
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'phone' => $this->faker->phoneNumber,
             'is_active' => 1,
+            'email' => $this->faker->email,
+            'owner_id' => $owner->id,
+            'role_id' => $this->role->id,
         ]);
-        $user->email = $this->faker->email;
-        $user->owner_id = $owner->id;
-        $user->role_id = $this->role->id;
-        $user->save();
     }
 
     private function postParams()

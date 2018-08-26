@@ -1,5 +1,61 @@
 ## Laravel Enso's Changelog
 
+### 2.9.0
+
+This version is a major backend refactor. It has breaking changes so read carefully the needed steps for upgrading existing projects. We created an artisan command that does all the hard work during the upgrade, so don't worry.
+
+#### Changes
+
+##### File System
+- the file system has been rewritten around a single `FileManager` class that makes full use of Laravel's `UploadedFile` class
+- there is a `files` table now that keeps track of all the files in the application. The `File` model has a polymorphic 'attachable` relationship to any needed model.
+- to develop new packages that work with file uploads all you need is the new `HasFile` trait and implementing the `Attachable` contract. 
+The trait creates a `file` `morphOne` relationship to the base model and makes available all the needed methods: `inline()`, `download()`, `upload(UploadedFile $file)`. There are also helpers (check the contract / trait) and protected properties that can be used for configuring the specific of the model related to files, like:
+    - `folder`: string the storage folder for the model's files
+    - `mimeTypes`: array
+    - `extensions`: array
+    - `resizeImages`: array(width, height)
+    - `optimizeImages`: boolean
+- the trait adds a `deleting` event on the base model that makes sure the to associated files are delelted on `$model->delete()`
+- when the env is testing `FileManager` uses a `testing` folder
+- upgraded packages: AvatarManager, DataImport, DocumentsManager, FileManager, HowToVideos
+
+##### Seeders
+- until now the app was using migrations instead of seeders for inserting the default roles, owner and user. This version adds seeders for roles, default user, default owners, and countries (for the addresses package)
+- the seeders can be published with `php artisan vendor:publish --tag=enso-seeders`. Use the `--force` flag if needed.
+
+#### Roles
+- we have now a `php artisan enso:roles:sync` command that will help keeping the all the environments up to date.
+
+#### Upgrade steps for existing projects
+
+- update in composer.json the following:
+    - "laravel-enso/core": "2.13.*",
+    - "laravel-enso/dataimport": "2.3.*",
+    - "laravel-enso/documentsmanager": "2.3.*",
+    - "laravel-enso/howtovideos": "2.1.*",
+- run `composer update`
+- run `php artisan migrate`
+- run `php artisan enso:filemanager:upgrade`. This command will translate all the tables from the old format to the new one. It's recommended to make a backup of the database before the update, just to be sure that nothing goes wrong.
+- run `php artisan vendor:publish --tag=enso-seeders --force` to update the seeders (Database, Role, Owner & User) if you didn't make any customizations to the existing ones.
+
+##### Files & Folders to delete
+- remove the `insert_default_owner` & `insert_default_user` migrations
+- remove the `app/storage/temp` folder, it's no longer needed
+
+##### Files that need to be replaced & edited according to the repo
+- sync the `config/enso/config.php` keys with the keys from `vendor/laravel-enso/core/src/config/config.php`
+- replace `tests/Feature/OwnerTest.php` with the one from the repo.
+- replace `tests/Feature/UserTest.php` with the one from the repo.
+- replace `resources/assets/js/pages/administration/users/Index.vue` with the one from the repo.
+- edit `storage/app/.gitignore` file and replace `temp` with `testing`
+- add in `app/User.php` the `avatarId` attribute to fillable
+- add in `app/Tables/Builders/UserTable.php` `users.id` to the table select (`users.id, users.id as "dtRowId"`). We need this for showing the avatar in the users index table
+- replace `app/Tables/Templates/users.json` with the one from the repo.
+
+#### Notes
+- this is a pretty heavy upgrade, if you find any problems open issues in github, issues for this upgrade will be prioritized
+
 ### 2.8.29
 - adds ability to delete individual notifications
 - for existing projects run `php artisan enso:notification:add-missing-permissions`

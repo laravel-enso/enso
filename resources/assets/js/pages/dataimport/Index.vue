@@ -13,11 +13,12 @@
             <div class="column is-hidden-touch is-6 has-padding-medium has-text-centered"
                 v-if="importType">
                 <file-uploader class="animated fadeIn"
-                    v-if="!template"
                     :url="templateLink"
+                    file-key="template"
                     @upload-start="loadingTemplate=true"
                     @upload-successful="template = $event;loadingTemplate = false"
-                    @upload-error="loadingTemplate=false">
+                    @upload-error="loadingTemplate=false"
+                    v-if="!template">
                     <a slot="upload-button"
                         class="button is-info"
                         slot-scope="{ openFileBrowser }"
@@ -50,10 +51,11 @@
             <div class="column has-padding-medium has-text-centered"
                 v-if="importType">
                 <div class="">
-                    <file-uploader @upload-start=" importing = true"
+                    <file-uploader :url="importLink"
+                        file-key="import"
+                        @upload-start=" importing = true"
                         @upload-successful="summary = $event;importing = false"
                         @upload-error="importing = false;importType = null"
-                        :url="importLink"
                         v-if="importType">
                         <a slot="upload-button"
                             slot-scope="{ openFileBrowser }"

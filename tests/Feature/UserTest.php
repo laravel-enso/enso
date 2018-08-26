@@ -24,7 +24,10 @@ class UserTest extends TestCase
         parent::setUp();
 
         // $this->withoutExceptionHandling();
-        $this->signIn(User::first());
+
+        $this->seed()
+            ->signIn(User::first());
+
         $this->faker = Factory::create();
         $this->owner = config('enso.config.ownerModel')::first(['id']);
         $this->role = Role::first(['id']);
@@ -36,8 +39,14 @@ class UserTest extends TestCase
         Notification::fake();
 
         $postParams = $this->postParams();
-        $response = $this->post(route('administration.users.store', [], false), $postParams);
-        $user = User::whereFirstName($postParams['first_name'])->first(['id']);
+
+        $response = $this->post(
+            route('administration.users.store', [], false),
+            $postParams
+        );
+
+        $user = User::whereFirstName($postParams['first_name'])
+                    ->first(['id']);
 
         $response->assertStatus(200)
             ->assertJsonStructure(['message'])
@@ -63,6 +72,7 @@ class UserTest extends TestCase
     public function update()
     {
         $user = $this->createUser();
+
         $user->last_name = 'edited';
 
         $this->patch(route('administration.users.update', $user->id, false), $user->toArray())

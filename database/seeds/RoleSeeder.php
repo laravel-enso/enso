@@ -7,51 +7,29 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
+    private const Roles = [
+        ['menu_id' => 1, 'name' => 'admin', 'display_name' => 'Administrator', 'description' => 'Administrator role. Full featured.'],
+        ['menu_id' => 1, 'name' => 'supervisor', 'display_name' => 'Supervisor', 'description' => 'Supervisor role.'],
+    ];
+
     public function run()
     {
-        collect(\File::files(config_path('local/roles')))
-            ->map(function ($file) {
-                $config = str_replace('.php', '', $file->getFilename());
+        \DB::table('roles')->insert(self::Roles);
 
-                return config('local.roles.'.$config);
-            })->sortBy('order')
-            ->each(function ($config) {
-                $this->create($config);
-            });
-    }
-
-    private function create(array $config)
-    {
-        $role = Role::firstOrCreate(
-            ['name' => $config['role']['name']],
-            [
-                'display_name' => $config['role']['display_name'],
-                'menu_id' => $this->menuId($config),
-            ]
-        );
+        $role = Role::whereName('admin')->first();
 
         $role->permissions()
-            ->sync($this->permissionIds($config));
+                ->attach(Permission::all());
 
         $role->menus()
-            ->sync($this->menuIds($config));
-    }
+            ->attach(Menu::all());
 
-    private function menuId($config)
-    {
-        return optional(Menu::whereLink($config['default_menu'])->first())
-            ->id;
-    }
+        $role = Role::whereName('supervisor')->first();
 
-    private function permissionIds($config)
-    {
-        return Permission::whereIn('name', $config['permissions'])
-                ->pluck('id');
-    }
+        $role->permissions()
+                ->attach(Permission::implicit()->get());
 
-    private function menuIds($config)
-    {
-        return Menu::whereIn('name', $config['menus'])
-                ->pluck('id');
+        $role->menus()
+            ->attach(Menu::all());
     }
 }
