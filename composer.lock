@@ -1755,16 +1755,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "1e7478225c57336eeb8888061a376176aa6cd997"
+                "reference": "f5451fc54fe96ad56d8bce36af1fe8c4049831b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/1e7478225c57336eeb8888061a376176aa6cd997",
-                "reference": "1e7478225c57336eeb8888061a376176aa6cd997",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/f5451fc54fe96ad56d8bce36af1fe8c4049831b8",
+                "reference": "f5451fc54fe96ad56d8bce36af1fe8c4049831b8",
                 "shasum": ""
             },
             "require": {
@@ -1823,20 +1823,20 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T11:19:08+00:00"
+            "time": "2018-08-26T12:34:30+00:00"
         },
         {
             "name": "laravel-enso/documentsmanager",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DocumentsManager.git",
-                "reference": "b2773824e7f3e4da2821e74b93a178ed3493a202"
+                "reference": "504595678c3aef0f3429e550374c6404912922c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/b2773824e7f3e4da2821e74b93a178ed3493a202",
-                "reference": "b2773824e7f3e4da2821e74b93a178ed3493a202",
+                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/504595678c3aef0f3429e550374c6404912922c9",
+                "reference": "504595678c3aef0f3429e550374c6404912922c9",
                 "shasum": ""
             },
             "require": {
@@ -1887,7 +1887,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T11:22:56+00:00"
+            "time": "2018-08-26T12:34:56+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
@@ -2098,16 +2098,16 @@
         },
         {
             "name": "laravel-enso/howtovideos",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/HowToVideos.git",
-                "reference": "94cb98176b9566d32caac4ed87f89b364ec021c0"
+                "reference": "ca7fcaf784138ecc98635fd51964b435dea257b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/HowToVideos/zipball/94cb98176b9566d32caac4ed87f89b364ec021c0",
-                "reference": "94cb98176b9566d32caac4ed87f89b364ec021c0",
+                "url": "https://api.github.com/repos/laravel-enso/HowToVideos/zipball/ca7fcaf784138ecc98635fd51964b435dea257b8",
+                "reference": "ca7fcaf784138ecc98635fd51964b435dea257b8",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2153,7 @@
                 "laravel-enso",
                 "vidoes"
             ],
-            "time": "2018-08-26T11:26:41+00:00"
+            "time": "2018-08-26T12:35:11+00:00"
         },
         {
             "name": "laravel-enso/imagetransformer",
