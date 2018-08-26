@@ -58,7 +58,7 @@ The trait creates a `file` `morphOne` relationship to the base model and makes a
 
 ### 2.8.29
 - adds ability to delete individual notifications
-- for existing projects run `php artisan enso:notification:add-missing-permissions`
+- for existing projects run `php artisan enso:notifications:add-missing-permissions`
 
 ### 2.8.28
 - fixes a series of small bugs in stub filling for StructureMigration
