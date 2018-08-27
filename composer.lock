@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.13.3",
+            "version": "2.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "69549137aeb585cfb4c4016a94a0d8e3c4c43b0c"
+                "reference": "be40f9ece3da48880fcbfb625dc60c8885ec4805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/69549137aeb585cfb4c4016a94a0d8e3c4c43b0c",
-                "reference": "69549137aeb585cfb4c4016a94a0d8e3c4c43b0c",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/be40f9ece3da48880fcbfb625dc60c8885ec4805",
+                "reference": "be40f9ece3da48880fcbfb625dc60c8885ec4805",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-08-26T13:59:16+00:00"
+            "time": "2018-08-27T05:35:07+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -3008,16 +3008,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.4.19",
+            "version": "1.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "277c49fe78100315d7221406f22a2b627c932afe"
+                "reference": "630ebb9cf114bd2e6173f720a98b70c33859d945"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/277c49fe78100315d7221406f22a2b627c932afe",
-                "reference": "277c49fe78100315d7221406f22a2b627c932afe",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/630ebb9cf114bd2e6173f720a98b70c33859d945",
+                "reference": "630ebb9cf114bd2e6173f720a98b70c33859d945",
                 "shasum": ""
             },
             "require": {
@@ -3061,7 +3061,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T19:43:45+00:00"
+            "time": "2018-08-27T05:24:33+00:00"
         },
         {
             "name": "laravel/framework",
