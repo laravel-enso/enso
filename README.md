@@ -40,7 +40,7 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 3. Configure the `.env` file. Run `php artisan key:generate`
 
-4. Run `php artisan migrate`
+4. Run `php artisan migrate --seed`
 
 5. Login into the project with user: `admin@laravel-enso.com`, password: `password`
 
