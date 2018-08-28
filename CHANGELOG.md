@@ -73,6 +73,7 @@ Among the goals:
     "class": "is-paddingless"
 },
 ```
+- remove from the same template (`users.json`) the deprecated `avatarId` from the appends array. The result should be `"appends": ["fullName"],`
 - update in `app/Tables/Builders/UserTable.php` the query method to:
 ```php
 public function query()
@@ -88,12 +89,15 @@ public function query()
 ```
 - replace both `app/Forms/Builders/OwnerForm.php` & `app/Forms/Builders/UserForm.php` with the ones from the repo (this is not mandatory, and must be done with care if you have already customized your local builders)
 ```
+- sync the `config/enso/config.php` keys with the keys from `vendor/laravel-enso/core/src/config/config.php`
+- replace `tests/Feature/OwnerTest.php` &&  `tests/Feature/UserTest.php` with the one from the repo - or manually update if you have local changes
 - modify the slot rendering in `resources/assets/js/pages/administration/users/Index.vue` to
 ```vue
 <img class="is-rounded"
     :src="avatarLink(row.avatarId)"
     v-if="row.avatarId">
 ```
+- add in 'database/seeds/UserSeeder.php` after the actual seed the following line`\Artisan::call('enso:avatars:generate');`
 
 ### 2.9.0
 
