@@ -145,6 +145,7 @@ return [
         /*
          * Package Service Providers...
          */
+        LaravelEnso\TrackWho\AppServiceProvider::class,
         /*
          * Application Service Providers...
          */

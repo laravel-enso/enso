@@ -2,62 +2,69 @@
 
     <div class="columns is-reverse-mobile">
         <div class="column is-three-quarters">
-            <div class="field has-addons video-description animated fadeInDown"
+            <div class="columns animated fadeInDown"
                 v-if="addingVideo || editingVideo">
-                <div class="control">
-                    <input class="input"
-                        v-focus
-                        type="text"
-                        :placeholder="__('video name')"
-                        v-model="video.name">
+                <div class="column is-narrow">
+                    <div class="control">
+                        <input class="input"
+                            v-focus
+                            type="text"
+                            :placeholder="__('Video name')"
+                            v-model="video.name">
+                    </div>
                 </div>
-                <div class="control is-expanded">
-                    <input class="input"
-                        type="text"
-                        :placeholder="__('video description')"
-                        v-model="video.description">
+                <div class="column">
+                    <div class="control is-expanded">
+                        <textarea class="textarea"
+                            rows="2"
+                            type="text"
+                            :placeholder="__('Video description')"
+                            v-model="video.description"/>
+                    </div>
                 </div>
-                <div class="control animated fadeIn"
-                    v-if="video.name">
-                    <file-uploader :url="uploadLink"
-                        :params="video"
-                        :file-size-limit="20000000"
-                        file-key="video"
-                        @upload-successful="reset(); getVideos()"
-                        v-if="addingVideo">
-                        <div slot="upload-button"
-                            slot-scope="{ openFileBrowser }">
-                            <div class="file"
-                                @click="openFileBrowser">
-                                <label class="file-label">
-                                    <span class="file-cta">
-                                        <span class="file-icon">
-                                            <fa icon="upload"/>
+                <div class="column is-narrow">
+                    <div class="control animated fadeIn"
+                        v-if="video.name">
+                        <file-uploader :url="uploadLink"
+                            :params="video"
+                            :file-size-limit="20000000"
+                            file-key="video"
+                            @upload-successful="reset(); getVideos()"
+                            v-if="addingVideo">
+                            <div slot="upload-button"
+                                slot-scope="{ openFileBrowser }">
+                                <div class="file"
+                                    @click="openFileBrowser">
+                                    <label class="file-label">
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <fa icon="upload"/>
+                                            </span>
+                                            <span class="file-label">
+                                                {{ __('Video') }}…
+                                            </span>
                                         </span>
-                                        <span class="file-label">
-                                            {{ __('Video') }}…
-                                        </span>
-                                    </span>
-                                </label>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                    </file-uploader>
-                    <a class="button is-outlined is-success"
-                        @click="video = video; update()"
-                        v-if="editingVideo">
-                        <span class="icon">
-                            <fa icon="check"/>
-                        </span>
-                    </a>
-                </div>
-                <div class="control animated fadeIn"
-                    v-if="addingVideo || editingVideo">
-                    <a class="button is-danger is-outlined"
-                        @click="reset()">
-                        <span class="icon">
-                            <fa icon="ban"/>
-                        </span>
-                    </a>
+                        </file-uploader>
+                        <a class="button is-outlined is-success"
+                            @click="video = video; update()"
+                            v-if="editingVideo">
+                            <span class="icon">
+                                <fa icon="check"/>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="control animated fadeIn"
+                        v-if="addingVideo || editingVideo">
+                        <a class="button is-danger is-outlined"
+                            @click="reset()">
+                            <span class="icon">
+                                <fa icon="ban"/>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="columns is-multiline">

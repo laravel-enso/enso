@@ -68,14 +68,13 @@ class OwnerTest extends TestCase
     {
         $postParams = $this->postParams();
 
-        $owner = config('enso.config.ownerModel')::create($postParams)
-                    ->append(['roleList']);
+        $owner = config('enso.config.ownerModel')::create($postParams);
 
         $owner->name = 'edited';
 
         $this->patch(
                 route('administration.owners.update', $owner->id, false),
-                $owner->toArray()
+                $owner->toArray() + ['roleList' => $owner->roleList()]
         )->assertStatus(200)
         ->assertJsonStructure(['message']);
 

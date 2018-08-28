@@ -150,8 +150,8 @@ export default {
         },
         avatarId() {
             return this.isSelfVisiting
-                ? this.user.avatarId
-                : this.profile.avatarId;
+                ? this.user.avatar.id
+                : this.profile.avatar.id;
         },
         avatarLink() {
             return route('core.avatars.show', this.avatarId);
@@ -172,7 +172,7 @@ export default {
                 .catch(error => this.handleError(error));
         },
         updateAvatar() {
-            axios.patch(route('core.avatars.update', this.user.avatarId))
+            axios.patch(route('core.avatars.update', this.user.avatar.id))
                 .then(({ data }) => this.setUserAvatar(data.avatarId))
                 .catch(error => this.handleError(error));
         },

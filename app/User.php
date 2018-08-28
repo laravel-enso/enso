@@ -18,7 +18,7 @@ class User extends Users
 
     protected $attributes = ['is_active' => false];
 
-    protected $appends = ['fullName', 'avatarId'];
+    protected $appends = ['fullName'];
 
     protected $casts = ['is_active' => 'boolean'];
 

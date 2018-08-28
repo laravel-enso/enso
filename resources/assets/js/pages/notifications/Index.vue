@@ -86,11 +86,11 @@
 import debounce from 'lodash/debounce';
 import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faCheck, faTrashAlt, faCogs, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCheck, faTrashAlt, faCogs, faQuestion, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import format from '../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../modules/enso/plugins/date-fns/formatDistance';
 
-library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion);
+library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion, faSpinner);
 
 export default {
 
@@ -176,7 +176,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

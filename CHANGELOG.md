@@ -1,5 +1,100 @@
 ## Laravel Enso's Changelog
 
+### 2.10.0
+
+This is a mostly a back end refactor.
+
+Among the goals:
+- dropping all the accessors (appends) that were using relationships in favor of getters
+- adding query scopes where they were missing
+- implementing resources ... something that we wanted for months
+- making all FormBuilders DRY
+- cleaning up and aligning all the service providers
+- refined tests
+- improving the form request validators
+- getting the project mature...
+
+#### Additions & Changes
+
+##### Activity Log
+- refactored main query into scopes
+
+##### AddressesManager
+- adds `Address` resource
+- adds `buildingTypes` and resource attributes to the config
+
+##### AvatarMangager
+- drops the `getAvatarIdAttribute`.
+- adds an `created` event listener on the `User` model which automagically generates a new avatar for every created user
+- adds the `generateAvatar()` method that can be called on any User. Note, in order to use this method you will have to be authenticated because the avatar relies on the `File` model that uses the `CreatedBy` trait.
+- adds `php artisan enso:avatars:generate` - command that generates all the missing avatars
+
+##### CommentsManager
+- adds `Comment` resource. Major backend refactor
+
+##### Core
+- `Resource::withoutWrapping()` was added in the `AppServiceProvider`. Let's hope that this is a good decision :)
+- `avatarId` was removed from the user's model `protected $fillable` array. Don't forget to do the same in your existing project(s). Read **Upgrade Instructions** for more details
+- adds a `Team` resource
+- adds the `Update` command
+
+##### DocumentsManager:
+- added document request validation
+- added a new `ordered()` scope (most recent first)
+- added the `Document` resource
+
+#### HowToVideo
+- clean up, added resources
+
+##### TrackWho
+- we have now a `TrackWho` resource and a `trackWho` config (publishable). You can customize the attributes in the `TrackWho` resource from the config.
+
+##### FileManager
+- added the `File` resource.
+
+##### FormBuilder
+- fixed a validation for multiple selects with mutated value.
+
+#### RolesManager
+- turned the `getRoleListAttribute` accessor into a getter - `rolesList()` in `HasRoles` trait. Updated the formbuilders for the models that were using this trait to use the getter instead of the accessor
+
+#### Upgrade Instructions *~ 3-5 mins*
+- update in composer.json: "laravel-enso/core": "2.14.*"
+- run `composer update`
+- run `php artisan enso:update` - this command will align some inconsistent column types and clear unused columns
+- remove the `avatarId` field from the `protected $fillable` array in your `App\User` model
+- update the avatar column definition in your `app/Forms/Templates/users.json` table template to
+```json
+{
+    "label": "",
+    "name": "avatarId",
+    "data": "avatars.avatarId",
+    "meta": ["slot"],
+    "class": "is-paddingless"
+},
+```
+- update in `app/Tables/Builders/UserTable.php` the query method to:
+```php
+public function query()
+{
+    return User::select(\DB::raw(
+            'users.id, users.id as "dtRowId", avatars.id as avatarId, owners.name as owner,
+            users.first_name, users.last_name, users.phone, users.email, roles.name as role,
+            users.is_active'
+        ))->join('owners', 'users.owner_id', '=', 'owners.id')
+        ->join('roles', 'users.role_id', '=', 'roles.id')
+        ->leftJoin('avatars', 'users.id', '=', 'avatars.user_id');
+}
+```
+- replace both `app/Forms/Builders/OwnerForm.php` & `app/Forms/Builders/UserForm.php` with the ones from the repo (this is not mandatory, and must be done with care if you have already customized your local builders)
+```
+- modify the slot rendering in `resources/assets/js/pages/administration/users/Index.vue` to
+```vue
+<img class="is-rounded"
+    :src="avatarLink(row.avatarId)"
+    v-if="row.avatarId">
+```
+
 ### 2.9.0
 
 This version is a major backend refactor. It has breaking changes so read carefully the needed steps for upgrading existing projects. We created an artisan command that does all the hard work during the upgrade, so don't worry.

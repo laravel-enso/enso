@@ -110,7 +110,7 @@ export default {
             return {
                 id: null,
                 name: null,
-                userList: [],
+                userIds: [],
                 users: [],
             };
         },

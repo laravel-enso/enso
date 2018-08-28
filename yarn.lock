@@ -78,37 +78,37 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@fortawesome/fontawesome-common-types@^0.2.2":
-  version "0.2.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.2.tgz#7fd64eacf7f64e4d7619d21b0b2f2467f5a70611"
+"@fortawesome/fontawesome-common-types@^0.2.3":
+  version "0.2.3"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.3.tgz#bcdffc26f2289ada8f6beb7808b45b05439b6718"
 
 "@fortawesome/fontawesome-free@^5.2.0":
-  version "5.2.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.2.0.tgz#50cd9856774351c56c0b1b0db4efe122d7913e58"
+  version "5.3.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.3.0.tgz#7631bce4390c5759a7e74d005ef01f4a23fa3aaf"
 
 "@fortawesome/fontawesome-svg-core@^1.2.2":
-  version "1.2.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.2.tgz#b431e7efb3e3a1887e596daa6ed0d241d2d1aea5"
+  version "1.2.3"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.3.tgz#e393f63e5e15da1f5af4601616a2cd58d1701a9e"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.2"
+    "@fortawesome/fontawesome-common-types" "^0.2.3"
 
 "@fortawesome/free-brands-svg-icons@^5.2.0":
-  version "5.2.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.2.0.tgz#1f49c423e704b31c5f36507e7c5cfcba6e5dfc9d"
+  version "5.3.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.3.0.tgz#32c95715ebac90efc649668a5ba2e2deeb561b3c"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.2"
+    "@fortawesome/fontawesome-common-types" "^0.2.3"
 
 "@fortawesome/free-regular-svg-icons@^5.2.0":
-  version "5.2.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.2.0.tgz#6e96f19e349ac0d19b6758255c777f7331aeb40c"
+  version "5.3.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.3.0.tgz#034283057eba8a1f9318378b8c071aaa8d2b45b2"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.2"
+    "@fortawesome/fontawesome-common-types" "^0.2.3"
 
 "@fortawesome/free-solid-svg-icons@^5.2.0":
-  version "5.2.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.2.0.tgz#b51c1d49278ef538a97c0ce9575a1b54cc1a52dc"
+  version "5.3.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.3.0.tgz#6aab98a8b5451489236e62654fe1d19b74b90fc6"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.2"
+    "@fortawesome/fontawesome-common-types" "^0.2.3"
 
 "@fortawesome/vue-fontawesome@^0.1.1":
   version "0.1.1"
@@ -1279,12 +1279,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000878"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000878.tgz#0d0c6d8500c3aea21441fad059bce4b8f3f509df"
+  version "1.0.30000880"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000880.tgz#e6d7ba9a6602086f6fc124b91eeacbb70c55b2c4"
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000844:
-  version "1.0.30000878"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000878.tgz#c644c39588dd42d3498e952234c372e5a40a4123"
+  version "1.0.30000880"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000880.tgz#b7b6ceaf739e17d0dda0d89426cba4be16d07bb0"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1467,16 +1467,12 @@ color-convert@^0.5.3:
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
 
 color-convert@^1.3.0, color-convert@^1.9.0:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.2.tgz#49881b8fba67df12a96bdf3f56c0aab9e7913147"
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
   dependencies:
-    color-name "1.1.1"
+    color-name "1.1.3"
 
-color-name@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.1.tgz#4b1415304cf50028ea81643643bd82ea05803689"
-
-color-name@^1.0.0:
+color-name@1.1.3, color-name@^1.0.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
 
@@ -2903,8 +2899,8 @@ glob-parent@^3.1.0:
     path-dirname "^1.0.0"
 
 glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -3609,8 +3605,8 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.8.tgz#57a9b130888f956834aa40c5b165ba59c758f033"
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.9.tgz#748911fb04f48a60c4771b375cac45a80df11c03"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -4107,19 +4103,15 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@>= 1.34.0 < 2":
+"mime-db@>= 1.34.0 < 2", mime-db@~1.36.0:
   version "1.36.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.36.0.tgz#5020478db3c7fe93aad7bbcc4dcf869c43363397"
 
-mime-db@~1.35.0:
-  version "1.35.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
-
 mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18, mime-types@~2.1.19:
-  version "2.1.19"
-  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.19.tgz#71e464537a7ef81c15f2db9d97e913fc0ff606f0"
+  version "2.1.20"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.20.tgz#930cb719d571e903738520f8470911548ca2cc19"
   dependencies:
-    mime-db "~1.35.0"
+    mime-db "~1.36.0"
 
 mime@1.4.1:
   version "1.4.1"
@@ -6298,8 +6290,8 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     safe-regex "^1.1.0"
 
 tooltip.js@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.2.0.tgz#8b16482f04397f4f9d7387843dccf186890c8860"
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.3.0.tgz#c56115ce9e4b549edda0b306a3e439a17262181d"
   dependencies:
     popper.js "^1.0.2"
 

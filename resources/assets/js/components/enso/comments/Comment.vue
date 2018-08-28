@@ -11,18 +11,18 @@
         </figure>
         <div class="media-content">
             <div class="has-margin-bottom-medium has-text-grey" v-if="!isNew">
-                <a><b>{{ comment.owner.fullName }}</b></a>
+                <a><b>{{ comment.owner.name }}</b></a>
                 <span>
-                    {{ timeFromNow(comment.updated_at || comment.created_at) }}
+                    {{ timeFromNow(comment.updatedAt || comment.createdAt) }}
                 </span>
-                <span v-if="comment.updated_by">
+                <span v-if="comment.createdAt !== comment.updatedAt">
                     &bull; {{ __('edited') }}
                 </span>
                 <div class="is-pulled-right is-flex"
                     v-if="!isNew && !isEditing && controls">
                     <button class="button is-naked is-small has-margin-right-small"
                         v-if="comment.isEditable"
-                        @click="originalBody=comment.body;">
+                        @click="originalBody = comment.body;">
                         <span class="icon is-small has-text-grey">
                             <fa icon="pencil-alt"/>
                         </span>
@@ -123,10 +123,10 @@ export default {
         highlightTaggedUsers() {
             let { body } = this.comment;
 
-            this.comment.taggedUserList
-                .forEach((user) => {
-                    const highlighted = `${'<span class="has-text-info">@'}${user.fullName}</span>`;
-                    body = body.replace(`@${user.fullName}`, highlighted);
+            this.comment.taggedUsers
+                .forEach(({ fullName }) => {
+                    const highlighted = `${'<span class="has-text-info">@'}${fullName}</span>`;
+                    body = body.replace(`@${fullName}`, highlighted);
                 });
 
             return body;

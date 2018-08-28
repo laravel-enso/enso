@@ -8,6 +8,7 @@
             <label slot="left"
                 class="label">
                 <input class="input team-name"
+                    v-focus
                     v-model="team.name"
                     v-if="edit">
                 <strong v-else>{{ team.name }}</strong>
@@ -50,9 +51,9 @@
             <figure class="image is-32x32 has-margin-right-small has-margin-bottom-small"
                 v-for="user in team.users"
                 :key="user.id"
-                v-tooltip="user.fullName">
+                v-tooltip="user.name">
                 <img class="is-rounded"
-                    :src="avatar(user.avatarId)">
+                    :src="avatar(user.avatar.id)">
             </figure>
             <span v-if="!edit && !loading && team.users.length === 0"
                 class="has-text-muted is-italic has-margin-bottom-small">
@@ -68,7 +69,7 @@
                     class="label">
                     {{ __('Members') }}:
                 </label>
-                <vue-select v-model="team.userList"
+                <vue-select v-model="team.userIds"
                     multiple
                     source="administration.users.selectOptions"
                     label="fullName"/>
@@ -154,6 +155,7 @@ export default {
         border-left: unset;
         border-right: unset;
         box-shadow: unset;
+        border-radius: 0;
 
         &:focus {
             box-shadow: unset;
@@ -180,6 +182,7 @@ export default {
 
             img {
                 border: 2px solid #f4f6fb;
+                border-radius: 50%;
 
                 &:hover {
                     border: none;

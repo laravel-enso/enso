@@ -5,7 +5,7 @@
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success"
                     v-tooltip="__('default')"
-                    v-if="address.is_default">
+                    v-if="address.isDefault">
                     <fa icon="anchor"/>
                 </span>
                 <slot name="address" :address="address">
@@ -15,13 +15,13 @@
                     <span v-if="address.street">
                         {{ address.street }}
                     </span>
-                    <span v-if="address.street_type">
-                        {{ __(address.street_type) }},
+                    <span v-if="address.streetType">
+                        {{ __(address.streetType) }},
                     </span>
                     <br>
                     <span v-if="address.building">
                         <span class="has-text-grey">
-                            {{ __(address.building_type) }}
+                            {{ __(address.buildingType) }}
                         </span>
                         {{ address.building }},
                     </span>
@@ -44,24 +44,24 @@
                         {{ address.apartment }},
                     </span>
                     <br>
-                    <span v-if="address.sub_administrative_area">
-                        {{ address.sub_administrative_area }},
+                    <span v-if="address.subAdministrativeArea">
+                        {{ address.subAdministrativeArea }},
                     </span>
                     <span v-if="address.city">
                         {{ address.city }},
                     </span>
                     <br>
-                    <span v-if="address.postal_area">
-                        {{ address.postal_area }},
+                    <span v-if="address.postalArea">
+                        {{ address.postalArea }},
                     </span>
-                    <span v-if="address.administrative_area">
-                        {{ address.administrative_area }},
+                    <span v-if="address.administrativeArea">
+                        {{ address.administrativeArea }},
                     </span>
                     <br>
                     <span class="icon">
                         <fa icon="globe"/>
                     </span>
-                    {{ address.country_name }}
+                    {{ address.country }}
                     <br>
                     <span class="icon"
                         v-if="address.obs">

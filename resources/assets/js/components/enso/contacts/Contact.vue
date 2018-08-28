@@ -2,10 +2,10 @@
     <card fixed>
         <div class="template has-padding-medium">
             <p class="title is-5">
-                {{ contact.first_name }} {{ contact.last_name }}
+                {{ contact.name }}
                 <span class="tag is-success is-pulled-right"
-                    :class="contact.is_active ? 'is-success' : 'is-danger'">
-                    <fa :icon="contact.is_active ? 'check' : 'times'"/>
+                    :class="contact.isActive ? 'is-success' : 'is-danger'">
+                    <fa :icon="contact.isActive ? 'check' : 'times'"/>
                 </span>
             </p>
             <p class="subtitle is-5">

@@ -26,7 +26,7 @@ export default new Vuex.Store({
 
     getters: {
         avatarLink: state => (state.isInitialised
-            ? route('core.avatars.show', state.user.avatarId)
+            ? route('core.avatars.show', state.user.avatar.id)
             : '#'),
         routes: state => Object.keys(state.routes),
     },
@@ -34,7 +34,7 @@ export default new Vuex.Store({
     mutations: {
         setUser: (state, user) => { state.user = user; },
         setImpersonating: (state, impersonating) => { state.impersonating = impersonating; },
-        setUserAvatar: (state, avatarId) => { state.user.avatarId = avatarId; },
+        setUserAvatar: (state, avatarId) => { state.user.avatar.id = avatarId; },
         setMeta: (state, meta) => { state.meta = meta; },
         initialise: (state, value) => { state.isInitialised = value; },
         setShowQuote: (state, value) => { state.showQuote = value; },

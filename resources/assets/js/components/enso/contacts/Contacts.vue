@@ -96,11 +96,17 @@ export default {
     },
 
     computed: {
+        params() {
+            return {
+                contactable_id: this.id,
+                contactable_type: this.type,
+            };
+        },
         filteredContacts() {
             return this.query
-                ? this.contacts.filter(contact => contact.first_name.toLowerCase()
+                ? this.contacts.filter(contact => contact.firstName.toLowerCase()
                     .indexOf(this.query.toLowerCase()) > -1
-                    || contact.last_name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                    || contact.lastName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.contacts;
         },
         count() {
@@ -123,7 +129,7 @@ export default {
             this.loading = true;
 
             axios.get(route('core.contacts.index'), {
-                params: { contactable_id: this.id, contactable_type: this.type },
+                params: this.params,
             }).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
@@ -146,9 +152,7 @@ export default {
                 this.$refs.card.toggle();
             }
 
-            const params = { contactable_id: this.id, contactable_type: this.type };
-
-            axios.get(route('core.contacts.create', params))
+            axios.get(route('core.contacts.create', this.params))
                 .then(({ data }) => {
                     this.loading = false;
                     this.form = data.form;

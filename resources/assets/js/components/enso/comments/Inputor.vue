@@ -18,7 +18,7 @@
                         <div class="media-left">
                             <figure class="image is-24x24">
                                 <img class="is-rounded"
-                                    :src="'/api/core/avatars/' + item.id">
+                                    :src="'/api/core/avatars/' + item.avatar.id">
                             </figure>
                         </div>
                         <div class="media-content">
@@ -186,7 +186,7 @@ export default {
         tagUser() {
             const user = this.items[this.position];
 
-            this.comment.taggedUserList.push({
+            this.comment.taggedUsers.push({
                 id: user.id,
                 fullName: user.fullName,
             });

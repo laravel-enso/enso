@@ -14,22 +14,19 @@ class OwnerForm
 
     public function __construct()
     {
-        $this->form = new Form(self::TemplatePath);
+        $this->form = (new Form(self::TemplatePath))
+            ->options('roleList', Role::get(['name', 'id']));
     }
 
     public function create()
     {
-        return $this->form
-            ->options('roleList', Role::get(['name', 'id']))
-            ->create();
+        return $this->form->create();
     }
 
     public function edit(Owner $owner)
     {
-        $owner->append(['roleList']);
-
         return $this->form
-            ->options('roleList', Role::get(['name', 'id']))
+            ->value('roleList', $owner->roleList())
             ->append('owner_id', $owner->id)
             ->edit($owner);
     }

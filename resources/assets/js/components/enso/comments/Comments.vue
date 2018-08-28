@@ -71,7 +71,7 @@ export default {
             return this.query
                 ? this.comments.filter(comment => comment.body.toLowerCase()
                     .indexOf(this.query.toLowerCase()) > -1
-                    || comment.owner.fullName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                    || comment.owner.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
                 : this.comments;
         },
     },
@@ -89,8 +89,8 @@ export default {
                 { params: this.getParams() },
             ).then(({ data }) => {
                 this.comments = this.offset
-                    ? this.comments.concat(data.comments)
-                    : data.comments;
+                    ? this.comments.concat(data.data)
+                    : data.data;
 
                 this.count = data.count;
                 this.offset = this.comments.length;
@@ -110,13 +110,13 @@ export default {
             this.offset = 0;
             this.get();
         },
-        emptyComment() {
+        factory() {
             return {
                 body: '',
-                taggedUserList: [],
+                taggedUsers: [],
                 owner: {
-                    avatarId: this.user.avatarId,
-                    fullName: this.user.fullName,
+                    avatarId: this.user.avatar.id,
+                    name: this.user.name,
                 },
             };
         },
@@ -125,7 +125,7 @@ export default {
                 return;
             }
 
-            this.comment = this.emptyComment();
+            this.comment = this.factory();
         },
         add() {
             if (!this.comment.body.trim()) {
@@ -151,7 +151,7 @@ export default {
                 commentable_id: this.id,
                 commentable_type: this.type,
                 body: this.comment.body,
-                taggedUserList: this.comment.taggedUserList,
+                taggedUsers: this.comment.taggedUsers,
                 path: this.path,
             };
         },
@@ -164,15 +164,15 @@ export default {
                 route('core.comments.update', comment.id),
                 comment,
             ).then(({ data }) => {
-                Object.assign(comment, data.comment);
+                Object.assign(comment, data);
                 this.loading = false;
                 this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         syncTaggedUsers(comment) {
-            comment.taggedUserList.forEach((user, index) => {
+            comment.taggedUsers.forEach((user, index) => {
                 if (!comment.body.includes(user.fullName)) {
-                    comment.taggedUserList.splice(index, 1);
+                    comment.taggedUsers.splice(index, 1);
                 }
             });
         },

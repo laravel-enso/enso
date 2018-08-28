@@ -7,7 +7,8 @@
             slot="avatarId"
             slot-scope="{ row }">
             <img class="is-rounded"
-                :src="avatarLink(row.avatarId)">
+                :src="avatarLink(row.avatarId)"
+                v-if="row.avatarId">
         </figure>
     </vue-table>
 

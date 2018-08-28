@@ -7,7 +7,7 @@
                     <fa icon="file"/>
                 </span>
                 <span>
-                    {{ shortName(doc.file.original_name) }}
+                    {{ shortName(doc.file.name) }}
                 </span>
             </div>
         </div>
@@ -63,7 +63,7 @@
                                     <span class="icon is-small">
                                         <fa icon="calendar-alt"/>
                                     </span>
-                                    {{ timeFromNow(doc.created_at) }}
+                                    {{ timeFromNow(doc.createdAt) }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">

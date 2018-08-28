@@ -3,12 +3,12 @@
     "readSuffix": "getTableData",
     "crtNo": true,
     "buttons": ["excel", "create", "show", "edit", "destroy"],
-    "appends": ["fullName", "avatarId"],
+    "appends": ["fullName"],
     "columns": [
         {
             "label": "",
             "name": "avatarId",
-            "data": "users.avatarId",
+            "data": "avatars.avatarId",
             "meta": ["slot"],
             "class": "is-paddingless"
         },
