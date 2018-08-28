@@ -2003,16 +2003,16 @@
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Helpers.git",
-                "reference": "ee557eda878b412ed1a5780df2c8229b81b58537"
+                "reference": "b4a4261c4a51445678537dee6505aa873df848a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/ee557eda878b412ed1a5780df2c8229b81b58537",
-                "reference": "ee557eda878b412ed1a5780df2c8229b81b58537",
+                "url": "https://api.github.com/repos/laravel-enso/Helpers/zipball/b4a4261c4a51445678537dee6505aa873df848a0",
+                "reference": "b4a4261c4a51445678537dee6505aa873df848a0",
                 "shasum": ""
             },
             "require": {
@@ -2049,7 +2049,7 @@
                 "helpers",
                 "laravel-enso"
             ],
-            "time": "2018-08-26T09:51:27+00:00"
+            "time": "2018-08-27T11:52:57+00:00"
         },
         {
             "name": "laravel-enso/historytracker",
