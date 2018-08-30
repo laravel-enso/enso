@@ -1,7 +1,7 @@
 <!--h-->
 # Laravel Enso
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/laravel-enso/Enso.svg?columns=all)](https://waffle.io/laravel-enso/Enso)
+[![Backers on Open Collective](https://opencollective.com/Enso/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/Enso/sponsors/badge.svg)](#sponsors) [![Waffle.io - Columns and their card count](https://badge.waffle.io/laravel-enso/Enso.svg?columns=all)](https://waffle.io/laravel-enso/Enso)
 [![Build Status](https://travis-ci.org/laravel-enso/Enso.svg?branch=master)](https://travis-ci.org/laravel-enso/Enso)
 <!--/h-->
 
@@ -88,6 +88,36 @@ are welcome. Pull requests are great, but issues are good too.
 ### Sponsor (*new*)
 
 This project is backed by [Earthlink](https://www.earthlink.ro)
+
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="graphs/contributors"><img src="https://opencollective.com/Enso/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/Enso#backer)]
+
+<a href="https://opencollective.com/Enso#backers" target="_blank"><img src="https://opencollective.com/Enso/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/Enso#sponsor)]
+
+<a href="https://opencollective.com/Enso/sponsor/0/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/1/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/2/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/3/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/4/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/5/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/6/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/7/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/8/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/Enso/sponsor/9/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/9/avatar.svg"></a>
+
+
 
 ### License
 
