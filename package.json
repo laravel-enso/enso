@@ -8,7 +8,8 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "postinstall": "opencollective-postinstall"
     },
     "devDependencies": {
         "babel-eslint": "^8.2.3",
@@ -70,6 +71,7 @@
         "laravel-echo": "^1.4.0",
         "lodash": "^4.17.10",
         "nprogress": "^0.2.0",
+        "opencollective": "^1.0.3",
         "popper.js": "^1.14.3",
         "pusher-js": "^4.2.2",
         "raven-js": "^3.26.2",
@@ -83,5 +85,9 @@
         "vue-video-player": "^5.0.2",
         "vuex": "^3.0.0",
         "zxcvbn": "^4.4.2"
+    },
+    "collective": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/Enso"
     }
 }
