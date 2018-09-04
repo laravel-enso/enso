@@ -1,7 +1,7 @@
 <template>
 
     <div id="app">
-        <nprogress ref="nprogress"/>
+        <progress-bar ref="progressBar"/>
         <transition enter-active-class="fadeIn"
             leave-active-class="fadeOut">
             <component :is="layout"
@@ -17,30 +17,24 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 import Auth from './layouts/Auth.vue';
 import Home from './layouts/Home.vue';
 import Default from './layouts/Default.vue';
-import Nprogress from '../components/enso/nprogress/Nprogress.vue';
-import axiosNprogress from '../modules/enso/plugins/axiosNprogress';
+import ProgressBar from './structure/progressBar/ProgressBar.vue';
 
 export default {
     name: 'App',
 
     components: {
-        Auth, Home, Default, Nprogress,
+        Auth, Home, Default, ProgressBar,
     },
 
     computed: {
+        ...mapState(['meta']),
         ...mapGetters({
             layout: 'layout/current',
         }),
-        ...mapState(['meta']),
     },
 
     created() {
         this.setInitialTheme();
-    },
-
-    mounted() {
-        this.$nprogress = this.$refs.nprogress;
-        axiosNprogress(this.$nprogress);
     },
 
     methods: {

@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="level-right">
-                        <div class="level-item">
+                        <div class="level-item is-marginless">
                             <a class="button is-small is-warning has-margin-left-small"
                                 @click="clearAll">
                                 <span>{{ __("Clear all") }}</span>
@@ -86,11 +86,11 @@
 import debounce from 'lodash/debounce';
 import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faCheck, faTrashAlt, faCogs, faQuestion, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCheck, faTrashAlt, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import format from '../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../modules/enso/plugins/date-fns/formatDistance';
 
-library.add(faBell, faCheck, faTrashAlt, faCogs, faQuestion, faSpinner);
+library.add(faBell, faCheck, faTrashAlt, faSpinner);
 
 export default {
 

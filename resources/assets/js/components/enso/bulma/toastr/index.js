@@ -1,41 +1,35 @@
 import Notification from './Notification.vue';
 
-let defaults = {
-    duration: 4000,
-    closeButton: true,
-    container: 'toastr-wrapper',
-    position: 'right',
-};
-
 export default {
     install(Vue, options) {
         const Toastr = Vue.extend(Notification);
 
-        defaults = Object.assign(defaults, options);
-
         Vue.prototype.$toastr = {
-            message(message, title, duration) {
-                this.mount('message', message, title, duration);
+            message(body, title, duration) {
+                this.mount('message', body, title, duration);
             },
-            primary(message, title, duration) {
-                this.mount('primary', message, title, duration);
+            primary(body, title, duration) {
+                this.mount('primary', body, title, duration);
             },
-            success(message, title, duration) {
-                this.mount('success', message, title, duration);
+            success(body, title, duration) {
+                this.mount('success', body, title, duration);
             },
-            warning(message, title, duration) {
-                this.mount('warning', message, title, duration);
+            warning(body, title, duration) {
+                this.mount('warning', body, title, duration);
             },
-            info(message, title, duration) {
-                this.mount('info', message, title, duration);
+            info(body, title, duration) {
+                this.mount('info', body, title, duration);
             },
-            error(message, title, duration) {
-                this.mount('danger', message, title, duration);
+            error(body, title, duration) {
+                this.mount('danger', body, title, duration);
             },
-            mount(type, message, title, duration = defaults.duration) {
+            mount(type, body, title, duration) {
+                if (duration) {
+                    options.duration = duration;
+                }
                 (new Toastr({
                     propsData: {
-                        ...defaults, type, message, title, duration,
+                        duration: duration || options.duration, type, body, title,
                     },
                 })).$mount();
             },

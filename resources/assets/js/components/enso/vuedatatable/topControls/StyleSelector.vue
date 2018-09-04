@@ -1,6 +1,7 @@
 <template>
 
-    <dropdown class="is-right">
+    <dropdown class="is-right"
+         hides-manually>
         <span slot="label"
             class="icon is-small">
             <fa icon="table"/>

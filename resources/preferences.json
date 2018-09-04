@@ -3,7 +3,8 @@
         "lang": "en",
         "dtStateSave": true,
         "expandedMenu": true,
-        "theme": "clean"
+        "theme": "clean",
+        "toastrPosition": "top-right"
     },
     "local": {
         "dashboard.index": {

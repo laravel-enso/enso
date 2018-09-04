@@ -22,6 +22,7 @@ export default new Vuex.Store({
         impersonating: null,
         meta: {},
         routes: {},
+        requests: [],
     },
 
     getters: {
@@ -29,16 +30,21 @@ export default new Vuex.Store({
             ? route('core.avatars.show', state.user.avatar.id)
             : '#'),
         routes: state => Object.keys(state.routes),
+        requests: state => state.requests.length,
     },
 
     mutations: {
-        setUser: (state, user) => { state.user = user; },
-        setImpersonating: (state, impersonating) => { state.impersonating = impersonating; },
-        setUserAvatar: (state, avatarId) => { state.user.avatar.id = avatarId; },
-        setMeta: (state, meta) => { state.meta = meta; },
-        initialise: (state, value) => { state.isInitialised = value; },
-        setShowQuote: (state, value) => { state.showQuote = value; },
-        setRoutes: (state, routes) => { state.routes = routes; },
+        addRequest: (state, { method, url }) => state.requests.push({ method, url }),
+        removeRequest: (state, index) => {
+            state.requests.splice(index, 1);
+        },
+        setUser: (state, user) => (state.user = user),
+        setImpersonating: (state, impersonating) => (state.impersonating = impersonating),
+        setUserAvatar: (state, avatarId) => (state.user.avatar.id = avatarId),
+        setMeta: (state, meta) => (state.meta = meta),
+        initialise: (state, value) => (state.isInitialised = value),
+        setShowQuote: (state, value) => (state.showQuote = value),
+        setRoutes: (state, routes) => (state.routes = routes),
         setDefaultRoute: (state, route) => {
             router.addRoutes([{
                 path: '/',

@@ -1,9 +1,13 @@
 <template>
 
-    <div :class="['navbar-item notifications', { 'has-dropdown': !isTouch }, { 'is-active': show }]"
+    <div :class="[
+            'navbar-item notifications',
+            { 'has-dropdown': !isTouch },
+            { 'is-active': show }
+        ]"
         v-click-outside="hide">
         <span v-if="isTouch" class="is-clickable"
-             @click="$emit('adsfasfd'); $router.push({'name': 'core.notifications.index'})">
+             @click="$router.push({'name': 'core.notifications.index'})">
             <span class="icon">
                 <fa icon="bell"/>
             </span>
@@ -47,7 +51,10 @@
                 <div class="level-left">
                     <div class="level-item">
                         <a class="button is-small is-info has-margin-left-small"
-                            @click="$router.push({'name': 'core.notifications.index'})">
+                            @click="
+                                show = false;
+                                $router.push({'name': 'core.notifications.index'})
+                            ">
                             <span>{{ __("See all") }}</span>
                             <span class="icon is-small">
                                 <fa icon="eye"/>
@@ -117,6 +124,7 @@ export default {
             loading: false,
             Echo: null,
             show: false,
+            desktopNotifications: false,
         };
     },
 
@@ -138,7 +146,8 @@ export default {
 
     created() {
         this.getData = debounce(this.getData, 500);
-        this.init();
+        this.initLaravelEcho();
+        this.initDesktopNotification();
         this.getCount();
         this.listen();
         this.addBusListeners();
@@ -201,7 +210,7 @@ export default {
                 this.unreadCount = 0;
             }).catch(error => this.handleError(error));
         },
-        init() {
+        initLaravelEcho() {
             this.Echo = new Echo({
                 broadcaster: 'pusher',
                 key: this.meta.pusher,
@@ -209,14 +218,51 @@ export default {
                 namespace: 'App.Events',
             });
         },
+        initDesktopNotification() {
+            if (!('Notification' in window) || Notification.permission === 'denied') {
+                return;
+            }
+
+            if (Notification.permission !== 'granted') {
+                Notification.requestPermission((permission) => {
+                    if (!('permission' in Notification)) {
+                        Notification.permission = permission;
+                    }
+
+                    this.desktopNotifications = permission === 'granted';
+                });
+                return;
+            }
+
+            this.desktopNotifications = Notification.permission === 'granted';
+        },
         listen() {
             const self = this;
-            this.Echo.private(`App.User.${this.user.id}`).notification((notification) => {
-                self.unreadCount++;
-                self.needsUpdate = true;
-                self.offset = 0;
-                this.$toastr[notification.level](notification.body);
-            });
+            this.Echo.private(`App.User.${this.user.id}`)
+                .notification(({
+                    level, body, title,
+                }) => {
+                    self.unreadCount++;
+                    self.needsUpdate = true;
+                    self.offset = 0;
+
+                    if (!document.hidden) {
+                        this.$toastr[level](body, title);
+                        return;
+                    }
+
+                    if (this.desktopNotifications) {
+                        const notification = new Notification(title, {
+                            body,
+                        });
+
+                        notification.onclick = () => {
+                            window.focus();
+                        };
+
+                        window.navigator.vibrate(500);
+                    }
+                });
         },
         computeScrollPosition(event) {
             const a = event.target.scrollTop;

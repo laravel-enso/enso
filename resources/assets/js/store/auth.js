@@ -12,5 +12,5 @@ export const mutations = {
         state.isAuth = false;
         localStorage.setItem('isAuth', false);
     },
-    setLastRoute: (state, route) => { state.lastRoute = route; },
+    setLastRoute: (state, route) => (state.lastRoute = route),
 };

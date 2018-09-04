@@ -1,6 +1,6 @@
 <template>
 
-    <dropdown>
+    <dropdown hides-manually>
         <span slot="label"
             class="icon is-small">
             <fa icon="eye"/>

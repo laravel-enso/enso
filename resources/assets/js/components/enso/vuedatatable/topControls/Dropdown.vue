@@ -3,7 +3,8 @@
     <div class="dropdown is-active"
         v-click-outside="hide">
         <div class="dropdown-trigger"
-            @click="show=!show">
+            @click="show=!show"
+            v-click-outside="shouldHide">
             <button class="button">
                 <slot name="label"/>
                 <span class="icon is-small angle"
@@ -52,6 +53,10 @@ export default {
             type: Number,
             default: 200,
         },
+        hidesManually: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -76,6 +81,11 @@ export default {
     methods: {
         hide() {
             this.show = false;
+        },
+        shouldHide() {
+            if (!this.hidesManually) {
+                this.show = false;
+            }
         },
     },
 };

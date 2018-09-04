@@ -9,10 +9,12 @@
                 <length-menu :template="template"
                     :length="length"
                     v-on="$listeners"/>
-                <column-visibility :template="template"
+                <column-visibility
+                    :template="template"
                     :i18n="i18n"
                     v-on="$listeners"/>
-                <style-selector :template="template"
+                <style-selector
+                    :template="template"
                     class="is-hidden-mobile"/>
                 <button class="button"
                     @click="$emit('reload')">

@@ -31,7 +31,7 @@ export default {
             setTimeout(() => {
                 this.login();
                 this.showHome();
-            }, 200);
+            }, 500);
         },
     },
 };

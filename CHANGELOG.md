@@ -1,5 +1,38 @@
 ## Laravel Enso's Changelog
 
+### 2.10.1
+
+Laravel 5.7 upgrade
+
+We decided to cleanup the project's root and to try to make Enso installable on any existing or new Laravel application. This is a direction / objective that we'll follow in the near future.
+
+#### Changes
+
+- Laravel 5.7 upgrade :)
+- improved Enso's `Toastr`, now allowing 6 positions (desktop corners)
+- new preferences setting that for customizing the toastr position
+- bulma dropdown now hides after a selection is made by default. Has a new `hides-manually` prop
+- updated the vuedatatable style selector and columns visibility dropdowns
+- updated the dropdowns from setttings (right aside bar)
+- moves the auth controllers to the core package, leaving the ones from the base project back to Laravel's original.
+- removed the deprecated `Nprogress.vue` component from `vue-components` repo
+- replaces `nprogress` dependency with an in house progress bar implementation that is integrated in the core. Now the animation is indeed controlled and the effect more natural
+- adds a `requests` array to the app's state that tracks all the pending requests. From now on the application won't allow a second requests to the same endpoint / method before receiving the response for the initial one. Le me know your thoughs on this...
+- adds the missing `StructureManager` tests to `phpunit.xml`
+- adds desktop notifications - ref laravel-enso/enso#136
+
+#### Upgrading an existing project
+
+- first be sure that you follow [L5.7 upgrade guide](https://laravel.com/docs/5.7/upgrade)
+- update in your `composer.json`: `"laravel/framework": "5.7.*",`
+- update in your `composer.json`: `"sentry/sentry-laravel": "dev-laravel-57@dev",`
+- unless you already customized the auth routes already remove from your `api.php` routes file the whole route group under the `Auth` namespace. - now they are loaded from the core package
+- replace the four auth controllers with the ones from this repo (`app/Http/Controllers/Auth/*`)
+- add to your `phpunit.xml` the test suite for `StructureManager`
+- run `php artisan enso:clear-preferences`
+- run `php artisan vendor:publish --tag=enso-preferences --force`
+- remove `nprogress` from your `package.json` and run `yarn upgrade`
+
 ### 2.10.0
 
 This is a mostly a back end refactor.

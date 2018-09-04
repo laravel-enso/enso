@@ -30,7 +30,6 @@
 <script>
 
 import { mapState, mapMutations, mapActions } from 'vuex';
-import Nprogress from '../../components/enso/nprogress/Nprogress.vue';
 import Navbar from '../structure/navbar/Navbar.vue';
 import Sidebar from '../structure/sidebar/Sidebar.vue';
 import Settings from '../structure/settings/Settings.vue';
@@ -42,7 +41,7 @@ export default {
     name: 'Default',
 
     components: {
-        Nprogress, Navbar, Sidebar, Settings, AppFooter, Router, PageHeader,
+        Navbar, Sidebar, Settings, AppFooter, Router, PageHeader,
     },
 
     computed: {

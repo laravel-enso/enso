@@ -19,7 +19,7 @@
         <div class="dropdown-content">
             <div class="dropdown-item"
                 v-if="!isExpanded">
-                {{ menu.name }}
+                {{ __(menu.name) }}
             </div>
         </div>
     </a>

@@ -13,6 +13,9 @@
                 v-if="multipleThemes">
                 <theme-selector/>
             </li>
+            <li class="settings-item">
+                <toastr-position/>
+            </li>
             <li class="settings-item has-margin-bottom-small">
                 <menu-state/>
             </li>
@@ -34,6 +37,7 @@ import { mapState } from 'vuex';
 import VueAside from '../VueAside.vue';
 import LanguageSelector from './LanguageSelector.vue';
 import ThemeSelector from './ThemeSelector.vue';
+import ToastrPosition from './ToastrPosition.vue';
 import MenuState from './MenuState.vue';
 import Tutorial from './Tutorial.vue';
 import KeyCollector from './KeyCollector.vue';
@@ -42,7 +46,13 @@ export default {
     name: 'Settings',
 
     components: {
-        VueAside, LanguageSelector, ThemeSelector, MenuState, Tutorial, KeyCollector,
+        VueAside,
+        LanguageSelector,
+        ThemeSelector,
+        ToastrPosition,
+        MenuState,
+        Tutorial,
+        KeyCollector,
     },
 
     computed: {

@@ -1,8 +1,8 @@
 import documentTitle from './after/documentTitle';
-import nprogress from './after/nprogress';
+import progressBar from './after/progressBar';
 
 export default (to) => {
-    nprogress();
+    progressBar();
     documentTitle(to);
 };
 

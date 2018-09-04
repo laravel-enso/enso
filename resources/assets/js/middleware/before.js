@@ -2,10 +2,10 @@ import store from '../store';
 import guest from './before/guest';
 import auth from './before/auth';
 import allow from './before/allow';
-import nprogress from './before/nprogress';
+import progressBar from './before/progressBar';
 
 export default (to, from, next) => {
-    nprogress();
+    progressBar();
     if (store.state.auth.isAuth) {
         auth(to, from, next);
         allow(to, from, next);

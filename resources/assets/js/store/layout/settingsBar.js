@@ -3,7 +3,5 @@ export const state = {
 };
 
 export const mutations = {
-    toggle: (state) => {
-        state.isVisible = !state.isVisible;
-    },
+    toggle: state => (state.isVisible = !state.isVisible),
 };

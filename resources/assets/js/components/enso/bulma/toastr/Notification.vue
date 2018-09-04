@@ -6,20 +6,19 @@
         @after-enter="hoverable = true"
         @after-leave="$destroy()">
         <div :class="[
-            'box notification toastr animated',
-            { 'highlight': hover },
-            type ? `is-${type}` : ''
-        ]"
-            v-if="show || hover"
+                'notification toastr animated',
+                { 'highlight': hover },
+                type ? `is-${type}` : ''
+            ]"
             @mouseenter="startHover"
-            @mouseleave="stopHover">
+            @mouseleave="stopHover"
+            v-if="show || hover">
             <button class="delete"
-                @click="close()"
-                v-if="closeButton"/>
+                @click="close()"/>
              <article class="media">
                 <div class="media-left">
                     <span class="icon is-large">
-                        <fa :icon="icons[type]" size="2x"/>
+                        <fa :icon="displayIcon" size="2x"/>
                     </span>
                 </div>
                 <div class="media-content">
@@ -27,7 +26,7 @@
                         <p>
                             <strong>{{ i18n(displayTitle) }}</strong>
                             <br>
-                            {{ i18n(message) }}
+                            {{ i18n(body) }}
                         </p>
                     </div>
                 </div>
@@ -40,33 +39,12 @@
 <script>
 
 import Vue from 'vue';
+import store from '../../../../store';
+import Types from './config/types';
+import Titles from './config/titles';
+import Icons from './config/icons';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faComment, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle }
-    from '@fortawesome/free-solid-svg-icons';
-
-library.add([
-    faComment, faInfoCircle, faCheckCircle, faExclamationCircle, faTimesCircle,
-]);
-
-const types = ['message', 'primary', 'info', 'success', 'warning', 'danger'];
-const positions = ['left', 'right', 'center'];
-const icons = {
-    message: faComment,
-    primary: faComment,
-    info: faInfoCircle,
-    success: faCheckCircle,
-    warning: faExclamationCircle,
-    danger: faTimesCircle,
-};
-const titles = {
-    message: 'Message',
-    primary: 'Notification',
-    info: 'Info',
-    success: 'Success',
-    warning: 'Warning',
-    danger: 'Error',
-};
+const Container = 'toastr-wrapper';
 
 export default {
     name: 'Notification',
@@ -75,33 +53,24 @@ export default {
         type: {
             type: String,
             required: true,
-            validator: val => types.includes(val),
+            validator: val => Types.includes(val),
+        },
+        icon: {
+            type: String,
+            default: null,
         },
         title: {
             type: String,
             default: null,
         },
-        message: {
+        body: {
             type: String,
             required: true,
-        },
-        position: {
-            type: String,
-            default: 'right',
-            validator: val => positions.includes(val),
         },
         duration: {
             type: Number,
             default: 3500,
             validator: val => val > 0,
-        },
-        closeButton: {
-            type: Boolean,
-            default: true,
-        },
-        container: {
-            type: String,
-            default: 'toastr-wrapper',
         },
         i18n: {
             type: Function,
@@ -116,7 +85,6 @@ export default {
     data() {
         return {
             wrapper: null,
-            icons,
             hoverable: false,
             show: true,
             hover: false,
@@ -124,53 +92,64 @@ export default {
     },
 
     computed: {
+        toastrPosition() {
+            return store.getters['preferences/toastrPosition'];
+        },
         direction() {
-            if (this.position === 'center') return 'Down';
-            if (this.position === 'right') return 'Right';
+            if (this.toastrPosition === 'top-center') return 'Down';
+            if (this.toastrPosition === 'bottom-center') return 'Up';
+            if (this.toastrPosition.indexOf('right') >= 0) return 'Right';
             return 'Left';
         },
         enterClass() {
             return `bounceIn${this.direction}`;
         },
         leaveClass() {
-            return this.position === 'center'
-                ? 'bounceOutUp'
-                : `bounceOut${this.direction}`;
-        },
-        icon() {
-            return this.icons[this.type];
+            if (this.direction === 'Down') {
+                return 'bounceOutUp';
+            }
+
+            if (this.direction === 'Up') {
+                return 'bounceOutDown';
+            }
+
+            return `bounceOut${this.direction}`;
         },
         containerClass() {
-            return `${this.container} ${this.position}`;
+            return `${Container} ${this.toastrPosition.split('-').join(' ')}`;
         },
         containerSelector() {
-            return `.${this.container}.${this.position}`;
+            return `.${Container}`;
+        },
+        displayIcon() {
+            return this.icon || Icons[this.type];
         },
         displayTitle() {
-            return this.title || titles[this.type];
+            return this.title || Titles[this.type];
         },
     },
 
     created() {
+        const { containerClass } = this;
         const wrapper = document.querySelector(this.containerSelector);
 
-        if (!wrapper) {
-            const { containerClass } = this;
-
-            const ToastrWrapper = Vue.extend({
-                name: 'ToastrWrapper',
-                render(h) {
-                    return h('div', {
-                        class: containerClass,
-                    });
-                },
-            });
-
-            this.wrapper = new ToastrWrapper().$mount();
-            document.body.appendChild(this.wrapper.$el);
-        } else {
+        if (wrapper) {
+            wrapper.className = containerClass;
             this.wrapper = wrapper.__vue__;
+            return;
         }
+
+        const ToastrWrapper = Vue.extend({
+            name: 'ToastrWrapper',
+            render(h) {
+                return h('div', {
+                    class: containerClass,
+                });
+            },
+        });
+
+        this.wrapper = new ToastrWrapper().$mount();
+        document.body.appendChild(this.wrapper.$el);
     },
 
     mounted() {
@@ -189,12 +168,10 @@ export default {
             this.show = false;
         },
         startHover() {
-            if (!this.hoverable && !this.show) {
-                return;
+            if (this.hoverable || this.show) {
+                this.hover = true;
+                clearTimeout(this.timer);
             }
-
-            this.hover = true;
-            clearTimeout(this.timer);
         },
         stopHover() {
             this.hover = false;
@@ -213,7 +190,14 @@ export default {
         flex-direction: column;
         z-index: 9999;
         pointer-events: none;
-        top: 2em;
+
+        &.top {
+            top: 4em;
+        }
+
+        &.bottom {
+            bottom: 4em;
+        }
 
         &.left {
             margin-right: auto;
@@ -229,13 +213,11 @@ export default {
             margin-left: calc(50% - 150px);
         }
 
-        .box.toastr.notification {
-            width: 300px;
-            padding: 12px;
-            margin-bottom: 6px;
+        .toastr.notification {
+            width: 350px;
+            padding: .6em;
+            margin-bottom: .25em;
             pointer-events: auto;
-            position: relative;
-            z-index: 9999;
             position: relative;
             overflow-x: hidden;
             -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
@@ -244,6 +226,10 @@ export default {
             &.highlight {
                 -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
                 box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
+            }
+
+            .media-left {
+                margin-right: .5rem
             }
         }
     }

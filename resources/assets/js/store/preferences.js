@@ -22,6 +22,7 @@ export const getters = {
     lang: state => state.global && state.global.lang,
     theme: state => state.global && state.global.theme,
     expandedMenu: state => state.global && state.global.expandedMenu,
+    toastrPosition: state => state.global && state.global.toastrPosition,
 };
 
 export const mutations = {
@@ -29,21 +30,12 @@ export const mutations = {
         state.global = preferences.global;
         state.local = preferences.local;
     },
-    global: (state, payload) => {
-        state.global = payload;
-    },
-    lang: (state, lang) => {
-        state.global.lang = lang;
-    },
-    theme: (state, theme) => {
-        state.global.theme = theme;
-    },
-    expandedMenu: (state, expandedMenu) => {
-        state.global.expandedMenu = expandedMenu;
-    },
-    local: (state, payload) => {
-        state.local[payload.route] = payload.value;
-    },
+    global: (state, payload) => (state.global = payload),
+    lang: (state, lang) => (state.global.lang = lang),
+    theme: (state, theme) => (state.global.theme = theme),
+    toastrPosition: (state, position) => (state.global.toastrPosition = position),
+    expandedMenu: (state, expandedMenu) => (state.global.expandedMenu = expandedMenu),
+    local: (state, payload) => (state.local[payload.route] = payload.value),
 };
 
 export const actions = {
@@ -68,6 +60,10 @@ export const actions = {
 
         dispatch('layout/switchTheme', null, { root: true })
             .then(() => updateGlobal());
+    },
+    setToastrPosition: ({ commit }, position) => {
+        commit('toastrPosition', position);
+        updateGlobal();
     },
     setMenuState: ({ commit }, state) => {
         commit('expandedMenu', state);
