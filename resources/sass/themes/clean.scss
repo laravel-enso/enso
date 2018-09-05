@@ -1,0 +1,17 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+$danger: #e50800;
+
+@import "./node_modules/bulma/bulma";
+
+@import "~flatpickr/dist/themes/light";
+
+@import "../extensions";
+
+body {
+	background: #fafafa;
+}
+
+.aside {
+	background: #fff;
+}

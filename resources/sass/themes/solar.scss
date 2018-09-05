@@ -1,0 +1,16 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/solar/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/solar/overrides";
+
+@import "~flatpickr/dist/themes/confetti";
+@import "../extensions";
+
+.aside {
+	background: #002b36;
+}
+
+.has-background-light {
+	background: #083641 !important;
+}

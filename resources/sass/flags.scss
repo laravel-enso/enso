@@ -1,0 +1,55 @@
+.flag-icon-background {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.flag-icon {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em;
+}
+
+.flag-icon:before {
+    content: "\00a0";
+}
+
+.flag-icon-gb {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/gb.svg);
+}
+
+.flag-icon-ro {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/ro.svg);
+}
+
+.flag-icon-de {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/de.svg);
+}
+
+.flag-icon-fr {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/fr.svg);
+}
+
+.flag-icon-nl {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/nl.svg);
+}
+
+.flag-icon-br {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/br.svg);
+}
+
+.flag-icon-eg {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/eg.svg);
+}
+
+.flag-icon-mn {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/mn.svg);
+}
+
+.flag-icon-hu {
+  background-image: url(../../node_modules/flag-icon-css/flags/4x3/hu.svg);
+}

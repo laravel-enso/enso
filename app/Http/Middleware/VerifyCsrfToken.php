@@ -6,5 +6,9 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier
 {
-    protected $except = ['api/login', 'api/password/email', 'api/password/reset'];
+    protected $addHttpCookie = true;
+
+    protected $except = [
+        'api/login', 'api/password/email', 'api/password/reset'
+    ];
 }

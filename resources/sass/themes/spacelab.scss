@@ -1,0 +1,12 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/spacelab/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/spacelab/overrides";
+
+@import "~flatpickr/dist/themes/airbnb";
+@import "../extensions";
+
+.aside {
+	background: #ffffff;
+}

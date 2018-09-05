@@ -1,0 +1,16 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/superhero/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/superhero/overrides";
+
+@import "~flatpickr/dist/themes/dark";
+@import "../extensions";
+
+.aside {
+	background: #1f2d3b;
+}
+
+.has-background-light {
+	background: #2b3e4f !important;
+}

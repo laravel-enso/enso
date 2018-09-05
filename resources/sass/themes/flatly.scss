@@ -1,0 +1,12 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/flatly/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/flatly/overrides";
+
+@import "~flatpickr/dist/themes/material_green";
+@import "../extensions";
+
+.aside {
+	background: #ffffff;
+}

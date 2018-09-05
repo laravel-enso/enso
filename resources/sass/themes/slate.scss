@@ -1,0 +1,16 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+@import "./node_modules/bulmaswatch/slate/variables";
+@import "./node_modules/bulma/bulma";
+@import "./node_modules/bulmaswatch/slate/overrides";
+
+@import "~flatpickr/dist/themes/dark";
+@import "../extensions";
+
+.aside {
+	background: #272b30;
+}
+
+.has-background-light {
+	background: #3a3f44 !important;
+}

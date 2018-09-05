@@ -1,0 +1,134 @@
+<template>
+
+    <card fixed>
+        <div class="media has-padding-medium">
+            <div class="media-content">
+                <span class="icon is-pulled-right has-text-success"
+                    v-tooltip="__('default')"
+                    v-if="address.isDefault">
+                    <fa icon="anchor"/>
+                </span>
+                <slot name="address" :address="address">
+                    <span v-if="address.number">
+                        {{ address.number }}
+                    </span>
+                    <span v-if="address.street">
+                        {{ address.street }}
+                    </span>
+                    <span v-if="address.streetType">
+                        {{ __(address.streetType) }},
+                    </span>
+                    <br>
+                    <span v-if="address.building">
+                        <span class="has-text-grey">
+                            {{ __(address.buildingType) }}
+                        </span>
+                        {{ address.building }},
+                    </span>
+                    <span v-if="address.entry">
+                        <span class="has-text-grey">
+                            {{ __('Entry') }}
+                        </span>
+                        {{ address.entry }},
+                    </span>
+                    <span v-if="address.floor">
+                        <span class="has-text-grey">
+                            {{ __('Floor') }}
+                        </span>
+                        {{ address.floor }},
+                    </span>
+                    <span v-if="address.apartment">
+                        <span class="has-text-grey">
+                            {{ __('Apartment') }}
+                        </span>
+                        {{ address.apartment }},
+                    </span>
+                    <br>
+                    <span v-if="address.subAdministrativeArea">
+                        {{ address.subAdministrativeArea }},
+                    </span>
+                    <span v-if="address.city">
+                        {{ address.city }},
+                    </span>
+                    <br>
+                    <span v-if="address.postalArea">
+                        {{ address.postalArea }},
+                    </span>
+                    <span v-if="address.administrativeArea">
+                        {{ address.administrativeArea }},
+                    </span>
+                    <br>
+                    <span class="icon">
+                        <fa icon="globe"/>
+                    </span>
+                    {{ address.country }}
+                    <br>
+                    <span class="icon"
+                        v-if="address.obs">
+                        <fa icon="sticky-note"/>
+                    </span>
+                     {{ address.obs }}
+                </slot>
+            </div>
+        </div>
+        <card-footer slot="footer">
+            <card-footer-item>
+                <a @click="$emit('edit')">
+                    {{ __('edit') }}
+                </a>
+            </card-footer-item>
+            <card-footer-item v-if="!address.is_default">
+                <a @click="$emit('set-default')">
+                    <span class="icon">
+                        <fa icon="anchor"/>
+                    </span>
+                </a>
+            </card-footer-item>
+            <card-footer-item>
+                <popover @confirm="$emit('destroy')">
+                    <a>{{ __('delete') }}</a>
+                </popover>
+            </card-footer-item>
+        </card-footer>
+    </card>
+
+</template>
+
+<script>
+
+import { VTooltip } from 'v-tooltip';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/free-solid-svg-icons';
+import Card from '../bulma/Card.vue';
+import CardFooter from '../bulma/CardFooter.vue';
+import CardFooterItem from '../bulma/CardFooterItem.vue';
+import Popover from '../bulma/Popover.vue';
+
+library.add(faAnchor, faGlobe, faStickyNote);
+
+export default {
+    name: 'AddressesCard',
+
+    components: {
+        Card, CardFooter, CardFooterItem, Popover,
+    },
+
+    directives: { tooltip: VTooltip },
+
+    props: {
+        address: {
+            type: Object,
+            required: true,
+        },
+    },
+};
+
+</script>
+
+<style scoped>
+
+    .media-content {
+        min-height: 148px;
+    }
+
+</style>

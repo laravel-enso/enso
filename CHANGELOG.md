@@ -1,5 +1,33 @@
 ## Laravel Enso's Changelog
 
+### 2.10.2
+
+Laravel 5.7 adds, as usual, small changes to the core / config files. A new thing is the flat resources folder.
+
+This update aligns everything in Enso with Laravel 5.7's changes.
+
+Updating an existing project:
+
+- move everything from `resources/assets/*` to `resources/*`
+- manually update/add the following files to match the ones from Enso's repo:
+    - `app/Http/Controllers/Auth/VerificationController.php`
+    - `app/Http/Kernel.php`
+    - `app/Http/Middleware/Authenticate.php`
+    - `app/Http/Middleware/VerifyCsrfToken.php`
+    - `app/Providers/RouteServiceProvider.php`
+    - `config/app.php`
+    - `config/enso/config.php`
+    - `config/hashing.php`
+    - `config/logging.php`
+    - `config/services.php`
+    - `config/session.php`
+    - `tests/CreatesApplication.php`
+    - `webpack.mix.js`
+
+- update in `composer.json`
+    - `"laravel-enso/charts": "2.5.*",`
+    - `"laravel-enso/core": "2.15.*",`
+
 ### 2.10.1
 
 Laravel 5.7 upgrade
