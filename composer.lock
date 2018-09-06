@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "2.15.0",
+            "version": "2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "5f606e6abeb1d7465fd7b8ccd5fedac6807a3986"
+                "reference": "c28c11cfb7e1fe70e6024a927aa271184122489a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/5f606e6abeb1d7465fd7b8ccd5fedac6807a3986",
-                "reference": "5f606e6abeb1d7465fd7b8ccd5fedac6807a3986",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/c28c11cfb7e1fe70e6024a927aa271184122489a",
+                "reference": "c28c11cfb7e1fe70e6024a927aa271184122489a",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-05T07:33:01+00:00"
+            "time": "2018-09-06T10:16:36+00:00"
         },
         {
             "name": "laravel-enso/dataimport",
@@ -1947,16 +1947,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "c689e46158299dfcd101f18e27a6d160fbad7d0a"
+                "reference": "17d7440bf937e5071b396fdef2e4e9f0381e96e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/c689e46158299dfcd101f18e27a6d160fbad7d0a",
-                "reference": "c689e46158299dfcd101f18e27a6d160fbad7d0a",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/17d7440bf937e5071b396fdef2e4e9f0381e96e4",
+                "reference": "17d7440bf937e5071b396fdef2e4e9f0381e96e4",
                 "shasum": ""
             },
             "require": {
@@ -1999,7 +1999,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-09-05T07:01:53+00:00"
+            "time": "2018-09-06T08:48:59+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2686,16 +2686,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "20eeacc1cd93ba573753b84a6c7c78bff4818346"
+                "reference": "8118b26d92c1edd3ded1fa37f3ae96058d41ea9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/20eeacc1cd93ba573753b84a6c7c78bff4818346",
-                "reference": "20eeacc1cd93ba573753b84a6c7c78bff4818346",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/8118b26d92c1edd3ded1fa37f3ae96058d41ea9a",
+                "reference": "8118b26d92c1edd3ded1fa37f3ae96058d41ea9a",
                 "shasum": ""
             },
             "require": {
@@ -2736,7 +2736,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2018-09-05T07:23:01+00:00"
+            "time": "2018-09-06T07:00:02+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
@@ -4049,16 +4049,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.7",
+            "version": "v0.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "4f5b6c090948773a8bfeea6a0f07ab7d0b24e932"
+                "reference": "ed3c32c4304e1a678a6e0f9dc11dd2d927d89555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4f5b6c090948773a8bfeea6a0f07ab7d0b24e932",
-                "reference": "4f5b6c090948773a8bfeea6a0f07ab7d0b24e932",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ed3c32c4304e1a678a6e0f9dc11dd2d927d89555",
+                "reference": "ed3c32c4304e1a678a6e0f9dc11dd2d927d89555",
                 "shasum": ""
             },
             "require": {
@@ -4119,7 +4119,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2018-08-11T15:54:43+00:00"
+            "time": "2018-09-05T11:40:09+00:00"
         },
         {
             "name": "pusher/pusher-php-server",
@@ -5637,20 +5637,20 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.19.13",
+            "version": "0.19.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "33dc5ce6af990a2ee3485545f2df7ad78385144e"
+                "reference": "d95e985bbc6b884e2e9e74fe99ce41728ae8d6e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/33dc5ce6af990a2ee3485545f2df7ad78385144e",
-                "reference": "33dc5ce6af990a2ee3485545f2df7ad78385144e",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/d95e985bbc6b884e2e9e74fe99ce41728ae8d6e4",
+                "reference": "d95e985bbc6b884e2e9e74fe99ce41728ae8d6e4",
                 "shasum": ""
             },
             "require": {
-                "codedungeon/php-cli-colors": "^1.10",
+                "codedungeon/php-cli-colors": "^1.10.2",
                 "hassankhan/config": "^1.0",
                 "php": "^7.1",
                 "symfony/yaml": "^2.7|^3.0|^4.0"
@@ -5685,7 +5685,7 @@
                 "result-printer",
                 "testing"
             ],
-            "time": "2018-08-10T01:24:39+00:00"
+            "time": "2018-09-05T16:10:09+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -6901,16 +6901,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.3",
+            "version": "7.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898"
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
-                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0356331bf62896dc56e3a15030b23b73f38b2935",
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935",
                 "shasum": ""
             },
             "require": {
@@ -6981,7 +6981,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-09-01T15:49:55+00:00"
+            "time": "2018-09-05T09:58:53+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

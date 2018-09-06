@@ -88,7 +88,6 @@
                             </span>
                         </div>
                         <vue-select v-model="field.value"
-                            @input="errors.clear(field.name)"
                             :i18n="i18n"
                             :has-error="errors.has(field.name)"
                             :label="field.meta.label || 'name'"
@@ -98,6 +97,8 @@
                             :multiple="field.meta.multiple"
                             :disabled="field.meta.disabled"
                             :placeholder="i18n(field.meta.placeholder)"
+                            @input="errors.clear(field.name)"
+                            @fetch="field.meta.options = $event"
                             v-else-if="field.meta.type === 'select'"/>
                         <datepicker v-model="field.value"
                             :format="field.meta.format"

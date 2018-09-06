@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 2.10.3
+
+- fixes user form template (`app/Forms/Templates/user.json`) `password` & `password_confirmation` fields hidden property - it needs to be a boolean. Update this manually in your local project.
+
+- changes the unique-request-at-once-rule implemented in v2.10.1 to apply only on non `get` requests. I'm still waiting feedback for this ;)
+
+- fixes some edge cases potential bugs in `vue-select` and `vue-form`
+
 ### 2.10.2
 
 Laravel 5.7 adds, as usual, small changes to the core / config files. A new thing is the flat resources folder.

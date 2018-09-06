@@ -63,8 +63,8 @@
             "meta": {
                 "type": "input",
                 "content": "password",
-                "hidden": "true",
-                "custom": "true"
+                "hidden": true,
+                "custom": true
             }
         },
         {
@@ -74,8 +74,8 @@
             "meta": {
                 "type": "input",
                 "content": "password",
-                "hidden": "true",
-                "custom": "true"
+                "hidden": true,
+                "custom": true
             }
         }, {
             "label": "Active",

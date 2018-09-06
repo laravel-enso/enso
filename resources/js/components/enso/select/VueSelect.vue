@@ -290,6 +290,7 @@ export default {
             axios.get(this.route, { params: this.getParams() })
                 .then((response) => {
                     this.processOptions(response);
+                    this.$emit('fetch', this.optionList);
                     this.loading = false;
                 }).catch(error => this.handleError(error));
         },

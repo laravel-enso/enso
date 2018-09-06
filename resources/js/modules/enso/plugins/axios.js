@@ -1,15 +1,11 @@
 import axios from 'axios';
 import store from '../../../store';
 
-const requestIndex = config => store.state.requests
-    .findIndex(({ method, url }) =>
-        method === config.method && url === config.url);
-
 window.axios = axios;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 axios.interceptors.request.use((config) => {
-    if (requestIndex(config) >= 0) {
+    if (config.method !== 'get' && store.getters.requestIndex(config) >= 0) {
         return false;
     }
 
@@ -18,7 +14,7 @@ axios.interceptors.request.use((config) => {
 });
 
 axios.interceptors.response.use((response) => {
-    store.commit('removeRequest', requestIndex(response.config));
+    store.commit('removeRequest', store.getters.requestIndex(response.config));
     return response;
 }, (error) => {
     const { method, url } = error.config;
