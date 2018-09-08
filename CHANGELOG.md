@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.10.4
+
+- fixes structure manager to match the new resources folder
+- fixes toastr css
+
 ### 2.10.3
 
 - fixes user form template (`app/Forms/Templates/user.json`) `password` & `password_confirmation` fields hidden property - it needs to be a boolean. Update this manually in your local project.

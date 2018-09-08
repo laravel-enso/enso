@@ -2740,16 +2740,16 @@
         },
         {
             "name": "laravel-enso/structuremanager",
-            "version": "2.2.42",
+            "version": "2.2.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/StructureManager.git",
-                "reference": "17fbe210554f17d7b9af5e1549145faa945672f4"
+                "reference": "21db63818e1346bc0eed7b5a06270fecf3334124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/17fbe210554f17d7b9af5e1549145faa945672f4",
-                "reference": "17fbe210554f17d7b9af5e1549145faa945672f4",
+                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/21db63818e1346bc0eed7b5a06270fecf3334124",
+                "reference": "21db63818e1346bc0eed7b5a06270fecf3334124",
                 "shasum": ""
             },
             "require": {
@@ -2792,7 +2792,7 @@
                 "laravel-enso",
                 "structuremanager"
             ],
-            "time": "2018-09-05T08:14:04+00:00"
+            "time": "2018-09-08T07:05:34+00:00"
         },
         {
             "name": "laravel-enso/trackwho",
@@ -2968,16 +2968,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "bb7db380910cbbf9daa6ea56c10eab8af427962c"
+                "reference": "ce1b7de3e6bba75d007e0b561080f1685d4852b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/bb7db380910cbbf9daa6ea56c10eab8af427962c",
-                "reference": "bb7db380910cbbf9daa6ea56c10eab8af427962c",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/ce1b7de3e6bba75d007e0b561080f1685d4852b4",
+                "reference": "ce1b7de3e6bba75d007e0b561080f1685d4852b4",
                 "shasum": ""
             },
             "type": "library",
@@ -3013,7 +3013,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-09-05T07:29:56+00:00"
+            "time": "2018-09-08T07:30:46+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
@@ -3074,16 +3074,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.1",
+            "version": "v5.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "4a5955e325faa2054420eeb7320cc2c81111a2f2"
+                "reference": "86e1f98a6d2aab018e0257a7cb2ef2110d64a873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/4a5955e325faa2054420eeb7320cc2c81111a2f2",
-                "reference": "4a5955e325faa2054420eeb7320cc2c81111a2f2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/86e1f98a6d2aab018e0257a7cb2ef2110d64a873",
+                "reference": "86e1f98a6d2aab018e0257a7cb2ef2110d64a873",
                 "shasum": ""
             },
             "require": {
@@ -3171,6 +3171,7 @@
                 "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",
                 "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (^1.0).",
                 "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
+                "moontoast/math": "Required to use ordered UUIDs (^1.1).",
                 "nexmo/client": "Required to use the Nexmo transport (^1.0).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^3.0).",
                 "predis/predis": "Required to use the redis cache and queue drivers (^1.0).",
@@ -3210,20 +3211,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-09-04T18:28:50+00:00"
+            "time": "2018-09-06T14:01:05+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "342c4ddf6dda7c7ed21e57566f202b96e28afb6b"
+                "reference": "0fb52858974e08e26fc214441a90aec652bc1204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/342c4ddf6dda7c7ed21e57566f202b96e28afb6b",
-                "reference": "342c4ddf6dda7c7ed21e57566f202b96e28afb6b",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/0fb52858974e08e26fc214441a90aec652bc1204",
+                "reference": "0fb52858974e08e26fc214441a90aec652bc1204",
                 "shasum": ""
             },
             "require": {
@@ -3278,7 +3279,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2018-06-21T09:19:40+00:00"
+            "time": "2018-09-07T11:08:22+00:00"
         },
         {
             "name": "laravel/tinker",

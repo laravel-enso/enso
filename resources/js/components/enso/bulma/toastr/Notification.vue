@@ -201,20 +201,20 @@ export default {
 
         &.left {
             margin-right: auto;
-            left: 2em;
+            left: 1em;
         }
 
         &.right {
             margin-left: auto;
-            right: 2em;
+            right: 1em;
         }
 
         &.center {
-            margin-left: calc(50% - 150px);
+            margin-left: calc(50% - 10em);
         }
 
         .toastr.notification {
-            width: 350px;
+            width: 20em;
             padding: .6em;
             margin-bottom: .25em;
             pointer-events: auto;
