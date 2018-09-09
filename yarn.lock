@@ -1291,12 +1291,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000884"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000884.tgz#d02b25dc885ffdf80434cf68b0941ea3161a4c8b"
+  version "1.0.30000885"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000885.tgz#cdc98dd168ed59678650071f7f6a70910e275bc8"
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000844:
-  version "1.0.30000884"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000884.tgz#eb82a959698745033b26a4dcd34d89dba7cc6eb3"
+  version "1.0.30000885"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000885.tgz#e889e9f8e7e50e769f2a49634c932b8aee622984"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1520,9 +1520,13 @@ combined-stream@1.0.6, combined-stream@~1.0.5, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.17.x, commander@^2.11.0, commander@^2.9.0, commander@~2.17.1:
+commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+
+commander@^2.11.0, commander@^2.9.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
 
 commander@~2.13.0:
   version "2.13.0"
@@ -2081,8 +2085,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47:
-  version "1.3.62"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.62.tgz#2e8e2dc070c800ec8ce23ff9dfcceb585d6f9ed8"
+  version "1.3.64"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.64.tgz#39f5a93bf84ab7e10cfbb7522ccfc3f1feb756cf"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -2490,7 +2494,7 @@ expand-range@^1.8.1:
 
 express@^4.16.2:
   version "4.16.3"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
+  resolved "http://registry.npmjs.org/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
   dependencies:
     accepts "~1.3.5"
     array-flatten "1.1.1"
@@ -3163,7 +3167,7 @@ http-errors@1.6.2:
 
 http-errors@~1.6.2:
   version "1.6.3"
-  resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
+  resolved "http://registry.npmjs.org/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
   dependencies:
     depd "~1.1.2"
     inherits "2.0.3"
@@ -3742,8 +3746,8 @@ jsx-ast-utils@^2.0.1:
     array-includes "^3.0.3"
 
 killable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -4286,7 +4290,7 @@ mux.js@4.3.2:
 
 mux.js@4.4.1:
   version "4.4.1"
-  resolved "https://registry.yarnpkg.com/mux.js/-/mux.js-4.4.1.tgz#c9c9a5e7e9f69f1d5670f2cc71c4cefa45aa7aec"
+  resolved "http://registry.npmjs.org/mux.js/-/mux.js-4.4.1.tgz#c9c9a5e7e9f69f1d5670f2cc71c4cefa45aa7aec"
 
 nan@^2.10.0, nan@^2.9.2:
   version "2.11.0"
@@ -5621,8 +5625,8 @@ resolve-from@^3.0.0:
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
 
 resolve-url-loader@^2.2.1:
-  version "2.3.0"
-  resolved "http://registry.npmjs.org/resolve-url-loader/-/resolve-url-loader-2.3.0.tgz#e1b37034d48f22f8cfb9f04c026faaa070fdaf26"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/resolve-url-loader/-/resolve-url-loader-2.3.1.tgz#b462fc7a78a22baf3ee462568d8ff5d766f7f1da"
   dependencies:
     adjust-sourcemap-loader "^1.1.0"
     camelcase "^4.1.0"
@@ -6034,8 +6038,8 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.0.tgz#7a7cd28470cc6d3a1cfe6d66886f6bc430d3ac87"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.1.tgz#e2a303236cac54b04031fa7a5a79c7e701df852f"
 
 spdy-transport@^2.0.18:
   version "2.1.0"

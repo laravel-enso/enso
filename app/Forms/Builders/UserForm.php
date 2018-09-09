@@ -24,10 +24,13 @@ class UserForm
     public function edit(User $user)
     {
         if (auth()->user()->can('change-password', $user)) {
-            $this->form->value('password', null)
-                ->show(['password', 'password_confirmation']);
+            $this->form->show([
+                'password', 'password_confirmation'
+            ]);
         }
 
-        return $this->form->edit($user);
+        return $this->form
+            ->value('password', null)
+            ->edit($user);
     }
 }

@@ -1,5 +1,33 @@
 ## Laravel Enso's Changelog
 
+### 2.10.5
+
+#### Changes & Fixes
+
+##### Helpers
+- adds a `JsonParser` helper class that is used now by dataimport, vuedatatable & formbuilder
+
+##### Dataimport
+- improves the template validations
+- improves the uploaded file validation
+- updates the config file - adds option to toggle validations depending the env (vuedatatable style)
+- implements `JsonParser`
+
+##### StructureManager
+- fixes tests
+- adds missing classes to structuremanager's table stub (index.vue)
+
+#### Core, VueDatatable, FormBuilder, Localisation
+- implements `JsonParser`
+##### General
+- fixes issue in user form where the encrypted password was sent to front-end
+
+#### Upgrade an existing project
+- update in `composer.json`: "laravel-enso/dataimport": "2.4.*",
+- `composer update`
+- `npm run dev`
+- update the `config/enso/imports.php` to match the enhanced structure
+
 ### 2.10.4
 
 - fixes structure manager to match the new resources folder

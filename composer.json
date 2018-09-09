@@ -14,7 +14,7 @@
         "laravel-enso/contacts": "2.2.*",
         "laravel-enso/controlpanelapi": "^2.0",
         "laravel-enso/core": "2.15.*",
-        "laravel-enso/dataimport": "2.3.*",
+        "laravel-enso/dataimport": "2.4.*",
         "laravel-enso/documentsmanager": "2.3.*",
         "laravel-enso/howtovideos": "2.1.*",
         "laravel-enso/notifications": "2.1.*",

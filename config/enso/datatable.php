@@ -7,7 +7,7 @@ return [
     |--------------------------------------------------------------------------
     | This flag sets whether validations are also executed in production
     | or only in local/development.
-    | Values: 'always/local'
+    | Values: 'always/local/yourEnv...'
     |
     */
 

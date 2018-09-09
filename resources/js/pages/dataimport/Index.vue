@@ -86,7 +86,7 @@
                 {{ row['issues'] }}
             </b>
         </vue-table>
-        <div class="columns"
+        <div class="columns is-centered"
             v-if="summary">
             <div class="column is-half-tablet is-one-third-widescreen is-one-quarter-fullhd">
                 <nav class="box panel is-paddingless  animated bounceInLeft">
@@ -146,7 +146,8 @@
                     </div>
                 </nav>
             </div>
-            <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd">
+            <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd"
+                v-if="summary.issues">
                 <card class="animated bounceInRight"
                     :icon="icon"
                     :title="__('Issues')">
@@ -321,12 +322,6 @@ export default {
             axios.get(route('import.getSummary', row.dtRowId))
                 .then(({ data }) => {
                     this.loading = false;
-
-                    if (data.issues === 0) {
-                        this.$toastr.info('The import has no issues');
-                        return;
-                    }
-
                     this.summary = data;
                 }).catch(error => this.handleError(error));
         },
