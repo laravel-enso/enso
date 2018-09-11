@@ -25,7 +25,7 @@ class UserForm
     {
         if (auth()->user()->can('change-password', $user)) {
             $this->form->show([
-                'password', 'password_confirmation'
+                'password', 'password_confirmation',
             ]);
         }
 

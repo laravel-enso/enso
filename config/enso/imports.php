@@ -27,5 +27,5 @@ return [
             'label' => 'Owners',
             'template' => 'app/Imports/Templates/owners.json',
         ],
-    ]
+    ],
 ];
