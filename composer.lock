@@ -1948,16 +1948,16 @@
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "2.5.6",
+            "version": "2.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "45d9d164e2dc01ee7ccf16407cb05f02cb24bb0e"
+                "reference": "dfe780d372f9995ee113837e53dd04263d199d64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/45d9d164e2dc01ee7ccf16407cb05f02cb24bb0e",
-                "reference": "45d9d164e2dc01ee7ccf16407cb05f02cb24bb0e",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/dfe780d372f9995ee113837e53dd04263d199d64",
+                "reference": "dfe780d372f9995ee113837e53dd04263d199d64",
                 "shasum": ""
             },
             "require": {
@@ -2001,7 +2001,7 @@
                 "filemanager",
                 "laravel-enso"
             ],
-            "time": "2018-09-11T12:09:07+00:00"
+            "time": "2018-09-11T13:18:31+00:00"
         },
         {
             "name": "laravel-enso/formbuilder",

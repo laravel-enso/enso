@@ -60,6 +60,14 @@
                         <fa icon="sync-alt"/>
                     </span>
                 </button>
+                <div class="box has-margin-top-large">
+                    <h4 class="title is-4 has-text-centered">
+                        {{ __('Storage used') }}: {{ totalStorage / 1000 | numberFormat }} KB
+                    </h4>
+                    <chart :data="chartData"
+                        :options="{ aspectRatio: 1 }"
+                        type="pie"/>
+                </div>
             </div>
         </div>
     </tabs>
@@ -75,19 +83,22 @@ import Tabs from '../../components/enso/bulma/Tabs.vue';
 import Tab from '../../components/enso/bulma/Tab.vue';
 import DateIntervalFilter from '../../components/enso/bulma/DateIntervalFilter.vue';
 import File from '../../components/enso/filemanager/File.vue';
+import Chart from '../../components/enso/charts/Chart.vue';
+
+import Colors from '../../components/enso/charts/colors';
 
 library.add(faSearch, faSyncAlt);
 
 export default {
     components: {
-        Tabs, Tab, File, DateIntervalFilter,
+        Tabs, Tab, File, DateIntervalFilter, Chart,
     },
 
     data() {
         return {
             loading: false,
             files: [],
-            folders: null,
+            folders: [],
             query: null,
             interval: {
                 min: null,
@@ -102,6 +113,32 @@ export default {
                 ? this.files.filter(file => file.name.toLowerCase()
                     .indexOf(this.query.toLowerCase()) > -1)
                 : this.files;
+        },
+        colors() {
+            return Colors.slice(0, this.folders.length);
+        },
+        foldersStats() {
+            return this.folders.map(folder =>
+                this.content(folder)
+                    .reduce((total, { size }) => (total += size), 0));
+        },
+        chartData() {
+            return {
+                labels: this.folders,
+                datasets: [{
+                    data: this.foldersStats,
+                    backgroundColor: this.colors,
+                    datalabels: {
+                        backgroundColor: this.colors,
+                        formatter: val => `${this.$options.filters.numberFormat(val / 1000)} KB`,
+                    },
+                }],
+            };
+        },
+        totalStorage() {
+            return this.files.length
+                ? this.files.reduce((total, { size }) => (total += size), 0)
+                : 0;
         },
     },
 

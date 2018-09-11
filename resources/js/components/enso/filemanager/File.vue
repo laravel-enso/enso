@@ -22,7 +22,7 @@
             <span class="icon is-small">
                 <fa icon="database"/>
             </span>
-            {{ file.size | numberFormat }} Kb
+            {{ file.size / 1000 | numberFormat }} KB
         </p>
         <div class="has-text-centered has-margin-top-medium">
             <div class="details">
