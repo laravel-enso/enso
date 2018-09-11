@@ -2,7 +2,7 @@
 
     <div class="box file-box has-padding-medium">
         <p class="has-text-centered">
-            <fa icon="file"
+            <fa :icon="icon"
                 size="3x"/>
         </p>
         <h5 class="title is-5 has-margin-top-medium has-text-centered">
@@ -63,8 +63,8 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
-    faCalendarAlt, faDatabase,
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink, faCalendarAlt,
+    faDatabase, faImage, faFileExcel, faFilePdf, faFileWord, faFilePowerpoint,
 } from '@fortawesome/free-solid-svg-icons';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
@@ -75,11 +75,17 @@ import Tabs from '../bulma/Tabs.vue';
 import Tab from '../bulma/Tab.vue';
 
 library.add([
-    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink,
-    faCalendarAlt, faDatabase,
+    faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink, faCalendarAlt,
+    faDatabase, faImage, faFileExcel, faFilePdf, faFileWord, faFilePowerpoint,
 ]);
 
 library.add(faFile);
+
+const Images = ['jpg', 'png', 'jpeg', 'gif'];
+const SpreadSheets = ['xls', 'xlsx', 'csv', 'numbers'];
+const Documents = ['doc', 'docx', 'pages'];
+const PPTs = ['ppt', 'pptx', 'key'];
+const PDFs = ['pdf'];
 
 export default {
     name: 'File',
@@ -107,6 +113,29 @@ export default {
         },
         openLink() {
             return route('core.files.show', this.file.id);
+        },
+        icon() {
+            if (Images.includes(this.file.name.split('.').pop())) {
+                return 'image';
+            }
+
+            if (SpreadSheets.includes(this.file.name.split('.').pop())) {
+                return 'file-excel';
+            }
+
+            if (Documents.includes(this.file.name.split('.').pop())) {
+                return 'file-word';
+            }
+
+            if (PPTs.includes(this.file.name.split('.').pop())) {
+                return 'file-powerpoint';
+            }
+
+            if (PDFs.includes(this.file.name.split('.').pop())) {
+                return 'file-pdf';
+            }
+
+            return 'file';
         },
     },
 
