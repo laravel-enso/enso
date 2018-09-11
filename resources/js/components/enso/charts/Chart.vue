@@ -101,6 +101,9 @@ export default {
             this.chart.data.datasets
                 .forEach((dataset, index) => {
                     dataset.data = this.data.datasets[index].data;
+                    dataset.backgroundColor = this.data.datasets[index].backgroundColor;
+                    dataset.datalabels.backgroundColor =
+                        this.data.datasets[index].datalabels.backgroundColor;
                 });
         },
         datasetsStructureChanged() {

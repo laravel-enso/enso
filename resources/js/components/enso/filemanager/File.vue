@@ -1,14 +1,18 @@
 <template>
 
     <div class="box file-box has-padding-medium">
-        <p class="has-text-centered">
+        <figure class="image is-32x32 avatar">
+            <img class="is-rounded"
+                :src="avatarLink(file.owner.avatarId)">
+        </figure>
+        <p class="has-text-centered has-margin-bottom-medium">
             <fa :icon="icon"
                 size="3x"/>
         </p>
-        <h5 class="title is-5 has-margin-top-medium has-text-centered">
+        <h5 class="title is-5 has-text-centered">
             {{ file.name }}
         </h5>
-        <p class="has-margin-top-medium has-text-centered">
+        <p class="has-text-centered">
             <span class="icon is-small">
                 <fa icon="calendar-alt"/>
             </span>
@@ -29,7 +33,8 @@
                     </span>
                 </button>
                 <button class="button is-naked"
-                    @click.stop="show">
+                    @click.stop="show"
+                    v-if="isViewable">
                     <span class="icon">
                         <fa icon="eye"/>
                     </span>
@@ -85,7 +90,7 @@ const Images = ['jpg', 'png', 'jpeg', 'gif'];
 const SpreadSheets = ['xls', 'xlsx', 'csv', 'numbers'];
 const Documents = ['doc', 'docx', 'pages'];
 const PPTs = ['ppt', 'pptx', 'key'];
-const PDFs = ['pdf'];
+const Pdfs = ['pdf'];
 
 export default {
     name: 'File',
@@ -114,8 +119,17 @@ export default {
         openLink() {
             return route('core.files.show', this.file.id);
         },
+        isImage() {
+            return Images.includes(this.file.name.split('.').pop());
+        },
+        isPdf() {
+            return Pdfs.includes(this.file.name.split('.').pop());
+        },
+        isViewable() {
+            return this.isImage || this.isPdf;
+        },
         icon() {
-            if (Images.includes(this.file.name.split('.').pop())) {
+            if (this.isImage) {
                 return 'image';
             }
 
@@ -131,7 +145,7 @@ export default {
                 return 'file-powerpoint';
             }
 
-            if (PDFs.includes(this.file.name.split('.').pop())) {
+            if (this.isPdf) {
                 return 'file-pdf';
             }
 
@@ -151,6 +165,9 @@ export default {
         timeFromNow(date) {
             return formatDistance(date);
         },
+        avatarLink(id) {
+            return route('core.avatars.show', id);
+        },
     },
 };
 </script>
@@ -158,7 +175,14 @@ export default {
 <style lang="scss" scoped>
 
     .file-box {
+        position: relative;
         cursor: pointer;
+
+        .avatar {
+            position: absolute;
+            top: .5em;
+            left: .5em;
+        }
 
         .details {
             display: flex;

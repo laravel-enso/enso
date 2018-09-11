@@ -7,9 +7,6 @@
     .columns.is-reverse-mobile {
         flex-direction: column-reverse;
         display: flex;
-        .column {
-            width: 100%; 
-        }
     }
 }
 

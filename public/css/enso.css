@@ -3748,10 +3748,6 @@
     display: -ms-flexbox;
     display: flex;
   }
-
-  .columns.is-reverse-mobile .column {
-    width: 100%;
-  }
 }
 
 .has-margin-small {
