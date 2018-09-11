@@ -26,6 +26,8 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 library.add(faUpload);
 
 export default {
+    name: 'FileUploader',
+
     props: {
         multiple: {
             type: Boolean,

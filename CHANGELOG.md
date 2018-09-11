@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.10.6
+
+- adds the new `Files` menu. The users can see their files in a centralised way.
+- adds datatable and files integration. Your exports can now be downloaded from the app.
+- for existing projects run:
+- `composer require laravel-enso/dataexport`
+- `composer update` 
+- `php artisan migrate`
+- `npm run dev`
+
 ### 2.10.5
 
 #### Changes & Fixes

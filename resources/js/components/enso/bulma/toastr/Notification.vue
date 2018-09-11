@@ -93,7 +93,7 @@ export default {
 
     computed: {
         toastrPosition() {
-            return store.getters['preferences/toastrPosition'];
+            return store.getters['preferences/toastrPosition'] || 'top-center';
         },
         direction() {
             if (this.toastrPosition === 'top-center') return 'Down';

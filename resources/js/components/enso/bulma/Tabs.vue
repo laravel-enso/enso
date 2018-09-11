@@ -2,10 +2,10 @@
     <div>
         <div :class="[
             'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-            { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
-            { 'is-fullwidth': fullwidth }
+            { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
+            { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
         ]">
-            <ul>
+            <ul class="tab-list">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
@@ -55,6 +55,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        custom: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -76,7 +80,7 @@ export default {
             setTimeout(() => {
                 this.active = index;
                 this.$emit('selected', this.tabs[this.active]);
-            }, 500);
+            }, 300);
         },
         disable(index) {
             if (!this.disabled.includes(index)) {
@@ -97,6 +101,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "./node_modules/bulma/sass/utilities/initial-variables";
+
+    .tabs.is-fullwidth.is-toggle.is-custom {
+        .tab-list {
+            background: $grey-lighter;
+            border-radius: 0.3em;
+
+            li {
+                padding: 0.5em;
+            }
+
+            .is-active {
+                a {
+                    background: $white;
+                    opacity: 1;
+                    font-weight: 600;
+                    color: $grey-dark;
+                }
+            }
+
+            a {
+                transition: background 0.15s;
+                transition: font-weight 0.15s;
+                border: unset;
+                border-radius: 0.3em;
+                opacity: 0.5;
+            }
+        }
+    }
 
     a[disabled] {
         opacity: .5;
@@ -104,4 +137,3 @@ export default {
     }
 
 </style>
-

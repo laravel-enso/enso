@@ -74,16 +74,14 @@ export default {
         destroy(index) {
             this.loading = true;
 
-            axios.delete(route('core.documents.destroy', [this.documents[index].id], false)).then(() => {
+            axios.delete(route(
+                'core.documents.destroy',
+                this.documents[index].id, false,
+            )).then(() => {
                 this.loading = false;
                 this.documents.splice(index, 1);
-                index = null;
                 this.$emit('update');
-            }).catch((error) => {
-                this.loading = false;
-                index = null;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
     },
 };
