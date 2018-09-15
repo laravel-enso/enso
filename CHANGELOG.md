@@ -1,5 +1,19 @@
 ## Laravel Enso's Changelog
 
+### 2.10.7
+
+#### Changes
+
+- moves `FileUploader.vue` & `Uploader.vue` from `laravel-enso/vuecomponents` to `laravel-enso/filemanager` 
+- adds a new `MorphableContainer.vue` component. An use example can be seen in owner's edit page
+- renames old `Addresses.vue` to `AddressesCard.vue`. Adds new `Addresses.vue` component to work with `MorphableContainer`
+- renames old `Contacts.vue` to `ContactsCard.vue`. Adds new `Contacts.vue` component to work with `MorphableContainer`
+
+#### Upgrading existing projects:
+
+- update `/resources/js/pages/administration/owners/Edit.vue` to match the file from the repo to use the new `MorphableContainer.vue`
+- run `php artisan enso:documents:remove-deprecated-permissions`
+
 ### 2.10.6
 
 - adds the new `Files` menu. The users can see their files in a centralised way.

@@ -174,7 +174,7 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faUpload, faBan, faCheck, faPencilAlt, faTags } from '@fortawesome/free-solid-svg-icons';
-import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
+import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
 import HowToVideo from '../../components/enso/howtovideos/HowToVideo.vue';
 
 library.add([faPlus, faUpload, faBan, faCheck, faPencilAlt, faTags]);

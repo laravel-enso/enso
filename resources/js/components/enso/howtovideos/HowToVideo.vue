@@ -97,7 +97,7 @@ import { faTrashAlt, faEdit, faImage } from '@fortawesome/free-regular-svg-icons
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Popover from '../bulma/Popover.vue';
-import FileUploader from '../fileuploader/FileUploader.vue';
+import FileUploader from '../filemanager/FileUploader.vue';
 
 library.add([faTrashAlt, faInfo, faTags, faEdit, faImage, faInfoCircle]);
 

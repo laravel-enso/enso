@@ -24,14 +24,14 @@
                     <vue-select-filter multiple
                         source="system.roles.selectOptions"
                         :placeholder="__('Roles')"
-                        v-model="filters.role_ids"/>
+                        v-model="filters.roleIds"/>
                 </div>
                 <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
                         source="administration.users.selectOptions"
                         label="fullName"
                         :placeholder="__('Authors')"
-                        v-model="filters.user_ids"/>
+                        v-model="filters.userIds"/>
                 </div>
                 <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Timeline from './../../components/enso/activityLog/Timeline.vue';
@@ -66,7 +65,10 @@ library.add(faSpinner);
 
 export default {
     components: {
-        Overlay, Timeline, DateIntervalFilter, VueSelectFilter,
+        Overlay,
+        Timeline,
+        DateIntervalFilter,
+        VueSelectFilter,
     },
 
     data() {
@@ -83,8 +85,8 @@ export default {
                 { name: 'Custom', id: 4 },
             ],
             filters: {
-                user_ids: [],
-                role_ids: [],
+                userIds: [],
+                roleIds: [],
                 intervals: {
                     min: null,
                     max: null,
@@ -116,29 +118,32 @@ export default {
             }
 
             this.axiosRequest = axios.CancelToken.source();
-            axios.get(route('core.activityLogs.index'), {
-                params: { offset: this.offset, filters: this.filters },
-                cancelToken: this.axiosRequest.token,
-            }).then(({ data }) => {
-                this.initialised = true;
-                const length = this.length(data);
+            axios
+                .get(route('core.activityLogs.index'), {
+                    params: { offset: this.offset, filters: this.filters },
+                    cancelToken: this.axiosRequest.token,
+                })
+                .then(({ data }) => {
+                    this.initialised = true;
+                    const length = this.length(data);
 
-                if (this.offset === 0) {
-                    this.feed = data;
-                } else {
-                    this.merge(data);
-                }
+                    if (this.offset === 0) {
+                        this.feed = data;
+                    } else {
+                        this.merge(data);
+                    }
 
-                this.offset += length;
-                this.loading = false;
-            }).catch((error) => {
-                if (axios.isCancel(error)) {
-                    this.axiosRequest = null;
-                    return;
-                }
+                    this.offset += length;
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    if (axios.isCancel(error)) {
+                        this.axiosRequest = null;
+                        return;
+                    }
 
-                this.handleError(error);
-            });
+                    this.handleError(error);
+                });
         },
         reload() {
             this.offset = 0;
@@ -160,7 +165,6 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="scss">

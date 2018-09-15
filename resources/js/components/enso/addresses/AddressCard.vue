@@ -1,7 +1,7 @@
 <template>
 
-    <card fixed>
-        <div class="media has-padding-medium">
+    <div class="box raises-on-hover">
+        <div class="media">
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success"
                     v-tooltip="__('default')"
@@ -9,59 +9,61 @@
                     <fa icon="anchor"/>
                 </span>
                 <slot name="address" :address="address">
-                    <span v-if="address.number">
+                    <strong v-if="address.number">
                         {{ address.number }}
-                    </span>
-                    <span v-if="address.street">
+                    </strong>
+                    <strong>
                         {{ address.street }}
-                    </span>
-                    <span v-if="address.streetType">
+                    </strong>
+                    <strong v-if="address.streetType">
                         {{ __(address.streetType) }},
-                    </span>
+                    </strong>
                     <br>
-                    <span v-if="address.building">
+                    <strong v-if="address.building">
                         <span class="has-text-grey">
                             {{ __(address.buildingType) }}
                         </span>
                         {{ address.building }},
-                    </span>
-                    <span v-if="address.entry">
+                    </strong>
+                    <strong v-if="address.entry">
                         <span class="has-text-grey">
                             {{ __('Entry') }}
                         </span>
                         {{ address.entry }},
-                    </span>
-                    <span v-if="address.floor">
+                    </strong>
+                    <strong v-if="address.floor">
                         <span class="has-text-grey">
                             {{ __('Floor') }}
                         </span>
                         {{ address.floor }},
-                    </span>
-                    <span v-if="address.apartment">
+                    </strong>
+                    <strong v-if="address.apartment">
                         <span class="has-text-grey">
                             {{ __('Apartment') }}
                         </span>
                         {{ address.apartment }},
-                    </span>
+                    </strong>
                     <br>
-                    <span v-if="address.subAdministrativeArea">
+                    <strong v-if="address.subAdministrativeArea">
                         {{ address.subAdministrativeArea }},
-                    </span>
-                    <span v-if="address.city">
+                    </strong>
+                    <strong v-if="address.city">
                         {{ address.city }},
-                    </span>
+                    </strong>
                     <br>
-                    <span v-if="address.postalArea">
+                    <strong v-if="address.postalArea">
                         {{ address.postalArea }},
-                    </span>
-                    <span v-if="address.administrativeArea">
+                    </strong>
+                    <strong v-if="address.administrativeArea">
                         {{ address.administrativeArea }},
-                    </span>
+                    </strong>
                     <br>
                     <span class="icon">
                         <fa icon="globe"/>
                     </span>
-                    {{ address.country }}
+                    <strong>
+                        {{ address.country }}
+                    </strong>
                     <br>
                     <span class="icon"
                         v-if="address.obs">
@@ -71,26 +73,31 @@
                 </slot>
             </div>
         </div>
-        <card-footer slot="footer">
-            <card-footer-item>
-                <a @click="$emit('edit')">
-                    {{ __('edit') }}
-                </a>
-            </card-footer-item>
-            <card-footer-item v-if="!address.is_default">
-                <a @click="$emit('set-default')">
+        <div class="has-text-centered has-margin-top-medium">
+            <div class="details">
+                <button class="button is-naked"
+                    @click="$emit('edit')">
+                    <span class="icon">
+                        <fa icon="pencil-alt"/>
+                    </span>
+                </button>
+                <button class="button is-naked"
+                    @click="$emit('set-default')">
                     <span class="icon">
                         <fa icon="anchor"/>
                     </span>
-                </a>
-            </card-footer-item>
-            <card-footer-item>
-                <popover @confirm="$emit('destroy')">
-                    <a>{{ __('delete') }}</a>
+                </button>
+                <popover placement="top"
+                    @confirm="$emit('delete')">
+                    <button class="button is-naked">
+                        <span class="icon">
+                            <fa icon="trash-alt"/>
+                        </span>
+                    </button>
                 </popover>
-            </card-footer-item>
-        </card-footer>
-    </card>
+            </div>
+        </div>
+    </div>
 
 </template>
 
@@ -98,20 +105,15 @@
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAnchor, faGlobe, faStickyNote } from '@fortawesome/free-solid-svg-icons';
-import Card from '../bulma/Card.vue';
-import CardFooter from '../bulma/CardFooter.vue';
-import CardFooterItem from '../bulma/CardFooterItem.vue';
+import { faPencilAlt, faAnchor, faGlobe, faStickyNote, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Popover from '../bulma/Popover.vue';
 
-library.add(faAnchor, faGlobe, faStickyNote);
+library.add(faPencilAlt, faAnchor, faGlobe, faStickyNote, faTrashAlt);
 
 export default {
-    name: 'AddressesCard',
+    name: 'AddressCard',
 
-    components: {
-        Card, CardFooter, CardFooterItem, Popover,
-    },
+    components: { Popover },
 
     directives: { tooltip: VTooltip },
 
@@ -125,10 +127,15 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
     .media-content {
         min-height: 148px;
+    }
+
+    .details {
+        display: flex;
+        justify-content: center;
     }
 
 </style>

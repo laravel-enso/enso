@@ -1,25 +1,56 @@
 <template>
 
-    <div>
-        <comment is-new
-            :id="id"
-            :type="type"
-            v-if="comment"
-            :comment="comment"
-            :index="-1"
-            @cancel-add="comment = null"
-            @save-comment="add()"/>
-        <comment v-for="(comment, index) in filteredComments"
-            :comment="comment"
-            :index="index"
-            @save-comment="update(comment)"
-            @delete="destroy(index)"
-            :key="index"/>
-        <div class="has-text-centered has-margin-top-large">
-            <button class="button is-naked has-text-grey"
-                @click="get()">
-                &bull; &bull; &bull;
+    <div class="has-padding-medium">
+        <div class="controls"
+            v-if="controls">
+            <button class="button"
+                @click="create()">
+                <span v-if="!isMobile">
+                    {{ __('Add Comment') }}
+                </span>
+                <span class="icon">
+                    <fa icon="plus"/>
+                </span>
             </button>
+            <button class="button has-margin-left-small"
+                @click="get()">
+                <span v-if="!isMobile">
+                    {{ __('Reload') }}
+                </span>
+                <span class="icon">
+                    <fa icon="sync"/>
+                </span>
+            </button>
+            <p class="control has-icons-left has-icons-right has-margin-left-large">
+                <input class="input is-rounded"
+                    type="text"
+                    v-model="internalQuery"
+                    :placeholder="__('Filter')">
+                <span class="icon is-small is-left">
+                    <fa icon="search"/>
+                </span>
+                <span class="icon is-small is-right clear-button"
+                    v-if="internalQuery"
+                    @click="internalQuery = ''">
+                    <a class="delete is-small"/>
+                </span>
+            </p>
+        </div>
+        <div :class="{'has-margin-top-large': controls}">
+            <comment is-new
+                :id="id"
+                :type="type"
+                v-if="comment"
+                :comment="comment"
+                :index="-1"
+                @cancel-add="comment = null"
+                @save-comment="add()"/>
+            <comment v-for="(comment, index) in filteredComments"
+                :comment="comment"
+                :index="index"
+                @save-comment="update(comment)"
+                @delete="destroy(index)"
+                :key="index"/>
         </div>
     </div>
 
@@ -44,35 +75,55 @@ export default {
             type: String,
             required: true,
         },
-        paginate: {
-            type: Number,
-            default: 100,
-        },
         query: {
             type: String,
             default: null,
+        },
+        controls: {
+            type: Boolean,
+            default: false,
         },
     },
 
     data() {
         return {
             comments: [],
-            count: 0,
-            offset: 0,
             comment: null,
             loading: false,
+            internalQuery: '',
             path: this.$route.path,
         };
     },
 
     computed: {
         ...mapState(['user']),
+        ...mapState('layout', ['isMobile']),
         filteredComments() {
-            return this.query
-                ? this.comments.filter(comment => comment.body.toLowerCase()
-                    .indexOf(this.query.toLowerCase()) > -1
-                    || comment.owner.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+            const query = this.internalQuery.toLowerCase();
+
+            return query
+                ? this.comments.filter(({ body, owner }) =>
+                    body.toLowerCase().indexOf(query) > -1
+                    || owner.name.toLowerCase().indexOf(query) > -1)
                 : this.comments;
+        },
+        count() {
+            return this.filteredComments.length;
+        },
+        params() {
+            return {
+                commentable_id: this.id,
+                commentable_type: this.type,
+            };
+        },
+    },
+
+    watch: {
+        count() {
+            this.$emit('update');
+        },
+        query() {
+            this.internalQuery = this.query;
         },
     },
 
@@ -86,30 +137,14 @@ export default {
 
             axios.get(
                 route('core.comments.index'),
-                { params: this.getParams() },
+                { params: this.params },
             ).then(({ data }) => {
-                this.comments = this.offset
-                    ? this.comments.concat(data.data)
-                    : data.data;
-
-                this.count = data.count;
-                this.offset = this.comments.length;
+                this.comments = data;
                 this.loading = false;
                 this.$emit('update');
             }).catch(error => this.handleError(error));
         },
-        getParams() {
-            return {
-                commentable_id: this.id,
-                commentable_type: this.type,
-                offset: this.offset,
-                paginate: this.paginate,
-            };
-        },
-        refresh() {
-            this.offset = 0;
-            this.get();
-        },
+
         factory() {
             return {
                 body: '',
@@ -139,8 +174,6 @@ export default {
                 this.postParams(),
             ).then(({ data }) => {
                 this.comments.unshift(data.comment);
-                this.count = data.count;
-                this.offset++;
                 this.comment = null;
                 this.loading = false;
                 this.$emit('update');
@@ -166,7 +199,6 @@ export default {
             ).then(({ data }) => {
                 Object.assign(comment, data);
                 this.loading = false;
-                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         syncTaggedUsers(comment) {
@@ -180,9 +212,8 @@ export default {
             this.loading = true;
 
             axios.delete(route('core.comments.destroy', this.comments[index].id))
-                .then(({ data }) => {
+                .then(() => {
                     this.comments.splice(index, 1);
-                    this.count = data.count;
                     this.loading = false;
                     this.$emit('update');
                 }).catch(error => this.handleError(error));
@@ -194,9 +225,9 @@ export default {
 
 <style scoped>
 
-    .wrapper {
-        max-height: 500px;
-        overflow-y: auto;
+    .controls {
+        display: flex;
+        justify-content: center;
     }
 
 </style>

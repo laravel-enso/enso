@@ -1,6 +1,6 @@
 <template>
 
-    <article class="media"
+    <article class="media box raises-on-hover"
         @mouseover="controls = true"
         @mouseleave="!dialog ? controls = false: null">
         <figure class="media-left">

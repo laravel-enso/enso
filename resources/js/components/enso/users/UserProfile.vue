@@ -115,7 +115,7 @@
 import { mapState, mapMutations } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSyncAlt, faTrashAlt, faUpload, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import FileUploader from '../fileuploader/FileUploader.vue';
+import FileUploader from '../filemanager/FileUploader.vue';
 
 library.add(faSyncAlt, faTrashAlt, faUpload, faSignOutAlt);
 

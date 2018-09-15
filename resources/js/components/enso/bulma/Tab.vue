@@ -5,7 +5,7 @@
         enter-active-class="fadeIn"
         leave-active-class="fadeOut">
         <div class="animated"
-            v-if="active">
+            v-show="active">
             <slot/>
         </div>
     </transition>

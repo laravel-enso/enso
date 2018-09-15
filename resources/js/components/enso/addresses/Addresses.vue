@@ -1,43 +1,57 @@
 <template>
 
-    <card icon="map-signs"
-        refresh
-        scrollable
-        :search="addresses.length > 1"
-        :title="title || __('Addresses')"
-        :overlay="loading"
-        @refresh="get()"
-        :collapsed="!open || isEmpty"
-        ref="card"
-        @query-update="query = $event"
-        @expand="isEmpty
-            ? $refs.card.collapse()
-            : null"
-        :badge="count"
-        :controls="1">
-        <card-control slot="control-1">
-            <span class="icon is-small"
+    <div class="has-padding-medium wrapper">
+        <div class="controls"
+            v-if="controls">
+            <button class="button"
                 @click="create()">
-                <fa icon="plus-square"/>
-            </span>
-        </card-control>
-        <div class="has-padding-medium wrapper">
-            <div class="columns is-multiline">
-                <div class="column is-half-tablet is-one-third-widescreen"
-                    v-for="(address, index) in filteredAddresses"
+                <span v-if="!isMobile">
+                    {{ __('New Address') }}
+                </span>
+                <span class="icon">
+                    <fa icon="plus"/>
+                </span>
+            </button>
+            <button class="button has-margin-left-small"
+                @click="get()">
+                <span v-if="!isMobile">
+                    {{ __('Reload') }}
+                </span>
+                <span class="icon">
+                    <fa icon="sync"/>
+                </span>
+            </button>
+            <p class="control has-icons-left has-icons-right has-margin-left-large">
+                <input class="input is-rounded"
+                    type="text"
+                    v-model="internalQuery"
+                    :placeholder="__('Filter')">
+                <span class="icon is-small is-left">
+                    <fa icon="search"/>
+                </span>
+                <span class="icon is-small is-right clear-button"
+                    v-if="internalQuery"
+                    @click="internalQuery = ''">
+                    <a class="delete is-small"/>
+                </span>
+            </p>
+        </div>
+        <div class="columns is-multiline"
+            :class="{'has-margin-top-large': controls}">
+            <div class="column is-half-tablet is-one-third-widescreen"
+                v-for="(address, index) in filteredAddresses"
+                :key="index">
+                <address-card :address="address"
+                    @set-default="setDefault(address)"
+                    @edit="edit(address)"
+                    @delete="destroy(address, index)"
                     :key="index">
-                    <address-card :address="address"
-                        @set-default="setDefault(address)"
-                        @edit="edit(address)"
-                        @destroy="destroy(address, index)"
-                        :key="index">
-                        <template slot="address"
-                            :address="address">
-                            <slot name="address"
-                                :address="address"/>
-                        </template>
-                    </address-card>
-                </div>
+                    <template slot="address"
+                        :address="address">
+                        <slot name="address"
+                            :address="address"/>
+                    </template>
+                </address-card>
             </div>
         </div>
         <address-form
@@ -45,7 +59,7 @@
             :type="type"
             :form="form"
             @close="form = null"
-            @destroy="get();form = null"
+            @delete="get();form = null"
             @submit="get();form = null"
             ref="form"
             v-if="form">
@@ -58,27 +72,24 @@
                     :errors="errors"/>
             </template>
         </address-form>
-    </card>
+    </div>
 
 </template>
 
 <script>
 
+import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMapSigns, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import Card from '../bulma/Card.vue';
-import CardControl from '../bulma/CardControl.vue';
+import { faPlus, faSync } from '@fortawesome/free-solid-svg-icons';
 import AddressCard from './AddressCard.vue';
 import AddressForm from './AddressForm.vue';
 
-library.add(faMapSigns, faPlusSquare);
+library.add(faPlus, faSync);
 
 export default {
     name: 'Addresses',
 
-    components: {
-        Card, CardControl, AddressCard, AddressForm,
-    },
+    components: { AddressCard, AddressForm },
 
     props: {
         id: {
@@ -87,48 +98,60 @@ export default {
         },
         type: {
             type: String,
-            required: true,
+            default: null,
         },
-        open: {
+        query: {
+            type: String,
+            default: '',
+        },
+        controls: {
             type: Boolean,
             default: false,
-        },
-        title: {
-            type: String,
-            default: null,
         },
     },
 
     data() {
         return {
             loading: false,
-            query: '',
             addresses: [],
             form: null,
+            internalQuery: '',
         };
     },
 
     computed: {
+        ...mapState('layout', ['isMobile']),
         filteredAddresses() {
-            const query = this.query.toLowerCase();
+            const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.addresses.filter(address =>
-                    address.city.toLowerCase().indexOf(query) > -1
-                    || address.street.toLowerCase().indexOf(query) > -1
-                    || address.number.toLowerCase().indexOf(query) > -1)
+                ? this.addresses.filter(({ city, street }) =>
+                    city.toLowerCase().indexOf(query) > -1
+                    || street.toLowerCase().indexOf(query) > -1)
                 : this.addresses;
         },
         count() {
-            return this.addresses.length;
-        },
-        isEmpty() {
-            return this.count === 0;
+            return this.filteredAddresses.length;
         },
         customFields() {
-            return this.form.sections
+            return this.form && this.form.sections
                 .reduce((fields, section) => fields
                     .concat(section.fields.filter(field => field.meta.custom)), []);
+        },
+        params() {
+            return {
+                addressable_id: this.id,
+                addressable_type: this.type,
+            };
+        },
+    },
+
+    watch: {
+        count() {
+            this.$emit('update');
+        },
+        query() {
+            this.internalQuery = this.query;
         },
     },
 
@@ -142,11 +165,11 @@ export default {
 
             axios.get(
                 route('core.addresses.index'),
-                { params: { addressable_id: this.id, addressable_type: this.type } },
+                { params: this.params },
             ).then(({ data }) => {
                 this.addresses = data;
                 this.loading = false;
-                this.$refs.card.resize();
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         edit(address) {
@@ -160,17 +183,13 @@ export default {
                 }).catch(error => this.handleError(error));
         },
         create() {
-            if (!this.$refs.card.expanded) {
-                this.$refs.card.toggle();
-            }
-
-            const params = { addressable_id: this.id, addressable_type: this.type };
             this.loading = true;
 
-            axios.get(route('core.addresses.create', params)).then(({ data }) => {
+            axios.get(route('core.addresses.create', this.params)).then(({ data }) => {
                 this.form = data.form;
                 this.$emit('form-loaded', this.form);
                 this.loading = false;
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
         setDefault(address) {
@@ -186,6 +205,7 @@ export default {
             axios.delete(route('core.addresses.destroy', address.id)).then(() => {
                 this.loading = false;
                 this.addresses.splice(index, 1);
+                this.$emit('update');
             }).catch(error => this.handleError(error));
         },
     },
@@ -193,11 +213,11 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-    .wrapper {
-        max-height: 430px;
-        overflow-y: auto;
+    .controls {
+        display: flex;
+        justify-content: center;
     }
 
 </style>

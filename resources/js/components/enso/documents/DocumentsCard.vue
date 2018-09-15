@@ -1,14 +1,14 @@
 <template>
 
-    <card :icon="icon"
+    <card icon="copy"
         refresh
         scrollable
-        :search="count > 1"
-        :title="title || __('Documents')"
+        search
+        :title="displayTitle"
         :overlay="$refs.documents && $refs.documents.loading"
         @refresh="$refs.documents.get()"
-        ref="card"
         :collapsed="!open || isEmpty"
+        ref="card"
         @expand="isEmpty
             ? $refs.card.collapse()
             : null"
@@ -34,14 +34,15 @@
 
 <script>
 
+import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
 import Documents from './Documents.vue';
-import FileUploader from '../fileuploader/FileUploader.vue';
+import FileUploader from '../filemanager/FileUploader.vue';
 
-library.add(faCopy);
+library.add(faCopy, faPlusSquare);
 
 export default {
     name: 'DocumentsCard',
@@ -77,22 +78,23 @@ export default {
     },
 
     computed: {
+        ...mapState('layout', ['isMobile']),
         isEmpty() {
             return this.count === 0;
         },
         uploadLink() {
             return route('core.documents.store');
         },
-        icon() {
-            return faCopy;
+        displayTitle() {
+            return !this.isMobile
+                ? this.title || this.__('Documents')
+                : null;
         },
     },
 
     watch: {
-        isEmpty() {
-            if (this.isEmpty) {
-                this.$refs.card.collapse();
-            }
+        count() {
+            this.$refs.card.resize();
         },
     },
 };

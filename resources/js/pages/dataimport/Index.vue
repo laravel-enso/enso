@@ -227,7 +227,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
-import FileUploader from '../../components/enso/fileuploader/FileUploader.vue';
+import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
 import Modal from './Modal.vue';
 import Card from '../../components/enso/bulma/Card.vue';
 import Overlay from '../../components/enso/bulma/Overlay.vue';

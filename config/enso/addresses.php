@@ -36,6 +36,7 @@ return [
         'subAdministrativeArea' => 'sub_administrative_area',
         'streetType' => 'street_type',
         'street' => 'street',
+        'number' => 'number',
         'building' => 'building',
         'entry' => 'entry',
         'floor' => 'floor',

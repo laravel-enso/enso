@@ -7,14 +7,14 @@
                 @loaded="initialised = true"
                 ref="form"/>
             <div v-if="initialised">
-                <contacts :id="$refs.form.data.params.owner_id"
-                    type="owner"/>
-                <comments-card :id="$refs.form.data.params.owner_id"
-                    type="owner"/>
-                <documents-card :id="$refs.form.data.params.owner_id"
-                    type="owner"/>
-                <addresses :id="$refs.form.data.params.owner_id"
-                    type="owner"/>
+                <morphable-container type="owner"
+                    :id="$refs.form.data.params.owner_id"
+                    contacts
+                    comments
+                    documents
+                    addresses>
+                    blah
+                </morphable-container>
             </div>
         </div>
     </div>
@@ -23,15 +23,16 @@
 
 <script>
 
+import MorphableContainer from '../../../components/enso/bulma/MorphableContainer.vue';
 import DocumentsCard from '../../../components/enso/documents/DocumentsCard.vue';
 import CommentsCard from '../../../components/enso/comments/CommentsCard.vue';
-import Contacts from '../../../components/enso/contacts/Contacts.vue';
-import Addresses from '../../../components/enso/addresses/Addresses.vue';
+import ContactsCard from '../../../components/enso/contacts/ContactsCard.vue';
+import AddressesCard from '../../../components/enso/addresses/AddressesCard.vue';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 
 export default {
     components: {
-        CommentsCard, Contacts, DocumentsCard, Addresses, VueFormSs,
+        MorphableContainer, CommentsCard, ContactsCard, DocumentsCard, AddressesCard, VueFormSs,
     },
 
     data() {

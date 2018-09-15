@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box file-box has-padding-medium">
+    <div class="box raises-on-hover file-box has-padding-medium">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
                 :src="avatarLink(file.owner.avatarId)">
@@ -187,11 +187,6 @@ export default {
         .details {
             display: flex;
             justify-content: center;
-        }
-
-        &:hover {
-            -webkit-box-shadow: 0 2px 18px 0 rgba(42,51,83,.12), 0 5px 8px rgba(0,0,0,.06);
-            box-shadow: 0 2px 18px 0 rgba(42,51,83,.12), 0 5px 8px rgba(0,0,0,.06);
         }
     }
 

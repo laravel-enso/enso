@@ -1,71 +1,75 @@
 <template>
-
-    <card :icon="icon"
-        refresh
-        scrollable
-        :search="contacts.length > 1"
-        :title="title || __('Contacts')"
-        :overlay="loading"
-        @refresh="get()"
-        :collapsed="!open || isEmpty"
-        ref="card"
-        @query-update="query = $event"
-        @expand="isEmpty
-            ? $refs.card.collapse()
-            : null"
-        :badge="count"
-        :controls="1">
-        <card-control slot="control-1"
-            @click="create()">
-            <span class="icon is-small">
-                <fa icon="plus-square"/>
-            </span>
-        </card-control>
-        <div class="has-padding-medium wrapper">
-            <div class="columns is-multiline">
-                <contact-form
-                    v-if="form"
-                    :id="id"
-                    :type="type"
-                    :form="form"
-                    @close="form = null"
-                    @destroy="get(); form=false"
-                    @submit="get();form=false"/>
-
-                <div class="column is-half-widescreen is-one-third-fullhd"
-                    v-for="(contact, index) in filteredContacts"
-                    :key="index">
-                    <contact
-                        :contact="contact"
-                        @edit="edit(contact)"
-                        @delete="destroy(contact, index)"
-                        :index="index"
-                        :type="type"
-                        :id="id"/>
-                </div>
-            </div>
+    <div class="has-padding-medium wrapper">
+        <div class="controls"
+            v-if="controls">
+            <button class="button"
+                @click="create()">
+                <span v-if="!isMobile">
+                    {{ __('Create Contact') }}
+                </span>
+                <span class="icon">
+                    <fa icon="plus"/>
+                </span>
+            </button>
+            <button class="button has-margin-left-small"
+                @click="get()">
+                <span v-if="!isMobile">
+                    {{ __('Reload') }}
+                </span>
+                <span class="icon">
+                    <fa icon="sync"/>
+                </span>
+            </button>
+            <p class="control has-icons-left has-icons-right has-margin-left-large">
+                <input class="input is-rounded"
+                    type="text"
+                    v-model="internalQuery"
+                    :placeholder="__('Filter')">
+                <span class="icon is-small is-left">
+                    <fa icon="search"/>
+                </span>
+                <span class="icon is-small is-right clear-button"
+                    v-if="internalQuery"
+                    @click="internalQuery = ''">
+                    <a class="delete is-small"/>
+                </span>
+            </p>
         </div>
-    </card>
+        <div class="columns is-multiline"
+            :class="{'has-margin-top-large': controls}">
+            <div class="column is-half-tablet is-one-third-widescreen"
+                v-for="(contact, index) in filteredContacts"
+                :key="index">
+                <contact :contact="contact"
+                    @edit="edit(contact)"
+                    @delete="destroy(contact, index)"
+                    :index="index"
+                    :type="type"
+                    :id="id"/>
+            </div>
+            <contact-form
+                v-if="form"
+                :id="id"
+                :type="type"
+                :form="form"
+                @close="form = null"
+                @destroy="get(); form=false"
+                @submit="get();form=false"/>
+        </div>
+    </div>
 
 </template>
 
 <script>
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAddressCard, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import Card from '../bulma/Card.vue';
-import CardControl from '../bulma/CardControl.vue';
+import { mapState } from 'vuex';
 import Contact from './Contact.vue';
 import ContactForm from './ContactForm.vue';
-
-library.add(faAddressCard, faPlusSquare);
 
 export default {
     name: 'Contacts',
 
-    components: {
-        Card, CardControl, Contact, ContactForm,
-    },
+    components: { Contact, ContactForm },
 
     props: {
         id: {
@@ -76,47 +80,53 @@ export default {
             type: String,
             required: true,
         },
-        open: {
+        query: {
+            type: String,
+            default: '',
+        },
+        controls: {
             type: Boolean,
             default: false,
-        },
-        title: {
-            type: String,
-            default: null,
         },
     },
 
     data() {
         return {
             loading: false,
-            query: '',
             contacts: [],
             form: null,
+            internalQuery: '',
         };
     },
 
     computed: {
+        ...mapState('layout', ['isMobile']),
+        filteredContacts() {
+            const query = this.internalQuery.toLowerCase();
+
+            return query
+                ? this.contacts.filter(({ name, position }) =>
+                    name.toLowerCase().indexOf(query) > -1
+                    || position.toLowerCase().indexOf(query) > -1)
+                : this.contacts;
+        },
+        count() {
+            return this.filteredContacts.length;
+        },
         params() {
             return {
                 contactable_id: this.id,
                 contactable_type: this.type,
             };
         },
-        filteredContacts() {
-            return this.query
-                ? this.contacts.filter(contact => contact.firstName.toLowerCase()
-                    .indexOf(this.query.toLowerCase()) > -1
-                    || contact.lastName.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
-                : this.contacts;
-        },
+    },
+
+    watch: {
         count() {
-            return this.contacts.length;
+            this.$emit('update');
         },
-        isEmpty() {
-            return this.count === 0;
-        },
-        icon() {
-            return faAddressCard;
+        query() {
+            this.internalQuery = this.query;
         },
     },
 
@@ -133,29 +143,17 @@ export default {
             }).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
-                this.$refs.card.resize();
+                this.$emit('update');
             }).catch(error => this.handleError(error));
-        },
-        destroy(contact, index) {
-            this.loading = true;
-
-            axios.delete(route('core.contacts.destroy', contact.id))
-                .then(() => {
-                    this.contacts.splice(index, 1);
-                    this.loading = false;
-                }).catch(error => this.handleError(error));
         },
         create() {
             this.loading = true;
-
-            if (!this.$refs.card.expanded) {
-                this.$refs.card.toggle();
-            }
 
             axios.get(route('core.contacts.create', this.params))
                 .then(({ data }) => {
                     this.loading = false;
                     this.form = data.form;
+                    this.$emit('update');
                 }).catch(error => this.handleError(error));
         },
         edit(contact) {
@@ -167,15 +165,26 @@ export default {
                     this.form = data.form;
                 }).catch(error => this.handleError(error));
         },
+        destroy(contact, index) {
+            this.loading = true;
+
+            axios.delete(route('core.contacts.destroy', contact.id))
+                .then(() => {
+                    this.contacts.splice(index, 1);
+                    this.loading = false;
+                    this.$emit('update');
+                }).catch(error => this.handleError(error));
+        },
     },
 };
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-    .wrapper {
-        max-height: 415px;
-        overflow-y: auto;
+    .controls {
+        display: flex;
+        justify-content: center;
     }
+
 </style>

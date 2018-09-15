@@ -3,10 +3,10 @@
     <card :icon="icon"
         refresh
         scrollable
-        :search="count > 1"
-        :title="title || __('Comments')"
+        search
+        :title="displayTitle"
         :overlay="$refs.comments && $refs.comments.loading"
-        @refresh="$refs.comments.refresh()"
+        @refresh="$refs.comments.get()"
         :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
@@ -26,9 +26,7 @@
             <comments :id="id"
                 :type="type"
                 :query="query"
-                :paginate="paginate"
-                @update="count = $refs.comments.count;
-                    $refs.card.expanded ? $refs.card.resize() : null;"
+                @update="count = $refs.comments.count; $refs.card.resize()"
                 ref="comments"/>
         </div>
     </card>
@@ -37,6 +35,7 @@
 
 <script>
 
+import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faComments, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
@@ -67,10 +66,6 @@ export default {
             type: String,
             default: '',
         },
-        paginate: {
-            type: Number,
-            default: 100,
-        },
         icon: {
             type: [String, Array, Object],
             default: () => faComments,
@@ -85,8 +80,20 @@ export default {
     },
 
     computed: {
+        ...mapState('layout', ['isMobile']),
+        displayTitle() {
+            return !this.isMobile
+                ? this.title || this.__('Comments')
+                : null;
+        },
         isEmpty() {
             return this.count === 0;
+        },
+    },
+
+    watch: {
+        count() {
+            this.$refs.card.resize();
         },
     },
 

@@ -1,22 +1,59 @@
 <template>
 
-    <div>
-        <document class="animated fadeInDown"
-            v-for="(doc, index) in filteredDocuments"
-            :key="index"
-            :doc="doc"
-            @delete="destroy(index)"/>
+    <div class="has-padding-medium wrapper">
+        <div class="controls"
+            v-if="controls">
+            <uploader :params="{ documentable_type: type, documentable_id: id }"
+                @upload-successful="get();"
+                :url="uploadLink"
+                multiple/>
+            <button class="button has-margin-left-small"
+                @click="get()">
+                <span v-if="!isMobile">
+                    {{ __('Reload') }}
+                </span>
+                <span class="icon">
+                    <fa icon="sync"/>
+                </span>
+            </button>
+            <p class="control has-icons-left has-icons-right has-margin-left-large">
+                <input class="input is-rounded"
+                    type="text"
+                    v-model="internalQuery"
+                    :placeholder="__('Filter')">
+                <span class="icon is-small is-left">
+                    <fa icon="search"/>
+                </span>
+                <span class="icon is-small is-right clear-button"
+                    v-if="internalQuery"
+                    @click="internalQuery = ''">
+                    <a class="delete is-small"/>
+                </span>
+            </p>
+        </div>
+        <div class="columns is-mobile is-multiline"
+            :class="{'has-margin-top-large': controls}">
+            <div class="column is-half-mobile is-one-third-desktop"
+                v-for="(doc, index) in filteredDocuments"
+                :key="index">
+                <file :file="doc.file"
+                    @delete="destroy(index)"/>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 
+import { mapState } from 'vuex';
 import Document from './Document.vue';
+import File from '../filemanager/File.vue';
+import Uploader from '../filemanager/Uploader.vue';
 
 export default {
     name: 'Documents',
 
-    components: { Document },
+    components: { Document, File, Uploader },
 
     props: {
         id: {
@@ -29,7 +66,11 @@ export default {
         },
         query: {
             type: String,
-            default: null,
+            default: '',
+        },
+        controls: {
+            type: Boolean,
+            default: false,
         },
     },
 
@@ -37,21 +78,34 @@ export default {
         return {
             documents: [],
             loading: false,
+            internalQuery: '',
         };
     },
 
     computed: {
+        ...mapState('layout', ['isMobile']),
         filteredDocuments() {
-            return this.query
-                ? this.documents.filter(doc => doc.original_name.toLowerCase()
-                    .indexOf(this.query.toLowerCase()) > -1)
+            const query = this.internalQuery.toLowerCase();
+
+            return query
+                ? this.documents.filter(({ file }) =>
+                    file.name.toLowerCase().indexOf(query) > -1)
                 : this.documents;
         },
         count() {
-            return this.documents.length;
+            return this.filteredDocuments.length;
         },
         uploadLink() {
             return route('core.documents.store');
+        },
+    },
+
+    watch: {
+        count() {
+            this.$emit('update');
+        },
+        query() {
+            this.internalQuery = this.query;
         },
     },
 
@@ -87,3 +141,13 @@ export default {
 };
 
 </script>
+
+
+<style lang="scss" scoped>
+
+    .controls {
+        display: flex;
+        justify-content: center;
+    }
+
+</style>

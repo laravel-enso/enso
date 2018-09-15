@@ -43,11 +43,11 @@ export default {
     watch: {
         requests(newVal, oldVal) {
             if (newVal > oldVal) {
-                this.incRequests();
+                this.incRequests(newVal - oldVal);
                 return;
             }
 
-            this.incResponses();
+            this.incResponses(oldVal - newVal);
         },
 
         shouldStop(shouldStop) {
@@ -75,13 +75,13 @@ export default {
             this.timer = setTimeout(() =>
                 this.init(), this.latency * 2.5);
         },
-        incRequests() {
+        incRequests(inc = 1) {
             this.show = true;
 
-            setTimeout(() => this.sent++, 1);
+            setTimeout(() => (this.sent += inc), 1);
         },
-        incResponses() {
-            setTimeout(() => this.received++, this.latency);
+        incResponses(inc = 1) {
+            setTimeout(() => (this.received += inc), this.latency);
         },
         startRouting() {
             this.init();
