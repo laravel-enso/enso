@@ -1,7 +1,7 @@
 <?php
 
-use App\Owner;
 use Illuminate\Database\Seeder;
+use LaravelEnso\Core\app\Models\Owner;
 use LaravelEnso\RoleManager\app\Models\Role;
 
 class UserSeeder extends Seeder

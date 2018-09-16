@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
 use Faker\Generator as Faker;
+use LaravelEnso\Core\app\Models\User;
 
 $factory->define(User::class, function (Faker $faker) {
     return [

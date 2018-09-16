@@ -2,7 +2,7 @@
 
 namespace App\Imports\Importers;
 
-use App\Owner;
+use LaravelEnso\Core\app\Models\Owner;
 use LaravelEnso\DataImport\app\Classes\Importers\Importer;
 
 class OwnerImporter extends Importer

@@ -28,6 +28,9 @@
         <testsuite name="contacts">
             <directory suffix="Test.php">./vendor/laravel-enso/contacts/tests/features</directory>
         </testsuite>
+        <testsuite name="core">
+            <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
+        </testsuite>
         <testsuite name="dataimport">
             <directory suffix="Test.php">./vendor/laravel-enso/dataimport/tests/features</directory>
         </testsuite>

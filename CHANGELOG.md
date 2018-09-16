@@ -1,5 +1,167 @@
 ## Laravel Enso's Changelog
 
+### 2.11.0
+
+This version is a step forward in the direction of abstracting Enso from a clean Laravel project.
+
+Changes and upgrade instructions:
+
+- update in your `composer.json` the `core` requirement to `"laravel-enso/core": "3.0.*",`
+- the examples were moved in a dedicated `examples` package. to upgrade remove everyting related to examples:
+    - remove the files (copy everything below in one take and paste it into the terminal)
+        ```
+        rm app/Example.php
+        rm -R app/Http/Controllers/Examples
+        rm database/factories/ExampleFactory.php
+        rm database/migrations/2018_01_29_204255_create_examples_table.php
+        rm -R resources/views/examples
+        rm -R resources/assets/js/tableExample.js
+        rm -R resources/assets/js/selectExample.js
+        ```
+    - remove the routes under the `Examples` namespace from `routes/web.php` file:
+        ```php
+        Route::namespace('Examples')
+            ->prefix('examples')->as('examples.')
+            ->group(function () {
+                Route::view('table', 'examples.table.index')->name('table');
+
+                Route::prefix('table')->as('table.')
+                    ->group(function () {
+                        Route::get('init', 'TableController@init')->name('init');
+                        Route::get('data', 'TableController@data')->name('data');
+                        Route::get('exportExcel', 'TableController@exportExcel')->name('exportExcel');
+                    });
+
+                Route::view('select', 'examples.select.index')->name('select');
+
+                Route::prefix('select')->as('select.')
+                    ->group(function () {
+                        Route::get('employee', 'EmployeeSelectController@options')->name('employee');
+                    });
+            });
+        ```
+    - remove from webpack the following lines:
+        ```js
+        .js('resources/js/tableExample.js', 'public/js')
+        .js('resources/js/selectExample.js', 'public/js')
+        ```
+    - if you still need examples in your project run `composer require laravel-enso/examples` and put back the two lines in `webpack.js`.
+- the `Owner` & `User` models were moved to `core`. To upgrade
+    - remove `app/Owner.php`. If in the future you will need customization over this model you can create it locally but be sure to extend the one from core.
+    - update `app/User.php` content to:
+        ```php
+        <?php
+
+            namespace App;
+
+            use LaravelEnso\Core\app\Models\User as EnsoUser;
+
+            class User extends EnsoUser
+            {
+                //
+            }
+        ```
+        If you have customizations add it as well
+- the form and tables (buiders, template, controllers) and the corresponding routes were moved to the `core` package. To upgrade remove the following files/routes:
+    - `app/Forms/Builders/UserForm.php`
+    - `app/Forms/Builders/OwnerForm.php`
+    - `app/Forms/Templates/user.php`
+    - `app/Forms/Templates/owner.php`
+    - `app/Tables/Builders/OwnerTable.php`
+    - `app/Tables/Builders/UserTable.php`
+    - `app/Tables/Templates/owners.php`
+    - `app/Tables/Templates/users.php`
+    - `app/Http/Controllers/Administration/*`
+    - `app/Http/Requests/ValidateOwnerRequest.php`
+    - `app/Http/Requests/ValidateUserRequest.php`
+    - `database/migrations/2017_01_01_108000_create_owners_table.php`
+    - `database/migrations/2018_01_29_204255_create_examples_table.php`
+    - from the `api.php` remove the lines related to user & owner:
+        ```php
+        Route::middleware(['auth', 'core'])
+            ->group(function () {
+                Route::namespace('Administration')
+                    ->prefix('administration')->as('administration.')
+                    ->group(function () {
+                        Route::namespace('Owner')
+                            ->prefix('owners')->as('owners.')
+                            ->group(function () {
+                                Route::get('initTable', 'OwnerTableController@init')
+                                    ->name('initTable');
+                                Route::get('getTableData', 'OwnerTableController@data')
+                                    ->name('getTableData');
+                                Route::get('exportExcel', 'OwnerTableController@excel')
+                                    ->name('exportExcel');
+
+                                Route::get('selectOptions', 'OwnerSelectController@options')
+                                    ->name('selectOptions');
+                            });
+
+                        Route::resource('owners', 'Owner\OwnerController', ['except' => ['show', 'index']]);
+
+                        Route::namespace('User')
+                            ->prefix('users')->as('users.')
+                            ->group(function () {
+                                Route::get('initTable', 'UserTableController@init')
+                                    ->name('initTable');
+                                Route::get('getTableData', 'UserTableController@data')
+                                    ->name('getTableData');
+                                Route::get('exportExcel', 'UserTableController@excel')
+                                    ->name('exportExcel');
+
+                                Route::get('selectOptions', 'UserSelectController@options')
+                                    ->name('selectOptions');
+                            });
+
+                        Route::resource('users', 'User\UserController', ['except' => ['index']]);
+                    });
+            });
+        ```
+- the user & owner tests were moved to the `core` package. to upgrade:
+    - add in your `phpunit.xml` the `core` test suite
+        ```xml
+        <testsuite name="core">
+            <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
+        </testsuite>
+        ```
+    - remove `tests/Feature/OwnerTest.php`
+    - remove `tests/Feature/UserTest.php`
+- the `UserPolicy` was moved to the `core` package and consolidated with the `ImpersonatePolicy`. Also the `Horizon` authentication was moved to the `core` `AuthServiceProvider` upgrade:
+    - remove `app/Policies/UserPolicy.php`
+    - update `app/Providers/AuthServiceProvider.php` to to following content:
+        ```php
+        <?php
+
+        namespace App\Providers;
+
+        use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+        class AuthServiceProvider extends ServiceProvider
+        {
+            protected $policies = [
+                //
+            ];
+
+            public function boot()
+            {
+                $this->registerPolicies();
+            }
+        }
+
+        ```
+- update the `Owner` model import in the following files:
+    - `app/Imports/Importers/OwnerImporter.php`
+    - `config/enso/addresses.php` (if the case)
+    - `config/enso/contacts.php`  (if the case)
+    - `config/enso/comments.php`  (if the case)
+    - `config/enso/documents.php`  (if the case)
+    - `config/enso/discussions.php`  (if the case)
+    - `config/enso/config.php` (the ownerModel  key)
+    - `database/factories/UserFactory.php`
+    - `database/seeds/OwnerSeeder.php`
+    - `database/seeds/UserSeeder.php`
+- Note: If you used the `Owner` class for morphable packages, update in the `addresses`, `contacts`, `comments`, `documents` tables `morphable_type` from `App\Owner` to `LaravelEnso\Core\app\Models\Owner`
+
 ### 2.10.8
 
 - adds `laravel-enso/discussions`.
