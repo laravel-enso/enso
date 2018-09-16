@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "296d1ae60f63dec6d3c2865ba1e8f297",
+    "content-hash": "eb29a95bb74d63faf6155052823dacea",
     "packages": [
         {
             "name": "box/spout",
@@ -1294,16 +1294,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.3.21",
+            "version": "2.3.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "b63402533c309b6bce365ccc7677950a43e6d8a2"
+                "reference": "391a0bda4a1832f745626cb3a3f75c07cd176cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/b63402533c309b6bce365ccc7677950a43e6d8a2",
-                "reference": "b63402533c309b6bce365ccc7677950a43e6d8a2",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/391a0bda4a1832f745626cb3a3f75c07cd176cb4",
+                "reference": "391a0bda4a1832f745626cb3a3f75c07cd176cb4",
                 "shasum": ""
             },
             "require": {
@@ -1353,7 +1353,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-09-15T13:41:03+00:00"
+            "time": "2018-09-16T06:57:25+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -1472,16 +1472,16 @@
         },
         {
             "name": "laravel-enso/commentsmanager",
-            "version": "2.3.22",
+            "version": "2.3.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/CommentsManager.git",
-                "reference": "3f20d6f89856d9b11b6d841f1d00cd9b8f2c8fde"
+                "reference": "9d26d31dfa7a7ea029c56133196a424c5a7133d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/3f20d6f89856d9b11b6d841f1d00cd9b8f2c8fde",
-                "reference": "3f20d6f89856d9b11b6d841f1d00cd9b8f2c8fde",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/9d26d31dfa7a7ea029c56133196a424c5a7133d2",
+                "reference": "9d26d31dfa7a7ea029c56133196a424c5a7133d2",
                 "shasum": ""
             },
             "require": {
@@ -1530,20 +1530,20 @@
                 "commentsmanager",
                 "laravel-enso"
             ],
-            "time": "2018-09-15T12:50:20+00:00"
+            "time": "2018-09-16T06:58:12+00:00"
         },
         {
             "name": "laravel-enso/contacts",
-            "version": "2.2.20",
+            "version": "2.2.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Contacts.git",
-                "reference": "e1a5b98296fb871ebcd7d0d1484e853b77cd5a2a"
+                "reference": "805219ded57cfffbfec6ddd9e11a378df1d0a0b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/e1a5b98296fb871ebcd7d0d1484e853b77cd5a2a",
-                "reference": "e1a5b98296fb871ebcd7d0d1484e853b77cd5a2a",
+                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/805219ded57cfffbfec6ddd9e11a378df1d0a0b8",
+                "reference": "805219ded57cfffbfec6ddd9e11a378df1d0a0b8",
                 "shasum": ""
             },
             "require": {
@@ -1597,7 +1597,7 @@
                 "contacts",
                 "laravel-enso"
             ],
-            "time": "2018-09-15T12:54:02+00:00"
+            "time": "2018-09-16T06:57:42+00:00"
         },
         {
             "name": "laravel-enso/controlpanelapi",
@@ -1883,17 +1883,74 @@
             "time": "2018-09-15T12:55:36+00:00"
         },
         {
-            "name": "laravel-enso/documentsmanager",
-            "version": "2.3.7",
+            "name": "laravel-enso/discussions",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-enso/DocumentsManager.git",
-                "reference": "9975425b2e6f19b11c02337cbac9d9ab03c3d384"
+                "url": "https://github.com/laravel-enso/Discussions.git",
+                "reference": "1c10cf75c8be93661313bc17e0452f801f2f200b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/9975425b2e6f19b11c02337cbac9d9ab03c3d384",
-                "reference": "9975425b2e6f19b11c02337cbac9d9ab03c3d384",
+                "url": "https://api.github.com/repos/laravel-enso/Discussions/zipball/1c10cf75c8be93661313bc17e0452f801f2f200b",
+                "reference": "1c10cf75c8be93661313bc17e0452f801f2f200b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "2.15.*",
+                "laravel-enso/vuecomponents": "2.5.*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "laravel-enso/testhelper": "1.4.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEnso\\Discussions\\AppServiceProvider",
+                        "LaravelEnso\\Discussions\\AuthServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\Discussions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Ocneanu",
+                    "email": "aocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Discussion board for Laravel Enso",
+            "homepage": "https://git.xtelecom.com/mishu/enso-discussions",
+            "keywords": [
+                "discussions",
+                "laravel-enso"
+            ],
+            "time": "2018-09-16T10:52:54+00:00"
+        },
+        {
+            "name": "laravel-enso/documentsmanager",
+            "version": "2.3.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/DocumentsManager.git",
+                "reference": "9c9e9b35be81d9bc017e136fddb6cbea745d1013"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/9c9e9b35be81d9bc017e136fddb6cbea745d1013",
+                "reference": "9c9e9b35be81d9bc017e136fddb6cbea745d1013",
                 "shasum": ""
             },
             "require": {
@@ -1944,7 +2001,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2018-09-15T13:21:01+00:00"
+            "time": "2018-09-16T06:58:30+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
@@ -3026,16 +3083,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.5.0",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "36e7923519e377a499be0282544b8b8c947b8a91"
+                "reference": "1e289b5c619ab5dca57fd7ac4ab0951133abdf7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/36e7923519e377a499be0282544b8b8c947b8a91",
-                "reference": "36e7923519e377a499be0282544b8b8c947b8a91",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/1e289b5c619ab5dca57fd7ac4ab0951133abdf7f",
+                "reference": "1e289b5c619ab5dca57fd7ac4ab0951133abdf7f",
                 "shasum": ""
             },
             "type": "library",
@@ -3071,7 +3128,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-09-15T12:40:55+00:00"
+            "time": "2018-09-16T10:47:43+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",

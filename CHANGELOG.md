@@ -1,5 +1,18 @@
 ## Laravel Enso's Changelog
 
+### 2.10.8
+
+- adds `laravel-enso/discussions`.
+
+Steps for adding discussions in an existing project:
+
+- `composer required laravel-enso/discussions`
+- `php artisan vendor:publish --tag="discussions-config" and then configure your desired model.
+- `yarn add quill`
+- `yarn add vue-quill-editor`
+- compile
+- add to `/resources/js/pages/administration/owners/Edit.vue` the `discussions` prop to `morphable-container`
+
 ### 2.10.7
 
 #### Changes

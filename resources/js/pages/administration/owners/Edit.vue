@@ -9,10 +9,11 @@
             <div v-if="initialised">
                 <morphable-container type="owner"
                     :id="$refs.form.data.params.owner_id"
+                    addresses
                     contacts
                     comments
-                    documents
-                    addresses>
+                    discussions
+                    documents>
                     blah
                 </morphable-container>
             </div>

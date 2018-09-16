@@ -1,6 +1,6 @@
 <template>
 
-    <div class="has-padding-medium wrapper">
+    <div class="wrapper">
         <div class="controls"
             v-if="controls">
             <uploader :params="{ documentable_type: type, documentable_id: id }"

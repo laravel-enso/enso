@@ -1,6 +1,6 @@
 <template>
 
-    <div class="has-padding-medium">
+    <div class="wrapper">
         <div class="controls"
             v-if="controls">
             <button class="button"
