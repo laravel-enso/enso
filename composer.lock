@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.0.15",
+            "version": "3.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "98a5cb8e060808c9389851328e8ed579d049f3a6"
+                "reference": "e84f3c4e31afc6f322ccb079682bf5a6b6420f18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/98a5cb8e060808c9389851328e8ed579d049f3a6",
-                "reference": "98a5cb8e060808c9389851328e8ed579d049f3a6",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/e84f3c4e31afc6f322ccb079682bf5a6b6420f18",
+                "reference": "e84f3c4e31afc6f322ccb079682bf5a6b6420f18",
                 "shasum": ""
             },
             "require": {
@@ -1765,7 +1765,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-17T12:40:54+00:00"
+            "time": "2018-09-17T17:50:22+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
