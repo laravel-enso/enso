@@ -13,9 +13,7 @@
                     contacts
                     comments
                     discussions
-                    documents>
-                    blah
-                </morphable-container>
+                    documents/>
             </div>
         </div>
     </div>
@@ -25,16 +23,10 @@
 <script>
 
 import MorphableContainer from '../../../components/enso/bulma/MorphableContainer.vue';
-import DocumentsCard from '../../../components/enso/documents/DocumentsCard.vue';
-import CommentsCard from '../../../components/enso/comments/CommentsCard.vue';
-import ContactsCard from '../../../components/enso/contacts/ContactsCard.vue';
-import AddressesCard from '../../../components/enso/addresses/AddressesCard.vue';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 
 export default {
-    components: {
-        MorphableContainer, CommentsCard, ContactsCard, DocumentsCard, AddressesCard, VueFormSs,
-    },
+    components: { MorphableContainer, VueFormSs },
 
     data() {
         return {

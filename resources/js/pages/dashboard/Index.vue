@@ -1,13 +1,25 @@
 <template>
 
-    <div class="columns">
-        <div class="column"
-            v-for="(column, index) in grid"
-            :key="index">
-            <chart-card class="is-raised has-margin-bottom-large"
-                v-for="(element, index) in column"
-                :key="index"
-                :source="element.meta.source"/>
+    <div class="columns is-multiline">
+        <div class="column is-one-third">
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/pie"/>
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/polar"/>
+        </div>
+        <div class="column is-one-third">
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/bar"/>
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/bubble"/>
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/line"/>
+        </div>
+        <div class="column is-one-third">
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/radar"/>
+            <chart-card class="raises-on-hover has-margin-bottom-large"
+                source="/api/dashboard/doughnut"/>
         </div>
     </div>
 
@@ -15,18 +27,10 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
 import ChartCard from '../../components/enso/charts/ChartCard.vue';
 
 export default {
     components: { ChartCard },
-
-    computed: {
-        ...mapGetters('preferences', { preferences: 'local' }),
-        grid() {
-            return this.preferences(this.$route.name).grid;
-        },
-    },
 };
 
 </script>

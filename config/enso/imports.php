@@ -25,7 +25,7 @@ return [
     'configs' => [
         'owners' => [
             'label' => 'Owners',
-            'template' => 'app/Imports/Templates/owners.json',
+            'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',
         ],
     ],
 ];

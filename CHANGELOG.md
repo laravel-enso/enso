@@ -1,5 +1,28 @@
 ## Laravel Enso's Changelog
 
+### 2.11.2
+
+Soon you will be able to get Laravel-Enso on existing projects by running `composer require laravel-enso/core`...
+
+#### Changes and Upgrade steps:
+
+- cleans `preferences.json`, now it contains only global settings
+
+Moves the remaining demo files / classes / routes into the `examples` package:
+    -  `app/Classes/LocalState.php` (delete your local one if not used)
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
+    -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`
+    - `routes/api.php` is now empty
+    - dashboard Index.vue file
+
+Finally, moves into core:
+    - the front-end route for dashboard
+    - the dashboard structure migration (delete your local one)
+    - an empty dasbhoard `Index.vue` file
+
+- after updating run `art vendor:publish --tag=enso-preferences --force`;
+
 ### 2.11.1
 
 This update adds the WIP touch layout. Run `php artisan enso:clear-preferences` after the update.
