@@ -47,7 +47,7 @@ export default new Vuex.Store({
         setMeta: (state, meta) => (state.meta = meta),
         initialise: (state, value) => (state.isInitialised = value),
         setShowQuote: (state, value) => (state.showQuote = value),
-        setRoutes: (state, routes) => (state.routes = routes),
+        setRoutes: (state, routes) => (state.routes = { ...routes, ...{ touch: null } }),
         setDefaultRoute: (state, route) => {
             router.addRoutes([{
                 path: '/',

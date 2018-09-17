@@ -14,6 +14,9 @@
                 <theme-selector/>
             </li>
             <li class="settings-item">
+                <layout-selector/>
+            </li>
+            <li class="settings-item">
                 <toastr-position/>
             </li>
             <li class="settings-item has-margin-bottom-small">
@@ -37,6 +40,7 @@ import { mapState } from 'vuex';
 import VueAside from '../VueAside.vue';
 import LanguageSelector from './LanguageSelector.vue';
 import ThemeSelector from './ThemeSelector.vue';
+import LayoutSelector from './LayoutSelector.vue';
 import ToastrPosition from './ToastrPosition.vue';
 import MenuState from './MenuState.vue';
 import Tutorial from './Tutorial.vue';
@@ -49,6 +53,7 @@ export default {
         VueAside,
         LanguageSelector,
         ThemeSelector,
+        LayoutSelector,
         ToastrPosition,
         MenuState,
         Tutorial,

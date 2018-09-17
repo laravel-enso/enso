@@ -5,14 +5,11 @@
         <div class="app-main"
             v-show="lightsOn">
             <navbar class="animated slideInDown"/>
-            <transition enter-active-class="slideInLeft"
-                leave-active-class="slideOutLeft">
-                <sidebar :class="[
-                    'animated',
-                    menu.isVisible ? 'slideInLeft' : 'slideOutLeft',
-                    { 'is-collapsed' : !menu.isExpanded }
-                ]" v-if="menu.isVisible"/>
-            </transition>
+            <sidebar :class="[
+                'animated',
+                menu.isVisible ? 'slideInLeft' : 'slideOutLeft',
+                { 'is-collapsed' : !menu.isExpanded }
+            ]" v-if="menu.isVisible"/>
             <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
                 <div class="container is-fluid page-content is-marginless">
                     <page-header :title="$route.meta.title"/>
@@ -31,7 +28,7 @@
 
 import { mapState, mapMutations, mapActions } from 'vuex';
 import Navbar from '../structure/navbar/Navbar.vue';
-import Sidebar from '../structure/sidebar/Sidebar.vue';
+import Sidebar from '../structure/menu/Sidebar.vue';
 import Settings from '../structure/settings/Settings.vue';
 import AppFooter from '../structure/AppFooter.vue';
 import Router from '../Router.vue';

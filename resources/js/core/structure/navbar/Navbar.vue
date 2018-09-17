@@ -12,7 +12,8 @@
                 </h4>
             </a>
             <a class="navbar-item"
-                @click="toggleMenu(isTouch)">
+                @click="toggleMenu(isTouch)"
+                v-if="mode === 'default'">
                 <span class="icon is-small">
                     <fa icon="bars"
                         :class="{ 'rotate': !menu.isExpanded || !menu.isVisible }"/>
@@ -80,7 +81,7 @@ export default {
 
     computed: {
         ...mapState(['meta', 'impersonating']),
-        ...mapState('layout', ['isMobile', 'isTouch', 'menu']),
+        ...mapState('layout', ['isMobile', 'isTouch', 'menu', 'mode']),
     },
 
     methods: {

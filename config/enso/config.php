@@ -4,7 +4,7 @@ use App\Classes\LocalState;
 use LaravelEnso\Core\app\Models\Owner;
 
 return [
-    'version' => '2.11.0',
+    'version' => '2.11.1',
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',

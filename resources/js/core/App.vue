@@ -17,20 +17,32 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 import Auth from './layouts/Auth.vue';
 import Home from './layouts/Home.vue';
 import Default from './layouts/Default.vue';
+import Touch from './layouts/Touch.vue';
 import ProgressBar from './structure/progressBar/ProgressBar.vue';
 
 export default {
     name: 'App',
 
     components: {
-        Auth, Home, Default, ProgressBar,
+        Auth, Home, Default, Touch, ProgressBar,
     },
 
     computed: {
         ...mapState(['meta']),
-        ...mapGetters({
-            layout: 'layout/current',
-        }),
+        ...mapState('menus', ['implicit']),
+        ...mapGetters('layout', { layout: 'current' }),
+        ...mapGetters('preferences', { mode: 'layout' }),
+    },
+
+    watch: {
+        mode() {
+            if (this.mode === 'touch') {
+                this.$router.push({ name: 'touch' });
+                return;
+            }
+
+            this.$router.push({ name: this.implicit.link });
+        },
     },
 
     created() {

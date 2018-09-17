@@ -1,7 +1,14 @@
 <template>
 
-    <nav class="breadcrumb is-small has-dot-separator">
+    <nav :class="['breadcrumb has-dot-separator', {'is-small': layout === 'default'}]">
         <ul>
+            <li v-if="layout === 'touch'">
+                <router-link class="link"
+                    :to="{ name: 'touch' }"
+                    v-if="$route.meta.breadcrumb !== 'home'">
+                    {{ __('home') }}
+                </router-link>
+            </li>
             <li v-for="(breadcrumb, index) in breadcrumbs"
                 :class="{ 'is-active': breadcrumb.name === $route.meta.breadcrumb }"
                 :key="index">
@@ -9,10 +16,9 @@
                     :class="{'is-disabled': breadcrumb.name !== $route.meta.breadcrumb }">
                     {{ __(breadcrumb.name) }}
                 </a>
-                <router-link
-                    :class="{ 'link' : breadcrumb.name !== $route.meta.breadcrumb }"
-                    v-if="breadcrumb.route"
-                    :to="{ name: breadcrumb.route }">
+                <router-link :class="{ 'link' : breadcrumb.name !== $route.meta.breadcrumb }"
+                    :to="{ name: breadcrumb.route }"
+                    v-if="breadcrumb.route">
                     {{ __(breadcrumb.name) }}
                 </router-link>
             </li>
@@ -23,10 +29,13 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'Breadrumbs',
 
     computed: {
+        ...mapGetters('preferences', ['layout']),
         breadcrumbs() {
             return this.$route.matched.reduce((breadcrumbs, element) => {
                 breadcrumbs.push({ name: element.meta.breadcrumb, route: element.meta.route });

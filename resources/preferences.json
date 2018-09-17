@@ -3,6 +3,7 @@
         "lang": "en",
         "dtStateSave": true,
         "expandedMenu": true,
+        "layout": "default",
         "theme": "clean",
         "toastrPosition": "top-right"
     },

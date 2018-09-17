@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.11.1
+
+This update adds the WIP touch layout. Run `php artisan enso:clear-preferences` after the update.
+
 ### 2.11.0
 
 This version is a step forward in the direction of abstracting Enso from a clean Laravel project.

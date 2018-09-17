@@ -19,7 +19,7 @@ export const getters = {
 
         return state.home
             ? 'home'
-            : 'default';
+            : rootState.preferences.global.layout;
     },
 };
 
