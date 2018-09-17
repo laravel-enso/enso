@@ -2,7 +2,10 @@
 
 ### 2.11.2
 
-Soon you will be able to get Laravel-Enso on existing projects by running `composer require laravel-enso/core`...
+- rename `/resources/js/core/structure/settings/` to `/resources/js/core/structure/menu/
+- `php artisan localisation:merge` was renamed to `php artisan enso:localisation:merge`
+Update the command signature in your `comopser.json` in `"post-update-cmd"` event.
+
 
 #### Changes and Upgrade steps:
 
@@ -11,10 +14,9 @@ Soon you will be able to get Laravel-Enso on existing projects by running `compo
 Moves the remaining demo files / classes / routes into the `examples` package:
     -  `app/Classes/LocalState.php` (delete your local one if not used)
     -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
-    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
     -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`
     - `routes/api.php` is now empty
-    - dashboard Index.vue file
+    - dashboard's `Index.vue` file. If you don't need the example dashboard use [this file](https://github.com/laravel-enso/Core/blob/master/src/resources/customizableJs/pages/dashboard/Index.vue)
 
 Finally, moves into core:
     - the front-end route for dashboard
@@ -72,7 +74,7 @@ Changes and upgrade instructions:
         .js('resources/js/tableExample.js', 'public/js')
         .js('resources/js/selectExample.js', 'public/js')
         ```
-    - if you still need examples in your project run `composer require laravel-enso/examples` and put back in `webpack.js` the two lines from the previous step.
+    - NOTE: if you still need examples in your project (the dashboard for instance) run `composer require laravel-enso/examples`, put back in `webpack.js` the two lines from the previous step and run `php artisan vendor:publish --force --tag="examples-assets"
 - the `Owner` & `User` models were moved to `core`. To upgrade
     - remove `app/Owner.php`. If in the future you will need customization over this model you can create it locally but be sure to extend the one from core.
     - update `app/User.php` content to:

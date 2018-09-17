@@ -41,7 +41,9 @@ export default {
                 return;
             }
 
-            this.$router.push({ name: this.implicit.link });
+            if (this.$route.name === 'touch') {
+                this.$router.push({ name: this.implicit.link });
+            }
         },
     },
 
