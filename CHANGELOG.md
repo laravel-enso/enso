@@ -195,7 +195,7 @@ Changes and upgrade instructions:
 
 Steps for adding discussions in an existing project:
 
-- `composer required laravel-enso/discussions`
+- `composer require laravel-enso/discussions`
 - `php artisan vendor:publish --tag="discussions-config"` and then configure your desired model.
 - `yarn add quill`
 - `yarn add vue-quill-editor`
