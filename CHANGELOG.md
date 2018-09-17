@@ -89,7 +89,7 @@ Changes and upgrade instructions:
             }
         ```
         If you have customizations, add them as well
-- the form and tables (buiders, template, controllers) and the corresponding routes were moved to the `core` package. To upgrade, remove the following files/routes:
+- the form and tables (buiders, template, controllers) and the corresponding routes were moved to the `core` package. To upgrade, remove the following files/routes (if you customized some of the files then skip those and the corresponding routes if appliable):
     - `app/Forms/Builders/UserForm.php`
     - `app/Forms/Builders/OwnerForm.php`
     - `app/Forms/Templates/user.php`
