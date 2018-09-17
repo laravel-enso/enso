@@ -11,7 +11,7 @@ This version is a step forward in the direction of abstracting Enso from a clean
 Changes and upgrade instructions:
 
 - update in your `composer.json` the `core` requirement to `"laravel-enso/core": "3.0.*",`
-- the examples were moved in a dedicated `examples` package. to upgrade remove everyting related to examples:
+- the examples were moved in a dedicated `examples` package. To upgrade, remove everyting related to examples:
     - remove the files (copy everything below in one take and paste it into the terminal)
         ```
         rm app/Example.php
@@ -22,7 +22,7 @@ Changes and upgrade instructions:
         rm -R resources/assets/js/tableExample.js
         rm -R resources/assets/js/selectExample.js
         ```
-    - remove the routes under the `Examples` namespace from `routes/web.php` file:
+    - remove the routes under the `Examples` namespace from the `routes/web.php` file:
         ```php
         Route::namespace('Examples')
             ->prefix('examples')->as('examples.')
@@ -49,7 +49,7 @@ Changes and upgrade instructions:
         .js('resources/js/tableExample.js', 'public/js')
         .js('resources/js/selectExample.js', 'public/js')
         ```
-    - if you still need examples in your project run `composer require laravel-enso/examples` and put back the two lines in `webpack.js`.
+    - if you still need examples in your project run `composer require laravel-enso/examples` and put back in `webpack.js` the two lines from the previous step.
 - the `Owner` & `User` models were moved to `core`. To upgrade
     - remove `app/Owner.php`. If in the future you will need customization over this model you can create it locally but be sure to extend the one from core.
     - update `app/User.php` content to:
@@ -65,8 +65,8 @@ Changes and upgrade instructions:
                 //
             }
         ```
-        If you have customizations add it as well
-- the form and tables (buiders, template, controllers) and the corresponding routes were moved to the `core` package. To upgrade remove the following files/routes:
+        If you have customizations, add them as well
+- the form and tables (buiders, template, controllers) and the corresponding routes were moved to the `core` package. To upgrade, remove the following files/routes:
     - `app/Forms/Builders/UserForm.php`
     - `app/Forms/Builders/OwnerForm.php`
     - `app/Forms/Templates/user.php`
@@ -153,18 +153,18 @@ Changes and upgrade instructions:
         }
 
         ```
-- update the `Owner` model import in the following files:
+- update the `Owner` namespace in the following files:
     - `app/Imports/Importers/OwnerImporter.php`
-    - `config/enso/addresses.php` (if the case)
-    - `config/enso/contacts.php`  (if the case)
-    - `config/enso/comments.php`  (if the case)
-    - `config/enso/documents.php`  (if the case)
-    - `config/enso/discussions.php`  (if the case)
-    - `config/enso/config.php` (the ownerModel  key)
+    - `config/enso/addresses.php` (if used)
+    - `config/enso/contacts.php`  (if used)
+    - `config/enso/comments.php`  (if used)
+    - `config/enso/documents.php`  (if used)
+    - `config/enso/discussions.php`  (if used)
+    - `config/enso/config.php` (the `ownerModel`  key)
     - `database/factories/UserFactory.php`
     - `database/seeds/OwnerSeeder.php`
     - `database/seeds/UserSeeder.php`
-- Note: If you used the `Owner` class for morphable packages, update in the `addresses`, `contacts`, `comments`, `documents` tables `morphable_type` from `App\Owner` to `LaravelEnso\Core\app\Models\Owner`
+- Note: If you used the `Owner` class for morphable packages, update the `morphable_type` in the `addresses`, `contacts`, `comments`, `documents` tables from `App\Owner` to `LaravelEnso\Core\app\Models\Owner`
 
 ### 2.10.8
 
@@ -173,7 +173,7 @@ Changes and upgrade instructions:
 Steps for adding discussions in an existing project:
 
 - `composer required laravel-enso/discussions`
-- `php artisan vendor:publish --tag="discussions-config" and then configure your desired model.
+- `php artisan vendor:publish --tag="discussions-config"` and then configure your desired model.
 - `yarn add quill`
 - `yarn add vue-quill-editor`
 - compile
