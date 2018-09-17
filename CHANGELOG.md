@@ -11,12 +11,13 @@ Update the command signature in your `comopser.json` in `"post-update-cmd"` even
 
 - cleans `preferences.json`, now it contains only global settings
 
-Moves the remaining demo files / classes / routes into the `examples` package:
-    -  `app/Classes/LocalState.php` (delete your local one if not used)
-    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
-    -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`
-    - `routes/api.php` is now empty
-    - dashboard's `Index.vue` file. If you don't need the example dashboard use [this file](https://github.com/laravel-enso/Core/blob/master/src/resources/customizableJs/pages/dashboard/Index.vue)
+Moves the remaining demo files / classes / routes into the `examples` package:  
+    -  `app/Classes/LocalState.php` (delete your local one if not used)  
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)  
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)  
+    -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`  
+    - `routes/api.php` is now empty  
+    - dashboard Index.vue file  
 
 Finally, moves into core:
     - the front-end route for dashboard
@@ -197,7 +198,7 @@ Changes and upgrade instructions:
 
 Steps for adding discussions in an existing project:
 
-- `composer required laravel-enso/discussions`
+- `composer require laravel-enso/discussions`
 - `php artisan vendor:publish --tag="discussions-config"` and then configure your desired model.
 - `yarn add quill`
 - `yarn add vue-quill-editor`
