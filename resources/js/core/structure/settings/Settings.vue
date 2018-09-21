@@ -22,6 +22,9 @@
             <li class="settings-item has-margin-bottom-small">
                 <menu-state/>
             </li>
+            <li class="settings-item has-margin-bottom-small">
+                <history-state/>
+            </li>
             <li class="settings-item"
                 v-if="canAccess('system.tutorials.show')">
                 <tutorial/>
@@ -43,6 +46,7 @@ import ThemeSelector from './ThemeSelector.vue';
 import LayoutSelector from './LayoutSelector.vue';
 import ToastrPosition from './ToastrPosition.vue';
 import MenuState from './MenuState.vue';
+import HistoryState from './HistoryState.vue';
 import Tutorial from './Tutorial.vue';
 import KeyCollector from './KeyCollector.vue';
 
@@ -56,6 +60,7 @@ export default {
         LayoutSelector,
         ToastrPosition,
         MenuState,
+        HistoryState,
         Tutorial,
         KeyCollector,
     },

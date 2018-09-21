@@ -1,28 +1,19 @@
 module.exports = {
     "root": true,
-    "parserOptions": {
-        "parser": "babel-eslint",
-        "ecmaVersion": 2017,
-        "sourceType": "module"
-    },
-	env: {
-        browser: true,
-        jquery: true,
-        es6: true,
-    },
     extends: [
-    	"airbnb-base",
+        '@vue/airbnb',
     	"plugin:vue/recommended"
     ],
     plugins: [
         'vue',
     ],
     globals: {
-        moment: true,
         axios: true,
         route: true,
     },
     rules: {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ["error", 4],
         "vue/html-indent": 0,
         'vue/attributes-order': 0,

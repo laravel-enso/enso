@@ -24,6 +24,7 @@ export const getters = {
     layout: state => state.global && state.global.layout,
     expandedMenu: state => state.global && state.global.expandedMenu,
     toastrPosition: state => state.global && state.global.toastrPosition,
+    history: state => state.global && state.global.history,
 };
 
 export const mutations = {
@@ -37,6 +38,7 @@ export const mutations = {
     layout: (state, mode) => (state.global.layout = mode),
     toastrPosition: (state, position) => (state.global.toastrPosition = position),
     expandedMenu: (state, expandedMenu) => (state.global.expandedMenu = expandedMenu),
+    history: (state, history) => (state.global.history = history),
     local: (state, payload) => (state.local[payload.route] = payload.value),
 };
 
@@ -69,6 +71,10 @@ export const actions = {
     },
     setToastrPosition: ({ commit }, position) => {
         commit('toastrPosition', position);
+        updateGlobal();
+    },
+    setHistoryState: ({ commit }, history) => {
+        commit('history', history);
         updateGlobal();
     },
     setMenuState: ({ commit }, state) => {

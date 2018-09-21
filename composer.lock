@@ -1357,16 +1357,16 @@
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "8c9efbc1bec3dc014d396431b2805124edcbd608"
+                "reference": "1f3acdd056f58b12281911c6575018e4026a88d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/8c9efbc1bec3dc014d396431b2805124edcbd608",
-                "reference": "8c9efbc1bec3dc014d396431b2805124edcbd608",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/1f3acdd056f58b12281911c6575018e4026a88d7",
+                "reference": "1f3acdd056f58b12281911c6575018e4026a88d7",
                 "shasum": ""
             },
             "require": {
@@ -1415,7 +1415,7 @@
                 "avatarmanager",
                 "laravel-enso"
             ],
-            "time": "2018-09-16T14:33:15+00:00"
+            "time": "2018-09-18T04:39:22+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.0.16",
+            "version": "3.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "e84f3c4e31afc6f322ccb079682bf5a6b6420f18"
+                "reference": "f6858140dcb3c42635b800f59f4e987fc0649cab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/e84f3c4e31afc6f322ccb079682bf5a6b6420f18",
-                "reference": "e84f3c4e31afc6f322ccb079682bf5a6b6420f18",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/f6858140dcb3c42635b800f59f4e987fc0649cab",
+                "reference": "f6858140dcb3c42635b800f59f4e987fc0649cab",
                 "shasum": ""
             },
             "require": {
@@ -1765,7 +1765,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-17T17:50:22+00:00"
+            "time": "2018-09-21T06:27:54+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -3150,16 +3150,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "1e289b5c619ab5dca57fd7ac4ab0951133abdf7f"
+                "reference": "c92157837d0255522674f63687908e7e2046f8e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/1e289b5c619ab5dca57fd7ac4ab0951133abdf7f",
-                "reference": "1e289b5c619ab5dca57fd7ac4ab0951133abdf7f",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/c92157837d0255522674f63687908e7e2046f8e5",
+                "reference": "c92157837d0255522674f63687908e7e2046f8e5",
                 "shasum": ""
             },
             "type": "library",
@@ -3195,7 +3195,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-09-16T10:47:43+00:00"
+            "time": "2018-09-21T04:25:02+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
@@ -3256,16 +3256,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.3",
+            "version": "v5.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "536a024e3ef6b93f55f4039a7f4568efa7e60aea"
+                "reference": "ddb87a87471b452456fbbe1365e1b9ae55483515"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/536a024e3ef6b93f55f4039a7f4568efa7e60aea",
-                "reference": "536a024e3ef6b93f55f4039a7f4568efa7e60aea",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ddb87a87471b452456fbbe1365e1b9ae55483515",
+                "reference": "ddb87a87471b452456fbbe1365e1b9ae55483515",
                 "shasum": ""
             },
             "require": {
@@ -3393,7 +3393,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-09-11T13:42:55+00:00"
+            "time": "2018-09-20T14:03:45+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3755,16 +3755,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.33.0",
+            "version": "1.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "55667c1007a99e82030874b1bb14d24d07108413"
+                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/55667c1007a99e82030874b1bb14d24d07108413",
-                "reference": "55667c1007a99e82030874b1bb14d24d07108413",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
+                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
                 "shasum": ""
             },
             "require": {
@@ -3806,20 +3806,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-08-07T08:39:47+00:00"
+            "time": "2018-09-20T19:36:25+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bd088dc940a418f09cda079a9b5c7c478890fb8d"
+                "reference": "fa6ee28600d21d49b2b4e1006b48426cec8e579c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd088dc940a418f09cda079a9b5c7c478890fb8d",
-                "reference": "bd088dc940a418f09cda079a9b5c7c478890fb8d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/fa6ee28600d21d49b2b4e1006b48426cec8e579c",
+                "reference": "fa6ee28600d21d49b2b4e1006b48426cec8e579c",
                 "shasum": ""
             },
             "require": {
@@ -3857,7 +3857,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-07-15T17:25:16+00:00"
+            "time": "2018-09-18T07:03:24+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3906,16 +3906,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.6.5",
+            "version": "v1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "aaaf71f3f7713248703c23cfbd1189ce1215f57f"
+                "reference": "a19c29c6c2a66dd01a6c532ae022e438d4e396e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/aaaf71f3f7713248703c23cfbd1189ce1215f57f",
-                "reference": "aaaf71f3f7713248703c23cfbd1189ce1215f57f",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/a19c29c6c2a66dd01a6c532ae022e438d4e396e9",
+                "reference": "a19c29c6c2a66dd01a6c532ae022e438d4e396e9",
                 "shasum": ""
             },
             "require": {
@@ -3984,7 +3984,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2018-09-14T00:17:10+00:00"
+            "time": "2018-09-21T01:45:19+00:00"
         },
         {
             "name": "predis/predis",

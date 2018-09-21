@@ -3,10 +3,10 @@
         "lang": "en",
         "dtStateSave": true,
         "expandedMenu": true,
+        "history": true,
         "layout": "default",
         "theme": "clean",
         "toastrPosition": "top-right"
     },
-    "local": {
-    }
+    "local": {}
 }

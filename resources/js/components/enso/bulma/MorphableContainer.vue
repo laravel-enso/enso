@@ -3,12 +3,12 @@
         custom>
         <span slot="label"
             slot-scope="{ tab }">
-            {{ tab }}
+            {{ __(tab) }}
             <span class="tag is-dark file-counter">
                 {{ count[tab.toLowerCase()] }}
             </span>
         </span>
-        <tab :id="__('Addresses')"
+        <tab id="Addresses"
             v-if="addresses">
             <addresses controls
                 :type="type"
@@ -16,7 +16,7 @@
                 @update="count.addresses = $refs.addresses.count"
                 ref="addresses"/>
         </tab>
-        <tab :id="__('Comments')"
+        <tab id="Comments"
             v-if="comments">
             <comments controls
                 :type="type"
@@ -24,7 +24,7 @@
                 @update="count.comments = $refs.comments.count"
                 ref="comments"/>
         </tab>
-        <tab :id="__('Contacts')"
+        <tab id="Contacts"
             v-if="contacts">
             <contacts controls
                 :type="type"
@@ -32,7 +32,7 @@
                 @update="count.contacts = $refs.contacts.count"
                 ref="contacts"/>
         </tab>
-        <tab :id="__('Discussions')"
+        <tab id="Discussions"
             v-if="discussions">
             <discussions controls
                 :type="type"
@@ -40,7 +40,7 @@
                 @update="count.discussions = $refs.discussions.count"
                 ref="discussions"/>
         </tab>
-        <tab :id="__('Documents')"
+        <tab id="Documents"
             v-if="documents">
             <documents controls
                 :type="type"

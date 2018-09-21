@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.11.3
+
+- adds history tabs for the default layout. Users can control the history mode from the settings bar.
+- fixes some small bugs
+- small refactoring for the store
+- adds `enso:update-global-preferences` command
+
+To upgrade an existing app after `composer update` run `php artisan enso:update-global-preferences' and you're done.
+
 ### 2.11.2
 
 - rename `/resources/js/core/structure/settings/` to `/resources/js/core/structure/menu/
