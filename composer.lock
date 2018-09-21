@@ -1826,16 +1826,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.4.6",
+            "version": "2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "9a93fed05803f2094915ed037d89cad6e6a8ef64"
+                "reference": "c2f3ccc8709d388af1eb17fc4dc9d3c22952e36c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/9a93fed05803f2094915ed037d89cad6e6a8ef64",
-                "reference": "9a93fed05803f2094915ed037d89cad6e6a8ef64",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/c2f3ccc8709d388af1eb17fc4dc9d3c22952e36c",
+                "reference": "c2f3ccc8709d388af1eb17fc4dc9d3c22952e36c",
                 "shasum": ""
             },
             "require": {
@@ -1894,7 +1894,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-09-21T08:56:40+00:00"
+            "time": "2018-09-21T10:08:33+00:00"
         },
         {
             "name": "laravel-enso/discussions",
