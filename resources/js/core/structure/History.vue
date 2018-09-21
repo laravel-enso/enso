@@ -1,11 +1,11 @@
 <template>
 
     <div class="wrapper">
-        <div class="field is-grouped is-grouped-multiline">
-            <div class="control"
+        <draggable class="field is-grouped is-grouped-multiline">
+            <span class="control"
                 v-for="(route, index) in routes"
                 :key="index">
-                <div class="tags has-addons">
+                <span class="tags has-addons">
                     <a :class="['tag', {'is-link': route.name === $route.name}]"
                         @click="$router.push({
                             name: route.name, params: route.params, query: route.query
@@ -14,9 +14,9 @@
                     </a>
                     <a class="tag is-delete"
                         @click="remove(route)"/>
-                </div>
-            </div>
-        </div>
+                </span>
+            </span>
+        </draggable>
     </div>
 
 </template>
@@ -24,9 +24,12 @@
 <script>
 
 import { mapState, mapMutations } from 'vuex';
+import Draggable from 'vuedraggable';
 
 export default {
     name: 'History',
+
+    components: { Draggable },
 
     computed: {
         ...mapState('history', ['routes']),

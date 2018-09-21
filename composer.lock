@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.0.18",
+            "version": "3.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "f6858140dcb3c42635b800f59f4e987fc0649cab"
+                "reference": "b68b15413ba64d192aee786fe9e01e61695a24f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/f6858140dcb3c42635b800f59f4e987fc0649cab",
-                "reference": "f6858140dcb3c42635b800f59f4e987fc0649cab",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/b68b15413ba64d192aee786fe9e01e61695a24f1",
+                "reference": "b68b15413ba64d192aee786fe9e01e61695a24f1",
                 "shasum": ""
             },
             "require": {
@@ -1765,7 +1765,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-21T06:27:54+00:00"
+            "time": "2018-09-21T09:31:45+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -1826,16 +1826,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.4.5",
+            "version": "2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "f0263f1abcf20ce039bbb00990c789b880e2a22a"
+                "reference": "9a93fed05803f2094915ed037d89cad6e6a8ef64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/f0263f1abcf20ce039bbb00990c789b880e2a22a",
-                "reference": "f0263f1abcf20ce039bbb00990c789b880e2a22a",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/9a93fed05803f2094915ed037d89cad6e6a8ef64",
+                "reference": "9a93fed05803f2094915ed037d89cad6e6a8ef64",
                 "shasum": ""
             },
             "require": {
@@ -1894,7 +1894,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-09-16T14:34:51+00:00"
+            "time": "2018-09-21T08:56:40+00:00"
         },
         {
             "name": "laravel-enso/discussions",

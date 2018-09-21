@@ -243,28 +243,39 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
     .card {
         position: relative;
-    }
 
-    .card-header-title {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+        &.is-rounded {
+            border-radius: 0.5em;
 
-    .card-content {
-        transition: max-height .400s ease;
-    }
+            .card-header {
+                border-radius: 0.5em;
+            }
+        }
 
-    .icon.angle[aria-hidden="true"] {
-        transform: rotate(180deg);
-    }
+        .card-header {
 
-    .icon.angle {
-        transition: transform .300s ease;
+            .card-header-title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .icon.angle[aria-hidden="true"] {
+                transform: rotate(180deg);
+            }
+
+            .icon.angle {
+                transition: transform .300s ease;
+            }
+        }
+
+        .card-content {
+            transition: max-height .400s ease;
+        }
     }
 
 </style>

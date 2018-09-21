@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.11.4
+
+- makes history tabs draggable
+- replaces intro.js with driver.js.
+- fixes some inconsistencies in dataimport -> templates
+- to upgrade an exising project run
+    - `yarn add driver.js vuedraggable`
+    - `yarn remove intro.js`
+    - `yarn hot`
+
 ### 2.11.3
 
 - adds history tabs for the default layout. Users can control the history mode from the settings bar.

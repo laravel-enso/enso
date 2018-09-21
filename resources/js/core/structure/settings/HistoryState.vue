@@ -2,7 +2,7 @@
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
-                {{ __('History Mode') }}
+                {{ __('History Tabs') }}
             </div>
         </div>
         <div class="level-right">

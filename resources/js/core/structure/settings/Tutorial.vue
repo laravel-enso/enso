@@ -25,7 +25,8 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
-const introJs = require('intro.js');
+import * as Driver from 'driver.js';
+import '../../../../../node_modules/driver.js/dist/driver.min.css';
 
 library.add(faQuestion);
 
@@ -34,7 +35,7 @@ export default {
 
     data() {
         return {
-            intro: introJs(),
+            driver: new Driver(),
         };
     },
 
@@ -43,28 +44,20 @@ export default {
             axios.get(route('system.tutorials.show'), {
                 params: { route: this.$route.name },
             }).then(({ data }) => {
-                this.init(data);
-            }).catch(error => this.handleError(error));
+                if (data.length) {
+                    this.init(data);
+                }
+            }).catch((error) => {
+                this.handleError(error);
+            });
         },
         init(steps) {
             this.$store.commit('layout/settingsBar/toggle');
-            this.intro.setOptions({
-                steps, highlightClass: 'intro-highlight', showStepNumbers: false,
-            });
-            this.intro.start();
+            this.driver.defineSteps(steps);
+            this.driver.start();
         },
     },
 };
 
 </script>
-
-<style src="intro.js/introjs.css"></style>
-
-<style>
-
-    .intro-highlight {
-        opacity: 0.5;
-    }
-
-</style>
 

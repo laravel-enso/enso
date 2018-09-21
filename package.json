@@ -54,6 +54,7 @@
         "chartjs-plugin-datalabels": "^0.3.0",
         "css-element-queries": "^1.0.2",
         "date-fns": "2.0.0-alpha.7",
+        "driver.js": "^0.7.1",
         "favico.js": "^0.3.10",
         "file-saver": "^1.3.8",
         "flag-icon-css": "^3.0.0",
@@ -77,6 +78,7 @@
         "vue-quill-editor": "^3.0.6",
         "vue-router": "^3.0.1",
         "vue-video-player": "^5.0.2",
+        "vuedraggable": "^2.16.0",
         "vuex": "^3.0.0",
         "zxcvbn": "^4.4.2"
     },
