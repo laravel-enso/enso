@@ -10,7 +10,7 @@
                         @click="$router.push({
                             name: route.name, params: route.params, query: route.query
                         })">
-                        {{ route.meta.title }}
+                        {{ __(route.meta.title) }}
                     </a>
                     <a class="tag is-delete"
                         @click="remove(route)"/>

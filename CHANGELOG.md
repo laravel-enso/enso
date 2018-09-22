@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.11.5
+
+- adds `showQuote` to core's config (`config/enso/config.php`), a boolean flag that allows showing or disabling the home screen
+- fixes history tabs title
+- minor refactors
+
 ### 2.11.4
 
 - makes history tabs draggable

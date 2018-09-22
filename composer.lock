@@ -1664,16 +1664,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.0.20",
+            "version": "3.0.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "b68b15413ba64d192aee786fe9e01e61695a24f1"
+                "reference": "8c84b53174cb9c97a49bace87e198626dea17c87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/b68b15413ba64d192aee786fe9e01e61695a24f1",
-                "reference": "b68b15413ba64d192aee786fe9e01e61695a24f1",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/8c84b53174cb9c97a49bace87e198626dea17c87",
+                "reference": "8c84b53174cb9c97a49bace87e198626dea17c87",
                 "shasum": ""
             },
             "require": {
@@ -1765,7 +1765,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-21T09:31:45+00:00"
+            "time": "2018-09-22T17:18:30+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -3906,16 +3906,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.6.6",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "a19c29c6c2a66dd01a6c532ae022e438d4e396e9"
+                "reference": "7b73005be3c224f12c47bd75a23ce24b762e47e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/a19c29c6c2a66dd01a6c532ae022e438d4e396e9",
-                "reference": "a19c29c6c2a66dd01a6c532ae022e438d4e396e9",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/7b73005be3c224f12c47bd75a23ce24b762e47e8",
+                "reference": "7b73005be3c224f12c47bd75a23ce24b762e47e8",
                 "shasum": ""
             },
             "require": {
@@ -3984,7 +3984,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2018-09-21T01:45:19+00:00"
+            "time": "2018-09-22T03:59:58+00:00"
         },
         {
             "name": "predis/predis",

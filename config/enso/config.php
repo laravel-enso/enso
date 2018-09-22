@@ -5,6 +5,7 @@ use LaravelEnso\Core\app\Models\Owner;
 
 return [
     'version' => '2.11.4',
+    'showQuote' => true,
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',
