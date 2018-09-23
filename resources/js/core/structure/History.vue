@@ -2,6 +2,10 @@
 
     <div class="wrapper">
         <draggable class="field is-grouped is-grouped-multiline">
+            <a class="tag is-warning icon" v-if="routes.length > 1"
+                @click="clear()">
+                <fa icon="trash-alt"/>
+            </a>
             <span class="control"
                 v-for="(route, index) in routes"
                 :key="index">
@@ -23,8 +27,12 @@
 
 <script>
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { mapState, mapMutations } from 'vuex';
 import Draggable from 'vuedraggable';
+
+library.add(faTrashAlt);
 
 export default {
     name: 'History',
@@ -43,6 +51,11 @@ export default {
                 const to = this.routes[this.routes.length - 1];
                 this.$router.push({ name: to.name });
             }
+        },
+        clear() {
+            this.routes
+                .filter(({ name }) => name !== this.$route.name)
+                .forEach(route => this.drop(route));
         },
     },
 };

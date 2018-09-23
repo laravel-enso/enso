@@ -1,7 +1,11 @@
 import store from '../../store';
 
+const excluded = ['notFound', 'unauthorized'];
+
+const qualifies = route => route.name && !excluded.includes(route.name);
+
 export default (to) => {
-    if (to && store.state.preferences.global.history) {
+    if (store.state.preferences.global.history && qualifies(to)) {
         store.commit('history/push', to);
     }
 };
