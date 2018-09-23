@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.11.6
+
+#### Improves History Tabs
+- adds a clear control
+- prevents `notFound` and `unauthorized` for being pushed to the history tabs
+- integrates with vuex and saves / loads configuration to / from localStorage
+
 ### 2.11.5
 
 - adds `showQuote` to core's config (`config/enso/config.php`), a boolean flag that allows showing or disabling the home screen

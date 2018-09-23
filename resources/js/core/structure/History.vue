@@ -1,11 +1,13 @@
 <template>
 
     <div class="wrapper">
-        <draggable class="field is-grouped is-grouped-multiline">
-            <a class="tag is-warning icon" v-if="routes.length > 1"
-                @click="clear()">
-                <fa icon="trash-alt"/>
-            </a>
+        <span class="tag is-warning icon has-margin-right-small"
+            v-if="routes.length > 1"
+            @click="clear()">
+            <fa icon="trash-alt"/>
+        </span>
+        <draggable class="field is-grouped is-grouped-multiline"
+            v-model="routes">
             <span class="control"
                 v-for="(route, index) in routes"
                 :key="index">
@@ -29,7 +31,7 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { mapState, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 import Draggable from 'vuedraggable';
 
 library.add(faTrashAlt);
@@ -40,7 +42,14 @@ export default {
     components: { Draggable },
 
     computed: {
-        ...mapState('history', ['routes']),
+        routes: {
+            get() {
+                return this.$store.state.history.routes;
+            },
+            set(routes) {
+                this.$store.commit('history/set', routes);
+            },
+        },
     },
 
     methods: {
@@ -63,12 +72,19 @@ export default {
 
 <style lang="scss" scoped>
     .wrapper {
+        display: flex;
         padding: 0.2em;
         -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
         box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
 
         a.tag:hover {
             text-decoration: none;
+        }
+
+        .field.is-grouped {
+            .control:not(:last-child) {
+                margin-right: .25rem;
+            }
         }
     }
 </style>
