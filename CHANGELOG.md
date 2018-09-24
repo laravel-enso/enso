@@ -37,7 +37,7 @@
 - to upgrade an exising project run
     - `yarn add driver.js vuedraggable`
     - `yarn remove intro.js`
-    - `yarn hot`
+    - `yarn dev`
 
 ### 2.11.3
 
