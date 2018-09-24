@@ -26,8 +26,8 @@ export default {
         font-size: 0.85em;
         max-height: 100vh;
         z-index: 2;
-        -webkit-box-shadow: 0 2px 3px hsla(0,0%,4%,.1);
-        box-shadow: 0 2px 3px hsla(0,0%,4%,.1);
+        -webkit-box-shadow: 0 2px 3px hsla(0,0%,4%,.2);
+        box-shadow: 0 2px 3px hsla(0,0%,4%,.2);
         transition: width .5s ease;
 
         &.is-collapsed {

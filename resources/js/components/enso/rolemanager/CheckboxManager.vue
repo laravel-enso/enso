@@ -19,7 +19,8 @@
             </div>
         </card-control>
         <div class="has-padding-medium">
-            <checkbox-manager v-for="group in sortedGroups"
+            <checkbox-manager class="is-rounded raises-on-hover has-margin-top-small"
+                v-for="group in sortedGroups"
                 ref="children"
                 nested
                 @shrink="$refs.card.shrink($event)"

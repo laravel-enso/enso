@@ -6,6 +6,6 @@ export default {
     component: RoleIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Roles Index',
+        title: 'Roles',
     },
 };

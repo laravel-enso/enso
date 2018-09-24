@@ -1,7 +1,7 @@
 <template>
 
     <div class="wrapper">
-        <inputor class="animated fadeIn"
+        <inputor class="raises-on-hover animated fadeIn"
             :message="discussion"
             placeholder="Share your idea..."
             title

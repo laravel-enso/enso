@@ -74,8 +74,8 @@ export default {
     .wrapper {
         display: flex;
         padding: 0.2em;
-        -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
-        box-shadow: 0 1px 1px hsla(0,0%,4%,.1);
+        -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.2);
+        box-shadow: 0 1px 1px hsla(0,0%,4%,.2);
 
         a.tag:hover {
             text-decoration: none;

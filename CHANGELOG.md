@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+###
+
+- fixes `ProgressBar`'s position
+- makes pages layout consitent. All tables have now `class="box is-paddingless raises-on-hover is-rounded"` and all forms class="box raises-on-hover animated fadeIn"
+- tweaks navbar and aside shadow
+- removes the ` Index` termination from index pages title (fe routes)
+- fixes laravel-enso/structuremanager#10
+- moves the following packages from core composer json to the project's composer json: "addressesmanager","commentsmanager","contacts","controlpanelapi","dataimport","discussions","documentsmanager","howtovideos"
+
 ### 2.11.6
 
 #### Improves History Tabs

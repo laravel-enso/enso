@@ -6,6 +6,6 @@ export default {
     component: TutorialsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Tutorials Index',
+        title: 'Tutorials',
     },
 };

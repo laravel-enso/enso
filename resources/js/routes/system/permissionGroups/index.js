@@ -6,6 +6,6 @@ export default {
     component: PermissionGroupsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Permission Groups Index',
+        title: 'Permission Groups',
     },
 };

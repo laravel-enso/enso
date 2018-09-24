@@ -6,6 +6,6 @@ export default {
     component: OwnersIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Owners Index',
+        title: 'Owners',
     },
 };

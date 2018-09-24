@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="box">
+        <div class="box raises-on-hover ">
             <article class="media">
                 <figure class="media-left">
                     <p class="image is-48x48">

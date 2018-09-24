@@ -22,7 +22,7 @@
                             v-model="video.description"/>
                     </div>
                 </div>
-                <div class="column is-narrow">
+                <div class="column is-narrow is-flex">
                     <div class="control animated fadeIn"
                         v-if="video.name">
                         <file-uploader :url="uploadLink"
@@ -71,7 +71,8 @@
                 <div class="column is-half"
                     v-for="(vid, index) in filteredVideos"
                     :key="index">
-                    <how-to-video :video="vid"
+                    <how-to-video class="is-rounded raises-on-hover"
+                        :video="vid"
                         :tags="tags"
                         @start-tagging="video = vid; taggingId = video.id"
                         @stop-tagging="video = vid; taggingId = null; update()"

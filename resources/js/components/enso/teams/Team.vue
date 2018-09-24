@@ -1,5 +1,6 @@
 <template>
     <info-box :class="[
+        'raises-on-hover',
         { 'is-danger': edit && !team.id },
         { 'is-warning': edit && team.id },
         { 'is-info': !edit && team.users.length === 0 },

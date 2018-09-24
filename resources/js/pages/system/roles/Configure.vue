@@ -7,12 +7,14 @@
                 <center class="has-padding-bottom-large">
                     <h5 class="title is-5">{{ data.role.display_name }}</h5>
                 </center>
-                <checkbox-manager :title="__('Menus')"
+                <checkbox-manager class="is-rounded raises-on-hover"
+                    :title="__('Menus')"
                     :role-permissions="data.roleMenus"
                     :group-data="data.menus"
                     v-if="data.menus.length"/>
 
-                <checkbox-manager :title="__('Permissions')"
+                <checkbox-manager class="is-rounded raises-on-hover has-margin-top-large"
+                    :title="__('Permissions')"
                     :role-permissions="data.rolePermissions"
                     :group-data="data.permissionTree"
                     v-if="data.menus.length"/>

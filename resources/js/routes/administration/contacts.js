@@ -6,6 +6,6 @@ export default {
     component: ContactsIndex,
     meta: {
         breadcrumb: 'contacts',
-        title: 'Contacts Index',
+        title: 'Contacts',
     },
 };

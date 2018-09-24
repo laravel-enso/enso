@@ -4,7 +4,8 @@
         <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
             v-for="(log, index) in logs"
             :key="index">
-            <card :icon="icon"
+            <card class="is-rounded raises-on-hover"
+                :icon="icon"
                 :title="log.name"
                 :controls="3">
                 <card-control slot="control-1"

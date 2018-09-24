@@ -1,6 +1,6 @@
 <template>
 
-    <vue-table class="is-rounded is-raised"
+    <vue-table class="box is-paddingless raises-on-hover is-rounded"
         :path="path"
         id="permissions">
         <span slot="type"

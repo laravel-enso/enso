@@ -6,6 +6,6 @@ export default {
     component: MenusIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Menus Index',
+        title: 'Menus',
     },
 };

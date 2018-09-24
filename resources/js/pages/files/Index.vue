@@ -44,7 +44,7 @@
                         </span>
                     </p>
                 </div>
-                <date-interval-filter class="box has-margin-top-large"
+                <date-interval-filter class="box raises-on-hover has-margin-top-large"
                     :title="__('Uploaded Between')"
                     :min="interval.min"
                     @update-min="interval.min = $event; fetch()"
@@ -60,13 +60,14 @@
                         <fa icon="sync-alt"/>
                     </span>
                 </button>
-                <div class="box has-margin-top-large">
+                <div class="box raises-on-hover has-margin-top-large">
                     <h4 class="title is-4 has-text-centered">
-                        {{ __('Storage used') }}: {{ totalStorage / 1000 | numberFormat }} KB
+                        {{ __('Space used') }}: {{ totalStorage / 1000 | numberFormat }} KB
                     </h4>
                     <chart :data="chartData"
                         :options="{ aspectRatio: 1 }"
-                        type="pie"/>
+                        type="pie"
+                        v-if="totalStorage > 0"/>
                 </div>
             </div>
         </div>

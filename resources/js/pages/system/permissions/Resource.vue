@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <vue-form-ss class="box animated fadeIn"
+            <vue-form-ss class="box raises-on-hover animated fadeIn"
                 :route-params="[$route.name, null, false]"/>
         </div>
     </div>

@@ -43,7 +43,7 @@
         </div>
         <div class="column is-two-thirds"
             v-if="initialised">
-            <timeline class="is-raised"
+            <timeline class="raises-on-hover"
                 :feed="feed"
                 :loading="loading"
                 @load-more="fetch()"

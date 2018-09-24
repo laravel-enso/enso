@@ -35,9 +35,7 @@ export default {
 
 .box {
     border-top: 2px solid $white;
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-    box-shadow: 0px 0px 5px 1px rgba(133,133,133,1);
-    transition: border-color .75s ease;
+    transition: border-color .75s ease, box-shadow 0.3s ease-in-out;;
     position: relative;
 
     &.is-info {

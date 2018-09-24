@@ -9,7 +9,7 @@
             </p>
         </figure>
         <div class="media-content">
-            <inputor class="animated fadeIn"
+            <inputor class="raises-on-hover animated fadeIn"
                 :message="reply"
                 placeholder="Share your opinion..."
                 type="reply"

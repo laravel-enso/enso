@@ -102,7 +102,7 @@ export default {
     .progress-bar {
         background: #f44336;
         box-shadow: 0 0 5px #f44336;
-        position: absolute;
+        position: fixed;
         left: 0px;
         top: 0px;
         height: 2px;

@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <vue-form-ss class="box is-raised animated fadeIn"
+            <vue-form-ss class="box raises-on-hover animated fadeIn"
                 :route-params="[$route.name, $route.params.id, false]"
                 ref="form"
                 @loaded="pivotParams.owners.id = $refs.form.field('owner_id').value">

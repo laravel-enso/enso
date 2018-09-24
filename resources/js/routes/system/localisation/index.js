@@ -6,6 +6,6 @@ export default {
     component: LocalisationIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Localisation Index',
+        title: 'Localisation',
     },
 };

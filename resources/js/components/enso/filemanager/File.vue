@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box raises-on-hover file-box has-padding-medium">
+    <div class="box raises-on-hover file-box has-padding-large">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
                 :src="avatarLink(file.owner.avatarId)">
@@ -180,8 +180,8 @@ export default {
 
         .avatar {
             position: absolute;
-            top: .5em;
-            left: .5em;
+            top: .6em;
+            left: .6em;
         }
 
         .details {

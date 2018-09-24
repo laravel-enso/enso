@@ -1,98 +1,108 @@
 <template>
 
     <div>
-        <div class="box">
-            <div class="columns is-multiline">
-                <div class="column">
-                    <div class="columns is-multiline">
-                        <div class="column is-half">
-                            <vue-select :options="locales"
-                                v-model="selectedLocale"
-                                @input="getLangFile()"
-                                :placeholder="__('Choose language')"/>
-                        </div>
-                        <div class="column is-half has-text-right animated fadeIn is-hidden-mobile"
-                            v-if="selectedLocale">
-                            <p class="has-padding-top-small">
-                                <b>{{ keysCount }}</b> {{ __('keys found') }}
-                            </p>
-                        </div>
-                        <div class="column animated fadeIn"
-                            v-if="selectedLocale">
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input type="text"
-                                        class="input"
-                                        v-focus
-                                        v-select-on-focus
-                                        :placeholder="__('Search')"
-                                        v-model="query"
-                                        @keyup.enter="isNewKey ? addKey() : focusIt(null)">
-                                    <span class="icon is-small is-left">
-                                        <fa icon="search"/>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
+        <div class="columns is-multiline">
+            <div class="column">
+                <div class="columns is-multiline">
+                    <div class="column is-half">
+                        <vue-select :options="locales"
+                            v-model="selectedLocale"
+                            @input="getLangFile()"
+                            :placeholder="__('Choose language')"/>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="columns is-mobile has-text-centered">
-                        <div class="column is-half"
-                            v-if="selectedLocale">
-                            <button class="button is-success is-fullwidth"
-                                v-if="isNewKey"
-                                @click="addKey()">
-                                {{ __('Add Key') }}
-                            </button>
-                        </div>
-                        <div class="column is-half"
-                            v-if="!selectedLocale && meta.env === 'local'">
-                            <button class="button is-warning"
-                                @click="merge()"
-                                v-if="canAccess('system.localisation.merge')">
-                                {{ __('Merge all localisation files') }}
-                            </button>
-                        </div>
-                        <div class="column is-half"
-                            v-if="selectedLocale">
-                            <button @click="saveLangFile()"
-                                class="button is-success is-fullwidth"
-                                :class="{ 'is-loading': loading }">
-                                {{ __('Update') }}
-                            </button>
-                        </div>
-                    </div>
-                    <div class="columns is-mobile has-text-right"
+                    <div class="column is-half has-text-right animated fadeIn is-hidden-mobile"
                         v-if="selectedLocale">
-                        <div class="column">
-                            <label class="label">{{ __('Core') }}
-                                <vue-switch class="has-margin-left-medium has-margin-right-medium"
-                                    v-model="filterCore"
-                                    size="is-large"/>
-                                {{ __('App') }}
-                            </label>
-                        </div>
-                        <div class="column">
-                            <label class="label">{{ __('Only missing') }}
-                                <vue-switch class="has-margin-left-medium"
-                                    v-model="filterMissing"
-                                    size="is-large"/>
-                            </label>
+                        <p class="has-padding-top-small">
+                            <b>{{ keysCount }}</b> {{ __('keys found') }}
+                        </p>
+                    </div>
+                    <div class="column animated fadeIn"
+                        v-if="selectedLocale">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input type="text"
+                                    class="input is-rounded"
+                                    v-focus
+                                    v-select-on-focus
+                                    :placeholder="__('Search')"
+                                    v-model="query"
+                                    @keyup.enter="isNewKey ? addKey() : focusIt(null)">
+                                <span class="icon is-small is-left">
+                                    <fa icon="search"/>
+                                </span>
+                                <span class="icon is-small is-right clear-button"
+                                    v-if="query"
+                                    @click="query = null">
+                                    <a class="delete is-small"/>
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="column">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-half"
+                        v-if="selectedLocale">
+                        <button class="button is-success is-fullwidth"
+                            v-if="isNewKey"
+                            @click="addKey()">
+                            {{ __('Add Key') }}
+                        </button>
+                    </div>
+                    <div class="column is-half"
+                        v-if="!selectedLocale && meta.env === 'local'">
+                        <button class="button is-warning"
+                            @click="merge()"
+                            v-if="canAccess('system.localisation.merge')">
+                            {{ __('Merge all localisation files') }}
+                        </button>
+                    </div>
+                    <div class="column is-half"
+                        v-if="selectedLocale">
+                        <button @click="saveLangFile()"
+                            class="button is-success is-fullwidth"
+                            :class="{ 'is-loading': loading }">
+                            {{ __('Update') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="columns is-mobile has-text-right"
+                    v-if="selectedLocale">
+                    <div class="column">
+                        <label class="label">{{ __('Core') }}
+                            <vue-switch class="has-margin-left-medium has-margin-right-medium"
+                                v-model="filterCore"
+                                size="is-large"/>
+                            {{ __('App') }}
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="label">{{ __('Only missing') }}
+                            <vue-switch class="has-margin-left-medium"
+                                v-model="filterMissing"
+                                size="is-large"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="box"
+        <div class="box raises-on-hover has-margin-top-large"
             v-if="selectedLocale">
-            <div class="columns is-hidden-mobile has-shadow-bottom">
+            <div class="columns is-hidden-mobile has-shadow-bottom"
+                v-if="filteredKeys.length">
                 <div class="column is-half has-text-centered">
                     <h6 class="title is-6">{{ __('Key') }}</h6>
                 </div>
                 <div class="column is-half has-text-centered">
                     <h6 class="title is-6">{{ __('Value') }}</h6>
                 </div>
+            </div>
+            <div class="has-text-centered"
+                v-else>
+                <h5 class="subtitle is-5">
+                    {{ __('No keys found') }}
+                </h5>
             </div>
             <div :style="styleObject">
                 <div class="columns"
@@ -297,11 +307,15 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
     .has-shadow-bottom {
         -webkit-box-shadow: 0px 3px 5px -4px lightgray;
         box-shadow: 0px 3px 5px -4px lightgray;
+    }
+
+    .icon.clear-button {
+        pointer-events: all;
     }
 
 </style>

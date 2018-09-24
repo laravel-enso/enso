@@ -1,6 +1,6 @@
 <template>
 
-    <vue-table class="is-raised is-rounded"
+    <vue-table class="box is-paddingless raises-on-hover is-rounded"
         :path="path"
         id="users">
         <figure class="image is-24x24 avatar"

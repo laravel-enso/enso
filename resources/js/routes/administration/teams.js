@@ -6,6 +6,6 @@ export default {
     component: TeamsIndex,
     meta: {
         breadcrumb: 'index',
-        title: 'Teams Index',
+        title: 'Teams',
     },
 };

@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <vue-table class="is-raised is-rounded animated fadeIn"
+        <vue-table class="box is-paddingless raises-on-hover is-rounded animated fadeIn"
             :path="path"
             id="imports-table"
             @get-summary="getSummary"
@@ -89,7 +89,7 @@
         <div class="columns is-centered"
             v-if="summary">
             <div class="column is-half-tablet is-one-third-widescreen is-one-quarter-fullhd">
-                <nav class="box panel is-paddingless  animated bounceInLeft">
+                <nav class="box panel is-paddingless raises-on-hover animated bounceInLeft">
                     <p class="panel-heading">
                         {{ __('Import Summary') }}
                     </p>
@@ -148,7 +148,7 @@
             </div>
             <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd"
                 v-if="summary.issues">
-                <card class="animated bounceInRight"
+                <card class="is-rounded raises-on-hover animated bounceInRight"
                     :icon="icon"
                     :title="__('Issues')">
                     <tabs class="has-padding-medium"
@@ -169,7 +169,8 @@
                             :key="sheet"
                             :id="sheet">
                             <tabs>
-                                <tab v-for="(issues, category) in sheetIssues"
+                                <tab class="has-padding-large"
+                                    v-for="(issues, category) in sheetIssues"
                                     :key="category"
                                     :id="category">
                                     <paginate :list="issues">
