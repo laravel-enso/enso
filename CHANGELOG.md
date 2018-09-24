@@ -1,6 +1,6 @@
 ## Laravel Enso's Changelog
 
-###
+### 2.11.7
 
 - fixes `ProgressBar`'s position
 - makes pages layout consitent. All tables have now `class="box is-paddingless raises-on-hover is-rounded"` and all forms class="box raises-on-hover animated fadeIn"
@@ -30,7 +30,7 @@
 - to upgrade an exising project run
     - `yarn add driver.js vuedraggable`
     - `yarn remove intro.js`
-    - `yarn hot`
+    - `yarn dev`
 
 ### 2.11.3
 
