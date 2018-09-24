@@ -1,6 +1,13 @@
 ## Laravel Enso's Changelog
 
-###
+### 2.11.8
+
+- refactors all controllers to extend `Illuminate\Routing\Controller`
+- adds morphable models traits in `App\User` instead of `Core\User`;
+- excludes auth routes from history tabs
+- fixes teams edit/store form validation handling
+
+### 2.11.7
 
 - fixes `ProgressBar`'s position
 - makes pages layout consitent. All tables have now `class="box is-paddingless raises-on-hover is-rounded"` and all forms class="box raises-on-hover animated fadeIn"

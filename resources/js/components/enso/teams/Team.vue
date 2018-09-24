@@ -33,7 +33,7 @@
                     </a>
                     <a class="button is-naked is-success is-outlined"
                         :disabled="!team.name"
-                        @click="store();edit = false">
+                        @click="store();">
                         <span class="icon">
                             <fa icon="check" size="sm"/>
                         </span>
@@ -120,10 +120,12 @@ export default {
                     this.$toastr.success(data.message);
                     this.team.users = data.team.users;
                     this.team.id = data.team.id;
+                    this.edit = null;
                     this.$emit('create', this.team);
                 }).catch((error) => {
                     if (error.response.status === 422) {
                         this.$toastr.warning(this.__('Choose another name'));
+                        return;
                     }
                     this.handleError(error);
                 });
