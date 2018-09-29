@@ -5,11 +5,12 @@
             { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
             { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
         ]">
-            <ul class="tab-list">
+            <ul class="tab-list has-background-grey-light">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a @click="setActive(index)"
+                    <a :class="{ 'has-background-white has-text-grey-dark': index === active }"
+                        @click="setActive(index)"
                         :disabled="disabled.includes(index)">
                         <slot name="label"
                             :tab="tab">
@@ -101,11 +102,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "./node_modules/bulma/sass/utilities/initial-variables";
-
     .tabs.is-fullwidth.is-toggle.is-custom {
         .tab-list {
-            background: $grey-lighter;
             border-radius: 0.3em;
 
             li {
@@ -114,10 +112,8 @@ export default {
 
             .is-active {
                 a {
-                    background: $white;
                     opacity: 1;
                     font-weight: 600;
-                    color: $grey-dark;
                 }
             }
 

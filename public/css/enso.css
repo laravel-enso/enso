@@ -3907,7 +3907,6 @@
 .raises-on-hover:hover {
   -webkit-box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.2);
   box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.2);
-  opacity: 0.95;
 }
 
 [v-cloak] {

@@ -1,7 +1,10 @@
 <template>
-    <div class="progress-bar"
-        :style="width"
-        v-if="show"/>
+    <transition enter-active-class="fadeIn"
+        leave-active-class="fadeOut">
+        <div class="progress-bar animated"
+            :style="width"
+            v-if="show"/>
+    </transition>
 </template>
 
 <script>
@@ -49,48 +52,45 @@ export default {
 
             this.incResponses(oldVal - newVal);
         },
-
-        shouldStop(shouldStop) {
-            if (shouldStop) {
-                this.stop();
-            }
-        },
-    },
-
-    mounted() {
-        if (this.shouldStop) {
-            this.stop();
-        }
     },
 
     methods: {
-        init() {
+        reset() {
+            this.show = false;
             this.sent = 0;
             this.received = 0;
-            this.show = false;
         },
-        stop() {
-            clearTimeout(this.timer);
+        update() {
+            if (this.shouldStop) {
+                clearTimeout(this.timer);
 
-            this.timer = setTimeout(() =>
-                this.init(), this.latency * 2.5);
-        },
-        incRequests(inc = 1) {
-            this.show = true;
-
-            setTimeout(() => (this.sent += inc), 1);
-        },
-        incResponses(inc = 1) {
-            setTimeout(() => (this.received += inc), this.latency);
+                this.timer = setTimeout(() =>
+                    this.reset(), this.latency * 3);
+            }
         },
         startRouting() {
-            this.init();
-            setTimeout(() => this.incRequests(), this.latency);
+            clearTimeout(this.routingTimer);
+            this.reset();
+            this.incRequests();
         },
         stopRouting() {
             clearTimeout(this.routingTimer);
 
-            this.routingTimer = setTimeout(() => this.incResponses(), this.latency * 2);
+            this.routingTimer = setTimeout(() =>
+                this.incResponses(), this.latency * 4);
+        },
+        incRequests(inc = 1) {
+            if (!this.show) {
+                setTimeout(() => (this.show = true), 1);
+            }
+
+            setTimeout(() => (this.sent += inc), 2);
+        },
+        incResponses(inc = 1) {
+            setTimeout(() => {
+                this.received += inc;
+                this.update();
+            }, this.latency);
         },
     },
 };

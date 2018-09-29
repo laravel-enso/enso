@@ -1,6 +1,6 @@
 import store from '../../store';
 
-const excluded = ['notFound', 'unauthorized'];
+const excluded = ['notFound', 'unauthorized', 'touch'];
 
 const qualifies = route => route.name
     && !excluded.includes(route.name)

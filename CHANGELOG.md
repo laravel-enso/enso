@@ -1,5 +1,65 @@
 ## Laravel Enso's Changelog
 
+### 2.11.9
+
+#### Changes
+
+##### Main project
+- removes the users table migration from the main project - this migration is included in the core package
+- updates composer and npm dependencies
+
+##### Core
+- improves the progress bar
+- removes opacity from `.raises-on-hover`
+- improves `GuestState`'s extensibility laravel-enso/core#69
+- adds `touch` route to excluded list for history tabs
+- updates user & owner seeders
+- updates history to false in default preferences
+- adds `created_at` in user & owner table
+- adds morphable traits back to the owner until having a proper example structure for this packages
+
+##### Contacts
+- adds `created_at` in main table
+
+##### FormBuilder
+- adds `dateFormat` attribute in `forms.php` config file
+- automatically converts `datepicker` field types to the default (config) format if no specific format is provided in the field's `meta` array
+
+##### Impersonate
+- fixes tests laravel-enso/impersonate#5
+
+##### Localisation
+- removes `updated_at` from the main tables.
+
+##### MenuManager
+- removes `updated_at` from the main tables.
+
+##### PermissionsManager
+- removes `updated_at` from permissions and permissions groups tables.
+
+##### RolesManager
+- removes `updated_at` from the main tables and adds the default menu instead.
+- improves `RoleSeeder`
+
+##### StructureManager
+- fixes generation for multi word models
+
+##### TestHelper
+- removes max execution time laravel-enso/testhelper#2
+
+##### VueDatatable
+- adds `notExportable` option
+- makes `ExportExcel` dispatchable
+
+##### VueComponents
+- fixes custom tabs colors
+- updates info box to play nice with .raises-on-hover
+
+#### Updating existing projects
+- `composer update`
+- publish the above mentioned seeders if needed
+- `yarn dev`
+
 ### 2.11.8
 
 - refactors all controllers to extend `Illuminate\Routing\Controller`
