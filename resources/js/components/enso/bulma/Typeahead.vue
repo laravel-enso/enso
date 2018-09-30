@@ -215,7 +215,7 @@ export default {
         width: 100%;
 
         .dropdown.typeahead {
-            width: 100%;
+            width: calc(100% - 1.4em);
             position:absolute;
 
             .dropdown-menu {
