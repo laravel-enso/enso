@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.11.10
+
+- adds the new searchable package. Users have now the ability to search from a central place to any model from the application that is defined in the searchable config.
+
 ### 2.11.9
 
 #### Changes

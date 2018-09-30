@@ -1,10 +1,14 @@
 <template>
 
-    <div>
+    <div class="wrapper">
         <div class="control has-icons-left has-icons-right"
             :class="{ 'is-loading': loading }">
-            <input class="input" type="text"
-                :class="{ 'is-danger': hasError }"
+            <input :class="[
+                    'input is-fullwidth',
+                    { 'is-rounded': isRounded },
+                    { 'is-danger': hasError }
+                ]"
+                type="text"
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :value="value"
@@ -19,7 +23,7 @@
             </span>
             <span class="icon is-small is-right clear-button"
                 v-if="value && !loading"
-                @click="$emit('input', null)">
+                @click="$emit('input', '')">
                 <a class="delete is-small"/>
             </span>
         </div>
@@ -34,7 +38,8 @@
                         @mousemove="position = index">
                         <slot name="option"
                             :highlight="highlight"
-                            :item="item">
+                            :item="item"
+                            :label="label">
                             <span v-html="highlight(item[label])"/>
                         </slot>
                     </a>
@@ -76,7 +81,7 @@ export default {
         },
         length: {
             type: Number,
-            default: 10,
+            default: 100,
         },
         source: {
             type: String,
@@ -88,7 +93,7 @@ export default {
         },
         label: {
             type: String,
-            required: true,
+            default: 'label',
         },
         placeholder: {
             type: String,
@@ -116,6 +121,10 @@ export default {
             type: String,
             default: '',
         },
+        isRounded: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -128,19 +137,16 @@ export default {
     },
 
     computed: {
+        route() {
+            return typeof route === 'function'
+                ? route(this.source)
+                : this.source;
+        },
         hasError() {
             return this.validator && this.value && !this.regExp.test(this.value);
         },
         showDropdown() {
             return !this.hideDropdown && this.value && !this.hasError;
-        },
-    },
-
-    watch: {
-        value() {
-            if (!this.value) {
-                this.items = [];
-            }
         },
     },
 
@@ -156,18 +162,21 @@ export default {
 
             this.loading = true;
 
-            axios.get(this.source, {
-                params: { query: this.value, length: this.length, params: this.params },
+            axios.get(this.route, {
+                params: {
+                    query: this.value, length: this.length, params: this.params,
+                },
             }).then((response) => {
                 this.hideDropdown = false;
                 this.items = response.data;
                 this.loading = false;
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+            }).catch(error => this.handleError(error));
         },
         update(value) {
+            if (!this.value) {
+                this.items = [];
+            }
+
             this.$emit('selected', this.items[this.position]);
             this.$emit('input', value);
         },
@@ -200,24 +209,34 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-    .dropdown.typeahead {
+    .wrapper {
         width: 100%;
-        position:absolute;
 
-        .dropdown-menu {
+        .dropdown.typeahead {
             width: 100%;
+            position:absolute;
 
-            .dropdown-content a.dropdown-item {
-                text-overflow: ellipsis;
-                overflow-x: hidden;
+            .dropdown-menu {
+                width: 100%;
+
+                .dropdown-content {
+                    max-height: 20em;
+                    overflow-y: scroll;
+
+                    a.dropdown-item {
+                        text-overflow: ellipsis;
+                        overflow-x: hidden;
+                        padding-right: 1em;
+                    }
+                }
             }
         }
-    }
 
-    .control.has-icons-right .icon.clear-button {
-        pointer-events: all;
+        .control.has-icons-right .icon.clear-button {
+            pointer-events: all;
+        }
     }
 
 </style>

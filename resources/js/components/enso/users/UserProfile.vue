@@ -1,7 +1,7 @@
 <template>
     <div class="box has-padding-medium is-raised"
         v-if="profile">
-        <h4 class="title is-4 has-text-centered has-margin-top-medium">
+        <h4 class="title is-4 has-text-centered has-margin-top-large">
             {{ profile.fullName }}
         </h4>
         <hr>
@@ -69,7 +69,7 @@
             </div>
             <div class="column">
                 <hr v-if="isMobile">
-                <div class="columns is-mobile">
+                <div class="columns is-mobile is-multiline">
                     <div class="column is-one-third has-text-right">
                         <p class="has-margin-top-small"><strong>{{ __('Owner') }}</strong></p>
                         <p class="has-margin-top-small"><strong>{{ __('Role') }}</strong></p>
@@ -82,6 +82,15 @@
                         <p class="has-margin-top-small">{{ profile.email }}</p>
                         <p class="has-margin-top-small">{{ profile.phone }}</p>
                     </div>
+                </div>
+                <div class="has-text-centered">
+                    <a class="button is-warning"
+                        @click="$router.push({
+                            name: 'administration.users.edit',
+                            params: { id: profile.id },
+                        })">
+                        {{ __('Edit User Info') }}
+                    </a>
                 </div>
             </div>
         </div>
