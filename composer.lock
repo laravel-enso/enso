@@ -1663,16 +1663,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.0.38",
+            "version": "3.0.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "17ef9d676035eb23e159f84f704dd0f745a6abb1"
+                "reference": "5a4175e0abc65812476f302f1c96dec514f90e15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/17ef9d676035eb23e159f84f704dd0f745a6abb1",
-                "reference": "17ef9d676035eb23e159f84f704dd0f745a6abb1",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/5a4175e0abc65812476f302f1c96dec514f90e15",
+                "reference": "5a4175e0abc65812476f302f1c96dec514f90e15",
                 "shasum": ""
             },
             "require": {
@@ -1757,7 +1757,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-09-30T08:59:16+00:00"
+            "time": "2018-10-01T05:37:58+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -2860,16 +2860,16 @@
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Searchable.git",
-                "reference": "e092fb1e7e5ac82d7064b610b767f3638ede7a02"
+                "reference": "81c2fb66f7443dd02834ef9199d49b4ae814f3a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/e092fb1e7e5ac82d7064b610b767f3638ede7a02",
-                "reference": "e092fb1e7e5ac82d7064b610b767f3638ede7a02",
+                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/81c2fb66f7443dd02834ef9199d49b4ae814f3a5",
+                "reference": "81c2fb66f7443dd02834ef9199d49b4ae814f3a5",
                 "shasum": ""
             },
             "require": {
@@ -2909,7 +2909,7 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2018-09-30T16:00:40+00:00"
+            "time": "2018-10-01T05:25:54+00:00"
         },
         {
             "name": "laravel-enso/select",

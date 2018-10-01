@@ -7,39 +7,45 @@ use LaravelEnso\Contacts\app\Models\Contact;
 use LaravelEnso\HowToVideos\app\Models\Video;
 
 return [
+    'defaultLabel' => 'name',
+    'routes' => [
+        'show' => 'eye',
+        'edit' => 'pencil-alt',
+        'index' => 'list-ul',
+    ],
+    'limit' => 10,
     'models' => [
         User::class => [
-            'groupLabel' => 'User',
+            'group' => 'User',
             'attributes' => ['first_name', 'last_name', 'email'],
-            'itemLabel' => 'fullName',
+            'label' => 'fullName',
             'permissionGroup' => 'administration.users',
         ],
         Owner::class => [
-            'groupLabel' => 'Owner',
+            'group' => 'Owner',
             'attributes' => ['name', 'description'],
-            'itemLabel' => 'name',
+            'label' => 'name',
             'permissionGroup' => 'administration.owners',
         ],
         Team::class => [
-            'groupLabel' => 'Team',
+            'group' => 'Team',
             'attributes' => ['name'],
-            'itemLabel' => 'name',
+            'label' => 'name',
             'permissionGroup' => 'administration.teams',
         ],
         Video::class => [
-            'groupLabel' => 'HowToVideo',
+            'group' => 'HowToVideo',
             'attributes' => ['name', 'description'],
-            'itemLabel' => 'name',
+            'label' => 'name',
             'permissions' => ['index'],
             'permissionGroup' => 'howTo.videos',
         ],
         Contact::class => [
-            'groupLabel' => 'Contact',
+            'group' => 'Contact',
             'attributes' => ['first_name', 'last_name'],
-            'itemLabel' => 'fullName',
+            'label' => 'fullName',
             'permissions' => ['index'],
             'permissionGroup' => 'core.contacts',
         ],
     ],
-    'limit' => 10,
 ];

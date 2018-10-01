@@ -9,24 +9,15 @@
             <template slot="option"
                 slot-scope="{ highlight, item }">
                 <span>
-                    <strong>{{ __(item['groupLabel']) }}:</strong>
+                    <strong>{{ __(item['group']) }}:</strong>
                     <span v-html="highlight(item['label'])"/>
                     <span class="route-controls"
                         v-if="item.routes.length">
                         <span class="icon is-small route-control"
-                            @mousedown.stop="redirect(item, 'show')"
-                            v-if="!!route('show', item)">
-                            <fa icon="eye"/>
-                        </span>
-                        <span class="icon is-small route-control"
-                            @mousedown.stop="redirect(item, 'edit')"
-                            v-if="!!route('edit', item)">
-                            <fa icon="pencil-alt"/>
-                        </span>
-                        <span class="icon is-small route-control"
-                            @mousedown.stop="redirect(item, 'index')"
-                            v-if="!!route('index', item)">
-                            <fa icon="list-ul"/>
+                            @mousedown.stop="redirect(item, route.name)"
+                            v-for="(route, index) in item.routes"
+                            :key="index">
+                            <fa :icon="route.icon"/>
                         </span>
                     </span>
                 </span>
@@ -59,15 +50,14 @@ export default {
                 route.indexOf(search) >= 0);
         },
         redirect(item, to = null) {
-            to = to
-                ? this.route(to, item)
-                : this.route('show', item)
-                    || this.route('edit', item)
-                    || this.route('index', item);
-
-            if (to) {
-                this.$router.push({ name: to, params: { id: item.id } });
+            if (!to && !item.routes.length) {
+                return;
             }
+
+            this.$router.push({
+                name: to || item.routes[0].name,
+                params: { id: item.id },
+            });
 
             this.$nextTick(() => (this.query = ''));
         },
