@@ -87,6 +87,8 @@
 - fixes laravel-enso/structuremanager#10
 - moves the following packages from core composer json to the project's composer json: "addressesmanager","commentsmanager","contacts","controlpanelapi","dataimport","discussions","documentsmanager","howtovideos"
 
+Upgrade: apply [these](https://github.com/laravel-enso/Enso/commit/daa1d5b1473c800cbdde1fcbd91249765bd2acd4#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780) changes to composer.json
+
 ### 2.11.6
 
 #### Improves History Tabs
