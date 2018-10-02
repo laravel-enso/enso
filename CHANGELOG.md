@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.11.11
+- fixes team filtering and updating bugs
+- adds `scopes` to searchable models
+- replaces `uniqid` with `Str::random(40)` for avatar generation
+- throws and error in dataimport when importing blank sheets
+- minor fixes in examples
+
 ### 2.11.10
 
 - adds the new searchable package. Users have now the ability to search from a central place to any model from the application that is defined in the searchable config.

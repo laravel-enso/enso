@@ -1,9 +1,9 @@
 <template>
     <info-box :class="[
         'raises-on-hover',
-        { 'is-danger': edit && !team.id },
-        { 'is-warning': edit && team.id },
-        { 'is-info': !edit && team.users.length === 0 },
+        { 'is-danger': team.edit && !team.id },
+        { 'is-warning': team.edit && team.id },
+        { 'is-info': !team.edit && team.users.length === 0 },
     ]">
         <info-item>
             <label slot="left"
@@ -11,14 +11,14 @@
                 <input class="input team-name"
                     v-focus
                     v-model="team.name"
-                    v-if="edit">
+                    v-if="team.edit">
                 <strong v-else>{{ team.name }}</strong>
             </label>
             <div slot="right"
                 class="has-text-right">
                 <a class="button is-naked animated fadeIn"
-                    v-if="!edit"
-                    @click="edit = true">
+                    v-if="!team.edit"
+                    @click="team.edit = true">
                     <span class="icon">
                         <fa icon="pencil-alt" size="sm"/>
                     </span>
@@ -26,7 +26,7 @@
                 <span class="animated fadeIn"
                     v-else>
                     <a class="button is-naked is-outlined"
-                        @click="$emit('cancel');edit = false">
+                        @click="$emit('cancel');team.edit = false">
                         <span class="icon">
                             <fa icon="ban"/>
                         </span>
@@ -56,7 +56,7 @@
                 <img class="is-rounded"
                     :src="avatar(user.avatar.id)">
             </figure>
-            <span v-if="!edit && !loading && team.users.length === 0"
+            <span v-if="!team.edit && !loading && team.users.length === 0"
                 class="has-text-muted is-italic has-margin-bottom-small">
                 {{ __('No users yet') }}
             </span>
@@ -65,7 +65,7 @@
             enter-active-class="fadeIn"
             leave-active-class="fadeOut">
             <div class="has-margin-bottom-large has-margin-top-large animated"
-                v-if="edit && team.name">
+                v-if="team.edit && team.name">
                 <label slot="left"
                     class="label">
                     {{ __('Members') }}:
@@ -106,7 +106,6 @@ export default {
     data() {
         return {
             loading: false,
-            edit: this.team.id === null,
         };
     },
 
@@ -120,7 +119,7 @@ export default {
                     this.$toastr.success(data.message);
                     this.team.users = data.team.users;
                     this.team.id = data.team.id;
-                    this.edit = null;
+                    this.team.edit = false;
                     this.$emit('create', this.team);
                 }).catch((error) => {
                     if (error.response.status === 422) {
@@ -137,7 +136,7 @@ export default {
                 .then(({ data }) => {
                     this.loading = false;
                     this.$toastr.success(data.message);
-                    this.edit = false;
+                    this.team.edit = false;
                     this.$emit('destroy');
                 }).catch(error => this.handleError(error));
         },

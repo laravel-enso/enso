@@ -84,8 +84,9 @@ export default {
     computed: {
         filteredTeams() {
             return this.query
-                ? this.teams.filter(({ name }) =>
-                    name.toLowerCase().indexOf(this.query.toLowerCase()) > -1)
+                ? this.teams.filter(({ edit, name }) =>
+                    edit || name.toLowerCase()
+                        .indexOf(this.query.toLowerCase()) > -1)
                 : this.teams;
         },
     },
@@ -112,6 +113,7 @@ export default {
                 name: null,
                 userIds: [],
                 users: [],
+                edit: true,
             };
         },
     },

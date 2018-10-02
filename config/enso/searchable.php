@@ -2,7 +2,6 @@
 
 use LaravelEnso\Core\app\Models\Team;
 use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Core\app\Models\Owner;
 use LaravelEnso\Contacts\app\Models\Contact;
 use LaravelEnso\HowToVideos\app\Models\Video;
 
@@ -20,12 +19,7 @@ return [
             'attributes' => ['first_name', 'last_name', 'email'],
             'label' => 'fullName',
             'permissionGroup' => 'administration.users',
-        ],
-        Owner::class => [
-            'group' => 'Owner',
-            'attributes' => ['name', 'description'],
-            'label' => 'name',
-            'permissionGroup' => 'administration.owners',
+            'scopes' => ['active'],
         ],
         Team::class => [
             'group' => 'Team',
