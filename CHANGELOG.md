@@ -107,7 +107,7 @@ Upgrade: apply [these](https://github.com/laravel-enso/Enso/commit/daa1d5b1473c8
 - makes history tabs draggable
 - replaces intro.js with driver.js.
 - fixes some inconsistencies in dataimport -> templates
-- to upgrade an exising project run
+- to upgrade an exising project, replace the contents of `resources/js/core/structure/settings/Tutorial.vue` ([changes](https://github.com/laravel-enso/Enso/commit/54c311e228466e9dcf48a02a0e8acc9ea972463f#diff-0060d05a9cde49b00f2421a5fee597b7)) and run
     - `yarn add driver.js vuedraggable`
     - `yarn remove intro.js`
     - `yarn dev`
