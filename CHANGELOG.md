@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.11.13
+Improves history tabs. When updating existing apps use the delete button to clear previous tabs from the local storage to fully make use of the new behavior.
+
 ### 2.11.12
 
 After a thorough analysis we decided to slighly change the behaviour of `TrackWho`. In all the traits `auth()->user()->id` was changed to `optional(auth()->user())->id`. This way we allow easier tests, seeders, tinker playing etc., on models that use one ore more of the three traits. In conjunction with this move, all the tables that have `created_by` should update the column to be `nullable()`. For Enso's tables we added a command for this `enso:track-who:update`

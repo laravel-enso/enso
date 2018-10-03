@@ -18,8 +18,16 @@
                         })">
                         {{ __(route.meta.title) }}
                     </a>
+                    <a class="tag is-success check"
+                        @click="stick(route)"
+                        v-if="!route.sticky">
+                        <span class="icon is-small">
+                            <fa icon="check"/>
+                        </span>
+                    </a>
                     <a class="tag is-delete"
-                        @click="remove(route)"/>
+                        @click="remove(route)"
+                        v-if="routes.length > 1"/>
                 </span>
             </span>
         </draggable>
@@ -30,11 +38,11 @@
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { mapMutations } from 'vuex';
 import Draggable from 'vuedraggable';
 
-library.add(faTrashAlt);
+library.add(faCheck, faTrashAlt);
 
 export default {
     name: 'History',
@@ -53,7 +61,7 @@ export default {
     },
 
     methods: {
-        ...mapMutations('history', ['drop']),
+        ...mapMutations('history', ['stick', 'drop']),
         remove(route) {
             this.drop(route);
             if (route.name === this.$route.name) {
@@ -79,6 +87,10 @@ export default {
 
         a.tag:hover {
             text-decoration: none;
+        }
+
+        .tag.check {
+            margin-left: 1px;
         }
 
         .field.is-grouped {

@@ -8,6 +8,6 @@ const qualifies = route => route.name
 
 export default (to) => {
     if (store.state.preferences.global.history && qualifies(to)) {
-        store.commit('history/push', to);
+        store.dispatch('history/push', to);
     }
 };
