@@ -8,14 +8,10 @@ class OwnerSeeder extends Seeder
 {
     public function run()
     {
-        \DB::table('owners')->insert([
+        Owner::create([
             'name' => 'Admin',
             'is_active' => true,
-        ]);
-
-        Owner::whereName('Admin')
-            ->first()
-            ->roles()
-            ->attach(Role::all());
+        ])->roles()
+        ->sync(Role::pluck('id'));
     }
 }

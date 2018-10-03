@@ -1,5 +1,16 @@
 ## Laravel Enso's Changelog
 
+### 2.11.12
+
+After a thorough analysis we decided to slighly change the behaviour of `TrackWho`. In all the traits `auth()->user()->id` was changed to `optional(auth()->user())->id`. This way we allow easier tests, seeders, tinker playing etc., on models that use one ore more of the three traits. In conjunction with this move, all the tables that have `created_by` should update the column to be `nullable()`. For Enso's tables we added a command for this `enso:track-who:update`
+- removes unnecessary logic from `UserSeeder` and `OwnerSeeder`
+- fixes tabs/custom tabs css
+
+Upgrade steps:
+- run `composer update`
+- run `php artisan enso:track-who:update`
+- update user and owner seeders with the ones from `laravel-enso/core` if they are not customized already (optional)
+
 ### 2.11.11
 - fixes team filtering and updating bugs
 - adds `scopes` to searchable models

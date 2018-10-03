@@ -5,11 +5,14 @@
             { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
             { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
         ]">
-            <ul class="tab-list has-background-grey-light">
+            <ul :class="[
+                    'tab-list',
+                    { 'has-background-grey-light' : custom }
+                ]">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a :class="{ 'has-background-white has-text-grey-dark': index === active }"
+                    <a :class="{ 'has-background-white has-text-grey-dark': custom && index === active }"
                         @click="setActive(index)"
                         :disabled="disabled.includes(index)">
                         <slot name="label"
