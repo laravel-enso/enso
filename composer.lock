@@ -1948,16 +1948,16 @@
         },
         {
             "name": "laravel-enso/documentsmanager",
-            "version": "2.3.11",
+            "version": "2.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DocumentsManager.git",
-                "reference": "0cbdcf86742ee75408eb7edc37dc28a70c4fc95b"
+                "reference": "77d08d20d529fa3b432511cdac09d0382bb85832"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/0cbdcf86742ee75408eb7edc37dc28a70c4fc95b",
-                "reference": "0cbdcf86742ee75408eb7edc37dc28a70c4fc95b",
+                "url": "https://api.github.com/repos/laravel-enso/DocumentsManager/zipball/77d08d20d529fa3b432511cdac09d0382bb85832",
+                "reference": "77d08d20d529fa3b432511cdac09d0382bb85832",
                 "shasum": ""
             },
             "require": {
@@ -2008,7 +2008,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2018-10-03T06:24:56+00:00"
+            "time": "2018-10-03T08:52:47+00:00"
         },
         {
             "name": "laravel-enso/examples",
