@@ -9,8 +9,8 @@ $factory->define(Role::class, function (Faker $faker) {
         'name' => $faker->word,
         'display_name' => $faker->word,
         'description' => $faker->sentence,
-        'menu_id' => function() {
+        'menu_id' => function () {
             return factory(Menu::class)->create()->id;
-        }
+        },
     ];
 });

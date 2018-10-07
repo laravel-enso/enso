@@ -16,7 +16,7 @@ class PersonSeeder extends Seeder
             'email' => 'admin@laravel-enso.com',
             'gender' => Genders::Male,
             'birthday' => '1980-01-19',
-            'phone' => '+40793232522'
+            'phone' => '+40793232522',
         ]);
     }
 }
