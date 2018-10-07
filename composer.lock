@@ -2717,16 +2717,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/People.git",
-                "reference": "257bd9a2acb5bf538a701dcaeb47f59b28385cc3"
+                "reference": "d8368376879ac12dca42fdd769175f088175abe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/People/zipball/257bd9a2acb5bf538a701dcaeb47f59b28385cc3",
-                "reference": "257bd9a2acb5bf538a701dcaeb47f59b28385cc3",
+                "url": "https://api.github.com/repos/laravel-enso/People/zipball/d8368376879ac12dca42fdd769175f088175abe2",
+                "reference": "d8368376879ac12dca42fdd769175f088175abe2",
                 "shasum": ""
             },
             "require": {
@@ -2773,7 +2773,7 @@
                 "people",
                 "person-management"
             ],
-            "time": "2018-10-07T15:08:03+00:00"
+            "time": "2018-10-07T17:03:50+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",
