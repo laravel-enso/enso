@@ -1,5 +1,61 @@
 ## Laravel Enso's Changelog
 
+### 2.12.0
+
+#### ActivityLog
+- nothing will be persisted when a there's no one logged in to the app (seeds/tinker)
+- `LogsActivity` trait was renamed to `LogsActivity`
+
+#### AvatarManager
+- added assertion in show test
+
+#### Core
+- the Owners structure was renamed into UserGroup
+- removes the deprecated `ownerClass` attribute from `enso/config.php`
+- *history tags* were renamed to *bookmarks*
+- `selectOptions` routes were renamed to `options`
+- replaced the vue $bus instance with vm.$root
+- dropped support for `touch` mode. If it will be of any interest in the future we can look again in that direction
+
+#### CommentsManager
+- removed the `commentables` key from `enso/comments.php` config file. From now the `commentable_type` will be the destination morphable model class
+- removed the deprecated use of `ConfigMapper`
+
+#### DataImport
+- refactored all the tests
+- added test for `stopOnErrors`
+
+#### DocumentsManager
+- removed the `documentables` key from `enso/documents.php` config file. From now the `documentable_type` will be the destination morphable model class
+- removed the deprecated use of `ConfigMapper`
+
+#### FormBuilder
+- adds a series of traits to help tests: `CreateForm`, `EditForm`, `DestroyForm`
+
+#### Teams
+- the structure was moved in its own package => `laravel-enso/teams`
+- adds missing loading flag in `Index.vue`
+
+#### FormBuilder
+- makes switch `info` is-instead of `is-success`
+
+#### Select
+- renames *optionsLimit* with *limit* in vue-select
+
+#### People
+- a new packages that handles People.
+- it's required by `laravel-enso/core`
+- provides:
+    - `Genders` and `Titles` enums.
+    - publishable seeder - `PersonSeeder`
+
+#### RoleManager
+- fixes search in main table
+- fixes `SupervisorId` constant
+
+#### VueDatatable
+- adds trait to help tests: `DatatableTest`
+
 ### 2.12.0-beta
 
 You definately shouldn't update to this version. In the next days we will refine the upgrade process and commit a new version with the full changelog. Stay tuned...

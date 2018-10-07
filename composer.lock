@@ -1290,16 +1290,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "8c5c54fcda7368ae0c072e4e4275719bfe4dec9a"
+                "reference": "698e8240d6fac8323573547a37c80266b6937f5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/8c5c54fcda7368ae0c072e4e4275719bfe4dec9a",
-                "reference": "8c5c54fcda7368ae0c072e4e4275719bfe4dec9a",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/698e8240d6fac8323573547a37c80266b6937f5f",
+                "reference": "698e8240d6fac8323573547a37c80266b6937f5f",
                 "shasum": ""
             },
             "require": {
@@ -1350,7 +1350,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-10-07T13:40:19+00:00"
+            "time": "2018-10-07T16:33:25+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
