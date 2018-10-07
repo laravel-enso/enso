@@ -30,8 +30,6 @@ class Mention {
         this.cursorPosition = null;
         this.items = [];
         this.query = null;
-        this.template = item =>
-            `<img src="${route('core.avatars.show', item.avatar.id)}"> ${this.highlight(item.fullName)}`;
     }
 
     setQuillEvents() {
@@ -81,8 +79,8 @@ class Mention {
     }
 
     fetcher() {
-        axios.get(route('core.discussions.taggableUsers'), {
-            params: { query: this.query },
+        axios.get(route('administration.users.options'), {
+            params: { query: this.query, limit: 10 },
         }).then(({ data }) => this.renderList(data));
     }
 
@@ -135,7 +133,7 @@ class Mention {
         for (let i = 0; i < this.items.length; i++) {
             const li = document.createElement('li');
             li.className = 'mention-item';
-            li.innerHTML = this.template(this.items[i]);
+            li.innerHTML = this.options.template(this.highlight(this.items[i]));
             li.dataset.index = i;
             li.onclick = this.onItemClick.bind(this);
             this.mentionList.appendChild(li);
@@ -213,7 +211,7 @@ class Mention {
     itemData() {
         return {
             id: this.items[this.itemIndex].id,
-            value: this.template(this.items[this.itemIndex]),
+            value: this.options.template(this.items[this.itemIndex]),
         };
     }
 
@@ -234,10 +232,15 @@ class Mention {
         this.destroyMention();
     }
 
-    highlight(item) {
-        return this.query
-            ? item.replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>')
-            : item;
+    highlight(user) {
+        if (!this.query) {
+            return user;
+        }
+
+        user.person.name = user.person.name
+            .replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>');
+
+        return user;
     }
 
     destroyMention() {

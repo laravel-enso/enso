@@ -4,6 +4,8 @@
         <typeahead is-rounded
             source="core.search.index"
             :placeholder="__('Search')"
+            :searching="__('Searching') + '..'"
+            :no-results="__('Nothing found')"
             v-model="query"
             @update="redirect">
             <template slot="option"

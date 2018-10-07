@@ -1,7 +1,7 @@
 <template>
 
     <div class="columns is-reverse-mobile">
-        <div class="column is-three-quarters">
+        <div class="column is-three-quarters-desktop is-full-touch">
             <div class="columns animated fadeInDown"
                 v-if="addingVideo || editingVideo">
                 <div class="column is-narrow">

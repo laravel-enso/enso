@@ -165,7 +165,7 @@ export default {
             return route('core.avatars.show', avatarId);
         },
         template(user) {
-            return `<img src="${route('core.avatars.show', user.avatarId)}"> ${user.fullName}`;
+            return `<img src="${route('core.avatars.show', user.avatar.id)}"> ${user.person.name}`;
         },
     },
 };

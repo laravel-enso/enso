@@ -149,13 +149,14 @@
             <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd"
                 v-if="summary.issues">
                 <card class="is-rounded raises-on-hover animated bounceInRight"
-                    :icon="icon"
+                    icon="exclamation-triangle"
                     :title="__('Issues')">
                     <tabs class="has-padding-medium"
                         alignment="right">
-                        <tab v-for="(issues, category) in summary.structureIssues"
+                        <tab class="has-padding-large"
                             :key="category"
-                            :id="category">
+                            :id="category"
+                            v-for="(issues, category) in summary.structureIssues">
                             <ul class="issues has-margin-left-large">
                                 <li v-for="(issue, index) in issues"
                                     :key="index">
@@ -223,8 +224,8 @@
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-    faUpload, faDownload, faTrashAlt, faFileExcel,
-    faCalendarAlt, faClock, faCheck, faTimes, faBook,
+    faUpload, faDownload, faTrashAlt, faFileExcel, faCalendarAlt,
+    faClock, faCheck, faTimes, faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
@@ -237,8 +238,8 @@ import Tabs from '../../components/enso/bulma/Tabs.vue';
 import Tab from '../../components/enso/bulma/Tab.vue';
 
 library.add([
-    faUpload, faDownload, faTrashAlt, faFileExcel,
-    faCalendarAlt, faClock, faCheck, faTimes, faBook,
+    faUpload, faDownload, faTrashAlt, faFileExcel, faCalendarAlt,
+    faClock, faCheck, faTimes, faExclamationTriangle,
 ]);
 
 export default {
@@ -273,9 +274,6 @@ export default {
         importLink() {
             return this.importType
                 && route('import.run', this.importType);
-        },
-        icon() {
-            return faBook;
         },
     },
 

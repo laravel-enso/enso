@@ -11,7 +11,7 @@
                 { 'is-collapsed' : !menu.isExpanded }
             ]" v-if="menu.isVisible"/>
             <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
-                <history v-if="history"/>
+                <bookmarks v-if="bookmarks"/>
                 <div class="container is-fluid page-content is-marginless">
                     <page-header :title="$route.meta.title"/>
                     <router v-if="isInitialised"/>
@@ -33,20 +33,20 @@ import Sidebar from '../structure/menu/Sidebar.vue';
 import Settings from '../structure/settings/Settings.vue';
 import AppFooter from '../structure/AppFooter.vue';
 import Router from '../Router.vue';
-import History from '../structure/History.vue';
+import Bookmarks from '../structure/Bookmarks.vue';
 import PageHeader from '../structure/PageHeader.vue';
 
 export default {
     name: 'Default',
 
     components: {
-        Navbar, Sidebar, Settings, AppFooter, Router, History, PageHeader,
+        Navbar, Sidebar, Settings, AppFooter, Router, Bookmarks, PageHeader,
     },
 
     computed: {
         ...mapState(['meta', 'isInitialised']),
         ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'menu', 'settingsBar']),
-        ...mapGetters('preferences', ['history']),
+        ...mapGetters('preferences', ['bookmarks']),
         lightsOn() {
             return !this.lightsOff;
         },
@@ -63,8 +63,8 @@ export default {
     },
 
     created() {
-        this.$bus.$on('start-impersonating', $event => this.startImpersonating($event));
-        this.$bus.$on('stop-impersonating', () => this.stopImpersonating());
+        this.$root.$on('start-impersonating', $event => this.startImpersonating($event));
+        this.$root.$on('stop-impersonating', () => this.stopImpersonating());
     },
 
     beforeMount() {

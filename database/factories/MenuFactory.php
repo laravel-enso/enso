@@ -7,9 +7,9 @@ $factory->define(Menu::class, function (Faker $faker) {
     return [
         'parent_id' => null,
         'name' => $faker->word,
+        'link' => $faker->url,
         'icon' => $faker->word,
-        'link' => null,
-        'has_children' => 0,
-        'order_index' => 999,
+        'has_children' => false,
+        'order_index' => $faker->randomNumber(3),
     ];
 });

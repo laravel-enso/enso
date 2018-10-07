@@ -5,13 +5,13 @@ use LaravelEnso\Contacts\app\Models\Contact;
 
 $factory->define(Contact::class, function (Faker $faker) {
     return [
-        'contactable_id' => 1,
-        'contactable_type' => 'App\Owner',
+        'contactable_id' => $faker->randomKey,
+        'contactable_type' => $faker->word,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'phone' => $faker->phoneNumber,
         'email' => $faker->unique()->safeEmail,
-        'created_by' => 2,
-        'is_active' => $faker->numberBetween($min = 0, $max = 1),
+        'phone' => $faker->phoneNumber,
+        'position' => $faker->jobTitle,
+        'is_active' => $faker->boolean,
     ];
 });

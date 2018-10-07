@@ -4,7 +4,6 @@
         :show="true">
         <vue-form class="box"
             :data="form"
-            :params="params"
             v-on="$listeners">
             <template v-for="field in customFields"
                 v-if="field.meta.custom"
@@ -49,16 +48,23 @@ export default {
     },
 
     computed: {
-        params() {
-            return {
-                addressable_id: this.id,
-                addressable_type: this.type,
-            };
-        },
         customFields() {
             return this.form.sections
                 .reduce((fields, section) => fields
                     .concat(section.fields.filter(field => field.meta.custom)), []);
+        },
+    },
+
+    created() {
+        this.field('addressable_type').value = this.type;
+        this.field('addressable_id').value = this.id;
+    },
+
+    methods: {
+        field(field) {
+            return this.form.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
         },
     },
 };

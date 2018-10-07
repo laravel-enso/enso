@@ -1,14 +1,11 @@
 <?php
 
-use LaravelEnso\Core\app\Models\Owner;
+use LaravelEnso\Core\app\Models\UserGroup;
 
 return [
-    'contactables' => [
-        'owner' => Owner::class,
-    ],
     'loggableMorph' => [
         'contactable' => [
-            Owner::class => 'name',
+            UserGroup::class => 'name',
         ],
     ],
 ];

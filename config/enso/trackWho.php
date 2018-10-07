@@ -1,5 +1,8 @@
 <?php
 
 return [
-    'resource' => ['name' => 'fullName'],
+    'resourcePersonAttributes' => [
+        'name' => 'name',
+        'appellative' => 'appellative',
+    ],
 ];

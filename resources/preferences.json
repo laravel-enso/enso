@@ -3,8 +3,7 @@
         "lang": "en",
         "dtStateSave": true,
         "expandedMenu": true,
-        "history": true,
-        "layout": "default",
+        "bookmarks": false,
         "theme": "clean",
         "toastrPosition": "top-right"
     },

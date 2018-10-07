@@ -13,7 +13,7 @@
                 </span>
             </button>
             <button class="button has-margin-left-small"
-                @click="get()">
+                @click="fetch()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
                 </span>
@@ -59,8 +59,8 @@
             :type="type"
             :form="form"
             @close="form = null"
-            @delete="get();form = null"
-            @submit="get();form = null"
+            @delete="fetch();form = null"
+            @submit="fetch();form = null"
             ref="form"
             v-if="form">
             <template v-for="field in customFields"
@@ -156,11 +156,11 @@ export default {
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
             axios.get(
@@ -196,7 +196,7 @@ export default {
             this.loading = true;
 
             axios.patch(route('core.addresses.setDefault', address.id)).then(() => {
-                this.get();
+                this.fetch();
             }).catch(error => this.handleError(error));
         },
         destroy(address, index) {

@@ -49,7 +49,7 @@
                             {{ searching }}
                         </span>
                         <span v-else>
-                            {{ notResults }}
+                            {{ noResults }}
                         </span>
                     </a>
                 </div>
@@ -99,9 +99,9 @@ export default {
             type: String,
             default: 'What are you searching for today?',
         },
-        notResults: {
+        noResults: {
             type: String,
-            default: 'No results found matching the criteria...',
+            default: 'Nothing found...',
         },
         searching: {
             type: String,

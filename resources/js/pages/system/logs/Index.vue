@@ -7,11 +7,14 @@
             <card class="is-rounded raises-on-hover"
                 :icon="icon"
                 :title="log.name"
-                :controls="3">
+                :controls="4">
                 <card-control slot="control-1"
-                    v-if="log.canBeSeen">
+                    v-if="log.visible">
                     <span class="icon is-small has-text-success"
-                        @click="$router.push({ name: 'system.logs.show', params: { id: log.name } })">
+                        @click="$router.push({
+                            name: 'system.logs.show',
+                            params: { id: log.name }
+                        })">
                         <fa icon="eye"/>
                     </span>
                 </card-control>
@@ -28,6 +31,12 @@
                             <fa icon="trash-alt"/>
                         </span>
                     </popover>
+                </card-control>
+                <card-control slot="control-4">
+                    <a class="icon is-small has-text-success"
+                        @click="fetch">
+                        <fa icon="sync-alt"/>
+                    </a>
                 </card-control>
                 <div class="has-padding-large">
                     <p>
@@ -48,13 +57,14 @@
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt, faSyncAlt }
+    from '@fortawesome/free-solid-svg-icons';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt);
+library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt, faSyncAlt);
 
 export default {
     components: { Card, CardControl, Popover },
@@ -72,12 +82,15 @@ export default {
     },
 
     created() {
-        axios.get(route('system.logs.index')).then(({ data }) => {
-            this.logs = data;
-        }).catch(error => this.handleError(error));
+        this.fetch();
     },
 
     methods: {
+        fetch() {
+            axios.get(route('system.logs.index')).then(({ data }) => {
+                this.logs = data;
+            }).catch(error => this.handleError(error));
+        },
         empty(log) {
             axios.delete(route('system.logs.destroy', log.name)).then(({ data }) => {
                 const index = this.logs.findIndex(item => log.name === item.name);

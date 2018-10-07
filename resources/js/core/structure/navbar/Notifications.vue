@@ -28,7 +28,7 @@
             <div class="notification-list"
                 @scroll="computeScrollPosition($event)">
                 <a class="navbar-item"
-                    @click="markAsRead(notification)"
+                    @click="update(notification)"
                     v-for="(notification, index) in notifications"
                     :key="index">
                     <div class="navbar-content">
@@ -65,7 +65,7 @@
                 <div class="level-right">
                     <div class="level-item">
                         <a class="button is-small is-success"
-                            @click="markAllAsRead">
+                            @click="updateAll">
                             <span>{{ __("Mark all as read") }}</span>
                             <span class="icon is-small">
                                 <fa icon="check"/>
@@ -139,16 +139,16 @@ export default {
         },
         show() {
             if (this.show) {
-                this.getData();
+                this.fetch();
             }
         },
     },
 
     created() {
-        this.getData = debounce(this.getData, 500);
+        this.fetch = debounce(this.fetch, 500);
         this.initLaravelEcho();
         this.initDesktopNotification();
-        this.getCount();
+        this.count();
         this.listen();
         this.addBusListeners();
     },
@@ -157,31 +157,30 @@ export default {
         hide() {
             this.show = false;
         },
-        getCount() {
-            axios.get(route('core.notifications.getCount'))
+        count() {
+            axios.get(route('core.notifications.count'))
                 .then(({ data }) => {
-                    this.unreadCount = data;
+                    this.unreadCount = data.count;
                 }).catch(error => this.handleError(error));
         },
-        getData() {
+        fetch() {
             if (!this.needsUpdate || this.loading) {
                 return;
             }
 
             this.loading = true;
 
-            axios.get(route(
-                'core.notifications.getList',
-                [this.offset, this.limit],
-            )).then(({ data }) => {
+            axios.get(route('core.notifications.index'),
+                { params: { offset: this.offset, limit: this.limit }},
+            ).then(({ data }) => {
                 this.notifications = this.offset ? this.notifications.concat(data) : data;
                 this.offset = this.notifications.length;
                 this.needsUpdate = false;
                 this.loading = false;
             }).catch(error => this.handleError(error));
         },
-        markAsRead(notification) {
-            axios.patch(route('core.notifications.markAsRead', notification.id))
+        update(notification) {
+            axios.patch(route('core.notifications.update', notification.id))
                 .then(({ data }) => {
                     this.unreadCount = Math.max(--this.unreadCount, 0);
                     notification.read_at = data.read_at;
@@ -191,11 +190,10 @@ export default {
                     }
                 }).catch(error => this.handleError(error));
         },
-        markAllAsRead() {
-            axios.patch(route('core.notifications.markAllAsRead'))
-                .then(() => {
-                    this.readAll();
-                }).catch(error => this.handleError(error));
+        updateAll() {
+            axios.post(route('core.notifications.updateAll'))
+                .then(() => this.readAll())
+                .catch(error => this.handleError(error));
         },
         readAll() {
             this.notifications.forEach((notification) => {
@@ -203,12 +201,6 @@ export default {
             });
 
             this.unreadCount = 0;
-        },
-        clearAll() {
-            axios.patch(route('core.notifications.clearAll')).then(() => {
-                this.notifications = [];
-                this.unreadCount = 0;
-            }).catch(error => this.handleError(error));
         },
         initLaravelEcho() {
             this.Echo = new Echo({
@@ -270,14 +262,14 @@ export default {
 
             if (a / b > 0.7) {
                 this.needsUpdate = true;
-                this.getData();
+                this.fetch();
             }
         },
         timeFromNow(date) {
             return formatDistance(date);
         },
         addBusListeners() {
-            this.$bus.$on('notification-read', (notification) => {
+            this.$root.$on('read-notification', (notification) => {
                 this.unreadCount = Math.max(--this.unreadCount, 0);
                 const existing = this.notifications.find(({ id }) => id === notification.id);
 
@@ -286,9 +278,9 @@ export default {
                 }
             });
 
-            this.$bus.$on('read-all-notifications', () => this.readAll());
+            this.$root.$on('read-all-notifications', () => this.readAll());
 
-            this.$bus.$on('clear-notification', (notification) => {
+            this.$root.$on('destroy-notification', (notification) => {
                 const index = this.notifications.findIndex(({ id }) => id === notification.id);
 
                 if (!notification.read_at) {
@@ -300,7 +292,7 @@ export default {
                 }
             });
 
-            this.$bus.$on('clear-all-notifications', () => {
+            this.$root.$on('destroy-all-notifications', () => {
                 this.notifications = [];
                 this.unreadCount = 0;
             });

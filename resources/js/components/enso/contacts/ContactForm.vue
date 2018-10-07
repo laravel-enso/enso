@@ -3,7 +3,6 @@
         :show="true">
         <vue-form class="box"
             v-on="$listeners"
-            :params="params"
             :data="form"/>
     </modal>
 </template>
@@ -33,12 +32,16 @@ export default {
         },
     },
 
-    computed: {
-        params() {
-            return {
-                contactable_id: this.id,
-                contactable_type: this.type,
-            };
+    created() {
+        this.field('contactable_type').value = this.type;
+        this.field('contactable_id').value = this.id;
+    },
+
+    methods: {
+        field(field) {
+            return this.form.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
         },
     },
 };

@@ -36,7 +36,7 @@
                             <span class="icon is-small has-text-info"
                                 v-tooltip="i18n(field.meta.tooltip)"
                                 v-if="field.meta.tooltip">
-                                <fa icon="info" size="xs"/>
+                                <fa icon="info-circle" size="xs"/>
                             </span>
                         </label>
                         <slot :name="field.name"
@@ -45,7 +45,7 @@
                             v-if="field.meta.custom"/>
                         <vue-switch v-model="field.value"
                             size="is-large"
-                            type="is-success"
+                            type="is-info"
                             :disabled="field.meta.disabled || field.meta.readonly"
                             @click="$emit('update')"
                             @input="errors.clear(field.name)"
@@ -141,71 +141,86 @@
                     </div>
                 </div>
             </div>
-            <a class="button"
-                v-if="data.actions.destroy"
-                :disabled="data.actions.destroy.forbidden"
-                :class="data.actions.destroy.button.class"
-                @click="modal = true">
-                <span class="is-hidden-mobile">
-                    {{ i18n(data.actions.destroy.button.label) }}
-                </span>
-                <span class="icon">
-                    <fa :icon="data.actions.destroy.button.icon"/>
-                </span>
-                <span class="is-hidden-mobile"/>
-            </a>
-            <a class="button"
-                :class="data.actions.show.button.class"
-                @click="show()"
-                v-if="data.actions.show"
-                :disabled="data.actions.show.forbidden">
-                <span class="is-hidden-mobile">
-                    {{ i18n(data.actions.show.button.label) }}
-                </span>
-                <span class="icon">
-                    <fa :icon="data.actions.show.button.icon"/>
-                </span>
-                <span class="is-hidden-mobile"/>
-            </a>
-            <a class="button"
-                :class="data.actions.create.button.class"
-                @click="create()"
-                v-if="data.actions.create"
-                :disabled="data.actions.create.forbidden">
-                <span class="is-hidden-mobile">
-                    {{ i18n(data.actions.create.button.label) }}
-                </span>
-                <span class="icon">
-                    <fa :icon="data.actions.create.button.icon"/>
-                </span>
-                <span class="is-hidden-mobile"/>
-            </a>
-            <button type="submit"
-                v-if="data.actions.store"
-                class="button is-pulled-right"
-                :class="[data.actions.store.button.class, { 'is-loading': loading }]"
-                :disabled="data.actions.store.forbidden || errors.any()">
-                <span class="is-hidden-mobile">
-                    {{ i18n(data.actions.store.button.label) }}
-                </span>
-                <span class="icon">
-                    <fa :icon="data.actions.store.button.icon"/>
-                </span>
-                <span class="is-hidden-mobile"/>
-            </button>
-            <button type="submit"
-                v-if="data.actions.update"
-                class="button is-pulled-right"
-                :class="[data.actions.update.button.class, { 'is-loading': loading }]"
-                :disabled="data.actions.update.forbidden || errors.any()">
-                <span class="is-hidden-mobile">
-                    {{ i18n(data.actions.update.button.label) }}
-                </span>
-                <span class="icon">
-                    <fa :icon="data.actions.update.button.icon"/>
-                </span>
-                <span class="is-hidden-mobile"/>
-            </button>
+            <div class="actions">
+                <a class="button"
+                    v-if="data.actions.store"
+                    @click="$router.go(-1)">
+                    <span class="is-hidden-mobile">
+                        {{ i18n('Back') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="arrow-left"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </a>
+                <a class="button"
+                    v-if="data.actions.destroy"
+                    :disabled="data.actions.destroy.forbidden"
+                    :class="data.actions.destroy.button.class"
+                    @click="modal = true">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(data.actions.destroy.button.label) }}
+                    </span>
+                    <span class="icon">
+                        <fa :icon="data.actions.destroy.button.icon"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </a>
+                <a class="button"
+                    :class="data.actions.show.button.class"
+                    @click="show()"
+                    v-if="data.actions.show"
+                    :disabled="data.actions.show.forbidden">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(data.actions.show.button.label) }}
+                    </span>
+                    <span class="icon">
+                        <fa :icon="data.actions.show.button.icon"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </a>
+                <a class="button"
+                    :class="data.actions.create.button.class"
+                    @click="create()"
+                    v-if="data.actions.create"
+                    :disabled="data.actions.create.forbidden">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(data.actions.create.button.label) }}
+                    </span>
+                    <span class="icon">
+                        <fa :icon="data.actions.create.button.icon"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </a>
+                <slot name="actions"/>
+                <button type="submit"
+                    v-if="data.actions.store"
+                    class="button is-pulled-right"
+                    :class="[data.actions.store.button.class, { 'is-loading': loading }]"
+                    :disabled="data.actions.store.forbidden || errors.any()">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(data.actions.store.button.label) }}
+                    </span>
+                    <span class="icon">
+                        <fa :icon="data.actions.store.button.icon"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </button>
+                <button type="submit"
+                    v-if="data.actions.update"
+                    class="button is-pulled-right"
+                    :class="[data.actions.update.button.class, { 'is-loading': loading }]"
+                    :disabled="data.actions.update.forbidden || errors.any()">
+                    <span class="is-hidden-mobile">
+                        {{ i18n(data.actions.update.button.label) }}
+                    </span>
+                    <span class="icon">
+                        <fa :icon="data.actions.update.button.icon"/>
+                    </span>
+                    <span class="is-hidden"/>
+                </button>
+            </div>
+
             <div class="is-clearfix"/>
         </form>
         <modal v-if="data.actions.destroy"
@@ -222,7 +237,7 @@
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo }
+import { faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faInfoCircle, faArrowLeft }
     from '@fortawesome/free-solid-svg-icons';
 import Divider from './Divider.vue';
 import Errors from './classes/Errors';
@@ -232,7 +247,7 @@ import VueSelect from '../select/VueSelect.vue';
 import Datepicker from './Datepicker.vue';
 import Money from './Money.vue';
 
-library.add(faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faUndo, faInfo);
+library.add(faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faInfoCircle, faArrowLeft);
 
 export default {
     name: 'VueForm',

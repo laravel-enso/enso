@@ -42,7 +42,7 @@ export default {
         ...mapState(['meta']),
         ...mapState(['isInitialised', 'showQuote']),
         ...mapState('auth', ['isAuth']),
-        ...mapState('history', ['lastRoute']),
+        ...mapState('bookmarks', ['lastRoute']),
         ...mapGetters('localisation', ['documentTitle']),
     },
 
@@ -60,7 +60,7 @@ export default {
 
     methods: {
         ...mapMutations('layout', ['hideHome']),
-        ...mapMutations('history', ['setLastRoute']),
+        ...mapMutations('bookmarks', ['setLastRoute']),
         ...mapActions(['initialise']),
         ...mapActions('layout', ['setTheme']),
         enterApp() {

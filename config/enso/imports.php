@@ -23,9 +23,9 @@ return [
     */
 
     'configs' => [
-        'owners' => [
-            'label' => 'Owners',
-            'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',
+        'userGroups' => [
+            'label' => 'UserGroup',
+            'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/userGroups.json',
         ],
     ],
 ];

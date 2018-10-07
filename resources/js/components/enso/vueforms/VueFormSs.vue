@@ -12,6 +12,7 @@
                 :field="field"
                 :errors="errors"/>
         </template>
+        <slot name="actions" slot="actions"/>
     </vue-form>
 
 </template>

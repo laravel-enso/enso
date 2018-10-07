@@ -1,7 +1,7 @@
 <template>
 
     <div class="columns is-centered">
-        <div class="column is-three-quarters">
+        <div class="column is-three-quarters-desktop is-full-touch">
             <div class="animated fadeIn"
                 v-if="data">
                 <center class="has-padding-bottom-large">

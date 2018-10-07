@@ -1,16 +1,14 @@
 <?php
 
 use App\Classes\LocalState;
-use LaravelEnso\Core\app\Models\Owner;
 
 return [
-    'version' => '2.11.13',
+    'version' => '2.12.0',
     'showQuote' => true,
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',
     'stateBuilder' => LocalState::class,
-    'ownerModel' => Owner::class,
     'defaultRole' => 'admin',
     'phpDateFormat' => 'd-m-Y',
     'jsDateFormat' => 'DD-MM-YYYY',

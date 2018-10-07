@@ -9,15 +9,16 @@
         "fideloper/proxy": "~4.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel-enso/core": "^3.0",
-        "laravel-enso/addressesmanager": "2.3.*",
-        "laravel-enso/commentsmanager": "2.3.*",
-        "laravel-enso/contacts": "2.2.32",
+        "laravel-enso/addressesmanager": "2.4.*",
+        "laravel-enso/commentsmanager": "2.4.*",
+        "laravel-enso/contacts": "2.3.*",
         "laravel-enso/controlpanelapi": "^2.0",
-        "laravel-enso/dataimport": "2.4.*",
-        "laravel-enso/discussions": "^1.0",
-        "laravel-enso/documentsmanager": "2.3.*",
+        "laravel-enso/dataimport": "2.5.*",
+        "laravel-enso/discussions": "1.1.*",
+        "laravel-enso/documentsmanager": "2.4.*",
         "laravel-enso/examples": "^1.0",
-        "laravel-enso/howtovideos": "2.1.*",
+        "laravel-enso/howtovideos": "2.2.*",
+        "laravel-enso/teams": "1.0.*",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "sentry/sentry-laravel": "dev-laravel-57@dev"
@@ -28,7 +29,6 @@
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
         "laracasts/generators": "dev-develop",
-        "laravel-enso/testhelper": "1.4.*",
         "mockery/mockery": "1.*",
         "nunomaduro/collision": "^2.0.0",
         "phpunit/phpunit": "^7.0",
@@ -44,7 +44,10 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LaravelEnso\\Teams\\": "vendor/laravel-enso/teams/src/",
+            "LaravelEnso\\People\\": "vendor/laravel-enso/people/src/",
+            "LaravelEnso\\Companies\\": "vendor/laravel-enso/companies/src/"
         }
     },
     "autoload-dev": {

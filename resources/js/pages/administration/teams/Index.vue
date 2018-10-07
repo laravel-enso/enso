@@ -74,6 +74,7 @@ export default {
 
     data() {
         return {
+            loading: false,
             initialised: false,
             teams: [],
             team: null,

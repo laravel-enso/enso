@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.12.0-beta
+
+You definately shouldn't update to this version. In the next days we will refine the upgrade process and commit a new version with the full changelog. Stay tuned...
+
 ### 2.11.13
 Improves history tabs. When updating existing apps use the delete button to clear previous tabs from the local storage to fully make use of the new behavior.
 
@@ -171,7 +175,7 @@ This version is a step forward in the direction of abstracting Enso from a clean
 
 Changes and upgrade instructions:
 
-- update in your `composer.json` the `core` requirement to `"laravel-enso/core": "3.0.*",`
+- update in your `composer.json` the `core` requirement to `"laravel-enso/core": "3.1.*",`
 - the examples were moved in a dedicated `examples` package. To upgrade, remove everyting related to examples:
     - remove the files (copy everything below in one take and paste it into the terminal)
         ```
@@ -711,7 +715,7 @@ To upgrade an existing project update in your `composer.json`: "laravel-enso/cor
 
 The documentation will be updated soon.
 
-Meanwhile, take a look at the new `LogActivity` trait. For examples peek at the `User` model from a blank project and for polymorphic relations at the `Comment` model from the `CommentsManager` packages.
+Meanwhile, take a look at the new `LogsActivity` trait. For examples peek at the `User` model from a blank project and for polymorphic relations at the `Comment` model from the `CommentsManager` packages.
 
 ### 2.8.18
 

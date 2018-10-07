@@ -5,7 +5,7 @@
             :src="$store.getters.avatarLink">
         <span class="has-margin-left-small"
             v-if="!isTouch">
-            {{ $store.state.user.first_name }}
+            {{ $store.state.user.person.appellative || $store.state.user.person.name }}
         </span>
     </a>
 </template>

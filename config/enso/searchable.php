@@ -1,7 +1,7 @@
 <?php
 
-use LaravelEnso\Core\app\Models\Team;
-use LaravelEnso\Core\app\Models\User;
+use LaravelEnso\Teams\app\Models\Team;
+use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\Contacts\app\Models\Contact;
 use LaravelEnso\HowToVideos\app\Models\Video;
 
@@ -14,12 +14,11 @@ return [
     ],
     'limit' => 10,
     'models' => [
-        User::class => [
-            'group' => 'User',
-            'attributes' => ['first_name', 'last_name', 'email'],
-            'label' => 'fullName',
-            'permissionGroup' => 'administration.users',
-            'scopes' => ['active'],
+        Person::class => [
+            'group' => 'Person',
+            'attributes' => ['name', 'appellative', 'email', 'phone'],
+            'label' => 'name',
+            'permissionGroup' => 'administration.people',
         ],
         Team::class => [
             'group' => 'Team',

@@ -2,7 +2,14 @@
     <div class="box has-padding-medium is-raised"
         v-if="profile">
         <h4 class="title is-4 has-text-centered has-margin-top-large">
-            {{ profile.fullName }}
+            <span class="icon">
+                <fa icon="user"
+                    size="xs"/>
+            </span>
+            {{ profile.person.name }}
+            <span v-if="profile.person.appellative">
+                ({{ profile.person.appellative }})
+            </span>
         </h4>
         <hr>
         <div class="columns">
@@ -15,10 +22,9 @@
                         </figure>
                     </div>
                     <div class="column">
-                        <div class="has-margin-top-small field controls"
-                            v-if="isSelfVisiting">
-                            <button class="button is-fullwidth is-warning"
-                                v-if="avatarId"
+                        <div class="has-margin-top-small field controls">
+                            <a class="button is-fullwidth is-primary"
+                                v-if="isSelfVisiting"
                                 @click="updateAvatar">
                                 <span class="icon">
                                     <fa icon="sync-alt"/>
@@ -26,13 +32,14 @@
                                 <span>
                                     {{ __('Avatar') }}
                                 </span>
-                            </button>
+                            </a>
                             <file-uploader @upload-successful="setUserAvatar($event.id)"
                                 :url="uploadAvatarLink"
-                                file-key="avatar">
+                                file-key="avatar"
+                                v-if="isSelfVisiting">
                                 <template slot="upload-button"
                                     slot-scope="{ openFileBrowser }">
-                                    <button class="button is-fullwidth is-info has-margin-top-small"
+                                    <a class="button is-fullwidth is-info has-margin-top-small"
                                         @click="openFileBrowser">
                                         <span class="icon">
                                             <fa icon="upload"/>
@@ -40,29 +47,41 @@
                                         <span>
                                             {{ __('Avatar') }}
                                         </span>
-                                    </button>
+                                    </a>
                                 </template>
                             </file-uploader>
-                            <button class="button is-fullwidth is-danger has-margin-top-small"
-                                @click="exit()">
+                            <a class="button is-fullwidth is-danger has-margin-top-small"
+                                @click="exit()"
+                                v-if="isSelfVisiting">
                                 <span class="icon">
                                     <fa icon="sign-out-alt"/>
                                 </span>
                                 <span>
                                     {{ __('Log out') }}
                                 </span>
-                            </button>
-                        </div>
-                        <div class="has-margin-top-large"
-                            v-else>
+                            </a>
                             <button class="button is-fullwidth is-warning"
-                                @click="$bus.$emit('start-impersonating', profile.id)"
+                                @click="$root.$emit('start-impersonating', profile.id)"
                                 v-if="
-                                    canAccess('core.impersonate.start')
+                                    !isSelfVisiting
+                                    && canAccess('core.impersonate.start')
                                     && !impersonating
                                 ">
                                 {{ __('Impersonate') }}
                             </button>
+                            <a class="button is-fullwidth has-margin-top-small is-warning"
+                                @click="$router.push({
+                                    name: 'administration.users.edit',
+                                    params: { id: profile.id },
+                                })"
+                                v-if="canAccess('administration.users.edit')">
+                                <span class="icon">
+                                    <fa icon="pencil-alt"/>
+                                </span>
+                                <span>
+                                    {{ __('Edit') }}
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -71,26 +90,27 @@
                 <hr v-if="isMobile">
                 <div class="columns is-mobile is-multiline">
                     <div class="column is-one-third has-text-right">
-                        <p class="has-margin-top-small"><strong>{{ __('Owner') }}</strong></p>
+                        <p class="has-margin-top-small"><strong>{{ __('Group') }}</strong></p>
                         <p class="has-margin-top-small"><strong>{{ __('Role') }}</strong></p>
                         <p class="has-margin-top-small"><strong>{{ __('Email') }}</strong></p>
                         <p class="has-margin-top-small"><strong>{{ __('Phone') }}</strong></p>
+                        <p class="has-margin-top-small"><strong>{{ __('Birthday') }}</strong></p>
+                        <p class="has-margin-top-small"><strong>{{ __('Gender') }}</strong></p>
                     </div>
                     <div class="column">
-                        <p class="has-margin-top-small">{{ profile.owner.name }}</p>
+                        <p class="has-margin-top-small">{{ profile.group.name }}</p>
                         <p class="has-margin-top-small">{{ profile.role.name }}</p>
                         <p class="has-margin-top-small">{{ profile.email }}</p>
-                        <p class="has-margin-top-small">{{ profile.phone }}</p>
+                        <p class="has-margin-top-small">{{ profile.person.phone || '---' }}</p>
+                        <p class="has-margin-top-small">{{ dateFormat(profile.person.birthday) || '---' }} </p>
+                        <p class="has-margin-top-small is-italic">
+                            {{
+                                profile.person.gender
+                                    ? enums.genders[profile.person.gender]
+                                    : '---'
+                            }}
+                        </p>
                     </div>
-                </div>
-                <div class="has-text-centered">
-                    <a class="button is-warning"
-                        @click="$router.push({
-                            name: 'administration.users.edit',
-                            params: { id: profile.id },
-                        })">
-                        {{ __('Edit User Info') }}
-                    </a>
                 </div>
             </div>
         </div>
@@ -123,10 +143,12 @@
 
 import { mapState, mapMutations } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSyncAlt, faTrashAlt, faUpload, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSyncAlt, faTrashAlt, faUpload, faSignOutAlt, faPencilAlt }
+    from '@fortawesome/free-solid-svg-icons';
 import FileUploader from '../filemanager/FileUploader.vue';
+import format from '../../../modules/enso/plugins/date-fns/format';
 
-library.add(faSyncAlt, faTrashAlt, faUpload, faSignOutAlt);
+library.add(faUser, faSyncAlt, faTrashAlt, faUpload, faSignOutAlt, faPencilAlt);
 
 export default {
     name: 'UserProfile',
@@ -140,7 +162,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['user', 'meta', 'impersonating']),
+        ...mapState(['user', 'meta', 'enums', 'impersonating']),
         ...mapState('auth', ['isAuth']),
         ...mapState('layout', ['isMobile']),
         uploadAvatarLink() {
@@ -161,13 +183,13 @@ export default {
 
     created() {
         if (this.isAuth) {
-            this.getProfile();
+            this.fetch();
         }
     },
 
     methods: {
         ...mapMutations(['setUserAvatar', 'initialise']),
-        getProfile() {
+        fetch() {
             axios.get(route(this.$route.name, this.$route.params.id))
                 .then(response => (this.profile = response.data.user))
                 .catch(error => this.handleError(error));
@@ -186,6 +208,9 @@ export default {
             }).catch((error) => {
                 this.handleError(error);
             });
+        },
+        dateFormat(date) {
+            return format(date, this.meta.dateFormat);
         },
     },
 };

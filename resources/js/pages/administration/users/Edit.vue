@@ -1,15 +1,18 @@
 <template>
 
     <div class="columns is-centered">
-        <div class="column is-three-quarters">
+        <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box raises-on-hover animated fadeIn"
                 :route-params="[$route.name, $route.params.id, false]"
                 ref="form"
-                @loaded="pivotParams.owners.id = $refs.form.field('owner_id').value">
-                <template slot="owner_id" slot-scope="{ field, errors }">
+                @loaded="
+                    personId = $refs.form.data.params.personId
+                    pivotParams.userGroups.id = $refs.form.field('group_id').value;
+                ">
+                <template slot="group_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :has-error="errors.has(field.name)"
-                        @input="pivotParams.owners.id=$event;errors.clear(field.name)"
+                        @input="pivotParams.userGroups.id=$event;errors.clear(field.name)"
                         :source="field.meta.source"/>
                 </template>
                 <template slot="role_id" slot-scope="{ field, errors }">
@@ -48,6 +51,20 @@
                         </span>
                     </div>
                 </template>
+                <a slot="actions"
+                    class="button is-warning"
+                    @click="$router.push({
+                        name: 'administration.people.edit',
+                        params: { id: personId }
+                    })">
+                    <span class="is-hidden-mobile">
+                        {{ __('Edit Person') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="user-tie"/>
+                    </span>
+                    <span class="is-hidden-mobile"/>
+                </a>
             </vue-form-ss>
         </div>
     </div>
@@ -70,7 +87,8 @@ export default {
 
     data() {
         return {
-            pivotParams: { owners: { id: null } },
+            personId: null,
+            pivotParams: { userGroups: { id: null } },
             password: null,
             passwordConfirmation: null,
         };

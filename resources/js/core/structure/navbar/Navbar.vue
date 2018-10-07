@@ -12,8 +12,7 @@
                 </h4>
             </a>
             <a class="navbar-item"
-                @click="toggleMenu(isTouch)"
-                v-if="layout === 'default'">
+                @click="toggleMenu(isTouch)">
                 <span class="icon is-small">
                     <fa icon="bars"
                         :class="{ 'rotate': !menu.isExpanded || !menu.isVisible }"/>
@@ -30,7 +29,7 @@
             <div class="navbar-item"
                 v-if="impersonating">
                 <button class="button is-small is-warning"
-                    @click="$bus.$emit('stop-impersonating')"
+                    @click="$root.$emit('stop-impersonating')"
                     v-tooltip="__('Impersonating')">
                     <span class="icon is-small">
                         <fa icon="user"/>
@@ -87,7 +86,6 @@ export default {
     computed: {
         ...mapState(['meta', 'impersonating']),
         ...mapState('layout', ['isMobile', 'isTouch', 'menu']),
-        ...mapGetters('preferences', ['layout']),
     },
 
     methods: {

@@ -1,11 +1,8 @@
 <?php
 
-use LaravelEnso\Core\app\Models\Owner;
+use LaravelEnso\Core\app\Models\UserGroup;
 
 return [
-    'addressables' => [
-        'owner' => Owner::class,
-    ],
     'streetTypes' => [
         'Street' => 'Street',
         'Avenue' => 'Avenue',
@@ -48,7 +45,7 @@ return [
     ],
     'loggableMorph' => [
         'addressable' => [
-            Owner::class => 'name',
+            UserGroup::class => 'name',
         ],
     ],
 ];

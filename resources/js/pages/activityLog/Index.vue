@@ -22,14 +22,14 @@
                 </div>
                 <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
-                        source="system.roles.selectOptions"
+                        source="system.roles.options"
                         :placeholder="__('Roles')"
                         v-model="filters.roleIds"/>
                 </div>
                 <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
-                        source="administration.users.selectOptions"
-                        label="fullName"
+                        source="administration.users.options"
+                        label="person.name"
                         :placeholder="__('Authors')"
                         v-model="filters.userIds"/>
                 </div>

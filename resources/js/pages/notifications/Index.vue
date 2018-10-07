@@ -19,7 +19,7 @@
                     <div class="level-left">
                         <div class="level-item">
                             <a class="button is-small is-success"
-                                @click="markAllAsRead">
+                                @click="updateAll">
                                 <span>{{ __("Mark all as read") }}</span>
                                 <span class="icon is-small">
                                     <fa icon="check"/>
@@ -30,7 +30,7 @@
                     <div class="level-right">
                         <div class="level-item is-marginless">
                             <a class="button is-small is-warning has-margin-left-small"
-                                @click="clearAll">
+                                @click="destroyAll">
                                 <span>{{ __("Clear all") }}</span>
                                 <span class="icon is-small">
                                     <fa icon="trash-alt"/>
@@ -53,21 +53,21 @@
                                             && notification.data.path !== '#'
                                     }
                                 ]"
-                                @click="markAsRead(notification)">
+                                @click="update(notification)">
                                 {{ notification.data.body }}
                             </span>
                             <span class="is-pulled-right">
                                 {{ timeFromNow(notification.created_at) }}
                                 <a class="delete has-margin-left-medium"
-                                    @click="clear(notification, index)"/>
+                                    @click="destroy(notification, index)"/>
                             </span>
-                            <span class="is-clearfix"/>
+                            <span class="is-destroyfix"/>
                         </div>
                     </li>
                 </ul>
                 <div class="has-text-centered has-margin-top-large">
                     <button :class="['button animated fadeIn', {'is-loading': loading}]"
-                        @click="getData">
+                        @click="fetch">
                         {{ __('Load more') }}
                     </button>
                 </div>
@@ -110,43 +110,41 @@ export default {
     },
 
     created() {
-        this.getData = debounce(this.getData, 500);
-        this.getData();
+        this.fetch = debounce(this.fetch, 500);
+        this.fetch();
     },
 
     methods: {
-        getData() {
+        fetch() {
             if (this.loading) {
                 return;
             }
 
             this.loading = true;
 
-            axios.get(route(
-                'core.notifications.getList',
-                [this.offset, this.limit],
-            )).then(({ data }) => {
+            axios.get(route('core.notifications.index'),
+                { params: { offset: this.offset, limit: this.limit }},
+            ).then(({ data }) => {
                 this.initialised = true;
                 this.notifications = this.offset ? this.notifications.concat(data) : data;
                 this.offset = this.notifications.length;
                 this.loading = false;
             }).catch(error => this.handleError(error));
         },
-        markAsRead(notification) {
-            axios.patch(route('core.notifications.markAsRead', notification.id))
+        update(notification) {
+            axios.patch(route('core.notifications.update', notification.id))
                 .then(({ data }) => {
                     notification.read_at = data.read_at;
-                    this.$bus.$emit('notification-read', notification);
+                    this.$root.$emit('read-notification', notification);
                     if (notification.data.path && notification.data.path !== '#') {
                         this.$router.push({ path: notification.data.path });
                     }
                 }).catch(error => this.handleError(error));
         },
-        markAllAsRead() {
-            axios.patch(route('core.notifications.markAllAsRead'))
-                .then(() => {
-                    this.readAll();
-                }).catch(error => this.handleError(error));
+        updateAll() {
+            axios.post(route('core.notifications.updateAll'))
+                .then(() => this.readAll())
+                .catch(error => this.handleError(error));
         },
         readAll() {
             this.notifications.forEach((notification) => {
@@ -155,18 +153,18 @@ export default {
 
             this.unreadCount = 0;
 
-            this.$bus.$emit('read-all-notifications');
+            this.$root.$emit('read-all-notifications');
         },
-        clearAll() {
-            axios.patch(route('core.notifications.clearAll')).then(() => {
+        destroyAll() {
+            axios.post(route('core.notifications.destroyAll')).then(() => {
                 this.notifications = [];
-                this.$bus.$emit('clear-all-notifications');
+                this.$root.$emit('destroy-all-notifications');
             }).catch(error => this.handleError(error));
         },
-        clear(notification, index) {
-            axios.delete(route('core.notifications.clear', notification.id)).then(() => {
+        destroy(notification, index) {
+            axios.post(route('core.notifications.destroy', notification.id)).then(() => {
                 this.notifications.splice(index, 1);
-                this.$bus.$emit('clear-notification', notification);
+                this.$root.$emit('destroy-notification', notification);
             }).catch(error => this.handleError(error));
         },
         timeFromNow(date) {

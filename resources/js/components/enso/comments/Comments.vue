@@ -13,7 +13,7 @@
                 </span>
             </button>
             <button class="button has-margin-left-small"
-                @click="get()">
+                @click="fetch()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
                 </span>
@@ -44,11 +44,11 @@
                 :comment="comment"
                 :index="-1"
                 @cancel-add="comment = null"
-                @save-comment="add()"/>
+                @save="add()"/>
             <comment v-for="(comment, index) in filteredComments"
                 :comment="comment"
                 :index="index"
-                @save-comment="update(comment)"
+                @save="update(comment)"
                 @delete="destroy(index)"
                 :key="index"/>
         </div>
@@ -128,16 +128,16 @@ export default {
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
             axios.get(
                 route('core.comments.index'),
-                { params: this.params },
+                { params: this.params }
             ).then(({ data }) => {
                 this.comments = data;
                 this.loading = false;
@@ -181,11 +181,10 @@ export default {
         },
         postParams() {
             return {
-                commentable_id: this.id,
-                commentable_type: this.type,
                 body: this.comment.body,
                 taggedUsers: this.comment.taggedUsers,
                 path: this.path,
+                ...this.params,
             };
         },
         update(comment) {
@@ -203,7 +202,7 @@ export default {
         },
         syncTaggedUsers(comment) {
             comment.taggedUsers.forEach((user, index) => {
-                if (!comment.body.includes(user.fullName)) {
+                if (!comment.body.includes(user.name)) {
                     comment.taggedUsers.splice(index, 1);
                 }
             });

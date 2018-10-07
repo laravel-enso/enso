@@ -14,7 +14,7 @@
                             v-if="multiple">
                             <tag v-for="(option, index) in selected"
                                 :disabled="disabled"
-                                :label="option[label]"
+                                :label="optionLabel(option, label)"
                                 :key="index"
                                 @remove="remove(option[trackBy]); $emit('remove', option)"/>
                         </div>
@@ -55,7 +55,7 @@
                     :class="{ 'is-active': position === index }"
                     @mousemove="position = index"
                     @click.prevent="hit()">
-                    <span v-html="highlight(option[label])"/>
+                    <span v-html="highlight(optionLabel(option, label))"/>
                     <span :class="[
                             'label tag', isSelected(option) ? 'is-warning' : 'is-success'
                         ]" v-if="index === position">
@@ -132,7 +132,7 @@ export default {
             type: null,
             default: this.multiple ? [] : null,
         },
-        optionsLimit: {
+        limit: {
             type: Number,
             default: 100,
         },
@@ -166,7 +166,7 @@ export default {
         },
         placeholder: {
             type: String,
-            default: 'Please choose',
+            default: 'Choose',
         },
         labels: {
             type: Object,
@@ -210,7 +210,7 @@ export default {
         filteredOptions() {
             return this.query
                 ? this.optionList.filter(option =>
-                    option[this.label].toLowerCase()
+                    this.optionLabel(option, this.label).toLowerCase()
                         .indexOf(this.query.toLowerCase()) >= 0)
                 : this.optionList;
         },
@@ -223,8 +223,10 @@ export default {
                 return null;
             }
             if (!this.multiple) {
-                return this.optionList.find(option =>
-                    option[this.trackBy] === this.value)[this.label];
+                const option = this.optionList.find(option =>
+                    option[this.trackBy] === this.value);
+
+                return this.optionLabel(option, this.label);
             }
 
             return this.optionList.filter(option =>
@@ -301,7 +303,7 @@ export default {
                 customParams: this.customParams,
                 query: this.query,
                 value: this.value,
-                optionsLimit: this.optionsLimit,
+                limit: this.limit,
             };
         },
         processOptions({ data }) {
@@ -419,6 +421,10 @@ export default {
         },
         optionSelector() {
             return this.$el.querySelectorAll('.dropdown-item')[this.position];
+        },
+        optionLabel(option, label) {
+            return label.split('.')
+                .reduce((result, property) => result[property], option);
         },
     },
 };

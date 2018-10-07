@@ -21,6 +21,7 @@ export default new Vuex.Store({
         user: {},
         impersonating: null,
         meta: {},
+        enums: {},
         routes: {},
         requests: [],
     },
@@ -45,9 +46,10 @@ export default new Vuex.Store({
         setImpersonating: (state, impersonating) => (state.impersonating = impersonating),
         setUserAvatar: (state, avatarId) => (state.user.avatar.id = avatarId),
         setMeta: (state, meta) => (state.meta = meta),
+        setEnums: (state, enums) => (state.enums = enums),
         initialise: (state, value) => (state.isInitialised = value),
         setShowQuote: (state, value) => (state.showQuote = value),
-        setRoutes: (state, routes) => (state.routes = { ...routes, touch: null }),
+        setRoutes: (state, routes) => (state.routes = routes),
         setDefaultRoute: (state, route) => {
             router.addRoutes([{
                 path: '/',
@@ -78,6 +80,7 @@ export default new Vuex.Store({
                 commit('layout/setThemes', data.themes);
                 commit('layout/menu/update', data.preferences.global.expandedMenu);
                 commit('setMeta', data.meta);
+                commit('setEnums', data.enums);
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
                 commit('setDefaultRoute', data.implicitMenu.link);

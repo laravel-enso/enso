@@ -1,13 +1,13 @@
 <template>
 
     <div class="columns is-centered">
-        <div class="column is-three-quarters">
+        <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box raises-on-hover animated fadeIn"
-                :route-params="[$route.name, null, false]">
-                <template slot="owner_id" slot-scope="{ field, errors }">
+                :route-params="[$route.name, $route.params.id, false]">
+                <template slot="group_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :has-error="errors.has(field.name)"
-                        @input="pivotParams.owners.id=$event;errors.clear(field.name)"
+                        @input="pivotParams.userGroups.id=$event;errors.clear(field.name)"
                         :source="field.meta.source"/>
                 </template>
                 <template slot="role_id" slot-scope="{ field, errors }">
@@ -33,7 +33,7 @@ export default {
 
     data() {
         return {
-            pivotParams: { owners: { id: null } },
+            pivotParams: { userGroups: { id: null } },
         };
     },
 };

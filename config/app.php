@@ -145,6 +145,10 @@ return [
         /*
          * Package Service Providers...
          */
+        LaravelEnso\Teams\AppServiceProvider::class,
+        LaravelEnso\People\AppServiceProvider::class,
+        LaravelEnso\People\AuthServiceProvider::class,
+        LaravelEnso\Companies\AppServiceProvider::class,
         /*
          * Application Service Providers...
          */

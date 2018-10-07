@@ -1,15 +1,12 @@
 <?php
 
-use LaravelEnso\Core\app\Models\Owner;
+use LaravelEnso\Core\app\Models\UserGroup;
 
 return [
     'editableTimeLimit' => 24 * 60 * 60,
-    'commentables' => [
-        'owner' => Owner::class,
-    ],
     'loggableMorph' => [
         'commentable' => [
-            Owner::class => 'name',
+            UserGroup::class => 'name',
         ],
     ],
 ];

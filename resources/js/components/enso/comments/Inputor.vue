@@ -23,7 +23,7 @@
                         </div>
                         <div class="media-content">
                             <div class="content"
-                                v-html="highlight(item.fullName)"/>
+                                v-html="highlight(item.person.name)"/>
                         </div>
                     </article>
                 </a>
@@ -32,7 +32,7 @@
         <div class="field">
             <p class="control">
                 <textarea class="textarea vue-comment"
-                    @keyup.shift.enter="$emit('save-comment')"
+                    @keyup.shift.enter="$emit('save')"
                     v-focus
                     v-model="comment.body"
                     :placeholder="__('Type a new comment')"/>
@@ -44,6 +44,7 @@
 
 <script>
 
+import { mapState } from 'vuex';
 import debounce from 'lodash/debounce';
 import getCaretCoordinates from 'textarea-caret';
 import vClickOutside from 'v-click-outside';
@@ -71,6 +72,7 @@ export default {
     },
 
     computed: {
+        ...mapState(['user']),
         hasText() {
             return this.comment.body.trim();
         },
@@ -96,10 +98,12 @@ export default {
 
     methods: {
         fetch() {
-            axios.get(route('core.comments.getTaggableUsers'), {
-                params: { query: this.query },
+            axios.get(route('administration.users.options'), {
+                params: { query: this.query, limit: 10 },
             }).then(({ data }) => {
-                this.items = data;
+                this.items = data
+                    .filter(({ id }) => id !== this.user.id);
+
                 if (this.items.length) {
                     this.position = 0;
                 }
@@ -174,7 +178,7 @@ export default {
                 search += ' ';
             }
 
-            let replace = search.substr(0, atPosition + 1) + item.fullName;
+            let replace = search.substr(0, atPosition + 1) + item.person.name;
             replace += ' ';
 
             return { search, replace };
@@ -188,7 +192,7 @@ export default {
 
             this.comment.taggedUsers.push({
                 id: user.id,
-                fullName: user.fullName,
+                name: user.person.name,
             });
         },
     },

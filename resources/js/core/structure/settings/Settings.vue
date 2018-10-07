@@ -14,16 +14,13 @@
                 <theme-selector/>
             </li>
             <li class="settings-item">
-                <layout-selector/>
-            </li>
-            <li class="settings-item">
                 <toastr-position/>
             </li>
             <li class="settings-item has-margin-bottom-small">
                 <menu-state/>
             </li>
             <li class="settings-item has-margin-bottom-small">
-                <history-state/>
+                <bookmarks-state/>
             </li>
             <li class="settings-item"
                 v-if="canAccess('system.tutorials.show')">
@@ -43,10 +40,9 @@ import { mapState } from 'vuex';
 import VueAside from '../VueAside.vue';
 import LanguageSelector from './LanguageSelector.vue';
 import ThemeSelector from './ThemeSelector.vue';
-import LayoutSelector from './LayoutSelector.vue';
 import ToastrPosition from './ToastrPosition.vue';
 import MenuState from './MenuState.vue';
-import HistoryState from './HistoryState.vue';
+import BookmarksState from './BookmarksState.vue';
 import Tutorial from './Tutorial.vue';
 import KeyCollector from './KeyCollector.vue';
 
@@ -57,10 +53,9 @@ export default {
         VueAside,
         LanguageSelector,
         ThemeSelector,
-        LayoutSelector,
         ToastrPosition,
         MenuState,
-        HistoryState,
+        BookmarksState,
         Tutorial,
         KeyCollector,
     },

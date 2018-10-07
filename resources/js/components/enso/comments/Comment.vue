@@ -56,7 +56,7 @@
                         v-tooltip.left="{
                             content: __('You can also save by pressing SHIFT + Enter after typing'),
                             delay: 800}"
-                        @click="isNew ? $emit('save-comment') : update()">
+                        @click="isNew ? $emit('save') : update()">
                         <span v-if="isNew">
                             {{ __('Post') }}
                         </span>
@@ -124,9 +124,9 @@ export default {
             let { body } = this.comment;
 
             this.comment.taggedUsers
-                .forEach(({ fullName }) => {
-                    const highlighted = `${'<span class="has-text-info">@'}${fullName}</span>`;
-                    body = body.replace(`@${fullName}`, highlighted);
+                .forEach(({ name }) => {
+                    const highlighted = `${'<span class="has-text-info">@'}${name}</span>`;
+                    body = body.replace(`@${name}`, highlighted);
                 });
 
             return body;
@@ -155,7 +155,7 @@ export default {
                 return;
             }
 
-            this.$emit('save-comment');
+            this.$emit('save');
 
             this.originalBody = null;
         },
