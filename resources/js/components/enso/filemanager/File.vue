@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box raises-on-hover file-box has-padding-large">
+    <div class="box has-background-light raises-on-hover file-box has-padding-large">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
                 :src="avatarLink(file.owner.avatarId)">

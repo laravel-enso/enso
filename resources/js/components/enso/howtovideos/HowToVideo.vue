@@ -66,7 +66,7 @@
                     <div class="control"
                         v-for="(tag, index) in tagList"
                         :key="index">
-                        <div class="tags has-addons">
+                        <div class="tags is-bold has-addons">
                             <span class="tag">
                                 {{ tag.name }}
                             </span>

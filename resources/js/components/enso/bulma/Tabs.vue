@@ -7,7 +7,7 @@
         ]">
             <ul :class="[
                     'tab-list',
-                    { 'has-background-grey-light' : custom }
+                    { 'has-background-grey-lighter' : custom }
                 ]">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"

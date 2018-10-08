@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="breadcrumb is-small has-dot-separator">
+    <nav class="breadcrumb is-small is-bold has-dot-separator">
         <ul>
             <li v-for="(breadcrumb, index) in breadcrumbs"
                 :class="{ 'is-active': breadcrumb.name === $route.meta.breadcrumb }"

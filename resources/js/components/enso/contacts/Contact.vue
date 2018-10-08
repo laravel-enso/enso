@@ -1,5 +1,5 @@
 <template>
-    <div class="box raises-on-hover">
+    <div class="box has-background-light raises-on-hover">
         <p class="title is-5">
             {{ contact.name }}
             <span class="tag is-success is-pulled-right"

@@ -1,6 +1,6 @@
 <template>
 
-    <article class="media box raises-on-hover"
+    <article class="media box has-background-light raises-on-hover"
         @mouseover="controls = true"
         @mouseleave="!dialog ? controls = false: null">
         <figure class="media-left">
@@ -48,14 +48,20 @@
                 <inputor v-on="$listeners"
                     :comment="comment"/>
                 <div class="has-margin-top-medium">
-                    <button class="button is-small is-outlined has-margin-right-small action"
+                    <a class="button is-small is-outlined has-margin-right-small action"
                         @click="isNew ? $emit('cancel-add') : cancelAdd()">
-                        {{ __('Cancel') }}
-                    </button>
-                    <button class="button is-small is-outlined is-success action"
-                        v-tooltip.left="{
-                            content: __('You can also save by pressing SHIFT + Enter after typing'),
-                            delay: 800}"
+                        <span>
+                            {{ __('Cancel') }}
+                        </span>
+                        <span class="icon is-small">
+                            <fa icon="ban"/>
+                        </span>
+                    </a>
+                    <a class="button is-small is-outlined is-success action"
+                        v-tooltip.right="{
+                                content: __('Shift + Enter to post'),
+                                delay: 800
+                            }"
                         @click="isNew ? $emit('save') : update()">
                         <span v-if="isNew">
                             {{ __('Post') }}
@@ -63,7 +69,10 @@
                         <span v-else>
                             {{ __('Update') }}
                         </span>
-                    </button>
+                        <span class="icon is-small">
+                            <fa icon="check"/>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -76,12 +85,12 @@
 import { VTooltip } from 'v-tooltip';
 import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTrashAlt, faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
 import Inputor from './Inputor.vue';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 
-library.add(faPencilAlt, faTrashAlt);
+library.add(faPencilAlt, faTrashAlt, faCheck, faBan);
 
 export default {
     name: 'Comment',

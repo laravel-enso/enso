@@ -94,7 +94,7 @@
                     <fa icon="plus"/>
                 </span>
             </a>
-            <div class="box">
+            <div class="box has-background-light raises-on-hover">
                 <div class="level">
                     <div class="level-left">
                         <div class="level-item">
@@ -154,13 +154,16 @@
                         v-for="tag in filteredTags"
                         :key="tag.id">
                         <div class="tags has-addons">
-                            <span :class="['tag is-clickable', { 'is-warning' : tag.selected }]"
+                            <span :class="[
+                                    'tag is-white is-clickable',
+                                    { 'is-bold' : tag.selected }
+                                ]"
                                 @click="taggingId
                                     ? video.tagList.push(tag.id)
                                     : tag.selected = !tag.selected">
                                 {{ tag.name }}
                             </span>
-                            <a class="tag is-delete"
+                            <a class="tag is-delete is-white"
                                 @click="deleteTag(tag.id)"
                                 v-if="canAccess('howTo.tags.destroy') && !taggingId"/>
                         </div>

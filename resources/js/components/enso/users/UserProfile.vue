@@ -1,5 +1,5 @@
 <template>
-    <div class="box has-padding-medium is-raised"
+    <div class="box has-background-light has-padding-medium raises-on-hover"
         v-if="profile">
         <h4 class="title is-4 has-text-centered has-margin-top-large">
             <span class="icon">
@@ -11,13 +11,13 @@
                 ({{ profile.person.appellative }})
             </span>
         </h4>
-        <hr>
+        <hr class="has-background-grey-lighter">
         <div class="columns">
             <div class="column">
                 <div class="columns is-mobile">
                     <div class="column">
                         <figure class="image is-128x128 avatar">
-                            <img class="is-rounded is-raised"
+                            <img class="is-rounded"
                                 :src="avatarLink">
                         </figure>
                     </div>
@@ -87,7 +87,8 @@
                 </div>
             </div>
             <div class="column">
-                <hr v-if="isMobile">
+                <hr class="has-background-grey-lighter"
+                    v-if="isMobile">
                 <div class="columns is-mobile is-multiline">
                     <div class="column is-one-third has-text-right">
                         <p class="has-margin-top-small"><strong>{{ __('Group') }}</strong></p>
@@ -114,24 +115,24 @@
                 </div>
             </div>
         </div>
-        <hr>
-        <div class="level is-mobile has-margin-top-medium">
+        <hr class="has-background-grey-lighter">
+        <div class="level is-mobile has-margin-bottom-large">
             <div class="level-item has-text-centered has-right-border">
                 <div>
-                    <p class="stat-value">{{ profile.loginCount }}</p>
-                    <p class="stat-key">{{ __('logins') }}</p>
+                    <p class="subtitle is-3">{{ profile.loginCount }}</p>
+                    <p class="subtitle is-4">{{ __('logins') }}</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="stat-value">{{ profile.actionLogCount }}</p>
-                    <p class="stat-key">{{ __('actions') }}</p>
+                    <p class="subtitle is-3">{{ profile.actionLogCount }}</p>
+                    <p class="subtitle is-4">{{ __('actions') }}</p>
                 </div>
             </div>
             <div class="level-item has-text-centered has-left-border">
                 <div>
-                    <p class="stat-value">{{ profile.rating }}</p>
-                    <p class="stat-key">{{ __('rating') }}</p>
+                    <p class="subtitle is-3">{{ profile.rating }}</p>
+                    <p class="subtitle is-4">{{ __('rating') }}</p>
                 </div>
             </div>
         </div>
@@ -233,17 +234,6 @@ export default {
 
     .has-right-border {
         border-right: 1px solid rgba(0,0,0,0.2);
-    }
-
-    .stat-value {
-        font-size: 2em;
-        padding-top: 12px;
-    }
-
-    .stat-key {
-        font-size: 1.4em;
-        font-weight: 200;
-        padding-bottom: 8px;
     }
 
 </style>

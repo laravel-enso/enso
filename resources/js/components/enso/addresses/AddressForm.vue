@@ -2,7 +2,7 @@
 
     <modal v-on="$listeners"
         :show="true">
-        <vue-form class="box"
+        <vue-form class="box has-background-light"
             :data="form"
             v-on="$listeners">
             <template v-for="field in customFields"
@@ -33,14 +33,6 @@ export default {
     components: { Modal, VueForm },
 
     props: {
-        id: {
-            type: Number,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: true,
-        },
         form: {
             type: Object,
             default: null,
@@ -52,19 +44,6 @@ export default {
             return this.form.sections
                 .reduce((fields, section) => fields
                     .concat(section.fields.filter(field => field.meta.custom)), []);
-        },
-    },
-
-    created() {
-        this.field('addressable_type').value = this.type;
-        this.field('addressable_id').value = this.id;
-    },
-
-    methods: {
-        field(field) {
-            return this.form.sections
-                .reduce((fields, section) => fields.concat(section.fields), [])
-                .find(item => item.name === field);
         },
     },
 };

@@ -55,8 +55,6 @@
             </div>
         </div>
         <address-form
-            :id="id"
-            :type="type"
             :form="form"
             @close="form = null"
             @delete="fetch();form = null"
@@ -178,6 +176,7 @@ export default {
             axios.get(route('core.addresses.edit', address.id))
                 .then(({ data }) => {
                     this.form = data.form;
+                    this.addFields();
                     this.$emit('form-loaded', this.form);
                     this.loading = false;
                 }).catch(error => this.handleError(error));
@@ -187,6 +186,7 @@ export default {
 
             axios.get(route('core.addresses.create', this.params)).then(({ data }) => {
                 this.form = data.form;
+                this.addFields();
                 this.$emit('form-loaded', this.form);
                 this.loading = false;
                 this.$emit('update');
@@ -207,6 +207,15 @@ export default {
                 this.addresses.splice(index, 1);
                 this.$emit('update');
             }).catch(error => this.handleError(error));
+        },
+        addFields() {
+            this.field('addressable_type').value = this.type;
+            this.field('addressable_id').value = this.id;
+        },
+        field(field) {
+            return this.form.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
         },
     },
 };

@@ -12,7 +12,7 @@
                 v-for="(route, index) in routes"
                 :key="index">
                 <span class="tags has-addons">
-                    <a :class="['tag', {'is-link': route.name === $route.name}]"
+                    <a :class="['tag is-bold', {'is-link': route.name === $route.name}]"
                         @click="$router.push({
                             name: route.name, params: route.params, query: route.query
                         })">

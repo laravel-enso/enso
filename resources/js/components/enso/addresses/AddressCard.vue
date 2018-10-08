@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box raises-on-hover">
+    <div class="box has-background-light raises-on-hover">
         <div class="media">
             <div class="media-content">
                 <span class="icon is-pulled-right has-text-success"

@@ -34,7 +34,7 @@ export default {
 @import '~bulma/sass/utilities/derived-variables.sass';
 
 .box {
-    border-top: 2px solid $white;
+    border-top: 2px solid $light;
     transition: border-color .75s ease, box-shadow 0.3s ease-in-out;;
     position: relative;
 

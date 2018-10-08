@@ -148,7 +148,7 @@
             </div>
             <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd"
                 v-if="summary.issues">
-                <card class="is-rounded raises-on-hover animated bounceInRight"
+                <card class="has-background-light is-rounded raises-on-hover animated bounceInRight"
                     icon="exclamation-triangle"
                     :title="__('Issues')">
                     <tabs class="has-padding-medium"

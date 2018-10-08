@@ -1,7 +1,7 @@
 <template>
 
     <div class="card">
-        <header class="card-header"
+        <header class="card-header has-background-light"
             v-if="header">
             <p class="card-header-title">
                 <span class="icon is-small has-margin-right-small"

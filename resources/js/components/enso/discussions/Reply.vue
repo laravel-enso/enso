@@ -1,7 +1,7 @@
 <template>
 
     <article class="media media-reply"
-        :class="{'box raises-on-hover': !edit && reply.id}">
+        :class="{'box has-background-light raises-on-hover': !edit && reply.id}">
         <figure class="media-left">
             <p class="image is-48x48">
                 <img class="is-rounded"

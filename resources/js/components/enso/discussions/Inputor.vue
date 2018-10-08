@@ -1,6 +1,6 @@
 <template>
 
-    <div class="box">
+    <div class="box has-background-light">
         <input class="input control is-large message-title"
             v-model="message.title"
             :placeholder="__('Title...')"

@@ -45,8 +45,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "LaravelEnso\\DynamicRelations\\": "vendor/laravel-enso/dynamicrelations/src/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

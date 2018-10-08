@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar app-navbar">
+    <nav class="navbar app-navbar is-light">
         <div class="navbar-brand">
             <a class="navbar-item logo" href="#">
                 <figure class="image is-24x24">

@@ -49,8 +49,6 @@
             </div>
             <contact-form
                 v-if="form"
-                :id="id"
-                :type="type"
                 :form="form"
                 @close="form = null"
                 @destroy="get(); form=false"
@@ -153,6 +151,7 @@ export default {
                 .then(({ data }) => {
                     this.loading = false;
                     this.form = data.form;
+                    this.addFields();
                     this.$emit('update');
                 }).catch(error => this.handleError(error));
         },
@@ -163,6 +162,7 @@ export default {
                 .then(({ data }) => {
                     this.loading = false;
                     this.form = data.form;
+                    this.addFields();
                 }).catch(error => this.handleError(error));
         },
         destroy(contact, index) {
@@ -174,6 +174,15 @@ export default {
                     this.loading = false;
                     this.$emit('update');
                 }).catch(error => this.handleError(error));
+        },
+        addFields() {
+            this.field('contactable_type').value = this.type;
+            this.field('contactable_id').value = this.id;
+        },
+        field(field) {
+            return this.form.sections
+                .reduce((fields, section) => fields.concat(section.fields), [])
+                .find(item => item.name === field);
         },
     },
 };

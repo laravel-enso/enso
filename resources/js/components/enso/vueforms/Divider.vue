@@ -1,6 +1,6 @@
 <template>
 
-    <div :class="['divider', placement]"
+    <div :class="['is-divider', placement]"
         :data-title="title"/>
 
 </template>
@@ -31,7 +31,7 @@ export default {
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/derived-variables.sass';
 
-    .divider {
+    .is-divider {
         border-top: 1px solid $grey-light;
         height: 1px;
         margin: .5rem 0;
@@ -49,8 +49,8 @@ export default {
         }
     }
 
-    .divider[data-title]::after {
-        background: $white;
+    .is-divider[data-title]::after {
+        background: $light;
         color: $grey-dark;
         content: attr(data-title);
         display: inline-block;

@@ -1,6 +1,6 @@
 <template>
     <info-box :class="[
-        'raises-on-hover',
+        'has-background-light raises-on-hover',
         { 'is-danger': team.edit && !team.id },
         { 'is-warning': team.edit && team.id },
         { 'is-info': !team.edit && team.users.length === 0 },
@@ -12,7 +12,7 @@
                     v-focus
                     v-model="team.name"
                     v-if="team.edit">
-                <strong v-else>{{ team.name }}</strong>
+                <span v-else>{{ team.name }}</span>
             </label>
             <div slot="right"
                 class="has-text-right">

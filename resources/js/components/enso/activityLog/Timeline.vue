@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="box has-background-light">
         <button :class="['button is-pulled-right', {'is-loading': loading}]"
             @click="$emit('refresh')">
             <span class="icon">

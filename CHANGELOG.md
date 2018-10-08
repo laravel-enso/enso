@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.12.1
+- adds `has-background-light` on most of the focusable elements in pages
+- updates fonts for the *clean* theme
+
 ### 2.12.0
 
 Facing our latest challenges we decided to change the way users are handled in Enso by introducing a new structure of *people*. This was the main objective of this upgrade.
