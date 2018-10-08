@@ -1,5 +1,5 @@
 script:
-  - phpunit
+  - php -d max_input_time=0 -d max_execution_time=0 vendor/bin/phpunit
 
 after_success:
   - chmod +x ./.deploy.sh; ./.deploy.sh

@@ -2,59 +2,303 @@
 
 ### 2.12.0
 
+Facing our latest challenges we decided to change the way users are handled in Enso by introducing a new structure of *people*. This was the main objective of this upgrade.
+
+Some of the people will be users (all users are people), some can be contacts (soon), some can be clients or employees, and some can be of all types at once. This structure will handle all the personal information for persons that are relevant to the app.
+
+The second objective was cleaning up and improving the code, trying to make everything simpler and more consistent. We tried to rename what was was confusing, to move logic where it belongs and so on. 
+
+The majority of tests were also improved.
+
+#### Upgrade steps
+For existing projects we created an upgrade command that will take care of most of the changes, like migrating the current user table into two tables, users & people, and so on.
+
+Make sure you have a backup of your database before starting. If you find any problems use the issue tracker to let us now.
+
+- update `composer.json` dependencies:
+    - "laravel-enso/addressesmanager": "2.4.*",
+    - "laravel-enso/commentsmanager": "2.4.*",
+    - "laravel-enso/contacts": "2.3.*",
+    - "laravel-enso/dataimport": "2.5.*",
+    - "laravel-enso/discussions": "1.1.*",
+    - "laravel-enso/documentsmanager": "2.4.*",
+    - "laravel-enso/howtovideos": "2.2.*",
+    - "laravel-enso/teams": "1.0.*",
+- run `composer update`
+- run `php artisan enso:upgrade`
+- run `php artisan migrate`
+- run `php artisan enso:upgrade` (again, don't ask :) )
+- run `php artisan enso:update-global-preferences
+- read the individual package changes below, and where you find upgrade instructions follow those steps.
+- run `yarn dev` / `npm run dev`
+
+Note: The upgrade command will do the following:
+- rename migrations to match the new names (for example the owner related migrations)
+- rename the `owners` & `owner_role` tables and relevant relation columns
+- prepares the `users` table to work with `people`
+- splits users data into `users` and `people`
+- removes all the deprecated permissions and renames the one that were changed (`selectOptions` => `options` and so on)
+- updates the menus to reflect the new structures;
+
+#### ActionLogger
+##### Changes
+- renamed the `HasActionLogs` trait to `ActionLogs`
+- improved test
+
+##### Upgrade
+This change should not affect existing projects.
+
 #### ActivityLog
-- nothing will be persisted when a there's no one logged in to the app (seeds/tinker)
-- `LogsActivity` trait was renamed to `LogsActivity`
+##### Changes
+- renamed the `LogActivity` trait to `LogsActivity`
+- the logger will not attempt to persist data when there is no authenticated user - this was causing problems when using seeder / playing in tinker etc
+
+##### Upgrade
+Search in the whole project for `LogActivity` and replace it with `LogsActivity`.
+
+#### AddressesManager
+##### Changes
+- **changed how the morphable relation is handled** <a id="morphable"></a>
+- the front-end component works now takes the destination model's *classname* instead of an alias
+-  the `addressable_type` and `addressable_id` are dynamically assigned in the form object inside the `AddressForm` component
+- the index request is now validated and helps the dev properly configure the front-end component
+- as a result of this changes:
+    - the back-end logic is more natural without having to create a custom store method
+    - there is no need for the `addressable` key from the `addresses.php` config, it can now be removed
+    - the `ConfigMapper` was deprecated and removed
+
+- an observer was added that will automatically set the first added address as the default
+- the `countriesSelectOptions` route/permission was renamed to `countryOptions`
+
+##### Upgrade
+To upgrade manually replace where the front-end component is used the provided `type` property from the old alias to the mapped class from the `addresses.php` config. After, remove the `addressable` key from the config.
 
 #### AvatarManager
-- added assertion in show test
+##### Changes
+- improved tests
 
-#### Core
-- the Owners structure was renamed into UserGroup
-- removes the deprecated `ownerClass` attribute from `enso/config.php`
-- *history tags* were renamed to *bookmarks*
-- `selectOptions` routes were renamed to `options`
-- replaced the vue $bus instance with vm.$root
-- dropped support for `touch` mode. If it will be of any interest in the future we can look again in that direction
+##### ToDo
+- this packages needs a refactor to exclude the edge cases where users don't get a generated avatar and the front-end breaks
 
 #### CommentsManager
-- removed the `commentables` key from `enso/comments.php` config file. From now the `commentable_type` will be the destination morphable model class
-- removed the deprecated use of `ConfigMapper`
+##### Changes
+- upgraded the way that the *morphable* relation is handled similar to [AddressManager](#morphable) was changed
+- added a publishable `CommentFactory`
+- improved validation
+- dropped `TaggableUsers` structure (controller, response, route/permission) in favour of the core's `UserSelectController
+- improved the tests
+
+##### Upgrade
+The upgrade steps are similar to [AddressManager](#morphable)
+
+#### Companies (*New*)
+##### Features
+- this package will handle company management in Enso
+- full crud / menu
+- addresses, contacts, documents, discussions and comments
+- provides a publishable `CompanyFactory`
+
+##### Installation
+It comes by default in an fresh Enso. To install it in an existing project:
+ - `composer require laravel-enso/companies`
+ - `php artisan migrate`
+ - `php artisan vendor:publish --tag=companies-assets`
+ - `yarn dev` / `npm run dev`
+ - `php artisan vendor:publish --tag=companies-factory` (optional)
+ - `factory(LaravelEnso\Companies\app\Models\Company::class, xx)->create()` (optional)
+
+##### ToDo
+Plans for the near future: 
+- extend it to support customizations through publishable form and table templates
+- customize validation rules by config
+- add a dedicated *contacts* structure based on `People`
+
+#### Contacts
+##### Changes
+- upgraded the way that the *morphable* relation is handled similar to [AddressManager](#morphable) was changed
+- improved the `ContactFactory`
+- improved the request validations
+- improved tests
+- changed the form icon to a more relavant one
+
+##### Upgrade
+The upgrade steps are similar to [AddressManager](#morphable)
+
+#### Core
+##### Changes
+- transformed / renamed the old `Owner` into `UserGroup`
+- removed the deprecated `ownerClass` attribute from `enso/config.php`
+- dropped personal information from the users table, except the email needed for login
+- integrated the `User` with the new `Person`
+- added an `allowed` general scope on `User` that may be used for limiting access
+- `selectOptions` routes were renamed to `options`
+- added missing `themes` config in `AppServiceProvider`
+- moved `teams` in a dedicated package
+- updated back-end & front-end to work with the new `people` structure
+- added `user_id` to fillable in `Preference`
+- improved user policy
+- removed the `ownerModel` from config
+- improved `UserFactory`
+- added publishable `UserGroupFactory`
+- added a default order for `Dashboard`, `Administration`, `System`, `Users` & `UserGroups` menus
+- renamed *historyTabs* into *bookmarks* and enhances the store logic
+- droped for the moment support for the `Touch` layout. If it will be of any interest in the future we can look again in this direction
+- added an `enums` key in vuex store
+- replaced the use of deprecated `$bus` with `$root` for vue events
+- refactord the notifications front-end logic
+- adds translationed to typeahead labels in `Search.vue`
+- improved tests
+- **added the `Upgrade` command**
+
+##### Upgrade
+- replace the use of `Owner` with `UserGroup` if the case
+- replace `this.$bus` with `this.$root` where you emit/listen to events
+- remove the `ownerModel` key from `enso/config.php`
+
+#### DataExport
+- makes the `created_by` nullable
 
 #### DataImport
-- refactored all the tests
-- added test for `stopOnErrors`
+- changed the issue summary icon
+- added a default order for the menu in the structure migration
+- changed the default testing structure from *owner* to *userGroup*
+- improved the tests
+
+#### Discussions
+##### Changes
+- upgraded the way that the *morphable* relation is handled similar to [AddressManager](#morphable) was changed
+- improved validation
+- dropped `TaggableUsers` structure (controller, response, route/permission) in favour of the core's `UserSelectController
+
+##### Upgrade
+The upgrade steps are similar to [AddressManager](#morphable)
 
 #### DocumentsManager
-- removed the `documentables` key from `enso/documents.php` config file. From now the `documentable_type` will be the destination morphable model class
-- removed the deprecated use of `ConfigMapper`
+##### Changes
+- upgraded the way that the *morphable* relation is handled similar to [AddressManager](#morphable) was changed
+- improved validation
+
+##### Upgrade
+The upgrade steps are similar to [AddressManager](#morphable)
+
+#### Examples
+- updated the provided import to work with `UserGroup`
+- refactored the `ExampleFactory` and `SeniorityEnum`
+
+#### FileManager
+- improved the tests
+- added a default menu order
 
 #### FormBuilder
-- adds a series of traits to help tests: `CreateForm`, `EditForm`, `DestroyForm`
+- enhanced the use of selects in templates. Now the `options` property can be provided with and `Enum`
+- also strengthened the validations for selects
+- added traits helpers for tests: `CreateForm`, `EditForm` & `DestroyForm`
+- updates the switch css class form `is-success` to `is-info` 
 
-#### Teams
-- the structure was moved in its own package => `laravel-enso/teams`
-- adds missing loading flag in `Index.vue`
+#### Helpers
+##### Changes
+- adds a `null` default return in `Enum@attributes()`
+- renames the `IsActive` trait into `ActiveState`
 
-#### FormBuilder
-- makes switch `info` is-instead of `is-success`
+##### Upgrade
+Search in the whole project for `IsActive` and replace it with `ActiveState`.
+
+#### HistoryTracker
+- improved test
+
+#### Impersonate
+- improved tests
+
+#### Localisation
+- added a publishable `LocalisationFactory`
+- improved tests
+
+#### LogManager
+- renamed `canBeSeen` to `visible` for the returned response
+- added a reload control on the log card
+- improved the tests
+
+#### MenuManager
+- added missing `parent_id` in request validator
+- improved `MenuFactory`
+- improved tests
+
+#### Notifications
+- cleaned up things in the controller
+- renamed routes/permissions
+- replaced the use of `vm.$bus` with `vm.$root`
+- improved the tests
+
+#### People (*New*)
+##### Features
+- this package will handle people management in Enso
+- full crud / menu
+- multiple addresses
+- a publishable `PeopleFactory`
+- `Genders` and `Titles` enums.
+
+##### Installation
+It comes by default in an fresh Enso. To install it in an existing project follow the main upgrade steps provided above.
+
+##### ToDo
+Plans for the near future: 
+- extend it to support customizations through publishable form and table templates
+- customize validation rules by config
 
 #### Select
-- renames *optionsLimit* with *limit* in vue-select
+##### Changes
+- added a default limit of 100 to the backend builder
+- renamed `optionsLimit` prop to `limit` for the `VueSelect` component and makes it optional
+- renamed the default placeholder from `Please choose` to `Choose`
+- added support for nested `$queryAttributes`. Check the `UserSelectController` for an example ;)
 
-#### People
-- a new packages that handles People.
-- it's required by `laravel-enso/core`
-- provides:
-    - `Genders` and `Titles` enums.
-    - publishable seeder - `PersonSeeder`
+##### Upgrade
+Replace in all instances where the component is used `optionsLimit` prop to `limit`. The prop being optional, the impact is minor even if the prop is not renamed
+
+#### StructureManager
+##### Changes
+- changed the default css class for edit & create pages to `<div class="column is-three-quarters-desktop is-full-touch">`
+- renamed the `selectOptions` permission/route to `options`
+- refactored test
+
+##### Upgrade
+In order to have a consistent look search in the app for ``<div class="column is-three-quarters-desktop">` and replace it with `<div class="column is-three-quarters-desktop is-full-touch">`
 
 #### RoleManager
 - fixes search in main table
 - fixes `SupervisorId` constant
 
+#### Teams (*New*)
+- initially part of the *core*, the structure was moved in its own package
+- adds missing loading flag in `Index.vue`
+
+##### Installation
+It comes by default in an fresh Enso. To install it in an existing project:
+ - `composer require laravel-enso/teams`
+ - `php artisan migrate`
+ - `php artisan vendor:publish --tag=teams-assets`
+ - `yarn dev` / `npm run dev`
+
+#### TrackWho
+- changed the traits to work only when the user is authenticated
+- updated the `TrackWho` resource for the new core
+- improved tests
+
+#### TutorialManager
+##### Changes
+- added a publishable `TutorialFactory`
+- refactored the `Placement` Enum, positions start at 1 now.
+- improved tests
+
+##### Upgrade
+Run this query in `MySql`: `update tutorials set placement = placement + 1`
+
+##### VueComponents
+- corrected typo in typeahead prop: `notResults` => `noResults`
+
 #### VueDatatable
-- adds trait to help tests: `DatatableTest`
+- added support for nullable enum columns
+- added a trait for tests: `DatatableTest`
 
 ### 2.12.0-beta
 

@@ -44,10 +44,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "LaravelEnso\\Teams\\": "vendor/laravel-enso/teams/src/",
-            "LaravelEnso\\People\\": "vendor/laravel-enso/people/src/",
-            "LaravelEnso\\Companies\\": "vendor/laravel-enso/companies/src/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
