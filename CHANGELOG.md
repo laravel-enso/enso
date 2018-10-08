@@ -6,18 +6,19 @@ Facing our latest challenges we decided to change the way users are handled in E
 
 Some of the people will be users (all users are people), some can be contacts (soon), some can be clients or employees, and some can be of all types at once. This structure will handle all the personal information for persons that are relevant to the app.
 
-The second objective was cleaning up and improving the code, trying to make everything simpler and more consistent. We tried to rename what was was confusing, to move logic where it belongs and so on. 
+The second objective was cleaning up and improving the code, trying to make everything simpler and more consistent. We tried to rename what was was confusing, to move logic to where it belongs and so on. 
 
 The majority of tests were also improved.
 
 #### Upgrade steps
 For existing projects we created an upgrade command that will take care of most of the changes, like migrating the current user table into two tables, users & people, and so on.
 
-Make sure you have a backup of your database before starting. If you find any problems use the issue tracker to let us now.
+Make sure you have a backup of your database before starting. If you find any problems use the issue tracker to let us know.
 
 - update `composer.json` dependencies:
     - "laravel-enso/addressesmanager": "2.4.*",
     - "laravel-enso/commentsmanager": "2.4.*",
+    - "laravel-enso/companies": "1.0.*",
     - "laravel-enso/contacts": "2.3.*",
     - "laravel-enso/dataimport": "2.5.*",
     - "laravel-enso/discussions": "1.1.*",
@@ -28,7 +29,8 @@ Make sure you have a backup of your database before starting. If you find any pr
 - run `php artisan enso:upgrade`
 - run `php artisan migrate`
 - run `php artisan enso:upgrade` (again, don't ask :) )
-- run `php artisan enso:update-global-preferences
+- run `php artisan enso:update-global-preferences`
+- run `php artisan enso:track-who:update`
 - read the individual package changes below, and where you find upgrade instructions follow those steps.
 - run `yarn dev` / `npm run dev`
 
@@ -37,7 +39,7 @@ Note: The upgrade command will do the following:
 - rename the `owners` & `owner_role` tables and relevant relation columns
 - prepares the `users` table to work with `people`
 - splits users data into `users` and `people`
-- removes all the deprecated permissions and renames the one that were changed (`selectOptions` => `options` and so on)
+- removes all the deprecated permissions and renames one that were changed (`selectOptions` => `options` and so on)
 - updates the menus to reflect the new structures;
 
 #### ActionLogger
@@ -62,7 +64,7 @@ Search in the whole project for `LogActivity` and replace it with `LogsActivity`
 - the front-end component works now takes the destination model's *classname* instead of an alias
 -  the `addressable_type` and `addressable_id` are dynamically assigned in the form object inside the `AddressForm` component
 - the index request is now validated and helps the dev properly configure the front-end component
-- as a result of this changes:
+- as a result of these changes:
     - the back-end logic is more natural without having to create a custom store method
     - there is no need for the `addressable` key from the `addresses.php` config, it can now be removed
     - the `ConfigMapper` was deprecated and removed
@@ -71,21 +73,21 @@ Search in the whole project for `LogActivity` and replace it with `LogsActivity`
 - the `countriesSelectOptions` route/permission was renamed to `countryOptions`
 
 ##### Upgrade
-To upgrade manually replace where the front-end component is used the provided `type` property from the old alias to the mapped class from the `addresses.php` config. After, remove the `addressable` key from the config.
+To upgrade manually replace where the front-end component is used the provided `type` property from the old alias to the mapped class from the `addresses.php` config. Afterwards remove the `addressable` key from the config.
 
 #### AvatarManager
 ##### Changes
 - improved tests
 
 ##### ToDo
-- this packages needs a refactor to exclude the edge cases where users don't get a generated avatar and the front-end breaks
+- this package needs a refactor to exclude the edge cases where users don't get a generated avatar and the front-end breaks
 
 #### CommentsManager
 ##### Changes
 - upgraded the way that the *morphable* relation is handled similar to [AddressManager](#morphable) was changed
 - added a publishable `CommentFactory`
 - improved validation
-- dropped `TaggableUsers` structure (controller, response, route/permission) in favour of the core's `UserSelectController
+- dropped the `TaggableUsers` structure (controller, response, route/permission) in favour of the core's `UserSelectController`
 - improved the tests
 
 ##### Upgrade
@@ -110,7 +112,7 @@ It comes by default in an fresh Enso. To install it in an existing project:
 ##### ToDo
 Plans for the near future: 
 - extend it to support customizations through publishable form and table templates
-- customize validation rules by config
+- customize validation rules through the config
 - add a dedicated *contacts* structure based on `People`
 
 #### Contacts
@@ -127,10 +129,8 @@ The upgrade steps are similar to [AddressManager](#morphable)
 #### Core
 ##### Changes
 - transformed / renamed the old `Owner` into `UserGroup`
-- removed the deprecated `ownerClass` attribute from `enso/config.php`
 - dropped personal information from the users table, except the email needed for login
 - integrated the `User` with the new `Person`
-- added an `allowed` general scope on `User` that may be used for limiting access
 - `selectOptions` routes were renamed to `options`
 - added missing `themes` config in `AppServiceProvider`
 - moved `teams` in a dedicated package
@@ -141,12 +141,12 @@ The upgrade steps are similar to [AddressManager](#morphable)
 - improved `UserFactory`
 - added publishable `UserGroupFactory`
 - added a default order for `Dashboard`, `Administration`, `System`, `Users` & `UserGroups` menus
-- renamed *historyTabs* into *bookmarks* and enhances the store logic
+- renamed *historyTabs* into *bookmarks* and enhanced the store logic
 - droped for the moment support for the `Touch` layout. If it will be of any interest in the future we can look again in this direction
 - added an `enums` key in vuex store
 - replaced the use of deprecated `$bus` with `$root` for vue events
 - refactord the notifications front-end logic
-- adds translationed to typeahead labels in `Search.vue`
+- adds translation to typeahead labels in `Search.vue`
 - improved tests
 - **added the `Upgrade` command**
 
@@ -243,7 +243,7 @@ It comes by default in an fresh Enso. To install it in an existing project follo
 ##### ToDo
 Plans for the near future: 
 - extend it to support customizations through publishable form and table templates
-- customize validation rules by config
+- customize validation rules through the config
 
 #### Select
 ##### Changes
@@ -262,7 +262,7 @@ Replace in all instances where the component is used `optionsLimit` prop to `lim
 - refactored test
 
 ##### Upgrade
-In order to have a consistent look search in the app for ``<div class="column is-three-quarters-desktop">` and replace it with `<div class="column is-three-quarters-desktop is-full-touch">`
+In order to have a consistent look search in the app for `<div class="column is-three-quarters-desktop">` and replace it with `<div class="column is-three-quarters-desktop is-full-touch">`
 
 #### RoleManager
 - fixes search in main table
@@ -291,7 +291,7 @@ It comes by default in an fresh Enso. To install it in an existing project:
 - improved tests
 
 ##### Upgrade
-Run this query in `MySql`: `update tutorials set placement = placement + 1`
+Run this query in MySql: `update tutorials set placement = placement + 1`
 
 ##### VueComponents
 - corrected typo in typeahead prop: `notResults` => `noResults`

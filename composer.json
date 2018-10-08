@@ -11,6 +11,7 @@
         "laravel-enso/core": "^3.0",
         "laravel-enso/addressesmanager": "2.4.*",
         "laravel-enso/commentsmanager": "2.4.*",
+        "laravel-enso/companies": "1.0.*",
         "laravel-enso/contacts": "2.3.*",
         "laravel-enso/controlpanelapi": "^2.0",
         "laravel-enso/dataimport": "2.5.*",
@@ -44,7 +45,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LaravelEnso\\DynamicRelations\\": "vendor/laravel-enso/dynamicrelations/src/"
         }
     },
     "autoload-dev": {

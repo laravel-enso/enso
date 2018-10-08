@@ -1,7 +1,7 @@
 <template>
 
     <div class="columns is-centered">
-        <div class="column is-three-quarters animated fadeIn">
+        <div class="column is-three-quarters is-full-touch">
             <vue-form-ss class="box raises-on-hover animated fadeIn"
                 :route-params="[$route.name, $route.params.id, false]"
                 @loaded="initialised = true"
