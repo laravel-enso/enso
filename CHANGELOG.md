@@ -1,5 +1,9 @@
 ## Laravel Enso's Changelog
 
+### 2.12.2
+- improved the factories & seeders. `PersonSeeder` was removed
+- improves comment and user tests
+
 ### 2.12.1
 - adds `has-background-light` on most of the focusable elements in pages
 - updates fonts for the *clean* theme

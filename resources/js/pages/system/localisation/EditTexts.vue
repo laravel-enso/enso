@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="box raises-on-hover has-margin-top-large"
+        <div class="box has-background-light raises-on-hover has-margin-top-large"
             v-if="selectedLocale">
             <div class="columns is-hidden-mobile has-shadow-bottom"
                 v-if="filteredKeys.length">
@@ -268,7 +268,7 @@ export default {
             }).then(({ data }) => {
                 this.loading = false;
                 this.$toastr.success(data.message);
-            }).catch((error) => this.handleError(error));
+            }).catch(error => this.handleError(error));
         },
         addKey() {
             this.$set(this.langFile, this.query, null);
