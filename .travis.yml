@@ -1,7 +1,5 @@
-before_script: echo 'max_execution_time=500' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-
 script:
-  - php -d max_execution_time=0 vendor/bin/phpunit
+  - phpunit
 
 after_success:
   - chmod +x ./.deploy.sh; ./.deploy.sh
@@ -12,6 +10,7 @@ php:
   - 7.2
 
 before_script:
+  - echo 'max_execution_time=500' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - cp .env.testing .env
   - composer self-update
   - composer install --no-interaction
