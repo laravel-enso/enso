@@ -77,7 +77,7 @@ Search in the whole project for `LogActivity` and replace it with `LogsActivity`
 - the `countriesSelectOptions` route/permission was renamed to `countryOptions`
 
 ##### Upgrade
-To upgrade manually replace where the front-end component is used the provided `type` property from the old alias to the mapped class from the `addresses.php` config. Afterwards remove the `addressable` key from the config.
+To upgrade, manually replace the provided `type` property where the front-end component is used, replacing the old alias with the mapped class from the `addresses.php` config. Afterwards, remove the `addressable` key from the config.
 
 #### AvatarManager
 ##### Changes
