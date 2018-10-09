@@ -1,3 +1,5 @@
+before_script: echo 'max_execution_time=500' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
 script:
   - php -d max_execution_time=0 vendor/bin/phpunit
 
