@@ -209,7 +209,7 @@ The upgrade steps are similar to [AddressManager](#morphable)
 - renames the `IsActive` trait into `ActiveState`
 
 ##### Upgrade
-Search in the whole project for `IsActive` and replace it with `ActiveState` and `:is-active` with `:active-state`.
+Search in the whole project for `IsActive` and replace it with `ActiveState`, mind the casing.
 
 #### HistoryTracker
 - improved test
