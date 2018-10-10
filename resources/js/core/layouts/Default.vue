@@ -11,8 +11,13 @@
                 { 'is-collapsed' : !menu.isExpanded }
             ]" v-if="menu.isVisible"/>
             <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
-                <bookmarks v-if="bookmarks"/>
-                <div class="container is-fluid page-content is-marginless">
+                <transition :duration="100"
+                    enter-active-class="slideInDown"
+                    leave-active-class="slideOutUp">
+                    <bookmarks v-show="bookmarks"
+                        class="animated"/>
+                </transition>
+                <div class="wrapper page-content">
                     <page-header :title="$route.meta.title"/>
                     <router v-if="isInitialised"/>
                 </div>
@@ -72,11 +77,13 @@ export default {
     },
 
     mounted() {
-        setTimeout(() => this.setThemeParams(), 501);
+        setTimeout(() => {
+            this.updateLayout();
+        }, 501);
     },
 
     methods: {
-        ...mapMutations('layout', ['setThemeParams', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
+        ...mapMutations('layout', ['updateLayout', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
         ...mapMutations('layout/menu', { showMenu: 'show', hideMenu: 'hide' }),
         ...mapActions(['initialise']),
         addTouchBreakpointsListeners() {
@@ -112,6 +119,9 @@ export default {
                     this.$toastr.info(response.data.message);
                     this.initialise();
                 }).catch(error => this.handleError(error));
+        },
+        stopTransition() {
+            setTimeout(() => (this.bookmarkTransition = false), 50);
         },
     },
 };
@@ -152,8 +162,8 @@ export default {
         }
     }
 
-    div.container.page-content {
-        padding: 20px;
+    .wrapper.page-content {
+        padding: 1.2em;
     }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar app-navbar is-light">
+    <nav class="navbar app-navbar is-light is-fixed-top">
         <div class="navbar-brand">
             <a class="navbar-item logo" href="#">
                 <figure class="image is-24x24">
@@ -62,7 +62,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faCode, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -98,9 +98,6 @@ export default {
 <style lang="scss" scoped>
 
     .navbar {
-        position: fixed;
-        min-width: 100%;
-        top: 0px;
         z-index: 3;
 
         -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.2);
@@ -112,10 +109,6 @@ export default {
             &.rotate {
                 transform: rotate(90deg);
             }
-        }
-
-        .is-pulled-right {
-            margin-left: auto;
         }
     }
 

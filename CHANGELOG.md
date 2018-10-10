@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.12.3
+- bug fixes for v2.12.x
+
 ### 2.12.2
 - improved the factories & seeders. `PersonSeeder` was removed
 - improves comment and user tests

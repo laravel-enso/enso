@@ -27,7 +27,7 @@ export const mutations = {
     showHome: state => (state.home = true),
     hideHome: state => (state.home = false),
     setThemes: (state, themes) => (state.themes = themes),
-    setThemeParams() {
+    updateLayout() {
         const height = document.querySelector('.app-navbar').clientHeight;
         const menuAside = document.querySelector('.menu.aside');
         const settingsAside = document.querySelector('.settings.aside');
@@ -73,7 +73,7 @@ export const actions = {
             dispatch('setTheme').then(() => {
                 setTimeout(() => {
                     commit('toggleLights');
-                    setTimeout(() => commit('setThemeParams'), 501);
+                    setTimeout(() => commit('updateLayout'), 501);
                 }, 1000);
             });
         }, 500);
