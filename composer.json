@@ -71,8 +71,8 @@
             "php artisan package:discover"
         ],
         "post-update-cmd": [
-            "php artisan vendor:publish --force --tag='enso-assets'",
-            "php artisan vendor:publish --tag='localisation-lang-files'",
+            "php artisan vendor:publish --force --tag=enso-assets",
+            "php artisan vendor:publish --tag=localisation-lang-files",
             "php artisan enso:localisation:merge"
         ]
     },
