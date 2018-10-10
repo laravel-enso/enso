@@ -151,7 +151,7 @@ export default {
                 taggedUsers: [],
                 owner: {
                     avatarId: this.user.avatar.id,
-                    name: this.user.person.name,
+                    name: this.user.name,
                 },
             };
         },
@@ -202,7 +202,7 @@ export default {
         },
         syncTaggedUsers(comment) {
             comment.taggedUsers.forEach((user, index) => {
-                if (!comment.body.includes(user.person.name)) {
+                if (!comment.body.includes(user.name)) {
                     comment.taggedUsers.splice(index, 1);
                 }
             });

@@ -1,5 +1,5 @@
 const initBookmarks = () => {
-    const bookmarks = localStorage.getItem('bookmar;s');
+    const bookmarks = localStorage.getItem('bookmarks');
 
     return bookmarks && JSON.parse(bookmarks) || [];
 };

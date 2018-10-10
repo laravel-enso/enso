@@ -52,7 +52,7 @@
             <figure class="image is-32x32 has-margin-right-small has-margin-bottom-small"
                 v-for="user in team.users"
                 :key="user.id"
-                v-tooltip="user.person.name">
+                v-tooltip="user.name">
                 <img class="is-rounded"
                     :src="avatar(user.avatar.id)">
             </figure>

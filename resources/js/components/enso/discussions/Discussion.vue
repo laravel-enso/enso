@@ -165,7 +165,7 @@ export default {
                 discussion_id: this.discussion.id,
                 body: null,
                 owner: {
-                    name: this.user.person.name,
+                    name: this.user.name,
                     avatarId: this.user.avatar.id,
                 },
             };
