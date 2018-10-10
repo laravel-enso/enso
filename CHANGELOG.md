@@ -81,7 +81,7 @@ Search in the whole project for `LogActivity` and replace it with `LogsActivity`
 - the `countriesSelectOptions` route/permission was renamed to `countryOptions`
 
 ##### Upgrade
-To upgrade, manually replace the provided `type` property where the front-end component is used, replacing the old alias with the mapped class from the `addresses.php` config. Afterwards, remove the `addressable` key from the config.
+To upgrade, manually replace the provided `type` property where the front-end component is used, replacing the old alias with the mapped class from the `addresses.php` config. Afterwards, remove the `addressable` key from the config. (see [this change](https://github.com/laravel-enso/Enso/commit/be5743c80bf028468ae5dbf30956b5c87d30c634#diff-c55ea2ae73bcf4f5d68ad75da15d5546) for an example)
 
 #### AvatarManager
 ##### Changes
@@ -209,7 +209,7 @@ The upgrade steps are similar to [AddressManager](#morphable)
 - renames the `IsActive` trait into `ActiveState`
 
 ##### Upgrade
-Search in the whole project for `IsActive` and replace it with `ActiveState`.
+Search in the whole project for `IsActive` and replace it with `ActiveState`, mind the casing.
 
 #### HistoryTracker
 - improved test
