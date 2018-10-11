@@ -34,7 +34,7 @@
                     :expanded="expanded"
                     :selected="selected"
                     @ajax="ajax"
-                    @update-selected="updateSelectedFlag()"
+                    @update-selected="updateSelectedFlag"
                     ref="body"
                     v-if="hasContent">
                     <template v-for="column in template.columns"

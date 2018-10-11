@@ -7,7 +7,7 @@
                     <fa icon="file"/>
                 </span>
                 <span>
-                    {{ shortName(doc.file.name) }}
+                    {{ shortName(file.name) }}
                 </span>
             </div>
         </div>
@@ -16,28 +16,26 @@
                 leave-active-class="animated fadeOut">
                 <div class="level-item has-text-grey">
                     <button class="button is-naked"
-                        v-if="doc.isAccessible && canAccess('core.documents.link')"
+                        v-if="canAccess('core.files.link')"
                         @click="link">
                         <span class="icon">
                             <fa icon="link"/>
                         </span>
                     </button>
                     <button class="button is-naked"
-                        v-if="doc.isAccessible"
                         @click="show">
                         <span class="icon">
                             <fa icon="eye"/>
                         </span>
                     </button>
                     <a class="button is-naked"
-                        v-if="doc.isAccessible"
                         :href="downloadLink">
                         <span class="icon">
                             <fa icon="cloud-download-alt"/>
                         </span>
                     </a>
                     <popover placement="bottom"
-                        v-if="doc.isDeletable"
+                        v-if="file.isDeletable"
                         @confirm="$emit('delete')">
                         <button class="button is-naked">
                             <span class="icon">
@@ -57,19 +55,19 @@
                                     <span class="icon is-small">
                                         <fa icon="user"/>
                                     </span>
-                                    {{ doc.file.owner.name }}
+                                    {{ file.owner.name }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
                                         <fa icon="calendar-alt"/>
                                     </span>
-                                    {{ timeFromNow(doc.createdAt) }}
+                                    {{ timeFromNow(file.createdAt) }}
                                 </p>
                                 <p>
                                     <span class="icon is-small">
                                         <fa icon="database"/>
                                     </span>
-                                    {{ $options.filters.numberFormat(doc.file.size) }} Kb
+                                    {{ $options.filters.numberFormat(file.size) }} Kb
                                 </p>
                             </div>
                         </template>
@@ -107,7 +105,7 @@ export default {
     components: { VPopover, Popover, Modal },
 
     props: {
-        doc: {
+        file: {
             type: Object,
             required: true,
         },
@@ -121,16 +119,16 @@ export default {
 
     computed: {
         downloadLink() {
-            return route('core.documents.download', this.doc.id);
+            return route('core.files.download', this.file.id);
         },
         openLink() {
-            return route('core.documents.show', this.doc.id);
+            return route('core.files.show', this.file.id);
         },
     },
 
     methods: {
         link() {
-            axios.get(route('core.documents.link', this.doc.id))
+            axios.get(route('core.files.link', this.file.id))
                 .then(({ data }) => (this.temporaryLink = data.link))
                 .catch(error => this.handleError(error));
         },
@@ -152,17 +150,15 @@ export default {
 
 <style lang="scss" scoped>
 
-    @import '~bulma/sass/utilities/initial-variables';
-    @import '~bulma/sass/utilities/derived-variables.sass';
-
     .wrapper {
         padding: .2rem;
+        width: 100%;
         -webkit-box-shadow: 0px 0px 3px 1px rgba(133,133,133,1);
         box-shadow: 0px 0px 3px 1px rgba(133,133,133,1);
         border-radius: 5px;
 
         &:hover {
-            border-left: 4px solid $link;
+            border-left: 4px solid #3273dc;
         }
 
         &:not(:last-child) {

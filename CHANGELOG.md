@@ -1,13 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 2.12.5
+- improved menu's animations
+- 
+
 ### 2.12.4
-- adds delete restrains/cascading options for the morphable packages - Addresses, Comments, Contacts, Discussions and Documents. To make use of the add in the local configs `'onDelete' => 'type'` where type can be `cascade` or `restrict`
-- improves the bookmarks, now we can unstick the first bookmark when it's single
-- fixes a bug in select, now the selection can be deselected in single mode
-- hides the vue select dropdown's scrollbar 
-- adds missing exception import in companies / people models
-- hides the menu's scroll bar
-- adds scroll to settings
+- added delete restrains/cascading options for the morphable packages - Addresses, Comments, Contacts, Discussions and Documents. To make use of the add in the local configs `'onDelete' => 'type'` where type can be `cascade` or `restrict`
+- improved the bookmarks, now we can unstick the first bookmark when it's single
+- fixed a bug in select, now the selection can be deselected in single mode
+- hided the vue select dropdown's scrollbar 
+- added missing exception import in companies / people models
+- hided the menu's scroll bar
+- added scroll to settings
 
 ### 2.12.3
 - bug fixes for v2.12.x

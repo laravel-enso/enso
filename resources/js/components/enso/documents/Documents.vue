@@ -31,12 +31,15 @@
                 </span>
             </p>
         </div>
-        <div class="columns is-mobile is-multiline"
-            :class="{'has-margin-top-large': controls}">
-            <div class="column is-half-mobile is-one-third-desktop"
+        <div :class="[
+                {'columns is-mobile is-multiline': !compact},
+                {'has-margin-top-large': controls}
+            ]">
+            <div :class="{ 'column is-half-mobile is-one-third-desktop': !compact }"
                 v-for="(doc, index) in filteredDocuments"
                 :key="index">
-                <file :file="doc.file"
+                <component :is="component"
+                    :file="doc.file"
                     @delete="destroy(index)"/>
             </div>
         </div>
@@ -68,6 +71,10 @@ export default {
             type: String,
             default: '',
         },
+        compact: {
+            type: Boolean,
+            default: false,
+        },
         controls: {
             type: Boolean,
             default: false,
@@ -97,6 +104,11 @@ export default {
         },
         uploadLink() {
             return route('core.documents.store');
+        },
+        component() {
+            return this.compact
+                ? 'document'
+                : 'file';
         },
     },
 

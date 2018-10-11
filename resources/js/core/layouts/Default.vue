@@ -5,11 +5,11 @@
         <div class="app-main"
             v-show="lightsOn">
             <navbar class="animated slideInDown"/>
-            <sidebar :class="[
-                'animated',
-                menu.isVisible ? 'slideInLeft' : 'slideOutLeft',
-                { 'is-collapsed' : !menu.isExpanded }
-            ]" v-if="menu.isVisible"/>
+            <transition enter-active-class="slideInLeft"
+                leave-active-class="slideOutLeft">
+                <sidebar :class="['animated', { 'is-collapsed' : !menu.isExpanded }]"
+                    v-if="menu.isVisible"/>
+            </transition>
             <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
                 <transition :duration="100"
                     enter-active-class="slideInDown"

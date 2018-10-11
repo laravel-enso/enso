@@ -10,7 +10,7 @@
                     <input type="checkbox"
                         :value="row.dtRowId"
                         v-model="$parent.selected"
-                        @change="updateSelected">
+                        @change="$emit('update-selected')">
                 </label>
             </div>
         </td>
@@ -307,10 +307,10 @@ export default {
                 }
             });
 
-            this.updateSelected();
+            this.$emit('update-selected');
         },
         updateSelected() {
-            this.$emit('update-selected', this.selected);
+            this.$emit('update-selected');
         },
     },
 };
