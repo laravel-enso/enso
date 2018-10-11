@@ -110,6 +110,10 @@ export default {
                 transform: rotate(90deg);
             }
         }
+
+        .is-pulled-right {
+            margin-left: auto;
+        }
     }
 
 </style>
