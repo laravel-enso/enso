@@ -3,7 +3,7 @@
     <div class="bookmarks-wrapper">
         <span class="control">
             <a class="tag is-warning icon has-margin-right-small"
-                v-if="routes.length > 1"
+                v-if="stickyRoutes"
                 @click="clear()">
                 <fa icon="trash-alt"/>
             </a>
@@ -64,6 +64,9 @@ export default {
                 this.$store.commit('bookmarks/set', routes);
             },
         },
+        stickyRoutes() {
+            return this.routes.some(({ sticky }) => sticky);
+        },
     },
 
     mounted() {
@@ -72,7 +75,7 @@ export default {
     },
 
     methods: {
-        ...mapMutations('bookmarks', ['stick', 'drop']),
+        ...mapMutations('bookmarks', ['stick', 'unStick', 'drop']),
         remove(route) {
             this.drop(route);
             if (route.name === this.$route.name) {
@@ -84,6 +87,9 @@ export default {
             this.routes
                 .filter(({ name }) => name !== this.$route.name)
                 .forEach(route => this.drop(route));
+
+            this.routes.forEach(route =>
+                this.unStick(route));
         },
         ensureBookmarkVisibility() {
             clearInterval(this.handle);

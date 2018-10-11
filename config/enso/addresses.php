@@ -3,6 +3,12 @@
 use LaravelEnso\Core\app\Models\UserGroup;
 
 return [
+    'onDelete' => 'cascade',
+    'loggableMorph' => [
+        'addressable' => [
+            UserGroup::class => 'name',
+        ],
+    ],
     'streetTypes' => [
         'Street' => 'Street',
         'Avenue' => 'Avenue',
@@ -42,10 +48,5 @@ return [
         'postalArea' => 'postal_area',
         'obs' => 'obs',
         'isDefault' => 'is_default',
-    ],
-    'loggableMorph' => [
-        'addressable' => [
-            UserGroup::class => 'name',
-        ],
     ],
 ];

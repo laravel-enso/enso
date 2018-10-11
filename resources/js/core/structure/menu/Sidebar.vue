@@ -67,11 +67,19 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
-    .menu-wrapper {
-        max-height: calc(100vh - 110px);
-        overflow-y: auto;
+    .menu {
+        -ms-overflow-style: none;
+
+        .menu-wrapper {
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+        }
+
+        .menu-wrapper::-webkit-scrollbar {
+            display: none;
+        }
     }
 
 </style>

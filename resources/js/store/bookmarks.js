@@ -42,6 +42,12 @@ export const mutations = {
         state.routes[index].sticky = true;
         updateLocalStorage(state.routes);
     },
+    unStick(state, route) {
+        const index = state.routes
+            .findIndex(({ name }) => name === route.name);
+        state.routes[index].sticky = false;
+        updateLocalStorage(state.routes);
+    },
     drop(state, route) {
         const index = state.routes
             .findIndex(({ name }) => name === route.name);

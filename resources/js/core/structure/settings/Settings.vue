@@ -1,6 +1,6 @@
 <template>
 
-    <vue-aside class="settings">
+    <vue-aside class="wrapper settings">
         <p class="menu-label has-text-centered">
             {{ __("Settings") }}
         </p>
@@ -78,15 +78,21 @@ export default {
 
 <style>
 
-    div.aside.settings {
+    .wrapper.settings {
         right: 0;
+        overflow-y: auto;
+        -ms-overflow-style: none;
     }
 
-    li.settings-item .level-item {
+    .wrapper.settings::-webkit-scrollbar {
+        display: none;
+    }
+
+    .settings-item .level-item {
         padding: 6px;
     }
 
-    li.settings-item .level-right .level-item {
+    .settings-item .level-right .level-item {
         margin-right: unset;
     }
 

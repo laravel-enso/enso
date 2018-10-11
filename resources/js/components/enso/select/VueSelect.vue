@@ -346,6 +346,11 @@ export default {
 
             if (!this.multiple) {
                 this.hideDropdown();
+                if (this.value === value) {
+                    this.$emit('input', null);
+                    return;
+                }
+
                 this.$emit('input', value);
                 return;
             }
@@ -536,6 +541,11 @@ export default {
 
         .dropdown-menu {
             width: 100%;
+            overflow-y: auto;
+
+            .dropdown-content::-webkit-scrollbar {
+                display: none;
+            }
 
             .dropdown-content {
                 max-height: 13rem;
