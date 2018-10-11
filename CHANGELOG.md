@@ -2,7 +2,8 @@
 
 ### 2.12.5
 - improved menu's animations
-- 
+- added a `compact` option for documents manager where files can be seen in the old format
+- some minor bug fixes
 
 ### 2.12.4
 - added delete restrains/cascading options for the morphable packages - Addresses, Comments, Contacts, Discussions and Documents. To make use of the add in the local configs `'onDelete' => 'type'` where type can be `cascade` or `restrict`
