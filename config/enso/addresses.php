@@ -4,6 +4,8 @@ use LaravelEnso\Core\app\Models\UserGroup;
 
 return [
     'onDelete' => 'cascade',
+    'requestValidator' => null,
+    'formTemplate' => null,
     'loggableMorph' => [
         'addressable' => [
             UserGroup::class => 'name',

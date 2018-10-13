@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.12.6
+- vuedatatable's `ModelTable` class now provides a `templatePath()` method
+- added configs for customizations in people and companies
+- fixed bugs in impersonate and teams
+- improved the customization for addresses
+- updated composer & npm deps
+
+To update an existing project change in `composer.json`: "laravel-enso/addressesmanager": "2.5.*"
+
 ### 2.12.5
 - improved menu's animations
 - added a `compact` option for documents manager where files can be seen in the old format
