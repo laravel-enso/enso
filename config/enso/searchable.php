@@ -3,6 +3,7 @@
 use LaravelEnso\Teams\app\Models\Team;
 use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\Contacts\app\Models\Contact;
+use LaravelEnso\Companies\app\Models\Company;
 use LaravelEnso\HowToVideos\app\Models\Video;
 
 return [
@@ -19,6 +20,12 @@ return [
             'attributes' => ['name', 'appellative', 'email', 'phone'],
             'label' => 'name',
             'permissionGroup' => 'administration.people',
+        ],
+        Company::class => [
+            'group' => 'Company',
+            'attributes' => ['name'],
+            'label' => 'name',
+            'permissionGroup' => 'administration.companies',
         ],
         Team::class => [
             'group' => 'Team',

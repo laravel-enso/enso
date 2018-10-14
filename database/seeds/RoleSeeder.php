@@ -21,17 +21,17 @@ class RoleSeeder extends Seeder
         $admin = $roles->first();
 
         $admin->permissions()
-                ->attach(Permission::all());
+                ->sync(Permission::pluck('id'));
 
         $admin->menus()
-            ->attach(Menu::all());
+            ->sync(Menu::pluck('id'));
 
         $supervisor = $roles->last();
 
         $supervisor->permissions()
-                ->attach(Permission::implicit()->get());
+                ->sync(Permission::implicit()->pluck('id'));
 
         $supervisor->menus()
-            ->attach(Menu::all());
+            ->sync(Menu::pluck('id'));
     }
 }
