@@ -541,7 +541,6 @@ export default {
 
         .dropdown-menu {
             width: 100%;
-            overflow-y: auto;
 
             .dropdown-content::-webkit-scrollbar {
                 display: none;

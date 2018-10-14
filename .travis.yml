@@ -10,8 +10,6 @@ php:
   - 7.2
 
 before_script:
-  - echo 'max_execution_time=500' > myconfig.ini
-  - phpenv config-add myconfig.ini
   - cp .env.testing .env
   - composer self-update
   - composer install --no-interaction
