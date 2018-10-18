@@ -13,7 +13,7 @@
                     :class="{ 'is-active': index === active }"
                     :key="index">
                     <a :class="{ 'has-background-white has-text-grey-dark': custom && index === active }"
-                        @click="setActive(index)"
+                        @click="activate(index)"
                         :disabled="disabled.includes(index)">
                         <slot name="label"
                             :tab="tab">
@@ -74,17 +74,17 @@ export default {
     },
 
     methods: {
-        setActive(index) {
+        activate(index) {
             if (this.active === index || this.disabled.includes(index)) {
                 return;
             }
 
+            this.setActive(index);
+            this.$emit('selected', this.tabs[index]);
+        },
+        setActive(index) {
             this.active = null;
-
-            setTimeout(() => {
-                this.active = index;
-                this.$emit('selected', this.tabs[this.active]);
-            }, 300);
+            setTimeout(() => (this.active = index), 300);
         },
         disable(index) {
             if (!this.disabled.includes(index)) {

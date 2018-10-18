@@ -1,5 +1,18 @@
 ## Laravel Enso's Changelog
 
+### 2.12.7
+
+#### Important
+- updated `QUEUE_DRIVER` key to `QUEUE_CONNECTION` in `config/queue.php`
+- updated `SENTRY_DSN` to `SENTRY_LARAVEL_DSN` in `config/sentry.php`
+
+#### Fixes & improvements
+- added a `readonly` boolean prop to `vue-filter`
+- fix: removes the first (default) `selected` emitted event in tabs
+- added `highlight(dtRowId)` & `clearHighlighted()` helpers to the FE `vue-table` api
+- improved `vue-form-ss` to use the `params` prop in the template fetching reuqest
+- fixed publsih tag in companies
+
 ### 2.12.6
 - vuedatatable's `ModelTable` class now provides a `templatePath()` method
 - added configs for customizations in people and companies

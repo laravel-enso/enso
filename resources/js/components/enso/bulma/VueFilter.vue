@@ -3,6 +3,11 @@
     <div class="vue-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
+            <span class="icon lock has-text-muted"
+                v-if="readonly">
+                <fa icon="lock"
+                    size="xs"/>
+            </span>
         </div>
         <div class="tabs is-toggle is-fullwidth is-small filter-tabs">
             <ul>
@@ -40,9 +45,9 @@
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faPowerOff);
+library.add(faPowerOff, faLock);
 
 export default {
     name: 'VueFilter',
@@ -74,6 +79,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        readonly: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -84,7 +93,9 @@ export default {
 
     methods: {
         update(value) {
-            this.$emit('input', value);
+            if (!this.readonly) {
+                this.$emit('input', value);
+            }
         },
     },
 };
@@ -95,6 +106,15 @@ export default {
 
     .vue-filter {
         padding: 0.5em;
+        position: relative;
+
+        .has-text-centered {
+
+            .lock {
+                position: absolute;
+                right: 0;
+            }
+        }
 
         .filter-tabs {
             padding-top: 0.5em;

@@ -3,10 +3,11 @@
     <div :class="['dropdown', { 'is-active': dropdown }]"
         v-click-outside="hideDropdown">
         <div :class="['dropdown-trigger', { 'is-danger': hasError }]">
-            <div class="button"
+            <fieldset class="button"
                 tabindex="0"
                 :disabled="disabled"
                 @click="showDropdown"
+                @keypress.enter="showDropdown"
                 @focus="showDropdown">
                 <div class="select-value">
                     <div class="field is-grouped is-grouped-multiline">
@@ -45,7 +46,7 @@
                         <fa icon="angle-up"/>
                     </span>
                 </div>
-            </div>
+            </fieldset>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">

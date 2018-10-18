@@ -1526,16 +1526,16 @@
         },
         {
             "name": "laravel-enso/companies",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Companies.git",
-                "reference": "e46d95829a1382a337e8ebe32987f7e46846269a"
+                "reference": "61dccbaaf9d66b7551e36bd3be7110352aa1744a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/e46d95829a1382a337e8ebe32987f7e46846269a",
-                "reference": "e46d95829a1382a337e8ebe32987f7e46846269a",
+                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/61dccbaaf9d66b7551e36bd3be7110352aa1744a",
+                "reference": "61dccbaaf9d66b7551e36bd3be7110352aa1744a",
                 "shasum": ""
             },
             "require": {
@@ -1581,7 +1581,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2018-10-13T10:10:17+00:00"
+            "time": "2018-10-15T06:33:19+00:00"
         },
         {
             "name": "laravel-enso/contacts",
@@ -2163,16 +2163,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.9.1",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "2c422c36d6bc77f8da2004ebb62f713fde21a19e"
+                "reference": "3bbf02f5d3035d316fdaa0c79f0d854acde434e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/2c422c36d6bc77f8da2004ebb62f713fde21a19e",
-                "reference": "2c422c36d6bc77f8da2004ebb62f713fde21a19e",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/3bbf02f5d3035d316fdaa0c79f0d854acde434e5",
+                "reference": "3bbf02f5d3035d316fdaa0c79f0d854acde434e5",
                 "shasum": ""
             },
             "require": {
@@ -2215,7 +2215,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-10-08T14:54:01+00:00"
+            "time": "2018-10-17T06:25:24+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -3328,16 +3328,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.5.12",
+            "version": "2.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "310303a9e09a272051b1c4fbe958eb5e9a782510"
+                "reference": "6427f9f944622de1069427c2ee30f60a49aa53a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/310303a9e09a272051b1c4fbe958eb5e9a782510",
-                "reference": "310303a9e09a272051b1c4fbe958eb5e9a782510",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/6427f9f944622de1069427c2ee30f60a49aa53a4",
+                "reference": "6427f9f944622de1069427c2ee30f60a49aa53a4",
                 "shasum": ""
             },
             "type": "library",
@@ -3373,20 +3373,20 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-10-08T14:58:56+00:00"
+            "time": "2018-10-15T12:06:47+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "cd57bd89224fd190085689c56d2d17bd938a6eb2"
+                "reference": "06987f21970a4b51299bb2d9429411a127beb1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/cd57bd89224fd190085689c56d2d17bd938a6eb2",
-                "reference": "cd57bd89224fd190085689c56d2d17bd938a6eb2",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/06987f21970a4b51299bb2d9429411a127beb1e4",
+                "reference": "06987f21970a4b51299bb2d9429411a127beb1e4",
                 "shasum": ""
             },
             "require": {
@@ -3431,7 +3431,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-10-13T09:38:21+00:00"
+            "time": "2018-10-16T13:15:35+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3773,16 +3773,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.47",
+            "version": "1.0.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
                 "shasum": ""
             },
             "require": {
@@ -3853,7 +3853,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-09-14T15:30:29+00:00"
+            "time": "2018-10-15T13:53:10+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7031,16 +7031,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "6.0.8",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "848f78b3309780fef7ec8c4666b7ab4e6b09b22f"
+                "reference": "0685fb6a43aed1b2e09804d1aaf17144c82861f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/848f78b3309780fef7ec8c4666b7ab4e6b09b22f",
-                "reference": "848f78b3309780fef7ec8c4666b7ab4e6b09b22f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0685fb6a43aed1b2e09804d1aaf17144c82861f8",
+                "reference": "0685fb6a43aed1b2e09804d1aaf17144c82861f8",
                 "shasum": ""
             },
             "require": {
@@ -7064,7 +7064,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0-dev"
+                    "dev-master": "6.1-dev"
                 }
             },
             "autoload": {
@@ -7090,7 +7090,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-10-04T03:41:23+00:00"
+            "time": "2018-10-16T05:37:37+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

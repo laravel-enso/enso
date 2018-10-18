@@ -33,6 +33,7 @@
                     :i18n="i18n"
                     :expanded="expanded"
                     :selected="selected"
+                    :highlighted="highlighted"
                     @ajax="ajax"
                     @update-selected="updateSelectedFlag"
                     ref="body"
@@ -149,6 +150,7 @@ export default {
             expanded: [],
             forceInfo: false,
             selected: [],
+            highlighted: [],
         };
     },
 
@@ -485,6 +487,17 @@ export default {
                 .length === 0;
 
             this.$refs.header.updateSelectedFlag(selected);
+        },
+        highlight(id) {
+            const index = this.body.data
+                .findIndex(({ dtRowId }) => dtRowId === id);
+
+            if (index >= 0) {
+                this.highlighted.push(index);
+            }
+        },
+        clearHighlighted() {
+            this.highlighted = [];
         },
     },
 };

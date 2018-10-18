@@ -67,7 +67,10 @@ export default {
 
     methods: {
         get() {
-            axios.get(route(...this.routeParams)).then(({ data }) => {
+            axios.get(
+                route(...this.routeParams),
+                { params: this.params },
+            ).then(({ data }) => {
                 this.data = data.form;
                 this.$emit('loaded');
             }).catch(error => this.handleError(error));

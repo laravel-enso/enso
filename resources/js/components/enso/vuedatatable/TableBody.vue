@@ -2,7 +2,8 @@
 
 <tbody>
     <tr v-for="(row, index) in body.data"
-        :key="index">
+        :key="index"
+        :class="highlighted.includes(index) ? template.highlight : null">
         <td :class="template.align"
             v-if="template.selectable && !isChild(row)">
             <div class="selectable">
@@ -152,6 +153,10 @@ export default {
             required: true,
         },
         selected: {
+            type: Array,
+            required: true,
+        },
+        highlighted: {
             type: Array,
             required: true,
         },
