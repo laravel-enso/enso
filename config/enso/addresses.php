@@ -8,7 +8,7 @@ return [
     'formTemplate' => null,
     'loggableMorph' => [
         'addressable' => [
-            Company::class => 'name'
+            Company::class => 'name',
         ],
     ],
     'streetTypes' => [
