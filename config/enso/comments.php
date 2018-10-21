@@ -1,13 +1,13 @@
 <?php
 
-use LaravelEnso\Core\app\Models\UserGroup;
+use LaravelEnso\Companies\app\Models\Company;
 
 return [
     'editableTimeLimit' => 24 * 60 * 60,
     'onDelete' => 'cascade',
     'loggableMorph' => [
         'commentable' => [
-            UserGroup::class => 'name',
+            Company::class => 'name',
         ],
     ],
 ];

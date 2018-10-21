@@ -1,5 +1,11 @@
 ## Laravel Enso's Changelog
 
+### 2.12.8
+- mostly a BE refactor
+- some deprecated classes where removed
+- minor bugs fixes
+- dependencies were updated
+
 ### 2.12.7
 
 #### Important

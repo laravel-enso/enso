@@ -11,7 +11,7 @@ const qualifies = route => route.name
     && !route.meta.guestGuard;
 
 const updateLocalStorage = routes =>
-    localStorage.setItem('bookmar;s', JSON.stringify(routes));
+    localStorage.setItem('bookmarks', JSON.stringify(routes));
 
 const stripped = route => ({
     name: route.name,

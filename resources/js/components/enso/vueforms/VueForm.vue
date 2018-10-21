@@ -143,20 +143,21 @@
             </div>
             <div class="actions">
                 <a class="button"
-                    v-if="data.actions.store"
+                    :class="data.actions.back.button.class"
+                    v-if="data.actions.back"
                     @click="$router.go(-1)">
                     <span class="is-hidden-mobile">
                         {{ i18n('Back') }}
                     </span>
                     <span class="icon">
-                        <fa icon="arrow-left"/>
+                        <fa :icon="data.actions.back.button.icon"/>
                     </span>
                     <span class="is-hidden"/>
                 </a>
                 <a class="button"
+                    :class="data.actions.destroy.button.class"
                     v-if="data.actions.destroy"
                     :disabled="data.actions.destroy.forbidden"
-                    :class="data.actions.destroy.button.class"
                     @click="modal = true">
                     <span class="is-hidden-mobile">
                         {{ i18n(data.actions.destroy.button.label) }}

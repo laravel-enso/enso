@@ -36,6 +36,13 @@ return [
             'action' => 'router',
             'label' => 'Show',
         ],
+        'back' => [
+            'icon' => 'arrow-left',
+            'class' => 'is-primary',
+            'event' => 'back',
+            'action' => 'router',
+            'label' => 'Back',
+        ],
         'store' => [
             'icon' => 'check',
             'class' => 'is-success',
@@ -61,6 +68,17 @@ return [
             'label' => 'Delete',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Date format
+    |--------------------------------------------------------------------------
+    | Global date format for date columns. Will use Carbon to parse the columns
+    | marked as date to the desired format.
+    |
+    */
+
+    'dateFormat' => 'd-m-Y',
 
     /*
     |--------------------------------------------------------------------------

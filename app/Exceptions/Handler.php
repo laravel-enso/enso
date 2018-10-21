@@ -13,8 +13,7 @@ class Handler extends ExceptionHandler
     ];
 
     protected $dontFlash = [
-        'password',
-        'password_confirmation',
+        'password', 'password_confirmation',
     ];
 
     public function report(Exception $exception)

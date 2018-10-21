@@ -34,11 +34,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            chart: null,
-        };
-    },
+    data: () => ({
+        chart: null,
+    }),
 
     watch: {
         data() {
@@ -71,9 +69,8 @@ export default {
                             font: {
                                 style: 'bold',
                             },
-                            display(context) {
-                                const { chart } = context;
-                                const meta = chart.getDatasetMeta(context.datasetIndex);
+                            display({ chart, datasetIndex }) {
+                                const meta = chart.getDatasetMeta(datasetIndex);
                                 return !meta.hidden;
                             },
                         },

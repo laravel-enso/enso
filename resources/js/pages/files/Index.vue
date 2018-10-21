@@ -77,6 +77,7 @@
 
 <script>
 
+import { subMonths } from 'date-fns';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -102,8 +103,8 @@ export default {
             folders: [],
             query: null,
             interval: {
-                min: null,
-                max: null,
+                min: new Date(),
+                max: subMonths(new Date(), 1),
             },
         };
     },

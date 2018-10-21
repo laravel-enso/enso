@@ -1,12 +1,12 @@
 <?php
 
-use LaravelEnso\Core\app\Models\UserGroup;
+use LaravelEnso\Companies\app\Models\Company;
 
 return [
     'onDelete' => 'cascade',
     'loggableMorph' => [
         'contactable' => [
-            UserGroup::class => 'name',
+            Company::class => 'name',
         ],
     ],
 ];

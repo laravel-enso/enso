@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserGroupSeeder::class,
             UserSeeder::class,
+            LanguageSeeder::class,
             CountrySeeder::class,
         ]);
     }

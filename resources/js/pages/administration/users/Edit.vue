@@ -6,21 +6,24 @@
                 :route-params="[$route.name, $route.params.id, false]"
                 ref="form"
                 @loaded="
-                    personId = $refs.form.data.params.personId
+                    initialised = true;
                     pivotParams.userGroups.id = $refs.form.field('group_id').value;
                 ">
                 <template slot="group_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :has-error="errors.has(field.name)"
-                        @input="pivotParams.userGroups.id=$event;errors.clear(field.name)"
-                        :source="field.meta.source"/>
+                        :source="field.meta.source"
+                        @input="
+                            pivotParams.userGroups.id=$event;
+                            errors.clear(field.name)
+                        "/>
                 </template>
                 <template slot="role_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :pivot-params="pivotParams"
                         :has-error="errors.has(field.name)"
-                        @input="errors.clear(field.name);"
-                        :source="field.meta.source"/>
+                        :source="field.meta.source"
+                        @input="errors.clear(field.name);"/>
                 </template>
                 <template slot="password" slot-scope="{ field, errors }">
                     <div class="control has-icons-right">
@@ -28,7 +31,10 @@
                             v-model="field.value"
                             :type="field.meta.content"
                             @keydown="$emit('update');"
-                            @input="errors.clear(field.name); password = $event.target.value"
+                            @input="
+                                errors.clear(field.name);
+                                password = $event.target.value
+                            "
                             v-if="!field.meta.hidden">
                         <span class="icon is-small is-right">
                             <fa icon="lock"/>
@@ -43,7 +49,10 @@
                             v-model="field.value"
                             :type="field.meta.content"
                             @keydown="$emit('update');"
-                            @input="errors.clear(field.name); passwordConfirmation = $event.target.value"
+                            @input="
+                                errors.clear(field.name);
+                                passwordConfirmation = $event.target.value
+                            "
                             v-if="!field.meta.hidden">
                         <span class="icon is-small is-right has-text-success"
                             v-if="password && password === passwordConfirmation">
@@ -55,8 +64,9 @@
                     class="button is-warning"
                     @click="$router.push({
                         name: 'administration.people.edit',
-                        params: { id: personId }
-                    })">
+                        params: { id: $refs.form.data.params.personId }
+                    })"
+                    v-if="initialised">
                     <span class="is-hidden-mobile">
                         {{ __('Edit Person') }}
                     </span>
@@ -87,7 +97,7 @@ export default {
 
     data() {
         return {
-            personId: null,
+            initialised: false,
             pivotParams: { userGroups: { id: null } },
             password: null,
             passwordConfirmation: null,

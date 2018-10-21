@@ -4,18 +4,14 @@
         <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
                 :route-params="[$route.name, $route.params.id, false]"
-                @loaded="
-                    userId = $refs.form.data.params.userId;
-                    personId = $refs.form.data.params.personId;
-                    initialised = true;
-                "
+                @loaded="initialised = true"
                 ref="form">
                 <span slot="actions">
                     <a class="button is-warning"
-                        v-if="userId"
+                        v-if="initialised"
                         @click="$router.push({
                             name: 'administration.users.edit',
-                            params: { id: userId }
+                            params: { id: $refs.form.data.params.userId }
                         })">
                         <span class="is-hidden-mobile">
                             {{ __('Edit User') }}
@@ -26,11 +22,11 @@
                         <span class="is-hidden-mobile"/>
                     </a>
                     <a class="button is-primary"
-                        v-else-if="personId">
+                        v-else-if="initialised">
                         <span class="is-hidden-mobile"
                             @click="$router.push({
                                 name: 'administration.users.create',
-                                params: { id: personId }
+                                params: { id: $refs.form.data.params.personId }
                             })">
                             {{ __('Create User') }}
                         </span>
@@ -64,8 +60,6 @@ export default {
     components: { VueFormSs, MorphableContainer },
 
     data: () => ({
-        userId: null,
-        personId: null,
         initialised: false,
     }),
 };

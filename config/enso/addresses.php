@@ -1,6 +1,6 @@
 <?php
 
-use LaravelEnso\Core\app\Models\UserGroup;
+use LaravelEnso\Companies\app\Models\Company;
 
 return [
     'onDelete' => 'cascade',
@@ -8,7 +8,7 @@ return [
     'formTemplate' => null,
     'loggableMorph' => [
         'addressable' => [
-            UserGroup::class => 'name',
+            Company::class => 'name'
         ],
     ],
     'streetTypes' => [
@@ -29,26 +29,5 @@ return [
         'Residential' => 'Residential',
         'Comercial' => 'Comercial',
         'Industrial' => 'Industrial',
-    ],
-    'validations' => [
-        'street' => 'required',
-        'city' => 'required',
-        'country_id' => 'required',
-    ],
-    'resource' => [
-        'administrativeArea' => 'administrative_area',
-        'city' => 'city',
-        'subAdministrativeArea' => 'sub_administrative_area',
-        'streetType' => 'street_type',
-        'street' => 'street',
-        'number' => 'number',
-        'building' => 'building',
-        'entry' => 'entry',
-        'floor' => 'floor',
-        'apartment' => 'apartment',
-        'buildingType' => 'building_type',
-        'postalArea' => 'postal_area',
-        'obs' => 'obs',
-        'isDefault' => 'is_default',
     ],
 ];

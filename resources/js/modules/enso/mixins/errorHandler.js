@@ -3,7 +3,7 @@ import Vue from 'vue';
 Vue.mixin({
     methods: {
         handleError(error) {
-            if (this.hasOwnProperty('loading')) {
+            if (Object.prototype.hasOwnProperty.call(this, 'loading')) {
                 this.loading = false;
             }
 
