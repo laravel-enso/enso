@@ -11,7 +11,9 @@
             <template slot="option"
                 slot-scope="{ highlight, item }">
                 <span>
-                    <strong>{{ __(item['group']) }}:</strong>
+                    <span class="tag is-bold is-info is-uppercase">
+                        {{ __(item['group']) }}
+                    </span>
                     <span v-html="highlight(item['label'])"/>
                     <span class="route-controls"
                         v-if="item.routes.length">
@@ -23,7 +25,7 @@
                         </span>
                     </span>
                 </span>
-            </template>
+            </span></template>
         </typeahead>
     </div>
 
@@ -69,6 +71,11 @@ export default {
 
 <style lang="scss" scoped>
     .navbar-item.search {
+        .tag {
+            padding: 0.5em;
+            height: 1.6em;
+            opacity: .7;
+        }
         .route-controls {
             position: absolute;
             right: 1em;

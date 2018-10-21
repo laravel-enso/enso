@@ -1290,16 +1290,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "2.5.3",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "360e40623c6ce46004db2ad4f4394e67c6d909db"
+                "reference": "e5968d3a0e0fbfde1b532c8cba3f17e9c7b10a15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/360e40623c6ce46004db2ad4f4394e67c6d909db",
-                "reference": "360e40623c6ce46004db2ad4f4394e67c6d909db",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/e5968d3a0e0fbfde1b532c8cba3f17e9c7b10a15",
+                "reference": "e5968d3a0e0fbfde1b532c8cba3f17e9c7b10a15",
                 "shasum": ""
             },
             "require": {
@@ -1351,7 +1351,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2018-10-21T09:31:51+00:00"
+            "time": "2018-10-21T12:42:43+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -1714,16 +1714,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.1.15",
+            "version": "3.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "20d486f20760a869125524731fd20673badf3697"
+                "reference": "a8e339d74564c9f11b74faeae2967f894bdc057e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/20d486f20760a869125524731fd20673badf3697",
-                "reference": "20d486f20760a869125524731fd20673badf3697",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/a8e339d74564c9f11b74faeae2967f894bdc057e",
+                "reference": "a8e339d74564c9f11b74faeae2967f894bdc057e",
                 "shasum": ""
             },
             "require": {
@@ -1806,7 +1806,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-10-21T11:40:08+00:00"
+            "time": "2018-10-21T15:29:18+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
