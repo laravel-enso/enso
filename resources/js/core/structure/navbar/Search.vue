@@ -21,7 +21,7 @@
                             @mousedown.stop="redirect(item, route.name)"
                             v-for="(route, index) in item.routes"
                             :key="index">
-                            <fa :icon="route.icon"/>
+                            <fa :icon="route.icon" size="sm"/>
                         </span>
                     </span>
                 </span>
@@ -79,6 +79,7 @@ export default {
         .route-controls {
             position: absolute;
             right: 1em;
+            margin-top: .15em;
 
             .route-control {
                 z-index: 4;

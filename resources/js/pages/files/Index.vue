@@ -103,8 +103,8 @@ export default {
             folders: [],
             query: null,
             interval: {
-                min: new Date(),
-                max: subMonths(new Date(), 1),
+                min: subMonths(new Date(), 1),
+                max: new Date(),
             },
         };
     },
