@@ -33,7 +33,7 @@ return [
     'label' => [
         'separator' => ' - ',
         'attributes' => [
-            'localityName', 'street', 'number'
+            'localityName', 'street', 'number',
         ],
-    ]
+    ],
 ];
