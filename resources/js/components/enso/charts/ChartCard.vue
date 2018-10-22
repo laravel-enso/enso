@@ -1,6 +1,6 @@
 <template>
     <card refresh
-        :title="config.title"
+        :title="title"
         :icon="icon"
         :overlay="loading"
         :controls="1"
@@ -13,7 +13,7 @@
             </span>
         </card-control>
         <chart class="has-padding-medium"
-            :data="config.data"
+            :data="data"
             :options="config.options"
             :type="config.type"
             ref="chart"/>
@@ -59,6 +59,15 @@ export default {
             type: Object,
             default: null,
         },
+        i18n: {
+            type: Function,
+            default(key) {
+                return this.$options.methods &&
+                    Object.keys(this.$options.methods).includes('__')
+                    ? this.__(key)
+                    : key;
+            },
+        },
     },
 
     data() {
@@ -72,6 +81,22 @@ export default {
     computed: {
         icon() {
             return this.icons[this.config.type];
+        },
+        title() {
+            return this.i18n(this.config.title);
+        },
+        data() {
+            return this.config.type !== 'bubble'
+                ? {
+                    datasets: this.config.data.datasets,
+                    labels: this.config.data.labels.map(label => this.i18n(label)),
+                }
+                : {
+                    datasets: this.config.data.datasets.map((dataset) => {
+                        dataset.label = this.i18n(dataset.label);
+                        return dataset;
+                    }),
+                };
         },
     },
 

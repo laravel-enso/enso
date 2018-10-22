@@ -4,7 +4,12 @@
 - mostly a BE refactor
 - some deprecated classes where removed
 - minor bugs fixes
+- minor new improvements
 - dependencies were updated
+
+UPGRADE:
+
+make sure that `config/form.php` contains the new `back` button. Look here for the format - `vendor/laravel-enso/formbuilder/src/config/forms.php`
 
 ### 2.12.7
 
