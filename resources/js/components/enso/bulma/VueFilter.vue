@@ -2,7 +2,7 @@
 
     <div class="vue-filter">
         <div class="has-text-centered">
-            <b>{{ title }}</b>
+            <strong>{{ title }}</strong>
             <span class="icon lock has-text-muted"
                 v-if="readonly">
                 <fa icon="lock"

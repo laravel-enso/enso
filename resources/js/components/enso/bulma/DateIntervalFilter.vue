@@ -2,7 +2,7 @@
 
     <div class="date-interval-filter">
         <div class="has-text-centered">
-            <b>{{ title }}</b>
+            <strong>{{ title }}</strong>
         </div>
         <div class="columns is-mobile">
             <div class="column">

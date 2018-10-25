@@ -33,6 +33,7 @@
                     <p class="control has-icons-left has-icons-right"
                         v-if="files.length">
                         <input class="input is-rounded search-files"
+                            :placeholder="__('Filter')"
                             v-model="query">
                         <span class="icon is-small is-left">
                             <fa icon="search"/>
@@ -44,13 +45,7 @@
                         </span>
                     </p>
                 </div>
-                <date-interval-filter class="box has-background-light raises-on-hover has-margin-top-large"
-                    :title="__('Uploaded Between')"
-                    :min="interval.min"
-                    @update-min="interval.min = $event; fetch()"
-                    :max="interval.max"
-                    @update-max="interval.max = $event; fetch()"/>
-                <button class="button is-fullwidth"
+                <button class="button is-fullwidth has-margin-top-large"
                     :class="{ 'is-loading': loading }"
                     @click="fetch">
                     <span>
@@ -60,7 +55,9 @@
                         <fa icon="sync-alt"/>
                     </span>
                 </button>
-                <div class="box has-background-light raises-on-hover has-margin-top-large">
+                <date-filter class="box raises-on-hover has-margin-top-large"
+                    @update="interval = $event; fetch()"/>
+                <div class="box has-background-light raises-on-hover">
                     <h4 class="title is-4 has-text-centered">
                         {{ __('Space used') }}: {{ totalStorage / 1000 | numberFormat }} KB
                     </h4>
@@ -77,13 +74,12 @@
 
 <script>
 
-import { addDays, subMonths } from 'date-fns';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Tabs from '../../components/enso/bulma/Tabs.vue';
 import Tab from '../../components/enso/bulma/Tab.vue';
-import DateIntervalFilter from '../../components/enso/bulma/DateIntervalFilter.vue';
+import DateFilter from '../../components/enso/bulma/DateFilter.vue';
 import File from '../../components/enso/filemanager/File.vue';
 import Chart from '../../components/enso/charts/Chart.vue';
 
@@ -92,9 +88,7 @@ import Colors from '../../components/enso/charts/colors';
 library.add(faSearch, faSyncAlt);
 
 export default {
-    components: {
-        Tabs, Tab, File, DateIntervalFilter, Chart,
-    },
+    components: { Tabs, Tab, File, Chart, DateFilter },
 
     data() {
         return {
@@ -103,8 +97,8 @@ export default {
             folders: [],
             query: null,
             interval: {
-                min: subMonths(new Date(), 1),
-                max: addDays(new Date(), 1),
+                min: null,
+                max: null,
             },
         };
     },

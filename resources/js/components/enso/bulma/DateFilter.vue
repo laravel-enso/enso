@@ -1,0 +1,163 @@
+<template>
+
+    <div class="date-filter is-paddingless">
+        <div class="has-text-centered has-padding-medium has-background-light">
+            <strong v-if="custom">{{ i18n('Between') }}</strong>
+            <strong v-else>{{ i18n('When') }}</strong>
+        </div>
+        <div class="has-padding-large">
+            <div class="wrapper">
+                <span :class="['tag filter', {'is-warning is-bold': filter === key}]"
+                    v-for="(type, key) in filters"
+                    :key="key"
+                    @click="filter = key; update()">
+                    {{ type }}
+                </span>
+            </div>
+            <div class="date-interval"
+                ref="dateInterval">
+                <transition enter-active-class="fadeInDown"
+                    leave-active-class="fadeOutUp"
+                    @enter="expand"
+                    @leave="shrink">
+                    <div class="columns is-mobile animated has-margin-top-large"
+                        v-show="filter === filters.custom"
+                        ref="filter">
+                        <div class="column">
+                            <datepicker :format="format"
+                                v-model="interval.min"
+                                :locale="locale"
+                                :placeholder="i18n('From')"
+                                :disabled="filter !== filters.custom"
+                                @input="update()"/>
+                        </div>
+                        <div class="column">
+                            <datepicker :format="format"
+                                v-model="interval.max"
+                                :locale="locale"
+                                :placeholder="i18n('To')"
+                                :disabled="filter !== filters.custom"
+                                @input="update()"/>
+                        </div>
+                    </div>
+                </transition>
+            </div>
+
+        </div>
+
+    </div>
+
+</template>
+
+<script>
+
+import { format, addDays, subDays, subWeeks, subMonths } from 'date-fns';
+import Datepicker from '../vueforms/Datepicker.vue';
+
+export default {
+    name: 'DateFilter',
+
+    components: { Datepicker },
+
+    props: {
+        format: {
+            type: String,
+            default: 'd-m-Y',
+        },
+        locale: {
+            type: String,
+            default: 'en',
+        },
+        i18n: {
+            type: Function,
+            default(key) {
+                return this.$options.methods &&
+                    Object.keys(this.$options.methods).includes('__')
+                    ? this.__(key)
+                    : key;
+            },
+        },
+    },
+
+    data: () => ({
+        custom: false,
+        interval: {
+            min: null,
+            max: null,
+        },
+        filters: {
+            today: 'today',
+            yesterday: 'yesterday',
+            lastWeek: 'last week',
+            lastMonth: 'last month',
+            custom: 'custom',
+        },
+        filter: 'today',
+    }),
+
+    computed: {
+        alternateFormat() {
+            return this.format.replace('d', 'DD')
+                .replace('m', 'MM')
+                .replace('Y', 'YYYY');
+        },
+    },
+
+    mounted() {
+        this.update();
+    },
+
+    methods: {
+        update() {
+            if (this.filter !== this.filters.custom) {
+                this[this.filter]();
+            }
+
+            this.$emit('update', this.interval);
+        },
+        expand() {
+            this.$refs.dateInterval.style.height = `${this.$refs.filter.clientHeight}px`;
+        },
+        shrink() {
+            this.$refs.dateInterval.style.height = 0;
+        },
+        today() {
+            this.interval.min = format(new Date(), this.alternateFormat);
+            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+        },
+        yesterday() {
+            this.interval.min = format(subDays(new Date(), 1), this.alternateFormat);
+            this.interval.max = format(new Date(), this.alternateFormat);
+        },
+        lastWeek() {
+            this.interval.min = format(subWeeks(new Date(), 1), this.alternateFormat);
+            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+        },
+        lastMonth() {
+            this.interval.min = format(subMonths(new Date(), 1), this.alternateFormat);
+            this.interval.max = format(addDays(new Date(), 1), this.alternateFormat);
+        },
+    },
+};
+
+</script>
+
+<style lang="scss" scoped>
+
+    .date-filter {
+        .tag.filter {
+            cursor: pointer;
+        }
+
+        .date-interval {
+            height: 0;
+            transition: height .5s ease;
+        }
+
+        .tag.filter:not(:last-child) {
+            margin-right: 0.5em;
+            margin-bottom: 0.3em;
+        }
+    }
+
+</style>
