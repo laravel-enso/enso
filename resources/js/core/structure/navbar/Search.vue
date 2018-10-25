@@ -25,7 +25,7 @@
                         </span>
                     </span>
                 </span>
-            </span></template>
+            </template>
         </typeahead>
     </div>
 

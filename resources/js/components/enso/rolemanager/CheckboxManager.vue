@@ -1,42 +1,47 @@
 <template>
 
     <card :title="title"
-        collapsed
-        scrollable
+        :collapsed="collapsed"
         :nested="nested"
-        ref="card"
         :controls="1"
         @shrink="$emit('shrink', $event)"
-        @extend="$emit('extend', $event)">
+        @extend="$emit('extend', $event)"
+        ref="card">
         <card-control slot="control-1">
-            <div class="field">
+            <div class="has-margin-top-small">
                 <input type="checkbox"
                     :id="'checkbox-' + _uid"
                     :name="'checkbox-' + _uid"
                     class="is-checkradio is-info"
                     @change="updateBelow">
-                <label :for="'checkbox-' + _uid"/>
+                <label class="is-paddingless"
+                    :for="'checkbox-' + _uid"/>
             </div>
         </card-control>
-        <div class="has-padding-medium">
-            <checkbox-manager class="is-rounded raises-on-hover has-margin-top-small"
-                v-for="group in sortedGroups"
-                ref="children"
+        <div class="has-padding-large">
+            <checkbox-manager :class="[
+                    'is-rounded has-margin-top-small',
+                    { 'raises-on-hover': items._items.length }
+                ]"
+                v-for="(items, group) in data"
                 nested
-                @shrink="$refs.card.shrink($event)"
-                @extend="$refs.card.extend($event)"
+                collapsed
                 :title="group"
                 :key="group"
-                :group-data="groupData[group]"
+                :data="items"
                 :role-permissions="rolePermissions"
-                @update="update"/>
-            <manager-content v-if="isRoot"
+                @shrink="$refs.card.shrink($event)"
+                @extend="$refs.card.extend($event)"
+                @update="update"
+                ref="children"
+                v-if="group !== '_items'"/>
+            <content-manager :items="data._items"
+                :role-permissions="rolePermissions"
+                @checked="check"
+                @indeterminate="indeterminate"
+                @unchecked="uncheck"
                 ref="content"
-                :group-data="groupData"
-                :role-permissions="rolePermissions"
-                @checked="setChecked"
-                @indeterminate="setIndeterminate"
-                @unchecked="setUnchecked"/>
+                v-if="data._items.length"/>
         </div>
     </card>
 
@@ -46,20 +51,22 @@
 
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
-import ManagerContent from './ManagerContent.vue';
+import ContentManager from './ContentManager.vue';
+
+import { Checked } from './statuses';
 
 export default {
     name: 'CheckboxManager',
 
-    components: { Card, CardControl, ManagerContent },
+    components: { Card, CardControl, ContentManager },
 
     props: {
         title: {
             type: String,
             required: true,
         },
-        groupData: {
-            type: [Array, Object],
+        data: {
+            type: [Object],
             required: true,
         },
         rolePermissions: {
@@ -70,69 +77,78 @@ export default {
             type: Boolean,
             default: false,
         },
+        collapsed: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     computed: {
-        isRoot() {
-            return Array.isArray(this.groupData);
-        },
-        sortedGroups() {
-            return this.isRoot ? [] : Object.keys(this.groupData).sort();
-        },
         checkbox() {
             return this.$el.querySelector('input[type=checkbox]');
         },
     },
 
     methods: {
-        setChecked() {
+        check() {
             this.checkbox.indeterminate = false;
             this.checkbox.checked = true;
             this.$emit('update');
         },
-        setIndeterminate() {
+        indeterminate() {
             this.checkbox.checked = false;
             this.checkbox.indeterminate = true;
             this.$emit('update');
         },
-        setUnchecked() {
+        uncheck() {
             this.checkbox.checked = false;
             this.checkbox.indeterminate = false;
             this.$emit('update');
         },
         update() {
-            const checked = this.$refs.children.filter(child => child.checkbox.checked).length;
+            const checkedCount = this.$refs.children
+                .filter(child => child.checkbox.checked &&
+                    (!child.$refs.content || child.$refs.content.status === Checked))
+                .length;
 
-            if (checked === this.$refs.children.length) {
-                this.setChecked();
+            if (checkedCount === this.$refs.children.length) {
+                this.check();
                 return;
             }
 
-            const indeterminate = this.$refs.children
+            const indeterminateCount = this.$refs.children
                 .filter(child => child.checkbox.indeterminate).length;
 
-            if (checked || indeterminate) {
-                this.setIndeterminate();
+            if (checkedCount || indeterminateCount) {
+                this.indeterminate();
                 return;
             }
 
-            this.setUnchecked();
+            this.uncheck();
         },
         updateBelow() {
-            return this.isRoot
-                ? this.updateContent()
-                : this.updateChildren();
+            this.updateContent();
+            this.updateChildren();
         },
         updateContent() {
-            return this.checkbox.checked
-                ? this.$refs.content.setAllChecked()
-                : this.$refs.content.setAllUnchecked();
+            if (!this.$refs.content) {
+                return;
+            }
+
+            if (this.checkbox.checked) {
+                this.$refs.content.checkAll();
+                return;
+            }
+
+            this.$refs.content.uncheckAll();
         },
         updateChildren() {
-            const self = this;
+            if (!this.$refs.children) {
+                return;
+            }
 
             this.$refs.children.forEach((child) => {
-                child.checkbox.checked = self.checkbox.checked;
+                child.checkbox.checked = this.checkbox.checked;
                 child.updateBelow();
             });
         },
@@ -140,11 +156,3 @@ export default {
 };
 
 </script>
-
-<style scoped>
-
-    .field {
-        width: 15px;
-    }
-
-</style>

@@ -2,7 +2,7 @@ const UserGroupEdit = () => import('../../../pages/administration/userGroups/Edi
 
 export default {
     name: 'administration.userGroups.edit',
-    path: ':id/edit',
+    path: ':userGroup/edit',
     component: UserGroupEdit,
     meta: {
         breadcrumb: 'edit',

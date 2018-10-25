@@ -69,12 +69,11 @@ export default new Vuex.Store({
         initialise({ commit, dispatch }) {
             commit('initialise', false);
 
-            axios.get('/api/core').then(({ data }) => {
+            axios.get('/api/core/home').then(({ data }) => {
                 commit('setUser', data.user);
                 commit('preferences/set', data.preferences);
                 commit('setImpersonating', data.impersonating);
                 commit('menus/set', data.menus);
-                commit('menus/setImplicit', data.implicitMenu);
                 commit('localisation/setLanguages', data.languages);
                 commit('localisation/setI18n', data.i18n);
                 commit('layout/setThemes', data.themes);
@@ -83,7 +82,7 @@ export default new Vuex.Store({
                 commit('setEnums', data.enums);
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
-                commit('setDefaultRoute', data.implicitMenu.link);
+                commit('setDefaultRoute', data.implicitRoute);
 
                 if (data.ravenKey) {
                     Raven.config(data.meta.ravenKey)

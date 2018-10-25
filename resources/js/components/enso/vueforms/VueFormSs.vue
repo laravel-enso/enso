@@ -29,7 +29,9 @@ export default {
     props: {
         routeParams: {
             type: Array,
-            required: true,
+            default() {
+                return [this.$route.name, this.$route.params, false];
+            },
         },
         params: {
             type: Object,

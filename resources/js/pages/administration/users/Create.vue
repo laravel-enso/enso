@@ -3,7 +3,7 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
-                :route-params="[$route.name, $route.params.id, false]">
+                :route-params="[$route.name, $route.params.person, false]">
                 <template slot="group_id" slot-scope="{ field, errors }">
                     <vue-select v-model="field.value"
                         :has-error="errors.has(field.name)"

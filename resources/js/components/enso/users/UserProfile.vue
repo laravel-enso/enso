@@ -72,7 +72,7 @@
                             <a class="button is-fullwidth has-margin-top-small is-warning"
                                 @click="$router.push({
                                     name: 'administration.users.edit',
-                                    params: { id: profile.id },
+                                    params: { user: profile.id },
                                 })"
                                 v-if="canAccess('administration.users.edit')">
                                 <span class="icon">
@@ -191,7 +191,7 @@ export default {
     methods: {
         ...mapMutations(['setUserAvatar', 'initialise']),
         fetch() {
-            axios.get(route(this.$route.name, this.$route.params.id))
+            axios.get(route(this.$route.name, this.$route.params.user))
                 .then(response => (this.profile = response.data.user))
                 .catch(error => this.handleError(error));
         },

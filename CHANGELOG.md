@@ -1,5 +1,140 @@
 ## Laravel Enso's Changelog
 
+### 2.13.0
+
+#### General
+This version greatly improves the permission management system by simplifiyng parts of the core structure and generally allowing for more flexibility.
+
+It also adds a set of changes that widen convention based matchings (for routes, parameters, models, etc.) while reducing a significant amount of lines of code and improving readability.
+
+The permissions table provides all the needed information when checking user access for both routes and menus. That said, the `menu_role` pivot table was dropped as it's no longer needed. The menus section from the role configurator was also dropped and the UI streamlined.
+
+The menu table was improved by replacing the `link` column, that was previously string and stored the permission name, with `permission_id` (nullable for parent menus).
+
+The `Permission Groups` were also dropped (menu, table, relation to permissions). The grouping for permission is determined dynamically based on the route name prefixes. This permits  any type of nested routes structure and removes the previous restriction of having to provide the same number of depth levels for all the route subgroups. Now we can have `administration.companies.routeNames` and also `administration.companies.contacts.routeName` and the improved interface will handle this structure.
+
+The frontend routing was adjusted slightly to better match the backend routing, in the sense that all the route parameters are now named after the model instead of the generic `id`  (for instance, `adminisration/users/:id/edit` became `administration/users/:user/edit`) similar to Laravel conventions.
+
+Read all the notes below before jumping to the `Upgrade steps`. 
+
+#### AddressManager
+- removed the `requestValidator` property from `addresses.php` config file (you may remove this from your local config)
+- to provide your own request validator create a class that implements the `ValidatesAddressRequest` contract and update the binding to the contract into a service provider
+
+    ```php
+    $this->app->bind(
+        ValidatesAddressRequest::class, MyAddressRequestValidator::class
+    );
+    ```
+
+#### Charts
+- added i18n to `ChartCart.vue`. Now the labels, legends and data series are translated.
+- added `fillBackgroundOpacity` in the `charts.php` config file.
+- rearranged the default color order.
+
+#### CommentsManager
+- refactored the back-end
+- to provide your own, custom, `CommentTagNotification`, create a notification that implements the `NotifiesTaggedUsers` contract and update the binding to the contract into a service provider
+
+    ```php
+    $this->app->bind(
+        NotifiesTaggedUsers::class, MyCustomNotification::class
+    );
+    ```
+
+#### Companies
+- removed the `requestValidator` property from `companies.php` config file (you may remove this from your local config)
+- to provide your own request validator create a class that implements the `ValidatesCompanyRequest` contract and update the binding to the contract into a service provider
+
+    ```php
+    $this->app->bind(
+        ValidatesCompanyRequest::class, MyCompanyRequestValidator::class
+    );
+    ```
+
+#### Core
+- removed deprecated commands (`enso:update`, `enso:track-who:update`, `enso:filemanager:upgrade`)
+- renamed `enso:clear-preferences` to `enso:preferences:clear`
+- renamed `enso:update-global-preferences` to `enso:preferences:update-global`
+- added an `enso:upgrade` command for v2.13.x - update forms, pages, tables and structure migrations
+- replaced `implicitMenu` with `implicitRoute` in the store
+- renamed the `core.index` route to `core.home.index`
+- refactored the frontend sidebar / menu / menuItem Vue components
+
+#### FormBuilder
+- now you can disable the back button through the `actions` helper
+- refactored action computing
+- added a `routeParams` bag useful for nested routes or custom contexts. From now on, the model's id will be available here in the edit forms
+- updated the `vue-form` component to work with model matched route params / segments
+- improved the `vue-form-ss` component by adding default `routeParams`
+
+#### MenuManager
+- removed the `link` column and added `permission_id` from the `menus` table
+- updated the forms, pages, table and the structure migration
+- refactored the menu tree generation using the `permissions` table instead of the deprecated `role_menu` table 
+- updated the factory
+
+#### People
+- removed the `requestValidator` property from the `people.php` config file (you may remove this from your local config)
+- to provide your own request validator create a class that implements the `ValidatesPersonRequest` contract and update the binding to the contract into a service provider
+
+    ```php
+    $this->app->bind(
+        ValidatesPersonRequest::class, MyPersonRequestValidator::class
+    );
+    ```
+
+#### PermissionManager
+- dropped the deprecated `PermissionGroup` structure
+- dropped support for `ResourcePermissions`
+- updated the forms, pages, table and the structure migration
+
+#### RoleManager
+- dropped the `menus` relationship from the Role model
+
+#### StructureMigration, CLI
+- removed the deprecated `PermissionGroup` creation / support. Now the `permissionGroup` option is used only for the route prefix. This resulted in a substantial code cleanup for both the CLI and StructureMigration
+- renamed `link` to `route` in the array menu definition
+- updated the table writer with the new template changes - updates `getTableData` route to `tableData`
+- updated the crud controller to generate the `'param' => ['model' => $model->id]` respose on storing new models
+- removed `:route-params=....` from the create and edit page stubs
+- updated the FE routes generation to use the model name param insteand of `id`
+- added the option to generate the assets without performing validation
+
+#### VueComponents
+- added a `keep-alive` boolean prop for `Tab.vue`
+
+#### VueDatatable
+- `readSuffix` was renamed to `dataRouteSuffix` and it's now optional, being defined globally in the `datatables.php` config file, with a default value of `tableData`. If needed, you may overwrite it per each table template 
+- added a 'highlight' option to the config that defaults to 'has-background-info',
+
+#### Upgrading existing projects
+
+##### Important Notes
+- make sure you read all of the above.
+- the upgrade steps presented below will work only for Enso **v2.12.8**. If you are not already at this version, make sure that you upgrade to v2.12.8 before jumping to v2.13.x
+
+##### Upgrade steps
+- update in your `composer.json`: "laravel-enso/core": "3.2.*",
+- run `composer update`
+- run `php artisan vendor:publish --tag=menus-factory --force
+- run `php artisan vendor:publish --tag=roles-seeder --force
+- run `php artisan enso:upgrade`
+
+**search & replace**
+
+- search the whole project for `protected $permissionGroup` and remove the property from all structure migrations (optional)
+- search for `getTableData` and replace it with `tableData` in all the route files and structure migrations
+- search for `readSuffix` in your table templates and remove it if you want to use the global `dataRouteSuffix` from the config or replace it with `dataRouteSuffix` if you need a custom one
+- add the `'dataRouteSuffix' => 'tableData',` line in your `config/enso/datatable.php` config file
+- search for `'link' => '` and replace it with `'route' => '` in all your structure migrations
+- search for `'id' => $` in all your crud controllers (store() methods) and update the returned array from
+`'id' => $model->id,` to `'param' => ['model' => $model->id],` where `model` will correspond to the according path segment (model name)
+- search for `:id` in all your frontend routes and replace `id` with `model` where model is the actual camelCase model, matched with the one from the backend route.
+- search for `:route-params="[$route.name, null, false]"` in your 'Create' pages and remove it. Now the vue-form-ss defaults to this. (optional)
+- search for `:route-params="[$route.name, $route.params.id, false]"` in your edit pages and remove it. (optional)
+
+
 ### 2.12.8
 - mostly a BE refactor
 - some deprecated classes where removed
@@ -1972,7 +2107,7 @@ Packages updates. Bug fixes
 Fixes bug in VueSelect & adds auto scroll when using keyboard navigation.
 
 ### 2.2.0
-Removes vue-multiselect dependency. VueSelect has been rebuild from scratch and is now bulma themed. The option list builder has been upgraded too. Helpers/Enum has now an select() method that maps the $data to the expected format. VueSelect now uses an array of objects with the following format: [{id: 3, name: 'Label'}]. Select docs will be updated soon.
+Removes vue-multiselect dependency. VueSelect has been rebuild from scratch and is now bulma themed. The option list builder has been upgraded too. Helpers/Enum has now a select() method that maps the $data to the expected format. VueSelect now uses an array of objects with the following format: [{id: 3, name: 'Label'}]. Select docs will be updated soon.
 
 Upgrades the whole project for VueSelect, including the example page.
 

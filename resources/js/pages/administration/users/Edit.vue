@@ -3,7 +3,6 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
-                :route-params="[$route.name, $route.params.id, false]"
                 ref="form"
                 @loaded="
                     initialised = true;
@@ -64,7 +63,7 @@
                     class="button is-warning"
                     @click="$router.push({
                         name: 'administration.people.edit',
-                        params: { id: $refs.form.data.params.personId }
+                        params: { person: $refs.form.data.params.personId }
                     })"
                     v-if="initialised">
                     <span class="is-hidden-mobile">

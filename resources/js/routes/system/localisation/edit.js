@@ -2,7 +2,7 @@ const LocalisationEdit = () => import('../../../pages/system/localisation/Edit.v
 
 export default {
     name: 'system.localisation.edit',
-    path: ':id/edit',
+    path: ':localisation/edit',
     component: LocalisationEdit,
     meta: {
         breadcrumb: 'edit',

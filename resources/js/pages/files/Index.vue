@@ -77,7 +77,7 @@
 
 <script>
 
-import { subMonths } from 'date-fns';
+import { addDays, subMonths } from 'date-fns';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -104,7 +104,7 @@ export default {
             query: null,
             interval: {
                 min: subMonths(new Date(), 1),
-                max: new Date(),
+                max: addDays(new Date(), 1),
             },
         };
     },

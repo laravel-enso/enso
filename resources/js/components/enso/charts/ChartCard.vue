@@ -86,17 +86,29 @@ export default {
             return this.i18n(this.config.title);
         },
         data() {
-            return this.config.type !== 'bubble'
-                ? {
-                    datasets: this.config.data.datasets,
-                    labels: this.config.data.labels.map(label => this.i18n(label)),
-                }
-                : {
+            switch (this.config.type) {
+            case 'bubble':
+                return {
                     datasets: this.config.data.datasets.map((dataset) => {
                         dataset.label = this.i18n(dataset.label);
                         return dataset;
                     }),
                 };
+            case 'line':
+            case 'bar':
+                return {
+                    datasets: this.config.data.datasets.map((dataset) => {
+                        dataset.label = this.i18n(dataset.label);
+                        return dataset;
+                    }),
+                    labels: this.config.data.labels.map(label => this.i18n(label)),
+                };
+            default:
+                return {
+                    datasets: this.config.data.datasets,
+                    labels: this.config.data.labels.map(label => this.i18n(label)),
+                };
+            }
         },
     },
 

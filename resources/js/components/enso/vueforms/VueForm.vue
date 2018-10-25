@@ -305,11 +305,18 @@ export default {
         show() {
             const { show } = this.data.actions;
             this.$emit('show');
-            this.$router.push({ name: show.route, params: { id: show.id } });
+
+            this.$router.push({
+                name: show.route,
+                params: this.data.routeParams,
+            });
         },
         create() {
             this.$emit('create');
-            this.$router.push({ name: this.data.actions.create.route });
+            this.$router.push({
+                name: this.data.actions.create.route,
+                params: this.data.routeParams,
+            });
         },
         submit() {
             this.loading = true;
@@ -322,7 +329,7 @@ export default {
                 if (data.redirect) {
                     this.$router.push({
                         name: data.redirect,
-                        params: { id: data.id },
+                        params: { ...data.param, ...this.data.routeParams },
                     });
                 }
             }).catch((error) => {
@@ -357,7 +364,10 @@ export default {
                 this.$emit('destroy');
 
                 if (data.redirect) {
-                    this.$router.push({ name: data.redirect });
+                    this.$router.push({
+                        name: data.redirect,
+                        params: this.data.routeParams,
+                    });
                 }
             }).catch((error) => {
                 this.loading = false;

@@ -24,7 +24,10 @@ export default {
 
     methods: {
         goToProfile() {
-            this.$router.push({ name: 'administration.users.show', params: { id: this.user.id } });
+            this.$router.push({
+                name: 'administration.users.show',
+                params: { user: this.user.id },
+            });
         },
     },
 };

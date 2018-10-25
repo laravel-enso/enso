@@ -230,19 +230,20 @@ export default {
             }
 
             if (button.action === 'router') {
-                this.$router.push({ name: button.route, params: this.getRouteParams(button, row) });
+                this.$router.push({
+                    name: button.route,
+                    params: this.getRouteParams(button, row),
+                });
             }
         },
         getRouteParams(button, row) {
-            const params = {
-                id: row.dtRowId,
-            };
+            const params = {};
 
-            if (button.params) {
-                return Object.assign(params, button.params);
-            }
+            params[this.template.pathSegment] = row.dtRowId;
 
-            return params;
+            return button.params
+                ? { ...params, ...button.params }
+                : params;
         },
 
         getIndex(row) {

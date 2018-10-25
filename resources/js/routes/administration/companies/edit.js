@@ -2,7 +2,7 @@ const CompanyEdit = () => import('../../../pages/administration/companies/Edit.v
 
 export default {
     name: 'administration.companies.edit',
-    path: ':id/edit',
+    path: ':company/edit',
     component: CompanyEdit,
     meta: {
         breadcrumb: 'edit',

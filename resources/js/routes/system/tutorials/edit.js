@@ -2,7 +2,7 @@ const TutorialEdit = () => import('../../../pages/system/tutorials/Edit.vue');
 
 export default {
     name: 'system.tutorials.edit',
-    path: ':id/edit',
+    path: ':tutorial/edit',
     component: TutorialEdit,
     meta: {
         breadcrumb: 'edit',

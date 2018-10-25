@@ -3,15 +3,14 @@
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
             <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
-                :route-params="[$route.name, $route.params.id, false]"
                 @loaded="initialised = true"
                 ref="form">
                 <span slot="actions">
                     <a class="button is-warning"
-                        v-if="initialised"
+                        v-if="initialised && $refs.form.data.params.userId"
                         @click="$router.push({
                             name: 'administration.users.edit',
-                            params: { id: $refs.form.data.params.userId }
+                            params: { user: $refs.form.data.params.userId }
                         })">
                         <span class="is-hidden-mobile">
                             {{ __('Edit User') }}
@@ -26,7 +25,7 @@
                         <span class="is-hidden-mobile"
                             @click="$router.push({
                                 name: 'administration.users.create',
-                                params: { id: $refs.form.data.params.personId }
+                                params: { person: $refs.form.data.routeParams.person }
                             })">
                             {{ __('Create User') }}
                         </span>
@@ -39,7 +38,7 @@
             </vue-form-ss>
             <div v-if="initialised">
                 <morphable-container type="LaravelEnso\People\app\Models\Person"
-                    :id="$refs.form.data.params.personId"
+                    :id="$refs.form.data.routeParams.person"
                     addresses/>
             </div>
         </div>

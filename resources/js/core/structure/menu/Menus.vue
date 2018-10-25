@@ -9,7 +9,7 @@
                 @shrink="shrink"
                 @extend="extend"
                 :collapsed="!menu.expanded"
-                v-if="menu.children.length"/>
+                v-if="menu.has_children"/>
         </li>
     </ul>
 

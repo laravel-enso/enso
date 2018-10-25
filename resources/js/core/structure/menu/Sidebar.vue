@@ -42,25 +42,25 @@ export default {
             }
         },
         hasActiveChild(menu) {
-            return menu.children.some(child =>
+            return menu.has_children && menu.children.some(child =>
                 this.isActive(child) || this.hasActiveChild(child));
         },
         isActive(menu) {
-            return menu.link !== null && (
+            return menu.route !== null && (
                 this.routeNameMatches(menu)
                     || this.routePathMatches(menu)
             );
         },
-        routeNameMatches({ link }) {
+        routeNameMatches({ route }) {
             return this.$route.matched
-                .map(route => route.name)
-                .includes(link);
+                .map(matchedRoute => matchedRoute.name)
+                .includes(route);
         },
-        routePathMatches({ link }) {
+        routePathMatches({ route }) {
             return this.$route.matched.length > 1
                     && this.$route.matched
-                        .map(route => route.path)[this.$route.matched.length - 2]
-                            === `/${link.split('.').slice(0, -1).join('/')}`;
+                        .map(matchedRoute => matchedRoute.path)[this.$route.matched.length - 2]
+                            === `/${route.split('.').slice(0, -1).join('/')}`;
         },
     },
 };

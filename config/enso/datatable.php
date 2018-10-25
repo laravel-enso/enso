@@ -139,6 +139,7 @@ return [
             'bordered' => 'is-bordered',
             'hover' => 'is-hoverable',
         ],
+        'highlight' => 'has-background-info',
     ],
 
     /*
@@ -201,4 +202,16 @@ return [
     */
 
     'method' => 'GET',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route suffixes
+    |--------------------------------------------------------------------------
+    |
+    | The route suffix will be the default used for every table. You will still
+    | have the option of customizing the suffix for certain tables by using
+    | the same attribute in the table's json template.
+    */
+
+    'dataRouteSuffix' => 'tableData',
 ];

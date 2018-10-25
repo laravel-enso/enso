@@ -1,23 +1,13 @@
 <template>
 
     <div class="columns is-centered">
-        <div class="column is-three-quarters-desktop is-full-touch">
+        <div class="column is-half is-three-fifths-desktop is-full-touch">
             <div class="animated fadeIn"
                 v-if="data">
-                <center class="has-padding-bottom-large">
-                    <h5 class="title is-5">{{ data.role.display_name }}</h5>
-                </center>
-                <checkbox-manager class="is-rounded raises-on-hover"
-                    :title="__('Menus')"
-                    :role-permissions="data.roleMenus"
-                    :group-data="data.menus"
-                    v-if="data.menus.length"/>
-
-                <checkbox-manager class="is-rounded raises-on-hover has-margin-top-large"
-                    :title="__('Permissions')"
+                <checkbox-manager class="is-rounded has-margin-top-large"
+                    :title="`${data.role.display_name}'s ${__('Permissions')}`"
                     :role-permissions="data.rolePermissions"
-                    :group-data="data.permissionTree"
-                    v-if="data.menus.length"/>
+                    :data="data.permissions"/>
                 <button class="button is-success has-margin-top-large is-pulled-right"
                     @click="update"
                     :disabled="!canAccess('system.roles.setPermissions')">
@@ -25,8 +15,8 @@
                 </button>
                 <div class="is-clearfix"/>
             </div>
-            </div>
         </div>
+    </div>
 
 </template>
 
@@ -39,35 +29,26 @@ export default {
 
     data() {
         return {
-            roleId: this.$route.params.role,
             data: null,
         };
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
-            axios.get(route('system.roles.getPermissions', this.roleId))
-                .then(({ data }) => {
-                    this.data = data;
-                }).catch(error => this.handleError(error));
+        fetch() {
+            axios.get(route('system.roles.getPermissions', this.$route.params.role))
+                .then(({ data }) => (this.data = data))
+                .catch(error => this.handleError(error));
         },
         update() {
             axios.post(
-                route('system.roles.setPermissions', this.roleId),
-                this.postParams(),
-            ).then(({ data }) => {
-                this.$toastr.success(data.message);
-            }).catch(error => this.handleError(error));
-        },
-        postParams() {
-            return {
-                roleMenus: this.data.roleMenus,
-                rolePermissions: this.data.rolePermissions,
-            };
+                route('system.roles.setPermissions', this.$route.params.role),
+                { rolePermissions: this.data.rolePermissions },
+            ).then(({ data }) => this.$toastr.success(data.message))
+            .catch(error => this.handleError(error));
         },
     },
 };

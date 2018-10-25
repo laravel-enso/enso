@@ -13,7 +13,7 @@
                     <span class="icon is-small has-text-success"
                         @click="$router.push({
                             name: 'system.logs.show',
-                            params: { id: log.name }
+                            params: { log: log.name }
                         })">
                         <fa icon="eye"/>
                     </span>

@@ -4,7 +4,6 @@ use LaravelEnso\Companies\app\Models\Company;
 
 return [
     'onDelete' => 'cascade',
-    'requestValidator' => null,
     'formTemplate' => null,
     'loggableMorph' => [
         'addressable' => [

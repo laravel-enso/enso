@@ -2,8 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
-            <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
-                :route-params="[$route.name, null, false]">
+            <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn">
                 <template slot="icon" slot-scope="{ field, errors }">
                     <div class="control has-icons-right">
                         <input class="input"

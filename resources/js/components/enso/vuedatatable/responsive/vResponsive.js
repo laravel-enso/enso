@@ -6,6 +6,6 @@ let table = null;
 export default {
     inserted: (el, binding, { context }) => {
         table = new ResponsiveTable(el, context);
-        const sensor = new ResizeSensor(el, () => table.resize());
+        return new ResizeSensor(el, () => table.resize());
     },
 };

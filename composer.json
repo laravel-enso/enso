@@ -8,7 +8,7 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "~4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel-enso/core": "^3.0",
+        "laravel-enso/core": "3.2.*",
         "laravel-enso/addressesmanager": "2.5.*",
         "laravel-enso/commentsmanager": "2.4.*",
         "laravel-enso/companies": "1.0.*",

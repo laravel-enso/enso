@@ -8,7 +8,8 @@
                 {{ count[tab.toLowerCase()] }}
             </span>
         </span>
-        <tab id="Addresses"
+        <tab keep-alive
+            id="Addresses"
             v-if="addresses">
             <addresses controls
                 :type="type"
@@ -16,7 +17,8 @@
                 @update="count.addresses = $refs.addresses.count"
                 ref="addresses"/>
         </tab>
-        <tab id="Comments"
+        <tab keep-alive
+            id="Comments"
             v-if="comments">
             <comments controls
                 :type="type"
@@ -24,7 +26,8 @@
                 @update="count.comments = $refs.comments.count"
                 ref="comments"/>
         </tab>
-        <tab id="Contacts"
+        <tab keep-alive
+            id="Contacts"
             v-if="contacts">
             <contacts controls
                 :type="type"
@@ -32,7 +35,8 @@
                 @update="count.contacts = $refs.contacts.count"
                 ref="contacts"/>
         </tab>
-        <tab id="Discussions"
+        <tab keep-alive
+            id="Discussions"
             v-if="discussions">
             <discussions controls
                 :type="type"
@@ -40,7 +44,8 @@
                 @update="count.discussions = $refs.discussions.count"
                 ref="discussions"/>
         </tab>
-        <tab id="Documents"
+        <tab keep-alive
+            id="Documents"
             v-if="documents">
             <documents controls
                 :type="type"
