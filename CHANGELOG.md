@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.13.1
+- minor bug fixes
+- improves search to work with model relations
+- adds `DateFilter.vue` - implemented in Files menu
+
 ### 2.13.0
 
 #### General

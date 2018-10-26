@@ -6,12 +6,12 @@
             <strong v-else>{{ i18n('When') }}</strong>
         </div>
         <div class="has-padding-large">
-            <div class="wrapper">
-                <span :class="['tag filter', {'is-warning is-bold': filter === key}]"
+            <div class="tags-wrapper">
+                <span :class="['tag filter', {'is-warning': filter === key}]"
                     v-for="(type, key) in filters"
                     :key="key"
                     @click="filter = key; update()">
-                    {{ type }}
+                    {{ i18n(type) }}
                 </span>
             </div>
             <div class="date-interval"
@@ -20,10 +20,10 @@
                     leave-active-class="fadeOutUp"
                     @enter="expand"
                     @leave="shrink">
-                    <div class="columns is-mobile animated has-margin-top-large"
+                    <div class="columns is-mobile animated has-margin-top-small"
                         v-show="filter === filters.custom"
                         ref="filter">
-                        <div class="column">
+                        <div class="column picker-wrapper">
                             <datepicker :format="format"
                                 v-model="interval.min"
                                 :locale="locale"
@@ -31,7 +31,7 @@
                                 :disabled="filter !== filters.custom"
                                 @input="update()"/>
                         </div>
-                        <div class="column">
+                        <div class="column picker-wrapper">
                             <datepicker :format="format"
                                 v-model="interval.max"
                                 :locale="locale"
@@ -152,6 +152,10 @@ export default {
         .date-interval {
             height: 0;
             transition: height .5s ease;
+
+            .picker-wrapper {
+                padding: 0.4em 0.8em 0;
+            }
         }
 
         .tag.filter:not(:last-child) {

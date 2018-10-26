@@ -56,6 +56,7 @@
                     </span>
                 </button>
                 <date-filter class="box raises-on-hover has-margin-top-large"
+                    :locale="locale"
                     @update="interval = $event; fetch()"/>
                 <div class="box has-background-light raises-on-hover">
                     <h4 class="title is-4 has-text-centered">
@@ -74,6 +75,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -104,6 +106,7 @@ export default {
     },
 
     computed: {
+        ...mapGetters('preferences', { locale: 'lang' }),
         filteredFiles() {
             return this.query
                 ? this.files.filter(file => file.name.toLowerCase()

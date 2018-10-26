@@ -60,7 +60,7 @@ export default {
 
             this.$router.push({
                 name: to || item.routes[0].name,
-                params: { id: item.id },
+                params: item.param,
             });
 
             this.$nextTick(() => (this.query = ''));
@@ -75,6 +75,8 @@ export default {
             padding: 0.5em;
             height: 1.6em;
             opacity: .7;
+            -webkit-box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
+            box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
         }
         .route-controls {
             position: absolute;
