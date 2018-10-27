@@ -1233,16 +1233,16 @@
         },
         {
             "name": "laravel-enso/activitylog",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActivityLog.git",
-                "reference": "db441070d80b4ce6934e081573a4f39782c7e7ab"
+                "reference": "172a7339046c3ec6be3f115901ba45b151dd3d92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/db441070d80b4ce6934e081573a4f39782c7e7ab",
-                "reference": "db441070d80b4ce6934e081573a4f39782c7e7ab",
+                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/172a7339046c3ec6be3f115901ba45b151dd3d92",
+                "reference": "172a7339046c3ec6be3f115901ba45b151dd3d92",
                 "shasum": ""
             },
             "require": {
@@ -1286,7 +1286,7 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2018-10-27T09:45:09+00:00"
+            "time": "2018-10-27T16:41:20+00:00"
         },
         {
             "name": "laravel-enso/addressesmanager",
@@ -2106,16 +2106,16 @@
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "2.5.21",
+            "version": "2.5.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "6faa39ac6e08a83e8177f83e70373b6628139439"
+                "reference": "7dfdd3a7b031865f09c425ac506b7d45e0b88354"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/6faa39ac6e08a83e8177f83e70373b6628139439",
-                "reference": "6faa39ac6e08a83e8177f83e70373b6628139439",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/7dfdd3a7b031865f09c425ac506b7d45e0b88354",
+                "reference": "7dfdd3a7b031865f09c425ac506b7d45e0b88354",
                 "shasum": ""
             },
             "require": {
@@ -2161,7 +2161,7 @@
                 "filemanager",
                 "laravel-enso"
             ],
-            "time": "2018-10-26T13:50:58+00:00"
+            "time": "2018-10-27T16:40:12+00:00"
         },
         {
             "name": "laravel-enso/formbuilder",

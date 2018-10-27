@@ -12,8 +12,7 @@
                 </span>
             </h4>
         </div>
-        <div class="columns is-reversed-mobile"
-            v-if="initialised">
+        <div class="columns is-reverse-mobile">
             <div class="column is-two-thirds">
                 <timeline class="raises-on-hover"
                     :feed="feed"
@@ -116,10 +115,6 @@ export default {
         },
     },
 
-    created() {
-        this.fetch();
-    },
-
     methods: {
         fetch() {
             this.loading = true;
@@ -129,32 +124,30 @@ export default {
             }
 
             this.axiosRequest = axios.CancelToken.source();
-            axios
-                .get(route('core.activityLogs.index'), {
-                    params: { offset: this.offset, filters: this.filters },
-                    cancelToken: this.axiosRequest.token,
-                })
-                .then(({ data }) => {
-                    this.initialised = true;
-                    const length = this.length(data);
 
-                    if (this.offset === 0) {
-                        this.feed = data;
-                    } else {
-                        this.merge(data);
-                    }
+            axios.get(route('core.activityLogs.index'), {
+                params: { offset: this.offset, filters: this.filters },
+                cancelToken: this.axiosRequest.token,
+            }).then(({ data }) => {
+                this.initialised = true;
+                const length = this.length(data);
 
-                    this.offset += length;
-                    this.loading = false;
-                })
-                .catch((error) => {
-                    if (axios.isCancel(error)) {
-                        this.axiosRequest = null;
-                        return;
-                    }
+                if (this.offset === 0) {
+                    this.feed = data;
+                } else {
+                    this.merge(data);
+                }
 
-                    this.handleError(error);
-                });
+                this.offset += length;
+                this.loading = false;
+            }).catch((error) => {
+                if (axios.isCancel(error)) {
+                    this.axiosRequest = null;
+                    return;
+                }
+
+                this.handleError(error);
+            });
         },
         reload() {
             this.offset = 0;

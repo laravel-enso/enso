@@ -141,10 +141,6 @@ export default {
         },
     },
 
-    created() {
-        this.fetch();
-    },
-
     methods: {
         fetch() {
             this.loading = true;
