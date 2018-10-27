@@ -81,11 +81,6 @@ export default {
     .wrapper.settings {
         right: 0;
         overflow-y: auto;
-        -ms-overflow-style: none;
-    }
-
-    .wrapper.settings::-webkit-scrollbar {
-        display: none;
     }
 
     .settings-item .level-item {

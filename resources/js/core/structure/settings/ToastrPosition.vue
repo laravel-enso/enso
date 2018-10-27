@@ -3,7 +3,7 @@
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item is-marginless">
-                {{ __('Toastr position') }}
+                {{ __('Notifications') }}
             </div>
         </div>
         <div class="level-right">

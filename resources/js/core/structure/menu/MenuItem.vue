@@ -2,7 +2,8 @@
     <a class="menu-item"
         @click="select">
         <span class="icon is-small">
-            <fa :icon="menu.icon"/>
+            <fa fixed-width
+                :icon="menu.icon"/>
         </span>
         <transition enter-active-class="zoomIn"
             leave-active-class="zoomOut">

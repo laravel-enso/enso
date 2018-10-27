@@ -4,10 +4,8 @@
         <p class="menu-label has-text-centered">
             {{ __("Menu") }}
         </p>
-        <div class="menu-wrapper">
-            <menus :menus="menus"
-                :is-active="isActive"/>
-        </div>
+        <menus :menus="menus"
+            :is-active="isActive"/>
     </vue-aside>
 
 </template>
@@ -69,17 +67,8 @@ export default {
 
 <style lang="scss">
 
-    .menu {
-        -ms-overflow-style: none;
-
-        .menu-wrapper {
-            max-height: calc(100vh - 110px);
-            overflow-y: auto;
-        }
-
-        .menu-wrapper::-webkit-scrollbar {
-            display: none;
-        }
+    .aside.menu {
+        overflow-y: auto;
     }
 
 </style>

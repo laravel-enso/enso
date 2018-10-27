@@ -1,7 +1,8 @@
 <template>
 
-    <div class="columns is-centered is-multiline">
-        <div class="column" v-if="!initialised && loading">
+    <div class="wrapper">
+        <div class="has-text-centered"
+            v-if="!initialised && loading">
             <h4 class="title is-4 has-text-centered">
                 {{ __('Loading') }}
                 <span class="icon is-small has-margin-left-medium">
@@ -11,29 +12,41 @@
                 </span>
             </h4>
         </div>
-        <div class="column is-full"
+        <div class="columns is-reversed-mobile"
             v-if="initialised">
-            <div class="columns">
-                <div class="column is-two-fifths">
-                    <date-interval-filter :min="filters.intervals.min"
-                        @update-min="filters.intervals.min = $event"
-                        :max="filters.intervals.max"
-                        @update-max="filters.intervals.max = $event"/>
-                </div>
-                <div class="column is-one-fifth-desktop">
+            <div class="column is-two-thirds">
+                <timeline class="raises-on-hover"
+                    :feed="feed"
+                    :loading="loading"
+                    @load-more="fetch()"/>
+            </div>
+            <div class="column is-one-third">
+                <button class="button is-fullwidth"
+                    :class="{ 'is-loading': loading }"
+                    @click="reload()">
+                    <span>
+                        {{ __('Reload') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="sync-alt"/>
+                    </span>
+                </button>
+                <date-filter class="box raises-on-hover has-margin-top-large"
+                    :locale="locale"
+                    @update="filters.interval = $event"/>
+                <div class="box has-padding-medium raises-on-hover has-background-light">
+                    <p class="has-text-centered">
+                        <strong>{{ __('What') }}</strong>
+                    </p>
                     <vue-select-filter multiple
                         source="system.roles.options"
                         :placeholder="__('Roles')"
                         v-model="filters.roleIds"/>
-                </div>
-                <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
                         source="administration.users.options"
                         label="person.name"
                         :placeholder="__('Authors')"
                         v-model="filters.userIds"/>
-                </div>
-                <div class="column is-one-fifth-desktop">
                     <vue-select-filter multiple
                         :options="actions"
                         :placeholder="__('Events')"
@@ -41,24 +54,18 @@
                 </div>
             </div>
         </div>
-        <div class="column is-two-thirds"
-            v-if="initialised">
-            <timeline class="raises-on-hover"
-                :feed="feed"
-                :loading="loading"
-                @load-more="fetch()"
-                @refresh="reload()"/>
-        </div>
     </div>
 
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Timeline from './../../components/enso/activityLog/Timeline.vue';
 import Overlay from './../../components/enso/bulma/Overlay.vue';
-import DateIntervalFilter from './../../components/enso/bulma/DateIntervalFilter.vue';
+import DateFilter from './../../components/enso/bulma/DateFilter.vue';
 import VueSelectFilter from './../../components/enso/select/VueSelectFilter.vue';
 
 library.add(faSpinner);
@@ -67,7 +74,7 @@ export default {
     components: {
         Overlay,
         Timeline,
-        DateIntervalFilter,
+        DateFilter,
         VueSelectFilter,
     },
 
@@ -87,13 +94,17 @@ export default {
             filters: {
                 userIds: [],
                 roleIds: [],
-                intervals: {
+                interval: {
                     min: null,
                     max: null,
                 },
                 events: [],
             },
         };
+    },
+
+    computed: {
+        ...mapGetters('preferences', { locale: 'lang' }),
     },
 
     watch: {

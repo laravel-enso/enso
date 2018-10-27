@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.13.2
+
+- improved activityLog. For existing projects **update** the syntax in the `protected $loggable` property for relations from `[Model::class, $attribute]` to `[Model::class => $attribute]` if any local models are using that. Adds optional `$loggedEvents`
+- improves searchable
+- adds `fixed-width` for menu icons
+- fixes some UI bugs
+
 ### 2.13.1
 - minor bug fixes
 - improves search to work with model relations
