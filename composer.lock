@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bda3252e671b3d1118874ce9c3480312",
+    "content-hash": "a353b695104756b88f089ea092db7a89",
     "packages": [
         {
             "name": "box/spout",
@@ -1355,16 +1355,16 @@
         },
         {
             "name": "laravel-enso/avatarmanager",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AvatarManager.git",
-                "reference": "f8e000356697efd244b9d5fce0efa6c2b6c067ca"
+                "reference": "a3e174b2c94d1bb0ebd0b80eaba35b06464f80fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/f8e000356697efd244b9d5fce0efa6c2b6c067ca",
-                "reference": "f8e000356697efd244b9d5fce0efa6c2b6c067ca",
+                "url": "https://api.github.com/repos/laravel-enso/AvatarManager/zipball/a3e174b2c94d1bb0ebd0b80eaba35b06464f80fa",
+                "reference": "a3e174b2c94d1bb0ebd0b80eaba35b06464f80fa",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1410,7 @@
                 "avatarmanager",
                 "laravel-enso"
             ],
-            "time": "2018-10-25T05:27:50+00:00"
+            "time": "2018-10-28T12:37:54+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -1865,16 +1865,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "2.5.5",
+            "version": "2.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "e27afab0a2540c04de31e8e1606afbf3f6a03182"
+                "reference": "e7265db2750af4829105e227d8a51f5605714417"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/e27afab0a2540c04de31e8e1606afbf3f6a03182",
-                "reference": "e27afab0a2540c04de31e8e1606afbf3f6a03182",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/e7265db2750af4829105e227d8a51f5605714417",
+                "reference": "e7265db2750af4829105e227d8a51f5605714417",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1931,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2018-10-28T09:31:30+00:00"
+            "time": "2018-10-28T12:41:21+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -2053,16 +2053,16 @@
         },
         {
             "name": "laravel-enso/examples",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Examples.git",
-                "reference": "4c970d3d2af3a0caf2487a565cd40df262ad0154"
+                "reference": "731b4aad6d156fddd5052ade37a580cb3ab98fd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/4c970d3d2af3a0caf2487a565cd40df262ad0154",
-                "reference": "4c970d3d2af3a0caf2487a565cd40df262ad0154",
+                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/731b4aad6d156fddd5052ade37a580cb3ab98fd3",
+                "reference": "731b4aad6d156fddd5052ade37a580cb3ab98fd3",
                 "shasum": ""
             },
             "require": {
@@ -2102,20 +2102,20 @@
                 "examples",
                 "laravel-enso"
             ],
-            "time": "2018-10-27T09:51:49+00:00"
+            "time": "2018-10-28T13:09:29+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "2.5.24",
+            "version": "2.5.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "92b76d14acd1338f9ac7c7b698a90f87b190ad60"
+                "reference": "35dcdfeb8c2601d508040656acb007189d4986c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/92b76d14acd1338f9ac7c7b698a90f87b190ad60",
-                "reference": "92b76d14acd1338f9ac7c7b698a90f87b190ad60",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/35dcdfeb8c2601d508040656acb007189d4986c0",
+                "reference": "35dcdfeb8c2601d508040656acb007189d4986c0",
                 "shasum": ""
             },
             "require": {
@@ -2161,20 +2161,20 @@
                 "filemanager",
                 "laravel-enso"
             ],
-            "time": "2018-10-28T09:23:25+00:00"
+            "time": "2018-10-28T12:38:19+00:00"
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "0d41ecab6ea43c5e805f458e9e42a820f4292a1e"
+                "reference": "fa3099c574a7a21a7e964962188e1acbf8bcdce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/0d41ecab6ea43c5e805f458e9e42a820f4292a1e",
-                "reference": "0d41ecab6ea43c5e805f458e9e42a820f4292a1e",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/fa3099c574a7a21a7e964962188e1acbf8bcdce1",
+                "reference": "fa3099c574a7a21a7e964962188e1acbf8bcdce1",
                 "shasum": ""
             },
             "require": {
@@ -2217,7 +2217,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2018-10-25T07:48:49+00:00"
+            "time": "2018-10-28T12:40:35+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -3379,16 +3379,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "0702cae504f887e46da197e81e337635baed4401"
+                "reference": "1525452f2d91c8d53a3eec067a79a172a6a2b811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/0702cae504f887e46da197e81e337635baed4401",
-                "reference": "0702cae504f887e46da197e81e337635baed4401",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/1525452f2d91c8d53a3eec067a79a172a6a2b811",
+                "reference": "1525452f2d91c8d53a3eec067a79a172a6a2b811",
                 "shasum": ""
             },
             "require": {
@@ -3433,7 +3433,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-10-25T08:07:52+00:00"
+            "time": "2018-10-28T12:41:00+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3645,6 +3645,68 @@
                 "queue"
             ],
             "time": "2018-09-07T11:08:22+00:00"
+        },
+        {
+            "name": "laravel/telescope",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "f9ee91ef63d3e139e0e4941e546014955b5f81c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/f9ee91ef63d3e139e0e4941e546014955b5f81c9",
+                "reference": "f9ee91ef63d3e139e0e4941e546014955b5f81c9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "~5.7.7",
+                "moontoast/math": "^1.1",
+                "php": "^7.1.3",
+                "symfony/var-dumper": "^4.1"
+            },
+            "require-dev": {
+                "nunomaduro/larastan": "^0.3.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "time": "2018-10-25T13:28:18+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3935,6 +3997,55 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "moontoast/math",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/moontoast-math.git",
+                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
+                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
+                "satooshi/php-coveralls": "^0.6.1",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Moontoast\\Math\\": "src/Moontoast/Math/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "A mathematics library, providing functionality for large numbers",
+            "homepage": "https://github.com/ramsey/moontoast-math",
+            "keywords": [
+                "bcmath",
+                "math"
+            ],
+            "time": "2017-02-16T16:54:46+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -6362,68 +6473,6 @@
             "time": "2018-02-10T22:36:34+00:00"
         },
         {
-            "name": "laravel/telescope",
-            "version": "v0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/telescope.git",
-                "reference": "f9ee91ef63d3e139e0e4941e546014955b5f81c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/f9ee91ef63d3e139e0e4941e546014955b5f81c9",
-                "reference": "f9ee91ef63d3e139e0e4941e546014955b5f81c9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel/framework": "~5.7.7",
-                "moontoast/math": "^1.1",
-                "php": "^7.1.3",
-                "symfony/var-dumper": "^4.1"
-            },
-            "require-dev": {
-                "nunomaduro/larastan": "^0.3.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Telescope\\TelescopeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Telescope\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "mohamed@laravel.com"
-                }
-            ],
-            "description": "An elegant debug assistant for the Laravel framework.",
-            "keywords": [
-                "debugging",
-                "laravel",
-                "monitoring"
-            ],
-            "time": "2018-10-25T13:28:18+00:00"
-        },
-        {
             "name": "mockery/mockery",
             "version": "1.2.0",
             "source": {
@@ -6487,55 +6536,6 @@
                 "testing"
             ],
             "time": "2018-10-02T21:52:37+00:00"
-        },
-        {
-            "name": "moontoast/math",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/moontoast-math.git",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
-                "satooshi/php-coveralls": "^0.6.1",
-                "squizlabs/php_codesniffer": "^2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Moontoast\\Math\\": "src/Moontoast/Math/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                }
-            ],
-            "description": "A mathematics library, providing functionality for large numbers",
-            "homepage": "https://github.com/ramsey/moontoast-math",
-            "keywords": [
-                "bcmath",
-                "math"
-            ],
-            "time": "2017-02-16T16:54:46+00:00"
         },
         {
             "name": "myclabs/deep-copy",
