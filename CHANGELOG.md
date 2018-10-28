@@ -1,6 +1,7 @@
 ## Laravel Enso's Changelog
 
 ### 2.13.3
+- adds Telescope and drops debugbar
 - adds `Uploads` section to the `Files` menu
 - small improvements to the `Files` menu
 - adds a `storageLimit` option in the `enso/files.php` config
@@ -10,6 +11,7 @@ Upgrade an existing project:
     - `composer update`
     - `php artisan:migrate`
     - `php artisan:enso:upgrade`
+    - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
 
 ### 2.13.2
 
