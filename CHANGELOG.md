@@ -1,5 +1,16 @@
 ## Laravel Enso's Changelog
 
+### 2.13.3
+- adds `Uploads` section to the `Files` menu
+- small improvements to the `Files` menu
+- adds a `storageLimit` option in the `enso/files.php` config
+- droppes deprecated columns
+
+Upgrade an existing project:
+    - `composer update`
+    - `php artisan:migrate`
+    - `php artisan:enso:upgrade`
+
 ### 2.13.2
 
 - improved activityLog. For existing projects **update** the syntax in the `protected $loggable` property for relations from `[Model::class, $attribute]` to `[Model::class => $attribute]` if any local models are using that. Adds optional `$loggedEvents`

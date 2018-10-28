@@ -5,6 +5,7 @@ import RavenVue from 'raven-js/plugins/vue';
 import router from './router';
 import storeImporter from './modules/importers/storeImporter';
 import localState from './localState';
+import bootEnums from './classes/enso/Enum/bootEnums';
 
 Vue.use(Vuex);
 
@@ -66,7 +67,7 @@ export default new Vuex.Store({
     },
 
     actions: {
-        initialise({ commit, dispatch }) {
+        initialise({ commit, dispatch, getters }) {
             commit('initialise', false);
 
             axios.get('/api/core/home').then(({ data }) => {
@@ -79,7 +80,7 @@ export default new Vuex.Store({
                 commit('layout/setThemes', data.themes);
                 commit('layout/menu/update', data.preferences.global.expandedMenu);
                 commit('setMeta', data.meta);
-                commit('setEnums', data.enums);
+                commit('setEnums', bootEnums(data.enums, getters['localisation/__']));
                 commit('setCsrfToken', data.meta.csrfToken);
                 commit('setRoutes', data.routes);
                 commit('setDefaultRoute', data.implicitRoute);
