@@ -15,6 +15,8 @@ Upgrade an existing project:
   - `php artisan migrate`
   - `php artisan enso:upgrade`
   - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
+  
+  Please also note that telescope has a dependency on the `ext-bcmath` php extension
 
 ### 2.13.2
 
