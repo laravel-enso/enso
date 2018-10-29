@@ -79,10 +79,10 @@ return [
         Watchers\ModelWatcher::class => env('TELESCOPE_MODEL_WATCHER', true),
         Watchers\NotificationWatcher::class => env('TELESCOPE_NOTIFICATION_WATCHER', true),
 
-        Watchers\QueryWatcher::class => [
-            'enabled' => env('TELESCOPE_QUERY_WATCHER', true),
-            'slow' => 100,
-        ],
+        // Watchers\QueryWatcher::class => [
+        //     'enabled' => env('TELESCOPE_QUERY_WATCHER', true),
+        //     'slow' => 100,
+        // ],
 
         Watchers\RedisWatcher::class => env('TELESCOPE_REDIS_WATCHER', true),
         Watchers\RequestWatcher::class => env('TELESCOPE_REQUEST_WATCHER', true),

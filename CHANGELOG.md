@@ -6,8 +6,9 @@
 Steps for upgrade:
 
 - `composer remove laravel-enso/contacts`
+- update in componse.json `"laravel-enso/companies": "1.1.*",`
 - `composer update`
-- `php artisa migrate:fresh`
+- `php artisan migrate`
 - `rm config/enso/contacts.php`
 - remove the `Contacts` trait from `App\User`
 
