@@ -23,7 +23,6 @@
         </card-control>
         <div class="wrapper has-padding-medium">
             <contacts :id="id"
-                :type="type"
                 :query="query"
                 @update="count = $refs.contacts.count; $refs.card.resize()"
                 ref="contacts"/>
@@ -46,17 +45,11 @@ library.add(faAddressCard, faPlusSquare);
 export default {
     name: 'ContactsCard',
 
-    components: {
-        Card, CardControl, Contacts,
-    },
+    components: { Card, CardControl, Contacts },
 
     props: {
         id: {
             type: Number,
-            required: true,
-        },
-        type: {
-            type: String,
             required: true,
         },
         open: {

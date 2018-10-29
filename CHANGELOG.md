@@ -1,5 +1,16 @@
 ## Laravel Enso's Changelog
 
+### 2.13.4
+- now the contacts structure is a part of companies
+
+Steps for upgrade:
+
+- `composer remove laravel-enso/contacts`
+- `composer update`
+- `php artisa migrate:fresh`
+- `rm config/enso/contacts.php`
+- remove the `Contacts` trait from `App\User`
+
 ### 2.13.3
 - adds Telescope and drops debugbar
 - adds `Uploads` section to the `Files` menu
@@ -11,6 +22,7 @@ Upgrade an existing project:
     - `composer update`
     - `php artisan:migrate`
     - `php artisan:enso:upgrade`
+    - `php artisan vendor:publish --tag=filemanager-config --force`
     - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
 
 ### 2.13.2

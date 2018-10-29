@@ -1,7 +1,9 @@
 <template>
 
     <file-uploader v-on="$listeners"
-        v-bind="$attrs">
+        v-bind="$attrs"
+        :multiple="multiple"
+        ref="uploader">
         <div slot="upload-button"
             slot-scope="{ openFileBrowser }"
             @click="openFileBrowser">
@@ -45,12 +47,16 @@ export default {
             type: Boolean,
             default: false,
         },
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     computed: {
         label() {
             return this.multiple
-                ? 'Files'
+                ? 'File(s)'
                 : 'File';
         },
     },

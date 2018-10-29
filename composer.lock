@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a353b695104756b88f089ea092db7a89",
+    "content-hash": "660520531cf5379bcd5824c159f76736",
     "packages": [
         {
             "name": "box/spout",
@@ -1233,16 +1233,16 @@
         },
         {
             "name": "laravel-enso/activitylog",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ActivityLog.git",
-                "reference": "172a7339046c3ec6be3f115901ba45b151dd3d92"
+                "reference": "d61d745cb1625b5eb7f385a04b33aeb500e4e2ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/172a7339046c3ec6be3f115901ba45b151dd3d92",
-                "reference": "172a7339046c3ec6be3f115901ba45b151dd3d92",
+                "url": "https://api.github.com/repos/laravel-enso/ActivityLog/zipball/d61d745cb1625b5eb7f385a04b33aeb500e4e2ae",
+                "reference": "d61d745cb1625b5eb7f385a04b33aeb500e4e2ae",
                 "shasum": ""
             },
             "require": {
@@ -1286,7 +1286,7 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2018-10-27T16:41:20+00:00"
+            "time": "2018-10-29T08:08:26+00:00"
         },
         {
             "name": "laravel-enso/addressesmanager",
@@ -1528,16 +1528,16 @@
         },
         {
             "name": "laravel-enso/companies",
-            "version": "1.0.9",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Companies.git",
-                "reference": "a5e6c67c475b1af422ac2fd1e60766f034cdd2e7"
+                "reference": "48e32e2a80323186edf321c9f247ba7c8bb7d6a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/a5e6c67c475b1af422ac2fd1e60766f034cdd2e7",
-                "reference": "a5e6c67c475b1af422ac2fd1e60766f034cdd2e7",
+                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/48e32e2a80323186edf321c9f247ba7c8bb7d6a8",
+                "reference": "48e32e2a80323186edf321c9f247ba7c8bb7d6a8",
                 "shasum": ""
             },
             "require": {
@@ -1584,71 +1584,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2018-10-25T06:19:23+00:00"
-        },
-        {
-            "name": "laravel-enso/contacts",
-            "version": "2.3.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-enso/Contacts.git",
-                "reference": "7dc4dfb6eee8b35aad31f21fd9984bbcda97c27c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Contacts/zipball/7dc4dfb6eee8b35aad31f21fd9984bbcda97c27c",
-                "reference": "7dc4dfb6eee8b35aad31f21fd9984bbcda97c27c",
-                "shasum": ""
-            },
-            "require": {
-                "laravel-enso/activitylog": "1.1.*",
-                "laravel-enso/core": "3.2.*",
-                "laravel-enso/formbuilder": "2.10.*",
-                "laravel-enso/helpers": "1.9.*",
-                "laravel-enso/structuremanager": "2.4.*",
-                "laravel-enso/vuecomponents": "2.5.*",
-                "laravel-enso/vuedatatable": "1.7.*",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelEnso\\Contacts\\AppServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelEnso\\Contacts\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Ocneanu",
-                    "email": "aocneanu@gmail.com",
-                    "homepage": "https://laravel-enso.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Mihai Ocneanu",
-                    "email": "mihai.ocneanu@gmail.com",
-                    "homepage": "https://laravel-enso.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Contacts dependency for Larave Enso",
-            "homepage": "https://github.com/laravel-enso/Contacts",
-            "keywords": [
-                "contacts",
-                "laravel-enso"
-            ],
-            "time": "2018-10-25T06:28:04+00:00"
+            "time": "2018-10-29T08:27:57+00:00"
         },
         {
             "name": "laravel-enso/controlpanelapi",
@@ -1714,16 +1650,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "fe2ff56bb2d837b80732f11f8d921defb5eb6c1b"
+                "reference": "5052c2493545c940693970eec0fd0e196d02f407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/fe2ff56bb2d837b80732f11f8d921defb5eb6c1b",
-                "reference": "fe2ff56bb2d837b80732f11f8d921defb5eb6c1b",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/5052c2493545c940693970eec0fd0e196d02f407",
+                "reference": "5052c2493545c940693970eec0fd0e196d02f407",
                 "shasum": ""
             },
             "require": {
@@ -1806,7 +1742,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-10-28T09:07:31+00:00"
+            "time": "2018-10-28T13:15:45+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -2106,16 +2042,16 @@
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "2.5.25",
+            "version": "2.5.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "35dcdfeb8c2601d508040656acb007189d4986c0"
+                "reference": "3f2a35e5104e2dbd72fb98e2977e89e103fc6f5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/35dcdfeb8c2601d508040656acb007189d4986c0",
-                "reference": "35dcdfeb8c2601d508040656acb007189d4986c0",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/3f2a35e5104e2dbd72fb98e2977e89e103fc6f5f",
+                "reference": "3f2a35e5104e2dbd72fb98e2977e89e103fc6f5f",
                 "shasum": ""
             },
             "require": {
@@ -2161,7 +2097,7 @@
                 "filemanager",
                 "laravel-enso"
             ],
-            "time": "2018-10-28T12:38:19+00:00"
+            "time": "2018-10-28T13:26:06+00:00"
         },
         {
             "name": "laravel-enso/formbuilder",
@@ -2718,16 +2654,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/People.git",
-                "reference": "981c02d947a4da3755b9563876d6f58dbe477ed8"
+                "reference": "06bbfc051951deba1a7fa3ad044e25b4623698f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/People/zipball/981c02d947a4da3755b9563876d6f58dbe477ed8",
-                "reference": "981c02d947a4da3755b9563876d6f58dbe477ed8",
+                "url": "https://api.github.com/repos/laravel-enso/People/zipball/06bbfc051951deba1a7fa3ad044e25b4623698f9",
+                "reference": "06bbfc051951deba1a7fa3ad044e25b4623698f9",
                 "shasum": ""
             },
             "require": {
@@ -2774,7 +2710,7 @@
                 "people",
                 "person-management"
             ],
-            "time": "2018-10-26T13:45:04+00:00"
+            "time": "2018-10-28T13:12:51+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",

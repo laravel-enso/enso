@@ -3,9 +3,9 @@
         "lang": "en",
         "dtStateSave": true,
         "expandedMenu": true,
-        "bookmarks": false,
+        "bookmarks": true,
         "theme": "clean",
-        "toastrPosition": "top-right"
+        "toastrPosition": "bottom-right"
     },
     "local": {}
 }

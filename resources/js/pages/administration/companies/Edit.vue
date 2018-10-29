@@ -6,7 +6,7 @@
                 @loaded="initialised = true"
                 ref="form"/>
             <div v-if="initialised">
-                <morphable-container type="LaravelEnso\Companies\app\Models\Company"
+                <accessories type="LaravelEnso\Companies\app\Models\Company"
                     :id="$refs.form.data.routeParams.company"
                     addresses
                     contacts
@@ -21,11 +21,11 @@
 
 <script>
 
-import MorphableContainer from '../../../components/enso/bulma/MorphableContainer.vue';
+import Accessories from '../../../components/enso/bulma/Accessories.vue';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
 
 export default {
-    components: { MorphableContainer, VueFormSs },
+    components: { VueFormSs, Accessories },
 
     data() {
         return {

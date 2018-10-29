@@ -37,7 +37,7 @@
                 </span>
             </vue-form-ss>
             <div v-if="initialised">
-                <morphable-container type="LaravelEnso\People\app\Models\Person"
+                <accessories type="LaravelEnso\People\app\Models\Person"
                     :id="$refs.form.data.routeParams.person"
                     addresses/>
             </div>
@@ -51,12 +51,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
-import MorphableContainer from '../../../components/enso/bulma/MorphableContainer.vue';
+import Accessories from '../../../components/enso/bulma/Accessories.vue';
 
 library.add(faUser);
 
 export default {
-    components: { VueFormSs, MorphableContainer },
+    components: { VueFormSs, Accessories },
 
     data: () => ({
         initialised: false,

@@ -1,7 +1,8 @@
 <template>
 
     <modal v-on="$listeners"
-        :show="true">
+        :show="true"
+        container="address-form">
         <vue-form class="box has-background-light"
             :data="form"
             v-on="$listeners">
@@ -50,10 +51,12 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
-    .modal-content {
-        width: 70%;
+    .address-form {
+        .modal-content {
+            width: 70%;
+        }
     }
 
 </style>

@@ -7,7 +7,7 @@
         </a>
         <span v-if="event.action.type === 4">{{ __(event.message) }}</span>
         <span v-else>{{ __(event.action.label) }}</span>
-        <span v-if="event.action.type === 4 && !event.morphable">
+        <span v-if="event.action.type === 4 && !event.morphable && !event.relation">
             {{ __('on') }} {{ __(event.model) }}
         </span>
         <span v-else-if="event.action.type !== 4">
@@ -21,6 +21,10 @@
         <span v-if="event.morphable">
             {{ __('on') }} {{ __(event.morphable.model) }}
             <strong>{{ event.morphable.label }}</strong>
+        </span>
+        <span v-if="event.relation">
+            {{ __('on') }} {{ __(event.relation.model) }}
+            <strong>{{ event.relation.label }}</strong>
         </span>
     </p>
 </template>
