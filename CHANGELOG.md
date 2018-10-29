@@ -8,10 +8,13 @@
 - droppes deprecated columns
 
 Upgrade an existing project:
-    - `composer update`
-    - `php artisan:migrate`
-    - `php artisan:enso:upgrade`
-    - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
+  - `composer require laravel/telescope`
+  - remove `"barryvdh/laravel-debugbar"` from `require-dev` in your composer (optional)
+  - `composer update`
+  - `php artisan telescope:install`
+  - `php artisan migrate`
+  - `php artisan enso:upgrade`
+  - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
 
 ### 2.13.2
 
