@@ -2882,16 +2882,16 @@
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Searchable.git",
-                "reference": "eb853b597062ba30639a2e5e49638f2c797f623a"
+                "reference": "b27a21364cfbb5771b420f432eb550552383be21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/eb853b597062ba30639a2e5e49638f2c797f623a",
-                "reference": "eb853b597062ba30639a2e5e49638f2c797f623a",
+                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/b27a21364cfbb5771b420f432eb550552383be21",
+                "reference": "b27a21364cfbb5771b420f432eb550552383be21",
                 "shasum": ""
             },
             "require": {
@@ -2931,7 +2931,7 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2018-10-27T05:44:28+00:00"
+            "time": "2018-10-30T06:12:26+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -3315,16 +3315,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "1525452f2d91c8d53a3eec067a79a172a6a2b811"
+                "reference": "84cdbb5cb4bc765a10735d8e9774e677cb748178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/1525452f2d91c8d53a3eec067a79a172a6a2b811",
-                "reference": "1525452f2d91c8d53a3eec067a79a172a6a2b811",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/84cdbb5cb4bc765a10735d8e9774e677cb748178",
+                "reference": "84cdbb5cb4bc765a10735d8e9774e677cb748178",
                 "shasum": ""
             },
             "require": {
@@ -3369,7 +3369,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2018-10-28T12:41:00+00:00"
+            "time": "2018-10-30T06:14:20+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7107,16 +7107,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace"
+                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/21ad88bbba7c3d93530d93994e0a33cd45f02ace",
-                "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c99e3be9d3e85f60646f152f9002d46ed7770d18",
+                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18",
                 "shasum": ""
             },
             "require": {
@@ -7152,7 +7152,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-02-01T13:16:43+00:00"
+            "time": "2018-10-30T05:52:18+00:00"
         },
         {
             "name": "phpunit/phpunit",

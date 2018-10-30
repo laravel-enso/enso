@@ -56,6 +56,8 @@ export default {
         font-size: 0.8rem;
         font-weight: bold;
         height: 1.4em;
+        -webkit-box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
+        box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
     }
 
 </style>

@@ -2,8 +2,8 @@
 
 use LaravelEnso\Teams\app\Models\Team;
 use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\Contacts\app\Models\Contact;
 use LaravelEnso\Companies\app\Models\Company;
+use LaravelEnso\Companies\app\Models\Contact;
 use LaravelEnso\HowToVideos\app\Models\Video;
 
 return [
@@ -42,10 +42,11 @@ return [
         ],
         Contact::class => [
             'group' => 'Contact',
-            'attributes' => ['first_name', 'last_name'],
-            'label' => 'fullName',
-            'permissions' => ['index'],
-            'permissionGroup' => 'core.contacts',
+            'attributes' => ['person.name', 'person.appellative', 'position'],
+            'label' => 'person.name',
+            'permissions' => ['edit'],
+            'permissionGroup' => 'administration.companies',
+            'routeParam' => ['company' => 'company_id'],
         ],
     ],
 ];
