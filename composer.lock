@@ -1528,16 +1528,16 @@
         },
         {
             "name": "laravel-enso/companies",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Companies.git",
-                "reference": "e94d93a75e6cec0b9650b2ad367959220433f93e"
+                "reference": "c870b198f7975734b492e0e234339172c8561660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/e94d93a75e6cec0b9650b2ad367959220433f93e",
-                "reference": "e94d93a75e6cec0b9650b2ad367959220433f93e",
+                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/c870b198f7975734b492e0e234339172c8561660",
+                "reference": "c870b198f7975734b492e0e234339172c8561660",
                 "shasum": ""
             },
             "require": {
@@ -1584,7 +1584,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2018-10-29T14:18:48+00:00"
+            "time": "2018-10-29T16:33:32+00:00"
         },
         {
             "name": "laravel-enso/controlpanelapi",
@@ -2539,16 +2539,16 @@
         },
         {
             "name": "laravel-enso/menumanager",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/MenuManager.git",
-                "reference": "b3e1b50599619c39aa62bf3b8ef477248d2b39ba"
+                "reference": "58740df729e197fc6432c96dc89367df7a9ae69a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/b3e1b50599619c39aa62bf3b8ef477248d2b39ba",
-                "reference": "b3e1b50599619c39aa62bf3b8ef477248d2b39ba",
+                "url": "https://api.github.com/repos/laravel-enso/MenuManager/zipball/58740df729e197fc6432c96dc89367df7a9ae69a",
+                "reference": "58740df729e197fc6432c96dc89367df7a9ae69a",
                 "shasum": ""
             },
             "require": {
@@ -2594,7 +2594,7 @@
                 "menu-manager",
                 "menumanager"
             ],
-            "time": "2018-10-27T06:49:10+00:00"
+            "time": "2018-10-30T04:30:48+00:00"
         },
         {
             "name": "laravel-enso/notifications",
@@ -2654,16 +2654,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "1.0.13",
+            "version": "1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/People.git",
-                "reference": "3a7a7b087a14d711992603df64bee0acc4359a7e"
+                "reference": "cfb71f4c99dcf1636890abeab5b953bf5f423da1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/People/zipball/3a7a7b087a14d711992603df64bee0acc4359a7e",
-                "reference": "3a7a7b087a14d711992603df64bee0acc4359a7e",
+                "url": "https://api.github.com/repos/laravel-enso/People/zipball/cfb71f4c99dcf1636890abeab5b953bf5f423da1",
+                "reference": "cfb71f4c99dcf1636890abeab5b953bf5f423da1",
                 "shasum": ""
             },
             "require": {
@@ -2710,7 +2710,7 @@
                 "people",
                 "person-management"
             ],
-            "time": "2018-10-29T14:15:29+00:00"
+            "time": "2018-10-30T04:31:07+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",
@@ -3584,16 +3584,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "9848d07cbf1d9c615bca56826166fd0cb802730c"
+                "reference": "3984649a9ff8e9bcca6b40d1126d2d8e336616de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/9848d07cbf1d9c615bca56826166fd0cb802730c",
-                "reference": "9848d07cbf1d9c615bca56826166fd0cb802730c",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/3984649a9ff8e9bcca6b40d1126d2d8e336616de",
+                "reference": "3984649a9ff8e9bcca6b40d1126d2d8e336616de",
                 "shasum": ""
             },
             "require": {
@@ -3643,7 +3643,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2018-10-29T12:57:15+00:00"
+            "time": "2018-10-29T20:37:28+00:00"
         },
         {
             "name": "laravel/tinker",

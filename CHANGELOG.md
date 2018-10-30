@@ -1,7 +1,7 @@
 ## Laravel Enso's Changelog
 
 ### 2.13.4
-- now the contacts structure is a part of companies
+- now the contacts structure is a part of companies. The old package will be no longer maintained. If you have already contacts make sure that you migrate them before upgrading...
 
 Steps for upgrade:
 
