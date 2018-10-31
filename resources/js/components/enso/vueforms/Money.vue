@@ -1,18 +1,18 @@
 <template>
 
-    <span v-if="label"
-        ref="label">
-        {{ money }}
-    </span>
-    <input v-model="money"
-        :disabled="disabled"
-        :readonly="readonly"
-        :placeholder="placeholder"
-        @blur="update"
-        @focus="money = value"
-        ref="money"
-        type="tel"
-        v-else>
+        <span v-if="label"
+            ref="label">
+            {{ money }}
+        </span>
+        <input v-model="money"
+            :disabled="disabled"
+            :readonly="readonly"
+            :placeholder="placeholder"
+            type="tel"
+            @blur="update"
+            @focus="money = value"
+            ref="money"
+            v-else>
 
 </template>
 

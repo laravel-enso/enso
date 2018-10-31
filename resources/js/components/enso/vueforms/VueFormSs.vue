@@ -10,6 +10,8 @@
             slot-scope="{ field, errors }">
             <slot :name="field.name"
                 :field="field"
+                :i18n="__"
+                :locale="locale"
                 :errors="errors"/>
         </template>
         <slot name="actions" slot="actions"/>

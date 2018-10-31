@@ -95,6 +95,11 @@ export default {
             clearInterval(this.handle);
             const index = this.routes
                 .findIndex(({ name }) => name === this.$route.name);
+
+            if (index === -1) {
+                return;
+            }
+
             const container = this.$el.querySelector('.bookmarks');
             const bookmark = container.querySelectorAll('.control')[index];
             const containerLeft = container.scrollLeft;

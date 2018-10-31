@@ -2,11 +2,10 @@
 
     <div class="control has-icons-left has-icons-right">
         <input :class="[
-            'input',
-            { 'is-danger': isDanger },
-            { 'is-warning': isWarning }
-        ]"
-            type="text"
+                'input',
+                { 'is-danger': isDanger },
+                { 'is-warning': isWarning }
+            ]" type="text"
             :placeholder="placeholder"
             :name="name"
             :value="value"
@@ -14,12 +13,20 @@
         <span class="icon is-small is-left">
             <fa icon="clock"
                 v-if="timeOnly"/>
-            <fa icon="calendar-alt" v-else/>
+            <fa icon="calendar-alt"
+                v-else/>
         </span>
         <span class="icon is-small is-right clear-button"
-            v-if="value && !disabled"
-            @click="picker.clear()">
+            @click="picker.clear()"
+            v-if="value && !disabled && !isDanger">
             <a class="delete is-small"/>
+        </span>
+        <span :class="[
+                'icon is-small is-right',
+                { 'has-text-danger': isDanger },
+                { 'has-text-warning': isWarning }
+            ]" v-if="isDanger || isWarning">
+            <fa icon="exclamation-triangle"/>
         </span>
     </div>
 
@@ -29,10 +36,10 @@
 
 import Flatpickr from 'flatpickr';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faClock, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faCalendarAlt, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import i18n from './flatpickrLocale';
 
-library.add(faClock, faCalendarAlt);
+library.add(faClock, faCalendarAlt, faExclamationTriangle);
 
 export default {
     name: 'Datepicker',
@@ -168,7 +175,7 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     .control.has-icons-right .icon.clear-button {
         pointer-events: all;

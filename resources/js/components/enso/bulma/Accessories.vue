@@ -26,15 +26,8 @@
                 @update="count.comments = $refs.comments.count"
                 ref="comments"/>
         </tab>
-        <tab keep-alive
-            id="Contacts"
-            v-if="contacts">
-            <contacts controls
-                :type="type"
-                :id="id"
-                @update="count.contacts = $refs.contacts.count"
-                ref="contacts"/>
-        </tab>
+        <slot name="custom"
+            :count="count"/>
         <tab keep-alive
             id="Discussions"
             v-if="discussions">
@@ -62,7 +55,6 @@ import Tabs from './Tabs.vue';
 import Tab from './Tab.vue';
 import Addresses from '../addresses/Addresses.vue';
 import Comments from '../comments/Comments.vue';
-import Contacts from '../contacts/Contacts.vue';
 import Discussions from '../discussions/Discussions.vue';
 import Documents from '../documents/Documents.vue';
 
@@ -70,7 +62,7 @@ export default {
     name: 'Accessories',
 
     components: {
-        Tabs, Tab, Addresses, Comments, Contacts, Discussions, Documents,
+        Tabs, Tab, Addresses, Comments, Discussions, Documents,
     },
 
     props: {
@@ -83,10 +75,6 @@ export default {
             required: true,
         },
         addresses: {
-            type: Boolean,
-            default: false,
-        },
-        contacts: {
             type: Boolean,
             default: false,
         },
@@ -104,17 +92,14 @@ export default {
         },
     },
 
-    data() {
-        return {
-            count: {
-                addresses: 0,
-                comments: 0,
-                contacts: 0,
-                discussions: 0,
-                documents: 0,
-            },
-        };
-    },
+    data: () => ({
+        count: {
+            addresses: 0,
+            comments: 0,
+            discussions: 0,
+            documents: 0,
+        },
+    }),
 };
 
 </script>

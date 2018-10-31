@@ -29,7 +29,7 @@
 
 <script>
 
-import Modal from '../../../components/enso/bulma/Modal.vue';
+import Modal from '../../../../components/enso/bulma/Modal.vue';
 
 export default {
     components: { Modal },

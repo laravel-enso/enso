@@ -48,7 +48,7 @@
                 </div>
             </fieldset>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-menu">
             <div class="dropdown-content">
                 <a class="dropdown-item"
                     v-for="(option, index) in filteredOptions"
@@ -448,11 +448,14 @@ export default {
     }
 
     .dropdown {
-        position: relative;
         width: 100%;
 
         .dropdown-trigger {
             width: 100%;
+
+            fieldset {
+                min-width: 1em;
+            }
 
             &.is-danger {
                 .button {
@@ -542,6 +545,7 @@ export default {
 
         .dropdown-menu {
             width: 100%;
+            min-width: 1em;
 
             .dropdown-content::-webkit-scrollbar {
                 display: none;

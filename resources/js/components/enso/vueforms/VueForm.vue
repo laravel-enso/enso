@@ -1,18 +1,10 @@
 <template>
 
     <div>
-        <h5 class="title is-5"
-            v-if="data.icon || data.title">
-            <span class="icon"
-                v-if="data.icon">
-                <fa :icon="data.icon"/>
-            </span>
-            <span v-if="data.title">
-                {{ i18n(data.title) }}
-            </span>
-        </h5>
+        <form-header :data="data"
+            :i18n="i18n"/>
         <form class="is-marginless"
-            @submit.prevent="submit()">
+            @submit.prevent="$refs.actions.submit()">
             <div class="columns is-multiline"
                 v-for="(section, index) in data.sections"
                 :key="index"
@@ -23,250 +15,66 @@
                         :placement="data.dividerTitlePlacement"/>
                 </div>
                 <div v-for="field in section.fields"
-                    :class="[ 'column',
+                    :class="[
+                        'column',
                         section.columns !== 'custom'
                             ? columnSize(section.columns)
                             : `is-${field.column}`
-                    ]"
-                    :key="field.name"
+                    ]" :key="field.name"
                     v-if="!field.meta.hidden">
-                    <div class="field">
-                        <label class="label">
-                            {{ i18n(field.label) }}
-                            <span class="icon is-small has-text-info"
-                                v-tooltip="i18n(field.meta.tooltip)"
-                                v-if="field.meta.tooltip">
-                                <fa icon="info-circle" size="xs"/>
-                            </span>
-                        </label>
-                        <slot :name="field.name"
-                            :field="field"
-                            :errors="errors"
-                            v-if="field.meta.custom"/>
-                        <vue-switch v-model="field.value"
-                            size="is-large"
-                            type="is-info"
-                            :disabled="field.meta.disabled || field.meta.readonly"
-                            @click="$emit('update')"
-                            @input="errors.clear(field.name)"
-                            v-else-if="
-                                field.meta.type === 'input'
-                                && field.meta.content === 'checkbox'
-                            "/>
-                        <div :class="['control', { 'has-icons-right': errors.has(field.name) }]"
-                            v-else-if="field.meta.type === 'input'">
-                            <money :class="['input', { 'is-danger': errors.has(field.name) }]"
-                                v-model="field.value"
-                                :readonly="field.meta.readonly"
-                                :disabled="field.meta.disabled"
-                                :placeholder="i18n(field.meta.placeholder)"
-                                :symbol="field.meta.symbol"
-                                :precision="field.meta.precision"
-                                :thousand="field.meta.thousand"
-                                :decimal="field.meta.decimal"
-                                :positive="field.meta.positive"
-                                :negative="field.meta.negative"
-                                :zero="field.meta.zero"
-                                @keydown="$emit('update');"
-                                @input="errors.clear(field.name)"
-                                v-if="field.meta.content === 'money'"/>
-                            <input :class="['input', { 'is-danger': errors.has(field.name) }]"
-                                v-model="field.value"
-                                :type="field.meta.content"
-                                :readonly="field.meta.readonly"
-                                :disabled="field.meta.disabled"
-                                :placeholder="i18n(field.meta.placeholder)"
-                                :step="field.meta.step"
-                                :min="field.meta.min"
-                                :max="field.meta.max"
-                                @keydown="$emit('update');"
-                                @input="errors.clear(field.name)"
-                                v-else-if="field.meta.type === 'input'">
-                            <span class="icon is-small is-right has-text-danger"
-                                v-if="errors.has(field.name)">
-                                <fa icon="exclamation-triangle"/>
-                            </span>
-                        </div>
-                        <vue-select v-model="field.value"
-                            :i18n="i18n"
-                            :has-error="errors.has(field.name)"
-                            :label="field.meta.label || 'name'"
-                            :track-by="field.meta.trackBy || 'id'"
-                            :options="field.meta.options"
-                            :source="field.meta.source"
-                            :multiple="field.meta.multiple"
-                            :disabled="field.meta.disabled"
-                            :placeholder="i18n(field.meta.placeholder)"
-                            @input="errors.clear(field.name)"
-                            @fetch="field.meta.options = $event"
-                            v-else-if="field.meta.type === 'select'"/>
-                        <datepicker v-model="field.value"
-                            :format="field.meta.format"
-                            :time="field.meta.time"
-                            :disabled="field.meta.disabled"
-                            :placeholder="i18n(field.meta.placeholder)"
-                            :locale="locale"
-                            :is-danger="errors.has(field.name)"
-                            @input="errors.clear(field.name)"
-                            @keydown="$emit('update');"
-                            v-else-if="field.meta.type === 'datepicker'"/>
-                        <datepicker v-model="field.value"
-                            :format="field.meta.format"
-                            time-only
-                            :disabled="field.meta.disabled"
-                            :placeholder="i18n(field.meta.placeholder)"
-                            @input="errors.clear(field.name)"
-                            v-else-if="field.meta.type === 'timepicker'"/>
-                        <div class="control has-icons-right"
-                            v-else-if="field.meta.type === 'textarea'">
-                            <textarea :class="[
-                                    'textarea',
-                                    { 'is-danger': errors.has(field.name) },
-                                    { 'fixed': !field.meta.resize }
-                                ]"
-                                v-model="field.value"
-                                :placeholder="i18n(field.meta.placeholder)"
-                                :rows="field.meta.rows"
-                                :disabled="field.meta.disabled"
-                                @input="errors.clear(field.name)"/>
-                            <span class="icon is-small is-right has-text-danger"
-                                v-if="errors.has(field.name)">
-                                <fa icon="exclamation-triangle"/>
-                            </span>
-                        </div>
-                        <p class="help is-danger"
-                            v-if="errors.has(field.name)">
-                            {{ errors.get(field.name) }}
-                        </p>
-                    </div>
+                    <form-field :errors="errors"
+                        :field="field"
+                        :i18n="i18n"
+                        :locale="locale"
+                        v-on="$listeners">
+                        <template :slot="field.name"
+                            v-if="field.meta.custom">
+                            <slot :name="field.name"
+                                :errors="errors"
+                                :field="field"
+                                :i18n="i18n"
+                                :locale="locale"
+                                v-if="field.meta.custom"/>
+                        </template>
+                    </form-field>
                 </div>
             </div>
-            <div class="actions">
-                <a class="button"
-                    :class="data.actions.back.button.class"
-                    v-if="data.actions.back"
-                    @click="$router.go(-1)">
-                    <span class="is-hidden-mobile">
-                        {{ i18n('Back') }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.back.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </a>
-                <a class="button"
-                    :class="data.actions.destroy.button.class"
-                    v-if="data.actions.destroy"
-                    :disabled="data.actions.destroy.forbidden"
-                    @click="modal = true">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(data.actions.destroy.button.label) }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.destroy.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </a>
-                <a class="button"
-                    :class="data.actions.show.button.class"
-                    @click="show()"
-                    v-if="data.actions.show"
-                    :disabled="data.actions.show.forbidden">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(data.actions.show.button.label) }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.show.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </a>
-                <a class="button"
-                    :class="data.actions.create.button.class"
-                    @click="create()"
-                    v-if="data.actions.create"
-                    :disabled="data.actions.create.forbidden">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(data.actions.create.button.label) }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.create.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </a>
-                <slot name="actions"/>
-                <button type="submit"
-                    v-if="data.actions.store"
-                    class="button is-pulled-right"
-                    :class="[data.actions.store.button.class, { 'is-loading': loading }]"
-                    :disabled="data.actions.store.forbidden || errors.any()">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(data.actions.store.button.label) }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.store.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </button>
-                <button type="submit"
-                    v-if="data.actions.update"
-                    class="button is-pulled-right"
-                    :class="[data.actions.update.button.class, { 'is-loading': loading }]"
-                    :disabled="data.actions.update.forbidden || errors.any()">
-                    <span class="is-hidden-mobile">
-                        {{ i18n(data.actions.update.button.label) }}
-                    </span>
-                    <span class="icon">
-                        <fa :icon="data.actions.update.button.icon"/>
-                    </span>
-                    <span class="is-hidden"/>
-                </button>
-            </div>
-
-            <div class="is-clearfix"/>
+            <form-actions :data="data"
+                :errors="errors"
+                :i18n="i18n"
+                v-on="$listeners"
+                @focus-error="focusError"
+                ref="actions">
+                <template slot="actions">
+                    <slot name="actions"/>
+                </template>
+            </form-actions>
         </form>
-        <modal v-if="data.actions.destroy"
-            :show="modal"
-            :i18n="i18n"
-            :message="data.actions.destroy.button.message"
-            @close="modal = false"
-            @commit="destroy()"/>
+
     </div>
 
 </template>
 
 <script>
 
-import { VTooltip } from 'v-tooltip';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faInfoCircle, faArrowLeft }
-    from '@fortawesome/free-solid-svg-icons';
-import Divider from './Divider.vue';
+import FormHeader from './parts/FormHeader.vue';
+import FormField from './parts/FormField.vue';
+import Divider from './parts/Divider.vue';
+import FormActions from './parts/FormActions.vue';
 import Errors from './classes/Errors';
-import Modal from './Modal.vue';
-import VueSwitch from './VueSwitch.vue';
-import VueSelect from '../select/VueSelect.vue';
-import Datepicker from './Datepicker.vue';
-import Money from './Money.vue';
 
-library.add(faTrashAlt, faEye, faPlus, faCheck, faExclamationTriangle, faInfoCircle, faArrowLeft);
 
 export default {
     name: 'VueForm',
 
-    directives: { tooltip: VTooltip },
-
     components: {
-        Divider, VueSwitch, Modal, VueSelect, Datepicker, Money,
+        FormHeader, FormField, Divider, FormActions,
     },
 
     props: {
         data: {
             type: Object,
             required: true,
-        },
-        params: {
-            type: Object,
-            default: null,
         },
         i18n: {
             type: Function,
@@ -276,6 +84,10 @@ export default {
                     : key;
             },
         },
+        params: {
+            type: Object,
+            default: null,
+        },
         locale: {
             type: String,
             default: 'en',
@@ -284,119 +96,30 @@ export default {
 
     data() {
         return {
-            loading: false,
-            modal: false,
             errors: new Errors(),
         };
-    },
-
-    computed: {
-        path() {
-            return this.data.method === 'post'
-                ? this.data.actions.store.path
-                : this.data.actions.update.path;
-        },
     },
 
     methods: {
         columnSize(columns) {
             return `is-${parseInt(12 / columns, 10)}`;
         },
-        show() {
-            const { show } = this.data.actions;
-            this.$emit('show');
-
-            this.$router.push({
-                name: show.route,
-                params: this.data.routeParams,
-            });
-        },
-        create() {
-            this.$emit('create');
-            this.$router.push({
-                name: this.data.actions.create.route,
-                params: this.data.routeParams,
-            });
-        },
-        submit() {
-            this.loading = true;
-
-            axios[this.data.method](this.path, this.formData()).then(({ data }) => {
-                this.loading = false;
-                this.$toastr.success(data.message);
-                this.$emit('submit');
-
-                if (data.redirect) {
-                    this.$router.push({
-                        name: data.redirect,
-                        params: { ...data.param, ...this.data.routeParams },
-                    });
-                }
-            }).catch((error) => {
-                const { status, data } = error.response;
-                this.loading = false;
-
-                if (status === 422) {
-                    this.errors.set(data.errors);
-
-                    return;
-                }
-
-                this.handleError(error);
-            });
-        },
-        formData() {
+        flatten() {
             return this.data.sections
-                .reduce((fields, section) => fields
-                    .concat(section.fields), [])
-                .reduce((object, field) => {
-                    object[field.name] = field.value;
-                    return object;
-                }, { _params: this.params });
-        },
-        destroy() {
-            this.modal = false;
-            this.loading = true;
-
-            axios.delete(this.data.actions.destroy.path).then(({ data }) => {
-                this.loading = false;
-                this.$toastr.success(data.message);
-                this.$emit('destroy');
-
-                if (data.redirect) {
-                    this.$router.push({
-                        name: data.redirect,
-                        params: this.data.routeParams,
-                    });
-                }
-            }).catch((error) => {
-                this.loading = false;
-                this.handleError(error);
-            });
+                .reduce((fields, section) => fields.concat(section.fields), []);
         },
         field(field) {
-            return this.data.sections
-                .reduce((fields, section) => fields.concat(section.fields), [])
+            return this.flatten()
                 .find(item => item.name === field);
         },
         hasFields(section) {
             return section.fields.find(field => !field.meta.hidden) !== undefined;
         },
+        focusError() {
+            this.$el.querySelector('.help.is-danger')
+                .scrollIntoView({ behavior: 'smooth' });
+        },
     },
 };
 
 </script>
-
-<style lang="scss" scoped>
-
-    .title {
-        .icon {
-            vertical-align: text-bottom;
-        }
-    }
-
-    .fixed {
-        resize: none;
-    }
-
-</style>

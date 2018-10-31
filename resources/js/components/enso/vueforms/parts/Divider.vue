@@ -12,14 +12,14 @@ export default {
     name: 'Divider',
 
     props: {
-        title: {
-            type: String,
-            default: null,
-        },
         placement: {
             type: String,
             default: 'center',
             validator: value => ['left', 'center', 'right'].includes(value),
+        },
+        title: {
+            type: String,
+            default: null,
         },
     },
 };

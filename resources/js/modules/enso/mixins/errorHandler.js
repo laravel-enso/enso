@@ -11,7 +11,7 @@ Vue.mixin({
 
             if (status === 401) {
                 if (this.$store.state.auth.isAuth) {
-                    this.$store.commit('history/setLastRoute', this.$route);
+                    this.$store.commit('bookmarks/setLastRoute', this.$route);
                     this.$store.commit('initialise', false);
                     this.$store.commit('auth/logout');
                     this.$router.push({ name: 'login' });

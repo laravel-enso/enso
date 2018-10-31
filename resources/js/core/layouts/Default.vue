@@ -5,26 +5,29 @@
         <div class="app-main"
             v-show="lightsOn">
             <navbar class="animated slideInDown"/>
-            <transition enter-active-class="slideInLeft"
-                leave-active-class="slideOutLeft">
-                <sidebar :class="['animated', { 'is-collapsed' : !menu.isExpanded }]"
-                    v-if="menu.isVisible"/>
-            </transition>
-            <section :class="['main-content', menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]">
-                <transition :duration="100"
-                    enter-active-class="slideInDown"
-                    leave-active-class="slideOutUp">
-                    <bookmarks v-show="bookmarks"
-                        class="animated"/>
-                </transition>
+            <sidebar :class="[
+                    'animated',
+                    { 'is-collapsed' : !menu.isExpanded },
+                    menu.isVisible ? 'slideInLeft' : 'slideOutLeft'
+                ]" v-if="menu.isVisible"/>
+            <section :class="[
+                    'main-content',
+                    menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]
+                ">
+                <bookmarks :class="[
+                        'animated',
+                        bookmarks ? 'slideInDown' : 'fadeOut'
+                    ]" v-show="bookmarks"/>
                 <div class="wrapper page-content">
                     <page-header :title="$route.meta.title"/>
                     <router v-if="isInitialised"/>
                 </div>
             </section>
-            <settings class="animated"
-                :class="settingsBar.isVisible ? 'slideInRight': 'slideOutRight'"/>
-            <app-footer class="animated slideInUp"/>
+            <settings :class="[
+                    'animated',
+                    settingsBar.isVisible ? 'slideInRight': 'slideOutRight'
+                ]"/>
+            <app-footer class="animated fadeIn"/>
         </div>
     </transition>
 
