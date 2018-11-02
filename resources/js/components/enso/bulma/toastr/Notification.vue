@@ -148,6 +148,8 @@ export default {
             ? wrapper.__vue__
             : this.mountWrapper();
 
+        this.wrapper.$el.className = this.wrapperClass;
+
         document.body.appendChild(this.wrapper.$el);
     },
 
@@ -158,15 +160,9 @@ export default {
 
     methods: {
         mountWrapper() {
-            const { wrapperClass } = this;
-
             return new Vue({
                 name: 'ToastrWrapper',
-                render(h) {
-                    return h('div', {
-                        class: wrapperClass,
-                    });
-                },
+                render: h => h('div'),
             }).$mount();
         },
         startHovering() {

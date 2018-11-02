@@ -53,6 +53,8 @@ export default {
             ? wrapper.__vue__
             : this.mountWrapper();
 
+        this.wrapper.$el.className = this.container;
+
         document.body.appendChild(this.wrapper.$el);
     },
 
@@ -67,15 +69,9 @@ export default {
 
     methods: {
         mountWrapper() {
-            const { container } = this;
-
             return new Vue({
                 name: 'ModalWrapper',
-                render(h) {
-                    return h('div', {
-                        class: container,
-                    });
-                },
+                render: h => h('div'),
             }).$mount();
         },
         closeOnEsc(e) {
