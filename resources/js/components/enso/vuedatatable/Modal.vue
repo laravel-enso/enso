@@ -51,11 +51,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    .modal.is-active {
-        z-index: 10;
-    }
-
-</style>

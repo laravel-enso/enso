@@ -6,18 +6,22 @@
         </div>
         <div class="columns is-mobile">
             <div class="column">
-                <datepicker :format="format"
-                    :value="min"
+                <datepicker v-model="interval.min"
+                    :format="format"
+                    :is-warning="equal"
+                    :is-danger="inversed"
                     :locale="locale"
                     :placeholder="minLabel"
-                    @input="$emit('update-min', $event || null)"/>
+                    @input="update"/>
             </div>
             <div class="column">
-                <datepicker :format="format"
-                    :value="max"
+                <datepicker v-model="interval.max"
+                    :format="format"
+                    :is-danger="inversed"
+                    :is-warning="equal"
                     :locale="locale"
                     :placeholder="maxLabel"
-                    @input="$emit('update-max', $event || null)"/>
+                    @input="update"/>
             </div>
         </div>
     </div>
@@ -26,6 +30,7 @@
 
 <script>
 
+import { compareAsc, parse } from 'date-fns';
 import Datepicker from '../vueforms/Datepicker.vue';
 
 export default {
@@ -34,18 +39,6 @@ export default {
     components: { Datepicker },
 
     props: {
-        title: {
-            type: String,
-            default: null,
-        },
-        min: {
-            type: null,
-            required: true,
-        },
-        max: {
-            type: null,
-            required: true,
-        },
         format: {
             type: String,
             default: 'd-m-Y',
@@ -54,13 +47,60 @@ export default {
             type: String,
             default: 'en',
         },
+        maxLabel: {
+            type: String,
+            default: 'To',
+        },
         minLabel: {
             type: String,
             default: 'From',
         },
-        maxLabel: {
+        title: {
             type: String,
-            default: 'To',
+            default: null,
+        },
+    },
+
+    data: () => ({
+        interval: {
+            min: null,
+            max: null,
+        },
+    }),
+
+    computed: {
+        alternateFormat() {
+            return this.format.replace('d', 'DD')
+                .replace('m', 'MM')
+                .replace('Y', 'YYYY');
+        },
+        sanitizedInterval() {
+            return {
+                min: this.interval.min || null,
+                max: this.interval.max || null,
+            };
+        },
+        parsedMax() {
+            return parse(this.interval.max, this.alternateFormat, new Date());
+        },
+        parsedMin() {
+            return parse(this.interval.min, this.alternateFormat, new Date());
+        },
+        inversed() {
+            return !!this.interval.min
+                && !!this.interval.max
+                && compareAsc(this.parsedMin, this.parsedMax) === 1;
+        },
+        equal() {
+            return !!this.interval.min
+                && !!this.interval.max
+                && compareAsc(this.parsedMin, this.parsedMax) === 0;
+        },
+    },
+
+    methods: {
+        update() {
+            this.$emit('update', this.sanitizedInterval);
         },
     },
 };

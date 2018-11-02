@@ -5,19 +5,7 @@
         <div :class="['modal animated', { 'is-active': show }]"
             v-if="show">
             <div class="modal-background"/>
-            <div class="modal-card"
-                v-if="card">
-                <header class="modal-card-head">
-                    <slot name="header"/>
-                </header>
-                <section class="modal-card-body">
-                    <slot name="body"/>
-                </section>
-                <footer class="modal-card-foot">
-                    <slot name="footer"/>
-                </footer>
-            </div>
-            <div v-else class="modal-content">
+            <div class="modal-content">
                 <slot/>
             </div>
             <button class="modal-close is-large"
@@ -40,10 +28,6 @@ export default {
             type: Boolean,
             required: true,
         },
-        card: {
-            type: Boolean,
-            default: false,
-        },
         container: {
             type: String,
             default: 'modal-wrapper',
@@ -57,30 +41,19 @@ export default {
     },
 
     computed: {
-        containerSelector() {
+        wrapperSelector() {
             return `.${this.container}`;
         },
     },
 
     created() {
-        const wrapper = document.querySelector(this.containerSelector);
+        const wrapper = document.querySelector(this.wrapperSelector);
 
-        if (!wrapper) {
-            const { container } = this;
-            const ModalWrapper = Vue.extend({
-                name: 'ModalWrapper',
-                render(h) {
-                    return h('div', {
-                        class: container,
-                    });
-                },
-            });
+        this.wrapper = wrapper
+            ? wrapper.__vue__
+            : this.mountWrapper();
 
-            this.wrapper = new ModalWrapper().$mount();
-            document.body.appendChild(this.wrapper.$el);
-        } else {
-            this.wrapper = wrapper.__vue__;
-        }
+        document.body.appendChild(this.wrapper.$el);
     },
 
     mounted() {
@@ -93,6 +66,18 @@ export default {
     },
 
     methods: {
+        mountWrapper() {
+            const { container } = this;
+
+            return new Vue({
+                name: 'ModalWrapper',
+                render(h) {
+                    return h('div', {
+                        class: container,
+                    });
+                },
+            }).$mount();
+        },
         closeOnEsc(e) {
             if (this.show && e.keyCode === 27) {
                 this.$emit('close');

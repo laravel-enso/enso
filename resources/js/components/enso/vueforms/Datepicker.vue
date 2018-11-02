@@ -18,7 +18,7 @@
         </span>
         <span class="icon is-small is-right clear-button"
             @click="picker.clear()"
-            v-if="value && !disabled && !isDanger">
+            v-if="value && !disabled && !isDanger && !isWarning">
             <a class="delete is-small"/>
         </span>
         <span :class="[

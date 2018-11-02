@@ -1,5 +1,12 @@
 ## Laravel Enso's Changelog
 
+### 2.13.16
+- adds comments to company's edit form
+- updates `Dropdown.vue`, now it uses `em` instead of `px` for sizing
+- improves all filters
+- improves toastr
+- refactors vuecomponents
+
 ### 2.13.5
 - major FE refactor for `vue-forms`. Docs update soon but don't worry, should be backward compatible
 - lots of minor bug fixes

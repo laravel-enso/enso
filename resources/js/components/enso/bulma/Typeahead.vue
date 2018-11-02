@@ -12,12 +12,12 @@
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :value="value"
+                @blur="dropdown=false"
                 @input="update($event.target.value);getData();"
                 @keydown.up="keyUp"
                 @keydown.down="keyDown"
                 @keydown.enter="hit"
-                @keydown.esc="update('')"
-                @blur="dropdown=false">
+                @keydown.esc="update('')">
             <span class="icon is-small is-left">
                 <fa icon="search"/>
             </span>
@@ -137,13 +137,13 @@ export default {
     },
 
     computed: {
+        hasError() {
+            return this.validator && this.value && !this.regExp.test(this.value);
+        },
         route() {
             return typeof route === 'function'
                 ? route(this.source)
                 : this.source;
-        },
-        hasError() {
-            return this.validator && this.value && !this.regExp.test(this.value);
         },
         showDropdown() {
             return !this.hideDropdown && this.value && !this.hasError;
@@ -164,7 +164,9 @@ export default {
 
             axios.get(this.route, {
                 params: {
-                    query: this.value, length: this.length, params: this.params,
+                    query: this.value,
+                    length: this.length,
+                    params: this.params,
                 },
             }).then((response) => {
                 this.hideDropdown = false;

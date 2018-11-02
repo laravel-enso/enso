@@ -8,8 +8,7 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <dropdown class="is-right"
-                    :height="220">
+                <dropdown class="is-right">
                     <span slot="label">
                         {{ theme }}
                     </span>

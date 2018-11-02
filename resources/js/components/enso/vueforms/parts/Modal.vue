@@ -35,16 +35,16 @@ export default {
     components: { Modal },
 
     props: {
-        show: {
-            type: Boolean,
+        i18n: {
+            type: Function,
             required: true,
         },
         message: {
             type: String,
             default: null,
         },
-        i18n: {
-            type: Function,
+        show: {
+            type: Boolean,
             required: true,
         },
     },

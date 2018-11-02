@@ -15,25 +15,30 @@
                     v-for="(option, index) in options"
                     :key="index">
                     <a @click="update(option.value)">
-                        <span class="icon is-small"
-                            :class="option.class"
+                        <span :class="['icon is-small', option.class]"
                             v-if="icons">
                             <fa :icon="option.label"/>
                         </span>
-                        <span class="filter-label" v-else
-                            :class="option.class">
+                        <span class="filter-label"
+                            :class="option.class"
+                            v-else>
                             {{ option.label }}
                         </span>
                     </a>
                 </li>
                 <li :class="{ 'is-active': value === null }"
                     v-if="!hideOff">
-                    <a @click="update(null)">
-                        <span class="icon is-small"
-                            :class="value === null ? 'has-text-danger' : 'has-text-success'">
+                    <a @click="update()">
+                        <span :class="[
+                                'icon is-small',
+                                value === null ? 'has-text-danger' : 'has-text-success'
+                            ]">
                             <fa icon="power-off"/>
                         </span>
-                        <span class="filter-label" v-if="!icons && offLabel">{{ offLabel }}</span>
+                        <span class="filter-label"
+                            v-if="!icons && offLabel">
+                            {{ offLabel }}
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -53,17 +58,17 @@ export default {
     name: 'VueFilter',
 
     props: {
-        title: {
-            type: String,
-            default: null,
-        },
-        offLabel: {
-            type: String,
-            default: '',
+        hideOff: {
+            type: Boolean,
+            default: false,
         },
         icons: {
             type: Boolean,
             default: false,
+        },
+        offLabel: {
+            type: String,
+            default: '',
         },
         options: {
             type: Array,
@@ -71,18 +76,20 @@ export default {
                 return [];
             },
         },
-        value: {
-            type: null,
-            default: null,
-        },
-        hideOff: {
-            type: Boolean,
-            default: false,
-        },
         readonly: {
             type: Boolean,
             default: false,
         },
+        title: {
+            type: String,
+            default: null,
+        },
+        value: {
+            type: null,
+            default: null,
+        },
+
+
     },
 
     data() {
@@ -92,7 +99,7 @@ export default {
     },
 
     methods: {
-        update(value) {
+        update(value = null) {
             if (!this.readonly) {
                 this.$emit('input', value);
             }
@@ -118,6 +125,10 @@ export default {
 
         .filter-tabs {
             padding-top: 0.5em;
+
+            li > a {
+                transition: background 0.4s;
+            }
 
             .filter-label {
                 font-size: 0.9em;

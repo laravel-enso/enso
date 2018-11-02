@@ -34,8 +34,8 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 library.add(faCheck, faTimes);
 
 const positions = [
-    'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start',
-    'bottom-end', 'left', 'left-start', 'left-end',
+    'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom',
+    'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end',
 ];
 
 const triggers = ['hover', 'click', 'focus', 'manual'];
@@ -46,6 +46,10 @@ export default {
     components: { VPopover },
 
     props: {
+        open: {
+            type: Boolean,
+            default: false,
+        },
         placement: {
             type: String,
             default: 'bottom',
@@ -57,12 +61,10 @@ export default {
             type: String,
             default: 'click',
             validator(value) {
-                return value.split(' ').filter(val => !triggers.includes(val)).length === 0;
+                return value.split(' ')
+                    .filter(val => !triggers.includes(val))
+                    .length === 0;
             },
-        },
-        open: {
-            type: Boolean,
-            default: false,
         },
     },
 

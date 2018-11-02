@@ -15,6 +15,10 @@ export default {
     name: 'Overlay',
 
     props: {
+        color: {
+            type: String,
+            default: '#f44336',
+        },
         size: {
             type: String,
             default: 'small',
@@ -25,10 +29,6 @@ export default {
         transparent: {
             type: Boolean,
             default: false,
-        },
-        color: {
-            type: String,
-            default: '#f44336',
         },
     },
 

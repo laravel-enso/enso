@@ -1,10 +1,10 @@
 <template>
     <div>
         <div :class="[
-            'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-            { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
-            { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
-        ]">
+                'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
+                { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
+                { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
+            ]">
             <ul :class="[
                     'tab-list',
                     { 'has-background-grey-lighter' : custom }
@@ -36,22 +36,14 @@ export default {
         alignment: {
             type: String,
             default: 'left',
-            validator: value => ['left', 'centered', 'right'].includes(value),
-        },
-        size: {
-            type: String,
-            default: 'normal',
-            validator: value => ['normal', 'small', 'medium', 'large'].includes(value),
+            validator: value => ['left', 'centered', 'right']
+                .includes(value),
         },
         boxed: {
             type: Boolean,
             default: false,
         },
-        toggle: {
-            type: Boolean,
-            default: false,
-        },
-        toggleRounded: {
+        custom: {
             type: Boolean,
             default: false,
         },
@@ -59,7 +51,17 @@ export default {
             type: Boolean,
             default: false,
         },
-        custom: {
+        size: {
+            type: String,
+            default: 'normal',
+            validator: value => ['normal', 'small', 'medium', 'large']
+                .includes(value),
+        },
+        toggle: {
+            type: Boolean,
+            default: false,
+        },
+        toggleRounded: {
             type: Boolean,
             default: false,
         },

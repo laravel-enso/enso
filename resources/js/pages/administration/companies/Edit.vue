@@ -6,11 +6,12 @@
                 @loaded="ready = true"
                 ref="form"/>
             <div v-if="ready">
-                <accessories type="LaravelEnso\Companies\app\Models\Company"
-                    :id="$refs.form.data.routeParams.company"
-                    addresses
+                <accessories addresses
+                    comments
                     discussions
-                    documents>
+                    documents
+                    type="LaravelEnso\Companies\app\Models\Company"
+                    :id="$refs.form.data.routeParams.company">
                     <template slot="custom"
                         slot-scope="{count}">
                         <tab keep-alive

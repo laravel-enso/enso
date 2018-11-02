@@ -3,12 +3,12 @@
     <div class="dropdown is-active"
         v-click-outside="hide">
         <div class="dropdown-trigger"
-            @click="show=!show"
-            v-click-outside="shouldHide">
+            @click="visible = !visible"
+            v-click-outside="attemptHide">
             <button class="button">
                 <slot name="label"/>
                 <span class="icon is-small angle"
-                        :aria-hidden="!show">
+                        :aria-hidden="!visible">
                     <fa icon="angle-down"/>
                 </span>
             </button>
@@ -17,7 +17,7 @@
             enter-active-class="fadeIn"
             leave-active-class="fadeOut">
             <div class="animated dropdown-menu menu-list"
-                v-if="show"
+                v-if="visible"
                 :style="widthStyle">
                 <div class="dropdown-content has-text-centered"
                     :style="[widthStyle, heightStyle]">
@@ -45,46 +45,44 @@ export default {
     },
 
     props: {
-        width: {
-            type: Number,
-            default: 64,
-        },
         height: {
             type: Number,
-            default: 200,
+            default: 16,
         },
         hidesManually: {
             type: Boolean,
             default: false,
         },
+        width: {
+            type: Number,
+            default: 4.5,
+        },
     },
 
-    data() {
-        return {
-            show: false,
-        };
-    },
+    data: () => ({
+        visible: false,
+    }),
 
     computed: {
-        widthStyle() {
-            return {
-                'min-width': `${this.width}px`,
-            };
-        },
         heightStyle() {
             return {
-                'max-height': `${this.height}px`,
+                'max-height': `${this.height}em`,
+            };
+        },
+        widthStyle() {
+            return {
+                'min-width': `${this.width}em`,
             };
         },
     },
 
     methods: {
         hide() {
-            this.show = false;
+            this.visible = false;
         },
-        shouldHide() {
+        attemptHide() {
             if (!this.hidesManually) {
-                this.show = false;
+                this.hide();
             }
         },
     },

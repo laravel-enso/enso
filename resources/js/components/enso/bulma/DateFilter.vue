@@ -2,15 +2,15 @@
 
     <div class="date-filter is-paddingless">
         <div class="has-text-centered has-padding-medium has-background-light">
-            <strong v-if="custom">{{ i18n('Between') }}</strong>
+            <strong v-if="selected === filters.custom">{{ i18n('Between') }}</strong>
             <strong v-else>{{ i18n('When') }}</strong>
         </div>
         <div class="has-padding-large">
             <div class="tags-wrapper">
-                <span :class="['tag filter', {'is-warning': filter === key}]"
+                <span :class="['tag filter', {'is-warning': selected === key}]"
                     v-for="(type, key) in filters"
                     :key="key"
-                    @click="filter = key; update()">
+                    @click="selected = key; update()">
                     {{ i18n(type) }}
                 </span>
             </div>
@@ -21,37 +21,39 @@
                     @enter="expand"
                     @leave="shrink">
                     <div class="columns is-mobile animated has-margin-top-small"
-                        v-show="filter === filters.custom"
+                        v-show="selected === filters.custom"
                         ref="filter">
                         <div class="column picker-wrapper">
-                            <datepicker :format="format"
-                                v-model="interval.min"
+                            <datepicker v-model="interval.min"
+                                :format="format"
+                                :is-danger="inversed"
+                                :is-warning="equal"
                                 :locale="locale"
                                 :placeholder="i18n('From')"
-                                :disabled="filter !== filters.custom"
+                                :disabled="selected !== filters.custom"
                                 @input="update()"/>
                         </div>
                         <div class="column picker-wrapper">
-                            <datepicker :format="format"
-                                v-model="interval.max"
+                            <datepicker v-model="interval.max"
+                                :format="format"
+                                :is-danger="inversed"
+                                :is-warning="equal"
                                 :locale="locale"
                                 :placeholder="i18n('To')"
-                                :disabled="filter !== filters.custom"
+                                :disabled="selected !== filters.custom"
                                 @input="update()"/>
                         </div>
                     </div>
                 </transition>
             </div>
-
         </div>
-
     </div>
 
 </template>
 
 <script>
 
-import { format, addDays, subDays, subWeeks, subMonths } from 'date-fns';
+import { addDays, compareAsc, format, parse, subDays, subMonths, subWeeks } from 'date-fns';
 import Datepicker from '../vueforms/Datepicker.vue';
 
 export default {
@@ -80,7 +82,6 @@ export default {
     },
 
     data: () => ({
-        custom: false,
         interval: {
             min: null,
             max: null,
@@ -92,7 +93,7 @@ export default {
             lastMonth: 'last month',
             custom: 'custom',
         },
-        filter: 'today',
+        selected: 'today',
     }),
 
     computed: {
@@ -100,6 +101,22 @@ export default {
             return this.format.replace('d', 'DD')
                 .replace('m', 'MM')
                 .replace('Y', 'YYYY');
+        },
+        parsedMax() {
+            return parse(this.interval.max, this.alternateFormat, new Date());
+        },
+        parsedMin() {
+            return parse(this.interval.min, this.alternateFormat, new Date());
+        },
+        inversed() {
+            return !!this.interval.min
+                && !!this.interval.max
+                && compareAsc(this.parsedMin, this.parsedMax) === 1;
+        },
+        equal() {
+            return !!this.interval.min
+                && !!this.interval.max
+                && compareAsc(this.parsedMin, this.parsedMax) === 0;
         },
     },
 
@@ -109,8 +126,8 @@ export default {
 
     methods: {
         update() {
-            if (this.filter !== this.filters.custom) {
-                this[this.filter]();
+            if (this.selected !== this.filters.custom) {
+                this[this.selected]();
             }
 
             this.$emit('update', this.interval);

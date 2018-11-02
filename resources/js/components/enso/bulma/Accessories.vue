@@ -1,4 +1,5 @@
 <template>
+
     <tabs alignment="centered"
         custom>
         <span slot="label"
@@ -47,33 +48,26 @@
                 ref="documents"/>
         </tab>
     </tabs>
+
 </template>
 
 <script>
 
-import Tabs from './Tabs.vue';
-import Tab from './Tab.vue';
 import Addresses from '../addresses/Addresses.vue';
 import Comments from '../comments/Comments.vue';
 import Discussions from '../discussions/Discussions.vue';
 import Documents from '../documents/Documents.vue';
+import Tabs from './Tabs.vue';
+import Tab from './Tab.vue';
 
 export default {
     name: 'Accessories',
 
     components: {
-        Tabs, Tab, Addresses, Comments, Discussions, Documents,
+        Addresses, Comments, Discussions, Documents, Tab, Tabs,
     },
 
     props: {
-        id: {
-            type: Number,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: true,
-        },
         addresses: {
             type: Boolean,
             default: false,
@@ -89,6 +83,14 @@ export default {
         documents: {
             type: Boolean,
             default: false,
+        },
+        id: {
+            type: Number,
+            required: true,
+        },
+        type: {
+            type: String,
+            required: true,
         },
     },
 
