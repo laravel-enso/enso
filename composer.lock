@@ -1528,16 +1528,16 @@
         },
         {
             "name": "laravel-enso/companies",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Companies.git",
-                "reference": "037fe7eb8e4a8228b50f1fe02877348c4e0d8df1"
+                "reference": "52d83d54a9402cc1e001809dcb5b3b3dcc7d1d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/037fe7eb8e4a8228b50f1fe02877348c4e0d8df1",
-                "reference": "037fe7eb8e4a8228b50f1fe02877348c4e0d8df1",
+                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/52d83d54a9402cc1e001809dcb5b3b3dcc7d1d39",
+                "reference": "52d83d54a9402cc1e001809dcb5b3b3dcc7d1d39",
                 "shasum": ""
             },
             "require": {
@@ -1584,7 +1584,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2018-11-02T07:12:26+00:00"
+            "time": "2018-11-02T08:15:51+00:00"
         },
         {
             "name": "laravel-enso/controlpanelapi",
@@ -3266,16 +3266,16 @@
         },
         {
             "name": "laravel-enso/vuecomponents",
-            "version": "2.5.32",
+            "version": "2.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueComponents.git",
-                "reference": "47c1b80c2273ea96e1fc88da771343d3933a02d1"
+                "reference": "54e7cef61c717283a81d9dec9fb318da23f94bb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/47c1b80c2273ea96e1fc88da771343d3933a02d1",
-                "reference": "47c1b80c2273ea96e1fc88da771343d3933a02d1",
+                "url": "https://api.github.com/repos/laravel-enso/VueComponents/zipball/54e7cef61c717283a81d9dec9fb318da23f94bb1",
+                "reference": "54e7cef61c717283a81d9dec9fb318da23f94bb1",
                 "shasum": ""
             },
             "type": "library",
@@ -3311,7 +3311,7 @@
                 "vue-component",
                 "vue-components"
             ],
-            "time": "2018-11-02T07:41:31+00:00"
+            "time": "2018-11-02T08:04:32+00:00"
         },
         {
             "name": "laravel-enso/vuedatatable",
