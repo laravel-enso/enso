@@ -1,6 +1,6 @@
 ## Laravel Enso's Changelog
 
-### 2.13.16
+### 2.13.6
 - adds comments to company's edit form
 - updates `Dropdown.vue`, now it uses `em` instead of `px` for sizing
 - improves all filters
