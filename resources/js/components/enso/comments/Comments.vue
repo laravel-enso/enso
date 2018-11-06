@@ -58,8 +58,12 @@
 
 <script>
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mapState } from 'vuex';
 import Comment from './Comment.vue';
+
+library.add(faPlus, faSync, faSearch);
 
 export default {
     name: 'Comments',

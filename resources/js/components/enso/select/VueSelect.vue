@@ -59,7 +59,7 @@
                     <span v-html="highlight(optionLabel(option, label))"/>
                     <span :class="[
                             'label tag', isSelected(option) ? 'is-warning' : 'is-success'
-                        ]" v-if="index === position">
+                        ]" v-if="index === position && !disableClear">
                         <span v-if="isSelected(option)">{{ i18n(labels.deselect) }}</span>
                         <span v-else>{{ i18n(labels.select) }}</span>
                     </span>
@@ -347,7 +347,7 @@ export default {
 
             if (!this.multiple) {
                 this.hideDropdown();
-                if (this.value === value) {
+                if (this.value === value && !this.disableClear) {
                     this.$emit('input', null);
                     return;
                 }

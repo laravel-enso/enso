@@ -48,10 +48,14 @@
 
 <script>
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mapState } from 'vuex';
 import Document from './Document.vue';
 import File from '../filemanager/File.vue';
 import Uploader from '../filemanager/Uploader.vue';
+
+library.add(faPlus, faSync, faSearch);
 
 export default {
     name: 'Documents',

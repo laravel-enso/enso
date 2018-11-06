@@ -85,10 +85,14 @@
 
 <script>
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mapState } from 'vuex';
 import Contact from './Contact.vue';
 import ContactForm from './ContactForm.vue';
 import Modal from '../bulma/Modal.vue';
+
+library.add(faPlus, faSync, faSearch);
 
 export default {
     name: 'Contacts',

@@ -77,12 +77,12 @@
 <script>
 
 import { mapState } from 'vuex';
+import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faSync } from '@fortawesome/free-solid-svg-icons';
 import AddressCard from './AddressCard.vue';
 import AddressForm from './AddressForm.vue';
 
-library.add(faPlus, faSync);
+library.add(faPlus, faSync, faSearch);
 
 export default {
     name: 'Addresses',

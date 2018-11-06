@@ -25,6 +25,9 @@
         <testsuite name="commentsmanager">
             <directory suffix="Test.php">./vendor/laravel-enso/commentsmanager/tests/features</directory>
         </testsuite>
+        <testsuite name="companies">
+            <directory suffix="Test.php">./vendor/laravel-enso/companies/tests/features</directory>
+        </testsuite>
         <testsuite name="contacts">
             <directory suffix="Test.php">./vendor/laravel-enso/contacts/tests/features</directory>
         </testsuite>
@@ -54,6 +57,9 @@
         </testsuite>
         <testsuite name="notifications">
             <directory suffix="Test.php">./vendor/laravel-enso/notifications/tests/features</directory>
+        </testsuite>
+        <testsuite name="people">
+            <directory suffix="Test.php">./vendor/laravel-enso/people/tests/features</directory>
         </testsuite>
         <testsuite name="permissionmanager">
             <directory suffix="Test.php">./vendor/laravel-enso/permissionmanager/tests/features</directory>

@@ -177,7 +177,7 @@ export default {
             };
 
             if (this.isLogin) {
-                params = Object.assign({ password: this.password }, params);
+                params = Object.assign({ password: this.password, remember: this.remember }, params);
             }
 
             if (this.isReset) {

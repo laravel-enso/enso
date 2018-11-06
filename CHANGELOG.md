@@ -1,6 +1,12 @@
 ## Laravel Enso's Changelog
 
-### 2.13.16
+### 2.13.7
+- adds tests for people / company / company contacts
+- fixes bugs
+
+Note: For existing projects replace the old ContactFactory with the one provided by the Companies package.
+
+### 2.13.6
 - adds comments to company's edit form
 - updates `Dropdown.vue`, now it uses `em` instead of `px` for sizing
 - improves all filters

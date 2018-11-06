@@ -3,7 +3,7 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '2.13.6',
+    'version' => '2.13.7',
     'showQuote' => true,
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',

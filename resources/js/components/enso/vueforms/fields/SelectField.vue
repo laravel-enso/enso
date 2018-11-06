@@ -9,6 +9,8 @@
         :options="field.meta.options"
         :source="field.meta.source"
         :placeholder="i18n(field.meta.placeholder)"
+        :customParams="customParams"
+        :params="params"
         :pivot-params="pivotParams"
         :track-by="field.meta.trackBy || 'id'"
         v-on="$listeners"
@@ -38,6 +40,14 @@ export default {
         i18n: {
             type: Function,
             required: true,
+        },
+        customParams: {
+            type: Object,
+            default: () => ({}),
+        },
+        params: {
+            type: Object,
+            default: () => ({}),
         },
         pivotParams: {
             type: Object,

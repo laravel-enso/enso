@@ -1,17 +1,18 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Contacts\app\Models\Contact;
+use LaravelEnso\People\app\Models\Person;
+use LaravelEnso\Companies\app\Models\Company;
+use LaravelEnso\Companies\app\Models\Contact;
 
 $factory->define(Contact::class, function (Faker $faker) {
     return [
-        'contactable_id' => $faker->randomKey,
-        'contactable_type' => $faker->word,
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->phoneNumber,
+        'company_id' => function () {
+            return factory(Company::class)->create()->id;
+        },
+        'person_id' => function () {
+            return factory(Person::class)->create()->id;
+        },
         'position' => $faker->jobTitle,
-        'is_active' => $faker->boolean,
     ];
 });
