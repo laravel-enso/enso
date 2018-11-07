@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.13.9
+- adds categories filtering for searchable
+
 ### 2.13.8
 - fixes searchable with multiple words
 - improves menu behavior laravel-enso/core#80

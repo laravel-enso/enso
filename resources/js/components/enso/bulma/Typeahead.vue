@@ -30,8 +30,10 @@
         <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
+                    <slot name="controls"
+                        :items="items"/>
                     <a href="#" class="dropdown-item"
-                        v-for="(item, index) in items"
+                        v-for="(item, index) in filter(items)"
                         :key="index"
                         :class="{ 'is-active': position === index }"
                         @mousedown.prevent="hit"
@@ -124,6 +126,10 @@ export default {
         isRounded: {
             type: Boolean,
             default: false,
+        },
+        filter: {
+            type: Function,
+            default: items => (items),
         },
     },
 

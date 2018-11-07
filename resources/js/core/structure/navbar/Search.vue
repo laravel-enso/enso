@@ -6,8 +6,28 @@
             :placeholder="__('Search')"
             :searching="__('Searching') + '..'"
             :no-results="__('Nothing found')"
+            :filter="filter"
             v-model="query"
             @update="redirect">
+            <template slot="controls"
+                slot-scope="{ items }">
+                <a class="dropdown-item has-text-centered"
+                    v-if="tags(items).length < 6">
+                    <span class="tag control-list is-uppercase"
+                        :class="{ 'is-info': selected(tag) }"
+                        v-for="(tag, index) in tags(items)"
+                        :key="index"
+                        @click="toggle(tag)">
+                        {{ __(tag ) }}
+                    </span>
+                </a>
+                <a class="dropdown-item has-text-centered"
+                    v-else>
+                    <p class="title is-6">
+                        {{ __('Categories found') }}: {{ tags(items).length }}
+                    </p>
+                </a>
+            </template>
             <template slot="option"
                 slot-scope="{ highlight, item }">
                 <span>
@@ -46,7 +66,18 @@ export default {
 
     data: () => ({
         query: '',
+        selectedTags: [],
     }),
+
+    watch: {
+        query: {
+            handler(value) {
+                if (!value) {
+                    this.selectedTags = [];
+                }
+            },
+        },
+    },
 
     methods: {
         route(search, { routes }) {
@@ -65,6 +96,34 @@ export default {
 
             this.$nextTick(() => (this.query = ''));
         },
+        tags(items) {
+            return items.reduce((tags, { group }) => {
+                if (!tags.includes(group)) {
+                    tags.push(group);
+                }
+
+                return tags;
+            }, []);
+        },
+        filter(items) {
+            return this.selectedTags.length
+                ? items.filter(item =>
+                    this.selectedTags.includes(item.group))
+                : items;
+        },
+        toggle(tag) {
+            const index = this.selectedTags.indexOf(tag);
+
+            if (index > -1) {
+                this.selectedTags.splice(index, 1);
+                return;
+            }
+
+            this.selectedTags.push(tag);
+        },
+        selected(tag) {
+            return this.selectedTags.includes(tag);
+        },
     },
 };
 </script>
@@ -77,6 +136,10 @@ export default {
             opacity: .7;
             -webkit-box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
             box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
+
+            &.control-list:not(:first-child) {
+                margin-left: .5em;
+            }
         }
         .route-controls {
             position: absolute;
