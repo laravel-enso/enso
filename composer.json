@@ -20,7 +20,6 @@
         "laravel-enso/howtovideos": "2.2.*",
         "laravel-enso/teams": "1.0.*",
         "laravel/framework": "5.7.*",
-        "laravel/telescope": "^0.1.3",
         "laravel/tinker": "~1.0",
         "sentry/sentry-laravel": "dev-laravel-57@dev"
     },
@@ -29,6 +28,7 @@
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
         "laracasts/generators": "dev-develop",
+        "laravel/telescope": "^0.1.3",
         "mockery/mockery": "1.*",
         "nunomaduro/collision": "^2.0.0",
         "phpunit/phpunit": "^7.0"

@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.13.8
+- fixes searchable with multiple words
+- improves menu behavior laravel-enso/core#80
+- adds telescope back for local. If you need it in production be sure that you have it in the right section in composer.json
+
 ### 2.13.7
 - adds tests for people / company / company contacts
 - fixes bugs

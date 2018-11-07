@@ -5,7 +5,6 @@
             <menu-item :class="{ 'is-active': isActive(menu) }"
                 :menu="menu"/>
             <menus :menus="menu.children"
-                :is-active="isActive"
                 @shrink="shrink"
                 @extend="extend"
                 :collapsed="!menu.expanded"
@@ -17,6 +16,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import MenuItem from './MenuItem.vue';
 
 import './icons';
@@ -31,14 +31,14 @@ export default {
             type: Array,
             required: true,
         },
-        isActive: {
-            type: Function,
-            required: true,
-        },
         collapsed: {
             type: Boolean,
             default: false,
         },
+    },
+
+    computed: {
+        ...mapGetters('menus', ['isActive']),
     },
 
     watch: {

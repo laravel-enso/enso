@@ -4,17 +4,6 @@ export const state = {
     keyCollector: false,
 };
 
-export const mutations = {
-    setI18n: (state, i18n) => (state.i18n = i18n),
-    setLanguages: (state, languages) => (state.languages = languages),
-    addKey: (state, key) => {
-        Object.keys(state.i18n).forEach((lang) => {
-            state.i18n[lang][key] = '';
-        });
-    },
-    setKeyCollector: (state, status) => (state.keyCollector = status),
-};
-
 export const getters = {
     isInitialised: state => Object.keys(state.i18n).length > 0,
     __: (state, getters, rootState, rootGetters) => (key) => {
@@ -27,6 +16,17 @@ export const getters = {
         title => (rootState.meta.extendedDocumentTitle
             ? `${getters.__(title)} | ${rootState.meta.appName}`
             : getters.__(title)),
+};
+
+export const mutations = {
+    setI18n: (state, i18n) => (state.i18n = i18n),
+    setLanguages: (state, languages) => (state.languages = languages),
+    addKey: (state, key) => {
+        Object.keys(state.i18n).forEach((lang) => {
+            state.i18n[lang][key] = '';
+        });
+    },
+    setKeyCollector: (state, status) => (state.keyCollector = status),
 };
 
 export const actions = {

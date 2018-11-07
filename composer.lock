@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "660520531cf5379bcd5824c159f76736",
+    "content-hash": "5a35bb93e1cc69c9ae80890e648c979a",
     "packages": [
         {
             "name": "box/spout",
@@ -1650,16 +1650,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.2.12",
+            "version": "3.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "40d86c8f79a90b59ae0d0eb3e6a3308b3f47fb71"
+                "reference": "96ff8f44ea8261c5e50b80a0b997be18bf176d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/40d86c8f79a90b59ae0d0eb3e6a3308b3f47fb71",
-                "reference": "40d86c8f79a90b59ae0d0eb3e6a3308b3f47fb71",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/96ff8f44ea8261c5e50b80a0b997be18bf176d89",
+                "reference": "96ff8f44ea8261c5e50b80a0b997be18bf176d89",
                 "shasum": ""
             },
             "require": {
@@ -1742,7 +1742,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-11-05T10:24:50+00:00"
+            "time": "2018-11-07T10:37:24+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -2882,16 +2882,16 @@
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Searchable.git",
-                "reference": "b27a21364cfbb5771b420f432eb550552383be21"
+                "reference": "637b09bdef1a479dc28053bc744abdace56bcdf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/b27a21364cfbb5771b420f432eb550552383be21",
-                "reference": "b27a21364cfbb5771b420f432eb550552383be21",
+                "url": "https://api.github.com/repos/laravel-enso/Searchable/zipball/637b09bdef1a479dc28053bc744abdace56bcdf8",
+                "reference": "637b09bdef1a479dc28053bc744abdace56bcdf8",
                 "shasum": ""
             },
             "require": {
@@ -2931,7 +2931,7 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2018-10-30T06:12:26+00:00"
+            "time": "2018-11-07T06:29:10+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -3583,69 +3583,6 @@
             "time": "2018-11-01T14:03:51+00:00"
         },
         {
-            "name": "laravel/telescope",
-            "version": "v0.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/telescope.git",
-                "reference": "e3dbda59367969222603a2a20f0ee3aabe7bcdce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/e3dbda59367969222603a2a20f0ee3aabe7bcdce",
-                "reference": "e3dbda59367969222603a2a20f0ee3aabe7bcdce",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel/framework": "~5.7.7",
-                "moontoast/math": "^1.1",
-                "php": "^7.1.3",
-                "symfony/var-dumper": "^4.1"
-            },
-            "require-dev": {
-                "nunomaduro/larastan": "^0.3.7",
-                "orchestra/testbench": "~3.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Telescope\\TelescopeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Telescope\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "mohamed@laravel.com"
-                }
-            ],
-            "description": "An elegant debug assistant for the Laravel framework.",
-            "keywords": [
-                "debugging",
-                "laravel",
-                "monitoring"
-            ],
-            "time": "2018-11-02T10:45:19+00:00"
-        },
-        {
             "name": "laravel/tinker",
             "version": "v1.0.8",
             "source": {
@@ -3934,55 +3871,6 @@
                 "psr-3"
             ],
             "time": "2018-11-05T09:00:11+00:00"
-        },
-        {
-            "name": "moontoast/math",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/moontoast-math.git",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
-                "satooshi/php-coveralls": "^0.6.1",
-                "squizlabs/php_codesniffer": "^2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Moontoast\\Math\\": "src/Moontoast/Math/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                }
-            ],
-            "description": "A mathematics library, providing functionality for large numbers",
-            "homepage": "https://github.com/ramsey/moontoast-math",
-            "keywords": [
-                "bcmath",
-                "math"
-            ],
-            "time": "2017-02-16T16:54:46+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -6410,6 +6298,69 @@
             "time": "2018-02-10T22:36:34+00:00"
         },
         {
+            "name": "laravel/telescope",
+            "version": "v0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "e3dbda59367969222603a2a20f0ee3aabe7bcdce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/e3dbda59367969222603a2a20f0ee3aabe7bcdce",
+                "reference": "e3dbda59367969222603a2a20f0ee3aabe7bcdce",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "~5.7.7",
+                "moontoast/math": "^1.1",
+                "php": "^7.1.3",
+                "symfony/var-dumper": "^4.1"
+            },
+            "require-dev": {
+                "nunomaduro/larastan": "^0.3.7",
+                "orchestra/testbench": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "time": "2018-11-02T10:45:19+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.2.0",
             "source": {
@@ -6473,6 +6424,55 @@
                 "testing"
             ],
             "time": "2018-10-02T21:52:37+00:00"
+        },
+        {
+            "name": "moontoast/math",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/moontoast-math.git",
+                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
+                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
+                "satooshi/php-coveralls": "^0.6.1",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Moontoast\\Math\\": "src/Moontoast/Math/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "A mathematics library, providing functionality for large numbers",
+            "homepage": "https://github.com/ramsey/moontoast-math",
+            "keywords": [
+                "bcmath",
+                "math"
+            ],
+            "time": "2017-02-16T16:54:46+00:00"
         },
         {
             "name": "myclabs/deep-copy",
