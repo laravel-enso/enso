@@ -11,7 +11,7 @@ Upgrade steps:
 - manually overwrite the `config/enso/themes.php` config file with the one provided by the core package
 - update `webpack.min.js` accordingly - you can use the one from this repo
 - run `php artisan enso:preferences:clear`
-- compile & enjoy
+- compile & enjoy (you should compile the themes at least the first time -> uncomment the two lines from webpack.js)
 
 ### 2.13.10
 - improved searchable; added tests
