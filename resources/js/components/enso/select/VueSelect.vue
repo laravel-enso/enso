@@ -3,9 +3,10 @@
     <div :class="['dropdown', { 'is-active': dropdown }]"
         v-click-outside="hideDropdown">
         <div :class="['dropdown-trigger', { 'is-danger': hasError }]">
-            <fieldset class="button"
+            <fieldset class="control-input input"
                 tabindex="0"
                 :disabled="disabled"
+                :readonly="readonly"
                 @click="showDropdown"
                 @keypress.enter="showDropdown"
                 @focus="showDropdown">
@@ -14,7 +15,7 @@
                         <div class="control"
                             v-if="multiple">
                             <tag v-for="(option, index) in selected"
-                                :disabled="disabled"
+                                :disabled="readonly || disabled"
                                 :label="optionLabel(option, label)"
                                 :key="index"
                                 @remove="remove(option[trackBy]); $emit('remove', option)"/>
@@ -39,7 +40,7 @@
                     <span class="is-loading"
                         v-if="loading"/>
                     <a class="delete is-small"
-                        v-if="!disableClear && !loading && hasSelection && !disabled"
+                        v-if="!disableClear && !loading && hasSelection && !readonly && !disabled"
                         @mousedown.prevent.self="clear"/>
                     <span class="icon is-small angle"
                         :aria-hidden="dropdown">
@@ -138,6 +139,10 @@ export default {
             default: 100,
         },
         disabled: {
+            type: Boolean,
+            default: false,
+        },
+        readonly: {
             type: Boolean,
             default: false,
         },
@@ -325,7 +330,7 @@ export default {
                     .filter(val => val === option[this.trackBy]).length > 0).length > 0;
         },
         showDropdown() {
-            if (this.optionList.length === 0 || this.disabled) {
+            if (this.optionList.length === 0 || this.readonly || this.disabled) {
                 return;
             }
 
@@ -457,17 +462,7 @@ export default {
                 min-width: 1em;
             }
 
-            &.is-danger {
-                .button {
-                    border-color: #e50800;
-                    border-top-color: rgb(229, 8, 0);
-                    border-right-color: rgb(229, 8, 0);
-                    border-bottom-color: rgb(229, 8, 0);
-                    border-left-color: rgb(229, 8, 0);
-                }
-            }
-
-            .button {
+            .control-input {
                 justify-content: flex-start;
                 width: 100%;
                 min-height: 2.25em;
@@ -493,6 +488,7 @@ export default {
                             padding: 0;
                             -webkit-box-shadow: unset;
                             width: fit-content;
+                            background-color: inherit;
                         }
 
                         .control:last-child,
@@ -508,7 +504,7 @@ export default {
 
                     .angle {
                         position: absolute;
-                        top: 0.25rem;
+                        top: 0.55rem;
                         right: 0.6rem;
                     }
 

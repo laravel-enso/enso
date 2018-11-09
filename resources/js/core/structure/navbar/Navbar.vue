@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar app-navbar is-light is-fixed-top">
+    <nav class="navbar app-navbar has-background-light is-fixed-top">
         <div class="navbar-brand">
             <a class="navbar-item logo" href="#">
                 <figure class="image is-24x24">
@@ -100,8 +100,8 @@ export default {
     .navbar {
         z-index: 3;
 
-        -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.2);
-        box-shadow: 0 1px 1px hsla(0,0%,4%,.2);
+        -webkit-box-shadow: 0 1px 1px hsla(0,0%,4%,.35);
+        box-shadow: 0 1px 1px hsla(0,0%,4%,.35);
 
         .fa-bars {
             transition: transform .300s;

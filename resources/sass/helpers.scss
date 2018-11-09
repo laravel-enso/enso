@@ -159,7 +159,7 @@
     transition: box-shadow 0.3s ease-in-out;
 
     &:hover {
-        -webkit-box-shadow: 0 2px 18px 1px rgba(42,51,83,.2);
-        box-shadow: 0 2px 18px 1px rgba(42,51,83,.2);
+        -webkit-box-shadow: 0 2px 18px 1px rgba(42,51,83,.35);
+        box-shadow: 0 2px 18px 1px rgba(42,51,83,.35);
     }
 }

@@ -8,18 +8,12 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <dropdown class="is-right">
-                    <span slot="label">
-                        {{ theme }}
+                <a class="button is-naked"
+                    @click="setTheme(alternate)">
+                    <span class="icon is-small">
+                        <fa icon="lightbulb"/>
                     </span>
-                    <a v-for="(href, key) in themes"
-                        :key="key"
-                        class="dropdown-item"
-                        :class="{ 'is-active': key === theme }"
-                        @click="setTheme(key)">
-                        {{ key }}
-                    </a>
-                </dropdown>
+                </a>
             </div>
         </div>
     </div>
@@ -29,16 +23,21 @@
 <script>
 
 import { mapState, mapGetters, mapActions } from 'vuex';
-import Dropdown from '../../../components/enso/bulma/Dropdown.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faLightbulb);
 
 export default {
     name: 'ThemeSelector',
 
-    components: { Dropdown },
-
     computed: {
         ...mapState('layout', ['themes']),
         ...mapGetters('preferences', ['theme']),
+        alternate() {
+            return Object.keys(this.themes)
+                .find(theme => theme !== this.theme);
+        },
     },
 
     methods: {

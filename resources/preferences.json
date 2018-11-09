@@ -4,7 +4,7 @@
         "dtStateSave": true,
         "expandedMenu": true,
         "bookmarks": true,
-        "theme": "clean",
+        "theme": "light",
         "toastrPosition": "bottom-right"
     },
     "local": {}

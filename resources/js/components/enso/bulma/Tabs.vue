@@ -7,7 +7,7 @@
             ]">
             <ul :class="[
                     'tab-list',
-                    { 'has-background-grey-lighter' : custom }
+                    { 'has-background-grey-light' : custom }
                 ]">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
@@ -107,9 +107,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    @import "./node_modules/bulma/sass/utilities/initial-variables";
+
     .tabs.is-fullwidth.is-toggle.is-custom {
         .tab-list {
-            border-radius: 0.3em;
+            border-radius: $radius;
 
             li {
                 padding: 0.5em;

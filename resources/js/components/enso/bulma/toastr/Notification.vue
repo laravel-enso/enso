@@ -234,8 +234,8 @@ export default {
             position: relative;
             overflow-x: hidden;
             cursor: pointer;
-            -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
-            box-shadow: 0 0 5px 3px hsla(0,0%,50%,.3);
+            -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
+            box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
             transition: box-shadow 0.2s ease-in-out;
 
             &:not(:last-child) {

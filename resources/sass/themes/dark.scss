@@ -1,0 +1,165 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+$family-sans-serif: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// variables
+
+$grey-darker:  #1c2531;
+$grey-dark:    #283243;
+$grey:         #232D3D;
+$grey-light:   #5285af;
+$grey-lighter: #dee5ed;
+
+$orange:       #E54124;
+$yellow:       #FFB610;
+$green:        #1BB934;
+$blue:         #0194EF;
+$red:          #E1112C;
+
+$primary: $orange;
+
+$dark: darken($grey-darker, 3);
+
+$title-color: $grey-lighter;
+
+$subtitle-strong-color: $grey-lighter;
+$subtitle-color: darken($grey-lighter, 10);
+$subtitle-strong-color: darken($grey-lighter, 10);
+
+$background: $grey-dark;
+$body-background-color: $grey-darker;
+$footer-background-color: $background;
+
+$border: $grey;
+
+$text: $grey-lighter;
+$text-strong: darken($grey-lighter, 10);
+$text-light: $grey-light;
+
+$box-background-color: $background;
+
+$card-shadow: none;
+$card-background-color: darken($body-background-color, 1);
+$card-header-box-shadow: none;
+$card-header-background-color: darken($body-background-color, 3);
+$card-footer-background-color: darken($body-background-color, 3);
+
+$link: $grey-light;
+$link-hover: $grey-lighter;
+$link-focus: $grey-lighter;
+$link-active: $grey-lighter;
+$button-color: $grey-lighter;
+$button-background-color: $grey;
+$button-border-color: $grey;
+$button-hover-border: transparent;
+$button-active-border-color: transparent;
+$input-hover-color: $link-hover;
+
+
+$input-color: $grey-lighter;
+$input-background-color: $grey-dark;
+$input-border-color: $grey;
+$input-hover-border-color: $grey-light;
+$input-focus-border-color: $blue;
+
+// $input-arrow: $link
+
+$input-icon-color: $grey-light;
+$input-icon-active-color: $grey-lighter;
+
+$file-cta-background-color: $grey-dark;
+$file-cta-color: $grey-light;
+$file-cta-hover-color: $grey-lighter;
+$file-cta-active-color: $grey-lighter;
+
+// $label-color: $grey-darker
+
+$table-color: $text;
+$table-head-color: $grey-lighter;
+$table-background-color: $grey-dark;
+$table-cell-border: 1px solid $grey;
+$table-row-hover-background-color: $grey-darker;
+$table-striped-row-even-background-color: $grey-darker;
+$table-striped-row-even-hover-background-color: lighten($grey-darker, 4);
+
+$navbar-background-color: $background;
+$navbar-item-color: $text;
+$navbar-item-hover-color: $grey-light;
+$navbar-item-active-color: $primary;
+$navbar-item-hover-background-color: rgba($grey-darker, 0.1);
+$navbar-item-active-background-color: rgba($grey-darker, 0.1);
+$navbar-dropdown-item-hover-color: $grey-light;
+$navbar-dropdown-item-active-color: $primary;
+$navbar-dropdown-background-color: $background;
+$navbar-dropdown-arrow: currentColor;
+
+$dropdown-content-background-color: $background;
+$dropdown-item-color: $text;
+$dropdown-item-hover-color: $text-light;
+
+$tabs-toggle-link-active-background-color: $background;
+$tabs-toggle-link-active-border-color: $border;
+$tabs-toggle-link-active-color: #FFF;
+$tabs-boxed-link-active-background-color: $body-background-color;
+
+$pagination-color: $link;
+$pagination-border-color: $border;
+
+// variables
+
+@import "./node_modules/bulma/bulma";
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+// overrides
+
+// .section {
+//   background-color: $body-background-color;
+// }
+
+.delete, .modal-close {
+    background-color: rgba(10, 10, 10, 0.4);
+
+    &:hover {
+        background-color: rgba(10, 10, 10, 0.8);
+    }
+}
+
+.button {
+    &.is-hovered,
+    &:hover {
+        background-color: darken($button-background-color, 3%);
+    }
+    @each $name, $pair in $colors {
+        $color: nth($pair, 1);
+        $color-invert: nth($pair, 2);
+
+        &.is-#{$name} {
+            &.is-hovered,
+            &:hover {
+                background-color: darken($color, 3%);
+            }
+        }
+    }
+}
+
+.label {
+    color: $grey-lighter;
+}
+
+.tag:not(body) {
+    background-color: $grey;
+}
+
+// overrides
+
+.aside {
+	background: $body-background-color;
+}
+
+.has-background-light {
+	background: #2b3e4f !important;
+}
+
+@import "~flatpickr/dist/themes/dark";
+@import "../extensions";

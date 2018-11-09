@@ -3905,8 +3905,8 @@
 }
 
 .raises-on-hover:hover {
-  -webkit-box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.2);
-  box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.2);
+  -webkit-box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.35);
+  box-shadow: 0 2px 18px 1px rgba(42, 51, 83, 0.35);
 }
 
 [v-cloak] {
@@ -3933,9 +3933,5 @@
 .icon.angle[aria-expanded="true"] {
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg);
-}
-
-.footer {
-  background-color: unset;
 }
 

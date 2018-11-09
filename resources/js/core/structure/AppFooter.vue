@@ -41,7 +41,7 @@
                     <a href="https://earthlink.ro"
                         target="_blank">
                         <figure class="image earthlink">
-                            <img src="https://www.earthlink.ro/images/logos/logo.png">
+                            <img src="/images/earthlink.svg">
                         </figure>
                     </a>
                 </span>
@@ -82,6 +82,7 @@ export default {
 
     .footer {
         margin-left: 180px;
+        background: inherit;
 
         figure.image.earthlink {
             width: 112px;

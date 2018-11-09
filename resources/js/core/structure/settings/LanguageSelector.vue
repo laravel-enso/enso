@@ -13,7 +13,7 @@
                         <i :class="languages[locale]"/>
                     </span>
                     <a v-for="(flag, lang) in languages"
-                        class="dropdown-item"
+                        class="dropdown-item has-text-centered"
                         :key="lang"
                         :class="{ 'is-active': flag === languages[locale] }"
                         @click="setLang(lang);updateTitle()">

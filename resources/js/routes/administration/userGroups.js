@@ -7,7 +7,7 @@ export default {
     path: 'userGroups/',
     component: RouterView,
     meta: {
-        breadcrumb: 'userGroups',
+        breadcrumb: 'user groups',
         route: 'administration.userGroups.index',
     },
     children: routes,

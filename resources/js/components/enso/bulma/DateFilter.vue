@@ -1,7 +1,7 @@
 <template>
 
     <div class="date-filter is-paddingless">
-        <div class="has-text-centered has-padding-medium has-background-light">
+        <div class="header has-text-centered has-padding-medium has-background-light">
             <strong v-if="selected === filters.custom">{{ i18n('Between') }}</strong>
             <strong v-else>{{ i18n('When') }}</strong>
         </div>
@@ -162,6 +162,11 @@ export default {
 <style lang="scss" scoped>
 
     .date-filter {
+        .header {
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+        }
+
         .tag.filter {
             cursor: pointer;
         }

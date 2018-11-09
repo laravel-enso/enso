@@ -2,6 +2,7 @@
 
     <vue-select v-model="field.value"
         :disabled="field.meta.disabled"
+        :readonly="field.meta.readonly"
         :has-error="errors.has(field.name)"
         :i18n="i18n"
         :label="field.meta.label || 'name'"
@@ -9,7 +10,7 @@
         :options="field.meta.options"
         :source="field.meta.source"
         :placeholder="i18n(field.meta.placeholder)"
-        :customParams="customParams"
+        :custom-params="customParams"
         :params="params"
         :pivot-params="pivotParams"
         :track-by="field.meta.trackBy || 'id'"

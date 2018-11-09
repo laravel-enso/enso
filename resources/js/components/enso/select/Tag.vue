@@ -36,9 +36,9 @@ export default {
 
         .tag {
             padding: 0.5em;
-            height: 1.4em;
+            height: 1.35em;
             font-size: 1em;
-            margin: 0.05em 0 0.05em;
+            margin: 0.075em 0 0.075em;
 
             &:not(body).is-delete {
                 width: 1.4em;

@@ -108,7 +108,7 @@ export default {
 
     &:before {
         width: calc(1.625 * var(--height) - 2px);
-        background-color: $grey-lighter;
+        background-color: $grey-light;
     }
 
     &:after {
