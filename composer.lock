@@ -1650,16 +1650,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.2.18",
+            "version": "3.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "97ff012ce242bc0181c77c8893d3f08687acce34"
+                "reference": "4fa806afc190c23ea1b0b8a7f1b6c004bb792a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/97ff012ce242bc0181c77c8893d3f08687acce34",
-                "reference": "97ff012ce242bc0181c77c8893d3f08687acce34",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/4fa806afc190c23ea1b0b8a7f1b6c004bb792a5b",
+                "reference": "4fa806afc190c23ea1b0b8a7f1b6c004bb792a5b",
                 "shasum": ""
             },
             "require": {
@@ -1742,7 +1742,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2018-11-09T10:17:55+00:00"
+            "time": "2018-11-09T10:46:23+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -1989,16 +1989,16 @@
         },
         {
             "name": "laravel-enso/examples",
-            "version": "1.0.13",
+            "version": "1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Examples.git",
-                "reference": "a3de436ae4a8ea11418b14fb77162f6d83cf2643"
+                "reference": "725ed733350dc142b7559442d1217b83839990ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/a3de436ae4a8ea11418b14fb77162f6d83cf2643",
-                "reference": "a3de436ae4a8ea11418b14fb77162f6d83cf2643",
+                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/725ed733350dc142b7559442d1217b83839990ef",
+                "reference": "725ed733350dc142b7559442d1217b83839990ef",
                 "shasum": ""
             },
             "require": {
@@ -2038,7 +2038,7 @@
                 "examples",
                 "laravel-enso"
             ],
-            "time": "2018-11-02T07:14:27+00:00"
+            "time": "2018-11-09T10:47:01+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
