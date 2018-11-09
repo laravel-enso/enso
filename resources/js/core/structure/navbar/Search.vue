@@ -10,23 +10,24 @@
             v-model="query"
             @update="redirect">
             <template slot="controls"
-                slot-scope="{ items }">
-                <a class="dropdown-item has-text-centered"
+                slot-scope="{ items }"
+                v-if="items.length">
+                <div class="dropdown-content has-text-centered has-padding-small has-margin-top-small"
                     v-if="tags(items).length < 6">
-                    <span class="tag control-list is-uppercase"
+                    <a class="tag control-list is-uppercase"
                         :class="{ 'is-info': selected(tag) }"
                         v-for="(tag, index) in tags(items)"
                         :key="index"
                         @click="toggle(tag)">
                         {{ __(tag ) }}
-                    </span>
-                </a>
-                <a class="dropdown-item has-text-centered"
+                    </a>
+                </div>
+                <div class="has-text-centered"
                     v-else>
                     <p class="title is-6">
                         {{ __('Categories found') }}: {{ tags(items).length }}
                     </p>
-                </a>
+                </div>
             </template>
             <template slot="option"
                 slot-scope="{ highlight, item }">
@@ -69,16 +70,6 @@ export default {
         selectedTags: [],
     }),
 
-    watch: {
-        query: {
-            handler(value) {
-                if (!value) {
-                    this.selectedTags = [];
-                }
-            },
-        },
-    },
-
     methods: {
         route(search, { routes }) {
             return routes.find(route =>
@@ -106,6 +97,20 @@ export default {
             }, []);
         },
         filter(items) {
+            if (this.value === '') {
+                this.selectedTags = [];
+            }
+
+            let filtered = this.filtered(items);
+
+            if (!filtered.length && this.selectedTags.length) {
+                this.selectedTags = [];
+                filtered = this.filtered(items);
+            }
+
+            return filtered;
+        },
+        filtered(items) {
             return this.selectedTags.length
                 ? items.filter(item =>
                     this.selectedTags.includes(item.group))
@@ -136,6 +141,10 @@ export default {
             opacity: .7;
             -webkit-box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
             box-shadow: 0 1px 1px rgba(10, 10, 10, 0.2);
+
+            &.control-list:hover {
+                text-decoration: none;
+            }
 
             &.control-list:not(:first-child) {
                 margin-left: .5em;

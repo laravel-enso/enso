@@ -67,6 +67,9 @@
         <testsuite name="rolemanager">
             <directory suffix="Test.php">./vendor/laravel-enso/rolemanager/tests/features</directory>
         </testsuite>
+        <testsuite name="searchable">
+            <directory suffix="Test.php">./vendor/laravel-enso/searchable/tests/features</directory>
+        </testsuite>
         <testsuite name="structuremanager">
             <directory suffix="Test.php">./vendor/laravel-enso/structuremanager/tests/features</directory>
         </testsuite>

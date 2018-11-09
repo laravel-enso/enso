@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.13.10
+- improved searchable; added tests
+- added `nullLast` sorting option to vuedatatable
+- fixed a bug in vueform when using a different id key in edited models
+- improves the menu behaviour (auto toggle on parent menus)
+
+For existing projects check the repo's `phpunit.xml` file and make sure you have all the test suites for your instance.
+
+Note: temporarily disable the `RequestWatcher` in telescope.php (`Watchers\RequestWatcher::class => env('TELESCOPE_REQUEST_WATCHER', false)`) until the problem will be fixed -> https://github.com/laravel/telescope/pull/357
+
 ### 2.13.9
 - adds categories filtering for searchable
 

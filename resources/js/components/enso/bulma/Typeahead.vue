@@ -23,15 +23,15 @@
             </span>
             <span class="icon is-small is-right clear-button"
                 v-if="value && !loading"
-                @click="$emit('input', '')">
+                @click="update('')">
                 <a class="delete is-small"/>
             </span>
         </div>
+        <slot name="controls"
+            :items="items"/>
         <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                    <slot name="controls"
-                        :items="items"/>
                     <a href="#" class="dropdown-item"
                         v-for="(item, index) in filter(items)"
                         :key="index"
@@ -71,10 +71,6 @@ library.add(faSearch);
 
 export default {
     name: 'Typeahead',
-
-    filters: {
-
-    },
 
     props: {
         disabled: {
@@ -181,7 +177,7 @@ export default {
             }).catch(error => this.handleError(error));
         },
         update(value) {
-            if (!this.value) {
+            if (value === '') {
                 this.items = [];
             }
 

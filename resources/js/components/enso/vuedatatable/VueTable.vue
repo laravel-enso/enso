@@ -379,6 +379,7 @@ export default {
                         sort: column.meta.sort,
                         total: column.meta.total,
                         date: column.meta.date,
+                        nullLast: column.meta.nullLast,
                     },
                     enum: column.enum,
                 });

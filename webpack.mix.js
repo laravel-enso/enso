@@ -16,7 +16,7 @@ mix
     .sass('resources/sass/enso.scss', 'public/css');
 
 // .sass('resources/sass/themes/cerulean.scss', 'public/themes/cerulean/bulma.min.css')
-// .sass('resources/sass/themes/clean.scss', 'public/themes/clean/bulma.min.css')
+// .sass('resources/sass/themes/clean.scss', 'public/themes/clean/bulma.min.css');
 // .sass('resources/sass/themes/cosmo.scss', 'public/themes/cosmo/bulma.min.css')
 // .sass('resources/sass/themes/cyborg.scss', 'public/themes/cyborg/bulma.min.css')
 // .sass('resources/sass/themes/darkly.scss', 'public/themes/darkly/bulma.min.css')
