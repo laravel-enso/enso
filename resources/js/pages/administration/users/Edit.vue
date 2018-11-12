@@ -74,14 +74,12 @@ export default {
         VueFormSs, InputField, SelectField, PasswordStrength,
     },
 
-    data() {
-        return {
-            ready: false,
-            pivotParams: { userGroups: { id: null } },
-            password: null,
-            passwordConfirmation: null,
-        };
-    },
+    data: () => ({
+        ready: false,
+        pivotParams: { userGroups: { id: null } },
+        password: null,
+        passwordConfirmation: null,
+    }),
 };
 
 </script>

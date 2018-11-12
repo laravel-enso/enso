@@ -33,11 +33,9 @@ import SelectField from '../../../components/enso/vueforms/fields/SelectField.vu
 export default {
     components: { VueFormSs, InputField, SelectField },
 
-    data() {
-        return {
-            pivotParams: { userGroups: { id: null } },
-        };
-    },
+    data: () => ({
+        pivotParams: { userGroups: { id: null } },
+    }),
 };
 
 </script>

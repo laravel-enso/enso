@@ -15,3 +15,20 @@ $red: #e74c3c;
 .aside {
 	background: $body-background-color;
 }
+
+.editor.wysiwyg {
+	.content.wysiwyg-content {
+		&:hover {
+			color: $input-hover-color;
+			border-color: $grey-light;
+		}
+
+		color: $input-color;
+		background-color: $input-background-color;
+		border-color: $input-border-color;
+
+		&.is-danger {
+			border-color: $danger;
+		}
+	}
+}

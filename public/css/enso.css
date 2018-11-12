@@ -3913,6 +3913,10 @@
   display: none;
 }
 
+*:focus {
+  outline: 0;
+}
+
 .animated {
   -webkit-animation-duration: .5s;
           animation-duration: .5s;

@@ -2,8 +2,8 @@
 
     <div :class="['dropdown', { 'is-active': dropdown }]"
         v-click-outside="hideDropdown">
-        <div :class="['dropdown-trigger', { 'is-danger': hasError }]">
-            <fieldset class="control-input input"
+        <div class="dropdown-trigger">
+            <fieldset :class="['control-input input', { 'is-danger': hasError }]"
                 tabindex="0"
                 :disabled="disabled"
                 :readonly="readonly"

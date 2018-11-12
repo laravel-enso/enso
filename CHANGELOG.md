@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 2.13.12
+- added wysiwyg field to vue-select based on tiptap
+- upgrades telescope, less bugs
+
+For existing projects:
+
+- run `yarn add tiptap tiptap-commands tiptap-extensions`
+- compile, including enso's light & dark themes
+- update in telescope.php `Watchers\RequestWatcher::class => env('TELESCOPE_REQUEST_WATCHER', true),`
+
 ### 2.13.11
 - from now on Enso ships with only two themes, a light one and a dark one. If you enjoyed bulmaswatch it's pretty easy to keep the old functionality in place, you just have to customize the `themes.php` config file, the `themeSelector.vue` component and the local `webpack.mix.js`
 - the vue select was improved visually and extended with a `readonly` prop

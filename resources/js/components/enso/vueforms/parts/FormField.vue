@@ -29,6 +29,7 @@ import MoneyField from '../fields/MoneyField.vue';
 import DateField from '../fields/DateField.vue';
 import SelectField from '../fields/SelectField.vue';
 import TextareaField from '../fields/TextareaField.vue';
+import WysiwygField from '../fields/WysiwygField.vue';
 
 library.add(faExclamationTriangle, faInfoCircle);
 
@@ -36,7 +37,14 @@ export default {
     name: 'FormField',
 
     components: {
-        FieldLabel, SwitchField, InputField, MoneyField, SelectField, DateField, TextareaField,
+        FieldLabel,
+        SwitchField,
+        InputField,
+        MoneyField,
+        SelectField,
+        DateField,
+        TextareaField,
+        WysiwygField,
     },
 
     props: {
@@ -80,6 +88,8 @@ export default {
                 return 'date-field';
             case 'timepicker':
                 return 'time-field';
+            case 'wysiwyg':
+                return 'wysiwyg-field';
             default:
                 throw new Error(`Misconfigured field "${this.field.name}"`);
             }

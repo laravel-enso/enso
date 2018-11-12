@@ -28,10 +28,6 @@ export default {
             type: Object,
             required: true,
         },
-        i18n: {
-            type: Function,
-            required: true,
-        },
     },
 };
 
