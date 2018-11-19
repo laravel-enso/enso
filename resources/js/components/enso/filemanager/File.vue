@@ -27,6 +27,7 @@
         <div class="has-text-centered has-margin-top-medium">
             <div class="details">
                 <button class="button is-naked"
+                    v-if="canAccess('core.files.link')"
                     @click.stop="link">
                     <span class="icon">
                         <fa icon="link"/>

@@ -18,6 +18,8 @@
                              id="Contacts">
                             <contacts controls
                                 :id="$refs.form.data.routeParams.company"
+                                route-key="company"
+                                route-prefix="administration.companies.contacts"
                                 @update="$set(count, 'contacts', $refs.contacts.count)"
                                 ref="contacts"/>
                         </tab>

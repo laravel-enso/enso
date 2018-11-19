@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.13.13
+- added support for using hasMany relations to determine selected values in the formbuilder
+- dropped the `roleList()` helper from the `HasRoles` trait (as a consequense of the above)
+- adds discussions tests
+- adds ModalCard.vue
+- fixes many small bugs
+
+For existing projects publish the `discussions-factory` and add the test suite to phpunit.xml, if applicable
+
 ### 2.13.12
 - added wysiwyg field to vue-select based on tiptap
 - upgrades telescope, less bugs

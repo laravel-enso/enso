@@ -11,7 +11,7 @@
 import DateField from './DateField.vue';
 
 export default {
-    name: 'DateField',
+    name: 'TimeField',
 
     components: { DateField },
 };

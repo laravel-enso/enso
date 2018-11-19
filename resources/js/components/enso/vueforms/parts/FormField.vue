@@ -27,6 +27,7 @@ import SwitchField from '../fields/SwitchField.vue';
 import InputField from '../fields/InputField.vue';
 import MoneyField from '../fields/MoneyField.vue';
 import DateField from '../fields/DateField.vue';
+import TimeField from '../fields/TimeField.vue';
 import SelectField from '../fields/SelectField.vue';
 import TextareaField from '../fields/TextareaField.vue';
 import WysiwygField from '../fields/WysiwygField.vue';
@@ -43,6 +44,7 @@ export default {
         MoneyField,
         SelectField,
         DateField,
+        TimeField,
         TextareaField,
         WysiwygField,
     },

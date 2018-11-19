@@ -33,10 +33,16 @@
         "nunomaduro/collision": "^2.0.0",
         "phpunit/phpunit": "^7.0"
     },
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/bogdankharchenko/Laravel-5-Generators-Extended"
-    }],
+    "repositories": {
+        "0": {
+            "type": "git",
+            "url": "https://github.com/bogdankharchenko/Laravel-5-Generators-Extended"
+        },
+        "packagist.org": {
+            "type": "composer",
+            "url": "https://repo-eu-uk-1.packagist.org"
+        }
+    },
     "autoload": {
         "classmap": [
             "database/seeds",
@@ -53,8 +59,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {

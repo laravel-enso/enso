@@ -18,7 +18,7 @@
                                 :disabled="readonly || disabled"
                                 :label="optionLabel(option, label)"
                                 :key="index"
-                                @remove="remove(option[trackBy]); $emit('remove', option)"/>
+                                @remove="remove(option); $emit('remove', option)"/>
                         </div>
                         <input class="input select-input" type="text"
                             v-focus
@@ -228,6 +228,7 @@ export default {
             if (this.optionList.length === 0) {
                 return null;
             }
+
             if (!this.multiple) {
                 const option = this.optionList.find(option =>
                     option[this.trackBy] === this.value);
@@ -249,24 +250,24 @@ export default {
         },
         query: {
             handler() {
-                this.getData();
+                this.fetch();
             },
         },
         params: {
             handler() {
-                this.getData();
+                this.fetch();
             },
             deep: true,
         },
         pivotParams: {
             handler() {
-                this.getData();
+                this.fetch();
             },
             deep: true,
         },
         customParams: {
             handler() {
-                this.getData();
+                this.fetch();
             },
             deep: true,
         },
@@ -274,8 +275,8 @@ export default {
 
     created() {
         this.setRoute();
-        this.getData = debounce(this.getData, this.debounce);
-        this.getData();
+        this.fetch = debounce(this.fetch, this.debounce);
+        this.fetch();
     },
 
     methods: {
@@ -288,7 +289,7 @@ export default {
                 ? route(this.source)
                 : this.source;
         },
-        getData() {
+        fetch() {
             if (!this.isServerSide) {
                 return;
             }
@@ -380,15 +381,17 @@ export default {
         highlight(label) {
             return label.replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>');
         },
-        remove(value) {
+        remove(option) {
             const index = this.value
-                .findIndex(val => val === value);
+                .findIndex(val => val === option[this.trackBy]);
             this.value.splice(index, 1);
         },
         isSelected(option) {
             return this.multiple
-                ? this.value.findIndex(item => item === option[this.trackBy]) >= 0
-                : this.value !== null && this.value === option[this.trackBy];
+                ? this.value.findIndex(item =>
+                    item === option[this.trackBy]) >= 0
+                : this.value !== null
+                    && this.value === option[this.trackBy];
         },
         keyDown() {
             if (this.filteredOptions.length === 0

@@ -112,6 +112,14 @@ export default {
             type: Boolean,
             default: false,
         },
+        routeKey: {
+        type: String,
+        required: true
+        },
+        routePrefix: {
+        type: String,
+        required: true
+        }
     },
 
     data() {
@@ -140,12 +148,12 @@ export default {
         },
         params() {
             return {
-                company_id: this.id,
+                [this.routeKey + '_id']: this.id,
             };
         },
         routeParams() {
             return {
-                company: this.id,
+                [this.routeKey]: this.id,
             };
         },
     },
@@ -168,8 +176,8 @@ export default {
             this.loading = true;
 
             axios.get(route(
-                'administration.companies.contacts.index',
-                { company: this.id }
+                this.route('index'),
+                { [this.routeKey]: this.id }
             )).then(({ data }) => {
                 this.contacts = data;
                 this.loading = false;
@@ -180,12 +188,12 @@ export default {
             this.loading = true;
 
             axios.get(route(
-                'administration.companies.contacts.create',
-                { company: this.id }
+                this.route('create'),
+                { [this.routeKey]: this.id }
             )).then(({ data }) => {
                 this.form = data.form;
                 this.loading = false;
-                this.field('company_id').value = this.id;
+                this.field(this.routeKey + '_id').value = this.id;
                 this.$emit('update');
             }).catch(error => this.handleError(error));
         },
@@ -193,7 +201,7 @@ export default {
             this.loading = true;
 
             axios.get(route(
-                'administration.companies.contacts.edit',
+                this.route('edit'),
                 { contact: contact.id },
             )).then(({ data }) => {
                 this.form = data.form;
@@ -204,7 +212,7 @@ export default {
             this.loading = true;
 
             axios.delete(route(
-                'administration.companies.contacts.destroy',
+                this.route('destroy'),
                 { contact: contact.id },
             )).then(() => {
                 this.deletedContact = this.contacts.splice(index, 1).pop();
@@ -228,6 +236,9 @@ export default {
                 this.loading = false;
             }).catch(error => this.handleError(error));
         },
+        route(suffix) {
+            return `${this.routePrefix}.${suffix}`;
+        }
     },
 };
 

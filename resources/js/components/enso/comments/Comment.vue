@@ -12,7 +12,7 @@
         <div class="media-content">
             <div class="has-margin-bottom-medium has-text-grey" v-if="!isNew">
                 <a><b>{{ comment.owner.name }}</b></a>
-                <span>
+                <span v-tooltip="comment.updatedAt || comment.createdAt">
                     {{ timeFromNow(comment.updatedAt || comment.createdAt) }}
                 </span>
                 <span v-if="comment.createdAt !== comment.updatedAt">

@@ -31,6 +31,9 @@
         <testsuite name="core">
             <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
         </testsuite>
+        <testsuite name="discussions">
+            <directory suffix="Test.php">./vendor/laravel-enso/discussions/tests/features</directory>
+        </testsuite>
         <testsuite name="documentsmanager">
             <directory suffix="Test.php">./vendor/laravel-enso/documentsmanager/tests/features</directory>
         </testsuite>
