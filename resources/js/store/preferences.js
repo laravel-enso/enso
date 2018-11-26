@@ -51,6 +51,7 @@ export const actions = {
     },
     setLang: ({ commit }, lang) => {
         commit('lang', lang);
+        localStorage.setItem('locale', lang);
         updateGlobal();
     },
     setTheme: ({ commit, dispatch, getters }, theme) => {

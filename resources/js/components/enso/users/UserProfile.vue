@@ -60,7 +60,7 @@
                                     {{ __('Log out') }}
                                 </span>
                             </a>
-                            <button class="button is-fullwidth is-warning"
+                            <a class="button is-fullwidth is-warning"
                                 @click="$root.$emit('start-impersonating', profile.id)"
                                 v-if="
                                     !isSelfVisiting
@@ -68,7 +68,7 @@
                                     && !impersonating
                                 ">
                                 {{ __('Impersonate') }}
-                            </button>
+                            </a>
                             <a class="button is-fullwidth has-margin-top-small is-warning"
                                 @click="$router.push({
                                     name: 'administration.users.edit',
@@ -90,27 +90,57 @@
                 <hr class="has-background-grey-lighter"
                     v-if="isMobile">
                 <div class="columns is-mobile is-multiline">
-                    <div class="column is-one-third has-text-right">
-                        <p class="has-margin-top-small"><strong>{{ __('Group') }}</strong></p>
-                        <p class="has-margin-top-small"><strong>{{ __('Role') }}</strong></p>
-                        <p class="has-margin-top-small"><strong>{{ __('Email') }}</strong></p>
-                        <p class="has-margin-top-small"><strong>{{ __('Phone') }}</strong></p>
-                        <p class="has-margin-top-small"><strong>{{ __('Birthday') }}</strong></p>
-                        <p class="has-margin-top-small"><strong>{{ __('Gender') }}</strong></p>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Group') }}:</strong>
                     </div>
-                    <div class="column">
-                        <p class="has-margin-top-small">{{ profile.group.name }}</p>
-                        <p class="has-margin-top-small">{{ profile.role.name }}</p>
-                        <p class="has-margin-top-small">{{ profile.email }}</p>
-                        <p class="has-margin-top-small">{{ profile.person.phone || '---' }}</p>
-                        <p class="has-margin-top-small">{{ dateFormat(profile.person.birthday) || '---' }} </p>
-                        <p class="has-margin-top-small is-italic">
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
+                            {{ profile.group.name }}
+                        </span>
+                    </div>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Role') }}:</strong>
+                    </div>
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
+                            {{ profile.role.name }}
+                        </span>
+                    </div>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Email') }}:</strong>
+                    </div>
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
+                            {{ profile.email }}
+                        </span>
+                    </div>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Phone') }}:</strong>
+                    </div>
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
+                            {{ profile.person.phone }}
+                        </span>
+                    </div>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Birthday') }}:</strong>
+                    </div>
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
+                            {{ dateFormat(profile.person.birthday) }}
+                        </span>
+                    </div>
+                    <div class="column is-one-third has-text-right has-padding-small">
+                        <strong>{{ __('Gender') }}:</strong>
+                    </div>
+                    <div class="column is-two-thirds has-padding-small">
+                        <span class="has-margin-left-medium">
                             {{
                                 profile.person.gender
                                     ? enums.genders[profile.person.gender]
-                                    : '---'
+                                    : null
                             }}
-                        </p>
+                        </span>
                     </div>
                 </div>
             </div>

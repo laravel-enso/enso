@@ -74,7 +74,11 @@ export default {
         },
         route() {
             if (this.lastRoute) {
-                this.$router.push(this.lastRoute);
+                this.$router.push({
+                    name: this.lastRoute.name,
+                    params: this.lastRoute.params,
+                    query: this.lastRoute.query,
+                });
                 this.setLastRoute(null);
                 return;
             }

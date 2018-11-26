@@ -264,30 +264,25 @@ export default {
             });
         },
         setPreferences() {
-            this.setDefaultPreferences();
-            this.checkSavedPreferences();
+            const preferences = this.userPreferences();
+
+            if (preferences) {
+                this.setUserPreferences(preferences);
+            }
         },
-        checkSavedPreferences() {
+        userPreferences() {
             if (localStorage.getItem(this.preferencesKey) === null) {
-                return;
+                return null;
             }
 
-            const prefs = JSON.parse(localStorage.getItem(this.preferencesKey));
+            const preferences = JSON.parse(localStorage.getItem(this.preferencesKey));
 
-            if (prefs.columns.length !== this.template.columns.length) {
+            if (preferences.columns.length !== this.template.columns.length) {
                 localStorage.removeItem(this.preferencesKey);
-                return;
+                return null;
             }
 
-            this.setUserPreferences(prefs);
-        },
-        setDefaultPreferences() {
-            this.template.columns.forEach(({ meta }) => {
-                this.$set(meta, 'sort', null);
-                this.$set(meta, 'hidden', false);
-            });
-
-            this.$set(this.template, 'sort', false);
+            return preferences;
         },
         setUserPreferences(prefs) {
             Object.keys(prefs.global).forEach((key) => {

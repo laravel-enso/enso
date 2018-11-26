@@ -3,7 +3,7 @@
     <div class="wrapper">
         <div class="controls"
             v-if="controls">
-            <button class="button"
+            <a class="button"
                 @click="create()">
                 <span v-if="!isMobile">
                     {{ __('Add Comment') }}
@@ -11,8 +11,8 @@
                 <span class="icon">
                     <fa icon="plus"/>
                 </span>
-            </button>
-            <button class="button has-margin-left-small"
+            </a>
+            <a class="button has-margin-left-small"
                 @click="fetch()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
@@ -20,7 +20,7 @@
                 <span class="icon">
                     <fa icon="sync"/>
                 </span>
-            </button>
+            </a>
             <p class="control has-icons-left has-icons-right has-margin-left-large">
                 <input class="input is-rounded"
                     type="text"

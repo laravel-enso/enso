@@ -14,7 +14,7 @@
         </a>
         <a :class="['button', data.actions.destroy.button.class]"
             :disabled="data.actions.destroy.forbidden"
-            @click="modal = true"
+            @click="modal = !data.actions.destroy.forbidden"
             v-if="data.actions.destroy">
             <span class="is-hidden-mobile">
                 {{ i18n(data.actions.destroy.button.label) }}
@@ -26,7 +26,7 @@
         </a>
         <a :class="['button', data.actions.show.button.class]"
             :disabled="data.actions.show.forbidden"
-            @click="show()"
+            @click="!data.actions.show.forbidden ? show() : null"
             v-if="data.actions.show">
             <span class="is-hidden-mobile">
                 {{ i18n(data.actions.show.button.label) }}
@@ -38,7 +38,7 @@
         </a>
         <a :class="['button', data.actions.create.button.class]"
             :disabled="data.actions.create.forbidden"
-            @click="create()"
+            @click="!data.actions.create.forbidden ? create() : null"
             v-if="data.actions.create">
             <span class="is-hidden-mobile">
                 {{ i18n(data.actions.create.button.label) }}

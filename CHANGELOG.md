@@ -1,5 +1,10 @@
 ## Laravel Enso's Changelog
 
+### 2.13.14
+- upgrades telescope to 1.x
+- minor improvements
+- minor bug fixes
+
 ### 2.13.13
 - added support for using hasMany relations to determine selected values in the formbuilder
 - dropped the `roleList()` helper from the `HasRoles` trait (as a consequense of the above)

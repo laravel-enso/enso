@@ -93,6 +93,7 @@ export default {
         },
         ensureBookmarkVisibility() {
             clearInterval(this.handle);
+
             const index = this.routes
                 .findIndex(({ name }) => name === this.$route.name);
 
@@ -102,6 +103,11 @@ export default {
 
             const container = this.$el.querySelector('.bookmarks');
             const bookmark = container.querySelectorAll('.control')[index];
+
+            if (!bookmark) {
+                return;
+            }
+
             const containerLeft = container.scrollLeft;
             const containerRight = containerLeft + container.clientWidth;
             const bookmarkLeft = bookmark.offsetLeft;

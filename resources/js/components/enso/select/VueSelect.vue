@@ -184,6 +184,10 @@ export default {
                 addTag: 'Add option',
             }),
         },
+        translated: {
+            type: Boolean,
+            default: false,
+        },
         i18n: {
             type: Function,
             default(key) {
@@ -437,8 +441,12 @@ export default {
             return this.$el.querySelectorAll('.dropdown-item')[this.position];
         },
         optionLabel(option, label) {
-            return label.split('.')
+            const optionLabel = label.split('.')
                 .reduce((result, property) => result[property], option);
+
+            return this.translated
+                ? this.i18n(optionLabel)
+                : optionLabel;
         },
     },
 };

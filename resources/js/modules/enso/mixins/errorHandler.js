@@ -9,14 +9,12 @@ Vue.mixin({
 
             const { status, data } = error.response;
 
-            if (status === 401) {
-                if (this.$store.state.auth.isAuth) {
-                    this.$store.commit('bookmarks/setLastRoute', this.$route);
-                    this.$store.commit('initialise', false);
-                    this.$store.commit('auth/logout');
-                    this.$router.push({ name: 'login' });
-                    return;
-                }
+            if ([401, 419].includes(status) && this.$store.state.auth.isAuth) {
+                this.$store.commit('bookmarks/setLastRoute', this.$route);
+                this.$store.commit('initialise', false);
+                this.$store.commit('auth/logout');
+                this.$router.push({ name: 'login' });
+                return;
             }
 
             if ([403, 409, 429, 555].includes(status)) {
