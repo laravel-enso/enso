@@ -1,5 +1,26 @@
 ## Laravel Enso's Changelog
 
+### 2.13.15
+- fixes the default spa redirect to allow route caching see [#169](https://github.com/laravel-enso/Enso/issues/169)
+
+Upgrade steps:
+
+- update `telescope.php` with the one provided in the project
+- in `web.php` file change the SPA redirect from
+
+```php
+Route::get('/{any}', function () {
+    return view('laravel-enso/core::index');
+})->where('any', '.*');
+```
+
+to 
+
+```php
+Route::view('/{any}', 'laravel-enso/core::index')
+    ->where('any', '.*');
+```
+
 ### 2.13.14
 - upgrades telescope to 1.x
 - minor improvements

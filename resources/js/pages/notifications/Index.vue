@@ -38,8 +38,8 @@
                     enter-active-class="fadeIn"
                     leave-active-class="fadeOut">
                     <li class="animated"
-                        v-for="(notification, index) in notifications"
-                        :key="index">
+                        v-for="notification in notifications"
+                        :key="notification.id">
                         <div class="box has-background-light has-padding-medium has-margin-bottom-small"
                             :class="{'is-bold': !notification.read_at}">
                             <fa :icon="notification.data.icon"

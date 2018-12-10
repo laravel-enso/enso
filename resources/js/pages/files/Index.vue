@@ -19,8 +19,8 @@
                         leave-active-class="fadeOutDown"
                         tag="div">
                         <div class="column is-half-mobile is-one-third-desktop animated"
-                            v-for="(file, index) in content(folder)"
-                            :key="index">
+                            v-for="file in content(folder)"
+                            :key="file.id">
                             <file :file="file"
                                 @delete="destroy(file.id)"/>
                         </div>

@@ -31,6 +31,8 @@ Vue.mixin({
                 window.location.reload();
             }
 
+            this.$toastr.error(this.__('Something went wrong...'));
+
             throw error;
         },
     },
