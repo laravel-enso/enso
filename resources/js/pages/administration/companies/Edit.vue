@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters is-full-touch">
-            <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
+            <enso-form class="box has-background-light raises-on-hover animated fadeIn"
                 @loaded="ready = true"
                 ref="form"/>
             <div v-if="ready">
@@ -11,13 +11,13 @@
                     discussions
                     documents
                     type="LaravelEnso\Companies\app\Models\Company"
-                    :id="$refs.form.data.routeParams.company">
+                    :id="$refs.form.routeParam('company')">
                     <template slot="custom"
                         slot-scope="{count}">
                         <tab keep-alive
                              id="Contacts">
                             <contacts controls
-                                :id="$refs.form.data.routeParams.company"
+                                :id="$refs.form.routeParam('company')"
                                 route-key="company"
                                 route-prefix="administration.companies.contacts"
                                 @update="$set(count, 'contacts', $refs.contacts.count)"
@@ -34,13 +34,13 @@
 <script>
 
 import Accessories from '../../../components/enso/bulma/Accessories.vue';
-import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
+import EnsoForm from '../../../components/enso/vueforms/EnsoForm.vue';
 import Contacts from '../../../components/enso/contacts/Contacts.vue';
 import Tab from '../../../components/enso/bulma/Tab.vue';
 
 export default {
     components: {
-        VueFormSs, Accessories, Contacts, Tab,
+        EnsoForm, Accessories, Contacts, Tab,
     },
 
     data: () => ({

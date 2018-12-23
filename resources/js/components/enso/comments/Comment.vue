@@ -20,24 +20,24 @@
                 </span>
                 <div class="is-pulled-right is-flex"
                     v-if="!isNew && !isEditing && controls">
-                    <button class="button is-naked is-small has-margin-right-small"
+                    <a class="button is-naked is-small has-margin-right-small"
                         v-if="comment.isEditable"
                         @click="originalBody = comment.body;">
                         <span class="icon is-small has-text-grey">
                             <fa icon="pencil-alt"/>
                         </span>
-                    </button>
+                    </a>
                     <popover placement="bottom-end"
                         v-if="comment.isDeletable"
                         @confirm="$emit('delete')"
                         @show="dialog = true"
                         @hide="dialog = controls = false">
-                        <button class="button is-naked is-small"
+                        <a class="button is-naked is-small"
                             @click="dialog=true">
                             <span class="icon is-small has-text-grey">
                                 <fa icon="trash-alt"/>
                             </span>
-                        </button>
+                        </a>
                     </popover>
                 </div>
             </div>

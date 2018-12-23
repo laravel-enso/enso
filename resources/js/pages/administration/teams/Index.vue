@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div v-if="initialised">
+        <div v-if="ready">
             <button class="button is-success has-margin-bottom-large"
                 @click="team=factory()"
                 :disabled="team">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <h4 class="title is-4 has-text-centered"
-            v-if="!initialised && loading">
+            v-if="!ready && loading">
             {{ __('Loading') }}
             <span class="icon is-small has-margin-left-medium">
                 <fa icon="spinner"
@@ -75,7 +75,7 @@ export default {
     data() {
         return {
             loading: false,
-            initialised: false,
+            ready: false,
             teams: [],
             team: null,
             query: null,
@@ -104,7 +104,7 @@ export default {
                 .then(({ data }) => {
                     this.teams = data;
                     this.loading = false;
-                    this.initialised = true;
+                    this.ready = true;
                 })
                 .catch(error => this.handleError(error));
         },

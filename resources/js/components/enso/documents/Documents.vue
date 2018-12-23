@@ -7,7 +7,7 @@
                 @upload-successful="get();"
                 :url="uploadLink"
                 multiple/>
-            <button class="button has-margin-left-small"
+            <a class="button has-margin-left-small"
                 @click="get()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
@@ -15,7 +15,7 @@
                 <span class="icon">
                     <fa icon="sync"/>
                 </span>
-            </button>
+            </a>
             <p class="control has-icons-left has-icons-right has-margin-left-large">
                 <input class="input is-rounded"
                     type="text"

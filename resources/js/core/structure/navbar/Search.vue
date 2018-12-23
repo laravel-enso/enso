@@ -8,7 +8,8 @@
             :no-results="__('Nothing found')"
             :filter="filter"
             v-model="query"
-            @update="redirect">
+            @update="redirect"
+            ref="typeahead">
             <template slot="controls"
                 slot-scope="{ items }"
                 v-if="items.length">
@@ -85,7 +86,11 @@ export default {
                 params: item.param,
             });
 
-            this.$nextTick(() => (this.query = ''));
+            this.$nextTick(() => {
+                this.query = '';
+                this.selectedTags = [];
+                this.$refs.typeahead.items = [];
+            });
         },
         tags(items) {
             return items.reduce((tags, { group }) => {

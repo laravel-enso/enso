@@ -2,7 +2,7 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
-            <vue-form-ss class="box has-background-light raises-on-hover animated fadeIn"
+            <enso-form class="box has-background-light raises-on-hover animated fadeIn"
                 ref="form"
                 @loaded="
                     ready = true;
@@ -45,7 +45,7 @@
                     class="button is-warning"
                     @click="$router.push({
                         name: 'administration.people.edit',
-                        params: { person: $refs.form.data.params.personId }
+                        params: { person: $refs.form.param('personId') }
                     })"
                     v-if="ready">
                     <span class="is-hidden-mobile">
@@ -56,7 +56,7 @@
                     </span>
                     <span class="is-hidden-mobile"/>
                 </a>
-            </vue-form-ss>
+            </enso-form>
         </div>
     </div>
 
@@ -64,14 +64,14 @@
 
 <script>
 
-import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
+import EnsoForm from '../../../components/enso/vueforms/EnsoForm.vue';
 import InputField from '../../../components/enso/vueforms/fields/InputField.vue';
 import SelectField from '../../../components/enso/vueforms/fields/SelectField.vue';
 import PasswordStrength from '../../auth/password/PasswordStrength.vue';
 
 export default {
     components: {
-        VueFormSs, InputField, SelectField, PasswordStrength,
+        EnsoForm, InputField, SelectField, PasswordStrength,
     },
 
     data: () => ({

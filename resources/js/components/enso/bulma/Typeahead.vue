@@ -12,8 +12,7 @@
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :value="value"
-                @blur="dropdown=false"
-                @input="update($event.target.value);getData();"
+                @input="update($event.target.value); fetch()"
                 @keydown.up="keyUp"
                 @keydown.down="keyDown"
                 @keydown.enter="hit"
@@ -29,7 +28,7 @@
         </div>
         <slot name="controls"
             :items="items"/>
-        <div :class="['dropdown typeahead', { 'is-active': showDropdown }]">
+        <div :class="['dropdown typeahead', { 'is-active': visibleDropdown }]">
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                     <a href="#" class="dropdown-item"
@@ -127,13 +126,17 @@ export default {
             type: Function,
             default: items => (items),
         },
+        debounce: {
+            type: Number,
+            default: 250,
+        },
     },
 
     data() {
         return {
             position: 0,
             items: [],
-            hideDropdown: false,
+            hiddenDropdown: false,
             loading: false,
         };
     },
@@ -147,17 +150,17 @@ export default {
                 ? route(this.source)
                 : this.source;
         },
-        showDropdown() {
-            return !this.hideDropdown && this.value && !this.hasError;
+        visibleDropdown() {
+            return !this.hiddenDropdown && !!this.value && !this.hasError;
         },
     },
 
     created() {
-        this.getData = debounce(this.getData, 200);
+        this.fetch = debounce(this.fetch, this.debounce);
     },
 
     methods: {
-        getData() {
+        fetch() {
             if (!this.value || this.hasError) {
                 return;
             }
@@ -171,24 +174,23 @@ export default {
                     params: this.params,
                 },
             }).then((response) => {
-                this.hideDropdown = false;
+                this.hiddenDropdown = false;
                 this.items = response.data;
                 this.loading = false;
             }).catch(error => this.handleError(error));
         },
         update(value) {
-            if (value === '') {
+            if (!value) {
                 this.items = [];
             }
-
-            this.$emit('selected', this.items[this.position]);
             this.$emit('input', value);
         },
         hit() {
-            if (this.showDropdown && this.items.length) {
+            if (this.visibleDropdown && this.items.length) {
                 this.update(this.items[this.position][this.label]);
                 this.$emit('update', this.items[this.position]);
-                this.hideDropdown = true;
+                this.$emit('selected', this.items[this.position]);
+                this.hiddenDropdown = true;
             }
         },
         keyUp() {

@@ -3,7 +3,7 @@
     <section class="hero is-fullheight is-primary is-bold">
         <div class="hero-body">
             <div class="container">
-                <router v-if="initialised"/>
+                <router v-if="ready"/>
             </div>
         </div>
     </section>
@@ -22,7 +22,7 @@ export default {
 
     data() {
         return {
-            initialised: false,
+            ready: false,
         };
     },
 
@@ -49,7 +49,7 @@ export default {
                     this.setRoutes(routes);
                     const lang = Object.keys(i18n).shift();
                     this.lang(lang);
-                    this.initialised = true;
+                    this.ready = true;
                 }).catch(error => this.handleError(error));
         },
     },

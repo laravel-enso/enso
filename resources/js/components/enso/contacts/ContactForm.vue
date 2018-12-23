@@ -1,11 +1,11 @@
 <template>
-    <modal :show="show"
+    <modal show
         container="contact-form"
-        v-on="$listeners"
-        ref="modal">
+        v-on="$listeners">
         <vue-form class="box has-background-light"
+            v-bind="$attrs"
             v-on="$listeners"
-            :data="form">
+            ref="form">
             <a slot="actions"
                 class="button is-warning"
                 @click="
@@ -36,22 +36,11 @@ export default {
 
     components: { Modal, VueForm },
 
-    props: {
-        form: {
-            type: Object,
-            default: null,
-        },
-    },
-
-    data: () => ({
-        show: true,
-    }),
-
     methods: {
         field(field) {
-            return this.form.sections
-                .reduce((fields, section) => fields.concat(section.fields), [])
-                .find(item => item.name === field);
+            return this.$refs.form.data
+                ? this.$refs.form.field(field)
+                : null;
         },
     },
 };

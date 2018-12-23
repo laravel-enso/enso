@@ -12,7 +12,7 @@
                 </span>
             </button>
             <button class="button has-margin-left-small"
-                    @click="get()">
+                    @click="fetch()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
                 </span>
@@ -46,11 +46,13 @@
                      @edit="edit(contact)"
                      @delete="destroy(contact, index)"/>
             </div>
-            <contact-form :form="form"
-                @close="form = null"
-                @destroy="get(); form=false"
-                @submit="get();form=false"
-                v-if="form"/>
+            <contact-form :path="path"
+                @close="path = null"
+                @destroy="fetch()"
+                @submit="fetch(); path = null"
+                @loaded="$refs.form.field(`${routeKey}_id`).value = id"
+                ref="form"
+                v-if="path"/>
         </div>
         <modal :show="!!deletedContact"
             @close="deletedContact = null">
@@ -113,20 +115,20 @@ export default {
             default: false,
         },
         routeKey: {
-        type: String,
-        required: true
+            type: String,
+            required: true,
         },
         routePrefix: {
-        type: String,
-        required: true
-        }
+            type: String,
+            required: true,
+        },
     },
 
     data() {
         return {
             loading: false,
             contacts: [],
-            form: null,
+            path: null,
             internalQuery: '',
             deletedContact: null,
         };
@@ -148,11 +150,6 @@ export default {
         },
         params() {
             return {
-                [this.routeKey + '_id']: this.id,
-            };
-        },
-        routeParams() {
-            return {
                 [this.routeKey]: this.id,
             };
         },
@@ -168,77 +165,47 @@ export default {
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
-            axios.get(route(
-                this.route('index'),
-                { [this.routeKey]: this.id }
-            )).then(({ data }) => {
-                this.contacts = data;
-                this.loading = false;
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
+            axios.get(route(this.route('index'), this.params))
+                .then(({ data }) => {
+                    this.contacts = data;
+                    this.loading = false;
+                    this.$emit('update');
+                }).catch(error => this.handleError(error));
         },
         create() {
-            this.loading = true;
-
-            axios.get(route(
-                this.route('create'),
-                { [this.routeKey]: this.id }
-            )).then(({ data }) => {
-                this.form = data.form;
-                this.loading = false;
-                this.field(this.routeKey + '_id').value = this.id;
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
+            this.path = route(this.route('create'), this.params);
         },
         edit(contact) {
-            this.loading = true;
-
-            axios.get(route(
-                this.route('edit'),
-                { contact: contact.id },
-            )).then(({ data }) => {
-                this.form = data.form;
-                this.loading = false;
-            }).catch(error => this.handleError(error));
+            this.path = route(this.route('edit'), { contact: contact.id });
         },
         destroy(contact, index) {
             this.loading = true;
 
-            axios.delete(route(
-                this.route('destroy'),
-                { contact: contact.id },
-            )).then(() => {
-                this.deletedContact = this.contacts.splice(index, 1).pop();
-                this.loading = false;
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
-        },
-        field(field) {
-            return this.form.sections
-                .reduce((fields, section) => fields.concat(section.fields), [])
-                .find(item => item.name === field);
+            axios.delete(route(this.route('destroy'), { contact: contact.id }))
+                .then(() => {
+                    this.deletedContact = this.contacts.splice(index, 1).pop();
+                    this.loading = false;
+                }).catch(error => this.handleError(error));
         },
         destroyPerson() {
             this.loading = true;
 
-            axios.delete(route(
-                'administration.people.destroy',
-                { person: this.deletedContact.person_id },
-            )).then(() => {
-                this.deletedContact = null;
-                this.loading = false;
-            }).catch(error => this.handleError(error));
+            axios.delete(route('administration.people.destroy', { person: this.deletedContact.person_id }))
+                .then(() => {
+                    this.deletedContact = null;
+                    this.loading = false;
+                }).catch(error => this.handleError(error));
         },
         route(suffix) {
             return `${this.routePrefix}.${suffix}`;
-        }
+        },
     },
 };
 

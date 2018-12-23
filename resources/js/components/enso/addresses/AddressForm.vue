@@ -1,11 +1,13 @@
 <template>
 
-    <modal v-on="$listeners"
-        :show="true"
+    <modal show
+        v-on="$listeners"
         container="address-form">
         <vue-form class="box has-background-light"
-            :data="form"
-            v-on="$listeners">
+            v-bind="$attrs"
+            v-on="$listeners"
+            @loaded="ready = true; $emit('loaded')"
+            ref="form">
             <template v-for="field in customFields"
                 v-if="field.meta.custom"
                 :slot="field.name"
@@ -33,18 +35,23 @@ export default {
 
     components: { Modal, VueForm },
 
-    props: {
-        form: {
-            type: Object,
-            default: null,
-        },
-    },
+    data: () => ({
+        ready: false,
+    }),
 
     computed: {
         customFields() {
-            return this.form.sections
-                .reduce((fields, section) => fields
-                    .concat(section.fields.filter(field => field.meta.custom)), []);
+            return this.ready
+                ? this.$refs.form.customFields
+                : [];
+        },
+    },
+
+    methods: {
+        field(field) {
+            return this.ready
+                ? this.$refs.form.field(field)
+                : null;
         },
     },
 };

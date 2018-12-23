@@ -2,7 +2,7 @@
 
     <div class="wrapper">
         <div class="has-text-centered"
-            v-if="!initialised && loading">
+            v-if="!ready && loading">
             <h4 class="title is-4 has-text-centered">
                 {{ __('Loading') }}
                 <span class="icon is-small has-margin-left-medium">
@@ -79,7 +79,7 @@ export default {
 
     data() {
         return {
-            initialised: false,
+            ready: false,
             loading: false,
             axiosRequest: null,
             feed: [],
@@ -129,7 +129,6 @@ export default {
                 params: { offset: this.offset, filters: this.filters },
                 cancelToken: this.axiosRequest.token,
             }).then(({ data }) => {
-                this.initialised = true;
                 const length = this.length(data);
 
                 if (this.offset === 0) {
@@ -140,6 +139,7 @@ export default {
 
                 this.offset += length;
                 this.loading = false;
+                this.ready = true;
             }).catch((error) => {
                 if (axios.isCancel(error)) {
                     this.axiosRequest = null;

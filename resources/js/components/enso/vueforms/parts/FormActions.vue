@@ -117,6 +117,10 @@ export default {
             type: Function,
             required: true,
         },
+        params: {
+            type: Object,
+            default: null,
+        },
     },
 
     data: () => ({

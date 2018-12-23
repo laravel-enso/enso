@@ -1,7 +1,36 @@
 ## Laravel Enso's Changelog
 
+### 2.13.16
+
+#### Changes and upgrade instructions:
+
+##### General
+- renames `initialised` to `ready` in `Auth.vue`, `activityLog/Index.vue`, 'teams/Index.vue`. If you were using this flag be sure to update your local code.
+
+##### VueDatatable
+- adds label and tooltip support for row buttons
+- renames `getData()` to `fetch()`. If you were calling `this.$refs.table.getData()` in the code be sure to rename it
+
+##### FormBuilder
+- adds template fetching logic VueForm similar to VueTable
+- adds EnsoForm for using VueForm in the Enso environment. VueFormSS is be deprecated and must be replaced with EnsoForm. For existing projects you can safely search & replace all instances of `vue-form-ss` with `enso-forms` and `VueFormSS` with `EnsoForm`
+- adds & refactors field helpers in VueForm / EnsoForm:
+    - `field(value)`
+    - `param(param)`
+    - `routeParam(param)`
+    - `customFields` - computed property
+
+To upgrade besides the above notes you must manually bump the core version in your composer.json:
+    - "laravel-enso/core": "3.3.*"
+
+Run `composer update`, `yarn upgrade`, compile and enjoy
+
+
+
+
+
 ### 2.13.15
-- fixes the default spa redirect to allow route caching see [#169](https://github.com/laravel-enso/Enso/issues/169)
+- fixes the default spa redirect to allow Laravel routes caching see [#169](https://github.com/laravel-enso/Enso/issues/169)
 
 Upgrade steps:
 

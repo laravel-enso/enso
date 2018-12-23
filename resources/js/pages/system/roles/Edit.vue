@@ -2,15 +2,15 @@
 
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
-            <vue-form-ss class="box raises-on-hover animated fadeIn"
-                @loaded="initialised = true"
+            <enso-form class="box has-background-light raises-on-hover animated fadeIn"
+                @loaded="ready = true"
                 ref="form">
                 <span slot="actions"
-                    v-if="initialised">
+                    v-if="ready">
                     <a class="button is-warning"
                         @click="$router.push({
                             name: 'system.roles.configure',
-                            params: { role: $refs.form.data.routeParams.role }
+                            params: { role: $refs.form.routeParam('role') }
                         })">
                         <span class="is-hidden-mobile">
                             {{ __('Configure') }}
@@ -31,7 +31,7 @@
                         <span class="is-hidden-mobile"/>
                     </a>
                 </span>
-            </vue-form-ss>
+            </enso-form>
         </div>
     </div>
 
@@ -41,23 +41,21 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSave, faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import VueFormSs from '../../../components/enso/vueforms/VueFormSs.vue';
+import EnsoForm from '../../../components/enso/vueforms/EnsoForm.vue';
 
 library.add([faSave, faSlidersH]);
 
 export default {
-    components: { VueFormSs },
+    components: { EnsoForm },
 
     data: () => ({
-        initialised: null,
+        ready: false,
     }),
 
     methods: {
         writeConfig() {
-            axios.post(route(
-                'system.roles.writeConfig',
-                this.$refs.form.data.routeParams.role,
-            )).then(({ data }) => this.$toastr.success(data.message))
+            axios.post(route('system.roles.writeConfig', this.$refs.form.routeParam('role')))
+                .then(({ data }) => this.$toastr.success(data.message))
                 .catch(error => this.handleError(error));
         },
     },

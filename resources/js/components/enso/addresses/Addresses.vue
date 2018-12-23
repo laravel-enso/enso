@@ -44,8 +44,7 @@
                 <address-card :address="address"
                     @set-default="setDefault(address)"
                     @edit="edit(address)"
-                    @delete="destroy(address, index)"
-                    :key="index">
+                    @delete="destroy(address, index)">
                     <template slot="address"
                         :address="address">
                         <slot name="address"
@@ -54,13 +53,12 @@
                 </address-card>
             </div>
         </div>
-        <address-form
-            :form="form"
-            @close="form = null"
-            @delete="fetch();form = null"
-            @submit="fetch();form = null"
+        <address-form :path="path"
+            @loaded="setFields()"
+            @close="reset();"
+            @submit="fetch(); reset();"
             ref="form"
-            v-if="form">
+            v-if="path">
             <template v-for="field in customFields"
                 :slot="field.name"
                 slot-scope="{ field, errors }"
@@ -112,8 +110,9 @@ export default {
         return {
             loading: false,
             addresses: [],
-            form: null,
+            path: null,
             internalQuery: '',
+            customFields: [],
         };
     },
 
@@ -130,11 +129,6 @@ export default {
         },
         count() {
             return this.filteredAddresses.length;
-        },
-        customFields() {
-            return this.form && this.form.sections
-                .reduce((fields, section) => fields
-                    .concat(section.fields.filter(field => field.meta.custom)), []);
         },
         params() {
             return {
@@ -161,61 +155,44 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(
-                route('core.addresses.index'),
-                { params: this.params },
-            ).then(({ data }) => {
-                this.addresses = data;
-                this.loading = false;
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
-        },
-        edit(address) {
-            this.loading = true;
-
-            axios.get(route('core.addresses.edit', address.id))
+            axios.get(route('core.addresses.index'), { params: this.params })
                 .then(({ data }) => {
-                    this.form = data.form;
-                    this.addFields();
-                    this.$emit('form-loaded', this.form);
+                    this.addresses = data;
                     this.loading = false;
+                    this.$emit('update');
                 }).catch(error => this.handleError(error));
         },
+        edit(address) {
+            this.path = route('core.addresses.edit', address.id);
+        },
         create() {
-            this.loading = true;
-
-            axios.get(route('core.addresses.create', this.params)).then(({ data }) => {
-                this.form = data.form;
-                this.addFields();
-                this.$emit('form-loaded', this.form);
-                this.loading = false;
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
+            this.path = route('core.addresses.create', this.params);
         },
         setDefault(address) {
             this.loading = true;
 
-            axios.patch(route('core.addresses.setDefault', address.id)).then(() => {
-                this.fetch();
-            }).catch(error => this.handleError(error));
+            axios.patch(route('core.addresses.setDefault', address.id))
+                .then(() => this.fetch())
+                .catch(error => this.handleError(error));
         },
         destroy(address, index) {
             this.loading = true;
 
-            axios.delete(route('core.addresses.destroy', address.id)).then(() => {
-                this.loading = false;
-                this.addresses.splice(index, 1);
-                this.$emit('update');
-            }).catch(error => this.handleError(error));
+            axios.delete(route('core.addresses.destroy', address.id))
+                .then(() => {
+                    this.addresses.splice(index, 1);
+                    this.loading = false;
+                }).catch(error => this.handleError(error));
         },
-        addFields() {
-            this.field('addressable_type').value = this.type;
-            this.field('addressable_id').value = this.id;
+        setFields() {
+            this.$refs.form.field('addressable_type').value = this.type;
+            this.$refs.form.field('addressable_id').value = this.id;
+            this.customFields = this.$refs.form.customFields;
+            this.$emit('form-loaded');
         },
-        field(field) {
-            return this.form.sections
-                .reduce((fields, section) => fields.concat(section.fields), [])
-                .find(item => item.name === field);
+        reset() {
+            this.path = null;
+            this.customFields = [];
         },
     },
 };
