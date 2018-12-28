@@ -13,7 +13,7 @@
 
 ##### FormBuilder
 - adds template fetching logic VueForm similar to VueTable
-- adds EnsoForm for using VueForm in the Enso environment. VueFormSS is be deprecated and must be replaced with EnsoForm. For existing projects you can safely search & replace all instances of `vue-form-ss` with `enso-forms` and `VueFormSS` with `EnsoForm`
+- adds EnsoForm for using VueForm in the Enso environment. VueFormSS is be deprecated and must be replaced with EnsoForm. For existing projects you can safely search & replace all instances of `vue-form-ss` with `enso-form` and `VueFormSS` with `EnsoForm`
 - adds & refactors field helpers in VueForm / EnsoForm:
     - `field(value)`
     - `param(param)`
