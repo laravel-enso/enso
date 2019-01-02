@@ -1,5 +1,19 @@
 ## Laravel Enso's Changelog
 
+### 2.13.17
+
+- fixes small bugs
+- upgrades date-fns to the latest alpha
+
+To upgrade existing projects:
+
+- run `composer update`
+- update in your package.json `"date-fns": "^2.0.0-alpha.7"`
+- run `yarn install`
+- update in `config/enso/config.php` `jsDateFormat => 'dd-MM-yyyy'`
+- read [this](https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md)
+- update in your code the date format [accordingly](https://date-fns.org/v2.0.0-alpha.26/docs/format)
+
 ### 2.13.16
 
 #### Changes and upgrade instructions:

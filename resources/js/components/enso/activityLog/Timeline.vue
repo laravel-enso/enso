@@ -79,7 +79,7 @@ export default {
 
     methods: {
         formatDate(date) {
-            return format(date, 'dddd, MMMM DD');
+            return format(date, 'E, MMMM dd');
         },
         icon({ icon, type }) {
             if (icon) {

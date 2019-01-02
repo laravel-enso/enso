@@ -70,9 +70,9 @@ export default {
 
     computed: {
         alternateFormat() {
-            return this.format.replace('d', 'DD')
+            return this.format.replace('d', 'dd')
                 .replace('m', 'MM')
-                .replace('Y', 'YYYY');
+                .replace('Y', 'yyyy');
         },
         sanitizedInterval() {
             return {

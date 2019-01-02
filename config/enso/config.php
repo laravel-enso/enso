@@ -3,7 +3,7 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '2.13.16',
+    'version' => '2.13.17',
     'showQuote' => true,
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
@@ -11,7 +11,7 @@ return [
     'stateBuilder' => LocalState::class,
     'defaultRole' => 'admin',
     'phpDateFormat' => 'd-m-Y',
-    'jsDateFormat' => 'DD-MM-YYYY',
+    'jsDateFormat' => 'dd-MM-yyyy',
     'paths' => [
         'files' => 'files',
         'avatars' => 'avatars',

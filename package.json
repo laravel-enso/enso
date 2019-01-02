@@ -54,7 +54,7 @@
         "chart.js": "^2.7.2",
         "chartjs-plugin-datalabels": "^0.3.0",
         "css-element-queries": "^1.0.2",
-        "date-fns": "2.0.0-alpha.7",
+        "date-fns": "^2.0.0-alpha.7",
         "driver.js": "^0.7.1",
         "dropzone": "^5.5.1",
         "favico.js": "^0.3.10",

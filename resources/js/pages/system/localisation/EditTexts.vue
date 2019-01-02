@@ -198,10 +198,10 @@ export default {
                 return this.sortedKeys;
             }
 
-            const self = this;
+            const query = this.query.toLowerCase();
 
-            return this.langKeys.filter(key => key.toLowerCase()
-                .indexOf(self.query.toLowerCase()) > -1);
+            return this.langKeys.filter(key => (key.toLowerCase().indexOf(query) > -1
+                || (this.langFile[key] && this.langFile[key].toLowerCase().indexOf(query) > -1)));
         },
         isNewKey() {
             return this.selectedLocale &&

@@ -89,7 +89,7 @@
             <div class="column">
                 <hr class="has-background-grey-lighter"
                     v-if="isMobile">
-                <div class="columns is-mobile is-multiline">
+                <div class="columns is-mobile is-multiline details">
                     <div class="column is-one-third has-text-right has-padding-small">
                         <strong>{{ __('Group') }}:</strong>
                     </div>
@@ -264,6 +264,11 @@ export default {
 
     .has-right-border {
         border-right: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .details > .column {
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
 </style>
