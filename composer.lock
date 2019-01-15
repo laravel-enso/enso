@@ -1657,16 +1657,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.4.8",
+            "version": "3.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "db1b5d4a8eb803a473fa9a9583052804d890b6f9"
+                "reference": "2ea11bd2de1a6e2f2e351c61f1613d2c16d32c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/db1b5d4a8eb803a473fa9a9583052804d890b6f9",
-                "reference": "db1b5d4a8eb803a473fa9a9583052804d890b6f9",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/2ea11bd2de1a6e2f2e351c61f1613d2c16d32c71",
+                "reference": "2ea11bd2de1a6e2f2e351c61f1613d2c16d32c71",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-01-15T07:00:48+00:00"
+            "time": "2019-01-15T07:22:19+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -1810,16 +1810,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "345b7c8383b0999bec8bf7c2dfcb6737a82bfabc"
+                "reference": "caaab0a97d387513d0c6fb10b2af762efc6a3000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/345b7c8383b0999bec8bf7c2dfcb6737a82bfabc",
-                "reference": "345b7c8383b0999bec8bf7c2dfcb6737a82bfabc",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/caaab0a97d387513d0c6fb10b2af762efc6a3000",
+                "reference": "caaab0a97d387513d0c6fb10b2af762efc6a3000",
                 "shasum": ""
             },
             "require": {
@@ -1875,7 +1875,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2019-01-14T12:16:17+00:00"
+            "time": "2019-01-15T07:24:10+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -3323,16 +3323,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.9.2",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "a854367713e78484770ba187feeebda4076e6f97"
+                "reference": "024f4d6dfda662871ecf6f310e392d7d0c74501d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/a854367713e78484770ba187feeebda4076e6f97",
-                "reference": "a854367713e78484770ba187feeebda4076e6f97",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/024f4d6dfda662871ecf6f310e392d7d0c74501d",
+                "reference": "024f4d6dfda662871ecf6f310e392d7d0c74501d",
                 "shasum": ""
             },
             "require": {
@@ -3376,7 +3376,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-01-14T12:04:49+00:00"
+            "time": "2019-01-15T08:06:33+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7738,16 +7738,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.1",
+            "version": "7.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f"
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c23d78776ad415d5506e0679723cb461d71f488f",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7c89093bd00f7d5ddf0ab81dee04f801416b4944",
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944",
                 "shasum": ""
             },
             "require": {
@@ -7818,7 +7818,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-12-12T07:20:32+00:00"
+            "time": "2019-01-15T08:19:08+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

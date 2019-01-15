@@ -1,77 +1,63 @@
 ## Laravel Enso's Changelog
-
 ### 2.14.0
-
 #### Changes:
 This is one of the biggest releases until now, with changes such as the complete rewrite of the Data Import package, the rewrite and improvement of the DataTable Export functionality, enhancements and new functionality for the VueForm and much more.
-
 The improvements brought to the DataTable Export and the DataImport now allow the export of practically unlimited records from a datatable, as well as the import of xlsx files limited only by your ability to create them and the limitations of the file format.
-
 That's not all though, as the new mechanisms also become much much more efficient due to the parallelization of the operations. This is made possible by leveraging Laravel's queueing facilities and impressive load balancing.
-
 Together with the refreshed web socketed operations' progress reporting we now have hugely powerful, high throughput solutions for I/O operations.
-
 This is yet another step towards our vision for Enso and rest assured, there is more to come.
-
 ##### Core
-- adds IO structure for monitoring background export/import operations progress in real-time (needs websockets). It will soon be refactored and extracted to it's own separate package
-- fixes the global search on medium devices
+- adds IO structure for monitoring background export/import operations progress in real-time (needs websockets). It will soon be refactored and extracted to its own separate package
+- fixes the global search on medium screen sized devices
 - refactors the request management helpers
 - adds params support for translations, thanks to @jlsjonas
 - fixes translation for the `auth` layout
 - adds a `shortNumber` filter ( `{{ 1000 | shortNumber }} // 1k`)
-- adds globally `font-awesome-layers` under the name of `fal`
-- both the `dataimport` and `companies` packages are now required by `core`
-
+- globally adds the `font-awesome-layers` component under the name of `fal`
+- both the `dataimport` and `companies` packages are now required by `core` and are no longer optional
 ##### DataExport
 - adds `type`, `entries`, `status` and `created_by` columns to the table
 - uses the `CreatedBy` trait
 - integrates with the new background operations management system (IO) for real time progress in the FE
-
 ##### DataImport
-- completely redesignes the package and import philosophy. Adds virtually infinite number of rows that can imported at once with very low memory consumption by splitting the import file in chunks and processing them in queued jobs
+- completely redesigned the package and import philosophy. Adds support for a virtually infinite number of rows that can imported in the same import with very low memory consumption, by splitting the import file in chunks and processing them in queued jobs
 - adds queue management
-- generates a downloadable xlsx rejected summary if there are import validation errors. The summary has the same structure as the import file with an extra column (on each sheet) that will describe all the validation errors for each row. This will streamline the import operations when dealing with large files
+- generates a downloadable xlsx rejected rows summary if there are import validation errors. The summary has the same structure as the import file with an extra column (on each sheet) that will describe all the validation errors for each row. This will streamline the import operations when dealing with large files
 - improves local (dev's) import and validation classes
-- adds `before` and `after` hooks in the importing process
+- adds `before` and `after` hooks which are available in the importing process
 - integrates with the new background operations management system (IO) for real time progress in the FE
 - comes with a new `import-uploader` component that can be placed anywhere in the applications for local imports
-
 ##### Helpers
 - enhances the `Obj` class. Now it can receive any object or associative array, including Laravel collections, and even Models with loaded relations. 
-- the `Obj@get($key)` method will return `null` for an unset `$key`
+- changed the `Obj@get($key)` method to return `null` for an unset `$key`, instead of throwing an exception
 - enhances the Enum by reordering the data source priority. Take a look at `LaravelEnso\Examples\app\Enums\SeniorityEnum` for an example
-
 ##### FormBuilder
-- adds the `tabs` property to the form template root. If provided will require a `tab` property for each section that will represent the tab's label. The sections will be grouped in tabs using their given labels
+- adds the `tabs` property to the form template root. If provided, it will require a `tab` property for each section, which will represent the tab's label. The sections will be grouped in tabs using their given labels
 - the delete modal has the commit button focused by default
 - exposes a series of getters/helpers from `vue-from` and `enso-form` that can be accessed via `$refs`:
     - computed:
-        - `data` - the whole object
-        - `customFields` - custom fields array
-        - `errors` - the errors object
+        - `data` - represents the whole object
+        - `customFields` - represents  custom fields array
+        - `errors` - represents the errors object
     - methods
-        - `formData()` - the params that are going to the server on POST / PATCH
-        - `field(field)` - return the field object for a given label
+        - `formData()` - returns the params that are sent to the server on POST / PATCH
+        - `field(field)` - returns the field object for a given label
         - `param(param)` - returns the specified param from the optional `params` object
         - `routeParam(param)` - returns the route param from the `routeParams` object
         - `fetch()` - form's fetch method for getting the template
-
 ##### VueComponents
 - removes the deprecated `MorpableContainer`
-- adds a new `enso-tabs` component. The old `tabs` component is visually limited to the bulma available options. `enso-tabs` has less props and displays the custom tabs used in the Files menu, the `accesories` component and in `vue-form` (new!)
+- adds a new `enso-tabs` component. The old `tabs` component is visually limited to the Bulma available options. `enso-tabs` has less props and displays the custom tabs used in the Files menu, the `accesories` component and in `vue-form` (new!)
 - adds compact mode to `accesories`
-
 ##### VueDatatable
-- adds excel practically unlimited export functionality by greatly improving the table fetcher. The whole process is done in the background and uses a small amount of memory. You should consider appropriate values for `config('enso.datatable.exports.timeout')` and for the `config('queues.connections.yourConnection.retry_after')`
+- adds practically unlimited excel export functionality by greatly improving the table fetcher. The whole process is done in the background and uses a small amount of memory. You should consider using appropriate values for the configuration options `enso.datatable.exports.timeout` and for the `queues.connections.yourConnection.retry_after`
 - improves the builder logic and reusability
 - optimizes the Builder for date / enum / translatable computing
 - renamed the `translation` template param to `translatable`
-- the (delete) modal accepts shift-enter for the commit action
+- the (delete) modal accepts `shift-enter` as a keyboard shortcut for the commit action
 - changes the way actions are processed. Now, in the `CustomAction@process` class / method only one `$row` at a time will be available
 - adds options for customizing the export & notification queues
 - integrates with the new background operations management system (IO) for real time progress in the FE
-
 #### Upgrade instructions - estimated time per project ~ 10-15min
 - update in `composer.json`: "laravel-enso/core": "3.4.*"
 - from `composer.json`, remove the packages:
@@ -94,7 +80,7 @@ This is yet another step towards our vision for Enso and rest assured, there is 
     * `config/enso/datatable.php` with `vendor/laravel-enso/vuedatatable/src/config/datatable.php`
 - configure your `config/horizon.php` to make sure that you have the appropriate queues for both local and production envs. You can use the config from this repo as an example.
 - refactor your import classes and validators to match the new structure
-- if necessary, in your table templates, rename the atrribute `translation` to `translatable` 
+- if necessary, in your table templates, rename the attribute `translation` to `translatable` 
 - sync `phpunit.xml` with the one from the main repo
 
 ### 2.13.17

@@ -82,9 +82,9 @@
                     'tag is-table-tag',
                     {'is-info': row.status === 10},
                     {'is-warning': row.status === 20},
-                    {'is-primary': row.status === 30},
-                    {'is-danger': row.status === 40},
-                    {'is-success': row.status === 50}
+                    {'is-primary': row.status === 23},
+                    {'is-danger': row.status === 26},
+                    {'is-success': row.status === 30}
                 ]">
                 {{ row.computedStatus }}
             </span>
