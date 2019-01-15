@@ -73,20 +73,34 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 1,
-                'tries' => 2,
+                'queue' => ['default', 'light', 'notifications'],
+                'balance' => 'auto',
+                'processes' => 4,
+                'tries' => 1,
+            ],
+            'supervisor-2' => [
+                'connection' => 'redis',
+                'queue' => ['heavy'],
+                'balance' => 'auto',
+                'processes' => 2,
+                'tries' => 1,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
+                'queue' => ['default', 'light', 'notifications'],
                 'balance' => 'simple',
-                'processes' => 3,
-                'tries' => 3,
+                'processes' => 6,
+                'tries' => 1,
+            ],
+            'supervisor-2' => [
+                'connection' => 'redis',
+                'queue' => ['heavy'],
+                'balance' => 'simple',
+                'processes' => 2,
+                'tries' => 1,
             ],
         ],
     ],

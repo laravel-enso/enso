@@ -7,11 +7,11 @@
                 ref="form">
                 <span slot="actions">
                     <a class="button is-warning"
-                        v-if="ready && $refs.form.param('userId')"
                         @click="$router.push({
                             name: 'administration.users.edit',
                             params: { user: $refs.form.param('userId') }
-                        })">
+                        })"
+                        v-if="ready && $refs.form.param('userId')">
                         <span class="is-hidden-mobile">
                             {{ __('Edit User') }}
                         </span>
@@ -21,12 +21,12 @@
                         <span class="is-hidden-mobile"/>
                     </a>
                     <a class="button is-primary"
+                        @click="$router.push({
+                            name: 'administration.users.create',
+                            params: { person: $refs.form.routeParam('person') }
+                        })"
                         v-else-if="ready">
-                        <span class="is-hidden-mobile"
-                            @click="$router.push({
-                                name: 'administration.users.create',
-                                params: { person: $refs.form.routeParam('person') }
-                            })">
+                        <span class="is-hidden-mobile">
                             {{ __('Create User') }}
                         </span>
                         <span class="icon">

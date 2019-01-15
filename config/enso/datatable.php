@@ -153,9 +153,22 @@ return [
 
     'export' => [
         'path' => 'exports',
-        'limit' => 20000,
-        'maxExecutionTime' => 100,
+        'timeout' => 500,
         'notifications' => ['broadcast', 'database'],
+        'chunk' => 2000,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queues
+    |--------------------------------------------------------------------------
+    | Specifies the queue for exports generation and for notifications.
+    |
+    */
+
+    'queues' => [
+        'exports' => 'heavy',
+        'notifications' => 'notifications',
     ],
 
     /*

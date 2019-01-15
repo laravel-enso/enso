@@ -48,6 +48,22 @@ export default {
             required: true,
         },
     },
+
+    mounted() {
+        document.addEventListener('keydown', this.commitOnShiftEnter);
+    },
+
+    beforeDestroy() {
+        document.removeEventListener('keydown', this.commitOnShiftEnter);
+    },
+
+    methods: {
+        commitOnShiftEnter(e) {
+            if (this.show && e.keyCode === 13 && e.shiftKey) {
+                this.$emit('commit');
+            }
+        },
+    },
 };
 
 </script>

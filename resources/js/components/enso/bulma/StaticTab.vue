@@ -1,5 +1,5 @@
 <template>
-    <div class="animated"
+    <div class="animated fadeIn"
         v-if="active">
         <slot/>
     </div>

@@ -5,30 +5,28 @@
             :i18n="i18n"/>
         <form class="is-marginless"
             @submit.prevent="$refs.actions.submit()">
-            <div class="columns is-multiline"
-                v-for="(section, index) in data.sections"
-                :key="index"
-                v-if="hasFields(section)">
-                <div class="column is-12"
-                    v-if="section.divider">
-                    <divider :title="i18n(section.title)"
-                        :placement="data.dividerTitlePlacement"/>
-                </div>
-                <div v-for="field in section.fields"
-                    :class="[
-                        'column',
-                        section.columns !== 'custom'
-                            ? columnSize(section.columns)
-                            : `is-${field.column}`
-                    ]" :key="field.name"
-                    v-if="!field.meta.hidden">
-                    <form-field :errors="errors"
-                        :field="field"
+            <enso-tabs class="form-tabs"
+                v-if="tabbed">
+                <span slot="label"
+                    slot-scope="{ tab }"
+                    :class="{'badge is-badge-danger is-badge-small': errorCount(tab)}"
+                    :data-badge="errorCount(tab)">
+                    {{ tab }}
+                </span>
+                <tab :id="i18n(tab)"
+                    :key="tab"
+                    keep-alive
+                    v-for="tab in tabs">
+                    <form-section :section="section"
                         :i18n="i18n"
                         :locale="locale"
-                        v-on="$listeners">
+                        :errors="errors"
+                        :divider-title-placement="data.dividerTitlePlacement"
+                        :key="index"
+                        v-for="(section, index) in sections(tab)"
+                        v-if="hasFields(section)">
                         <template :slot="field.name"
-                            v-if="field.meta.custom">
+                            v-for="field in customFields">
                             <slot :name="field.name"
                                 :errors="errors"
                                 :field="field"
@@ -36,10 +34,30 @@
                                 :locale="locale"
                                 v-if="field.meta.custom"/>
                         </template>
-                    </form-field>
-                </div>
-            </div>
-            <form-actions :data="data"
+                    </form-section>
+                </tab>
+            </enso-tabs>
+            <form-section :section="section"
+                :i18n="i18n"
+                :locale="locale"
+                :errors="errors"
+                :divider-title-placement="data.dividerTitlePlacement"
+                :key="index"
+                v-for="(section, index) in data.sections"
+                v-if="!tabbed && hasFields(section)">
+                <template :slot="field.name"
+                    v-for="field in customFields">
+                    <slot :name="field.name"
+                        :errors="errors"
+                        :field="field"
+                        :i18n="i18n"
+                        :locale="locale"
+                        v-if="field.meta.custom"/>
+                </template>
+            </form-section>
+            <form-actions class="has-margin-top-large"
+                :data="data"
+                :form-data="formData"
                 :errors="errors"
                 :i18n="i18n"
                 :params="params"
@@ -59,17 +77,17 @@
 <script>
 
 import FormHeader from './parts/FormHeader.vue';
-import FormField from './parts/FormField.vue';
-import Divider from './parts/Divider.vue';
 import FormActions from './parts/FormActions.vue';
 import Errors from './classes/Errors';
-
+import FormSection from './parts/FormSection.vue';
+import EnsoTabs from '../bulma/EnsoTabs.vue';
+import Tab from '../bulma/Tab.vue';
 
 export default {
     name: 'VueForm',
 
     components: {
-        FormHeader, FormField, Divider, FormActions,
+        FormHeader, FormActions, EnsoTabs, Tab, FormSection,
     },
 
     props: {
@@ -104,6 +122,21 @@ export default {
                         .concat(section.fields.filter(field => field.meta.custom)), [])
                 : [];
         },
+        tabbed() {
+            return this.data && this.data.tabs;
+        },
+        tabs() {
+            return this.data && this.data.tabs
+                ? this.data.sections
+                    .reduce((tabs, { tab }) => {
+                        if (!tabs.includes(tab)) {
+                            tabs.push(tab);
+                        }
+
+                        return tabs;
+                    }, [])
+                : [];
+        },
     },
 
     created() {
@@ -118,13 +151,28 @@ export default {
                     this.$emit('loaded');
                 }).catch(error => this.handleError(error));
         },
-        columnSize(columns) {
-            return `is-${parseInt(12 / columns, 10)}`;
-        },
         flatten() {
             return this.data.sections
                 .reduce((fields, section) =>
                     fields.concat(section.fields), []);
+        },
+        sections(tab) {
+            return this.data.sections.filter(section => section.tab === tab);
+        },
+        errorCount(tab) {
+            return this.sections(tab).reduce((fields, section) => {
+                fields.push(...section.fields);
+                return fields;
+            }, []).filter(({ name }) => this.errors.has(name)).length;
+        },
+        formData() {
+            return this.data.sections
+                .reduce((fields, section) => fields
+                    .concat(section.fields), [])
+                .reduce((object, field) => {
+                    object[field.name] = field.value;
+                    return object;
+                }, { _params: this.params });
         },
         field(field) {
             return this.flatten()
@@ -148,3 +196,12 @@ export default {
 };
 
 </script>
+
+<style lang="scss">
+
+    .form-tabs {
+        position: relative;
+        z-index: 1;
+    }
+
+</style>

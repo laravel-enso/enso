@@ -1,1 +1,2 @@
 import './numberFormat';
+import './shortNumber';

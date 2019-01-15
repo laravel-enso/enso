@@ -1,23 +1,25 @@
 <template>
 
     <div>
-        <div class="columns"
-            v-if="!summary">
-            <div class="column is-4-desktop is-9-tablet is-12-mobile">
-                <div class="">
-                    <vue-select v-model="importType"
-                        :options="importTypes"
-                        @input="getTemplate"/>
-                </div>
+        <div class="columns">
+            <div class="column is-3-desktop is-8-tablet is-12-mobile">
+                <vue-select v-model="importType"
+                    :options="importTypes"
+                    placeholder="Import Type"
+                    @input="getTemplate"/>
             </div>
-            <div class="column is-hidden-touch is-6 has-padding-medium has-text-centered"
+            <div class="column is-hidden-touch is-6 has-text-centered"
                 v-if="importType">
                 <file-uploader class="animated fadeIn"
                     :url="templateLink"
+                    :params="{ type: importType }"
                     file-key="template"
                     @upload-start="loadingTemplate=true"
-                    @upload-successful="template = $event;loadingTemplate = false"
-                    @upload-error="loadingTemplate=false"
+                    @upload-successful="
+                        template = $event;
+                        loadingTemplate = false
+                    "
+                    @upload-error="loadingTemplate = false"
                     v-if="!template">
                     <a slot="upload-button"
                         class="button is-info"
@@ -48,169 +50,45 @@
                     </span>
                 </a>
             </div>
-            <div class="column has-padding-medium has-text-centered"
+            <div class="column has-text-centered-touch has-text-right-desktop"
                 v-if="importType">
-                <div class="">
-                    <file-uploader :url="importLink"
-                        file-key="import"
-                        @upload-start=" importing = true"
-                        @upload-successful="summary = $event;importing = false"
-                        @upload-error="importing = false;importType = null"
-                        v-if="importType">
-                        <a slot="upload-button"
-                            slot-scope="{ openFileBrowser }"
-                            @click="openFileBrowser"
-                            :class="['button is-success', { 'is-loading': importing }]">
-                            <span>{{ __('Import') }}</span>
-                            <span class="icon is-small">
-                                <fa icon="upload"/>
-                            </span>
-                        </a>
-                    </file-uploader>
-                </div>
+                <import-uploader :path="importLink"
+                    :params="{ type: importType, test: 1 }"
+                    @upload-successful="$refs.imports.fetch()"/>
             </div>
         </div>
         <vue-table class="box is-paddingless raises-on-hover is-rounded animated fadeIn"
             :path="path"
-            id="imports-table"
-            @get-summary="getSummary"
-            v-if="!summary">
-            <b slot="successful"
-            slot-scope="{ row }"
-            class="has-text-success">
-                {{ row['successful'] }}
+            id="imports"
+            @download-rejected="downloadRejected"
+            ref="imports">
+            <b slot="entries"
+                slot-scope="{ row }"
+                class="has-text-info">
+                {{ row.entries || '-' }}
             </b>
-            <b slot="issues"
-            slot-scope="{ row }"
-            class="has-text-danger">
-                {{ row['issues'] }}
+            <b slot="successful" slot-scope="{ row }"
+                class="has-text-success">
+                {{ row.successful === null ? '-' : row.successful }}
             </b>
+            <b slot="failed"
+                slot-scope="{ row }"
+                class="has-text-danger">
+                {{ row.failed === null ? '-' : row.failed }}
+            </b>
+            <span slot="computedStatus"
+                slot-scope="{ row }"
+                :class="[
+                    'tag is-table-tag',
+                    {'is-info': row.status === 10},
+                    {'is-warning': row.status === 20},
+                    {'is-primary': row.status === 30},
+                    {'is-danger': row.status === 40},
+                    {'is-success': row.status === 50}
+                ]">
+                {{ row.computedStatus }}
+            </span>
         </vue-table>
-        <div class="columns is-centered"
-            v-if="summary">
-            <div class="column is-half-tablet is-one-third-widescreen is-one-quarter-fullhd">
-                <nav class="box panel is-paddingless raises-on-hover animated bounceInLeft">
-                    <p class="panel-heading">
-                        {{ __('Import Summary') }}
-                    </p>
-                    <a class="panel-block">
-                        <span class="panel-icon has-text-info">
-                            <fa icon="file-excel"/>
-                        </span>
-                        {{ __('File') }}:&emsp;
-                        <span class="has-text-info">
-                            {{ summary.filename }}
-                        </span>
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon has-text-info">
-                            <fa icon="calendar-alt"/>
-                        </span>
-                        {{ __('Date') }}:&emsp;
-                        <span class="has-text-info">
-                            {{ summary.date }}
-                        </span>
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon has-text-info">
-                            <fa icon="clock"/>
-                        </span>
-                        {{ __('Time') }}:&emsp;
-                        <span class="has-text-info">
-                            {{ summary.time }}
-                        </span>
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon has-text-success">
-                            <fa icon="check"/>
-                        </span>
-                        {{ __('Imported Entries') }}:&emsp;
-                        <span class="has-text-success">
-                            {{ summary.successful }}
-                        </span>
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon has-text-danger">
-                            <fa icon="times"/>
-                        </span>
-                        {{ __('Issues') }}:&emsp;
-                        <span class="has-text-danger">
-                            {{ summary.issues }}
-                        </span>
-                    </a>
-                    <div class="panel-block">
-                        <button class="button is-info is-outlined is-fullwidth"
-                            @click="summary=null">
-                            {{ __("Back") }}
-                        </button>
-                    </div>
-                </nav>
-            </div>
-            <div class="column is-half-tablet is-two-thirds-widescreen is-three-quarters-fullhd"
-                v-if="summary.issues">
-                <card class="has-background-light is-rounded raises-on-hover animated bounceInRight"
-                    icon="exclamation-triangle"
-                    :title="__('Issues')">
-                    <tabs class="has-padding-medium"
-                        alignment="right">
-                        <tab class="has-padding-large"
-                            :key="category"
-                            :id="category"
-                            v-for="(issues, category) in summary.structureIssues">
-                            <ul class="issues has-margin-left-large">
-                                <li v-for="(issue, index) in issues"
-                                    :key="index">
-                                    <span>
-                                        <b class="has-text-danger">{{ issue }}</b>
-                                    </span>
-                                </li>
-                            </ul>
-                        </tab>
-                        <tab v-for="(sheetIssues, sheet) in summary.contentIssues"
-                            :key="sheet"
-                            :id="sheet">
-                            <tabs>
-                                <tab class="has-padding-large"
-                                    v-for="(issues, category) in sheetIssues"
-                                    :key="category"
-                                    :id="category">
-                                    <paginate :list="issues">
-                                        <template slot-scope="{ list }">
-                                            <h5 class="title is-5 has-text-centered">
-                                                {{ __('Issues') }}
-                                            </h5>
-                                            <ul class="issues has-margin-left-large">
-                                                <li v-for="(issue, index) in list"
-                                                    :key="index">
-                                                    <span v-if="issue.column">
-                                                        {{ __("Column") }}:
-                                                        <b class="has-text-warning">
-                                                            {{ issue.column }}
-                                                        </b>
-                                                    </span>
-                                                    <span v-if="issue.rowNumber">
-                                                        {{ __("Line") }}:
-                                                        <b class="has-text-warning">
-                                                            {{ issue.rowNumber }}
-                                                        </b>
-                                                    </span>
-                                                    <span v-if="issue.value">
-                                                        {{ __("Value") }}:
-                                                        <b class="has-text-danger">
-                                                            {{ issue.value }}
-                                                        </b>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </template>
-                                    </paginate>
-                                </tab>
-                            </tabs>
-                        </tab>
-                    </tabs>
-                </card>
-            </div>
-        </div>
         <modal :show="modal"
             @close="modal = false"
             :i18n="__"
@@ -223,28 +101,19 @@
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-    faUpload, faDownload, faTrashAlt, faFileExcel, faCalendarAlt,
-    faClock, faCheck, faTimes, faExclamationTriangle,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUpload, faDownload, faTrashAlt, faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
+import ImportUploader from '../../components/enso/dataimport/ImportUploader.vue';
 import Modal from './Modal.vue';
 import Card from '../../components/enso/bulma/Card.vue';
-import Overlay from '../../components/enso/bulma/Overlay.vue';
-import Paginate from '../../components/enso/bulma/Paginate.vue';
-import Tabs from '../../components/enso/bulma/Tabs.vue';
-import Tab from '../../components/enso/bulma/Tab.vue';
 
-library.add([
-    faUpload, faDownload, faTrashAlt, faFileExcel, faCalendarAlt,
-    faClock, faCheck, faTimes, faExclamationTriangle,
-]);
+library.add(faUpload, faDownload, faTrashAlt, faFileExcel);
 
 export default {
     components: {
-        VueSelect, VueTable, FileUploader, Card, Modal, Overlay, Tabs, Tab, Paginate,
+        VueSelect, VueTable, FileUploader, ImportUploader, Card, Modal,
     },
 
     directives: { tooltip: VTooltip },
@@ -253,11 +122,10 @@ export default {
         return {
             path: route('import.initTable'),
             importType: null,
-            summary: null,
+            summary: {},
             template: null,
             modal: false,
             loadingTemplate: false,
-            importing: false,
             importTypes: [],
         };
     },
@@ -265,7 +133,7 @@ export default {
     computed: {
         templateLink() {
             return this.importType
-                && route('import.uploadTemplate', this.importType);
+                && route('import.uploadTemplate');
         },
         downloadLink() {
             return this.template
@@ -273,7 +141,12 @@ export default {
         },
         importLink() {
             return this.importType
-                && route('import.run', this.importType);
+                && route('import.store');
+        },
+        hasErrors() {
+            return this.summary
+                && this.summary.errors
+                && Object.keys(this.summary.errors).length;
         },
     },
 
@@ -292,7 +165,7 @@ export default {
 
             this.loadingTemplate = true;
 
-            axios.get(route('import.getTemplate', this.importType))
+            axios.get(route('import.template', this.importType))
                 .then(({ data }) => {
                     this.template = data;
                     this.loadingTemplate = false;
@@ -315,34 +188,15 @@ export default {
                     this.handleError(error);
                 });
         },
-        getSummary(row) {
-            this.loading = true;
+        downloadRejected({ rejectedId }) {
+            if (!rejectedId) {
+                this.$toastr.info(this.__('No rejected summary available'));
+                return;
+            }
 
-            axios.get(route('import.getSummary', row.dtRowId))
-                .then(({ data }) => {
-                    this.loading = false;
-                    this.summary = data;
-                }).catch(error => this.handleError(error));
+            window.location.href = route('import.downloadRejected', rejectedId);
         },
     },
 };
 
 </script>
-
-<style lang="scss" scoped>
-
-    ul.issues {
-        list-style-type: square;
-
-        li {
-            cursor: pointer;
-            width: fit-content;
-            padding: 0.2em;
-
-            &:hover {
-                background: lightgray;
-            }
-        }
-    }
-
-</style>

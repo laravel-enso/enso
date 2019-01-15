@@ -21,7 +21,6 @@
                                 @remove="remove(option); $emit('remove', option)"/>
                         </div>
                         <input class="input select-input" type="text"
-                            v-focus
                             :placeholder="i18n(placeholder)"
                             v-model="query"
                             @keydown.esc="hideDropdown"
@@ -100,9 +99,6 @@ export default {
 
     directives: {
         clickOutside: vClickOutside.directive,
-        focus: {
-            inserted: el => el.focus(),
-        },
     },
 
     components: { Tag },

@@ -42,6 +42,7 @@
             <div class="is-pulled-right is-flex"
                 v-if="isTouch">
                 <search v-if="!isMobile"/>
+                <i-o/>
                 <notifications/>
                 <profile-control/>
                 <settings-control/>
@@ -51,6 +52,7 @@
             <div class="navbar-end"
                 v-if="!isTouch">
                 <search/>
+                <i-o/>
                 <notifications/>
                 <profile-control/>
                 <settings-control/>
@@ -67,6 +69,7 @@ import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faCode, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import IO from './IO.vue';
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';
 import ProfileControl from './ProfileControl.vue';
@@ -80,7 +83,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        Notifications, SettingsControl, ProfileControl, Search,
+        IO, Notifications, SettingsControl, ProfileControl, Search,
     },
 
     computed: {

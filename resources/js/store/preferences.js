@@ -18,12 +18,12 @@ const updateLocal = (payload) => {
 
 export const getters = {
     global: state => state.global,
-    local: state => route => state.local && state.local[route],
-    lang: state => state.global && state.global.lang,
-    theme: state => state.global && state.global.theme,
-    expandedMenu: state => state.global && state.global.expandedMenu,
-    toastrPosition: state => state.global && state.global.toastrPosition,
-    bookmarks: state => state.global && state.global.bookmarks,
+    local: state => route => state.local[route],
+    lang: state => state.global.lang,
+    theme: state => state.global.theme,
+    expandedMenu: state => state.global.expandedMenu,
+    toastrPosition: state => state.global.toastrPosition,
+    bookmarks: state => state.global.bookmarks,
 };
 
 export const mutations = {

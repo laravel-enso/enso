@@ -53,8 +53,18 @@ export default {
         },
         init(steps) {
             this.$store.commit('layout/settingsBar/toggle');
-            this.driver.defineSteps(steps);
+            this.driver.defineSteps(this.localise(steps));
             this.driver.start();
+        },
+        localise(steps) {
+            return steps.map(({ element, popover }) => ({
+                element,
+                popover: {
+                    description: this.__(popover.description),
+                    position: popover.position,
+                    title: this.__(popover.title),
+                },
+            }));
         },
     },
 };

@@ -2,18 +2,14 @@
     <div>
         <div :class="[
                 'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-                { 'is-toggle': toggle || custom }, { 'is-toggle-rounded': toggleRounded },
-                { 'is-fullwidth': fullwidth || custom }, { 'is-custom': custom }
+                { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
+                { 'is-fullwidth': fullwidth }
             ]">
-            <ul :class="[
-                    'tab-list',
-                    { 'has-background-grey-light' : custom }
-                ]">
+            <ul class="tab-list">
                 <li v-for="(tab, index) in tabs"
                     :class="{ 'is-active': index === active }"
                     :key="index">
-                    <a :class="{ 'has-background-white has-text-grey-dark': custom && index === active }"
-                        @click="activate(index)"
+                    <a @click="activate(index)"
                         :disabled="disabled.includes(index)">
                         <slot name="label"
                             :tab="tab">
@@ -40,10 +36,6 @@ export default {
                 .includes(value),
         },
         boxed: {
-            type: Boolean,
-            default: false,
-        },
-        custom: {
             type: Boolean,
             default: false,
         },
@@ -81,12 +73,8 @@ export default {
                 return;
             }
 
-            this.setActive(index);
+            this.active = index;
             this.$emit('selected', this.tabs[index]);
-        },
-        setActive(index) {
-            this.active = null;
-            setTimeout(() => (this.active = index), 300);
         },
         disable(index) {
             if (!this.disabled.includes(index)) {
@@ -107,33 +95,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-    @import "./node_modules/bulma/sass/utilities/initial-variables";
-
-    .tabs.is-fullwidth.is-toggle.is-custom {
-        .tab-list {
-            border-radius: $radius;
-
-            li {
-                padding: 0.5em;
-            }
-
-            .is-active {
-                a {
-                    opacity: 1;
-                    font-weight: 600;
-                }
-            }
-
-            a {
-                transition: background 0.15s;
-                transition: font-weight 0.15s;
-                border: unset;
-                border-radius: 0.3em;
-                opacity: 0.5;
-            }
-        }
-    }
 
     a[disabled] {
         opacity: .5;

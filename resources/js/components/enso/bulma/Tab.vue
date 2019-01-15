@@ -1,14 +1,9 @@
 <template>
 
-    <transition appear
-        :duration="300"
-        enter-active-class="fadeIn"
-        leave-active-class="fadeOut">
-        <component :is="tab"
-            :active="active">
-            <slot/>
-        </component>
-    </transition>
+    <component :is="tab"
+        :active="active">
+        <slot/>
+    </component>
 
 </template>
 
@@ -71,7 +66,7 @@ export default {
         this.$parent.tabs.push(this.id);
 
         if (this.default) {
-            this.$parent.setActive(this.index);
+            this.$parent.activate(this.index);
         }
 
         if (this.disabled) {

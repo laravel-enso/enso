@@ -1,6 +1,6 @@
 <template>
 
-    <div class="level wrapper">
+    <div class="level wrapper has-margin-top-medium">
         <div class="level-left">
             <div class="level-item">
                 <span class="icon is-small has-margin-small">

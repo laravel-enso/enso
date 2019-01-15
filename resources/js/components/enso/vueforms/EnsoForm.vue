@@ -64,9 +64,19 @@ export default {
                 ? this.$refs.form.customFields
                 : [];
         },
+        errors() {
+            return this.ready
+                ? this.$refs.form.errors
+                : [];
+        },
     },
 
     methods: {
+        formData() {
+            return this.ready
+                ? this.$refs.form.formData()
+                : null;
+        },
         field(field) {
             return this.ready
                 ? this.$refs.form.field(field)
@@ -81,6 +91,9 @@ export default {
             return this.ready
                 ? this.$refs.form.routeParam(param)
                 : null;
+        },
+        fetch() {
+            this.$refs.form.fetch();
         },
     },
 

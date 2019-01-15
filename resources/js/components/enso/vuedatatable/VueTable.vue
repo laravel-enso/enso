@@ -40,8 +40,8 @@
                     v-if="hasContent">
                     <template v-for="column in template.columns"
                         :slot="column.name"
-                        v-if="column.meta.slot"
-                        slot-scope="{ row, column }">
+                        slot-scope="{ row, column }"
+                        v-if="column.meta.slot">
                         <slot :name="column.name"
                             :column="column"
                             :row="row"
@@ -338,7 +338,7 @@ export default {
         },
         readRequest(method = null) {
             const params = {
-                columns: this.requestColumns(),
+                columns: this.template.columns,
                 meta: {
                     start: this.start,
                     length: this.length,
@@ -346,6 +346,7 @@ export default {
                     total: this.template.total,
                     enum: this.template.enum,
                     date: this.template.date,
+                    translatable: this.template.translatable,
                     actions: this.template.actions,
                     forceInfo: this.forceInfo,
                 },
@@ -355,6 +356,7 @@ export default {
                 intervals: this.intervals,
                 params: this.params,
                 selected: this.selected,
+                comparisonOperator: this.template.comparisonOperator,
             };
 
             method = method || this.template.method;
@@ -362,25 +364,6 @@ export default {
             return method === 'GET'
                 ? { params }
                 : params;
-        },
-        requestColumns() {
-            return this.template.columns.reduce((columns, column) => {
-                columns.push({
-                    name: column.name,
-                    data: column.data,
-                    meta: {
-                        searchable: column.meta.searchable,
-                        sortable: column.meta.sortable,
-                        sort: column.meta.sort,
-                        total: column.meta.total,
-                        date: column.meta.date,
-                        nullLast: column.meta.nullLast,
-                    },
-                    enum: column.enum,
-                });
-
-                return columns;
-            }, []);
         },
         processMoney(body) {
             this.template.columns
@@ -404,8 +387,7 @@ export default {
         },
         exportData(path) {
             axios[this.template.method.toLowerCase()](
-                path,
-                this.exportRequest(),
+                path, this.exportRequest(),
             ).catch((error) => {
                 const { status, data } = error.response;
 
@@ -427,6 +409,7 @@ export default {
                     sort: this.template.sort,
                     enum: this.template.enum,
                     date: this.template.date,
+                    translatable: this.template.translatable,
                     total: false,
                 },
                 search: this.search,
@@ -434,6 +417,7 @@ export default {
                 filters: this.filters,
                 intervals: this.intervals,
                 params: this.params,
+                comparisonOperator: this.template.comparisonOperator,
             };
 
             return this.template.method === 'GET'

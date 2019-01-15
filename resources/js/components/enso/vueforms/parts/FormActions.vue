@@ -109,6 +109,10 @@ export default {
             type: Object,
             required: true,
         },
+        formData: {
+            type: Function,
+            required: true,
+        },
         errors: {
             type: Object,
             required: true,
@@ -182,15 +186,6 @@ export default {
 
                     this.handleError(error);
                 });
-        },
-        formData() {
-            return this.data.sections
-                .reduce((fields, section) => fields
-                    .concat(section.fields), [])
-                .reduce((object, field) => {
-                    object[field.name] = field.value;
-                    return object;
-                }, { _params: this.params });
         },
         destroy() {
             this.modal = false;

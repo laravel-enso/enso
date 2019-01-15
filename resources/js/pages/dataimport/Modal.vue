@@ -16,7 +16,8 @@
                             {{ i18n("Cancel") }}
                         </button>
                         <button class="button is-danger has-margin-left-small"
-                            @click="$emit('commit')">
+                            @click="$emit('commit')"
+                            v-focus>
                             {{ i18n("Yes") }}
                         </button>
                     </div>
@@ -51,11 +52,3 @@ export default {
 };
 
 </script>
-
-<style>
-
-    .modal.is-active {
-        z-index: 10;
-    }
-
-</style>

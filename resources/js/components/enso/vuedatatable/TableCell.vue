@@ -13,7 +13,7 @@
         </span>
         <slot :name="column.name"
             v-else-if="column.meta.slot"/>
-        <span v-else-if="column.meta.translation">{{ i18n(value) }}</span>
+        <span v-else-if="column.meta.translatable">{{ i18n(value) }}</span>
         <span v-else>{{ value }}</span>
     </span>
 

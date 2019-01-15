@@ -3,7 +3,7 @@
     <modal show
         v-on="$listeners"
         container="address-form">
-        <vue-form class="box has-background-light"
+        <enso-form class="box has-background-light"
             v-bind="$attrs"
             v-on="$listeners"
             @loaded="ready = true; $emit('loaded')"
@@ -16,7 +16,7 @@
                     :field="field"
                     :errors="errors"/>
             </template>
-        </vue-form>
+        </enso-form>
     </modal>
 
 </template>
@@ -25,7 +25,7 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
-import VueForm from '../vueforms/VueForm.vue';
+import EnsoForm from '../vueforms/EnsoForm.vue';
 import Modal from '../bulma/Modal.vue';
 
 library.add(faLocationArrow);
@@ -33,7 +33,7 @@ library.add(faLocationArrow);
 export default {
     name: 'AddressForm',
 
-    components: { Modal, VueForm },
+    components: { Modal, EnsoForm },
 
     data: () => ({
         ready: false,
@@ -51,6 +51,11 @@ export default {
         field(field) {
             return this.ready
                 ? this.$refs.form.field(field)
+                : null;
+        },
+        param(param) {
+            return this.ready
+                ? this.$refs.form.param(param)
                 : null;
         },
     },

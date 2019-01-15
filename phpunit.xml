@@ -31,6 +31,9 @@
         <testsuite name="core">
             <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
         </testsuite>
+        <testsuite name="dataimport">
+            <directory suffix="Test.php">./vendor/laravel-enso/dataimport/tests/features</directory>
+        </testsuite>
         <testsuite name="discussions">
             <directory suffix="Test.php">./vendor/laravel-enso/discussions/tests/features</directory>
         </testsuite>
@@ -73,9 +76,6 @@
         <testsuite name="searchable">
             <directory suffix="Test.php">./vendor/laravel-enso/searchable/tests/features</directory>
         </testsuite>
-        <testsuite name="structuremanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/structuremanager/tests/features</directory>
-        </testsuite>
         <testsuite name="trackwho">
             <directory suffix="Test.php">./vendor/laravel-enso/trackwho/tests/features</directory>
         </testsuite>
@@ -85,8 +85,8 @@
         <testsuite name="versioning">
             <directory suffix="Test.php">./vendor/laravel-enso/versioning/tests/features</directory>
         </testsuite>
-        <testsuite name="dataimport">
-            <directory suffix="Test.php">./vendor/laravel-enso/dataimport/tests/features</directory>
+        <testsuite name="structuremanager">
+            <directory suffix="Test.php">./vendor/laravel-enso/structuremanager/tests/features</directory>
         </testsuite>
     </testsuites>
     <filter>

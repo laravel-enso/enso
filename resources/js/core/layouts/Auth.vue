@@ -12,7 +12,7 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import Router from '../Router.vue';
 
 export default {
@@ -28,6 +28,7 @@ export default {
 
     computed: {
         ...mapState(['meta']),
+        ...mapGetters('localisation', ['documentTitle']),
     },
 
     created() {
@@ -39,18 +40,18 @@ export default {
         ...mapMutations('localisation', ['setI18n']),
         ...mapMutations('preferences', ['lang']),
         init() {
-            const locale = localStorage.getItem('locale');
-
-            axios.get('/api/meta', { params: { locale } })
-                .then(({ data }) => {
-                    const { meta, i18n, routes } = data;
-                    this.setMeta(meta);
-                    this.setI18n(i18n);
-                    this.setRoutes(routes);
-                    const lang = Object.keys(i18n).shift();
-                    this.lang(lang);
-                    this.ready = true;
-                }).catch(error => this.handleError(error));
+            axios.get('/api/meta', {
+                params: { locale: localStorage.getItem('locale') },
+            }).then(({ data }) => {
+                const { meta, i18n, routes } = data;
+                const lang = Object.keys(i18n).shift();
+                this.lang(lang);
+                this.setI18n(i18n);
+                document.title = this.documentTitle(this.$route.meta.title);
+                this.setMeta(meta);
+                this.setRoutes(routes);
+                this.ready = true;
+            }).catch(error => this.handleError(error));
         },
     },
 };

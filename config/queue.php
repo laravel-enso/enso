@@ -59,7 +59,7 @@ return [
             'driver' => 'redis',
             'connection' => 'queues',
             'queue' => 'default',
-            'retry_after' => 90,
+            'retry_after' => 60 * 30,
             'block_for' => null,
         ],
     ],

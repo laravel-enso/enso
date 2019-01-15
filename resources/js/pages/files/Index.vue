@@ -1,6 +1,6 @@
 <template>
 
-    <tabs alignment="centered"
+    <enso-tabs alignment="centered"
         custom>
         <span slot="label"
             slot-scope="{ tab }">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-    </tabs>
+    </enso-tabs>
 
 </template>
 
@@ -87,7 +87,7 @@ import { mapState, mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Tabs from '../../components/enso/bulma/Tabs.vue';
+import EnsoTabs from '../../components/enso/bulma/EnsoTabs.vue';
 import Tab from '../../components/enso/bulma/Tab.vue';
 import DateFilter from '../../components/enso/bulma/DateFilter.vue';
 import File from '../../components/enso/filemanager/File.vue';
@@ -99,7 +99,7 @@ import Colors from '../../components/enso/charts/colors';
 library.add(faSearch, faSyncAlt);
 
 export default {
-    components: { Tabs, Tab, File, Chart, DateFilter, Uploader },
+    components: { EnsoTabs, Tab, File, Chart, DateFilter, Uploader },
 
     data() {
         return {

@@ -180,7 +180,7 @@ export default {
         }
 
         @media screen and (min-width: 768px) and (max-width: 1023px) {
-            width: 26em;
+            width: 24em;
             left: calc(50% - 13em);
         }
 
