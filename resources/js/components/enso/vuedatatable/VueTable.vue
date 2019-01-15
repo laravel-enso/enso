@@ -338,7 +338,7 @@ export default {
         },
         readRequest(method = null) {
             const params = {
-                columns: this.template.columns,
+                columns: this.requestColumns(),
                 meta: {
                     start: this.start,
                     length: this.length,
@@ -364,6 +364,27 @@ export default {
             return method === 'GET'
                 ? { params }
                 : params;
+        },
+        requestColumns() {
+            return this.template.columns.reduce((columns, column) => {
+                columns.push({
+                    name: column.name,
+                    data: column.data,
+                    meta: {
+                        searchable: column.meta.searchable,
+                        sortable: column.meta.sortable,
+                        sort: column.meta.sort,
+                        total: column.meta.total,
+                        date: column.meta.date,
+                        translatable: column.meta.translatable,
+                        nullLast: column.meta.nullLast,
+                        rogue: column.meta.rogue,
+                        notExportable: column.meta.notExportable,
+                    },
+                    enum: column.enum,
+                });
+                return columns;
+            }, []);
         },
         processMoney(body) {
             this.template.columns
@@ -402,7 +423,7 @@ export default {
         exportRequest() {
             const params = {
                 name: this.id,
-                columns: this.template.columns,
+                columns: this.requestColumns(),
                 meta: {
                     start: 0,
                     length: this.body.filtered,
