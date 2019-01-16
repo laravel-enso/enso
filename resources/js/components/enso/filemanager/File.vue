@@ -26,20 +26,20 @@
         </p>
         <div class="has-text-centered has-margin-top-medium">
             <div class="details">
-                <button class="button is-naked"
+                <a class="button is-naked"
                     v-if="canAccess('core.files.link')"
                     @click.stop="link">
                     <span class="icon">
                         <fa icon="link"/>
                     </span>
-                </button>
-                <button class="button is-naked"
+                </a>
+                <a class="button is-naked"
                     @click.stop="show"
                     v-if="isViewable">
                     <span class="icon">
                         <fa icon="eye"/>
                     </span>
-                </button>
+                </a>
                 <a class="button is-naked"
                     :href="downloadLink">
                     <span class="icon">
@@ -49,11 +49,11 @@
                 <popover placement="top"
                     @confirm="$emit('delete')"
                     v-if="file.isDeletable">
-                    <button class="button is-naked">
+                    <a class="button is-naked">
                         <span class="icon">
                             <fa icon="trash-alt"/>
                         </span>
-                    </button>
+                    </a>
                 </popover>
             </div>
         </div>
