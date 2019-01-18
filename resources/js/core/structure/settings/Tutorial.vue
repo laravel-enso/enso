@@ -35,7 +35,12 @@ export default {
 
     data() {
         return {
-            driver: new Driver(),
+            driver: new Driver({
+                doneBtnText: this.__('Done'),
+                closeBtnText: this.__('Close'),
+                nextBtnText: this.__('Next'),
+                prevBtnText: this.__('Previous'),
+            }),
         };
     },
 

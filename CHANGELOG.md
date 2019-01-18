@@ -1,11 +1,33 @@
 ## Laravel Enso's Changelog
+
+### 2.14.1
+
+#### Bug Fixes
+- fixes header normalization in Data Import
+- fixes the role configurator
+- adds the missing searchOperator from datatable config that was breaking the table search
+- fixes tabs position in formbuilder to properly display select's dropdown
+- updates structure manager's from create / edit stubs for `enso-form`
+- removes a redundant test in Searchable that was causing problems on certain env's
+- prevents form submisison when used in a form for `file.vue`
+
+#### Improvements
+- adds an exception on export when another export is running for the same user / table
+- adds a `compact` prop to `vue-filter`
+- adds translations for the tutorial navigation buttons
+
+#### Note
+The Documentation is up to date now
+
 ### 2.14.0
+
 #### Changes:
 This is one of the biggest releases until now, with changes such as the complete rewrite of the Data Import package, the rewrite and improvement of the DataTable Export functionality, enhancements and new functionality for the VueForm and much more.
 The improvements brought to the DataTable Export and the DataImport now allow the export of practically unlimited records from a datatable, as well as the import of xlsx files limited only by your ability to create them and the limitations of the file format.
 That's not all though, as the new mechanisms also become much much more efficient due to the parallelization of the operations. This is made possible by leveraging Laravel's queueing facilities and impressive load balancing.
 Together with the refreshed web socketed operations' progress reporting we now have hugely powerful, high throughput solutions for I/O operations.
 This is yet another step towards our vision for Enso and rest assured, there is more to come.
+
 ##### Core
 - adds IO structure for monitoring background export/import operations progress in real-time (needs websockets). It will soon be refactored and extracted to its own separate package
 - fixes the global search on medium screen sized devices
@@ -15,10 +37,12 @@ This is yet another step towards our vision for Enso and rest assured, there is 
 - adds a `shortNumber` filter ( `{{ 1000 | shortNumber }} // 1k`)
 - globally adds the `font-awesome-layers` component under the name of `fal`
 - both the `dataimport` and `companies` packages are now required by `core` and are no longer optional
+
 ##### DataExport
 - adds `type`, `entries`, `status` and `created_by` columns to the table
 - uses the `CreatedBy` trait
 - integrates with the new background operations management system (IO) for real time progress in the FE
+
 ##### DataImport
 - completely redesigned the package and import philosophy. Adds support for a virtually infinite number of rows that can imported in the same import with very low memory consumption, by splitting the import file in chunks and processing them in queued jobs
 - adds queue management
@@ -27,10 +51,12 @@ This is yet another step towards our vision for Enso and rest assured, there is 
 - adds `before` and `after` hooks which are available in the importing process
 - integrates with the new background operations management system (IO) for real time progress in the FE
 - comes with a new `import-uploader` component that can be placed anywhere in the applications for local imports
+
 ##### Helpers
 - enhances the `Obj` class. Now it can receive any object or associative array, including Laravel collections, and even Models with loaded relations. 
 - changed the `Obj@get($key)` method to return `null` for an unset `$key`, instead of throwing an exception
 - enhances the Enum by reordering the data source priority. Take a look at `LaravelEnso\Examples\app\Enums\SeniorityEnum` for an example
+
 ##### FormBuilder
 - adds the `tabs` property to the form template root. If provided, it will require a `tab` property for each section, which will represent the tab's label. The sections will be grouped in tabs using their given labels
 - the delete modal has the commit button focused by default
@@ -45,10 +71,12 @@ This is yet another step towards our vision for Enso and rest assured, there is 
         - `param(param)` - returns the specified param from the optional `params` object
         - `routeParam(param)` - returns the route param from the `routeParams` object
         - `fetch()` - form's fetch method for getting the template
+
 ##### VueComponents
 - removes the deprecated `MorpableContainer`
 - adds a new `enso-tabs` component. The old `tabs` component is visually limited to the Bulma available options. `enso-tabs` has less props and displays the custom tabs used in the Files menu, the `accesories` component and in `vue-form` (new!)
 - adds compact mode to `accesories`
+
 ##### VueDatatable
 - adds practically unlimited excel export functionality by greatly improving the table fetcher. The whole process is done in the background and uses a small amount of memory. You should consider using appropriate values for the configuration options `enso.datatable.exports.timeout` and for the `queues.connections.yourConnection.retry_after`
 - improves the builder logic and reusability
@@ -58,6 +86,7 @@ This is yet another step towards our vision for Enso and rest assured, there is 
 - changes the way actions are processed. Now, in the `CustomAction@process` class / method only one `$row` at a time will be available
 - adds options for customizing the export & notification queues
 - integrates with the new background operations management system (IO) for real time progress in the FE
+
 #### Upgrade instructions - estimated time per project ~ 10-15min
 - update in `composer.json`: "laravel-enso/core": "3.4.*"
 - from `composer.json`, remove the packages:

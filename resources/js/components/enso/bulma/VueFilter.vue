@@ -1,6 +1,6 @@
 <template>
 
-    <div class="vue-filter">
+    <div :class="['vue-filter', {'is-compact': compact}]">
         <div class="has-text-centered">
             <strong>{{ title }}</strong>
             <span class="icon lock has-text-muted"
@@ -58,6 +58,10 @@ export default {
     name: 'VueFilter',
 
     props: {
+        compact: {
+            type: Boolean,
+            default: false,
+        },
         hideOff: {
             type: Boolean,
             default: false,
@@ -115,6 +119,20 @@ export default {
         padding: 0.5em;
         position: relative;
 
+        &.is-compact {
+            padding: 0.2em;
+
+            .filter-tabs {
+                padding-top: 0;
+
+                li {
+                    a {
+                        padding: .12rem .12rem;
+                    }
+                }
+            }
+        }
+
         .has-text-centered {
 
             .lock {
@@ -126,8 +144,11 @@ export default {
         .filter-tabs {
             padding-top: 0.5em;
 
-            li > a {
-                transition: background 0.4s;
+            li {
+                font-size: .9rem;
+                a {
+                    transition: background 0.4s;
+                }
             }
 
             .filter-label {

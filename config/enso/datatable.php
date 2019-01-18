@@ -153,7 +153,7 @@ return [
 
     'export' => [
         'path' => 'exports',
-        'timeout' => 500,
+        'timeout' => 60 * 10,
         'notifications' => ['broadcast', 'database'],
         'chunk' => 2000,
     ],
@@ -227,4 +227,17 @@ return [
     */
 
     'dataRouteSuffix' => 'tableData',
+
+    /*
+    |--------------------------------------------------------------------------
+    | SQL comparison operator
+    |--------------------------------------------------------------------------
+    |
+    | The comparison operator will be the default used for every table. You
+    | will still have the option of customizing the operator for certain
+    | tables by using the same attribute in the table's json template.
+    | Possible values for comparison operator: LIKE, ILIKE
+    */
+
+    'comparisonOperator' => 'LIKE',
 ];
