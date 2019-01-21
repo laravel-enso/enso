@@ -30,11 +30,14 @@
                             @keydown.enter.prevent="hit()"
                             v-if="dropdown">
                     </div>
-                    <span v-if="!dropdown && !(multiple && hasSelection)">
-                        {{ hasSelection
-                            ? selected
-                            : (optionList.length > 0 ? i18n(placeholder) : i18n(labels.noOptions))
-                        }}
+                    <span v-if="!dropdown && !multiple && hasSelection">
+                        {{ selected }}
+                    </span>
+                    <span v-else-if="!dropdown && !multiple && hasOptions">
+                        {{ i18n(placeholder) }}
+                    </span>
+                    <span v-else-if="!dropdown && !hasOptions">
+                        {{ i18n(labels.noOptions) }}
                     </span>
                     <span class="is-loading"
                         v-if="loading"/>
@@ -224,8 +227,11 @@ export default {
             return (this.multiple && this.value.length !== 0)
                 || (!this.multiple && this.value !== null);
         },
+        hasOptions() {
+            return this.optionList.length > 0;
+        },
         selected() {
-            if (this.optionList.length === 0) {
+            if (!this.hasOptions) {
                 return null;
             }
 
@@ -331,7 +337,12 @@ export default {
                     .filter(val => val === option[this.trackBy]).length > 0).length > 0;
         },
         showDropdown() {
-            if (this.optionList.length === 0 || this.readonly || this.disabled) {
+            if (!this.hasOptions) {
+                this.fetch();
+                return;
+            }
+
+            if (this.readonly || this.disabled) {
                 return;
             }
 
@@ -487,6 +498,7 @@ export default {
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     text-align: left;
+                    cursor: pointer;
 
                     .field.is-grouped.is-grouped-multiline {
                         .select-input {

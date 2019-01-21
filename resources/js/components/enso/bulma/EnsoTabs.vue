@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             tabs: [],
-            active: 0,
+            active: null,
             disabled: [],
         };
     },

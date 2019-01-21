@@ -123,9 +123,6 @@ export default {
     },
 
     watch: {
-        count() {
-            this.$emit('update');
-        },
         query() {
             this.internalQuery = this.query;
         },
@@ -179,8 +176,8 @@ export default {
             ).then(({ data }) => {
                 this.comments.unshift(data.comment);
                 this.comment = null;
-                this.loading = false;
                 this.$emit('update');
+                this.loading = false;
             }).catch(error => this.handleError(error));
         },
         postParams() {
@@ -217,8 +214,8 @@ export default {
             axios.delete(route('core.comments.destroy', this.comments[index].id))
                 .then(() => {
                     this.comments.splice(index, 1);
-                    this.loading = false;
                     this.$emit('update');
+                    this.loading = false;
                 }).catch(error => this.handleError(error));
         },
     },

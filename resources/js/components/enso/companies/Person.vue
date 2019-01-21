@@ -1,13 +1,13 @@
 <template>
     <div class="box has-background-light raises-on-hover">
         <p class="title is-5">
-            {{ contact.name }}
+            {{ person.name }}
         </p>
         <p class="subtitle is-6">
-            {{ contact.position }}
+            {{ person.position }}
         </p>
         <p class="has-text-weight-light is-7">
-            {{ contact.email }} {{ contact.phone }}
+            {{ person.email }} {{ person.phone }}
         </p>
         <div class="has-text-centered has-margin-top-medium">
             <div class="details">
@@ -37,7 +37,7 @@ import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt }
     from '@fortawesome/free-solid-svg-icons';
-import ContactForm from './ContactForm.vue';
+import PersonForm from './PersonForm.vue';
 import Popover from '../bulma/Popover.vue';
 
 library.add([
@@ -45,14 +45,14 @@ library.add([
 ]);
 
 export default {
-    name: 'Contact',
+    name: 'Person',
 
     directives: { tooltip: VTooltip },
 
-    components: { ContactForm, Popover },
+    components: { PersonForm, Popover },
 
     props: {
-        contact: {
+        person: {
             type: Object,
             required: true,
         },

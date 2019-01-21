@@ -8,7 +8,7 @@
                     placeholder="Import Type"
                     @input="getTemplate"/>
             </div>
-            <div class="column is-hidden-touch is-6 has-text-centered"
+            <div class="column is-6 is-hidden-touch has-text-centered"
                 v-if="importType">
                 <file-uploader class="animated fadeIn"
                     :url="templateLink"
@@ -53,7 +53,7 @@
             <div class="column has-text-centered-touch has-text-right-desktop"
                 v-if="importType">
                 <import-uploader :path="importLink"
-                    :params="{ type: importType, test: 1 }"
+                    :params="{ type: importType }"
                     @upload-successful="$refs.imports.fetch()"/>
             </div>
         </div>

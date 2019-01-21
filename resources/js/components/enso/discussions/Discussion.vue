@@ -49,7 +49,7 @@
                 <popover placement="bottom-end"
                     @confirm="$emit('delete')"
                     @show="popover = true"
-                    v-if="!discussion.replies">
+                    v-if="!discussion.replies.length">
                     <button class="button is-naked is-small"
                         @click="popover = true">
                         <span class="icon is-small has-text-grey">

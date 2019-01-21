@@ -6,12 +6,13 @@
         <form class="is-marginless"
             @submit.prevent="$refs.actions.submit()">
             <enso-tabs class="form-tabs"
+                @selected="$emit('tab-selected', $event)"
                 v-if="tabbed">
                 <span slot="label"
                     slot-scope="{ tab }"
                     :class="{'badge is-badge-danger is-badge-small': errorCount(tab)}"
                     :data-badge="errorCount(tab)">
-                    {{ tab }}
+                    {{ i18n(tab) }}
                 </span>
                 <tab :id="i18n(tab)"
                     :key="tab"

@@ -139,9 +139,6 @@ export default {
     },
 
     watch: {
-        count() {
-            this.$emit('update');
-        },
         query() {
             this.internalQuery = this.query;
         },
@@ -158,8 +155,8 @@ export default {
             axios.get(route('core.addresses.index'), { params: this.params })
                 .then(({ data }) => {
                     this.addresses = data;
-                    this.loading = false;
                     this.$emit('update');
+                    this.loading = false;
                 }).catch(error => this.handleError(error));
         },
         edit(address) {
@@ -181,6 +178,7 @@ export default {
             axios.delete(route('core.addresses.destroy', address.id))
                 .then(() => {
                     this.addresses.splice(index, 1);
+                    this.$emit('update');
                     this.loading = false;
                 }).catch(error => this.handleError(error));
         },

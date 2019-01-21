@@ -5,8 +5,8 @@
         scrollable
         search
         :title="displayTitle"
-        :overlay="$refs.contacts && $refs.contacts.loading"
-        @refresh="$refs.contacts.get()"
+        :overlay="$refs.people && $refs.people.loading"
+        @refresh="$refs.people.get()"
         :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
@@ -16,16 +16,16 @@
         :badge="count"
         :controls="1">
         <card-control slot="control-1"
-            @click="$refs.contacts.create()">
+            @click="$refs.people.create()">
             <span class="icon is-small">
                 <fa icon="plus-square"/>
             </span>
         </card-control>
         <div class="wrapper has-padding-medium">
-            <contacts :id="id"
+            <people :id="id"
                 :query="query"
-                @update="count = $refs.contacts.count; $refs.card.resize()"
-                ref="contacts"/>
+                @update="count = $refs.people.count; $refs.card.resize()"
+                ref="people"/>
         </div>
     </card>
 
@@ -38,14 +38,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAddressCard, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../bulma/Card.vue';
 import CardControl from '../bulma/CardControl.vue';
-import Contacts from './Contacts.vue';
+import People from './People.vue';
 
 library.add(faAddressCard, faPlusSquare);
 
 export default {
-    name: 'ContactsCard',
+    name: 'PeopleCard',
 
-    components: { Card, CardControl, Contacts },
+    components: { Card, CardControl, People },
 
     props: {
         id: {
@@ -73,7 +73,7 @@ export default {
         ...mapState('layout', ['isMobile']),
         displayTitle() {
             return !this.isMobile
-                ? this.title || this.__('Contacts')
+                ? this.title || this.__('People')
                 : null;
         },
         isEmpty() {

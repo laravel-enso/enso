@@ -36,11 +36,18 @@
                     </a>
                 </span>
             </enso-form>
-            <div v-if="ready">
-                <accessories type="LaravelEnso\People\app\Models\Person"
-                    :id="$refs.form.routeParam('person')"
-                    addresses/>
-            </div>
+            <accessories v-if="ready">
+                <template slot-scope="{ count }">
+                    <tab keep-alive
+                        id="Addresses">
+                        <addresses controls
+                            type="LaravelEnso\People\app\Models\Person"
+                            :id="$refs.form.routeParam('person')"
+                            @update="$set(count, 'addresses', $refs.addresses.count)"
+                            ref="addresses"/>
+                    </tab>
+                </template>
+            </accessories>
         </div>
     </div>
 
@@ -52,11 +59,15 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import EnsoForm from '../../../components/enso/vueforms/EnsoForm.vue';
 import Accessories from '../../../components/enso/bulma/Accessories.vue';
+import Tab from '../../../components/enso/bulma/Tab.vue';
+import Addresses from '../../../components/enso/addresses/Addresses.vue';
 
 library.add(faUser);
 
 export default {
-    components: { EnsoForm, Accessories },
+    components: {
+        EnsoForm, Accessories, Tab, Addresses,
+    },
 
     data: () => ({
         ready: false,

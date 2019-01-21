@@ -48,7 +48,7 @@
                     </span>
                 </p>
             </div>
-            <div class="box raises-on-hover"
+            <div class="box has-background-light raises-on-hover"
                 v-for="(topic, index) in filteredDiscussions"
                 :key="index">
                 <discussion-preview class="is-clickable"
@@ -114,12 +114,6 @@ export default {
         },
     },
 
-    watch: {
-        count() {
-            this.$emit('update');
-        },
-    },
-
     created() {
         this.get();
     },
@@ -135,6 +129,7 @@ export default {
                 },
             }).then(({ data }) => {
                 this.discussions = data;
+                this.$emit('update');
                 this.loading = false;
             }).catch(error => this.handleError(error));
         },
@@ -143,6 +138,7 @@ export default {
                 .then(({ data }) => {
                     this.discussion = data;
                     this.discussions.unshift(this.discussion);
+                    this.$emit('update');
                     this.inputor = false;
                 }).catch(error => this.handleError(error));
         },
@@ -159,6 +155,7 @@ export default {
                 .then(() => {
                     const index = this.discussions.findIndex(({ id }) => id === this.discussion.id);
                     this.discussions.splice(index, 1);
+                    this.$emit('update');
                     this.discussion = null;
                     this.get();
                 }).catch(error => this.handleError(error));

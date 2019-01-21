@@ -5,7 +5,7 @@
             <button class="button"
                     @click="create()">
                 <span v-if="!isMobile">
-                    {{ __('New Contact') }}
+                    {{ __('Associate Person') }}
                 </span>
                 <span class="icon">
                     <fa icon="plus"/>
@@ -38,34 +38,35 @@
         <div class="columns is-multiline"
              :class="{'has-margin-top-large': controls}">
             <div class="column is-half-tablet is-one-third-widescreen"
-                 v-for="(contact, index) in filteredContacts"
+                 v-for="(person, index) in filteredPeople"
                  :key="index">
-                <contact :contact="contact"
+                <person :person="person"
                      :id="id"
                      :index="index"
-                     @edit="edit(contact)"
-                     @delete="destroy(contact, index)"/>
+                     @edit="edit(person)"
+                     @delete="destroy(person, index)"/>
             </div>
-            <contact-form :path="path"
+            <person-form :path="path"
                 @close="path = null"
                 @destroy="fetch()"
+                @edit-person="navigateToPerson"
                 @submit="fetch(); path = null"
-                @loaded="$refs.form.field(`${routeKey}_id`).value = id"
+                @loaded="$refs.form.field('company_id').value = id"
                 ref="form"
                 v-if="path"/>
         </div>
-        <modal :show="!!deletedContact"
-            @close="deletedContact = null">
+        <modal :show="!!deletedPerson"
+            @close="deletedPerson = null">
             <div class="box">
                 <h5 class="subtitle is-5">
-                    {{ __("Do you want to delete the contact's associated person?") }}
+                    {{ __("Do you want to delete the person's associated person?") }}
                 </h5>
                 <hr>
                 <div class="level">
                     <div class="level-left">
                         <div class="level-item">
                             <button class="button is-outlined"
-                                @click="deletedContact = null">
+                                @click="deletedPerson = null">
                                 {{ __('Cancel') }}
                             </button>
                         </div>
@@ -90,16 +91,16 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mapState } from 'vuex';
-import Contact from './Contact.vue';
-import ContactForm from './ContactForm.vue';
+import Person from './Person.vue';
+import PersonForm from './PersonForm.vue';
 import Modal from '../bulma/Modal.vue';
 
 library.add(faPlus, faSync, faSearch);
 
 export default {
-    name: 'Contacts',
+    name: 'People',
 
-    components: { Contact, ContactForm, Modal },
+    components: { Person, PersonForm, Modal },
 
     props: {
         id: {
@@ -114,51 +115,35 @@ export default {
             type: Boolean,
             default: false,
         },
-        routeKey: {
-            type: String,
-            required: true,
-        },
-        routePrefix: {
-            type: String,
-            required: true,
-        },
     },
 
     data() {
         return {
             loading: false,
-            contacts: [],
+            people: [],
             path: null,
             internalQuery: '',
-            deletedContact: null,
+            deletedPerson: null,
         };
     },
 
     computed: {
         ...mapState('layout', ['isMobile']),
-        filteredContacts() {
+        filteredPeople() {
             const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.contacts.filter(({ name, position }) =>
+                ? this.people.filter(({ name, position }) =>
                     name.toLowerCase().indexOf(query) > -1
                         || position.toLowerCase().indexOf(query) > -1)
-                : this.contacts;
+                : this.people;
         },
         count() {
-            return this.filteredContacts.length;
-        },
-        params() {
-            return {
-                [this.routeKey]: this.id,
-            };
+            return this.filteredPeople.length;
         },
     },
 
     watch: {
-        count() {
-            this.$emit('update');
-        },
         query() {
             this.internalQuery = this.query;
         },
@@ -172,40 +157,56 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(route(this.route('index'), this.params))
-                .then(({ data }) => {
-                    this.contacts = data;
-                    this.loading = false;
-                    this.$emit('update');
-                }).catch(error => this.handleError(error));
+            axios.get(route(
+                'administration.companies.people.index', { company: this.id },
+            )).then(({ data }) => {
+                this.people = data;
+                this.$emit('update');
+                this.loading = false;
+            }).catch(error => this.handleError(error));
         },
         create() {
-            this.path = route(this.route('create'), this.params);
+            this.path = route(
+                'administration.companies.people.create', { company: this.id }
+            );
         },
-        edit(contact) {
-            this.path = route(this.route('edit'), { contact: contact.id });
+        edit(person) {
+            this.path = route(
+                'administration.companies.people.edit', { person: person.id }
+            );
         },
-        destroy(contact, index) {
+        destroy(person, index) {
             this.loading = true;
 
-            axios.delete(route(this.route('destroy'), { contact: contact.id }))
-                .then(() => {
-                    this.deletedContact = this.contacts.splice(index, 1).pop();
-                    this.loading = false;
-                }).catch(error => this.handleError(error));
+            axios.delete(route(
+                'administration.companies.people.destroy', { person: person.id }
+            )).then(() => {
+                this.deletedPerson = this.people.splice(index, 1).pop();
+                this.$emit('update');
+                this.loading = false;
+            }).catch(error => this.handleError(error));
         },
         destroyPerson() {
             this.loading = true;
 
-            axios.delete(route('administration.people.destroy', { person: this.deletedContact.person_id }))
-                .then(() => {
-                    this.deletedContact = null;
-                    this.loading = false;
-                }).catch(error => this.handleError(error));
+            axios.delete(
+                route('administration.people.destroy',
+                { person: this.deletedPerson.id })
+            ).then(() => {
+                this.deletedPerson = null;
+                this.loading = false;
+            }).catch(error => this.handleError(error));
         },
-        route(suffix) {
-            return `${this.routePrefix}.${suffix}`;
-        },
+        navigateToPerson($event) {
+            this.path = null;
+
+            this.$nextTick(() => {
+                this.$router.push({
+                    name: 'administration.people.edit',
+                    params: { person: $event },
+                });
+            });
+        }
     },
 };
 

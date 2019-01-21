@@ -65,7 +65,7 @@ export default {
     created() {
         this.$parent.tabs.push(this.id);
 
-        if (this.default) {
+        if (this.default || this.$parent.active === null) {
             this.$parent.activate(this.index);
         }
 

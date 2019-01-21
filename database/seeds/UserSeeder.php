@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use LaravelEnso\Core\app\Models\User;
 use LaravelEnso\People\app\Enums\Titles;
-use LaravelEnso\People\app\Enums\Genders;
 use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\Core\app\Models\UserGroup;
 use LaravelEnso\RoleManager\app\Models\Role;
@@ -31,7 +30,6 @@ class UserSeeder extends Seeder
             'name' => 'Admin Root',
             'appellative' => 'Admin',
             'email' => 'admin@laravel-enso.com',
-            'gender' => Genders::Male,
             'birthday' => '1980-01-19',
             'phone' => '+40793232522',
         ]);

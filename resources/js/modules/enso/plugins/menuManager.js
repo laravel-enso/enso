@@ -26,7 +26,7 @@ const updateActiveMenu = (menus, commit) => {
 
     if (menu) {
         commit('expand', menu);
-        updateActiveMenu(menu.children);
+        updateActiveMenu(menu.children, commit);
     }
 };
 

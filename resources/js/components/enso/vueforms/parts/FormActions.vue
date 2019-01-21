@@ -85,7 +85,7 @@
             :show="modal"
             @close="modal = false"
             @commit="destroy()"
-            v-if="data.actions.destroy"/>
+            v-if="modal && data.actions.destroy"/>
     </div>
 
 </template>

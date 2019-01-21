@@ -117,9 +117,6 @@ export default {
     },
 
     watch: {
-        count() {
-            this.$emit('update');
-        },
         query() {
             this.internalQuery = this.query;
         },

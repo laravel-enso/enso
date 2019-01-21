@@ -1,5 +1,96 @@
 ## Laravel Enso's Changelog
 
+### 2.15.0
+
+#### Changes
+This version aimed to allow direct association of users to companies via persons.
+This will provide a good structure for creating users that will belong to different organisations (clients for instance)
+and the related restrictions when accessing application's resources.
+
+The old contacts structure is deprecated. The associated people are now called `company people`.
+
+An upgrade command is provided that takes care of all the database structural updates and transforms the old
+contacts / mandataries to company people.
+
+##### Addresses, Comments, Discussions, Documents
+- refactors the count update tracking
+
+##### Companies
+- removes deprecated command
+- removes the deprecated contact request validation (including customization)
+- removes `mandatary_position` from the table / form
+- reorganizes the company form
+- restricts the `mandatary` to the list of associated people
+- creates the `adminstration.companies.people` structure
+- limits the company selection when using the `CompanySelectController` for users that do not belong to `AdminGroup`
+- reuses the `PersonSelectController` for company people
+- updates the `people()` relation in `Company.php`
+- removes the deprecated `contactFormTemplate` from `companies.php` config file
+- updates the `CompanyFactory`
+- removes the deprecated `ContactFactory`
+- replaces the deprecated `/resources/js/components/enso/contacts/` components with `/resources/js/components/enso/companies/`
+- updates the implementation of `accessories` in the `Edit.vue` page
+- updates the routes
+- replaces `ContactTest` with `CompanyPeopleTest`
+
+##### Core
+- updates the `Upgrade` command to take care of 3.3.* => ^3.4 upgrades
+- refactors the role change authorization in `UserController`
+- adds the `AdminGroupId` constant to the `UserGroup` model
+- adds the `belongsToAdminGroup()` helper to the `User` model
+- refines the user delete error messages
+- updates the `UserSeeder`
+- fixes a bug when having more than 2 level nested menus
+
+##### Discussions
+- fixes discussion delete
+
+##### DataImport
+- fixes cell sanitization
+- fixes header normalization
+- fixes tests
+
+##### FormBuilder
+- adds selected tab name to `_params` on submit
+- fixes modal visibility in an edge case
+
+##### People
+- adds `PersonPolicy`
+- adds `appellative` & `position` to `PersonSelectControllers`'s query attributes
+- drops the `gender` column and adds a `gender()` helper that determines the gender by the `title` value; Adds a `isMandatary()` helper
+- adds a `company()` relation to the `Person` model
+- makes the form tabbed; adds `company_id` and `position` to the table / form
+- updates the `PersonFactory`
+- updates the implementation of `accessories` in the `Edit.vue` page
+- updates the tests
+
+##### Select
+- fetches the option list when clicking on the `No options` label
+- adds `cursor:pointer` to the `.select-value` class
+- makes the request object (optional) available for the select controllers
+
+##### StructureManager
+- updates the stubs for select controllers and form pages
+
+##### TrackWho
+- adds return type to relations. This will help when requesting the relations in contracts
+
+##### VueComponents
+- refactors `accessories`; now it can use any kind of accessory
+- updates `tabs` to emit the `selected` event when mounted
+
+#### Upgrade instructions - estimated time per project ~ 5min
+- update in `composer.json`: "laravel-enso/core": "3.5.*"
+- run `composer update`
+- run `php artisan migrate`
+- run `php artisan enso:upgrade`
+- update `CompanyFactory` and `PersonFactory` and `UserSeeder` with the ones from the packages
+- remove `ContactFactory`
+- remove `/resources/js/components/enso/contacts/`
+
+Note:
+If you customized the company / person form / table / pages you will have to manually update them accordingly...
+
 ### 2.14.1
 
 #### Bug Fixes
@@ -21,7 +112,7 @@ The Documentation is up to date now
 
 ### 2.14.0
 
-#### Changes:
+#### Changes
 This is one of the biggest releases until now, with changes such as the complete rewrite of the Data Import package, the rewrite and improvement of the DataTable Export functionality, enhancements and new functionality for the VueForm and much more.
 The improvements brought to the DataTable Export and the DataImport now allow the export of practically unlimited records from a datatable, as well as the import of xlsx files limited only by your ability to create them and the limitations of the file format.
 That's not all though, as the new mechanisms also become much much more efficient due to the parallelization of the operations. This is made possible by leveraging Laravel's queueing facilities and impressive load balancing.

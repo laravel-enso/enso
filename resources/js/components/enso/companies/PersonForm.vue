@@ -1,6 +1,6 @@
 <template>
     <modal show
-        container="contact-form"
+        container="person-form"
         v-on="$listeners">
         <vue-form class="box has-background-light"
             v-bind="$attrs"
@@ -8,12 +8,7 @@
             ref="form">
             <a slot="actions"
                 class="button is-warning"
-                @click="
-                    show = false;
-                    $router.push({
-                        name: 'administration.people.edit',
-                        params: { person: field('person_id').value }
-                    })">
+                @click="editPerson">
                 <span class="is-hidden-mobile">
                     {{ __('Edit Person') }}
                 </span>
@@ -32,11 +27,18 @@ import Modal from '../bulma/Modal.vue';
 import VueForm from '../vueforms/VueForm.vue';
 
 export default {
-    name: 'ContactForm',
+    name: 'PersonForm',
 
     components: { Modal, VueForm },
 
     methods: {
+        editPerson() {
+            if (!this.field('id').value) {
+                return;
+            }
+
+            this.$emit('edit-person', this.field('id').value);
+        },
         field(field) {
             return this.$refs.form.data
                 ? this.$refs.form.field(field)
@@ -49,7 +51,7 @@ export default {
 
 <style lang="scss">
 
-    .contact-form {
+    .person-form {
         .modal-content {
             overflow: unset;
         }
