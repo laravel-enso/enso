@@ -1657,16 +1657,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.5.1",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "0029473699667962338dd72cc0a510bca2b60381"
+                "reference": "d7013dc26e62b2e5de97027ef1587908fa7503cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/0029473699667962338dd72cc0a510bca2b60381",
-                "reference": "0029473699667962338dd72cc0a510bca2b60381",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/d7013dc26e62b2e5de97027ef1587908fa7503cf",
+                "reference": "d7013dc26e62b2e5de97027ef1587908fa7503cf",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-01-21T16:34:05+00:00"
+            "time": "2019-01-21T17:49:12+00:00"
         },
         {
             "name": "laravel-enso/dataexport",
@@ -2663,16 +2663,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/People.git",
-                "reference": "f8e0504579a35f2a876efc6047143b0ef53b10e4"
+                "reference": "7903107a8bcb683b35ec877e020dde4fe57ca00f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/People/zipball/f8e0504579a35f2a876efc6047143b0ef53b10e4",
-                "reference": "f8e0504579a35f2a876efc6047143b0ef53b10e4",
+                "url": "https://api.github.com/repos/laravel-enso/People/zipball/7903107a8bcb683b35ec877e020dde4fe57ca00f",
+                "reference": "7903107a8bcb683b35ec877e020dde4fe57ca00f",
                 "shasum": ""
             },
             "require": {
@@ -2720,7 +2720,7 @@
                 "people",
                 "person-management"
             ],
-            "time": "2019-01-21T17:23:29+00:00"
+            "time": "2019-01-21T17:49:39+00:00"
         },
         {
             "name": "laravel-enso/permissionmanager",

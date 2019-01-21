@@ -137,7 +137,7 @@
                         <span class="has-margin-left-medium">
                             {{
                                 profile.person.gender
-                                    ? enums.genders[profile.person.gender]
+                                    ? enums.genders._get(profile.person.gender)
                                     : null
                             }}
                         </span>
