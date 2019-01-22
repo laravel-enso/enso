@@ -87,6 +87,7 @@ contacts / mandataries to company people.
 - update `CompanyFactory` and `PersonFactory` and `UserSeeder` with the ones from the packages
 - remove `ContactFactory`
 - remove `/resources/js/components/enso/contacts/`
+- remove `Contact` from `config/enso/searchable.php`
 
 Note:
 If you customized the company / person form / table / pages you will have to manually update them accordingly...
