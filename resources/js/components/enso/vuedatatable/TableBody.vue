@@ -1,8 +1,7 @@
 <template>
-
 <tbody>
     <tr v-for="(row, index) in body.data"
-        :key="index"
+        :key="row.dtRowId"
         :class="highlighted.includes(index) ? template.highlight : null">
         <td :class="template.align"
             v-if="template.selectable && !isChild(row)">
@@ -68,9 +67,9 @@
             :class="template.align"
             v-if="template.actions && !isChild(row)">
             <span class="table-action-buttons">
-                <a v-for="(button, index) in template.buttons.row"
+                <a v-for="button in template.buttons.row"
                     v-tooltip="i18n(button.tooltip)"
-                    :key="index"
+                    :key="button.icon"
                     class="button is-small is-table-button has-margin-left-small"
                     :class="button.class"
                     :href="button.action === 'href' ? path(button, row.dtRowId) : null"
@@ -89,8 +88,8 @@
             v-if="isChild(row)">
             <ul>
                 <li class="child-row"
-                    v-for="(item, index) in row"
-                    :key="index"
+                    v-for="item in row"
+                    :key="item.column.label"
                     v-if="!item.column.meta.rogue">
                     <b>{{ i18n(item.column.label) }}</b>:
                     <table-cell :i18n="i18n"
@@ -115,14 +114,14 @@
         @close="closeModal()"
         @commit="doAction(button, row)"/>
 </tbody>
-
 </template>
 
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faMinusSquare, faPlusSquare, faEye, faPencilAlt, faTrashAlt, faCloudDownloadAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import TableCell from './TableCell.vue';
 import Modal from './Modal.vue';
@@ -169,13 +168,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            modal: false,
-            row: null,
-            button: null,
-        };
-    },
+    data: () => ({
+        modal: false,
+        row: null,
+        button: null,
+    }),
 
     computed: {
         hiddenColumns() {

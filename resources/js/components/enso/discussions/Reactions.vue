@@ -1,5 +1,4 @@
 <template>
-
     <div class="is-flex">
         <span class="clap is-clickable has-margin-right-large"
             @click="react"/>
@@ -11,7 +10,6 @@
                 :src="avatar(reaction.owner.avatarId)">
         </figure>
     </div>
-
 </template>
 
 <script>
@@ -54,6 +52,7 @@ export default {
         },
     },
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -62,4 +61,3 @@ export default {
         font-size: 24px;
     }
 </style>
-

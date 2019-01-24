@@ -14,17 +14,15 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'ProgressBar',
 
-    data() {
-        return {
-            show: false,
-            startingProgress: 10,
-            latency: 200,
-            sent: 0,
-            received: 0,
-            timer: null,
-            routingTimer: false,
-        };
-    },
+    data: () => ({
+        show: false,
+        startingProgress: 10,
+        latency: 200,
+        sent: 0,
+        received: 0,
+        timer: null,
+        routingTimer: false,
+    }),
 
     computed: {
         ...mapGetters(['requests']),
@@ -63,9 +61,9 @@ export default {
         update() {
             if (this.shouldStop) {
                 clearTimeout(this.timer);
-
-                this.timer = setTimeout(() =>
-                    this.reset(), this.latency * 3);
+                this.timer = setTimeout(
+                    () => this.reset(), this.latency * 3,
+                );
             }
         },
         startRouting() {
@@ -76,8 +74,9 @@ export default {
         stopRouting() {
             clearTimeout(this.routingTimer);
 
-            this.routingTimer = setTimeout(() =>
-                this.incResponses(), this.latency * 4);
+            this.routingTimer = setTimeout(
+                () => this.incResponses(), this.latency * 4,
+            );
         },
         incRequests(inc = 1) {
             if (!this.show) {

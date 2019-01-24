@@ -1,5 +1,4 @@
 <template>
-
     <div class="navbar-item search">
         <typeahead is-rounded
             source="core.search.index"
@@ -50,7 +49,6 @@
             </template>
         </typeahead>
     </div>
-
 </template>
 
 <script>
@@ -73,8 +71,7 @@ export default {
 
     methods: {
         route(search, { routes }) {
-            return routes.find(route =>
-                route.indexOf(search) >= 0);
+            return routes.find(route => route.indexOf(search) >= 0);
         },
         redirect(item, to = null) {
             if (!to && !item.routes.length) {
@@ -117,8 +114,7 @@ export default {
         },
         filtered(items) {
             return this.selectedTags.length
-                ? items.filter(item =>
-                    this.selectedTags.includes(item.group))
+                ? items.filter(item => this.selectedTags.includes(item.group))
                 : items;
         },
         toggle(tag) {

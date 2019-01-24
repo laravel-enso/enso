@@ -1,5 +1,4 @@
 <template>
-
     <modal v-on="$listeners"
         :show="show">
         <div class="box">
@@ -24,7 +23,6 @@
             </div>
         </div>
     </modal>
-
 </template>
 
 <script>

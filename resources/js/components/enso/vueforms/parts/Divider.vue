@@ -1,8 +1,6 @@
 <template>
-
     <div :class="['is-divider', placement]"
         :data-title="title"/>
-
 </template>
 
 

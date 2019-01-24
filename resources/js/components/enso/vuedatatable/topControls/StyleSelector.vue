@@ -1,5 +1,4 @@
 <template>
-
     <dropdown class="is-right"
          hides-manually>
         <span slot="label"
@@ -14,7 +13,6 @@
             {{ key }}
         </a>
     </dropdown>
-
 </template>
 
 <script>

@@ -1,10 +1,10 @@
 <template>
     <info-box :class="[
-        'has-background-light raises-on-hover',
-        { 'is-danger': team.edit && !team.id },
-        { 'is-warning': team.edit && team.id },
-        { 'is-info': !team.edit && team.users.length === 0 },
-    ]">
+            'has-background-light raises-on-hover',
+            { 'is-danger': team.edit && !team.id },
+            { 'is-warning': team.edit && team.id },
+            { 'is-info': !team.edit && team.users.length === 0 },
+        ]">
         <info-item>
             <label slot="left"
                 class="label">
@@ -12,7 +12,9 @@
                     v-focus
                     v-model="team.name"
                     v-if="team.edit">
-                <span v-else>{{ team.name }}</span>
+                <span v-else>
+                    {{ team.name }}
+                </span>
             </label>
             <div slot="right"
                 class="has-text-right">
@@ -80,15 +82,18 @@
 </template>
 
 <script>
+
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBan, faPencilAlt, faTrash, faCheck }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faBan, faPencilAlt, faTrash, faCheck,
+} from '@fortawesome/free-solid-svg-icons';
 import { VTooltip } from 'v-tooltip';
 import InfoBox from '../bulma/InfoBox.vue';
 import InfoItem from '../bulma/InfoItem.vue';
 import VueSelect from '../select/VueSelect.vue';
 
 library.add([faBan, faPencilAlt, faTrash, faCheck]);
+
 export default {
     name: 'Team',
 
@@ -103,11 +108,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loading: false,
-        };
-    },
+    data: () => ({
+        loading: false,
+    }),
 
     methods: {
         store() {

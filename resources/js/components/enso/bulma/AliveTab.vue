@@ -3,7 +3,6 @@
         v-show="active">
         <slot/>
     </div>
-
 </template>
 
 <script>

@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div class="columns is-centered">
             <div class="column is-half-desktop">
@@ -70,7 +69,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -78,7 +76,9 @@
 import debounce from 'lodash/debounce';
 import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faCheck, faTrashAlt, faSpinner, faSync } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBell, faCheck, faTrashAlt, faSpinner, faSync,
+} from '@fortawesome/free-solid-svg-icons';
 import format from '../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../modules/enso/plugins/date-fns/formatDistance';
 
@@ -86,14 +86,12 @@ library.add(faBell, faCheck, faTrashAlt, faSpinner, faSync);
 
 export default {
 
-    data() {
-        return {
-            limit: 200,
-            notifications: [],
-            offset: 0,
-            loading: false,
-        };
-    },
+    data: () => ({
+        limit: 200,
+        notifications: [],
+        offset: 0,
+        loading: false,
+    }),
 
     computed: {
         ...mapState(['user', 'meta']),
@@ -113,9 +111,9 @@ export default {
 
             this.loading = true;
 
-            axios.get(route('core.notifications.index'),
-                { params: { offset: this.offset, limit: this.limit }},
-            ).then(({ data }) => {
+            axios.get(route('core.notifications.index'), {
+                params: { offset: this.offset, limit: this.limit },
+            }).then(({ data }) => {
                 this.notifications = this.offset ? this.notifications.concat(data) : data;
                 this.offset = this.notifications.length;
                 this.loading = false;
@@ -126,6 +124,7 @@ export default {
                 .then(({ data }) => {
                     notification.read_at = data.read_at;
                     this.$root.$emit('read-notification', notification);
+
                     if (notification.data.path && notification.data.path !== '#') {
                         this.$router.push({ path: notification.data.path });
                     }

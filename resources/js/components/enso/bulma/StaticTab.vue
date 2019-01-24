@@ -3,7 +3,6 @@
         v-if="active">
         <slot/>
     </div>
-
 </template>
 
 <script>

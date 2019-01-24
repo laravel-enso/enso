@@ -1,5 +1,4 @@
 <template>
-
     <vue-select v-model="field.value"
         :disabled="field.meta.disabled"
         :readonly="field.meta.readonly"
@@ -18,7 +17,6 @@
         v-on="$listeners"
         @fetch="field.meta.options = $event"
         @input="errors.clear(field.name)"/>
-
 </template>
 
 <script>

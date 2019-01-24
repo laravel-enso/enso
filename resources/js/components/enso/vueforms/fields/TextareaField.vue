@@ -13,7 +13,6 @@
             @input="errors.clear(field.name)"/>
         <error-icon v-if="errors.has(field.name)"/>
     </div>
-
 </template>
 
 <script>

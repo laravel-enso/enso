@@ -1,5 +1,4 @@
 <template>
-
     <div :class="[
             'navbar-item notifications',
             { 'has-dropdown': !isTouch },
@@ -11,7 +10,9 @@
             <span class="icon">
                 <fa icon="bell"/>
             </span>
-            <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>/>
+            <sup class="has-text-danger notification-count">
+                {{ unreadCount || null }}
+            </sup>
         </span>
         <a :class="['navbar-link', { 'rotate': visible }]"
             @click="toggle()"
@@ -19,7 +20,9 @@
             <span class="icon">
                 <fa icon="bell"/>
             </span>
-            <sup class="has-text-danger notification-count">{{ unreadCount || null }}</sup>
+            <sup class="has-text-danger notification-count">
+                {{ unreadCount || null }}
+            </sup>
             <overlay v-if="loading"/>
         </a>
         <div class="navbar-dropdown is-right"
@@ -75,12 +78,15 @@
                 </div>
             </nav>
             <a v-else class="navbar-item">
-                <span v-if="unreadCount || loading">{{ __("Loading...") }}</span>
-                <span v-else-if="!unreadCount">{{ __("You don't have any notifications") }}</span>
+                <span v-if="unreadCount || loading">
+                    {{ __("Loading...") }}
+                </span>
+                <span v-else-if="!unreadCount">
+                    {{ __("You don't have any notifications") }}
+                </span>
             </a>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -92,7 +98,9 @@ import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
 import Favico from 'favico.js';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faCheck, faEye, faCogs, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBell, faCheck, faEye, faCogs, faQuestion,
+} from '@fortawesome/free-solid-svg-icons';
 import Overlay from '../../../components/enso/bulma/Overlay.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
@@ -110,23 +118,21 @@ export default {
 
     components: { Overlay },
 
-    data() {
-        return {
-            favico: new Favico({
-                animation: 'popFade',
-            }),
-            limit: 200,
-            notifications: [],
-            unreadCount: 0,
-            totalCount: 0,
-            needsUpdate: true,
-            offset: 0,
-            loading: false,
-            echo: null,
-            visible: false,
-            desktopNotifications: false,
-        };
-    },
+    data: () => ({
+        favico: new Favico({
+            animation: 'popFade',
+        }),
+        limit: 200,
+        notifications: [],
+        unreadCount: 0,
+        totalCount: 0,
+        needsUpdate: true,
+        offset: 0,
+        loading: false,
+        echo: null,
+        visible: false,
+        desktopNotifications: false,
+    }),
 
     computed: {
         ...mapState(['user', 'meta']),
@@ -169,9 +175,9 @@ export default {
 
             this.loading = true;
 
-            axios.get(route('core.notifications.index'),
-                { params: { offset: this.offset, limit: this.limit }},
-            ).then(({ data }) => {
+            axios.get(route('core.notifications.index'), {
+                params: { offset: this.offset, limit: this.limit },
+            }).then(({ data }) => {
                 this.notifications = this.offset ? this.notifications.concat(data) : data;
                 this.offset = this.notifications.length;
                 this.needsUpdate = false;
@@ -195,9 +201,9 @@ export default {
                 .catch(error => this.handleError(error));
         },
         readAll() {
-            this.notifications.forEach((notification) => {
-                notification.read_at = notification.read_at || format(new Date(), 'Y-MM-DD H:mm:s');
-            });
+            this.notifications
+                .filter(notification => !notification.read_at)
+                .forEach(notification => (notification.read_at = this.now()));
 
             this.unreadCount = 0;
         },
@@ -231,27 +237,27 @@ export default {
             const self = this;
             this.echo.private(`App.User.${this.user.id}`)
                 .notification(({ level, body, title }) => {
-                self.unreadCount++;
-                self.needsUpdate = true;
-                self.offset = 0;
+                    self.unreadCount++;
+                    self.needsUpdate = true;
+                    self.offset = 0;
 
-                if (!document.hidden) {
-                    this.$toastr[level](body, title);
-                    return;
-                }
+                    if (!document.hidden) {
+                        this.$toastr[level](body, title);
+                        return;
+                    }
 
-                if (this.desktopNotifications) {
-                    const notification = new Notification(title, {
-                        body,
-                    });
+                    if (this.desktopNotifications) {
+                        const notification = new Notification(title, {
+                            body,
+                        });
 
-                    notification.onclick = () => {
-                        window.focus();
-                    };
+                        notification.onclick = () => {
+                            window.focus();
+                        };
 
-                    window.navigator.vibrate(500);
-                }
-            });
+                        window.navigator.vibrate(500);
+                    }
+                });
         },
         computeScrollPosition(event) {
             const a = event.target.scrollTop;
@@ -268,7 +274,8 @@ export default {
         addBusListeners() {
             this.$root.$on('read-notification', (notification) => {
                 this.unreadCount = Math.max(--this.unreadCount, 0);
-                const existing = this.notifications.find(({ id }) => id === notification.id);
+                const existing = this.notifications
+                    .find(({ id }) => id === notification.id);
 
                 if (existing) {
                     existing.read_at = notification.read_at;
@@ -278,7 +285,8 @@ export default {
             this.$root.$on('read-all-notifications', () => this.readAll());
 
             this.$root.$on('destroy-notification', (notification) => {
-                const index = this.notifications.findIndex(({ id }) => id === notification.id);
+                const index = this.notifications
+                    .findIndex(({ id }) => id === notification.id);
 
                 if (!notification.read_at) {
                     this.unreadCount = Math.max(--this.unreadCount, 0);
@@ -293,6 +301,9 @@ export default {
                 this.notifications = [];
                 this.unreadCount = 0;
             });
+        },
+        now() {
+            return format(new Date(), 'Y-MM-DD H:mm:s');
         },
     },
 };

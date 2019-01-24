@@ -16,21 +16,24 @@
             </div>
             <div class="level-right">
                 <span class="tag is-small is-info is-bold has-margin-right-medium"
-                    v-html="__('Default')"
-                    v-if="item.is_default"/>
+                    v-if="item.is_default">
+                    {{ __('Default') }}
+                </span>
                 <span class="tag is-small is-link is-bold has-margin-right-medium"
-                    v-html="__('Menu')"
-                    v-if="item.menu"/>
+                    v-if="item.menu">
+                    {{ __('Menu') }}
+                </span>
                 <span class="tag is-small is-warning is-bold"
-                    v-html="__('Write')"
-                    v-if="item.type"/>
+                    v-if="item.type">
+                    {{ __('Write') }}
+                </span>
                 <span class="tag is-small is-success is-bold"
-                    v-html="__('Read')"
-                    v-if="!item.type"/>
+                    v-if="!item.type">
+                    {{ __('Read') }}
+                </span>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -51,11 +54,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            checkedIds: [],
-        };
-    },
+    data: () => ({
+        checkedIds: [],
+    }),
 
     computed: {
         permissionIds() {
@@ -152,4 +153,3 @@ export default {
         }
     }
 </style>
-

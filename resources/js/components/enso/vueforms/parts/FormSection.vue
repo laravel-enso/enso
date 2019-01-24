@@ -1,19 +1,17 @@
 <template>
-
     <div class="columns is-multiline has-margin-bottom-large">
         <div class="column is-12"
             v-if="section.divider">
             <divider :title="i18n(section.title)"
                 :placement="dividerTitlePlacement"/>
         </div>
-        <div v-for="field in section.fields"
+        <div v-for="field in visibleFields"
             :class="[
                 'column',
                 section.columns !== 'custom'
                     ? columnSize(section.columns)
                     : `is-${field.column}`
-            ]" :key="field.name"
-            v-if="!field.meta.hidden">
+            ]" :key="field.name">
             <form-field :errors="errors"
                 :field="field"
                 :i18n="i18n"
@@ -31,7 +29,6 @@
             </form-field>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -67,11 +64,17 @@ export default {
         },
     },
 
+    computed: {
+        visibleFields() {
+            return this.section.fields.filter(field => !field.meta.hidden);
+        },
+    },
+
     methods: {
         columnSize(columns) {
             return `is-${parseInt(12 / columns, 10)}`;
         },
     },
 };
-</script>
 
+</script>

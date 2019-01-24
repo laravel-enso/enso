@@ -9,4 +9,3 @@ export default (to) => {
     documentTitle(to);
     bookmarks(to);
 };
-

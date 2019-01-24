@@ -1,5 +1,4 @@
 <template>
-
     <nav class="navbar app-navbar has-background-light is-fixed-top">
         <div class="navbar-brand">
             <a class="navbar-item logo" href="#">
@@ -59,7 +58,6 @@
             </div>
         </div>
     </nav>
-
 </template>
 
 <script>
@@ -67,8 +65,9 @@
 import { mapState, mapMutations } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faCode, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
-
+import {
+    faBars, faCode, faUser, faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import IO from './IO.vue';
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';

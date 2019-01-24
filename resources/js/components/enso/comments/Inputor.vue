@@ -1,5 +1,4 @@
 <template>
-
     <div class="animated fadeIn atwho-wrapper"
         @keyup="filter"
         @keydown.up="onUp"
@@ -39,7 +38,6 @@
             </p>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -63,13 +61,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            items: [],
-            position: null,
-            query: null,
-        };
-    },
+    data: () => ({
+        items: [],
+        position: null,
+        query: null,
+    }),
 
     computed: {
         ...mapState(['user']),

@@ -1,7 +1,5 @@
 <template>
-
     <div class="vue-dropzone dropzone"/>
-
 </template>
 
 <script>
@@ -45,14 +43,14 @@ export default {
             default: null,
         },
     },
-    data() {
-        return {
-            formData: new FormData(),
-            isS3: false,
-            isS3OverridesServerPropagation: false,
-            wasQueueAutoProcess: true,
-        };
-    },
+
+    data: () => ({
+        formData: new FormData(),
+        isS3: false,
+        isS3OverridesServerPropagation: false,
+        wasQueueAutoProcess: true,
+    }),
+
     computed: {
         settings() {
             return {
@@ -68,6 +66,7 @@ export default {
         // check duplicates
         },
     },
+
     mounted() {
         this.dropzone = new Dropzone(this.$el, this.settings);
         // add events

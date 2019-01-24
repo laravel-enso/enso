@@ -1,5 +1,4 @@
 <template>
-
     <draggable :list="menus"
         element="ul"
         class="sortable-menu"
@@ -14,7 +13,6 @@
             </li>
         </transition-group>
     </draggable>
-
 </template>
 
 <script>

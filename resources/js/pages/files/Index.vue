@@ -1,5 +1,4 @@
 <template>
-
     <enso-tabs alignment="centered"
         custom>
         <span slot="label"
@@ -47,7 +46,7 @@
                 <div class="field is-grouped has-margin-top-large">
                     <uploader multiple
                         :url="uploadUrl"
-                        fileKey="upload"
+                        file-key="upload"
                         @upload-successful="addUploadedFiles"/>
                     <a class="button is-fullwidth"
                         :class="{ 'is-loading': loading }"
@@ -78,7 +77,6 @@
             </div>
         </div>
     </enso-tabs>
-
 </template>
 
 <script>
@@ -99,21 +97,21 @@ import Colors from '../../components/enso/charts/colors';
 library.add(faSearch, faSyncAlt);
 
 export default {
-    components: { EnsoTabs, Tab, File, Chart, DateFilter, Uploader },
-
-    data() {
-        return {
-            loading: false,
-            files: [],
-            folders: [],
-            stats: {},
-            query: null,
-            interval: {
-                min: null,
-                max: null,
-            },
-        };
+    components: {
+        EnsoTabs, Tab, File, Chart, DateFilter, Uploader,
     },
+
+    data: () => ({
+        loading: false,
+        files: [],
+        folders: [],
+        stats: {},
+        query: null,
+        interval: {
+            min: null,
+            max: null,
+        },
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -131,9 +129,8 @@ export default {
             return Colors.slice(0, this.folders.length);
         },
         foldersStats() {
-            return this.folders.map(folder =>
-                this.content(folder)
-                    .reduce((total, { size }) => (total += size), 0));
+            return this.folders.map(folder => this.content(folder)
+                .reduce((total, { size }) => (total += size), 0));
         },
         chartData() {
             return {
@@ -151,14 +148,14 @@ export default {
         storageUsage() {
             return this.stats.totalSpaceUsed
                 && this.$options.filters.numberFormat(
-                    this.stats.totalSpaceUsed * 100 / this.stats.storageLimit, 2
+                    this.stats.totalSpaceUsed * 100 / this.stats.storageLimit, 2,
                 );
         },
         status() {
             return this.storageUsage < 95
                 ? 'has-text-success'
                 : 'has-text-danger';
-        }
+        },
     },
 
     methods: {
@@ -191,7 +188,7 @@ export default {
         },
         addUploadedFiles(files) {
             this.files.push(...files);
-        }
+        },
     },
 };
 

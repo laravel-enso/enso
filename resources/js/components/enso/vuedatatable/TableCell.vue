@@ -1,5 +1,4 @@
 <template>
-
     <span :class="{ 'is-clickable has-text-info': column.meta.clickable }"
          @click="column.meta.clickable ? $emit('clicked') : null">
         <slot name="hidden-controls" v-if="hiddenControls"/>
@@ -13,10 +12,13 @@
         </span>
         <slot :name="column.name"
             v-else-if="column.meta.slot"/>
-        <span v-else-if="column.meta.translatable">{{ i18n(value) }}</span>
-        <span v-else>{{ value }}</span>
+        <span v-else-if="column.meta.translatable">
+            {{ i18n(value) }}
+        </span>
+        <span v-else>
+            {{ value }}
+        </span>
     </span>
-
 </template>
 
 <script>

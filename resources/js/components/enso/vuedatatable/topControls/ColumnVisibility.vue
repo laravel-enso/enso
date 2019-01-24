@@ -1,5 +1,4 @@
 <template>
-
     <dropdown hides-manually>
         <span slot="label"
             class="icon is-small">
@@ -13,7 +12,6 @@
             {{ i18n(column.label) }}
         </a>
     </dropdown>
-
 </template>
 
 <script>

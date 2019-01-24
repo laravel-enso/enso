@@ -1,5 +1,4 @@
 <template>
-
     <v-popover :open="open"
         :trigger="trigger"
         :placement="placement"
@@ -22,7 +21,6 @@
             </button>
         </template>
     </v-popover>
-
 </template>
 
 <script>
@@ -67,8 +65,6 @@ export default {
             },
         },
     },
-
-
 };
 
 </script>

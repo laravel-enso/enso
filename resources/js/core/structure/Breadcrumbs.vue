@@ -1,5 +1,4 @@
 <template>
-
     <nav class="breadcrumb is-small is-bold has-dot-separator">
         <ul>
             <li v-for="(breadcrumb, index) in breadcrumbs"
@@ -17,7 +16,6 @@
             </li>
         </ul>
     </nav>
-
 </template>
 
 <script>
@@ -28,7 +26,10 @@ export default {
     computed: {
         breadcrumbs() {
             return this.$route.matched.reduce((breadcrumbs, element) => {
-                breadcrumbs.push({ name: element.meta.breadcrumb, route: element.meta.route });
+                breadcrumbs.push({
+                    name: element.meta.breadcrumb,
+                    route: element.meta.route,
+                });
                 return breadcrumbs;
             }, []);
         },

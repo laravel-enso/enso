@@ -1,10 +1,8 @@
 <template>
-
     <auth-form is-login
         @success="init"
         action="Login"
         route="login"/>
-
 </template>
 
 <script>

@@ -1,10 +1,8 @@
 <template>
-
     <component :is="tab"
         :active="active">
         <slot/>
     </component>
-
 </template>
 
 <script>

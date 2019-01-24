@@ -1,9 +1,7 @@
 <template>
-
     <div class="overlay is-overlay">
         <div class="overlay-loader"/>
     </div>
-
 </template>
 
 <script>

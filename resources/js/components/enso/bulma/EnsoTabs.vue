@@ -6,7 +6,7 @@
                     :key="index"
                     v-for="(tab, index) in tabs">
                     <a :class="{ 'has-background-white has-text-grey-dark': index === active }"
-                        @click="activate(index)"
+                        @click="select(index)"
                         :disabled="disabled.includes(index)">
                         <slot name="label"
                             :tab="tab">
@@ -40,22 +40,24 @@ export default {
         },
     },
 
-    data() {
-        return {
-            tabs: [],
-            active: null,
-            disabled: [],
-        };
-    },
+    data: () => ({
+        tabs: [],
+        active: null,
+        disabled: [],
+    }),
 
     methods: {
+        select(index) {
+            this.$emit('selected', this.tabs[index]);
+            this.activate(index);
+        },
         activate(index) {
             if (this.active === index || this.disabled.includes(index)) {
                 return;
             }
 
             this.active = index;
-            this.$emit('selected', this.tabs[index]);
+            this.$emit('activated', this.tabs[index]);
         },
         disable(index) {
             if (!this.disabled.includes(index)) {

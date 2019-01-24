@@ -1,12 +1,11 @@
 <template>
-
     <div v-if="data">
         <form-header :data="data"
             :i18n="i18n"/>
         <form class="is-marginless"
             @submit.prevent="$refs.actions.submit()">
             <enso-tabs class="form-tabs"
-                @selected="$emit('tab-selected', $event)"
+                @activated="$emit('tab-activated', $event)"
                 v-if="tabbed">
                 <span slot="label"
                     slot-scope="{ tab }"
@@ -14,7 +13,7 @@
                     :data-badge="errorCount(tab)">
                     {{ i18n(tab) }}
                 </span>
-                <tab :id="i18n(tab)"
+                <tab :id="tab"
                     :key="tab"
                     keep-alive
                     v-for="tab in tabs">
@@ -70,9 +69,7 @@
                 </template>
             </form-actions>
         </form>
-
-    </div>
-
+</div>
 </template>
 
 <script>
@@ -154,8 +151,7 @@ export default {
         },
         flatten() {
             return this.data.sections
-                .reduce((fields, section) =>
-                    fields.concat(section.fields), []);
+                .reduce((fields, section) => fields.concat(section.fields), []);
         },
         sections(tab) {
             return this.data.sections.filter(section => section.tab === tab);

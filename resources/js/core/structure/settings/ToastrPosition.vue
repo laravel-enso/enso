@@ -1,5 +1,4 @@
 <template>
-
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item is-marginless">
@@ -27,25 +26,22 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
 import Dropdown from '../../../components/enso/bulma/Dropdown.vue';
-import Positions from './../../../components/enso/bulma/toastr/config/positions';
+import Positions from '../../../components/enso/bulma/toastr/config/positions';
 
 export default {
     name: 'ToastrPosition',
 
     components: { Dropdown },
 
-    data() {
-        return {
-            positions: Positions,
-        };
-    },
+    data: () => ({
+        positions: Positions,
+    }),
 
     computed: {
         ...mapGetters('preferences', ['toastrPosition']),

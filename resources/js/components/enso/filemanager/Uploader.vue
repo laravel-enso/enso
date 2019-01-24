@@ -1,5 +1,4 @@
 <template>
-
     <file-uploader v-on="$listeners"
         v-bind="$attrs"
         :multiple="multiple"
@@ -21,7 +20,6 @@
             </div>
         </div>
     </file-uploader>
-
 </template>
 
 <script>

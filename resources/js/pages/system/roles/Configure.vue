@@ -1,5 +1,4 @@
 <template>
-
     <div class="columns is-centered">
         <div class="column is-half is-three-fifths-desktop is-full-touch">
             <div class="animated fadeIn"
@@ -17,7 +16,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -27,11 +25,9 @@ import CheckboxManager from '../../../components/enso/rolemanager/CheckboxManage
 export default {
     components: { CheckboxManager },
 
-    data() {
-        return {
-            data: null,
-        };
-    },
+    data: () => ({
+        data: null,
+    }),
 
     created() {
         this.fetch();
@@ -48,7 +44,7 @@ export default {
                 route('system.roles.setPermissions', this.$route.params.role),
                 { rolePermissions: this.data.rolePermissions },
             ).then(({ data }) => this.$toastr.success(data.message))
-            .catch(error => this.handleError(error));
+                .catch(error => this.handleError(error));
         },
     },
 };

@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div class="columns">
             <div class="column is-3-desktop is-8-tablet is-12-mobile">
@@ -94,14 +93,15 @@
             :i18n="__"
             @commit="deleteTemplate(template.id); modal = false"/>
     </div>
-
 </template>
 
 <script>
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUpload, faDownload, faTrashAlt, faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import {
+    faUpload, faDownload, faTrashAlt, faFileExcel,
+} from '@fortawesome/free-solid-svg-icons';
 import VueSelect from '../../components/enso/select/VueSelect.vue';
 import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
@@ -118,17 +118,15 @@ export default {
 
     directives: { tooltip: VTooltip },
 
-    data() {
-        return {
-            path: route('import.initTable'),
-            importType: null,
-            summary: {},
-            template: null,
-            modal: false,
-            loadingTemplate: false,
-            importTypes: [],
-        };
-    },
+    data: () => ({
+        path: route('import.initTable'),
+        importType: null,
+        summary: {},
+        template: null,
+        modal: false,
+        loadingTemplate: false,
+        importTypes: [],
+    }),
 
     computed: {
         templateLink() {

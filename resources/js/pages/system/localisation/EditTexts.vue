@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div class="columns is-multiline">
             <div class="column">
@@ -70,7 +69,8 @@
                 <div class="columns is-mobile has-text-right"
                     v-if="selectedLocale">
                     <div class="column">
-                        <label class="label">{{ __('Core') }}
+                        <label class="label">
+                            {{ __('Core') }}
                             <vue-switch class="has-margin-left-medium has-margin-right-medium"
                                 v-model="filterCore"
                                 size="is-large"/>
@@ -78,7 +78,8 @@
                         </label>
                     </div>
                     <div class="column">
-                        <label class="label">{{ __('Only missing') }}
+                        <label class="label">
+                            {{ __('Only missing') }}
                             <vue-switch class="has-margin-left-medium"
                                 v-model="filterMissing"
                                 size="is-large"/>
@@ -92,10 +93,14 @@
             <div class="columns is-hidden-mobile has-shadow-bottom"
                 v-if="filteredKeys.length">
                 <div class="column is-half has-text-centered">
-                    <h6 class="title is-6">{{ __('Key') }}</h6>
+                    <h6 class="title is-6">
+                        {{ __('Key') }}
+                    </h6>
                 </div>
                 <div class="column is-half has-text-centered">
-                    <h6 class="title is-6">{{ __('Value') }}</h6>
+                    <h6 class="title is-6">
+                        {{ __('Value') }}
+                    </h6>
                 </div>
             </div>
             <div class="has-text-centered"
@@ -135,7 +140,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -151,19 +155,17 @@ library.add(faSearch, faTrashAlt);
 export default {
     components: { VueSelect, VueSwitch },
 
-    data() {
-        return {
-            langFile: {},
-            originalLangFile: {},
-            locales: [],
-            selectedLocale: null,
-            query: null,
-            boxHeight: 0,
-            loading: false,
-            filterMissing: false,
-            filterCore: true,
-        };
-    },
+    data: () => ({
+        langFile: {},
+        originalLangFile: {},
+        locales: [],
+        selectedLocale: null,
+        query: null,
+        boxHeight: 0,
+        loading: false,
+        filterMissing: false,
+        filterCore: true,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -180,22 +182,9 @@ export default {
                 ? Object.keys(this.originalLangFile).filter(key => !this.originalLangFile[key])
                 : Object.keys(this.langFile);
         },
-        sortedKeys() {
-            return this.langKeys.sort((a, b) => {
-                if (a.toLowerCase() < b.toLowerCase()) {
-                    return -1;
-                }
-
-                if (a.toLowerCase() > b.toLowerCase()) {
-                    return 1;
-                }
-
-                return 0;
-            });
-        },
         filteredKeys() {
             if (!this.query) {
-                return this.sortedKeys;
+                return this.sortedKeys();
             }
 
             const query = this.query.toLowerCase();
@@ -204,8 +193,8 @@ export default {
                 || (this.langFile[key] && this.langFile[key].toLowerCase().indexOf(query) > -1)));
         },
         isNewKey() {
-            return this.selectedLocale &&
-                this.query && this.filteredKeys.indexOf(this.query) === -1;
+            return this.selectedLocale
+                && this.query && this.filteredKeys.indexOf(this.query) === -1;
         },
         keysCount() {
             return this.langKeys.length;
@@ -301,6 +290,19 @@ export default {
                     this.loading = false;
                     this.handleError(error);
                 });
+        },
+        sortedKeys() {
+            return this.langKeys.sort((a, b) => {
+                if (a.toLowerCase() < b.toLowerCase()) {
+                    return -1;
+                }
+
+                if (a.toLowerCase() > b.toLowerCase()) {
+                    return 1;
+                }
+
+                return 0;
+            });
         },
     },
 };

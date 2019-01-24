@@ -1,5 +1,4 @@
 <template>
-
     <form class="file-upload is-marginless"
         @submit.prevent>
         <input :multiple="multiple"
@@ -15,7 +14,6 @@
             </a>
         </slot>
     </form>
-
 </template>
 
 <script>
@@ -51,13 +49,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            input: null,
-            formData: new FormData(),
-            succesfull: 0,
-        };
-    },
+    data: () => ({
+        input: null,
+        formData: new FormData(),
+        succesfull: 0,
+    }),
 
     methods: {
         openFileBrowser() {

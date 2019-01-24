@@ -28,16 +28,15 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt }
-    from '@fortawesome/free-solid-svg-icons';
-import PersonForm from './PersonForm.vue';
+import {
+    faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import Popover from '../bulma/Popover.vue';
 
 library.add([
@@ -49,7 +48,7 @@ export default {
 
     directives: { tooltip: VTooltip },
 
-    components: { PersonForm, Popover },
+    components: { Popover },
 
     props: {
         person: {
@@ -69,4 +68,3 @@ export default {
     }
 
 </style>
-

@@ -1,5 +1,4 @@
 <template>
-
     <article class="media media-reply"
         :class="{'box has-background-light raises-on-hover': !edit && reply.id}">
         <figure class="media-left">
@@ -18,7 +17,9 @@
                 @cancel="$emit('cancel'); edit = false;"
                 v-if="edit || !reply.id"/>
             <div class="content" v-else>
-                <span class="has-text-info is-bold">{{ reply.owner.name }}</span>
+                <span class="has-text-info is-bold">
+                    {{ reply.owner.name }}
+                </span>
                 &bull;
                 <small class="has-text-muted">
                     {{ timeFromNow(reply.updatedAt || reply.createdAt) }}
@@ -30,7 +31,8 @@
                     </small>
                 </span>
                 <br>
-                <span v-html="format(reply.body)"/></div>
+                <span v-html="format(reply.body)"/>
+            </div>
         </div>
         <div class="media-right">
             <div class="is-flex is-pulled-right"
@@ -74,11 +76,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            edit: false,
-        };
-    },
+    data: () => ({
+        edit: false,
+    }),
 
     computed: {
         avatar() {

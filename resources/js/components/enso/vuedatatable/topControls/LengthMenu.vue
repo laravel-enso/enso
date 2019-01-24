@@ -1,5 +1,4 @@
 <template>
-
     <dropdown>
         <span slot="label">
             {{ length }}
@@ -12,7 +11,6 @@
             {{ value }}
         </a>
     </dropdown>
-
 </template>
 
 <script>

@@ -1,6 +1,5 @@
 <template>
-
-    <div>
+    <div class="wrapper">
         <div v-if="ready">
             <button class="button is-success has-margin-bottom-large"
                 @click="team=factory()"
@@ -58,7 +57,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -72,32 +70,29 @@ library.add(faPlus, faSearch, faSpinner);
 export default {
     components: { Team },
 
-    data() {
-        return {
-            loading: false,
-            ready: false,
-            teams: [],
-            team: null,
-            query: null,
-        };
-    },
+    data: () => ({
+        loading: false,
+        ready: false,
+        teams: [],
+        team: null,
+        query: null,
+    }),
 
     computed: {
         filteredTeams() {
             return this.query
-                ? this.teams.filter(({ edit, name }) =>
-                    edit || name.toLowerCase()
-                        .indexOf(this.query.toLowerCase()) > -1)
+                ? this.teams.filter(({ edit, name }) => edit || name.toLowerCase()
+                    .indexOf(this.query.toLowerCase()) > -1)
                 : this.teams;
         },
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
             axios.get(route('administration.teams.index'))

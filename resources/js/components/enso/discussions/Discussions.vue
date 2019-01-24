@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <inputor class="raises-on-hover animated fadeIn"
             :message="discussion"
@@ -31,7 +30,7 @@
                     </span>
                 </button>
                 <button class="button has-margin-left-small"
-                    @click="get()">
+                    @click="fetch()">
                     <span v-if="!isMobile">
                         {{ __('Reload') }}
                     </span>
@@ -58,7 +57,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -88,15 +86,13 @@ export default {
         },
     },
 
-    data() {
-        return {
-            query: '',
-            inputor: false,
-            discussion: null,
-            discussions: [],
-            loading: false,
-        };
-    },
+    data: () => ({
+        query: '',
+        inputor: false,
+        discussion: null,
+        discussions: [],
+        loading: false,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -104,8 +100,7 @@ export default {
             const query = this.query.toLowerCase();
 
             return query
-                ? this.discussions.filter(({ title, body }) =>
-                    title.toLowerCase().indexOf(query) >= 0
+                ? this.discussions.filter(({ title, body }) => title.toLowerCase().indexOf(query) >= 0
                     || body.toLowerCase().indexOf(query) >= 0)
                 : this.discussions;
         },
@@ -115,11 +110,11 @@ export default {
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
             axios.get(route('core.discussions.index'), {
@@ -157,7 +152,7 @@ export default {
                     this.discussions.splice(index, 1);
                     this.$emit('update');
                     this.discussion = null;
-                    this.get();
+                    this.fetch();
                 }).catch(error => this.handleError(error));
         },
         factory() {

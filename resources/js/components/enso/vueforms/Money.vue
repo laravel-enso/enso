@@ -1,19 +1,17 @@
 <template>
-
-        <span v-if="label"
-            ref="label">
-            {{ money }}
-        </span>
-        <input v-model="money"
-            :disabled="disabled"
-            :readonly="readonly"
-            :placeholder="placeholder"
-            type="tel"
-            @blur="update"
-            @focus="money = value"
-            ref="money"
-            v-else>
-
+    <span v-if="label"
+        ref="label">
+        {{ money }}
+    </span>
+    <input v-model="money"
+        :disabled="disabled"
+        :readonly="readonly"
+        :placeholder="placeholder"
+        type="tel"
+        @blur="update"
+        @focus="money = value"
+        ref="money"
+        v-else>
 </template>
 
 <script>
@@ -76,11 +74,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            money: null,
-        };
-    },
+    data: () => ({
+        money: null,
+    }),
 
     watch: {
         value: 'format',

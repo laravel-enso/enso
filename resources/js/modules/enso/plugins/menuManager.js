@@ -13,14 +13,11 @@ const isActive = menu => menu.route !== null
     && (routeNameMatches(menu) || routePathMatches(menu));
 
 const hasActiveChild = menu => menu.has_children
-    && menu.children.some(child =>
-        isActive(child) || hasActiveChild(child));
+    && menu.children.some(child => isActive(child) || hasActiveChild(child));
 
 const updateActiveMenu = (menus, commit) => {
     menus.filter(menu => !hasActiveChild(menu) && menu.expanded)
-        .forEach((menu) => {
-            commit('collapse', menu);
-        });
+        .forEach(menu => commit('collapse', menu));
 
     const menu = menus.find(menu => hasActiveChild(menu));
 

@@ -1,5 +1,4 @@
 <template>
-
     <div class="columns is-multiline">
         <div class="column is-one-third-widescreen is-half-desktop is-full-tablet"
             v-for="(log, index) in logs"
@@ -41,24 +40,28 @@
                 <div class="has-padding-large">
                     <p>
                         <span>{{ __("Last updated") }}</span>
-                        <span class="is-pulled-right">{{ timeFromNow(log.modified.date) }}</span>
+                        <span class="is-pulled-right">
+                            {{ timeFromNow(log.modified.date) }}
+                        </span>
                     </p>
                     <p>
                         <span>{{ __("Size") }}</span>
-                        <span class="is-pulled-right">{{ log.size }} {{ __("MB") }}</span>
+                        <span class="is-pulled-right">
+                            {{ log.size }} {{ __("MB") }}
+                        </span>
                     </p>
                 </div>
             </card>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTerminal, faEye, faCloudDownloadAlt, faTrashAlt, faSyncAlt }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faTerminal, faEye, faCloudDownloadAlt, faTrashAlt, faSyncAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import Card from '../../../components/enso/bulma/Card.vue';
 import CardControl from '../../../components/enso/bulma/CardControl.vue';
 import Popover from '../../../components/enso/bulma/Popover.vue';
@@ -69,11 +72,9 @@ library.add(faTerminal, faEye, faCloudDownloadAlt, faTrashAlt, faSyncAlt);
 export default {
     components: { Card, CardControl, Popover },
 
-    data() {
-        return {
-            logs: [],
-        };
-    },
+    data: () => ({
+        logs: [],
+    }),
 
     computed: {
         icon() {

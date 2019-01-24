@@ -1,9 +1,9 @@
 <template>
-
     <article class="message">
         <div class="message-header"
             v-if="log">
-            <p>{{ __("The log file") }}
+            <p>
+                {{ __("The log file") }}
                 <code>{{ log.name }}</code>
                 {{ __("was last updated") }}
                 {{ log.modified ? timeFromNow(log.modified.date) : null }}.
@@ -21,7 +21,6 @@
             </pre>
         </div>
     </article>
-
 </template>
 
 <script>
@@ -30,12 +29,10 @@ import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistanc
 import '../../../modules/enso/directives/hljs';
 
 export default {
-    data() {
-        return {
-            log: null,
-            content: null,
-        };
-    },
+    data: () => ({
+        log: null,
+        content: null,
+    }),
 
     created() {
         axios.get(route('system.logs.show', this.$route.params.log))

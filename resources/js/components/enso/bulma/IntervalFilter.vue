@@ -1,5 +1,4 @@
 <template>
-
     <div class="interval-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
@@ -35,7 +34,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>

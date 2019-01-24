@@ -1,12 +1,11 @@
 <template>
-
     <card :icon="icon"
         refresh
         scrollable
         search
         :title="displayTitle"
         :overlay="$refs.comments && $refs.comments.loading"
-        @refresh="$refs.comments.get()"
+        @refresh="$refs.comments.fetch()"
         :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
@@ -30,7 +29,6 @@
                 ref="comments"/>
         </div>
     </card>
-
 </template>
 
 <script>
@@ -72,12 +70,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            count: 0,
-            query: null,
-        };
-    },
+    data: () => ({
+        count: 0,
+        query: null,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),

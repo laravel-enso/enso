@@ -1,5 +1,46 @@
 ## Laravel Enso's Changelog
 
+### 2.15.1
+In this version we focused on greatly improving the assets compiling process. With the new configuration build times dropped by ~ 75% for production.
+
+#### Changes
+
+##### General
+- improves webpack.mix.js
+    - enables use of multiple cores
+    - disables [processCssUrls](https://laravel.com/docs/5.7/mix#url-processing)
+    - enables [vender extraction](https://laravel.com/docs/5.7/mix#vendor-extraction)
+- includes manifest.js and vendor.js in index.blade.php to support vendor extraction
+- updates in all the js file (with the new linter / rules)
+
+##### Core
+- moves UserGroup pages to the publishing list
+- adds AR and PT languages support in local date-fns i18n
+- adds `manifest.json` and `vendor.js` to `index.blade.php` to make use of webpack's vendor extraction
+
+##### Charts
+- renames `get()` => `fetch()` in `<chart-card>`
+
+##### Addresses, Comments, Documents, Discussions, CompanyPeople
+- renames `get()` => `fetch()` in `<*-card>` wrapper
+
+#### Bugs
+- fixes `<address-card>` refresh (`get` => `fetch`)
+
+#### Upgrade instructions
+- update in `composer.json`: `"laravel-enso/core": "3.6.*"`
+- run composer update
+- delete your local `node_modules`, `yarn.lock`, `package-lock.json`
+- update the following local files with the ones from the main repo
+    - `webpack.mix.js`
+    - `.eslintrc.js`
+    - `package.json`
+    - `.babelrc`
+- run `yarn`
+- compile
+- run in tinker the following command:
+    - `LaravelEnso\PermissionManager\app\Models\Permission::where('name', 'LIKE', 'administration.companies.contacts.%')->delete();` (it was a typo in the `enso:upgrade` command)
+
 ### 2.15.0
 
 #### Changes

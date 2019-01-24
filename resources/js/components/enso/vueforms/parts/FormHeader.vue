@@ -1,5 +1,4 @@
 <template>
-
     <h5 class="title is-5"
         v-if="data.icon || data.title">
         <span class="icon"
@@ -10,10 +9,10 @@
             {{ i18n(data.title) }}
         </span>
     </h5>
-
 </template>
 
 <script>
+
 export default {
     name: 'FormHeader',
 
@@ -28,6 +27,7 @@ export default {
         },
     },
 };
+
 </script>
 
 <style lang="scss" scoped>

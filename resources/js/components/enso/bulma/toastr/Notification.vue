@@ -1,5 +1,4 @@
 <template>
-
     <transition appear
         :enter-active-class="enterClass"
         :leave-active-class="leaveClass"
@@ -29,13 +28,14 @@
                             v-if="title">
                             {{ i18n(title) }}
                         </p>
-                        <p class="subtitle is-6">{{ i18n(body) }}</p>
+                        <p class="subtitle is-6">
+                            {{ i18n(body) }}
+                        </p>
                     </div>
                 </div>
             </article>
         </div>
     </transition>
-
 </template>
 
 <script>
@@ -81,16 +81,14 @@ export default {
         },
     },
 
-    data() {
-        return {
-            hoverable: false,
-            hovering: false,
-            progress: 0,
-            progressDelay: 10,
-            visible: true,
-            wrapper: null,
-        };
-    },
+    data: () => ({
+        hoverable: false,
+        hovering: false,
+        progress: 0,
+        progressDelay: 10,
+        visible: true,
+        wrapper: null,
+    }),
 
     computed: {
         wrapperClass() {
@@ -184,11 +182,9 @@ export default {
             clearInterval(this.interval);
         },
         startTimer() {
-            this.timer = setTimeout(() =>
-                (this.visible = false), this.duration);
+            this.timer = setTimeout(() => (this.visible = false), this.duration);
 
-            this.interval = setInterval(() =>
-                (this.progress += this.progressRate), this.progressDelay);
+            this.interval = setInterval(() => (this.progress += this.progressRate), this.progressDelay);
         },
     },
 };

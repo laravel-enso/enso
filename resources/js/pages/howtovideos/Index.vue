@@ -1,5 +1,4 @@
 <template>
-
     <div class="columns is-reverse-mobile">
         <div class="column is-three-quarters-desktop is-full-touch">
             <div class="columns animated fadeInDown"
@@ -177,7 +176,9 @@
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faUpload, faBan, faCheck, faPencilAlt, faTags } from '@fortawesome/free-solid-svg-icons';
+import {
+    faPlus, faUpload, faBan, faCheck, faPencilAlt, faTags,
+} from '@fortawesome/free-solid-svg-icons';
 import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
 import HowToVideo from '../../components/enso/howtovideos/HowToVideo.vue';
 
@@ -186,22 +187,20 @@ library.add([faPlus, faUpload, faBan, faCheck, faPencilAlt, faTags]);
 export default {
     components: { FileUploader, HowToVideo },
 
-    data() {
-        return {
-            videos: [],
-            query: '',
-            tags: [],
-            video: {
-                name: null,
-                description: null,
-                tagList: [],
-            },
-            addingVideo: false,
-            editingVideo: false,
-            taggingId: null,
-            editingTag: false,
-        };
-    },
+    data: () => ({
+        videos: [],
+        query: '',
+        tags: [],
+        video: {
+            name: null,
+            description: null,
+            tagList: [],
+        },
+        addingVideo: false,
+        editingVideo: false,
+        taggingId: null,
+        editingTag: false,
+    }),
 
     computed: {
         uploadLink() {
@@ -214,20 +213,21 @@ export default {
 
             return this.selectedTags.length === 0
                 ? this.videos
-                : this.videos.filter(({ tagList }) =>
-                    tagList.filter(tagId =>
-                        this.selectedTags.findIndex(({ id }) =>
-                            tagId === id) !== -1).length === this.selectedTags.length);
+                : this.videos.filter(({ tagList }) => tagList
+                    .filter(
+                        tagId => this.selectedTags.findIndex(({ id }) => tagId === id) !== -1,
+                    ).length === this.selectedTags.length);
         },
         filteredTags() {
             return !this.query
                 ? this.tags.filter(({ id }) => !this.video.tagList.includes(id))
-                : this.tags.filter(({ name, id }) => !this.video.tagList.includes(id) &&
-                    name.toLowerCase().indexOf(this.query.toLowerCase()) > -1);
+                : this.tags.filter(({ name, id }) => !this.video.tagList.includes(id)
+                    && name.toLowerCase().indexOf(this.query.toLowerCase()) > -1);
         },
         tagIsNew() {
-            return !!this.query && this.tags.findIndex(({ name }) =>
-                name.toLowerCase() === this.query.toLowerCase()) === -1;
+            return !!this.query && this.tags
+                .findIndex(({ name }) => name
+                    .toLowerCase() === this.query.toLowerCase()) === -1;
         },
         selectedTags() {
             return this.tags.filter(({ selected }) => selected);

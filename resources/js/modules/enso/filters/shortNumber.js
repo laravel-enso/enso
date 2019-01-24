@@ -6,7 +6,7 @@ Vue.filter('shortNumber', (number, precision = 2) => {
     if (number === 0) {
         return number;
     }
-    
+
     const tier = Math.floor(Math.log10(number) / 3);
 
     if (tier === 0) {

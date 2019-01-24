@@ -1,5 +1,4 @@
 <template>
-
     <div class="columns is-gapless has-background-light">
         <div class="column">
             <records-info :body="body"
@@ -18,7 +17,6 @@
                 v-if="hasEntries"/>
         </div>
     </div>
-
 </template>
 
 <script>

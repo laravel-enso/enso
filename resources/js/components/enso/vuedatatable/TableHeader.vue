@@ -1,5 +1,4 @@
 <template>
-
     <thead>
         <tr :class="['has-background-light', template.style]">
             <th :class="['vue-table-header', template.align]"
@@ -55,15 +54,15 @@
             </th>
         </tr>
     </thead>
-
 </template>
 
 <script>
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo,
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faSort, faSortUp, faSortDown, faPlus, faFileExcel, faInfo);
 
@@ -83,11 +82,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            pageSelected: false,
-        };
-    },
+    data: () => ({
+        pageSelected: false,
+    }),
 
     methods: {
         sortIcon(sort) {

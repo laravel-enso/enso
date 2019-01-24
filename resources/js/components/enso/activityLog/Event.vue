@@ -7,7 +7,9 @@
             </p>
         </figure>
         <div class="event">
-            <p class="heading">{{ event.time }}</p>
+            <p class="heading">
+{{ event.time }}
+</p>
             <message :event="event"
                 @show-profile="showProfile(event.author)"/>
         </div>
@@ -42,6 +44,7 @@ export default {
         },
     },
 };
+
 </script>
 
 <style lang="scss">
@@ -49,4 +52,3 @@ export default {
         font-weight: 600;
     }
 </style>
-

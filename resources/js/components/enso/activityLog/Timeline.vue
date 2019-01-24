@@ -38,19 +38,19 @@
                 {{ __('Load more') }}
             </button>
         </div>
-
-    </div>
+</div>
 </template>
 
 <script>
 
 import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSyncAlt, faPlus, faPencilAlt, faTrashAlt, faFlag }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faSyncAlt, faPlus, faPencilAlt, faTrashAlt, faFlag,
+} from '@fortawesome/free-solid-svg-icons';
 import Event from './Event.vue';
 
-import format from './../../../modules/enso/plugins/date-fns/format';
+import format from '../../../modules/enso/plugins/date-fns/format';
 
 library.add(faSyncAlt, faPlus, faPencilAlt, faTrashAlt, faFlag);
 

@@ -1,5 +1,4 @@
 <template>
-
     <tfoot>
         <tr>
             <td v-if="template.crtNo"/>
@@ -40,7 +39,6 @@
             <td v-if="template.actions"/>
         </tr>
     </tfoot>
-
 </template>
 
 <script>
@@ -90,4 +88,3 @@ export default {
         font-family: monospace;
     }
 </style>
-

@@ -1,5 +1,4 @@
 <template>
-
     <div :class="['vue-filter', {'is-compact': compact}]">
         <div class="has-text-centered">
             <strong>{{ title }}</strong>
@@ -44,7 +43,6 @@
             </ul>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -92,15 +90,11 @@ export default {
             type: null,
             default: null,
         },
-
-
     },
 
-    data() {
-        return {
-            internalValue: this.value,
-        };
-    },
+    data: v => ({
+        internalValue: v.value,
+    }),
 
     methods: {
         update(value = null) {

@@ -1,9 +1,7 @@
 <template>
-
     <p class="card-footer-item">
         <slot/>
     </p>
-
 </template>
 
 <script>

@@ -1,10 +1,8 @@
 <template>
-
     <vue-table class="box is-paddingless raises-on-hover is-rounded"
         :path="path"
         id="roles"
         @configure-role="redirect"/>
-
 </template>
 
 <script>
@@ -18,11 +16,9 @@ library.add([faSave, faSlidersH]);
 export default {
     components: { VueTable },
 
-    data() {
-        return {
-            path: route('system.roles.initTable'),
-        };
-    },
+    data: () => ({
+        path: route('system.roles.initTable'),
+    }),
 
     methods: {
         redirect($event) {

@@ -1,9 +1,7 @@
 <template>
-
     <div class="aside">
         <slot/>
     </div>
-
 </template>
 
 <script>

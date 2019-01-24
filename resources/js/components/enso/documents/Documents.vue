@@ -1,14 +1,13 @@
 <template>
-
     <div class="wrapper">
         <div class="controls"
             v-if="controls">
             <uploader :params="{ documentable_type: type, documentable_id: id }"
-                @upload-successful="get();"
+                @upload-successful="fetch();"
                 :url="uploadLink"
                 multiple/>
             <a class="button has-margin-left-small"
-                @click="get()">
+                @click="fetch()">
                 <span v-if="!isMobile">
                     {{ __('Reload') }}
                 </span>
@@ -85,13 +84,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            documents: [],
-            loading: false,
-            internalQuery: '',
-        };
-    },
+    data: () => ({
+        documents: [],
+        loading: false,
+        internalQuery: '',
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -99,8 +96,7 @@ export default {
             const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.documents.filter(({ file }) =>
-                    file.name.toLowerCase().indexOf(query) > -1)
+                ? this.documents.filter(({ file }) => file.name.toLowerCase().indexOf(query) > -1)
                 : this.documents;
         },
         count() {
@@ -123,11 +119,11 @@ export default {
     },
 
     created() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
-        get() {
+        fetch() {
             this.loading = true;
 
             axios.get(route('core.documents.index'), {

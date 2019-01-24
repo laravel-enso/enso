@@ -1,5 +1,4 @@
 <template>
-
     <vue-table class="box is-paddingless raises-on-hover is-rounded"
         :path="path"
         id="tutorials">
@@ -9,7 +8,6 @@
             {{ row['placement'] }}
         </span>
     </vue-table>
-
 </template>
 
 <script>
@@ -19,11 +17,9 @@ import VueTable from '../../../components/enso/vuedatatable/VueTable.vue';
 export default {
     components: { VueTable },
 
-    data() {
-        return {
-            path: route('system.tutorials.initTable'),
-        };
-    },
+    data: () => ({
+        path: route('system.tutorials.initTable'),
+    }),
 };
 
 </script>

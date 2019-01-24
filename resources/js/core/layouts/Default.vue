@@ -1,5 +1,4 @@
 <template>
-
     <transition enter-active-class="fadeIn"
         leave-active-class="fadeOut">
         <div class="app-main"
@@ -32,12 +31,13 @@
             <app-footer class="animated fadeIn"/>
         </div>
     </transition>
-
 </template>
 
 <script>
 
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import {
+    mapState, mapGetters, mapMutations, mapActions,
+} from 'vuex';
 import Navbar from '../structure/navbar/Navbar.vue';
 import Sidebar from '../structure/menu/Sidebar.vue';
 import Settings from '../structure/settings/Settings.vue';
@@ -101,7 +101,9 @@ export default {
                     const rect = body.getBoundingClientRect();
                     this.setIsTablet(rect.width <= TabletMaxWidth);
                     this.setIsMobile(rect.width <= MobileMaxWidth);
-                    this.setIsTouch(rect.width <= TabletMaxWidth || rect.width <= MobileMaxWidth);
+                    this.setIsTouch(
+                        rect.width <= TabletMaxWidth || rect.width <= MobileMaxWidth,
+                    );
                 }
             };
 

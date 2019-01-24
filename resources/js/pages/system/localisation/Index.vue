@@ -1,13 +1,11 @@
 <template>
-
     <vue-table class="box is-paddingless raises-on-hover is-rounded"
         :path="path"
         id="localisation">
         <i slot="flag"
-            slot-scope="{ row, column }"
+            slot-scope="{ row }"
             :class="row['flag']"/>
     </vue-table>
-
 </template>
 
 <script>
@@ -21,11 +19,9 @@ library.add(faEdit);
 export default {
     components: { VueTable },
 
-    data() {
-        return {
-            path: route('system.localisation.initTable'),
-        };
-    },
+    data: () => ({
+        path: route('system.localisation.initTable'),
+    }),
 };
 
 </script>

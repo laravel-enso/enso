@@ -1,7 +1,5 @@
 <template>
-
     <canvas class="chart-js"/>
-
 </template>
 
 <script>
@@ -11,9 +9,13 @@ import 'chartjs-plugin-datalabels';
 
 // Chart.defaults.global.plugins.datalabels.formatter = value => `${format(value)}m`;
 
-Chart.scaleService.updateScaleDefaults('linear', { ticks: { min: 0 } });
+Chart.scaleService.updateScaleDefaults(
+    'linear', { ticks: { min: 0 } },
+);
 
-const types = ['line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut', 'bubble'];
+const types = [
+    'line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut', 'bubble',
+];
 
 export default {
     name: 'Chart',
@@ -99,16 +101,14 @@ export default {
                 .forEach((dataset, index) => {
                     dataset.data = this.data.datasets[index].data;
                     dataset.backgroundColor = this.data.datasets[index].backgroundColor;
-                    dataset.datalabels.backgroundColor =
-                        this.data.datasets[index].datalabels.backgroundColor;
+                    dataset.datalabels.backgroundColor = this.data.datasets[index].datalabels.backgroundColor;
                 });
         },
         datasetsStructureChanged() {
             return this.chart.data.datasets.length !== this.data.datasets.length
                 || this.chart.data.datasets
-                    .filter(({ label }) => this.data.datasets
-                        .findIndex(dataset => dataset.label === label) === -1)
-                    .length !== 0;
+                    .some(({ label }) => this.data.datasets
+                        .findIndex(dataset => dataset.label === label) === -1);
         },
         svg() {
             return this.$el.toDataURL('image/jpg');

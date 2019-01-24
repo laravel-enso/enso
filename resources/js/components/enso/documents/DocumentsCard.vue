@@ -1,5 +1,4 @@
 <template>
-
     <card icon="copy"
         refresh
         scrollable
@@ -29,7 +28,6 @@
                 ref="documents"/>
         </div>
     </card>
-
 </template>
 
 <script>
@@ -70,12 +68,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            query: '',
-            count: 0,
-        };
-    },
+    data: () => ({
+        query: '',
+        count: 0,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),

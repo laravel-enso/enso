@@ -1,5 +1,4 @@
 <template>
-
     <div class="box has-background-light raises-on-hover">
         <div class="media">
             <div class="media-content">
@@ -98,14 +97,15 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPencilAlt, faAnchor, faGlobe, faStickyNote, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+    faPencilAlt, faAnchor, faGlobe, faStickyNote, faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import Popover from '../bulma/Popover.vue';
 
 library.add(faPencilAlt, faAnchor, faGlobe, faStickyNote, faTrashAlt);

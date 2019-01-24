@@ -1,5 +1,4 @@
 <template>
-
     <div class="level">
         <div class="level-left is-hidden-mobile">
             <div class="level-item">
@@ -26,7 +25,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -45,11 +43,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loaded: true,
-        };
-    },
+    data: () => ({
+        loaded: true,
+    }),
 
     watch: {
         title: {
@@ -72,4 +68,3 @@ export default {
         }
     }
 </style>
-

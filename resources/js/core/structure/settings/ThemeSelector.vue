@@ -1,5 +1,4 @@
 <template>
-
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
@@ -17,7 +16,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>

@@ -1,5 +1,4 @@
 <template>
-
     <div class="level is-mobile">
         <div class="level-left">
             <slot name="left"
@@ -10,7 +9,6 @@
                 class="level-item has-text-right"/>
         </div>
     </div>
-
 </template>
 
 <script>

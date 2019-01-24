@@ -1,5 +1,4 @@
 <template>
-
     <div class="level is-mobile settings">
         <div class="level-left">
             <div class="level-item">
@@ -17,7 +16,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -33,16 +31,14 @@ library.add(faQuestion);
 export default {
     name: 'Tutorial',
 
-    data() {
-        return {
-            driver: new Driver({
-                doneBtnText: this.__('Done'),
-                closeBtnText: this.__('Close'),
-                nextBtnText: this.__('Next'),
-                prevBtnText: this.__('Previous'),
-            }),
-        };
-    },
+    data: v => ({
+        driver: new Driver({
+            doneBtnText: v.__('Done'),
+            closeBtnText: v.__('Close'),
+            nextBtnText: v.__('Next'),
+            prevBtnText: v.__('Previous'),
+        }),
+    }),
 
     methods: {
         get() {
@@ -75,4 +71,3 @@ export default {
 };
 
 </script>
-

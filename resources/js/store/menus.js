@@ -5,7 +5,7 @@ export const state = {
 };
 
 export const getters = {
-    isActive: state => menu => isActive(menu),
+    isActive: () => menu => isActive(menu),
 };
 
 export const mutations = {

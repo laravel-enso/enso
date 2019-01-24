@@ -149,20 +149,32 @@
         <div class="level is-mobile has-margin-bottom-large">
             <div class="level-item has-text-centered has-right-border">
                 <div>
-                    <p class="subtitle is-3">{{ profile.loginCount }}</p>
-                    <p class="subtitle is-4">{{ __('logins') }}</p>
+                    <p class="subtitle is-3">
+                        {{ profile.loginCount }}
+                    </p>
+                    <p class="subtitle is-4">
+                        {{ __('logins') }}
+                    </p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
-                    <p class="subtitle is-3">{{ profile.actionLogCount }}</p>
-                    <p class="subtitle is-4">{{ __('actions') }}</p>
+                    <p class="subtitle is-3">
+                        {{ profile.actionLogCount }}
+                    </p>
+                    <p class="subtitle is-4">
+                        {{ __('actions') }}
+                    </p>
                 </div>
             </div>
             <div class="level-item has-text-centered has-left-border">
                 <div>
-                    <p class="subtitle is-3">{{ profile.rating }}</p>
-                    <p class="subtitle is-4">{{ __('rating') }}</p>
+                    <p class="subtitle is-3">
+                        {{ profile.rating }}
+                    </p>
+                    <p class="subtitle is-4">
+                        {{ __('rating') }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -174,8 +186,9 @@
 
 import { mapState, mapMutations } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faSyncAlt, faTrashAlt, faUpload, faSignOutAlt, faPencilAlt }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faUser, faSyncAlt, faTrashAlt, faUpload, faSignOutAlt, faPencilAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import FileUploader from '../filemanager/FileUploader.vue';
 import format from '../../../modules/enso/plugins/date-fns/format';
 
@@ -186,11 +199,9 @@ export default {
 
     components: { FileUploader },
 
-    data() {
-        return {
-            profile: null,
-        };
-    },
+    data: () => ({
+        profile: null,
+    }),
 
     computed: {
         ...mapState(['user', 'meta', 'enums', 'impersonating']),
@@ -241,7 +252,9 @@ export default {
             });
         },
         dateFormat(date) {
-            return format(date, this.meta.dateFormat);
+            return date
+                ? format(date, this.meta.dateFormat)
+                : null;
         },
     },
 };

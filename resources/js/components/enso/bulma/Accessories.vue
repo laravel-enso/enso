@@ -1,5 +1,4 @@
 <template>
-
     <enso-tabs>
         <span slot="label"
             slot-scope="{ tab }">
@@ -10,7 +9,6 @@
         </span>
         <slot :count="count"/>
     </enso-tabs>
-
 </template>
 
 <script>

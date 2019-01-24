@@ -1,5 +1,4 @@
 <template>
-
     <div class="box has-background-light">
         <input class="input control is-large message-title"
             v-model="message.title"
@@ -38,7 +37,6 @@
             </span>
         </button>
     </div>
-
 </template>
 
 <script>
@@ -81,36 +79,34 @@ export default {
         },
     },
 
-    data() {
-        return {
-            tribute: null,
-            query: null,
-            users: [],
-            tagged: [],
-            options: {
-                theme: 'snow',
-                placeholder: this.__(this.placeholder),
-                modules: {
-                    toolbar: [
-                        ['bold', 'italic', 'strike'],
-                        this.attachments
-                            ? ['blockquote', 'code-block', 'image', 'link']
-                            : ['blockquote', 'code-block', 'link'],
-                        [{ header: 1 }, { header: 2 }],
-                        [{ list: 'ordered' }, { list: 'bullet' }],
-                        [{ align: [] }],
-                        [{ color: [] }, { background: [] }, 'clean'],
-                    ],
-                    mention: {
-                        template: item => this.template(item),
-                    },
-                    upload: {
-                        handler: () => this.openFileBrowser(),
-                    },
+    data: v => ({
+        tribute: null,
+        query: null,
+        users: [],
+        tagged: [],
+        options: {
+            theme: 'snow',
+            placeholder: v.__(v.placeholder),
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'strike'],
+                    v.attachments
+                        ? ['blockquote', 'code-block', 'image', 'link']
+                        : ['blockquote', 'code-block', 'link'],
+                    [{ header: 1 }, { header: 2 }],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    [{ align: [] }],
+                    [{ color: [] }, { background: [] }, 'clean'],
+                ],
+                mention: {
+                    template: item => v.template(item),
+                },
+                upload: {
+                    handler: () => v.openFileBrowser(),
                 },
             },
-        };
-    },
+        },
+    }),
 
     computed: {
         filled() {
@@ -141,8 +137,7 @@ export default {
             }
         },
         taggedUsers() {
-            return this.tagged.filter(user =>
-                this.message.body.indexOf(this.template(user)) > 0);
+            return this.tagged.filter(user => this.message.body.indexOf(this.template(user)) > 0);
         },
         upload($event) {
             const Editor = this.$refs.quillEditor.quill;

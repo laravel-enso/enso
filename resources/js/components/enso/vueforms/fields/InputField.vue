@@ -14,7 +14,6 @@
             @keydown="$emit('update');">
         <error-icon v-if="errors.has(field.name)"/>
     </div>
-
 </template>
 
 <script>

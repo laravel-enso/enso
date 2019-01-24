@@ -1,5 +1,4 @@
 <template>
-
     <modal show
         v-on="$listeners"
         container="address-form">
@@ -9,16 +8,14 @@
             @loaded="ready = true; $emit('loaded')"
             ref="form">
             <template v-for="field in customFields"
-                v-if="field.meta.custom"
                 :slot="field.name"
-                slot-scope="{ field, errors}">
+                slot-scope="{ errors }">
                 <slot :name="field.name"
                     :field="field"
                     :errors="errors"/>
             </template>
         </enso-form>
     </modal>
-
 </template>
 
 <script>

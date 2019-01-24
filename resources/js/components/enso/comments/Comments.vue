@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <div class="controls"
             v-if="controls">
@@ -53,7 +52,6 @@
                 :key="index"/>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -89,15 +87,13 @@ export default {
         },
     },
 
-    data() {
-        return {
-            comments: [],
-            comment: null,
-            loading: false,
-            internalQuery: '',
-            path: this.$route.path,
-        };
-    },
+    data: v => ({
+        comments: [],
+        comment: null,
+        loading: false,
+        internalQuery: '',
+        path: v.$route.path,
+    }),
 
     computed: {
         ...mapState(['user']),
@@ -106,8 +102,7 @@ export default {
             const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.comments.filter(({ body, owner }) =>
-                    body.toLowerCase().indexOf(query) > -1
+                ? this.comments.filter(({ body, owner }) => body.toLowerCase().indexOf(query) > -1
                     || owner.name.toLowerCase().indexOf(query) > -1)
                 : this.comments;
         },
@@ -138,7 +133,7 @@ export default {
 
             axios.get(
                 route('core.comments.index'),
-                { params: this.params }
+                { params: this.params },
             ).then(({ data }) => {
                 this.comments = data;
                 this.loading = false;

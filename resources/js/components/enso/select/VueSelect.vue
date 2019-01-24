@@ -1,5 +1,4 @@
 <template>
-
     <div :class="['dropdown', { 'is-active': dropdown }]"
         v-click-outside="hideDropdown">
         <div class="dropdown-trigger">
@@ -14,11 +13,11 @@
                     <div class="field is-grouped is-grouped-multiline">
                         <div class="control"
                             v-if="multiple">
-                            <tag v-for="(option, index) in selected"
+                            <tag v-for="option in selection"
                                 :disabled="readonly || disabled"
-                                :label="optionLabel(option, label)"
-                                :key="index"
-                                @remove="remove(option); $emit('remove', option)"/>
+                                :label="optionLabel(option)"
+                                :key="option[trackBy]"
+                                @remove="remove(option)"/>
                         </div>
                         <input class="input select-input" type="text"
                             :placeholder="i18n(placeholder)"
@@ -30,15 +29,17 @@
                             @keydown.enter.prevent="hit()"
                             v-if="dropdown">
                     </div>
-                    <span v-if="!dropdown && !multiple && hasSelection">
-                        {{ selected }}
-                    </span>
-                    <span v-else-if="!dropdown && !multiple && hasOptions">
-                        {{ i18n(placeholder) }}
-                    </span>
-                    <span v-else-if="!dropdown && !hasOptions">
-                        {{ i18n(labels.noOptions) }}
-                    </span>
+                    <div v-if="!dropdown">
+                        <span v-if="!multiple && hasSelection">
+                            {{ selection }}
+                        </span>
+                        <span v-if="!hasSelection && hasOptions">
+                            {{ i18n(placeholder) }}
+                        </span>
+                        <span v-else-if="!hasOptions">
+                            {{ i18n(labels.noOptions) }}
+                        </span>
+                    </div>
                     <span class="is-loading"
                         v-if="loading"/>
                     <a class="delete is-small"
@@ -55,16 +56,19 @@
             <div class="dropdown-content">
                 <a class="dropdown-item"
                     v-for="(option, index) in filteredOptions"
-                    :key="index"
+                    :key="option[trackBy]"
                     :class="{ 'is-active': position === index }"
                     @mousemove="position = index"
-                    @click.prevent="hit()">
-                    <span v-html="highlight(optionLabel(option, label))"/>
-                    <span :class="[
-                            'label tag', isSelected(option) ? 'is-warning' : 'is-success'
-                        ]" v-if="index === position && !disableClear">
-                        <span v-if="isSelected(option)">{{ i18n(labels.deselect) }}</span>
-                        <span v-else>{{ i18n(labels.select) }}</span>
+                    @click="hit()">
+                    <span v-html="highlight(optionLabel(option))"/>
+                    <span :class="['label tag', isSelected(option) ? 'is-warning' : 'is-success']"
+                        v-if="index === position && !disableClear">
+                        <span v-if="isSelected(option)">
+                            {{ i18n(labels.deselect) }}
+                        </span>
+                        <span v-else>
+                            {{ i18n(labels.select) }}
+                        </span>
                     </span>
                     <span class="icon is-small selected has-text-success"
                         v-else-if="isSelected(option)">
@@ -72,7 +76,7 @@
                     </span>
                 </a>
                 <a class="dropdown-item"
-                    v-if="filteredOptions.length === 0"
+                    v-if="!hasFilteredOptions"
                     @click="taggable ? $emit('add-tag', query) : null">
                     {{ i18n(labels.noResults) }}
                     <span class="label tag is-info"
@@ -83,7 +87,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -107,83 +110,34 @@ export default {
     components: { Tag },
 
     props: {
-        multiple: {
-            type: Boolean,
-            default: false,
-        },
-        source: {
-            type: String,
+        customParams: {
+            type: Object,
             default: null,
         },
-        options: {
-            type: Array,
-            default() {
-                return [];
-            },
-        },
-        trackBy: {
-            type: String,
-            default: 'id',
-        },
-        label: {
-            type: String,
-            default: 'name',
-        },
-        value: {
-            type: null,
-            default: this.multiple ? [] : null,
-        },
-        limit: {
+        debounce: {
             type: Number,
-            default: 100,
-        },
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
-        readonly: {
-            type: Boolean,
-            default: false,
-        },
-        taggable: {
-            type: Boolean,
-            default: false,
+            default: 300,
         },
         disableClear: {
             type: Boolean,
             default: false,
         },
-        hasError: {
+        disabled: {
             type: Boolean,
             default: false,
         },
-        params: {
-            type: Object,
-            default: null,
+        errorHandler: {
+            type: Function,
+            default(error) {
+                if (Object.keys(this.$options.methods).includes('handleError')) {
+                    this.handleError(error);
+                    return;
+                }
+
+                throw error;
+            },
         },
-        pivotParams: {
-            type: Object,
-            default: null,
-        },
-        customParams: {
-            type: Object,
-            default: null,
-        },
-        placeholder: {
-            type: String,
-            default: 'Choose',
-        },
-        labels: {
-            type: Object,
-            default: () => ({
-                select: 'select',
-                deselect: 'deselect',
-                noOptions: 'No options available',
-                noResults: 'No search results found',
-                addTag: 'Add option',
-            }),
-        },
-        translated: {
+        hasError: {
             type: Boolean,
             default: false,
         },
@@ -195,22 +149,78 @@ export default {
                     : key;
             },
         },
-        debounce: {
+        label: {
+            type: String,
+            default: 'name',
+        },
+        labels: {
+            type: Object,
+            default: () => ({
+                select: 'select',
+                deselect: 'deselect',
+                noOptions: 'No options available',
+                noResults: 'No search results found',
+                addTag: 'Add option',
+            }),
+        },
+        limit: {
             type: Number,
-            default: 300,
+            default: 100,
+        },
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
+        options: {
+            type: Array,
+            default: () => ([]),
+        },
+        params: {
+            type: Object,
+            default: null,
+        },
+        pivotParams: {
+            type: Object,
+            default: null,
+        },
+        placeholder: {
+            type: String,
+            default: 'Choose',
+        },
+        readonly: {
+            type: Boolean,
+            default: false,
+        },
+        source: {
+            type: String,
+            default: null,
+        },
+        taggable: {
+            type: Boolean,
+            default: false,
+        },
+        trackBy: {
+            type: String,
+            default: 'id',
+        },
+        translated: {
+            type: Boolean,
+            default: false,
+        },
+        value: {
+            type: null,
+            default: this.multiple ? [] : null,
         },
     },
 
-    data() {
-        return {
-            optionList: this.options,
-            loading: false,
-            query: '',
-            dropdown: false,
-            position: null,
-            route: null,
-        };
-    },
+    data: v => ({
+        optionList: v.options,
+        loading: false,
+        query: '',
+        dropdown: false,
+        position: null,
+        path: null,
+    }),
 
     computed: {
         isServerSide() {
@@ -218,32 +228,35 @@ export default {
         },
         filteredOptions() {
             return this.query
-                ? this.optionList.filter(option =>
-                    this.optionLabel(option, this.label).toLowerCase()
-                        .indexOf(this.query.toLowerCase()) >= 0)
+                ? this.optionList.filter(option => this.matchesQuery(option))
                 : this.optionList;
         },
         hasSelection() {
-            return (this.multiple && this.value.length !== 0)
-                || (!this.multiple && this.value !== null);
+            return Array.isArray(this.value)
+                ? this.value.length > 0
+                : !!this.value;
         },
         hasOptions() {
             return this.optionList.length > 0;
         },
-        selected() {
+        hasFilteredOptions() {
+            return this.filteredOptions.length > 0;
+        },
+        selection() {
             if (!this.hasOptions) {
                 return null;
             }
 
-            if (!this.multiple) {
-                const option = this.optionList.find(option =>
-                    option[this.trackBy] === this.value);
-
-                return this.optionLabel(option, this.label);
+            if (this.multiple) {
+                return this.optionList
+                    .filter(option => this.value
+                        .includes(option[this.trackBy]));
             }
 
-            return this.optionList.filter(option =>
-                this.value.includes(option[this.trackBy]));
+            const option = this.optionList
+                .find(option => option[this.trackBy] === this.value);
+
+            return this.optionLabel(option);
         },
     },
 
@@ -254,11 +267,7 @@ export default {
             },
             deep: true,
         },
-        query: {
-            handler() {
-                this.fetch();
-            },
-        },
+        query: 'fetch',
         params: {
             handler() {
                 this.fetch();
@@ -280,18 +289,18 @@ export default {
     },
 
     created() {
-        this.setRoute();
+        this.setPath();
         this.fetch = debounce(this.fetch, this.debounce);
         this.fetch();
     },
 
     methods: {
-        setRoute() {
+        setPath() {
             if (!this.isServerSide) {
                 return;
             }
 
-            this.route = typeof route === 'function'
+            this.path = typeof route === 'function'
                 ? route(this.source)
                 : this.source;
         },
@@ -302,14 +311,14 @@ export default {
 
             this.loading = true;
 
-            axios.get(this.route, { params: this.getParams() })
-                .then((response) => {
-                    this.processOptions(response);
+            axios.get(this.path, { params: this.requestParams() })
+                .then(({ data }) => {
+                    this.processOptions(data);
                     this.$emit('fetch', this.optionList);
                     this.loading = false;
-                }).catch(error => this.handleError(error));
+                }).catch(error => this.errorHandler(error));
         },
-        getParams() {
+        requestParams() {
             return {
                 params: this.params,
                 pivotParams: this.pivotParams,
@@ -319,30 +328,34 @@ export default {
                 limit: this.limit,
             };
         },
-        processOptions({ data }) {
-            this.optionList = data;
+        processOptions(options) {
+            this.optionList = options;
 
-            if (!this.query && !this.valueIsMatched() && this.hasSelection) {
+            if (!this.query && !this.optionsMatchValue() && this.hasSelection) {
                 this.clear();
             }
         },
-        valueIsMatched() {
-            if (!this.multiple) {
+        matchesQuery(option) {
+            return this.optionLabel(option).toLowerCase()
+                .indexOf(this.query.toLowerCase()) >= 0;
+        },
+        optionsMatchValue() {
+            if (this.multiple) {
                 return this.optionList
-                    .filter(option => option[this.trackBy] === this.value).length > 0;
+                    .findIndex(option => this.value
+                        .findIndex(val => val === option[this.trackBy]) >= 0) >= 0;
             }
 
-            return this.optionList.filter(option =>
-                this.value
-                    .filter(val => val === option[this.trackBy]).length > 0).length > 0;
+            return this.optionList
+                .findIndex(option => option[this.trackBy] === this.value) >= 0;
         },
         showDropdown() {
-            if (!this.hasOptions) {
-                this.fetch();
+            if (this.readonly || this.disabled) {
                 return;
             }
 
-            if (this.readonly || this.disabled) {
+            if (!this.hasOptions) {
+                this.fetch();
                 return;
             }
 
@@ -356,35 +369,40 @@ export default {
             this.position = null;
         },
         hit() {
-            if (this.filteredOptions.length === 0) {
+            if (!this.hasFilteredOptions) {
                 return;
             }
 
             const value = this.filteredOptions[this.position][this.trackBy];
 
-            if (!this.multiple) {
-                this.hideDropdown();
-                if (this.value === value && !this.disableClear) {
-                    this.$emit('input', null);
-                    return;
-                }
-
-                this.$emit('input', value);
+            if (this.multiple) {
+                this.handleMultipleSelection(value);
                 return;
             }
 
-            const newValue = this.value;
-            const index = newValue.findIndex(option => option === value);
+            this.handleSelection(value);
+        },
+        handleSelection(value) {
+            this.hideDropdown();
+            if (this.value === value && !this.disableClear) {
+                this.$emit('input', null);
+                return;
+            }
+
+            this.$emit('input', value);
+        },
+        handleMultipleSelection(value) {
+            const index = this.value.findIndex(option => option === value);
 
             if (index >= 0) {
-                newValue.splice(index, 1);
+                this.value.splice(index, 1);
             } else {
-                newValue.push(value);
+                this.value.push(value);
             }
 
             this.query = '';
             this.$el.querySelector('input').focus();
-            this.$emit('input', newValue);
+            this.$emit('input', this.value);
         },
         clear() {
             this.$emit('input', this.multiple ? [] : null);
@@ -395,18 +413,19 @@ export default {
         remove(option) {
             const index = this.value
                 .findIndex(val => val === option[this.trackBy]);
+
             this.value.splice(index, 1);
+            this.$emit('remove', option);
+            this.$emit('input', this.value);
         },
         isSelected(option) {
             return this.multiple
-                ? this.value.findIndex(item =>
-                    item === option[this.trackBy]) >= 0
+                ? this.value.findIndex(item => item === option[this.trackBy]) >= 0
                 : this.value !== null
                     && this.value === option[this.trackBy];
         },
         keyDown() {
-            if (this.filteredOptions.length === 0
-                || this.loading
+            if (!this.hasFilteredOptions || this.loading
                 || this.position === this.filteredOptions.length - 1) {
                 return;
             }
@@ -426,8 +445,8 @@ export default {
             this.scroll();
         },
         scroll() {
-            const dropdown = this.dropdownSelector();
-            const option = this.optionSelector();
+            const dropdown = this.$el.querySelector('.dropdown-content');
+            const option = this.$el.querySelectorAll('.dropdown-item')[this.position];
 
             if (option.offsetTop < dropdown.scrollTop) {
                 dropdown.scrollTop -= (dropdown.scrollTop - option.offsetTop);
@@ -441,14 +460,8 @@ export default {
                 dropdown.scrollTop += (optionBottom - dropdownBottom);
             }
         },
-        dropdownSelector() {
-            return this.$el.querySelector('.dropdown-content');
-        },
-        optionSelector() {
-            return this.$el.querySelectorAll('.dropdown-item')[this.position];
-        },
-        optionLabel(option, label) {
-            const optionLabel = label.split('.')
+        optionLabel(option) {
+            const optionLabel = this.label.split('.')
                 .reduce((result, property) => result[property], option);
 
             return this.translated
@@ -491,6 +504,14 @@ export default {
                 padding-right: calc(0.625em - 1px);
                 padding-bottom: calc(0.375em - 1px);
                 padding-left: calc(0.625em - 1px);
+
+                &[disabled] {
+                    border-color: inherit;
+
+                    .select-value {
+                        cursor: unset;
+                    }
+                }
 
                 .select-value {
                     max-width: calc(100% - 2.5em);

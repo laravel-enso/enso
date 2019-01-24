@@ -13,7 +13,9 @@
                         <h4 class="title is-4 is-marginless">
                             {{ discussion.title }}
                         </h4>
-                        <span class="has-text-info is-bold">{{ discussion.owner.name }}</span>
+                        <span class="has-text-info is-bold">
+{{ discussion.owner.name }}
+</span>
                         &bull;
                         <small class="has-text-muted">
                             {{ timeFromNow(discussion.updatedAt || discussion.createdAt) }}
@@ -118,12 +120,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            popover: false,
-            reply: null,
-        };
-    },
+    data: () => ({
+        popover: false,
+        reply: null,
+    }),
 
     computed: {
         ...mapState(['user']),

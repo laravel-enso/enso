@@ -11,7 +11,7 @@
         "laravel-enso/addressesmanager": "2.5.*",
         "laravel-enso/commentsmanager": "2.4.*",
         "laravel-enso/controlpanelapi": "^2.0",
-        "laravel-enso/core": "3.5.*",
+        "laravel-enso/core": "3.6.*",
         "laravel-enso/discussions": "1.1.*",
         "laravel-enso/documentsmanager": "2.4.*",
         "laravel-enso/examples": "^1.0",

@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div :class="['pagination pull-right', {'with-border': border}]">
             <div :class="['dropdown', {'is-active': open}]"
@@ -11,13 +10,13 @@
                         </span>
                         {{ pageLength }}
                     </span>
-                    <a v-for="(length, index) in lengths"
-                        :key="index"
+                    <a v-for="option in lengths"
+                        :key="option"
                         class="dropdown-item"
                         href="#"
-                        :class="{ 'is-active': length == pageLength }"
-                        @click="changeLength(length)">
-                        {{ length }}
+                        :class="{ 'is-active': option == pageLength }"
+                        @click="changeLength(option)">
+                        {{ option }}
                     </a>
                 </dropdown>
             </div>
@@ -49,14 +48,14 @@
         <div class="is-clearfix has-margin-bottom-medium"/>
         <slot :list="computedList"/>
     </div>
-
 </template>
 
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faBars, faAngleDown, faEye, faAngleLeft, faFileAlt, faAngleRight,
+} from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown.vue';
 
 library.add([
@@ -79,9 +78,7 @@ export default {
         },
         lengths: {
             type: Array,
-            default() {
-                return [10, 15, 20, 25, 30];
-            },
+            default: () => ([10, 15, 20, 25, 30]),
         },
         border: {
             type: Boolean,
@@ -89,13 +86,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            pageLength: this.length,
-            open: false,
-            current: 1,
-        };
-    },
+    data: v => ({
+        pageLength: v.length,
+        open: false,
+        current: 1,
+    }),
 
     computed: {
         computedList() {

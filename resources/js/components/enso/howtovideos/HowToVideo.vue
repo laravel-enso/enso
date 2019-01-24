@@ -1,5 +1,4 @@
 <template>
-
     <card icon="video"
         :title="video.name"
         :controls="5">
@@ -121,19 +120,16 @@ export default {
         },
     },
 
-    data() {
-        return {
-            tagging: false,
-        };
-    },
+    data: () => ({
+        tagging: false,
+    }),
 
     computed: {
         uploadLink() {
             return route('howTo.posters.store');
         },
         tagList() {
-            return this.tags.filter(({ id }) =>
-                this.video.tagList.includes(id));
+            return this.tags.filter(({ id }) => this.video.tagList.includes(id));
         },
     },
 

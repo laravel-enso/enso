@@ -1,5 +1,4 @@
 <template>
-
     <section class="hero is-fullheight is-primary is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -19,12 +18,13 @@
             </div>
         </div>
     </section>
-
 </template>
 
 <script>
 
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import {
+    mapState, mapGetters, mapMutations, mapActions,
+} from 'vuex';
 import Overlay from '../../components/enso/bulma/Overlay.vue';
 
 export default {
@@ -32,11 +32,9 @@ export default {
 
     components: { Overlay },
 
-    data() {
-        return {
-            loading: true,
-        };
-    },
+    data: () => ({
+        loading: true,
+    }),
 
     computed: {
         ...mapState(['meta']),

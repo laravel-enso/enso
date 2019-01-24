@@ -1,5 +1,4 @@
 <template>
-
     <div class="bookmarks-wrapper">
         <span class="control">
             <a class="tag is-warning icon has-margin-right-small"
@@ -34,7 +33,6 @@
             </span>
         </draggable>
     </div>
-
 </template>
 
 <script>
@@ -70,8 +68,10 @@ export default {
     },
 
     mounted() {
-        this.$root.$on('bookmarks-update', () =>
-            this.$nextTick(() => this.ensureBookmarkVisibility()));
+        this.$root.$on(
+            'bookmarks-update',
+            () => this.$nextTick(() => this.ensureBookmarkVisibility()),
+        );
     },
 
     methods: {
@@ -88,8 +88,7 @@ export default {
                 .filter(({ name }) => name !== this.$route.name)
                 .forEach(route => this.drop(route));
 
-            this.routes.forEach(route =>
-                this.unStick(route));
+            this.routes.forEach(route => this.unStick(route));
         },
         ensureBookmarkVisibility() {
             clearInterval(this.handle);

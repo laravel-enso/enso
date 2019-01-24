@@ -12,8 +12,8 @@ export const getters = {
             ? state.i18n[lang][key]
             : key;
     },
-    documentTitle: (state, getters, rootState) =>
-        title => (rootState.meta.extendedDocumentTitle
+    documentTitle:
+        (state, getters, rootState) => title => (rootState.meta.extendedDocumentTitle
             ? `${getters.__(title)} | ${rootState.meta.appName}`
             : getters.__(title)),
 };

@@ -83,7 +83,6 @@
             </div>
         </modal>
     </div>
-
 </template>
 
 <script>
@@ -117,15 +116,13 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loading: false,
-            people: [],
-            path: null,
-            internalQuery: '',
-            deletedPerson: null,
-        };
-    },
+    data: () => ({
+        loading: false,
+        people: [],
+        path: null,
+        internalQuery: '',
+        deletedPerson: null,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -133,8 +130,7 @@ export default {
             const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.people.filter(({ name, position }) =>
-                    name.toLowerCase().indexOf(query) > -1
+                ? this.people.filter(({ name, position }) => name.toLowerCase().indexOf(query) > -1
                         || position.toLowerCase().indexOf(query) > -1)
                 : this.people;
         },
@@ -167,19 +163,19 @@ export default {
         },
         create() {
             this.path = route(
-                'administration.companies.people.create', { company: this.id }
+                'administration.companies.people.create', { company: this.id },
             );
         },
         edit(person) {
             this.path = route(
-                'administration.companies.people.edit', { person: person.id }
+                'administration.companies.people.edit', { person: person.id },
             );
         },
         destroy(person, index) {
             this.loading = true;
 
             axios.delete(route(
-                'administration.companies.people.destroy', { person: person.id }
+                'administration.companies.people.destroy', { person: person.id },
             )).then(() => {
                 this.deletedPerson = this.people.splice(index, 1).pop();
                 this.$emit('update');
@@ -191,7 +187,7 @@ export default {
 
             axios.delete(
                 route('administration.people.destroy',
-                { person: this.deletedPerson.id })
+                    { person: this.deletedPerson.id }),
             ).then(() => {
                 this.deletedPerson = null;
                 this.loading = false;
@@ -206,7 +202,7 @@ export default {
                     params: { person: $event },
                 });
             });
-        }
+        },
     },
 };
 

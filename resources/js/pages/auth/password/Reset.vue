@@ -1,6 +1,5 @@
 <template>
-
-        <auth-form is-reset
+    <auth-form is-reset
             action="Set a new password"
             route="password.reset"
             @success="success">
@@ -10,7 +9,6 @@
                 <password-strength :password="password"/>
             </p>
         </auth-form>
-
 </template>
 
 <script>
@@ -26,9 +24,7 @@ export default {
     methods: {
         success({ status }) {
             this.$toastr.success(status);
-
-            setTimeout(() =>
-                this.$router.push({ name: 'login' }), 350);
+            setTimeout(() => this.$router.push({ name: 'login' }), 350);
         },
     },
 };

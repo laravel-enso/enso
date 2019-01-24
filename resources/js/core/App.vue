@@ -1,5 +1,4 @@
 <template>
-
     <div id="app">
         <progress-bar ref="progressBar"/>
         <transition enter-active-class="fadeIn"
@@ -8,7 +7,6 @@
                 class="animated"/>
         </transition>
     </div>
-
 </template>
 
 <script>

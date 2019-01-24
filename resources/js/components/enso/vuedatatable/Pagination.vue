@@ -1,5 +1,4 @@
 <template>
-
     <nav class="pagination is-small"
         role="navigation"
         aria-label="pagination">
@@ -52,7 +51,6 @@
             </li>
         </ul>
     </nav>
-
 </template>
 
 <script>

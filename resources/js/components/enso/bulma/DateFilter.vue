@@ -1,9 +1,12 @@
 <template>
-
     <div class="date-filter is-paddingless">
         <div class="header has-text-centered has-padding-medium has-background-light">
-            <strong v-if="selected === filters.custom">{{ i18n('Between') }}</strong>
-            <strong v-else>{{ i18n('When') }}</strong>
+            <strong v-if="selected === filters.custom">
+                {{ i18n('Between') }}
+            </strong>
+            <strong v-else>
+                {{ i18n('When') }}
+            </strong>
         </div>
         <div class="has-padding-large">
             <div class="tags-wrapper">
@@ -48,12 +51,13 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 
-import { addDays, compareAsc, format, parse, subDays, subMonths, subWeeks } from 'date-fns';
+import {
+    addDays, compareAsc, format, parse, subDays, subMonths, subWeeks,
+} from 'date-fns';
 import Datepicker from '../vueforms/Datepicker.vue';
 
 export default {
@@ -73,8 +77,8 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return this.$options.methods &&
-                    Object.keys(this.$options.methods).includes('__')
+                return this.$options.methods
+                    && Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },

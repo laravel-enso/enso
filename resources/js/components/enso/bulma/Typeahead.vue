@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <div class="control has-icons-left has-icons-right"
             :class="{ 'is-loading': loading }">
@@ -57,7 +56,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -132,14 +130,12 @@ export default {
         },
     },
 
-    data() {
-        return {
-            position: 0,
-            items: [],
-            hiddenDropdown: false,
-            loading: false,
-        };
-    },
+    data: () => ({
+        position: 0,
+        items: [],
+        hiddenDropdown: false,
+        loading: false,
+    }),
 
     computed: {
         hasError() {

@@ -1,12 +1,11 @@
 <template>
-
     <card icon="address-card"
         refresh
         scrollable
         search
         :title="displayTitle"
         :overlay="$refs.people && $refs.people.loading"
-        @refresh="$refs.people.get()"
+        @refresh="$refs.people.fetch()"
         :collapsed="!open || isEmpty"
         ref="card"
         @query-update="query = $event"
@@ -28,7 +27,6 @@
                 ref="people"/>
         </div>
     </card>
-
 </template>
 
 <script>
@@ -62,12 +60,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            query: '',
-            count: 0,
-        };
-    },
+    data: () => ({
+        query: '',
+        count: 0,
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),

@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <div class="has-text-centered"
             v-if="!ready && loading">
@@ -54,7 +53,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -62,45 +60,41 @@
 import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Timeline from './../../components/enso/activityLog/Timeline.vue';
-import Overlay from './../../components/enso/bulma/Overlay.vue';
-import DateFilter from './../../components/enso/bulma/DateFilter.vue';
-import VueSelectFilter from './../../components/enso/select/VueSelectFilter.vue';
+import Timeline from '../../components/enso/activityLog/Timeline.vue';
+import DateFilter from '../../components/enso/bulma/DateFilter.vue';
+import VueSelectFilter from '../../components/enso/select/VueSelectFilter.vue';
 
 library.add(faSpinner);
 
 export default {
     components: {
-        Overlay,
         Timeline,
         DateFilter,
         VueSelectFilter,
     },
 
-    data() {
-        return {
-            ready: false,
-            loading: false,
-            axiosRequest: null,
-            feed: [],
-            offset: 0,
-            actions: [
-                { name: 'Created', id: 1 },
-                { name: 'Updated', id: 2 },
-                { name: 'Deleted', id: 3 },
-                { name: 'Custom', id: 4 },
-            ],
-            filters: {
-                userIds: [],
-                roleIds: [],
-                interval: {
-                    min: null,
-                    max: null,
-                },
-                events: [],
+    data: () => ({
+        ready: false,
+        loading: false,
+        axiosRequest: null,
+        feed: [],
+        offset: 0,
+        actions: [
+            { name: 'Created', id: 1 },
+            { name: 'Updated', id: 2 },
+            { name: 'Deleted', id: 3 },
+            { name: 'Custom', id: 4 },
+        ],
+        filters: {
+            userIds: [],
+            roleIds: [],
+            interval: {
+                min: null,
+                max: null,
             },
-        };
-    },
+            events: [],
+        },
+    }),
 
     computed: {
         ...mapGetters('preferences', { locale: 'lang' }),

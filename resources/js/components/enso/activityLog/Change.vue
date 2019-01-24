@@ -1,12 +1,14 @@
 <template>
     <span>
-        <span v-if="index > 0"> & </span>
+        <span v-if="index > 0">
+            &
+        </span>
         -
         {{ __(change.attribute) }}
         {{ __('was changed') }}
         <span v-if="!isBool(change.before)">
             {{ __('from') }}
-            <strong >{{ change.before }}</strong>
+            <strong>{{ change.before }}</strong>
         </span>
         {{ __('to') }}
         <span :class="[
@@ -16,7 +18,9 @@
             v-if="isBool(change.after)">
             <fa :icon="change.after ? 'check-circle' : 'times-circle'"/>
         </span>
-        <strong v-else>{{ change.after }}</strong>
+        <strong v-else>
+            {{ change.after }}
+        </strong>
     </span>
 </template>
 

@@ -1,5 +1,4 @@
 <template>
-
     <div class="login">
         <div class="box has-padding-medium">
             <h3 class="title is-3 has-text-black has-text-centered has-margin-bottom-medium">
@@ -110,14 +109,15 @@
             <div class="is-clearfix"/>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import { mapState } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faCheck, faExclamationTriangle, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add([
     faEnvelope, faCheck, faExclamationTriangle, faLock, faUser,
@@ -145,17 +145,15 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loading: false,
-            email: '',
-            password: '',
-            passwordConfirmation: null,
-            remember: false,
-            hasErrors: false,
-            isSuccessful: false,
-        };
-    },
+    data: () => ({
+        loading: false,
+        email: '',
+        password: '',
+        passwordConfirmation: null,
+        remember: false,
+        hasErrors: false,
+        isSuccessful: false,
+    }),
 
     computed: {
         ...mapState(['meta']),
@@ -177,7 +175,10 @@ export default {
             };
 
             if (this.isLogin) {
-                params = Object.assign({ password: this.password, remember: this.remember }, params);
+                params = Object.assign({
+                    password: this.password,
+                    remember: this.remember,
+                }, params);
             }
 
             if (this.isReset) {

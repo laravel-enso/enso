@@ -1,5 +1,4 @@
 <template>
-
     <transition enter-active-class="fadeIn"
         leave-active-class="fadeOut">
         <div :class="['modal animated', { 'is-active': show }]"
@@ -13,7 +12,6 @@
                 @click="$emit('close')"/>
         </div>
     </transition>
-
 </template>
 
 <script>
@@ -34,11 +32,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            wrapper: null,
-        };
-    },
+    data: () => ({
+        wrapper: null,
+    }),
 
     computed: {
         wrapperSelector() {

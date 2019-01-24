@@ -34,8 +34,7 @@ export default new Vuex.Store({
         routes: state => Object.keys(state.routes),
         requests: state => state.requests.length,
         requestIndex: state => ({ url, method }) => state.requests
-            .findIndex(request =>
-                method === request.method && url === request.url),
+            .findIndex(request => method === request.method && url === request.url),
     },
 
     mutations: {

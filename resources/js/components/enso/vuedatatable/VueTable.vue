@@ -1,5 +1,4 @@
 <template>
-
     <div class="table-wrapper"
         v-if="initialised">
         <top-controls :template="template"
@@ -60,7 +59,9 @@
                         v-if="visibleColumns[i].meta.customTotal">
                         <slot :name="`${visibleColumns[i].name}_custom_total`"
                             :total="body ? body.total : []"
-                            :column="visibleColumns[i]">{{ `${visibleColumns[i].name}_custom_total` }}</slot>
+                            :column="visibleColumns[i]">
+                            {{ `${visibleColumns[i].name}_custom_total` }}
+                        </slot>
                     </template>
                 </table-footer>
             </table>
@@ -80,7 +81,6 @@
             {{ i18n('No records were found') }}
         </div>
     </div>
-
 </template>
 
 <script>
@@ -130,29 +130,27 @@ export default {
         i18n: {
             type: Function,
             default(key) {
-                return this.$options.methods &&
-                    Object.keys(this.$options.methods).includes('__')
+                return this.$options.methods
+                    && Object.keys(this.$options.methods).includes('__')
                     ? this.__(key)
                     : key;
             },
         },
     },
 
-    data() {
-        return {
-            loading: false,
-            initialised: false,
-            template: null,
-            search: '',
-            start: null,
-            body: null,
-            length: null,
-            expanded: [],
-            forceInfo: false,
-            selected: [],
-            highlighted: [],
-        };
-    },
+    data: () => ({
+        loading: false,
+        initialised: false,
+        template: null,
+        search: '',
+        start: null,
+        body: null,
+        length: null,
+        expanded: [],
+        forceInfo: false,
+        selected: [],
+        highlighted: [],
+    }),
 
     computed: {
         preferencesKey() {
@@ -483,9 +481,9 @@ export default {
                 return;
             }
 
-            const selected = this.body.data.filter(row =>
-                this.selected.findIndex(id => id === row.dtRowId) === -1)
-                .length === 0;
+            const selected = !this.body.data
+                .some(row => this.selected
+                    .findIndex(id => id === row.dtRowId) === -1);
 
             this.$refs.header.updateSelectedFlag(selected);
         },

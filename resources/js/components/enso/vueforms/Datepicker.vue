@@ -1,5 +1,4 @@
 <template>
-
     <div class="control has-icons-left has-icons-right">
         <input :class="[
                 'input',
@@ -29,7 +28,6 @@
             <fa icon="exclamation-triangle"/>
         </span>
     </div>
-
 </template>
 
 <script>
@@ -105,14 +103,14 @@ export default {
         },
     },
 
-    data() {
-        return {
-            picker: null,
-        };
-    },
+    data: () => ({
+        picker: null,
+    }),
 
     computed: {
-        config(self = this) {
+        config() {
+            const self = this;
+
             return {
                 weekNumbers: this.weekNumbers,
                 defaultDate: this.value,

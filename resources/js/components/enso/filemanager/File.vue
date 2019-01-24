@@ -1,5 +1,4 @@
 <template>
-
     <div class="box has-background-light raises-on-hover file-box has-padding-large">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
@@ -62,7 +61,6 @@
             :link="temporaryLink"
             @close="temporaryLink = ''"/>
     </div>
-
 </template>
 
 <script>
@@ -76,16 +74,10 @@ import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 import Modal from './Modal.vue';
 
-
-import Tabs from '../bulma/Tabs.vue';
-import Tab from '../bulma/Tab.vue';
-
-library.add([
+library.add(
     faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink, faCalendarAlt,
     faDatabase, faImage, faFileExcel, faFilePdf, faFileWord, faFilePowerpoint,
-]);
-
-library.add(faFile);
+);
 
 const Images = ['jpg', 'png', 'jpeg', 'gif'];
 const SpreadSheets = ['xls', 'xlsx', 'csv', 'numbers'];
@@ -96,9 +88,7 @@ const Pdfs = ['pdf'];
 export default {
     name: 'File',
 
-    components: {
-        Tabs, Tab, Popover, Modal,
-    },
+    components: { Popover, Modal },
 
     props: {
         file: {
@@ -107,11 +97,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            temporaryLink: '',
-        };
-    },
+    data: () => ({
+        temporaryLink: '',
+    }),
 
     computed: {
         downloadLink() {

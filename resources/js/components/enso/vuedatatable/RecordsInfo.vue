@@ -1,5 +1,4 @@
 <template>
-
     <div class="records-info has-text-centered-touch">
         {{ chunkInfo }}
         <span v-if="body.filters">
@@ -9,7 +8,6 @@
             {{ selectedInfo }}
         </span>
     </div>
-
 </template>
 
 <script>
@@ -57,7 +55,7 @@ export default {
         selectedInfo() {
             return this.hasSelected
                 ? `(${this.selected.length} ${this.i18n('selected')})`
-                : ``;
+                : '';
         },
         chunkInfo() {
             return this.hasRecords

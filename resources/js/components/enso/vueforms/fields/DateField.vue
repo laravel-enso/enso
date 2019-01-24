@@ -1,5 +1,4 @@
 <template>
-
     <datepicker v-model="field.value"
         :disabled="field.meta.disabled"
         :format="field.meta.format"
@@ -11,7 +10,6 @@
         v-on="$listeners"
         @input="errors.clear(field.name)"
         @keydown="$emit('update');"/>
-
 </template>
 
 <script>

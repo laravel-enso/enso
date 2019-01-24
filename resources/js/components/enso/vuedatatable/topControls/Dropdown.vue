@@ -1,5 +1,4 @@
 <template>
-
     <div class="dropdown is-active"
         v-click-outside="hide">
         <div class="dropdown-trigger"
@@ -26,7 +25,6 @@
             </div>
         </transition>
     </div>
-
 </template>
 
 <script>

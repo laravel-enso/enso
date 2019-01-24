@@ -1,12 +1,10 @@
 <template>
-
     <vue-aside class="menu">
         <p class="menu-label has-text-centered">
             {{ __("Menu") }}
         </p>
         <menus :menus="menus"/>
     </vue-aside>
-
 </template>
 
 <script>
@@ -42,4 +40,3 @@ export default {
     }
 
 </style>
-

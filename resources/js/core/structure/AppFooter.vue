@@ -1,5 +1,4 @@
 <template>
-
     <footer class="footer">
         <div class="content has-text-centered">
             <p class="level">
@@ -56,7 +55,6 @@
             </p>
         </div>
     </footer>
-
 </template>
 
 <script>

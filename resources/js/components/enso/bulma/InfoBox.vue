@@ -1,5 +1,4 @@
 <template>
-
     <div class="box">
         <div class="has-margin-bottom-medium has-text-centered"
             v-if="title">
@@ -10,7 +9,6 @@
         <hr v-if="title">
         <slot/>
     </div>
-
 </template>
 
 <script>

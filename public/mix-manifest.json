@@ -1,6 +1,14 @@
 {
-    "/js/tableExample.js": "/js/tableExample.js",
-    "/css/enso.css": "/css/enso.css",
-    "/js/enso.js": "/js/enso.js",
-    "/js/selectExample.js": "/js/selectExample.js"
+    "/js/vendor.js": "/js/vendor.js?id=62da557ead33bd9d8be1",
+    "/js/vendor.js.map": "/js/vendor.js.map?id=df2778e2edafb18d74bc",
+    "/js/enso.js": "/js/enso.js?id=c1e62e20b757e3f3a690",
+    "/css/enso.css": "/css/enso.css?id=45de11d8bc15d062145d",
+    "/themes/light/bulma.min.css": "/themes/light/bulma.min.css?id=89c37093d67923c7993d",
+    "/themes/dark/bulma.min.css": "/themes/dark/bulma.min.css?id=11135b711025c7324094",
+    "/js/enso.js.map": "/js/enso.js.map?id=56d04910b1a2ac6a6f2f",
+    "/css/enso.css.map": "/css/enso.css.map?id=c46d557c29aa286244dd",
+    "/themes/light/bulma.min.css.map": "/themes/light/bulma.min.css.map?id=516dc36aaa6cf2fca279",
+    "/themes/dark/bulma.min.css.map": "/themes/dark/bulma.min.css.map?id=cf1779b9f3837cd1dece",
+    "/js/manifest.js": "/js/manifest.js?id=756eeaae14876fbf24e1",
+    "/js/manifest.js.map": "/js/manifest.js.map?id=d727d7de4e9332f4f6b4"
 }

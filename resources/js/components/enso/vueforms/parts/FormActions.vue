@@ -1,5 +1,4 @@
 <template>
-
     <div class="actions">
         <a :class="['button', data.actions.back.button.class]"
             @click="$router.go(-1)"
@@ -87,14 +86,14 @@
             @commit="destroy()"
             v-if="modal && data.actions.destroy"/>
     </div>
-
 </template>
 
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faEye, faPlus, faCheck, faArrowLeft }
-    from '@fortawesome/free-solid-svg-icons';
+import {
+    faTrashAlt, faEye, faPlus, faCheck, faArrowLeft,
+} from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal.vue';
 
 library.add(faTrashAlt, faEye, faPlus, faCheck, faArrowLeft);

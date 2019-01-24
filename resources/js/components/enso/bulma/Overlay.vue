@@ -1,12 +1,10 @@
 <template>
-
     <div class="overlay is-overlay"
         :class="{ 'is-opaque': !transparent }">
         <div class="overlay-loader"
             :style="overlayColor"
             :class="loaderSize"/>
     </div>
-
 </template>
 
 <script>
@@ -32,15 +30,13 @@ export default {
         },
     },
 
-    data() {
-        return {
-            overlayColor: {
-                border: `2px solid ${this.color}`,
-                'border-right-color': 'transparent',
-                'border-top-color': 'transparent',
-            },
-        };
-    },
+    data: v => ({
+        overlayColor: {
+            border: `2px solid ${v.color}`,
+            'border-right-color': 'transparent',
+            'border-top-color': 'transparent',
+        },
+    }),
 
     computed: {
         loaderSize() {

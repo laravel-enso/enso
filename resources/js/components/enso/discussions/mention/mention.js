@@ -62,10 +62,10 @@ class Mention {
         const textBefore = this.quill.getText(startPosition, this.cursorPosition - startPosition);
         const mentionCharIndex = textBefore.lastIndexOf(this.options.mentionChar);
 
-        if (mentionCharIndex === 0 || (mentionCharIndex > 0 &&
-            ['\n', ' ', '   '].includes(textBefore[mentionCharIndex - 1]))) {
-            this.mentionCharPosition = this.cursorPosition -
-                (textBefore.length - mentionCharIndex);
+        if (mentionCharIndex === 0 || (mentionCharIndex > 0
+            && ['\n', ' ', '   '].includes(textBefore[mentionCharIndex - 1]))) {
+            this.mentionCharPosition = this.cursorPosition
+                - (textBefore.length - mentionCharIndex);
 
             this.query = textBefore.substring(mentionCharIndex + 1);
 
@@ -155,15 +155,15 @@ class Mention {
         const containerPos = this.quill.container.getBoundingClientRect();
         const mentionCharPosition = this.quill.getBounds(this.mentionCharPosition);
 
-        let top = window.pageYOffset +
-            containerPos.top +
-            mentionCharPosition.bottom +
-            this.options.offsetTop;
+        let top = window.pageYOffset
+            + containerPos.top
+            + mentionCharPosition.bottom
+            + this.options.offsetTop;
 
-        let left = window.pageXOffset +
-            containerPos.left +
-            mentionCharPosition.left +
-            this.options.offsetLeft;
+        let left = window.pageXOffset
+            + containerPos.left
+            + mentionCharPosition.left
+            + this.options.offsetLeft;
 
         if (this.containerExceedsVertically(top)) {
             const overMentionCharPos = window.pageYOffset

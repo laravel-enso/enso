@@ -1,5 +1,4 @@
 <template>
-
     <label class="label">
         {{ i18n(field.label) }}
         <span class="icon is-small has-text-info"
@@ -8,7 +7,6 @@
             <fa icon="info-circle" size="xs"/>
         </span>
     </label>
-
 </template>
 
 <script>

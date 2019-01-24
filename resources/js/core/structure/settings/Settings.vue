@@ -1,5 +1,4 @@
 <template>
-
     <vue-aside class="wrapper settings">
         <p class="menu-label has-text-centered">
             {{ __("Settings") }}
@@ -31,7 +30,6 @@
             </li>
         </ul>
     </vue-aside>
-
 </template>
 
 <script>

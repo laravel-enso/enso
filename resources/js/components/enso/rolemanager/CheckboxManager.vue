@@ -1,5 +1,4 @@
 <template>
-
     <card :title="title"
         :collapsed="collapsed"
         :nested="nested"
@@ -21,20 +20,19 @@
         <div class="has-padding-large">
             <checkbox-manager :class="[
                     'is-rounded has-margin-top-small',
-                    { 'raises-on-hover': items._items.length }
+                    { 'raises-on-hover': data[group]._items.length }
                 ]"
-                v-for="(items, group) in data"
+                v-for="group in groups"
                 nested
                 collapsed
                 :title="group"
                 :key="group"
-                :data="items"
+                :data="data[group]"
                 :role-permissions="rolePermissions"
                 @shrink="$refs.card.shrink($event)"
                 @extend="$refs.card.extend($event)"
                 @update="update"
-                ref="children"
-                v-if="group !== '_items'"/>
+                ref="children"/>
             <content-manager :items="data._items"
                 :role-permissions="rolePermissions"
                 @checked="check"
@@ -44,7 +42,6 @@
                 v-if="data._items.length"/>
         </div>
     </card>
-
 </template>
 
 <script>
@@ -66,7 +63,7 @@ export default {
             required: true,
         },
         data: {
-            type: [Object],
+            type: Object,
             required: true,
         },
         rolePermissions: {
@@ -86,6 +83,9 @@ export default {
     computed: {
         checkbox() {
             return this.$el.querySelector('input[type=checkbox]');
+        },
+        groups() {
+            return Object.keys(this.data).filter(key => key !== '_items');
         },
     },
 
@@ -107,8 +107,8 @@ export default {
         },
         update() {
             const checkedCount = this.$refs.children
-                .filter(child => child.checkbox.checked &&
-                    (!child.$refs.content || child.$refs.content.status === Checked))
+                .filter(child => child.checkbox.checked
+                    && (!child.$refs.content || child.$refs.content.status === Checked))
                 .length;
 
             if (checkedCount === this.$refs.children.length) {

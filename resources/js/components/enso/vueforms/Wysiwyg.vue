@@ -24,7 +24,7 @@
                         { 'is-inactive': readonly }
                     ]" @click="marks.italic.command">
                     <span class="icon is-small">
-                        <fa icon="italic" />
+                        <fa icon="italic"/>
                     </span>
                 </a>
                 <a :class="[
@@ -67,7 +67,7 @@
                         { 'is-active': nodes.paragraph.active({ textAlign: 'center' })}
                     ]" @click="nodes.paragraph.command({ textAlign: 'center' })">
                     <span class="icon is-small">
-                        <fa icon="align-center" />
+                        <fa icon="align-center"/>
                     </span>
                 </a>
                 <a :class="[
@@ -75,7 +75,7 @@
                         { 'is-active': nodes.paragraph.active({ textAlign: 'right' })}
                     ]" @click="nodes.paragraph.command({ textAlign: 'right' })">
                     <span class="icon is-small">
-                        <fa icon="align-right" />
+                        <fa icon="align-right"/>
                     </span>
                 </a>
                 <a :class="[
@@ -191,6 +191,7 @@
 </template>
 
 <script>
+
 import { Editor } from 'tiptap';
 import {
     BlockquoteNode, CodeBlockNode, HardBreakNode, HeadingNode, OrderedListNode,

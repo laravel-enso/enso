@@ -1,5 +1,4 @@
 <template>
-
     <label class="vue-switch" :class="[size, type, { 'checked': value, 'disabled': disabled }]">
         <input type="checkbox"
             class="checkbox"
@@ -9,7 +8,6 @@
             :required="required"
             :checked="value">
     </label>
-
 </template>
 
 <script>
@@ -45,11 +43,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            checked: this.value,
-        };
-    },
+    data: v => ({
+        checked: v.value,
+    }),
 
     watch: {
         value(value) {

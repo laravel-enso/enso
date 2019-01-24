@@ -1,5 +1,4 @@
 <template>
-
     <div class="top-controls has-background-light">
         <div class="columns is-multiline">
             <div class="
@@ -81,13 +80,14 @@
             @close="closeModal()"
             @commit="doAction(button)"/>
     </div>
-
 </template>
 
 <script>
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSync, faUndo, faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSync, faUndo, faSearch, faInfoCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import LengthMenu from './topControls/LengthMenu.vue';
 import ColumnVisibility from './topControls/ColumnVisibility.vue';
 import StyleSelector from './topControls/StyleSelector.vue';
@@ -129,14 +129,12 @@ export default {
         },
     },
 
-    data() {
-        return {
-            lengthMenu: false,
-            columnVisibility: false,
-            modal: false,
-            button: null,
-        };
-    },
+    data: () => ({
+        lengthMenu: false,
+        columnVisibility: false,
+        modal: false,
+        button: null,
+    }),
 
     methods: {
         showModal(button) {

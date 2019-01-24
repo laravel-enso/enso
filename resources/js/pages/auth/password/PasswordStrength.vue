@@ -29,7 +29,12 @@ import zxcvbn from 'zxcvbn';
 export default {
     name: 'PasswordStrength',
 
-    props: ['password'],
+    props: {
+        password: {
+            type: String,
+            required: true,
+        },
+    },
 
     methods: {
         score() {

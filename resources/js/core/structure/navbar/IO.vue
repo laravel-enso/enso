@@ -1,5 +1,4 @@
 <template>
-
     <div :class="[
             'navbar-item io',
             { 'has-dropdown': !isTouch },
@@ -12,7 +11,9 @@
                 <fa icon="sync-alt"
                     spin/>
             </span>
-            <sup class="has-text-danger operation-count">{{ count || null }}</sup>
+            <sup class="has-text-danger operation-count">
+                {{ count || null }}
+            </sup>
         </span>
         <a :class="['navbar-link', { 'rotate': visible }]"
             @click="visible = !visible"
@@ -21,7 +22,9 @@
                 <fa icon="sync-alt"
                     spin/>
             </span>
-            <sup class="has-text-danger operation-count">{{ count || null }}</sup>
+            <sup class="has-text-danger operation-count">
+                {{ count || null }}
+            </sup>
         </a>
         <div class="navbar-dropdown is-right"
             v-if="visible">
@@ -119,7 +122,9 @@ import { mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSyncAlt, faDatabase, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSyncAlt, faDatabase, faCaretLeft, faCaretRight,
+} from '@fortawesome/free-solid-svg-icons';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
@@ -245,4 +250,3 @@ export default {
     }
 
 </style>
-

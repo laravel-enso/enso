@@ -1,5 +1,4 @@
 <template>
-
     <transition enter-active-class="fadeIn"
         leave-active-class="fadeOut">
         <div :class="['modal animated', { 'is-active': show }]"
@@ -21,7 +20,6 @@
                 @click="$emit('close')"/>
         </div>
     </transition>
-
 </template>
 
 <script>
@@ -29,6 +27,7 @@ import Vue from 'vue';
 
 export default {
     name: 'Modal',
+
     props: {
         show: {
             type: Boolean,
@@ -39,18 +38,20 @@ export default {
             default: 'modal-wrapper',
         },
     },
-    data() {
-        return {
-            wrapper: null,
-        };
-    },
+
+    data: () => ({
+        wrapper: null,
+    }),
+
     computed: {
         containerSelector() {
             return `.${this.container}`;
         },
     },
+
     created() {
         const wrapper = document.querySelector(this.containerSelector);
+
         if (!wrapper) {
             const { container } = this;
             const ModalWrapper = Vue.extend({
@@ -67,13 +68,16 @@ export default {
             this.wrapper = wrapper.__vue__;
         }
     },
+
     mounted() {
         this.wrapper.$el.appendChild(this.$el);
         document.addEventListener('keydown', this.closeOnEsc);
     },
+
     beforeDestroy() {
         document.removeEventListener('keydown', this.closeOnEsc);
     },
+
     methods: {
         closeOnEsc(e) {
             if (this.show && e.keyCode === 27) {

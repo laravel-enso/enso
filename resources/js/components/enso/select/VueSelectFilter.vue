@@ -1,5 +1,4 @@
 <template>
-
     <div class="vue-filter">
         <div class="has-text-centered">
             <b>{{ title }}</b>
@@ -8,7 +7,6 @@
             v-bind="$attrs"
             v-on="$listeners"/>
     </div>
-
 </template>
 
 <script>

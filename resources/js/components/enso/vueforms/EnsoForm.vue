@@ -1,5 +1,4 @@
 <template>
-
     <vue-form :i18n="__"
         :locale="locale"
         :params="params"
@@ -18,12 +17,11 @@
         </template>
         <slot name="actions" slot="actions"/>
     </vue-form>
-
 </template>
 
 <script>
 
-import VueForm from '../../../components/enso/vueforms/VueForm.vue';
+import VueForm from "./VueForm.vue";
 
 export default {
     name: 'EnsoForm',

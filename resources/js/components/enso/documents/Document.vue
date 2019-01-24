@@ -1,5 +1,4 @@
 <template>
-
     <div class="level wrapper has-margin-top-medium">
         <div class="level-left">
             <div class="level-item">
@@ -79,7 +78,6 @@
                 @close="temporaryLink = ''"/>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -111,11 +109,9 @@ export default {
         },
     },
 
-    data() {
-        return {
-            temporaryLink: '',
-        };
-    },
+    data: () => ({
+        temporaryLink: '',
+    }),
 
     computed: {
         downloadLink() {

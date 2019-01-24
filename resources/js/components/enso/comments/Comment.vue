@@ -1,5 +1,4 @@
 <template>
-
     <article class="media box has-background-light raises-on-hover"
         @mouseover="controls = true"
         @mouseleave="!dialog ? controls = false: null">
@@ -77,7 +76,6 @@
             </div>
         </div>
     </article>
-
 </template>
 
 <script>
@@ -85,7 +83,9 @@
 import { VTooltip } from 'v-tooltip';
 import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPencilAlt, faTrashAlt, faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
+import {
+    faPencilAlt, faTrashAlt, faCheck, faBan,
+} from '@fortawesome/free-solid-svg-icons';
 import Inputor from './Inputor.vue';
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
@@ -114,13 +114,11 @@ export default {
         },
     },
 
-    data() {
-        return {
-            controls: false,
-            dialog: false,
-            originalBody: null,
-        };
-    },
+    data: () => ({
+        controls: false,
+        dialog: false,
+        originalBody: null,
+    }),
 
     computed: {
         ...mapGetters(['avatarLink']),

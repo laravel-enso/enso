@@ -1,11 +1,9 @@
 <template>
-
     <div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
             <enso-form class="box raises-on-hover animated fadeIn"/>
         </div>
     </div>
-
 </template>
 
 <script>

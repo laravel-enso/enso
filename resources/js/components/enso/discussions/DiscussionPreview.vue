@@ -1,5 +1,4 @@
 <template>
-
     <article class="media clickable">
         <figure class="media-left">
             <p class="image is-48x48">
@@ -9,9 +8,13 @@
         </figure>
         <div class="media-content">
             <div class="content">
-                <span class="has-text-weight-semibold">{{ discussion.title }}</span>
+                <span class="has-text-weight-semibold">
+                        {{ discussion.title }}
+                    </span>
                 <p class="preview">
-                    <span class="has-text-info is-bold">{{ discussion.owner.name }}</span>
+                    <span class="has-text-info is-bold">
+                        {{ discussion.owner.name }}
+                    </span>
                     &bull;
                     <small class="has-text-muted">
                         {{ timeFromNow(discussion.updatedAt || discussion.createdAt) }}
@@ -27,7 +30,6 @@
             </span>
         </div>
     </article>
-
 </template>
 
 <script>

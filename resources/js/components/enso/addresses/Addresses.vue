@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <div class="controls"
             v-if="controls">
@@ -69,7 +68,6 @@
             </template>
         </address-form>
     </div>
-
 </template>
 
 <script>
@@ -106,15 +104,13 @@ export default {
         },
     },
 
-    data() {
-        return {
-            loading: false,
-            addresses: [],
-            path: null,
-            internalQuery: '',
-            customFields: [],
-        };
-    },
+    data: () => ({
+        loading: false,
+        addresses: [],
+        path: null,
+        internalQuery: '',
+        customFields: [],
+    }),
 
     computed: {
         ...mapState('layout', ['isMobile']),
@@ -122,9 +118,10 @@ export default {
             const query = this.internalQuery.toLowerCase();
 
             return query
-                ? this.addresses.filter(({ city, street }) =>
-                    city.toLowerCase().indexOf(query) > -1
-                    || street.toLowerCase().indexOf(query) > -1)
+                ? this.addresses.filter(
+                    ({ city, street }) => city.toLowerCase().indexOf(query) > -1
+                        || street.toLowerCase().indexOf(query) > -1,
+                )
                 : this.addresses;
         },
         count() {

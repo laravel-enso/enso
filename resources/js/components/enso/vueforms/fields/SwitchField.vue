@@ -1,5 +1,4 @@
 <template>
-
     <vue-switch v-model="field.value"
         :disabled="field.meta.disabled || field.meta.readonly"
         size="is-large"
@@ -7,7 +6,6 @@
         v-on="$listeners"
         @click="$emit('update')"
         @input="errors.clear(field.name)"/>
-
 </template>
 
 <script>

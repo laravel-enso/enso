@@ -1,5 +1,4 @@
 <template>
-
     <div :class="['control', { 'has-icons-right': errors.has(field.name) }]">
         <money :class="['input', { 'is-danger': errors.has(field.name) }]"
             v-model="field.value"

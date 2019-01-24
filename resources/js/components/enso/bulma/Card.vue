@@ -1,5 +1,4 @@
 <template>
-
     <div class="card">
         <header class="card-header has-background-light"
             v-if="header">
@@ -13,7 +12,9 @@
                     v-if="!fixed && title">
                     {{ title }}
                 </span>
-                <span v-else-if="title">{{ title }}</span>
+                <span v-else-if="title">
+                    {{ title }}
+                </span>
             </p>
             <div class="has-vertically-centered-content"
                 v-if="search">
@@ -66,7 +67,6 @@
 
         <overlay size="medium" v-if="overlay"/>
     </div>
-
 </template>
 
 <script>
@@ -135,12 +135,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            query: null,
-            expanded: !this.collapsed,
-        };
-    },
+    data: v => ({
+        query: null,
+        expanded: !v.collapsed,
+    }),
 
     computed: {
         searchInput() {

@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
         <file-uploader :url="path"
             :params="params"
@@ -49,7 +48,6 @@
             </div>
         </modal>
     </div>
-
 </template>
 
 <script>

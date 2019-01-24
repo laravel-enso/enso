@@ -1,12 +1,15 @@
 <template>
-
     <p>
         <a class="author"
             @click="$emit('show-profile')">
             {{ event.author.name }}
         </a>
-        <span v-if="event.action.type === 4">{{ __(event.message) }}</span>
-        <span v-else>{{ __(event.action.label) }}</span>
+        <span v-if="event.action.type === 4">
+            {{ __(event.message) }}
+        </span>
+        <span v-else>
+            {{ __(event.action.label) }}
+        </span>
         <span v-if="event.action.type === 4 && !event.morphable && !event.relation">
             {{ __('on') }} {{ __(event.model) }}
         </span>
