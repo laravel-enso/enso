@@ -1,10 +1,8 @@
 {
     "/js/vendor.js": "/js/vendor.js",
-    "/js/tableExample.js": "/js/tableExample.js",
     "/js/enso.js": "/js/enso.js",
     "/css/enso.css": "/css/enso.css",
     "/themes/light/bulma.min.css": "/themes/light/bulma.min.css",
     "/themes/dark/bulma.min.css": "/themes/dark/bulma.min.css",
-    "/js/selectExample.js": "/js/selectExample.js",
     "/js/manifest.js": "/js/manifest.js"
 }

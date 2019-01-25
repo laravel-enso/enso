@@ -107,13 +107,12 @@ import VueTable from '../../components/enso/vuedatatable/VueTable.vue';
 import FileUploader from '../../components/enso/filemanager/FileUploader.vue';
 import ImportUploader from '../../components/enso/dataimport/ImportUploader.vue';
 import Modal from './Modal.vue';
-import Card from '../../components/enso/bulma/Card.vue';
 
 library.add(faUpload, faDownload, faTrashAlt, faFileExcel);
 
 export default {
     components: {
-        VueSelect, VueTable, FileUploader, ImportUploader, Card, Modal,
+        VueSelect, VueTable, FileUploader, ImportUploader, Modal,
     },
 
     directives: { tooltip: VTooltip },

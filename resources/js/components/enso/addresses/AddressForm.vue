@@ -7,11 +7,11 @@
             v-on="$listeners"
             @loaded="ready = true; $emit('loaded')"
             ref="form">
-            <template v-for="field in customFields"
-                :slot="field.name"
+            <template v-for="customField in customFields"
+                :slot="customField.name"
                 slot-scope="{ errors }">
-                <slot :name="field.name"
-                    :field="field"
+                <slot :name="customField.name"
+                    :field="customField"
                     :errors="errors"/>
             </template>
         </enso-form>

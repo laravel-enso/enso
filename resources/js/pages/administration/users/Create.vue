@@ -1,6 +1,5 @@
 <template>
-
-    <div class="columns is-centered">
+<div class="columns is-centered">
         <div class="column is-three-quarters-desktop is-full-touch">
             <enso-form class="box has-background-light raises-on-hover animated fadeIn">
                 <template slot="group_id"
@@ -20,17 +19,15 @@
             </enso-form>
         </div>
     </div>
-
 </template>
 
 <script>
 
 import EnsoForm from '../../../components/enso/vueforms/EnsoForm.vue';
-import InputField from '../../../components/enso/vueforms/fields/InputField.vue';
 import SelectField from '../../../components/enso/vueforms/fields/SelectField.vue';
 
 export default {
-    components: { EnsoForm, InputField, SelectField },
+    components: { EnsoForm, SelectField },
 
     data: () => ({
         pivotParams: { userGroups: { id: null } },

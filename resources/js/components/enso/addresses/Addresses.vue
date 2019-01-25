@@ -60,8 +60,7 @@
             v-if="path">
             <template v-for="field in customFields"
                 :slot="field.name"
-                slot-scope="{ field, errors }"
-                v-if="field.meta.custom">
+                slot-scope="{ errors }">
                 <slot :name="field.name"
                     :field="field"
                     :errors="errors"/>

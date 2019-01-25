@@ -14,7 +14,7 @@ module.exports = {
     parserOptions: {
         parser: 'babel-eslint',
         sourceType: 'module',
-        "ecmaVersion": 2017,
+        ecmaVersion: 2017,
         allowImportExportEverywhere: true
     },
     rules: {
@@ -22,9 +22,8 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ["error", 4],
         "vue/html-indent": 0,
-        'vue/attributes-order': 0,
+        // 'vue/attributes-order': 0,
         "no-plusplus": 0,
-        "no-debugger": 0,
         "no-underscore-dangle": ["error", { "allow": ["__"] } ],
         "no-param-reassign": 0,
         "no-mixed-operators": 0,

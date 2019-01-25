@@ -8,7 +8,7 @@
         ref="form">
         <template v-for="field in customFields"
             :slot="field.name"
-            slot-scope="{ field, errors }">
+            slot-scope="{ errors }">
             <slot :name="field.name"
                 :field="field"
                 :i18n="__"
@@ -21,7 +21,7 @@
 
 <script>
 
-import VueForm from "./VueForm.vue";
+import VueForm from './VueForm.vue';
 
 export default {
     name: 'EnsoForm',
