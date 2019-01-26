@@ -30,8 +30,8 @@ mix
         'tiptap-extensions', 'tooltip.js', 'v-click-outside', 'v-tooltip', 'vue',
         'vue-quill-editor', 'vue-router', 'vuedraggable', 'vuex',
     ])
-    // .js('resources/js/tableExample.js', 'public/js')
-    // .js('resources/js/selectExample.js', 'public/js')
+    .js('resources/js/tableExample.js', 'public/js')
+    .js('resources/js/selectExample.js', 'public/js')
     .sourceMaps();
 
 if (mix.inProduction()) {
