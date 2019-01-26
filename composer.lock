@@ -1999,16 +1999,16 @@
         },
         {
             "name": "laravel-enso/examples",
-            "version": "1.0.20",
+            "version": "1.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Examples.git",
-                "reference": "573c781fa8f5e315c890a4b9b374db6899430866"
+                "reference": "5f08e5a9f16bd1ba59a8d549d782f65ba591e1ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/573c781fa8f5e315c890a4b9b374db6899430866",
-                "reference": "573c781fa8f5e315c890a4b9b374db6899430866",
+                "url": "https://api.github.com/repos/laravel-enso/Examples/zipball/5f08e5a9f16bd1ba59a8d549d782f65ba591e1ed",
+                "reference": "5f08e5a9f16bd1ba59a8d549d782f65ba591e1ed",
                 "shasum": ""
             },
             "require": {
@@ -2048,7 +2048,7 @@
                 "examples",
                 "laravel-enso"
             ],
-            "time": "2019-01-24T12:22:16+00:00"
+            "time": "2019-01-26T07:09:36+00:00"
         },
         {
             "name": "laravel-enso/filemanager",
