@@ -2,15 +2,15 @@
     <nav class="breadcrumb is-small is-bold has-dot-separator">
         <ul>
             <li v-for="(breadcrumb, index) in breadcrumbs"
-                :class="{ 'is-active': breadcrumb.name === $route.meta.breadcrumb }"
-                :key="index">
+                :key="index"
+                :class="{ 'is-active': breadcrumb.name === $route.meta.breadcrumb }">
                 <a v-if="!breadcrumb.route"
                     :class="{'is-disabled': breadcrumb.name !== $route.meta.breadcrumb }">
                     {{ __(breadcrumb.name) }}
                 </a>
-                <router-link :class="{ 'link' : breadcrumb.name !== $route.meta.breadcrumb }"
-                    :to="{ name: breadcrumb.route }"
-                    v-if="breadcrumb.route">
+                <router-link v-if="breadcrumb.route"
+                    :class="{ 'link' : breadcrumb.name !== $route.meta.breadcrumb }"
+                    :to="{ name: breadcrumb.route }">
                     {{ __(breadcrumb.name) }}
                 </router-link>
             </li>

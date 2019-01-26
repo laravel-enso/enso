@@ -1,55 +1,61 @@
 <template>
     <div class="wrapper">
-        <div class="controls"
-            v-if="controls">
-            <a class="button"
-                @click="create()">
-                <span v-if="!isMobile">
-                    {{ __('Add Comment') }}
-                </span>
-                <span class="icon">
-                    <fa icon="plus"/>
-                </span>
-            </a>
-            <a class="button has-margin-left-small"
-                @click="fetch()">
-                <span v-if="!isMobile">
-                    {{ __('Reload') }}
-                </span>
-                <span class="icon">
-                    <fa icon="sync"/>
-                </span>
-            </a>
-            <p class="control has-icons-left has-icons-right has-margin-left-large">
-                <input class="input is-rounded"
-                    type="text"
-                    v-model="internalQuery"
-                    :placeholder="__('Filter')">
-                <span class="icon is-small is-left">
-                    <fa icon="search"/>
-                </span>
-                <span class="icon is-small is-right clear-button"
-                    v-if="internalQuery"
-                    @click="internalQuery = ''">
-                    <a class="delete is-small"/>
-                </span>
-            </p>
+        <div v-if="controls"
+            class="controls">
+            <slot name="controls"
+                :is-mobile="isMobile"
+                :create="create"
+                :internal-query="internalQuery"
+                :fetch="fetch">
+                <a class="button"
+                    @click="create()">
+                    <span v-if="!isMobile">
+                        {{ __('Add Comment') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="plus"/>
+                    </span>
+                </a>
+                <a class="button has-margin-left-small"
+                    @click="fetch()">
+                    <span v-if="!isMobile">
+                        {{ __('Reload') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="sync"/>
+                    </span>
+                </a>
+                <p class="control has-icons-left has-icons-right has-margin-left-large">
+                    <input v-model="internalQuery"
+                        class="input is-rounded"
+                        type="text"
+                        :placeholder="__('Filter')">
+                    <span class="icon is-small is-left">
+                        <fa icon="search"/>
+                    </span>
+                    <span v-if="internalQuery"
+                        class="icon is-small is-right clear-button"
+                        @click="internalQuery = ''">
+                        <a class="delete is-small"/>
+                    </span>
+                </p>
+            </slot>
         </div>
         <div :class="{'has-margin-top-large': controls}">
-            <comment is-new
+            <comment v-if="comment"
                 :id="id"
+                is-new
                 :type="type"
-                v-if="comment"
                 :comment="comment"
                 :index="-1"
                 @cancel-add="comment = null"
                 @save="add()"/>
             <comment v-for="(comment, index) in filteredComments"
+                :key="comment.id"
                 :comment="comment"
                 :index="index"
                 @save="update(comment)"
-                @delete="destroy(index)"
-                :key="index"/>
+                @delete="destroy(index)"/>
         </div>
     </div>
 </template>

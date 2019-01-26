@@ -3,25 +3,25 @@
     <tr v-for="(row, index) in body.data"
         :key="row.dtRowId"
         :class="highlighted.includes(index) ? template.highlight : null">
-        <td :class="template.align"
-            v-if="template.selectable && !isChild(row)">
+        <td v-if="template.selectable && !isChild(row)"
+            :class="template.align">
             <div class="selectable">
                 <label class="checkbox">
-                    <input type="checkbox"
+                    <input v-model="$parent.selected"
+                        type="checkbox"
                         :value="row.dtRowId"
-                        v-model="$parent.selected"
                         @change="$emit('update-selected')">
                 </label>
             </div>
         </td>
-        <td :class="template.align"
-            v-if="template.crtNo && !isChild(row)">
+        <td v-if="template.crtNo && !isChild(row)"
+            :class="template.align">
             <div class="crt-no">
                 <span class="crt-no-label">
                     {{ rowIndex(row) }}
                 </span>
-                <span class="hidden-controls"
-                    v-if="hiddenCount"
+                <span v-if="hiddenCount"
+                    class="hidden-controls"
                     @click="toggleExpand(row, index)">
                     <span class="icon is-small">
                         <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"/>
@@ -29,47 +29,47 @@
                 </span>
             </div>
         </td>
-        <td :class="[
+        <td v-for="(column, idx) in template.columns"
+            v-if="
+                column.meta.visible && !column.meta.hidden
+                && !column.meta.rogue && !isChild(row)
+            "
+            :key="idx"
+            :class="[
                 column.class,
                 { 'is-money' : column.money },
                 column.align
                     ? template.aligns[column.align]
                     : template.align
-            ]"
-            v-for="(column, idx) in template.columns"
-            :key="idx"
-            v-if="
-                column.meta.visible && !column.meta.hidden
-                && !column.meta.rogue && !isChild(row)
-            ">
+            ]">
             <table-cell :i18n="i18n"
                 :hidden-controls="cascadesHiddenControls && idx === 0"
                 :column="column"
                 :value="row[column.name]"
                 @clicked="clicked(row, column)">
-                <span slot="hidden-controls"
+                <span v-if="cascadesHiddenControls && idx === 0"
+                    slot="hidden-controls"
                     class="hidden-controls"
-                    v-if="cascadesHiddenControls && idx === 0"
                     @click="toggleExpand(row, index)">
                     <span class="icon is-small">
                         <fa :icon="isExpanded(row) ? 'minus-square' : 'plus-square'"/>
                     </span>
                 </span>
-                <span :slot="column.name"
-                    v-if="column.meta.slot">
+                <span v-if="column.meta.slot"
+                    :slot="column.name">
                     <slot :name="column.name"
                         :row="row"
                         :column="column"/>
                 </span>
             </table-cell>
         </td>
-        <td class="table-actions"
-            :class="template.align"
-            v-if="template.actions && !isChild(row)">
+        <td v-if="template.actions && !isChild(row)"
+            class="table-actions"
+            :class="template.align">
             <span class="table-action-buttons">
-                <a v-for="button in template.buttons.row"
+                <a v-for="(button, index) in template.buttons.row"
+                    :key="index"
                     v-tooltip="i18n(button.tooltip)"
-                    :key="button.icon"
                     class="button is-small is-table-button has-margin-left-small"
                     :class="button.class"
                     :href="button.action === 'href' ? path(button, row.dtRowId) : null"
@@ -83,21 +83,21 @@
                 </a>
             </span>
         </td>
-        <td :colspan="hiddenColSpan"
-            :class="template.align"
-            v-if="isChild(row)">
+        <td v-if="isChild(row)"
+            :colspan="hiddenColSpan"
+            :class="template.align">
             <ul>
-                <li class="child-row"
-                    v-for="item in row"
+                <li v-for="item in row"
+                    v-if="!item.column.meta.rogue"
                     :key="item.column.label"
-                    v-if="!item.column.meta.rogue">
+                    class="child-row">
                     <b>{{ i18n(item.column.label) }}</b>:
                     <table-cell :i18n="i18n"
                         :column="item.column"
                         :value="item.value"
                         @clicked="clicked(body.data[item.index], item.column)">
-                        <span :slot="item.column.name"
-                            v-if="item.column.meta.slot">
+                        <span v-if="item.column.meta.slot"
+                            :slot="item.column.name">
                             <slot :name="item.column.name"
                                 :row="body.data[item.rowIndex]"
                                 :column="item.column"/>

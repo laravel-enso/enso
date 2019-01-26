@@ -1,42 +1,50 @@
 <template>
     <div class="wrapper">
-        <div class="controls"
-            v-if="controls">
-            <uploader :params="{ documentable_type: type, documentable_id: id }"
-                @upload-successful="fetch();"
-                :url="uploadLink"
-                multiple/>
-            <a class="button has-margin-left-small"
-                @click="fetch()">
-                <span v-if="!isMobile">
-                    {{ __('Reload') }}
-                </span>
-                <span class="icon">
-                    <fa icon="sync"/>
-                </span>
-            </a>
-            <p class="control has-icons-left has-icons-right has-margin-left-large">
-                <input class="input is-rounded"
-                    type="text"
-                    v-model="internalQuery"
-                    :placeholder="__('Filter')">
-                <span class="icon is-small is-left">
-                    <fa icon="search"/>
-                </span>
-                <span class="icon is-small is-right clear-button"
-                    v-if="internalQuery"
-                    @click="internalQuery = ''">
-                    <a class="delete is-small"/>
-                </span>
-            </p>
+        <div v-if="controls"
+            class="controls">
+            <slot :id="id"
+                name="controls"
+                :is-mobile="isMobile"
+                :type="type"
+                :uploadLink="uploadLink"
+                :fetch="fetch"
+                :internal-query="internalQuery">
+                <uploader :params="{ documentable_type: type, documentable_id: id }"
+                    :url="uploadLink"
+                    multiple
+                    @upload-successful="fetch();"/>
+                <a class="button has-margin-left-small"
+                    @click="fetch()">
+                    <span v-if="!isMobile">
+                        {{ __('Reload') }}
+                    </span>
+                    <span class="icon">
+                        <fa icon="sync"/>
+                    </span>
+                </a>
+                <p class="control has-icons-left has-icons-right has-margin-left-large">
+                    <input v-model="internalQuery"
+                        class="input is-rounded"
+                        type="text"
+                        :placeholder="__('Filter')">
+                    <span class="icon is-small is-left">
+                        <fa icon="search"/>
+                    </span>
+                    <span v-if="internalQuery"
+                        class="icon is-small is-right clear-button"
+                        @click="internalQuery = ''">
+                        <a class="delete is-small"/>
+                    </span>
+                </p>
+            </slot>
         </div>
         <div :class="[
                 {'columns is-mobile is-multiline': !compact},
                 {'has-margin-top-large': controls}
             ]">
-            <div :class="{ 'column is-half-mobile is-one-third-desktop': !compact }"
-                v-for="(doc, index) in filteredDocuments"
-                :key="index">
+            <div v-for="(doc, index) in filteredDocuments"
+                :key="doc.id"
+                :class="{ 'column is-half-mobile is-one-third-desktop': !compact }">
                 <component :is="component"
                     :file="doc.file"
                     @delete="destroy(index)"/>

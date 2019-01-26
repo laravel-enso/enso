@@ -1,24 +1,24 @@
 <template>
     <transition enter-active-class="fadeIn"
         leave-active-class="fadeOut">
-        <div class="app-main"
-            v-show="lightsOn">
+        <div v-show="lightsOn"
+            class="app-main">
             <navbar class="animated slideInDown"/>
             <transition enter-active-class="slideInLeft"
                 leave-active-class="slideOutLeft">
-                <sidebar :class="[
+                <sidebar v-if="menu.isVisible" :class="[
                         'animated',
                         { 'is-collapsed' : !menu.isExpanded },
-                    ]" v-if="menu.isVisible"/>
+                    ]"/>
             </transition>
             <section :class="[
                     'main-content',
                     menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]
                 ">
-                <bookmarks :class="[
+                <bookmarks v-show="bookmarks" :class="[
                         'animated',
                         bookmarks ? 'slideInDown' : 'fadeOut'
-                    ]" v-show="bookmarks"/>
+                    ]"/>
                 <div class="wrapper page-content">
                     <page-header :title="$route.meta.title"/>
                     <router v-if="isInitialised"/>

@@ -9,7 +9,7 @@
             </p>
         </figure>
         <div class="media-content">
-            <div class="has-margin-bottom-medium has-text-grey" v-if="!isNew">
+            <div v-if="!isNew" class="has-margin-bottom-medium has-text-grey">
                 <a><b>{{ comment.owner.name }}</b></a>
                 <span v-tooltip="comment.updatedAt || comment.createdAt">
                     {{ timeFromNow(comment.updatedAt || comment.createdAt) }}
@@ -17,17 +17,17 @@
                 <span v-if="comment.createdAt !== comment.updatedAt">
                     &bull; {{ __('edited') }}
                 </span>
-                <div class="is-pulled-right is-flex"
-                    v-if="!isNew && !isEditing && controls">
-                    <a class="button is-naked is-small has-margin-right-small"
-                        v-if="comment.isEditable"
+                <div v-if="!isNew && !isEditing && controls"
+                    class="is-pulled-right is-flex">
+                    <a v-if="comment.isEditable"
+                        class="button is-naked is-small has-margin-right-small"
                         @click="originalBody = comment.body;">
                         <span class="icon is-small has-text-grey">
                             <fa icon="pencil-alt"/>
                         </span>
                     </a>
-                    <popover placement="bottom-end"
-                        v-if="comment.isDeletable"
+                    <popover v-if="comment.isDeletable"
+                        placement="bottom-end"
                         @confirm="$emit('delete')"
                         @show="dialog = true"
                         @hide="dialog = controls = false">
@@ -40,12 +40,12 @@
                     </popover>
                 </div>
             </div>
-            <div v-html="highlightTaggedUsers"
+            <div v-if="!isEditing && !isNew"
                 class="comment-body"
-                v-if="!isEditing && !isNew"/>
+                v-html="highlightTaggedUsers"/>
             <div v-else>
-                <inputor v-on="$listeners"
-                    :comment="comment"/>
+                <inputor :comment="comment"
+                    v-on="$listeners"/>
                 <div class="has-margin-top-medium">
                     <a class="button is-small is-outlined has-margin-right-small action"
                         @click="isNew ? $emit('cancel-add') : cancelAdd()">
@@ -56,11 +56,11 @@
                             <fa icon="ban"/>
                         </span>
                     </a>
-                    <a class="button is-small is-outlined is-success action"
-                        v-tooltip.right="{
+                    <a v-tooltip.right="{
                                 content: __('Shift + Enter to post'),
                                 delay: 800
                             }"
+                        class="button is-small is-outlined is-success action"
                         @click="isNew ? $emit('save') : update()">
                         <span v-if="isNew">
                             {{ __('Post') }}

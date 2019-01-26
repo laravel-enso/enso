@@ -4,13 +4,13 @@
         @keydown.up="onUp"
         @keydown.down="onDown"
         @keydown.enter="onEnter">
-        <div class="atwho dropdown-menu"
+        <div v-show="items.length"
             v-click-outside="hide"
-            v-show="items.length">
+            class="atwho dropdown-menu">
             <div class="dropdown-content">
-                <a :class="['dropdown-item', { 'is-active': index === position}]"
-                    v-for="(item, index) in items"
+                <a v-for="(item, index) in items"
                     :key="index"
+                    :class="['dropdown-item', { 'is-active': index === position}]"
                     @mousemove="position = index"
                     @click="selectItem">
                     <article class="media">
@@ -30,11 +30,11 @@
         </div>
         <div class="field">
             <p class="control">
-                <textarea class="textarea vue-comment"
-                    @keyup.shift.enter="$emit('save')"
+                <textarea v-model="comment.body"
                     v-focus
-                    v-model="comment.body"
-                    :placeholder="__('Type a new comment')"/>
+                    class="textarea vue-comment"
+                    :placeholder="__('Type a new comment')"
+                    @keyup.shift.enter="$emit('save')"/>
             </p>
         </div>
     </div>

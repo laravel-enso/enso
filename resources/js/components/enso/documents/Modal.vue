@@ -1,13 +1,13 @@
 <template>
-    <modal v-on="$listeners"
-        :show="show">
+    <modal :show="show"
+        v-on="$listeners">
         <div class="box">
             <div class="field has-addons">
                 <div class="control is-expanded">
-                    <input class="input"
-                        :value="link"
-                        v-select-on-focus
-                        v-focus>
+                    <input v-select-on-focus
+                        v-focus
+                        class="input"
+                        :value="link">
                 </div>
                 <div class="control">
                     <a class="button"

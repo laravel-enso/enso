@@ -1,5 +1,30 @@
 ## Laravel Enso's Changelog
 
+### 2.15.2
+
+#### Changes
+Starting now Enso supports custom password policies via config.
+
+You have the option to configure the password's:
+    - lifetime (in days)
+    - length
+    - min upper case letters
+    - min numeric characters
+    - min special characters
+
+If you leave the lifetime null or 0 the user will never be required to change his password. 
+
+Once the lifetime is configured the user will receive notifications upon login when he has less than 3 days until his current password becomes invalid.
+
+#### Bug Fixes
+- fixes a bug when clearing unread notifications
+- fixes a warning in `<password-strength>`
+
+#### Upgrade instructions
+- run `composer update`
+- run `php artisan enso:upgrade`
+- configure in `.env` your desired `PASSWORD_LIFETIME`, default is 0
+
 ### 2.15.1
 In this version we focused on greatly improving the assets compiling process. With the new configuration build times dropped by ~ 75% for production.
 

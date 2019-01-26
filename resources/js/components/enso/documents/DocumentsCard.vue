@@ -1,31 +1,31 @@
 <template>
-    <card icon="copy"
+    <card ref="card"
+        icon="copy"
         refresh
         scrollable
         search
         :title="displayTitle"
         :overlay="$refs.documents && $refs.documents.loading"
-        @refresh="$refs.documents.get()"
         :collapsed="!open || isEmpty"
-        ref="card"
+        :badge="count"
+        :controls="1"
+        @refresh="$refs.documents.get()"
         @expand="isEmpty
             ? $refs.card.collapse()
             : null"
-        @query-update="query = $event"
-        :badge="count"
-        :controls="1">
+        @query-update="query = $event">
         <card-control slot="control-1">
             <file-uploader :params="{ documentable_type: type, documentable_id: id }"
-                @upload-successful="$refs.documents.get();"
                 :url="uploadLink"
-                multiple/>
+                multiple
+                @upload-successful="$refs.documents.get();"/>
         </card-control>
         <div class="wrapper has-padding-medium">
             <documents :id="id"
+                ref="documents"
                 :type="type"
                 :query="query"
-                @update="count = $refs.documents.count; $refs.card.resize()"
-                ref="documents"/>
+                @update="count = $refs.documents.count; $refs.card.resize()"/>
         </div>
     </card>
 </template>

@@ -1,4 +1,4 @@
-import "./directives";
-import "./filters";
-import "./mixins";
-import "./plugins";
+import './directives';
+import './filters';
+import './mixins';
+import './plugins';

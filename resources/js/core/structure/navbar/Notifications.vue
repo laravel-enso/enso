@@ -1,10 +1,10 @@
 <template>
-    <div :class="[
+    <div v-click-outside="() => visible = false"
+        :class="[
             'navbar-item notifications',
             { 'has-dropdown': !isTouch },
             { 'is-active': visible }
-        ]"
-        v-click-outside="() => visible = false">
+        ]">
         <span v-if="isTouch" class="is-clickable"
              @click="$router.push({'name': 'core.notifications.index'})">
             <span class="icon">
@@ -14,9 +14,9 @@
                 {{ unreadCount || null }}
             </sup>
         </span>
-        <a :class="['navbar-link', { 'rotate': visible }]"
-            @click="toggle()"
-            v-else>
+        <a v-else
+            :class="['navbar-link', { 'rotate': visible }]"
+            @click="toggle()">
             <span class="icon">
                 <fa icon="bell"/>
             </span>
@@ -25,18 +25,18 @@
             </sup>
             <overlay v-if="loading"/>
         </a>
-        <div class="navbar-dropdown is-right"
-            v-if="visible">
+        <div v-if="visible"
+            class="navbar-dropdown is-right">
             <div class="notification-list"
                 @scroll="computeScrollPosition($event)">
-                <a class="navbar-item"
-                    @click="update(notification)"
-                    v-for="notification in notifications"
-                    :key="notification.id">
+                <a v-for="notification in notifications"
+                    :key="notification.id"
+                    class="navbar-item"
+                    @click="update(notification)">
                     <div class="navbar-content">
                         <p class="is-notification" :class="{ 'is-bold': !notification.read_at }">
-                            <fa :icon="notification.data.icon"
-                                v-if="notification.data.icon"/>
+                            <fa v-if="notification.data.icon"
+                                :icon="notification.data.icon"/>
                             {{ notification.data.body }}
                         </p>
                         <p>
@@ -47,10 +47,10 @@
                     </div>
                 </a>
             </div>
-            <hr class="navbar-divider"
-                v-if="notifications.length">
-            <nav class="level navbar-item"
-                v-if="notifications.length">
+            <hr v-if="notifications.length"
+                class="navbar-divider">
+            <nav v-if="notifications.length"
+                class="level navbar-item">
                 <div class="level-left">
                     <div class="level-item">
                         <a class="button is-small is-info has-margin-left-small"
@@ -303,7 +303,7 @@ export default {
             });
         },
         now() {
-            return format(new Date(), 'Y-MM-DD H:mm:s');
+            return format(new Date());
         },
     },
 };

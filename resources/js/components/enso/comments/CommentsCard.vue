@@ -1,20 +1,20 @@
 <template>
-    <card :icon="icon"
+    <card ref="card"
+        :icon="icon"
         refresh
         scrollable
         search
         :title="displayTitle"
         :overlay="$refs.comments && $refs.comments.loading"
-        @refresh="$refs.comments.fetch()"
         :collapsed="!open || isEmpty"
-        ref="card"
+        :badge="count"
+        :controls="1"
+        @refresh="$refs.comments.fetch()"
         @query-update="query = $event"
         @expand="isEmpty && $refs.comments
             && !$refs.comments.comment
                 ? $refs.card.collapse()
-                : null"
-        :badge="count"
-        :controls="1">
+                : null">
         <card-control slot="control-1"
             @click="addComment()">
             <span class="icon is-small">
@@ -23,10 +23,10 @@
         </card-control>
         <div class="has-padding-medium wrapper">
             <comments :id="id"
+                ref="comments"
                 :type="type"
                 :query="query"
-                @update="count = $refs.comments.count; $refs.card.resize()"
-                ref="comments"/>
+                @update="count = $refs.comments.count; $refs.card.resize()"/>
         </div>
     </card>
 </template>

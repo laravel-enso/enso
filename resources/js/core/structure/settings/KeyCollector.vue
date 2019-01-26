@@ -7,8 +7,8 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <vue-switch size="is-medium"
-                    v-model="collect"
+                <vue-switch v-model="collect"
+                    size="is-medium"
                     @input="setKeyCollector(collect);"/>
             </div>
         </div>

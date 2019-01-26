@@ -4,14 +4,13 @@
             :key="index">
             <menu-item :class="{ 'is-active': isActive(menu) }"
                 :menu="menu"/>
-            <menus :menus="menu.children"
-                @shrink="shrink"
-                @extend="extend"
+            <menus v-if="menu.has_children"
+                :menus="menu.children"
                 :collapsed="!menu.expanded"
-                v-if="menu.has_children"/>
+                @shrink="shrink"
+                @extend="extend"/>
         </li>
     </ul>
-
 </template>
 
 <script>

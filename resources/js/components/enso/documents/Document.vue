@@ -14,8 +14,8 @@
             <transition enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
                 <div class="level-item has-text-grey">
-                    <button class="button is-naked"
-                        v-if="canAccess('core.files.link')"
+                    <button v-if="canAccess('core.files.link')"
+                        class="button is-naked"
                         @click="link">
                         <span class="icon">
                             <fa icon="link"/>
@@ -33,8 +33,8 @@
                             <fa icon="cloud-download-alt"/>
                         </span>
                     </a>
-                    <popover placement="bottom"
-                        v-if="file.isDeletable"
+                    <popover v-if="file.isDeletable"
+                        placement="bottom"
                         @confirm="$emit('delete')">
                         <button class="button is-naked">
                             <span class="icon">

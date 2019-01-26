@@ -97,7 +97,7 @@ return [
     'configs' => [
         'userGroups' => [
             'label' => 'User Groups',
-            'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/userGroups.json',
+            'template' => 'vendor/laravel-enso/dataimport/src/app/Tests/userGroups.json',
         ],
     ],
 ];

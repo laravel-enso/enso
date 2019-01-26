@@ -7,19 +7,19 @@
         </span>
         <transition enter-active-class="zoomIn"
             leave-active-class="zoomOut">
-            <span class="animated has-margin-left-small menu-hiding-label"
-                v-if="isExpanded">
+            <span v-if="isExpanded"
+                class="animated has-margin-left-small menu-hiding-label">
                 {{ __(menu.name) }}
             </span>
         </transition>
-        <span class="icon is-small angle is-pulled-right"
-            :aria-expanded="menu.expanded"
-            v-if="menu.has_children">
+        <span v-if="menu.has_children"
+            class="icon is-small angle is-pulled-right"
+            :aria-expanded="menu.expanded">
             <fa icon="angle-up"/>
         </span>
         <div class="dropdown-content">
-            <div class="dropdown-item"
-                v-if="!isExpanded">
+            <div v-if="!isExpanded"
+                class="dropdown-item">
                 {{ __(menu.name) }}
             </div>
         </div>

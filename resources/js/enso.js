@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import "./modules/enso";
+import './modules/enso';
 
 import router from './router';
 import store from './store';

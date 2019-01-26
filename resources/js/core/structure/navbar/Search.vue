@@ -1,29 +1,29 @@
 <template>
     <div class="navbar-item search">
-        <typeahead is-rounded
+        <typeahead ref="typeahead"
+            v-model="query"
+            is-rounded
             source="core.search.index"
             :placeholder="__('Search')"
             :searching="__('Searching') + '..'"
             :no-results="__('Nothing found')"
             :filter="filter"
-            v-model="query"
-            @update="redirect"
-            ref="typeahead">
-            <template slot="controls"
-                slot-scope="{ items }"
-                v-if="items.length">
-                <div class="dropdown-content has-text-centered has-padding-small has-margin-top-small"
-                    v-if="tags(items).length < 6">
-                    <a class="tag control-list is-uppercase"
-                        :class="{ 'is-info': selected(tag) }"
-                        v-for="(tag, index) in tags(items)"
+            @update="redirect">
+            <template v-if="items.length"
+                slot="controls"
+                slot-scope="{ items }">
+                <div v-if="tags(items).length < 6"
+                    class="dropdown-content has-text-centered has-padding-small has-margin-top-small">
+                    <a v-for="(tag, index) in tags(items)"
                         :key="index"
+                        class="tag control-list is-uppercase"
+                        :class="{ 'is-info': selected(tag) }"
                         @click="toggle(tag)">
                         {{ __(tag ) }}
                     </a>
                 </div>
-                <div class="has-text-centered"
-                    v-else>
+                <div v-else
+                    class="has-text-centered">
                     <p class="title is-6">
                         {{ __('Categories found') }}: {{ tags(items).length }}
                     </p>
@@ -36,12 +36,12 @@
                         {{ __(item['group']) }}
                     </span>
                     <span v-html="highlight(item['label'])"/>
-                    <span class="route-controls"
-                        v-if="item.routes.length">
-                        <span class="icon is-small route-control"
-                            @mousedown.stop="redirect(item, route.name)"
-                            v-for="(route, index) in item.routes"
-                            :key="index">
+                    <span v-if="item.routes.length"
+                        class="route-controls">
+                        <span v-for="(route, index) in item.routes"
+                            :key="index"
+                            class="icon is-small route-control"
+                            @mousedown.stop="redirect(item, route.name)">
                             <fa :icon="route.icon" size="sm"/>
                         </span>
                     </span>

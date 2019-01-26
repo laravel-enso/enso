@@ -11,43 +11,43 @@
                 @submit.prevent="submit()">
                 <div class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input"
+                        <input v-model="email"
+                            v-focus
+                            class="input"
                             type="email"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             :placeholder="__('Email')"
-                            v-model="email"
-                            @input="hasErrors=false"
-                            v-focus>
+                            @input="hasErrors=false">
                         <span class="icon is-small is-left">
                             <fa icon="envelope"/>
                         </span>
-                        <span class="icon is-small is-right has-text-success"
-                            v-if="isSuccessful">
+                        <span v-if="isSuccessful"
+                            class="icon is-small is-right has-text-success">
                             <fa icon="check"/>
                         </span>
-                        <span class="icon is-small is-right has-text-danger"
-                            v-if="hasErrors">
+                        <span v-if="hasErrors"
+                            class="icon is-small is-right has-text-danger">
                             <fa icon="exclamation-triangle"/>
                         </span>
                     </div>
                 </div>
-                <div class="field" v-if="isLogin || isReset">
+                <div v-if="isLogin || isReset" class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input"
+                        <input v-model="password"
+                            class="input"
                             type="password"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             :placeholder="__('Password')"
-                            v-model="password"
                             @input="hasErrors=false">
                         <span class="icon is-small is-left">
                             <fa icon="lock"/>
                         </span>
-                        <span class="icon is-small is-right has-text-success"
-                            v-if="isSuccessful">
+                        <span v-if="isSuccessful"
+                            class="icon is-small is-right has-text-success">
                             <fa icon="check"/>
                         </span>
-                        <span class="icon is-small is-right has-text-danger"
-                            v-if="hasErrors">
+                        <span v-if="hasErrors"
+                            class="icon is-small is-right has-text-danger">
                             <fa icon="exclamation-triangle"/>
                         </span>
                         <slot name="password-strength"
@@ -55,36 +55,36 @@
                             :has-password="hasPassword"/>
                     </div>
                 </div>
-                <div class="field" v-if="isReset">
+                <div v-if="isReset" class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input"
+                        <input v-model="passwordConfirmation"
+                            class="input"
                             type="password"
                             :class="{ 'is-danger': hasErrors, 'is-success': isSuccessful }"
                             :placeholder="__('Repeat Password')"
-                            v-model="passwordConfirmation"
                             @input="hasErrors=false">
                         <span class="icon is-small is-left">
                             <fa icon="lock"/>
                         </span>
-                        <span class="icon is-small is-right has-text-success"
-                            v-if="isSuccessful">
+                        <span v-if="isSuccessful"
+                            class="icon is-small is-right has-text-success">
                             <fa icon="check"/>
                         </span>
-                        <span class="icon is-small is-right has-text-danger"
-                            v-if="hasErrors">
+                        <span v-if="hasErrors"
+                            class="icon is-small is-right has-text-danger">
                             <fa icon="exclamation-triangle"/>
                         </span>
-                        <span class="icon is-small is-right has-text-success"
-                            v-if="match && !hasErrors">
+                        <span v-if="match && !hasErrors"
+                            class="icon is-small is-right has-text-success">
                             <fa icon="check"/>
                         </span>
                     </div>
                 </div>
-                <div class="field" v-if="isLogin">
+                <div v-if="isLogin" class="field">
                     <div class="control">
                         <label class="checkbox">
-                        <input type="checkbox"
-                            v-model="remember">
+                        <input v-model="remember"
+                            type="checkbox">
                             {{ __('Remember me') }}
                         </label>
                     </div>
@@ -101,9 +101,9 @@
                     </button>
                 </div>
             </form>
-            <router-link :to="{ name: 'password.email' }"
-                class="is-pulled-right"
-                v-if="isLogin">
+            <router-link v-if="isLogin"
+                :to="{ name: 'password.email' }"
+                class="is-pulled-right">
                 {{ __('Forgot password') }}
             </router-link>
             <div class="is-clearfix"/>

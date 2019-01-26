@@ -23,10 +23,10 @@ export default (key, params = null) => {
 
             const param = params[key.toLowerCase()];
 
-            if(key === key.toUpperCase()) {
+            if (key === key.toUpperCase()) {
                 return param.toUpperCase();
             }
-            
+
             return key[0] === key[0].toUpperCase()
                 ? param.charAt(0).toUpperCase() + param.slice(1)
                 : param;

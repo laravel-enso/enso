@@ -3,8 +3,8 @@
         @click="goToProfile()">
         <img class="is-rounded"
             :src="$store.getters.avatarLink">
-        <span class="has-margin-left-small"
-            v-if="!isTouch">
+        <span v-if="!isTouch"
+            class="has-margin-left-small">
             {{ $store.state.user.person.appellative || $store.state.user.person.name }}
         </span>
     </a>

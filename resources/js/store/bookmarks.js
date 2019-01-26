@@ -10,8 +10,7 @@ const qualifies = route => route.name
     && !excluded.includes(route.name)
     && !route.meta.guestGuard;
 
-const updateLocalStorage = routes =>
-    localStorage.setItem('bookmarks', JSON.stringify(routes));
+const updateLocalStorage = routes => localStorage.setItem('bookmarks', JSON.stringify(routes));
 
 const stripped = route => ({
     name: route.name,

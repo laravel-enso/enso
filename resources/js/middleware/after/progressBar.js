@@ -5,4 +5,3 @@ export default () => {
         router.app.$refs.progressBar.stopRouting();
     }
 };
-

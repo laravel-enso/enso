@@ -1,17 +1,17 @@
 <template>
     <div class="bookmarks-wrapper">
         <span class="control">
-            <a class="tag is-warning icon has-margin-right-small"
-                v-if="stickyRoutes"
+            <a v-if="stickyRoutes"
+                class="tag is-warning icon has-margin-right-small"
                 @click="clear()">
                 <fa icon="trash-alt"/>
             </a>
         </span>
-        <draggable class="field is-grouped bookmarks"
-            v-model="routes">
-            <span class="control"
-                v-for="(route, index) in routes"
-                :key="index">
+        <draggable v-model="routes"
+            class="field is-grouped bookmarks">
+            <span v-for="(route, index) in routes"
+                :key="index"
+                class="control">
                 <span class="tags has-addons">
                     <a :class="['tag is-bold', {'is-link': route.name === $route.name}]"
                         @click="$router.push({
@@ -19,16 +19,16 @@
                         })">
                         {{ __(route.meta.title) }}
                     </a>
-                    <a class="tag is-success check"
-                        @click="stick(route)"
-                        v-if="!route.sticky">
+                    <a v-if="!route.sticky"
+                        class="tag is-success check"
+                        @click="stick(route)">
                         <span class="icon is-small">
                             <fa icon="check"/>
                         </span>
                     </a>
-                    <a class="tag is-delete"
-                        @click="remove(route)"
-                        v-if="routes.length > 1"/>
+                    <a v-if="routes.length > 1"
+                        class="tag is-delete"
+                        @click="remove(route)"/>
                 </span>
             </span>
         </draggable>

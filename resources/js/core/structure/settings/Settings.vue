@@ -4,12 +4,12 @@
             {{ __("Settings") }}
         </p>
         <ul class="menu-list">
-            <li class="settings-item"
-                v-if="multipleLanguages">
+            <li v-if="multipleLanguages"
+                class="settings-item">
                 <language-selector/>
             </li>
-            <li class="settings-item"
-                v-if="multipleThemes">
+            <li v-if="multipleThemes"
+                class="settings-item">
                 <theme-selector/>
             </li>
             <li class="settings-item">
@@ -21,8 +21,8 @@
             <li class="settings-item has-margin-bottom-small">
                 <bookmarks-state/>
             </li>
-            <li class="settings-item"
-                v-if="canAccess('system.tutorials.show')">
+            <li v-if="canAccess('system.tutorials.show')"
+                class="settings-item">
                 <tutorial/>
             </li>
             <li class="settings-item">

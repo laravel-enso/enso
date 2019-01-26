@@ -1,7 +1,7 @@
 <template>
-    <vue-table class="box is-paddingless raises-on-hover is-rounded"
-        :path="path"
-        id="userGroups"/>
+    <vue-table id="userGroups"
+        class="box is-paddingless raises-on-hover is-rounded"
+        :path="path"/>
 </template>
 
 <script>

@@ -29,6 +29,7 @@ module.exports = {
         "no-mixed-operators": 0,
         "func-names": 0,
         "no-shadow": 0,
+        "vue/no-v-html": 0,
         "vue/max-attributes-per-line": 0,
         "no-return-assign": ["error", "except-parens"],
         "vue/html-closing-bracket-newline": ["error", {

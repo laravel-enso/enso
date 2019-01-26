@@ -7,9 +7,9 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <vue-switch size="is-medium"
-                    @input="update"
-                    v-model="state"/>
+                <vue-switch v-model="state"
+                    size="is-medium"
+                    @input="update"/>
             </div>
         </div>
     </div>

@@ -5,9 +5,9 @@
                 <transition mode="out-in"
                     enter-active-class="fadeIn"
                     leave-active-class="fadeOut">
-                    <p class="title is-5 animated"
+                    <p v-if="loaded"
                         id="page-title"
-                        v-if="loaded">
+                        class="title is-5 animated">
                         {{ __(title) }}
                     </p>
                 </transition>
@@ -19,8 +19,8 @@
                     mode="out-in"
                     enter-active-class="fadeInRight"
                     leave-active-class="fadeOutRight">
-                    <breadcrumbs class="animated" id="breadcrumbs"
-                         v-if="loaded"/>
+                    <breadcrumbs v-if="loaded" id="breadcrumbs"
+                         class="animated"/>
                 </transition>
             </div>
         </div>

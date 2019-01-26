@@ -7,8 +7,8 @@
         </div>
         <div class="level-right">
             <div class="level-item">
-                <vue-switch size="is-medium"
-                    v-model="state"/>
+                <vue-switch v-model="state"
+                    size="is-medium"/>
             </div>
         </div>
     </div>

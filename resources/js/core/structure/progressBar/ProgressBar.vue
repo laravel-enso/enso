@@ -1,9 +1,9 @@
 <template>
     <transition enter-active-class="fadeIn"
         leave-active-class="fadeOut">
-        <div class="progress-bar animated"
-            :style="width"
-            v-if="show"/>
+        <div v-if="show"
+            class="progress-bar animated"
+            :style="width"/>
     </transition>
 </template>
 

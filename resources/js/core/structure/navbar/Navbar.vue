@@ -5,8 +5,8 @@
                 <figure class="image is-24x24">
                     <img src="/images/logo.svg">
                 </figure>
-                <h4 class="title is-4 animated has-margin-left-small"
-                    v-if="menu.isExpanded && !isMobile">
+                <h4 v-if="menu.isExpanded && !isMobile"
+                    class="title is-4 animated has-margin-left-small">
                     {{ meta.appName }}
                 </h4>
             </a>
@@ -17,19 +17,19 @@
                         :class="{ 'rotate': !menu.isExpanded || !menu.isVisible }"/>
                 </span>
             </a>
-            <div class="navbar-item"
-                v-if="meta.env === 'local'">
+            <div v-if="meta.env === 'local'"
+                class="navbar-item">
                 <span class="tag is-warning">
                     <span class="icon is-small">
                         <fa icon="code"/>
                     </span>
                 </span>
             </div>
-            <div class="navbar-item"
-                v-if="impersonating">
-                <button class="button is-small is-warning"
-                    @click="$root.$emit('stop-impersonating')"
-                    v-tooltip="__('Impersonating')">
+            <div v-if="impersonating"
+                class="navbar-item">
+                <button v-tooltip="__('Impersonating')"
+                    class="button is-small is-warning"
+                    @click="$root.$emit('stop-impersonating')">
                     <span class="icon is-small">
                         <fa icon="user"/>
                     </span>
@@ -38,8 +38,8 @@
                     </span>
                 </button>
             </div>
-            <div class="is-pulled-right is-flex"
-                v-if="isTouch">
+            <div v-if="isTouch"
+                class="is-pulled-right is-flex">
                 <search v-if="!isMobile"/>
                 <i-o/>
                 <notifications/>
@@ -48,8 +48,8 @@
             </div>
         </div>
         <div class="navbar-menu">
-            <div class="navbar-end"
-                v-if="!isTouch">
+            <div v-if="!isTouch"
+                class="navbar-end">
                 <search/>
                 <i-o/>
                 <notifications/>
