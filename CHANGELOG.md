@@ -11,6 +11,7 @@ You have the option to configure the password's:
     - min upper case letters
     - min numeric characters
     - min special characters
+    - max login attempts per minute
 
 If you leave the lifetime null or 0 the user will never be required to change his password. 
 
@@ -23,7 +24,8 @@ Once the lifetime is configured the user will receive notifications upon login w
 #### Upgrade instructions
 - run `composer update`
 - run `php artisan enso:upgrade`
-- configure in `.env` your desired `PASSWORD_LIFETIME`, default is 0
+- publish the core configs if you want to customize the auth params
+- configure in `.env` your desired password params -> see `config/enso/auth.php` for the available options
 
 ### 2.15.1
 In this version we focused on greatly improving the assets compiling process. With the new configuration build times dropped by ~ 75% for production.

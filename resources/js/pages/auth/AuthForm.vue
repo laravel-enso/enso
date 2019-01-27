@@ -215,6 +215,11 @@ export default {
                         return;
                     }
 
+                    if (status === 429) {
+                        this.$toastr.error(data.errors.email[0]);
+                        return;
+                    }
+
                     if (status === 422) {
                         this.reportValidationErrors(data);
                         return;
