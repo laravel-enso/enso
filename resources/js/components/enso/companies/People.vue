@@ -1,8 +1,9 @@
 <template>
     <div class="wrapper">
-        <div class="controls"
-             v-if="controls">
-            <button class="button"
+        <div v-if="controls"
+             class="controls">
+            <button v-if="canAccess('administration.companies.people.create')"
+                    class="button"
                     @click="create()">
                 <span v-if="!isMobile">
                     {{ __('Associate Person') }}
@@ -21,15 +22,15 @@
                 </span>
             </button>
             <p class="control has-icons-left has-icons-right has-margin-left-large">
-                <input class="input is-rounded"
+                <input v-model="internalQuery"
+                       class="input is-rounded"
                        type="text"
-                       v-model="internalQuery"
                        :placeholder="__('Filter')">
                 <span class="icon is-small is-left">
                     <fa icon="search"/>
                 </span>
-                <span class="icon is-small is-right clear-button"
-                      v-if="internalQuery"
+                <span v-if="internalQuery"
+                      class="icon is-small is-right clear-button"
                       @click="internalQuery = ''">
                     <a class="delete is-small"/>
                 </span>
@@ -37,23 +38,23 @@
         </div>
         <div class="columns is-multiline"
              :class="{'has-margin-top-large': controls}">
-            <div class="column is-half-tablet is-one-third-widescreen"
-                 v-for="(person, index) in filteredPeople"
-                 :key="index">
-                <person :person="person"
-                     :id="id"
+            <div v-for="(person, index) in filteredPeople"
+                 :key="index"
+                 class="column is-half-tablet is-one-third-widescreen">
+                <person :id="id"
+                     :person="person"
                      :index="index"
                      @edit="edit(person)"
                      @delete="destroy(person, index)"/>
             </div>
-            <person-form :path="path"
+            <person-form v-if="path"
+                ref="form"
+                :path="path"
                 @close="path = null"
                 @destroy="fetch()"
                 @edit-person="navigateToPerson"
                 @submit="fetch(); path = null"
-                @loaded="$refs.form.field('company_id').value = id"
-                ref="form"
-                v-if="path"/>
+                @loaded="$refs.form.field('company_id').value = id"/>
         </div>
         <modal :show="!!deletedPerson"
             @close="deletedPerson = null">
@@ -177,7 +178,12 @@ export default {
             axios.delete(route(
                 'administration.companies.people.destroy', { person: person.id },
             )).then(() => {
-                this.deletedPerson = this.people.splice(index, 1).pop();
+                const deletedPerson = this.people.splice(index, 1).pop();
+
+                if (this.canAccess('administration.people.destroy')) {
+                    this.deletedPerson = deletedPerson;
+                }
+
                 this.$emit('update');
                 this.loading = false;
             }).catch(error => this.handleError(error));

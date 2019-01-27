@@ -17,7 +17,8 @@
                         <fa icon="pencil-alt"/>
                     </span>
                 </button>
-                <popover placement="top"
+                <popover v-if="canAccess('administration.companies.people.destroy')"
+                    placement="top"
                     @confirm="$emit('delete')">
                     <button class="button is-naked">
                         <span class="icon">
