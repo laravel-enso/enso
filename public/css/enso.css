@@ -3556,6 +3556,13 @@
 .button.is-naked {
   background: 0;
   border: none;
+  opacity: 0.6;
+  -webkit-transition: opacity ease 0.3s;
+  transition: opacity ease 0.3s;
+}
+
+.button.is-naked:hover {
+  opacity: 1;
 }
 
 .button.is-naked:focus {

@@ -145,6 +145,11 @@
 .button.is-naked {
     background: 0;
     border: none;
+    opacity: 0.6;
+    transition: opacity ease 0.3s;
+    &:hover {
+        opacity: 1;
+    }
     &:focus {
         box-shadow: unset;
     }

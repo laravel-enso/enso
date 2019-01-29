@@ -1,46 +1,53 @@
 <template>
-    <div :class="['vue-filter', {'is-compact': compact}]">
-        <div class="has-text-centered">
-            <strong>{{ title }}</strong>
-            <span class="icon lock has-text-muted"
-                v-if="readonly">
+    <div class="vue-filter is-paddingless">
+        <div v-if="!compact"
+            class="header has-text-centered has-background-light">
+            <strong>{{ i18n(title) }}</strong>
+            <span v-if="readonly"
+                class="icon lock has-text-muted">
                 <fa icon="lock"
                     size="xs"/>
             </span>
         </div>
-        <div class="tabs is-toggle is-fullwidth is-small filter-tabs">
-            <ul>
-                <li :class="{ 'is-active': option.value === value }"
-                    v-for="(option, index) in options"
-                    :key="index">
-                    <a @click="update(option.value)">
-                        <span :class="['icon is-small', option.class]"
-                            v-if="icons">
-                            <fa :icon="option.label"/>
-                        </span>
-                        <span class="filter-label"
-                            :class="option.class"
-                            v-else>
-                            {{ option.label }}
-                        </span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active': value === null }"
-                    v-if="!hideOff">
-                    <a @click="update()">
-                        <span :class="[
-                                'icon is-small',
-                                value === null ? 'has-text-danger' : 'has-text-success'
-                            ]">
-                            <fa icon="power-off"/>
-                        </span>
-                        <span class="filter-label"
-                            v-if="!icons && offLabel">
-                            {{ offLabel }}
-                        </span>
-                    </a>
-                </li>
-            </ul>
+        <div v-tooltip="compact ? i18n(title) : null"
+            :class="['tabs-wrapper', {'has-background-light': compact}]">
+            <div class="tabs is-toggle is-fullwidth filter-tabs">
+                <ul>
+                    <li v-for="(option, index) in options"
+                        :key="index"
+                        class="has-background-white"
+                        :class="{ 'is-active': option.value === value }">
+                        <a @click="update(option.value)">
+                            <span v-if="icons"
+                                :class="['icon', option.class]">
+                                <fa :icon="option.label"/>
+                            </span>
+                            <span v-else
+                                class="filter-label"
+                                :class="option.class">
+                                {{ option.label }}
+                            </span>
+                        </a>
+                    </li>
+                    <li v-if="!hideOff"
+                        :class="{ 'is-active': value === null }">
+                        <a @click="update()">
+                            <span :class="[
+                                    'icon',
+                                    value === null
+                                        ? 'has-text-danger'
+                                        : 'has-text-success'
+                                ]">
+                                <fa icon="power-off"/>
+                            </span>
+                            <span v-if="!icons && offLabel"
+                                class="filter-label">
+                                {{ offLabel }}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -49,11 +56,14 @@
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPowerOff, faLock } from '@fortawesome/free-solid-svg-icons';
+import { VTooltip } from 'v-tooltip';
 
 library.add(faPowerOff, faLock);
 
 export default {
     name: 'VueFilter',
+
+    directives: { tooltip: VTooltip },
 
     props: {
         compact: {
@@ -63,6 +73,15 @@ export default {
         hideOff: {
             type: Boolean,
             default: false,
+        },
+        i18n: {
+            type: Function,
+            default(key) {
+                return this.$options.methods
+                    && Object.keys(this.$options.methods).includes('__')
+                    ? this.__(key)
+                    : key;
+            },
         },
         icons: {
             type: Boolean,
@@ -109,44 +128,35 @@ export default {
 
 <style lang="scss" scoped>
 
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+@import '~bulma/sass/utilities/derived-variables.sass';
+
     .vue-filter {
-        padding: 0.5em;
-        position: relative;
+        .header {
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+            padding-top: 0.5em;
+        }
 
-        &.is-compact {
-            padding: 0.2em;
+        .tabs-wrapper {
+            border-radius: inherit;
+            padding: 0.25em;
 
-            .filter-tabs {
-                padding-top: 0;
+            .tabs {
+                height: 2.25em;
 
                 li {
+                    &.is-active {
+                        a {
+                            background-color: $warning;
+                            border-color: $warning;
+                        }
+                    }
+
                     a {
-                        padding: .12rem .12rem;
+                        padding: 0.25em 0;
                     }
                 }
-            }
-        }
-
-        .has-text-centered {
-
-            .lock {
-                position: absolute;
-                right: 0;
-            }
-        }
-
-        .filter-tabs {
-            padding-top: 0.5em;
-
-            li {
-                font-size: .9rem;
-                a {
-                    transition: background 0.4s;
-                }
-            }
-
-            .filter-label {
-                font-size: 0.9em;
             }
         }
     }

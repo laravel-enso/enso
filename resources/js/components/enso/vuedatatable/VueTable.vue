@@ -347,6 +347,7 @@ export default {
                     translatable: this.template.translatable,
                     actions: this.template.actions,
                     forceInfo: this.forceInfo,
+                    fullInfoRecordLimit: this.template.fullInfoRecordLimit
                 },
                 search: this.search,
                 appends: this.template.appends,

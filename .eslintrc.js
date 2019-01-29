@@ -24,6 +24,7 @@ module.exports = {
         "vue/html-indent": 0,
         // 'vue/attributes-order': 0,
         "no-plusplus": 0,
+        "vue/singleline-html-element-content-newline": 0,
         "no-underscore-dangle": ["error", { "allow": ["__"] } ],
         "no-param-reassign": 0,
         "no-mixed-operators": 0,

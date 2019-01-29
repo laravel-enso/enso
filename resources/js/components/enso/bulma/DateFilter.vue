@@ -1,78 +1,95 @@
 <template>
     <div class="date-filter is-paddingless">
-        <div class="header has-text-centered has-padding-medium has-background-light">
-            <strong v-if="selected === filters.custom">
-                {{ i18n('Between') }}
-            </strong>
-            <strong v-else>
-                {{ i18n('When') }}
+        <div v-if="!compact"
+            class="header has-text-centered has-background-light">
+            <strong>
+                {{ title }}
             </strong>
         </div>
-        <div class="has-padding-large">
-            <div class="tags-wrapper">
-                <span :class="['tag filter', {'is-warning': selected === key}]"
-                    v-for="(type, key) in filters"
-                    :key="key"
-                    @click="selected = key; update()">
-                    {{ i18n(type) }}
-                </span>
-            </div>
-            <div class="date-interval"
-                ref="dateInterval">
-                <transition enter-active-class="fadeInDown"
-                    leave-active-class="fadeOutUp"
-                    @enter="expand"
-                    @leave="shrink">
-                    <div class="columns is-mobile animated has-margin-top-small"
-                        v-show="selected === filters.custom"
-                        ref="filter">
-                        <div class="column picker-wrapper">
+        <div v-tooltip="compact ? title : null"
+            :class="['filter-wrapper', {'has-background-light': compact}]">
+            <transition enter-active-class="fadeIn"
+                leave-active-class="fadeOut"
+                mode="out-in">
+                <div v-if="!isCustom"
+                    key="tags"
+                    class="tags-wrapper has-text-centered animated">
+                    <div class="filter-tags">
+                            <span v-for="(type, key) in filters"
+                            :key="key"
+                            :class="['tag', {'is-warning': selected === key}]"
+                            @click="selected = key; update()">
+                            {{ i18n(type) }}
+                        </span>
+                    </div>
+                </div>
+                <div v-else
+                    key="dates"
+                    class="dates-wrapper animated">
+                    <div class="columns is-mobile is-variable is-1 is-centered">
+                        <div class="column is-narrow">
+                            <a class="button is-naked">
+                                <span class="icon is-small"
+                                    @click="selected = filters.today">
+                                    <fa icon="arrow-left"/>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="column">
                             <datepicker v-model="interval.min"
                                 :format="format"
                                 :is-danger="inversed"
                                 :is-warning="equal"
                                 :locale="locale"
                                 :placeholder="i18n('From')"
-                                :disabled="selected !== filters.custom"
+                                :disabled="!isCustom"
                                 @input="update()"/>
                         </div>
-                        <div class="column picker-wrapper">
+                        <div class="column">
                             <datepicker v-model="interval.max"
                                 :format="format"
                                 :is-danger="inversed"
                                 :is-warning="equal"
                                 :locale="locale"
                                 :placeholder="i18n('To')"
-                                :disabled="selected !== filters.custom"
+                                :disabled="!isCustom"
                                 @input="update()"/>
                         </div>
                     </div>
-                </transition>
-            </div>
+                </div>
+            </transition>
         </div>
     </div>
 </template>
 
 <script>
 
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {
     addDays, compareAsc, format, parse, subDays, subMonths, subWeeks,
 } from 'date-fns';
+import { VTooltip } from 'v-tooltip';
 import Datepicker from '../vueforms/Datepicker.vue';
+
+library.add(faArrowLeft);
 
 export default {
     name: 'DateFilter',
 
+    directives: { tooltip: VTooltip },
+
     components: { Datepicker },
 
     props: {
+        compact: {
+            type: Boolean,
+            default: false,
+        },
         format: {
             type: String,
             default: 'd-m-Y',
-        },
-        locale: {
-            type: String,
-            default: 'en',
         },
         i18n: {
             type: Function,
@@ -83,9 +100,18 @@ export default {
                     : key;
             },
         },
+        locale: {
+            type: String,
+            default: 'en',
+        },
+        default: {
+            type: String,
+            default: 'today',
+            validator: v => ['today', 'yesterday', 'last week', 'last month', 'all'].includes(v),
+        },
     },
 
-    data: () => ({
+    data: v => ({
         interval: {
             min: null,
             max: null,
@@ -96,11 +122,20 @@ export default {
             lastWeek: 'last week',
             lastMonth: 'last month',
             custom: 'custom',
+            all: 'all',
         },
-        selected: 'today',
+        selected: v.default,
     }),
 
     computed: {
+        isCustom() {
+            return this.selected === this.filters.custom;
+        },
+        title() {
+            return this.isCustom
+                ? this.i18n('Between')
+                : this.i18n('When');
+        },
         alternateFormat() {
             return this.format.replace('d', 'dd')
                 .replace('m', 'MM')
@@ -136,11 +171,9 @@ export default {
 
             this.$emit('update', this.interval);
         },
-        expand() {
-            this.$refs.dateInterval.style.height = `${this.$refs.filter.clientHeight}px`;
-        },
-        shrink() {
-            this.$refs.dateInterval.style.height = 0;
+        all() {
+            this.interval.min = null;
+            this.interval.max = null;
         },
         today() {
             this.interval.min = format(new Date(), this.alternateFormat);
@@ -169,24 +202,27 @@ export default {
         .header {
             border-top-left-radius: inherit;
             border-top-right-radius: inherit;
+            padding-top: 0.5em;
         }
 
-        .tag.filter {
+        .tag {
             cursor: pointer;
-        }
-
-        .date-interval {
-            height: 0;
-            transition: height .5s ease;
-
-            .picker-wrapper {
-                padding: 0.4em 0.8em 0;
+            &:not(:last-child) {
+                margin-right: 0.5em;
+                margin-bottom: 0.3em;
             }
         }
 
-        .tag.filter:not(:last-child) {
-            margin-right: 0.5em;
-            margin-bottom: 0.3em;
+        .filter-wrapper {
+            border-radius: inherit;
+            padding: 0.25em;
+        }
+
+        .tags-wrapper {
+            .filter-tags {
+                min-height: 2.25em;
+                padding: 0.2em;
+            }
         }
     }
 

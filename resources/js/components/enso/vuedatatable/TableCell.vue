@@ -1,7 +1,8 @@
 <template>
     <span :class="{ 'is-clickable has-text-info': column.meta.clickable }"
          @click="column.meta.clickable ? $emit('clicked') : null">
-        <slot name="hidden-controls" v-if="hiddenControls"/>
+        <slot v-if="hiddenControls"
+            name="hidden-controls"/>
         <span v-if="column.meta.boolean"
             class="tag is-table-tag icon is-small"
             :class="value ? 'is-success' : 'is-danger'">
@@ -10,14 +11,12 @@
         <span v-else-if="column.meta.icon && value">
             <fa :icon="value"/>
         </span>
-        <slot :name="column.name"
-            v-else-if="column.meta.slot"/>
+        <slot v-else-if="column.meta.slot"
+            :name="column.name"/>
         <span v-else-if="column.meta.translatable">
             {{ i18n(value) }}
         </span>
-        <span v-else>
-            {{ value }}
-        </span>
+        <span v-else>{{ value }}</span>
     </span>
 </template>
 

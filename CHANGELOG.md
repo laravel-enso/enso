@@ -1,5 +1,33 @@
 ## Laravel Enso's Changelog
 
+### 2.15.3
+
+#### Improvements
+- improves `vue-table` BE filtering
+- makes `fullInfoRecordInfo` available in `vue-table` templates
+- refreshes the table example page
+- allows `Obj` properties to contain dash
+- updates the default values in `config/enso/auth.php`
+- makes the `position` field require a company to be selected, in People
+- adds FE permissions check for company people management
+- upgrades the filters (`vue-filter`, `vue-select-filter`, `date-filter`, `date-interval-filter`, `interval-filter`)
+    - adds a `compact` prop
+    - makes the filters of the same height in both compact and non compact mode
+    - allows stacking of more filters horizontally
+    - adds an `all` option for DateFilter
+    - changes selection in `vue-filter` to `warning`
+
+#### Bug Fixes
+- fixes filtering reporting bug in `vue-table`'s ui
+- fixes a bug when using `fullInfoRecordInfo`
+- fixes `money` format in `vue-table`
+- fixes the `.is-naked` helper class for `.button`
+
+#### Upgrade instructions
+- `composer update`
+- `yarn upgrade`
+- `yarn run dev`
+
 ### 2.15.2
 
 #### Changes

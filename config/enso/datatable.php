@@ -191,7 +191,7 @@ return [
     | greatly improved. The info can still be called on demand.
     */
 
-    'fullInfoRecordLimit' => 100000,
+    'fullInfoRecordLimit' => 1000000,
 
     /*
     |--------------------------------------------------------------------------

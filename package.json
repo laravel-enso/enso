@@ -14,10 +14,10 @@
     "devDependencies": {
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@vue/eslint-config-airbnb": "^4.0.0",
+        "babel-eslint": "^10.0.1",
         "cross-env": "^5.1.6",
         "eslint": "^5.0.1",
         "eslint-plugin-vue": "^5.0.0",
-        "babel-eslint": "^10.0.1",
         "laravel-mix": "3.0.0",
         "node-sass": "^4.11.0",
         "webpack-cli": "^3.2.1"
