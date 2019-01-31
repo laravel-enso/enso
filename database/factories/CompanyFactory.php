@@ -14,5 +14,6 @@ $factory->define(Company::class, function (Faker $faker) {
         'bank_account' => $faker->bankAccountNumber,
         'obs' => $faker->sentence,
         'pays_vat' => $faker->boolean,
+        'is_tenant' => false,
     ];
 });

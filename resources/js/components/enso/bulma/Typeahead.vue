@@ -182,10 +182,12 @@ export default {
             this.$emit('input', value);
         },
         hit() {
-            if (this.visibleDropdown && this.items.length) {
-                this.update(this.items[this.position][this.label]);
-                this.$emit('update', this.items[this.position]);
-                this.$emit('selected', this.items[this.position]);
+            const items = this.filter(this.items);
+
+            if (this.visibleDropdown && items.length) {
+                this.update(items[this.position][this.label]);
+                this.$emit('update', items[this.position]);
+                this.$emit('selected', items[this.position]);
                 this.hiddenDropdown = true;
             }
         },

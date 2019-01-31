@@ -9,7 +9,7 @@
         :collapsed="!open || isEmpty"
         :badge="count"
         :controls="1"
-        @refresh="$refs.documents.get()"
+        @refresh="$refs.documents.fetch()"
         @expand="isEmpty
             ? $refs.card.collapse()
             : null"
@@ -18,7 +18,7 @@
             <file-uploader :params="{ documentable_type: type, documentable_id: id }"
                 :url="uploadLink"
                 multiple
-                @upload-successful="$refs.documents.get();"/>
+                @upload-successful="$refs.documents.fetch();"/>
         </card-control>
         <div class="wrapper has-padding-medium">
             <documents :id="id"

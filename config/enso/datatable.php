@@ -153,8 +153,8 @@ return [
 
     'export' => [
         'path' => 'exports',
-        'timeout' => 60 * 10,
-        'notifications' => ['broadcast', 'database'],
+        'timeout' => 60 * 60,
+        'notifications' => ['mail', 'broadcast', 'database'],
         'chunk' => 2000,
     ],
 
@@ -202,7 +202,7 @@ return [
     | a bigger table.
     */
 
-    'debounce' => 100,
+    'debounce' => 350,
 
     /*
     |--------------------------------------------------------------------------

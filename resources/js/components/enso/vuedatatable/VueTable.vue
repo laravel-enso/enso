@@ -336,6 +336,8 @@ export default {
         },
         readRequest(method = null) {
             const params = {
+                name: this.id,
+                cache: this.template.cache,
                 columns: this.requestColumns(),
                 meta: {
                     start: this.start,

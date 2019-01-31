@@ -234,7 +234,7 @@ export default {
         hasSelection() {
             return Array.isArray(this.value)
                 ? this.value.length > 0
-                : !!this.value;
+                : this.value !== null;
         },
         hasOptions() {
             return this.optionList.length > 0;

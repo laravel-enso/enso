@@ -1,5 +1,27 @@
 ## Laravel Enso's Changelog
 
+### 2.16.0
+Starting with this version Enso gets native multitenancy support, thanks to the our newest package `laravel-enso/multitenancy`
+
+#### Improvements
+- in the following days we will update the docs to fully cover the new capabilities multitenancy
+- adds caching support for totals in tables; this can be have a great positive impact in large tables. For more info check the [docs](https://docs.laravel-enso.com/packages/vue-datatable.html#caching-support)
+- strenghthens the user -> person -> company -> userGroup -> roles policies, getting ready for MT :D
+
+#### Bug Fixes
+- fixes a bug in vue select when the selected value is (int) 0
+- fixes a bug in typeahead when using the filter function -> this bug affected the searchable functionality
+- other minor bug fixes
+
+#### Upgrade steps:
+- update in `composer.json`: `"laravel-enso/core": "3.6.*"`
+- run `composer update`
+- run `php artisan enso:upgrade`
+- update your `database.php` config file and make sure that you have a `system` connection that is also configured as default and an optionally `tenant` connection. Use the file from the main repository as an example.
+- update `CompanyFactory` with the one from the demo repository
+- update `.env.example` && `.env.testing` if needed
+- update the `horizon.php` & `datatable.php` configuration files with the ones from the main repository
+
 ### 2.15.3
 
 #### Improvements
