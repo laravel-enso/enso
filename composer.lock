@@ -1535,16 +1535,16 @@
         },
         {
             "name": "laravel-enso/companies",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Companies.git",
-                "reference": "e53746becef2f7ece6f19c904f337b8e14f26896"
+                "reference": "5c41f51017602b36d63f9ab68d1287cb00d685ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/e53746becef2f7ece6f19c904f337b8e14f26896",
-                "reference": "e53746becef2f7ece6f19c904f337b8e14f26896",
+                "url": "https://api.github.com/repos/laravel-enso/Companies/zipball/5c41f51017602b36d63f9ab68d1287cb00d685ee",
+                "reference": "5c41f51017602b36d63f9ab68d1287cb00d685ee",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2019-01-31T18:11:50+00:00"
+            "time": "2019-02-01T08:15:15+00:00"
         },
         {
             "name": "laravel-enso/controlpanelapi",
@@ -1812,16 +1812,16 @@
         },
         {
             "name": "laravel-enso/dataimport",
-            "version": "3.0.21",
+            "version": "3.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/DataImport.git",
-                "reference": "982b0ba6ec16b405fd1de560ea711a8082038938"
+                "reference": "36c49baca4c38f4a1ba10c308fb069d5c3001ec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/982b0ba6ec16b405fd1de560ea711a8082038938",
-                "reference": "982b0ba6ec16b405fd1de560ea711a8082038938",
+                "url": "https://api.github.com/repos/laravel-enso/DataImport/zipball/36c49baca4c38f4a1ba10c308fb069d5c3001ec9",
+                "reference": "36c49baca4c38f4a1ba10c308fb069d5c3001ec9",
                 "shasum": ""
             },
             "require": {
@@ -1878,7 +1878,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2019-01-31T18:21:02+00:00"
+            "time": "2019-02-01T08:02:22+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -3381,16 +3381,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "1.9.20",
+            "version": "1.9.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "3a7f912f7edd78eb9072c61e6601b0bb18f2631e"
+                "reference": "377c86741ae3727ef89880f9d37d394a454ec0be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/3a7f912f7edd78eb9072c61e6601b0bb18f2631e",
-                "reference": "3a7f912f7edd78eb9072c61e6601b0bb18f2631e",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/377c86741ae3727ef89880f9d37d394a454ec0be",
+                "reference": "377c86741ae3727ef89880f9d37d394a454ec0be",
                 "shasum": ""
             },
             "require": {
@@ -3434,7 +3434,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-02-01T06:29:49+00:00"
+            "time": "2019-02-01T06:52:38+00:00"
         },
         {
             "name": "laravel/framework",

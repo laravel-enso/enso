@@ -6,7 +6,7 @@ use LaravelEnso\Companies\app\Models\Company;
 $factory->define(Company::class, function (Faker $faker) {
     return [
         'mandatary_id' => null,
-        'name' => $faker->company,
+        'name' => $faker->unique()->company,
         'email' => $faker->email,
         'phone' => $faker->phoneNumber,
         'fax' => $faker->phoneNumber,
