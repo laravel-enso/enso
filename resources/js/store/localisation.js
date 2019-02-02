@@ -2,6 +2,7 @@ export const state = {
     i18n: {},
     languages: [],
     keyCollector: false,
+    missingKeys: [],
 };
 
 export const getters = {
@@ -26,12 +27,17 @@ export const mutations = {
             state.i18n[lang][key] = '';
         });
     },
-    setKeyCollector: (state, status) => (state.keyCollector = status),
-};
+    setKeyCollector: (state, status) => {
+        if (status === false) {
+            state.missingKeys = [];
+        }
 
-export const actions = {
-    addMissingKey({ commit }, key) {
-        axios.patch(route('system.localisation.addKey'), { langKey: key });
-        commit('addKey', key);
+        state.keyCollector = status;
+    },
+    clearMissingKeys: state => (state.missingKeys = []),
+    addMissingKey: (state, key) => {
+        if (!state.missingKeys.includes(key)) {
+            state.missingKeys.push(key);
+        }
     },
 };

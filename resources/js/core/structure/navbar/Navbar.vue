@@ -51,6 +51,7 @@
             <div v-if="!isTouch"
                 class="navbar-end">
                 <search/>
+                <missing-keys/>
                 <i-o/>
                 <notifications/>
                 <profile-control/>
@@ -68,6 +69,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faBars, faCode, faUser, faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import MissingKeys from './MissingKeys.vue';
 import IO from './IO.vue';
 import Notifications from './Notifications.vue';
 import SettingsControl from './SettingsControl.vue';
@@ -82,7 +84,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        IO, Notifications, SettingsControl, ProfileControl, Search,
+        MissingKeys, IO, Notifications, SettingsControl, ProfileControl, Search,
     },
 
     computed: {

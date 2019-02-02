@@ -69,7 +69,7 @@
             <span class="table-action-buttons">
                 <a v-for="(button, index) in template.buttons.row"
                     :key="index"
-                    v-tooltip="i18n(button.tooltip)"
+                    v-tooltip="button.tooltip ? i18n(button.tooltip) : null"
                     class="button is-small is-table-button has-margin-left-small"
                     :class="button.class"
                     :href="button.action === 'href' ? path(button, row.dtRowId) : null"

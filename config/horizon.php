@@ -139,14 +139,14 @@ return [
             'supervisor-1' => [
                 'connection' => 'redis',
                 'queue' => ['default', 'light', 'notifications'],
-                'balance' => 'simple',
-                'processes' => 6,
+                'balance' => 'auto',
+                'processes' => 10,
                 'tries' => 1,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
                 'queue' => ['heavy'],
-                'balance' => 'simple',
+                'balance' => 'auto',
                 'processes' => 2,
                 'tries' => 1,
             ],

@@ -154,8 +154,7 @@ return [
     'export' => [
         'path' => 'exports',
         'timeout' => 60 * 60,
-        'notifications' => ['mail', 'broadcast', 'database'],
-        'chunk' => 2000,
+        'notifications' => ['broadcast', 'database'],
     ],
 
     /*

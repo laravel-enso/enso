@@ -1,11 +1,11 @@
 <template>
-    <div :class="[
+    <div v-if="count"
+        v-click-outside="() => visible = false"
+        :class="[
             'navbar-item io',
             { 'has-dropdown': !isTouch },
             { 'is-active': visible }
-        ]"
-        v-click-outside="() => visible = false"
-        v-if="count">
+        ]">
         <span v-if="isTouch" class="is-clickable">
             <span class="icon">
                 <fa icon="sync-alt"
@@ -15,9 +15,9 @@
                 {{ count || null }}
             </sup>
         </span>
-        <a :class="['navbar-link', { 'rotate': visible }]"
-            @click="visible = !visible"
-            v-else>
+        <a v-else
+            :class="['navbar-link', { 'rotate': visible }]"
+            @click="visible = !visible">
             <span class="icon">
                 <fa icon="sync-alt"
                     spin/>
@@ -26,28 +26,28 @@
                 {{ count || null }}
             </sup>
         </a>
-        <div class="navbar-dropdown is-right"
-            v-if="visible">
+        <div v-if="visible"
+            class="navbar-dropdown is-right">
             <div class="operation-list">
-                <a class="navbar-item"
-                    v-for="operation in imports"
-                    :key="operation.id">
+                <a v-for="operation in imports"
+                    :key="operation.id"
+                    class="navbar-item">
                     <div class="navbar-content">
                         <div class="is-operation">
                             <div class="level is-marginless">
                                 <div class="level-left">
                                     <div class="level-item">
-                                        <figure class="media"
-                                            v-tooltip.left-start="operation.owner.name">
+                                        <figure v-tooltip.left-start="operation.owner.name"
+                                            class="media">
                                             <p class="image is-16x16">
                                                 <img class="is-rounded"
                                                     :src="avatar(operation.owner)">
                                             </p>
                                         </figure>
-                                        <span class="icon is-small has-text-info has-margin-left-small"
-                                            v-tooltip.left-start="
+                                        <span v-tooltip.left-start="
                                                 `${__('elapsed time')}: ${since(operation.since.date)}`
-                                            ">
+                                            "
+                                            class="icon is-small has-text-info has-margin-left-small">
                                             <fa icon="database"/>
                                         </span>
                                         <span class="icon is-small has-text-danger animated flash infinite slower">
@@ -70,25 +70,25 @@
                         </div>
                     </div>
                 </a>
-                <a class="navbar-item"
-                    v-for="operation in exports"
-                    :key="operation.id">
+                <a v-for="operation in exports"
+                    :key="operation.id"
+                    class="navbar-item">
                     <div class="navbar-content">
                         <div class="is-operation">
                             <div class="level is-marginless">
                                 <div class="level-left">
                                     <div class="level-item">
-                                        <figure class="media"
-                                            v-tooltip.left-start="operation.owner.name">
+                                        <figure v-tooltip.left-start="operation.owner.name"
+                                            class="media">
                                             <p class="image is-16x16">
                                                 <img class="is-rounded"
                                                     :src="avatar(operation.owner)">
                                             </p>
                                         </figure>
-                                        <span class="icon is-small has-text-info has-margin-left-small"
-                                            v-tooltip.left-start="
+                                        <span v-tooltip.left-start="
                                                 `${__('elapsed time')}: ${since(operation.since.date)}`
-                                            ">
+                                            "
+                                            class="icon is-small has-text-info has-margin-left-small">
                                             <fa icon="database"/>
                                         </span>
                                         <span class="icon is-small has-text-success animated flash infinite slower">
@@ -128,8 +128,6 @@ import {
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
-
-import './icons';
 
 library.add(faSyncAlt, faDatabase, faCaretLeft, faCaretRight);
 
