@@ -1,5 +1,14 @@
 ## Laravel Enso's Changelog
 
+### 2.16.1
+The public assets were removed from the git repo.
+
+If you would like the same approach for your own project match the .gitignore file with the one from the main repo (the public folder in particular) and make a commit with the new file.
+
+After run `git rm -r --cached ./`, perform a second commit and that's it.
+
+Beware that if you do that you will have to compile the assets in the deployment process.
+
 ### 2.16.0
 Starting with this version Enso gets native multitenancy support, 
 thanks to the our newest package [laravel-enso/multitenancy](https://github.com/laravel-enso/multitenancy)
