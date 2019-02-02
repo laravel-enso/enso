@@ -1,2 +1,2 @@
-curl -s 'https://forge.laravel.com/servers/168624/sites/481656/deploy/http?token=L2P42Kus2HXrTnM7BIQj747Cvw35AcJJqrhNOwvX';
+curl -s 'https://envoyer.io/deploy/Bcog0S7QhfJdREY4anSOm2p4ZXw4mw59UCTYvqAe';
 echo 'Deployment triggered!'

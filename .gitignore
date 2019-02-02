@@ -1,8 +1,11 @@
 /node_modules
 /.vscode
 /packages
-/public/hot
-/public/storage
+/public/*
+!/public/robots.txt
+!/public/index.php
+!/public/.htaccess
+!/public/vendor
 /storage/*.key
 /vendor
 /.idea
