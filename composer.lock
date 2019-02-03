@@ -1595,16 +1595,16 @@
         },
         {
             "name": "laravel-enso/controlpanelapi",
-            "version": "2.0.18",
+            "version": "2.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/ControlPanelApi.git",
-                "reference": "2a2a5dab10cf50f016a20e31e847f8d9bd0cc6ef"
+                "reference": "7a2ba56eb9617fe59784cac7e3ef35d3d1b572c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/ControlPanelApi/zipball/2a2a5dab10cf50f016a20e31e847f8d9bd0cc6ef",
-                "reference": "2a2a5dab10cf50f016a20e31e847f8d9bd0cc6ef",
+                "url": "https://api.github.com/repos/laravel-enso/ControlPanelApi/zipball/7a2ba56eb9617fe59784cac7e3ef35d3d1b572c6",
+                "reference": "7a2ba56eb9617fe59784cac7e3ef35d3d1b572c6",
                 "shasum": ""
             },
             "require": {
@@ -1653,20 +1653,20 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2019-02-02T08:38:10+00:00"
+            "time": "2019-02-03T16:02:13+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "3.7.9",
+            "version": "3.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Core.git",
-                "reference": "314b81b3e856b9b4c8f50bd018296832934179e4"
+                "reference": "5cab4531fc4e60ddfdc792ec7c43eaf24fb1c737"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/314b81b3e856b9b4c8f50bd018296832934179e4",
-                "reference": "314b81b3e856b9b4c8f50bd018296832934179e4",
+                "url": "https://api.github.com/repos/laravel-enso/Core/zipball/5cab4531fc4e60ddfdc792ec7c43eaf24fb1c737",
+                "reference": "5cab4531fc4e60ddfdc792ec7c43eaf24fb1c737",
                 "shasum": ""
             },
             "require": {
@@ -1753,7 +1753,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-02-03T15:01:29+00:00"
+            "time": "2019-02-03T15:49:18+00:00"
         },
         {
             "name": "laravel-enso/dataexport",

@@ -67,7 +67,7 @@ export default {
             type: String,
             required: true,
             validator: val => ['in', 'out'].includes(val),
-        }
+        },
     },
 
     computed: {
@@ -86,8 +86,8 @@ export default {
         since(since) {
             return formatDistance(since);
         },
-    }
-}
+    },
+};
 </script>
 
 <style lang="scss" scoped>

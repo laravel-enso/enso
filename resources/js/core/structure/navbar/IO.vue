@@ -101,7 +101,6 @@ export default {
         listen() {
             this.echo.private(`operations.${this.user.id}`)
                 .listen('.io-started', ({ operation }) => {
-                    console.log(operation);
                     this.push(operation);
                 }).listen('.io-updated', ({ operation }) => {
                     this.update(operation);
