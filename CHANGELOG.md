@@ -1,5 +1,22 @@
 ## Laravel Enso's Changelog
 
+### 2.16.2
+
+#### Improvements
+- adds a new system for collection missing translation keys, optimizing the number of needed server requests
+- moves the IO logic in its own package, `laravel-enso/io`
+- refactors / improves the IO ui
+- refactors DataImport / DataExport to make use of the new helpers available for IO Operations
+- removes the chunk option from `config/enso/datatable.php`. The chunk is determined dinamically now
+- fixes missing header bug in VueDatatable excel exports, on every sheet
+- fixes exporting hidden columns (!visible) in vue datatable
+- fixes icon rendering bug in menu manager table when using fa icons with other prefix than `fas`
+- updates all Enso's tables to use the new cache feature
+
+#### To upgrade
+- run `composer update`
+- run `yarn run dev`
+
 ### 2.16.1
 The public assets were removed from the git repo.
 

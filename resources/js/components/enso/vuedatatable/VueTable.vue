@@ -369,6 +369,7 @@ export default {
         requestColumns() {
             return this.template.columns.reduce((columns, column) => {
                 columns.push({
+                    label: column.label,
                     name: column.name,
                     data: column.data,
                     meta: {
@@ -381,6 +382,8 @@ export default {
                         nullLast: column.meta.nullLast,
                         rogue: column.meta.rogue,
                         notExportable: column.meta.notExportable,
+                        visible: column.meta.visible,
+                        x: 1,
                     },
                     enum: column.enum,
                 });

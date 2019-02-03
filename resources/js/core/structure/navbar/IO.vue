@@ -32,84 +32,14 @@
                 <a v-for="operation in imports"
                     :key="operation.id"
                     class="navbar-item">
-                    <div class="navbar-content">
-                        <div class="is-operation">
-                            <div class="level is-marginless">
-                                <div class="level-left">
-                                    <div class="level-item">
-                                        <figure v-tooltip.left-start="operation.owner.name"
-                                            class="media">
-                                            <p class="image is-16x16">
-                                                <img class="is-rounded"
-                                                    :src="avatar(operation.owner)">
-                                            </p>
-                                        </figure>
-                                        <span v-tooltip.left-start="
-                                                `${__('elapsed time')}: ${since(operation.since.date)}`
-                                            "
-                                            class="icon is-small has-text-info has-margin-left-small">
-                                            <fa icon="database"/>
-                                        </span>
-                                        <span class="icon is-small has-text-danger animated flash infinite slower">
-                                            <fa icon="caret-left"
-                                                transform="shrink-1"/>
-                                        </span>
-                                        <span class="has-margin-left-small">
-                                            {{ operation.name }}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="level-right">
-                                    <div class="level-item">
-                                        <span class="is-bold has-text-success">
-                                            {{ operation.entries | shortNumber }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <operation :operation="operation"
+                        type="in"/>
                 </a>
                 <a v-for="operation in exports"
                     :key="operation.id"
                     class="navbar-item">
-                    <div class="navbar-content">
-                        <div class="is-operation">
-                            <div class="level is-marginless">
-                                <div class="level-left">
-                                    <div class="level-item">
-                                        <figure v-tooltip.left-start="operation.owner.name"
-                                            class="media">
-                                            <p class="image is-16x16">
-                                                <img class="is-rounded"
-                                                    :src="avatar(operation.owner)">
-                                            </p>
-                                        </figure>
-                                        <span v-tooltip.left-start="
-                                                `${__('elapsed time')}: ${since(operation.since.date)}`
-                                            "
-                                            class="icon is-small has-text-info has-margin-left-small">
-                                            <fa icon="database"/>
-                                        </span>
-                                        <span class="icon is-small has-text-success animated flash infinite slower">
-                                            <fa icon="caret-right"
-                                                transform="shrink-1"/>
-                                        </span>
-                                        <span class="has-margin-left-small">
-                                            {{ operation.name }}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="level-right">
-                                    <div class="level-item">
-                                        <span class="is-bold has-text-success">
-                                            {{ operation.entries | shortNumber }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <operation :operation="operation"
+                        type="out"/>
                 </a>
             </div>
         </div>
@@ -120,14 +50,13 @@
 
 import { mapState } from 'vuex';
 import vClickOutside from 'v-click-outside';
-import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faSyncAlt, faDatabase, faCaretLeft, faCaretRight,
 } from '@fortawesome/free-solid-svg-icons';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
-import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
+import Operation from './Operation.vue';
 
 library.add(faSyncAlt, faDatabase, faCaretLeft, faCaretRight);
 
@@ -136,8 +65,9 @@ export default {
 
     directives: {
         clickOutside: vClickOutside.directive,
-        tooltip: VTooltip,
     },
+
+    components: { Operation },
 
     data: () => ({
         echo: null,
@@ -160,12 +90,6 @@ export default {
     },
 
     methods: {
-        since(since) {
-            return formatDistance(since);
-        },
-        avatar({ avatarId }) {
-            return route('core.avatars.show', avatarId);
-        },
         initEcho() {
             this.echo = new Echo({
                 broadcaster: 'pusher',
@@ -177,6 +101,7 @@ export default {
         listen() {
             this.echo.private(`operations.${this.user.id}`)
                 .listen('.io-started', ({ operation }) => {
+                    console.log(operation);
                     this.push(operation);
                 }).listen('.io-updated', ({ operation }) => {
                     this.update(operation);
@@ -228,12 +153,6 @@ export default {
         overflow-x: hidden;
         max-height: 400px;
         overflow-y: auto;
-    }
-
-    div.is-operation {
-        white-space: normal;
-        width: 268px;
-        overflow-x: hidden;
     }
 
     .navbar-link {
