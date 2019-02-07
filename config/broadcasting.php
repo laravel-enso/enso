@@ -47,10 +47,10 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
-                'host' => env('PUSHER_APP_HOST', '127.0.0.1'),
-                'port' => env('PUSHER_APP_PORT', 6001),
+                'host' => '127.0.0.1',
+                'port' => 6001,
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'scheme' => env('PUSHER_APP_SCHEME', 'http'),
+                'scheme' => 'http',
             ],
         ],
 
