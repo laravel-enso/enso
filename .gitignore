@@ -6,6 +6,9 @@
 !/public/index.php
 !/public/.htaccess
 !/public/vendor
+!/public/images/logo.svg
+!/public/images/favicon.png
+!/public/favicon.ico
 /storage/*.key
 /vendor
 /.idea
@@ -14,5 +17,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+.env_prod
 .DS_STORE
 ._*
