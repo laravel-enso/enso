@@ -17,6 +17,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
-.env_prod
 .DS_STORE
 ._*
