@@ -1,5 +1,5 @@
 script:
-  - phpunit
+  - vendor/bin/phpunit
 
 after_success:
   - chmod +x ./.deploy.sh; ./.deploy.sh

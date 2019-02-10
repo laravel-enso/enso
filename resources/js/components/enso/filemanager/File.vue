@@ -8,10 +8,11 @@
             <fa :icon="icon"
                 size="3x"/>
         </p>
-        <h5 class="title is-5 has-text-centered">
-            {{ file.name }}
+        <h5 class="title is-5 has-text-centered" v-tooltip="file.name">
+            {{ file.name | truncate }}
         </h5>
-        <p class="has-text-centered">
+        <p class="has-text-centered"
+           v-tooltip="file.createdAt">
             <span class="icon is-small">
                 <fa icon="calendar-alt"/>
             </span>
@@ -73,6 +74,7 @@ import {
 import Popover from '../bulma/Popover.vue';
 import formatDistance from '../../../modules/enso/plugins/date-fns/formatDistance';
 import Modal from './Modal.vue';
+import { VTooltip } from "v-tooltip";
 
 library.add(
     faFile, faEye, faCloudDownloadAlt, faTrashAlt, faLink, faCalendarAlt,
@@ -88,7 +90,17 @@ const Pdfs = ['pdf'];
 export default {
     name: 'File',
 
+    directives: { tooltip: VTooltip },
+
     components: { Popover, Modal },
+    
+    filters: {
+        truncate(value) {
+            return value.length > 30
+                ? `${value.substring(0, 16)}...${value.slice(-10)}`
+                : value;
+        }
+    },
 
     props: {
         file: {

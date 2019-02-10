@@ -349,7 +349,7 @@ export default {
                     translatable: this.template.translatable,
                     actions: this.template.actions,
                     forceInfo: this.forceInfo,
-                    fullInfoRecordLimit: this.template.fullInfoRecordLimit
+                    fullInfoRecordLimit: this.template.fullInfoRecordLimit,
                 },
                 search: this.search,
                 appends: this.template.appends,
@@ -383,9 +383,9 @@ export default {
                         rogue: column.meta.rogue,
                         notExportable: column.meta.notExportable,
                         visible: column.meta.visible,
-                        x: 1,
                     },
                     enum: column.enum,
+                    dateFormat: column.dateFormat,
                 });
                 return columns;
             }, []);

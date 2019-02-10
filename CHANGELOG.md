@@ -1,5 +1,8 @@
 ## Laravel Enso's Changelog
 
+### 2.16.3
+Small bug fixes, composer & npm packages updates
+
 ### 2.16.2
 
 #### Improvements

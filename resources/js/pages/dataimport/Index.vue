@@ -51,7 +51,8 @@
             </div>
             <div class="column has-text-centered-touch has-text-right-desktop"
                 v-if="importType">
-                <import-uploader :path="importLink"
+                <import-uploader class="is-pulled-right"
+                    :path="importLink"
                     :params="{ type: importType }"
                     @upload-successful="$refs.imports.fetch()"/>
             </div>

@@ -1,17 +1,28 @@
 <template>
-    <div class="box">
-        <div class="has-margin-bottom-medium has-text-centered"
-            v-if="title">
-            <span class="subtitle is-5">
-                <slot name="title"/>
+    <div class="box is-paddingless">
+        <div :class="[
+                'header title is-5 has-padding-large has-background-light',
+                { 'is-clickable': collapsible }
+            ]"
+            v-if="title"
+            @click="collapsible ? expanded = !expanded : null">
+            <slot name="title"/>
+            <span class="icon angle"
+                :aria-hidden="expanded">
+                <fa icon="angle-up"/>
             </span>
         </div>
-        <hr v-if="title">
-        <slot/>
+        <slot v-if="expanded"/>
     </div>
 </template>
 
 <script>
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faSync, faAngleDown }
+    from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSearch, faSync, faAngleDown);
 
 export default {
     name: 'InfoBox',
@@ -21,7 +32,19 @@ export default {
             type: Boolean,
             default: false,
         },
+        collapsible: {
+            type: Boolean,
+            default: false,
+        },
+        collapsed: {
+            type: Boolean,
+            default: false,
+        },
     },
+
+    data: v => ({
+        expanded: !v.collapsed,
+    }),
 };
 
 </script>
@@ -35,6 +58,21 @@ export default {
     border-top: 2px solid $light;
     transition: border-color .75s ease, box-shadow 0.3s ease-in-out;;
     position: relative;
+
+    .header {
+        border-radius: inherit;
+
+        .icon.angle {
+            right: 0.5em;
+            top: 0.8em;
+            position: absolute;
+            transition: transform .300s ease;
+
+            &[aria-hidden="true"] {
+                transform: rotate(180deg);
+            }
+        }
+    }
 
     &.is-info {
         border-color: $info;
