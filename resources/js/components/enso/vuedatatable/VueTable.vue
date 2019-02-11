@@ -338,6 +338,7 @@ export default {
             const params = {
                 name: this.id,
                 cache: this.template.cache,
+                flatten: this.template.flatten,
                 columns: this.requestColumns(),
                 meta: {
                     start: this.start,
