@@ -8,7 +8,7 @@
         <div class="level-right">
             <div class="level-item">
                 <a class="button is-naked"
-                    @click="setTheme(alternate)">
+                   @click="setTheme(alternate)">
                     <span class="icon is-small">
                         <fa icon="lightbulb"/>
                     </span>
@@ -31,10 +31,10 @@ export default {
 
     computed: {
         ...mapState('layout', ['themes']),
-        ...mapGetters('preferences', ['theme']),
+        ...mapGetters('preferences', ['theme', 'rtlCss']),
         alternate() {
             return Object.keys(this.themes)
-                .find(theme => theme !== this.theme);
+                .find(theme => theme.replace('-rtl', '') !== this.theme.replace('-rtl', '')) + this.rtlCss;
         },
     },
 

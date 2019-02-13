@@ -11,14 +11,14 @@
                 </h4>
             </a>
             <a class="navbar-item"
-                @click="toggleMenu(isTouch)">
+               @click="toggleMenu(isTouch)">
                 <span class="icon is-small">
                     <fa icon="bars"
                         :class="{ 'rotate': !menu.isExpanded || !menu.isVisible }"/>
                 </span>
             </a>
             <div v-if="meta.env === 'local'"
-                class="navbar-item">
+                 class="navbar-item">
                 <span class="tag is-warning">
                     <span class="icon is-small">
                         <fa icon="code"/>
@@ -26,10 +26,10 @@
                 </span>
             </div>
             <div v-if="impersonating"
-                class="navbar-item">
+                 class="navbar-item">
                 <button v-tooltip="__('Impersonating')"
-                    class="button is-small is-warning"
-                    @click="$root.$emit('stop-impersonating')">
+                        class="button is-small is-warning"
+                        @click="$root.$emit('stop-impersonating')">
                     <span class="icon is-small">
                         <fa icon="user"/>
                     </span>
@@ -39,7 +39,7 @@
                 </button>
             </div>
             <div v-if="isTouch"
-                class="is-pulled-right is-flex">
+                 class="is-flex" :class="isRTL ? 'is-pulled-left' : 'is-pulled-right'">
                 <search v-if="!isMobile"/>
                 <i-o/>
                 <notifications/>
@@ -49,7 +49,7 @@
         </div>
         <div class="navbar-menu">
             <div v-if="!isTouch"
-                class="navbar-end">
+                 class="navbar-end">
                 <search/>
                 <missing-keys/>
                 <i-o/>
@@ -63,7 +63,7 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 import { VTooltip } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -90,6 +90,7 @@ export default {
     computed: {
         ...mapState(['meta', 'impersonating']),
         ...mapState('layout', ['isMobile', 'isTouch', 'menu']),
+        ...mapGetters('preferences', ['isRTL']),
     },
 
     methods: {
@@ -117,6 +118,9 @@ export default {
 
         .is-pulled-right {
             margin-left: auto;
+        }
+        .is-pulled-left {
+            margin-right: auto;
         }
     }
 

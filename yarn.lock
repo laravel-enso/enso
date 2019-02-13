@@ -1365,6 +1365,11 @@ bulma-extensions@^2.2.1:
   resolved "https://registry.yarnpkg.com/bulma-extensions/-/bulma-extensions-2.2.2.tgz#d46f11d1242a3fdc60a983afaea0b5e6c137362d"
   integrity sha512-6hV6SiRT7RZD5+scn/462Dz8RURRgxuvlCy+R5LH9U6FLn7Q/sInAA5VdK8c4DKpxZjfsipp72EAKM7yzgzRig==
 
+bulma-rtl@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/bulma-rtl/-/bulma-rtl-0.7.1.tgz#7e589f3cd8ffcdf8fb507996279a812ebf79f91f"
+  integrity sha512-Gjsmzc3ZAzIAqfCguFxlkFn4OKFhNZ5G67GdQScxhJHyOPYEYWdsKbPG9N+mau4BjkV6pNrNxzDonxiXyGHT5A==
+
 bulma@^0.7.2:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.4.tgz#7e74512e9118d9799021339e67e365ee0ac4f3f9"

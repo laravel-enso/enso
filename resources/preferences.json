@@ -5,7 +5,10 @@
         "expandedMenu": true,
         "bookmarks": true,
         "theme": "light",
-        "toastrPosition": "bottom-right"
+        "toastrPosition": "bottom-right",
+        "isRTL": false,
+        "rtlClass": "left",
+        "rtlCss": null
     },
     "local": {}
 }

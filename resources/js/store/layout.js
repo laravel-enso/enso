@@ -53,6 +53,9 @@ export const mutations = {
 
 export const actions = {
     setTheme({ state, rootGetters }, theme = null) {
+        document.getElementById('enso_css')
+            .setAttribute('href', `/css/enso${rootGetters['preferences/rtlCss']}.css`);
+
         document.getElementById('theme')
             .setAttribute('href', theme || state.themes[rootGetters['preferences/theme']]);
 

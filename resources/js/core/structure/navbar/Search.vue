@@ -1,47 +1,48 @@
 <template>
     <div class="navbar-item search">
         <typeahead ref="typeahead"
-            v-model="query"
-            is-rounded
-            source="core.search.index"
-            :placeholder="__('Search')"
-            :searching="__('Searching') + '..'"
-            :no-results="__('Nothing found')"
-            :filter="filter"
-            @update="redirect">
+                   v-model="query"
+                   is-rounded
+                   source="core.search.index"
+                   :placeholder="__('Search')"
+                   :searching="__('Searching') + '..'"
+                   :no-results="__('Nothing found')"
+                   :filter="filter"
+                   @update="redirect">
             <template v-if="items.length"
-                slot="controls"
-                slot-scope="{ items }">
+                      slot="controls"
+                      slot-scope="{ items }">
                 <div v-if="tags(items).length < 6"
-                    class="dropdown-content has-text-centered has-padding-small has-margin-top-small">
+                     class="dropdown-content has-text-centered
+                     has-padding-small has-margin-top-small">
                     <a v-for="(tag, index) in tags(items)"
-                        :key="index"
-                        class="tag control-list is-uppercase"
-                        :class="{ 'is-info': selected(tag) }"
-                        @click="toggle(tag)">
+                       :key="index"
+                       class="tag control-list is-uppercase"
+                       :class="{ 'is-info': selected(tag) }"
+                       @click="toggle(tag)">
                         {{ __(tag ) }}
                     </a>
                 </div>
                 <div v-else
-                    class="has-text-centered">
+                     class="has-text-centered">
                     <p class="title is-6">
                         {{ __('Categories found') }}: {{ tags(items).length }}
                     </p>
                 </div>
             </template>
             <template slot="option"
-                slot-scope="{ highlight, item }">
+                      slot-scope="{ highlight, item }">
                 <span>
                     <span class="tag is-bold is-info is-uppercase">
                         {{ __(item['group']) }}
                     </span>
                     <span v-html="highlight(item['label'])"/>
                     <span v-if="item.routes.length"
-                        class="route-controls">
+                          class="route-controls" :class="rtlClass">
                         <span v-for="(route, index) in item.routes"
-                            :key="index"
-                            class="icon is-small route-control"
-                            @mousedown.stop="redirect(item, route.name)">
+                              :key="index"
+                              class="icon is-small route-control"
+                              @mousedown.stop="redirect(item, route.name)">
                             <fa :icon="route.icon" size="sm"/>
                         </span>
                     </span>
@@ -53,6 +54,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEye, faPencilAlt, faListUl } from '@fortawesome/free-solid-svg-icons';
 import Typeahead from '../../../components/enso/bulma/Typeahead.vue';
@@ -68,6 +70,10 @@ export default {
         query: '',
         selectedTags: [],
     }),
+
+    computed: {
+        ...mapGetters('preferences', ['rtlClass']),
+    },
 
     methods: {
         route(search, { routes }) {
@@ -153,8 +159,13 @@ export default {
         }
         .route-controls {
             position: absolute;
-            right: 1em;
             margin-top: .15em;
+            &.left {
+                right: 1rem;
+            }
+            &.right {
+                left: 1rem;
+            }
 
             .route-control {
                 z-index: 4;

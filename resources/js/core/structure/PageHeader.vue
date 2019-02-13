@@ -1,13 +1,13 @@
 <template>
     <div class="level">
-        <div class="level-left is-hidden-mobile">
+        <div class="level-left is-hidden-mobile" v-if="!isRTL">
             <div class="level-item">
                 <transition mode="out-in"
-                    enter-active-class="fadeIn"
-                    leave-active-class="fadeOut">
+                            enter-active-class="fadeIn"
+                            leave-active-class="fadeOut">
                     <p v-if="loaded"
-                        id="page-title"
-                        class="title is-5 animated">
+                       id="page-title"
+                       class="title is-5 animated">
                         {{ __(title) }}
                     </p>
                 </transition>
@@ -16,11 +16,24 @@
         <div class="level-right">
             <div class="level-item">
                 <transition
-                    mode="out-in"
-                    enter-active-class="fadeInRight"
-                    leave-active-class="fadeOutRight">
+                        mode="out-in"
+                        enter-active-class="fadeInRight"
+                        leave-active-class="fadeOutRight">
                     <breadcrumbs v-if="loaded" id="breadcrumbs"
-                         class="animated"/>
+                                 class="animated"/>
+                </transition>
+            </div>
+        </div>
+        <div class="level-left is-hidden-mobile" v-if="isRTL">
+            <div class="level-item">
+                <transition mode="out-in"
+                            enter-active-class="fadeIn"
+                            leave-active-class="fadeOut">
+                    <p v-if="loaded"
+                       id="page-title"
+                       class="title is-5 animated">
+                        {{ __(title) }}
+                    </p>
                 </transition>
             </div>
         </div>
@@ -29,6 +42,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import Breadcrumbs from './Breadcrumbs.vue';
 
 export default {
@@ -41,6 +55,10 @@ export default {
             type: String,
             default: null,
         },
+    },
+
+    computed: {
+        ...mapGetters('preferences', ['isRTL']),
     },
 
     data: () => ({

@@ -1,12 +1,12 @@
 <template>
     <div v-click-outside="() => visible = false"
-        :class="[
+         :class="[
             'navbar-item notifications',
             { 'has-dropdown': !isTouch },
             { 'is-active': visible }
         ]">
         <span v-if="isTouch" class="is-clickable"
-             @click="$router.push({'name': 'core.notifications.index'})">
+              @click="$router.push({'name': 'core.notifications.index'})">
             <span class="icon">
                 <fa icon="bell"/>
             </span>
@@ -15,8 +15,8 @@
             </sup>
         </span>
         <a v-else
-            :class="['navbar-link', { 'rotate': visible }]"
-            @click="toggle()">
+           :class="['navbar-link', { 'rotate': visible }]"
+           @click="toggle()">
             <span class="icon">
                 <fa icon="bell"/>
             </span>
@@ -26,13 +26,13 @@
             <overlay v-if="loading"/>
         </a>
         <div v-if="visible"
-            class="navbar-dropdown is-right">
+             class="navbar-dropdown " :class="isRTL ? 'is-left' : 'is-right'">
             <div class="notification-list"
-                @scroll="computeScrollPosition($event)">
+                 @scroll="computeScrollPosition($event)">
                 <a v-for="notification in notifications"
-                    :key="notification.id"
-                    class="navbar-item"
-                    @click="update(notification)">
+                   :key="notification.id"
+                   class="navbar-item"
+                   @click="update(notification)">
                     <div class="navbar-content">
                         <p class="is-notification" :class="{ 'is-bold': !notification.read_at }">
                             <fa v-if="notification.data.icon"
@@ -50,11 +50,11 @@
             <hr v-if="notifications.length"
                 class="navbar-divider">
             <nav v-if="notifications.length"
-                class="level navbar-item">
+                 class="level navbar-item">
                 <div class="level-left">
                     <div class="level-item">
                         <a class="button is-small is-info has-margin-left-small"
-                            @click="
+                           @click="
                                 visible = false;
                                 $router.push({'name': 'core.notifications.index'})
                             ">
@@ -68,7 +68,7 @@
                 <div class="level-right">
                     <div class="level-item">
                         <a class="button is-small is-success"
-                            @click="updateAll">
+                           @click="updateAll">
                             <span>{{ __("Mark all as read") }}</span>
                             <span class="icon is-small">
                                 <fa icon="check"/>
@@ -92,7 +92,7 @@
 <script>
 
 import debounce from 'lodash/debounce';
-import { mapState } from 'vuex';
+import { mapState,mapGetters } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import Pusher from 'pusher-js';
 import Echo from 'laravel-echo';
@@ -137,6 +137,7 @@ export default {
     computed: {
         ...mapState(['user', 'meta']),
         ...mapState('layout', ['isTouch']),
+        ...mapGetters('preferences', ['isRTL']),
     },
 
     watch: {

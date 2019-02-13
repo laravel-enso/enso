@@ -1,11 +1,11 @@
 <template>
     <transition enter-active-class="fadeIn"
-        leave-active-class="fadeOut">
+                leave-active-class="fadeOut">
         <div v-show="lightsOn"
-            class="app-main">
+             class="app-main">
             <navbar class="animated slideInDown"/>
-            <transition enter-active-class="slideInLeft"
-                leave-active-class="slideOutLeft">
+            <transition :enter-active-class="isRTL ? 'slideInRight' :'slideInLeft'"
+                        :leave-active-class="isRTL ? 'slideOutRight' :'slideOutLeft'">
                 <sidebar v-if="menu.isVisible" :class="[
                         'animated',
                         { 'is-collapsed' : !menu.isExpanded },
@@ -13,7 +13,7 @@
             </transition>
             <section :class="[
                     'main-content',
-                    menu.isExpanded ? 'is-expanded' : 'is-collapsed' ]
+                    menu.isExpanded ? 'is-expanded '+rtlClass : 'is-collapsed '+rtlClass ]
                 ">
                 <bookmarks v-show="bookmarks" :class="[
                         'animated',
@@ -26,7 +26,7 @@
             </section>
             <settings :class="[
                     'animated',
-                    settingsBar.isVisible ? 'slideInRight': 'slideOutRight'
+                    settingsBar.isVisible ? slideIn : slideOut
                 ]"/>
             <app-footer class="animated fadeIn"/>
         </div>
@@ -56,9 +56,15 @@ export default {
     computed: {
         ...mapState(['meta', 'isInitialised']),
         ...mapState('layout', ['lightsOff', 'isTablet', 'isMobile', 'menu', 'settingsBar']),
-        ...mapGetters('preferences', ['bookmarks']),
+        ...mapGetters('preferences', ['bookmarks', 'rtlClass', 'isRTL']),
         lightsOn() {
             return !this.lightsOff;
+        },
+        slideIn() {
+            return this.isRTL ? 'slideInLeft' : 'slideInRight'
+        },
+        slideOut() {
+            return this.isRTL ? 'slideOutLeft' : 'slideOutRight'
         },
     },
 
@@ -89,10 +95,10 @@ export default {
 
     methods: {
         ...mapMutations('layout', ['updateLayout', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
-        ...mapMutations('layout/menu', { showMenu: 'show', hideMenu: 'hide' }),
+        ...mapMutations('layout/menu', {showMenu: 'show', hideMenu: 'hide'}),
         ...mapActions(['initialise']),
         addTouchBreakpointsListeners() {
-            const { body } = document;
+            const {body} = document;
             const TabletMaxWidth = 1023;
             const MobileMaxWidth = 768;
 
@@ -153,18 +159,39 @@ export default {
         transition: margin .5s;
 
         &.is-expanded {
-            margin-left: 180px;
+
+            &.left {
+                margin-left: 180px;
+            }
+
+            &.right {
+                margin-right: 180px;
+            }
         }
 
         &.is-collapsed {
-            margin-left: 56px;
+
+            &.left {
+                margin-left: 56px;
+            }
+
+            &.right {
+                margin-right: 56px;
+            }
         }
     }
 
     @media screen and (max-width: 1023px) {
         .main-content {
             &.is-expanded, &.is-collapsed {
-                margin-left: 0;
+
+                &.left {
+                    margin-left: 0;
+                }
+
+                &.right {
+                    margin-right: 0;
+                }
             }
         }
     }

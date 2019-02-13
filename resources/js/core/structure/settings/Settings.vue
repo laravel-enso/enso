@@ -1,5 +1,5 @@
 <template>
-    <vue-aside class="wrapper settings">
+    <vue-aside class="wrapper settings" :class="rtlClass">
         <p class="menu-label has-text-centered">
             {{ __("Settings") }}
         </p>
@@ -34,7 +34,7 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import VueAside from '../VueAside.vue';
 import LanguageSelector from './LanguageSelector.vue';
 import ThemeSelector from './ThemeSelector.vue';
@@ -62,6 +62,7 @@ export default {
         ...mapState(['user']),
         ...mapState(['meta']),
         ...mapState('layout', ['themes']),
+        ...mapGetters('preferences', ['rtlClass']),
         ...mapState('localisation', ['languages']),
         multipleThemes() {
             return Object.keys(this.themes).length > 1;
@@ -74,11 +75,18 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" >
 
     .wrapper.settings {
-        right: 0;
+
         overflow-y: auto;
+
+        &.left {
+            right: 0;
+        }
+        &.right {
+            left: 0;
+        }
     }
 
     .settings-item .level-item {
@@ -89,4 +97,7 @@ export default {
         margin-right: unset;
     }
 
+    .settings-item .level-left .level-item {
+        margin-left: unset;
+    }
 </style>

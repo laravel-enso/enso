@@ -24,6 +24,9 @@ export const getters = {
     expandedMenu: state => state.global.expandedMenu,
     toastrPosition: state => state.global.toastrPosition,
     bookmarks: state => state.global.bookmarks,
+    isRTL: state => state.global.isRTL,
+    rtlClass: state => state.global.rtlClass,
+    rtlCss: state => (state.global.isRTL ? '-rtl' : ''),
 };
 
 export const mutations = {
@@ -38,6 +41,9 @@ export const mutations = {
     expandedMenu: (state, expandedMenu) => (state.global.expandedMenu = expandedMenu),
     bookmarks: (state, bookmarks) => (state.global.bookmarks = bookmarks),
     local: (state, payload) => (state.local[payload.route] = payload.value),
+    isRTL: (state, isRTL) => (state.global.isRTL = isRTL),
+    rtlClass: (state, rtlClass) => (state.global.rtlClass = rtlClass),
+    rtlCss: (state, rtlCss) => (state.global.rtlCss = rtlCss),
 };
 
 export const actions = {
@@ -49,17 +55,33 @@ export const actions = {
         commit('local', payload);
         updateLocal(payload);
     },
-    setLang: ({ commit }, lang) => {
+    setLang: ({ commit, dispatch, getters }, lang) => {
         commit('lang', lang);
         localStorage.setItem('locale', lang);
+
+        const rtlLangs = ['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi'];
+
+        if (rtlLangs.includes(lang)) { // TODO: replace AR with an array with all RTL language
+            dispatch('setIsRTL', true);
+            dispatch('setRtlClass', true);
+            dispatch('setRtlCss', true);
+        } else {
+            dispatch('setIsRTL', false);
+            dispatch('setRtlClass', false);
+            dispatch('setRtlCss', false);
+        }
+
+        const { theme } = getters;
+        dispatch('setTheme', theme);
+
         updateGlobal();
     },
     setTheme: ({ commit, dispatch, getters }, theme) => {
-        if (theme === getters.theme) {
+        if (theme.replace('-rtl', '') + getters.rtlCss === getters.theme) {
             return;
         }
 
-        commit('theme', theme);
+        commit('theme', theme.replace('-rtl', '') + getters.rtlCss);
 
         dispatch('layout/switchTheme', null, { root: true })
             .then(() => updateGlobal());
@@ -77,4 +99,13 @@ export const actions = {
         commit('layout/menu/update', state, { root: true });
         updateGlobal();
     },
+    setIsRTL: ({ commit }, isRTL) => {
+        commit('isRTL', isRTL);
+    },
+    setRtlClass: ({ commit }, isRTL) => (
+        isRTL ? commit('rtlClass', 'right') : commit('rtlClass', 'left')
+    ),
+    setRtlCss: ({ commit }, isRTL) => (
+        isRTL ? commit('rtlCss', '-rtl') : commit('rtlCss', '')
+    ),
 };

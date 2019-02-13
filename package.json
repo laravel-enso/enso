@@ -51,6 +51,7 @@
         "axios": "^0.18",
         "bulma": "^0.7.2",
         "bulma-extensions": "^2.2.1",
+        "bulma-rtl": "^0.7.1",
         "chart.js": "^2.7.2",
         "chartjs-plugin-datalabels": "^0.3.0",
         "css-element-queries": "^1.0.2",
