@@ -1,14 +1,15 @@
 <template>
     <div class="box is-paddingless">
         <div :class="[
-                'header title is-5 has-padding-large has-background-light',
+                'header title is-5 is-marginless has-padding-large has-background-light',
                 { 'is-clickable': collapsible }
             ]"
             v-if="title"
-            @click="collapsible ? expanded = !expanded : null">
+            @click="collapsible ? toggle() : null">
             <slot name="title"/>
             <span class="icon angle"
-                :aria-hidden="expanded">
+                :aria-hidden="expanded"
+                v-if="collapsible">
                 <fa icon="angle-up"/>
             </span>
         </div>
@@ -45,6 +46,19 @@ export default {
     data: v => ({
         expanded: !v.collapsed,
     }),
+
+    watch: {
+        collapsed(value) {
+            this.expanded = !value;
+        },
+    },
+
+    methods: {
+        toggle() {
+            this.expanded = !this.expanded;
+            this.$emit(this.expanded ? 'expand' : 'collapse');
+        },
+    },
 };
 
 </script>

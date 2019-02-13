@@ -1,12 +1,13 @@
 <template>
     <enso-tabs>
-        <span slot="label"
-            slot-scope="{ tab }">
-            {{ tab }}
-            <span class="tag is-dark file-counter">
+        <template v-slot:label="{ tab }">
+            <span>
+                {{ tab }}
+            </span>
+            <span class="tag is-dark file-counter has-margin-left-medium">
                 {{ content(tab).length }}
             </span>
-        </span>
+        </template>
         <div class="columns is-reverse-mobile">
             <div class="column is-two-thirds">
                 <tab v-for="folder in folders"
