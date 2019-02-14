@@ -1,33 +1,33 @@
 <template>
     <div :class="['dropdown', { 'is-active': dropdown }]"
-         v-click-outside="hideDropdown">
+        v-click-outside="hideDropdown">
         <div class="dropdown-trigger">
             <fieldset :class="['control-input input', { 'is-danger': hasError }]"
-                      tabindex="0"
-                      :disabled="disabled"
-                      :readonly="readonly"
-                      @click="showDropdown"
-                      @keypress.enter="showDropdown"
-                      @focus="showDropdown">
+                tabindex="0"
+                :disabled="disabled"
+                :readonly="readonly"
+                @click="showDropdown"
+                @keypress.enter="showDropdown"
+                @focus="showDropdown">
                 <div class="select-value">
                     <div class="field is-grouped is-grouped-multiline">
                         <div class="control"
-                             v-if="multiple">
+                            v-if="multiple">
                             <tag v-for="option in selection"
-                                 :disabled="readonly || disabled"
-                                 :label="optionLabel(option)"
-                                 :key="option[trackBy]"
-                                 @remove="remove(option)"/>
+                                :disabled="readonly || disabled"
+                                :label="optionLabel(option)"
+                                :key="option[trackBy]"
+                                @remove="remove(option)"/>
                         </div>
                         <input class="input select-input" type="text"
-                               :placeholder="i18n(placeholder)"
-                               v-model="query"
-                               @keydown.esc="hideDropdown"
-                               @keydown.down="keyDown"
-                               @keydown.up="keyUp"
-                               @keydown.tab="hideDropdown"
-                               @keydown.enter.prevent="hit()"
-                               v-if="dropdown">
+                            :placeholder="i18n(placeholder)"
+                            v-model="query"
+                            @keydown.esc="hideDropdown"
+                            @keydown.down="keyDown"
+                            @keydown.up="keyUp"
+                            @keydown.tab="hideDropdown"
+                            @keydown.enter.prevent="hit()"
+                            v-if="dropdown">
                     </div>
                     <div v-if="!dropdown">
                         <span v-if="!multiple && hasSelection">
@@ -41,12 +41,12 @@
                         </span>
                     </div>
                     <span class="is-loading"
-                          v-if="loading"/>
+                        v-if="loading"/>
                     <a class="delete is-small" :class="rtlClass"
-                       v-if="!disableClear && !loading && hasSelection && !readonly && !disabled"
-                       @mousedown.prevent.self="clear"/>
+                        v-if="!disableClear && !loading && hasSelection && !readonly && !disabled"
+                        @mousedown.prevent.self="clear"/>
                     <span class="icon is-small angle" :class="rtlClass"
-                          :aria-hidden="dropdown">
+                        :aria-hidden="dropdown">
                         <fa icon="angle-up"/>
                     </span>
                 </div>
@@ -55,11 +55,11 @@
         <div class="dropdown-menu">
             <div class="dropdown-content">
                 <a class="dropdown-item"
-                   v-for="(option, index) in filteredOptions"
-                   :key="option[trackBy]"
-                   :class="{ 'is-active': position === index }"
-                   @mousemove="position = index"
-                   @click="hit()">
+                    v-for="(option, index) in filteredOptions"
+                    :key="option[trackBy]"
+                    :class="{ 'is-active': position === index }"
+                    @mousemove="position = index"
+                    @click="hit()">
                     <span v-html="highlight(optionLabel(option))"/>
                     <span :class="['label tag',
                     isSelected(option) ? 'is-warning' : 'is-success', rtlClass]"
@@ -72,16 +72,16 @@
                         </span>
                     </span>
                     <span class="icon is-small selected has-text-success" :class="rtlClass"
-                          v-else-if="isSelected(option)">
+                        v-else-if="isSelected(option)">
                         <fa icon="check"/>
                     </span>
                 </a>
                 <a class="dropdown-item"
-                   v-if="!hasFilteredOptions"
-                   @click="taggable ? $emit('add-tag', query) : null">
+                    v-if="!hasFilteredOptions"
+                    @click="taggable ? $emit('add-tag', query) : null">
                     {{ i18n(labels.noResults) }}
                     <span class="label tag is-info" :class="rtlClass"
-                          v-if="taggable">
+                        v-if="taggable">
                         {{ i18n(labels.addTag) }}
                     </span>
                 </a>
@@ -411,7 +411,7 @@ export default {
             this.$emit('input', this.multiple ? [] : null);
         },
         highlight(label) {
-            return label.replace(new RegExp(`(${this.query})`, 'gi'), '$1');
+            return label.replace(new RegExp(`(${this.query})`, 'gi'), '<b>$1</b>');
         },
         remove(option) {
             const index = this.value
