@@ -61,7 +61,7 @@ export const actions = {
 
         const rtlLangs = ['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi'];
 
-        if (rtlLangs.includes(lang)) { // TODO: replace AR with an array with all RTL language
+        if (rtlLangs.includes(lang)) {
             dispatch('setIsRTL', true);
             dispatch('setRtlClass', true);
             dispatch('setRtlCss', true);
