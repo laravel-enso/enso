@@ -8,7 +8,7 @@
         <div class="level-right">
             <div class="level-item">
                 <a class="button is-naked"
-                   @click="setTheme(alternate)">
+                    @click="setTheme(alternate)">
                     <span class="icon is-small">
                         <fa icon="lightbulb"/>
                     </span>
