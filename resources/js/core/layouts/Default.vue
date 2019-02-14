@@ -1,8 +1,8 @@
 <template>
     <transition enter-active-class="fadeIn"
-                leave-active-class="fadeOut">
+        leave-active-class="fadeOut">
         <div v-show="lightsOn"
-             class="app-main">
+            class="app-main">
             <navbar class="animated slideInDown"/>
             <transition :enter-active-class="isRTL ? 'slideInRight' :'slideInLeft'"
                         :leave-active-class="isRTL ? 'slideOutRight' :'slideOutLeft'">
@@ -95,10 +95,10 @@ export default {
 
     methods: {
         ...mapMutations('layout', ['updateLayout', 'setIsTablet', 'setIsMobile', 'setIsTouch']),
-        ...mapMutations('layout/menu', {showMenu: 'show', hideMenu: 'hide'}),
+        ...mapMutations('layout/menu', { showMenu: 'show', hideMenu: 'hide' }),
         ...mapActions(['initialise']),
         addTouchBreakpointsListeners() {
-            const {body} = document;
+            const { body } = document;
             const TabletMaxWidth = 1023;
             const MobileMaxWidth = 768;
 
