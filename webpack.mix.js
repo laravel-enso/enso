@@ -19,6 +19,9 @@ mix
     .sass('resources/sass/enso.scss', 'public/css')
     .sass('resources/sass/themes/light.scss', 'public/themes/light/bulma.min.css')
     .sass('resources/sass/themes/dark.scss', 'public/themes/dark/bulma.min.css')
+    .sass('resources/sass/enso-rtl.scss', 'public/css')
+    .sass('resources/sass/themes-rtl/light.scss', 'public/themes-rtl/light/bulma.min.css')
+    .sass('resources/sass/themes-rtl/dark.scss', 'public/themes-rtl/dark/bulma.min.css')
     .js('resources/js/enso.js', 'public/js')
     .extract([
         '@fortawesome/fontawesome-free', '@fortawesome/fontawesome-svg-core',
