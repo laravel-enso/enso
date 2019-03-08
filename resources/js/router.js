@@ -1,19 +1,19 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import routeImporter from './modules/importers/routeImporter';
-import before from './middleware/before';
-import after from './middleware/after';
+import routeImporter from '@core-modules/importers/routeImporter';
+import before from '@core-middleware/before';
 
 Vue.use(Router);
 
-const routes = routeImporter(require.context('./routes', false, /.*\.js$/));
+const coreRoutes = routeImporter(require.context('@core-routes', false, /.*\.js$/));
+
+const routes = []; // your local routes
 
 const router = new Router({
     mode: 'history',
-    routes,
+    routes: [...coreRoutes, ...routes],
 });
 
 router.beforeEach(before);
-router.afterEach(after);
 
 export default router;

@@ -1,6 +1,22 @@
 const mix = require('laravel-mix');
 
 mix
+    .webpackConfig({
+        resolve: {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+                '@core-routes': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/routes`,
+                '@core-pages': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/pages`,
+                '@core-middleware': `${__dirname}/node_modules/@enso-ui/ui/src/middleware`,
+                '@core-modules': `${__dirname}/node_modules/@enso-ui/ui/src/modules`,
+                '@root': `${__dirname}/resources/js`,
+                '@pages': `${__dirname}/resources/js/pages`,
+                '@store': `${__dirname}/resources/js/store`,
+                '@components': `${__dirname}/resources/js/components`,
+            },
+        },
+    })
+
     .options({
         hmrOptions: {
             port: '3030',
@@ -17,8 +33,8 @@ mix
     })
     .copyDirectory('resources/images', 'public/images')
     .sass('resources/sass/enso.scss', 'public/css')
-    .sass('resources/sass/themes/light.scss', 'public/themes/light/bulma.min.css')
-    .sass('resources/sass/themes/dark.scss', 'public/themes/dark/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/light.scss', 'public/themes/light/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/dark.scss', 'public/themes/dark/bulma.min.css')
     .js('resources/js/enso.js', 'public/js')
     .extract([
         '@fortawesome/fontawesome-free', '@fortawesome/fontawesome-svg-core',

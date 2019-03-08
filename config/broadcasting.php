@@ -34,8 +34,6 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
-                'host' => env('PUSHER_APP_HOST', 'api.pusherapp.com'),
-                'port' => env('PUSHER_APP_PORT'),
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => true,
             ],
