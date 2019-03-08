@@ -1399,16 +1399,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "58e67fbb3fe09b0ab72327b1139a1a1a27a1cf78"
+                "reference": "ba7097910e3aa1730879eeb64e3305d3ed1419c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/58e67fbb3fe09b0ab72327b1139a1a1a27a1cf78",
-                "reference": "58e67fbb3fe09b0ab72327b1139a1a1a27a1cf78",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/ba7097910e3aa1730879eeb64e3305d3ed1419c3",
+                "reference": "ba7097910e3aa1730879eeb64e3305d3ed1419c3",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1458,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-03-08T14:03:45+00:00"
+            "time": "2019-03-08T16:08:02+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -3516,16 +3516,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "f941864b8c73dddc09408251a3db05a1d2fdf147"
+                "reference": "4ac4cebf9bc7c547d4cfd029631d170136aef64c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/f941864b8c73dddc09408251a3db05a1d2fdf147",
-                "reference": "f941864b8c73dddc09408251a3db05a1d2fdf147",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/4ac4cebf9bc7c547d4cfd029631d170136aef64c",
+                "reference": "4ac4cebf9bc7c547d4cfd029631d170136aef64c",
                 "shasum": ""
             },
             "require": {
@@ -3569,7 +3569,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-03-08T13:32:43+00:00"
+            "time": "2019-03-08T15:47:40+00:00"
         },
         {
             "name": "laravel/framework",
