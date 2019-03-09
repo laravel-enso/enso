@@ -2215,16 +2215,16 @@
         },
         {
             "name": "laravel-enso/formbuilder",
-            "version": "3.0.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FormBuilder.git",
-                "reference": "3892bab8d0f277356f9cea98d39f3be1114d43ff"
+                "reference": "61562322db0f9cabbe261aa2f296c367a3c43e4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/3892bab8d0f277356f9cea98d39f3be1114d43ff",
-                "reference": "3892bab8d0f277356f9cea98d39f3be1114d43ff",
+                "url": "https://api.github.com/repos/laravel-enso/FormBuilder/zipball/61562322db0f9cabbe261aa2f296c367a3c43e4a",
+                "reference": "61562322db0f9cabbe261aa2f296c367a3c43e4a",
                 "shasum": ""
             },
             "require": {
@@ -2266,7 +2266,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2019-03-08T12:59:13+00:00"
+            "time": "2019-03-09T07:26:02+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -3191,16 +3191,16 @@
         },
         {
             "name": "laravel-enso/structuremanager",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/StructureManager.git",
-                "reference": "9dd4d92f0f521aa24e334a12b7d378609e8e4fed"
+                "reference": "7fcd11e7dad34d1ec608496c64efdb834144948a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/9dd4d92f0f521aa24e334a12b7d378609e8e4fed",
-                "reference": "9dd4d92f0f521aa24e334a12b7d378609e8e4fed",
+                "url": "https://api.github.com/repos/laravel-enso/StructureManager/zipball/7fcd11e7dad34d1ec608496c64efdb834144948a",
+                "reference": "7fcd11e7dad34d1ec608496c64efdb834144948a",
                 "shasum": ""
             },
             "require": {
@@ -3243,7 +3243,7 @@
                 "laravel-enso",
                 "structuremanager"
             ],
-            "time": "2019-03-08T15:31:38+00:00"
+            "time": "2019-03-09T07:52:44+00:00"
         },
         {
             "name": "laravel-enso/teams",
