@@ -4,13 +4,12 @@ import {
     coreModules, coreState, coreGetters, coreMutations, coreActions,
 } from '@core-modules/store';
 
-// your local modules
-// import storeImporter from '@core-modules/importers/storeImporter';
-// const modules = storeImporter(require.context('./store', false, /.*\.js$/));
+import storeImporter from '@core-modules/importers/storeImporter';
+
+const modules = storeImporter(require.context('./store', false, /.*\.js$/));
 
 Vue.use(Vuex);
 
-const modules = {};
 const state = {};
 const getters = {};
 const mutations = {};

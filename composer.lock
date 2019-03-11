@@ -3139,16 +3139,16 @@
         },
         {
             "name": "laravel-enso/select",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Select.git",
-                "reference": "2b5661ec9af3fe1c6a1ca5ad40afee48d3bb1392"
+                "reference": "02a3fb29ed9fd2466304b000d36ac03419e60f2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/2b5661ec9af3fe1c6a1ca5ad40afee48d3bb1392",
-                "reference": "2b5661ec9af3fe1c6a1ca5ad40afee48d3bb1392",
+                "url": "https://api.github.com/repos/laravel-enso/Select/zipball/02a3fb29ed9fd2466304b000d36ac03419e60f2c",
+                "reference": "02a3fb29ed9fd2466304b000d36ac03419e60f2c",
                 "shasum": ""
             },
             "require": {
@@ -3187,7 +3187,7 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2019-03-10T08:04:53+00:00"
+            "time": "2019-03-11T16:25:50+00:00"
         },
         {
             "name": "laravel-enso/structuremanager",
@@ -3354,16 +3354,16 @@
         },
         {
             "name": "laravel-enso/tutorialmanager",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/TutorialManager.git",
-                "reference": "5dbc7dd7a0196658692a30c06e8f76b6ce6f79fe"
+                "reference": "e2b7e040cbf31d8286372a81a03b530826e9cafd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/5dbc7dd7a0196658692a30c06e8f76b6ce6f79fe",
-                "reference": "5dbc7dd7a0196658692a30c06e8f76b6ce6f79fe",
+                "url": "https://api.github.com/repos/laravel-enso/TutorialManager/zipball/e2b7e040cbf31d8286372a81a03b530826e9cafd",
+                "reference": "e2b7e040cbf31d8286372a81a03b530826e9cafd",
                 "shasum": ""
             },
             "require": {
@@ -3410,7 +3410,7 @@
                 "tutorial-manager",
                 "tutorialmanager"
             ],
-            "time": "2019-03-08T13:31:52+00:00"
+            "time": "2019-03-08T15:32:19+00:00"
         },
         {
             "name": "laravel-enso/versioning",
