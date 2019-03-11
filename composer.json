@@ -42,8 +42,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "LaravelEnso\\IO\\": "vendor/laravel-enso/io/src/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

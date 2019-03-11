@@ -3,6 +3,19 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Horizon Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the URI path where Horizon will be accessible from. Feel free
+    | to change this path to anything you like. Note that the URI will not
+    | affect the paths of its internal API that aren't exposed to users.
+    |
+    */
+
+    'path' => 'horizon',
+
+    /*
+    |--------------------------------------------------------------------------
     | Horizon Redis Connection
     |--------------------------------------------------------------------------
     |
@@ -67,8 +80,9 @@ return [
     */
 
     'trim' => [
-        'recent' => 60 * 24 * 2,
+        'recent' => 60 * 24,
         'failed' => 60 * 24 * 7,
+        'monitored' => 60 * 24 * 7,
     ],
 
     /*

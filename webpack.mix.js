@@ -37,10 +37,19 @@ mix
     .sass('node_modules/@enso-ui/themes/bulma/dark.scss', 'public/themes/dark/bulma.min.css')
     .js('resources/js/enso.js', 'public/js')
     .extract([
-        '@fortawesome/fontawesome-free', '@fortawesome/fontawesome-svg-core',
-        '@fortawesome/free-brands-svg-icons', '@fortawesome/free-regular-svg-icons',
-        '@fortawesome/free-solid-svg-icons', '@fortawesome/vue-fontawesome', 'accounting-js',
-        'axios', 'chart.js', 'chartjs-plugin-datalabels', 'css-element-queries', 'date-fns',
+        '@enso-ui/accessories/bulma', '@enso-ui/bulma', '@enso-ui/card/bulma',
+        '@enso-ui/charts/bulma', '@enso-ui/confirmation/bulma', '@enso-ui/datepicker/bulma',
+        '@enso-ui/directives', '@enso-ui/divider', '@enso-ui/dropdown/bulma',
+        '@enso-ui/dropdown-indicator', '@enso-ui/filters/bulma', '@enso-ui/forms/bulma',
+        '@enso-ui/loader/bulma', '@enso-ui/mixins', '@enso-ui/modal/bulma', '@enso-ui/money',
+        '@enso-ui/progress-bar', '@enso-ui/select/bulma', '@enso-ui/switch/bulma',
+        '@enso-ui/tables/bulma', '@enso-ui/tabs/bulma', '@enso-ui/toastr/bulma',
+        '@enso-ui/transitions', '@enso-ui/typeahead/bulma', '@enso-ui/ui/bulma',
+        '@enso-ui/uploader/bulma', '@fortawesome/fontawesome-free',
+        '@fortawesome/fontawesome-svg-core', '@fortawesome/free-brands-svg-icons',
+        '@fortawesome/free-regular-svg-icons', '@fortawesome/free-solid-svg-icons',
+        '@fortawesome/vue-fontawesome', 'accounting-js', 'axios', 'chart.js',
+        'chartjs-plugin-datalabels', 'css-element-queries', 'date-fns',
         'dropzone', 'file-saver', 'flatpickr', 'laravel-echo', 'lodash', 'popper.js',
         'pusher-js', 'quill', 'raven-js', 'textarea-caret', 'tiptap', 'tiptap-commands',
         'tiptap-extensions', 'tooltip.js', 'v-click-outside', 'v-tooltip', 'vue',
