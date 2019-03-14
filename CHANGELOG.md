@@ -1,5 +1,563 @@
 ## Laravel Enso's Changelog
 
+### 3.0.0
+
+### General
+
+#### Goals
+
+We are always trying to move towards logic normalization (be it back end or front end), having the packages encapsulated, easy to work on, maintain, extend and customize.
+
+Keeping the front-end assets together with the back-end code as well as having to publish everything on updates, managing what to overwrite or keep separate, was clearly not natural.
+
+V3 is a big step in the right direction with the extraction of the front-end assets from the Composer packages and their move to individual NPM repositories.
+
+#### Rewrite
+
+All the VueJS components have been rewritten (around 20k LOC have been updated/refactored), and now there is a more logical flow, components communicate better with each other, there's a greater degree of re-usability, removed duplicated logic, less lines of code (the old middleware is gone) and even a bit of extra functionality.
+
+We went for "composition over inheritance" favoring slots over props.
+
+Where it was feasible we created renderless components.
+
+We made use of dependency injection to replace global mixins or to share the state in specific components / libs.
+
+After the refactor most of the middlewares were removed.
+
+We tried to remove all the `scoped` scss styling from the vue components, opening them up for local customization
+
+We added friendly aliases for imports.
+
+#### NPM packages
+
+We strived to create packages for every piece of functionality. This is still an ongoing process.
+
+All the new packages can be found under the @enso-ui organisation on both github and npmjs.
+
+For the active components we went for encapsulating the front end behavior in renderless components, and creating template wrappers.
+
+#### Theming and styling
+
+As before, Enso ships with two themes, one dark and one light. 
+The themes and the overall styling have been organized better, offer the possibility of easier customization and can be found in the @enso-ui/themes package.
+
+It's easier to style specific components on both themes by creating a single scss file that uses variables, and place this file under the `/components` folder
+
+#### Development & Customization
+
+If previously, the best/only way to customize some of the pages was to create your own local copies and then making sure you overwrite the default Enso pages with your own versions, now you can customize the assets much easier. You can do this by either rewriting core-routes in your local project and point to local pages, or you can use (patch-package)[https://www.npmjs.com/package/patch-package] and customize anything in a package without having to manually maintain the differences.
+
+You can easily write your own version for any asset while taking advantage of the existing behaviour contained in the renderless components. This even makes switching Enso from Bulma to the CSS framework of your choice much easier.
+
+Therefore, for most packages, you have the possibility to:
+- customize the components within the packages and then use patch-package, or
+- locally create your own version of the component  and change the imports to use your local component
+
+For the theme customization you can:
+- customize the styles within the theme package and then use patch-package, or
+- create your own theme, locally, and change the theme import in webpack.mix.js
+
+You can develop your own components and pages by importing just the bits and pieces you need.
+
+Remember, should you need a custom behavior for a component, or your own version of a component with different styling you can build it your own way as most complex components have the core logic encapsulated in renderless components.
+
+If making package fixes we kindly ask you to also open a github issue and a pull request, since this helps the whole community.
+
+#### Enso vs Standalone
+
+In the past, even if we're done our best to make some of the components work outside of the Enso ecosystem, there hasn't been a clear distinction between the integrated and the standalone components.
+
+With the rewrite, all the packages were designed to be also Enso independent, and may be used in any vue project.
+
+If you are developing your project within the Enso ecosystem, the Enso versions of the components offer a tighter integration into the framework, 
+automatically determining and using:
+- the user's locale
+- dynamically determined routes
+- the internationalization helper
+- the app's error handling
+- the user's date format
+
+#### Bug Fixes & Improvements
+- page transitions are in better sync
+- the theme changing system was refactored and it's more efficient
+- the bookmarks bar is sticky
+- the document title is properly handled / translated
+- totals & numbers alignment in vue table
+- several levels of span removed in vue table
+- several edge cases fixed in vue-select
+
+### New Packages
+
+#### Accessories (@enso-ui/accessories)
+
+##### Addresses.vue, Comments.vue, Documents.vue
+- the `controls` property is no longer available
+
+##### AddressesCard.vue, CommentsCard.vue, DocumentsCard.vue
+- the `open` property has been replaced to `collapsed`
+
+#### Charts (@enso-ui/charts)
+
+##### Chart.vue
+- a new `formatter` property is available, type `function` used to format the datalabels values
+
+##### ChartCard.vue
+- a new `errorHandler` property is available
+
+##### EnsoChartCard.vue
+
+#### Forms (@enso-ui/forms)
+
+##### VueForm.vue
+- a new `errorHandler` property is available
+- whole sections can now be inserted into custom slots made available for this purpose
+- the following events are available:
+    - `ready`
+    - `loaded` - each time the template gets fetched
+    - `submit`
+    - `show`
+    - `destroy`
+- the Tabs component events are cascaded
+
+#### Datepicker.vue (@enso-ui/datepicker)
+- the `name` property is no longer available
+
+#### Divider.vue (@enso-ui/divider)
+- has a correspondent divider.scss in @enso-ui/themes, now looks good on the dark theme.
+
+#### Money.vue (@enso-ui/money)
+
+#### VueSwitch.vue (@enso-ui/switch)
+- the `required` property is no longer available
+- the `type` & `size` props is no longer available
+- Bulma classes can be set directly on the component (`is-large is-warning`)
+
+#### Wysiwyg.vue (@enso-ui/wysiwyg)
+- `tiptap` was updated from 0.17.* to 1.7.*
+- now supports tables
+
+#### Select.vue (@enso-ui/select)
+
+##### VueSelect
+- the `limit` property has been renamed to `paginate`
+- the trackBy is now sent from the front-end to the back-end, which means this property is no longer needed in the back-end
+- the following events are now available:
+    - `select`
+    - `deselect`
+    - `clear`
+    - `add-tag`
+    - `input`
+
+##### EnsoSelect
+- new
+
+#### Filters (@enso-ui/filters)
+
+##### VueFilter.vue
+- the `length` property has been replaced with `paginate`
+- the `validator` property has been removed
+- if `icons` is used then the options object will use the `icon` key instead of `label`
+
+##### EnsoFilter.vue
+- new
+
+##### DateFilter
+- last week and last month were changed to 7 days & 30 days
+
+##### EnsoDateFilter.vue
+- new
+
+##### EnsoDateIntervalFilter.vue
+- new
+
+##### EnsoIntervalFilter.vue
+- new
+
+##### VueSelectFilter.vue -> SelectFilter.vue
+
+##### VueSelectFilter.vue -> SelectFilter.vue
+
+##### EnsoSelectFilter.vue
+- new
+
+##### IntervalFilter.vue
+- is located in the `@enso-ui\filters` package
+
+#### Notification.vue -> Toastr.vue (@enso-ui/toastr)
+- the `container` property has been removed and `toastr-notifications` is used by default
+- the `i18n` property has been removed
+- the `html` property has been added
+
+#### Card.vue (@enso-ui/card)
+- the `nested` property has been removed. The nesting is handled automatically
+- the `icon` & `title` properties have been removed, in favor of using the default slot of the  `CardHeader` component
+- the `search` property has been deprecated & removed
+- the `badge` property has been removed, in favor of using the default slot of the `CardBadge` component
+- the `refresh` property has been removed, in favor of using the `CardRefresh` component
+- the `fixed` property has been deprecated & removed. The card by default is non collapsible but when using the `CardCollapse` component within the `controls` slot, it becomes collapsible
+- the `removable` property has been removed in favor of the `CardRemove` component
+- the `controls` property has been deprecated & removed
+- the `overlay` property has been renamed as loading
+- the `scrollable` property has been deprecated & removed
+- the `transition` property has been added and is required if using transitions
+
+Note that now the card has become more modular, so instead of giving properties, you'll be using other components to build the card to your heart's desire, achieving the previous functionality and going beyond.
+
+#### Dropdown.vue (@enso-ui/dropdown)
+- added `disabled` property
+- `height` & `width` were removed and need to be managed in the wrapper component
+- `hidesManually` has been renamed to `manual`
+- used the new dropdown-indicator
+- built upon a renderless component
+- handles keyboard events: Esc, Tab, Enter
+
+##### DropdownIndicator.vue (@enso-ui/dropdown-indicator)
+- reusable arrow with state
+
+#### Modal (@enso-ui/modal)
+
+##### Modal.vue (@enso-ui/modal)
+- the `card` property has been removed
+- the `container` property has been replaced with `portal`
+
+##### ModalCard.vue
+- the `container` property has been replaced with `portal`
+
+##### Overlay.vue -> Loader.vue (@enso-ui/loader)
+- the component has been removed and replaced with `Loader`
+- `Loader` is now located in the `@enso-ui\loader` package
+- the loader now has an improved animation and uses a transition for a better experience
+
+##### Popover.vue -> Confirmation.vue (@enso-ui/cofirmation)
+
+#### Tabs (@enso-ui/tabs)
+
+##### Tabs.vue
+- the component design has been updated under the hood, switching from event based communication to dependency injection
+- the following events are now available:
+    - `registered`, when a new tab is registered
+    - `removed`, when a tab is removed
+    - `selected`, when a tab is selected
+    - `activated`, when a tab is made active
+
+##### EnsoTabs.vue
+- the `alignment` property has been removed
+
+##### Tab.vue
+- the `disabled` property has been removed
+- the following methods are exposed:
+  - activate
+  - enable
+  - disable
+  - remove
+
+#### Typeahead
+
+##### Typeahead.vue (@enso-ui/typeahead)
+- is now located in the `@enso-ui\typeahead` package
+- the `length` property has been replaced with `paginate`
+- the `validator` property has been removed as now the regex validation is always used and can be customized
+
+##### EnsoTypeahead.vue
+- new
+
+#### Uploader (@enso-ui/uploader)
+
+##### FileUploader.vue -> Uploader.vue
+
+##### EnsoUploader.vue (@enso-ui/uploader)
+- new
+
+#### ProgressBar.vue (@enso-ui/progress-bar)
+- new
+
+#### Tables
+
+##### EnsoTable.vue
+- new
+
+##### Themes (@enso-ui/themes)
+- it contains the two themes (light & dark) that come with Enso by default.
+- it contains components scss
+
+#### Transitions (@enso-ui/transitions)
+- this is a new package
+
+##### Fade
+##### FadeDown
+##### FadeLeft
+##### FadeRight
+##### FadeUp
+##### SlideDown
+##### SlideLeft
+##### SlideRight
+##### SlideUp
+##### Zoom
+
+##### UI (@enso-ui/ui)
+- it contains the main `App.vue` component as well as all the core dependencies such as layouts, middleware, pages, filters, mixins, plugins, routes, etc.
+
+#### VueComponents
+- was deprecated and split into multiple packages
+
+##### InfoBox.vue
+- the component has been removed, we now have the `info-box` class that can be added to any box
+
+##### InfoItem.vue
+- the component has been removed
+
+##### Paginate.vue
+- the component has been removed for now, but a new component is in development that will work with the Laravel
+pagination
+
+### Upgrade steps
+
+- note that this update also upgrades Laravel to v5.8.x, Vue to v2.6.x, and Horizon to 3.0.x. It is important to take a look at their respective update notes & guides to determine if there any ugrade steps that apply to your project (this is irrespective of Enso)
+
+- remove from `package.json` the following dependencies 
+```json
+"accounting-js": "^1.1.1",
+"bulma-extensions": "^2.2.1",
+"chart.js": "^2.7.2",
+"chartjs-plugin-datalabels": "^0.3.0",
+"css-element-queries": "^1.0.2",
+"date-fns": "^2.0.0-alpha.7",
+"driver.js": "^0.7.1",
+"dropzone": "^5.5.1",
+"favico.js": "^0.3.10",
+"file-saver": "^1.3.8",
+"flag-icon-css": "^3.0.0",
+"flatpickr": "^4.5.0",
+"highlight.js": "^9.12.0",
+"intro.js": "^2.9.3",
+"laravel-echo": "^1.4.0",
+"lodash": "^4.17.10",
+"popper.js": "^1.14.3",
+"quill": "^1.3.6",
+"textarea-caret": "^3.1.0",
+"tiptap": "^0.20.1",
+"tiptap-commands": "^0.7.1",
+"tiptap-extensions": "^0.23.0",
+"tooltip.js": "^1.2.0",
+"v-click-outside": "^1.0.5",
+"video.js": "^7.0.3",
+"vue": "^2.5.16",
+"vue-quill-editor": "^3.0.6",
+```
+
+- add the following new dependencies to `package.json` (note the new VueJS version)
+```json
+"@enso-ui/accessories": "^1.0.0",
+"@enso-ui/bulma": "^1.0.0",
+"@enso-ui/directives": "^1.0.1",
+"@enso-ui/forms": "^1.0.1",
+"@enso-ui/mixins": "^1.0.0",
+"@enso-ui/select": "^1.0.2",
+"@enso-ui/tables": "^1.0.0",
+"@enso-ui/themes": "^1.0.0",
+"@enso-ui/transitions": "^1.0.1",
+"@enso-ui/ui": "^1.0.0",
+"patch-package": "^6.0.2",
+"popper.js": "^1.14.7",
+"vue": "^2.6.8",
+```
+
+- ensure you have these depenedencies in `package.json` under devDependencies:
+```json
+"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+"@vue/eslint-config-airbnb": "^4.0.0",
+"babel-eslint": "^10.0.1",
+"cross-env": "^5.1.6",
+"eslint": "^5.0.1",
+"eslint-plugin-vue": "^5.0.0",
+"laravel-mix": "3.0.0",
+"node-sass": "^4.11.0",
+"webpack-cli": "^3.2.1"
+```
+
+- update the `postinstall` section to this:
+```json
+"postinstall": "opencollective-postinstall && patch-package"
+```
+
+- update `composer.json` by removing the following dependencies:
+```json
+"laravel-enso/addressesmanager": "2.5.*",
+"laravel-enso/commentsmanager": "2.4.*",
+"laravel-enso/discussions": "1.1.*",
+"laravel-enso/documentsmanager": "2.4.*",
+"laravel-enso/howtovideos": "2.2.*",
+```
+
+- update `composer.json` by updating the following dependencies:
+```json
+"laravel-enso/core": "4.0.*",
+"laravel/horizon": "^3.0",
+"laravel/framework": "5.8.*",
+"laravel/telescope": "^2.0",
+"sentry/sentry-laravel": "^1.0.0"
+```
+
+- remove the following commands from `post-update-cmd`
+```json
+"php artisan vendor:publish --force --tag=enso-assets",
+"php artisan rolcris:update-assets"
+```
+
+- sync the `webpack.mix.js` file with the Enso version:
+```js
+const mix = require('laravel-mix');
+
+mix
+    .webpackConfig({
+        resolve: {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+                '@core-routes': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/routes`,
+                '@core-pages': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/pages`,
+                '@core-middleware': `${__dirname}/node_modules/@enso-ui/ui/src/middleware`,
+                '@core-modules': `${__dirname}/node_modules/@enso-ui/ui/src/modules`,
+                '@root': `${__dirname}/resources/js`,
+                '@pages': `${__dirname}/resources/js/pages`,
+                '@store': `${__dirname}/resources/js/store`,
+                '@components': `${__dirname}/resources/js/components`,
+            },
+        },
+    })
+
+    .options({
+        hmrOptions: {
+            port: '3030',
+        },
+        processCssUrls: false,
+        uglify: {
+            parallel: true,
+            cache: true,
+            uglifyOptions: {
+                mangle: true,
+                compress: true,
+            },
+        },
+    })
+    .copyDirectory('resources/images', 'public/images')
+    .sass('resources/sass/enso.scss', 'public/css')
+    .sass('node_modules/@enso-ui/themes/bulma/light.scss', 'public/themes/light/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/dark.scss', 'public/themes/dark/bulma.min.css')
+    .js('resources/js/enso.js', 'public/js')
+    .extract([
+        '@fortawesome/fontawesome-free', '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-brands-svg-icons', '@fortawesome/free-regular-svg-icons',
+        '@fortawesome/free-solid-svg-icons', '@fortawesome/vue-fontawesome', 'accounting-js',
+        'axios', 'chart.js', 'chartjs-plugin-datalabels', 'css-element-queries', 'date-fns',
+        'dropzone', 'file-saver', 'flatpickr', 'laravel-echo', 'lodash', 'popper.js',
+        'pusher-js', 'quill', 'raven-js', 'textarea-caret', 'tiptap', 'tiptap-commands',
+        'tiptap-extensions', 'tooltip.js', 'v-click-outside', 'v-tooltip', 'vue',
+        'vue-quill-editor', 'vue-router', 'vuedraggable', 'vuex',
+    ])
+    .js('resources/js/tableExample.js', 'public/js')
+    .js('resources/js/selectExample.js', 'public/js')
+    .sourceMaps();
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+```
+- The folders below must be kept until you update your app to use the new npm packages. Once you're using the new versions, you may safely delete them:
+- `resources\js\classes\enso`
+- `resources\js\components\enso` 
+
+- delete the following folders since the respective functionality was moved to @enso-ui
+- `resources\js\core`
+- `resources\js\middleware`
+- `resources\js\modules\enso`
+- `resources\js\modules\importers`
+
+- delete the following `resources\js\pages` subfolders (except for customizations!!):
+- `activityLog`,
+- `administration`,
+- `auth`,
+- `dashboard`,
+- `dataimport`,
+- `files`,
+- `howtovideos`,
+- `notifications`,
+- `system`
+
+- delete the following `resources\js\routes` subfolders (except for customizations!!):
+- `administration`,
+- `system`,
+- `activityLog.js`,
+- `administration.js`,
+- `auth.js`,
+- `dashboard.js`,
+- `dataImport.js`,
+- `files.js`,
+- `howToVideos.js`,
+- `notFound.js`,
+- `notifications.js`,
+- `system.js`,
+- `unauthorized.js`
+
+- delete the following `resources\js\store` subfolders:
+- `layout`,
+- `auth.js`,
+- `bookmarks.js`,
+- `layout.js`,
+- `localisation`,
+- `menus.js`,
+- `preferences.js`
+
+- update the following files from the `resources\js` folder:
+- `enso.js`
+- `router.js`
+- `selectExample.js`
+- `store.js`
+- `tableExample.js`
+
+- `composer install && composer update`
+
+- run `php artisan horizon:install`
+
+- republish the resources: `php artisan vendor:publish --tag=horizon-assets --force`
+
+- update the Horizon `gate()` method in the published `HorizonApplicationServiceProvider` to:
+```php
+{
+    Gate::define('viewHorizon', function ($user) {
+        auth()->check() && user()->isAdmin();
+    });
+}
+```
+
+- if necessary, update `App\Exceptions\Handler` to include the new sentry reporting syntax
+
+- update the sentry config and remove the `user_context` option which is now deprecated
+
+- `yarn install && yarn upgrade`
+
+- `canAccess` must be injected where it is used
+
+- if you have customized Enso, use `patch-package` to reapply those customizations for each individual package. Note that when using yarn, the [postinstall-postinstall](https://github.com/ds300/patch-package#why-use-postinstall-postinstall-with-yarn) package is also needed.
+
+- build
+
+- replace all relative RouterView imports such as `const RouterView = () => import('../../../core/Router.vue');` with the package import `const RouterView = () => import('@core-pages/Router.vue');`
+
+- replace relative routeImporer imports such as: `import routeImporter from '../modules/importers/routeImporter;` with the package import : `import routeImporter from '@core-modules/importers/routeImporter';`
+
+- comment out the import of the `tiptap-extensions` from `/resources/js/components/enso/vueforms/Wysiwyg.vue`
+
+- in `resources/images` ensure you have `earthlink.svg` & `enso-favicon.png`
+
+- when adding your own local routes that overwrite or reuse part or the core routes, ensure that 
+within the route file you expose only the `path` and the `children` properties. If you also set the `meta` property, that would result in having the core routes overwritten by your local routes vs having the local routes merged into the core routes.
+
+- move the icon imports from `resources/js/core/structure/menu/icons/app.js` to `resources/js/app.js`
+
+Migrate all pages/components by looking at the general changelog
+- inject `i18n` and `errorHandler` everywhere they're used
+
 ### 2.16.3
 Small bug fixes, composer & npm packages updates
 
@@ -3036,9 +3594,6 @@ Finally decided to start keeping a changelog for the main project.
 - new component: `Popup`
 - major cleanup of all components, libs, imports
 - jQuery is now used only in `Comments/Inputor.vue` until we find a js only lib to replace at.js
-
-#### Improvements
-
 - under `assets/js`, for `pages`, `routes` and `store` the intermediate `enso` folder was removed, in order to maintain coherence when extending the project
 - dynamic loading for store and routes via `storeImporter` and `routeImporter` helper functions
 - lazy loading for routes
