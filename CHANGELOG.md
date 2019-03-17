@@ -1,5 +1,26 @@
 ## Laravel Enso's Changelog
 
+### 3.0.1
+
+- tens of small bugs fixed
+- improves file index page
+- improved docs
+- adds scroll to top
+
+#### Upgrade
+
+- update in your `router.js`:
+
+```js
+const router = new Router({
+    mode: 'history',
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        return savedPosition || { x: 0, y: 0 };
+    },
+});
+```
+
 ### 3.0.0
 
 ### General
@@ -516,6 +537,8 @@ if (mix.inProduction()) {
 - `tableExample.js`
 
 - `composer install && composer update`
+
+- `php artisan enso:upgrade`
 
 - run `php artisan horizon:install`
 
