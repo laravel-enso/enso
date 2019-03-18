@@ -495,12 +495,12 @@ if (mix.inProduction()) {
 - `resources/js/modules/importers`
 
 - delete the following files since the respective functionality was moved to @enso-ui/themes
-- `resources/sass/extensions.sass`
-- `resources/sass/helpers.sass`
-- `resources/sass/flags.sass`
-- `resources/sass/v-tooltip.sass`
+- `resources/sass/extensions.scss`
+- `resources/sass/helpers.scss`
+- `resources/sass/flags.scss`
+- `resources/sass/v-tooltip.scss`
 
-- update - `resources/sass/enso.sass` to match the one from `laravel-enso/enso` repo
+- update - `resources/sass/enso.scss` to match the one from `laravel-enso/enso` repo
 
 - delete the following `resources/js/pages` subfolders (except for customizations!!):
 - `activityLog`,
