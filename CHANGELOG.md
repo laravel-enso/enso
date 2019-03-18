@@ -485,64 +485,64 @@ if (mix.inProduction()) {
 
 ```
 - The folders below must be kept until you update your app to use the new npm packages. Once you're using the new versions, you may safely delete them:
-- `resources/js/classes/enso`
-- `resources/js/components/enso` 
+    - `resources/js/classes/enso`
+    - `resources/js/components/enso` 
 
 - delete the following folders since the respective functionality was moved to @enso-ui/ui
-- `resources/js/core`
-- `resources/js/middleware`
-- `resources/js/modules/enso`
-- `resources/js/modules/importers`
+    - `resources/js/core`
+    - `resources/js/middleware`
+    - `resources/js/modules/enso`
+    - `resources/js/modules/importers`
 
 - delete the following files since the respective functionality was moved to @enso-ui/themes
-- `resources/sass/extensions.scss`
-- `resources/sass/helpers.scss`
-- `resources/sass/flags.scss`
-- `resources/sass/v-tooltip.scss`
+    - `resources/sass/extensions.scss`
+    - `resources/sass/helpers.scss`
+    - `resources/sass/flags.scss`
+    - `resources/sass/v-tooltip.scss`
 
 - update - `resources/sass/enso.scss` to match the one from `laravel-enso/enso` repo
 
 - delete the following `resources/js/pages` subfolders (except for customizations!!):
-- `activityLog`,
-- `administration`,
-- `auth`,
-- `dashboard`,
-- `dataimport`,
-- `files`,
-- `howtovideos`,
-- `notifications`,
-- `system`
+    - `activityLog`,
+    - `administration`,
+    - `auth`,
+    - `dashboard`,
+    - `dataimport`,
+    - `files`,
+    - `howtovideos`,
+    - `notifications`,
+    - `system`
 
 - delete the following `resources/js/routes` subfolders (except for customizations!!):
-- `administration`,
-- `system`,
-- `activityLog.js`,
-- `administration.js`,
-- `auth.js`,
-- `dashboard.js`,
-- `dataImport.js`,
-- `files.js`,
-- `howToVideos.js`,
-- `notFound.js`,
-- `notifications.js`,
-- `system.js`,
-- `unauthorized.js`
+    - `administration`,
+    - `system`,
+    - `activityLog.js`,
+    - `administration.js`,
+    - `auth.js`,
+    - `dashboard.js`,
+    - `dataImport.js`,
+    - `files.js`,
+    - `howToVideos.js`,
+    - `notFound.js`,
+    - `notifications.js`,
+    - `system.js`,
+    - `unauthorized.js`
 
 - delete the following `resources/js/store` subfolders:
-- `layout`,
-- `auth.js`,
-- `bookmarks.js`,
-- `layout.js`,
-- `localisation`,
-- `menus.js`,
-- `preferences.js`
+    - `layout`,
+    - `auth.js`,
+    - `bookmarks.js`,
+    - `layout.js`,
+    - `localisation`,
+    - `menus.js`,
+    - `preferences.js`
 
 - update the following files from the `resources/js` folder:
-- `enso.js`
-- `router.js`
-- `selectExample.js`
-- `store.js`
-- `tableExample.js`
+    - `enso.js`
+    - `router.js`
+    - `selectExample.js`
+    - `store.js`
+    - `tableExample.js`
 
 - `composer install && composer update`
 
