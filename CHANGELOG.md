@@ -1,5 +1,15 @@
 ## Laravel Enso's Changelog
 
+### 3.0.2
+
+- fixes two bugs related to hidden rows (due to responsivity)
+- fixes closing modal on deleting from forms
+- minor other bug fixes
+- adds the `ProgressCircle` component (@enso-ui/progress-circle)
+- updates all deps
+- adds a `localisation(bool)` helper in `Enum`
+- adds an `option()` helper to the `Chart` builder
+
 ### 3.0.1
 
 - tens of small bugs fixed
