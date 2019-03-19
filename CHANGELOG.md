@@ -212,7 +212,7 @@ automatically determining and using:
 - new
 
 ##### IntervalFilter.vue
-- is located in the `@enso-ui\filters` package
+- is located in the `@enso-ui/filters` package
 
 #### Notification.vue -> Toastr.vue (@enso-ui/toastr)
 - the `container` property has been removed and `toastr-notifications` is used by default
@@ -256,7 +256,7 @@ Note that now the card has become more modular, so instead of giving properties,
 
 ##### Overlay.vue -> Loader.vue (@enso-ui/loader)
 - the component has been removed and replaced with `Loader`
-- `Loader` is now located in the `@enso-ui\loader` package
+- `Loader` is now located in the `@enso-ui/loader` package
 - the loader now has an improved animation and uses a transition for a better experience
 
 ##### Popover.vue -> Confirmation.vue (@enso-ui/cofirmation)
@@ -285,7 +285,7 @@ Note that now the card has become more modular, so instead of giving properties,
 #### Typeahead
 
 ##### Typeahead.vue (@enso-ui/typeahead)
-- is now located in the `@enso-ui\typeahead` package
+- is now located in the `@enso-ui/typeahead` package
 - the `length` property has been replaced with `paginate`
 - the `validator` property has been removed as now the regex validation is always used and can be customized
 
@@ -495,56 +495,64 @@ if (mix.inProduction()) {
 
 ```
 - The folders below must be kept until you update your app to use the new npm packages. Once you're using the new versions, you may safely delete them:
-- `resources\js\classes\enso`
-- `resources\js\components\enso` 
+    - `resources/js/classes/enso`
+    - `resources/js/components/enso` 
 
-- delete the following folders since the respective functionality was moved to @enso-ui
-- `resources\js\core`
-- `resources\js\middleware`
-- `resources\js\modules\enso`
-- `resources\js\modules\importers`
+- delete the following folders since the respective functionality was moved to @enso-ui/ui
+    - `resources/js/core`
+    - `resources/js/middleware`
+    - `resources/js/modules/enso`
+    - `resources/js/modules/importers`
 
-- delete the following `resources\js\pages` subfolders (except for customizations!!):
-- `activityLog`,
-- `administration`,
-- `auth`,
-- `dashboard`,
-- `dataimport`,
-- `files`,
-- `howtovideos`,
-- `notifications`,
-- `system`
+- delete the following files since the respective functionality was moved to @enso-ui/themes
+    - `resources/sass/extensions.scss`
+    - `resources/sass/helpers.scss`
+    - `resources/sass/flags.scss`
+    - `resources/sass/v-tooltip.scss`
 
-- delete the following `resources\js\routes` subfolders (except for customizations!!):
-- `administration`,
-- `system`,
-- `activityLog.js`,
-- `administration.js`,
-- `auth.js`,
-- `dashboard.js`,
-- `dataImport.js`,
-- `files.js`,
-- `howToVideos.js`,
-- `notFound.js`,
-- `notifications.js`,
-- `system.js`,
-- `unauthorized.js`
+- update - `resources/sass/enso.scss` to match the one from `laravel-enso/enso` repo
 
-- delete the following `resources\js\store` subfolders:
-- `layout`,
-- `auth.js`,
-- `bookmarks.js`,
-- `layout.js`,
-- `localisation`,
-- `menus.js`,
-- `preferences.js`
+- delete the following `resources/js/pages` subfolders (except for customizations!!):
+    - `activityLog`,
+    - `administration`,
+    - `auth`,
+    - `dashboard`,
+    - `dataimport`,
+    - `files`,
+    - `howtovideos`,
+    - `notifications`,
+    - `system`
 
-- update the following files from the `resources\js` folder:
-- `enso.js`
-- `router.js`
-- `selectExample.js`
-- `store.js`
-- `tableExample.js`
+- delete the following `resources/js/routes` subfolders (except for customizations!!):
+    - `administration`,
+    - `system`,
+    - `activityLog.js`,
+    - `administration.js`,
+    - `auth.js`,
+    - `dashboard.js`,
+    - `dataImport.js`,
+    - `files.js`,
+    - `howToVideos.js`,
+    - `notFound.js`,
+    - `notifications.js`,
+    - `system.js`,
+    - `unauthorized.js`
+
+- delete the following `resources/js/store` subfolders:
+    - `layout`,
+    - `auth.js`,
+    - `bookmarks.js`,
+    - `layout.js`,
+    - `localisation`,
+    - `menus.js`,
+    - `preferences.js`
+
+- update the following files from the `resources/js` folder:
+    - `enso.js`
+    - `router.js`
+    - `selectExample.js`
+    - `store.js`
+    - `tableExample.js`
 
 - `composer install && composer update`
 
@@ -558,7 +566,7 @@ if (mix.inProduction()) {
 ```php
 {
     Gate::define('viewHorizon', function ($user) {
-        auth()->check() && user()->isAdmin();
+        return auth()->check() && $user->isAdmin();
     });
 }
 ```
