@@ -588,7 +588,8 @@ within the route file you expose only the `path` and the `children` properties. 
 
 - move the icon imports from `resources/js/core/structure/menu/icons/app.js` to `resources/js/app.js`
 
-Migrate all pages/components by looking at the general changelog
+- Migrate all pages/components by looking at the [New Packages section](#new-packages).
+
 - inject `i18n` and `errorHandler` everywhere they're used
 
 ### 2.16.3
