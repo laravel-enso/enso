@@ -1399,16 +1399,16 @@
         },
         {
             "name": "laravel-enso/addressesmanager",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/AddressesManager.git",
-                "reference": "ba7097910e3aa1730879eeb64e3305d3ed1419c3"
+                "reference": "f5a0bce486480f6b8b0bf2fbb8a51ea0ac55a2ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/ba7097910e3aa1730879eeb64e3305d3ed1419c3",
-                "reference": "ba7097910e3aa1730879eeb64e3305d3ed1419c3",
+                "url": "https://api.github.com/repos/laravel-enso/AddressesManager/zipball/f5a0bce486480f6b8b0bf2fbb8a51ea0ac55a2ed",
+                "reference": "f5a0bce486480f6b8b0bf2fbb8a51ea0ac55a2ed",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1458,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-03-08T16:08:02+00:00"
+            "time": "2019-03-20T11:41:16+00:00"
         },
         {
             "name": "laravel-enso/avatarmanager",
@@ -1521,16 +1521,16 @@
         },
         {
             "name": "laravel-enso/charts",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/Charts.git",
-                "reference": "6197d153341b7828a41fd9c146088407a43d7cec"
+                "reference": "a9d4db2850e9069686f5fff918c5dd29bb96f3f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/6197d153341b7828a41fd9c146088407a43d7cec",
-                "reference": "6197d153341b7828a41fd9c146088407a43d7cec",
+                "url": "https://api.github.com/repos/laravel-enso/Charts/zipball/a9d4db2850e9069686f5fff918c5dd29bb96f3f4",
+                "reference": "a9d4db2850e9069686f5fff918c5dd29bb96f3f4",
                 "shasum": ""
             },
             "require": {
@@ -1570,20 +1570,20 @@
                 "charts",
                 "laravel-enso"
             ],
-            "time": "2019-03-18T12:43:11+00:00"
+            "time": "2019-03-20T09:23:19+00:00"
         },
         {
             "name": "laravel-enso/commentsmanager",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/CommentsManager.git",
-                "reference": "4d8681ba43bc6a9427a0fe2db8a7f909485a6b7f"
+                "reference": "2418f6a5e073a6d98ba7d6c0a66b70d28e4349d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/4d8681ba43bc6a9427a0fe2db8a7f909485a6b7f",
-                "reference": "4d8681ba43bc6a9427a0fe2db8a7f909485a6b7f",
+                "url": "https://api.github.com/repos/laravel-enso/CommentsManager/zipball/2418f6a5e073a6d98ba7d6c0a66b70d28e4349d4",
+                "reference": "2418f6a5e073a6d98ba7d6c0a66b70d28e4349d4",
                 "shasum": ""
             },
             "require": {
@@ -1599,8 +1599,7 @@
                 "laravel": {
                     "providers": [
                         "LaravelEnso\\CommentsManager\\AppServiceProvider",
-                        "LaravelEnso\\CommentsManager\\AuthServiceProvider",
-                        "LaravelEnso\\CommentsManager\\NotificationProvider"
+                        "LaravelEnso\\CommentsManager\\AuthServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -1630,7 +1629,7 @@
                 "commentsmanager",
                 "laravel-enso"
             ],
-            "time": "2019-03-08T15:16:17+00:00"
+            "time": "2019-03-20T11:56:38+00:00"
         },
         {
             "name": "laravel-enso/companies",
@@ -2158,16 +2157,16 @@
         },
         {
             "name": "laravel-enso/filemanager",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/FileManager.git",
-                "reference": "e6e2c96e4047abe51f6415f8b0a6d0f3605f5e9d"
+                "reference": "13fdd7a941c33e75615a11b6fb3188fd7b73a106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/e6e2c96e4047abe51f6415f8b0a6d0f3605f5e9d",
-                "reference": "e6e2c96e4047abe51f6415f8b0a6d0f3605f5e9d",
+                "url": "https://api.github.com/repos/laravel-enso/FileManager/zipball/13fdd7a941c33e75615a11b6fb3188fd7b73a106",
+                "reference": "13fdd7a941c33e75615a11b6fb3188fd7b73a106",
                 "shasum": ""
             },
             "require": {
@@ -2214,7 +2213,7 @@
                 "filemanager",
                 "laravel-enso"
             ],
-            "time": "2019-03-16T08:32:20+00:00"
+            "time": "2019-03-20T12:45:21+00:00"
         },
         {
             "name": "laravel-enso/formbuilder",
@@ -3470,16 +3469,16 @@
         },
         {
             "name": "laravel-enso/vuedatatable",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/VueDatatable.git",
-                "reference": "54c5a0469229fef3d16091edf68f4ba55c31823d"
+                "reference": "2dd3a4ed87ae93c12039c6f69cb17407606dc5ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/54c5a0469229fef3d16091edf68f4ba55c31823d",
-                "reference": "54c5a0469229fef3d16091edf68f4ba55c31823d",
+                "url": "https://api.github.com/repos/laravel-enso/VueDatatable/zipball/2dd3a4ed87ae93c12039c6f69cb17407606dc5ec",
+                "reference": "2dd3a4ed87ae93c12039c6f69cb17407606dc5ec",
                 "shasum": ""
             },
             "require": {
@@ -3522,7 +3521,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-03-16T08:51:01+00:00"
+            "time": "2019-03-20T11:35:24+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4411,16 +4410,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.9.0",
+            "version": "v1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140"
+                "reference": "87125d5b265f98c4d1b8d83a1f0726607c229421"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/f261f50c84d20b1364723dbd21e668f4e40b2140",
-                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/87125d5b265f98c4d1b8d83a1f0726607c229421",
+                "reference": "87125d5b265f98c4d1b8d83a1f0726607c229421",
                 "shasum": ""
             },
             "require": {
@@ -4489,7 +4488,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2019-03-06T17:16:38+00:00"
+            "time": "2019-03-20T17:19:05+00:00"
         },
         {
             "name": "php-http/client-common",

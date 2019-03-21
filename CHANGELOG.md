@@ -1,5 +1,18 @@
 ## Laravel Enso's Changelog
 
+### 3.0.3
+
+- adds `horizontalBar` chart type in Charts
+- exposes 
+- fixes a bug in Filemanager for filenames containing non ascii chars
+- adds a `responsive` boolean flag in vue table config / template that controls if the table is horizontally responsive / uses scroll
+- fixes the table stubs in StructureManager
+- fixes label generation in AddressManager when having `country_id` null
+- fixes `VueTable`'s unique `key` for `tr` that was causing table freezes in some edge cases
+- fixes `expanded` management in `VueTable`
+- adds missing `notificationEvents` in `Notifications`
+- adds `Tag` to export list in the select package
+
 ### 3.0.2
 
 - fixes two bugs related to hidden rows (due to responsivity)
