@@ -1,5 +1,31 @@
 ## Laravel Enso's Changelog
 
+### 3.1.0
+
+#### Changes
+
+- improves custom fields in forms (slots). Now you can use the generic `FormField` in almost all cases. If you want to use the specific fields (`SelectField`, `InputField`...) don't forget to manually add the label
+- unifies `phpDateFormat` and `jsDateFormat` in one single `dateFormat` prop, in `config/enso/config.php`
+- adds a new Calendar package. Note that the calendar is still WiP
+- fixes various bugs
+- fixes npm dependencies to keep track of minor versions
+
+#### Upgrade steps:
+
+- update in `package.json` all `@enso-ui/...` deps by replacing the `^` with `~` (`"@enso-ui/accessories": "~1.0.0",`)
+- update in `package.json` the `form` and `ui` deps to
+```
+"@enso-ui/forms": "~1.1.0",
+"@enso-ui/ui": "~1.1.0",
+```
+- update in `composer.json` -> `"laravel-enso/core": "4.1.*"`
+- replace `phpDateFormat` and `jsDateFormat` with `dateFormat` in `config/enso/config.php`
+- search the whole frontend by `-field` and replace all the specific fields with `form-field` in custom forms. Don't forget to also import `FormField.vue` from the same location.
+- `composer update && yarn install && yarn upgrade`
+- `php artisan migrate`
+- publish the calendar config and provider if you need customisations (will be documented in the near future)
+- `yarn dev`
+
 ### 3.0.3
 
 - adds `horizontalBar` chart type in Charts

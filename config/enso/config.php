@@ -3,12 +3,11 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '3.0.3',
+    'version' => '3.1.0',
     'showQuote' => true,
     'stateBuilder' => LocalState::class,
     'defaultRole' => 'admin',
-    'phpDateFormat' => 'd-m-Y',
-    'jsDateFormat' => 'dd-MM-yyyy',
+    'dateFormat' => 'd-m-Y',
     'paths' => [
         'files' => 'files',
         'avatars' => 'avatars',
