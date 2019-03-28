@@ -429,6 +429,7 @@ pagination
 "@enso-ui/ui": "^1.0.0",
 "patch-package": "^6.0.2",
 "popper.js": "^1.14.7",
+"v-click-outside": "^2.0.2",
 "vue": "^2.6.8",
 ```
 
