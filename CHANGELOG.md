@@ -1,5 +1,20 @@
 ## Laravel Enso's Changelog
 
+### 3.1.1
+
+- fixes typo in calendar
+- fixes comment tag notifications
+- improves data import cell sanitization
+- improves new operation handling in `IO.vue`
+- improves slot exposure in forms
+- fixes bug that was preventing hiding sections without visible fields
+- adds back submit button animation in forms
+- fixes selected value handling in vue select when using objects
+
+To upgrade:
+
+- `yarn upgrade && composer update && yarn run dev`
+
 ### 3.1.0
 
 #### Changes
