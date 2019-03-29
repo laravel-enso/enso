@@ -66,7 +66,6 @@
         "postinstall-postinstall": "^2.0.0",
         "pusher-js": "^4.2.2",
         "raven-js": "^3.26.2",
-        "v-click-outside": "^2.0.2",
         "v-tooltip": "^2.0.0-rc.32",
         "vue": "^2.6.8",
         "vue-router": "^3.0.1",

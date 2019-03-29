@@ -3,7 +3,7 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '3.1.0',
+    'version' => '3.1.1',
     'showQuote' => true,
     'stateBuilder' => LocalState::class,
     'defaultRole' => 'admin',

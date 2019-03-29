@@ -52,8 +52,8 @@ mix
         'chartjs-plugin-datalabels', 'css-element-queries', 'date-fns',
         'dropzone', 'file-saver', 'flatpickr', 'laravel-echo', 'lodash', 'popper.js',
         'pusher-js', 'quill', 'raven-js', 'textarea-caret', 'tiptap', 'tiptap-commands',
-        'tiptap-extensions', 'tooltip.js', 'v-click-outside', 'v-tooltip', 'vue',
-        'vue-quill-editor', 'vue-router', 'vuedraggable', 'vuex',
+        'tiptap-extensions', 'tooltip.js', 'v-tooltip', 'vue', 'vue-quill-editor',
+        'vue-router', 'vuedraggable', 'vuex',
     ])
     .js('resources/js/tableExample.js', 'public/js')
     .js('resources/js/selectExample.js', 'public/js')
