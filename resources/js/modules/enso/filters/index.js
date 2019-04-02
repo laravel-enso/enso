@@ -1,2 +1,0 @@
-import './numberFormat';
-import './shortNumber';

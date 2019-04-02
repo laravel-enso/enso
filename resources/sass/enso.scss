@@ -1,7 +1,5 @@
 @import '~animate.css/animate.css';
-@import './v-tooltip';
 
-@import './helpers';
 @import './app';
 
 [v-cloak] {
@@ -14,16 +12,4 @@
 
 .animated {
     animation-duration: .5s;
-}
-
-.icon.angle {
-    transition: transform .300s ease;
-
-    &[aria-hidden="true"] {
-        transform: rotate(180deg);
-    }
-
-    &[aria-expanded="true"] {
-        transform: rotate(-180deg);
-    }
 }

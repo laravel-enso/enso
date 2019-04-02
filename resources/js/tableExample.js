@@ -4,27 +4,23 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faVuejs, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+    ToastrPlugin, Toastr, Tabs, Tab, VueFilter,
+    IntervalFilter, DateIntervalFilter, SelectFilter as VueSelectFilter,
+} from '@enso-ui/bulma';
+import { hljs } from '@enso-ui/directives';
+import { VueTable } from '@enso-ui/tables/bulma';
 import store from './store';
-import VueTable from './components/enso/vuedatatable/VueTable.vue';
-import VueFilter from './components/enso/bulma/VueFilter.vue';
-import VueSelectFilter from './components/enso/select/VueSelectFilter.vue';
-import IntervalFilter from './components/enso/bulma/IntervalFilter.vue';
-import DateIntervalFilter from './components/enso/bulma/DateIntervalFilter.vue';
-import Tabs from './components/enso/bulma/Tabs.vue';
-import Tab from './components/enso/bulma/Tab.vue';
-import Toastr from './components/enso/bulma/toastr';
-import './modules/enso/directives/hljs';
-
-import './modules/enso/mixins/errorHandler';
 
 library.add(faVuejs, faGithub, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
 
-Vue.use(Toastr, {
-    position: 'right',
-    duration: 3000,
-    closeButton: true,
+Vue.use(ToastrPlugin, {
+    layout: Toastr,
+    options: {
+        duration: 3500,
+    },
 });
 
 window.axios = axios;
@@ -34,8 +30,16 @@ new Vue({
 
     comments: true,
 
+    directives: { hljs },
+
     components: {
-        VueTable, VueFilter, VueSelectFilter, IntervalFilter, DateIntervalFilter, Tabs, Tab,
+        VueTable,
+        VueFilter,
+        VueSelectFilter,
+        IntervalFilter,
+        DateIntervalFilter,
+        Tabs,
+        Tab,
     },
 
     data() {

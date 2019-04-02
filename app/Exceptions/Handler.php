@@ -24,9 +24,4 @@ class Handler extends ExceptionHandler
 
         parent::report($exception);
     }
-
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
 }

@@ -4,25 +4,22 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faVuejs, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+    ToastrPlugin, Toastr, Tabs, Tab, VueSwitch, SelectFilter as VueSelectFilter,
+} from '@enso-ui/bulma';
+import { VueSelect } from '@enso-ui/select/bulma';
+import { hljs } from '@enso-ui/directives';
 import store from './store';
-import VueSelect from './components/enso/select/VueSelect.vue';
-import VueSelectFilter from './components/enso/select/VueSelectFilter.vue';
-import VueSwitch from './components/enso/vueforms/VueSwitch.vue';
-import Tabs from './components/enso/bulma/Tabs.vue';
-import Tab from './components/enso/bulma/Tab.vue';
-import Toastr from './components/enso/bulma/toastr';
-import './modules/enso/directives/hljs';
-
-import './modules/enso/mixins/errorHandler';
 
 library.add(faVuejs, faGithub, faCheck, faTimes);
 
 Vue.component('fa', FontAwesomeIcon);
 
-Vue.use(Toastr, {
-    position: 'right',
-    duration: 3000,
-    closeButton: true,
+Vue.use(ToastrPlugin, {
+    layout: Toastr,
+    options: {
+        duration: 3500,
+    },
 });
 
 window.axios = axios;
@@ -31,6 +28,8 @@ new Vue({
     store,
 
     comments: true,
+
+    directives: { hljs },
 
     components: {
         VueSelect, VueSelectFilter, Tabs, Tab, VueSwitch,
