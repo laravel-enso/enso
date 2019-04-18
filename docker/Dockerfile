@@ -1,5 +1,4 @@
 FROM php:7.3-apache
-LABEL maintainer="Patrick Greene <patrick@vsteks.com>"
 
 # Apache configuration
 RUN a2enmod rewrite
