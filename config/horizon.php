@@ -130,14 +130,14 @@ return [
                 'connection' => 'redis',
                 'queue' => ['default', 'light', 'notifications'],
                 'balance' => 'auto',
-                'processes' => 18,
+                'processes' => 9,
                 'tries' => 1,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
                 'queue' => ['heavy'],
                 'balance' => 'auto',
-                'processes' => 4,
+                'processes' => 2,
                 'tries' => 1,
             ],
             'supervisor-3' => [
@@ -154,14 +154,14 @@ return [
                 'connection' => 'redis',
                 'queue' => ['default', 'light', 'notifications'],
                 'balance' => 'auto',
-                'processes' => 9,
+                'processes' => 3,
                 'tries' => 1,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
                 'queue' => ['heavy'],
                 'balance' => 'auto',
-                'processes' => 2,
+                'processes' => 1,
                 'tries' => 1,
             ],
             'supervisor-3' => [

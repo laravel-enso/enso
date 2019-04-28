@@ -26,7 +26,7 @@ return [
     'buildingTypes' => [
         'Offices' => 'Offices',
         'Residential' => 'Residential',
-        'Comercial' => 'Comercial',
+        'Commercial' => 'Commercial',
         'Industrial' => 'Industrial',
     ],
     'label' => [

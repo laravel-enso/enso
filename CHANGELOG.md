@@ -1,5 +1,169 @@
 ## Laravel Enso's Changelog
 
+### 3.2.0
+
+#### Changes -> laravel-enso
+
+##### ActivityLog
+- uses Enso's `dateFormat` in interval filter
+
+##### AddressesManager
+- corrects a label
+- refactor params validation in a method to allow easier customization of the request validator
+
+##### CommentsManager
+- adds a `humanReadableDates` config option that defaults to true
+
+##### Core
+- adds RTL support, still WiP
+- adds `ioStatuses` to state enums
+- fixes `enso` mail theme
+- removes the duplicate favico from index.blade.php
+- refactors/improves the password validator
+
+##### DataExport
+- adds `created_by` to fillable
+- adds an `ExcelExport` class helper; will be documented soon.
+
+##### DataImport
+- adds a time column in the main table
+- sorts the main table by the latest imports as default
+- makes the type selector filter the main table too
+- adds `created_by` to fillable
+- improves row sanitization
+- fixes a bug on imports that don't have a custom validator
+- fixes the importer / validator reusability; saves several instantiations on larger imports
+- fixes the statuses to work with IO
+
+##### Examples
+- fixes the example table bugs
+
+##### FileManager
+- refactors / improves the interval filter; now enso's `dateFormat` is used
+
+##### FormBuilder
+- fixes a bug when using custom routes
+- adds autosave support
+- adds a `labels` config & template option that turns labels into placeholders when set to `false`
+- fixes the validation message for template's `columns` attribute
+- hides forbidden actions instead of just disabling
+- adds a debounce option, useful with autosave forms
+
+##### IO
+- moves the broadcast channel from the main repo in the IO package
+- improves progress reporting for imports / exports. Now admins / supervisors can see all IO operations while lower roles can only see their own activity
+
+##### Localisation
+- adds RTL support
+- fixes the `Flag` label in the edit form
+
+##### LogManager
+- improves the index page
+- adds `reload` and `delete` controls to the show page
+
+##### Notifications
+- moves the notifications broadcast channel from the main repo in the notification package
+
+##### People
+- fixes `person.json` form template
+
+##### Rememberable
+- refactors the package from scratch
+- the two traits were merged into just one
+- added the option to cache models `forever`
+- easier interface
+- better key naming
+- allows caching models with non standard id's
+
+##### Select
+- fixes pagination
+- adds support for api resources instead of models
+
+##### StructureManager
+- uses the model to determine the table name in `index.stub`
+- removes redundant `animated fadeIn` in form stubs
+- uses the correct table component in `index.stub`
+- fixes the index page name
+
+##### TrackWho
+- updates the logic to allow manual management when no `auth()->check()` is available
+
+##### VueDatatable
+- uses Enso's `dateFormat` when for interval filters
+- fixes new sheet generation when exporting more than 1 mil rows
+- improves `cacheTrait` to autodetect the model's table
+- fixes a bug when using a custom `lengthMenu`
+- makes the tables controls customizable
+- fixes the default sort when used in template
+
+##### TutorialManager
+- fixed bug: tutorial background was sometimes blocking the highlighted element
+
+#### Changes -> enso-ui
+
+##### accessories
+- changes the classes for comment dates and controls to ensure a better contract when using the dark theme 
+- adds back the `controls` prop for documents
+- 
+##### card
+- removes the card in the nextTick after emitting the `remove` event. This way the event can be used for custom logic, like router navigation
+
+##### chart
+- adds the fetched data to the `fetched` event
+
+##### filters
+- adds a `disabled-options` prop in date-filter
+
+##### forms
+- improves error focusing on submit (scrollIntoView)
+- correctly cascades tabs events
+- adds a template prop
+
+##### tables
+- adds axios request canceler for concurrent data fetch()
+- fixes a visual issue on edge when table is reloading
+- fixes debounce
+
+##### themes
+- fixes tag counter `EnsoTabs` when using the dark theme
+- fixes the navbar-end disapearing when window width was 1039px-1087px
+- makes vue filters scrollbars invisible
+- fixes the `ModalCard` background when using the dark theme
+
+##### transitions
+- names all transitions
+- adds `HorizontalFade` && `HorizontalSlide` for RTL
+
+##### ui
+- fixes ravenKey in store
+- allows using `:` in lang keys
+- adds a `_filter()` helper for the `Enum` to work with Enso's filters
+- fixes filter change in files
+- makes the logo clickable in the AuthForms; on click navigates to the login form
+- adds `unicode2php` convertor for dates
+
+#### Upgrade steps
+
+- refactor the deprecated FE helpers (global mixins) with the new injected ones available in v3.x:
+  - `__` to `i18n`
+  - `handleError` to `errorHandler`
+- refactor the `Rememberable` use according with the new [version](https://docs.laravel-enso.com/packages/rememberable.html)
+- when `TableCache` trait is used you can safely drop the `protected $cachedTable = 'tableId';` property; now the trait autodetects the table's name
+- update the core dependency in `composer.json` to: `"laravel-enso/core": "4.2.*"`
+- update the ui dependency in `package.json` to: `"@enso-ui/ui": "~1.2.0",`
+- run the following:
+  - `composer update`
+  - `php artisan vendor:publish --tag=localisation-factory --force`
+  - `php artisan vendor:publish --tag=dataexport-config`
+  - add the `labels` config option in `config/enso/forms.php`
+  - add the `humanReadableDates` config option in `config/enso/comments.php`
+  - rename the `buildingTypes.Comercial` to `buildingTypes.Commercial` in `config/enso/addresses.php`
+  - if you are using the `enso` theme for mails then run `php artisan vendor:publish --tag=enso-email --force`
+  - remove from `routes/channels.php` both `App.User.{id}` and `operations.{userId}` entries 
+  - if you're not using multitenancy remove from `config/databases.php` the `system` and `tenant` connections and update your env to use `mysql`
+  - `php artisan enso:upgrade`
+  - `yarn && yarn upgrade && yarn run dev`
+  
 ### 3.1.1
 
 - fixes typo in calendar

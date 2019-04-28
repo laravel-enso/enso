@@ -16,7 +16,6 @@ mix
             },
         },
     })
-
     .options({
         hmrOptions: {
             port: '3030',
