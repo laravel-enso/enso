@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  php:
+    build: ./docker
+    container_name: enso
+    ports:
+      - 8000:80
+    volumes:
+      - ./docker/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./:/var/www/html
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:5.7.21
+    container_name: enso-${DB_CONNECTION}
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql
+
+#  myadmin:
+#    image: phpmyadmin/phpmyadmin:4.7
+#    container_name: enso-phpmyadmin
+#    ports:
+#      - 8081:80
+#    environment:
+#      - PMA_ARBITRARY=1
+#      - PMA_HOST=${DB_CONNECTION}
+#    restart: always
+#    depends_on:
+#      - mysqldb

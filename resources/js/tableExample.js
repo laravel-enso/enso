@@ -46,8 +46,8 @@ new Vue({
         return {
             showCode: false,
             activeOptions: [
-                { value: true, label: 'check', class: 'has-text-success' },
-                { value: false, label: 'times', class: 'has-text-danger' },
+                { value: true, icon: 'check', class: 'has-text-success' },
+                { value: false, icon: 'times', class: 'has-text-danger' },
             ],
             seniorityOptions: [
                 { id: 1, name: 'Assistant' },

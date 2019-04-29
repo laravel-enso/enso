@@ -218,7 +218,8 @@ img {
     -webkit-text-size-adjust: none;
 }
 
-.button-blue {
+.button-blue,
+.button-primary {
     background-color: #259cea;
     border-top: 6px solid #259cea;
     border-right: 12px solid #259cea;
@@ -226,7 +227,8 @@ img {
     border-left: 12px solid #259cea;
 }
 
-.button-green {
+.button-green,
+.button-success {
     background-color: #2ed16b;
     border-top: 6px solid #2ed16b;
     border-right: 12px solid #2ed16b;
@@ -234,7 +236,8 @@ img {
     border-left: 12px solid #2ed16b;
 }
 
-.button-red {
+.button-red,
+.button-danger {
     background-color: #e41415;
     border-top: 6px solid #e41415;
     border-right: 12px solid #e41415;

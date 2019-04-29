@@ -112,4 +112,15 @@ return [
     */
 
     'dividerTitlePlacement' => 'center',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Labels
+    |--------------------------------------------------------------------------
+    | By default all form fields will have a conventional label. If this flag
+    | is set to false the label will be used as placeholder. Can be
+    | overriden in each form template
+    */
+
+    'labels' => 'true',
 ];

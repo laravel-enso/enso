@@ -13,6 +13,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         Telescope::night();
 
+        $this->hideSensitiveRequestDetails();
+
         Telescope::filter(function (IncomingEntry $entry) {
             if ($this->app->isLocal()) {
                 return true;
@@ -25,10 +27,25 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
     }
 
+    protected function hideSensitiveRequestDetails()
+    {
+        if ($this->app->isLocal()) {
+            return;
+        }
+
+        Telescope::hideRequestParameters(['_token']);
+
+        Telescope::hideRequestHeaders([
+            'cookie',
+            'x-csrf-token',
+            'x-xsrf-token',
+        ]);
+    }
+
     protected function gate()
     {
         Gate::define('viewTelescope', function ($user) {
-            return $user->isAdmin();
+            return auth()->check() && $user->isAdmin();
         });
     }
 }
