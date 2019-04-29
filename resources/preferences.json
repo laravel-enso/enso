@@ -5,8 +5,7 @@
         "expandedMenu": true,
         "bookmarks": true,
         "theme": "light",
-        "toastrPosition": "bottom-right",
-        "isRTL": false
+        "toastrPosition": "bottom-right"
     },
     "local": {}
 }
