@@ -1,5 +1,19 @@
 ## Laravel Enso's Changelog
 
+### 3.2.1
+
+#### Changes
+- adds RTL
+- brings back excel export in dataimport main table
+- fixes the multi root render bug in Tabs
+- exposes a key method in CoreTabs
+- visually refines Adresses, Comments, Documents, Discussions and People widgets
+- adds docker setup
+- exposes `constants()` from `Enum`
+- fixes a bug in IOStatuses when running async operations
+- fixes example table page
+- other minor bugs and fixes
+
 ### 3.2.0
 
 #### Changes -> laravel-enso
