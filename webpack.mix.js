@@ -34,6 +34,8 @@ mix
     .sass('resources/sass/enso.scss', 'public/css')
     .sass('node_modules/@enso-ui/themes/bulma/light.scss', 'public/themes/light/bulma.min.css')
     .sass('node_modules/@enso-ui/themes/bulma/dark.scss', 'public/themes/dark/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/light-rtl.scss', 'public/themes-rtl/light/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/dark-rtl.scss', 'public/themes-rtl/dark/bulma.min.css')
     .js('resources/js/enso.js', 'public/js')
     .extract([
         '@enso-ui/accessories/bulma', '@enso-ui/bulma', '@enso-ui/card/bulma',

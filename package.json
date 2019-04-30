@@ -59,6 +59,7 @@
         "animate.css": "^3.6.1",
         "axios": "^0.18",
         "bulma": "^0.7.2",
+        "bulma-rtl": "^0.7.1",
         "opencollective": "^1.0.3",
         "opencollective-postinstall": "^2.0.0",
         "patch-package": "^6.0.2",
