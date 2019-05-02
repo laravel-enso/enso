@@ -850,9 +850,9 @@
     vue "^2.5.16"
 
 "@enso-ui/modal@^1.0.0", "@enso-ui/modal@^1.0.4", "@enso-ui/modal@^1.0.6":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@enso-ui/modal/-/modal-1.0.9.tgz#912b850e4d9fe1aa73d5b631e95e15befc7fef07"
-  integrity sha512-7OgeiNr+OKpAhkXqnj9vsKAYghINhHszQoQ9dh2Dl52R/X0VsgKQHx+FYfYz2IF1WQBqMqAhzxrcx84ahR8Bhg==
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@enso-ui/modal/-/modal-1.0.10.tgz#0b14e02b102fb775cc703f829b99cd9992d5e422"
+  integrity sha512-6oUABA0/4uARjSeW+P6WjxJ0SAGTTMXBgWZu3d0TQIb1XXEb9i8CSLpwM8KvqEPEcKxZqLk+fBJlEqiIiGSvcQ==
   dependencies:
     "@enso-ui/directives" "^1.0.0"
     "@enso-ui/transitions" "^1.0.0"
@@ -1769,13 +1769,13 @@ browserslist@^2.11.3:
     electron-to-chromium "^1.3.30"
 
 browserslist@^4.5.2, browserslist@^4.5.4:
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.5.5.tgz#fe1a352330d2490d5735574c149a85bc18ef9b82"
-  integrity sha512-0QFO1r/2c792Ohkit5XI8Cm8pDtZxgNl2H6HU4mHrpYz7314pEYcsAVVatM0l/YmxPnEzh9VygXouj4gkFUTKA==
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.5.6.tgz#ea42e8581ca2513fa7f371d4dd66da763938163d"
+  integrity sha512-o/hPOtbU9oX507lIqon+UvPYqpx3mHc8cV3QemSBTXwkG8gSQSK6UKvXcE/DcleU3+A59XTUHyCvZ5qGy8xVAg==
   dependencies:
-    caniuse-lite "^1.0.30000960"
-    electron-to-chromium "^1.3.124"
-    node-releases "^1.1.14"
+    caniuse-lite "^1.0.30000963"
+    electron-to-chromium "^1.3.127"
+    node-releases "^1.1.17"
 
 buffer-from@^1.0.0:
   version "1.1.1"
@@ -1921,7 +1921,7 @@ caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000963.tgz#df13099c13d3ad29d8ded5387f77e86319dd3805"
   integrity sha512-5Qk1jSsqRY3dD7BAjU018y0MsznzYb+kMTKzGknue8vSWlHkw2S345vRnd0cVEerzZ6ugUfoKaUOOVbBxWLWCA==
 
-caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000960:
+caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000963:
   version "1.0.30000963"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000963.tgz#5be481d5292f22aff5ee0db4a6c049b65b5798b1"
   integrity sha512-n4HUiullc7Lw0LyzpeLa2ffP8KxFBGdxqD/8G3bSL6oB758hZ2UE2CVK+tQN958tJIi0/tfpjAc67aAtoHgnrQ==
@@ -2927,10 +2927,10 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.124, electron-to-chromium@^1.3.30:
-  version "1.3.127"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.127.tgz#9b34d3d63ee0f3747967205b953b25fe7feb0e10"
-  integrity sha512-1o25iFRf/dbgauTWalEzmD1EmRN3a2CzP/K7UVpYLEBduk96LF0FyUdCcf4Ry2mAWJ1VxyblFjC93q6qlLwA2A==
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.127, electron-to-chromium@^1.3.30:
+  version "1.3.129"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.129.tgz#bff32e1840775554aafa301e9dc5002d565aae80"
+  integrity sha512-puirJsgZnedlFEmRa7WEUIaS8ZgHHn7d7inph+RiapCc0x80hdoDyEEpR9z3aRUSZy4fGxOTOFcxnGmySlrmhA==
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -5809,7 +5809,7 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-node-releases@^1.1.14:
+node-releases@^1.1.17:
   version "1.1.17"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.17.tgz#71ea4631f0a97d5cd4f65f7d04ecf9072eac711a"
   integrity sha512-/SCjetyta1m7YXLgtACZGDYJdCSIBAWorDWkGCGZlydP2Ll7J48l7j/JxNYZ+xsgSPbWfdulVS/aY+GdjUsQ7Q==
@@ -6889,7 +6889,7 @@ prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.7.0:
   dependencies:
     orderedmap "^1.0.0"
 
-prosemirror-schema-list@^1.0.2:
+prosemirror-schema-list@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/prosemirror-schema-list/-/prosemirror-schema-list-1.0.3.tgz#539caafa4f9314000943bd783be4017165ec0bd6"
   integrity sha512-+zzSawVds8LsZpl/bLTCYk2lYactF93W219Czh81zBILikCRDOHjp1CQ1os4ZXBp6LlD+JnBqF1h59Q+hilOoQ==
@@ -6905,7 +6905,7 @@ prosemirror-state@^1.0.0, prosemirror-state@^1.2.1, prosemirror-state@^1.2.2:
     prosemirror-model "^1.0.0"
     prosemirror-transform "^1.0.0"
 
-prosemirror-tables@^0.7.10, prosemirror-tables@^0.7.9:
+prosemirror-tables@^0.7.11:
   version "0.7.11"
   resolved "https://registry.yarnpkg.com/prosemirror-tables/-/prosemirror-tables-0.7.11.tgz#400317df5898473f8c33eef8f8016451d0d1ceed"
   integrity sha512-IOvz4sE4RgEeI8aKbis6ADqXEZlqnU1aZ/hdZLj6F74HeCGv5cC/hnOkhlip+4IaQvqn1u3oyBWKMzjGlUJuww==
@@ -8290,45 +8290,45 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
-tiptap-commands@^1.7.0, tiptap-commands@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/tiptap-commands/-/tiptap-commands-1.7.1.tgz#88f615e623836c49f3c4ad1b1cdd95ebed7cf0e1"
-  integrity sha512-HQVFgfBeeOe9mJFYUDkYxiX1D+aYjyO9rO0SeYdumqv9rNHTF3GFfx7qJSk4/d2+GgXDRyoiO35B25EkxGjJJw==
+tiptap-commands@^1.7.0, tiptap-commands@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/tiptap-commands/-/tiptap-commands-1.8.0.tgz#416942b60005fc23fc44ce7fdf4d2fe428b0d4c7"
+  integrity sha512-1/pOhQvCGDsoCFkOrAtoC7PBoXVEpRr8bYitPwZSNvxtqBdn+FaIfGJTHxYlxcY6skcHtlbeh9msb/W9lrz8eg==
   dependencies:
     prosemirror-commands "^1.0.7"
     prosemirror-inputrules "^1.0.1"
-    prosemirror-schema-list "^1.0.2"
+    prosemirror-schema-list "^1.0.3"
     prosemirror-state "^1.2.2"
-    tiptap-utils "^1.3.0"
+    tiptap-utils "^1.4.0"
 
 tiptap-extensions@^1.13.0, tiptap-extensions@^1.14.0:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/tiptap-extensions/-/tiptap-extensions-1.16.2.tgz#deea16318b6f1d2b080d3d240ff9bfe4940f5261"
-  integrity sha512-b6/uv56eMTdmUPTobZpS2aJFmZd9h7FTi+LcVYfbytcw8iow/p6Rzf/gGny5c1L9x0Tvk93fvUQE+wuKg38DKw==
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/tiptap-extensions/-/tiptap-extensions-1.17.0.tgz#caa5ea47623f2c13b15b449001a061fbd96eeb32"
+  integrity sha512-ljlNG5rIpbggSO5FU27NAjfeDN3Kz18GqfNGoEOHHgvC5JDIj6x5QyiPOvCRNpuWN4t4XEMUkq+F8KjI5jceKw==
   dependencies:
     lowlight "^1.11.0"
     prosemirror-history "^1.0.4"
     prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.7.10"
+    prosemirror-tables "^0.7.11"
     prosemirror-utils "^0.7.6"
     prosemirror-view "^1.8.9"
-    tiptap "^1.16.2"
-    tiptap-commands "^1.7.1"
+    tiptap "^1.17.0"
+    tiptap-commands "^1.8.0"
 
-tiptap-utils@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/tiptap-utils/-/tiptap-utils-1.3.0.tgz#bfc77cf57c07cd5c1f1d33f65ef94c4190506b77"
-  integrity sha512-b9GRQB3Kilu9Yq6hwjjzQgZtQDXDOrB/vZPV5OzwcKRN5a9PfLGrTLJ5LbU414Vcy9HTXiqX2pq0o5FslJhHpg==
+tiptap-utils@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tiptap-utils/-/tiptap-utils-1.4.0.tgz#5449bc80afcc54730bd3010b6d5fd8cd6e62160c"
+  integrity sha512-uPG6LRzFUhkHl3UUYhXj1vA17c43ttZPKwkSkpzbrLBBl661UAAv7Z8grvOFBY9gVjzKeg1uIncRH2al2A3SQg==
   dependencies:
     prosemirror-model "^1.7.0"
     prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.7.9"
+    prosemirror-tables "^0.7.11"
     prosemirror-utils "^0.7.6"
 
-tiptap@^1.14.0, tiptap@^1.16.2:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/tiptap/-/tiptap-1.16.2.tgz#0a94ea8f58cccafd56439bcbd29fa9c6071ed90a"
-  integrity sha512-krMpbrQDvSwcp0FIUFjZgmlZUc65kvno+ASecp2G13DJUoAeYHTUW7AKng53xJP/rMm9ubc3q9XA6e6B5Bf+mA==
+tiptap@^1.14.0, tiptap@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/tiptap/-/tiptap-1.17.0.tgz#0dd7c8551378d43efbe1755504ba91d43ccb101d"
+  integrity sha512-8Qd/lkdgju2d7RdF5Ek6fzMpbPKGIt5YaFkRY0El2GMxt/4QcjX+6HWtcNl05fgIwF8uuPNy0CtSoeUi5KZGsQ==
   dependencies:
     prosemirror-commands "^1.0.7"
     prosemirror-dropcursor "^1.1.1"
@@ -8338,8 +8338,8 @@ tiptap@^1.14.0, tiptap@^1.16.2:
     prosemirror-model "^1.7.0"
     prosemirror-state "^1.2.1"
     prosemirror-view "^1.8.9"
-    tiptap-commands "^1.7.1"
-    tiptap-utils "^1.3.0"
+    tiptap-commands "^1.8.0"
+    tiptap-utils "^1.4.0"
 
 tmp@^0.0.33:
   version "0.0.33"
@@ -8873,9 +8873,9 @@ vm-browserify@0.0.4:
     indexof "0.0.1"
 
 vue-cal@^1.43.1:
-  version "1.56.0"
-  resolved "https://registry.yarnpkg.com/vue-cal/-/vue-cal-1.56.0.tgz#a92d3311ca7c82260a1490bbdd2f4e61431fcaa0"
-  integrity sha512-WN6oI+JTRCuXia+kBZWZIFj8x4tH//Hv/Cm+BPO3noIR9p0Tj1pV2iCUrDPE9ZlYlDsywcUF0Y0V3EL2YxIzJg==
+  version "1.57.1"
+  resolved "https://registry.yarnpkg.com/vue-cal/-/vue-cal-1.57.1.tgz#b060874336137d8739566d6e4cedaca0461b7fc2"
+  integrity sha512-P/aAeyNY3eOyPJ1sLTQeyVF7pJe517SvVvudbXu0W8mE4eOoG3hVtk5ys+bB01sSk3QmIEF8pcZC/Mlm6WzRpA==
 
 vue-eslint-parser@^5.0.0:
   version "5.0.0"

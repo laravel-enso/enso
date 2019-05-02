@@ -6,13 +6,24 @@
 - adds RTL
 - brings back excel export in dataimport main table
 - fixes the multi root render bug in Tabs
-- exposes a key method in CoreTabs
+- exposes a `key` method in CoreTabs
 - visually refines Adresses, Comments, Documents, Discussions and People widgets
 - adds docker setup
 - exposes `constants()` from `Enum`
 - fixes a bug in IOStatuses when running async operations
 - fixes example table page
 - other minor bugs and fixes
+
+### Upgrade existing projects
+- update `webpack.mix.js` to add the rtl themes
+- copy `patches/bulma-rtl+0.7.1.patch` from Enso's repo to your local project
+- `composer update`
+- `yarn upgrade && yarn && yarn run dev`
+- add to your `config/enso/themes/php` 
+```php
+'light-rtl' => '/themes-rtl/light/bulma.min.css',
+'dark-rtl' => '/themes-rtl/dark/bulma.min.css',
+```
 
 ### 3.2.0
 
