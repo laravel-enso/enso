@@ -1,5 +1,13 @@
 ## Laravel Enso's Changelog
 
+### 3.2.3
+- fixes minor bugs
+- updates dependencies
+- updates changelog for 3.2.1
+
+### 3.2.2
+- updates changelog for 3.2.1
+
 ### 3.2.1
 
 #### Changes
@@ -24,6 +32,7 @@
 'light-rtl' => '/themes-rtl/light/bulma.min.css',
 'dark-rtl' => '/themes-rtl/dark/bulma.min.css',
 ```
+- make sure that you have the update versions for `LanguageFactory` & `LanguageSeeder`, in your project
 
 ### 3.2.0
 
