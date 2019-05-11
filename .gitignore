@@ -16,3 +16,4 @@ npm-debug.log
 .env
 .DS_STORE
 ._*
+yarn.lock
