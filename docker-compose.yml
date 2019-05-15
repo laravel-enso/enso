@@ -35,7 +35,7 @@ services:
 #      - 8081:80
 #    environment:
 #      - PMA_ARBITRARY=1
-#      - PMA_HOST=${DB_CONNECTION}
+#      - PMA_HOST=enso-${DB_CONNECTION}
 #    restart: always
 #    depends_on:
 #      - mysqldb
