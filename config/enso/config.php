@@ -3,18 +3,11 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '3.2.2',
+    'version' => '3.3.0',
     'showQuote' => true,
     'stateBuilder' => LocalState::class,
     'defaultRole' => 'admin',
     'dateFormat' => 'd-m-Y',
-    'paths' => [
-        'files' => 'files',
-        'avatars' => 'avatars',
-        'imports' => 'imports',
-        'exports' => 'exports',
-        'howToVideos' => 'howToVideos',
-    ],
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',

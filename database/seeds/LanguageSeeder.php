@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use LaravelEnso\Localisation\app\Models\Language;
 
 class LanguageSeeder extends Seeder
@@ -19,7 +20,7 @@ class LanguageSeeder extends Seeder
 
     public function run()
     {
-        \DB::transaction(function () {
+        DB::transaction(function () {
             collect(self::Languages)
                 ->each(function ($language) {
                     factory(Language::class)

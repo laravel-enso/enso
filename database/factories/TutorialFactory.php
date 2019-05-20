@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\TutorialManager\app\Enums\Placement;
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
-use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Tutorials\app\Enums\Placement;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
+use LaravelEnso\Permissions\app\Models\Permission;
 
 $factory->define(Tutorial::class, function (Faker $faker) {
     return [

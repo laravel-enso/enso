@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\CommentsManager\app\Models\Comment;
+use LaravelEnso\Comments\app\Models\Comment;
 
 $factory->define(Comment::class, function (Faker $faker) {
     return [

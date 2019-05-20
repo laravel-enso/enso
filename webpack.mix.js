@@ -57,9 +57,10 @@ mix
         'vue-router', 'vuedraggable', 'vuex',
     ])
     .js('resources/js/tableExample.js', 'public/js')
-    .js('resources/js/selectExample.js', 'public/js')
-    .sourceMaps();
+    .js('resources/js/selectExample.js', 'public/js');
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.sourceMaps();
 }

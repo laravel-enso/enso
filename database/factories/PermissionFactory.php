@@ -1,14 +1,14 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\PermissionManager\app\Models\Permission;
-use LaravelEnso\PermissionManager\app\Enums\PermissionTypes;
+use LaravelEnso\Permissions\app\Enums\Types;
+use LaravelEnso\Permissions\app\Models\Permission;
 
 $factory->define(Permission::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->sentence,
-        'type' => PermissionTypes::keys()->random(),
+        'type' => Types::keys()->random(),
         'is_default' => $faker->boolean,
     ];
 });

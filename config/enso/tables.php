@@ -9,7 +9,7 @@ return [
     | or only in local/development.
     | Values: 'always/local/yourEnv...'
     |
- */
+    */
 
     'validations' => 'local',
 

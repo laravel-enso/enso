@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use LaravelEnso\Roles\app\Models\Role;
 use LaravelEnso\Core\app\Models\UserGroup;
-use LaravelEnso\RoleManager\app\Models\Role;
 
 class UserGroupSeeder extends Seeder
 {

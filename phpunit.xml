@@ -13,17 +13,17 @@
         <testsuite name="local">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
-        <testsuite name="actionlogger">
-            <directory suffix="Test.php">./vendor/laravel-enso/actionlogger/tests/features</directory>
+        <testsuite name="action-logger">
+            <directory suffix="Test.php">./vendor/laravel-enso/action-logger/tests/features</directory>
         </testsuite>
-        <testsuite name="avatarmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/avatarmanager/tests/features</directory>
+        <testsuite name="avatars">
+            <directory suffix="Test.php">./vendor/laravel-enso/avatars/tests/features</directory>
         </testsuite>
         <testsuite name="cnpvalidator">
             <directory suffix="Test.php">./vendor/laravel-enso/cnpvalidator/tests/features</directory>
         </testsuite>
-        <testsuite name="commentsmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/commentsmanager/tests/features</directory>
+        <testsuite name="comments">
+            <directory suffix="Test.php">./vendor/laravel-enso/comments/tests/features</directory>
         </testsuite>
         <testsuite name="companies">
             <directory suffix="Test.php">./vendor/laravel-enso/companies/tests/features</directory>
@@ -31,20 +31,20 @@
         <testsuite name="core">
             <directory suffix="Test.php">./vendor/laravel-enso/core/tests/features</directory>
         </testsuite>
-        <testsuite name="dataimport">
-            <directory suffix="Test.php">./vendor/laravel-enso/dataimport/tests/features</directory>
+        <testsuite name="data-import">
+            <directory suffix="Test.php">./vendor/laravel-enso/data-import/tests/features</directory>
         </testsuite>
         <testsuite name="discussions">
             <directory suffix="Test.php">./vendor/laravel-enso/discussions/tests/features</directory>
         </testsuite>
-        <testsuite name="documentsmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/documentsmanager/tests/features</directory>
+        <testsuite name="documents">
+            <directory suffix="Test.php">./vendor/laravel-enso/documents/tests/features</directory>
         </testsuite>
-        <testsuite name="filemanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/filemanager/tests/features</directory>
+        <testsuite name="files">
+            <directory suffix="Test.php">./vendor/laravel-enso/files/tests/features</directory>
         </testsuite>
-        <testsuite name="historytracker">
-            <directory suffix="Test.php">./vendor/laravel-enso/historytracker/tests/features</directory>
+        <testsuite name="history-tracker">
+            <directory suffix="Test.php">./vendor/laravel-enso/history-tracker/tests/features</directory>
         </testsuite>
         <testsuite name="impersonate">
             <directory suffix="Test.php">./vendor/laravel-enso/impersonate/tests/features</directory>
@@ -52,11 +52,11 @@
         <testsuite name="localisation">
             <directory suffix="Test.php">./vendor/laravel-enso/localisation/tests/features</directory>
         </testsuite>
-        <testsuite name="logmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/logmanager/tests/features</directory>
+        <testsuite name="logs">
+            <directory suffix="Test.php">./vendor/laravel-enso/logs/tests/features</directory>
         </testsuite>
-        <testsuite name="menumanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/menumanager/tests/features</directory>
+        <testsuite name="menu-manager">
+            <directory suffix="Test.php">./vendor/laravel-enso/menu-manager/tests/features</directory>
         </testsuite>
         <testsuite name="notifications">
             <directory suffix="Test.php">./vendor/laravel-enso/notifications/tests/features</directory>
@@ -64,29 +64,29 @@
         <testsuite name="people">
             <directory suffix="Test.php">./vendor/laravel-enso/people/tests/features</directory>
         </testsuite>
-        <testsuite name="permissionmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/permissionmanager/tests/features</directory>
+        <testsuite name="permissions">
+            <directory suffix="Test.php">./vendor/laravel-enso/permissions/tests/features</directory>
         </testsuite>
         <testsuite name="rememberable">
             <directory suffix="Test.php">./vendor/laravel-enso/rememberable/tests/features</directory>
         </testsuite>
-        <testsuite name="rolemanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/rolemanager/tests/features</directory>
+        <testsuite name="roles">
+            <directory suffix="Test.php">./vendor/laravel-enso/roles/tests/features</directory>
         </testsuite>
         <testsuite name="searchable">
             <directory suffix="Test.php">./vendor/laravel-enso/searchable/tests/features</directory>
         </testsuite>
-        <testsuite name="trackwho">
-            <directory suffix="Test.php">./vendor/laravel-enso/trackwho/tests/features</directory>
+        <testsuite name="track-who">
+            <directory suffix="Test.php">./vendor/laravel-enso/track-who/tests/features</directory>
         </testsuite>
-        <testsuite name="tutorialmanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/tutorialmanager/tests/features</directory>
+        <testsuite name="tutorials">
+            <directory suffix="Test.php">./vendor/laravel-enso/tutorials/tests/features</directory>
         </testsuite>
         <testsuite name="versioning">
             <directory suffix="Test.php">./vendor/laravel-enso/versioning/tests/features</directory>
         </testsuite>
         <testsuite name="structuremanager">
-            <directory suffix="Test.php">./vendor/laravel-enso/structuremanager/tests/features</directory>
+            <directory suffix="Test.php">./vendor/laravel-enso/cli/tests/features</directory>
         </testsuite>
     </testsuites>
     <filter>

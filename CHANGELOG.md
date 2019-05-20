@@ -1,5 +1,333 @@
 ## Laravel Enso's Changelog
 
+### 3.3.0 RC1
+
+## NOTE
+
+We're in the process of testing the upgrade steps...
+
+## Purpose
+- rename BE repos - when the organization was started we had not really followed 
+a consistent naming convention for the packages. But now we do :)
+- use the same naming convention for migrations
+- refactor controllers and request validators towards SRP, 
+with an invokable controller for each route endpoint 
+- switch to using dependency injection wherever possible in controllers, 
+to allow easier & cleaner customization of Models ($fillable, relations etc), 
+request validators, from builders, table builders, etc.
+- replace the class registration part of the configs with service providers
+- refactor `is_null($var)` usages to `$var === null`, following best practices
+- remove `activity-log`'s default inclusion from all packages except from `teams`
+- following several requests and real world requirements, 
+change the relationship between people and companies from `N - 1` to `N - N`
+
+## Changes
+
+Note that all back-end packages (and repositories) were renamed, 
+even if in some cases, only the casing changed. Where needed namespaces were updated.
+
+Below you'll find the old package name in parenthesis.
+
+### Back-End:
+
+#### action-logger (old ActionLogger)
+
+#### activity-log (old ActivityLog)
+- will be soon refactored from scratch; 
+- the Model linking mechanism will be updated to using a registration service provider
+- that this package is not yet production-ready
+
+#### addresses (old AddressesManager)
+- renamed namespace from `AddressesManager` to `Addresses`
+- renamed migration (applied by the rename-migrations command)
+- refactored controllers
+- added `$fillable` for the `Address` model and `$request->validated()` in the controllers
+- improved request validators
+- does not allow to delete the default address if secondary addresses are present
+- touches parent on model creation
+
+#### avatars (old AvatarManager)
+- renamed namespace from `AvatarManager` to `Avatars`
+- renamed `Classes` folder to `Services`
+- refactored controllers
+
+#### calendar (old Calendar)
+- refactored controllers
+- small refactor
+- this package is work in progress, will be updated and is not yet production-ready
+
+#### comments (old CommentsManager)
+- renamed namespace from `CommentsManager` to `Comments`
+- renamed migration (applied by the rename-migrations command)
+- refactored controllers
+- improved request validation
+- added a `TaggedUser` resource
+- touches parent on comment creation
+- removed the `LogsActvity` trait from the model
+
+#### control-panel-api (old ControlPanelApi)
+- refactored controllers
+- adds `.styleci.yml`
+
+#### charts (old Charts)
+- renamed `Classes` to `Factories`
+- dropped that `Chart` suffix for all builders (eg. `BarChart` to `Bar`)
+
+#### cli (old StructureMigration)
+- added support for namespaced models 
+- updated stubs for single responsibility controllers
+- added `.styleci.yml`
+
+#### companies (old Companies)
+- renamed migration (applied by the rename-migrations command)
+- refactored controllers
+- refactored request validation
+- added `$fillable` to the model and used `$request->validated()` in controller methods
+- removed the `LogsActvity` trait from the model
+- renamed `scopeTenants` to `scopeTenant`
+- `$company->mandatary()` is now a helper method
+- `$company->people` was added for the new relation
+
+#### core (old Core)
+- refactored controllers
+- refactored request validators
+- added the `UserGroups` enum, bound to the app's service container under the `user-groups` alias; 
+the enum is also present in the app state
+- added the `enso:rename-migrations` command
+- updated the `enso:upgrade` command for a smoother upgrade
+- web sockets is available in the app state
+- `UserGroup::Admin` constant has been removed
+
+#### data-export (old DataExport)
+- added an `ExcelExport` service
+- implements `FileServiceProvider`
+
+#### data-import (old DataImport)
+- renamed migration (applied by the rename-migrations command)
+- renamed `Classses` to `Services`
+- refactored controllers
+- removed the `LogsActvity` trait from the model
+
+#### discussions (old Discussions)
+- renamed migration (applied by the rename-migrations command)
+- refactored controllers
+- refactored request validators
+- removed the `LogsActvity` trait from the model
+- touches parent on model creation
+
+#### documents (old DocumentsManager)
+- renamed migration (applied by the rename-migrations command)
+- renamed namespace from `DocumentsManager` to `Documents`
+- refactored controllers
+- removed the `LogsActvity` trait from the model
+
+#### files (old FileManager)
+- renamed namespace from `FileManager` to `Files`
+- renamed `FileManager` service to `Files`
+- added a publishable `FileServiceProvider` that allows registering the visible files in the File menu 
+and drops the `VisibleFiles` enum
+- added a `FileBrowser` facade
+- improved the `files.php` config
+- added an `attach` method to the `Attachable` contract that takes a `Illuminate\Http\File` object
+- added explicit exceptions
+- refactored controllers
+- improved services
+- added return types for `Attachable` & `VisibleFile` contracts
+
+#### forms (old FormBuilder)
+- renamed namespace from `FormBuilder` to `Forms`
+- renamed `Classes` to `Services`
+
+#### helpers (old Helpers)
+- exposed the `constants()` method
+
+#### history-tracker (old HistoryTracker)
+
+#### how-to (old HowToVideos)
+- renamed migration (applied by the rename-migrations command)
+- refactored controllers
+- removed the `LogsActvity` trait from the model
+
+#### impersonate (old Impersonate)
+- refactored controllers
+
+#### localisation (old Localisation)
+- refactored controllers
+- refactored validation 
+- renamed `Classes` to `Services`
+
+#### logs (old LogManager)
+- renamed migration (applied by the rename-migrations command)
+- renamed namespace from `LogManager` to `Logs`
+- refactored controllers
+
+#### menus (old MenuManager)
+- renamed namespace from `MenuManager` to `Menus`
+- refactored controllers
+- refactored request validators
+- added the organize action - allows drag & drop menu reordering for menus having the same parent
+
+#### migrator (part of the old StructureMigration)
+- moved to its own package
+- renamed class `StructureMigration` to `Migration`
+
+#### people (old People)
+- refactored controllers
+- refactored request validation
+- added `$fillable` to the model and used `$request->validated()` in controller methods
+- removed the `LogsActvity` trait from the model
+- changed the relationship with companies from `N - 1` to `N - N`:
+    - the pivot table has three additional attributes, `position`, `is_main` & `is_mandatory`
+    - `$person->company()` is now a helper method
+    - `$person->company()->pivot->position` will return the person's position
+    - `$person->companies` was added for the new relation, always loads with `position`
+
+#### permissions (old PermissionManager)
+- renamed namespace from `PermissionManager` to `Permissions`
+- renamed enum from `PermissionTypes` to `Types`
+- refactored controllers
+- refactored request validation
+
+#### rememberable (old Rememberable)
+
+#### roles (old RoleManager)
+- renamed namespace from `RoleManager` to `Roles`
+- refactored controllers 
+- refactored requests 
+- added `Roles` Enum, bound to the app's service container under the `roles` alias
+it replaces the old `AdminId` and `SupervisorId` role constants; 
+- the roles enumeration is now also available in the front end via the app state
+- renamed `Classes` to `Services`
+- allows nullable `menu_id` - useful for users that can't access the app but can still be notified by email
+
+#### searchable (old Searchable)
+- implements a publishable `SearchServiceProvider` that allows registering the searchable models
+- small refactor
+
+#### select (old Select)
+- renamed the `options` method from the `OptionsBuilder` trait to `__invoke`
+- added a `select.php` config that allows customizing the default `trackBy` & `queryAttributes`
+
+#### tables (old VueDatatable)
+- renamed namespace from `VueDatatable` to `Tables`
+- renamed config file from `datatable.php` to `tables.php`
+- renamed `Classes` to `Services`
+- added `Init`, `Data` traits for invokable controllers
+- renamed the `excel` method to `__invoke` in the `Excel` trait
+- renamed the `action` method to `__invoke` in the `Action` trait
+
+##### Note
+The `Datatable` trait will be deprecated soon, 
+but if you like the old approach better you can recreate the trait locally and use it as required
+ 
+#### track-who (old TrackWho)
+ - removed config & AppServiceProvider
+ - fixed `DeletedBy` attribute order in `forceFill()`
+
+#### tutorials (old TutorialManager)
+- renamed migration (applied by the rename-migrations command)
+- renamed namespace from `TutorialManager` to `tutorials`
+- refactored controllers
+- extracted a `Tutorial` resource from the `TutorialIndex` response
+- renamed `TutorialIndex` response to `Show`
+- added a `tutorials.php` config
+- removed the `LogsActvity` trait from the model
+
+#### versioning (old Versioning)
+
+### Front-End / UI
+
+#### dropdown
+- adds the ability to open the dropdown upwards if the room below is insufficient
+
+#### forms
+- fixes section slot for tabs
+- fixes `switch-field` height 
+
+#### ui
+- added menu drag and drop reorder option via settings switch 
+- removed deprecated `__.js` module
+- echo is now instantiated on window (accessible as `window.Echo`)
+- there is a new `websockets` module, 
+which provides the `ioChannel`, `privateChannel` and `pusher` configurations
+
+#### vue-switch
+- added support for control-label via slot
+- `vue-switch` can now be toggled also with the Enter key
+ 
+## Upgrade Steps
+- update in `composer.json`
+    - `core` to 4.3.*  
+    - `control-panel-api` to `2.2.*`
+    - `examples` to 1.2.* (if needed)
+    - remove `laracasts/generators`
+- update in `package.json`
+    - `@enso-ui/ui` to `~1.3.0`
+- run `composer update`
+- run `yarn upgrade && yarn` (if `patch-package` fails, you should update your patches)
+- run `php artisan enso:rename-migrations`     
+- run `php artisan migrate`     
+- run `php artisan enso:upgrade`
+- update `App\User` with the proper imports/namespaces
+- remove from your route file the `@options` action method for all select controllers that are using the `OptionsBuider` trait
+- remove from your local route file `@excel` action method if you want to keep the old style table controllers
+**OR**
+- refactor all your table controllers to single responsibility controllers. 
+Use a package like `tutorials` for an example of how this is achieved.
+
+- configs:
+    - remove the paths key from `config/enso/config.php`
+    - update `config/enso/files.php` according to the one from the `files` package
+    - rename `config/enso/datatable.php` => `config/enso/tables.php`
+    - update `config/enso/imports`, if necessary (example importer)
+    - update `config/enso/searchable` according to the one from the searchable package. To add your models publish and use the new `SearchServiceProvider`
+
+- factories and seeders:
+    - update `MenuFactory`
+    - update `PermissionFactory`
+    - update `TutorialFactory`
+    - update `CommentFactory`
+    - update `RoleFactory`
+    - update `UserFactory`
+    - update `CountrySeeder`
+    - update `UserGroupSeeder`
+    - update `UserSeeder`
+    - update `RoleSeeder`
+    - update `PersonFactory`
+    - update `CompanyFactory`
+
+- search and replace (where applicable)
+    - `LaravelEnso\StructureManager\app\Classes\StructureMigration` => `LaravelEnso\StructureManager\app\Database\Migration`
+    - ` extends StructureMigration` => ` extends Migration`
+    - `LaravelEnso\Charts\app\Classes` => `LaravelEnso\Charts\app\Factories`
+    - `LaravelEnso\Charts\app\Classes\BarChart` => `LaravelEnso\Charts\app\Factories\Bar`
+    - `LaravelEnso\Charts\app\Classes\BubbleChart` => `LaravelEnso\Charts\app\Factories\Bubble`
+    - `LaravelEnso\Charts\app\Classes\DoughnutChart` => `LaravelEnso\Charts\app\Factories\Doughnut`
+    - `LaravelEnso\Charts\app\Classes\LineChart` => `LaravelEnso\Charts\app\Factories\Line`
+    - `LaravelEnso\Charts\app\Classes\PieChart` => `LaravelEnso\Charts\app\Factories\Pie`
+    - `LaravelEnso\Charts\app\Classes\PolarChart` => `LaravelEnso\Charts\app\Factories\Polar`
+    - `LaravelEnso\Charts\app\Classes\RadarChart` => `LaravelEnso\Charts\app\Factories\Radar`
+    - `LaravelEnso\FileManager\app\Classes\FileManager` => `LaravelEnso\Files\app\Services\Files`
+    - `LaravelEnso\Permissions\app\Enums\PermissionTypes` => `LaravelEnso\Permissions\app\Enums\Types`
+    - `LaravelEnso\FormBuilder\app\Classes` => `LaravelEnso\Forms\app\Services`
+    - the `UserGroup::Admin` constant has been removed and should be replaced with the `UserGroups::Admin` enum
+    - the `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be 
+        replaced with `Roles::Admin`, `Roles::Supervisor`; make sure to import the `LaravelEnso\Roles\app\Enums\Roles` enum
+    - since the `Company` model's `scopeTenants` was renamed to `scopeTenant` search for its use and update as needed
+    - `LaravelEnso\VueDatatable` with `LaravelEnso\Tables`
+    - `LaravelEnso\Tables\app\Classes` with `LaravelEnso\Tables\app\Services`
+- if using/customizing/extending addresses, people or companies (eventually any package), 
+you should switch to leveraging dependency injection  and should bind your local implementations to the 
+package's models, validator classes
+- note that for both Person, Company and Address models the `$guarded` property was replaced with the explicit `$fillable`. 
+If extending any of these models, don't forget to overwrite the `$fillable` property 
+- if you're using/extending validators, controllers, models from the refactored packages, at minimum, 
+you will need to update your imports
+- update `phpunit.xml` with the one from this repo
+- make sure that in `webpack.mix.js` you don't have `sourceMaps()` for production
+- don't forget to implement Searchable and Files for your required models. 
+You can use `LaravelEnso\Companies\SearchServiceProvider` as example.  
+
 ### 3.2.3
 - fixes minor bugs
 - updates dependencies
@@ -670,7 +998,7 @@ pagination
 "laravel-enso/commentsmanager": "2.4.*",
 "laravel-enso/discussions": "1.1.*",
 "laravel-enso/documentsmanager": "2.4.*",
-"laravel-enso/howtovideos": "2.2.*",
+"laravel-enso/how-to": "2.2.*",
 ```
 
 - update `composer.json` by updating the following dependencies:
@@ -772,7 +1100,7 @@ if (mix.inProduction()) {
     - `dashboard`,
     - `dataimport`,
     - `files`,
-    - `howtovideos`,
+    - `how-to`,
     - `notifications`,
     - `system`
 
@@ -1604,7 +1932,7 @@ Make sure you have a backup of your database before starting. If you find any pr
     - "laravel-enso/dataimport": "2.5.*",
     - "laravel-enso/discussions": "1.1.*",
     - "laravel-enso/documentsmanager": "2.4.*",
-    - "laravel-enso/howtovideos": "2.2.*",
+    - "laravel-enso/how-to": "2.2.*",
     - "laravel-enso/teams": "1.0.*",
 - run `composer update`
 - run `php artisan enso:upgrade`
@@ -1984,7 +2312,7 @@ Upgrade steps:
 - tweaks navbar and aside shadow
 - removes the ` Index` termination from index pages title (fe routes)
 - fixes laravel-enso/structuremanager#10
-- moves the following packages from core composer json to the project's composer json: "addressesmanager","commentsmanager","contacts","controlpanelapi","dataimport","discussions","documentsmanager","howtovideos"
+- moves the following packages from core composer json to the project's composer json: "addressesmanager","commentsmanager","contacts","controlpanelapi","dataimport","discussions","documentsmanager","how-to"
 
 Upgrade: apply [these](https://github.com/laravel-enso/Enso/commit/daa1d5b1473c800cbdde1fcbd91249765bd2acd4#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780) changes to `composer.json`, followed by a `composer update`
 
@@ -2429,11 +2757,11 @@ Among the goals:
 ```php
 public function query()
 {
-    return User::select(\DB::raw(
+    return User::selectRaw(
             'users.id, users.id as "dtRowId", avatars.id as avatarId, owners.name as owner,
             users.first_name, users.last_name, users.phone, users.email, roles.name as role,
             users.is_active'
-        ))->join('owners', 'users.owner_id', '=', 'owners.id')
+        )->join('owners', 'users.owner_id', '=', 'owners.id')
         ->join('roles', 'users.role_id', '=', 'roles.id')
         ->leftJoin('avatars', 'users.id', '=', 'avatars.user_id');
 }
@@ -2483,7 +2811,7 @@ The trait creates a `file` `morphOne` relationship to the base model and makes a
     - "laravel-enso/core": "2.13.*",
     - "laravel-enso/dataimport": "2.3.*",
     - "laravel-enso/documentsmanager": "2.3.*",
-    - "laravel-enso/howtovideos": "2.1.*",
+    - "laravel-enso/how-to": "2.1.*",
 - run `composer update`
 - run `php artisan migrate`
 - run `php artisan enso:filemanager:upgrade`. This command will translate all the tables from the old format to the new one. It's recommended to make a backup of the database before the update, just to be sure that nothing goes wrong.
@@ -2960,7 +3288,7 @@ We finally ported the 'How To Videos' menu from to the SPA version of Enso.
 
 To use it in an existing project do the following steps:
 - `composer update`
-- `composer require laravel-enso/howtovideos`
+- `composer require laravel-enso/how-to`
 - `php artisan vendor:publish --tag=howToVideos-storage`
 - `npm install --save vue-video-player`
 - compile
@@ -3270,7 +3598,7 @@ Changes the `__` from being defined extending the prototype to a mixin. This all
 Adds the `weekdays` prop to datepicker.
 
 Closes:
-    - laravel-enso/vuedatatables#1
+    - laravel-enso/vuedatatable#1
     - laravel-enso/enso#86
 
 ### 2.5.6

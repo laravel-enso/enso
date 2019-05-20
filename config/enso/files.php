@@ -1,14 +1,12 @@
 <?php
 
-use LaravelEnso\FileManager\app\Models\Upload;
-use LaravelEnso\DataExport\app\Models\DataExport;
-use LaravelEnso\DocumentsManager\app\Models\Document;
-
 return [
-    'visible' => [
-        'exports' => DataExport::class,
-        'documents' => Document::class,
-        'uploads' => Upload::class,
+    'linkExpiration' => 60 * 60 * 24,
+    'storageLimit' => 500000,
+    'paginate' => env('FILES_PAGINATE', 24),
+    'paths' => [
+        'files' => 'files',
+        'tenants' => 'tenants',
+        'testing' => 'testing',
     ],
-    'storageLimit' => '500000',
 ];

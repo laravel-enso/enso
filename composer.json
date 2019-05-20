@@ -8,9 +8,9 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "~4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel-enso/controlpanelapi": "^2.1",
-        "laravel-enso/core": "4.2.*",
-        "laravel-enso/examples": "^1.1",
+        "laravel-enso/control-panel-api": "2.2.*",
+        "laravel-enso/core": "4.3.*",
+        "laravel-enso/examples": "1.2.*",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^3.0",
         "laravel/telescope": "^2.0",
@@ -21,15 +21,10 @@
         "codedungeon/phpunit-result-printer": "^0.19.0",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.7.0",
-        "laracasts/generators": "dev-develop",
         "mockery/mockery": "1.*",
         "nunomaduro/collision": "^2.0.0",
         "phpunit/phpunit": "^7.0"
     },
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/bogdankharchenko/Laravel-5-Generators-Extended"
-    }],
     "autoload": {
         "classmap": [
             "database/seeds",

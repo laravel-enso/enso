@@ -7,7 +7,7 @@ RUN a2enmod rewrite
 RUN apt-get update \
   && apt-get install -y zlib1g-dev libicu-dev wget gnupg g++ git openssh-client \
   && apt-get install -y libxml2-dev libfreetype6-dev libpng-dev libjpeg-dev libzip-dev \
-  && apt-get install -y libmagickwand-dev \
+&& apt-get install -y libmagickwand-dev unzip\
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl pdo_mysql zip
 

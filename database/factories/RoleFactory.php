@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\RoleManager\app\Models\Role;
+use LaravelEnso\Menus\app\Models\Menu;
+use LaravelEnso\Roles\app\Models\Role;
 
 $factory->define(Role::class, function (Faker $faker) {
     return [
