@@ -2261,16 +2261,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "6d1a2365d9be220bfdd4bd73a975beeb7548e984"
+                "reference": "e89dcc9978f69ca2a23f65611c8e5f94b9e889ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/6d1a2365d9be220bfdd4bd73a975beeb7548e984",
-                "reference": "6d1a2365d9be220bfdd4bd73a975beeb7548e984",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/e89dcc9978f69ca2a23f65611c8e5f94b9e889ca",
+                "reference": "e89dcc9978f69ca2a23f65611c8e5f94b9e889ca",
                 "shasum": ""
             },
             "require": {
@@ -2287,7 +2287,8 @@
                     "providers": [
                         "LaravelEnso\\Files\\AppServiceProvider",
                         "LaravelEnso\\Files\\AuthServiceProvider",
-                        "LaravelEnso\\Files\\FileServiceProvider"
+                        "LaravelEnso\\Files\\FileServiceProvider",
+                        "LaravelEnso\\Files\\UploadServiceProvider"
                     ],
                     "aliases": {
                         "FileBrowser": "LaravelEnso\\Files\\app\\Facades\\FileBrowser"
@@ -2319,7 +2320,7 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2019-05-17T12:52:04+00:00"
+            "time": "2019-05-20T17:36:12+00:00"
         },
         {
             "name": "laravel-enso/forms",
@@ -3247,16 +3248,16 @@
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/searchable.git",
-                "reference": "9691cd5c8409ae448910e24e1e51afb1f550fb51"
+                "reference": "07ba451e3d348705c3c5eb80cb6d2cdc9224ef67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/9691cd5c8409ae448910e24e1e51afb1f550fb51",
-                "reference": "9691cd5c8409ae448910e24e1e51afb1f550fb51",
+                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/07ba451e3d348705c3c5eb80cb6d2cdc9224ef67",
+                "reference": "07ba451e3d348705c3c5eb80cb6d2cdc9224ef67",
                 "shasum": ""
             },
             "require": {
@@ -3299,7 +3300,7 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2019-05-17T13:15:56+00:00"
+            "time": "2019-05-20T17:33:19+00:00"
         },
         {
             "name": "laravel-enso/select",
