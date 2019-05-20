@@ -1864,16 +1864,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.3.12",
+            "version": "4.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "b09d86501455262ef59a851fe6eaf02dce7e87ce"
+                "reference": "816db7779dbd514c9469959d91479cedd3693d43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/b09d86501455262ef59a851fe6eaf02dce7e87ce",
-                "reference": "b09d86501455262ef59a851fe6eaf02dce7e87ce",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/816db7779dbd514c9469959d91479cedd3693d43",
+                "reference": "816db7779dbd514c9469959d91479cedd3693d43",
                 "shasum": ""
             },
             "require": {
@@ -1963,7 +1963,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-05-20T16:49:32+00:00"
+            "time": "2019-05-20T17:42:23+00:00"
         },
         {
             "name": "laravel-enso/data-export",
@@ -2261,16 +2261,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "e89dcc9978f69ca2a23f65611c8e5f94b9e889ca"
+                "reference": "19c13df8e729384a62b9d45869d03f0c0b2609ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/e89dcc9978f69ca2a23f65611c8e5f94b9e889ca",
-                "reference": "e89dcc9978f69ca2a23f65611c8e5f94b9e889ca",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/19c13df8e729384a62b9d45869d03f0c0b2609ef",
+                "reference": "19c13df8e729384a62b9d45869d03f0c0b2609ef",
                 "shasum": ""
             },
             "require": {
@@ -2320,7 +2320,7 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2019-05-20T17:36:12+00:00"
+            "time": "2019-05-20T17:51:31+00:00"
         },
         {
             "name": "laravel-enso/forms",
