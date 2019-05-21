@@ -139,7 +139,8 @@ and drops the `VisibleFiles` enum
 - renamed `Classes` to `Services`
 
 #### helpers (old Helpers)
-- exposed the `constants()` method
+- refactored `Obj` to extend `Collection`
+- exposed the `constants()` method in `Enum`
 
 #### history-tracker (old HistoryTracker)
 
@@ -166,6 +167,10 @@ and drops the `VisibleFiles` enum
 - refactored controllers
 - refactored request validators
 - added the organize action - allows drag & drop menu reordering for menus having the same parent
+
+#### multitenancy
+- moved `Connection` enum to `Enums` folder
+- renamed `Classes` to `Services`
 
 #### migrator (part of the old StructureMigration)
 - moved to its own package
@@ -239,6 +244,7 @@ but if you like the old approach better you can recreate the trait locally and u
 
 #### dropdown
 - adds the ability to open the dropdown upwards if the room below is insufficient
+- exposes `triggerEvents`, all the components that use dropdown were updated accordingly
 
 #### forms
 - fixes section slot for tabs

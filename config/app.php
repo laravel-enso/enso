@@ -145,7 +145,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Telescope\TelescopeApplicationServiceProvider::class,
+        LaravelEnso\Files\FileServiceProvider::class,
         /*
          * Application Service Providers...
          */
