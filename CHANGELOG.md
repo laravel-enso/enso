@@ -1,10 +1,6 @@
 ## Laravel Enso's Changelog
 
-### 3.3.0 RC1
-
-## NOTE
-
-We're in the process of testing the upgrade steps...
+### 3.3.0
 
 ## Purpose
 - rename BE repos - when the organization was started we had not really followed 
@@ -264,7 +260,7 @@ which provides the `ioChannel`, `privateChannel` and `pusher` configurations
 ## Upgrade Steps
 - update in `composer.json`
     - `core` to 4.3.*  
-    - `control-panel-api` to `2.2.*`
+    - `control-panel-api` to `2.2.*` (replace controlpanelapi)
     - `examples` to 1.2.* (if needed)
     - remove `laracasts/generators`
 - update in `package.json`
@@ -272,7 +268,7 @@ which provides the `ioChannel`, `privateChannel` and `pusher` configurations
 - run `composer update`
 - run `yarn upgrade && yarn` (if `patch-package` fails, you should update your patches)
 - run `php artisan enso:rename-migrations`     
-- run `php artisan migrate`     
+- run `php artisan migrate`
 - run `php artisan enso:upgrade`
 - update `App\User` with the proper imports/namespaces
 - remove from your route file the `@options` action method for all select controllers that are using the `OptionsBuider` trait
@@ -295,15 +291,16 @@ Use a package like `tutorials` for an example of how this is achieved.
     - update `CommentFactory`
     - update `RoleFactory`
     - update `UserFactory`
+    - update `PersonFactory`
+    - update `CompanyFactory`
     - update `CountrySeeder`
+    - update `LocalitySeeder`
     - update `UserGroupSeeder`
     - update `UserSeeder`
     - update `RoleSeeder`
-    - update `PersonFactory`
-    - update `CompanyFactory`
 
 - search and replace (where applicable)
-    - `LaravelEnso\StructureManager\app\Classes\StructureMigration` => `LaravelEnso\StructureManager\app\Database\Migration`
+    - `LaravelEnso\StructureManager\app\Classes\StructureMigration` => `LaravelEnso\Migrator\app\Database\Migration`
     - ` extends StructureMigration` => ` extends Migration`
     - `LaravelEnso\Charts\app\Classes` => `LaravelEnso\Charts\app\Factories`
     - `LaravelEnso\Charts\app\Classes\BarChart` => `LaravelEnso\Charts\app\Factories\Bar`
@@ -316,23 +313,33 @@ Use a package like `tutorials` for an example of how this is achieved.
     - `LaravelEnso\FileManager\app\Classes\FileManager` => `LaravelEnso\Files\app\Services\Files`
     - `LaravelEnso\Permissions\app\Enums\PermissionTypes` => `LaravelEnso\Permissions\app\Enums\Types`
     - `LaravelEnso\FormBuilder\app\Classes` => `LaravelEnso\Forms\app\Services`
-    - the `UserGroup::Admin` constant has been removed and should be replaced with the `UserGroups::Admin` enum
-    - the `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be 
+    - `LaravelEnso\AddressesManager` => `LaravelEnso\Addresses`
+    - `LaravelEnso\CommentsManager` => `LaravelEnso\Comments`
+    - `LaravelEnso\DocumentsManager` => `LaravelEnso\Documents`
+    - `LaravelEnso\VueDatatable` => `LaravelEnso\Tables`
+    - `LaravelEnso\Tables\app\Classes\Table` => `LaravelEnso\Tables\app\Services\Table`
+    - `LaravelEnso\PermissionManager` =>  `LaravelEnso\Permissions`
+    - `LaravelEnso\RoleManager` => `LaravelEnso\Roles`
+    - `UserGroup::Admin` constant has been removed and should be replaced with the `UserGroups::Admin` enum
+    - `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be 
         replaced with `Roles::Admin`, `Roles::Supervisor`; make sure to import the `LaravelEnso\Roles\app\Enums\Roles` enum
     - since the `Company` model's `scopeTenants` was renamed to `scopeTenant` search for its use and update as needed
     - `LaravelEnso\VueDatatable` with `LaravelEnso\Tables`
     - `LaravelEnso\Tables\app\Classes` with `LaravelEnso\Tables\app\Services`
-- if using/customizing/extending addresses, people or companies (eventually any package), 
-you should switch to leveraging dependency injection  and should bind your local implementations to the 
-package's models, validator classes
-- note that for both Person, Company and Address models the `$guarded` property was replaced with the explicit `$fillable`. 
-If extending any of these models, don't forget to overwrite the `$fillable` property 
+
+- refactor local forms, if required:
+    - local `person.json` template (`company_id` changed to company)
+    - local `company.json` template (`mandatary_id` changed to mandatary)
+
+- if using/customizing/extending addresses, people or companies (eventually any package):
+    - you should switch to leveraging dependency injection and bind your local implementations to the package's models, validator classes
+    - note that for both Person, Company and Address models the `$guarded` property was replaced with the explicit `$fillable`. 
+    - if extending any of these models, don't forget to overwrite the `$fillable` property 
 - if you're using/extending validators, controllers, models from the refactored packages, at minimum, 
 you will need to update your imports
 - update `phpunit.xml` with the one from this repo
 - make sure that in `webpack.mix.js` you don't have `sourceMaps()` for production
-- don't forget to implement Searchable and Files for your required models. 
-You can use `LaravelEnso\Companies\SearchServiceProvider` as example.  
+- don't forget to implement Searchable and Files for your required models. You can use `LaravelEnso\Companies\SearchServiceProvider` as example.  
 
 ### 3.2.3
 - fixes minor bugs
