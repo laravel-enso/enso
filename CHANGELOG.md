@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 3.3.1
+
+- improved forms
+    - added a reusable `Action` component
+    - added visual indicators when a form is dirty or has errors
+    - fixed a bug when constructing the `formData` object
+- fixed all templates where text fields were declared null as default instead of an empty string
+- fixes table's db date format handling. We have now a config option for that
+- fixes examples
+
+When upgrading you should consider refactoring custom form action, if any, using the new `Action` component.
+
 ### 3.3.0
 
 ## Purpose
