@@ -144,6 +144,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Controls
+    |--------------------------------------------------------------------------
+    | Default controls list. Can be overriden in for each table in its own
+    | template
+    |
+     */
+
+    'controls' => ['length', 'columns', 'style', 'reload', 'reset'],
+    /*
+
+    |--------------------------------------------------------------------------
     | Export Settings
     |--------------------------------------------------------------------------
     | Path where the temporary files are stored within storage/app folder; timeout

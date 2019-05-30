@@ -1,5 +1,17 @@
 ## Laravel Enso's Changelog
 
+### 3.3.2
+- adds preview in tables
+- fixes excel export when using filters / sorts / search in tables
+- fixes multiple select filter in tables
+- refactors AddressForm to allow easier customization
+- fixes in CLI controllers / routes / model bindings generation
+- fixes dateinterval filter max value
+- fixes menus treeBuilder to consider only permissions available to the auth user's role
+- fixes other minor bugs
+
+Run `composer update` / `yarn upgrade && yarn` to upgrade existing projects
+
 ### 3.3.1
 
 - improved forms
@@ -332,6 +344,7 @@ Use a package like `tutorials` for an example of how this is achieved.
     - `LaravelEnso\Tables\app\Classes\Table` => `LaravelEnso\Tables\app\Services\Table`
     - `LaravelEnso\PermissionManager` =>  `LaravelEnso\Permissions`
     - `LaravelEnso\RoleManager` => `LaravelEnso\Roles`
+    - `LaravelEnso\FileManager` => `LaravelEnso\Files
     - `UserGroup::Admin` constant has been removed and should be replaced with the `UserGroups::Admin` enum
     - `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be 
         replaced with `Roles::Admin`, `Roles::Supervisor`; make sure to import the `LaravelEnso\Roles\app\Enums\Roles` enum
