@@ -1,5 +1,24 @@
 ## Laravel Enso's Changelog
 
+### 3.3.3
+
+#### ui
+- adds bookmarks store module
+- fixes bookmark focus
+- adds ability to hold state
+
+#### forms
+- enhances the errors & changes control, adding the ability to undo
+- integrates with the new bookmark's state to hold changes
+- adds a fill helper
+- exposes dirty & fill in vue form / enso form
+
+#### general
+- fixes small bugs
+- updates dependencies
+
+Run `composer update` / `yarn upgrade && yarn` to upgrade existing projects
+
 ### 3.3.2
 - adds preview in tables
 - fixes excel export when using filters / sorts / search in tables
