@@ -1,4 +1,41 @@
 ## Laravel Enso's Changelog
+### 3.3.4
+
+#### BE
+
+Bug fixes, small additions & refactors, dependencies updates
+
+##### calendar
+- fixes the request validator and `allowed` scope
+##### data-export
+- fixes contracts import `ExcelExport` service
+##### data-import
+- fixes excel seeder in
+- adds a small refactor in `Template.php`
+##### roles
+- fixes `enso:roles:sync` throwing error when the roles folder was missing
+##### tables
+- fixes multiple select filters in tables
+- fixes `filters` prop parsing
+- fixes interval filters
+- refactors excel export to work with scopes that need the authenticated user
+
+#### FE
+
+##### forms
+- cascades `setOriginal()` helper in `vue-form` and `enso-form`
+##### ui
+- adds a `disable-state` boolean prop for forms that don't need state
+- adds a toaster confirmation when writing role config files
+- adds dot separator support for date format in enso-ui
+##### tables
+- adds payload to postEvents
+- fixes `clickable` on columns hidden due to responsiveness
+##### wysiwyg
+- patches the `Link` extension to open links in new tab / windows
+
+#### Upgrade
+- `composer update && yarn upgrade && yarn`
 
 ### 3.3.3
 
