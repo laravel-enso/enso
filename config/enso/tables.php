@@ -8,7 +8,6 @@ return [
     | This flag sets whether validations are also executed in production
     | or only in local/development.
     | Values: 'always/local/yourEnv...'
-    |
     */
 
     'validations' => 'local',
@@ -17,9 +16,7 @@ return [
     |--------------------------------------------------------------------------
     | Labels used when the drawing a table
     |--------------------------------------------------------------------------
-    |
     | The labels are translated if a localisation function is available
-    |
      */
 
     'labels' => [
@@ -31,11 +28,9 @@ return [
     |--------------------------------------------------------------------------
     | Length menu
     |--------------------------------------------------------------------------
-    |
     | These are the predefined settings for the pagination options. If another
     | set of pagination options is given in a table template, the global
     | configuration is disregarded for that table.
-    |
      */
 
     'lengthMenu' => [
@@ -125,7 +120,6 @@ return [
     |--------------------------------------------------------------------------
     | Style defaults and mapping for your front-end framework. Note: You should
     | set only one align attribute in default list.
-    |
      */
 
     'style' => [
@@ -148,12 +142,11 @@ return [
     |--------------------------------------------------------------------------
     | Default controls list. Can be overriden in for each table in its own
     | template
-    |
      */
 
     'controls' => ['length', 'columns', 'style', 'reload', 'reset'],
-    /*
 
+    /*
     |--------------------------------------------------------------------------
     | Export Settings
     |--------------------------------------------------------------------------
@@ -173,7 +166,6 @@ return [
     | Queues
     |--------------------------------------------------------------------------
     | Specifies the queue for exports generation and for notifications.
-    |
      */
 
     'queues' => [
@@ -187,11 +179,9 @@ return [
     |--------------------------------------------------------------------------
     | Global date format for date columns. Will use Carbon to parse the columns
     | marked as date to the desired format.
-    |
      */
 
     'dateFormat' => 'd-m-Y',
-    'dbDateFormat' => 'Y-m-d H:i:s',
 
     /*
     |--------------------------------------------------------------------------
@@ -208,7 +198,6 @@ return [
     |--------------------------------------------------------------------------
     | Debounce Rate
     |--------------------------------------------------------------------------
-    |
     | Configure the debounce for the serverside requests. Use a higher value for
     | a bigger table.
      */
@@ -219,7 +208,6 @@ return [
     |--------------------------------------------------------------------------
     | Responsive
     |--------------------------------------------------------------------------
-    |
     | Configure if the tables are responsive. The flag can be overriden in
     | each table template
      */
@@ -230,7 +218,6 @@ return [
     |--------------------------------------------------------------------------
     | Method
     |--------------------------------------------------------------------------
-    |
     | If you're working with larger tables sometimes the URI can get too long
     | and you may run in a 414 Exception. This flag allows to globally
     | configure the request method for fetching data.
@@ -242,7 +229,6 @@ return [
     |--------------------------------------------------------------------------
     | Route suffixes
     |--------------------------------------------------------------------------
-    |
     | The route suffix will be the default used for every table. You will still
     | have the option of customizing the suffix for certain tables by using
     | the same attribute in the table's json template.
@@ -254,7 +240,6 @@ return [
     |--------------------------------------------------------------------------
     | SQL comparison operator
     |--------------------------------------------------------------------------
-    |
     | The comparison operator will be the default used for every table. You
     | will still have the option of customizing the operator for certain
     | tables by using the same attribute in the table's json template.

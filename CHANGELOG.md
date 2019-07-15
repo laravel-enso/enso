@@ -1,9 +1,125 @@
 ## Laravel Enso's Changelog
+### 3.3.5
+
+#### front-end
+
+#### accessories
+- adds an `icons` boolean prop to the `Accessories.vue` component
+- improves `Document.vue` for long names
+- adds a `compact` boolean prop for `Comments.vue`
+- adds `disable-state` on `EnsoForm` in `AddressForm`
+
+#### card
+- improves (reduces) card control spacing
+
+#### datepicker
+- adds Ukranian language support
+
+#### filters
+- fixes `IntervalFilter` (now works with `v-model=interval`) & `DateIntervalFilter`
+
+#### forms
+- cascades `fetch()`, `setOriginal()`, `hideTab()`, `showTab()` from the core component
+- adds a `ref="field"` on the used form field component in `FormField.vue`
+- fixes vuex state handling => keeps a copy of the form data
+- automatically hides tabs with empty sections
+
+#### mixins
+- adds a `files.js` mixin
+
+#### select
+- emits an `update` event when a change is made from inside the component
+- fixes `fetch()` cascading from the core component
+- allows multi argument search with highlighting matched
+
+#### tables
+- fixes custom totals
+- adds support for nested attributes
+#### ui
+- fixes `.` (dot) date separator handling
+- adds a `setPageTitle` action in store.js that handles page title & bookmark renaming
+- adds `hideFooter` / `showFooter` mutations in `layout.js` store module
+- extracts `AvatarList.vue` component from `Team.vue`
+- fixes settings bar padding that was causing the appearance of a horizontal scroll in some cases
+
+#### uploader
+- adds a compact option
+
+#### back-end
+
+##### addresses, comments, discussions, documents
+- fixes avatar loading for `TrackWho` resource
+- adds a `MorphOne` relation besides the `MorphsMany`
+- adds `UpdatesOnTouch
+
+##### data-export
+- adds missing imports in `ExcelExport` service
+
+##### data-import
+- changes sheet normalisation from camel case to snake case
+- ignores empty rows on import
+
+##### examples
+- fixes `DateInterval` filter use
+
+##### files
+- fixes avatar loading for `TrackWho` resource
+
+##### helpers
+- adds translation in `EnsoException`
+- adds `AvoidsDeletionConflicts` model trait => reports `ConflictHttpException` when a model cannot be deleted due to DB restrictions
+- adds `MapsRequestKeys` request validator => adds a `mapped()` method to the request validator that maps the keys to snake case
+- adds `UpdatesOnTouch` model that ensure that parent models trigger the `updated` event when using the `protected $touches` property. Does that by rewriting `Model`'s `touchOwners()` method.
+- adds `Decimals` class that exposes a set of static helpers for decimals operations / comparisons using bcmath
+
+##### forms
+- adds `hideSection($fieldName)` / `showSection($fieldName)` & `hideTab($tabName)` / `showTab($tabName)` helpers for the form object
+
+##### io
+- fixes avatar loading for TrackWho
+
+##### people
+- adds missing `position` & `is_main` pivot information on `company()` & `companies()` relations
+
+##### ro-addresses
+- adds county `Options` controller & route
+
+#### roles
+- refactors the `Sync` command
+
+##### select
+- allows multi argument searching
+- adds a `comparisonOperator` option in `select.php` config
+- adds tests
+
+##### tables
+- refactors excel export to work with authenticated user (needed in some scopes)
+- fixes interval filters (both date & non date)
+- implements dependency injection for resolving the table class
+- adds `searchable` ability for relations / nested attributes
+- adds `cents` option in meta that divides totals to 100, if the case
+
+##### teams
+- fixes n+1 query problem when loading resources in index controller
+
+##### track-who
+- refactors resource to enfore correct pre-loading of relations
+
+##### ui
+- fixes enums translations
+
+##### versioning
+- adds a `lockFor($version)` method
+- refactors the trait
+
+#### Upgrade
+- `composer update && yarn upgrade && yarn`
+
 ### 3.3.4
 
-#### BE
-
 Bug fixes, small additions & refactors, dependencies updates
+
+#### BE
 
 ##### calendar
 - fixes the request validator and `allowed` scope
