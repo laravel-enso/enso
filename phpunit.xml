@@ -79,6 +79,9 @@
         <testsuite name="track-who">
             <directory suffix="Test.php">./vendor/laravel-enso/track-who/tests/features</directory>
         </testsuite>
+        <testsuite name="select">
+            <directory suffix="Test.php">./vendor/laravel-enso/select/tests/features</directory>
+        </testsuite>
         <testsuite name="tutorials">
             <directory suffix="Test.php">./vendor/laravel-enso/tutorials/tests/features</directory>
         </testsuite>
