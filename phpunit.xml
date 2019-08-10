@@ -16,6 +16,9 @@
         <testsuite name="action-logger">
             <directory suffix="Test.php">./vendor/laravel-enso/action-logger/tests/features</directory>
         </testsuite>
+        <testsuite name="addresses">
+            <directory suffix="Test.php">./vendor/laravel-enso/addresses/tests/features</directory>
+        </testsuite>
         <testsuite name="avatars">
             <directory suffix="Test.php">./vendor/laravel-enso/avatars/tests/features</directory>
         </testsuite>
@@ -42,6 +45,9 @@
         </testsuite>
         <testsuite name="files">
             <directory suffix="Test.php">./vendor/laravel-enso/files/tests/features</directory>
+        </testsuite>
+        <testsuite name="forms">
+            <directory suffix="Test.php">./vendor/laravel-enso/forms/tests/unit</directory>
         </testsuite>
         <testsuite name="history-tracker">
             <directory suffix="Test.php">./vendor/laravel-enso/history-tracker/tests/features</directory>
@@ -78,6 +84,9 @@
         </testsuite>
         <testsuite name="select">
             <directory suffix="Test.php">./vendor/laravel-enso/select/tests/features</directory>
+        </testsuite>
+        <testsuite name="tables">
+            <directory suffix="Test.php">./vendor/laravel-enso/tables/tests/units</directory>
         </testsuite>
         <testsuite name="track-who">
             <directory suffix="Test.php">./vendor/laravel-enso/track-who/tests/features</directory>

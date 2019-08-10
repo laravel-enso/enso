@@ -36,7 +36,7 @@ return [
     |
      */
 
-    'enabled' => env('TELESCOPE_ENABLED', env('APP_ENV') !== 'testing'),
+    'enabled' => env('TELESCOPE_ENABLED'),
 
     /*
     |--------------------------------------------------------------------------

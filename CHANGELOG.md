@@ -1,4 +1,99 @@
 ## Laravel Enso's Changelog
+
+### 3.3.6
+
+#### front-end
+
+##### datepicker
+- adds support for readonly (acted as disabled before)
+
+##### directives
+- adds `v-long-click` directive; should provide the duration when used (`v-long-click:2000`)
+
+##### forms
+- disables `dirty` monitoring when `disable-state` is used
+- adds `self` to the ready event; now the whole form component can be used as an object from the outside
+
+##### select
+- improves fetching / debouncing strategy
+- adds a `selection` event that returns option objects
+- fixes non string labels highlighing / matching
+- fixed issue with matching when using non-lower case query string
+
+##### tables
+- shrinks default row text to `0.9em`
+- adds support for cents
+- adds support for `searchModes`, `searchMode`
+
+##### ui
+- adds vuecal2 support; the calendar menu is still WiP
+- fixes `numberFormat` filter to always display the specified digits
+- adds support for `font-awesome-layers-text` component; can be accesed under the global `<falt/>`
+- fixes a bug in bookmarks when trying to focus the bookmark before the page was mounted
+- fixes default logo
+
+##### uploader
+- adds `open-file-browser` event
+
+#### back-end
+
+##### addresses
+- adds tests
+
+##### calendar
+- adds reminders; still WiP
+
+##### companies
+- updates the form and table classes to allow easier extenting via service container
+
+##### cli
+- fixes stub for table builder
+
+##### documents
+- return a document resource from `Store.php` controller
+
+##### forms
+- adds tests
+- adds support for `disable-filtering` select option
+
+##### helpers
+- adds `DateAttributes` trait
+- adds `InCents` trait
+
+##### history-tracker
+- rewrites logic that handles tracked attributes
+
+##### localisation
+- fixes routes for `localisation:merge` command
+
+##### people
+- updates the form and table classes to allow easier extenting via service container
+
+##### ro-addresses
+- adds an option resource
+
+##### roles
+- updates `warning` to `warn` in `enso:roles:sync` command
+
+#####  tables
+- adds `searchMode` / `searchModes` to allow full use of table indexing on huge tables
+- adds support for cents
+- adds tests
+- fixes search with multiple arguments on relations
+- fixes max / min filters
+
+##### versioning
+- improves logic
+- fixes error repoting
+- fixes various edge case bugs
+
+#### Upgrade steps
+- `composer update`
+- `php artisan enso:upgrade`
+- `yarn upgrade && yarn`
+
+Enjoy!
+
 ### 3.3.5
 
 #### front-end

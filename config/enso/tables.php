@@ -247,4 +247,26 @@ return [
     */
 
     'comparisonOperator' => 'LIKE',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search Modes
+    |--------------------------------------------------------------------------
+    | Allowed search modes. Array with one ore more possible values
+    | Possible values for search mode: 'full', 'startsWith', 'endsWith'
+    |
+    */
+
+    'searchModes' => ['full', 'startsWith', 'endsWith'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search Mode
+    |--------------------------------------------------------------------------
+    | Controls the global way in which wildcards are used in the query.
+    | Can be customized for each table.
+    | Possible values for search mode: 'full', 'startsWith', 'endsWith'
+    */
+
+    'searchMode' => 'startsWith',
 ];

@@ -7,7 +7,7 @@ after_success:
 language: php
 
 php:
-  - 7.2
+  - 7.3
 
 before_script:
   - cp .env.example .env
@@ -29,7 +29,6 @@ addons:
       - mysql-5.7-trusty
     packages:
       - mysql-server
-      - mysql-client
 
 dist: trusty
 
