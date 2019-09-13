@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use LaravelEnso\Companies\app\Models\Company;
+use LaravelEnso\Companies\app\Enums\CompanyStatuses;
 
 $factory->define(Company::class, function (Faker $faker) {
     return [
@@ -14,5 +15,6 @@ $factory->define(Company::class, function (Faker $faker) {
         'obs' => $faker->sentence,
         'pays_vat' => $faker->boolean,
         'is_tenant' => false,
+        'status' => CompanyStatuses::Active,
     ];
 });

@@ -20,6 +20,9 @@ return [
     // Initial generator class
     'generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
 
+    // Theme implementation
+    'decorator' => \Laravolt\Avatar\Theme\Decorator::class,
+
     // Whether all characters supplied must be replaced with their closest ASCII counterparts
     'ascii' => false,
 
@@ -39,7 +42,7 @@ return [
     'fontSize' => 48,
 
     // convert initial letter in uppercase
-    'uppercase' => false,
+    'uppercase' => true,
 
     // Fonts used to render text.
     // If contains more than one fonts, randomly selected based on name supplied
@@ -78,4 +81,16 @@ return [
         // or any valid hex ('#aabbcc')
         'color' => 'background',
     ],
+
+    // List of theme name to be used when rendering avatar
+    // Possible values are:
+    // 1. Theme name as string: 'colorful'
+    // 2. Or array of string name: ['grayscale-light', 'grayscale-dark']
+    // 3. Or wildcard "*" to use all defined themes
+    'theme' => ['*'],
+
+    // Predefined themes
+    // Available theme attributes are:
+    // shape, chars, backgrounds, foregrounds, fonts, fontSize, width, height, ascii, uppercase, and border.
+    'themes' => []
 ];

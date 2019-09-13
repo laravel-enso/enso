@@ -145,7 +145,7 @@ return [
         /*
          * Package Service Providers...
          */
-        LaravelEnso\Files\FileServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

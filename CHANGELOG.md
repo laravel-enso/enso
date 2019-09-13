@@ -1,4 +1,418 @@
 ## Laravel Enso's Changelog
+### 3.4.0
+
+#### front-end
+
+##### accessories
+- adds permission checks for various document operations
+
+##### filters
+- cascades enso select event handlers in select filter
+- adds a `title` prop to date-filter
+- fixes tooltip in date-filter
+- adds watcher for `default` prop in date-filter
+- fixes horizontal padding in vue-filter
+
+##### forms
+- allows passing `params` in select fields
+- avoids scrollIntoView erorrs (eg when using hidden fields)
+
+##### select
+- adds watcher for `source`
+- no longer fetches on click when the component is readonly / disabled
+- locks selection when params / pivot-params / custom-params are changed until the new list of options is fetched
+- removes `disable-filtering` prop
+- disables front end filtering when using server-side
+
+##### tables
+- improves vResponsive directive
+- refactors dtRowId
+- adds a `FilterState` helper component
+- renames bulma `Controls` component names
+- minor visual refactor
+
+##### typeahead
+- adds route translation in enso-typeahead
+- cascades clear
+- fixes params in dataimport index template
+
+##### ui
+- fixes menu label padding
+- improves tag group template in search, adds horizontal scrolling
+- fixes checkbox alignment in checkbox manager
+
+#### back-end
+
+##### addresses
+- removed superfluous validation
+- removes address observer
+- add laravel-enso/enums
+- improves form extending, removes formTemplate from config
+- adds lat and long fields in form, with custom validation rules
+- renames DefaultAddress controller to SetDefault
+- improves scopeFor to work with morphMap
+- removes deprecated Addresses trait
+
+##### avatars
+- removes redundant method call in default avatar
+- upgrades laravolt/avatars to 3.0
+
+##### calendars
+- adds laravel-enso/enums
+- adds enums service provider for registering calendars
+
+##### charts
+- small refactor
+
+##### cli
+- adds a package option. Now you can generate whole structure boilerplates directly in your `vendor/my-vendor/my-package` folder
+- adds session saving. You can now configure a structure, exit (or encounter an error :P) then come back and continue from where you left
+- adds unit tests
+- adds laravel-enso/enums
+
+##### comments
+- removed superfluous validation
+- small refactor
+
+##### companies
+- implements dependency injection in controllers
+- adds rememberable, avoids deletion conflicts and relations traits to the company model
+- adds laravel-enso/enums
+- improves form for easier customization
+- adds `fiscal_code`, `reg_com_nr` and `status` fields in table migration
+- adds `CompanyStatuses` enum
+- adds a `EnumServiceProvider`
+- removes `companies.php` config file
+- removes default restrictions in Options controller
+- adds fiscal_code to $queryAttributes in Options
+
+##### core
+- adds laravel-enso/enums
+- adds `EnumServiceProvider`
+- fixes email unique validation in user form validation
+- removes duplicate trait use in UserGroup
+- adds rememberable on UserGroup
+- adds rememberable, avoids deletion conflicts and relations traits to User
+- improves user and group form for easier customization
+- removes versionings as a requirement
+- updates `Upgrade` command for 3.4.0
+
+##### data-export
+- adds a chunk option in config for setting the default value
+- updates policies: view, share, destroy
+- upgrades box/spout to 3.0
+- implements the new AuthorizesFileAccess
+
+##### data-import
+- small refactor
+- adds laravel-enso/enums
+- implements AuthorizesFileAccess contract
+- updates policies: view, share, destroy
+- upgrades box/spout to 3.0
+- upgrades 
+
+##### discussions
+- small refactor
+
+##### documents
+- removed superfluous validation
+- updates policies: view, share, destroy
+- implements AuthorizesFileAccess
+
+##### dynamic-methods (new)
+- a set of traits that allow adding methods / relations / mutators / accessors in models from a local service provider
+
+##### enums (new)
+- Enso Enum was moved from laravel-enso/helpers in itw own package
+- has an EnumServiceProvider that allows registering enums that are sent by the app state builder to the front-end. The provider can be extended in any package or locally
+
+##### files
+- greatly improves the authorizan strategy
+- adds AuthorizesFileAccess contract
+- adds an UploadPolicy for view, share and destroy
+
+##### forms
+- removes deprecated `allow-filtering` option from meta
+- adds `params` to meta for select fields
+- allows use of nested attributes
+
+##### helpers
+- adds an optional precision for all methods in Decimals
+- adds floor and ceil to Decimals
+- fixes an edge case bug in Obj's filled method
+- adds DatabaseSeederProgress and SeederProgress traits that allow displaying a progress bar in the seed process
+- updates InCents to do floor on converting in cents
+- removes Enum (now lies in its own package)
+
+##### how-to
+- small refactor
+
+##### io
+- adds laravel-enso/enums
+
+##### localisation
+- small refactor
+- improves form for easier customization
+
+##### menus
+- small refactor
+- improves form for easier customization
+
+##### notifications
+- removes unused vars in notification
+
+##### people
+- improves form for easier customization
+- adds AvoidsDeletionConflicts, Relations, Rememberable on Person
+- adds laravel-enso/enums
+- adds EnumServiceProvider
+- adds bank and bank_account to the table's migration
+- adds uid to $queryAttributes in Option
+- removes people.php config file
+
+##### permissions
+- small refactor
+- improves form for easier customization
+
+##### rememberable
+- cacheGet($id) now return null if the model does not exist in the database
+
+##### roles
+- adds rememberable on Role
+- adds laravel-enso/enums
+- improves form for easier customization
+
+##### searchable
+- casts labels sent to the front-end as strings
+- refactors Finder.php
+- improves the logic in Search.php
+
+##### select
+- refactors the option builder
+
+##### tables
+- small refactor & cleanup of redundant logic
+- refactores filters
+- dtRowId is now configurable and defaults to "id"
+- the box/spout dependency was upgraded to the v3 version
+- adds/uses `laravel-enso/enums`
+- now using the Laravel 6 Arr class instead of the global helpers
+
+##### track-who
+- improves resources logic
+- refactors auth helper into facade
+- fixes updatedByTest
+
+##### teams
+- team now uses rememberable
+
+##### tutorials
+- small refactor
+- improvements to form customization
+- adds/uses `laravel-enso/enums`
+
+##### versions (new)
+- alternative package to versioning where the version is kept on the model vs using a separate table
+
+##### versioning
+- improves flow, optimizes queries, fixes N+1 problem
+- addresses scenario where N+1 queries were being made by using $with
+- renames versioning table to precede all other model migrations
+
+#### Upgrade steps
+
+##### Local project
+
+- update in composer.json
+    - "laravel-enso/control-panel-api": "2.3.*", // optional, if you are using it
+    -"laravel-enso/core": "4.4.*",
+- rename `structuremanager` test suite to `cli` in phpunit.xml
+- remove from the local User.php the Addresses & Documents traits
+- update CompanyFactory the one from the github repo
+- update `enso/exports.php`, `enso/tables.php`, `laravolt/avatar.php` config files with the ones from the github repo
+- delete `enso/people.php` & `enso/companies.php` deprecated configs
+// refactor table & form customisation
+
+##### Laravel 6 file changes
+
+- `bootstrap/app.php`:
+    - update the `$app` variable value
+    ```
+    $app = new Illuminate\Foundation\Application(
+        $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+    );
+    ```
+    - be sure to clear the cache (? `php artisan cache:clear` )
+​
+- `configs/app.php`:
+    - add `'asset_url' => env('ASSET_URL', null),`
+    - add `'faker_locale' => 'en_US',`
+    - add the following aliases to the `aliases` array 
+    ```
+    'Arr' => Illuminate\Support\Arr::class,
+    'Str' => Illuminate\Support\Str::class,
+    ```
+​
+- `configs/auth.php`:
+    - add the following value to `guards.api` configuration array: `'hash' => false,`
+​
+- `configs/broadcasting.php`
+    - replace `'encrypted' => true,` with `'useTLS' => true,` in the `connections.pusher.options` configuration array
+​
+- `configs/cache.php`
+    - add the dynamodb configuration to the `stores` configuration array
+    ```
+    'dynamodb' => [
+        'driver' => 'dynamodb',
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+        'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+        'endpoint' => env('DYNAMODB_ENDPOINT'),
+    ],
+    ```
+    - update the `prefix` value with `env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),`; Remember to import `Str` (Illuminate\Support\Str) class.
+​
+- `configs/database.php`
+    - add the following values to the `connections.sqlite` configuration array: 
+    ```
+    'url' => env('DATABASE_URL'),
+    'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+    ```
+    - add the following values to the `connections.mysql` configuration array:
+    ```
+    'url' => env('DATABASE_URL'),
+    'prefix_indexes' => true,
+    'options' => extension_loaded('pdo_mysql') ? array_filter([
+        PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+    ]) : [],
+    ```
+    - add the following values to the `connections.pgsql` configuration array: 
+    ```
+    'url' => env('DATABASE_URL'),
+    'prefix_indexes' => true,
+    ```
+    - add the following values to the `connections.sqlsrv` configuration array: 
+    ```
+    'url' => env('DATABASE_URL'),
+    'prefix_indexes' => true,
+    ```
+    - the entire `redis` configuration array should be updated:
+    ```
+    'redis' => [
+            'client' => env('REDIS_CLIENT', 'phpredis'),
+            'options' => [
+                'cluster' => env('REDIS_CLUSTER', 'redis'),
+                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            ],
+            'cache' => [
+                'url' => env('REDIS_URL'),
+                ...
+            ],
+            'queues' => [
+                'url' => env('REDIS_URL'),
+                ...
+            ],
+            'horizon' => [
+                'url' => env('REDIS_URL'),
+                ...
+            ],
+    ```
+- `configs/filesystems.php`
+    - the following key values should be updated for the  `disks.s3` configuration array:
+    ```
+    'key' => env('AWS_ACCESS_KEY_ID'),
+    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+    'region' => env('AWS_DEFAULT_REGION'),
+    ```
+       Note that the AWS configuration keys have changed and should be updated within the env file as well.
+​
+- `configs/logging.php`
+    - for the `channels.stack` configuration array: 
+        - add the following value `'ignore_exceptions' => false,`
+        - update `channels` to `'channels' => ['daily'],`
+    - update the `channels.daily` value to `'days' => 14,`
+    - add the new `papertrail` value to the `channels` configuration array: 
+    ```
+    'papertrail' => [
+        'driver' => 'monolog',
+        'level' => 'debug',
+        'handler' => SyslogUdpHandler::class,
+        'handler_with' => [
+            'host' => env('PAPERTRAIL_URL'),
+            'port' => env('PAPERTRAIL_PORT'),
+        ],
+    ],
+    ```
+    - add the new `formatter` value to the `channels.stderr` configuration array: `'formatter' => env('LOG_STDERR_FORMATTER'),`
+​
+- `configs/mail.php`
+    - add the following value: `'log_channel' => env('MAIL_LOG_CHANNEL'),`
+​
+- `configs/queue.php`
+    - add the following value to the `connections.beanstalkd` configuration array: `'block_for' => 0,`
+    - add the following values to the `connections.sqs` configuration array: 
+    ```
+    'key' => env('AWS_ACCESS_KEY_ID'),
+    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+    'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+    'queue' => env('SQS_QUEUE', 'your-queue-name'),
+    'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ```
+- `configs/services.php`
+    - add the following value to the `mailgun` configuration array:: `'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),`
+    - add the `postmark` configuration:
+    ```
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
+    ```
+    - update the `ses` configuration:
+    ```
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+    ```
+    - remove the `stripe` and `sparkpost` configurations
+- `configs/session.php`
+    - update the `cookie` configuration array:
+    ```
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+    ),
+    ```
+    Be sure to also import the `Str` class.
+- `configs/view.php`
+    - update the `compiled` configuration array:
+    ```
+    'compiled' => env(
+        'VIEW_COMPILED_PATH',
+        realpath(storage_path('framework/views'))
+    ),
+    ```
+​
+- `resources/lang/en/validation.php`
+
+    The following translation keys and their values have to be added:
+    - 'date_equals'
+    - 'ends_with'
+    - 'gt'
+    - 'gte'
+    - 'lt'
+    - 'lte'
+    - 'not_regex'
+    - 'starts_wit'
+    - 'uuid'
+
+- `tests/Bootstrap.php` file was added.​
+
+- `app/Kernel.php`
+   - the `ThrottleRequests` middileware was added to the `$middlewarePriority` variable.
+
+- `.env` has some
 
 ### 3.3.6
 
@@ -19,6 +433,7 @@
 - adds a `selection` event that returns option objects
 - fixes non string labels highlighing / matching
 - fixed issue with matching when using non-lower case query string
+- fixes issue with highlighting special chars
 
 ##### tables
 - shrinks default row text to `0.9em`
@@ -870,7 +1285,7 @@ To upgrade:
 - search the whole frontend by `-field` and replace all the specific fields with `form-field` in custom forms. Don't forget to also import `FormField.vue` from the same location.
 - `composer update && yarn install && yarn upgrade`
 - `php artisan migrate`
-- publish the calendar config and provider if you need customisations (will be documented in the near future)
+- publish the calendar config and provider if you need customizations (will be documented in the near future)
 - `yarn dev`
 
 ### 3.0.3

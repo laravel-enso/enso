@@ -14,6 +14,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Default id attribute
+    |--------------------------------------------------------------------------
+    | Model's id attribute used internally by the table component. Needed for
+    | routing and actions
+     */
+
+    'dtRowId' => 'id',
+
+    /*
+    |--------------------------------------------------------------------------
     | Labels used when the drawing a table
     |--------------------------------------------------------------------------
     | The labels are translated if a localisation function is available
