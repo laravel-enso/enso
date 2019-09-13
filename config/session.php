@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Str;
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -11,7 +14,7 @@ return [
     | you may specify any of the other wonderful drivers provided here.
     |
     | Supported: "file", "cookie", "database", "apc",
-    |            "memcached", "redis", "array"
+    |            "memcached", "redis", "dynamodb", "array"
     |
     */
 
@@ -89,9 +92,9 @@ return [
     | Session Cache Store
     |--------------------------------------------------------------------------
     |
-    | When using the "apc" or "memcached" session drivers, you may specify a
-    | cache store that should be used for these sessions. This value must
-    | correspond with one of the application's configured cache stores.
+    | When using the "apc", "memcached", or "dynamodb" session drivers you may
+    | list a cache store that should be used for these sessions. This value
+    | must match with one of the application's configured cache "stores".
     |
     */
 
@@ -123,7 +126,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
     ),
 
     /*
@@ -192,4 +195,5 @@ return [
     */
 
     'same_site' => null,
+
 ];
