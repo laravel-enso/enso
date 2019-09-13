@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f65887d02c76e355a047aa87827635c",
+    "content-hash": "a1572f191711eaaf000c9f421473e76b",
     "packages": [
         {
             "name": "box/spout",
@@ -1472,16 +1472,16 @@
         },
         {
             "name": "laravel-enso/avatars",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/avatars.git",
-                "reference": "3b8ae6aee1c50fc2a17f654ecf030b3704a48746"
+                "reference": "cba70b5bdab49423a5707b4e0723043cb5915564"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/3b8ae6aee1c50fc2a17f654ecf030b3704a48746",
-                "reference": "3b8ae6aee1c50fc2a17f654ecf030b3704a48746",
+                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/cba70b5bdab49423a5707b4e0723043cb5915564",
+                "reference": "cba70b5bdab49423a5707b4e0723043cb5915564",
                 "shasum": ""
             },
             "require": {
@@ -1527,7 +1527,7 @@
                 "avatars",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T14:56:22+00:00"
+            "time": "2019-09-12T08:41:21+00:00"
         },
         {
             "name": "laravel-enso/calendar",
@@ -1820,16 +1820,16 @@
         },
         {
             "name": "laravel-enso/control-panel-api",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/control-panel-api.git",
-                "reference": "23c9ac7dcab59b73a2b4f188cca3b3913b73113a"
+                "reference": "db6b4db02077b02a69a78da6bd1d0288f83b71a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/23c9ac7dcab59b73a2b4f188cca3b3913b73113a",
-                "reference": "23c9ac7dcab59b73a2b4f188cca3b3913b73113a",
+                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/db6b4db02077b02a69a78da6bd1d0288f83b71a9",
+                "reference": "db6b4db02077b02a69a78da6bd1d0288f83b71a9",
                 "shasum": ""
             },
             "require": {
@@ -1877,20 +1877,20 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T16:01:04+00:00"
+            "time": "2019-09-11T15:50:23+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.4.1",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "d3bd75e8e3c2c1305e9974ed87bef403de110187"
+                "reference": "8886963fdfad8b281456caea4f2afe8825a715d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/d3bd75e8e3c2c1305e9974ed87bef403de110187",
-                "reference": "d3bd75e8e3c2c1305e9974ed87bef403de110187",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/8886963fdfad8b281456caea4f2afe8825a715d1",
+                "reference": "8886963fdfad8b281456caea4f2afe8825a715d1",
                 "shasum": ""
             },
             "require": {
@@ -1930,7 +1930,6 @@
                 "laravel-enso/teams": "2.1.*",
                 "laravel-enso/track-who": "1.8.*",
                 "laravel-enso/tutorials": "3.2.*",
-                "laravel-enso/versioning": "1.3.*",
                 "laravel/framework": "6.0.*"
             },
             "type": "library",
@@ -1981,20 +1980,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-09-11T14:26:32+00:00"
+            "time": "2019-09-13T14:17:50+00:00"
         },
         {
             "name": "laravel-enso/data-export",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-export.git",
-                "reference": "57186d496cce20d8cb581946ac6df18d7cace32f"
+                "reference": "88b292cdd98f4395328eb08df1ff421c6771af95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/57186d496cce20d8cb581946ac6df18d7cace32f",
-                "reference": "57186d496cce20d8cb581946ac6df18d7cace32f",
+                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/88b292cdd98f4395328eb08df1ff421c6771af95",
+                "reference": "88b292cdd98f4395328eb08df1ff421c6771af95",
                 "shasum": ""
             },
             "require": {
@@ -2039,20 +2038,20 @@
                 "enso-exports",
                 "laravel-enso"
             ],
-            "time": "2019-09-11T05:56:36+00:00"
+            "time": "2019-09-13T09:10:10+00:00"
         },
         {
             "name": "laravel-enso/data-import",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-import.git",
-                "reference": "da613b63533db2a186edc64c875f9456897135b0"
+                "reference": "21d26c290414987466ed70be56da2701fc4d0712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/da613b63533db2a186edc64c875f9456897135b0",
-                "reference": "da613b63533db2a186edc64c875f9456897135b0",
+                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/21d26c290414987466ed70be56da2701fc4d0712",
+                "reference": "21d26c290414987466ed70be56da2701fc4d0712",
                 "shasum": ""
             },
             "require": {
@@ -2107,7 +2106,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2019-09-11T06:05:46+00:00"
+            "time": "2019-09-13T09:10:27+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -2167,16 +2166,16 @@
         },
         {
             "name": "laravel-enso/documents",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "ab9a2bcaffa358301a6247adaa34b14773d3c103"
+                "reference": "d2543a6b708a4f3fe892e77af47be1f0d849fcb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/ab9a2bcaffa358301a6247adaa34b14773d3c103",
-                "reference": "ab9a2bcaffa358301a6247adaa34b14773d3c103",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/d2543a6b708a4f3fe892e77af47be1f0d849fcb0",
+                "reference": "d2543a6b708a4f3fe892e77af47be1f0d849fcb0",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2222,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T15:29:16+00:00"
+            "time": "2019-09-13T09:11:48+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
@@ -2383,16 +2382,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "b7aec61e92d8d75faa4a60b25bb7df059b86a475"
+                "reference": "0a6b8264badebf25ca6ad096c55c09bacf9461d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/b7aec61e92d8d75faa4a60b25bb7df059b86a475",
-                "reference": "b7aec61e92d8d75faa4a60b25bb7df059b86a475",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/0a6b8264badebf25ca6ad096c55c09bacf9461d0",
+                "reference": "0a6b8264badebf25ca6ad096c55c09bacf9461d0",
                 "shasum": ""
             },
             "require": {
@@ -2441,20 +2440,20 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T15:29:58+00:00"
+            "time": "2019-09-13T09:11:18+00:00"
         },
         {
             "name": "laravel-enso/forms",
-            "version": "3.2.0",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "eea3e9b9243af7e0c80965483f1b8c9fef6faadd"
+                "reference": "30e1e6787a465e765ed2f6d88800e5ab64b009df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/eea3e9b9243af7e0c80965483f1b8c9fef6faadd",
-                "reference": "eea3e9b9243af7e0c80965483f1b8c9fef6faadd",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/30e1e6787a465e765ed2f6d88800e5ab64b009df",
+                "reference": "30e1e6787a465e765ed2f6d88800e5ab64b009df",
                 "shasum": ""
             },
             "require": {
@@ -2495,7 +2494,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T14:59:41+00:00"
+            "time": "2019-09-13T09:46:47+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -2807,16 +2806,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.3.0",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "033d5687231c5f18a6e10a62841712c3dc36072d"
+                "reference": "88608d407ff35044a2aedfb2b1a9b5fe3c551fed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/033d5687231c5f18a6e10a62841712c3dc36072d",
-                "reference": "033d5687231c5f18a6e10a62841712c3dc36072d",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/88608d407ff35044a2aedfb2b1a9b5fe3c551fed",
+                "reference": "88608d407ff35044a2aedfb2b1a9b5fe3c551fed",
                 "shasum": ""
             },
             "require": {
@@ -2861,7 +2860,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2019-09-11T07:01:21+00:00"
+            "time": "2019-09-13T14:14:54+00:00"
         },
         {
             "name": "laravel-enso/logs",
@@ -3312,16 +3311,16 @@
         },
         {
             "name": "laravel-enso/roles",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/roles.git",
-                "reference": "3e80a2cb3e08ddb6ed1428726be368564945d6a9"
+                "reference": "45db41a8c9be18512d46805a5b24e49b82d9f808"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/3e80a2cb3e08ddb6ed1428726be368564945d6a9",
-                "reference": "3e80a2cb3e08ddb6ed1428726be368564945d6a9",
+                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/45db41a8c9be18512d46805a5b24e49b82d9f808",
+                "reference": "45db41a8c9be18512d46805a5b24e49b82d9f808",
                 "shasum": ""
             },
             "require": {
@@ -3371,7 +3370,7 @@
                 "role-manager",
                 "roles"
             ],
-            "time": "2019-09-11T12:19:00+00:00"
+            "time": "2019-09-13T13:27:15+00:00"
         },
         {
             "name": "laravel-enso/searchable",
@@ -3484,16 +3483,16 @@
         },
         {
             "name": "laravel-enso/tables",
-            "version": "2.2.1",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "158b3f18bb69db68a510b15cd23d8ac39a724ea4"
+                "reference": "355fdc7ef0ed524dd2cbaae9823978f29ec49b6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/158b3f18bb69db68a510b15cd23d8ac39a724ea4",
-                "reference": "158b3f18bb69db68a510b15cd23d8ac39a724ea4",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/355fdc7ef0ed524dd2cbaae9823978f29ec49b6e",
+                "reference": "355fdc7ef0ed524dd2cbaae9823978f29ec49b6e",
                 "shasum": ""
             },
             "require": {
@@ -3536,7 +3535,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-09-11T14:36:28+00:00"
+            "time": "2019-09-13T14:07:48+00:00"
         },
         {
             "name": "laravel-enso/teams",
@@ -3701,70 +3700,17 @@
             "time": "2019-09-11T07:59:11+00:00"
         },
         {
-            "name": "laravel-enso/versioning",
-            "version": "1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-enso/versioning.git",
-                "reference": "c8207741f99d6f9f47b51b9197766f5901a3cf67"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/versioning/zipball/c8207741f99d6f9f47b51b9197766f5901a3cf67",
-                "reference": "c8207741f99d6f9f47b51b9197766f5901a3cf67",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelEnso\\Versioning\\AppServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelEnso\\Versioning\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Ocneanu",
-                    "email": "aocneanu@gmail.com",
-                    "homepage": "https://laravel-enso.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Prevents update conflicts using the optimistic lock pattern in Laravel",
-            "homepage": "https://github.com/laravel-enso/versioning",
-            "keywords": [
-                "laravel-enso",
-                "optimistic-lock",
-                "trait",
-                "versioning"
-            ],
-            "time": "2019-09-11T12:08:14+00:00"
-        },
-        {
             "name": "laravel/framework",
-            "version": "v6.0.0",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "89c81d4dc37714d82521d05dc003b26b2a86defc"
+                "reference": "56789e9dec750e0fbe8e9e6ae90a01a4e6887902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/89c81d4dc37714d82521d05dc003b26b2a86defc",
-                "reference": "89c81d4dc37714d82521d05dc003b26b2a86defc",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/56789e9dec750e0fbe8e9e6ae90a01a4e6887902",
+                "reference": "56789e9dec750e0fbe8e9e6ae90a01a4e6887902",
                 "shasum": ""
             },
             "require": {
@@ -3861,8 +3807,8 @@
                 "moontoast/math": "Required to use ordered UUIDs (^1.1).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^3.0).",
-                "symfony/cache": "Required to PSR-6 cache bridge (^4.3).",
-                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.1).",
+                "symfony/cache": "Required to PSR-6 cache bridge (^4.3.4).",
+                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.2).",
                 "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
             },
             "type": "library",
@@ -3896,7 +3842,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-09-03T13:09:57+00:00"
+            "time": "2019-09-10T18:46:24+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -4648,16 +4594,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.10.1",
+            "version": "v1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "5115fa44886d1c2785d2f135ef4626db868eac4b"
+                "reference": "a9f968bc99485f85f9303a8524c3485a7e87bc15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/5115fa44886d1c2785d2f135ef4626db868eac4b",
-                "reference": "5115fa44886d1c2785d2f135ef4626db868eac4b",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/a9f968bc99485f85f9303a8524c3485a7e87bc15",
+                "reference": "a9f968bc99485f85f9303a8524c3485a7e87bc15",
                 "shasum": ""
             },
             "require": {
@@ -4726,7 +4672,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2019-07-12T16:36:59+00:00"
+            "time": "2019-09-12T12:05:58+00:00"
         },
         {
             "name": "php-http/client-common",
@@ -8759,16 +8705,16 @@
         },
         {
             "name": "nette/finder",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2"
+                "reference": "14164e1ddd69e9c5f627ff82a10874b3f5bba5fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/6be1b83ea68ac558aff189d640abe242e0306fe2",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2",
+                "url": "https://api.github.com/repos/nette/finder/zipball/14164e1ddd69e9c5f627ff82a10874b3f5bba5fe",
+                "reference": "14164e1ddd69e9c5f627ff82a10874b3f5bba5fe",
                 "shasum": ""
             },
             "require": {
@@ -8809,7 +8755,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -8817,7 +8763,7 @@
                 "iterator",
                 "nette"
             ],
-            "time": "2019-02-28T18:13:25+00:00"
+            "time": "2019-07-11T18:02:17+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -9300,35 +9246,33 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
+                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
-                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/63a995caa1ca9e5590304cd845c15ad6d482a62a",
+                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.6"
+                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src"
-                    ]
+                    "phpDocumentor\\Reflection\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9350,30 +9294,30 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2017-09-11T18:02:19+00:00"
+            "time": "2018-08-07T13:53:10+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c"
+                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
-                "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
+                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "phpdocumentor/reflection-common": "^1.0.0",
-                "phpdocumentor/type-resolver": "^0.4.0",
+                "phpdocumentor/reflection-common": "^1.0.0 || ^2.0.0",
+                "phpdocumentor/type-resolver": "~0.4 || ^1.0.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
-                "doctrine/instantiator": "~1.0.5",
+                "doctrine/instantiator": "^1.0.5",
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^6.4"
             },
@@ -9401,41 +9345,40 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2019-04-30T17:48:53+00:00"
+            "time": "2019-09-12T14:27:41+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.4.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
+                "reference": "2e32a6d48972b2c1976ed5d8967145b6cec4a4a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/2e32a6d48972b2c1976ed5d8967145b6cec4a4a9",
+                "reference": "2e32a6d48972b2c1976ed5d8967145b6cec4a4a9",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
-                "phpdocumentor/reflection-common": "^1.0"
+                "php": "^7.1",
+                "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^5.2||^4.8.24"
+                "ext-tokenizer": "^7.1",
+                "mockery/mockery": "~1",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
+                    "phpDocumentor\\Reflection\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9448,7 +9391,8 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2017-07-14T14:27:02+00:00"
+            "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
+            "time": "2019-08-22T18:11:29+00:00"
         },
         {
             "name": "phploc/phploc",

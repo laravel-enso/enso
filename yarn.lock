@@ -688,9 +688,9 @@
     vuex "^3.0.0"
 
 "@enso-ui/accessories@~1.1.0":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.3.tgz#01f64832e4b28aa2851e03701d93f92a35ad73ba"
-  integrity sha512-E7nnczBXaYE4CcrtMACtpQ4L9mZr3BA8pB8ueCx4JhmWNMYoLdU7u/wvWb911+KppqyoFdxm2R45utVT6y7uHA==
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.4.tgz#02815af09fb6d495f1860c9b501e44e5f4e178f7"
+  integrity sha512-dq8OMmF8vFsIYmNGIhQoLVszPTzbJeWZ+sLVTzLuQzHA0TqmFeuWJCLEVLXP9tE+VrclgzyfZF4OS/K5DEQz4A==
   dependencies:
     "@enso-ui/card" "^1.0.0"
     "@enso-ui/confirmation" "^1.0.0"
@@ -716,9 +716,9 @@
     vuex "^3.0.0"
 
 "@enso-ui/bulma@~1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/bulma/-/bulma-1.1.1.tgz#6b0a35b32e2ddc3ba088c2cb1f81942211ab7f1d"
-  integrity sha512-73az+J8J/dRQTmSgH+pBOhEbSGx2bBQzKGnoWfJfEjOXwHAbB1ANuWZmZJiEikbT7c7sQpuH5oPEb0/CxKEslg==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@enso-ui/bulma/-/bulma-1.1.2.tgz#265065fb780259e44befc3f1385dd12f43b2e094"
+  integrity sha512-AyhrUSE3lpbRnJrZKjUPRb06c0bv62O1Ax0SC/F9zyCwB5HQykZM1iGpI1PFcU+IzNLZQlSBqJxLf3VM4VT5xA==
   dependencies:
     "@enso-ui/accessories" "~1.1.0"
     "@enso-ui/card" "^1.0.0"
@@ -854,9 +854,9 @@
     vuex "^3.0.0"
 
 "@enso-ui/forms@^1.0.0", "@enso-ui/forms@~1.2.0":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/forms/-/forms-1.2.1.tgz#4623e7cea636db7fdd08f9e2aad3c802db091a3a"
-  integrity sha512-pOPglUcv/1mpFSYKFT2gAo2CeAtW5GUuWH9O8cgjB3s5t+19WrPeqVgm6GDNqxvzQSeA4Gxo3KxUGkecUlhu8A==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@enso-ui/forms/-/forms-1.2.2.tgz#e74a5a726be8f93040a1722854d9b7b866b64042"
+  integrity sha512-yV4ZZDZuitjb5tQPzYGHa5eNA8HpPxjxGRC7xP7Q5k6EH+3or5ihSXt7pNM0UJ/L9FY9/HHSSTBSOmaYY0EueA==
   dependencies:
     "@enso-ui/datepicker" "~1.0.5"
     "@enso-ui/directives" "~1.0.1"
@@ -995,9 +995,9 @@
     vue "^2.5.16"
 
 "@enso-ui/tables@~1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-1.1.0.tgz#91f051f5fc9067cfb9d467b2420513a77faa37e2"
-  integrity sha512-nUD44+6w7/oUjij2ryV+j2zH4xgEQQZ26Xe8OSnhvqwKIA0bHbrhWZynslhl/gA2wh1YCMQ8OXuvhxCznlq5Ow==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-1.1.1.tgz#b5c9a8293eeca42b50d527b8cfbcf61781629d74"
+  integrity sha512-8akgqzLBzqK99oldNAA9/0Ai7biNuaTnWyM+/kcmPqZAPL7pm566YvM0QUELUJk8wOte+Qoq4eflbcIPbmWFsQ==
   dependencies:
     "@enso-ui/directives" "^1.0.4"
     "@enso-ui/dropdown" "^1.0.15"
@@ -1069,15 +1069,16 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@~1.4.0":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.4.1.tgz#a53dc32995321aa9b9b9c323cfdb4b43581661aa"
-  integrity sha512-H408CUNRhlzwGzzDdEru87EBCfJeQnySccil+ovN7Rhih9QxSDnYsI8koT0/Y8KP5AWdsa9zxtt+6qn+dkm8Nw==
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.4.5.tgz#a97e588a15d7368b57ae4b8a9ff9d92ebb1360fd"
+  integrity sha512-/vH5vL97pjkIthFKzUmc9NcVQjgQkQFZ0/Wkcead6tG5o/wQRAamHKEfCnSvx0wlFac3Tsxo22zXqCiAfQpWbg==
   dependencies:
     "@enso-ui/accessories" "~1.1.0"
     "@enso-ui/bulma" "~1.1.0"
     "@enso-ui/directives" "^1.0.0"
     "@enso-ui/forms" "~1.2.0"
     "@enso-ui/mixins" "^1.0.0"
+    "@enso-ui/modal" "^1.0.0"
     "@enso-ui/tables" "~1.1.0"
     "@enso-ui/transitions" "^1.0.0"
     "@enso-ui/typeahead" "~1.1.0"

@@ -1,6 +1,9 @@
 ## Laravel Enso's Changelog
 ### 3.4.0
 
+## IMPORTANT
+**We're still testing the new version so don't upgrade your production projects yet.**
+
 #### front-end
 
 ##### accessories
@@ -151,7 +154,8 @@
 - adds laravel-enso/enums
 
 ##### localisation
-- small refactor
+- refactors the `localisation` key to `language`
+- renamed form & table (builders & templates)
 - improves form for easier customization
 
 ##### menus
@@ -196,7 +200,8 @@
 - dtRowId is now configurable and defaults to "id"
 - the box/spout dependency was upgraded to the v3 version
 - adds/uses `laravel-enso/enums`
-- now using the Laravel 6 Arr class instead of the global helpers
+- now uses the Laravel 6 Arr class instead of the global helpers
+- adds `model` prop in template for customizing the model
 
 ##### track-who
 - improves resources logic
@@ -231,7 +236,12 @@
 - update CompanyFactory the one from the github repo
 - update `enso/exports.php`, `enso/tables.php`, `laravolt/avatar.php` config files with the ones from the github repo
 - delete `enso/people.php` & `enso/companies.php` deprecated configs
-// refactor table & form customisation
+- make sure to refactor any customisation to people / companies form or tables using dependency injection / binding in AppServiceProvider. The old methods with configs was removed
+- search and replace `LaravelEnso\Helpers\app\Classes\Enum` => `LaravelEnso\Enums\app\Services\Enum`
+- either refactor all table builders to drop the dtRowId alias in favour of id, or add in the local table templates `"dtRowId": "dtRowId"`
+- refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
+- if you are currently usin versioning add in your composer.json under `require` this package since it was removed as a dependency from core
+- run `php enso:upgrade`
 
 ##### Laravel 6 file changes
 
@@ -300,23 +310,11 @@
     - the entire `redis` configuration array should be updated:
     ```
     'redis' => [
-            'client' => env('REDIS_CLIENT', 'phpredis'),
-            'options' => [
-                'cluster' => env('REDIS_CLUSTER', 'redis'),
-                'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-            ],
-            'cache' => [
-                'url' => env('REDIS_URL'),
-                ...
-            ],
-            'queues' => [
-                'url' => env('REDIS_URL'),
-                ...
-            ],
-            'horizon' => [
-                'url' => env('REDIS_URL'),
-                ...
-            ],
+        'client' => env('REDIS_CLIENT', 'predis'),
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
     ```
 - `configs/filesystems.php`
     - the following key values should be updated for the  `disks.s3` configuration array:
@@ -330,7 +328,7 @@
 - `configs/logging.php`
     - for the `channels.stack` configuration array: 
         - add the following value `'ignore_exceptions' => false,`
-        - update `channels` to `'channels' => ['daily'],`
+        - update `channels` to `'channels' => ['single'],` // or 'daily'
     - update the `channels.daily` value to `'days' => 14,`
     - add the new `papertrail` value to the `channels` configuration array: 
     ```
@@ -412,7 +410,8 @@
 - `app/Kernel.php`
    - the `ThrottleRequests` middileware was added to the `$middlewarePriority` variable.
 
-- `.env` has some
+- `.env`
+    - add if necessary `MAILGUN_ENDPOINT=api.eu.mailgun.net`
 
 ### 3.3.6
 
