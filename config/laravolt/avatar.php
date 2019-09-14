@@ -92,5 +92,5 @@ return [
     // Predefined themes
     // Available theme attributes are:
     // shape, chars, backgrounds, foregrounds, fonts, fontSize, width, height, ascii, uppercase, and border.
-    'themes' => []
+    'themes' => [],
 ];

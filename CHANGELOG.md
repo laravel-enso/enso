@@ -37,12 +37,12 @@
 ##### typeahead
 - adds route translation in enso-typeahead
 - cascades clear
-- fixes params in dataimport index template
 
 ##### ui
 - fixes menu label padding
 - improves tag group template in search, adds horizontal scrolling
 - fixes checkbox alignment in checkbox manager
+- fixes params in dataimport index template
 
 #### back-end
 
@@ -108,6 +108,7 @@
 
 ##### data-import
 - small refactor
+- updates contracts (beforehook, importable, afterhook) to receive the authenticated user as well
 - adds laravel-enso/enums
 - implements AuthorizesFileAccess contract
 - updates policies: view, share, destroy
@@ -240,6 +241,7 @@
 - search and replace `LaravelEnso\Helpers\app\Classes\Enum` => `LaravelEnso\Enums\app\Services\Enum`
 - either refactor all table builders to drop the dtRowId alias in favour of id, or add in the local table templates `"dtRowId": "dtRowId"`
 - refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
+- refactor all importers and make sure the user is added within the parameters as specified in the beforehook, importable and afterhook contracts
 - if you are currently usin versioning add in your composer.json under `require` this package since it was removed as a dependency from core
 - run `php enso:upgrade`
 

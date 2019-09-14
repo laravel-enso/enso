@@ -1,13 +1,20 @@
-script:
-  - vendor/bin/phpunit
-
-after_success:
-  - chmod +x ./.deploy.sh; ./.deploy.sh
-
+dist: xenial
 language: php
 
-php:
-  - 7.3
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.3
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'create database enso;'
 
 before_script:
   - cp .env.example .env
@@ -16,20 +23,9 @@ before_script:
   - php artisan key:generate
   - php artisan migrate
 
+script: vendor/bin/phpunit
 
-before_install:
-  - mysql -e 'create database enso;'
-
-services:
-  - mysql
-
-addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
-
-dist: trusty
+after_success:
+  - chmod +x ./.deploy.sh; ./.deploy.sh
 
 sudo: required
