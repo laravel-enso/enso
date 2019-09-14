@@ -11,9 +11,10 @@
 
 ##### filters
 - cascades enso select event handlers in select filter
+- adds v-model to date filter, with value required
 - adds a `title` prop to date-filter
 - fixes tooltip in date-filter
-- adds watcher for `default` prop in date-filter
+- adds watcher for `value` prop in date-filter
 - fixes horizontal padding in vue-filter
 
 ##### forms
@@ -242,6 +243,7 @@
 - either refactor all table builders to drop the dtRowId alias in favour of id, or add in the local table templates `"dtRowId": "dtRowId"`
 - refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
 - refactor all importers and make sure the user is added within the parameters as specified in the beforehook, importable and afterhook contracts
+- add a value to all date-filter or enso-date-filter component use
 - if you are currently usin versioning add in your composer.json under `require` this package since it was removed as a dependency from core
 - run `php enso:upgrade`
 
