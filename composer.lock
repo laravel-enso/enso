@@ -1354,16 +1354,16 @@
         },
         {
             "name": "laravel-enso/activity-log",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/activity-log.git",
-                "reference": "4bd9f931c8bea0fde4c2b35c8166e4995cb16104"
+                "reference": "e76a3acf4e5b470882dca88c601a4c665186fa98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/4bd9f931c8bea0fde4c2b35c8166e4995cb16104",
-                "reference": "4bd9f931c8bea0fde4c2b35c8166e4995cb16104",
+                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/e76a3acf4e5b470882dca88c601a4c665186fa98",
+                "reference": "e76a3acf4e5b470882dca88c601a4c665186fa98",
                 "shasum": ""
             },
             "require": {
@@ -1406,7 +1406,7 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2019-09-14T08:25:58+00:00"
+            "time": "2019-09-14T11:04:57+00:00"
         },
         {
             "name": "laravel-enso/addresses",
@@ -3374,16 +3374,16 @@
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/searchable.git",
-                "reference": "c8a17c5f405f857cfefb54766b134cd27d075ef2"
+                "reference": "19d003fd8c0ab54e6117405b8c73225d4dffdf6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/c8a17c5f405f857cfefb54766b134cd27d075ef2",
-                "reference": "c8a17c5f405f857cfefb54766b134cd27d075ef2",
+                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/19d003fd8c0ab54e6117405b8c73225d4dffdf6e",
+                "reference": "19d003fd8c0ab54e6117405b8c73225d4dffdf6e",
                 "shasum": ""
             },
             "require": {
@@ -3426,7 +3426,7 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2019-09-11T07:25:34+00:00"
+            "time": "2019-09-14T11:04:39+00:00"
         },
         {
             "name": "laravel-enso/select",
@@ -9807,16 +9807,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.15",
+            "version": "7.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d79c053d972856b8b941bb233e39dc521a5093f0"
+                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d79c053d972856b8b941bb233e39dc521a5093f0",
-                "reference": "d79c053d972856b8b941bb233e39dc521a5093f0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/316afa6888d2562e04aeb67ea7f2017a0eb41661",
+                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661",
                 "shasum": ""
             },
             "require": {
@@ -9887,7 +9887,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-08-21T07:05:16+00:00"
+            "time": "2019-09-14T09:08:39+00:00"
         },
         {
             "name": "psr/cache",
@@ -10155,16 +10155,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687"
+                "reference": "68609e1261d215ea5b21b7987539cbfbe156ec3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/06a9a5947f47b3029d76118eb5c22802e5869687",
-                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/68609e1261d215ea5b21b7987539cbfbe156ec3e",
+                "reference": "68609e1261d215ea5b21b7987539cbfbe156ec3e",
                 "shasum": ""
             },
             "require": {
@@ -10218,7 +10218,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2019-08-11T12:43:14+00:00"
+            "time": "2019-09-14T09:02:43+00:00"
         },
         {
             "name": "sebastian/finder-facade",
