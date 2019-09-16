@@ -2382,16 +2382,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "0a6b8264badebf25ca6ad096c55c09bacf9461d0"
+                "reference": "b4424d1a8474df08517d82609defe29c906795d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/0a6b8264badebf25ca6ad096c55c09bacf9461d0",
-                "reference": "0a6b8264badebf25ca6ad096c55c09bacf9461d0",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/b4424d1a8474df08517d82609defe29c906795d4",
+                "reference": "b4424d1a8474df08517d82609defe29c906795d4",
                 "shasum": ""
             },
             "require": {
@@ -2440,7 +2440,7 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2019-09-13T09:11:18+00:00"
+            "time": "2019-09-16T09:09:24+00:00"
         },
         {
             "name": "laravel-enso/forms",
@@ -2806,16 +2806,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.3.3",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "b816f8b589d1c596b7974974d221446deb9f28d2"
+                "reference": "6a56cafa35f93eacd5e9db7df19914bd44e03e8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/b816f8b589d1c596b7974974d221446deb9f28d2",
-                "reference": "b816f8b589d1c596b7974974d221446deb9f28d2",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/6a56cafa35f93eacd5e9db7df19914bd44e03e8c",
+                "reference": "6a56cafa35f93eacd5e9db7df19914bd44e03e8c",
                 "shasum": ""
             },
             "require": {
@@ -2860,7 +2860,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2019-09-15T06:48:00+00:00"
+            "time": "2019-09-16T12:25:47+00:00"
         },
         {
             "name": "laravel-enso/logs",
@@ -3311,16 +3311,16 @@
         },
         {
             "name": "laravel-enso/roles",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/roles.git",
-                "reference": "b43736477123947e98f7658f4386a4fd2d9901cb"
+                "reference": "f6a6851d9a8723a328a9f3c807c5ee0bbbcdbefb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/b43736477123947e98f7658f4386a4fd2d9901cb",
-                "reference": "b43736477123947e98f7658f4386a4fd2d9901cb",
+                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/f6a6851d9a8723a328a9f3c807c5ee0bbbcdbefb",
+                "reference": "f6a6851d9a8723a328a9f3c807c5ee0bbbcdbefb",
                 "shasum": ""
             },
             "require": {
@@ -3370,7 +3370,7 @@
                 "role-manager",
                 "roles"
             ],
-            "time": "2019-09-14T08:32:10+00:00"
+            "time": "2019-09-16T12:29:42+00:00"
         },
         {
             "name": "laravel-enso/searchable",
@@ -5857,16 +5857,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a"
+                "reference": "b45a02cafe2f6a12850cfd2e81bb8c023363ad1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1e351d2257de312dfa3bdb5544b55e587bd4c00a",
-                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/b45a02cafe2f6a12850cfd2e81bb8c023363ad1f",
+                "reference": "b45a02cafe2f6a12850cfd2e81bb8c023363ad1f",
                 "shasum": ""
             },
             "require": {
@@ -5921,7 +5921,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-09-03T07:39:44+00:00"
+            "time": "2019-09-16T07:53:07+00:00"
         },
         {
             "name": "spatie/image-optimizer",

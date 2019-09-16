@@ -1,4 +1,5 @@
 ## Laravel Enso's Changelog
+
 ### 3.4.0
 
 ## IMPORTANT
@@ -233,6 +234,14 @@
 - update in composer.json
     - "laravel-enso/control-panel-api": "2.3.*", // optional, if you are using it
     -"laravel-enso/core": "4.4.*",
+
+- update in package.json
+    - "@enso-ui/accessories": "~1.1.0",
+    - "@enso-ui/bulma": "~1.2.0",
+    - "@enso-ui/forms": "~1.2.0",
+    - "@enso-ui/select": "~1.1.0",
+    - "@enso-ui/tables": "~1.1.0",
+    - "@enso-ui/ui": "~1.5.0",
 - rename `structuremanager` test suite to `cli` in phpunit.xml
 - remove from the local User.php the Addresses & Documents traits
 - update CompanyFactory the one from the github repo
