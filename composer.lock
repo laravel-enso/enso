@@ -1881,16 +1881,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.4.7",
+            "version": "4.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "5e7574ccbb26ffeb596879c0407ec62d41dff12e"
+                "reference": "2579c65b1cbb7c13b4fc3a8c41a9c755a95b94cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/5e7574ccbb26ffeb596879c0407ec62d41dff12e",
-                "reference": "5e7574ccbb26ffeb596879c0407ec62d41dff12e",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/2579c65b1cbb7c13b4fc3a8c41a9c755a95b94cb",
+                "reference": "2579c65b1cbb7c13b4fc3a8c41a9c755a95b94cb",
                 "shasum": ""
             },
             "require": {
@@ -1980,7 +1980,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-09-14T09:01:08+00:00"
+            "time": "2019-09-14T11:23:44+00:00"
         },
         {
             "name": "laravel-enso/data-export",
@@ -2806,16 +2806,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.3.2",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "6ee1345e75c3f3b6041c4c597c487bc35313f0f6"
+                "reference": "b816f8b589d1c596b7974974d221446deb9f28d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/6ee1345e75c3f3b6041c4c597c487bc35313f0f6",
-                "reference": "6ee1345e75c3f3b6041c4c597c487bc35313f0f6",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/b816f8b589d1c596b7974974d221446deb9f28d2",
+                "reference": "b816f8b589d1c596b7974974d221446deb9f28d2",
                 "shasum": ""
             },
             "require": {
@@ -2860,7 +2860,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2019-09-14T07:50:18+00:00"
+            "time": "2019-09-15T06:48:00+00:00"
         },
         {
             "name": "laravel-enso/logs",
