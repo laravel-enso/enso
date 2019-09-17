@@ -1410,16 +1410,16 @@
         },
         {
             "name": "laravel-enso/addresses",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/addresses.git",
-                "reference": "1034ff829a8d8c83824b9eeff4ceb88b3e67fca1"
+                "reference": "42ee37577a580e295027d75fb3b1d234b0be5c4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/1034ff829a8d8c83824b9eeff4ceb88b3e67fca1",
-                "reference": "1034ff829a8d8c83824b9eeff4ceb88b3e67fca1",
+                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/42ee37577a580e295027d75fb3b1d234b0be5c4c",
+                "reference": "42ee37577a580e295027d75fb3b1d234b0be5c4c",
                 "shasum": ""
             },
             "require": {
@@ -1468,7 +1468,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-09-14T08:26:20+00:00"
+            "time": "2019-09-17T07:25:07+00:00"
         },
         {
             "name": "laravel-enso/avatars",
@@ -1697,16 +1697,16 @@
         },
         {
             "name": "laravel-enso/comments",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/comments.git",
-                "reference": "ebf5fd5cf30bda7f43d0200e1004ebba32c3f1c5"
+                "reference": "5f4353866f1dac0dd56a89c7361d8076671bda16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/ebf5fd5cf30bda7f43d0200e1004ebba32c3f1c5",
-                "reference": "ebf5fd5cf30bda7f43d0200e1004ebba32c3f1c5",
+                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/5f4353866f1dac0dd56a89c7361d8076671bda16",
+                "reference": "5f4353866f1dac0dd56a89c7361d8076671bda16",
                 "shasum": ""
             },
             "require": {
@@ -1750,20 +1750,20 @@
                 "comments-manager",
                 "laravel-enso"
             ],
-            "time": "2019-09-10T15:07:54+00:00"
+            "time": "2019-09-17T07:26:13+00:00"
         },
         {
             "name": "laravel-enso/companies",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/companies.git",
-                "reference": "774b5e0c75e6d7e26840b6c98be9f30dc1ed75c0"
+                "reference": "f6a125dfa9f3207097bb8dbb69371f310903856b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/774b5e0c75e6d7e26840b6c98be9f30dc1ed75c0",
-                "reference": "774b5e0c75e6d7e26840b6c98be9f30dc1ed75c0",
+                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/f6a125dfa9f3207097bb8dbb69371f310903856b",
+                "reference": "f6a125dfa9f3207097bb8dbb69371f310903856b",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2019-09-14T09:00:31+00:00"
+            "time": "2019-09-17T07:45:54+00:00"
         },
         {
             "name": "laravel-enso/control-panel-api",
@@ -2110,16 +2110,16 @@
         },
         {
             "name": "laravel-enso/discussions",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/discussions.git",
-                "reference": "22382f374effd8af5adf24ecb5042d55d8409616"
+                "reference": "120b82c99747ff586e6f79d6bf222d23ec039992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/22382f374effd8af5adf24ecb5042d55d8409616",
-                "reference": "22382f374effd8af5adf24ecb5042d55d8409616",
+                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/120b82c99747ff586e6f79d6bf222d23ec039992",
+                "reference": "120b82c99747ff586e6f79d6bf222d23ec039992",
                 "shasum": ""
             },
             "require": {
@@ -2162,20 +2162,20 @@
                 "discussions",
                 "laravel-enso"
             ],
-            "time": "2019-09-14T08:28:41+00:00"
+            "time": "2019-09-17T07:26:31+00:00"
         },
         {
             "name": "laravel-enso/documents",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "d2543a6b708a4f3fe892e77af47be1f0d849fcb0"
+                "reference": "c49ddfbb47a22a8698e278dcb00b4e8ee6275da0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/d2543a6b708a4f3fe892e77af47be1f0d849fcb0",
-                "reference": "d2543a6b708a4f3fe892e77af47be1f0d849fcb0",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/c49ddfbb47a22a8698e278dcb00b4e8ee6275da0",
+                "reference": "c49ddfbb47a22a8698e278dcb00b4e8ee6275da0",
                 "shasum": ""
             },
             "require": {
@@ -2222,7 +2222,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2019-09-13T09:11:48+00:00"
+            "time": "2019-09-17T07:25:57+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
@@ -3143,16 +3143,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/people.git",
-                "reference": "d079859d0bf393361aab693ad9b17b46d5c4dfc5"
+                "reference": "bb606a6706ddf973b081e4af17615cd52e7fffab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/people/zipball/d079859d0bf393361aab693ad9b17b46d5c4dfc5",
-                "reference": "d079859d0bf393361aab693ad9b17b46d5c4dfc5",
+                "url": "https://api.github.com/repos/laravel-enso/people/zipball/bb606a6706ddf973b081e4af17615cd52e7fffab",
+                "reference": "bb606a6706ddf973b081e4af17615cd52e7fffab",
                 "shasum": ""
             },
             "require": {
@@ -3201,7 +3201,7 @@
                 "people",
                 "person-management"
             ],
-            "time": "2019-09-14T08:31:19+00:00"
+            "time": "2019-09-17T07:46:09+00:00"
         },
         {
             "name": "laravel-enso/permissions",
@@ -3539,16 +3539,16 @@
         },
         {
             "name": "laravel-enso/teams",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/teams.git",
-                "reference": "ca26b004ba3a8542d5c2452055fc952854daf46a"
+                "reference": "01d921a72c2383ca430facb513ad142e6daa47d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/ca26b004ba3a8542d5c2452055fc952854daf46a",
-                "reference": "ca26b004ba3a8542d5c2452055fc952854daf46a",
+                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/01d921a72c2383ca430facb513ad142e6daa47d1",
+                "reference": "01d921a72c2383ca430facb513ad142e6daa47d1",
                 "shasum": ""
             },
             "require": {
@@ -3594,7 +3594,7 @@
                 "laravel-enso",
                 "team-management"
             ],
-            "time": "2019-09-11T07:27:41+00:00"
+            "time": "2019-09-17T05:54:58+00:00"
         },
         {
             "name": "laravel-enso/track-who",
@@ -9766,16 +9766,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.7",
+            "version": "7.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800"
+                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
-                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
+                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
                 "shasum": ""
             },
             "require": {
@@ -9784,7 +9784,7 @@
                 "php": "^7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.1.0",
+                "phpunit/php-token-stream": "^3.1.1",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^4.2.2",
                 "sebastian/version": "^2.0.1",
@@ -9825,7 +9825,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-07-25T05:31:54+00:00"
+            "time": "2019-09-17T06:24:36+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -9969,16 +9969,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a"
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e899757bb3df5ff6e95089132f32cd59aac2220a",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/995192df77f63a59e47f025390d2d1fdf8f425ff",
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff",
                 "shasum": ""
             },
             "require": {
@@ -10014,7 +10014,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2019-07-25T05:29:42+00:00"
+            "time": "2019-09-17T06:23:10+00:00"
         },
         {
             "name": "phpunit/phpunit",

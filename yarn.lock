@@ -656,9 +656,9 @@
     to-fast-properties "^2.0.0"
 
 "@enso-ui/accessories@~1.1.0":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.5.tgz#b3dfe1f2d638cedf097d81dab7a353b197983fde"
-  integrity sha512-DAQCDvgMAocSBbPeAlJcJ2ORg1LcZpvOkE+QF3wCCrW02pqfNsvfnfSQNafGz4HWyeisPVvgaSbvwSxGqZbYZg==
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.6.tgz#608afbb4d0d464d4aa7c4218e33735a4e51f7fde"
+  integrity sha512-Z+i27fGUmTQBtrteT+RDIULwp4SH8oCPZPRtoM2OB9saK37VeNDLBMeUbnkLIhYnNTs5uBFP9D3uq6asMruj3Q==
   dependencies:
     "@enso-ui/card" "^1.0.0"
     "@enso-ui/confirmation" "^1.0.0"
@@ -927,9 +927,9 @@
     vue "^2.5.16"
 
 "@enso-ui/switch@^1.0.0", "@enso-ui/switch@~1.0.2":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@enso-ui/switch/-/switch-1.0.10.tgz#3eca4e15af23203898e7cb79c9269bb2e6521dae"
-  integrity sha512-MJf8vnhlqYXucsp0eDZC5OOSiel83netUUHB+WF+cqhFZC4ECa8V+LK8zLG6L4M0ZKESBLnsSsTmHE/WsGP89Q==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@enso-ui/switch/-/switch-1.0.11.tgz#00c55680a7822fc13dd8dd1d6c049c0321ac5b11"
+  integrity sha512-BUFA0N7u6HtfB7AaBOdbkDQ280+Iesv79wjdVOI14CXmiAAAQYegwAmLC6bMuMjLfuMjtN8w3q6VIG3KtFK7WQ==
   dependencies:
     bulma "^0.7.2"
     vue "^2.5.16"
@@ -1009,9 +1009,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@~1.5.0":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.5.2.tgz#da05e6b9966fb5e520603941709071d6919da311"
-  integrity sha512-P7go1Djk6lHYUTvToFqTX6s61YeAuCYCF0dVuB1w3HGhkeZm+stQKcsebomo2aMy6wAN7r7vVjocH4IiaWchbQ==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.5.3.tgz#5634e32dd7d64c0eea25edd27b38d40b5f458466"
+  integrity sha512-Xj+GDELwpv7NjRPWjUYOO71jCydBkiEEcXEBUkn51djyvahFmK3JG97pAy/4RXlRHxo3u6CjVdKKBKKqGa4YOA==
   dependencies:
     "@enso-ui/accessories" "~1.1.0"
     "@enso-ui/bulma" "~1.2.0"
@@ -3927,11 +3927,11 @@ fs-extra@^7.0.1:
     universalify "^0.1.0"
 
 fs-minipass@^1.2.5:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.6.tgz#2c5cc30ded81282bfe8a0d7c7c1853ddeb102c07"
-  integrity sha512-crhvyXcMejjv3Z5d2Fa9sf5xLYVCF5O1c71QxbVnbLsmYMBEvDAftewesN/HhY03YRoA7zOMxjNGrF5svGaaeQ==
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.7.tgz#ccff8570841e7fe4265693da88936c55aed7f7c7"
+  integrity sha512-GWSSJGFy4e9GUeCcbIkED+bgAoFyj7XF1mV8rma3QW4NIqX9Kyx79N/PF61H5udOV3aY1IaMLs6pGbH71nlCTA==
   dependencies:
-    minipass "^2.2.1"
+    minipass "^2.6.0"
 
 fs-write-stream-atomic@^1.0.8:
   version "1.0.10"
@@ -5679,10 +5679,10 @@ minimist@1.2.0, minimist@^1.1.3, minimist@^1.2.0:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
-minipass@^2.2.1, minipass@^2.3.5:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.5.1.tgz#cf435a9bf9408796ca3a3525a8b851464279c9b8"
-  integrity sha512-dmpSnLJtNQioZFI5HfQ55Ad0DzzsMAb+HfokwRTNXwEQjepbTkl5mtIlSVxGIkOkxlpX7wIn5ET/oAd9fZ/Y/Q==
+minipass@^2.2.1, minipass@^2.3.5, minipass@^2.6.0:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.6.2.tgz#c3075a22680b3b1479bae5915904cb1eba50f5c0"
+  integrity sha512-38Jwdc8AttUDaQAIRX8Iaw3QoCDWjAwKMGeGDF9JUi9QCPMjH5qAQg/hdO8o1nC7Nmh1/CqzMg5FQPEKuKwznQ==
   dependencies:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
@@ -5952,9 +5952,9 @@ node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.29:
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.30.tgz#35eebf129c63baeb6d8ddeda3c35b05abfd37f7f"
-  integrity sha512-BHcr1g6NeUH12IL+X3Flvs4IOnl1TL0JczUhEZjDE+FXXPQcVCNr8NEPb01zqGxzhTpdyJL5GXemaCW7aw6Khw==
+  version "1.1.32"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.32.tgz#485b35c1bf9b4d8baa105d782f8ca731e518276e"
+  integrity sha512-VhVknkitq8dqtWoluagsGPn3dxTvN9fwgR59fV3D7sLBHe0JfDramsMI8n8mY//ccq/Kkrf8ZRHRpsyVZ3qw1A==
   dependencies:
     semver "^5.3.0"
 
@@ -7090,9 +7090,9 @@ prosemirror-utils@^0.9.6:
   integrity sha512-UC+j9hQQ1POYfMc5p7UFxBTptRiGPR7Kkmbl3jVvU8VgQbkI89tR/GK+3QYC8n+VvBZrtAoCrJItNhWSxX3slA==
 
 prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.10.0:
-  version "1.10.3"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.10.3.tgz#4f268b0054dcf1a497653aae9121d263f8b503a8"
-  integrity sha512-3R5iTItRmE1wWZ3X5pbl4j2H6gElTr7Hcr6wTS0QuRlqE9xROcP6BPQuBxaOANgzUOiU8Skw42GCI8Xc/d9Y/A==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.11.1.tgz#e2359d486eee1467871eb5f13f6ea18c86603c3e"
+  integrity sha512-Gc1BAoh/v8ZqhgudUWME0xuxEyEVQLxSX3DOGeIqXUPs3mI+6x8nn2LqBLx5u5t1yKKIEhCynGx9Mf/tAk0wdg==
   dependencies:
     prosemirror-model "^1.1.0"
     prosemirror-state "^1.0.0"
@@ -9216,9 +9216,9 @@ webpack-chunk-hash@^0.4.0:
   integrity sha1-a0DDBw+8n/DP4P54HHF0r2x8FqQ=
 
 webpack-cli@^3.2.1:
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.8.tgz#caeaebcc26f685db1736e5decd3f01aac30123ec"
-  integrity sha512-RANYSXwikSWINjHMd/mtesblNSpjpDLoYTBtP99n1RhXqVI/wxN40Auqy42I7y4xrbmRBoA5Zy5E0JSBD5XRhw==
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.3.9.tgz#79c27e71f94b7fe324d594ab64a8e396b9daa91a"
+  integrity sha512-xwnSxWl8nZtBl/AFJCOn9pG7s5CYUYdZxmmukv+fAHLcBIHM36dImfpQg3WfShZXeArkWlf6QRw24Klcsv8a5A==
   dependencies:
     chalk "2.4.2"
     cross-spawn "6.0.5"
