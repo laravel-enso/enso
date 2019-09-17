@@ -440,7 +440,8 @@
 #### front-end
 
 ##### datepicker
-- adds support for readonly (acted as disabled before)
+- adds support for `readonly` (acted as disabled before)
+- adds `disable-clear`
 
 ##### directives
 - adds `v-long-click` directive; should provide the duration when used (`v-long-click:2000`)

@@ -656,9 +656,9 @@
     to-fast-properties "^2.0.0"
 
 "@enso-ui/accessories@~1.1.0":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.6.tgz#608afbb4d0d464d4aa7c4218e33735a4e51f7fde"
-  integrity sha512-Z+i27fGUmTQBtrteT+RDIULwp4SH8oCPZPRtoM2OB9saK37VeNDLBMeUbnkLIhYnNTs5uBFP9D3uq6asMruj3Q==
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-1.1.7.tgz#1cc80428f5555945d3f8a1514278f82c453f5c39"
+  integrity sha512-hTYYsI0mzpTmGbggMMeGkgShu6ggUFo7cJewsfvjfpg1Efykob27eWlefrwFxPfYfAhikOUqKTbBPeo6GdJfbA==
   dependencies:
     "@enso-ui/card" "^1.0.0"
     "@enso-ui/confirmation" "^1.0.0"
@@ -754,9 +754,9 @@
     vue "^2.5.16"
 
 "@enso-ui/datepicker@^1.0.0", "@enso-ui/datepicker@~1.0.5":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@enso-ui/datepicker/-/datepicker-1.0.18.tgz#8905ac2ecdd817ea9e10cbf6eceb07303614d4b8"
-  integrity sha512-p3auHIVjm53xSeHC/B615GbshJs24p/uqMMsr2AGffSOYcliEo4EXcSeh2YzjQMsMDCT/zOuuD3QTtnJhChVbQ==
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@enso-ui/datepicker/-/datepicker-1.0.19.tgz#2c3772f8f18a25e8d8d34800a799549b2bcaafe3"
+  integrity sha512-SRWN0BjsJhJk3qBGYzyHn05FBgoqNEczBKOU+o2vQSbKTS9R8eFDnXg3jQRGXAerdMEEog53Mau9eRBkZQvDvw==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.2.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.2"
@@ -911,9 +911,9 @@
     vue "^2.5.16"
 
 "@enso-ui/select@~1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/select/-/select-1.1.1.tgz#c57f78fc496c4d3062be0afe3efc3266fd55a49a"
-  integrity sha512-PXD+1SQ6eYhmUCbKN9DAsagn4yQUwVw1V1070Iurpv0SFzMhIp/s9jXNKjtkRWGEWHsj2+Nv+zMThTBo4X+pFA==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@enso-ui/select/-/select-1.1.2.tgz#12b6e1048e2b60611b725b2c06093c2501a794de"
+  integrity sha512-7Ea3oUNnI3QR0QtZ0BGoVE3HG3y5SIcKNrNpP/hF4c9q72sXHb/hBgtxanfEhViWpvmUInRwEplXU/mkzCTDUg==
   dependencies:
     "@enso-ui/directives" "^1.0.0"
     "@enso-ui/dropdown" "~1.0.0"
@@ -927,9 +927,9 @@
     vue "^2.5.16"
 
 "@enso-ui/switch@^1.0.0", "@enso-ui/switch@~1.0.2":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@enso-ui/switch/-/switch-1.0.11.tgz#00c55680a7822fc13dd8dd1d6c049c0321ac5b11"
-  integrity sha512-BUFA0N7u6HtfB7AaBOdbkDQ280+Iesv79wjdVOI14CXmiAAAQYegwAmLC6bMuMjLfuMjtN8w3q6VIG3KtFK7WQ==
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@enso-ui/switch/-/switch-1.0.12.tgz#c05700e964fcd1e14a782e8da3b8951a09d66358"
+  integrity sha512-R67rTBzxt9ZZ3cXF98qf5lXr/GUf8Az9SVfQBv8+Ntx6Ewoywveywdb72T++WSXqMdo6WjadUimoePJNq+1EKQ==
   dependencies:
     bulma "^0.7.2"
     vue "^2.5.16"
@@ -1009,9 +1009,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@~1.5.0":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.5.3.tgz#5634e32dd7d64c0eea25edd27b38d40b5f458466"
-  integrity sha512-Xj+GDELwpv7NjRPWjUYOO71jCydBkiEEcXEBUkn51djyvahFmK3JG97pAy/4RXlRHxo3u6CjVdKKBKKqGa4YOA==
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-1.5.4.tgz#d0ebafcb106f627cb978539cb791f5aedc5af4c1"
+  integrity sha512-Uykb+vXzoXaWtIgdK2cqDAkw0K09jNTfF3d1yKKDBYdDp8z//Px1ucNAHnTj2SyQT0ie5b5RImo1h8InmRaZ9g==
   dependencies:
     "@enso-ui/accessories" "~1.1.0"
     "@enso-ui/bulma" "~1.2.0"
