@@ -37,10 +37,11 @@
 - minor visual refactor
 
 ##### typeahead
-- adds route translation in enso-typeahead
+- adds automatic route translation in enso-typeahead
 - cascades clear
 
 ##### ui
+- the `route` helper is no longer defined as global and must now be injected in every component
 - fixes menu label padding
 - improves tag group template in search, adds horizontal scrolling
 - fixes checkbox alignment in checkbox manager
@@ -231,9 +232,16 @@
 
 ##### Local project
 
-- update in composer.json
-    - "laravel-enso/control-panel-api": "2.3.*", // optional, if you are using it
-    -"laravel-enso/core": "4.4.*",
+- update in composer.json:
+    - require
+        - "laravel-enso/control-panel-api": "2.3.*", // optional, if you are using it
+        - "laravel-enso/core": "4.4.*",
+        - "laravel-enso/enums" "1.1.*",
+    - require-dev
+        - "codedungeon/phpunit-result-printer": "^0.26.0",
+        - "facade/ignition": "^1.4",
+        - "nunomaduro/collision": "^3.0",
+        - "phpunit/phpunit": "^8.0"
 
 - update in package.json
     - "@enso-ui/accessories": "~1.1.0",
@@ -250,11 +258,12 @@
 - make sure to refactor any customisation to people / companies form or tables using dependency injection / binding in AppServiceProvider. The old methods with configs was removed
 - search and replace `LaravelEnso\Helpers\app\Classes\Enum` => `LaravelEnso\Enums\app\Services\Enum`
 - either refactor all table builders to drop the dtRowId alias in favour of id, or add in the local table templates `"dtRowId": "dtRowId"`
+- make sure you inject `route` in all the components where the helper is used. Search for "route()" in your resources folder and refactor
 - refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
 - refactor all importers and make sure the user is added within the parameters as specified in the beforehook, importable and afterhook contracts
-- add a value to all date-filter or enso-date-filter component use
+- add a value to all date-filters or enso-date-filters component use
 - if you are currently usin versioning add in your composer.json under `require` this package since it was removed as a dependency from core
-- run `php enso:upgrade`
+- run `php artisan enso:upgrade`
 
 ##### Laravel 6 file changes
 
@@ -420,7 +429,7 @@
 
 - `tests/Bootstrap.php` file was added.​
 
-- `app/Kernel.php`
+- `app/Http/Kernel.php`
    - the `ThrottleRequests` middileware was added to the `$middlewarePriority` variable.
 
 - `.env`

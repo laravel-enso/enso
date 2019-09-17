@@ -130,7 +130,7 @@ return [
                 'connection' => 'redis',
                 'queue' => ['default', 'light', 'notifications'],
                 'balance' => 'auto',
-                'processes' => 9,
+                'processes' => 6,
                 'tries' => 1,
             ],
             'supervisor-2' => [
