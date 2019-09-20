@@ -2,9 +2,6 @@
 
 ### 3.4.0
 
-## IMPORTANT
-**We're still testing the new version so don't upgrade your production projects yet.**
-
 #### front-end
 
 ##### accessories
@@ -58,6 +55,7 @@
 - renames DefaultAddress controller to SetDefault
 - improves scopeFor to work with morphMap
 - removes deprecated Addresses trait
+- refactors exceptions
 
 ##### avatars
 - removes redundant method call in default avatar
@@ -91,6 +89,7 @@
 - removes `companies.php` config file
 - removes default restrictions in Options controller
 - adds fiscal_code to $queryAttributes in Options
+- refactors exceptions
 
 ##### core
 - adds laravel-enso/enums
@@ -116,7 +115,7 @@
 - implements AuthorizesFileAccess contract
 - updates policies: view, share, destroy
 - upgrades box/spout to 3.0
-- upgrades 
+- refactors exceptions
 
 ##### discussions
 - small refactor
@@ -137,11 +136,13 @@
 - greatly improves the authorizan strategy
 - adds AuthorizesFileAccess contract
 - adds an UploadPolicy for view, share and destroy
+- refactors exceptions
 
 ##### forms
 - removes deprecated `allow-filtering` option from meta
 - adds `params` to meta for select fields
 - allows use of nested attributes
+- refactors exceptions
 
 ##### helpers
 - adds an optional precision for all methods in Decimals
@@ -152,7 +153,11 @@
 - removes Enum (now lies in its own package)
 
 ##### how-to
-- small refactor
+- small general refactor
+- refactors exceptions
+
+##### image-transformer
+- refactors exceptions
 
 ##### io
 - adds laravel-enso/enums
@@ -161,6 +166,10 @@
 - refactors the `localisation` key to `language`
 - renamed form & table (builders & templates)
 - improves form for easier customization
+- refactors exceptions
+
+##### logs
+- refactors exceptions
 
 ##### menus
 - small refactor
@@ -189,6 +198,7 @@
 - adds rememberable on Role
 - adds laravel-enso/enums
 - improves form for easier customization
+- refactors exceptions
 
 ##### searchable
 - casts labels sent to the front-end as strings
@@ -206,6 +216,7 @@
 - adds/uses `laravel-enso/enums`
 - now uses the Laravel 6 Arr class instead of the global helpers
 - adds `model` prop in template for customizing the model
+- refactors exceptions
 
 ##### track-who
 - improves resources logic
@@ -242,7 +253,6 @@
         - "facade/ignition": "^1.4",
         - "nunomaduro/collision": "^3.0",
         - "phpunit/phpunit": "^8.0"
-
 - update in package.json
     - "@enso-ui/accessories": "~1.1.0",
     - "@enso-ui/bulma": "~1.2.0",
@@ -251,22 +261,65 @@
     - "@enso-ui/tables": "~1.1.0",
     - "@enso-ui/ui": "~1.5.0",
 - rename `structuremanager` test suite to `cli` in phpunit.xml
-- remove from the local User.php the Addresses & Documents traits
-- update CompanyFactory the one from the github repo
+- remove from the local `User` model the `Addresses` & `Documents` traits
+- update the `CompanyFactory` with the one from the github repo (of course, retain any local additions if necessary)
 - update `enso/exports.php`, `enso/tables.php`, `laravolt/avatar.php` config files with the ones from the github repo
-- delete `enso/people.php` & `enso/companies.php` deprecated configs
-- make sure to refactor any customisation to people / companies form or tables using dependency injection / binding in AppServiceProvider. The old methods with configs was removed
+- delete the `enso/people.php` & `enso/companies.php` deprecated configs
+- make sure to refactor any customisation to the people / companies forms or tables using dependency injection / binding in your `AppServiceProvider`. The old customization mechanisms which were using configs have been removed.
 - search and replace `LaravelEnso\Helpers\app\Classes\Enum` => `LaravelEnso\Enums\app\Services\Enum`
-- either refactor all table builders to drop the dtRowId alias in favour of id, or add in the local table templates `"dtRowId": "dtRowId"`
-- make sure you inject `route` in all the components where the helper is used. Search for "route()" in your resources folder and refactor
+- either refactor all table builders and remove the `dtRowId` alias for the id, or update your local table templates and add `"dtRowId": "dtRowId"`
+- make sure you inject `route` in all the VueJS components where the helper is used. Search for "route()" in your resources folder and refactor
 - refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
-- refactor all importers and make sure the user is added within the parameters as specified in the beforehook, importable and afterhook contracts
-- add a value to all date-filters or enso-date-filters component use
-- if you are currently usin versioning add in your composer.json under `require` this package since it was removed as a dependency from core
+- update all importers and classes implementing the `BeforeHook`, `Importable` and `AfterHook` contracts, as the `before`, `run` and `after` method signatures have changed
+and a and `$user` parameter was added
+- add a `value` parameter to all `date-filters` or `enso-date-filters` component use
+- if you are currently using the [Versioning](https://github.com/laravel-enso/versioning) package, manually add it as a dependency in your composer.json under `require`, as it was removed as a dependency from [Core](https://github.com/laravel-enso/core)
 - run `php artisan enso:upgrade`
+​
+Optional:
+- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`. 
+Take a look at the `EnumServiceProvider` from the [People](https://github.com/laravel-enso/people) package as an example.
+If using this method, you won't need to add them in the project's `LocalState`.##### Local project
 
+- update in composer.json:
+    - require
+        - "laravel-enso/control-panel-api": "2.3.*", // optional, if you are using it
+        - "laravel-enso/core": "4.4.*",
+        - "laravel-enso/enums" "1.1.*",
+    - require-dev
+        - "codedungeon/phpunit-result-printer": "^0.26.0",
+        - "facade/ignition": "^1.4",
+        - "nunomaduro/collision": "^3.0",
+        - "phpunit/phpunit": "^8.0"
+- update in package.json
+    - "@enso-ui/accessories": "~1.1.0",
+    - "@enso-ui/bulma": "~1.2.0",
+    - "@enso-ui/forms": "~1.2.0",
+    - "@enso-ui/select": "~1.1.0",
+    - "@enso-ui/tables": "~1.1.0",
+    - "@enso-ui/ui": "~1.5.0",
+- rename `structuremanager` test suite to `cli` in phpunit.xml
+- remove from the local `User` model the `Addresses` & `Documents` traits
+- update the `CompanyFactory` with the one from the github repo (of course, retain any local additions if necessary)
+- update `enso/exports.php`, `enso/tables.php`, `laravolt/avatar.php` config files with the ones from the github repo
+- delete the `enso/people.php` & `enso/companies.php` deprecated configs
+- make sure to refactor any customisation to the people / companies forms or tables using dependency injection / binding in your `AppServiceProvider`. The old customization mechanisms which were using configs have been removed.
+- search and replace `LaravelEnso\Helpers\app\Classes\Enum` => `LaravelEnso\Enums\app\Services\Enum`
+- either refactor all table builders and remove the `dtRowId` alias for the id, or update your local table templates and add `"dtRowId": "dtRowId"`
+- make sure you inject `route` in all the VueJS components where the helper is used. Search for "route()" in your resources folder and refactor
+- refactor any customizations to documents, uploads, imports, exports to make use of the `AuthorizesFileAccess` contract
+- update all importers and classes implementing the `BeforeHook`, `Importable` and `AfterHook` contracts, as the `before`, `run` and `after` method signatures have changed
+and a and `$user` parameter was added
+- add a `value` parameter to all `date-filters` or `enso-date-filters` component use
+- if you are currently using the [Versioning](https://github.com/laravel-enso/versioning) package, manually add it as a dependency in your composer.json under `require`, as it was removed as a dependency from [Core](https://github.com/laravel-enso/core)
+- run `php artisan enso:upgrade`
+​
+Optional:
+- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`. 
+Take a look at the `EnumServiceProvider` from the [People](https://github.com/laravel-enso/people) package as an example.
+If using this method, you won't need to add them in the project's `LocalState`. 
+​
 ##### Laravel 6 file changes
-
 - `bootstrap/app.php`:
     - update the `$app` variable value
     ```
@@ -279,7 +332,7 @@
 - `configs/app.php`:
     - add `'asset_url' => env('ASSET_URL', null),`
     - add `'faker_locale' => 'en_US',`
-    - add the following aliases to the `aliases` array 
+    - add the following aliases to the `aliases` array
     ```
     'Arr' => Illuminate\Support\Arr::class,
     'Str' => Illuminate\Support\Str::class,
@@ -306,7 +359,7 @@
     - update the `prefix` value with `env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),`; Remember to import `Str` (Illuminate\Support\Str) class.
 ​
 - `configs/database.php`
-    - add the following values to the `connections.sqlite` configuration array: 
+    - add the following values to the `connections.sqlite` configuration array:
     ```
     'url' => env('DATABASE_URL'),
     'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -319,17 +372,17 @@
         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
     ]) : [],
     ```
-    - add the following values to the `connections.pgsql` configuration array: 
+    - add the following values to the `connections.pgsql` configuration array:
     ```
     'url' => env('DATABASE_URL'),
     'prefix_indexes' => true,
     ```
-    - add the following values to the `connections.sqlsrv` configuration array: 
+    - add the following values to the `connections.sqlsrv` configuration array:
     ```
     'url' => env('DATABASE_URL'),
     'prefix_indexes' => true,
     ```
-    - the entire `redis` configuration array should be updated:
+    - the `redis` configuration array should be updated:
     ```
     'redis' => [
         'client' => env('REDIS_CLIENT', 'predis'),
@@ -348,11 +401,11 @@
        Note that the AWS configuration keys have changed and should be updated within the env file as well.
 ​
 - `configs/logging.php`
-    - for the `channels.stack` configuration array: 
+    - for the `channels.stack` configuration array:
         - add the following value `'ignore_exceptions' => false,`
         - update `channels` to `'channels' => ['single'],` // or 'daily'
     - update the `channels.daily` value to `'days' => 14,`
-    - add the new `papertrail` value to the `channels` configuration array: 
+    - add the new `papertrail` value to the `channels` configuration array:
     ```
     'papertrail' => [
         'driver' => 'monolog',
@@ -371,7 +424,7 @@
 ​
 - `configs/queue.php`
     - add the following value to the `connections.beanstalkd` configuration array: `'block_for' => 0,`
-    - add the following values to the `connections.sqs` configuration array: 
+    - add the following values to the `connections.sqs` configuration array:
     ```
     'key' => env('AWS_ACCESS_KEY_ID'),
     'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -415,7 +468,6 @@
     ```
 ​
 - `resources/lang/en/validation.php`
-
     The following translation keys and their values have to be added:
     - 'date_equals'
     - 'ends_with'
@@ -426,12 +478,9 @@
     - 'not_regex'
     - 'starts_wit'
     - 'uuid'
-
 - `tests/Bootstrap.php` file was added.​
-
 - `app/Http/Kernel.php`
    - the `ThrottleRequests` middileware was added to the `$middlewarePriority` variable.
-
 - `.env`
     - add if necessary `MAILGUN_ENDPOINT=api.eu.mailgun.net`
 

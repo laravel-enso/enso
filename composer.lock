@@ -1410,16 +1410,16 @@
         },
         {
             "name": "laravel-enso/addresses",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/addresses.git",
-                "reference": "42ee37577a580e295027d75fb3b1d234b0be5c4c"
+                "reference": "c01d8b0389d55ef7d02cc8442606128a7c13ed25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/42ee37577a580e295027d75fb3b1d234b0be5c4c",
-                "reference": "42ee37577a580e295027d75fb3b1d234b0be5c4c",
+                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/c01d8b0389d55ef7d02cc8442606128a7c13ed25",
+                "reference": "c01d8b0389d55ef7d02cc8442606128a7c13ed25",
                 "shasum": ""
             },
             "require": {
@@ -1468,7 +1468,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-09-17T07:25:07+00:00"
+            "time": "2019-09-18T07:34:27+00:00"
         },
         {
             "name": "laravel-enso/avatars",
@@ -1697,16 +1697,16 @@
         },
         {
             "name": "laravel-enso/comments",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/comments.git",
-                "reference": "5f4353866f1dac0dd56a89c7361d8076671bda16"
+                "reference": "0ef082f04a69ef361e00674ffcb57293c0f3daa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/5f4353866f1dac0dd56a89c7361d8076671bda16",
-                "reference": "5f4353866f1dac0dd56a89c7361d8076671bda16",
+                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/0ef082f04a69ef361e00674ffcb57293c0f3daa1",
+                "reference": "0ef082f04a69ef361e00674ffcb57293c0f3daa1",
                 "shasum": ""
             },
             "require": {
@@ -1750,20 +1750,20 @@
                 "comments-manager",
                 "laravel-enso"
             ],
-            "time": "2019-09-17T07:26:13+00:00"
+            "time": "2019-09-18T05:39:30+00:00"
         },
         {
             "name": "laravel-enso/companies",
-            "version": "2.2.2",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/companies.git",
-                "reference": "f6a125dfa9f3207097bb8dbb69371f310903856b"
+                "reference": "054fc13c3134e3dadd3d2efc5f8f5ed847c6c0d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/f6a125dfa9f3207097bb8dbb69371f310903856b",
-                "reference": "f6a125dfa9f3207097bb8dbb69371f310903856b",
+                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/054fc13c3134e3dadd3d2efc5f8f5ed847c6c0d4",
+                "reference": "054fc13c3134e3dadd3d2efc5f8f5ed847c6c0d4",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
                 "company-management",
                 "laravel-enso"
             ],
-            "time": "2019-09-17T07:45:54+00:00"
+            "time": "2019-09-18T07:35:03+00:00"
         },
         {
             "name": "laravel-enso/control-panel-api",
@@ -2042,16 +2042,16 @@
         },
         {
             "name": "laravel-enso/data-import",
-            "version": "4.2.3",
+            "version": "4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-import.git",
-                "reference": "38e0c6a813e88e58c51d8d06b0e5501bc7d30236"
+                "reference": "14d3db7915eea06ab134d459288adf0cacb5f80d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/38e0c6a813e88e58c51d8d06b0e5501bc7d30236",
-                "reference": "38e0c6a813e88e58c51d8d06b0e5501bc7d30236",
+                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/14d3db7915eea06ab134d459288adf0cacb5f80d",
+                "reference": "14d3db7915eea06ab134d459288adf0cacb5f80d",
                 "shasum": ""
             },
             "require": {
@@ -2106,20 +2106,20 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2019-09-14T08:28:13+00:00"
+            "time": "2019-09-18T07:36:26+00:00"
         },
         {
             "name": "laravel-enso/discussions",
-            "version": "2.2.2",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/discussions.git",
-                "reference": "120b82c99747ff586e6f79d6bf222d23ec039992"
+                "reference": "706dbe728449501bfc5e29aed4d2b3d89b112c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/120b82c99747ff586e6f79d6bf222d23ec039992",
-                "reference": "120b82c99747ff586e6f79d6bf222d23ec039992",
+                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/706dbe728449501bfc5e29aed4d2b3d89b112c8c",
+                "reference": "706dbe728449501bfc5e29aed4d2b3d89b112c8c",
                 "shasum": ""
             },
             "require": {
@@ -2162,20 +2162,20 @@
                 "discussions",
                 "laravel-enso"
             ],
-            "time": "2019-09-17T07:26:31+00:00"
+            "time": "2019-09-18T07:31:47+00:00"
         },
         {
             "name": "laravel-enso/documents",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "c49ddfbb47a22a8698e278dcb00b4e8ee6275da0"
+                "reference": "015e715faed42d4a44f01e54a5228da5d19ca7dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/c49ddfbb47a22a8698e278dcb00b4e8ee6275da0",
-                "reference": "c49ddfbb47a22a8698e278dcb00b4e8ee6275da0",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/015e715faed42d4a44f01e54a5228da5d19ca7dd",
+                "reference": "015e715faed42d4a44f01e54a5228da5d19ca7dd",
                 "shasum": ""
             },
             "require": {
@@ -2222,7 +2222,7 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2019-09-17T07:25:57+00:00"
+            "time": "2019-09-18T07:24:42+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
@@ -2382,16 +2382,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "b4424d1a8474df08517d82609defe29c906795d4"
+                "reference": "929cf3c762225d3cb28e21763783ef4106c3b226"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/b4424d1a8474df08517d82609defe29c906795d4",
-                "reference": "b4424d1a8474df08517d82609defe29c906795d4",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/929cf3c762225d3cb28e21763783ef4106c3b226",
+                "reference": "929cf3c762225d3cb28e21763783ef4106c3b226",
                 "shasum": ""
             },
             "require": {
@@ -2440,20 +2440,20 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2019-09-16T09:09:24+00:00"
+            "time": "2019-09-18T07:49:29+00:00"
         },
         {
             "name": "laravel-enso/forms",
-            "version": "3.2.3",
+            "version": "3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "2913aece674b59dd65611156cf6cfadee3d3f219"
+                "reference": "e9bbe3d2ce04a65e5bb2c59bdb31e72ae70e29a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/2913aece674b59dd65611156cf6cfadee3d3f219",
-                "reference": "2913aece674b59dd65611156cf6cfadee3d3f219",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/e9bbe3d2ce04a65e5bb2c59bdb31e72ae70e29a4",
+                "reference": "e9bbe3d2ce04a65e5bb2c59bdb31e72ae70e29a4",
                 "shasum": ""
             },
             "require": {
@@ -2494,7 +2494,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2019-09-14T08:29:31+00:00"
+            "time": "2019-09-18T09:44:57+00:00"
         },
         {
             "name": "laravel-enso/helpers",
@@ -8254,16 +8254,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.6.6",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "8fe0ab9850e92aa5e4492c44145b28bc5b83051a"
+                "reference": "4ff9397a24da58b35382802e2d22325b640123ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/8fe0ab9850e92aa5e4492c44145b28bc5b83051a",
-                "reference": "8fe0ab9850e92aa5e4492c44145b28bc5b83051a",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/4ff9397a24da58b35382802e2d22325b640123ea",
+                "reference": "4ff9397a24da58b35382802e2d22325b640123ea",
                 "shasum": ""
             },
             "require": {
@@ -8318,7 +8318,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-16T19:55:14+00:00"
+            "time": "2019-09-20T09:37:06+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -11770,16 +11770,16 @@
         },
         {
             "name": "symplify/coding-standard",
-            "version": "v6.0.5",
+            "version": "v6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Symplify/CodingStandard.git",
-                "reference": "d16273e5e71960f49e448300fbe44d6f5292aeee"
+                "reference": "d692701e2c74edd8c0cc7c35f47b8421b8b4885c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/CodingStandard/zipball/d16273e5e71960f49e448300fbe44d6f5292aeee",
-                "reference": "d16273e5e71960f49e448300fbe44d6f5292aeee",
+                "url": "https://api.github.com/repos/Symplify/CodingStandard/zipball/d692701e2c74edd8c0cc7c35f47b8421b8b4885c",
+                "reference": "d692701e2c74edd8c0cc7c35f47b8421b8b4885c",
                 "shasum": ""
             },
             "require": {
@@ -11789,13 +11789,13 @@
                 "php": "^7.1",
                 "phpstan/phpdoc-parser": "^0.3.4",
                 "squizlabs/php_codesniffer": "^3.4",
-                "symplify/package-builder": "^6.0.5"
+                "symplify/package-builder": "^6.1"
             },
             "require-dev": {
-                "nette/application": "^2.4|^3.0",
+                "nette/application": "^3.0",
                 "phpunit/phpunit": "^7.5|^8.0",
-                "symplify/easy-coding-standard-tester": "^6.0.5",
-                "symplify/package-builder": "^6.0.5"
+                "symplify/easy-coding-standard-tester": "^6.1",
+                "symplify/package-builder": "^6.1"
             },
             "type": "library",
             "extra": {
@@ -11814,20 +11814,20 @@
                 "MIT"
             ],
             "description": "Set of Symplify rules for PHP_CodeSniffer and PHP CS Fixer.",
-            "time": "2019-07-26T14:48:44+00:00"
+            "time": "2019-09-18T08:01:34+00:00"
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "v6.0.5",
+            "version": "v6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Symplify/EasyCodingStandard.git",
-                "reference": "5893608bde2bf5bd5f48d977481582e3d2f90daa"
+                "reference": "94b8cf03af132d007d8a33c8dad5655cff6a74e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/EasyCodingStandard/zipball/5893608bde2bf5bd5f48d977481582e3d2f90daa",
-                "reference": "5893608bde2bf5bd5f48d977481582e3d2f90daa",
+                "url": "https://api.github.com/repos/Symplify/EasyCodingStandard/zipball/94b8cf03af132d007d8a33c8dad5655cff6a74e8",
+                "reference": "94b8cf03af132d007d8a33c8dad5655cff6a74e8",
                 "shasum": ""
             },
             "require": {
@@ -11841,19 +11841,19 @@
                 "psr/simple-cache": "^1.0",
                 "slevomat/coding-standard": "^5.0.1",
                 "squizlabs/php_codesniffer": "^3.4",
-                "symfony/cache": "^3.4|^4.2",
-                "symfony/config": "^3.4|^4.2",
-                "symfony/console": "^3.4|^4.2",
+                "symfony/cache": "^3.4|^4.3",
+                "symfony/config": "^3.4|^4.3",
+                "symfony/console": "^3.4|^4.3",
                 "symfony/dependency-injection": "^3.4.10|^4.2",
-                "symfony/finder": "^3.4|^4.2",
-                "symfony/http-kernel": "^3.4|^4.2",
-                "symfony/yaml": "^3.4|^4.2",
-                "symplify/coding-standard": "^6.0.5",
-                "symplify/package-builder": "^6.0.5"
+                "symfony/finder": "^3.4|^4.3",
+                "symfony/http-kernel": "^3.4|^4.3",
+                "symfony/yaml": "^3.4|^4.3",
+                "symplify/coding-standard": "^6.1",
+                "symplify/package-builder": "^6.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.5|^8.0",
-                "symplify/easy-coding-standard-tester": "^6.0.5"
+                "symplify/easy-coding-standard-tester": "^6.1"
             },
             "bin": [
                 "bin/ecs"
@@ -11878,33 +11878,33 @@
                 "MIT"
             ],
             "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer.",
-            "time": "2019-07-26T14:48:44+00:00"
+            "time": "2019-09-14T22:46:23+00:00"
         },
         {
             "name": "symplify/package-builder",
-            "version": "v6.0.5",
+            "version": "v6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Symplify/PackageBuilder.git",
-                "reference": "f531e03f87c89b26605f1cc1022160e398108ba1"
+                "reference": "fbdfe363a27070cfdfbc47d5f59e711ed08bb060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/PackageBuilder/zipball/f531e03f87c89b26605f1cc1022160e398108ba1",
-                "reference": "f531e03f87c89b26605f1cc1022160e398108ba1",
+                "url": "https://api.github.com/repos/Symplify/PackageBuilder/zipball/fbdfe363a27070cfdfbc47d5f59e711ed08bb060",
+                "reference": "fbdfe363a27070cfdfbc47d5f59e711ed08bb060",
                 "shasum": ""
             },
             "require": {
                 "nette/finder": "^2.4",
                 "nette/utils": "^2.5|^3.0",
                 "php": "^7.1",
-                "symfony/config": "^3.4|^4.2",
-                "symfony/console": "^3.4|^4.2",
-                "symfony/debug": "^3.4|^4.2",
+                "symfony/config": "^3.4|^4.3",
+                "symfony/console": "^3.4|^4.3",
+                "symfony/debug": "^3.4|^4.3",
                 "symfony/dependency-injection": "^3.4.10|^4.2",
-                "symfony/finder": "^3.4|^4.2",
-                "symfony/http-kernel": "^3.4|^4.2",
-                "symfony/yaml": "^3.4|^4.2"
+                "symfony/finder": "^3.4|^4.3",
+                "symfony/http-kernel": "^3.4|^4.3",
+                "symfony/yaml": "^3.4|^4.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.5|^8.0"
@@ -11925,7 +11925,7 @@
                 "MIT"
             ],
             "description": "Dependency Injection, Console and Kernel toolkit for Symplify packages.",
-            "time": "2019-07-22T21:06:43+00:00"
+            "time": "2019-09-17T20:48:03+00:00"
         },
         {
             "name": "theseer/fdomdocument",

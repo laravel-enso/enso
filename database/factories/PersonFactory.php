@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 use LaravelEnso\People\app\Enums\Titles;
 use LaravelEnso\People\app\Enums\Genders;
@@ -17,6 +18,6 @@ $factory->define(Person::class, function (Faker $faker) {
         'appellative' => $faker->firstName(lcfirst(Genders::get($gender))),
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
-        'birthday' => now()->subYears(rand(15, 40)),
+        'birthday' => Carbon::now()->subYears(rand(15, 40)),
     ];
 });
