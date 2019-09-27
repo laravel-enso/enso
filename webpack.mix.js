@@ -5,10 +5,7 @@ mix
         resolve: {
             extensions: ['.js', '.vue', '.json'],
             alias: {
-                '@core-routes': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/routes`,
-                '@core-pages': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/pages`,
-                '@core-middleware': `${__dirname}/node_modules/@enso-ui/ui/src/middleware`,
-                '@core-modules': `${__dirname}/node_modules/@enso-ui/ui/src/modules`,
+                '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
                 '@root': `${__dirname}/resources/js`,
                 '@pages': `${__dirname}/resources/js/pages`,
                 '@store': `${__dirname}/resources/js/store`,

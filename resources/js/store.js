@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {
     coreModules, coreState, coreGetters, coreMutations, coreActions,
-} from '@core-modules/store';
+} from '@core/modules/store';
 
-import storeImporter from '@core-modules/importers/storeImporter';
+import storeImporter from '@core/modules/importers/storeImporter';
 
 const modules = storeImporter(require.context('./store', false, /.*\.js$/));
 

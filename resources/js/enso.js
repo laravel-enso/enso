@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import '@core-modules';
+import '@core/modules';
 
 import App from '@enso-ui/ui/bulma';
 import router from './router';

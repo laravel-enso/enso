@@ -1,12 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import routeImporter from '@core-modules/importers/routeImporter';
-import RouteMerger from '@core-modules/importers/RouteMerger';
-import before from '@core-middleware/before';
+import routeImporter from '@core/modules/importers/routeImporter';
+import RouteMerger from '@core/modules/importers/RouteMerger';
+import before from '@core/middleware/before';
+import routes from '@core/bulma/routes';
 
 Vue.use(Router);
-
-const routes = routeImporter(require.context('@core-routes', false, /.*\.js$/));
 
 (new RouteMerger(routes))
     .add(routeImporter(require.context('./routes', false, /.*\.js$/)));

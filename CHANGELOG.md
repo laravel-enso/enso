@@ -1,5 +1,108 @@
 ## Laravel Enso's Changelog
 
+### 3.5.0
+
+#### front-end
+
+We've created individual packages for resources that map on their back-end siblings for:
+- calendar
+- files
+- data-import
+- activity-log
+- people
+- companies
+- teams
+- roles
+- permissions
+- menus
+- localisation
+- tutorials
+- how-to
+
+This allows much easier customisation...
+
+##### switch
+- fixes not clickable bug on IOS
+
+##### tables
+- cleansup vResponsive
+- fixes file download on default download button
+
+#### back-end
+
+##### cli
+- fixes menu creation w/o model bug
+- updates table template stub
+- updates form builder stub to use `static` vs `self`
+- updates stubs for the new aliases in enso-ui 2.x
+
+##### companies
+- makes `status` required in form validator
+- fixes person form in edit mode, the user field is now readonly
+
+##### core
+- adds an upgrade for the new data-import
+
+##### data-import
+- refactors, cleans & increases accuracy for the progress tracking strategy
+
+##### forms
+- exposes `sectionVisibility` & `tabVisiblity` helpers by making them public
+- fixes `unknownMetaAttributes()` validation error reporting
+
+##### helpers
+- fixes inCents when having null cent attributes
+- adds `CarsadesMorphMap` trait. You can use this in combination with Laravel's `Relation::morphMap()` and have a single alias for all children classes. The convention is to use the singular camel case name of the model's table
+
+##### rememberable
+- refactored `self` vs `static` in model retrieving
+
+##### tables
+- fixes `cents` flag appeared as true when no cent columns defined bug
+
+#### Upgrade Steps
+
+- update in `package.json` the following
+    - "@enso-ui/accessories": "~2.0.0",
+    - "@enso-ui/bulma": "~2.0.0",
+    - "@enso-ui/directives": "~1.0.1",
+    - "@enso-ui/filters": "^1.1.1",
+    - "@enso-ui/mixins": "~1.0.0",
+    - "@enso-ui/select": "~1.1.1",
+    - "@enso-ui/themes": "~1.0.0",
+    - "@enso-ui/transitions": "~1.0.1",
+    - "@enso-ui/ui": "~2.0.0",
+- replace in `webpack.mix.js`
+
+```js
+'@core-routes': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/routes`,
+'@core-pages': `${__dirname}/node_modules/@enso-ui/ui/src/bulma/pages`,
+'@core-middleware': `${__dirname}/node_modules/@enso-ui/ui/src/middleware`,
+'@core-modules': `${__dirname}/node_modules/@enso-ui/ui/src/modules`,
+```
+
+with
+
+```js
+'@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
+```
+
+- search and replace:
+    - `@core-modules` => `@core/modules`
+    - `@core-pages` => `@core/bulma/pages`
+    - `@core-middleware` => `@core/middleware`
+    - `@core-modules` => `@core/modules`
+- update in `router.js`:
+    - add `import routes from '@core/bulma/routes';`
+    - remove `const routes = routeImporter(require.context('@core-routes', false, /.*\.js$/));`
+- run `yarn upgrade`
+- update your front-end patches if the case requires
+- run `yarn` (to apply the patches)
+- run `composer update`
+- run `php artisan enso:upgrade`
+
+Enjoy!
+
 ### 3.4.0
 
 #### front-end
@@ -1118,6 +1221,8 @@ you will need to update your imports
 - update `phpunit.xml` with the one from this repo
 - make sure that in `webpack.mix.js` you don't have `sourceMaps()` for production
 - don't forget to implement Searchable and Files for your required models. You can use `LaravelEnso\Companies\SearchServiceProvider` as example.  
+
+Enjoy!
 
 ### 3.2.3
 - fixes minor bugs
