@@ -36,7 +36,7 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 ### Installation Steps
 
-1. Download the project with `git clone https://github.com/laravel-enso/Enso.git`
+1. Download the project with `git clone --depth 1 https://github.com/laravel-enso/Enso.git`
 
 2. Run in the project folder `composer install`
 
