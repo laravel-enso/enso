@@ -1123,9 +1123,9 @@
     vue "^2.5.16"
 
 "@enso-ui/tables@1.2.x":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-1.2.0.tgz#6ad526e95a95ec16511febed5b9dba6ba7012324"
-  integrity sha512-rgWHPwb96L9dejJzlllu4U56bS1j2ZA2EsfYOxo46oRNpZkIDZcHo1L1O1wFyxlR39+Pmgw9hWCDKD5c9o4p/A==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-1.2.1.tgz#aa1542261065b964f8b3358421313aa42448cda6"
+  integrity sha512-a/xeLs00eO37t2FN8q3NNlAGsp97n2gWd9NNh7+ScaJgIaZIJmrowNLjAyYjwQjHVc7q7JpMUkqVIMdca4ylrQ==
   dependencies:
     "@enso-ui/directives" "1.0.x"
     "@enso-ui/dropdown" "1.0.x"
@@ -7319,9 +7319,9 @@ prosemirror-utils@^0.9.6:
   integrity sha512-UC+j9hQQ1POYfMc5p7UFxBTptRiGPR7Kkmbl3jVvU8VgQbkI89tR/GK+3QYC8n+VvBZrtAoCrJItNhWSxX3slA==
 
 prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.11.4:
-  version "1.11.6"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.11.6.tgz#8500fc20a06b9bf3e2f60c01d9a950bd61512db6"
-  integrity sha512-QilemwGa8ib1n42JFFP4J4SEpzPan2IcMNUlllya/ye9gjuHy1Wt5R/o0zXK0Y0HRP4gNqqb9VrbLvi7UAILqQ==
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.11.7.tgz#537020acab43e18d51e18717fb1f39466317ce21"
+  integrity sha512-RDll1mhrOQ5JPOsUZlISH3VP/4zyHm3RAuqh9Cg5HdpfSQow0nsx8xL5YQZ976UdhvwbkiKamLtxhSRKES9wsA==
   dependencies:
     prosemirror-model "^1.1.0"
     prosemirror-state "^1.0.0"
