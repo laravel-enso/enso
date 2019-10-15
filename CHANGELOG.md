@@ -19,7 +19,7 @@
 
 #### filters
 - updates `date-filter` interval logic. Previously, "today" generated an interval between today@00:00:00 (AM) and tomorrow@00:00:00 (AM). Now the interval is between today@00:00:00 and today@23:59:59. The same principle applies for the other intervals.
-- all the filters had the `title` property renamed to `label` (was causing unwanted native tooltip)
+- all the filters had the `title` property renamed to `name` (was causing unwanted native tooltip)
 
 #### select
 - adds `axios` request cancelling on concurrent requests
@@ -162,6 +162,9 @@
     - "@enso-ui/forms": "~1.2.0"
     - "@enso-ui/select": "~1.1.1"
 
+- run `comopser update && yarn && yarn upgrade && yarn"
+- run `php artisan enso:upgrade`
+
 - add in phpunit.xml the test suite for activity-log
 ```xml
 <testsuite name="activity-log">
@@ -181,7 +184,7 @@
 - add the new `Authenticates` contract to all imports that need the authenticated user
 
 #### filters
-- replace the `title` prop with `label` for all the usage instances of the following filters: 
+- replace the `title` prop with `name` for all the usage instances of the following filters: 
     - `BooleanFilter`, 
     - `CoreSelectFilter`, 
     - `EnsoFilter`,
