@@ -3,11 +3,12 @@
 use App\Classes\LocalState;
 
 return [
-    'version' => '3.4.0',
+    'version' => '3.6.0',
     'showQuote' => true,
     'stateBuilder' => LocalState::class,
     'defaultRole' => 'admin',
     'dateFormat' => 'd-m-Y',
+    'dateTimeFormat' => 'd-m-Y H:i:s',
     'facebook' => 'https://facebook.com',
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',

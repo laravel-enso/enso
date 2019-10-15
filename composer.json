@@ -7,8 +7,11 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "~4.0",
         "guzzlehttp/guzzle": "^6.3",
+        "laravel-enso/cli": "3.3.*",
         "laravel-enso/control-panel-api": "2.3.*",
-        "laravel-enso/core": "4.4.*",
+        "laravel-enso/core": "4.5.*",
+        "laravel-enso/pdf": "1.0.*",
+        "laravel-enso/excel": "1.0.*",
         "laravel-enso/examples": "1.2.*",
         "laravel/horizon": "^3.0",
         "laravel/telescope": "^2.0",
@@ -36,7 +39,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "LaravelEnso\\Cli\\tests\\": "vendor/laravel-enso/cli/tests/",
+            "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
     "extra": {

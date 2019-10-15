@@ -81,6 +81,8 @@ return [
 
     'locale' => 'en',
 
+    'faker_locale' => 'en_US',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -159,11 +161,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
-
+        LaravelEnso\ActivityLog\EnumServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -174,6 +175,7 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\LoggerServiceProvider::class,
     ],
 
     /*

@@ -80,7 +80,8 @@ return [
     */
 
     'trim' => [
-        'recent' => 60 * 24,
+        'recent' => 60,
+        'recent_failed' => 60 * 24 * 7,
         'failed' => 60 * 24 * 7,
         'monitored' => 60 * 24 * 7,
     ],
@@ -158,7 +159,7 @@ return [
                 'tries' => 1,
             ],
             'supervisor-2' => [
-                'connection' => 'redis',
+                'connection' => 'aedis',
                 'queue' => ['heavy'],
                 'balance' => 'auto',
                 'processes' => 1,

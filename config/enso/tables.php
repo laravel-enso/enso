@@ -3,6 +3,36 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Caching
+    |--------------------------------------------------------------------------
+    | Here are all the settings that control the way that table uses caching.
+    | The settings can be overriden in each table template.
+    |
+    | Template caching will improve the overall table speed. If you are using
+    | it in production make sure that you run `php artisan tables:clear`
+    | on each deployment to invalidate the old templates.
+    |
+    | Values: 'never/always/production/local/yourEnv...'
+    |
+    | Entry count caching can considerably speed up big tables and should be
+    | used only in conjunction with the TableCache trait on the base model.
+    | The trait invalidates the cache on model creation / deletion.
+    |
+    | Values: true/false
+    |
+    | Prefix is used for avoiding collisions and the tag is used for
+    | drivers that support tags, otherwise being ignored
+    */
+
+    'cache' => [
+        'template' => 'production',
+        'count' => true,
+        'prefix' => 'enso:tables',
+        'tag' => 'enso:tables',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Validations
     |--------------------------------------------------------------------------
     | This flag sets whether validations are also executed in production
@@ -168,7 +198,8 @@ return [
     'export' => [
         'path' => 'exports',
         'timeout' => 60 * 60,
-        'notifications' => ['broadcast', 'database'],
+        'sheetLimit' => 1000000,
+        'notifications' => ['mail', 'broadcast', 'database'],
     ],
 
     /*

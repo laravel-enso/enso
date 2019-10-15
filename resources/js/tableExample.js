@@ -67,7 +67,7 @@ new Vue({
                     hired_at: {
                         min: null,
                         max: null,
-                        dbDateFormat: 'Y-m-d',
+                        dateFormat: null,
                     },
                     salary: {
                         min: null,

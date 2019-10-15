@@ -16,6 +16,9 @@
         <testsuite name="action-logger">
             <directory suffix="Test.php">./vendor/laravel-enso/action-logger/tests/features</directory>
         </testsuite>
+        <testsuite name="activity-log">
+            <directory suffix="Test.php">./vendor/laravel-enso/activity-log/tests/units</directory>
+        </testsuite>
         <testsuite name="addresses">
             <directory suffix="Test.php">./vendor/laravel-enso/addresses/tests/features</directory>
         </testsuite>
