@@ -21,14 +21,14 @@ class LoggerServiceProvider extends ServiceProvider
             'label' => 'person.name',
             'attributes' => ['role_id' => [Role::class => 'name']],
             'events' => [Events::Created, Events::Deleted, Events::UpdatedActiveState],
-        ]
+        ],
     ];
 
     public function boot()
     {
         parent::boot();
 
-        if (! app()->environment('testing')) {
+        if (!app()->environment('testing')) {
             Logger::observe();
         }
     }
