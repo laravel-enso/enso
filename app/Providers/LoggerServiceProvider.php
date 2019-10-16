@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use LaravelEnso\Core\app\Models\User;
 use LaravelEnso\Roles\app\Models\Role;
 use LaravelEnso\Teams\app\Models\Team;
@@ -28,7 +29,7 @@ class LoggerServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        if (!app()->environment('testing')) {
+        if (! App::environment('testing')) {
             Logger::observe();
         }
     }

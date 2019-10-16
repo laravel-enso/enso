@@ -212,6 +212,7 @@
 - the `protected $templatePath` property has become `protected const TemplatePath`;
 - if you have extended any of the core tables in your local project make sure to take into account the changes
 - add in the `tables.php` config file the `cache` key and update (if required) the `notifications` value' => `['email', 'broadcast', 'database']`
+- add in the `tables.php` config file under the `export`  key =>  ``sheetLimit` => 1000000`
 - where used in templates, rename `count` with `countCache` or set it to `true` globally in the config
 - where missing, add the `buttons` property in all templates  (empty array)
 - see the above `filters` mentions regarding `dbDateFormat`

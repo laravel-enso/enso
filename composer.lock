@@ -3736,16 +3736,16 @@
         },
         {
             "name": "laravel-enso/tables",
-            "version": "3.0.4",
+            "version": "3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "7b36b8863e08864c650bbc14552828e6b8809d46"
+                "reference": "064d374b04faf3a3100ddd98a84f3f2cc2612e5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/7b36b8863e08864c650bbc14552828e6b8809d46",
-                "reference": "7b36b8863e08864c650bbc14552828e6b8809d46",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/064d374b04faf3a3100ddd98a84f3f2cc2612e5e",
+                "reference": "064d374b04faf3a3100ddd98a84f3f2cc2612e5e",
                 "shasum": ""
             },
             "require": {
@@ -3788,7 +3788,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2019-10-15T11:54:37+00:00"
+            "time": "2019-10-15T14:27:35+00:00"
         },
         {
             "name": "laravel-enso/teams",
@@ -3953,16 +3953,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.2.0",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "cacce5a77fa94793cf25345d67387632134d75dd"
+                "reference": "80914c430fb5e49f492812d704ba6aeec03d80a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cacce5a77fa94793cf25345d67387632134d75dd",
-                "reference": "cacce5a77fa94793cf25345d67387632134d75dd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/80914c430fb5e49f492812d704ba6aeec03d80a2",
+                "reference": "80914c430fb5e49f492812d704ba6aeec03d80a2",
                 "shasum": ""
             },
             "require": {
@@ -4095,7 +4095,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-10-08T12:50:06+00:00"
+            "time": "2019-10-15T13:38:24+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -6113,16 +6113,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "dd234ff068899e0ccd509dd7e39eaae1a9e704dc"
+                "reference": "d1d6136a3ea49c940bda7d9d2e98bffd1d06c70e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/dd234ff068899e0ccd509dd7e39eaae1a9e704dc",
-                "reference": "dd234ff068899e0ccd509dd7e39eaae1a9e704dc",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/d1d6136a3ea49c940bda7d9d2e98bffd1d06c70e",
+                "reference": "d1d6136a3ea49c940bda7d9d2e98bffd1d06c70e",
                 "shasum": ""
             },
             "require": {
@@ -6178,7 +6178,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-10-01T12:03:02+00:00"
+            "time": "2019-10-15T19:34:37+00:00"
         },
         {
             "name": "spatie/image-optimizer",
@@ -8932,23 +8932,23 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.8",
+            "version": "5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/44c6787311242a979fa15c704327c20e7221a0e4",
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.2.20",
+                "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
                 "json-schema/json-schema-test-suite": "1.2.0",
                 "phpunit/phpunit": "^4.8.35"
             },
@@ -8994,7 +8994,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2019-01-14T23:55:14+00:00"
+            "time": "2019-09-25T14:49:45+00:00"
         },
         {
             "name": "league/container",
