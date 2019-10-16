@@ -13,6 +13,7 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
+.phpunit.result.cache
 .env
 .DS_STORE
 ._*

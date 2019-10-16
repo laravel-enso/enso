@@ -868,9 +868,9 @@
     vue "^2.5.16"
 
 "@enso-ui/files@1.1.x":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-1.1.0.tgz#b40685953ddcf2b64d41ad0212605b8440f351d2"
-  integrity sha512-/n/G6gBh7URXHexbov46shk4TIWONPzgtAtUZ/13gisbW1t3s7kjyXB1FbAgLFHVgrCqKurMTdAdexYXsUc9zQ==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-1.1.1.tgz#a547fdadd41e957a13d80278aa711afdb499d813"
+  integrity sha512-8eVdcGHl6JVy5dZQSHHLkIqx5CxR8xbJH3X9VdIR6eBStbSUECo1ssjX3W4Yz5eqZu1LYceLsZzF8J9uUMJvuA==
   dependencies:
     "@enso-ui/accessories" "2.1.x"
     "@enso-ui/charts" "1.0.x"
@@ -1224,9 +1224,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@2.1.x":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.1.4.tgz#3f9dc8bdc4dd097c84b1fb24523dac3f4984c3be"
-  integrity sha512-3OuALW7kil8rXGWRD97M3OCmBg2khZi6enKjVvFtikdHQAv+GD4ChRmd9J92CPHd2gLw2U4Om6W7OVf+LbzhWQ==
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.1.5.tgz#24279db8f2c48cfbf55a697798e11bc18a683e6f"
+  integrity sha512-KMDzGSHoCORntnXw1PwZEw5Kon0eRTiyVK0sOKjgtamRV4dLfvGvr6mmjNL0wlaQmqyCr2Q4ZowM0vsCKOt0cg==
   dependencies:
     "@enso-ui/accessories" "2.1.x"
     "@enso-ui/activity-log" "1.1.x"
@@ -6176,9 +6176,9 @@ node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.29:
-  version "1.1.35"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.35.tgz#32a74a3cd497aa77f23d509f483475fd160e4c48"
-  integrity sha512-JGcM/wndCN/2elJlU0IGdVEJQQnJwsLbgPCFd2pY7V0mxf17bZ0Gb/lgOtL29ZQhvEX5shnVhxQyZz3ex94N8w==
+  version "1.1.36"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.36.tgz#44b7cb8254138e87bdbfa47761d0f825e20900b4"
+  integrity sha512-ggXhX6QGyJSjj3r+6ml2LqqC28XOWmKtpb+a15/Zpr9V3yoNazxJNlcQDS9bYaid5FReEWHEgToH1mwoUceWwg==
   dependencies:
     semver "^6.3.0"
 
@@ -6816,9 +6816,9 @@ pkg-dir@^3.0.0:
     find-up "^3.0.0"
 
 popper.js@^1.0.2, popper.js@^1.14.7, popper.js@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
-  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
+  integrity sha512-+G+EkOPoE5S/zChTpmBSSDYmhXJ5PsW8eMhH8cP/CQHMFPBG/kC9Y5IIw6qNYgdJ+/COf0ddY2li28iHaZRSjw==
 
 portfinder@^1.0.9:
   version "1.0.25"
@@ -7260,12 +7260,12 @@ prosemirror-inputrules@^1.0.4:
     prosemirror-transform "^1.0.0"
 
 prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/prosemirror-keymap/-/prosemirror-keymap-1.0.1.tgz#03ef32b828e3a859dfb570eb84928bf2e5330bc2"
-  integrity sha512-e79ApE7PXXZMFtPz7WbjycjAFd1NPjgY1MkecVz98tqwlBSggXWXYQnWFk6x7UkmnBYRHHbXHkR/RXmu2wyBJg==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/prosemirror-keymap/-/prosemirror-keymap-1.0.2.tgz#e4e8b876a586ec6a170615fce19c4450f4075bef"
+  integrity sha512-aq3fBT3WMbwGNacUtMbS/mxd87hjJyjtUx5/h3q/P3FiVqHxmeA9snxQsZHYe0cWRziZePun8zw6kHFKLp/DAQ==
   dependencies:
     prosemirror-state "^1.0.0"
-    w3c-keyname "^1.1.8"
+    w3c-keyname "^2.0.0"
 
 prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.7.3:
   version "1.7.4"
@@ -8812,9 +8812,9 @@ toidentifier@1.0.0:
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
 tooltip.js@^1.2.0:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.3.2.tgz#ccfe450ffd7332ce5f254033778649526c1db542"
-  integrity sha512-DeDr9JxYx/lSvQ53ZCRFLxXrmrSyU3fLz6k+ITUTw69AIYtpWij/NmOJQscJ7BwY5lcEwWJWSfqqQWVvTMYZiw==
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.3.3.tgz#2ad0d77bb6776a76e117eac0afcd3c7d3a237121"
+  integrity sha512-XWWuy/dBdF/F/YpRE955yqBZ4VdLfiTAUdOqoU+wJm6phJlMpEzl/iYHZ+qJswbeT9VG822bNfsETF9wzmoy5A==
   dependencies:
     popper.js "^1.0.2"
 
@@ -9397,10 +9397,10 @@ vuex@^3.0.0, vuex@^3.1.0:
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
   integrity sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
 
-w3c-keyname@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/w3c-keyname/-/w3c-keyname-1.1.8.tgz#4e2219663760fd6535b7a1550f1552d71fc9372c"
-  integrity sha512-2HAdug8GTiu3b4NYhssdtY8PXRue3ICnh1IlxvZYl+hiINRq0GfNWei3XOPDg8L0PsxbmYjWVLuLj6BMRR/9vA==
+w3c-keyname@^2.0.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/w3c-keyname/-/w3c-keyname-2.1.1.tgz#d234195b0a79913d06a0bc636f17f00050a5de56"
+  integrity sha512-8kSrsGClLiL4kb5/pTxglejUlEAPk3GXtkBblSMrQDxKz0NkMRTVTPBZm6QCNqPOCPsdNvae5XfV+RJZgeGXEA==
 
 watchpack@^1.4.0:
   version "1.6.0"
