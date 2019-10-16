@@ -176,6 +176,7 @@
 #### activity-log
 - truncate the `activity_logs` table. Or if required, you can manually migrate the old data to the new format
 - publish the `LoggerServiceProvider` and configure it using the provider from this repo as an example: `php artisan vendor:publish --tag=activity-log-provider`
+- update the UserSeeder ( if necessary ) so that it is compatible with the new `ActivityLog` structure
 
 #### addresses
 - add the to the addresses config file the `label` key
@@ -211,8 +212,8 @@
 - refactor all the table builders to implement the new `Table` contract and expose the required `query()` and `templatePath()` methods. You can follow as example the refactor of the [permissions table](https://github.com/laravel-enso/permissions/commit/707255e3a95a6e8fd87b581db689dfb623449ed5#diff-04ef87d5f506cd5a1ed3d19c5fe0c96b)
 - the `protected $templatePath` property has become `protected const TemplatePath`;
 - if you have extended any of the core tables in your local project make sure to take into account the changes
-- add in the `tables.php` config file the `cache` key and update (if required) the `notifications` value' => `['email', 'broadcast', 'database']`
-- add in the `tables.php` config file under the `export`  key =>  ``sheetLimit` => 1000000`
+- add in the tables.php config file the cache key and update (if required) the notifications value' => `['email', 'broadcast', 'database']`
+- add in the tables.php config file under the export key => ``sheetLimit => 1000000``
 - where used in templates, rename `count` with `countCache` or set it to `true` globally in the config
 - where missing, add the `buttons` property in all templates  (empty array)
 - see the above `filters` mentions regarding `dbDateFormat`
