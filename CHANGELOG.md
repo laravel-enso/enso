@@ -162,7 +162,7 @@
     - "@enso-ui/forms": "~1.2.0"
     - "@enso-ui/select": "~1.1.1"
 
-- run `comopser update && yarn && yarn upgrade && yarn"
+- run `composer update && yarn && yarn upgrade && yarn"
 - run `php artisan enso:upgrade`
 
 - add in phpunit.xml the test suite for activity-log
