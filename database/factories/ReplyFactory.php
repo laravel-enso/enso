@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Discussions\app\Models\Reply;
 use LaravelEnso\Discussions\app\Models\Discussion;
+use LaravelEnso\Discussions\app\Models\Reply;
 
 $factory->define(Reply::class, function (Faker $faker) {
     return [

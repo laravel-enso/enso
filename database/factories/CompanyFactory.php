@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Companies\app\Models\Company;
 use LaravelEnso\Companies\app\Enums\CompanyStatuses;
+use LaravelEnso\Companies\app\Models\Company;
 
 $factory->define(Company::class, function (Faker $faker) {
     return [

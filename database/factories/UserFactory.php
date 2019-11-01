@@ -2,9 +2,9 @@
 
 use Faker\Generator as Faker;
 use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Roles\app\Models\Role;
-use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\Core\app\Models\UserGroup;
+use LaravelEnso\People\app\Models\Person;
+use LaravelEnso\Roles\app\Models\Role;
 
 $factory->define(User::class, function (Faker $faker, $attributes = null) {
     if (isset($attributes['person_id']) && isset($attributes['email'])) {

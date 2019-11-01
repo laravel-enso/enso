@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use LaravelEnso\Roles\app\Models\Role;
 use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Roles\app\Models\Role;
 
 class RoleSeeder extends Seeder
 {

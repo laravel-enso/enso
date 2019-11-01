@@ -1,7 +1,7 @@
 <?php
 
-use LaravelEnso\Examples\app\Models\Example;
 use LaravelEnso\Examples\app\Enums\SeniorityEnum;
+use LaravelEnso\Examples\app\Models\Example;
 
 $factory->define(Example::class, function (Faker\Generator $faker) {
     $salary = $faker->numberBetween($min = 1100, $max = 5500);

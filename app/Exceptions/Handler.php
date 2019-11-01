@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
-use LaravelEnso\Helpers\app\Exceptions\EnsoException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use LaravelEnso\Helpers\app\Exceptions\EnsoException;
 
 class Handler extends ExceptionHandler
 {
