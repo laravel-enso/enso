@@ -13,10 +13,6 @@ class UserSeeder extends Seeder
     {
         $person = $this->person();
 
-        $dispatcher = User::getEventDispatcher();
-
-        User::unsetEventDispatcher();
-
         factory(User::class)->create([
             'person_id' => $person->id,
             'group_id' => UserGroup::whereName('Administrators')->first()->id,
@@ -25,8 +21,6 @@ class UserSeeder extends Seeder
             'role_id' => Role::whereName('admin')->first()->id,
             'is_active' => true,
         ])->generateAvatar();
-
-        User::setEventDispatcher($dispatcher);
     }
 
     private function person()

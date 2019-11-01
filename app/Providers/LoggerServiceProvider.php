@@ -21,7 +21,7 @@ class LoggerServiceProvider extends ServiceProvider
         User::class => [
             'label' => 'person.name',
             'attributes' => ['role_id' => [Role::class => 'name']],
-            'events' => [Events::Created, Events::Deleted, Events::UpdatedActiveState],
+            'events' => [Events::UpdatedActiveState],
         ],
     ];
 
