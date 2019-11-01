@@ -2,9 +2,9 @@
 
 ## 3.6.1
 
-### Front-End
+### front-end
 
-#### activity Log
+#### activity log
 - keepAlive was removed form the index page
 
 #### calendar
@@ -36,7 +36,7 @@
 #### ui
 - various small changes
 
-### Back-End
+### back-end
 
 #### activity log
 - small refactor
@@ -77,11 +77,11 @@ the tests which appeared to randomly fail
 - page titles for edit, create, show where fixed
 - various small changes and improvements
 
-#### data Export
+#### data export
 - the authenticated user is now passed in the `ExcelExport` service so that the `created_by` flag can be accurately set for the generated files
 - the computation for the sheet limit has been fixed
 
-#### data Import
+#### data import
 - fixes setting the `created_by` attribute for the rejected file
 
 #### emails (new)
