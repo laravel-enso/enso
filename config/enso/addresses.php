@@ -2,10 +2,6 @@
 
 return [
     'onDelete' => 'cascade',
-    'formTemplate' => null,
-    'loggableMorph' => [
-        'addressable' => [],
-    ],
     'streetTypes' => [
         'Street' => 'Street',
         'Avenue' => 'Avenue',
@@ -28,7 +24,7 @@ return [
     'label' => [
         'separator' => ' - ',
         'attributes' => [
-            'localityName', 'street', 'number',
+            'locality', 'street', 'number',
         ],
     ],
 ];

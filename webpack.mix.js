@@ -5,6 +5,7 @@ mix
         resolve: {
             extensions: ['.js', '.vue', '.json'],
             alias: {
+                '@calendar': `${__dirname}/node_modules/@enso-ui/calendar/src/bulma`,
                 '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
                 '@root': `${__dirname}/resources/js`,
                 '@pages': `${__dirname}/resources/js/pages`,

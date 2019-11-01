@@ -1,5 +1,150 @@
 # Laravel Enso's Changelog
 
+## 3.6.1
+
+### Front-End
+
+#### Activity Log
+- keepAlive was removed form the index page
+
+#### Calendar
+- as the package is no longer included in the UI package, if you want to continue using it, it should be manually installed
+- previously, the calendar was more of a stub package with little functionality, now it has been rewritten and updated, with features such as:
+    - creating and managing local calendars
+
+#### Emails
+- is a new package that can be used to compose emails for bulk sending (within the application)
+
+#### Files
+- keepAlive was removed form the index page
+
+#### Filters
+- fixed a bug in for the interval filters' computed value
+
+#### Products
+- small cleanup
+
+#### Switch
+- fixed readonly & disabled state
+
+#### Tables
+- the 'Totals' footer is now collapsible, similar to the other columns
+
+#### Typeahead
+- css styling was updated thus fixing some scrollbar issues and sub components sizing
+
+#### UI
+- various small changes
+
+### Back-End
+
+#### Activity Log
+- small refactor
+- the Events list now has better, user friendly labels
+
+#### Addresses
+- the `Country` model now uses Rememberable (caching)
+- the Addresses factory should be force published as it has been updated - this now fixes
+the tests which appeared to randomly fail
+
+#### Avatars
+- the uploaded avatar now has the `created_by` attribute properly set
+
+#### Cli
+- fixed page tiles for create, edit, show routes
+
+#### Companies
+- the `Active` status is now selected by default in the form when creating a new company
+
+#### Control Panel
+- date handling was refactored
+
+#### Control Panel API
+- refactored the statistics building flow
+
+#### Core
+- the `Calendar` package was removed as an implicit dependency - if required add it manually using composer
+- fixed the User seeder
+- generates now the broadcast private channel name dynamically, suited for cases where the user is under a custom namespace
+
+#### Currencies (new)
+- is a package that can be used to manage currencies and exchange rates
+- various small changes and improvements
+- improved request validation
+- added [Fixer Currency](https://fixer.io) API integration so the current exchange rates can be automatically retrieved for your defined currencies
+
+#### CLI
+- page titles for edit, create, show where fixed
+- various small changes and improvements
+
+#### Data Export
+- the authenticated user is now passed in the `ExcelExport` service so that the `created_by` flag can be accurately set for the generated files
+- the computation for the sheet limit has been fixed
+
+#### Data Import
+- fixes setting the `created_by` attribute for the rejected file
+
+#### Emails (new)
+- various small changes
+
+#### Files
+- the `File` model's `between` scope now includes the limits of the given interval whereas in the past they where excluded
+- the `Files` service's  `attach` method should also receive a `$user` model so we can properly set
+the `created_by` attribute on the model
+- `FilePolicy`'s `ownsFile` method visibility what changed from private to protected so it can be overwritten
+if required
+
+#### Forms
+- updated tests to use the configured user model
+
+#### Helpers
+- updated the `InCents` trait to handle `Pivot` models
+- fixed the event name in the `ActiveState` trait (typo)
+- enhanced the date parsing strategy for the `DateAttributes` trait in that if the date cannot be parsed
+using the available format(s), `Carbon::parse` will be used as fallback
+
+#### Notifications
+- generates now the broadcast private channel name dynamically, suited for cases where the user is under a custom namespace
+
+#### Products
+- the product-supplier relationship has been enhanced with the use of Pivot model class for the pivot
+- the supplier prices are now saved 'in cents' through the use of the `InCents` trait
+
+#### Rememberable
+- the package has been rewritten for better code performance, readability & maintainability
+- in addition to the existing Cache mechanism, a new Volatile transparent layer is used by default, which uses an in-memory cache (which is available during the request).
+
+#### Select
+- a new `TypeaheadBuilder` trait has been added to the package, which acts like a shim between the typeahead front-end and the Options backend so we can have select-like ease of use when using typeaheads
+
+#### Tables
+- various small changes, bug fixes and improvements
+- a `DynamicTemplate` contract & mechanisms  are now available that address a possible security issue when caching templates and having different templates and data for different users
+- enhanced interval filter handling
+- updated tests to use the configured user model
+- the exported file now has the `created_by` attribute properly set
+
+#### Teams
+- removed deprecated loggable properties from the model
+
+### Upgrade steps
+
+The new release should not 'breaking' when updating from 3.6.0.
+
+- `composer update`
+- `yarn upgrade && yarn`
+- the Addresses factory should be force published (take care if you've customized it):
+`php artisan vendor:publish --tag=addresses-factory --force`
+- update your User seeder or force publish the Core seeders (take care if you've customized them):
+`php artisan vendor:publish --tag=core-seeders --force`
+- update the Enso version within your config file to reflect the 3.6.1 version
+- if you want to install the calendar package:
+     - `composer require laravel-enso/calendar`
+     - `yarn add @enso-ui/calendar` (1.2.1 or newer) then import the routes & icons as per the [docs](https://docs.laravel-enso.com/backend/calendar.html#installation)
+     - `php artisan enso:upgrade` (be sure to run this before `php artisan migrate`)
+
+For the next release we aim to move to Vue Cli from using Laravel mix.
+
 ## 3.6.0
 
 ### front-end
