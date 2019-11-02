@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "678f55c76abe64a92d21994ed37c28a9",
+    "content-hash": "372512a97cd901abbe1ad8b15ec57b4b",
     "packages": [
         {
             "name": "barryvdh/laravel-snappy",
@@ -1663,16 +1663,16 @@
         },
         {
             "name": "laravel-enso/calendar",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/calendar.git",
-                "reference": "9c12a14665c4446a9f5d3a03c27b5daccc086bd7"
+                "reference": "45cc14058d7891084d7917da95358667d888fc35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/9c12a14665c4446a9f5d3a03c27b5daccc086bd7",
-                "reference": "9c12a14665c4446a9f5d3a03c27b5daccc086bd7",
+                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/45cc14058d7891084d7917da95358667d888fc35",
+                "reference": "45cc14058d7891084d7917da95358667d888fc35",
                 "shasum": ""
             },
             "require": {
@@ -1715,7 +1715,7 @@
                 "events",
                 "reminders"
             ],
-            "time": "2019-11-02T07:11:18+00:00"
+            "time": "2019-11-02T07:49:46+00:00"
         },
         {
             "name": "laravel-enso/charts",

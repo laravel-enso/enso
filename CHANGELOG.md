@@ -129,19 +129,19 @@ using the available format(s), `Carbon::parse` will be used as fallback
 
 ### Upgrade steps
 
-The new release should not 'breaking' when updating from 3.6.0.
-
 - `composer update`
 - `yarn upgrade && yarn`
-- the Addresses factory should be force published (take care if you've customized it):
+- the Addresses factory should be force published (pay attention if you've customized it):
 `php artisan vendor:publish --tag=addresses-factory --force`
-- update your User seeder or force publish the Core seeders (take care if you've customized them):
+- update your User seeder or force publish the Core seeders (pay attention if you've customized them):
 `php artisan vendor:publish --tag=core-seeders --force`
 - update the Enso version within your config file to reflect the 3.6.1 version
 - if you want to install the calendar package:
-     - `composer require laravel-enso/calendar`
-     - `yarn add @enso-ui/calendar` (1.2.1 or newer) then import the routes & icons as per the [docs](https://docs.laravel-enso.com/backend/calendar.html#installation)
-     - `php artisan enso:upgrade` (be sure to run this before `php artisan migrate`)
+    - `composer require laravel-enso/calendar:1.3.x`, then add
+    - `yarn add @enso-ui/calendar@1.2.x`
+    - read [docs](https://docs.laravel-enso.com/backend/calendar.html#installation)
+- `php artisan enso:upgrade`
+- `php artisan migrate`
 
 For the next release we aim to move to Vue Cli from using Laravel mix.
 
