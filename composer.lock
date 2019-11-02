@@ -1663,16 +1663,16 @@
         },
         {
             "name": "laravel-enso/calendar",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/calendar.git",
-                "reference": "09cd069cac8b08f08844862775360e887723b636"
+                "reference": "9c12a14665c4446a9f5d3a03c27b5daccc086bd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/09cd069cac8b08f08844862775360e887723b636",
-                "reference": "09cd069cac8b08f08844862775360e887723b636",
+                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/9c12a14665c4446a9f5d3a03c27b5daccc086bd7",
+                "reference": "9c12a14665c4446a9f5d3a03c27b5daccc086bd7",
                 "shasum": ""
             },
             "require": {
@@ -1715,7 +1715,7 @@
                 "events",
                 "reminders"
             ],
-            "time": "2019-11-01T10:00:06+00:00"
+            "time": "2019-11-02T07:11:18+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -8093,16 +8093,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "314aa57fdcfc942065996f59fb73a8b3f74f3fa5"
+                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/314aa57fdcfc942065996f59fb73a8b3f74f3fa5",
-                "reference": "314aa57fdcfc942065996f59fb73a8b3f74f3fa5",
+                "url": "https://api.github.com/repos/composer/composer/zipball/bb01f2180df87ce7992b8331a68904f80439dd2f",
+                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f",
                 "shasum": ""
             },
             "require": {
@@ -8169,7 +8169,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2019-08-02T18:55:33+00:00"
+            "time": "2019-11-01T16:20:17+00:00"
         },
         {
             "name": "composer/semver",

@@ -727,9 +727,9 @@
     bulma "^0.7.2"
 
 "@enso-ui/calendar@1.2.x":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@enso-ui/calendar/-/calendar-1.2.2.tgz#670136633206801e5bf4a4f5aebadcd390586f52"
-  integrity sha512-sKsQDuju/3UMmje2K9VvLVeP66SfTk+gUR113Vw5oLzcMVIaHYMZjh/jSoA9vUzt3Ngnu1bUnHMFZ+c6T2khmw==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@enso-ui/calendar/-/calendar-1.2.3.tgz#b3e9babb2b82f6135df5af469e46d9f6a2e22514"
+  integrity sha512-4Fkbah8+d8v+iauhgxZxoSbs0W7GrHZMBJaePJTHyjXDCP897kn46n14466En2jjpZSNQ84zTXsuEeQtklNabw==
   dependencies:
     "@enso-ui/datepicker" "1.0.x"
     "@enso-ui/forms" "1.2.x"
@@ -2122,7 +2122,7 @@ cache-base@^1.0.1:
 
 calendar@laravel-enso/calendar:
   version "0.0.0"
-  resolved "https://codeload.github.com/laravel-enso/calendar/tar.gz/a7d783e74d0e7e0e15cd776085e224b8d0f76123"
+  resolved "https://codeload.github.com/laravel-enso/calendar/tar.gz/78d6ab9f418e833e20bcc78963b0c3a0d0aaa173"
 
 caller-callsite@^2.0.0:
   version "2.0.0"
