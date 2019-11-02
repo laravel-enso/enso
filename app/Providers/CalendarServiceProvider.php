@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use LaravelEnso\Calendar\app\Facades\Calendars;
-use LaravelEnso\Calendar\app\Services\Calendars\BirthdayCalendar;
+use LaravelEnso\Calendar\app\Calendars\BirthdayCalendar;
 use LaravelEnso\Calendar\CalendarServiceProvider as ServiceProvider;
 
 class CalendarServiceProvider extends ServiceProvider
