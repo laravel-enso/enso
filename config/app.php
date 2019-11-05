@@ -164,7 +164,6 @@ return [
         /*
          * Package Service Providers...
          */
-        LaravelEnso\ActivityLog\EnumServiceProvider::class,
         /*
          * Application Service Providers...
          */
