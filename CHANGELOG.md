@@ -274,7 +274,7 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
 - `dbDateFormat` was removed
 - improves the strategy for autodetecting the `model` property. The camel case of the model class short name is now used 
 - determines the table's `name` property (if not provided in the template) by pluralising the `model` property (see above)
-- the notification channels should be present in config `['email', 'broadcast', 'database']
+- the notification channels should be present in config `['mail', 'broadcast', 'database']
 - all tests were refined
 
 #### tutorials
