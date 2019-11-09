@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Calendar\app\Models\Event;
-use LaravelEnso\Calendar\app\Models\Calendar;
 use LaravelEnso\Calendar\app\Enums\Frequencies;
+use LaravelEnso\Calendar\app\Models\Calendar;
+use LaravelEnso\Calendar\app\Models\Event;
 
 $factory->define(Event::class, function (Faker $faker) {
     return [
