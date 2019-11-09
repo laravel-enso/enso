@@ -854,9 +854,9 @@
     vuex "^3.0.0"
 
 "@enso-ui/confirmation@1.0.x":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@enso-ui/confirmation/-/confirmation-1.0.13.tgz#921973e2bea1d86d405a61b837fcb592489bac9b"
-  integrity sha512-1jx1eK0WO34VTD6+K3NBcyAEnT8yoAIfALL5G958AHh/CpQG1VAz++FTPIv+vXbWnn0y96BTVICyIxYMnTar4w==
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@enso-ui/confirmation/-/confirmation-1.0.14.tgz#9800e1150abc84c22e6d2f599e909212fda1f107"
+  integrity sha512-1xmF30NZ5PDi3cFMSb3RBEcXy+poSKb60BY619Hd8D5tk2GGtkQDT+Wfs0ZnyKyyIegCmdkrNyI+EJKDag9jHw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.2"
     "@fortawesome/free-solid-svg-icons" "^5.2.0"

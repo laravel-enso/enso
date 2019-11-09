@@ -1673,16 +1673,16 @@
         },
         {
             "name": "laravel-enso/calendar",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/calendar.git",
-                "reference": "4ff74844f90d9a32cf4452003ee968299d281270"
+                "reference": "7b9877f1dd1ba2883084f42cc0552e2ab03c6c8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/4ff74844f90d9a32cf4452003ee968299d281270",
-                "reference": "4ff74844f90d9a32cf4452003ee968299d281270",
+                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/7b9877f1dd1ba2883084f42cc0552e2ab03c6c8a",
+                "reference": "7b9877f1dd1ba2883084f42cc0552e2ab03c6c8a",
                 "shasum": ""
             },
             "require": {
@@ -1737,7 +1737,7 @@
                 "events",
                 "reminders"
             ],
-            "time": "2019-11-09T16:23:40+00:00"
+            "time": "2019-11-09T18:25:41+00:00"
         },
         {
             "name": "laravel-enso/charts",
@@ -2717,16 +2717,16 @@
         },
         {
             "name": "laravel-enso/forms",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "0ba02755c1bffdbb145f861c04605a3784c25863"
+                "reference": "bcafa0178248d15543327badfb3175853daf2e39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/0ba02755c1bffdbb145f861c04605a3784c25863",
-                "reference": "0ba02755c1bffdbb145f861c04605a3784c25863",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/bcafa0178248d15543327badfb3175853daf2e39",
+                "reference": "bcafa0178248d15543327badfb3175853daf2e39",
                 "shasum": ""
             },
             "require": {
@@ -2767,7 +2767,7 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2019-11-09T15:56:12+00:00"
+            "time": "2019-11-09T17:04:06+00:00"
         },
         {
             "name": "laravel-enso/helpers",
