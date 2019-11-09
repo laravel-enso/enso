@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use LaravelEnso\Addresses\app\Models\Address;
-use LaravelEnso\Addresses\app\Models\Country;
+use LaravelEnso\Countries\app\Models\Country;
 
 $factory->define(Address::class, function (Faker $faker) {
     return [

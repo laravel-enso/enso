@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use LaravelEnso\Addresses\app\Models\Country;
+use LaravelEnso\Countries\app\Models\Country;
 
 class CountrySeeder extends Seeder
 {
-    const CountriesJSON = __DIR__.'/../../vendor/laravel-enso/addresses/src/database/countries.json';
+    const CountriesJSON = __DIR__.'/../../vendor/laravel-enso/countries/src/database/countries.json';
 
     public function run()
     {
