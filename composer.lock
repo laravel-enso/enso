@@ -1492,16 +1492,16 @@
         },
         {
             "name": "laravel-enso/activity-log",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/activity-log.git",
-                "reference": "f1412d6278c3852a1ddce5b14909c831ecf70dc3"
+                "reference": "71a9d51a082be24cd3601932b82da1ba2002f53e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/f1412d6278c3852a1ddce5b14909c831ecf70dc3",
-                "reference": "f1412d6278c3852a1ddce5b14909c831ecf70dc3",
+                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/71a9d51a082be24cd3601932b82da1ba2002f53e",
+                "reference": "71a9d51a082be24cd3601932b82da1ba2002f53e",
                 "shasum": ""
             },
             "require": {
@@ -1547,7 +1547,7 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2019-11-09T14:26:36+00:00"
+            "time": "2019-11-10T12:25:59+00:00"
         },
         {
             "name": "laravel-enso/addresses",
@@ -2032,16 +2032,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.6.3",
+            "version": "4.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "1ca4b48cdec0ca4d297e7bf697b38a860eab3648"
+                "reference": "123a15191176cf95c380c2506cb7dae61e93628c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/1ca4b48cdec0ca4d297e7bf697b38a860eab3648",
-                "reference": "1ca4b48cdec0ca4d297e7bf697b38a860eab3648",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/123a15191176cf95c380c2506cb7dae61e93628c",
+                "reference": "123a15191176cf95c380c2506cb7dae61e93628c",
                 "shasum": ""
             },
             "require": {
@@ -2129,20 +2129,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-11-09T15:32:47+00:00"
+            "time": "2019-11-10T12:18:00+00:00"
         },
         {
             "name": "laravel-enso/countries",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/countries.git",
-                "reference": "cef8793939d3b32676fe6cbcbee576e3769699be"
+                "reference": "a2772d73ea6180a36a8e37c4f127b54a85a60495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/cef8793939d3b32676fe6cbcbee576e3769699be",
-                "reference": "cef8793939d3b32676fe6cbcbee576e3769699be",
+                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/a2772d73ea6180a36a8e37c4f127b54a85a60495",
+                "reference": "a2772d73ea6180a36a8e37c4f127b54a85a60495",
                 "shasum": ""
             },
             "require": {
@@ -2190,7 +2190,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-11-09T15:39:54+00:00"
+            "time": "2019-11-10T12:22:37+00:00"
         },
         {
             "name": "laravel-enso/data-export",

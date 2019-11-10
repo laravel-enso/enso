@@ -17,9 +17,6 @@ module.exports = {
         proxy: {
             '/api': {
                 target: process.env.API_URL,
-                secure: false,
-                ws: true,
-                disableHostCheck: true,
                 changeOrigin: true,
             },
         },
