@@ -5,7 +5,7 @@
     "author": "Adrian Ocneanu",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "rm -rf ../public/{js,css,images} && vue-cli-service build --no-clean --modern",
+        "build": "rm -rf ../public/{js,themes,themes-rtl,images} && vue-cli-service build --no-clean",
         "lint": "vue-cli-service lint",
         "postinstall": "opencollective-postinstall && patch-package",
         "prod": "npm run build",

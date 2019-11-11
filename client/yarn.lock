@@ -791,9 +791,9 @@
     bulma "^0.8.0"
 
 "@enso-ui/calendar@^1.3.x":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@enso-ui/calendar/-/calendar-1.3.2.tgz#e8c21b6c7303bf3f0438ccff50f435d23f541476"
-  integrity sha512-edn1wF50qy1WVZzDPs76E24PH/0oT/a0RlWknvwu1M6ip0XaXV1+sIOg/aBC4odtEQPocLlIQv3iSCKh5vXaiw==
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@enso-ui/calendar/-/calendar-1.3.3.tgz#ba2acc9fbc68694790e97434cd75d322e4a818fc"
+  integrity sha512-7QiItjMNgJGsl/prtBH/6lkaj2DYBH7VRjLgJVU6b/UZAE6iOh98u/WcAnXje9jNoaN0IzZvhNipfaSBxRC7qQ==
   dependencies:
     "@enso-ui/datepicker" "1.1.x"
     "@enso-ui/forms" "1.3.x"
@@ -836,9 +836,9 @@
     vue "^2.5.16"
 
 "@enso-ui/companies@1.2.x":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/companies/-/companies-1.2.0.tgz#08abd98dcf3fd4616a2b1897a3194edc34e7115f"
-  integrity sha512-+1wGyEXKVKwiQLacjWgeb1VEwNclpr9OAHy/+C+L5LBMMmorf307duKGNuHcQyb+L6HCA2j9H4w2e0AvTeSQaw==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/companies/-/companies-1.2.1.tgz#2a32e8d8f48befd7dabb1962ff95d52438a002d1"
+  integrity sha512-hzKLfiLl4qjdqniUZX6dUENz31b1oMud90zM1WCdrEO9RgcTafMz3kR0YCN7FRZchDGGvYBg9pikhGAU82eQ7w==
   dependencies:
     "@enso-ui/accessories" "2.2.x"
     "@enso-ui/card" "1.0.x"
