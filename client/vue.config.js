@@ -9,13 +9,17 @@ module.exports = {
                 ? '../resources/views/vendor/laravel-enso/core/index.blade.php'
                 : './index.html',
             template: process.env.NODE_ENV === 'production'
-                ? '../vendor/laravel-enso/core/src/stubs/production-index.blade.php'
-                : '../vendor/laravel-enso/core/src/stubs/development-index.html',
+                ? '../vendor/laravel-enso/core/stubs/production-index.blade.stub'
+                : '../vendor/laravel-enso/core/stubs/development-index.stub',
         },
     },
     devServer: {
         proxy: {
             '/api': {
+                target: process.env.API_URL,
+                changeOrigin: true,
+            },
+            '/broadcasting': {
                 target: process.env.API_URL,
                 changeOrigin: true,
             },
