@@ -6,4 +6,3 @@ return [
     'light-rtl' => 'light-rtl',
     'dark-rtl' => 'dark-rtl',
 ];
-
