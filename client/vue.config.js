@@ -4,7 +4,7 @@ module.exports = {
     pages: {
         main: {
             entry: 'src/js/enso.js',
-            minify: false,
+            minify: true,
             filename: process.env.NODE_ENV === 'production'
                 ? '../resources/views/vendor/laravel-enso/core/index.blade.php'
                 : './index.html',

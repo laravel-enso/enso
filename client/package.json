@@ -6,10 +6,10 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "rm -rf ../public/{js,themes,themes-rtl,images} && vue-cli-service build --no-clean",
+        "dev": "rm -rf ../public/{js,themes,themes-rtl,images} && vue-cli-service build --no-clean --mode development",
         "lint": "vue-cli-service lint",
         "postinstall": "opencollective-postinstall && patch-package",
-        "prod": "npm run build",
-        "production": "npm run build"
+        "prod": "npm run build"
     },
     "main": "vue.config.js",
     "dependencies": {

@@ -1,5 +1,6 @@
 # local
 .DS_STORE
+.DS_Store
 ._*
 Homestead.json
 Homestead.yaml
@@ -18,6 +19,8 @@ packages
 
 # logs
 .phpunit.result.cache
+.php_cs
+.php_cs.cache
 
 # code editors
 .idea
