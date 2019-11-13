@@ -1,5 +1,7 @@
 <?php
 
+use LaravelEnso\Core\BroadcastServiceProvider;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        BroadcastServiceProvider::class,
         /*
          * Application Service Providers...
          */
