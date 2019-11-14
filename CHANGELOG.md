@@ -231,6 +231,8 @@ php artisan vendor:publish --tag=countries-seeder --force
  
     To use it, update your live deployment process and after the deploy is done, add a hook that calls `php artisan enso:announce-app-update`.
     The logged in users will get a toaster message as a well a pulsing notification control in the navbar, which, when clicked, will reload the page.
+    
+    Note that for the user to be notified, the current in-page version must be different from the released version, so don't forget to update the `enso.config.version` value.
 
     Reloading helps avoid js errors related to the lazy loading of the front-end assets as well as any mismatches between the stale front-end and the updated back-end API.
 
