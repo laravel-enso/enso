@@ -1,5 +1,263 @@
 # Laravel Enso's Changelog
 
+## 3.7.0
+
+The major purpose of this release is three fold:
+* the switch to VueCli 4 which allows using the latest official VueJS tooling and should be more future-proof
+* the date handling flow was simplified: we now expect that the front-end will send the date in the database's date format (usually `Y-m-d` or `Y-m-d H:i:s`) and on the back-end, all dates should be cast to Carbon\Carbon.
+* the back-end packages were updated to require PHP 7.3+
+
+### front-end
+
+#### accessories
+- default value for Documents.vue's disableUpload was fixed causing users to not be able to upload files
+
+#### calendar
+- added Event recurrency support
+- small fixes and under the hood refactor
+- import of VueCal language packs for the Enso supported languages which fixed translation issue
+
+#### companies
+- fixed small bug when assigning a person to the company, which caused the person to not be listed as assigned
+
+#### confirmation
+- fixed small styling issue with the control's position
+
+#### currencies
+- added filters on the index page
+- for the currency display, symbols are used instead of icons 
+
+#### datepicker
+- default date format was updated from `'d-m-Y'` to `'Y-m-d'`
+- `alt-format` & `alt-input` parameter usage was fixed
+
+#### filters
+- DateFilter now has a `direction` parameter & control: you can now choose to filter from past & future presets
+- DateFilter also has a new `forward` boolean parameter which makes the component to start by default with the 
+future presets
+- under the hood date format handling has been improved
+
+#### forms
+- fixed the `alt-input` & `alt-format` handling for the date field
+- instead of a single `actions` slot, the form now has a two `actions-left` & `actions-right` slots. This is a breaking change - see the upgrade steps
+
+#### products
+- various small css fixes
+
+#### select
+- making another request when the last request is still in progress will trigger the existing request's cancellation
+- fixed bug when using the select in Object mode
+- improved serverSide checking strategy
+- the CoreSelect's `value` parameter is now required
+
+#### tables
+- fixed issue with unneeded scrollbars appearing under some circumstances
+- small cleanup
+
+#### themes
+- theme files were renamed due to switching to VueCli and using the style loader webpack plugin
+- Bulma version was bumped to ^0.8.0
+- button sizes are customized to appear smaller than the new Bulma default (and slightly smaller than the old default)
+
+#### ui
+- the media resources that belonged to the UI (such as notification image SVGs, some logos) were moved to the ui package and are copied on build
+- a new component is available in the navbar and being used to notify the currently
+logged in users whenever a new application update has been deployed
+- small changes made due to VueCli upgrade (routes, styles, themes)
+- other small fixes
+
+### back-end
+
+#### activity-log
+- updated date parsing due to filters changes
+
+#### avatar
+- added support for gif files
+
+#### calendar
+- recurring events are now supported
+- various bugs were fixed
+- updated the tests
+
+#### companies
+- updated message when setting/updating an assigned person/mandatary
+
+#### countries (new)
+- functionality derives from 'addresses` which now is now better encapsulated
+
+#### core
+- some of the resources used during the VueCli build process have been moved to this package, namely:
+    - stubs for the index page
+    - images used in the emails
+- a new command (`php artisan enso:announce-app-update`)and logic has been implemented that can be used to notify currently logged in users that a new application version has been deplyed
+- the older, deprecated upgrade commands where purged
+- improved local state handling (breaking change)
+- added upgrade commands for calendar, countries & tutorials
+- the themes' configuration was updated
+
+#### currencies
+- created a Converter service which can convert from one currency to another, at a given date
+- refactored fixer currency API
+- fixed exchange rate validation and more
+- fixed config API link
+- updated date parsing due to datepicker changes
+- added seeders for 17 currencies
+- added `exchange_rates` date index
+- various under the hood improvements
+- updated the tests
+
+#### enums
+- updated PHP dependency to 7.3+
+
+#### excel
+- updated PHP dependency to 7.3+
+
+#### files
+- updated date parsing as required for latest filters usage
+- fixed invalidMimeType exception message
+
+#### forms
+- updated date parsing for latest datepicker usage
+- updated the config: the previous `dateFormat` parameter is now named `altDateFormat` (breaking change)
+- fixed route generation in Builder
+- updated the tests
+
+#### helpers
+- the `DateAttributes` trait was removed as a consequence of the new date handling flow (breaking change)
+
+#### people
+- updated date parsing as required for latest filters usage
+
+#### permissions
+- added menu related check when deleting permission
+
+#### rememberable
+- fixed caching bug when choosing to cache 'forever'
+
+#### tables
+- updated date filtering strategy which resulted in much simpler and robust code
+- fixed default sort issue
+- fixed rawTotal computation issue for empty tables
+- fixed bug when exporting nested columns
+
+#### tutorials
+- the `show` route was renamed to `load`
+- fixed small form bug
+
+#### versions
+- updated PHP dependency to 7.3+
+
+### Upgrade steps
+
+Before getting into the actual upgrade steps, an overview of the changes is useful.
+
+When switching from Laravel Mix to VueCli a few things happen:
+- the front-end resources location will change from `resources/js` to `client/src/js`
+- the front-end dependencies location will change from `node_modules` to `client/node_modules`
+- the `package.json` configuration file location will change from project root to `client`
+- the front-end patches location will change from `patches` to `client/patches`
+- when installing dependencies using Yarn, building or serving the front-end, you will need to `cd` into the client folder first.
+- instead of using Laravel Mix's `webpack.mix.js` file to configure the build, we will be using VueCli's `vue.config.js`
+- we can still use Valet to serve the back-end but we must use `yarn serve` to serve the front-end for
+hot module replacement
+
+#### VueCli upgrade related steps
+- copy the `client` folder from the Enso repo into your project root
+- add any (package) aliases you had previously added to the `webpack.mix.js` file into: 
+    - the `settings.import-resolve.alias.map` section of the `client/.eslintrc.js` file
+    - the `configureWebpack.resolve.alias` section of the `client/vue.config.js` file
+- update/replace your project root `.eslintrc.js` with the contents from `client/.eslintrc.js`
+- if you had customized the `.babelrc` file, move those customizations to the `client/.babelrc` file, and remove the root file
+- move your patches from `patches` to `client/patches`
+- move any local dependencies you had added to the `package.json` to the `client/package.json` file
+- move any additions from the `resources/js/app.js` file to the `client/src/js/app.js`
+- move any additions from the `resources/js/localState.js ` file to the `client/src/js/localState.js `
+- move your local components, pages, routes & store from `resources/js` to `client/src/js`
+- once you have moved your js files, you may delete the `resources/js` folder
+- if you have any local image resources in `resources/images` you can create a `client/src/images` folder and move them there. Afterwards, you should add a configuration object to the CopyPlugin section from `vue.config.js` so that the images are copied on build.
+
+    You may then delete the `resources/images` folder (the image files provided with Enso, such as the ones in the `emails` and `corners` have been extracted to their respective packages)
+- move any additions from within the `resources/sass` files to the `client/src/sass` files
+- once you've moved everything, the `resources` folder should look like on the Enso repo [here](https://github.com/laravel-enso/enso/tree/master/resources)
+
+- remove the `webpack.mix.js` file
+- update `.gitignore` using Enso's as example and double check `client/.gitignore`
+- within `composer.json` update:
+    - `laravel-enso/core` to `4.6.*`
+    - `laravel-enso/calendar` to `1.4.*` (if using the calendar package)
+- run `composer update` in the project root to update the back-end packages
+- cd into the `client` folder and run `yarn` to install the front-end packages
+- make a copy of the `client/.env.example` file, name it `.env`, then edit it an set the url you're currently using with Valet, for your project
+- update the themes' configuration (`config/enso/themes`) to:
+```php
+return [
+    'light' => 'light',
+    'dark' => 'dark',
+    'light-rtl' => 'light-rtl',
+    'dark-rtl' => 'dark-rtl',
+];
+```
+
+#### Enso upgrade related steps:
+- search for any `DateAttributes` usages, remove the import and any date setters you might have added
+- when refactoring date attributes, you may use this [commit](https://github.com/laravel-enso/people/commit/15ea16132957e3ce1bea9b1066fdb3e4f079e79e) as an example
+- search and replace the `LaravelEnso\Addresses\app\Models\Country;` namespace with `LaravelEnso\Countries\app\Models\Country;`
+- where using the `actions` slot within forms, replace the `actions` slot with `actions-left` and/or `actions-right` slots as required
+- the local state implementation class should be bound in the service container to the `LaravelEnso\Core\app\Services\LocalState`
+- publish the updated `AddressFactory.php`: 
+```
+php artisan vendor:publish --tag=addresses-factory --force
+```
+- publish the updated `CountrySeeder.php`
+```
+php artisan vendor:publish --tag=countries-seeder --force
+```
+- is using the Calendar, also:
+    - publish the calendar factories
+    ```
+    php artisan vendor:publish --tag=calendar-factories --force
+    ```
+    - add the calendar test suite to `phpunit.xml`:
+    ```xml
+        <testsuite name="calendar">
+            <directory suffix="Test.php">./vendor/laravel-enso/calendar/tests</directory>
+        </testsuite>
+    ```
+    - add the following namespace `"LaravelEnso\\Calendar\\tests\\features\\": "vendor/laravel-enso/calendar/tests/features/",` to `composer.json`'s `autoload-dev.psr-4`
+- increment the enso/config version to 3.7.0
+- in `enso/forms.php` update the `dateFormat` key to `altDateFormat`
+- cd into the `client` folder and serve the front-end with `yarn serve` or build it with `yarn build`
+- (optional) a new feature allows you to notify your currently logged in users that a new application update/version was deployed.
+ 
+    To use it, update your live deployment process and after the deploy is done, add a hook that calls `php artisan enso:announce-app-update`.
+    The logged in users will get a toaster message as a well a pulsing notification control in the navbar, which, when clicked, will reload the page.
+
+    Reloading helps avoid js errors related to the lazy loading of the front-end assets as well as any mismatches between the stale front-end and the updated back-end API.
+
+    The page reload is not done automatically for a better user experience as well as to give users the chance to save their work.
+
+#### Serving the assets
+
+Serving the assets has changed from running `yarn run hot` to cd-ing into the 
+`client` folder and running `yarn serve`.
+
+No other steps are necessary if you are serving the back-end API as before, for example with Valet.
+
+Alternatively, if you don't want to use Valet, you may run `php artisan serve` and then point to the back-end URL, within the `client/.env` config.
+
+#### Building the assets
+
+Building the assets has changed from running `yarn run prod` to cd-ing into the 
+`client` folder and running `yarn build`.
+
+While the command is different, the resulted build is, for all practical purposes, identical to the one resulted when using Laravel Mix.
+
+#### Deploying in production 
+
+To deploy the build you should follow the same flow as before. 
+
+IF within your workflow you are also building the front-end, you should update your scripts so as to take into the account the `client` folder (see above).
+
 ## 3.6.1
 
 ### front-end
@@ -183,7 +441,7 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
 #### activity-log
 - rebuilt from scratch
 - registration of events is made in `LoggerServiceProvider'
-- all registerd / logged events use Laravel native Model events and Observers
+- all registered / logged events use Laravel native Model events and Observers
 - allows any number of custom events to be registered with models by extending the existing structures
 - now the messages are properly translated
 - for multi part events messages can be strings or arrays, (helps localisation)
@@ -260,7 +518,7 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
 #### tables
 - the package was completely refactored
 - the table builder class now has to implement a `Table` contract instead of extending a service class
-- adds a serie of contracts besides `Table`:
+- adds a series of contracts besides `Table`:
     - `AuthenticatesOnExport` => should be used for tables where the logged user is needed for restricting visible rows or any other purpose. The exporter will make sure that the user who requested the export will be authenticated before any queries are performed
     - `CustomFilter` => should be used for tables when custom filter logic is needed via `params`. Will make sure that the correct count is displayed when custom filters are applied
     - `RawTotal` => should be used with tables where the total cannot be computed simply by adding up column values (e.g. `sum(price * quantity))
@@ -268,11 +526,11 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
     - `ComputesColumns` => can be used to register local computors
 - improves exceptions
 - adds template caching, configurable by global config or per table. Comes with a `php artisan enso:tables:clear` command that should be used on production when opting for cacheing templates
-- renamed `cache` to `countCache`. Can now be set globally in the config. The builder will notifiy the dev if certain models are missing the `TableCache` trait
+- renamed `cache` to `countCache`. Can now be set globally in the config. The builder will notify the dev if certain models are missing the `TableCache` trait
 - makes the `buttons` attribute mandatory in templates
 - date interval filters object must now contain the `dateFormat` prop representing the FE format of the date. If the dateFormat prop is null, the `config('enso.config.dateFormat')` will be used
 - `dbDateFormat` was removed
-- improves the strategy for autodetecting the `model` property. The camel case of the model class short name is now used 
+- improves the strategy for auto-detecting the `model` property. The camel case of the model class short name is now used 
 - determines the table's `name` property (if not provided in the template) by pluralising the `model` property (see above)
 - the notification channels should be present in config `['mail', 'broadcast', 'database']
 - all tests were refined
@@ -389,7 +647,7 @@ This allows much easier customisation...
 - fixes not clickable bug on IOS
 
 #### tables
-- cleansup vResponsive
+- cleans up vResponsive
 - fixes file download on default download button
 
 ### back-end

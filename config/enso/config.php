@@ -1,11 +1,9 @@
 <?php
 
-use App\Classes\LocalState;
-
 return [
-    'version' => '3.6.1',
+    'version' => '3.7.0',
     'showQuote' => true,
-    'stateBuilder' => LocalState::class,
+    'stateBuilder' => null,
     'defaultRole' => 'admin',
     'dateFormat' => 'd-m-Y',
     'dateTimeFormat' => 'd-m-Y H:i:s',

@@ -1,13 +1,18 @@
-<!--h-->
 # Laravel Enso
+
 [![StyleCI](https://styleci.io/repos/95136264/shield?branch=master)](https://styleci.io/repos/95136264)
-[![Backers on Open Collective](https://opencollective.com/Enso/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/Enso/sponsors/badge.svg)](#sponsors) [![Waffle.io - Columns and their card count](https://badge.waffle.io/laravel-enso/Enso.svg?columns=all)](https://waffle.io/laravel-enso/Enso)
+[![Backers on Open Collective](https://opencollective.com/Enso/backers/badge.svg)](#backers) 
+[![Sponsors on Open Collective](https://opencollective.com/Enso/sponsors/badge.svg)](#sponsors)
+[![Github Issues](https://img.shields.io/github/issues/laravel-enso/enso)](https://github.com/laravel-enso/enso/issues)
 [![Build Status](https://travis-ci.org/laravel-enso/Enso.svg?branch=master)](https://travis-ci.org/laravel-enso/Enso)
-<!--/h-->
+![GitHub language count](https://img.shields.io/github/languages/count/laravel-enso/enso)
+![GitHub](https://img.shields.io/github/license/laravel-enso/enso)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/laravel-enso/enso)
+![GitHub Release Date](https://img.shields.io/github/release-date/laravel-enso/enso)
+![GitHub commits since latest release](https://img.shields.io/github/commits-since/laravel-enso/enso/latest)
+
 
 **Hit the ground running when building your new Laravel SPA project with boilerplate and extra functionality out of the box!**
-
-**v3.0alpha** please use 2.x for production...
 
 &nbsp;
 
@@ -21,13 +26,10 @@ If you are using this project please consult the **[changelog](https://github.co
 
 For the v1.x / adminlte version, take a look at the **[adminlte](https://github.com/laravel-enso/Enso/tree/adminlte)** branch.
 
-<!--h-->
 ### Official Documentation
 
 The documentation is available [here](https://docs.laravel-enso.com) split into backend and frontend.
 Note that most sections have short demo clips.
-
-<!--/h-->
 
 ### Take It For A Spin
 
@@ -36,19 +38,30 @@ and logging in with `admin@laravel-enso.com` and `password`.
 
 ### Installation Steps
 
-1. Download the project with `git clone --depth 1 https://github.com/laravel-enso/Enso.git`
+1. Download the project with `git clone https://github.com/laravel-enso/enso.git --depth 1`
 
-2. Run in the project folder `composer install`
+2. Within the project folder run `composer install`
 
-3. Configure the `.env` file. Run `php artisan key:generate`
+3. Create a database for your site (see the [Laravel database documentation](https://laravel.com/docs/6.x/database)), 
+copy or rename the `.env.example` file to `.env`, 
+edit the database configuration information, and run `php artisan key:generate`
 
-4. Run `php artisan migrate --seed`
+4. In order to serve the back-end API, take a look at the Local Development Server section of the [Laravel installation documentation](https://laravel.com/docs/6.x/#installation)
+and consider using [Valet](https://laravel.com/docs/6.x/valet) for a better experience
 
-5. Login into the project with user: `admin@laravel-enso.com`, password: `password`
+5. Run `php artisan migrate --seed`
 
-6. (optional) Setup the configuration files as needed, in `config/enso/*.php`
+6. Open the `client` folder, copy the `.env.example` file, save it as `.env` and set the URL 
+for the back-end API (which you've configured at step 4)
 
-7. (optional) `npm install` / `npm run dev` / `hmr` /...
+7. Run `yarn && yarn build`
+
+8. Launch the site and log into the project with user: `admin@laravel-enso.com`, password: `password`
+
+9. For live reload / hot module replacement functionality run `yarn serve`
+
+10. (optional) Setup the configuration files as needed, in `config/enso/*.php`
+
 
 Enjoy!
 
@@ -82,7 +95,6 @@ Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Lar
 
 Special thanks to [Taylor Otwell](https://laravel.com/), [Jeffrey Way](https://laracasts.com), [Evan You](https://vuejs.org/) and [Jeremy Thomas](https://bulma.io).
 
-<!--h-->
 ### Contributions
 
 are welcome. Pull requests are great, but issues are good too.
@@ -120,8 +132,6 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/Enso/sponsor/9/website" target="_blank"><img src="https://opencollective.com/Enso/sponsor/9/avatar.svg"></a>
 
 
-
 ### License
 
 This package is released under the MIT license.
-<!--/h-->

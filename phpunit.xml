@@ -25,6 +25,9 @@
         <testsuite name="avatars">
             <directory suffix="Test.php">./vendor/laravel-enso/avatars/tests/features</directory>
         </testsuite>
+        <testsuite name="calendar">
+            <directory suffix="Test.php">./vendor/laravel-enso/calendar/tests</directory>
+        </testsuite>
         <testsuite name="cli">
             <directory suffix="Test.php">./vendor/laravel-enso/cli/tests</directory>
         </testsuite>

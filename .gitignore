@@ -1,19 +1,33 @@
-/node_modules
-/.vscode
-/packages
-/public/*
-!/public/robots.txt
-!/public/index.php
-!/public/.htaccess
-!/public/vendor
-/storage/*.key
-/vendor
-/.idea
-/.vagrant
+# local
+.DS_STORE
+.DS_Store
+._*
 Homestead.json
 Homestead.yaml
-npm-debug.log
-.phpunit.result.cache
+public/*
+!public/robots.txt
+!public/index.php
+!public/.htaccess
+!public/vendor
+node_modules
+vendor
+packages
+.vagrant
+
+# env
 .env
-.DS_STORE
-._*
+
+# logs
+.phpunit.result.cache
+.php_cs
+.php_cs.cache
+
+# code editors
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
