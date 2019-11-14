@@ -1289,9 +1289,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@2.2.x":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.2.4.tgz#72d6e659c2489813168e6dbad164ca42f9618227"
-  integrity sha512-M+kr7rFKnwnyp2r+/39JzSeliJvidAsnBo+OF8s3aY7/pId3zE/+PkCbVcc3fE8ehXKRSU8TSAX6YPUfyNBA3g==
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.2.5.tgz#233a81a38cd868e698c9c8dfd4f9832cbad7222b"
+  integrity sha512-/HDMWlT+pe4HAVpPl15ootqMCfYVqbjWo0hZbPUqaLqMoa+xT6EqU4AjMfn+Z45NjaWhNsfWJexFqrSourE62A==
   dependencies:
     "@enso-ui/accessories" "2.2.x"
     "@enso-ui/activity-log" "1.2.x"

@@ -3090,16 +3090,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.4.5",
+            "version": "3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "087b941704e22494663986f768017d4cfe422147"
+                "reference": "2832249625b98041096524ee4e82cc5479e2a0eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/087b941704e22494663986f768017d4cfe422147",
-                "reference": "087b941704e22494663986f768017d4cfe422147",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/2832249625b98041096524ee4e82cc5479e2a0eb",
+                "reference": "2832249625b98041096524ee4e82cc5479e2a0eb",
                 "shasum": ""
             },
             "require": {
@@ -3144,7 +3144,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2019-11-14T09:42:04+00:00"
+            "time": "2019-11-14T12:37:17+00:00"
         },
         {
             "name": "laravel-enso/logs",
@@ -8600,16 +8600,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.11.2",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db"
+                "reference": "67736a01597b9e08f00a1fc8966b92b918dba5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/862cbc2dfffa1fa28b47822a116e5b2e03b421db",
-                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/67736a01597b9e08f00a1fc8966b92b918dba5ea",
+                "reference": "67736a01597b9e08f00a1fc8966b92b918dba5ea",
                 "shasum": ""
             },
             "require": {
@@ -8667,7 +8667,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-10-13T10:42:06+00:00"
+            "time": "2019-11-14T10:51:35+00:00"
         },
         {
             "name": "facade/ignition-contracts",
