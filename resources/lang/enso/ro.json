@@ -550,6 +550,6 @@
     "Flag Icon Class": "Clasa iconita steag",
     "Send a password reset link": "Genereaza link pentru reset parola",
     "Search": "Cauta",
-    "The application was updated, please save your work & refresh your browser": "Aplicatia a fost actualizata, salveaza-ti modificarile curente si reincarca pagina",
+    "The application was updated from :old to :new, please save your work & refresh your browser": "Aplicatia a fost actualizata de la :old la :new , salveaza-ti modificarile curente si reincarca pagina",
     "Click here to refresh your page and update to the latest version": "Apasa aici pentru a folosi ultima versiune a aplicatiei"
 }
