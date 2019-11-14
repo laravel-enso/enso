@@ -1,5 +1,6 @@
 {
-    "The application was updated, please refresh your browser": null,
+    "The application was updated, please save your work & refresh your browser": null,
+    "Click here to refresh your page and update to the latest version": null,
     "An export job is already running for the same table": "F\u00fcr diese Tabelle wurde bereits ein Export gestartet",
     "To": "Bis",
     "Between": "Zwischen",
@@ -21,7 +22,7 @@
     "Shift + Enter to post": "<SHIFT> + <ENTER> um die Nachricht abzusenden",
     "The Person was successfully created": "Die Person wurde erfolgreich angelegt",
     "The person was successfully deleted": "Die Person wurde erfolgreich gel\u00f6scht",
-    "The address have been successfully updated": "Die Adresse wurde erfolgreich aktualisiert",
+    "The address has been successfully updated": "Die Adresse wurde erfolgreich aktualisiert",
     "The address was successfully created": "Die Adresse wurde erfolgreich angelegt",
     "The person was successfully updated": "Die Person wurde erfolgreich aktualisiert",
     "The person was successfully created": "Die Person wurde erfolgreich angelegt",
