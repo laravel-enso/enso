@@ -166,7 +166,7 @@ hot module replacement
 - add any (package) aliases you had previously added to the `webpack.mix.js` file into: 
     - the `settings.import-resolve.alias.map` section of the `client/.eslintrc.js` file
     - the `configureWebpack.resolve.alias` section of the `client/vue.config.js` file
-- update/replace your project root `.eslintrc.js` with the contents from `client/.eslintrc.js`
+- update/replace your project root `.eslintrc.js` with the contents from `client/.eslintrc.js` and correct the aliases paths
 - if you had customized the `.babelrc` file, move those customizations to the `client/.babelrc` file, and remove the root file
 - move your patches from `patches` to `client/patches`
 - move any local dependencies you had added to the `package.json` to the `client/package.json` file
