@@ -213,7 +213,7 @@ php artisan vendor:publish --tag=addresses-factory --force
 ```
 php artisan vendor:publish --tag=countries-seeder --force
 ```
-- is using the Calendar, also:
+- if using the Calendar, also:
     - publish the calendar factories
     ```
     php artisan vendor:publish --tag=calendar-factories --force
@@ -225,8 +225,8 @@ php artisan vendor:publish --tag=countries-seeder --force
         </testsuite>
     ```
     - add the following namespace `"LaravelEnso\\Calendar\\tests\\features\\": "vendor/laravel-enso/calendar/tests/features/",` to `composer.json`'s `autoload-dev.psr-4`
-- increment the enso/config version to 3.7.0
-- in `enso/forms.php` update the `dateFormat` key to `altDateFormat`
+- in `config/enso/config.php` increment the version to 3.7.0
+- in `config/enso/forms.php` update the `dateFormat` key to `altDateFormat`
 - cd into the `client` folder and serve the front-end with `yarn serve` or build it with `yarn build`
 - (optional) a new feature allows you to notify your currently logged in users that a new application update/version was deployed.
  
