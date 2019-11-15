@@ -172,6 +172,7 @@ hot module replacement
 - move any local dependencies you had added to the `package.json` to the `client/package.json` file
 - move any additions from the `resources/js/app.js` file to the `client/src/js/app.js`
 - move any additions from the `resources/js/localState.js ` file to the `client/src/js/localState.js `
+- move any additions from the `resources/js/router.js ` file to the `client/src/js/router.js `
 - move your local components, pages, routes & store from `resources/js` to `client/src/js`
 - once you have moved your js files, you may delete the `resources/js` folder
 - if you have any local image resources in `resources/images` you can create a `client/src/images` folder and move them there. Afterwards, you should add a configuration object to the CopyPlugin section from `vue.config.js` so that the images are copied on build.
