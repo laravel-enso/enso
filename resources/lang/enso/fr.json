@@ -1,6 +1,8 @@
 {
-    "The application was updated from :old to :new, please save your work & refresh your browser": null,
-    "Click here to refresh your page and update to the latest version": null,
+    "Save your work then click here to refresh your page and update to the latest application version": null,
+    "The application was updated, please save your work & refresh your browser": null,
+    "The address has been successfully updated": null,
+    "Important": null,
     "An export job is already running for the same table": null,
     "To": null,
     "Between": null,
@@ -22,7 +24,6 @@
     "Shift + Enter to post": null,
     "The Person was successfully created": null,
     "The person was successfully deleted": null,
-    "The address have been successfully updated": null,
     "The address was successfully created": null,
     "The person was successfully updated": null,
     "The person was successfully created": null,

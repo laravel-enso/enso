@@ -1,5 +1,78 @@
 # Laravel Enso's Changelog
 
+## 3.7.1
+
+### front-end
+
+#### calendar
+- fixed request filter date format
+
+#### filters
+- fixes `fill` method for filter state
+- limits width for picker inputs in date filter
+
+#### tables
+- improves global button actions handling
+
+#### ui
+- small changes to the AppUpdate messages; removed the version check when updating
+- missing icon import fix
+
+### back-end
+
+#### companies
+- added `Company::owner()` static helper method which returns the application owner company, based on the configured id (`config('enso.config.ownerCompanyId')` - more information below
+
+#### core
+- changed the AppUpdated notification tooltip message
+- added `ownerCompanyId` key in `config.php`
+- updated the `config.php` configuration, so that the values that make sense are read from the `.env` file if they provided
+- cleanup of some deprecated image files
+
+#### currencies
+- fixes exchange fetcher service
+
+#### forms
+- fixed setting the route params for create
+- added support for `pivotParams` & `customParams` meta properties for select
+
+#### helpers
+- fixed `filled` getter on `Obj` when value is an instance of `Collection`
+
+#### localisation
+- updated/added a few translation keys and values
+
+#### menus
+- marked the computed icon not exportable in table thus fixing a table export issue
+
+#### roles
+- fixes role table to show users without default menu
+- fixes config writer for users without role
+
+### deprecated
+
+#### examples
+- the package is being deprecated and will no longer be maintained
+- for new projects, the relevant functionality (sample data for the dashboard charts) has been moved locally within Enso
+- for existing projects that may still use the package, they may continue using it 
+
+### Upgrade steps
+
+This is a non breaking upgrade:
+- run `composer update`
+- run `yarn upgrade && yarn` in `/client`
+
+### Company::owner()
+
+The newly added method addresses the need to identify the Application's client or owner. Internally, we've handled this in various ways and, with this small update, we mean to provide an unified, consistent approach.
+
+Since it makes sense that the Company model from the Companies package may be extended either in other packages or locally, the method's resulted class is resolved from the container.
+
+Thus, if required, you can bind your desired/local implementation to the `LaravelEnso\Companies\app\Models\Company` class in the service provider.
+
+You may set the application owner's company id within the main Enso configuration file (`enso.config.ownerCompanyId`).
+
+
 ## 3.7.0
 
 The major purpose of this release is three fold:

@@ -1,6 +1,7 @@
 {
-    "The application was updated from :old to :new, please save your work & refresh your browser": null,
-    "Click here to refresh your page and update to the latest version": null,
+    "Save your work then click here to refresh your page and update to the latest application version": null,
+    "The application was updated, please save your work & refresh your browser": null,
+    "Important": null,
     "An export job is already running for the same table": "F\u00fcr diese Tabelle wurde bereits ein Export gestartet",
     "To": "Bis",
     "Between": "Zwischen",
