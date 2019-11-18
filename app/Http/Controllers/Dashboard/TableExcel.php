@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tables\app\Traits\Excel;
 use LaravelEnso\Examples\Tables\Builders\ExampleTable;
+use LaravelEnso\Tables\app\Traits\Excel;
 
 class TableExcel extends Controller
 {

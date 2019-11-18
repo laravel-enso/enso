@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\Charts\app\Factories\Bar;
-use LaravelEnso\Charts\app\Factories\Pie;
-use LaravelEnso\Charts\app\Factories\Line;
-use LaravelEnso\Charts\app\Factories\Polar;
-use LaravelEnso\Charts\app\Factories\Radar;
 use LaravelEnso\Charts\app\Factories\Bubble;
 use LaravelEnso\Charts\app\Factories\Doughnut;
+use LaravelEnso\Charts\app\Factories\Line;
+use LaravelEnso\Charts\app\Factories\Pie;
+use LaravelEnso\Charts\app\Factories\Polar;
+use LaravelEnso\Charts\app\Factories\Radar;
 
 class ChartController extends Controller
 {
