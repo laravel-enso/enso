@@ -159,7 +159,7 @@ return [
                 'tries' => 1,
             ],
             'supervisor-2' => [
-                'connection' => 'aedis',
+                'connection' => 'redis',
                 'queue' => ['heavy'],
                 'balance' => 'auto',
                 'processes' => 1,

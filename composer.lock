@@ -2675,16 +2675,16 @@
         },
         {
             "name": "laravel-enso/forms",
-            "version": "3.3.6",
+            "version": "3.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "a8f903f50baf3dc187d708f5c731b98db6e23c9e"
+                "reference": "d2e5779f4dab8b5dba4f6d1cc98617e13e29f33a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/a8f903f50baf3dc187d708f5c731b98db6e23c9e",
-                "reference": "a8f903f50baf3dc187d708f5c731b98db6e23c9e",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/d2e5779f4dab8b5dba4f6d1cc98617e13e29f33a",
+                "reference": "d2e5779f4dab8b5dba4f6d1cc98617e13e29f33a",
                 "shasum": ""
             },
             "require": {
@@ -2725,20 +2725,20 @@
                 "form-builder",
                 "laravel-enso"
             ],
-            "time": "2019-11-18T12:22:34+00:00"
+            "time": "2019-11-19T09:15:22+00:00"
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "1.14.0",
+            "version": "1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/helpers.git",
-                "reference": "391999c7ab0b2ea1c5029d9ec09e7910d651aa0b"
+                "reference": "80b0aa5229c2fe2f09c52469976b69184ac731f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/391999c7ab0b2ea1c5029d9ec09e7910d651aa0b",
-                "reference": "391999c7ab0b2ea1c5029d9ec09e7910d651aa0b",
+                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/80b0aa5229c2fe2f09c52469976b69184ac731f8",
+                "reference": "80b0aa5229c2fe2f09c52469976b69184ac731f8",
                 "shasum": ""
             },
             "require": {
@@ -2775,7 +2775,7 @@
                 "helpers",
                 "laravel-enso"
             ],
-            "time": "2019-11-08T08:51:06+00:00"
+            "time": "2019-11-18T13:06:20+00:00"
         },
         {
             "name": "laravel-enso/history-tracker",
@@ -8493,16 +8493,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "04c0bbd1881942f59e27877bac3b29ba57519666"
+                "reference": "5a1bfe4425974d17addeefce737d66a4c921a8df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/04c0bbd1881942f59e27877bac3b29ba57519666",
-                "reference": "04c0bbd1881942f59e27877bac3b29ba57519666",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/5a1bfe4425974d17addeefce737d66a4c921a8df",
+                "reference": "5a1bfe4425974d17addeefce737d66a4c921a8df",
                 "shasum": ""
             },
             "require": {
@@ -8543,7 +8543,7 @@
                 "flare",
                 "reporting"
             ],
-            "time": "2019-11-08T11:11:17+00:00"
+            "time": "2019-11-19T08:42:39+00:00"
         },
         {
             "name": "facade/ignition",

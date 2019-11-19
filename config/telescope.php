@@ -15,7 +15,7 @@ return [
     | be used to store Telescope's data. In addition, you may set any
     | custom options as needed by the particular driver you choose.
     |
-     */
+    */
 
     'driver' => env('TELESCOPE_DRIVER', 'database'),
 
@@ -34,7 +34,7 @@ return [
     | of their individual configuration, which simply provides a single
     | and convenient way to enable or disable Telescope data storage.
     |
-     */
+    */
 
     'enabled' => env('TELESCOPE_ENABLED'),
 
@@ -47,7 +47,7 @@ return [
     | the chance to add your own middleware to this list or change any of
     | the existing middleware. Or, you can simply stick with this list.
     |
-     */
+    */
 
     'middleware' => [
         'web',
@@ -82,7 +82,7 @@ return [
     | Telescope. The watchers gather the application's profile data when
     | a request or task is executed. Feel free to customize this list.
     |
-     */
+    */
 
     'watchers' => [
         Watchers\CacheWatcher::class => env('TELESCOPE_CACHE_WATCHER', true),

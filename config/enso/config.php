@@ -3,7 +3,6 @@
 return [
     'version' => '3.7.1',
     'showQuote' => true,
-    'stateBuilder' => null,
     'defaultRole' => 'admin',
     'dateFormat' => 'd-m-Y',
     'dateTimeFormat' => 'd-m-Y H:i:s',
