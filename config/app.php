@@ -1,7 +1,5 @@
 <?php
 
-use LaravelEnso\Core\BroadcastServiceProvider;
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -82,8 +80,6 @@ return [
     */
 
     'locale' => 'en',
-
-    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +162,7 @@ return [
         /*
          * Package Service Providers...
          */
-        BroadcastServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

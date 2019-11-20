@@ -191,8 +191,9 @@ return [
     | Export Settings
     |--------------------------------------------------------------------------
     | Path where the temporary files are stored within storage/app folder; timeout
-    | limit for jobs; notification options; Note: email notification
-    | will be used in non Enso environments.
+    | limit for jobs; entry limit for each sheet; push notification channels.
+    | Note: while using Enso the users will receive a download link by email,
+    | while in non Enso environments the whole export file will be emailed.
      */
 
     'export' => [
@@ -309,5 +310,5 @@ return [
     | Possible values for search mode: 'full', 'startsWith', 'endsWith'
     */
 
-    'searchMode' => 'startsWith',
+    'searchMode' => 'full',
 ];

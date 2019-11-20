@@ -66,6 +66,9 @@ return [
 
     'waits' => [
         'redis:default' => 60,
+        'redis:light' => 60,
+        'redis:notifications' => 60,
+        'redis:heavy' => 60 * 30,
     ],
 
     /*
@@ -133,6 +136,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 6,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
@@ -140,6 +144,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 2,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
@@ -147,6 +152,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 1,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
         ],
 
@@ -157,6 +163,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 6,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
@@ -164,6 +171,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 1,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
@@ -171,6 +179,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 1,
                 'tries' => 1,
+                'timeout' => 60 * 60,
             ],
         ],
     ],
