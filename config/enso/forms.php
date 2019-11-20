@@ -84,7 +84,7 @@ return [
     |--------------------------------------------------------------------------
     | Select Placeholder
     |--------------------------------------------------------------------------
-    | Default select placeholder. Can be overriden by setting a custom one
+    | Default select placeholder. Can be overridden by setting a custom one
     | in the json template.
     |
     */
@@ -119,8 +119,19 @@ return [
     |--------------------------------------------------------------------------
     | By default all form fields will have a conventional label. If this flag
     | is set to false the label will be used as placeholder. Can be
-    | overriden in each form template
+    | overridden in each form template
     */
 
     'labels' => 'true',
+
+    /*
+    |--------------------------------------------------------------------------
+    | TinyMCE Api Key
+    |--------------------------------------------------------------------------
+    | If you're using the wysiwyg field you need to get a free api key from
+    | https://www.tiny.cloud/get-tiny/ first.
+    |
+    */
+
+    'tinyMCEApiKey' => env('TINY_MCE_API_KEY', null),
 ];

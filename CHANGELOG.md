@@ -1,5 +1,66 @@
 # Laravel Enso's Changelog
 
+## 3.7.2
+
+The main purpose of this release was to switch from using [tiptap](https://github.com/scrumpy/tiptap) to using [tinyMCE](https://www.tiny.cloud/) for our what-you-see-is-what-you-get editor VueJS component. 
+
+Through its dependency chain, after running `yarn upgrade` tiptap was breaking the build.
+
+As a bonus, tinyMCE should be better supported and the VueJS wrapper components for it are slimmer and cleaner.
+
+### front-end
+
+#### wysiwyg
+- drops tiptap in favour of tinyMCE (see more below)
+
+#### forms
+- updates the wyisiwyg field for the new tinyMCE powered wyisiwyg component
+
+#### calendar
+- reverts the resizing strategy
+
+### back-end
+
+#### companies
+- within the static `owner` method the company model is resolved from the service container so that if you're extending & binding the package model to a local model, you will obtain the local instance
+
+#### forms
+- adds support for tinyMCE customization within the form configuration and the json templates
+- fixes form params bug on create which caused the given parameter values to be ignored
+
+#### localisation
+- updated a couple of translation keys and values
+
+### Upgrade steps
+
+This is a non breaking upgrade:
+
+* run `composer update`
+* run `yarn upgrade && yarn` in `/client`
+* update the version to 3.7.2 in `config/enso/config.php`
+* update the `config/enso/forms.php` configuration file and add the new key:
+```
+|--------------------------------------------------------------------------
+| TinyMCE Api Key
+|--------------------------------------------------------------------------
+| If you're using the wysiwyg field you need to get a free api key from 
+| https://www.tiny.cloud/get-tiny/ first.
+| 
+*/
+
+'tinyMCEApiKey' => env('TINY_MCE_API_KEY', null),
+```
+
+If you were not using the `wysiwyg` component, there is nothing else for you to do.
+
+If you are using it, you will need to create an account on https://www.tiny.cloud/ ,
+get an API key and add your application domains.
+
+After obtaining your API key, add it to your `.env` file:
+```
+TINY_MCE_API_KEY=my-api-key
+```
+
 ## 3.7.1
 
 ### front-end
