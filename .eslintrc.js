@@ -14,9 +14,8 @@ module.exports = {
         'import/resolver': {
             alias: {
                 map: [
-                    ['@core', `${__dirname}/node_modules/@enso-ui/ui/src`],
-                    ['@calendar', `${__dirname}/node_modules/@enso-ui/calendar/src/bulma`],
-                    ['@financials', `${__dirname}/node_modules/@enso-ui/financials/src/bulma`],
+                    ['@core', `${__dirname}/client/node_modules/@enso-ui/ui/src`],
+                    ['@calendar', `${__dirname}/client/node_modules/@enso-ui/calendar/src/bulma`],
                 ],
             },
         },
@@ -32,7 +31,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ['error', 4],
         'vue/html-indent': 0,
-        // 'vue/attributes-order': 0,
+        'vue/attributes-order': 0,
         'no-plusplus': 0,
         'no-param-reassign': 0,
         'no-mixed-operators': 0,
