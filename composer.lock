@@ -246,25 +246,25 @@
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
-            "version": "0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a"
+                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/265b8593498b997dc2d31e75b89f053b5cc9621a",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a",
+                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
+                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "@stable"
+                "phpunit/phpunit": "~7.0|~6.0|~5.0|~4.8.35"
             },
-            "type": "project",
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "XdgBaseDir\\": "src/"
@@ -275,7 +275,7 @@
                 "MIT"
             ],
             "description": "implementation of xdg base directory specification for php",
-            "time": "2014-10-24T07:27:01+00:00"
+            "time": "2019-12-04T15:06:13+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -2040,16 +2040,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.6.14",
+            "version": "4.6.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "9fed5d4bcef3b8b738b630724c88eb116f894ed8"
+                "reference": "7f4b0411127949dabdfcbf4b90186daa9955445d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/9fed5d4bcef3b8b738b630724c88eb116f894ed8",
-                "reference": "9fed5d4bcef3b8b738b630724c88eb116f894ed8",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/7f4b0411127949dabdfcbf4b90186daa9955445d",
+                "reference": "7f4b0411127949dabdfcbf4b90186daa9955445d",
                 "shasum": ""
             },
             "require": {
@@ -2138,20 +2138,20 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2019-12-02T09:29:46+00:00"
+            "time": "2019-12-06T16:19:05+00:00"
         },
         {
             "name": "laravel-enso/countries",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/countries.git",
-                "reference": "2f54e079dbb8387470579f6397bcc90cfd10e9a7"
+                "reference": "53a08b099e1054c04d5fed3f4c510b5444ae0dc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/2f54e079dbb8387470579f6397bcc90cfd10e9a7",
-                "reference": "2f54e079dbb8387470579f6397bcc90cfd10e9a7",
+                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/53a08b099e1054c04d5fed3f4c510b5444ae0dc8",
+                "reference": "53a08b099e1054c04d5fed3f4c510b5444ae0dc8",
                 "shasum": ""
             },
             "require": {
@@ -2199,7 +2199,7 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2019-11-11T18:51:33+00:00"
+            "time": "2019-12-06T11:57:50+00:00"
         },
         {
             "name": "laravel-enso/data-export",
@@ -5721,20 +5721,20 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.11",
+            "version": "v0.9.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "75d9ac1c16db676de27ab554a4152b594be4748e"
+                "reference": "90da7f37568aee36b116a030c5f99c915267edd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/75d9ac1c16db676de27ab554a4152b594be4748e",
-                "reference": "75d9ac1c16db676de27ab554a4152b594be4748e",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/90da7f37568aee36b116a030c5f99c915267edd4",
+                "reference": "90da7f37568aee36b116a030c5f99c915267edd4",
                 "shasum": ""
             },
             "require": {
-                "dnoegel/php-xdg-base-dir": "0.1",
+                "dnoegel/php-xdg-base-dir": "0.1.*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "jakub-onderka/php-console-highlighter": "0.3.*|0.4.*",
@@ -5791,7 +5791,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2019-11-27T22:44:29+00:00"
+            "time": "2019-12-06T14:19:43+00:00"
         },
         {
             "name": "pusher/pusher-php-server",
