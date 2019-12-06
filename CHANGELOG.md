@@ -1,5 +1,135 @@
 # Laravel Enso's Changelog
 
+## 3.7.3
+
+This is the final release before upgrading Enso to PHP7.4.
+
+### front-end
+
+#### bulma
+- made available the new InputFilter & EnsoInputFilter components
+- made available the new SimpleDateFilter & EnsoSimpleDateFilter components
+
+#### calendar
+- updated EnsoCalendar's resizing strategy 
+
+#### departments (new)
+- a new package for managing departments
+
+#### divider
+- updated dependencies to address a security vulnerability
+
+#### erd
+- updated dependencies to address a security vulnerability
+
+#### filters
+- added two new filter components: InputFilter & SimpleDateFilter as well as their Enso counterparts: EnsoInputFilter & EnsoSimpleDateFilter
+- fixed DateFilter's picker width
+- date-filter refactor
+
+#### how-to
+- fixed the @enso-ui/uploader dependency restriction
+
+#### measurement-units (new)
+- a new package for managing measurement units
+
+#### money
+- updated dependencies to address a security vulnerability
+
+#### people
+- fixed the missing user buttons from person edit/create forms
+
+#### projects (new)
+- a new package for managing projects
+
+#### tables
+- you can now clear the search and change search mode while loading
+
+#### themes
+- updated deps to address mixin-deep security vulnerability
+- updated the vue-filter css so that the components can be customized with is-* mod classes
+
+#### uploader
+- added the formatBytes.js helper
+- fixed the file size reporting sometimes causing an undesired limitation
+
+### back-end
+
+#### core
+- added a `enso:storage:reset` command which can be ran after php artisan migrate:fresh to clear the storage (but before seeding)
+
+#### countries
+- removed broken relationship
+- added currencyCode in the model's resource
+- this package is now a dependency of the new `laravel-enso/measurement-units` package
+
+#### cli
+- added the TableCache trait to the generated model
+- fixed the request validator namespace 
+- updated the `resources` folder to `client/src/`
+- updated the tests
+
+#### departments (new)
+- a new package for managing a departments
+
+#### forms
+- adds the ability to customize routeParams on edit
+- fixed several form template validation error messages
+
+#### measurement-units
+- a new package for managing measurement units
+- this package is now a dependency of the `laravel-enso/products` package
+
+#### localisation
+- added missing translation keys
+
+#### ocr (new)
+- new package that can perform optical character recognition for pdf files
+- depends on the [OCRmyPDF](https://github.com/jbarlow83/OCRmyPDF) package - you should read its documentation for more information, requirements and limitations
+
+#### products
+- extracted measurement unit functionality to a distinct package and updated related code
+- removed the `measurement_unit` column from Product and replaces it with `measurement_unit_id`
+- added the upgrade `php artisan enso:products:upgrade` console command which will migrate your products table and seed either a default `Piece` measurement unit or can use an optional Enum to seed the measurement units specified by the enum
+- added some missing meta attributes within the table template
+
+#### select
+- fixed the typeahead trait causing issues when the request did non contain custom parameters
+- refactored the search strategy resulting in more concise code
+- fixed relation attribute search
+- updated the display of the selected options, showing them at the bottom of the option list (previously they were at the top) making it easier to set new options when in multi-select mode
+
+#### services
+- refactored the paths and routes structure
+- updated the factory and the tests
+
+#### tables
+- the exported file name is now translated
+- fixed the searching logic when having nested columns (relations) on the main model
+- refactored the search strategy resulting in more concise code
+
+### Upgrade steps
+
+This is a non breaking upgrade:
+
+* run `composer update`
+* run `yarn upgrade && yarn` in `/client`
+* update the version to 3.7.3 in `config/enso/config.php`
+
+If you are not using the `products` package, there is nothing else for you to do.
+
+Otherwise, you should run the products package's upgrade command, considering the following:
+- the measurement units functionality was extracted to the `measurement-units` package and `products` now depends on it
+- measurement units were stored in the products table's `measurement_units` column, and the values were taken from the `MeasurementUnits` enum
+- that column is dropped and replaced with a `measurment_unit_id` column which points to the `measurement_units` table
+
+If you did not customize the enum and were using the defaults, then you can simply run
+`php artisan enso:products:upgrade` and the command will handle the necessary changes.
+
+If you had customized/extended the enum, then you should provide the enum as a parameter to the upgrade command, in which case it will be used to seed the new measurment units:
+
+`php artisan enso:products:upgrade --enum=App\\Enums\\MyEnum`
+
 ## 3.7.2
 
 The main purpose of this release was to switch from using [tiptap](https://github.com/scrumpy/tiptap) to using [tinyMCE](https://www.tiny.cloud/) for our what-you-see-is-what-you-get editor VueJS component. 
