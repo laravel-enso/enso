@@ -1,8 +1,81 @@
 # Laravel Enso's Changelog
 
+## 3.7.4
+
+This release improves the quality of the back-end code addressing issues revealed by [phpinsights](https://github.com/nunomaduro/) (more info in the back-end section) as well as the usual small updates and fixes.
+
+### front-end
+
+#### calendar
+- added support for the spanish language
+
+#### forms
+- added in-page preview for PDF files
+- fixed small styling issues and updated dependencies
+
+#### forms
+- now emits a `template-fetch-error` when there is an error fetching the template from the API
+
+#### products
+- added missing measurement-units package dependency
+
+#### tables
+- added support for row global actions
+
+### backend-end
+
+All packages were checked with the analitics tool and, where needed, the appropriate fixes and updates where implemented. 
+
+Most packages have had updates pertaining to:
+- missing constants visibility
+- unused variables
+- string concatenation vs string templates
+- using old school methods such as `get_class` in favor of using `::class`
+- inconsistent array indentation
+- class fields and methods ordering
+
+and more.
+
+In addition to the code, architecture and style changes, the route files have been broken down into smaller files to make management easier.
+
+Apart from these updates, which are too many to list individually for each package, the packages below have had other additions.
+
+#### cli
+- fixed the generated method name used in the table builder stub
+
+#### core
+- added the missing doctype to the production tag, which fixes a TinyMCE issue
+- the User model deletion is now handled by the `AvoidsDeletionConflicts` trait 
+
+#### countries
+- added the country code to the model's resource
+
+#### currencies
+- fixed the Currency resource
+- fixed the seeder for testing cases
+- improved the converter so as to use the most recent date as fallback if there is no rate available for a given day
+- `laravel-enso/countries` is now a dependency for the package
+- the `short_name` attribute was refactored into `code`
+
+#### products
+- changed content type for the product part number form input from number to text
+
+#### teams
+- the Team model now uses the `AvoidsDeletionConflicts` trait for the delete process
+- the `Relations` trait is utilized to be able to support dynamic methods
+
+### Upgrade steps
+
+This is a non breaking upgrade:
+
+* run `composer update`
+* run `yarn upgrade && yarn` in `/client`
+* update the version to 3.7.4 in `config/enso/config.php`
+* if using the `currencies` package with a prior version to `1.4.0`, also run `php artisan enso:upgrade` in order to update the `short_name` table column
+
 ## 3.7.3
 
-This is the final release before upgrading Enso to PHP7.4.
+This is the second to final release before upgrading Enso to PHP7.4.
 
 ### front-end
 
