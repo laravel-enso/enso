@@ -1,16 +1,11 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Companies\app\Models\Company;
-use LaravelEnso\Discussions\app\Models\Discussion;
+use LaravelEnso\Discussions\App\Models\Discussion;
 
-$factory->define(Discussion::class, function (Faker $faker) {
-    return [
-        'discussable_id' => function () {
-            return factory(Company::class)->create()->id;
-        },
-        'discussable_type' => Company::class,
-        'body' => $faker->sentence,
-        'title' => $faker->sentence,
-    ];
-});
+$factory->define(Discussion::class, fn (Faker $faker) => [
+    'discussable_id' => $faker->randomKey,
+    'discussable_type' => $faker->word,
+    'body' => $faker->sentence,
+    'title' => $faker->sentence,
+]);

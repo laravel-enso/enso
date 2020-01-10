@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('telescope:prune')->daily();
+
+        // $schedule->command('enso:calendar:send-reminders')->everyMinute();
     }
 
     protected function commands()

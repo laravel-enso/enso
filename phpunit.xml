@@ -58,6 +58,9 @@
         <testsuite name="forms">
             <directory suffix="Test.php">./vendor/laravel-enso/forms/tests/unit</directory>
         </testsuite>
+        <testsuite name="helpers">
+            <directory suffix="Test.php">./vendor/laravel-enso/helpers/tests/units</directory>
+        </testsuite>
         <testsuite name="history-tracker">
             <directory suffix="Test.php">./vendor/laravel-enso/history-tracker/tests/features</directory>
         </testsuite>

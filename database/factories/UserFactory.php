@@ -1,10 +1,10 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Core\app\Models\UserGroup;
-use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\Roles\app\Models\Role;
+use LaravelEnso\Core\App\Models\User;
+use LaravelEnso\Core\App\Models\UserGroup;
+use LaravelEnso\People\App\Models\Person;
+use LaravelEnso\Roles\App\Models\Role;
 
 $factory->define(User::class, function (Faker $faker, $attributes = null) {
     if (isset($attributes['person_id']) && isset($attributes['email'])) {
@@ -18,13 +18,9 @@ $factory->define(User::class, function (Faker $faker, $attributes = null) {
 
     return [
         'person_id' => $personId,
-        'group_id' => function () {
-            return factory(UserGroup::class)->create()->id;
-        },
+        'group_id' => fn () => factory(UserGroup::class)->create()->id,
         'email' => $email,
-        'role_id' => function () {
-            return factory(Role::class)->create()->id;
-        },
+        'role_id' => fn () => factory(Role::class)->create()->id,
         'is_active' => $faker->boolean,
     ];
 });

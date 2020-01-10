@@ -8,7 +8,7 @@ import store from './store';
 
 import './app';
 
-import('../sass/enso.scss');
+import '../sass/enso.scss';
 
 Vue.config.productionTip = false;
 

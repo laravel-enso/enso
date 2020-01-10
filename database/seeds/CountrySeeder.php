@@ -1,34 +1,24 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use LaravelEnso\Countries\app\Models\Country;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\File;
+use LaravelEnso\Countries\App\Models\Country;
 
 class CountrySeeder extends Seeder
 {
-    const CountriesJSON = __DIR__.'/../../vendor/laravel-enso/countries/src/database/countries.json';
+    const JSON = __DIR__.'/../../vendor/laravel-enso/countries/src/database/countries.json';
 
     public function run()
     {
-        if (config('app.env') === 'testing') {
-            $this->countries()
-                ->slice(0, 10)
-                ->each(function ($country) {
-                    Country::create($country);
-                });
-
-            return;
-        }
-
         $this->countries()
-            ->each(function ($country) {
-                Country::create($country);
-            });
+            ->each(fn ($country) => Country::create($country));
     }
 
     public function countries()
     {
-        $countries = json_decode(\File::get(self::CountriesJSON), true);
-
-        return collect($countries);
+        return (new Collection(json_decode(File::get(self::JSON), true)))
+            ->when(App::environment('testing'), fn ($countries) => $countries->slice(0, 10));
     }
 }

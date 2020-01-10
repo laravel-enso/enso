@@ -1,6 +1,8 @@
 <?php
 
-// example/dummy data for the dashboard
+use Illuminate\Support\Facades\Route;
+
+// example data for the dashboard
 Route::middleware(['web', 'auth'])
     ->namespace('Dashboard')
     ->prefix('dashboard')->as('dashboard.')

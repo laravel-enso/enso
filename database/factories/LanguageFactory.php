@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Localisation\app\Models\Language;
+use LaravelEnso\Localisation\App\Models\Language;
 
 $factory->define(Language::class, function (Faker $faker) {
     $countryCode = $faker->countryCode;

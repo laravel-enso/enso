@@ -1,5 +1,268 @@
 # Laravel Enso's Changelog
 
+## 3.8.0
+
+With this release, we have upgraded our back-end packages to require PHP7.4+. Consequently, we have made several changes to adapt our back-end code to the latest syntax such as:
+ - refactoring to short closures
+ - adding typed properties and method return types where necessary
+ 
+Furthermore, we have also generally improved and refactored all of our packages in order for them to be consistent and more easily maintained. During this process we have aimed to:
+ - **normalize package namespaces ( renamed `app` to `App` )**
+ - replacing `collect()` helpers in favor of instantiating the `Collection()` object
+ - drop redundant suffixes for job, exception and policy classes where necessary
+ - refactor Exceptions to encapsulate error messages for consistency and reusability
+ - split route files
+ - add missing facade imports
+ - use array syntax for service provider tag publishing
+ - upgrade Enums to use the latest version
+ - improve overall logic where possible
+
+### front-end
+
+#### commercial
+- updates serialize-javascript from 1.9.1 to 2.1.1
+- renames quick-view-controls to controls
+- renames controls to actions
+- adds controls, row-actions and filters slots
+
+#### contracts
+- adds icons
+- refactors Form, Index, BaseForm, Card and List components
+- adds ContractParties enum
+- updates dependencies
+- fixes bugs
+
+#### departments
+- updates icon and dependencies
+
+#### forms
+- routing to the edit page is now done asynchronously
+
+#### hr
+- drops Projects component
+- updates dependencies
+- fixes style for payrolls Index page 
+- renames `splited` to `split`
+- updates namespaces
+
+#### projects
+- fixes bugs and namespaces
+
+#### roles
+- updates permissions
+
+#### tables
+- adds icon
+- improves custom slots handling
+- exposes slots for both row and global buttons
+- splits `scopedSlots` into `actionSlots`, `controlSlots` and `bodySlots`
+
+#### ui
+- updates dependencies
+
+### back-end
+
+#### addresses
+ - renames `setDefault` permission to `makeDefault`
+
+#### calendar
+ - overall refactors and removes `enso:calendar:send-reminders` command from AppServiceProvider. This means that notifications will no longer be sent automatically.
+
+#### cli
+ - makes the code DRYer
+ - reduces cyclomatic complexity
+ - improves writers
+ - extracts Cli trait in src/tests
+ - overall logic improvement
+
+#### companies
+ - refactors company request validator's unique methods into a parameterised one
+
+#### control-panel-api
+ - reverts statistics refactor
+
+#### contracts
+ - reverts statistics refactor
+
+#### core
+ - refactors state builders and adds return types for their methods
+    - **`data()` changes to `data(): array` inside the local state builder**
+ - adds upgrade command for new roles structure
+ - fixes user group conflict exception
+
+#### data-import
+ - adds a Finalize job
+ - adds in config unknownError key for customizing undetermined errors in rejected summaries
+ - makes the User available in custom validators via the `user()` helper
+ - shows duration in imports table for both mysql and sqlite
+ - fixes template validation message
+ - removes deprecated splittingQueue from config
+ - renames Policy to DataImport
+
+#### discussions
+ - adds DiscussionConflict exception
+ - users DI in controllers
+ - refactors validators
+
+#### documents
+ - adds DocumentConflict exception
+ - the `Policy` class was renamed to `Document`
+
+#### dynamic-methods
+ - adds contract and services for better managing the creation and binding of methods and relations to models
+
+#### emails
+ - removes unused controller and routes ( Create )
+ - removes superfluous service ( Mail Manager)
+ - removes deprecated publish ( resources/js )
+
+#### enums
+ - **renames attributes() in data() to be consistent with the property name**
+ - **`$data` becomes typed (`array $data`)**
+ - **adds return type for `data()` method  ( `data(): array` )**
+ - adds laravel as dependency in composer.json
+
+#### excel
+ - adds ExcelExport exception
+
+#### files
+ - improves file validation
+
+#### helpers 
+ - adds tests for InCents and MapsRequestKeys
+ - improves logic in InCents, JsonParser, Obj, Decimals
+
+#### forms
+ - small refactor and logic improvement
+
+#### helpers
+ - improves logic in InCents, JsonParser, Obj, Decimals
+ - adds test for InCents
+ - optimize imports
+
+#### how-to
+ - renames VideoException to Video. It now extends ConflictHttpException
+
+#### hr
+ - renames splited to split
+
+#### inventory (**PRIVATE**)
+ - refactored dynamic methods to new style
+
+#### localisation
+ - refactors unique fields in request validator
+
+#### menus
+ - improves logic in Organizer and in TreeBuilder
+ - adds a Menu exception that extends ConflictHttpException and encapsulates error messages
+
+#### multitenancy
+ - removed from core's dependencies ( becomes optional )
+ - fixes enums constant visibility
+
+#### notifications
+ - refines broadcast service provider
+
+#### people
+ - adds an appellative() helper on Person
+
+#### permissions
+ - adds a Permission exception that extends ConflictHttpException and encapsulates error messages
+
+#### products
+ - changes cents strategy
+ - refactors company relations using the new dynamic methods
+
+#### roles
+ - renames permissions
+ - refactors controllers structure
+ - extracts command logic to service
+
+#### searchable
+ - improves Finder.php
+
+#### services
+ - improves Finder.php
+
+#### tables
+ - **adds new feature that supports Custom Cache Key for table counts**
+ - adds optional `name` and `slot` attributes for button template object
+
+#### teams
+ - removes unused trait from Team Model
+
+
+### Upgrade steps:
+* within `composer.json` update where necessary:
+    - `laravel-enso/calendar` to `1.5.*` ( if using this package )
+    - `laravel-enso/cli` to `3.4.*`
+    - `laravel-enso/cnp-validator` to `1.3.*` ( if using this package )
+    - `laravel-enso/control-panel-api` to `2.4.*`
+    - `laravel-enso/core` to `4.7.*`
+    - `laravel-enso/dynamic-methods` to `1.1.*` ( if using this package )
+    - `laravel-enso/enums` to `1.2.*` ( if using this package )
+    - `laravel-enso/excel` to `1.1.*`
+    - `laravel-enso/pdf` to `1.1.*`
+    - `laravel-enso/ro-addresses` to `3.3.*` ( if using this package )
+    - `laravel-enso/versions` to `1.1.*` ( if using this package )
+* update in `client/package.json`:
+    - "@enso-ui/ui": "2.3.x",
+* within `client/src/js/enso.js` update the `import ('../sass/enso.scss');` line to `import '../sass/enso.scss';`
+* remove from `composer.json` the following line since it is no longer required:
+    `"LaravelEnso\\Cli\\tests\\": "vendor/laravel-enso/cli/tests/"`,
+* update your Enso classes imports ( search the whole project for `\app\` and replace with `\App\` )
+* if you are implementing our state builder interface or extending our local state builder, make sure to update your `build()` method signature ( `build(): array`)
+* upgrade `Enums` accordingly 
+    - rename `attributes()` method to `data()` where required
+    - `$data` becomes a typed property ( ` array $data= [..] ` )
+* if using/extending the `LaravelEnso\Documents\App\Policies\Policy` class, update any imports to `LaravelEnso\Documents\App\Policies\Document`
+* if using/extending the `LaravelEnso\People\App\Http\Requests\ValidatePersonRequest` class, note that the `uidUnique()` & `emailUnique()` methods have been replaced by the `unique($attribute)` method
+* add the following block inside your `phpunit.xml` file:
+```
+<testsuite name="helpers">
+    <directory suffix="Test.php">./vendor/laravel-enso/helpers/tests/units</directory>
+</testsuite>
+```
+* if you wish to continue sending `calendar` reminders, you need to handle this in your apps `App\Console\Kernel.php`
+```
+protected function schedule(Schedule $schedule)
+{
+    ...
+    $schedule->command('enso:calendar:send-reminders')->everyMinute();
+    ...
+}
+```
+* remove from `config/enso/imports.php` the deprecated `splittingQueue` key,
+* run `composer update`
+* run `yarn upgrade && yarn` in `/client`
+* run `php artisan enso:upgrade`
+* run `php artisan migrate`
+* update telescope assets: `php artisan telescope:publish`
+* update the version to 3.8.0 in `config/enso/config.php`
+
+**(optional)**
+
+In order for the local project to be syntactically consistent with our ecosystem you should refactor as follows:
+ * use typed properties where necessary
+ * replace all `collect()` helpers with the `Collection()` facade
+ * refactor closures to the new PHP7.4+ short closure syntax
+ * split route files ( eg. https://github.com/laravel-enso/core/tree/master/src/routes )
+ * if using `phpinsights`, don't forget to update the config file from `config/insights.php` ( https://github.com/laravel-enso/enso/blob/master/config/insights.php )
+ * we have moved the local `User::class` from our Enso app under `App\Models` namespace. From now on, we have decided to keep the models in all of our projects under this namespace for better readability. If you wish to adopt this structure as well, don't forget to update your `config\auth.php` file.
+```
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+```
+* the local factories and seeders have been updated to use short closures as well. if you wish, you can force publish the updated versions **(&nbsp;careful, this will overwrite your local customisations&nbsp;)** with:
+    - `php artisan vendor:publish --force --tag=enso-factories`
+    - `php artisan vendor:publish --force --tag=enso-seeders`
+
+* if you wish to take advantage of the new tables feature which allows the use of custom cache keys for counts, your table builders must implement `CustomCountCacheKey()`.
+* Regarding namespace was changed, you may need to migrate namespace in polymorphic relation in the database too. 
+
 ## 3.7.4
 
 This release improves the quality of the back-end code addressing issues revealed by [phpinsights](https://github.com/nunomaduro/) (more info in the back-end section) as well as the usual small updates and fixes.

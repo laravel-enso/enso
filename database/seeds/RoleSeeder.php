@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Roles\app\Models\Role;
+use Illuminate\Support\Collection;
+use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Roles\App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -13,18 +14,15 @@ class RoleSeeder extends Seeder
 
     public function run()
     {
-        $roles = collect(self::Roles)->map(function ($role) {
-            return factory(Role::class)->create($role);
-        });
+        $roles = (new Collection(self::Roles))
+            ->map(fn ($role) => factory(Role::class)->create($role));
 
         $admin = $roles->first();
 
-        $admin->permissions()
-                ->sync(Permission::pluck('id'));
+        $admin->permissions()->sync(Permission::pluck('id'));
 
         $supervisor = $roles->last();
 
-        $supervisor->permissions()
-                ->sync(Permission::implicit()->pluck('id'));
+        $supervisor->permissions()->sync(Permission::implicit()->pluck('id'));
     }
 }

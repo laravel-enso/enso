@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version' => '3.7.4',
+    'version' => '3.8.0',
     'ownerCompanyId' => env('OWNER_COMPANY_ID', 1),
     'showQuote' => env('SHOW_QUOTE', true),
     'defaultRole' => 'admin',

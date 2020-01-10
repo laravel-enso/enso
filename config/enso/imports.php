@@ -26,17 +26,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Chunk Splitting Queue
-    |--------------------------------------------------------------------------
-    | Specifies the queue for the chunk splitting job. Can be set
-    | specifically for every import in its template
-    |
-    */
-
-    'splittingQueue' => 'split',
-
-    /*
-    |--------------------------------------------------------------------------
     | Queues
     |--------------------------------------------------------------------------
     | Specifies the queue for each type of job during the import process.
@@ -73,6 +62,17 @@ return [
     */
 
     'errorColumn' => '_errors',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Unknown Import Error Message
+    |--------------------------------------------------------------------------
+    | If the developer misses covering with validations an error scenario
+    | when that scenario is met the importer will report and unknown
+    | error. Here you can customize that error message.
+     */
+
+    'unknownError' => 'Undetermined import error',
 
     /*
     |--------------------------------------------------------------------------

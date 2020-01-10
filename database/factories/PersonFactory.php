@@ -2,9 +2,9 @@
 
 use Carbon\Carbon;
 use Faker\Generator as Faker;
-use LaravelEnso\People\app\Enums\Genders;
-use LaravelEnso\People\app\Enums\Titles;
-use LaravelEnso\People\app\Models\Person;
+use LaravelEnso\People\App\Enums\Genders;
+use LaravelEnso\People\App\Enums\Titles;
+use LaravelEnso\People\App\Models\Person;
 
 $factory->define(Person::class, function (Faker $faker) {
     $title = Titles::keys()->random();
@@ -19,5 +19,7 @@ $factory->define(Person::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'birthday' => Carbon::now()->subYears(rand(15, 40)),
+        'bank' => $faker->word,
+        'bank_account' => $faker->bankAccountNumber,
     ];
 });

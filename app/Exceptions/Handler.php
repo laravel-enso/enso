@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use LaravelEnso\Helpers\app\Exceptions\EnsoException;
+use LaravelEnso\Helpers\App\Exceptions\EnsoException;
 
 class Handler extends ExceptionHandler
 {
