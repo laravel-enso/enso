@@ -1,5 +1,211 @@
 # Laravel Enso's Changelog
 
+## 3.8.1
+
+With this release, we have upgraded sass-loader to the latest version(8.0.3)
+
+### front-end
+#### accessories
+ - upgrades sass-loader
+
+#### activity-log
+ - upgrades sass-loader
+
+#### bulma
+ - upgrades sass-loader
+
+#### calendar
+ - upgrades sass-loader
+
+#### commercial
+ - upgrades sass-loader (#7)
+
+#### companies
+ - upgrades sass-loader
+
+#### currencies
+ - adds a Conversion.js service and a vuex store module
+ - adds allowed prop to currencies
+ - splits initialise in distinct actions for countries / currencies
+ - upgrades sass-loader
+
+#### data-import
+ - upgrades sass-loader
+
+#### datepicker
+ - upgrades sass-loader
+
+#### discounts
+ - upgrades sass-loader
+
+#### dropdown
+ - upgrades sass-loader
+
+#### emails
+ - upgrades sass-loader
+
+#### files
+ - upgrades sass-loader
+
+#### filters
+ - upgrades sass-loader
+
+#### financials
+ - upgrades sass-loader
+
+#### forms
+ - removed optional SelectField params attribute binding to field.meta.params
+ - adds slot in form field
+ - upgrades sass-loader
+
+#### how-to
+ - upgrades sass-loader
+
+#### inventory
+ - upgrades sass-loader
+
+#### localisation
+ - upgrades sass-loader
+
+#### logs
+ - upgrades sass-loader
+
+#### measurement-units
+ - upgrades sass-loader
+
+#### menus
+ - upgrades sass-loader
+
+#### mixins
+ - upgrades sass-loader
+
+#### modal
+ - adds ability to stack multiple modals w/o breaking close on esc
+
+#### people
+ - upgrades sass-loader
+
+#### permissions
+ - upgrades sass-loader
+
+#### products
+ - small cleanup
+ - upgrades sass-loader
+
+#### projects
+ - adds projects status
+ - upgrades deps
+
+#### roles
+ - extract hover to themes
+ - upgrades sass-loader
+ - adds class
+ - revert
+
+#### services
+ - upgrades sass-loader
+
+#### tables
+ - adds clearSelected Helper
+ - set pagesSelected to false directly
+ - improves
+ - refactors action slots
+
+#### teams
+ - updated deps versions
+ - upgrades sass-loader
+
+#### themes
+ - fixes syntax
+ - move hover logic
+ - refactor content-manager
+
+#### tutorials
+ - upgrades sass-loader
+
+#### ui
+ - updated dependencies version
+ - upgrades sass-loader
+
+
+### back-end
+
+#### core
+ - added migrations for morphable models namespaces
+ - adds currencies permission in upgrade command
+ - Spa and AppState flexibility #272 
+ - made AppState private methods protected. 
+ - Spa __invoke method will not instantiate with "new AppState" but with App::make
+ - adds missing import
+ - refactors Enso's Login event
+
+#### countries
+ - adds avoids deletion conflicts trait
+
+#### currencies
+ - fixes converter with default currency
+ - adds check for same currencies in converter; adds exception if no rate is found
+ - fix; needs refactor / rename
+ - renames Converter to Conversion; adds an endpoint for making conversions; refactors validators location;
+ - fixes typo in exchange rates table; adds an apiPrecision config option
+
+#### data-export
+ - adds a purge command 
+ - adds a retainFor config option
+
+#### data-import
+ - fixes validation/import logic
+ - removed leftover/deprecated Validator methods
+
+#### files
+ - fixes forUser scope check
+
+#### forms
+ - adds option to customize label in form
+ - added taggable to the list of supported meta params 
+ - removed params, pivotParams and customParams from the list of valid, optional meta attributes
+
+#### helpers
+ - fixes db seed progress bars
+
+#### image-transformer
+ - removed leftover exceptions
+
+#### localisation
+ - removed leftover command
+ - added new translation keys
+
+#### migrator
+ - removes leftover classes, improves structure migration rollback logic
+ - fixes rollback when parent menu is null; small refactor
+ - improves logic encapsulation
+ - adds validation on rollback for permissions
+
+#### products
+ - improves syncSupplier method; improves validation
+
+#### ro-addresses
+ - fixes method signature in AddressForm
+
+#### select
+ - fixes bug when search is empty and the builder was making a comparison to %%
+
+#### tables
+ - removes unneeded name attribute from buttons
+ - adds support for json resources on table properties
+ - adds support for resource collection
+
+#### track-who
+ - fixes created by & updated by when no user is auth
+
+
+### Upgrade steps:
+
+* changes sass-loader `"sass-loader": "^6.0.0"` in `packages.json` to `"sass-loader": "^8.0.0"`
+* add this file(`bulma-extensions+2.2.2.patch`) to your `client/patches`
+* run `yarn upgrade && yarn` in `/client`
+* update the version to 3.8.1 in `config/enso/config.php`
+
 ## 3.8.0
 
 With this release, we have upgraded our back-end packages to require PHP7.4+. Consequently, we have made several changes to adapt our back-end code to the latest syntax such as:
