@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/enso",
-    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 5.6, Vue and Bulma",
+    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 6.x, Vue and Bulma",
     "license": "MIT",
     "type": "project",
     "require": {
