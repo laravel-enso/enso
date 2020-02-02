@@ -1941,16 +1941,16 @@
         },
         {
             "name": "laravel-enso/control-panel-api",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/control-panel-api.git",
-                "reference": "3ec8fe1942debb2fc0ea2c1474b5c9c3d42ec89e"
+                "reference": "d6ba1ff2443df0bf8f2a36da4df32b256661a48e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/3ec8fe1942debb2fc0ea2c1474b5c9c3d42ec89e",
-                "reference": "3ec8fe1942debb2fc0ea2c1474b5c9c3d42ec89e",
+                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/d6ba1ff2443df0bf8f2a36da4df32b256661a48e",
+                "reference": "d6ba1ff2443df0bf8f2a36da4df32b256661a48e",
                 "shasum": ""
             },
             "require": {
@@ -2001,7 +2001,7 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-02-02T08:56:28+00:00"
+            "time": "2020-02-02T17:32:12+00:00"
         },
         {
             "name": "laravel-enso/control-panel-common",
