@@ -9,6 +9,7 @@ public/*
 !public/index.php
 !public/.htaccess
 !public/vendor
+resources/views/index.blade.php
 node_modules
 vendor
 packages

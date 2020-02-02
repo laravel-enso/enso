@@ -15,6 +15,10 @@ module.exports = {
             alias: {
                 map: [
                     ['@core', `${__dirname}/client/node_modules/@enso-ui/ui/src`],
+                    ['@root', `${__dirname}/client/src/js`],
+                    ['@pages', `${__dirname}/client/src/js/pages`],
+                    ['@store', `${__dirname}/client/src/js/store`],
+                    ['@components', `${__dirname}/client/src/js/components`],
                     ['@calendar', `${__dirname}/client/node_modules/@enso-ui/calendar/src/bulma`],
                 ],
             },
@@ -30,6 +34,7 @@ module.exports = {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ['error', 4],
+        'arrow-parens': ["error", "as-needed"],
         'vue/html-indent': 0,
         'vue/attributes-order': 0,
         'no-plusplus': 0,

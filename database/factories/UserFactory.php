@@ -7,7 +7,7 @@ use LaravelEnso\People\App\Models\Person;
 use LaravelEnso\Roles\App\Models\Role;
 
 $factory->define(User::class, function (Faker $faker, $attributes = null) {
-    if (isset($attributes['person_id']) && isset($attributes['email'])) {
+    if (isset($attributes['person_id'], $attributes['email'])) {
         $personId = $attributes['person_id'];
         $email = $attributes['email'];
     } else {

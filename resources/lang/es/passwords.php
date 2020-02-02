@@ -17,6 +17,6 @@ return [
     'reset'    => '¡Tu contraseña ha sido reiniciada!',
     'sent'     => '¡Te hemos enviado un email con el enlace de reinicio de contraseña!',
     'token'    => 'El enlace de reinicio de contraseña es inválido.',
-    'user'     => "No pudimos encontrar ningún usuario con el email especificado.",
+    'user'     => 'No pudimos encontrar ningún usuario con el email especificado.',
 
 ];

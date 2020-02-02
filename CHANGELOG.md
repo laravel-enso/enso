@@ -5,92 +5,24 @@
 With this release, we have upgraded sass-loader to the latest version(8.0.3)
 
 ### front-end
-#### accessories
- - upgrades sass-loader
-
-#### activity-log
- - upgrades sass-loader
-
-#### bulma
- - upgrades sass-loader
-
-#### calendar
- - upgrades sass-loader
-
-#### commercial
- - upgrades sass-loader (#7)
-
-#### companies
- - upgrades sass-loader
 
 #### currencies
  - adds a Conversion.js service and a vuex store module
  - adds allowed prop to currencies
  - splits initialise in distinct actions for countries / currencies
- - upgrades sass-loader
 
-#### data-import
- - upgrades sass-loader
-
-#### datepicker
- - upgrades sass-loader
-
-#### discounts
- - upgrades sass-loader
-
-#### dropdown
- - upgrades sass-loader
-
-#### emails
- - upgrades sass-loader
-
-#### files
- - upgrades sass-loader
-
-#### filters
- - upgrades sass-loader
-
-#### financials
- - upgrades sass-loader
+ #### divider
+  - centers title and slightly adjusts horizontal position
 
 #### forms
  - removed optional SelectField params attribute binding to field.meta.params
  - adds slot in form field
- - upgrades sass-loader
-
-#### how-to
- - upgrades sass-loader
-
-#### inventory
- - upgrades sass-loader
-
-#### localisation
- - upgrades sass-loader
-
-#### logs
- - upgrades sass-loader
-
-#### measurement-units
- - upgrades sass-loader
-
-#### menus
- - upgrades sass-loader
-
-#### mixins
- - upgrades sass-loader
 
 #### modal
  - adds ability to stack multiple modals w/o breaking close on esc
 
-#### people
- - upgrades sass-loader
-
-#### permissions
- - upgrades sass-loader
-
 #### products
  - small cleanup
- - upgrades sass-loader
 
 #### projects
  - adds projects status
@@ -98,22 +30,16 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
 
 #### roles
  - extract hover to themes
- - upgrades sass-loader
  - adds class
  - revert
-
-#### services
- - upgrades sass-loader
 
 #### tables
  - adds clearSelected Helper
  - set pagesSelected to false directly
- - improves
  - refactors action slots
 
 #### teams
  - updated deps versions
- - upgrades sass-loader
 
 #### themes
  - fixes syntax
@@ -124,9 +50,9 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
  - upgrades sass-loader
 
 #### ui
+ - adds an Avatar.vue component that works with the backend TrackWho resource
+ - refactors users table to use the new avatar component
  - updated dependencies version
- - upgrades sass-loader
-
 
 ### back-end
 
@@ -167,6 +93,7 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
 
 #### helpers
  - fixes db seed progress bars
+ - adds a DiskSize helper class for human readable values
 
 #### image-transformer
  - removed leftover exceptions
@@ -194,6 +121,10 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
  - removes unneeded name attribute from buttons
  - adds support for json resources on table properties
  - adds support for resource collection
+ - adds comptesArrayColumns and computesModelColumns contracts
+ - adds Resource computor
+ - adds a strip template option that can receive an array of attributes that will be stripped from the response
+ - refactors config to Config
 
 #### track-who
  - fixes created by & updated by when no user is auth
@@ -201,10 +132,42 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
 
 ### Upgrade steps:
 
-* changes sass-loader `"sass-loader": "^6.0.0"` in `packages.json` to `"sass-loader": "^8.0.0"`
-* add this file(`bulma-extensions+2.2.2.patch`) to your `client/patches`
-* run `yarn upgrade && yarn` in `/client`
-* update the version to 3.8.1 in `config/enso/config.php`
+- update sass-loader in `client/packages.json` from `"sass-loader": "^6.0.0"` to `"sass-loader": "^8.0.0"`
+- add `bulma-extensions+2.2.2.patch` from the current repo to your `client/patches`
+- update `client/vue.config.js` to compile the view locally instead of under the vendor folder
+```
+    filename: process.env.NODE_ENV === 'production'
+        ? '../resources/views/index.blade.php'
+        : './index.html',
+```
+- update the default route in `routes/web.php` to 
+```
+    Route::view('/{any}', 'index')->where('any', '.*');
+```
+- add in `.gitignore` the local view (`resources/views/index.blade.php`)
+- since this version we went back on building the app for both legacy and modern browsers. To enable that you have to:
+    - update the `babel.config.js` file to:
+    ```
+    module.exports = {
+        presets: [
+            '@vue/cli-plugin-babel/preset',
+        ],
+    };
+    ```
+    - add the `--modern` flag in `client/package.json` for the build script
+    ```
+    "build": "rm -rf ../public/{js,themes,themes-rtl,images} && vue-cli-service build --no-clean --modern",
+    ```
+- run `yarn upgrade && yarn` in `/client`
+- run `composer update` in project root
+- update the version to 3.8.1 in `config/enso/config.php`
+
+### Note:
+Besides what's mentioned above, you should go through these files in your project and align / adapt their content with the ones from the Enso repo:
+- client/package.json
+- client/vue.config.js
+- client/babel.config.js
+- .eslintrc.js and client/.eslintrc.js
 
 ## 3.8.0
 

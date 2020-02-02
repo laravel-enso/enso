@@ -6,7 +6,7 @@ module.exports = {
             entry: 'src/js/enso.js',
             minify: true,
             filename: process.env.NODE_ENV === 'production'
-                ? '../resources/views/vendor/laravel-enso/core/index.blade.php'
+                ? '../resources/views/index.blade.php'
                 : './index.html',
             template: process.env.NODE_ENV === 'production'
                 ? '../vendor/laravel-enso/core/stubs/production-index.blade.stub'
@@ -51,12 +51,12 @@ module.exports = {
             }]),
         ],
     },
-    chainWebpack: (config) => {
+    chainWebpack: config => {
         const scssRules = config.module.rule('scss').oneOfs;
         const normalRule = scssRules.store.get('normal');
         const lazyRule = config.module.rule('scss').oneOf('scss-lazy');
 
-        normalRule.uses.values().forEach((use) => {
+        normalRule.uses.values().forEach(use => {
             if (use.name !== 'vue-style-loader') {
                 lazyRule.use(use.name).merge(use.entries());
                 return;
@@ -82,16 +82,16 @@ module.exports = {
         config.module
             .rule('images')
             .use('url-loader')
-            .tap(options => Object.assign(
-                {}, options, { name: 'images/[name].[ext]' },
-            ));
+            .tap(options => ({
+                ...options, name: 'images/[name].[ext]',
+            }));
 
         config.module
             .rule('svg')
             .use('file-loader')
-            .tap(options => Object.assign(
-                {}, options, { name: 'images/[name].[ext]' },
-            ));
+            .tap(options => ({
+                ...options, name: 'images/[name].[ext]',
+            }));
     },
     productionSourceMap: false,
     css: {

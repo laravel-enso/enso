@@ -9,7 +9,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel-enso/calendar": "1.5.*",
         "laravel-enso/cli": "3.4.*",
-        "laravel-enso/control-panel-api": "2.4.*",
+        "laravel-enso/control-panel-api": "2.5.*",
         "laravel-enso/core": "4.7.*",
         "laravel-enso/excel": "1.1.*",
         "laravel-enso/pdf": "1.1.*",

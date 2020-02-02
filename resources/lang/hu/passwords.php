@@ -17,6 +17,6 @@ return [
     'reset'    => 'Jelszava alaphelyzetbe állítva!',
     'sent'     => 'Emailben elküldtük a jelszavát alaphelyzetbe állító linket.',
     'token'    => 'A jelszó alaphelyzetbe állító token nem érvényes.',
-    'user'     => "Ilyen email címmel rendelkező felhasználó nem található.",
+    'user'     => 'Ilyen email címmel rendelkező felhasználó nem található.',
 
 ];
