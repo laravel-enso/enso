@@ -1,5 +1,204 @@
 # Laravel Enso's Changelog
 
+## 3.8.2
+
+The release includes much needed UI vue-select / dropdown refactor. 
+
+These changes are breaking when customizing/building upon the @enso-ui/select components.
+
+### front-end
+
+Most of the packages received a dependency list cleanup.
+
+#### bulma
+- added the dropdown item component
+
+#### calendar
+- updates color select for the new vue-select / dropdown
+
+#### clipboard (new)
+- a simple VueJS clipboard copy component
+
+#### commercial
+- small adjustment in Order.vue
+
+#### contracts
+- refactored ui imports
+
+#### control-panel
+- added ubuntu icon import
+
+#### data-import
+- refactored ui imports
+
+#### datepicker
+- adds is-small boolean prop
+
+#### directives
+- v-focus can now be active conditionally 
+
+#### dropdown
+- adds arrow keys support
+- updated selector strategy
+
+#### emag
+- components refactor
+- loading flag enhancement
+
+#### filters
+- fixes format/altFormat small bug
+- added input width for DateFilter
+
+#### financials
+- added documents & comments to client payments
+
+#### projects
+- refactored ui imports
+
+#### select
+- removes keyboard handling (moved to dropdown)
+- updates the selection slot usage
+- adds click modifier for tag / deselect
+- improved tag handling
+- fixed several edge cases
+- adjusts search input size
+- fixed dropdown indicator
+- fixed tag delete button and label split when they did not fit the containing div
+
+#### tables
+- refactored dropdown use
+- adjusted is-table-tag lateral padding
+
+#### textarea (new)
+- textarea component that can be easily integrated within the form 
+
+#### themes
+- fixed small form-box overflow bug
+
+#### typeahead
+- upgrades dropdown usage
+
+#### ui
+- improves the main menu to handle indirect nested child pages
+- fixes a small typo related bug in the notifications page
+- upgrades dropdown usage
+- adds a margin between tags and options for the navbar search dropdown menu items
+
+#### wysiwyg
+- removed premium plugins from the default configuration
+
+### back-end
+
+#### avatars
+- fixed manual transaction for persistent processes
+
+#### calendar
+- fixed factories
+
+#### control-panel
+- improved token management
+
+#### control-panel-api
+- refined memory extracting
+- updated operating system label
+- general refactor & improvements
+- fixed total memory reporting
+- refactored closures 
+- fixes OS sensor value
+
+#### currencies
+- improved seeder
+- fixed manual transaction for persistent processes
+
+#### core
+- added index for created_at to action logs table
+- updated the upgrade command
+- added a protected `indexExists($index, $table)` helper in `DatabaseUpgrade`
+- fixed `Authentication` exception namespace
+
+#### countries
+- refactored seeder to use `JsonParser`
+
+#### data-import
+- added support for disabled imports (imports that are missing the template in imports.php config)
+- fixed manual transaction for persistent processes
+
+#### forms
+- fixes test
+- fixes error reporting for missing attributes
+
+#### helpers
+- enhanced `JsonParser` to support `Collection` & `Obj`
+- small refactor
+
+#### how-to
+- fixed manual transaction for persistent processes
+
+#### localisation
+- fixed manual transaction for persistent processes
+
+#### measurement-units
+- fixed factory edge case issue
+
+#### people
+- fixed the appellative helper
+- added dynamic methods dependencies in composer.json
+
+#### products
+- fixes a validation error occurring when saving a product with suppliers but without a default supplier
+
+#### roles
+- fixes visible role scope
+
+#### select
+- refactors option list retrieval flow
+- ensures options are sorted alphabetically
+- improves the options list limit computation
+
+#### services
+- the `Service` model is now `Rememberable`
+
+#### tables
+- refactored leftover `app` namespaces to `App`
+- refactored remaining `collect()` usage to `Collection`
+- fixed stub publishing
+- updated `ButtonTest.php`
+- fixed `Meta` `$filtered` type from `bool` to `int`
+- fixed count cache key implementation
+- added new feature that supports Custom Cache Key for table counts
+- fixed bug resulted from refactoring affecting multi-selection filtering
+- removed unneeded name attribute from buttons
+- added support for json resources / resource collections on table properties
+- made rogue column exportable by default
+
+#### versions
+- adds `Version` exception 
+- small refactor in trait
+- fixed manual transaction for persistent processes
+
+#### versioning
+- fixed manual transaction for persistent processes
+
+### Upgrade steps:
+- edit `client/package.json` and update all @enso-ui packages to their next respective minor version
+
+```bash
+"@enso-ui/accessories": "2.4.x",
+"@enso-ui/bulma": "2.3.x",
+"@enso-ui/calendar": "1.4.x",
+"@enso-ui/filters": "1.4.x",
+"@enso-ui/forms": "1.4.x",
+"@enso-ui/mixins": "1.1.x",
+"@enso-ui/tables": "1.4.x",
+"@enso-ui/ui": "2.4.x"
+```
+
+- run yarn, yarn upgrade && yarn to ensure you have the latest versions and patches are applied
+- run `composer update` in the project's root
+- update the version to 3.8.2 in `config/enso/config.php`
+- if you have front-end customisations to Dropdown / VueSelect / EnsoSelect / Typeahead / EnsoTypeahead ensure that they're functioning okay and make changes if necessary
+- if using `rogue` columns, unless you want those columns as exportable, mark each such column as `notExportable` in the table templates meta, since they're now exportable by default
+
 ## 3.8.1
 
 With this release, we have upgraded sass-loader to the latest version(8.0.3)

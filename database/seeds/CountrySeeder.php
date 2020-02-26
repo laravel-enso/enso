@@ -8,7 +8,7 @@ use LaravelEnso\Countries\App\Models\Country;
 
 class CountrySeeder extends Seeder
 {
-    const JSON = __DIR__.'/../../vendor/laravel-enso/countries/src/database/countries.json';
+    private const Json = __DIR__.'/../../vendor/laravel-enso/countries/src/database/countries.json';
 
     public function run()
     {
@@ -18,7 +18,7 @@ class CountrySeeder extends Seeder
 
     public function countries()
     {
-        return (new Collection(json_decode(File::get(self::JSON), true)))
+        return (new Collection(json_decode(File::get(self::Json), true)))
             ->when(App::environment('testing'), fn ($countries) => $countries->slice(0, 10));
     }
 }
