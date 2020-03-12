@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-use Illuminate\Routing\Controller;
 
 class VerificationController extends Controller
 {
     use VerifiesEmails;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {

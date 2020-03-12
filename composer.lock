@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "652b3fa5228b8e94752f4791d9976021",
+    "content-hash": "f29f5a109dfc4d928d9010c1bf4cdb0a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -626,16 +626,16 @@
         },
         {
             "name": "fruitcake/laravel-cors",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruitcake/laravel-cors.git",
-                "reference": "138ad34ba5f578283e94c5614f6c48a10bc3ac6a"
+                "reference": "0e0500133dbb6325266133dd72f040617c9cdbd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/138ad34ba5f578283e94c5614f6c48a10bc3ac6a",
-                "reference": "138ad34ba5f578283e94c5614f6c48a10bc3ac6a",
+                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/0e0500133dbb6325266133dd72f040617c9cdbd0",
+                "reference": "0e0500133dbb6325266133dd72f040617c9cdbd0",
                 "shasum": ""
             },
             "require": {
@@ -690,7 +690,7 @@
                 "crossdomain",
                 "laravel"
             ],
-            "time": "2020-02-21T13:24:15+00:00"
+            "time": "2020-03-11T21:05:07+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1865,16 +1865,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.8.1",
+            "version": "4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "1946c76c8844c27a32bede189ec8a9be810aac4a"
+                "reference": "64871b6ffe2bd4e8c2b2c0d3ef914d55af1619a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/1946c76c8844c27a32bede189ec8a9be810aac4a",
-                "reference": "1946c76c8844c27a32bede189ec8a9be810aac4a",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/64871b6ffe2bd4e8c2b2c0d3ef914d55af1619a8",
+                "reference": "64871b6ffe2bd4e8c2b2c0d3ef914d55af1619a8",
                 "shasum": ""
             },
             "require": {
@@ -1963,7 +1963,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2020-03-10T12:15:32+00:00"
+            "time": "2020-03-11T15:31:34+00:00"
         },
         {
             "name": "laravel-enso/countries",

@@ -15,7 +15,7 @@
         "laravel-enso/excel": "1.1.*",
         "laravel-enso/pdf": "1.1.*",
         "laravel/horizon": "^4.0",
-        "laravel/telescope": "^3.0",
+        "laravel/telescope": "^3.1",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "sentry/sentry-laravel": "^1.0.0"
@@ -29,14 +29,24 @@
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
     },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
     "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        }
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -45,32 +55,22 @@
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
-        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "php artisan package:discover"
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
         ],
         "post-update-cmd": [
             "php artisan vendor:publish --tag=localisation-lang-files",
             "php artisan enso:localisation:merge"
         ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

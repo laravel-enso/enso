@@ -1,6 +1,22 @@
 <?php
 
+use Illuminate\Support\Str;
+
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Horizon Domain
+    |--------------------------------------------------------------------------
+    |
+    | This is the subdomain where Horizon will be accessible from. If this
+    | setting is null, Horizon will reside under the same domain as the
+    | application. Otherwise, this value will serve as the subdomain.
+    |
+    */
+
+    'domain' => env('HORIZON_DOMAIN'),
+
     /*
     |--------------------------------------------------------------------------
     | Horizon Path
@@ -84,6 +100,8 @@ return [
 
     'trim' => [
         'recent' => 60,
+        'pending' => 60,
+        'completed' => 60,
         'recent_failed' => 60 * 24 * 7,
         'failed' => 60 * 24 * 7,
         'monitored' => 60 * 24 * 7,

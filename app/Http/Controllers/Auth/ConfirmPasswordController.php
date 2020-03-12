@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
-class LoginController extends Controller
+class ConfirmPasswordController extends Controller
 {
-    use AuthenticatesUsers;
+    use ConfirmsPasswords;
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('auth');
     }
 }

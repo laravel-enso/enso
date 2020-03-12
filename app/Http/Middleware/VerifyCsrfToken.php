@@ -9,6 +9,6 @@ class VerifyCsrfToken extends Middleware
     protected $addHttpCookie = true;
 
     protected $except = [
-        'api/login', 'api/password/email', 'api/password/reset',
+        'api/login', 'api/password/email', 'api/password/reset', //TODO check, remove exceptions
     ];
 }
