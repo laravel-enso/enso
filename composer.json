@@ -51,7 +51,6 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "LaravelEnso\\Calendar\\tests\\features\\": "vendor/laravel-enso/calendar/tests/features/",
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },

@@ -921,9 +921,9 @@
     vue "^2.5.16"
 
 "@enso-ui/data-import@1.3.x":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/data-import/-/data-import-1.3.0.tgz#4ef2ecfcadf8d67b569999c538740de83433ec75"
-  integrity sha512-c1j69Q5y62/QGfULiOQZUgIQvjH17iR59axYx+NeQ1L1g1OdELMR5xUQ+S/fOQdXGEVSLiHhS59BGaLp0KTI+Q==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/data-import/-/data-import-1.3.1.tgz#de75b79b65b3c9b221aa86b76df8de9aaf4094c3"
+  integrity sha512-dgnBcSoWWAEnkezWfmYWczGp5qsFZzj5loJase5TBSJPD52tYU7BmwPta/ZknJr+ljsGnK/vvP1QmqjQI6ypRQ==
   dependencies:
     "@enso-ui/directives" "1.0.x"
     "@enso-ui/modal" "1.0.x"
