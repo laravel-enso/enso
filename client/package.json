@@ -23,7 +23,7 @@
         "@enso-ui/tables": "1.4.x",
         "@enso-ui/themes": "1.1.x",
         "@enso-ui/transitions": "1.0.x",
-        "@enso-ui/ui": "2.4.x",
+        "@enso-ui/ui": "2.5.x",
         "@fortawesome/fontawesome-free": "^5.2.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.2",
         "@fortawesome/free-brands-svg-icons": "^5.2.0",

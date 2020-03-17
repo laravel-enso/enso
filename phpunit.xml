@@ -2,8 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         colors="true"
-         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
+         colors="true">
     <testsuites>
         <testsuite name="local">
             <directory suffix="Test.php">./tests</directory>
@@ -100,6 +99,9 @@
         </testsuite>
         <testsuite name="tutorials">
             <directory suffix="Test.php">./vendor/laravel-enso/tutorials/tests/features</directory>
+        </testsuite>
+        <testsuite name="tutorials">
+            <directory suffix="Test.php">./vendor/laravel-enso/upgrade/tests/units</directory>
         </testsuite>
     </testsuites>
     <filter>
