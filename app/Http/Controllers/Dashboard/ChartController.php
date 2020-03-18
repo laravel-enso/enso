@@ -61,8 +61,8 @@ class ChartController extends Controller
             ->title('Habits')
             ->labels(['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'])
             ->datasets([
-            '2005' => [65, 59, 90, 81, 56, 55, 40],
-            '2006' => [28, 48, 40, 19, 96, 27, 100],
+                '2005' => [65, 59, 90, 81, 56, 55, 40],
+                '2006' => [28, 48, 40, 19, 96, 27, 100],
             ])->get();
     }
 
