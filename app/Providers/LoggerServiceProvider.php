@@ -29,7 +29,7 @@ class LoggerServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        if (!App::environment('testing')) {
+        if (! App::runningUnitTests()) {
             Logger::observe();
         }
     }

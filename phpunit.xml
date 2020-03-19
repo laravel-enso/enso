@@ -100,7 +100,7 @@
         <testsuite name="tutorials">
             <directory suffix="Test.php">./vendor/laravel-enso/tutorials/tests/features</directory>
         </testsuite>
-        <testsuite name="tutorials">
+        <testsuite name="upgrade">
             <directory suffix="Test.php">./vendor/laravel-enso/upgrade/tests/units</directory>
         </testsuite>
     </testsuites>
