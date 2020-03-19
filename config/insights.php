@@ -23,7 +23,10 @@ use SlevomatCodingStandard\Sniffs\Functions\StaticClosureSniff;
 use SlevomatCodingStandard\Sniffs\Functions\UnusedParameterSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\DeclareStrictTypesSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\DisallowMixedTypeHintSniff;
-use SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
+use SlevomatCodingStandard\Sniffs\Variables\UnusedVariableSniff;
 
 return [
     /*
@@ -73,8 +76,10 @@ return [
         ForbiddenTraits::class,
         MethodChainingIndentationFixer::class,
         ObjectOperatorIndentSniff::class,
+        ReturnTypeHintSniff::class,
+        ParameterTypeHintSniff::class,
+        PropertyTypeHintSniff::class,
         StaticClosureSniff::class,
-        TypeHintDeclarationSniff::class,
         UpperCaseConstantNameSniff::class,
     ],
 
@@ -85,8 +90,8 @@ return [
         ElementNameMinimalLengthSniff::class => [
             'minLength' => 3,
             'allowedShortNames' => [
-                'i', 'id', 'ip', 'up', 'to', 'cc', 'by', 'lt',
-                'gt', 'eq', 'io', 'IO', 'NA', 'Ms', 'Mr',
+                'i', 'q', 'id', 'ip', 'up', 'to', 'cc', 'by', 'lt', 'lte',
+                'gt', 'gte', 'eq', 'io', 'IO', 'NA', 'Ms', 'Mr',
             ],
         ],
         ForbiddenPrivateMethods::class => [
@@ -107,6 +112,11 @@ return [
             'exclude' => [
                 'app/Http/Resources',
                 'app/Http/Middleware/Authenticate.php',
+            ],
+        ],
+        UnusedVariableSniff::class => [
+            'exclude' => [
+                'app/Enums',
             ],
         ],
     ],
