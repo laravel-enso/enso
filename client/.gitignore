@@ -16,8 +16,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # code editors
-.idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
