@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Str;
-
 return [
 
     /*
@@ -81,10 +79,10 @@ return [
     */
 
     'waits' => [
-        'redis:default' => 60,
-        'redis:light' => 60,
+        'redis:default'       => 60,
+        'redis:light'         => 60,
         'redis:notifications' => 60,
-        'redis:heavy' => 60 * 30,
+        'redis:heavy'         => 60 * 30,
     ],
 
     /*
@@ -99,12 +97,12 @@ return [
     */
 
     'trim' => [
-        'recent' => 60,
-        'pending' => 60,
-        'completed' => 60,
+        'recent'        => 60,
+        'pending'       => 60,
+        'completed'     => 60,
         'recent_failed' => 60 * 24 * 7,
-        'failed' => 60 * 24 * 7,
-        'monitored' => 60 * 24 * 7,
+        'failed'        => 60 * 24 * 7,
+        'monitored'     => 60 * 24 * 7,
     ],
 
     /*
@@ -150,54 +148,54 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default', 'light', 'notifications'],
-                'balance' => 'auto',
-                'processes' => 6,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['default', 'light', 'notifications'],
+                'balance'    => 'auto',
+                'processes'  => 6,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
-                'queue' => ['heavy'],
-                'balance' => 'auto',
-                'processes' => 2,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['heavy'],
+                'balance'    => 'auto',
+                'processes'  => 2,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
-                'queue' => ['sync'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['sync'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default', 'light', 'notifications'],
-                'balance' => 'auto',
-                'processes' => 6,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['default', 'light', 'notifications'],
+                'balance'    => 'auto',
+                'processes'  => 6,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
-                'queue' => ['heavy'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['heavy'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
-                'queue' => ['sync'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
-                'timeout' => 60 * 60,
+                'queue'      => ['sync'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
         ],
     ],
