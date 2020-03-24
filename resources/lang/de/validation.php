@@ -32,6 +32,7 @@ return [
     'boolean'        => ":attribute muss entweder 'true' oder 'false' sein.",
     'confirmed'      => ':attribute stimmt nicht mit der Bestätigung überein.',
     'date'           => ':attribute muss ein gültiges Datum sein.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'    => ':attribute entspricht nicht dem gültigen Format für :format.',
     'different'      => ':attribute und :other müssen sich unterscheiden.',
     'digits'         => ':attribute muss :digits Stellen haben.',
@@ -39,9 +40,22 @@ return [
     'dimensions'     => ':attribute hat ungültige Bildabmessungen.',
     'distinct'       => 'Das Feld :attribute beinhaltet einen bereits vorhandenen Wert.',
     'email'          => ':attribute muss eine gültige E-Mail-Adresse sein.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists'         => 'Der gewählte Wert für :attribute ist ungültig.',
     'file'           => ':attribute muss eine Datei sein.',
     'filled'         => ':attribute muss ausgefüllt sein.',
+    'gt' => [
+        'numeric' => 'The :attribute must be greater than :value.',
+        'file' => 'The :attribute must be greater than :value kilobytes.',
+        'string' => 'The :attribute must be greater than :value characters.',
+        'array' => 'The :attribute must have more than :value items.',
+    ],
+    'gte' => [
+        'numeric' => 'The :attribute must be greater than or equal :value.',
+        'file' => 'The :attribute must be greater than or equal :value kilobytes.',
+        'string' => 'The :attribute must be greater than or equal :value characters.',
+        'array' => 'The :attribute must have :value items or more.',
+    ],
     'image'          => ':attribute muss ein Bild sein.',
     'in'             => 'Der gewählte Wert für :attribute ist ungültig.',
     'in_array'       => 'Der gewählte Wert für :attribute kommt nicht in :other vor.',
@@ -50,6 +64,18 @@ return [
     'ipv4'           => ':attribute muss eine gültige IPv4-Adresse sein.',
     'ipv6'           => ':attribute muss eine gültige IPv6-Adresse sein.',
     'json'           => ':attribute muss ein gültiger JSON-String sein.',
+    'lt' => [
+        'numeric' => 'The :attribute must be less than :value.',
+        'file' => 'The :attribute must be less than :value kilobytes.',
+        'string' => 'The :attribute must be less than :value characters.',
+        'array' => 'The :attribute must have less than :value items.',
+    ],
+    'lte' => [
+        'numeric' => 'The :attribute must be less than or equal :value.',
+        'file' => 'The :attribute must be less than or equal :value kilobytes.',
+        'string' => 'The :attribute must be less than or equal :value characters.',
+        'array' => 'The :attribute must not have more than :value items.',
+    ],
     'max'            => [
         'numeric' => ':attribute darf maximal :max sein.',
         'file'    => ':attribute darf maximal :max Kilobytes groß sein.',
@@ -65,6 +91,7 @@ return [
         'array'   => ':attribute muss mindestens :min Elemente haben.',
     ],
     'not_in'               => 'Der gewählte Wert für :attribute ist ungültig.',
+    'not_regex' => 'The :attribute format is invalid.',
     'numeric'              => ':attribute muss eine Zahl sein.',
     'present'              => 'Das Feld :attribute muss vorhanden sein.',
     'regex'                => ':attribute Format ist ungültig.',
@@ -82,11 +109,14 @@ return [
         'string'  => ':attribute muss :size Zeichen lang sein.',
         'array'   => ':attribute muss genau :size Elemente haben.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'   => ':attribute muss ein String sein.',
     'timezone' => ':attribute muss eine gültige Zeitzone sein.',
     'unique'   => ':attribute ist schon vergeben.',
     'uploaded' => 'Der :attribute konnte nicht hochgeladen werden.',
     'url'      => 'Das Format von :attribute ist ungültig.',
+    'uuid' => 'The :attribute must be a valid UUID.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -97,19 +127,21 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
     |
     */
     'attributes' => [

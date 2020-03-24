@@ -41,9 +41,9 @@
     source-map "^0.5.0"
 
 "@babel/generator@^7.9.0":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.9.3.tgz#7c8b2956c6f68b3ab732bd16305916fbba521d94"
-  integrity sha512-RpxM252EYsz9qLUIq6F7YJyK1sv0wWDBFuztfDGWaQKzHjqDHysxSiRUpA/X9jmfqo+WzkAVKFaUily5h+gDCQ==
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.9.4.tgz#12441e90c3b3c4159cdecf312075bf1a8ce2dbce"
+  integrity sha512-rjP8ahaDy/ouhrvCoU1E5mqaitWrxwuNGU+dy1EpaoK48jZay4MdkskKGIMHLZNewg8sAsqpGSREJwP0zH3YQA==
   dependencies:
     "@babel/types" "^7.9.0"
     jsesc "^2.5.1"
@@ -253,9 +253,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.7.0", "@babel/parser@^7.8.6", "@babel/parser@^7.9.0":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.9.3.tgz#043a5fc2ad8b7ea9facddc4e802a1f0f25da7255"
-  integrity sha512-E6SpIDJZ0cZAKoCNk+qSDd0ChfTnpiJN9FfNf3RZ20dzwA2vL2oq5IX1XTVT+4vDmRlta2nGk5HGMMskJAR+4A==
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.9.4.tgz#68a35e6b0319bbc014465be43828300113f2f2e8"
+  integrity sha512-bC49otXX6N0/VYhgOMh4gnP26E9xnDZK3TmbNpxYzzz9BQLBosQwfyOe9/cXUU3txYhTzLCbcqd5c8y/OmCjHA==
 
 "@babel/plugin-proposal-async-generator-functions@^7.8.3":
   version "7.8.3"
@@ -1163,9 +1163,9 @@
     vue "^2.5.16"
 
 "@enso-ui/mixins@1.1.x":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@enso-ui/mixins/-/mixins-1.1.2.tgz#ad9c9ae1150bc6977ac8e86464d5b942af945c12"
-  integrity sha512-OvKLn6ns+P+gzUOTBP4+9dM57oteaaghi0YdH/Ot1HltKFVv0noV3xYg0fpfKunOOydOFzTxCLlazBYSSopqbA==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@enso-ui/mixins/-/mixins-1.1.3.tgz#05850573134c44cf25ae50cca1f4c932e111a3f5"
+  integrity sha512-uyRZOh3cIhretsJ0UpGSKw1sHjqOPf5nfRpny/A+fNKdthKDaEpenziQ4TChirfPT/ElCUllKVVdX9nR08/ZDw==
   dependencies:
     "@enso-ui/ui" "2.5.x"
     "@fortawesome/fontawesome-free" "^5.2.0"
@@ -1424,9 +1424,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@2.5.x":
-  version "2.5.7"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.5.7.tgz#70702926f4901304550132c6f7dd96529993d0fc"
-  integrity sha512-hGkA2WAQTmx4bFy3pE1f43Dffaz6KH/Sm0YxFFCKSUCklqCvYhjmppao0izhXdDd04I+iicndSD8wav/efyCCw==
+  version "2.5.8"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.5.8.tgz#04103f6f663e4c59844b7d2b17c243d5e09fff4f"
+  integrity sha512-T5PMH2Ndo9HyFQ6toZiT2VJDsg7wUPTUBmfUuEcWRNpFzeF0r+iKUr/SCTtS1TTo7G0DI3/Q0kXDYnJaItkI5w==
   dependencies:
     "@enso-ui/accessories" "2.4.x"
     "@enso-ui/activity-log" "1.3.x"
@@ -1465,6 +1465,8 @@
     "@fortawesome/free-regular-svg-icons" "^5.2.0"
     "@fortawesome/free-solid-svg-icons" "^5.2.0"
     "@fortawesome/vue-fontawesome" "^0.1.1"
+    "@sentry/browser" "^5.15.0"
+    "@sentry/integrations" "^5.15.0"
     animate.css "^3.6.1"
     axios "^0.19.0"
     bulma "^0.8.0"
@@ -1476,7 +1478,6 @@
     laravel-echo "^1.5.3"
     lodash "^4.17.11"
     pusher-js "^5.0.0"
-    raven-js "^3.27.0"
     tooltip.js "^1.2.0"
     v-tooltip "^2.0.0-rc.32"
     vue "^2.5.16"
@@ -9086,11 +9087,6 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
-
-raven-js@^3.27.0:
-  version "3.27.2"
-  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.27.2.tgz#6c33df952026cd73820aa999122b7b7737a66775"
-  integrity sha512-mFWQcXnhRFEQe5HeFroPaEghlnqy7F5E2J3Fsab189ondqUzcjwSVi7el7F36cr6PvQYXoZ1P2F5CSF2/azeMQ==
 
 raw-body@2.4.0:
   version "2.4.0"

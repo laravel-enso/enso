@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/enso",
-    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 6.x, Vue and Bulma",
+    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 7.x, Vue and Bulma",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -13,8 +13,8 @@
         "laravel-enso/control-panel-api": "2.5.*",
         "laravel-enso/core": "4.8.*",
         "laravel-enso/excel": "1.1.*",
-        "laravel/horizon": "^4.0",
         "laravel-enso/pdf": "1.1.*",
+        "laravel/horizon": "^4.0",
         "laravel/telescope": "^3.1",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",

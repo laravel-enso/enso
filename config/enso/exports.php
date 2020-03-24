@@ -10,7 +10,7 @@ return [
     |
      */
 
-    'rowLimit' => 1000000,
+    'rowLimit' => env('EXPORT_ROW_LIMIT', 1000000),
 
     /*
     |--------------------------------------------------------------------------
@@ -21,5 +21,16 @@ return [
     |
      */
 
-    'chunk' => 25000,
+    'chunk' => env('EXPORT_CHUNK', 25000),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Retain exports for a number of days
+    |--------------------------------------------------------------------------
+    | Sets the default period in days for retaining exports. Must be used
+    | together with the Purge command.
+    |
+     */
+
+    'retainFor' => env('EXPORT_RETAIN_FOR', 60),
 ];

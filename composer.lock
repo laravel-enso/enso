@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc0529da1f71958a40929c6f736f88be",
+    "content-hash": "f11c0b681d92d91ffdf04acc2015f75a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2115,16 +2115,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.8.8",
+            "version": "4.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "7ece38e7734ae2e6dc52b4d1f0b885ae24942cf2"
+                "reference": "dfbea2caa3e7f5910e4d92b583fa32f886acdb79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/7ece38e7734ae2e6dc52b4d1f0b885ae24942cf2",
-                "reference": "7ece38e7734ae2e6dc52b4d1f0b885ae24942cf2",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/dfbea2caa3e7f5910e4d92b583fa32f886acdb79",
+                "reference": "dfbea2caa3e7f5910e4d92b583fa32f886acdb79",
                 "shasum": ""
             },
             "require": {
@@ -2214,7 +2214,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2020-03-24T06:56:41+00:00"
+            "time": "2020-03-24T10:27:12+00:00"
         },
         {
             "name": "laravel-enso/countries",
@@ -3116,16 +3116,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.5.10",
+            "version": "3.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "6151c94de31a0e501d563856fda6fcd72fe67662"
+                "reference": "11b4c0136847d9f9ed0883bf44173123f46fdec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/6151c94de31a0e501d563856fda6fcd72fe67662",
-                "reference": "6151c94de31a0e501d563856fda6fcd72fe67662",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/11b4c0136847d9f9ed0883bf44173123f46fdec4",
+                "reference": "11b4c0136847d9f9ed0883bf44173123f46fdec4",
                 "shasum": ""
             },
             "require": {
@@ -3169,7 +3169,7 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2020-03-19T08:33:45+00:00"
+            "time": "2020-03-24T11:08:13+00:00"
         },
         {
             "name": "laravel-enso/logs",
@@ -6108,16 +6108,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
                 "shasum": ""
             },
             "require": {
@@ -6151,7 +6151,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2019-11-01T11:05:21+00:00"
+            "time": "2020-03-23T09:12:05+00:00"
         },
         {
             "name": "psr/simple-cache",

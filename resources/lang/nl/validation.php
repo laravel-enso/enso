@@ -32,6 +32,7 @@ return [
     'boolean'        => ':attribute veld moet waar of niet waar zijn.',
     'confirmed'      => ':attribute moet bevestigd worden.',
     'date'           => ':attribute is geen geldige datum.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'    => ':attribute komt niet overeen met het formaat: :format.',
     'different'      => ':attribute en :other moeten verschillend zijn.',
     'digits'         => ':attribute moet numeriek zijn: :digits.',
@@ -39,9 +40,22 @@ return [
     'dimensions'     => ':attribute heeft een ongeldige afbeeldingsgrootte.',
     'distinct'       => ':attribute veld heeft een ongeldige dubbele waarde.',
     'email'          => ':attribute moet een geldig e-mailadres zijn.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists'         => 'Het geselecteerde :attribute is ongeldig.',
     'file'           => ':attribute moet een bestand zijn.',
     'filled'         => ':attribute veld moet een waarde bevatten.',
+    'gt' => [
+        'numeric' => 'The :attribute must be greater than :value.',
+        'file' => 'The :attribute must be greater than :value kilobytes.',
+        'string' => 'The :attribute must be greater than :value characters.',
+        'array' => 'The :attribute must have more than :value items.',
+    ],
+    'gte' => [
+        'numeric' => 'The :attribute must be greater than or equal :value.',
+        'file' => 'The :attribute must be greater than or equal :value kilobytes.',
+        'string' => 'The :attribute must be greater than or equal :value characters.',
+        'array' => 'The :attribute must have :value items or more.',
+    ],
     'image'          => ':attribute moet een afbeelding zijn.',
     'in'             => 'De geselecteerde waarde :attribute is ongeldig.',
     'in_array'       => ':attribute veld bestaat niet in :other.',
@@ -50,6 +64,18 @@ return [
     'ipv4'           => ':attribute moet een geldig IPv4-adres zijn.',
     'ipv6'           => ':attribute moet een geldig IPv6-adres zijn',
     'json'           => ':attribute moet een geldige JSON string zijn.',
+    'lt' => [
+        'numeric' => 'The :attribute must be less than :value.',
+        'file' => 'The :attribute must be less than :value kilobytes.',
+        'string' => 'The :attribute must be less than :value characters.',
+        'array' => 'The :attribute must have less than :value items.',
+    ],
+    'lte' => [
+        'numeric' => 'The :attribute must be less than or equal :value.',
+        'file' => 'The :attribute must be less than or equal :value kilobytes.',
+        'string' => 'The :attribute must be less than or equal :value characters.',
+        'array' => 'The :attribute must not have more than :value items.',
+    ],
     'max'            => [
         'numeric' => ':attribute mag niet groter zijn dan :max.',
         'file'    => ':attribute mag niet groter zijn dan :max kilobytes.',
@@ -65,12 +91,15 @@ return [
         'array'   => ':attribute moet minimaal :min items bevatten.',
     ],
     'not_in'               => 'Het geselecteerde :attribute is ongeldig.',
+    'not_regex' => 'The :attribute format is invalid.',
     'numeric'              => ':attribute moet een geldig nummer zijn.',
     'present'              => ':attribute veld moet aanwezig zijn.',
     'regex'                => ':attribute formaat is ongeldig.',
     'required'             => ':attribute veld is verplicht.',
     'required_if'          => ':attribute veld is verplicht als :other de volgende waarde heeft: :value.',
     'required_unless'      => ':attribute veld is verplicht tenzij :other de volgende waarde heeft :values.',
+    'required_with' => 'The :attribute field is required when :values is present.',
+    'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without'     => ':attribute veld is verplicht :values niet aanwezig is.',
     'required_without_all' => ':attribute veld is verplicht, wanneer geen van :values waarden aanwezig zijn.',
     'same'                 => ':attribute en :other moeten overeenkomen.',
@@ -80,11 +109,13 @@ return [
         'string'  => ':attribute moet :size tekens bevatten.',
         'array'   => ':attribute moet :size items bevatten.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'   => ':attribute moet een geldige tekst zijn.',
     'timezone' => ':attribute moet een geldige tijdzone zijn.',
     'unique'   => ':attribute moet uniek zijn.',
     'uploaded' => ':attribute kon niet geupload worden.',
     'url'      => ':attribute formaat is ongeldig.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,9 +139,9 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
     |
     */
 

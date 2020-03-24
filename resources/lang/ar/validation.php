@@ -8,7 +8,7 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages.
+    | as the size rules. Feel free to tweak each of these messages here.
     |
     */
 
@@ -31,6 +31,7 @@ return [
     'boolean' => 'يجب أن تكون قيمة :attribute إما true أو false ',
     'confirmed' => 'حقل التأكيد غير مُطابق للحقل :attribute',
     'date' => ':attribute ليس تاريخًا صحيحًا',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format' => 'لا يتوافق :attribute مع الشكل :format.',
     'different' => 'يجب أن يكون الحقلان :attribute و :other مُختلفان',
     'digits' => 'يجب أن يحتوي :attribute على :digits رقمًا/أرقام',
@@ -38,9 +39,22 @@ return [
     'dimensions' => 'الـ :attribute يحتوي على أبعاد صورة غير صالحة.',
     'distinct' => 'للحقل :attribute قيمة مُكرّرة.',
     'email' => 'يجب أن يكون :attribute عنوان بريد إلكتروني صحيح البُنية',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'القيمة المحددة :attribute غير موجودة',
     'file' => 'الـ :attribute يجب أن يكون ملفا.',
     'filled' => ':attribute إجباري',
+    'gt' => [
+        'numeric' => 'The :attribute must be greater than :value.',
+        'file' => 'The :attribute must be greater than :value kilobytes.',
+        'string' => 'The :attribute must be greater than :value characters.',
+        'array' => 'The :attribute must have more than :value items.',
+    ],
+    'gte' => [
+        'numeric' => 'The :attribute must be greater than or equal :value.',
+        'file' => 'The :attribute must be greater than or equal :value kilobytes.',
+        'string' => 'The :attribute must be greater than or equal :value characters.',
+        'array' => 'The :attribute must have :value items or more.',
+    ],
     'image' => 'يجب أن يكون :attribute صورةً',
     'in' => ':attribute لاغٍ',
     'in_array' => ':attribute غير موجود في :other.',
@@ -49,6 +63,18 @@ return [
     'ipv4' => 'يجب أن يكون :attribute عنوان IPv4 صحيحًا.',
     'ipv6' => 'يجب أن يكون :attribute عنوان IPv6 صحيحًا.',
     'json' => 'يجب أن يكون :attribute نصآ من نوع JSON.',
+    'lt' => [
+        'numeric' => 'The :attribute must be less than :value.',
+        'file' => 'The :attribute must be less than :value kilobytes.',
+        'string' => 'The :attribute must be less than :value characters.',
+        'array' => 'The :attribute must have less than :value items.',
+    ],
+    'lte' => [
+        'numeric' => 'The :attribute must be less than or equal :value.',
+        'file' => 'The :attribute must be less than or equal :value kilobytes.',
+        'string' => 'The :attribute must be less than or equal :value characters.',
+        'array' => 'The :attribute must not have more than :value items.',
+    ],
     'max' => [
         'numeric' => 'يجب أن تكون قيمة :attribute مساوية أو أصغر لـ :max.',
         'file' => 'يجب أن لا يتجاوز حجم الملف :attribute :max كيلوبايت',
@@ -64,6 +90,7 @@ return [
         'array' => 'يجب أن يحتوي :attribute على الأقل على :min عُنصرًا/عناصر',
     ],
     'not_in' => ':attribute لاغٍ',
+    'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'يجب على :attribute أن يكون رقمًا',
     'present' => 'يجب تقديم :attribute',
     'regex' => 'صيغة :attribute .غير صحيحة',
@@ -81,11 +108,13 @@ return [
         'string' => 'يجب أن يحتوي النص :attribute على :size حروفٍ/حرفًا بالظبط',
         'array' => 'يجب أن يحتوي :attribute على :size عنصرٍ/عناصر بالظبط',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string' => 'يجب أن يكون :attribute نصآ.',
     'timezone' => 'يجب أن يكون :attribute نطاقًا زمنيًا صحيحًا',
     'unique' => 'قيمة :attribute مُستخدمة من قبل',
     'uploaded' => 'فشل في تحميل الـ :attribute',
     'url' => 'صيغة الرابط :attribute غير صحيحة',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,9 +138,9 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
     |
     */
 
