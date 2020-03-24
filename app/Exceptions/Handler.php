@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
+use LaravelEnso\Core\App\Exceptions\Sentry;
 use LaravelEnso\Helpers\App\Exceptions\EnsoException;
 use Throwable;
 
@@ -18,8 +20,8 @@ class Handler extends ExceptionHandler
 
     public function report(Throwable $exception)
     {
-        if (app()->bound('sentry') && $this->shouldReport($exception)) {
-            app('sentry')->captureException($exception);
+        if (App::bound('sentry') && $this->shouldReport($exception)) {
+            Sentry::report($exception);
         }
 
         parent::report($exception);

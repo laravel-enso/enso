@@ -30,8 +30,6 @@
         "@fortawesome/free-regular-svg-icons": "^5.2.0",
         "@fortawesome/free-solid-svg-icons": "^5.2.0",
         "@fortawesome/vue-fontawesome": "^0.1.1",
-        "@sentry/browser": "^5.15.0",
-        "@sentry/integrations": "^5.15.0",
         "animate.css": "^3.6.1",
         "axios": "^0.19.0",
         "bulma": "^0.8.0",
