@@ -107,7 +107,6 @@ Since the Laravel upgrade contains some pontetially breaking changes, you should
 - fixes edge case where error was sometimes not thrown when using the the `errorHandler`
 - updated Sentry integration, the `RAVEN_DSN` key is no longer required
 
-
 ### back-end
 
 The `type` attribute has been deprecated for structure migrations - all the packages with such migrations have been updated and have had the attribute removed.
@@ -260,6 +259,7 @@ Also, dependencies were updated as required.
 - edit `client/package.json` and
     - update `@enso-ui/ui` to `2.5.x`
     - update `pusher-js` to `^5.0.0`
+- rename in your .env* files `MAIL_DRIVER` to `MAIL_MAILER`
 - run yarn, yarn upgrade && yarn to ensure you have the latest versions and patches are applied. If necessary, update your patches
 - update the Enso version to 3.9.0 in `config/enso/config.php`
 - run `php artisan vendor:publish --tag=select-config" to publish the `select.php` config
@@ -270,7 +270,9 @@ Also, dependencies were updated as required.
 - find any local `LaravelEnso\Helpers\App\Classes\JsonParser` usages and update to `LaravelEnso\Helpers\App\Classes\JsonReader`
 - note that for Permission, the name should be unique; update the factory, look [here](https://github.com/laravel-enso/enso/blob/c14d2d7a0c754ab8328171f9909d979e105ba832/database/factories/PermissionFactory.php) for example
 - update `App\Exceptions\Handler`, use [this](https://github.com/laravel-enso/enso/commit/1e8ad53994b230c2e5f65b7a82b41ad9b3570db0#diff-646a4842abf9023c975a9a1658a68b0a) as model
-- `composer.json` / `doctrine/dbal`
+- make sure that in your composer.json you still have the following dependencies:
+    - "doctrine/dbal": "^2.8",
+    - "predis/predis": "^1.1",
 
 ## 3.8.2
 
