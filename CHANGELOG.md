@@ -1,8 +1,280 @@
 # Laravel Enso's Changelog
 
+## 3.9.0
+
+This release includes many improvements and new features, bugfixes as well as the upgrade to Laravel 7.*. 
+
+Since the Laravel upgrade contains some pontetially breaking changes, you should take a look at the [official upgrade instructions](https://laravel.com/docs/7.x/upgrade) to see if/how you're affected.
+
+### front-end
+
+#### bulma
+- added components: `TreeView`, `CheckboxManager`, `CheckboxItems`, `QuickView`
+
+#### calendar
+- fixed the event slot, due to the `VueCal` update
+- fixed an UI template issue when the selected option was not ready
+- added an update action when an event was modified via drag & drop due to the new VueCal feature
+- fixed display for long calendar names
+- refactored event update confirmation modal - now uses buttons instead of radio buttons
+
+#### categories (new)
+- created package that handles product categories
+
+#### checkbox (new)
+- created package with checkbox items & manager components - extracted from the roles package (role configurator)
+
+#### clipboard
+- added clipboard support for passing an argument to the copy method - the argument represents the value that you want copied to the clipboard
+
+#### commercial
+- small UI updates for the order lines
+- cleanup of unused injection in `FormContent`
+- implemented order lines reload when trying to add a line to an order with stale data
+
+#### companies
+- added a new `website` attribute to the company model and as a result, a new column is visible and clickable in the index table
+- a corresponding upgrade was added to Enso (more information below)
+
+#### discounts
+- small refactor of the package's pages, removing duplicated code
+
+#### dropdown
+- updated  dropdown item selector strategy 
+
+#### emag
+- updated form content & extracted logic into the `EmagOrder` component
+- added check for the presence of the emag order id value
+
+#### filters
+- removed the deprecated SimpleDateFilter/ EnsoSimpleDateFilter components
+- refactored & improved date filter to handle more intervals
+
+#### financials
+- improved payment type filtering logic, to work better with internationalization
+- improved client filter to work better when used together with local state loading
+
+#### mixins
+- fixes throwing unkown errors
+- makes `errorHandler` more readable
+
+#### permissions
+- permission `type` was extracted to a dynamic computed property and the db table's column was dropped
+- added mixin with the CSS class used for the different permission types
+
+#### roles
+- `Configure.vue` now uses the new `@enso-io/checkbox` functionality which was extracted to a distinct package that roles now depends on
+
+#### search-mode (new)
+- a new dependency package that permits switching between the different search modes (full, starts with, ends with)
+- this new package is now utilized by select, typeahead and tables 
+
+#### select
+- fixes the `shouldDisableDropdown`/`dropdownDisabled` computed property
+- improves the reload handling
+- added a `searchLimit` property, with the default value fo 10
+- added the new search mode functionality (hidden by default)
+
+#### quick-view (new)
+- a new dependency package that contains the `QuickView` component, extracted from the accessories package
+- the quick view default width was updated (is a little larger)
+
+#### tables
+- enhances support for highlighting rows
+- fixes tr `:key` attribute
+
+#### themes
+- added an `is-hoverable` helper class
+
+#### toastr
+- added a `when` method that allows fluent syntax while having conditionals
+
+#### tree-view (new)
+- added new package for the `TreeView` component
+
+#### typeahead
+- fixed the display of the 'no results' message visible when there are no results available
+- added ongoing request cancellation when multiple requests are made
+- added the new search mode functionality (hidden by default)
+
+#### ui
+- fixed the `shortNumber` filter, so that it does not alter 0 as well negative numbers
+- fixed an edge case in `Enum.js`
+- removed the dashboard route and page from the ui package (were moved to the local project)
+- menus related components refactor (`has_children` attribute usage changed to `hasChildren`)
+- refactored toastr usage in `Notifications.vue` & fixed small bug when toaster level was not specified
+- adds support for redirect after login
+- fixes edge case where error was sometimes not thrown when using the the `errorHandler`
+- updated Sentry integration, the `RAVEN_DSN` key is no longer required
+
+
+### back-end
+
+The `type` attribute has been deprecated for structure migrations - all the packages with such migrations have been updated and have had the attribute removed.
+
+Also, dependencies were updated as required.
+
+#### action logger
+- adds index on `created_at` column
+
+#### avatars
+- adds avatar resource
+
+#### calendar
+- refactors tests, adds validation for event destroy, updates validation for event, refactors frequency and sequence logic
+- adds formatting for reccurence end date  for parent event
+- adds check for sequence break so it is no longer performed when not needed, if performing update on first event in the sequence
+- renames update type enum labels
+- fixes bugs
+
+#### categories (new)
+- added new package that handles product categories
+
+#### cli
+- removes deprecated permission Types from stubs
+
+#### commercial
+- refactors `inCents` to decimal, small changes due to refactor
+- updates migrations
+- client stocks supplier is now optional
+- updates client stock import
+
+#### companies
+- adds new `website` attribute (nullable)
+
+#### core
+- updates for Laravel 7
+- removes `jessengers/date`
+- adds DB upgrade for permissions
+- adds `enso-aggregator` to composer.json
+- extracts upgrade logic in its own package
+- update due to `JsonParser` to `JsonReader` rename
+- adds companies upgrade command due to new `website` attribute
+- updates failed jobs id to bigIncrements
+- adds `User` & `Grup` resources
+- refactors `AppState` to return resources
+
+#### countries
+- update due to `JsonParser` to `JsonReader` rename
+
+#### data import
+- fixes edge case for cells that need trimming
+- fixes tests to work with the new `UploadedFile`
+- returns array from template show / store controllers
+- update due to `JsonParser` to `JsonReader` rename
+
+#### discounts
+- decimal discounts refactor
+
+#### files
+- adds a `model` helper to the facade
+- refactors deprecated `getClientSize` and `getClientMimeType` in `Files.php`
+
+#### filters (new)
+- new package that can work in tandem with the front-end date filter component to generate date interval values for queries, graphs etc
+
+#### forms
+- update due to `JsonParser` to `JsonReader` rename
+
+#### financials
+- refactors `inCents`
+- modifies computors
+- fixes supplier payment factory
+- various small updates: updates suppplier payment validator, adds return types for methods, adds typed properties, updates factories, updates tests
+- reverted to explicit asserts  
+
+#### helpers
+- `JsonParser` was renamed to `JsonReader`
+- adds `When` helper trait
+
+#### hr
+- refactors `inCents`
+
+#### inventory
+- fixes manual transactions for persistent processes
+- refactors `inCents`
+
+#### localisation
+- updates middleware to use `Carbon` instead of `Jessengers\Date`
+- update due to `JsonParser` to `JsonReader` rename
+- fixes typo in factory
+
+#### menus
+- adds a `Menu` resource
+- updates tree builder to return collection
+
+#### notifications
+- fixes test to fit the new `Carbon` serialization for models
+
+#### people
+- adds person resource
+
+#### permissions
+- small fixes
+- refactors type into computed property
+
+#### products
+- refactors `inCents` to  decimal 
+- updates request validation by adding internal code unique rule
+
+#### projects
+- removes Types from migration
+
+#### rememberable
+- adds return null if id is null
+
+#### roles
+- refactors permission tree to work with permission computed type
+- encapsulates config writing in model
+- adds a role resource
+
+#### select
+- adds searchMode
+
+#### services
+- refactors `inCents` to  decimal 
+
+#### tables
+- fixes global button filtering
+- uses `getCountForPagination` to fix count for queries that use group
+- update due to `JsonParser` to `JsonReader` rename
+- adds datetime support
+- adds a `dateTimeFormat` config option
+
+#### upgrade (new)
+- new package, contains upgrade logic for your local project
+
+### Upgrade steps
+
+- due to the upgrade to Laravel 7, there are quite a few small changes you have to do in your local project. Take a look at this [commit](https://github.com/laravel-enso/enso/commit/963af10ed4d794baf752219b303ddcd72451d22c) and check the list of changes. You should ignore:
+   - `composer.lock`
+   - `client/yarn.lock`
+   - `.styleci.yaml`
+   - `telescope` and `horizon` assets (you will publish these in the next steps)
+- you may safely remove the `RAVEN_DSN` key from your `.env*` files as it's no longer required
+- update `TelescopeServiceProvider` using [this](https://github.com/laravel-enso/enso/blob/c14d2d7a0c754ab8328171f9909d979e105ba832/app/Providers/TelescopeServiceProvider.php) as example
+- update the sentry config file using [this](https://github.com/laravel-enso/enso/blob/c14d2d7a0c754ab8328171f9909d979e105ba832/config/sentry.php) as example
+- run `composer update` in the project's root
+- run `php artisan horizon:install`
+- run `php artisan telescope:install`
+- edit `client/package.json` and
+    - update `@enso-ui/ui` to `2.5.x`
+    - update `pusher-js` to `^5.0.0`
+- run yarn, yarn upgrade && yarn to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.0 in `config/enso/config.php`
+- run `php artisan vendor:publish --tag=select-config" to publish the `select.php` config
+- note that the `type` attribute present in structure migrations has been deprecated and is no longer required - you may update your migrations, but it's not breaking if you leave it
+- the database upgrade service has been refactored and extracted to its own package. If you have upgrade logic in your local project you may need to update it. You should use as an updated example the core upgrade [here](https://github.com/laravel-enso/core/tree/master/src/app/Services/Upgrades) and [here](https://github.com/laravel-enso/core/blob/master/src/app/Commands/Upgrade.php)
+- update `config/cors.php` if your project requires it
+- update local factories
+- find any local `LaravelEnso\Helpers\App\Classes\JsonParser` usages and update to `LaravelEnso\Helpers\App\Classes\JsonReader`
+- note that for Permission, the name should be unique; update the factory, look [here](https://github.com/laravel-enso/enso/blob/c14d2d7a0c754ab8328171f9909d979e105ba832/database/factories/PermissionFactory.php) for example
+- update `App\Exceptions\Handler`, use [this](https://github.com/laravel-enso/enso/commit/1e8ad53994b230c2e5f65b7a82b41ad9b3570db0#diff-646a4842abf9023c975a9a1658a68b0a) as model
+- `composer.json` / `doctrine/dbal`
+
 ## 3.8.2
 
-The release includes much needed UI vue-select / dropdown refactor. 
+This release includes much needed UI vue-select / dropdown refactor. 
 
 These changes are breaking when customizing/building upon the @enso-ui/select components.
 
