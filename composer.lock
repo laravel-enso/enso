@@ -1878,16 +1878,16 @@
         },
         {
             "name": "laravel-enso/comments",
-            "version": "3.3.3",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/comments.git",
-                "reference": "dd2745427753600d0adc150e4e694291205de97d"
+                "reference": "b99393afaeb8a7495c94bb98819a8b6567555ee8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/dd2745427753600d0adc150e4e694291205de97d",
-                "reference": "dd2745427753600d0adc150e4e694291205de97d",
+                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/b99393afaeb8a7495c94bb98819a8b6567555ee8",
+                "reference": "b99393afaeb8a7495c94bb98819a8b6567555ee8",
                 "shasum": ""
             },
             "require": {
@@ -1930,7 +1930,7 @@
                 "comments-manager",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:37:55+00:00"
+            "time": "2020-03-30T14:20:07+00:00"
         },
         {
             "name": "laravel-enso/companies",

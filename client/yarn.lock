@@ -796,9 +796,9 @@
     to-fast-properties "^2.0.0"
 
 "@enso-ui/accessories@2.4.x":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-2.4.4.tgz#66a9087097bf97b3ea6a1e02d2533f11cca98375"
-  integrity sha512-qpfZs6/Jy3OZhFxkGAXsNX+Oms5oNG9SCgZs7pDFh2j5Gs4SQqp/qBFA1fqE+1Uq1yG5yHBGCWeDuMH0PA5XZQ==
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@enso-ui/accessories/-/accessories-2.4.5.tgz#4bd31c58ae48bc495ff03724fab5c826b3e0ef10"
+  integrity sha512-AMO+WgUQmUQVlBxvTwKsZK5uQ9qwTOxH2bXmFkMfH+divcSqqj3yql2jPOySFGFM4pLjO3+hNnkoJxlEWivOXQ==
   dependencies:
     "@enso-ui/card" "1.0.x"
     "@enso-ui/confirmation" "1.0.x"
@@ -1362,9 +1362,9 @@
     vue "^2.5.16"
 
 "@enso-ui/themes@1.1.x":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@enso-ui/themes/-/themes-1.1.11.tgz#cb3f94a3647d33abf7a7dfb0795880a0323336af"
-  integrity sha512-D9tiAsIXFQks2S3VlnF8m60Q7I+XHdoHcnQu92cpvNQxPFWPFBPdd/bOvE/XwdDBO34tmLlJTyi0SXhzIfjxlg==
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@enso-ui/themes/-/themes-1.1.12.tgz#0dda008beef36731ee5dc978ac860ca19ab2754d"
+  integrity sha512-q+w5MfGecQzf7FnQynT+0Ef3CU+PsmnnNYekaL5qfcAEGZG7G8oiyDmf24E9W+l72zedHCRU9diCbxDWKgyNJw==
   dependencies:
     bulma "^0.8.0"
     bulma-extensions "^2.2.1"
@@ -1429,9 +1429,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@2.5.x":
-  version "2.5.21"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.5.21.tgz#8043d05527690097f30bfc0ae56d61e8f93cc051"
-  integrity sha512-xIYvU+HHbiQWZo2rz0M42rzqAuYyhsnQk+FmRXkSNBOYx2Qeqq42OHAazctsoKsxO6Gxvgy0adIWbxEZ92PMug==
+  version "2.5.22"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-2.5.22.tgz#0ab4ad5b5a196a00e89c6a3c146517a37c48d4d4"
+  integrity sha512-TcSwVvPiVhzQlarE1Fr32p11YYF42v1AXmyZfHP2OjjnQ9L4WG4toJdtFapuo6GPrU6HdaE8/XQxvcA1rNWaLw==
   dependencies:
     "@enso-ui/accessories" "2.4.x"
     "@enso-ui/activity-log" "1.3.x"
