@@ -1,5 +1,214 @@
 # Laravel Enso's Changelog
 
+## 3.9.1
+
+The release includes many small changes both on the back-end and the front-end. 
+
+### front-end
+
+#### accessories
+- updated avatarLink usage
+- removes `quick-view` due to extracting it to its own package
+
+#### calendar
+- switched `vuecal` to default grey theme
+- added translation for the small calendar
+
+#### card
+- added `is-naked` on card control
+
+#### checkbox
+- updated the `CheckboxItems.vue` component class
+
+#### commercial
+- updated enso date filters usage
+
+#### contracts
+- fixed parties enum in `Index.vue`
+- updated enso date filters usage
+
+#### financials
+- updated enso date filters usage
+
+#### how-to
+- fixed template upload vertical alignment
+
+#### logs
+- log card controls are now naked instead of success/info/danger
+
+#### mixins
+- updated last route / intended route mutation usage
+
+#### modal
+- small refactor
+
+#### projects
+- fixed icon for the `ProjectCard` component
+
+#### quick-view (new)
+- replaced hardcoded scss `top` value with variable in order to detect navbar height
+
+#### route-mapper (new)
+- new micro package which contains the route mapping logic
+
+#### tables
+- fixed tag width on boolean columns
+- removed unnecessary span around cells
+- improved top controls 
+- updated search layout
+- enhanced column visibility & style selector
+- added helper for invisible columns
+
+#### teams
+- fixed team name padding in card
+
+#### themes
+- renamed the `is-hoverable` helper to `is-hoverable-item`
+- added a settings component
+- improved the font import, made it easier to customize
+- added `Muli` as family secondary font, used for the refactored menu
+- adjusted shadows for `is-raised`, `raises-on-hover`, box and card
+- made changes to improve contrast for both themes
+
+#### typeahead
+- drop down events are now cascaded
+- exposed `itemEvents` & `highlight` in the `items` slot
+
+#### toastr
+- vertically centered the message icon
+
+#### ui
+- removed deprecated `Route.js`
+- refactored document title, `route.js`
+- small refactor in `Loader.vue`
+- now using intendedRoute & intendedPath when redirecting a logged out user after login
+- renamed `MenuState` to `SidebarState`
+- implemented sidebar and navbar variables
+- updated aside shadow to be more discreet
+- changed page header animations to simple fade
+- updated navbar elements
+    - changed order for sidebar control
+    - added tooltip on env indicator
+    - removed arrow from notifications
+    - added a long awaited user dropdown when clicking the user profile link that allows quick logout
+    - upgraded search:
+         - by default it is hidden
+         - can be activated by clicking the search icon or using the `/` key
+         - on `esc` & blur it hides itself
+- updated sidebar / menu style:
+     - made the sidebar wider
+     - added a new font
+     - increased the menu-label & menu-item font
+     - updated highlighting and selected state of menu
+     - the parent menu now remains open when changing to a menu with a different parent
+     - added a visual indicator / handle for menu reorder
+     - refactored the way active menus are managed
+- refactored store
+    - renamed `menus` store module to `menu`
+    - renamed `layout/menu` module to `layout/sidebar`
+    - renamed `layout/settingsBar` to `layout/settings`
+    - added a `layout/search` module for managing the global search state
+    - integrated the logout request into the `auth.js` module
+- made the user group forms smaller
+- updated the avatar component to use the user resource format
+- added footer resize on sidebar collapse
+- added footer transition
+- made bookmarks shadow similar to that of the sidebar
+- renamed sidebar related classes (menu => sidebar)
+- set the menu font smaller (0.95em)
+- fixed bug in search when selecting from list
+- updated the sidebar state's label
+
+### back-end
+
+All back-end packages have been updated due to renaming the `app` folder to `App`. You can find more information below.  
+
+
+#### avatars
+- fixed trait folder name
+- added unique constraint for the `user_id` column
+
+#### cli
+- refactored logic & tests as needed to support the generation of files in both local & package modes, using the correct case for the App folder
+
+#### companies
+- added a default, open/permissive policy for the controller actions
+- project specific logic can be created locally when needed, by extending and binding a new policy  
+
+#### core
+- added a `role` relation to user group
+- adjusted the user group form 
+- updated the way the avatar is shown in users table
+- added a unique constraint for the `user_id` column in the `avatars` table
+- fixed namespace for the avatars upgrade command
+
+#### currencies
+- dropped Types from migrations
+
+#### data import
+- removed deprecated parameter from the `UploadedFile` constructor call
+
+#### excel
+- fixed namespace for ExcelExport from `LaravelEnso\Excel\App\Exports` to `LaravelEnso\Excel\App\Services`
+
+#### filters
+- fixed incorrect interval filtering by returning copies of the carbon objects
+- adds a new search service to be used for query builder searching 
+
+#### helpers
+- added a new `When` helper trait which can be used in a similar fashion to query builder style
+
+#### localisation
+- added translation keys for the Sentry front-end error report form
+- small keys cleanup
+- updated localisation form layout
+- updated user translation for the 'ro' language files
+
+#### menus
+- moved attribute set from tree builder to resource
+- added an `active` attribute to the resource
+
+#### people
+- added a default, open/permissive policy for the controller actions
+- project specific logic can be created locally when needed, by extending and binding a new policy  
+- multi-tenant specific request authorization logic has been removed form the request validation
+- fixed test
+
+#### products
+- fixes failing tests when suppliers are not given
+
+#### searchable
+- implemented the new search service from laravel-enso/filters; removed local logic
+
+#### select
+- refactored traits, used the new `When` helper trait for a more fluent, conditional flow
+
+#### tables
+- implemented the new search service from laravel-enso/filters; removed local logic
+
+#### upgrade
+- fixed the structure migration
+- fixed the default role permission syncing
+- refactored native php function to collection for better readability
+
+
+### Upgrade steps
+
+It was necessary to rename the `app` folders as with newer composer versions, 
+the tool would complain (show notices) about the namespace not being psr4 compliant.
+
+If these notices were to be present when deploying, Envoyer would stop the deploy process.
+
+However, since the namespaces remained the same, these changes should not affect you.
+
+To upgrade:
+- run `composer update` in the project's root
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.0 in `config/enso/config.php`
+- if using the `ExcelExport` class locally, search & replace `LaravelEnso\Excel\App\Exports\ExcelExport` with `LaravelEnso\Excel\App\Services\ExcelExport`
+- if directly using import templates from any of the Enso packages, update the path to the JSON templates in `config/enso/imports.php`
+
+
 ## 3.9.0
 
 This release includes many improvements and new features, bugfixes as well as the upgrade to Laravel 7.*. 
