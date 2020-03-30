@@ -23,7 +23,6 @@
         "sentry/sentry-laravel": "^1.0.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.26.0",
         "facade/ignition": "^2.0",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.9.1",
@@ -44,7 +43,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LaravelEnso\\Filters\\": "vendor/laravel-enso/filters/"
         },
         "classmap": [
             "database/seeds",

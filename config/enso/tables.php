@@ -163,7 +163,7 @@ return [
      */
 
     'style' => [
-        'default' => ['hover', 'striped', 'center'],
+        'default' => ['hover', 'center'],
         'mapping' => [
             'left' => 'has-text-left',
             'center' => 'has-text-centered',
