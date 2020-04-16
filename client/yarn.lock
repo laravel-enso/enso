@@ -901,9 +901,9 @@
     vue "^2.5.16"
 
 "@enso-ui/charts@1.0.x":
-  version "1.0.37"
-  resolved "https://registry.yarnpkg.com/@enso-ui/charts/-/charts-1.0.37.tgz#096b31e1b454e470fc1f2ba1768eae779d546927"
-  integrity sha512-r9bBNkQvCLhsQNAx2NM/+2POdtXjd1MDUKoNQ6SDmB2XX6EIxOaNo30tFYWbbbGVuqNiZbxxI5xxYfXblEckqA==
+  version "1.0.38"
+  resolved "https://registry.yarnpkg.com/@enso-ui/charts/-/charts-1.0.38.tgz#98389eb5a60b71818f877f24fd89ec121c89eb95"
+  integrity sha512-xkXdHJH/C4FsUQ8fxeLz0SUcxyr8kukwHMxRucj219XBO1DcGS80eimF93znX3F22LZ4j/GT4llEXCd9noMcLQ==
   dependencies:
     "@enso-ui/card" "1.0.x"
     "@enso-ui/directives" "1.0.x"
@@ -919,9 +919,9 @@
     vue "^2.5.16"
 
 "@enso-ui/checkbox@1.0.x":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@enso-ui/checkbox/-/checkbox-1.0.3.tgz#9a97c08eb387cba9535abda8be95c132899333a6"
-  integrity sha512-JPm5cBebJmVsbNXUldvt+KnGV0qqaFO5R2tkz8ojiyAN1mKMinc1qQgtvjY6HP9/z4YlE83VSwe0wxi/9Wlibg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@enso-ui/checkbox/-/checkbox-1.0.4.tgz#1d38a7f0bbd1862113fa532a4e0cd87f5ee51b98"
+  integrity sha512-zBYvvYANllnPRq9PRtAYmtPI2gGPAO9KGAI+09rXNa5KD8vsuzP34eOfPc1HO6TApNEKsBYdTkznongNcUc+Og==
   dependencies:
     bulma "^0.8.0"
     vue "^2.5.16"
