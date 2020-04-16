@@ -95,9 +95,13 @@ return [
     */
 
     'configs' => [
+        'companies' => [
+            'label' => 'Companies',
+            'template' => 'vendor/laravel-enso/companies/src/App/Imports/Templates/companies.json',
+        ],
         'userGroups' => [
             'label' => 'User Groups',
-            'template' => 'vendor/laravel-enso/data-import/src/app/Tests/userGroups.json',
+            'template' => 'vendor/laravel-enso/data-import/src/App/Tests/userGroups.json',
         ],
     ],
 ];

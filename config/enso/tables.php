@@ -1,5 +1,7 @@
 <?php
 
+use LaravelEnso\Filters\App\Enums\SearchModes;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -299,7 +301,10 @@ return [
     |
     */
 
-    'searchModes' => ['full', 'startsWith', 'endsWith'],
+    'searchModes' => [
+        SearchModes::Full, SearchModes::StartsWith, SearchModes::EndsWith,
+        SearchModes::ExactMatch, SearchModes::DoesntContain,
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -1,5 +1,295 @@
 # Laravel Enso's Changelog
 
+## 3.9.2
+
+The release includes small changes as well as new, powerful features for the tables package.
+
+### front-end
+
+Front-end packages have had their `yarn.lock` file removed as it wasn't mandatory and fixed various automated depencency vulnerability warnings.
+
+#### accessories
+- removed `tooltip.js` as direct dependency
+- fixed comments' avatar display
+- reverted to 'component'-wrapper class names for the `Discussions` and `Comments` components
+
+#### categories (new)
+- created a new package which is currently a dependency of the products package
+
+#### charts
+- added slot for controls 
+- now performs fetch on source change
+- added precision to info panel's sum compution 
+- added missing shortNumber filter
+- fixed progress circle missing import
+- fixed bug in infopanel when no data available
+- added default min:0 for y axis ticks
+- added info panel to the package
+- improved chart to use formatter function on y axis
+
+#### commercial
+- added stats example page
+- added missing package dependencies
+- fixed product select template
+- updated `QuickView` component import
+- added a github issue template to the repository
+
+#### confirmation
+- removes `tooltip.js` as direct dependency
+
+#### data-import
+- updated/fixed the Enum usage
+- added a github issue template to the repository
+
+#### departments
+- updated menu icon
+- updated ui dependency requirement
+
+#### directives
+- added a new `v-resize` directive, meant to be used with input fields, that resizes the field based on its content length
+
+#### dropdown
+- removed `popper.js` as dependency
+- cascaded the `hide()` method; 
+- fixed the proper closing of drop-downs when dealing with multiple drop-downs
+- added stopPropagation for `click` events
+- tweaked the component height to have it aligned with other Enso UI components
+
+#### enums (new)
+- micro package that exposes Enum functionality, similar the the back-end package with the same name
+
+#### filters
+- removed `tooltip.js` as direct dependency
+- `@enso-ui/strings` was added as a dependency as some utility methods are used  within `CoreDateFilter`
+
+#### forms
+- removes tiptap as dependency
+
+#### hr
+- added fa-pro dependency
+- removed unneded dep
+
+#### inventory
+- added addresses to the warehouse edit form as a result of adding an address relationship to the warehouse model 
+- the `@enso-ui/products` dependency was updated to the new minor version 
+- added a github issue template to the repository
+
+#### permissions
+- the `permission.js` mixin was converted to a module
+- added a github issue template to the repository
+
+#### quick-view
+- added a github issue template to the repository
+- removes unneeded `@enso-ui/card` dependency
+
+#### roles
+- updated the roles configuration component to work with the new permission module
+- added a github issue template to the repository
+
+#### search-mode (new)
+- added support for `exact` and `doesn't contain` matching
+- added stopPropagation for the `click` event
+
+#### strings (new)
+- micro package that contains a set of string manipulation methods
+
+#### tables
+- added support for configurable, state persistent, general filters
+- addressed bug tooltip position bug for some tables with one or two rows
+- translation support was added the column visibility selection
+- `@enso-ui/select` was added as dependency as dropdown usage was replaced by select
+- `@enso-ui/enums` was added as dependency as Enum computation was added to the front-end
+- added support for average totals
+- extracted search in its own component
+- fixed some layout problems in the top controls
+- fixed a bug where a double fetch was performed when resetting preferences
+- trimmed down request by removing garbage data
+- fixed preferences handling
+
+#### teams
+- added a github issue template to the repository
+- fixes team name padding in card
+
+#### themes
+- added the `sidebar.scss` component as part of the fix for the UI menu issue
+
+#### tutorials
+- updated column name in the index table
+- updates enum slot to the new table
+- added a github issue template to the repository
+
+#### typeahead
+- `itemEvents` & `highlight` attributes are now exposed in items slot
+
+#### products
+- fixed directives requirement/import
+- added category selection to the product form as the product model now has a  category relationship
+- `@enso-ui/categories` was added as a dependency
+- added a github issue template to the repository
+
+#### select
+- updated the multi-select trigger css (set height & min-height)
+- extended selection slot to also cover the 'no selection' or 'no options' scenarios
+- fixed bug where select height was not matched with inputs
+- fixed `select` / `deselect` events payload to include full object when working in objects mode
+
+#### ui
+- fixes collapsed sidebar label position on scroll
+- removed `tooltip.js` as direct dep
+- fixed navbar search tag filtering
+- `@enso-ui/enums` was added as a dependency
+- fixed bug related to missing a background color for the menu, on mobile usage mode
+- used interpolation syntax for scss variables usage
+
+### back-end
+
+#### addresses
+- replaces helper with facade
+- added checks for single vs multi address support
+
+#### avatars
+- now the supervisor can update the avatar of the impersonated user
+- refactored Default Avatar service, the create method returns now the freshly created avatar
+- improveed the logic in test
+
+#### calendar
+- removed event body from the birthday calendar
+- refactored event request validator
+- fixed logic in event policy causing users with the proper roles to not be able to edit certain events
+
+#### categories (new)
+- the package adds categories functionality and is currently a dependency of the products package
+
+#### charts
+- now axes are displayed by default
+
+#### cli
+- removed log
+- fixed bug that was not allowing the creation of a parent menu with null route
+
+#### control-panel
+- fixed bug caused by url leading slashes
+
+#### comments
+- fixed the user resource used for displaying the avatar
+
+#### companies
+- fixed the publish tag
+- added importer & excel seeder
+- fixed enum usage
+- updated the static Company model `owner` method
+
+#### currencies
+- added slot for the symbol table column
+
+#### data-import
+- fixed rejected import download
+- removed deprecated attribute from table select
+- fixed enum usage in table
+
+#### filters
+- fixed Hour typo related bug
+- added `TimeSegments` enum & timeSegment getter and property in the `Interval` service
+- extended comparison operators with Equal, Is, IsNot, NotLike, NotILike
+- extended search modes with exact and doesn't contain matching
+- fixed a bug in the search service when having falsies as value
+- adds tests for the new search modes
+
+#### forms
+- enums are now resolved from the service container
+
+#### localisation
+- updated a 'ro' translation value
+
+#### permissions
+- improved computed type by adding a Verbs enum
+
+#### phpunit-pretty-print (new)
+- created a phpunit pretty printer package
+
+#### products
+- added vat rates enum
+- improved form 
+- added category attribute & functionality to the package
+- added upgrade service to products
+
+#### ro-addresses
+- added missing facade import
+- updated index controller for the new for scope
+- refactors seeders
+- added factory & tests
+- fixes validator by adding missing attribute
+
+#### select
+- fixed resource instantiation via the usage of dependency injection
+
+#### tables
+- refactored optimal chunk service & its respective test
+- enums are now resolved from the service container
+- fixes enum localisation when building template
+- added support for configurable, state persistent, general filters
+- updated api version
+- `filterable` is now a supported `meta` attribute within the json table configuration files used to mark columns that are filterable using the new filtering functionality
+- `average` is now a supported `meta` attribute within the json table configuration files used to mark columns  for which we want a average type of total
+- updates backend for the new trimmed request
+- added some missing return types for methods
+- fixed a bug in `rawTotals` where the result was being cast to `int`
+- fixed an inconsistence where the columns was mapped in a Collection instead of a Obj
+- added support for `exact` and `doesn't contain` search modes
+- removed Enum computation in favor of front-end handling
+- renamed the `fetchMode` method to `serverSide`
+- added enum transformation for front-end enum processing
+#### upgrade
+- fixed exception method signature
+- fixed admin role syncing in production for structure upgrade
+
+### The new tables filters
+
+While the new minimum configuration table filters are implemented and you may test drive them (by adding the `"filterable"` attribute in the table columns' meta arrays, and then configuring the filters from the table's UI), please note that some of the filters configuration options/values/structure may change. We therefore don't recommend using them just yet in production.
+
+When this feature will reach what we consider a stable form, the various options will be explained and the documentation updated.
+
+### Upgrade steps
+
+To upgrade:
+- remove from `client/package.json`:
+    - extract-text-webpack-plugin
+    - popper.js
+    - postcss-cssnext
+- add in client/package.json
+    - postcss-preset-env
+- run `composer require --dev laravel-enso/phpunit-pretty-print
+- add in `phpunit.xml` `printerClass="LaravelEnso\PHPUnitPrettyPrint\PrettyPrint"`
+- run `composer update` in the project's root
+- run `yarn && yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.2 in `config/enso/config.php`
+- in `config/enso/tables.php` update the `comparisonOperator` and `searchModes` keys to:
+```php
+'comparisonOperator' => ComparisonOperators::Like,
+'searchModes' => [
+    SearchModes::Full, SearchModes::StartsWith, SearchModes::EndsWith,
+    SearchModes::ExactMatch, SearchModes::DoesntContain,
+],
+```
+- in `config/enso/select.php` update the `comparisonOperator` and `searchMode` keys to:
+```php
+'comparisonOperator' => ComparisonOperators::Like,
+'searchMode' => SearchModes::Full,
+```
+- in `config/enso/imports.php`:
+    - add the new companies importer under the `configs` array
+    ```php
+    'companies' => [
+        'label' => 'Companies',
+        'template' => 'vendor/laravel-enso/companies/src/App/Imports/Templates/companies.json',
+    ],
+    ```
+    - update `app` namespace to `App` for userGroups' importer
+- update `resources/preferences.json` and change the `expandedMenu` key to `expandedSidebar`
+- if using the `products` package:
+    - add the `LaravelEnso\Products\App\Services\Upgrades\Products` upgrade service class to your upgrade logic and if customizing the validation/form, extending the model, ensure that the new attribute is fillable/etc as required
+    - since products now depends on the `@enso-ui/categories` package, you should also import the package's icon and routes
+
 ## 3.9.1
 
 The release includes many small changes both on the back-end and the front-end. 
