@@ -1,5 +1,120 @@
 # Laravel Enso's Changelog
 
+
+## 3.9.3
+
+The release includes many small enhancements as well as bug fixes.
+
+### front-end
+
+#### categories
+- removed deprecated routes & pages
+- added the `CategoryTree` Vue component featuring an improved flow, CRUD & reorder abilities
+- updated dependencies
+- updated move route
+- now the selected category is cleared when destroying category
+- fixed the package entry point
+
+#### calendar
+- added translation for the calendar's name
+
+#### charts
+- fixes typo/leftover regarding the label formatter function
+- fixed data-labels with formatter
+- fixed progress in info-panel
+
+#### commercial
+- added short numbers to the stats info panel
+- added picture to items
+- pictures are now vertically aligned in the product selection typeahead
+
+#### control-panel
+- removed unneeded dependency
+- made all top columns narrow
+
+#### emag
+- updated routes
+- ui updates
+- adjusted for missing match's pictures
+- refactor to make available more information in sub components
+- fixed enum option name
+- unmatched products with a selection of emag products are now styled differently
+- refactored components
+- fixed missing product id
+- now modal is closed when match choice is made
+- matching process fixes
+- further tweak for the modal closing; removes published/is_published usage
+
+#### financials
+- added short-numbers to info panel
+
+#### modal
+- removed deregisteration from `close`, added it to `beforeDestroy`
+
+#### products
+- updated form for the new `CategoryTree.vue` component
+- added box on categories in form
+- added picture gallery
+- updated `BaseForm` for gallery
+- added missing dependency
+- added missing import
+
+#### select
+- fixed bug related to the disabled selection of options while loading the option list
+
+#### ui
+- parses number for type safety for the `shortNumber` formatter
+
+#### uploader
+- added support for manual uploading
+
+
+### back-end
+
+#### categories
+- updated factory
+- fixed validation bug
+- fixed moving of categories within the tree
+- updated the move route
+
+#### cli
+- refactored to get rid of deprecation notice
+
+#### core
+- adds categories upgrade
+- fixes user conflict exception
+
+#### files
+- changed resize / optimize order
+
+#### image-transformer
+- allows transformer to work with local files too
+
+#### products
+- added product pictures
+- fixed reordering
+- added a picture relation for the default picture (order_index 1)
+- removed `active` filter from product options controller
+
+#### roles
+- updated to use injected service in command handle method
+
+#### upgrade
+- fixed default role permission syncing
+- updated `Structure.php`
+- fixed typo and default role query
+- added a new `ShouldRunInConsole` contract
+- removes invalid logic
+- removed deprecated exception
+
+### Upgrade steps
+
+To upgrade:
+- run `composer update` in the project's root
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.3 in `config/enso/config.php`
+- if using the `categories` package, ensure that the `php artisan enso:upgrade` command is run
+
 ## 3.9.2
 
 The release includes small changes as well as new, powerful features for the tables package.
