@@ -39,7 +39,6 @@
         "opencollective": "^1.0.3",
         "opencollective-postinstall": "^2.0.0",
         "patch-package": "^6.0.2",
-        "popper.js": "^1.14.7",
         "postinstall-postinstall": "^2.0.0",
         "pusher-js": "^5.0.0",
         "v-tooltip": "^2.0.0-rc.32",
