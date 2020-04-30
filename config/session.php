@@ -194,6 +194,6 @@ return [
     |
     */
 
-    'same_site' => 'lax', //TODO check vs none
+    'same_site' => 'lax',
 
 ];
