@@ -249,6 +249,7 @@ For consistency, you should do the same to your local models (you may look at th
     - if using the `addresses` package WITH the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command
     is run BEFORE `php artisan migrate`
     - update the local/published `addresses` config file using the package version as reference
+    - since there are some new addresses routes added, please ensure that the roles/permissions are correctly configured for your projects and then save the roles configurations
 - run `php artisan enso:upgrade` considering the mentions above (in the addresses section)
 
 
