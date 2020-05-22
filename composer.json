@@ -19,7 +19,6 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "php": ">=7.4.0",
-        "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0.0"
     },
     "require-dev": {
@@ -71,7 +70,6 @@
             "@php artisan key:generate --ansi"
         ],
         "post-update-cmd": [
-            "php artisan vendor:publish --tag=localisation-lang-files",
             "php artisan enso:localisation:merge"
         ]
     }

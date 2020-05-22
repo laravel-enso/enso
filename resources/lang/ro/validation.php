@@ -5,13 +5,14 @@ return [
     'accepted'             => 'Câmpul trebuie să fie acceptat.',
     'active_url'           => 'Câmpul nu este un URL valid.',
     'after'                => 'Câmpul trebuie să fie o dată după :date.',
+    'after_or_equal'       => 'Câmpul trebuie să fie o dată egală sau mai noua cu :date.',
     'alpha'                => 'Câmpul poate conține doar litere.',
     'alpha_dash'           => 'Câmpul poate conține doar litere, numere și cratime.',
     'alpha_num'            => 'Câmpul poate conține doar litere și numere.',
     'array'                => 'Câmpul trebuie să fie un array.',
     'before'               => 'Câmpul trebuie să fie o dată înainte de :date.',
+    'before_or_equal'      => 'Câmpul trebuie să fie o dată cel mult egală cu :date.',
     'between'              => [
-
         'numeric' => 'Câmpul trebuie să fie între :min și :max.',
         'file'    => 'Fisierul trebuie să fie între :min și :max kiloocteți.',
         'string'  => 'Câmpul trebuie să fie între :min și :max caractere.',
