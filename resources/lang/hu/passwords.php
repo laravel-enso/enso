@@ -1,10 +1,9 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Language Lines
+    | Password Reminder Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -14,9 +13,9 @@ return [
     */
 
     'password' => 'A jelszónak minimum 6 karakter hosszúnak kell lennie és a megerősítéssel egyeznie kell.',
-    'reset'    => 'Jelszava alaphelyzetbe állítva!',
-    'sent'     => 'Emailben elküldtük a jelszavát alaphelyzetbe állító linket.',
-    'token'    => 'A jelszó alaphelyzetbe állító token nem érvényes.',
-    'user'     => 'Ilyen email címmel rendelkező felhasználó nem található.',
-
+    'reset' => 'Az új jelszó beállítva!',
+    'sent' => 'Jelszó-emlékeztető elküldve!',
+    'throttled' => 'Kérjük várjon, mielőtt újra megpróbálná.',
+    'token' => 'Ez az új jelszó generálásához tartozó token érvénytelen.',
+    'user' => 'Nem található felhasználó a megadott email címmel.',
 ];

@@ -1,6 +1,258 @@
 # Laravel Enso's Changelog
 
 
+## 3.9.4
+
+The release includes bug fixes as well as enhancements, some of which are potentially breaking.
+
+### front-end
+
+#### accessories
+- updated the user options route used for tagging
+
+#### charts
+- added a short number option to the `Chart.vue` component
+
+#### commercial
+- updated the bundled products index sample page
+
+#### emag
+- added a products index sample page
+
+#### financials
+- updated the index pages' filters to filter on `date` instead of `due date`
+
+#### inventory
+- updated the bundled products index sample page
+- switched from using the `RoAddresses` component to using the `Addresses` component
+- updated the Addresses related components: cleanup and refactor due to new structure & fields
+
+#### modal
+- test if we are ready to release the new refactored modal
+
+#### products
+- added a product picture column for the index table
+- made the product image clickable, which opens the image in a new tab
+
+#### quick-view
+- updated the default size (width)
+
+#### roles
+- fixed the configure and save buttons in role edit form
+
+#### search-mode
+- added Algolia support
+
+#### tables
+- fixes custom boolean internal table filters
+
+#### ui
+- fixed duplicate requests being made on language change
+- removed deprecated media resources, which have been moved to the back-end `core` package (and need to be published)
+- added custom modal for offering the choice of deleting a user simultaneously with its person
+
+
+### back-end
+
+#### addresses
+- the addresses package was completely refactored. It now supports regions and localities, 
+and some functionality was integrated from the ro-addresses package which will be deprecated. The update includes:
+    - the addition of the region & locality model, relationships, routes, etc
+    - the `Country` model now has relationships with the above models
+    - the update of the table and structure migrations
+    - the addition of an address select route/controller/resource 
+    - the removal redundant country relationship load on the select options flow
+    - the update & enhancement of the address form and template
+    - the update of the address factory & seeders
+    - the addition of an unique index to regions
+    - the inclusion of a Region seeder for Romanian counties and US states
+    - the inclusion of a Locality seeder for Romanian localities
+- the AddressFetch validator now uses the `TransformMorphMap` trait    
+
+#### avatars
+- removed the `ensureFolderExists` method call
+- updated the `Files` test folder references as the config key `enso.files.paths.testing` 
+has been updated to `enso.files.testingFolder`
+- the `Avatar` model now uses the `CascadesMorphMap` trait 
+- `morphMap` is now used for the `Avatar` model
+
+#### calendar
+- renamed notification template and updated button color
+
+#### categories
+- added a `hasChildren` scope and an `isParent` helper method on the `Category` model
+- updated request validator due to `MapsRequestKeys` refactor
+
+#### core
+- the `php artisan enso:storage:reset` also handles the creation of missing storage folders
+- the image resources previously present in the `@enso-ui/ui` package have been moved to the this package
+- renamed the resource publishing tag from `core-images` to `core-assets` 
+- added a FilesIndex upgrade service that attempts to set and unique index 
+on the `files` table to avoid any duplicates. If there are duplicated records present, 
+the upgrade will list the duplicates and skip adding the index
+- added upgrades for `Addresses`, `Documents`, `Files`, `Discussions`, `Comments`, morphMap, which replaces class names with their corresponding short morph map keys
+- fixed user notifications which sometimes were not found
+- added the ability to delete the attached person when deleting a user
+- refreshed the email theme
+- added an `Addresses` migrator due to the addresses' package refactor
+- removed the avatar label in the users table
+- removed avatar label in users table
+
+#### companies
+- refactored to use `mapMorphs`: the `Company` model now uses the `CascadesMorphMap` trait 
+
+#### comments
+- added controller for customizing taggable users
+- the `Comment` model now uses the `CascadesMorphMap` trait 
+
+#### countries
+- added the `Relations` trait on the model, so it can support dynamic relationships
+
+#### data-export
+- refactored to use `mapMorphs`: the `DataExport` model now uses the `CascadesMorphMap` trait 
+
+#### data-import
+- updated the `files` test folder references
+- refactored to use `mapMorphs`
+- fixed rejected import deletion bug causing rejected files to not be deleted 
+- fixed rejected import file name bug causing the file to have the extension added twice
+- added a cleanup upgrade for left-over rejected models & files in core
+
+#### documents
+- updated the `files` test folder references 
+- added the `$folder` variable to the `Document` model
+- the request validator now uses the `TransformMorphMap` trait
+- the `Document` model now uses the `CascadesMorphMap` trait 
+- `morphMap` is now used for the `Document` model
+
+#### discussions
+- the request validator now implements the `TransformsMorphMap` interface
+- refactored to use `mapMorphs`: the `Discussion` model now uses the `CascadesMorphMap` trait 
+
+#### files
+- refactored the paths config: now attachable models should have a `$folder` property or a `folder()` method
+- updated the `Files` test folder references as the config key `enso.files.paths.testing` 
+has been updated to `enso.files.testingFolder`
+- added handling logic for tests within the `HasFile` `folder()` method
+- refactored to use `mapMorphs`: the `Upload` model now uses the `CascadesMorphMap` trait 
+
+#### filters
+- adds Algolia support in search mode
+
+#### forms
+- when building the form, the enums are now resolved from the service container
+- fixed the toggling of tab visibility 
+- makes section's columns size customizable when building a form via the `columns(string $field, int $value)` method, 
+where the `$field` parameter is used to identify the section to be modified
+
+#### helpers
+- added a searchable trait for Scout that makes sure that reindexing is performed only when indexed attributes are changed, 
+avoiding unnecessary Algolia operations
+- added the Sleep service class that can be used to sleep during code execution `!!`
+- moved the `VatRates` enum from the `financials` package
+- improves `MapsRequestKeys` trait
+- added `morphMapKey()` method to the `CascadesMorphMap` trait which determines the model's morph map key
+- added the `TransformMorphMap` trait
+
+#### how-to
+- refactored to use `mapMorphs`: the `Video` model now uses the `CascadesMorphMap` trait 
+
+#### localisation
+- updated language resources
+- fixed some bugs found when adding keys
+- renamed `localisation-lang-files` tag into `enso-localisation`. 
+Under this tag we're publishing only Laravel's lang files
+- removed unused localisation files from the `app` directory
+- local translations are now saved to the local `app` directory when adding or updating
+- core translations are now saved to the enso localisation package directory when adding or updating
+- local app localisation resource files are now merged with the enso package's localisation resource files
+- added `SanitizeAppKeys` class in order to remove from app localisations the keys found also in enso localisations
+- added some missing translations
+
+#### menus
+- add the `isParent` & `isNotParent` scopes on the Menu model
+
+#### people
+- added internal table filter for filtering people with/without users
+- refactored to use `mapMorphs`: added `CascadesMorphMap` on the `Person` model
+- optimizes the `company()` helper query
+- person now touches user on each edit
+
+#### products
+- added `name` and `part_number` to the options builder `$queryAttributes` variable
+- the `Picture` model now implements `AuthorizesFileAccess` and access is allowed by default
+- added validation to disallow the selection of a parent category in the product form
+- added product pictures to the products table
+- updated publish tag & paths from `'products-resources', 'enso-resources'` to `'products-assets', 'enso-assets'` 
+- updated the default image
+- removed package's `VatRates` enum and switched to using the `VatRates` from the `Helpers` package
+- updates package product factory re: measurement units, causing the creation of a new measurement unit
+if one was not provided to the factory
+- shortened the picture label in table template
+- the picture now touches the product
+
+#### ro-addresses (deprecated)
+- the package is now deprecated, will not be maintained and should no longer be used
+
+#### select
+- added Algolia support, which is disabled by default
+
+#### services
+- updated `VatRates` import post enum refactor
+- fixed service factory re: measurement units bug, causing the creation of a new measurement unit when one was 
+not provided  
+- the vat percent is now a selectable value within the form
+- fixed description field width (full column)
+
+#### tables
+- on big tables, totals are shown only when `forceInfo` is `true` 
+- fixes raw total edge case when using bindings in the query select statement  
+- added Algolia support, which is disabled by default
+- fixed internal bug in custom filters without server side options
+
+#### upgrade
+- small refactor & fixes; updated structure migration reported message
+
+
+### Upgrade steps
+
+To upgrade:
+- run `composer update` in the project's root
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.4 in `config/enso/config.php`
+- if using the `MapsRequestKeys` trait, within the respective request validators, update the request keys' format from `camelCase` to `snake_case`. Also update the controllers to use `$request->validated()` instead of `$request->mapped()`
+- for all the enso models that use the `Addressable`, `Commentable`, `Discussable`, `Documentable` traits, we are now using `Relation::morphMap(...)` 
+and short keys instead of default namespaces as this solves issues with relationships breaking when extending models which use `morph` relationships. 
+For consistency, you should do the same to your local models (you may look at the Company model & companies AppServiceProvider classes as example)  
+- the `files` test folder config key has been updated from `enso.files.paths.testing` to `enso.files.testingFolder`. If you are customizing the value, make sure to update the config file structure. Also make sure to update the local file after the one in the files package.
+- if using the `products` package, note that the validator's `validateUnicity` method has been renamed to `validateUniqueness` - update your local validator if required
+- for this release, we've switched from using predis to using phpredis. Ensure that:
+    - the phpredis extension is installed on your (live) machines
+    - the `redis.client` configuration option is set to `phpredis` in your `config/database.php`
+    - if present in your env, the `REDIS_CLIENT` key value is `phpredis`
+    - remove the `predis` package from your `composer.json`
+- we've consolidated some assets (picture) locations and simplified the build process. You should:
+    - run the `artisan vendor:publish --tag=core-assets` command
+    - cleanup the multiple `CopyPlugin` instances and keep just the command that copies assets from `../resources/images` to `images`. Use enso's `vue.config.js` file as an example
+- the `VatRates` enum was removed from the `financials` & `products` packages and put in the `helpers` package. If using it locally, update the namespace to `LaravelEnso\Helpers\App\Enums\VatRates`
+- the localisation package and flow has been enhanced. To update for the new flow do the following:
+    - remove the `enso` resource directory from local language resources. From now on, when merging translations the core translations will be taken directly from the package resources
+    - run `php artisan vendor:publish --force --tag=enso-localisation`
+    - remove from your local `composer.json` file `"php artisan vendor:publish --tag=localisation-lang-files"` from under the `post-update-cmd` section
+- since the email theme assets were updated, if you want to use the refreshed theme, you should publish the assets with `php artisan vendor:publish --force --tag=enso-email`
+- the addresses package has been refactored and updated. You should:
+    - publish the package seeders with `php artisan vendor:publish --force --tag=addresses-seeds`
+    - publish the `AddressFactory.php` file with `php artisan vendor:publish --force --tag=addresses-factory`
+    - if present, delete the local `RoAddress` factory from the factories folder
+    - if using the `addresses` package WITHOUT the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command
+    is run AFTER `php artisan migrate`
+    - if using the `addresses` package WITH the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command
+    is run BEFORE `php artisan migrate`
+    - update the local/published `addresses` config file using the package version as reference
+    - since there are some new addresses routes added, please ensure that the roles/permissions are correctly configured for your projects and then save the roles configurations
+- run `php artisan enso:upgrade` considering the mentions above (in the addresses section)
+
+
 ## 3.9.3
 
 The release includes many small enhancements as well as bug fixes.

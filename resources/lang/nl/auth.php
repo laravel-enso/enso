@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -11,9 +10,8 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
-     */
+    */
 
-    'failed'   => 'Deze inloggegevens komen niet voor in onze database.',
-    'throttle' => 'Te veel inlogpogingen. Probeer het opnieuw over :seconds seconden.',
-
+    'failed'  => 'Deze combinatie van e-mailadres en wachtwoord is niet geldig.',
+    'throttle' => 'Te veel mislukte loginpogingen. Probeer het over :seconds seconden nogmaals.',
 ];

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -13,37 +12,37 @@ return [
     |
     */
 
-    'accepted' => 'The :attribute must be accepted.',
-    'active_url' => 'The :attribute is not a valid URL.',
-    'after' => 'The :attribute must be a date after :date.',
-    'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
-    'alpha' => 'The :attribute may only contain letters.',
-    'alpha_dash' => 'The :attribute may only contain letters, numbers, dashes and underscores.',
-    'alpha_num' => 'The :attribute may only contain letters and numbers.',
-    'array' => 'The :attribute must be an array.',
-    'before' => 'The :attribute must be a date before :date.',
-    'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
+    'accepted' => ':Attribute баталсан байх шаардлагатай.',
+    'active_url' => ':Attribute талбарт зөв URL хаяг оруулна уу.',
+    'after' => ':Attribute талбарт :date-с хойш огноо оруулна уу.',
+    'after_or_equal' => ':Attribute талбарт :date эсвэл түүнээс хойш огноо оруулна уу.',
+    'alpha' => ':Attribute талбарт латин үсэг оруулна уу.',
+    'alpha_dash' => ':Attribute талбарт латин үсэг, тоо болон зураас оруулах боломжтой.',
+    'alpha_num' => ':Attribute талбарт латин үсэг болон тоо оруулах боломжтой.',
+    'array' => ':Attribute талбар массив байх шаардлагатай.',
+    'before' => ':Attribute талбарт :date-с өмнөх огноо оруулна уу.',
+    'before_or_equal' => ':attribute талбарт :date эсвэл түүнээс өмнөх огноо оруулна уу.',
     'between' => [
-        'numeric' => ':attribute талбарт :min-ээс :max хүртэл тоо оруулна.',
-        'file' => 'The :attribute must be between :min and :max kilobytes.',
-        'string' => ' :attribute талбарт :min-ээс :max хүртэл тэмдэгт оруулна.',
-        'array' => 'The :attribute must have between :min and :max items.',
+        'numeric' => ':Attribute талбарт :min-:max хооронд тоо оруулна уу.',
+        'file' => ':Attribute талбарт :min-:max килобайт хэмжээтэй файл оруулна уу.',
+        'string' => ':Attribute талбарт :min-:max урттай текст оруулна уу.',
+        'array' => ':Attribute массивт :min-:max элемэнт байх шаардлагатай.',
     ],
-    'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => ':attribute талбарыг дахин оруулахдаа ялгаатай оруулсан байна.',
-    'date' => ':attribute талбарт огноо оруулна уу.',
+    'boolean' => ':Attribute талбарын утга үнэн эсвэл худал байх шаардлагатай.',
+    'confirmed' => ':Attribute талбарын баталагажуулалт тохирохгүй байна.',
+    'date' => ':Attribute талбарт оруулсан огноо буруу байна.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
-    'date_format' => 'The :attribute does not match the format :format.',
-    'different' => 'The :attribute and :other must be different.',
-    'digits' => 'The :attribute must be :digits digits.',
-    'digits_between' => 'The :attribute must be between :min and :max digits.',
-    'dimensions' => 'The :attribute has invalid image dimensions.',
-    'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => ':attribute нь зөв и-мэйл хаяг байх шаардлагатай.',
-    'ends_with' => 'The :attribute must end with one of the following: :values',
-    'exists' => 'The selected :attribute is invalid.',
-    'file' => 'The :attribute must be a file.',
-    'filled' => 'The :attribute field must have a value.',
+    'date_format' => ':Attribute талбарт :format хэлбэртэй огноо оруулна уу.',
+    'different' => ':Attribute талбарт :other -с өөр утга оруулах шаардлагатай.',
+    'digits' => ':Attribute талбарт дараах цифрүүдээс оруулах боломжтой. :digits.',
+    'digits_between' => ':Attribute талбарт :min-:max хоорондох цифр оруулах боломжтой.',
+    'dimensions' => ':Attribute талбарийн зургийн хэмжээс буруу байна.',
+    'distinct' => ':Attribute талбарт ялгаатай утга оруулах шаардлагатай.',
+    'email' => ':Attribute талбарт зөв и-мэйл хаяг оруулах шаардлагатай.',
+    'ends_with' => 'The :attribute must end with one of the following: :values.',
+    'exists' => 'Сонгогдсон :attribute буруу байна.',
+    'file' => ':Attribute талбарт файл оруулах шаардлагатай.',
+    'filled' => ':Attribute талбар шаардлагатай.',
     'gt' => [
         'numeric' => 'The :attribute must be greater than :value.',
         'file' => 'The :attribute must be greater than :value kilobytes.',
@@ -56,14 +55,14 @@ return [
         'string' => 'The :attribute must be greater than or equal :value characters.',
         'array' => 'The :attribute must have :value items or more.',
     ],
-    'image' => 'The :attribute must be an image.',
-    'in' => 'The selected :attribute is invalid.',
-    'in_array' => 'The :attribute field does not exist in :other.',
-    'integer' => ' :attribute талбарт тоо оруулна.',
-    'ip' => 'The :attribute must be a valid IP address.',
+    'image' => ':Attribute талбарт зураг оруулна уу.',
+    'in' => 'Сонгогдсон :attribute буруу байна.',
+    'in_array' => ':Attribute талбарт оруулсан утга :other -д байхгүй байна.',
+    'integer' => ':Attribute талбарт бүхэл тоо оруулах шаардлагатай.',
+    'ip' => ':Attribute талбарт зөв IP хаяг оруулах шаардлагатай.',
     'ipv4' => 'The :attribute must be a valid IPv4 address.',
     'ipv6' => 'The :attribute must be a valid IPv6 address.',
-    'json' => 'The :attribute must be a valid JSON string.',
+    'json' => ':Attribute талбарт зөв JSON тэмдэгт мөр оруулах шаардлагатай.',
     'lt' => [
         'numeric' => 'The :attribute must be less than :value.',
         'file' => 'The :attribute must be less than :value kilobytes.',
@@ -77,44 +76,44 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => ':attribute талбарт :max-ээс их байж болохгүй.',
-        'file' => ':attribute файлын хэмжээ :max kilobyte-с их байж болохгүй.',
-        'string' => ':attribute текстийн урт :max-ээс их байж болохгүй.',
-        'array' => ':attribute талбарт :max-с их өгөгдөл сонгох боломжгүй.',
+        'numeric' => ':Attribute талбарт :max буюу түүнээс бага утга оруулна уу.',
+        'file' => ':Attribute талбарт :max килобайтаас бага хэмжээтэй файл оруулна уу.',
+        'string' => ':Attribute талбарт :max-с бага урттай текст оруулна уу.',
+        'array' => ':Attribute талбарт хамгийн ихдээ :max элемэнт оруулах боломжтой.',
     ],
-    'mimes' => ':attribute нь :values төрлийн файл байх шаардлагатай.',
-    'mimetypes' => ':attribute нь :values төрлийн файл байх шаардлагатай.',
+    'mimes' => ':Attribute талбарт дараах төрлийн файл оруулах боломжтой: :values.',
+    'mimetypes' => ':Attribute талбарт дараах төрлийн файл оруулах боломжтой: :values.',
     'min' => [
-        'numeric' => ':attribute талбарт :min-ээс бага байж болохгүй.',
-        'file' => ':attribute файлын хэмжээ :min kilobyte-с бага байж болохгүй.',
-        'string' => ':attribute текстийн урт :min-ээс бага байж болохгүй.',
-        'array' => ':attribute талбарт :min-с бага өгөгдөл сонгох боломжгүй.',
+        'numeric' => ':Attribute талбарт :min буюу түүнээс их тоо оруулна уу.',
+        'file' => ':Attribute талбарт :min килобайтаас их хэмжээтэй файл оруулна уу.',
+        'string' => ':Attribute талбарт :min буюу түүнээс их үсэг бүхий текст оруулна уу.',
+        'array' => ':Attribute талбарт хамгийн багадаа :min элемэнт оруулах боломжтой.',
     ],
-    'not_in' => 'The selected :attribute is invalid.',
+    'not_in' => 'Буруу :attribute сонгогдсон байна.',
     'not_regex' => 'The :attribute format is invalid.',
-    'numeric' => ':attribute тоо байх шаардлагатай.',
-    'present' => 'The :attribute field must be present.',
-    'regex' => ':attribute буруу форматтай байна.',
-    'required' => ':attribute талбарыг заавал оруулна уу.',
-    'required_if' => 'The :attribute field is required when :other is :value.',
-    'required_unless' => 'The :attribute field is required unless :other is in :values.',
-    'required_with' => 'The :attribute field is required when :values is present.',
-    'required_with_all' => 'The :attribute field is required when :values is present.',
+    'numeric' => ':Attribute талбарт тоон утга оруулна уу.',
+    'present' => ':Attribute талбар байх шаардлагатай.',
+    'regex' => ':Attribute талбарт оруулсан утга буруу байна.',
+    'required' => ':Attribute талбар шаардлагатай.',
+    'required_if' => 'Хэрэв :other :value бол :attribute табларт утга оруулах шаардлагатай.',
+    'required_unless' => ':other :values дотор байхгүй бол :attribute талбарт утга оруулах шаардлагатай.',
+    'required_with' => ':values утгуудийн аль нэг байвал :attribute талбар шаардлагатай.',
+    'required_with_all' => ':values утгууд байвал :attribute талбар шаардлагатай.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
     'same' => 'The :attribute and :other must match.',
     'size' => [
-        'numeric' => 'The :attribute must be :size.',
-        'file' => 'The :attribute must be :size kilobytes.',
-        'string' => 'The :attribute must be :size characters.',
-        'array' => 'The :attribute must contain :size items.',
+        'numeric' => ':Attribute :size хэмжээтэй байх шаардлагатай.',
+        'file' => ':Attribute :size килобайт хэмжээтэй байх шаардлагатай.',
+        'string' => ':Attribute :size тэмдэгтийн урттай байх шаардлагатай.',
+        'array' => ':Attribute :size элемэнттэй байх шаардлагатай.',
     ],
-    'starts_with' => 'The :attribute must start with one of the following: :values',
-    'string' => 'The :attribute must be a string.',
-    'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => ':attribute талбарт оруулсан өгөгдөл аль хэдийн бүртгэгдсэн өгөгдөл тул дахин өөр өгөгдөл оруулна уу.',
-    'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute format is invalid.',
+    'starts_with' => 'The :attribute must start with one of the following: :values.',
+    'string' => ':Attribute талбарт текст оруулна уу.',
+    'timezone' => ':Attribute талбарт зөв цагийн бүс оруулна уу.',
+    'unique' => 'Оруулсан :attribute аль хэдий нь бүртгэгдсэн байна.',
+    'uploaded' => ':Attribute талбарт оруулсан файлыг хуулхад алдаа гарлаа.',
+    'url' => ':Attribute зөв url хаяг оруулна уу.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
@@ -139,15 +138,11 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
+    | The following language lines are used to swap attribute place-holders
+    | with something more reader friendly such as E-Mail Address instead
+    | of "email". This simply helps us make messages a little cleaner.
     |
     */
 
-    'attributes' => [
-        'price' => 'Үнэ',
-        'password'=>'Нууц үг',
-    ],
-
+    'attributes' => [],
 ];

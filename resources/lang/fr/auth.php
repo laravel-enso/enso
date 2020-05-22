@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -11,9 +10,8 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
-     */
+    */
 
-    'failed'   => 'Ces identifiants sont inconnus.',
-    'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes.',
-
+    'failed' => 'Ces identifiants ne correspondent pas à nos enregistrements',
+    'throttle' => 'Tentatives de connexion trop nombreuses. Veuillez essayer de nouveau dans :seconds secondes.',
 ];

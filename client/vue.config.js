@@ -37,12 +37,7 @@ module.exports = {
         },
         plugins: [
             new CopyPlugin([{
-                from: 'node_modules/@enso-ui/ui/src/resources/images',
-                to: 'images',
-                force: true,
-                folder: true,
-            }, {
-                from: '../vendor/laravel-enso/core/src/resources/images',
+                from: '../resources/images',
                 to: 'images',
                 force: true,
                 folder: true,
