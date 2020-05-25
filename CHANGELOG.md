@@ -5,6 +5,7 @@
 
 The release includes bug fixes as well as enhancements, some of which are potentially breaking.
 
+
 ### front-end
 
 #### accessories
@@ -220,7 +221,7 @@ To upgrade:
 - run `composer update` in the project's root
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
 - update the Enso version to 3.9.4 in `config/enso/config.php`
-- if using the `MapsRequestKeys` trait, update the controllers to use `$request->validated()` instead of `$request->mapped()`
+- if using the `MapsRequestKeys` trait, within the respective request validators, update the controllers to use `$request->validated()` instead of `$request->mapped()`
 - for all the enso models that use the `Addressable`, `Commentable`, `Discussable`, `Documentable` traits, we are now using `Relation::morphMap(...)` 
 and short keys instead of default namespaces as this solves issues with relationships breaking when extending models which use `morph` relationships. 
 For consistency, you should do the same to your local models (you may look at the Company model & companies AppServiceProvider classes as example)  
@@ -232,7 +233,7 @@ For consistency, you should do the same to your local models (you may look at th
     - if present in your env, the `REDIS_CLIENT` key value is `phpredis`
     - remove the `predis` package from your `composer.json`
 - we've consolidated some assets (picture) locations and simplified the build process. You should:
-    - run the `artisan vendor:publish --tag=core-assets` command
+    - run the `php artisan vendor:publish --tag=core-assets` command
     - cleanup the multiple `CopyPlugin` instances and keep just the command that copies assets from `../resources/images` to `images`. Use enso's `vue.config.js` file as an example
 - the `VatRates` enum was removed from the `financials` & `products` packages and put in the `helpers` package. If using it locally, update the namespace to `LaravelEnso\Helpers\App\Enums\VatRates`
 - the localisation package and flow has been enhanced. To update for the new flow do the following:
@@ -244,13 +245,12 @@ For consistency, you should do the same to your local models (you may look at th
     - publish the package seeders with `php artisan vendor:publish --force --tag=addresses-seeds`
     - publish the `AddressFactory.php` file with `php artisan vendor:publish --force --tag=addresses-factory`
     - if present, delete the local `RoAddress` factory from the factories folder
-    - if using the `addresses` package WITHOUT the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command
-    is run AFTER `php artisan migrate`
-    - if using the `addresses` package WITH the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command
-    is run BEFORE `php artisan migrate`
+    - if using the `addresses` package WITHOUT the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command is run AFTER `php artisan migrate`
+    - if using the `addresses` package WITH the `ro-addresses` extension, make sure that the `php artisan enso:upgrade` command is run BEFORE `php artisan migrate`
     - update the local/published `addresses` config file using the package version as reference
     - since there are some new addresses routes added, please ensure that the roles/permissions are correctly configured for your projects and then save the roles configurations
 - run `php artisan enso:upgrade` considering the mentions above (in the addresses section)
+
 
 
 ## 3.9.3
