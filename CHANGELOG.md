@@ -220,7 +220,7 @@ To upgrade:
 - run `composer update` in the project's root
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
 - update the Enso version to 3.9.4 in `config/enso/config.php`
-- if using the `MapsRequestKeys` trait, within the respective request validators, update the request keys' format from `camelCase` to `snake_case`. Also update the controllers to use `$request->validated()` instead of `$request->mapped()`
+- if using the `MapsRequestKeys` trait, update the controllers to use `$request->validated()` instead of `$request->mapped()`
 - for all the enso models that use the `Addressable`, `Commentable`, `Discussable`, `Documentable` traits, we are now using `Relation::morphMap(...)` 
 and short keys instead of default namespaces as this solves issues with relationships breaking when extending models which use `morph` relationships. 
 For consistency, you should do the same to your local models (you may look at the Company model & companies AppServiceProvider classes as example)  
