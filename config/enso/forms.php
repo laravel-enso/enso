@@ -133,5 +133,5 @@ return [
     |
     */
 
-    'tinyMCEApiKey' => (string) env('TINY_MCE_API_KEY', null),
+    'tinyMCEApiKey' => env('TINY_MCE_API_KEY', null),
 ];

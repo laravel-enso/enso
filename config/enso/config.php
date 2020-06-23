@@ -11,6 +11,6 @@ return [
     'googleplus' => 'https://plus.google.com',
     'twitter' => 'https://twitter.com',
     'cacheLifetime' => (int) env('CACHE_LIFETIME', 60),
-    'ensoApiToken' => (string) env('ENSO_API_TOKEN', null),
+    'ensoApiToken' => env('ENSO_API_TOKEN', null),
     'extendedDocumentTitle' => (bool) env('EXTENDED_DOCUMENT_TITLE', false),
 ];
