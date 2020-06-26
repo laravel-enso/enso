@@ -10,7 +10,7 @@ return [
     |
      */
 
-    'rowLimit' => env('EXPORT_ROW_LIMIT', 1000000),
+    'rowLimit' => (int) env('EXPORT_ROW_LIMIT', 1000000),
 
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ return [
     |
      */
 
-    'chunk' => env('EXPORT_CHUNK', 25000),
+    'chunk' => (int) env('EXPORT_CHUNK', 25000),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,5 +32,5 @@ return [
     |
      */
 
-    'retainFor' => env('EXPORT_RETAIN_FOR', 60),
+    'retainFor' => (int) env('EXPORT_RETAIN_FOR', 60),
 ];
