@@ -1,6 +1,212 @@
 # Laravel Enso's Changelog
 
 
+## 3.9.5
+
+### front-end
+
+#### accessories
+- updated components to use the `User` resource format for avatar
+- added localization button for addresses
+
+#### activity-log
+- updated components to use the `User` resource format for avatar
+
+#### calendar
+- fixed `EventConfirmation`
+- upgraded to `vue-cal 3`
+- fixed style
+
+#### categories
+- updated for the new BE
+- added `laravel-validation` as dependency
+
+#### charts
+- small refactor
+
+#### commercial (private)
+- added `laravel-validation` as dependency
+- updated import of `Errors` class in `RowLine` to use the new `laravel-validation` package
+
+#### contracts (private)
+- updated `Card` component to use the `User` resource format for avatar
+- uses `Avatar` component instead of img in `Card.vue`
+
+#### directives
+- fixed `clickOutside` when the target isn't a child of container
+- for solving this issue, added a deep modifier to check `contains` with positions
+- updated `clickOutside`
+
+#### dropdown
+- removed stop propagation as it uses the improved `v-clickOutside`
+- added `disable-controls` boolean prop
+- fixed `disableControls` reactivity
+
+#### emails
+- added `laravel-validation` as dependency
+
+#### files
+- updated components to use the user resource format for avatar
+- added clipboard to `Url.vue`
+
+#### financials (private)
+- added `laravel-validation` as dependency
+
+#### forms
+- added the ability to customize wysiwyg's toolbar
+- extracted `Errors` in its own package
+- added a new `RevealPassword` component
+- uses `RevealPassword` in `InputField`
+
+#### inventory (private)
+- added `laravel-validation` as dependency
+
+#### laravel-validation (new)
+- new package that contains an `Errors` class that maps on the Laravel `ValidationException` messages
+
+#### mixins
+- parses number for type safety in `shortNumber`
+- removed unneeded dependency
+
+#### permissions
+- added `cssClass` for menus
+
+#### projects (private)
+- added `laravel-validation` as dependency
+
+#### roles
+- updated FE for the new BE `Permission` resource
+
+#### tables
+- merged custom and column internal filter and smalls fixes
+- small refactor in label
+- added in-place editing filter
+- improved logic in `Filters` and `Labels` components
+- fixed eslint
+- small refactor
+- fixed internal filters without custom
+
+#### teams
+- updated components to use the `User` resource format for avatar
+- uses `Avatar` component instead of img in `AvatarList`
+
+#### textarea
+- updated eslint
+
+#### typeahead
+- improved behaviour when no results are found
+- added `min-query-length` property
+- added search event when pressing enter
+- fixed axios cancel token
+- provided query on item slot
+- added optional search button
+
+#### ui
+- fixed theme and rtl
+- updated `preferences.js`
+- updated `AuthForm` to display error messages instead of toastr
+- uses the new `RevealPassword` component in `AuthForm`
+
+#### webshop (new) (private)
+
+#### wysiwyg
+- updated eslint
+
+
+### back-end
+
+#### activity-log
+- updated `Timeline` response to use `User` resource instead of `TrackWho`
+
+#### addresses
+- updated validator: changes `is_default` to be required
+- removed unnecessary query
+- removed form builder region label usage
+- added rememberable in address
+- fixed one liner
+- added localisation functionality with google maps integration
+- uses laravel Http instead of guzzle; refactor and cleanup
+
+#### calendar
+- added fixes such that:
+    - when an event in the middle of the sequence is deleted, then it should break the sequence first then delete events
+    - when series of events are updated in the middle of the sequence then it should not change the frequency
+    - when a sequence of events is deleted, then the cache will be invalid
+- fixed frequency update, type equality in `ValidateEventRequest.php` and edge case when update date of an event in the middle of the sequence
+
+#### categories
+- improved recursive relations
+- renamed `recursiveParents` relation to `recursiveParent`
+- added `currentAndBelowIds` and relations trait
+- updated self relations to static
+- added `parentTree` helper
+
+#### commercial (private)
+- updated client stock import
+- cleanup in company service provider
+
+#### contracts (private)
+- updated `AdditionalAct` resource to use `User` resource instead of `TrackWho`
+
+#### core
+- added products and localize upgrade
+- updated `LoginController` to use `ValidationException` instead of `Authentication`
+- fixed `ValidatePasswordRequest` and `ForgotPasswordController`
+
+#### countries
+- added region label model helper
+
+#### discussions
+- updated resources to use `User` resource instead of `TrackWho`
+
+#### documentation
+- updated documentation for categories and products
+
+#### dynamic-methods
+- added scope support
+
+#### files
+- updated `File` resource to use `User` resource instead of `TrackWho`
+- added new `publicPath` method in trait & contract
+
+#### io
+- updated `IO` resource to use `User` resource instead of `TrackWho`
+
+#### measurement-units
+- renamed `UNITS` constant from seeder to `Units`
+
+#### permissions
+- improved permissions types, added `Permission` resource
+
+#### products
+- added `html_description`,  dynamic scopes to product and dynamic relations to category
+- removed unused `hasMappedProducts` and adds `manufacturedProducts` for companies
+
+#### roles
+- improved roles validation
+- uses resource in permission tree
+
+#### tables
+- fixed export edge case
+- updated `Enum.php`
+
+#### teams
+- updated `Team` resource to use `User` resource instead of `TrackWho`
+
+
+### Upgrade steps
+
+To upgrade:
+
+- run `composer update` in the project's root
+- run `yarn, yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- update the Enso version to 3.9.5 in `config/enso/config.php`
+- the `Errors` class was extracted from `enso-ui/forms` to it's own package `enso-ui/laravel-validation`. If using it locally, make sure to update the imports.
+- ensure that the `php artisan enso:upgrade` command is run
+- there is a new `localize` addresses route added, please ensure that the roles/permissions are correctly configured for your projects and then save the roles configurations
+- update the `client/src/js/enso.js` file using the package version as reference
+- make sure to have `vuex-router-sync` dependency in `package.json`
+
 ## 3.9.4
 
 The release includes bug fixes as well as enhancements, some of which are potentially breaking.
@@ -56,25 +262,25 @@ The release includes bug fixes as well as enhancements, some of which are potent
 ### back-end
 
 #### addresses
-- the addresses package was completely refactored. It now supports regions and localities, 
+- the addresses package was completely refactored. It now supports regions and localities,
 and some functionality was integrated from the ro-addresses package which will be deprecated. The update includes:
     - the addition of the region & locality model, relationships, routes, etc
     - the `Country` model now has relationships with the above models
     - the update of the table and structure migrations
-    - the addition of an address select route/controller/resource 
+    - the addition of an address select route/controller/resource
     - the removal redundant country relationship load on the select options flow
     - the update & enhancement of the address form and template
     - the update of the address factory & seeders
     - the addition of an unique index to regions
     - the inclusion of a Region seeder for Romanian counties and US states
     - the inclusion of a Locality seeder for Romanian localities
-- the AddressFetch validator now uses the `TransformMorphMap` trait    
+- the AddressFetch validator now uses the `TransformMorphMap` trait
 
 #### avatars
 - removed the `ensureFolderExists` method call
-- updated the `Files` test folder references as the config key `enso.files.paths.testing` 
+- updated the `Files` test folder references as the config key `enso.files.paths.testing`
 has been updated to `enso.files.testingFolder`
-- the `Avatar` model now uses the `CascadesMorphMap` trait 
+- the `Avatar` model now uses the `CascadesMorphMap` trait
 - `morphMap` is now used for the `Avatar` model
 
 #### calendar
@@ -87,9 +293,9 @@ has been updated to `enso.files.testingFolder`
 #### core
 - the `php artisan enso:storage:reset` also handles the creation of missing storage folders
 - the image resources previously present in the `@enso-ui/ui` package have been moved to the this package
-- renamed the resource publishing tag from `core-images` to `core-assets` 
-- added a FilesIndex upgrade service that attempts to set and unique index 
-on the `files` table to avoid any duplicates. If there are duplicated records present, 
+- renamed the resource publishing tag from `core-images` to `core-assets`
+- added a FilesIndex upgrade service that attempts to set and unique index
+on the `files` table to avoid any duplicates. If there are duplicated records present,
 the upgrade will list the duplicates and skip adding the index
 - added upgrades for `Addresses`, `Documents`, `Files`, `Discussions`, `Comments`, morphMap, which replaces class names with their corresponding short morph map keys
 - fixed user notifications which sometimes were not found
@@ -100,54 +306,54 @@ the upgrade will list the duplicates and skip adding the index
 - removed avatar label in users table
 
 #### companies
-- refactored to use `mapMorphs`: the `Company` model now uses the `CascadesMorphMap` trait 
+- refactored to use `mapMorphs`: the `Company` model now uses the `CascadesMorphMap` trait
 
 #### comments
 - added controller for customizing taggable users
-- the `Comment` model now uses the `CascadesMorphMap` trait 
+- the `Comment` model now uses the `CascadesMorphMap` trait
 
 #### countries
 - added the `Relations` trait on the model, so it can support dynamic relationships
 
 #### data-export
-- refactored to use `mapMorphs`: the `DataExport` model now uses the `CascadesMorphMap` trait 
+- refactored to use `mapMorphs`: the `DataExport` model now uses the `CascadesMorphMap` trait
 
 #### data-import
 - updated the `files` test folder references
 - refactored to use `mapMorphs`
-- fixed rejected import deletion bug causing rejected files to not be deleted 
+- fixed rejected import deletion bug causing rejected files to not be deleted
 - fixed rejected import file name bug causing the file to have the extension added twice
 - added a cleanup upgrade for left-over rejected models & files in core
 
 #### documents
-- updated the `files` test folder references 
+- updated the `files` test folder references
 - added the `$folder` variable to the `Document` model
 - the request validator now uses the `TransformMorphMap` trait
-- the `Document` model now uses the `CascadesMorphMap` trait 
+- the `Document` model now uses the `CascadesMorphMap` trait
 - `morphMap` is now used for the `Document` model
 
 #### discussions
 - the request validator now implements the `TransformsMorphMap` interface
-- refactored to use `mapMorphs`: the `Discussion` model now uses the `CascadesMorphMap` trait 
+- refactored to use `mapMorphs`: the `Discussion` model now uses the `CascadesMorphMap` trait
 
 #### files
 - refactored the paths config: now attachable models should have a `$folder` property or a `folder()` method
-- updated the `Files` test folder references as the config key `enso.files.paths.testing` 
+- updated the `Files` test folder references as the config key `enso.files.paths.testing`
 has been updated to `enso.files.testingFolder`
 - added handling logic for tests within the `HasFile` `folder()` method
-- refactored to use `mapMorphs`: the `Upload` model now uses the `CascadesMorphMap` trait 
+- refactored to use `mapMorphs`: the `Upload` model now uses the `CascadesMorphMap` trait
 
 #### filters
 - adds Algolia support in search mode
 
 #### forms
 - when building the form, the enums are now resolved from the service container
-- fixed the toggling of tab visibility 
-- makes section's columns size customizable when building a form via the `columns(string $field, int $value)` method, 
+- fixed the toggling of tab visibility
+- makes section's columns size customizable when building a form via the `columns(string $field, int $value)` method,
 where the `$field` parameter is used to identify the section to be modified
 
 #### helpers
-- added a searchable trait for Scout that makes sure that reindexing is performed only when indexed attributes are changed, 
+- added a searchable trait for Scout that makes sure that reindexing is performed only when indexed attributes are changed,
 avoiding unnecessary Algolia operations
 - added the Sleep service class that can be used to sleep during code execution `!!`
 - moved the `VatRates` enum from the `financials` package
@@ -156,12 +362,12 @@ avoiding unnecessary Algolia operations
 - added the `TransformMorphMap` trait
 
 #### how-to
-- refactored to use `mapMorphs`: the `Video` model now uses the `CascadesMorphMap` trait 
+- refactored to use `mapMorphs`: the `Video` model now uses the `CascadesMorphMap` trait
 
 #### localisation
 - updated language resources
 - fixed some bugs found when adding keys
-- renamed `localisation-lang-files` tag into `enso-localisation`. 
+- renamed `localisation-lang-files` tag into `enso-localisation`.
 Under this tag we're publishing only Laravel's lang files
 - removed unused localisation files from the `app` directory
 - local translations are now saved to the local `app` directory when adding or updating
@@ -184,7 +390,7 @@ Under this tag we're publishing only Laravel's lang files
 - the `Picture` model now implements `AuthorizesFileAccess` and access is allowed by default
 - added validation to disallow the selection of a parent category in the product form
 - added product pictures to the products table
-- updated publish tag & paths from `'products-resources', 'enso-resources'` to `'products-assets', 'enso-assets'` 
+- updated publish tag & paths from `'products-resources', 'enso-resources'` to `'products-assets', 'enso-assets'`
 - updated the default image
 - removed package's `VatRates` enum and switched to using the `VatRates` from the `Helpers` package
 - updates package product factory re: measurement units, causing the creation of a new measurement unit
@@ -200,14 +406,14 @@ if one was not provided to the factory
 
 #### services
 - updated `VatRates` import post enum refactor
-- fixed service factory re: measurement units bug, causing the creation of a new measurement unit when one was 
-not provided  
+- fixed service factory re: measurement units bug, causing the creation of a new measurement unit when one was
+not provided
 - the vat percent is now a selectable value within the form
 - fixed description field width (full column)
 
 #### tables
-- on big tables, totals are shown only when `forceInfo` is `true` 
-- fixes raw total edge case when using bindings in the query select statement  
+- on big tables, totals are shown only when `forceInfo` is `true`
+- fixes raw total edge case when using bindings in the query select statement
 - added Algolia support, which is disabled by default
 - fixed internal bug in custom filters without server side options
 
@@ -222,9 +428,9 @@ To upgrade:
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
 - update the Enso version to 3.9.4 in `config/enso/config.php`
 - if using the `MapsRequestKeys` trait, within the respective request validators, update the controllers to use `$request->validated()` instead of `$request->mapped()`
-- for all the enso models that use the `Addressable`, `Commentable`, `Discussable`, `Documentable` traits, we are now using `Relation::morphMap(...)` 
-and short keys instead of default namespaces as this solves issues with relationships breaking when extending models which use `morph` relationships. 
-For consistency, you should do the same to your local models (you may look at the Company model & companies AppServiceProvider classes as example)  
+- for all the enso models that use the `Addressable`, `Commentable`, `Discussable`, `Documentable` traits, we are now using `Relation::morphMap(...)`
+and short keys instead of default namespaces as this solves issues with relationships breaking when extending models which use `morph` relationships.
+For consistency, you should do the same to your local models (you may look at the Company model & companies AppServiceProvider classes as example)
 - the `files` test folder config key has been updated from `enso.files.paths.testing` to `enso.files.testingFolder`. If you are customizing the value, make sure to update the config file structure. Also make sure to update the local file after the one in the files package.
 - if using the `products` package, note that the validator's `validateUnicity` method has been renamed to `validateUniqueness` - update your local validator if required
 - for this release, we've switched from using predis to using phpredis. Ensure that:
@@ -384,9 +590,9 @@ Front-end packages have had their `yarn.lock` file removed as it wasn't mandator
 - created a new package which is currently a dependency of the products package
 
 #### charts
-- added slot for controls 
+- added slot for controls
 - now performs fetch on source change
-- added precision to info panel's sum compution 
+- added precision to info panel's sum compution
 - added missing shortNumber filter
 - fixed progress circle missing import
 - fixed bug in infopanel when no data available
@@ -417,7 +623,7 @@ Front-end packages have had their `yarn.lock` file removed as it wasn't mandator
 
 #### dropdown
 - removed `popper.js` as dependency
-- cascaded the `hide()` method; 
+- cascaded the `hide()` method;
 - fixed the proper closing of drop-downs when dealing with multiple drop-downs
 - added stopPropagation for `click` events
 - tweaked the component height to have it aligned with other Enso UI components
@@ -437,8 +643,8 @@ Front-end packages have had their `yarn.lock` file removed as it wasn't mandator
 - removed unneded dep
 
 #### inventory
-- added addresses to the warehouse edit form as a result of adding an address relationship to the warehouse model 
-- the `@enso-ui/products` dependency was updated to the new minor version 
+- added addresses to the warehouse edit form as a result of adding an address relationship to the warehouse model
+- the `@enso-ui/products` dependency was updated to the new minor version
 - added a github issue template to the repository
 
 #### permissions
@@ -576,7 +782,7 @@ Front-end packages have had their `yarn.lock` file removed as it wasn't mandator
 
 #### products
 - added vat rates enum
-- improved form 
+- improved form
 - added category attribute & functionality to the package
 - added upgrade service to products
 
@@ -659,7 +865,7 @@ To upgrade:
 
 ## 3.9.1
 
-The release includes many small changes both on the back-end and the front-end. 
+The release includes many small changes both on the back-end and the front-end.
 
 ### front-end
 
@@ -711,7 +917,7 @@ The release includes many small changes both on the back-end and the front-end.
 #### tables
 - fixed tag width on boolean columns
 - removed unnecessary span around cells
-- improved top controls 
+- improved top controls
 - updated search layout
 - enhanced column visibility & style selector
 - added helper for invisible columns
@@ -778,7 +984,7 @@ The release includes many small changes both on the back-end and the front-end.
 
 ### back-end
 
-All back-end packages have been updated due to renaming the `app` folder to `App`. You can find more information below.  
+All back-end packages have been updated due to renaming the `app` folder to `App`. You can find more information below.
 
 
 #### avatars
@@ -790,11 +996,11 @@ All back-end packages have been updated due to renaming the `app` folder to `App
 
 #### companies
 - added a default, open/permissive policy for the controller actions
-- project specific logic can be created locally when needed, by extending and binding a new policy  
+- project specific logic can be created locally when needed, by extending and binding a new policy
 
 #### core
 - added a `role` relation to user group
-- adjusted the user group form 
+- adjusted the user group form
 - updated the way the avatar is shown in users table
 - added a unique constraint for the `user_id` column in the `avatars` table
 - fixed namespace for the avatars upgrade command
@@ -810,7 +1016,7 @@ All back-end packages have been updated due to renaming the `app` folder to `App
 
 #### filters
 - fixed incorrect interval filtering by returning copies of the carbon objects
-- adds a new search service to be used for query builder searching 
+- adds a new search service to be used for query builder searching
 
 #### helpers
 - added a new `When` helper trait which can be used in a similar fashion to query builder style
@@ -827,7 +1033,7 @@ All back-end packages have been updated due to renaming the `app` folder to `App
 
 #### people
 - added a default, open/permissive policy for the controller actions
-- project specific logic can be created locally when needed, by extending and binding a new policy  
+- project specific logic can be created locally when needed, by extending and binding a new policy
 - multi-tenant specific request authorization logic has been removed form the request validation
 - fixed test
 
@@ -851,7 +1057,7 @@ All back-end packages have been updated due to renaming the `app` folder to `App
 
 ### Upgrade steps
 
-It was necessary to rename the `app` folders as with newer composer versions, 
+It was necessary to rename the `app` folders as with newer composer versions,
 the tool would complain (show notices) about the namespace not being psr4 compliant.
 
 If these notices were to be present when deploying, Envoyer would stop the deploy process.
@@ -868,7 +1074,7 @@ To upgrade:
 
 ## 3.9.0
 
-This release includes many improvements and new features, bugfixes as well as the upgrade to Laravel 7.*. 
+This release includes many improvements and new features, bugfixes as well as the upgrade to Laravel 7.*.
 
 Since the Laravel upgrade contains some pontetially breaking changes, you should take a look at the [official upgrade instructions](https://laravel.com/docs/7.x/upgrade) to see if/how you're affected.
 
@@ -906,7 +1112,7 @@ Since the Laravel upgrade contains some pontetially breaking changes, you should
 - small refactor of the package's pages, removing duplicated code
 
 #### dropdown
-- updated  dropdown item selector strategy 
+- updated  dropdown item selector strategy
 
 #### emag
 - updated form content & extracted logic into the `EmagOrder` component
@@ -933,7 +1139,7 @@ Since the Laravel upgrade contains some pontetially breaking changes, you should
 
 #### search-mode (new)
 - a new dependency package that permits switching between the different search modes (full, starts with, ends with)
-- this new package is now utilized by select, typeahead and tables 
+- this new package is now utilized by select, typeahead and tables
 
 #### select
 - fixes the `shouldDisableDropdown`/`dropdownDisabled` computed property
@@ -1046,7 +1252,7 @@ Also, dependencies were updated as required.
 - modifies computors
 - fixes supplier payment factory
 - various small updates: updates suppplier payment validator, adds return types for methods, adds typed properties, updates factories, updates tests
-- reverted to explicit asserts  
+- reverted to explicit asserts
 
 #### helpers
 - `JsonParser` was renamed to `JsonReader`
@@ -1079,7 +1285,7 @@ Also, dependencies were updated as required.
 - refactors type into computed property
 
 #### products
-- refactors `inCents` to  decimal 
+- refactors `inCents` to  decimal
 - updates request validation by adding internal code unique rule
 
 #### projects
@@ -1097,7 +1303,7 @@ Also, dependencies were updated as required.
 - adds searchMode
 
 #### services
-- refactors `inCents` to  decimal 
+- refactors `inCents` to  decimal
 
 #### tables
 - fixes global button filtering
@@ -1142,7 +1348,7 @@ Also, dependencies were updated as required.
 
 ## 3.8.2
 
-This release includes much needed UI vue-select / dropdown refactor. 
+This release includes much needed UI vue-select / dropdown refactor.
 
 These changes are breaking when customizing/building upon the @enso-ui/select components.
 
@@ -1175,7 +1381,7 @@ Most of the packages received a dependency list cleanup.
 - adds is-small boolean prop
 
 #### directives
-- v-focus can now be active conditionally 
+- v-focus can now be active conditionally
 
 #### dropdown
 - adds arrow keys support
@@ -1210,7 +1416,7 @@ Most of the packages received a dependency list cleanup.
 - adjusted is-table-tag lateral padding
 
 #### textarea (new)
-- textarea component that can be easily integrated within the form 
+- textarea component that can be easily integrated within the form
 
 #### themes
 - fixed small form-box overflow bug
@@ -1243,7 +1449,7 @@ Most of the packages received a dependency list cleanup.
 - updated operating system label
 - general refactor & improvements
 - fixed total memory reporting
-- refactored closures 
+- refactored closures
 - fixes OS sensor value
 
 #### currencies
@@ -1312,7 +1518,7 @@ Most of the packages received a dependency list cleanup.
 - made rogue column exportable by default
 
 #### versions
-- adds `Version` exception 
+- adds `Version` exception
 - small refactor in trait
 - fixed manual transaction for persistent processes
 
@@ -1398,8 +1604,8 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
 #### core
  - added migrations for morphable models namespaces
  - adds currencies permission in upgrade command
- - Spa and AppState flexibility #272 
- - made AppState private methods protected. 
+ - Spa and AppState flexibility #272
+ - made AppState private methods protected.
  - Spa __invoke method will not instantiate with "new AppState" but with App::make
  - adds missing import
  - refactors Enso's Login event
@@ -1415,7 +1621,7 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
  - fixes typo in exchange rates table; adds an apiPrecision config option
 
 #### data-export
- - adds a purge command 
+ - adds a purge command
  - adds a retainFor config option
 
 #### data-import
@@ -1427,7 +1633,7 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
 
 #### forms
  - adds option to customize label in form
- - added taggable to the list of supported meta params 
+ - added taggable to the list of supported meta params
  - removed params, pivotParams and customParams from the list of valid, optional meta attributes
 
 #### helpers
@@ -1479,7 +1685,7 @@ With this release, we have upgraded sass-loader to the latest version(8.0.3)
         ? '../resources/views/index.blade.php'
         : './index.html',
 ```
-- update the default route in `routes/web.php` to 
+- update the default route in `routes/web.php` to
 ```
     Route::view('/{any}', 'index')->where('any', '.*');
 ```
@@ -1513,7 +1719,7 @@ Besides what's mentioned above, you should go through these files in your projec
 With this release, we have upgraded our back-end packages to require PHP7.4+. Consequently, we have made several changes to adapt our back-end code to the latest syntax such as:
  - refactoring to short closures
  - adding typed properties and method return types where necessary
- 
+
 Furthermore, we have also generally improved and refactored all of our packages in order for them to be consistent and more easily maintained. During this process we have aimed to:
  - **normalize package namespaces ( renamed `app` to `App` )**
  - replacing `collect()` helpers in favor of instantiating the `Collection()` object
@@ -1549,7 +1755,7 @@ Furthermore, we have also generally improved and refactored all of our packages 
 #### hr
 - drops Projects component
 - updates dependencies
-- fixes style for payrolls Index page 
+- fixes style for payrolls Index page
 - renames `splited` to `split`
 - updates namespaces
 
@@ -1636,7 +1842,7 @@ Furthermore, we have also generally improved and refactored all of our packages 
 #### files
  - improves file validation
 
-#### helpers 
+#### helpers
  - adds tests for InCents and MapsRequestKeys
  - improves logic in InCents, JsonParser, Obj, Decimals
 
@@ -1720,7 +1926,7 @@ Furthermore, we have also generally improved and refactored all of our packages 
     `"LaravelEnso\\Cli\\tests\\": "vendor/laravel-enso/cli/tests/"`,
 * update your Enso classes imports ( search the whole project for `\app\` and replace with `\App\` )
 * if you are implementing our state builder interface or extending our local state builder, make sure to update your `build()` method signature ( `build(): array`)
-* upgrade `Enums` accordingly 
+* upgrade `Enums` accordingly
     - rename `attributes()` method to `data()` where required
     - `$data` becomes a typed property ( ` array $data= [..] ` )
 * if using/extending the `LaravelEnso\Documents\App\Policies\Policy` class, update any imports to `LaravelEnso\Documents\App\Policies\Document`
@@ -1769,7 +1975,7 @@ In order for the local project to be syntactically consistent with our ecosystem
     - `php artisan vendor:publish --force --tag=enso-seeders`
 
 * if you wish to take advantage of the new tables feature which allows the use of custom cache keys for counts, your table builders must implement `CustomCountCacheKey()`.
-* Regarding namespace was changed, you may need to migrate namespace in polymorphic relation in the database too. 
+* Regarding namespace was changed, you may need to migrate namespace in polymorphic relation in the database too.
 
 ## 3.7.4
 
@@ -1795,7 +2001,7 @@ This release improves the quality of the back-end code addressing issues reveale
 
 ### backend-end
 
-All packages were checked with the analitics tool and, where needed, the appropriate fixes and updates where implemented. 
+All packages were checked with the analitics tool and, where needed, the appropriate fixes and updates where implemented.
 
 Most packages have had updates pertaining to:
 - missing constants visibility
@@ -1816,7 +2022,7 @@ Apart from these updates, which are too many to list individually for each packa
 
 #### core
 - added the missing doctype to the production tag, which fixes a TinyMCE issue
-- the User model deletion is now handled by the `AvoidsDeletionConflicts` trait 
+- the User model deletion is now handled by the `AvoidsDeletionConflicts` trait
 
 #### countries
 - added the country code to the model's resource
@@ -1855,7 +2061,7 @@ This is the second to final release before upgrading Enso to PHP7.4.
 - made available the new SimpleDateFilter & EnsoSimpleDateFilter components
 
 #### calendar
-- updated EnsoCalendar's resizing strategy 
+- updated EnsoCalendar's resizing strategy
 
 #### departments (new)
 - a new package for managing departments
@@ -1909,7 +2115,7 @@ This is the second to final release before upgrading Enso to PHP7.4.
 
 #### cli
 - added the TableCache trait to the generated model
-- fixed the request validator namespace 
+- fixed the request validator namespace
 - updated the `resources` folder to `client/src/`
 - updated the tests
 
@@ -1976,7 +2182,7 @@ If you had customized/extended the enum, then you should provide the enum as a p
 
 ## 3.7.2
 
-The main purpose of this release was to switch from using [tiptap](https://github.com/scrumpy/tiptap) to using [tinyMCE](https://www.tiny.cloud/) for our what-you-see-is-what-you-get editor VueJS component. 
+The main purpose of this release was to switch from using [tiptap](https://github.com/scrumpy/tiptap) to using [tinyMCE](https://www.tiny.cloud/) for our what-you-see-is-what-you-get editor VueJS component.
 
 Through its dependency chain, after running `yarn upgrade` tiptap was breaking the build.
 
@@ -2017,9 +2223,9 @@ This is a non breaking upgrade:
 |--------------------------------------------------------------------------
 | TinyMCE Api Key
 |--------------------------------------------------------------------------
-| If you're using the wysiwyg field you need to get a free api key from 
+| If you're using the wysiwyg field you need to get a free api key from
 | https://www.tiny.cloud/get-tiny/ first.
-| 
+|
 */
 
 'tinyMCEApiKey' => env('TINY_MCE_API_KEY', null),
@@ -2089,7 +2295,7 @@ TINY_MCE_API_KEY=my-api-key
 #### examples
 - the package is being deprecated and will no longer be maintained
 - for new projects, the relevant functionality (sample data for the dashboard charts) has been moved locally within Enso
-- for existing projects that may still use the package, they may continue using it 
+- for existing projects that may still use the package, they may continue using it
 
 ### Upgrade steps
 
@@ -2133,7 +2339,7 @@ The major purpose of this release is three fold:
 
 #### currencies
 - added filters on the index page
-- for the currency display, symbols are used instead of icons 
+- for the currency display, symbols are used instead of icons
 
 #### datepicker
 - default date format was updated from `'d-m-Y'` to `'Y-m-d'`
@@ -2141,7 +2347,7 @@ The major purpose of this release is three fold:
 
 #### filters
 - DateFilter now has a `direction` parameter & control: you can now choose to filter from past & future presets
-- DateFilter also has a new `forward` boolean parameter which makes the component to start by default with the 
+- DateFilter also has a new `forward` boolean parameter which makes the component to start by default with the
 future presets
 - under the hood date format handling has been improved
 
@@ -2271,7 +2477,7 @@ hot module replacement
 
 #### VueCli upgrade related steps
 - copy the `client` folder from the Enso repo into your project root
-- add any (package) aliases you had previously added to the `webpack.mix.js` file into: 
+- add any (package) aliases you had previously added to the `webpack.mix.js` file into:
     - the `settings.import-resolve.alias.map` section of the `client/.eslintrc.js` file
     - the `configureWebpack.resolve.alias` section of the `client/vue.config.js` file
 - update/replace your project root `.eslintrc.js` with the contents from `client/.eslintrc.js` and correct the aliases paths
@@ -2313,7 +2519,7 @@ return [
 - search and replace the `LaravelEnso\Addresses\app\Models\Country;` namespace with `LaravelEnso\Countries\app\Models\Country;`
 - where using the `actions` slot within forms, replace the `actions` slot with `actions-left` and/or `actions-right` slots as required
 - the local state implementation class should be bound in the service container to the `LaravelEnso\Core\app\Services\LocalState`
-- publish the updated `AddressFactory.php`: 
+- publish the updated `AddressFactory.php`:
 ```
 php artisan vendor:publish --tag=addresses-factory --force
 ```
@@ -2337,10 +2543,10 @@ php artisan vendor:publish --tag=countries-seeder --force
 - in `config/enso/forms.php` update the `dateFormat` key to `altDateFormat`
 - cd into the `client` folder and serve the front-end with `yarn serve` or build it with `yarn build`
 - (optional) a new feature allows you to notify your currently logged in users that a new application update/version was deployed.
- 
+
     To use it, update your live deployment process and after the deploy is done, add a hook that calls `php artisan enso:announce-app-update`.
     The logged in users will get a toaster message as a well a pulsing notification control in the navbar, which, when clicked, will reload the page.
-    
+
     Note that for the user to be notified, the current in-page version must be different from the released version, so don't forget to update the `enso.config.version` value.
 
     Reloading helps avoid js errors related to the lazy loading of the front-end assets as well as any mismatches between the stale front-end and the updated back-end API.
@@ -2349,7 +2555,7 @@ php artisan vendor:publish --tag=countries-seeder --force
 
 #### Serving the assets
 
-Serving the assets has changed from running `yarn run hot` to cd-ing into the 
+Serving the assets has changed from running `yarn run hot` to cd-ing into the
 `client` folder and running `yarn serve`.
 
 No other steps are necessary if you are serving the back-end API as before, for example with Valet.
@@ -2358,14 +2564,14 @@ Alternatively, if you don't want to use Valet, you may run `php artisan serve` a
 
 #### Building the assets
 
-Building the assets has changed from running `yarn run prod` to cd-ing into the 
+Building the assets has changed from running `yarn run prod` to cd-ing into the
 `client` folder and running `yarn build`.
 
 While the command is different, the resulted build is, for all practical purposes, identical to the one resulted when using Laravel Mix.
 
-#### Deploying in production 
+#### Deploying in production
 
-To deploy the build you should follow the same flow as before. 
+To deploy the build you should follow the same flow as before.
 
 IF within your workflow you are also building the front-end, you should update your scripts so as to take into the account the `client` folder (see above).
 
@@ -2641,7 +2847,7 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
 - makes the `buttons` attribute mandatory in templates
 - date interval filters object must now contain the `dateFormat` prop representing the FE format of the date. If the dateFormat prop is null, the `config('enso.config.dateFormat')` will be used
 - `dbDateFormat` was removed
-- improves the strategy for auto-detecting the `model` property. The camel case of the model class short name is now used 
+- improves the strategy for auto-detecting the `model` property. The camel case of the model class short name is now used
 - determines the table's `name` property (if not provided in the template) by pluralising the `model` property (see above)
 - the notification channels should be present in config `['mail', 'broadcast', 'database']
 - all tests were refined
@@ -2699,17 +2905,17 @@ For the next release we aim to move to Vue Cli from using Laravel mix.
 - add the new `Authenticates` contract to all imports that need the authenticated user
 
 #### filters
-- replace the `title` prop with `name` for all the usage instances of the following filters: 
-    - `BooleanFilter`, 
-    - `CoreSelectFilter`, 
+- replace the `title` prop with `name` for all the usage instances of the following filters:
+    - `BooleanFilter`,
+    - `CoreSelectFilter`,
     - `EnsoFilter`,
     - `EnsoDateFilter`,
-    - `DateFilter`, 
-    - `DateIntervalFilter`, 
-    - `EnsoSelectFilter`, 
-    - `IntervalFilter`, 
-    - `SelectFilter` 
-    - `VueFilter` . 
+    - `DateFilter`,
+    - `DateIntervalFilter`,
+    - `EnsoSelectFilter`,
+    - `IntervalFilter`,
+    - `SelectFilter`
+    - `VueFilter` .
 
     To do this you can search the whole resources folder for `title="`. Make sure you only replace the prop for filters and not other components
 - make sure that the change in `date-filter` (described above at the front-end > filters section) does not impact your local use cases
@@ -3113,7 +3319,7 @@ and a and `$user` parameter was added
 - run `php artisan enso:upgrade`
 ​
 Optional:
-- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`. 
+- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`.
 Take a look at the `EnumServiceProvider` from the [People](https://github.com/laravel-enso/people) package as an example.
 If using this method, you won't need to add them in the project's `LocalState`.#### Local project
 
@@ -3151,9 +3357,9 @@ and a and `$user` parameter was added
 - run `php artisan enso:upgrade`
 ​
 Optional:
-- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`. 
+- now you can register/add Enums directly from your packages, to the application state, by using an `EnumServiceProvider`.
 Take a look at the `EnumServiceProvider` from the [People](https://github.com/laravel-enso/people) package as an example.
-If using this method, you won't need to add them in the project's `LocalState`. 
+If using this method, you won't need to add them in the project's `LocalState`.
 ​
 #### Laravel 6 file changes
 - `bootstrap/app.php`:
@@ -3616,23 +3822,23 @@ When upgrading you should consider refactoring custom form action, if any, using
 ## 3.3.0
 
 # Purpose
-- rename BE repos - when the organization was started we had not really followed 
+- rename BE repos - when the organization was started we had not really followed
 a consistent naming convention for the packages. But now we do :)
 - use the same naming convention for migrations
-- refactor controllers and request validators towards SRP, 
-with an invokable controller for each route endpoint 
-- switch to using dependency injection wherever possible in controllers, 
-to allow easier & cleaner customization of Models ($fillable, relations etc), 
+- refactor controllers and request validators towards SRP,
+with an invokable controller for each route endpoint
+- switch to using dependency injection wherever possible in controllers,
+to allow easier & cleaner customization of Models ($fillable, relations etc),
 request validators, from builders, table builders, etc.
 - replace the class registration part of the configs with service providers
 - refactor `is_null($var)` usages to `$var === null`, following best practices
 - remove `activity-log`'s default inclusion from all packages except from `teams`
-- following several requests and real world requirements, 
+- following several requests and real world requirements,
 change the relationship between people and companies from `N - 1` to `N - N`
 
 # Changes
 
-Note that all back-end packages (and repositories) were renamed, 
+Note that all back-end packages (and repositories) were renamed,
 even if in some cases, only the casing changed. Where needed namespaces were updated.
 
 Below you'll find the old package name in parenthesis.
@@ -3642,7 +3848,7 @@ Below you'll find the old package name in parenthesis.
 ### action-logger (old ActionLogger)
 
 ### activity-log (old ActivityLog)
-- will be soon refactored from scratch; 
+- will be soon refactored from scratch;
 - the Model linking mechanism will be updated to using a registration service provider
 - that this package is not yet production-ready
 
@@ -3683,7 +3889,7 @@ Below you'll find the old package name in parenthesis.
 - dropped that `Chart` suffix for all builders (eg. `BarChart` to `Bar`)
 
 ### cli (old StructureMigration)
-- added support for namespaced models 
+- added support for namespaced models
 - updated stubs for single responsibility controllers
 - added `.styleci.yml`
 
@@ -3700,7 +3906,7 @@ Below you'll find the old package name in parenthesis.
 ### core (old Core)
 - refactored controllers
 - refactored request validators
-- added the `UserGroups` enum, bound to the app's service container under the `user-groups` alias; 
+- added the `UserGroups` enum, bound to the app's service container under the `user-groups` alias;
 the enum is also present in the app state
 - added the `enso:rename-migrations` command
 - updated the `enso:upgrade` command for a smoother upgrade
@@ -3733,7 +3939,7 @@ the enum is also present in the app state
 ### files (old FileManager)
 - renamed namespace from `FileManager` to `Files`
 - renamed `FileManager` service to `Files`
-- added a publishable `FileServiceProvider` that allows registering the visible files in the File menu 
+- added a publishable `FileServiceProvider` that allows registering the visible files in the File menu
 and drops the `VisibleFiles` enum
 - added a `FileBrowser` facade
 - improved the `files.php` config
@@ -3763,7 +3969,7 @@ and drops the `VisibleFiles` enum
 
 ### localisation (old Localisation)
 - refactored controllers
-- refactored validation 
+- refactored validation
 - renamed `Classes` to `Services`
 
 ### logs (old LogManager)
@@ -3806,10 +4012,10 @@ and drops the `VisibleFiles` enum
 
 ### roles (old RoleManager)
 - renamed namespace from `RoleManager` to `Roles`
-- refactored controllers 
-- refactored requests 
+- refactored controllers
+- refactored requests
 - added `Roles` Enum, bound to the app's service container under the `roles` alias
-it replaces the old `AdminId` and `SupervisorId` role constants; 
+it replaces the old `AdminId` and `SupervisorId` role constants;
 - the roles enumeration is now also available in the front end via the app state
 - renamed `Classes` to `Services`
 - allows nullable `menu_id` - useful for users that can't access the app but can still be notified by email
@@ -3831,9 +4037,9 @@ it replaces the old `AdminId` and `SupervisorId` role constants;
 - renamed the `action` method to `__invoke` in the `Action` trait
 
 #### Note
-The `Datatable` trait will be deprecated soon, 
+The `Datatable` trait will be deprecated soon,
 but if you like the old approach better you can recreate the trait locally and use it as required
- 
+
 ### track-who (old TrackWho)
  - removed config & AppServiceProvider
  - fixed `DeletedBy` attribute order in `forceFill()`
@@ -3857,22 +4063,22 @@ but if you like the old approach better you can recreate the trait locally and u
 
 ### forms
 - fixes section slot for tabs
-- fixes `switch-field` height 
+- fixes `switch-field` height
 
 ### ui
-- added menu drag and drop reorder option via settings switch 
+- added menu drag and drop reorder option via settings switch
 - removed deprecated `__.js` module
 - echo is now instantiated on window (accessible as `window.Echo`)
-- there is a new `websockets` module, 
+- there is a new `websockets` module,
 which provides the `ioChannel`, `privateChannel` and `pusher` configurations
 
 ### vue-switch
 - added support for control-label via slot
 - `vue-switch` can now be toggled also with the Enter key
- 
+
 # Upgrade Steps
 - update in `composer.json`
-    - `core` to 4.3.*  
+    - `core` to 4.3.*
     - `control-panel-api` to `2.2.*` (replace controlpanelapi)
     - `examples` to 1.2.* (if needed)
     - remove `laracasts/generators`
@@ -3880,14 +4086,14 @@ which provides the `ioChannel`, `privateChannel` and `pusher` configurations
     - `@enso-ui/ui` to `~1.3.0`
 - run `composer update`
 - run `yarn upgrade && yarn` (if `patch-package` fails, you should update your patches)
-- run `php artisan enso:rename-migrations`     
+- run `php artisan enso:rename-migrations`
 - run `php artisan migrate`
 - run `php artisan enso:upgrade`
 - update `App\User` with the proper imports/namespaces
 - remove from your route file the `@options` action method for all select controllers that are using the `OptionsBuider` trait
 - remove from your local route file `@excel` action method if you want to keep the old style table controllers
 **OR**
-- refactor all your table controllers to single responsibility controllers. 
+- refactor all your table controllers to single responsibility controllers.
 Use a package like `tutorials` for an example of how this is achieved.
 
 - configs:
@@ -3935,7 +4141,7 @@ Use a package like `tutorials` for an example of how this is achieved.
     - `LaravelEnso\RoleManager` => `LaravelEnso\Roles`
     - `LaravelEnso\FileManager` => `LaravelEnso\Files
     - `UserGroup::Admin` constant has been removed and should be replaced with the `UserGroups::Admin` enum
-    - `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be 
+    - `Role::AdminId` and `Role::SupervisorId` constants are no longer available and should be
         replaced with `Roles::Admin`, `Roles::Supervisor`; make sure to import the `LaravelEnso\Roles\app\Enums\Roles` enum
     - since the `Company` model's `scopeTenants` was renamed to `scopeTenant` search for its use and update as needed
     - `LaravelEnso\VueDatatable` with `LaravelEnso\Tables`
@@ -3947,13 +4153,13 @@ Use a package like `tutorials` for an example of how this is achieved.
 
 - if using/customizing/extending addresses, people or companies (eventually any package):
     - you should switch to leveraging dependency injection and bind your local implementations to the package's models, validator classes
-    - note that for both Person, Company and Address models the `$guarded` property was replaced with the explicit `$fillable`. 
-    - if extending any of these models, don't forget to overwrite the `$fillable` property 
-- if you're using/extending validators, controllers, models from the refactored packages, at minimum, 
+    - note that for both Person, Company and Address models the `$guarded` property was replaced with the explicit `$fillable`.
+    - if extending any of these models, don't forget to overwrite the `$fillable` property
+- if you're using/extending validators, controllers, models from the refactored packages, at minimum,
 you will need to update your imports
 - update `phpunit.xml` with the one from this repo
 - make sure that in `webpack.mix.js` you don't have `sourceMaps()` for production
-- don't forget to implement Searchable and Files for your required models. You can use `LaravelEnso\Companies\SearchServiceProvider` as example.  
+- don't forget to implement Searchable and Files for your required models. You can use `LaravelEnso\Companies\SearchServiceProvider` as example.
 
 Enjoy!
 
@@ -3984,7 +4190,7 @@ Enjoy!
 - copy `patches/bulma-rtl+0.7.1.patch` from Enso's repo to your local project
 - `composer update`
 - `yarn upgrade && yarn && yarn run dev`
-- add to your `config/enso/themes/php` 
+- add to your `config/enso/themes/php`
 ```php
 'light-rtl' => '/themes-rtl/light/bulma.min.css',
 'dark-rtl' => '/themes-rtl/dark/bulma.min.css',
@@ -4093,9 +4299,9 @@ Enjoy!
 ### Changes -> enso-ui
 
 #### accessories
-- changes the classes for comment dates and controls to ensure a better contract when using the dark theme 
+- changes the classes for comment dates and controls to ensure a better contract when using the dark theme
 - adds back the `controls` prop for documents
-- 
+-
 #### card
 - removes the card in the nextTick after emitting the `remove` event. This way the event can be used for custom logic, like router navigation
 
@@ -4150,11 +4356,11 @@ Enjoy!
   - add the `humanReadableDates` config option in `config/enso/comments.php`
   - rename the `buildingTypes.Comercial` to `buildingTypes.Commercial` in `config/enso/addresses.php`
   - if you are using the `enso` theme for mails then run `php artisan vendor:publish --tag=enso-email --force`
-  - remove from `routes/channels.php` both `App.User.{id}` and `operations.{userId}` entries 
+  - remove from `routes/channels.php` both `App.User.{id}` and `operations.{userId}` entries
   - if you're not using multitenancy remove from `config/databases.php` the `system` and `tenant` connections and update your env to use `mysql`
   - `php artisan enso:upgrade`
   - `yarn && yarn upgrade && yarn run dev`
-  
+
 ## 3.1.1
 
 - fixes typo in calendar
@@ -4200,7 +4406,7 @@ To upgrade:
 ## 3.0.3
 
 - adds `horizontalBar` chart type in Charts
-- exposes 
+- exposes
 - fixes a bug in Filemanager for filenames containing non ascii chars
 - adds a `responsive` boolean flag in vue table config / template that controls if the table is horizontally responsive / uses scroll
 - fixes the table stubs in StructureManager
@@ -4279,7 +4485,7 @@ For the active components we went for encapsulating the front end behavior in re
 
 ### Theming and styling
 
-As before, Enso ships with two themes, one dark and one light. 
+As before, Enso ships with two themes, one dark and one light.
 The themes and the overall styling have been organized better, offer the possibility of easier customization and can be found in the @enso-ui/themes package.
 
 It's easier to style specific components on both themes by creating a single scss file that uses variables, and place this file under the `/components` folder
@@ -4310,7 +4516,7 @@ In the past, even if we're done our best to make some of the components work out
 
 With the rewrite, all the packages were designed to be also Enso independent, and may be used in any vue project.
 
-If you are developing your project within the Enso ecosystem, the Enso versions of the components offer a tighter integration into the framework, 
+If you are developing your project within the Enso ecosystem, the Enso versions of the components offer a tighter integration into the framework,
 automatically determining and using:
 - the user's locale
 - dynamically determined routes
@@ -4555,7 +4761,7 @@ pagination
 
 - note that this update also upgrades Laravel to v5.8.x, Vue to v2.6.x, and Horizon to 3.0.x. It is important to take a look at their respective update notes & guides to determine if there any ugrade steps that apply to your project (this is irrespective of Enso)
 
-- remove from `package.json` the following dependencies 
+- remove from `package.json` the following dependencies
 ```json
 "accounting-js": "^1.1.1",
 "bulma-extensions": "^2.2.1",
@@ -4706,7 +4912,7 @@ if (mix.inProduction()) {
 ```
 - The folders below must be kept until you update your app to use the new npm packages. Once you're using the new versions, you may safely delete them:
     - `resources/js/classes/enso`
-    - `resources/js/components/enso` 
+    - `resources/js/components/enso`
 
 - delete the following folders since the respective functionality was moved to @enso-ui/ui
     - `resources/js/core`
@@ -4797,13 +5003,13 @@ if (mix.inProduction()) {
 
 - replace relative routeImporer imports such as: `import routeImporter from '../modules/importers/routeImporter;` with the package import : `import routeImporter from '@core-modules/importers/routeImporter';`
 
-- replace relative date-fns imports such as: `import format from '../../../modules/enso/plugins/date-fns/format;` with the package import `import format from '@core-modules/plugins/date-fns/format';` (notably `format`, `formatDistance`) 
+- replace relative date-fns imports such as: `import format from '../../../modules/enso/plugins/date-fns/format;` with the package import `import format from '@core-modules/plugins/date-fns/format';` (notably `format`, `formatDistance`)
 
 - comment out the import of the `tiptap-extensions` from `/resources/js/components/enso/vueforms/Wysiwyg.vue`
 
 - in `resources/images` ensure you have `earthlink.svg` & `enso-favicon.png`
 
-- when adding your own local routes that overwrite or reuse part or the core routes, ensure that 
+- when adding your own local routes that overwrite or reuse part or the core routes, ensure that
 within the route file you expose only the `path` and the `children` properties. If you also set the `meta` property, that would result in having the core routes overwritten by your local routes vs having the local routes merged into the core routes.
 
 - move the icon imports from `resources/js/core/structure/menu/icons/app.js` to `resources/js/app.js`
@@ -4842,12 +5048,12 @@ After run `git rm -r --cached ./`, perform a second commit and that's it.
 Beware that if you do that you will have to compile the assets in the deployment process.
 
 ## 2.16.0
-Starting with this version Enso gets native multitenancy support, 
+Starting with this version Enso gets native multitenancy support,
 thanks to the our newest package [laravel-enso/multitenancy](https://github.com/laravel-enso/multitenancy)
 
 ### Improvements
 - for more information on multitenancy, take a look at the documentation
-- adds caching support for totals in tables; this can be have a great positive impact in large tables. 
+- adds caching support for totals in tables; this can be have a great positive impact in large tables.
 For more info check the [docs](https://docs.laravel-enso.com/packages/vue-datatable.html#caching-support)
 - strengthens the user -> person -> company -> userGroup -> roles policies, getting ready for MT :D
 - upgrades horizon to 2.0.x
@@ -4907,7 +5113,7 @@ You have the option to configure the password's:
     - min special characters
     - max login attempts per minute
 
-If you leave the lifetime null or 0 the user will never be required to change his password. 
+If you leave the lifetime null or 0 the user will never be required to change his password.
 
 Once the lifetime is configured the user will receive notifications upon login when he has less than 3 days until his current password becomes invalid.
 
@@ -5107,7 +5313,7 @@ This is yet another step towards our vision for Enso and rest assured, there is 
 - comes with a new `import-uploader` component that can be placed anywhere in the applications for local imports
 
 #### Helpers
-- enhances the `Obj` class. Now it can receive any object or associative array, including Laravel collections, and even Models with loaded relations. 
+- enhances the `Obj` class. Now it can receive any object or associative array, including Laravel collections, and even Models with loaded relations.
 - changed the `Obj@get($key)` method to return `null` for an unset `$key`, instead of throwing an exception
 - enhances the Enum by reordering the data source priority. Take a look at `LaravelEnso\Examples\app\Enums\SeniorityEnum` for an example
 
@@ -5163,7 +5369,7 @@ This is yet another step towards our vision for Enso and rest assured, there is 
     * `config/enso/datatable.php` with `vendor/laravel-enso/vuedatatable/src/config/datatable.php`
 - configure your `config/horizon.php` to make sure that you have the appropriate queues for both local and production envs. You can use the config from this repo as an example.
 - refactor your import classes and validators to match the new structure
-- if necessary, in your table templates, rename the attribute `translation` to `translatable` 
+- if necessary, in your table templates, rename the attribute `translation` to `translatable`
 - sync `phpunit.xml` with the one from the main repo
 
 ## 2.13.17
@@ -5223,7 +5429,7 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 ```
 
-to 
+to
 
 ```php
 Route::view('/{any}', 'laravel-enso/core::index')
@@ -5330,7 +5536,7 @@ Upgrade an existing project:
   - `php artisan enso:upgrade`
   - if used, remove `\Debugbar::disable();` from your `AppServiceProvider`'s `boot` method
   - Add `App\Providers\TelescopeServiceProvider::class,` to the Application Service Providers in `config/app.php`
-  
+
   Please also note that telescope has a dependency on the `ext-bcmath` php extension
 
 ## 2.13.2
@@ -5360,7 +5566,7 @@ The `Permission Groups` were also dropped (menu, table, relation to permissions)
 
 The frontend routing was adjusted slightly to better match the backend routing, in the sense that all the route parameters are now named after the model instead of the generic `id`  (for instance, `adminisration/users/:id/edit` became `administration/users/:user/edit`) similar to Laravel conventions.
 
-Read all the notes below before jumping to the `Upgrade steps`. 
+Read all the notes below before jumping to the `Upgrade steps`.
 
 ### AddressManager
 - removed the `requestValidator` property from `addresses.php` config file (you may remove this from your local config)
@@ -5416,7 +5622,7 @@ Read all the notes below before jumping to the `Upgrade steps`.
 ### MenuManager
 - removed the `link` column and added `permission_id` from the `menus` table
 - updated the forms, pages, table and the structure migration
-- refactored the menu tree generation using the `permissions` table instead of the deprecated `role_menu` table 
+- refactored the menu tree generation using the `permissions` table instead of the deprecated `role_menu` table
 - updated the factory
 
 ### People
@@ -5450,7 +5656,7 @@ Read all the notes below before jumping to the `Upgrade steps`.
 - added a `keep-alive` boolean prop for `Tab.vue`
 
 ### VueDatatable
-- `readSuffix` was renamed to `dataRouteSuffix` and it's now optional, being defined globally in the `datatables.php` config file, with a default value of `tableData`. If needed, you may overwrite it per each table template 
+- `readSuffix` was renamed to `dataRouteSuffix` and it's now optional, being defined globally in the `datatables.php` config file, with a default value of `tableData`. If needed, you may overwrite it per each table template
 - added a 'highlight' option to the config that defaults to 'has-background-info',
 
 ### Upgrading existing projects
@@ -5522,7 +5728,7 @@ To update an existing project change in `composer.json`: "laravel-enso/addresses
 - added delete restrains/cascading options for the morphable packages - Addresses, Comments, Contacts, Discussions and Documents. To make use of the add in the local configs `'onDelete' => 'type'` where type can be `cascade` or `restrict`
 - improved the bookmarks, now we can unstick the first bookmark when it's single
 - fixed a bug in select, now the selection can be deselected in single mode
-- hided the vue select dropdown's scrollbar 
+- hided the vue select dropdown's scrollbar
 - added missing exception import in companies / people models
 - hided the menu's scroll bar
 - added scroll to settings
@@ -5544,7 +5750,7 @@ Facing our latest challenges we decided to change the way users are handled in E
 
 Some of the people will be users (all users are people), some can be contacts (soon), some can be clients or employees, and some can be of all types at once. This structure will handle all the personal information for persons that are relevant to the app.
 
-The second objective was cleaning up and improving the code, trying to make everything simpler and more consistent. We tried to rename what was was confusing, to move logic to where it belongs and so on. 
+The second objective was cleaning up and improving the code, trying to make everything simpler and more consistent. We tried to rename what was was confusing, to move logic to where it belongs and so on.
 
 The majority of tests were also improved.
 
@@ -5648,7 +5854,7 @@ It comes by default in an fresh Enso. To install it in an existing project:
  - `factory(LaravelEnso\Companies\app\Models\Company::class, xx)->create()` (optional)
 
 #### ToDo
-Plans for the near future: 
+Plans for the near future:
 - extend it to support customizations through publishable form and table templates
 - customize validation rules through the config
 - add a dedicated *contacts* structure based on `People`
@@ -5731,7 +5937,7 @@ The upgrade steps are similar to [AddressManager](#morphable)
 - enhanced the use of selects in templates. Now the `options` property can be provided with and `Enum`
 - also strengthened the validations for selects
 - added traits helpers for tests: `CreateForm`, `EditForm` & `DestroyForm`
-- updates the switch css class form `is-success` to `is-info` 
+- updates the switch css class form `is-success` to `is-info`
 
 ### Helpers
 #### Changes
@@ -5779,7 +5985,7 @@ Search in the whole project for `IsActive` and replace it with `ActiveState`, mi
 It comes by default in an fresh Enso. To install it in an existing project follow the main upgrade steps provided above.
 
 #### ToDo
-Plans for the near future: 
+Plans for the near future:
 - extend it to support customizations through publishable form and table templates
 - customize validation rules through the config
 
@@ -5988,13 +6194,13 @@ Update the command signature in your `comopser.json` in `"post-update-cmd"` even
 
 - cleans `preferences.json`, now it contains only global settings
 
-Moves the remaining demo files / classes / routes into the `examples` package:  
-    -  `app/Classes/LocalState.php` (delete your local one if not used)  
-    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)  
-    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)  
-    -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`  
-    - `routes/api.php` is now empty  
-    - dashboard Index.vue file  
+Moves the remaining demo files / classes / routes into the `examples` package:
+    -  `app/Classes/LocalState.php` (delete your local one if not used)
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
+    -  `app/Http/Controllers/ChartController.php` (delete your local one if not used)
+    -  `app/Importers/*` (delete your local one if not used). If you stil want to use the example importer update in `/config/enso/imports.php` the template path to `'template' => 'vendor/laravel-enso/examples/src/app/Imports/Templates/owners.json',`
+    - `routes/api.php` is now empty
+    - dashboard Index.vue file
 
 Finally, moves into core:
     - the front-end route for dashboard
@@ -6186,7 +6392,7 @@ Steps for adding discussions in an existing project:
 
 ### Changes
 
-- moves `FileUploader.vue` & `Uploader.vue` from `laravel-enso/vuecomponents` to `laravel-enso/filemanager` 
+- moves `FileUploader.vue` & `Uploader.vue` from `laravel-enso/vuecomponents` to `laravel-enso/filemanager`
 - adds a new `MorphableContainer.vue` component. An use example can be seen in owner's edit page
 - renames old `Addresses.vue` to `AddressesCard.vue`. Adds new `Addresses.vue` component to work with `MorphableContainer`
 - renames old `Contacts.vue` to `ContactsCard.vue`. Adds new `Contacts.vue` component to work with `MorphableContainer`
@@ -6202,7 +6408,7 @@ Steps for adding discussions in an existing project:
 - adds datatable and files integration. Your exports can now be downloaded from the app.
 - for existing projects run:
 - `composer require laravel-enso/dataexport`
-- `composer update` 
+- `composer update`
 - `php artisan migrate`
 - `npm run dev`
 
@@ -6416,7 +6622,7 @@ This version is a major backend refactor. It has breaking changes so read carefu
 #### File System
 - the file system has been rewritten around a single `FileManager` class that makes full use of Laravel's `UploadedFile` class
 - there is a `files` table now that keeps track of all the files in the application. The `File` model has a polymorphic 'attachable` relationship to any needed model.
-- to develop new packages that work with file uploads all you need is the new `HasFile` trait and implementing the `Attachable` contract. 
+- to develop new packages that work with file uploads all you need is the new `HasFile` trait and implementing the `Attachable` contract.
 The trait creates a `file` `morphOne` relationship to the base model and makes available all the needed methods: `inline()`, `download()`, `upload(UploadedFile $file)`. There are also helpers (check the contract / trait) and protected properties that can be used for configuring the specific of the model related to files, like:
     - `folder`: string the storage folder for the model's files
     - `mimeTypes`: array
@@ -6706,7 +6912,7 @@ Pay attention, has one breaking change. See the upgrade section below.
 - raises the pagination default from 5 to 100
 
 ### Core
- 
+
 - removes the obsolete `DBRenameReserved` command
 
 ### DocumentsManager
@@ -6818,20 +7024,20 @@ This release is one of the biggest upgrades in a long time
 Changes overview:
 - separated site layouts: `Auth`, `Home`, `Default`
 - better management of transitions between different UI stages, such as authentication to main
-- optimizations to the app routing 
+- optimizations to the app routing
 - middleware is now used for the router; The users access will be filtered in the front-end too, based on their permissions; This means that all the FE permissions must be present in the `permissions` table and attached to the according roles. In the near future you'll be able to also add your own middleware too
-- improved nprogress usage - applied through a router middleware 
+- improved nprogress usage - applied through a router middleware
 - all layouts show the loading progress bar
 - easier access to the nprogress object via the router, previous management via events has been removed as is no longer necessary
 - refactored the authentication pages with the reuse of common elements
 - the login, password reset and home pages are also themed
 - resolved a situation where the login form would not be visible until refresh
-- resolved visual issues during theme loading 
+- resolved visual issues during theme loading
 - improved the 'Page not found' page; added the 'Unauthorized' page
 - improved title management for pages with a dedicated middleware, fixed issue where the title was missing in some scenarios and also translation issues
 - addressed a role configurator bug when having more than one menu with the same name
 - moved the logic for handling missing translation keys to the store `localisation` module
-- many other front-end cleanup & optimizations 
+- many other front-end cleanup & optimizations
 - tree permission builder refactor for the back-end role configurator
 - added logic to handle front-end only permissions, with no corresponding back-end routes
 
@@ -6843,7 +7049,7 @@ To upgrade a project do the following:
 * run `php artisan enso:add-missing-permissions`
 * make sure to manually add to the permissions table all the FE-only permissions and attach them to the according roles
 * following is the reorganized structure (read with care!!!) of the core application layout files:
-    - `js/core` 
+    - `js/core`
         - `structure`: the structural sub-components of the app
             - `navbar` (top)
             - `sidebar` (left) -> bring your own `/icons/app.js` file under this folder
@@ -6873,15 +7079,15 @@ To upgrade a project do the following:
         - `js/middleware/before/nprogress.js`
         - `js/middleware/before/guest.js`
         - `js/middleware/after/nprogress.js`
-        - `js/middleware/after/documentTitle.js`        
-    
+        - `js/middleware/after/documentTitle.js`
+
 * authentication pages/components, will be published automatically on update
     - the referenced files are:
         - `js/pages/auth/AuthForm.vue`
         - `js/pages/auth/Login.vue`
         - `js/pages/auth/password/Email.vue`
         - `js/pages/auth/password/Reset.vue`
-    
+
 * dashboard
     - the referenced file is:
         - `js/pages/dashboard/Index.vue` -> it needs to be copied from the Enso repository, overwriting the existing file
@@ -7018,7 +7224,7 @@ Upgrade instructions and detailed changes:
 ### Core
     - run `php artisan enso:clear-preferences'
     - publish the new preferences.json from the core package (with --force)
-    
+
 ### Charts
     - Charts implements now the `Responsable` contract. You don't need to call `get()` anymore in your controller
 
@@ -7039,7 +7245,7 @@ We finally decided to start refactoring the store.
 ### Breaking Changes:
 - refines user preferences. Now we have the ability to store local prefs using the view's route name. Docs will be updated soon.
 - refactors the store modules
-    - `locale.js` was renamed to `localisation.js` 
+    - `locale.js` was renamed to `localisation.js`
     - `preferences.js` is now responsible for everything related
     - `navbar.js` was renamed to `menu.js`
 
@@ -7197,7 +7403,7 @@ Improves the new `money` component.
 
 Improves `vue-table` handling of `money` type.
 
-Closes: 
+Closes:
     - laravel-enso/vuedatatable#46
     - laravel-enso/vuedatatable#47
 
@@ -7547,9 +7753,9 @@ Updates packages.
 Extracted the `VueSelect.vue` and `VueSelectFilter.vue` to the Select package.
 Packages update.
 
-Note: the Vue components move means that you should update throughout your pages/components the import path to the 
-select components and then delete the leftover components from the `vueforms` and `bulma` folders respectively: 
- 
+Note: the Vue components move means that you should update throughout your pages/components the import path to the
+select components and then delete the leftover components from the `vueforms` and `bulma` folders respectively:
+
 ...`/vueforms/VueSelect.vue` to ...`/select/VueSelect.vue`
 
 ...`/bulma/VueSelectFilter.vue` to ...`/select/VueSelectFilter.vue`
@@ -7614,7 +7820,7 @@ Packages update
 
 ## 2.1.13
 
-Update to the core package AddressesManager to 2.2.0, which now uses the list of countries from 
+Update to the core package AddressesManager to 2.2.0, which now uses the list of countries from
 [webpatser/laravel-countries](https://github.com/webpatser/laravel-countries).
 
 Note that since the old list and the new list are different, this is a breaking change for the existing addresses (backup your data before upgrading). We include a command that will setup the new countries table for you post-install.
@@ -7776,7 +7982,7 @@ Adds custom exceptions that extend `EnsoException` were the latter was previousl
 Refactor and clean up code in migrations, Controllers / Services.
 
 
-### Upgrade instructions:   
+### Upgrade instructions:
  - remove manually the `administration.users.updateProfile` route from the permissions menu
  - rename the dataimport config file from `importing.php` to `imports.php`. Remove `validationLabels` entry from `imports.php`. Place configs at the parent level - follow the format of the config from the package.
  - update the namespace for the classes provided by the helpers package: `Obj`, `Enum`, `IsActive` trait and `EnsoException`
@@ -7800,8 +8006,8 @@ To upgrade do the following steps:
 ## 2.0.29
 Various small fixes and cleanup for addresses
 
-Upgraded the contacts component to use the vue-form. New routes and permissions 
-were added and contacts structure migration has been changed (new edit and create permissions) 
+Upgraded the contacts component to use the vue-form. New routes and permissions
+were added and contacts structure migration has been changed (new edit and create permissions)
 
 To upgrade, the following steps are necessary:
 * edit the migrations table record 2017_01_01_148000_create_structure_for_contacts, and set a high batch, say 999
@@ -7814,7 +8020,7 @@ To upgrade, the following steps are necessary:
 Upgrades the ios-switch to a new vue-switch component that is hosted in the formbuilder package
 
 ## 2.0.27
-Addresses module is now included by default and is available in the owner edit page  
+Addresses module is now included by default and is available in the owner edit page
 
 Packages update
 

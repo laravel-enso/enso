@@ -2,8 +2,8 @@ import Vue from 'vue';
 
 import '@core/modules';
 
-import App from '@enso-ui/ui/bulma';
 import { sync } from 'vuex-router-sync';
+import App from '@enso-ui/ui/bulma';
 import store from './store';
 import router from './router';
 
