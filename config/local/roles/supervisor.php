@@ -75,5 +75,6 @@ return [
         'core.addresses.options',
         'core.addresses.localities',
         'core.addresses.regions',
+        'core.addresses.localize',
     ],
 ];
