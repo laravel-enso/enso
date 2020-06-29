@@ -9,11 +9,17 @@ services:
     volumes:
       - ./docker/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./:/var/www/html
+    environment:
+      DB_HOST: mysqldb
+      REDIS_HOST: redis
     depends_on:
       - mysqldb
+      - redis
+    networks:
+      - enso
 
   mysqldb:
-    image: mysql:5.7.21
+    image: mysql:8
     container_name: enso-${DB_CONNECTION}
     restart: always
     env_file:
@@ -27,6 +33,13 @@ services:
       - 3306:3306
     volumes:
       - /var/lib/mysql
+    networks:
+      - enso
+
+  redis:
+    image: redis:latest
+    networks:
+      - enso
 
 #  myadmin:
 #    image: phpmyadmin/phpmyadmin:4.7
@@ -39,3 +52,6 @@ services:
 #    restart: always
 #    depends_on:
 #      - mysqldb
+
+networks:
+  enso:
