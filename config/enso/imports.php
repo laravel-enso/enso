@@ -92,16 +92,16 @@ return [
     | Holds your import configuration. 'label' is used for the main page select
     | and template is the full path to your import template JSON.
     |
-    */
+     */
 
     'configs' => [
         'companies' => [
             'label' => 'Companies',
-            'template' => 'vendor/laravel-enso/companies/src/App/Imports/Templates/companies.json',
+            'template' => 'vendor/laravel-enso/companies/src/Imports/Templates/companies.json',
         ],
         'userGroups' => [
             'label' => 'User Groups',
-            'template' => 'vendor/laravel-enso/data-import/src/App/Tests/userGroups.json',
+            'template' => 'vendor/laravel-enso/data-import/src/Tests/userGroups.json',
         ],
     ],
 ];

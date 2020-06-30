@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Menus\App\Models\Menu;
-use LaravelEnso\Roles\App\Models\Role;
+use LaravelEnso\Menus\Models\Menu;
+use LaravelEnso\Roles\Models\Role;
 
 $factory->define(Role::class, fn (Faker $faker) => [
     'name' => $faker->word,

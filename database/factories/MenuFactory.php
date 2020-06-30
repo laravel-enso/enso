@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Menus\App\Models\Menu;
-use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Menus\Models\Menu;
+use LaravelEnso\Permissions\Models\Permission;
 
 $factory->define(Menu::class, fn (Faker $faker) => [
     'permission_id' => fn () => factory(Permission::class)->create()->id,

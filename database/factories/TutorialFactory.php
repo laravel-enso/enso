@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Permissions\App\Models\Permission;
-use LaravelEnso\Tutorials\App\Enums\Placement;
-use LaravelEnso\Tutorials\App\Models\Tutorial;
+use LaravelEnso\Permissions\Models\Permission;
+use LaravelEnso\Tutorials\Enums\Placement;
+use LaravelEnso\Tutorials\Models\Tutorial;
 
 $factory->define(Tutorial::class, fn (Faker $faker) => [
     'permission_id' => fn () => factory(Permission::class)->create()->id,

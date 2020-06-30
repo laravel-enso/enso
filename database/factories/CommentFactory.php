@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Comments\App\Models\Comment;
+use LaravelEnso\Comments\Models\Comment;
 
 $factory->define(Comment::class, fn (Faker $faker) => [
     'commentable_id' => $faker->randomKey,

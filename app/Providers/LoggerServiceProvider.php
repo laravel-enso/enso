@@ -3,12 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\App;
-use LaravelEnso\ActivityLog\App\Enums\Events;
-use LaravelEnso\ActivityLog\App\Facades\Logger;
+use LaravelEnso\ActivityLog\Enums\Events;
+use LaravelEnso\ActivityLog\Facades\Logger;
 use LaravelEnso\ActivityLog\LoggerServiceProvider as ServiceProvider;
-use LaravelEnso\Core\App\Models\User;
-use LaravelEnso\Roles\App\Models\Role;
-use LaravelEnso\Teams\App\Models\Team;
+use LaravelEnso\Core\Models\User;
+use LaravelEnso\Roles\Models\Role;
+use LaravelEnso\Teams\Models\Team;
 
 class LoggerServiceProvider extends ServiceProvider
 {

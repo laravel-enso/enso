@@ -1,6 +1,7 @@
 <?php
 
-use LaravelEnso\Filters\App\Enums\SearchModes;
+use LaravelEnso\Filters\Enums\ComparisonOperators;
+use LaravelEnso\Filters\Enums\SearchModes;
 
 return [
     /*
@@ -202,7 +203,7 @@ return [
         'path' => 'exports',
         'timeout' => 60 * 60,
         'sheetLimit' => 1000000,
-        'notifications' => ['mail', 'broadcast', 'database'],
+        'notifications' => ['email', 'broadcast', 'database'],
     ],
 
     /*
@@ -219,13 +220,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Date format
+    | Date & Datetime format
     |--------------------------------------------------------------------------
     | Global date format for date columns. Will use Carbon to parse the columns
     | marked as date to the desired format.
      */
 
     'dateFormat' => 'd-m-Y',
+    'dateTimeFormat' => 'd-m-Y H:i:s',
 
     /*
     |--------------------------------------------------------------------------
@@ -284,36 +286,36 @@ return [
     |--------------------------------------------------------------------------
     | SQL comparison operator
     |--------------------------------------------------------------------------
-    | The comparison operator will be the default used for every table. You
-    | will still have the option of customizing the operator for certain
-    | tables by using the same attribute in the table's json template.
-    | Possible values for comparison operator: LIKE, ILIKE
+    | The comparison operator will be the default used for every table. Can be
+    | customized for each table. Possible values:
+    | ComparisonOperators::Like, ComparisonOperators::ILike
     */
 
-    'comparisonOperator' => 'LIKE',
+    'comparisonOperator' => ComparisonOperators::Like,
 
     /*
     |--------------------------------------------------------------------------
     | Search Modes
     |--------------------------------------------------------------------------
-    | Allowed search modes. Array with one ore more possible values
-    | Possible values for search mode: 'full', 'startsWith', 'endsWith'
-    |
+    | Global allowed search modes that can be customized for each table.
+    | Possible values:
+    | SearchModes::Full', SearchModes::StartsWith, SearchModes::EndsWith
     */
 
     'searchModes' => [
         SearchModes::Full, SearchModes::StartsWith, SearchModes::EndsWith,
         SearchModes::ExactMatch, SearchModes::DoesntContain,
+        // SearchModes::Algolia,
     ],
 
     /*
     |--------------------------------------------------------------------------
     | Search Mode
     |--------------------------------------------------------------------------
-    | Controls the global way in which wildcards are used in the query.
-    | Can be customized for each table.
-    | Possible values for search mode: 'full', 'startsWith', 'endsWith'
+    | Controls the default way in which wildcards are used in the query.
+    | Can be customized for each table. Possible values:
+    | SearchModes::Full', SearchModes::StartsWith, SearchModes::EndsWith
     */
 
-    'searchMode' => 'full',
+    'searchMode' => SearchModes::Full,
 ];

@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Addresses\App\Models\Address;
-use LaravelEnso\Countries\App\Models\Country;
+use LaravelEnso\Addresses\Models\Address;
+use LaravelEnso\Countries\Models\Country;
 
 $factory->define(Address::class, function (Faker $faker) {
     $country = Country::inRandomOrder()->first();
