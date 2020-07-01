@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 
 // example data for the dashboard
@@ -27,3 +28,5 @@ Route::middleware(['auth', 'core'])
     ->group(function () {
         // add your local routes
     });
+
+Broadcast::routes(['middleware' => ['auth:sanctum']]);
