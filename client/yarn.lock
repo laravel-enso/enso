@@ -1576,9 +1576,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@^3.0":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-3.0.5.tgz#b053df66c5bbf6845853e66d155296657680a2ba"
-  integrity sha512-ZZESxLgRCERPl5P4ovZeLjb5j+mn1ERsmLr7eUdn6L3SnNDpcApJHAyl28WmGhVXRw01v/CIMuzDwUplHJTsdg==
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-3.0.6.tgz#5e0fb4ac3067c139ab4f1f6c35b95e66cbdf850a"
+  integrity sha512-wG0dHgR0AatIkcKbaW37wa3gmxJJWuv3aRYVbXhQ//iNyyL/wK1hH1cU6YGDCk7YBr+rxGwWNk/5V0H60BsdZQ==
   dependencies:
     "@enso-ui/accessories" "^3.0"
     "@enso-ui/charts" "^2.0"
