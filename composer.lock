@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa52d323ed1292b20dbada522f8feef4",
+    "content-hash": "681b85a8af476006fcad8631e655c169",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -232,6 +232,12 @@
                 "brick",
                 "math"
             ],
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-04-15T15:59:35+00:00"
         },
         {
@@ -394,6 +400,20 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-19T07:59:31+00:00"
         },
         {
@@ -509,6 +529,20 @@
                 "redis",
                 "xcache"
             ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-27T16:24:54+00:00"
         },
         {
@@ -602,6 +636,20 @@
                 "sqlite",
                 "sqlserver",
                 "sqlsrv"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdbal",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-20T17:19:26+00:00"
         },
@@ -756,6 +804,20 @@
                 "uppercase",
                 "words"
             ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-29T15:13:26+00:00"
         },
         {
@@ -817,6 +879,20 @@
                 "lexer",
                 "parser",
                 "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-25T17:44:05+00:00"
         },
@@ -1051,6 +1127,12 @@
                 "cors",
                 "crossdomain",
                 "laravel"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
             ],
             "time": "2020-04-28T08:47:37+00:00"
         },
@@ -1482,20 +1564,22 @@
         },
         {
             "name": "laravel-enso/action-logger",
-            "version": "2.4.2",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/action-logger.git",
-                "reference": "a2693d70c6ee742067865c494b36a29fd511f733"
+                "reference": "430afd0ae00dc82a3c9855e5bfc78b7208a1c273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/action-logger/zipball/a2693d70c6ee742067865c494b36a29fd511f733",
-                "reference": "a2693d70c6ee742067865c494b36a29fd511f733",
+                "url": "https://api.github.com/repos/laravel-enso/action-logger/zipball/430afd0ae00dc82a3c9855e5bfc78b7208a1c273",
+                "reference": "430afd0ae00dc82a3c9855e5bfc78b7208a1c273",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/permissions": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -1530,29 +1614,29 @@
                 "laravel-enso",
                 "logging"
             ],
-            "time": "2020-03-26T14:04:27+00:00"
+            "time": "2020-06-30T13:19:22+00:00"
         },
         {
             "name": "laravel-enso/activity-log",
-            "version": "3.2.4",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/activity-log.git",
-                "reference": "e8cea6a8031f90738a349b7cbcf05ce13cef9cc0"
+                "reference": "83095ad70f9f30ddd25db8dda6371c067412edbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/e8cea6a8031f90738a349b7cbcf05ce13cef9cc0",
-                "reference": "e8cea6a8031f90738a349b7cbcf05ce13cef9cc0",
+                "url": "https://api.github.com/repos/laravel-enso/activity-log/zipball/83095ad70f9f30ddd25db8dda6371c067412edbe",
+                "reference": "83095ad70f9f30ddd25db8dda6371c067412edbe",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -1589,31 +1673,31 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-06-10T07:21:25+00:00"
+            "time": "2020-06-30T13:19:22+00:00"
         },
         {
             "name": "laravel-enso/addresses",
-            "version": "3.4.25",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/addresses.git",
-                "reference": "65bdc5671f8b8993b2858d41b72f0e690a0aa7ff"
+                "reference": "141c28e501179f1437290df82ecc21298d5dcda1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/65bdc5671f8b8993b2858d41b72f0e690a0aa7ff",
-                "reference": "65bdc5671f8b8993b2858d41b72f0e690a0aa7ff",
+                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/141c28e501179f1437290df82ecc21298d5dcda1",
+                "reference": "141c28e501179f1437290df82ecc21298d5dcda1",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/countries": "1.1.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/select": "3.3.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/countries": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/select": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -1621,8 +1705,7 @@
                     "providers": [
                         "LaravelEnso\\Addresses\\AppServiceProvider",
                         "LaravelEnso\\Addresses\\CountryServiceProvider"
-                    ],
-                    "aliases": []
+                    ]
                 }
             },
             "autoload": {
@@ -1653,27 +1736,27 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-06-13T07:34:49+00:00"
+            "time": "2020-06-30T11:23:48+00:00"
         },
         {
             "name": "laravel-enso/avatars",
-            "version": "2.5.11",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/avatars.git",
-                "reference": "45ebbfd49568952bc9462b788a9f439086b30171"
+                "reference": "a1e0f3ed9c5ef740c58837aec7c1907144037b4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/45ebbfd49568952bc9462b788a9f439086b30171",
-                "reference": "45ebbfd49568952bc9462b788a9f439086b30171",
+                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/a1e0f3ed9c5ef740c58837aec7c1907144037b4d",
+                "reference": "a1e0f3ed9c5ef740c58837aec7c1907144037b4d",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/image-transformer": "1.6.*",
-                "laravel-enso/migrator": "1.1.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/image-transformer": "^2.0",
+                "laravel-enso/migrator": "^2.0",
                 "laravolt/avatar": "^3.0"
             },
             "type": "library",
@@ -1711,33 +1794,33 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-05-15T09:07:20+00:00"
+            "time": "2020-06-26T07:19:49+00:00"
         },
         {
             "name": "laravel-enso/calendar",
-            "version": "1.5.11",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/calendar.git",
-                "reference": "2205dd404599aa4b7548ccb2ea63559119a6d0c3"
+                "reference": "92bc93db3cb54de3da467d441efb9d269d2ccd7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/2205dd404599aa4b7548ccb2ea63559119a6d0c3",
-                "reference": "2205dd404599aa4b7548ccb2ea63559119a6d0c3",
+                "url": "https://api.github.com/repos/laravel-enso/calendar/zipball/92bc93db3cb54de3da467d441efb9d269d2ccd7a",
+                "reference": "92bc93db3cb54de3da467d441efb9d269d2ccd7a",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/people": "2.5.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/people": "^3.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -1786,24 +1869,24 @@
                 "laravel-enso",
                 "reminders"
             ],
-            "time": "2020-06-08T07:43:31+00:00"
+            "time": "2020-07-06T06:04:13+00:00"
         },
         {
             "name": "laravel-enso/charts",
-            "version": "3.2.3",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/charts.git",
-                "reference": "1e07d7d90db1f042e87d802571f588a567fb6dea"
+                "reference": "0c96a398ca3028a20ad0ce47b199260b391e1d77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/charts/zipball/1e07d7d90db1f042e87d802571f588a567fb6dea",
-                "reference": "1e07d7d90db1f042e87d802571f588a567fb6dea",
+                "url": "https://api.github.com/repos/laravel-enso/charts/zipball/0c96a398ca3028a20ad0ce47b199260b391e1d77",
+                "reference": "0c96a398ca3028a20ad0ce47b199260b391e1d77",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -1841,29 +1924,29 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-04-10T09:50:39+00:00"
+            "time": "2020-06-30T15:29:27+00:00"
         },
         {
             "name": "laravel-enso/cli",
-            "version": "3.4.8",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/cli.git",
-                "reference": "ec8a6aeb2cf987f33dad2e8dda120826f3a6c7a6"
+                "reference": "d5c4f99e07c3ebb0f27b495bb42f7efff78b2c5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/ec8a6aeb2cf987f33dad2e8dda120826f3a6c7a6",
-                "reference": "ec8a6aeb2cf987f33dad2e8dda120826f3a6c7a6",
+                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/d5c4f99e07c3ebb0f27b495bb42f7efff78b2c5c",
+                "reference": "d5c4f99e07c3ebb0f27b495bb42f7efff78b2c5c",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/menus": "3.4.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/roles": "3.4.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/menus": "^4.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/roles": "^4.0",
                 "php": ">=7.4.0"
             },
             "type": "library",
@@ -1899,34 +1982,36 @@
                 "enso-helper",
                 "laravel-enso"
             ],
-            "time": "2020-04-23T06:08:58+00:00"
+            "time": "2020-06-30T10:56:59+00:00"
         },
         {
             "name": "laravel-enso/comments",
-            "version": "3.3.8",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/comments.git",
-                "reference": "9ebbb1fce6751ad3ed75acb35f0818b11d612a86"
+                "reference": "bd988f7d2d2dbe302e13e071cb61e92c59d78fae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/9ebbb1fce6751ad3ed75acb35f0818b11d612a86",
-                "reference": "9ebbb1fce6751ad3ed75acb35f0818b11d612a86",
+                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/bd988f7d2d2dbe302e13e071cb61e92c59d78fae",
+                "reference": "bd988f7d2d2dbe302e13e071cb61e92c59d78fae",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
                         "LaravelEnso\\Comments\\AppServiceProvider",
-                        "LaravelEnso\\Comments\\AuthServiceProvider"
+                        "LaravelEnso\\Comments\\AuthServiceProvider",
+                        "LaravelEnso\\Comments\\UserServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -1955,38 +2040,35 @@
                 "comments-manager",
                 "laravel-enso"
             ],
-            "time": "2020-05-22T06:12:28+00:00"
+            "time": "2020-06-30T14:54:52+00:00"
         },
         {
             "name": "laravel-enso/companies",
-            "version": "2.4.10",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/companies.git",
-                "reference": "f108812b20fef014cea89c58e4b6620c78e97759"
+                "reference": "a14596638ed4259967d8b87aeb41fc6da56a773a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/f108812b20fef014cea89c58e4b6620c78e97759",
-                "reference": "f108812b20fef014cea89c58e4b6620c78e97759",
+                "url": "https://api.github.com/repos/laravel-enso/companies/zipball/a14596638ed4259967d8b87aeb41fc6da56a773a",
+                "reference": "a14596638ed4259967d8b87aeb41fc6da56a773a",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/addresses": "3.4.*",
-                "laravel-enso/comments": "3.3.*",
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/data-import": "4.4.*",
-                "laravel-enso/discussions": "2.3.*",
-                "laravel-enso/documents": "3.4.*",
-                "laravel-enso/dynamic-methods": "1.1.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/people": "2.5.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/tables": "3.2.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/addresses": "^4.0",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/data-import": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/people": "^3.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/tables": "^4.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -2025,36 +2107,35 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-05-15T13:57:31+00:00"
+            "time": "2020-06-30T13:19:35+00:00"
         },
         {
             "name": "laravel-enso/control-panel-api",
-            "version": "2.5.9",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/control-panel-api.git",
-                "reference": "9cabf1ba521bdabce4810dfb4e781a9b29b89ca6"
+                "reference": "9c8e6de7f2341fa0c2642517d93c31bb4aa9256e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/9cabf1ba521bdabce4810dfb4e781a9b29b89ca6",
-                "reference": "9cabf1ba521bdabce4810dfb4e781a9b29b89ca6",
+                "url": "https://api.github.com/repos/laravel-enso/control-panel-api/zipball/9c8e6de7f2341fa0c2642517d93c31bb4aa9256e",
+                "reference": "9c8e6de7f2341fa0c2642517d93c31bb4aa9256e",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/action-logger": "2.4.*",
-                "laravel-enso/control-panel-common": "1.0.*",
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/logs": "3.2.*"
+                "laravel-enso/action-logger": "^3.0",
+                "laravel-enso/control-panel-common": "^2.0",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/logs": "^4.0"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "LaravelEnso\\ControlPanelApi\\AppServiceProvider",
-                        "LaravelEnso\\ControlPanelApi\\AuthServiceProvider"
+                        "LaravelEnso\\ControlPanelApi\\AppServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -2089,24 +2170,24 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:35:49+00:00"
+            "time": "2020-06-30T15:39:52+00:00"
         },
         {
             "name": "laravel-enso/control-panel-common",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/control-panel-common.git",
-                "reference": "e66b54ae723d20694c9371ebcdcd5b434178481b"
+                "reference": "3e6ca80e92662a649b4a86650de57bde7a94fbdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/control-panel-common/zipball/e66b54ae723d20694c9371ebcdcd5b434178481b",
-                "reference": "e66b54ae723d20694c9371ebcdcd5b434178481b",
+                "url": "https://api.github.com/repos/laravel-enso/control-panel-common/zipball/3e6ca80e92662a649b4a86650de57bde7a94fbdf",
+                "reference": "3e6ca80e92662a649b4a86650de57bde7a94fbdf",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/helpers": "1.15.*"
+                "laravel-enso/helpers": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -2138,57 +2219,55 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:35:11+00:00"
+            "time": "2020-06-24T15:56:45+00:00"
         },
         {
             "name": "laravel-enso/core",
-            "version": "4.8.42",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "33990d6b17cea8f511db2db212aa819985f7878c"
+                "reference": "37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/33990d6b17cea8f511db2db212aa819985f7878c",
-                "reference": "33990d6b17cea8f511db2db212aa819985f7878c",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec",
+                "reference": "37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~6.0",
-                "laravel-enso/action-logger": "2.4.*",
-                "laravel-enso/activity-log": "3.2.*",
-                "laravel-enso/avatars": "2.5.*",
-                "laravel-enso/charts": "3.2.*",
-                "laravel-enso/companies": "2.4.*",
-                "laravel-enso/data-export": "1.6.*",
-                "laravel-enso/data-import": "4.4.*",
-                "laravel-enso/dynamic-methods": "1.1.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/history-tracker": "1.7.*",
-                "laravel-enso/how-to": "3.3.*",
-                "laravel-enso/impersonate": "2.5.*",
-                "laravel-enso/io": "1.3.*",
-                "laravel-enso/localisation": "3.5.*",
-                "laravel-enso/logs": "3.2.*",
-                "laravel-enso/menus": "3.4.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/notifications": "3.2.*",
-                "laravel-enso/people": "2.5.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/roles": "3.4.*",
-                "laravel-enso/searchable": "1.3.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/tables": "3.2.*",
-                "laravel-enso/teams": "2.2.*",
-                "laravel-enso/track-who": "1.9.*",
-                "laravel-enso/tutorials": "3.3.*",
-                "laravel-enso/upgrade": "1.0.*",
+                "laravel-enso/action-logger": "^3.0",
+                "laravel-enso/avatars": "^3.0",
+                "laravel-enso/charts": "^4.0",
+                "laravel-enso/companies": "^3.0",
+                "laravel-enso/data-export": "^2.0",
+                "laravel-enso/data-import": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/history-tracker": "^2.0",
+                "laravel-enso/impersonate": "^3.0",
+                "laravel-enso/io": "^2.0",
+                "laravel-enso/localisation": "^4.0",
+                "laravel-enso/logs": "^4.0",
+                "laravel-enso/menus": "^4.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/notifications": "^4.0",
+                "laravel-enso/people": "^3.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/roles": "^4.0",
+                "laravel-enso/searchable": "^2.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/tables": "^4.0",
+                "laravel-enso/teams": "^3.0",
+                "laravel-enso/track-who": "^2.0",
+                "laravel-enso/upgrade": "^2.0",
                 "laravel/framework": "^7.0",
+                "laravel/sanctum": "^2.3",
                 "php": ">=7.4.0"
             },
             "type": "library",
@@ -2241,30 +2320,30 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2020-06-25T07:58:16+00:00"
+            "time": "2020-07-01T10:29:25+00:00"
         },
         {
             "name": "laravel-enso/countries",
-            "version": "1.1.9",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/countries.git",
-                "reference": "f7417316ccc48d017610187c49dc59d663265416"
+                "reference": "976a5269de12d994e59bc52f4bdb619eb6354812"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/f7417316ccc48d017610187c49dc59d663265416",
-                "reference": "f7417316ccc48d017610187c49dc59d663265416",
+                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/976a5269de12d994e59bc52f4bdb619eb6354812",
+                "reference": "976a5269de12d994e59bc52f4bdb619eb6354812",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/dynamic-methods": "1.1.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/select": "3.3.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/select": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -2304,29 +2383,29 @@
                 "laravel-enso",
                 "manager"
             ],
-            "time": "2020-05-28T14:55:37+00:00"
+            "time": "2020-06-26T18:42:24+00:00"
         },
         {
             "name": "laravel-enso/data-export",
-            "version": "1.6.5",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-export.git",
-                "reference": "294ab28e51cf9af3e91a11bbcb57c708c0b96b0a"
+                "reference": "7209efdc2a4afc8815288ed926f036eb1e98efc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/294ab28e51cf9af3e91a11bbcb57c708c0b96b0a",
-                "reference": "294ab28e51cf9af3e91a11bbcb57c708c0b96b0a",
+                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/7209efdc2a4afc8815288ed926f036eb1e98efc5",
+                "reference": "7209efdc2a4afc8815288ed926f036eb1e98efc5",
                 "shasum": ""
             },
             "require": {
                 "box/spout": "^3.0",
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/io": "1.3.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/io": "^2.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -2362,33 +2441,34 @@
                 "enso-exports",
                 "laravel-enso"
             ],
-            "time": "2020-05-15T13:58:27+00:00"
+            "time": "2020-06-29T08:34:53+00:00"
         },
         {
             "name": "laravel-enso/data-import",
-            "version": "4.4.24",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-import.git",
-                "reference": "3c255be96a6f0710b66f3041624024a828548af7"
+                "reference": "9bcb9a934984b62910dfaa13d1eb98a077e11e2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/3c255be96a6f0710b66f3041624024a828548af7",
-                "reference": "3c255be96a6f0710b66f3041624024a828548af7",
+                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/9bcb9a934984b62910dfaa13d1eb98a077e11e2c",
+                "reference": "9bcb9a934984b62910dfaa13d1eb98a077e11e2c",
                 "shasum": ""
             },
             "require": {
                 "box/spout": "^3.0",
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/io": "1.3.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/tables": "3.2.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/io": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/tables": "^4.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -2430,28 +2510,28 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2020-05-15T12:43:15+00:00"
+            "time": "2020-06-30T16:59:03+00:00"
         },
         {
             "name": "laravel-enso/discussions",
-            "version": "2.3.7",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/discussions.git",
-                "reference": "6854b0d18df031c5e0bb3d70a84c550dba6e4a80"
+                "reference": "28e368cb1e8ec4047110f5e2d607a7cc504a1dc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/6854b0d18df031c5e0bb3d70a84c550dba6e4a80",
-                "reference": "6854b0d18df031c5e0bb3d70a84c550dba6e4a80",
+                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/28e368cb1e8ec4047110f5e2d607a7cc504a1dc7",
+                "reference": "28e368cb1e8ec4047110f5e2d607a7cc504a1dc7",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -2486,30 +2566,30 @@
                 "discussions",
                 "laravel-enso"
             ],
-            "time": "2020-06-10T07:20:00+00:00"
+            "time": "2020-06-24T17:35:45+00:00"
         },
         {
             "name": "laravel-enso/documents",
-            "version": "3.4.7",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "0942c66a789c7eee122a7c4317c799bff8cf51ec"
+                "reference": "99d1c38658c8b895f031c8c4e15ac95b92714545"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/0942c66a789c7eee122a7c4317c799bff8cf51ec",
-                "reference": "0942c66a789c7eee122a7c4317c799bff8cf51ec",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/99d1c38658c8b895f031c8c4e15ac95b92714545",
+                "reference": "99d1c38658c8b895f031c8c4e15ac95b92714545",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/image-transformer": "1.6.*",
-                "laravel-enso/migrator": "1.1.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/image-transformer": "^2.0",
+                "laravel-enso/migrator": "^2.0",
                 "laravel-enso/ocr": "1.0.*",
-                "laravel-enso/track-who": "1.9.*"
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "plugin",
             "extra": {
@@ -2547,20 +2627,20 @@
                 "file-uploader",
                 "laravel-enso"
             ],
-            "time": "2020-05-22T06:18:40+00:00"
+            "time": "2020-06-25T08:53:34+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
-            "version": "1.1.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/dynamic-methods.git",
-                "reference": "65f27cb1739868fc1a3a39cd43cecc18a56cb36f"
+                "reference": "c8837553bb9cc6d5e0479c1aac085e6ce5748d8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/dynamic-methods/zipball/65f27cb1739868fc1a3a39cd43cecc18a56cb36f",
-                "reference": "65f27cb1739868fc1a3a39cd43cecc18a56cb36f",
+                "url": "https://api.github.com/repos/laravel-enso/dynamic-methods/zipball/c8837553bb9cc6d5e0479c1aac085e6ce5748d8c",
+                "reference": "c8837553bb9cc6d5e0479c1aac085e6ce5748d8c",
                 "shasum": ""
             },
             "require": {
@@ -2590,20 +2670,20 @@
                 "dynamic-methods",
                 "laravel-enso"
             ],
-            "time": "2020-06-13T13:34:17+00:00"
+            "time": "2020-06-23T06:06:53+00:00"
         },
         {
             "name": "laravel-enso/enums",
-            "version": "1.2.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/enums.git",
-                "reference": "bf361c5013c6beb7651bab91497a29045fab3be0"
+                "reference": "41ac6425f1cb893910d8f4a98125cc0f37bc4d93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/enums/zipball/bf361c5013c6beb7651bab91497a29045fab3be0",
-                "reference": "bf361c5013c6beb7651bab91497a29045fab3be0",
+                "url": "https://api.github.com/repos/laravel-enso/enums/zipball/41ac6425f1cb893910d8f4a98125cc0f37bc4d93",
+                "reference": "41ac6425f1cb893910d8f4a98125cc0f37bc4d93",
                 "shasum": ""
             },
             "require": {
@@ -2618,7 +2698,7 @@
                         "LaravelEnso\\Enums\\EnumServiceProvider"
                     ],
                     "aliases": {
-                        "Enums": "LaravelEnso\\Enums\\App\\Facades\\Enums"
+                        "Enums": "LaravelEnso\\Enums\\Facades\\Enums"
                     }
                 }
             },
@@ -2651,20 +2731,20 @@
                 "enums",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:11:22+00:00"
+            "time": "2020-06-23T09:30:16+00:00"
         },
         {
             "name": "laravel-enso/excel",
-            "version": "1.1.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/excel.git",
-                "reference": "699b900cf7c52e9803c0068d8d2cf52453dfbd8a"
+                "reference": "bee4346619d2ff0c025ec83f7f370f62f6746ec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/excel/zipball/699b900cf7c52e9803c0068d8d2cf52453dfbd8a",
-                "reference": "699b900cf7c52e9803c0068d8d2cf52453dfbd8a",
+                "url": "https://api.github.com/repos/laravel-enso/excel/zipball/bee4346619d2ff0c025ec83f7f370f62f6746ec4",
+                "reference": "bee4346619d2ff0c025ec83f7f370f62f6746ec4",
                 "shasum": ""
             },
             "require": {
@@ -2708,28 +2788,28 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:17:37+00:00"
+            "time": "2020-06-25T11:19:02+00:00"
         },
         {
             "name": "laravel-enso/files",
-            "version": "3.4.11",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "5203c6a92a3dc92dc4ac5ce0cdc9d90b5b6a169a"
+                "reference": "2629e167188d40506e49ce7ec4cc57ee0b8ee971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/5203c6a92a3dc92dc4ac5ce0cdc9d90b5b6a169a",
-                "reference": "5203c6a92a3dc92dc4ac5ce0cdc9d90b5b6a169a",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/2629e167188d40506e49ce7ec4cc57ee0b8ee971",
+                "reference": "2629e167188d40506e49ce7ec4cc57ee0b8ee971",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/image-transformer": "1.6.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/track-who": "1.9.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/image-transformer": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/track-who": "^2.0",
                 "php": ">=7.4.0"
             },
             "type": "library",
@@ -2742,7 +2822,7 @@
                         "LaravelEnso\\Files\\UploadServiceProvider"
                     ],
                     "aliases": {
-                        "FileBrowser": "LaravelEnso\\Files\\App\\Facades\\FileBrowser"
+                        "FileBrowser": "LaravelEnso\\Files\\Facades\\FileBrowser"
                     }
                 }
             },
@@ -2771,24 +2851,24 @@
                 "files",
                 "laravel-enso"
             ],
-            "time": "2020-06-10T10:52:53+00:00"
+            "time": "2020-06-26T07:17:00+00:00"
         },
         {
             "name": "laravel-enso/filters",
-            "version": "1.0.12",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/filters.git",
-                "reference": "20b6cadf757888b5cfb8f9e4b5ec8d0b20ec7827"
+                "reference": "54eb8255877d10cfb9cf8deddd62a8ea0c1e6483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/filters/zipball/20b6cadf757888b5cfb8f9e4b5ec8d0b20ec7827",
-                "reference": "20b6cadf757888b5cfb8f9e4b5ec8d0b20ec7827",
+                "url": "https://api.github.com/repos/laravel-enso/filters/zipball/54eb8255877d10cfb9cf8deddd62a8ea0c1e6483",
+                "reference": "54eb8255877d10cfb9cf8deddd62a8ea0c1e6483",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -2817,25 +2897,25 @@
                 "filters",
                 "laravel-enso"
             ],
-            "time": "2020-05-11T06:02:31+00:00"
+            "time": "2020-06-25T07:23:42+00:00"
         },
         {
             "name": "laravel-enso/forms",
-            "version": "3.4.13",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "0ce9e718d770f4fb94319844bd56ae320a4f0fd5"
+                "reference": "ca2629ca17689cce353cd8c2a8227ddbb7427847"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/0ce9e718d770f4fb94319844bd56ae320a4f0fd5",
-                "reference": "0ce9e718d770f4fb94319844bd56ae320a4f0fd5",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/ca2629ca17689cce353cd8c2a8227ddbb7427847",
+                "reference": "ca2629ca17689cce353cd8c2a8227ddbb7427847",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -2873,20 +2953,20 @@
                 "json-templates",
                 "laravel-enso"
             ],
-            "time": "2020-05-19T15:41:28+00:00"
+            "time": "2020-06-24T18:24:01+00:00"
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "1.15.20",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/helpers.git",
-                "reference": "f03725ecfe78aa941c40473e0c8634217e689ded"
+                "reference": "73bcd13dd59a2926650b2f78f97f919934708de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/f03725ecfe78aa941c40473e0c8634217e689ded",
-                "reference": "f03725ecfe78aa941c40473e0c8634217e689ded",
+                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/73bcd13dd59a2926650b2f78f97f919934708de9",
+                "reference": "73bcd13dd59a2926650b2f78f97f919934708de9",
                 "shasum": ""
             },
             "require": {
@@ -2897,7 +2977,7 @@
             "extra": {
                 "laravel": {
                     "aliases": {
-                        "EnsoException": "LaravelEnso\\Helpers\\App\\Exceptions\\EnsoException"
+                        "EnsoException": "LaravelEnso\\Helpers\\Exceptions\\EnsoException"
                     }
                 }
             },
@@ -2924,20 +3004,20 @@
                 "helpers",
                 "laravel-enso"
             ],
-            "time": "2020-05-25T05:58:18+00:00"
+            "time": "2020-07-06T10:50:14+00:00"
         },
         {
             "name": "laravel-enso/history-tracker",
-            "version": "1.7.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/history-tracker.git",
-                "reference": "e2f4d06aed3fd7172d5d0c69b3a25e03f8f2c186"
+                "reference": "4714085a7478389e81a8531779df0ab091c109e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/history-tracker/zipball/e2f4d06aed3fd7172d5d0c69b3a25e03f8f2c186",
-                "reference": "e2f4d06aed3fd7172d5d0c69b3a25e03f8f2c186",
+                "url": "https://api.github.com/repos/laravel-enso/history-tracker/zipball/4714085a7478389e81a8531779df0ab091c109e2",
+                "reference": "4714085a7478389e81a8531779df0ab091c109e2",
                 "shasum": ""
             },
             "require": {
@@ -2968,27 +3048,27 @@
                 "history-tracker",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:03:48+00:00"
+            "time": "2020-06-25T10:07:22+00:00"
         },
         {
             "name": "laravel-enso/how-to",
-            "version": "3.3.5",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/how-to.git",
-                "reference": "725a5d09aaab69f5e811668268a566c2bf8f60bb"
+                "reference": "5efea2a5ede1f14c90226e343ed938b715067e93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/how-to/zipball/725a5d09aaab69f5e811668268a566c2bf8f60bb",
-                "reference": "725a5d09aaab69f5e811668268a566c2bf8f60bb",
+                "url": "https://api.github.com/repos/laravel-enso/how-to/zipball/5efea2a5ede1f14c90226e343ed938b715067e93",
+                "reference": "5efea2a5ede1f14c90226e343ed938b715067e93",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/files": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/files": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -3024,25 +3104,25 @@
                 "laravel-enso",
                 "vidoes"
             ],
-            "time": "2020-05-15T14:01:34+00:00"
+            "time": "2020-07-01T10:29:25+00:00"
         },
         {
             "name": "laravel-enso/image-transformer",
-            "version": "1.6.7",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/image-transformer.git",
-                "reference": "f949646f19984cbfd17469649f305d84a17898e1"
+                "reference": "4a62fa4ae0176e8bc7721a70f14b3f9064ca731e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/image-transformer/zipball/f949646f19984cbfd17469649f305d84a17898e1",
-                "reference": "f949646f19984cbfd17469649f305d84a17898e1",
+                "url": "https://api.github.com/repos/laravel-enso/image-transformer/zipball/4a62fa4ae0176e8bc7721a70f14b3f9064ca731e",
+                "reference": "4a62fa4ae0176e8bc7721a70f14b3f9064ca731e",
                 "shasum": ""
             },
             "require": {
                 "intervention/image": "^2.5",
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0",
                 "spatie/laravel-image-optimizer": "^1.6"
@@ -3079,25 +3159,25 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-04-29T10:15:55+00:00"
+            "time": "2020-06-26T06:42:23+00:00"
         },
         {
             "name": "laravel-enso/impersonate",
-            "version": "2.5.3",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/impersonate.git",
-                "reference": "548aff112c9061e9503aa3fa42d665f16d5ada16"
+                "reference": "df6e611a42fb3b2e25884d81dd253a0261b74d7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/impersonate/zipball/548aff112c9061e9503aa3fa42d665f16d5ada16",
-                "reference": "548aff112c9061e9503aa3fa42d665f16d5ada16",
+                "url": "https://api.github.com/repos/laravel-enso/impersonate/zipball/df6e611a42fb3b2e25884d81dd253a0261b74d7a",
+                "reference": "df6e611a42fb3b2e25884d81dd253a0261b74d7a",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/migrator": "1.1.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/migrator": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -3132,25 +3212,25 @@
                 "impersonate-users",
                 "laravel-enso"
             ],
-            "time": "2020-03-26T10:01:20+00:00"
+            "time": "2020-06-23T14:36:38+00:00"
         },
         {
             "name": "laravel-enso/io",
-            "version": "1.3.3",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/io.git",
-                "reference": "f66751e8b3a14daf7c1da90732689d9e6f2bc544"
+                "reference": "765fa6d981dc5e96a2c13c96a79a1e9328a69748"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/io/zipball/f66751e8b3a14daf7c1da90732689d9e6f2bc544",
-                "reference": "f66751e8b3a14daf7c1da90732689d9e6f2bc544",
+                "url": "https://api.github.com/repos/laravel-enso/io/zipball/765fa6d981dc5e96a2c13c96a79a1e9328a69748",
+                "reference": "765fa6d981dc5e96a2c13c96a79a1e9328a69748",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -3186,29 +3266,29 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-06-10T07:19:02+00:00"
+            "time": "2020-06-24T15:42:09+00:00"
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "3.5.16",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "f30638bfa3359d5df7ec11e3ab4cef3ff0bdb7d0"
+                "reference": "9477f5cf0ae2c292d91a45c1720a0abad0d00369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/f30638bfa3359d5df7ec11e3ab4cef3ff0bdb7d0",
-                "reference": "f30638bfa3359d5df7ec11e3ab4cef3ff0bdb7d0",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/9477f5cf0ae2c292d91a45c1720a0abad0d00369",
+                "reference": "9477f5cf0ae2c292d91a45c1720a0abad0d00369",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/tables": "3.2.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/tables": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3243,26 +3323,26 @@
                 "laravel-enso",
                 "localisation"
             ],
-            "time": "2020-05-20T14:18:03+00:00"
+            "time": "2020-06-26T11:27:40+00:00"
         },
         {
             "name": "laravel-enso/logs",
-            "version": "3.2.3",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/logs.git",
-                "reference": "b983e231fb1e256f6f95838a85266d979a1081be"
+                "reference": "b9d1813fb4c03311a1405d01584b9ce924824225"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/logs/zipball/b983e231fb1e256f6f95838a85266d979a1081be",
-                "reference": "b983e231fb1e256f6f95838a85266d979a1081be",
+                "url": "https://api.github.com/repos/laravel-enso/logs/zipball/b9d1813fb4c03311a1405d01584b9ce924824225",
+                "reference": "b9d1813fb4c03311a1405d01584b9ce924824225",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -3298,29 +3378,29 @@
                 "log-manager",
                 "logs"
             ],
-            "time": "2020-03-26T14:50:28+00:00"
+            "time": "2020-06-30T13:19:48+00:00"
         },
         {
             "name": "laravel-enso/menus",
-            "version": "3.4.7",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/menus.git",
-                "reference": "ae271f5eb021a83b5c2fcd34e944f83e88699c87"
+                "reference": "8032568b0e0efd8c67ee29a8197c5c782a1af79a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/menus/zipball/ae271f5eb021a83b5c2fcd34e944f83e88699c87",
-                "reference": "ae271f5eb021a83b5c2fcd34e944f83e88699c87",
+                "url": "https://api.github.com/repos/laravel-enso/menus/zipball/8032568b0e0efd8c67ee29a8197c5c782a1af79a",
+                "reference": "8032568b0e0efd8c67ee29a8197c5c782a1af79a",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/roles": "3.4.*",
-                "laravel-enso/tables": "3.2.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/roles": "^4.0",
+                "laravel-enso/tables": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3357,28 +3437,28 @@
                 "menu-manager",
                 "menus"
             ],
-            "time": "2020-05-18T06:15:50+00:00"
+            "time": "2020-06-25T11:35:04+00:00"
         },
         {
             "name": "laravel-enso/migrator",
-            "version": "1.1.7",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/migrator.git",
-                "reference": "f1dc56ba877cd2bde4bd14bf5917a59b567560a2"
+                "reference": "90cd9d97db2fc627b35d26a646363c9c94d51f33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/migrator/zipball/f1dc56ba877cd2bde4bd14bf5917a59b567560a2",
-                "reference": "f1dc56ba877cd2bde4bd14bf5917a59b567560a2",
+                "url": "https://api.github.com/repos/laravel-enso/migrator/zipball/90cd9d97db2fc627b35d26a646363c9c94d51f33",
+                "reference": "90cd9d97db2fc627b35d26a646363c9c94d51f33",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/menus": "3.4.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/roles": "3.4.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/menus": "^4.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/roles": "^4.0"
             },
             "type": "library",
             "autoload": {
@@ -3406,25 +3486,25 @@
                 "laravel-enso",
                 "migrator"
             ],
-            "time": "2020-03-26T09:51:58+00:00"
+            "time": "2020-06-25T11:29:39+00:00"
         },
         {
             "name": "laravel-enso/notifications",
-            "version": "3.2.4",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/notifications.git",
-                "reference": "bc2d5bf7d6a13ad1d4c3fe31890ca456d96fd5f0"
+                "reference": "c1ba69af11d2ca4c28741f6d7728889e4fd31800"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/notifications/zipball/bc2d5bf7d6a13ad1d4c3fe31890ca456d96fd5f0",
-                "reference": "bc2d5bf7d6a13ad1d4c3fe31890ca456d96fd5f0",
+                "url": "https://api.github.com/repos/laravel-enso/notifications/zipball/c1ba69af11d2ca4c28741f6d7728889e4fd31800",
+                "reference": "c1ba69af11d2ca4c28741f6d7728889e4fd31800",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/migrator": "1.1.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/migrator": "^2.0",
                 "php": ">=7.4.0",
                 "pusher/pusher-php-server": "^4.0"
             },
@@ -3463,7 +3543,7 @@
                 "notifications",
                 "push-notifications"
             ],
-            "time": "2020-03-26T09:50:20+00:00"
+            "time": "2020-06-25T11:11:28+00:00"
         },
         {
             "name": "laravel-enso/ocr",
@@ -3518,16 +3598,16 @@
         },
         {
             "name": "laravel-enso/pdf",
-            "version": "1.1.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/pdf.git",
-                "reference": "8acfe64234dbb6e81b9db6e77c64a61f9d6b98bf"
+                "reference": "0eacc393bc76e2bc203ce3911e366b97c37ca9d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/pdf/zipball/8acfe64234dbb6e81b9db6e77c64a61f9d6b98bf",
-                "reference": "8acfe64234dbb6e81b9db6e77c64a61f9d6b98bf",
+                "url": "https://api.github.com/repos/laravel-enso/pdf/zipball/0eacc393bc76e2bc203ce3911e366b97c37ca9d0",
+                "reference": "0eacc393bc76e2bc203ce3911e366b97c37ca9d0",
                 "shasum": ""
             },
             "require": {
@@ -3577,33 +3657,33 @@
                 "laravel-enso",
                 "pdf"
             ],
-            "time": "2020-03-26T09:48:05+00:00"
+            "time": "2020-06-25T11:05:43+00:00"
         },
         {
             "name": "laravel-enso/people",
-            "version": "2.5.11",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/people.git",
-                "reference": "57e620af01a8c2bf856457706c8081f97cf2b1cc"
+                "reference": "adf109e4b672730a4c074b49dc50da0e4e0f2794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/people/zipball/57e620af01a8c2bf856457706c8081f97cf2b1cc",
-                "reference": "57e620af01a8c2bf856457706c8081f97cf2b1cc",
+                "url": "https://api.github.com/repos/laravel-enso/people/zipball/adf109e4b672730a4c074b49dc50da0e4e0f2794",
+                "reference": "adf109e4b672730a4c074b49dc50da0e4e0f2794",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/dynamic-methods": "1.1.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/tables": "3.2.*",
-                "laravel-enso/track-who": "1.9.*",
-                "php": ">=7.4.0"
+                "laravel-enso/addresses": "^4.0",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/tables": "^4.0",
+                "laravel-enso/track-who": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -3613,8 +3693,7 @@
                         "LaravelEnso\\People\\AuthServiceProvider",
                         "LaravelEnso\\People\\SearchServiceProvider",
                         "LaravelEnso\\People\\EnumServiceProvider"
-                    ],
-                    "aliases": []
+                    ]
                 }
             },
             "autoload": {
@@ -3641,31 +3720,31 @@
                 "people",
                 "person-management"
             ],
-            "time": "2020-05-16T09:17:04+00:00"
+            "time": "2020-06-30T06:52:31+00:00"
         },
         {
             "name": "laravel-enso/permissions",
-            "version": "3.4.7",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/permissions.git",
-                "reference": "86d7af7b18f529ef46391b33abe73dd73542fb1e"
+                "reference": "887b8746914fa663941c96e8f96707708fb251ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/permissions/zipball/86d7af7b18f529ef46391b33abe73dd73542fb1e",
-                "reference": "86d7af7b18f529ef46391b33abe73dd73542fb1e",
+                "url": "https://api.github.com/repos/laravel-enso/permissions/zipball/887b8746914fa663941c96e8f96707708fb251ee",
+                "reference": "887b8746914fa663941c96e8f96707708fb251ee",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/roles": "3.4.*",
-                "laravel-enso/tables": "3.2.*",
-                "laravel-enso/tutorials": "3.3.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/roles": "^4.0",
+                "laravel-enso/tables": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3702,20 +3781,20 @@
                 "laravel-permissions",
                 "permission-manager"
             ],
-            "time": "2020-06-22T10:57:10+00:00"
+            "time": "2020-06-30T14:54:33+00:00"
         },
         {
             "name": "laravel-enso/rememberable",
-            "version": "2.2.4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/rememberable.git",
-                "reference": "462760c5f1d306795a2523f56cea2e7ec8b99c13"
+                "reference": "b7ac9f9f2ec9690e6a6b2a2b925baa14d711c25f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/rememberable/zipball/462760c5f1d306795a2523f56cea2e7ec8b99c13",
-                "reference": "462760c5f1d306795a2523f56cea2e7ec8b99c13",
+                "url": "https://api.github.com/repos/laravel-enso/rememberable/zipball/b7ac9f9f2ec9690e6a6b2a2b925baa14d711c25f",
+                "reference": "b7ac9f9f2ec9690e6a6b2a2b925baa14d711c25f",
                 "shasum": ""
             },
             "require": {
@@ -3748,32 +3827,32 @@
                 "model-cache",
                 "rememberable"
             ],
-            "time": "2020-04-05T04:55:41+00:00"
+            "time": "2020-06-25T07:59:58+00:00"
         },
         {
             "name": "laravel-enso/roles",
-            "version": "3.4.11",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/roles.git",
-                "reference": "ae6c4aca25cd1809ab6d861121287b6334268fdb"
+                "reference": "00d617345f3b7f526bd95cc461949a09823d5957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/ae6c4aca25cd1809ab6d861121287b6334268fdb",
-                "reference": "ae6c4aca25cd1809ab6d861121287b6334268fdb",
+                "url": "https://api.github.com/repos/laravel-enso/roles/zipball/00d617345f3b7f526bd95cc461949a09823d5957",
+                "reference": "00d617345f3b7f526bd95cc461949a09823d5957",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/menus": "3.4.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/select": "3.3.*",
-                "laravel-enso/tables": "3.2.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/menus": "^4.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/select": "^4.0",
+                "laravel-enso/tables": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3810,27 +3889,27 @@
                 "role-manager",
                 "roles"
             ],
-            "time": "2020-06-22T10:57:58+00:00"
+            "time": "2020-06-26T06:16:17+00:00"
         },
         {
             "name": "laravel-enso/searchable",
-            "version": "1.3.5",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/searchable.git",
-                "reference": "95d4695c7308c073b552e9ab563f3dfea77af771"
+                "reference": "761fdaa4e3807dfa14d029afb1edc857978229e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/95d4695c7308c073b552e9ab563f3dfea77af771",
-                "reference": "95d4695c7308c073b552e9ab563f3dfea77af771",
+                "url": "https://api.github.com/repos/laravel-enso/searchable/zipball/761fdaa4e3807dfa14d029afb1edc857978229e7",
+                "reference": "761fdaa4e3807dfa14d029afb1edc857978229e7",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/filters": "1.0.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/permissions": "3.4.*"
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/filters": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/permissions": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3840,7 +3919,7 @@
                         "LaravelEnso\\Searchable\\SearchServiceProvider"
                     ],
                     "aliases": {
-                        "Search": "LaravelEnso\\Searchable\\App\\Facades\\Search"
+                        "Search": "LaravelEnso\\Searchable\\Facades\\Search"
                     }
                 }
             },
@@ -3867,25 +3946,25 @@
                 "laravel-enso",
                 "searchable"
             ],
-            "time": "2020-03-26T09:03:21+00:00"
+            "time": "2020-06-25T11:00:05+00:00"
         },
         {
             "name": "laravel-enso/select",
-            "version": "3.3.11",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/select.git",
-                "reference": "1eb2056a2cf0b091fc329fa660301c3f54e0a5f2"
+                "reference": "1fdaede7b50f53d80f054b85dad16a81e7275e88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/select/zipball/1eb2056a2cf0b091fc329fa660301c3f54e0a5f2",
-                "reference": "1eb2056a2cf0b091fc329fa660301c3f54e0a5f2",
+                "url": "https://api.github.com/repos/laravel-enso/select/zipball/1fdaede7b50f53d80f054b85dad16a81e7275e88",
+                "reference": "1fdaede7b50f53d80f054b85dad16a81e7275e88",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/filters": "1.0.*",
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/filters": "^2.0",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -3923,27 +4002,27 @@
                 "select",
                 "select-server-side"
             ],
-            "time": "2020-04-06T16:07:33+00:00"
+            "time": "2020-06-30T15:29:27+00:00"
         },
         {
             "name": "laravel-enso/tables",
-            "version": "3.2.34",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "d97abd595cff3673f8fdb3c116a9f5c4433ee993"
+                "reference": "4966ee9c60acd172d4ea36d9d6f8812b2a9ea6bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/d97abd595cff3673f8fdb3c116a9f5c4433ee993",
-                "reference": "d97abd595cff3673f8fdb3c116a9f5c4433ee993",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/4966ee9c60acd172d4ea36d9d6f8812b2a9ea6bf",
+                "reference": "4966ee9c60acd172d4ea36d9d6f8812b2a9ea6bf",
                 "shasum": ""
             },
             "require": {
                 "box/spout": "^3.0",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/filters": "1.0.*",
-                "laravel-enso/helpers": "1.15.*",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/filters": "^2.0",
+                "laravel-enso/helpers": "^2.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -3981,29 +4060,29 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2020-06-04T12:48:40+00:00"
+            "time": "2020-06-24T16:10:21+00:00"
         },
         {
             "name": "laravel-enso/teams",
-            "version": "2.2.5",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/teams.git",
-                "reference": "8117c4688a5f1daaf8d8497ff18bef599b8e6c77"
+                "reference": "93db54b5b3f152923dd7c0a602fe9ae77a841bed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/8117c4688a5f1daaf8d8497ff18bef599b8e6c77",
-                "reference": "8117c4688a5f1daaf8d8497ff18bef599b8e6c77",
+                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/93db54b5b3f152923dd7c0a602fe9ae77a841bed",
+                "reference": "93db54b5b3f152923dd7c0a602fe9ae77a841bed",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/dynamic-methods": "1.1.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/rememberable": "2.2.*",
-                "laravel-enso/select": "3.3.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/rememberable": "^3.0",
+                "laravel-enso/select": "^4.0",
                 "php": ">=7.4.0"
             },
             "type": "library",
@@ -4040,20 +4119,20 @@
                 "laravel-enso",
                 "team-management"
             ],
-            "time": "2020-06-10T07:18:24+00:00"
+            "time": "2020-06-26T07:20:09+00:00"
         },
         {
             "name": "laravel-enso/track-who",
-            "version": "1.9.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/track-who.git",
-                "reference": "8c0f40f7dfed2ccabaf04d298db1378aeb23ddea"
+                "reference": "33b19e17f523952710d4a0df68ee991cde420642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/track-who/zipball/8c0f40f7dfed2ccabaf04d298db1378aeb23ddea",
-                "reference": "8c0f40f7dfed2ccabaf04d298db1378aeb23ddea",
+                "url": "https://api.github.com/repos/laravel-enso/track-who/zipball/33b19e17f523952710d4a0df68ee991cde420642",
+                "reference": "33b19e17f523952710d4a0df68ee991cde420642",
                 "shasum": ""
             },
             "require": {
@@ -4084,30 +4163,31 @@
                 "laravel-enso",
                 "track-who"
             ],
-            "time": "2020-03-26T08:44:16+00:00"
+            "time": "2020-06-26T11:28:23+00:00"
         },
         {
             "name": "laravel-enso/tutorials",
-            "version": "3.3.6",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tutorials.git",
-                "reference": "9737a3b0b202d27cefa335a6a2455cf1605a1ac6"
+                "reference": "c4428cfe16907ee0ff9f3743a3cad8db3bbfe51e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tutorials/zipball/9737a3b0b202d27cefa335a6a2455cf1605a1ac6",
-                "reference": "9737a3b0b202d27cefa335a6a2455cf1605a1ac6",
+                "url": "https://api.github.com/repos/laravel-enso/tutorials/zipball/c4428cfe16907ee0ff9f3743a3cad8db3bbfe51e",
+                "reference": "c4428cfe16907ee0ff9f3743a3cad8db3bbfe51e",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/core": "4.8.*",
-                "laravel-enso/enums": "1.2.*",
-                "laravel-enso/forms": "3.4.*",
-                "laravel-enso/helpers": "1.15.*",
-                "laravel-enso/migrator": "1.1.*",
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/tables": "3.2.*",
+                "laravel-enso/core": "^5.0",
+                "laravel-enso/dynamic-methods": "^2.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/forms": "^4.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/migrator": "^2.0",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/tables": "^4.0",
                 "php": ">=7.4.0"
             },
             "type": "library",
@@ -4144,25 +4224,25 @@
                 "tutorial-manager",
                 "tutorials"
             ],
-            "time": "2020-04-12T06:32:26+00:00"
+            "time": "2020-06-30T14:54:39+00:00"
         },
         {
             "name": "laravel-enso/upgrade",
-            "version": "1.0.8",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/upgrade.git",
-                "reference": "1ede2e8d2a6f7ee85eb28b16ed200bfb3de8f0b5"
+                "reference": "3c283cd8e27380244ba86b79366f34c08d207a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/upgrade/zipball/1ede2e8d2a6f7ee85eb28b16ed200bfb3de8f0b5",
-                "reference": "1ede2e8d2a6f7ee85eb28b16ed200bfb3de8f0b5",
+                "url": "https://api.github.com/repos/laravel-enso/upgrade/zipball/3c283cd8e27380244ba86b79366f34c08d207a06",
+                "reference": "3c283cd8e27380244ba86b79366f34c08d207a06",
                 "shasum": ""
             },
             "require": {
-                "laravel-enso/permissions": "3.4.*",
-                "laravel-enso/roles": "3.4.*",
+                "laravel-enso/permissions": "^4.0",
+                "laravel-enso/roles": "^4.0",
                 "laravel/framework": "^7.0",
                 "php": ">=7.4.0"
             },
@@ -4190,20 +4270,20 @@
                 "laravel-enso",
                 "upgrade"
             ],
-            "time": "2020-05-12T07:45:05+00:00"
+            "time": "2020-06-26T11:28:37+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v7.17.2",
+            "version": "v7.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d16ff3a0a66d98e04163456b39c4b7302cf50a40"
+                "reference": "116b508bafd81de97b1c09744445d32a91076b60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d16ff3a0a66d98e04163456b39c4b7302cf50a40",
-                "reference": "d16ff3a0a66d98e04163456b39c4b7302cf50a40",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/116b508bafd81de97b1c09744445d32a91076b60",
+                "reference": "116b508bafd81de97b1c09744445d32a91076b60",
                 "shasum": ""
             },
             "require": {
@@ -4347,7 +4427,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-06-24T13:11:25+00:00"
+            "time": "2020-06-30T13:52:36+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -4421,6 +4501,66 @@
                 "queue"
             ],
             "time": "2020-05-26T18:27:29+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "cf07490b92e07ee6206f712d4502e8a2a41f5049"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/cf07490b92e07ee6206f712d4502e8a2a41f5049",
+                "reference": "cf07490b92e07ee6206f712d4502e8a2a41f5049",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/contracts": "^6.9|^7.0",
+                "illuminate/database": "^6.9|^7.0",
+                "illuminate/support": "^6.9|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "time": "2020-06-16T19:14:01+00:00"
         },
         {
             "name": "laravel/telescope",
@@ -4551,16 +4691,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "15368c5328efb7ce94f35ca750acde9b496ab1b1"
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/15368c5328efb7ce94f35ca750acde9b496ab1b1",
-                "reference": "15368c5328efb7ce94f35ca750acde9b496ab1b1",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba",
                 "shasum": ""
             },
             "require": {
@@ -4602,7 +4742,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-04-29T15:06:45+00:00"
+            "time": "2020-06-30T20:56:33+00:00"
         },
         {
             "name": "laravolt/avatar",
@@ -4672,16 +4812,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "fc33ca12575e98e57cdce7d5f38b2ca5335714b3"
+                "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/fc33ca12575e98e57cdce7d5f38b2ca5335714b3",
-                "reference": "fc33ca12575e98e57cdce7d5f38b2ca5335714b3",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
+                "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
                 "shasum": ""
             },
             "require": {
@@ -4737,7 +4877,33 @@
                 "md",
                 "parser"
             ],
-            "time": "2020-06-21T20:50:13+00:00"
+            "funding": [
+                {
+                    "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.colinodell.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/colinpodell/10.00",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/colinodell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/colinodell",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-27T12:50:08+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4821,6 +4987,12 @@
                 "sftp",
                 "storage"
             ],
+            "funding": [
+                {
+                    "url": "https://offset.earth/frankdejonge",
+                    "type": "other"
+                }
+            ],
             "time": "2020-05-18T15:13:39+00:00"
         },
         {
@@ -4902,6 +5074,16 @@
                 "logging",
                 "psr-3"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-22T08:12:19+00:00"
         },
         {
@@ -4957,16 +5139,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.35.0",
+            "version": "2.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4b9bd835261ef23d36397a46a76b496a458305e5"
+                "reference": "ee7378a36cc62952100e718bcc58be4c7210e55f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4b9bd835261ef23d36397a46a76b496a458305e5",
-                "reference": "4b9bd835261ef23d36397a46a76b496a458305e5",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ee7378a36cc62952100e718bcc58be4c7210e55f",
+                "reference": "ee7378a36cc62952100e718bcc58be4c7210e55f",
                 "shasum": ""
             },
             "require": {
@@ -4978,9 +5160,10 @@
             "require-dev": {
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
-                "kylekatarnls/multi-tester": "^1.1",
+                "kylekatarnls/multi-tester": "^2.0",
                 "phpmd/phpmd": "^2.8",
-                "phpstan/phpstan": "^0.11",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12.30",
                 "phpunit/phpunit": "^7.5 || ^8.0",
                 "squizlabs/php_codesniffer": "^3.4"
             },
@@ -4996,6 +5179,11 @@
                 "laravel": {
                     "providers": [
                         "Carbon\\Laravel\\ServiceProvider"
+                    ]
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
                     ]
                 }
             },
@@ -5026,20 +5214,30 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-05-24T18:27:52+00:00"
+            "funding": [
+                {
+                    "url": "https://opencollective.com/Carbon",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-04T12:29:56+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463"
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/53c2753d756f5adb586dca79c2ec0e2654dd9463",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c346bbfafe2ff60680258b631afb730d186ed864",
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864",
                 "shasum": ""
             },
             "require": {
@@ -5078,7 +5276,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-06-03T07:24:19+00:00"
+            "time": "2020-07-02T17:12:47+00:00"
         },
         {
             "name": "opis/closure",
@@ -5270,16 +5468,16 @@
         },
         {
             "name": "php-http/client-common",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/client-common.git",
-                "reference": "a8b29678d61556f45d6236b1667db16d998ceec5"
+                "reference": "f3985360f3d054292605e9ec7c4bc24ebcf249bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/client-common/zipball/a8b29678d61556f45d6236b1667db16d998ceec5",
-                "reference": "a8b29678d61556f45d6236b1667db16d998ceec5",
+                "url": "https://api.github.com/repos/php-http/client-common/zipball/f3985360f3d054292605e9ec7c4bc24ebcf249bb",
+                "reference": "f3985360f3d054292605e9ec7c4bc24ebcf249bb",
                 "shasum": ""
             },
             "require": {
@@ -5287,13 +5485,19 @@
                 "php-http/httplug": "^2.0",
                 "php-http/message": "^1.6",
                 "php-http/message-factory": "^1.0",
-                "symfony/options-resolver": " ^3.4.20 || ~4.0.15 || ~4.1.9 || ^4.2.1 || ^5.0"
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.0",
+                "symfony/options-resolver": "^2.6 || ^3.4.20 || ~4.0.15 || ~4.1.9 || ^4.2.1 || ^5.0",
+                "symfony/polyfill-php80": "^1.17"
             },
             "require-dev": {
                 "doctrine/instantiator": "^1.1",
                 "guzzlehttp/psr7": "^1.4",
-                "phpspec/phpspec": "^5.1",
+                "nyholm/psr7": "^1.2",
+                "phpspec/phpspec": "^5.1 || ^6.0",
                 "phpspec/prophecy": "^1.8",
+                "phpunit/phpunit": "^7.5",
                 "sebastian/comparator": "^3.0"
             },
             "suggest": {
@@ -5306,7 +5510,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -5332,20 +5536,20 @@
                 "http",
                 "httplug"
             ],
-            "time": "2019-11-18T08:58:18+00:00"
+            "time": "2020-07-02T06:51:04+00:00"
         },
         {
             "name": "php-http/discovery",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "10d9019f393773345aedc0dc79e7fd678da874ee"
+                "reference": "9ab7668fee74a5ad61996095e50917bd50ee8bfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/10d9019f393773345aedc0dc79e7fd678da874ee",
-                "reference": "10d9019f393773345aedc0dc79e7fd678da874ee",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/9ab7668fee74a5ad61996095e50917bd50ee8bfe",
+                "reference": "9ab7668fee74a5ad61996095e50917bd50ee8bfe",
                 "shasum": ""
             },
             "require": {
@@ -5368,7 +5572,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -5397,7 +5601,7 @@
                 "message",
                 "psr7"
             ],
-            "time": "2020-06-14T10:44:12+00:00"
+            "time": "2020-07-02T11:43:45+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -5744,6 +5948,16 @@
                 "php",
                 "type"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-07T10:40:07+00:00"
         },
         {
@@ -5893,6 +6107,20 @@
                 "x.509",
                 "x509"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/terrafrost",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpseclib",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-04-04T23:17:33+00:00"
         },
         {
@@ -5992,20 +6220,20 @@
         },
         {
             "name": "psr/http-client",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "496a823ef742b632934724bf769560c2a5c7c44e"
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/496a823ef742b632934724bf769560c2a5c7c44e",
-                "reference": "496a823ef742b632934724bf769560c2a5c7c44e",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
+                "php": "^7.0 || ^8.0",
                 "psr/http-message": "^1.0"
             },
             "type": "library",
@@ -6037,7 +6265,7 @@
                 "psr",
                 "psr-18"
             ],
-            "time": "2018-10-30T23:29:13+00:00"
+            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -6542,6 +6770,12 @@
                 "identifier",
                 "uuid"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/ramsey",
+                    "type": "github"
+                }
+            ],
             "time": "2020-03-29T20:13:32+00:00"
         },
         {
@@ -6579,16 +6813,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "e44561875e0d724bac3d9cdb705bf58847acd425"
+                "reference": "407573e22e6cc46b72cff07c117eeb16bf3a17de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/e44561875e0d724bac3d9cdb705bf58847acd425",
-                "reference": "e44561875e0d724bac3d9cdb705bf58847acd425",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/407573e22e6cc46b72cff07c117eeb16bf3a17de",
+                "reference": "407573e22e6cc46b72cff07c117eeb16bf3a17de",
                 "shasum": ""
             },
             "require": {
@@ -6662,7 +6896,17 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2020-05-20T20:49:38+00:00"
+            "funding": [
+                {
+                    "url": "https://sentry.io/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://sentry.io/pricing/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-07-03T09:58:40+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
@@ -6730,6 +6974,16 @@
                 "log",
                 "logging",
                 "sentry"
+            ],
+            "funding": [
+                {
+                    "url": "https://sentry.io/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://sentry.io/pricing/",
+                    "type": "custom"
+                }
             ],
             "time": "2020-06-02T12:39:20+00:00"
         },
@@ -6839,6 +7093,12 @@
             "keywords": [
                 "laravel-image-optimizer",
                 "spatie"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
             ],
             "time": "2020-03-10T08:19:07+00:00"
         },
@@ -6981,6 +7241,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-15T12:59:21+00:00"
         },
         {
@@ -7034,20 +7308,34 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337"
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5e20b83385a77593259c9f8beb2c43cd03b2ac14",
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14",
                 "shasum": ""
             },
             "require": {
@@ -7057,6 +7345,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -7080,7 +7372,21 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
-            "time": "2020-05-27T08:34:37+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-06T08:49:21+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -7137,6 +7443,20 @@
             ],
             "description": "Symfony ErrorHandler Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-30T20:35:19+00:00"
         },
         {
@@ -7209,20 +7529,34 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "405952c4e90941a17e52ef7489a2bd94870bb290"
+                "reference": "f6f613d74cfc5a623fc36294d3451eb7fa5a042b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/405952c4e90941a17e52ef7489a2bd94870bb290",
-                "reference": "405952c4e90941a17e52ef7489a2bd94870bb290",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/f6f613d74cfc5a623fc36294d3451eb7fa5a042b",
+                "reference": "f6f613d74cfc5a623fc36294d3451eb7fa5a042b",
                 "shasum": ""
             },
             "require": {
@@ -7236,6 +7570,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -7267,7 +7605,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/finder",
@@ -7316,6 +7668,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
@@ -7377,6 +7743,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-15T06:52:54+00:00"
         },
         {
@@ -7476,6 +7856,20 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-15T13:51:38+00:00"
         },
         {
@@ -7539,6 +7933,20 @@
                 "mime",
                 "mime-type"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-09T15:07:35+00:00"
         },
         {
@@ -7594,6 +8002,20 @@
                 "config",
                 "configuration",
                 "options"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-23T13:08:13+00:00"
         },
@@ -7656,6 +8078,20 @@
                 "ctype",
                 "polyfill",
                 "portable"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-06T08:46:27+00:00"
         },
@@ -7720,6 +8156,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:46:27+00:00"
         },
         {
@@ -7783,6 +8233,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-06T08:46:27+00:00"
         },
@@ -7849,6 +8313,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-06T08:46:27+00:00"
         },
@@ -7917,6 +8395,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-14T14:40:37+00:00"
         },
         {
@@ -7980,6 +8472,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:46:27+00:00"
         },
         {
@@ -8034,6 +8540,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-12T16:47:27+00:00"
         },
@@ -8096,6 +8616,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-06T08:46:27+00:00"
         },
@@ -8163,6 +8697,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:46:27+00:00"
         },
         {
@@ -8226,6 +8774,20 @@
                 "portable",
                 "uuid"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:46:27+00:00"
         },
         {
@@ -8276,6 +8838,20 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-30T20:35:19+00:00"
         },
         {
@@ -8354,20 +8930,34 @@
                 "uri",
                 "url"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-10T11:49:58+00:00"
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/66a8f0957a3ca54e4f724e49028ab19d75a8918b",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/58c7475e5457c5492c26cc740cc0ad7464be9442",
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442",
                 "shasum": ""
             },
             "require": {
@@ -8381,6 +8971,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -8412,7 +9006,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/string",
@@ -8482,6 +9090,20 @@
                 "unicode",
                 "utf-8",
                 "utf8"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-11T12:16:36+00:00"
         },
@@ -8561,20 +9183,34 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-30T20:35:19+00:00"
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e"
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/e5ca07c8f817f865f618aa072c2fe8e0e637340e",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63",
                 "shasum": ""
             },
             "require": {
@@ -8587,6 +9223,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -8618,7 +9258,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -8693,6 +9347,20 @@
             "keywords": [
                 "debug",
                 "dump"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-30T20:35:19+00:00"
         },
@@ -8807,6 +9475,16 @@
                 "env",
                 "environment"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-07T18:25:35+00:00"
         },
         {
@@ -8854,6 +9532,24 @@
                 "ascii",
                 "clean",
                 "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-15T23:49:30+00:00"
         }
@@ -8912,6 +9608,16 @@
                 "certificate",
                 "ssl",
                 "tls"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-08T08:27:21+00:00"
         },
@@ -8992,6 +9698,20 @@
                 "autoload",
                 "dependency",
                 "package"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-24T19:23:30+00:00"
         },
@@ -9158,6 +9878,20 @@
                 "Xdebug",
                 "performance"
             ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-04T11:16:35+00:00"
         },
         {
@@ -9283,6 +10017,20 @@
                 "constructor",
                 "instantiate"
             ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-29T17:27:14+00:00"
         },
         {
@@ -9336,6 +10084,12 @@
                 "facade",
                 "flare",
                 "reporting"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/spatie",
+                    "type": "patreon"
+                }
             ],
             "time": "2020-03-02T15:52:04+00:00"
         },
@@ -9517,16 +10271,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.16.3",
+            "version": "v2.16.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "83baf823a33a1cbd5416c8626935cf3f843c10b0"
+                "reference": "1023c3458137ab052f6ff1e09621a721bfdeca13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/83baf823a33a1cbd5416c8626935cf3f843c10b0",
-                "reference": "83baf823a33a1cbd5416c8626935cf3f843c10b0",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/1023c3458137ab052f6ff1e09621a721bfdeca13",
+                "reference": "1023c3458137ab052f6ff1e09621a721bfdeca13",
                 "shasum": ""
             },
             "require": {
@@ -9558,12 +10312,12 @@
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.1",
                 "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.1",
                 "phpunitgoodpractices/traits": "^1.8",
-                "symfony/phpunit-bridge": "^4.3 || ^5.0",
+                "symfony/phpunit-bridge": "^5.1",
                 "symfony/yaml": "^3.0 || ^4.0 || ^5.0"
             },
             "suggest": {
                 "ext-dom": "For handling output formats in XML",
-                "ext-mbstring": "For handling non-UTF8 characters in cache signature.",
+                "ext-mbstring": "For handling non-UTF8 characters.",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "For IsIdenticalString constraint.",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "For XmlMatchesXsd constraint.",
                 "symfony/polyfill-mbstring": "When enabling `ext-mbstring` is not possible."
@@ -9604,7 +10358,13 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2020-04-15T18:51:10+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/keradus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-27T23:57:46+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -9883,6 +10643,12 @@
                 "provider",
                 "service"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/philipobenito",
+                    "type": "github"
+                }
+            ],
             "time": "2020-05-18T08:20:23+00:00"
         },
         {
@@ -9955,20 +10721,20 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.9.5",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "b2c28789e80a97badd14145fda39b545d83ca3ef"
+                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/b2c28789e80a97badd14145fda39b545d83ca3ef",
-                "reference": "b2c28789e80a97badd14145fda39b545d83ca3ef",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1 || ^8.0"
             },
             "replace": {
                 "myclabs/deep-copy": "self.version"
@@ -9999,7 +10765,13 @@
                 "object",
                 "object graph"
             ],
-            "time": "2020-01-17T21:11:47+00:00"
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-29T13:22:24+00:00"
         },
         {
             "name": "nette/utils",
@@ -10147,6 +10919,20 @@
                 "php",
                 "symfony"
             ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-04-04T19:56:08+00:00"
         },
         {
@@ -10231,36 +11017,51 @@
                 "quality",
                 "source"
             ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-03-10T20:43:15+00:00"
         },
         {
             "name": "object-calisthenics/phpcs-calisthenics-rules",
-            "version": "v3.7.0",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/object-calisthenics/phpcs-calisthenics-rules.git",
-                "reference": "f7bca2448514a9c36f244994aa05fc9e41182246"
+                "reference": "beb45852e52439792a9b4b4fd2dd1fd331bab4d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/object-calisthenics/phpcs-calisthenics-rules/zipball/f7bca2448514a9c36f244994aa05fc9e41182246",
-                "reference": "f7bca2448514a9c36f244994aa05fc9e41182246",
+                "url": "https://api.github.com/repos/object-calisthenics/phpcs-calisthenics-rules/zipball/beb45852e52439792a9b4b4fd2dd1fd331bab4d4",
+                "reference": "beb45852e52439792a9b4b4fd2dd1fd331bab4d4",
                 "shasum": ""
             },
             "require": {
-                "nette/utils": "^3.0",
-                "php": "^7.2",
-                "slevomat/coding-standard": "^5.0.4|^6.0",
+                "nette/utils": "^3.1",
+                "php": "^7.4",
+                "slevomat/coding-standard": "^6.3",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5",
-                "rector/rector": "^0.6",
-                "symplify/changelog-linker": "^7.1",
-                "symplify/coding-standard": "^7.1",
-                "symplify/easy-coding-standard-tester": "^7.1",
-                "symplify/phpstan-extensions": "^7.1",
+                "phpstan/phpdoc-parser": "0.4.8 as 0.4.4",
+                "phpstan/phpstan": "^0.12.32",
+                "phpunit/phpunit": "^9.0",
+                "rector/rector": "^0.7.43",
+                "symplify/changelog-linker": "^8.1",
+                "symplify/coding-standard": "^8.1",
+                "symplify/easy-coding-standard-tester": "^8.1",
+                "symplify/phpstan-extensions": "^8.1",
                 "tracy/tracy": "^2.7"
             },
             "type": "phpcodesniffer-standard",
@@ -10274,7 +11075,7 @@
                 "MIT"
             ],
             "description": "PHP CodeSniffer Object Calisthenics rules/sniffs",
-            "time": "2019-12-11T15:46:58+00:00"
+            "time": "2020-07-06T12:33:47+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -10431,25 +11232,25 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b"
+                "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
-                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/1d01c49d4ed62f25aa84a747ad35d5a16924662b",
+                "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": "^7.2 || ^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.x-dev"
+                    "dev-2.x": "2.x-dev"
                 }
             },
             "autoload": {
@@ -10476,7 +11277,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2020-04-27T09:25:28+00:00"
+            "time": "2020-06-27T09:03:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -10533,25 +11334,24 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "30441f2752e493c639526b215ed81d54f369d693"
+                "reference": "e878a14a65245fbe78f8080eba03b47c3b705651"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/30441f2752e493c639526b215ed81d54f369d693",
-                "reference": "30441f2752e493c639526b215ed81d54f369d693",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/e878a14a65245fbe78f8080eba03b47c3b705651",
+                "reference": "e878a14a65245fbe78f8080eba03b47c3b705651",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": "^7.2 || ^8.0",
                 "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
-                "ext-tokenizer": "^7.2",
-                "mockery/mockery": "~1"
+                "ext-tokenizer": "*"
             },
             "type": "library",
             "extra": {
@@ -10575,7 +11375,7 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
-            "time": "2020-06-19T20:22:09+00:00"
+            "time": "2020-06-27T10:12:23+00:00"
         },
         {
             "name": "phploc/phploc",
@@ -10802,24 +11602,30 @@
                 "testing",
                 "xunit"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
             "time": "2020-05-23T08:02:54+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "eba15e538f2bb3fe018b7bbb47d2fe32d404bfd2"
+                "reference": "8e282e5f5e2db5fb2271b3962ad69875c34a6f41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/eba15e538f2bb3fe018b7bbb47d2fe32d404bfd2",
-                "reference": "eba15e538f2bb3fe018b7bbb47d2fe32d404bfd2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/8e282e5f5e2db5fb2271b3962ad69875c34a6f41",
+                "reference": "8e282e5f5e2db5fb2271b3962ad69875c34a6f41",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -10852,24 +11658,30 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2020-06-15T12:54:35+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T11:50:37+00:00"
         },
         {
             "name": "phpunit/php-invoker",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-invoker.git",
-                "reference": "62f696ad0d140e0e513e69eaafdebb674d622b4c"
+                "reference": "f6eedfed1085dd1f4c599629459a0277d25f9a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/62f696ad0d140e0e513e69eaafdebb674d622b4c",
-                "reference": "62f696ad0d140e0e513e69eaafdebb674d622b4c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/f6eedfed1085dd1f4c599629459a0277d25f9a66",
+                "reference": "f6eedfed1085dd1f4c599629459a0277d25f9a66",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "ext-pcntl": "*",
@@ -10905,24 +11717,30 @@
             "keywords": [
                 "process"
             ],
-            "time": "2020-06-15T13:10:07+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T11:53:53+00:00"
         },
         {
             "name": "phpunit/php-text-template",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-text-template.git",
-                "reference": "0c69cbf965d5317ba33f24a352539f354a25db09"
+                "reference": "6ff9c8ea4d3212b88fcf74e25e516e2c51c99324"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/0c69cbf965d5317ba33f24a352539f354a25db09",
-                "reference": "0c69cbf965d5317ba33f24a352539f354a25db09",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/6ff9c8ea4d3212b88fcf74e25e516e2c51c99324",
+                "reference": "6ff9c8ea4d3212b88fcf74e25e516e2c51c99324",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -10954,24 +11772,30 @@
             "keywords": [
                 "template"
             ],
-            "time": "2020-06-15T12:52:43+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T11:55:37+00:00"
         },
         {
             "name": "phpunit/php-timer",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "b0d089de001ba60ffa3be36b23e1b8150d072238"
+                "reference": "cc49734779cbb302bf51a44297dab8c4bbf941e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/b0d089de001ba60ffa3be36b23e1b8150d072238",
-                "reference": "b0d089de001ba60ffa3be36b23e1b8150d072238",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/cc49734779cbb302bf51a44297dab8c4bbf941e7",
+                "reference": "cc49734779cbb302bf51a44297dab8c4bbf941e7",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.2"
@@ -11003,25 +11827,31 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2020-06-07T12:05:53+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T11:58:13+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e61c593e9734b47ef462340c24fca8d6a57da14e"
+                "reference": "5672711b6b07b14d5ab694e700c62eeb82fcf374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e61c593e9734b47ef462340c24fca8d6a57da14e",
-                "reference": "e61c593e9734b47ef462340c24fca8d6a57da14e",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/5672711b6b07b14d5ab694e700c62eeb82fcf374",
+                "reference": "5672711b6b07b14d5ab694e700c62eeb82fcf374",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11052,7 +11882,13 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2020-06-16T07:00:44+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-27T06:36:25+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -11140,6 +11976,16 @@
                 "testing",
                 "xunit"
             ],
+            "funding": [
+                {
+                    "url": "https://phpunit.de/donate.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
             "time": "2020-06-22T07:10:55+00:00"
         },
         {
@@ -11209,24 +12055,30 @@
                 "highlight.php",
                 "syntax"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/allejo",
+                    "type": "github"
+                }
+            ],
             "time": "2020-03-02T05:59:21+00:00"
         },
         {
             "name": "sebastian/code-unit",
-            "version": "1.0.3",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit.git",
-                "reference": "d650ef9b1fece15ed4d6eaed6e6b469b7b81183a"
+                "reference": "c1e2df332c905079980b119c4db103117e5e5c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/d650ef9b1fece15ed4d6eaed6e6b469b7b81183a",
-                "reference": "d650ef9b1fece15ed4d6eaed6e6b469b7b81183a",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/c1e2df332c905079980b119c4db103117e5e5c90",
+                "reference": "c1e2df332c905079980b119c4db103117e5e5c90",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11255,24 +12107,30 @@
             ],
             "description": "Collection of value objects that represent the PHP code units",
             "homepage": "https://github.com/sebastianbergmann/code-unit",
-            "time": "2020-06-15T13:11:26+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:50:45+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
-                "reference": "c771130f0e8669104a4320b7101a81c2cc2963ef"
+                "reference": "ee51f9bb0c6d8a43337055db3120829fa14da819"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/c771130f0e8669104a4320b7101a81c2cc2963ef",
-                "reference": "c771130f0e8669104a4320b7101a81c2cc2963ef",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/ee51f9bb0c6d8a43337055db3120829fa14da819",
+                "reference": "ee51f9bb0c6d8a43337055db3120829fa14da819",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11300,24 +12158,30 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2020-06-15T12:56:39+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:04:00+00:00"
         },
         {
             "name": "sebastian/comparator",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "266d85ef789da8c41f06af4093c43e9798af2784"
+                "reference": "dcc580eadfaa4e7f9d2cf9ae1922134ea962e14f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/266d85ef789da8c41f06af4093c43e9798af2784",
-                "reference": "266d85ef789da8c41f06af4093c43e9798af2784",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/dcc580eadfaa4e7f9d2cf9ae1922134ea962e14f",
+                "reference": "dcc580eadfaa4e7f9d2cf9ae1922134ea962e14f",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
+                "php": "^7.3 || ^8.0",
                 "sebastian/diff": "^4.0",
                 "sebastian/exporter": "^4.0"
             },
@@ -11364,24 +12228,30 @@
                 "compare",
                 "equality"
             ],
-            "time": "2020-06-15T15:04:48+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:05:46+00:00"
         },
         {
             "name": "sebastian/diff",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "3e523c576f29dacecff309f35e4cc5a5c168e78a"
+                "reference": "1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3e523c576f29dacecff309f35e4cc5a5c168e78a",
-                "reference": "3e523c576f29dacecff309f35e4cc5a5c168e78a",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113",
+                "reference": "1e90b4cf905a7d06c420b1d2e9d11a4dc8a13113",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0",
@@ -11420,24 +12290,30 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2020-05-08T05:01:12+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-30T04:46:02+00:00"
         },
         {
             "name": "sebastian/environment",
-            "version": "5.1.1",
+            "version": "5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "16eb0fa43e29c33d7f2117ed23072e26fc5ab34e"
+                "reference": "0a757cab9d5b7ef49a619f1143e6c9c1bc0fe9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/16eb0fa43e29c33d7f2117ed23072e26fc5ab34e",
-                "reference": "16eb0fa43e29c33d7f2117ed23072e26fc5ab34e",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/0a757cab9d5b7ef49a619f1143e6c9c1bc0fe9d2",
+                "reference": "0a757cab9d5b7ef49a619f1143e6c9c1bc0fe9d2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11473,29 +12349,35 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2020-06-15T13:00:01+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:07:24+00:00"
         },
         {
             "name": "sebastian/exporter",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "d12fbca85da932d01d941b59e4b71a0d559db091"
+                "reference": "571d721db4aec847a0e59690b954af33ebf9f023"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/d12fbca85da932d01d941b59e4b71a0d559db091",
-                "reference": "d12fbca85da932d01d941b59e4b71a0d559db091",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/571d721db4aec847a0e59690b954af33ebf9f023",
+                "reference": "571d721db4aec847a0e59690b954af33ebf9f023",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
+                "php": "^7.3 || ^8.0",
                 "sebastian/recursion-context": "^4.0"
             },
             "require-dev": {
                 "ext-mbstring": "*",
-                "phpunit/phpunit": "^9.0"
+                "phpunit/phpunit": "^9.2"
             },
             "type": "library",
             "extra": {
@@ -11540,7 +12422,13 @@
                 "export",
                 "exporter"
             ],
-            "time": "2020-06-15T13:12:44+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:08:55+00:00"
         },
         {
             "name": "sebastian/finder-facade",
@@ -11644,20 +12532,20 @@
         },
         {
             "name": "sebastian/object-enumerator",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-enumerator.git",
-                "reference": "15f319d67c49fc55ebcdbffb3377433125588455"
+                "reference": "074fed2d0a6d08e1677dd8ce9d32aecb384917b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/15f319d67c49fc55ebcdbffb3377433125588455",
-                "reference": "15f319d67c49fc55ebcdbffb3377433125588455",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/074fed2d0a6d08e1677dd8ce9d32aecb384917b8",
+                "reference": "074fed2d0a6d08e1677dd8ce9d32aecb384917b8",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
+                "php": "^7.3 || ^8.0",
                 "sebastian/object-reflector": "^2.0",
                 "sebastian/recursion-context": "^4.0"
             },
@@ -11687,24 +12575,30 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2020-06-15T13:15:25+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:11:32+00:00"
         },
         {
             "name": "sebastian/object-reflector",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-reflector.git",
-                "reference": "14e04b3c25b821cc0702d4837803fe497680b062"
+                "reference": "127a46f6b057441b201253526f81d5406d6c7840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/14e04b3c25b821cc0702d4837803fe497680b062",
-                "reference": "14e04b3c25b821cc0702d4837803fe497680b062",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/127a46f6b057441b201253526f81d5406d6c7840",
+                "reference": "127a46f6b057441b201253526f81d5406d6c7840",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11732,24 +12626,30 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2020-06-15T13:08:02+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:12:55+00:00"
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
-                "reference": "a32789e5f0157c10cf216ce6c5136db12a12b847"
+                "reference": "062231bf61d2b9448c4fa5a7643b5e1829c11d63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/a32789e5f0157c10cf216ce6c5136db12a12b847",
-                "reference": "a32789e5f0157c10cf216ce6c5136db12a12b847",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/062231bf61d2b9448c4fa5a7643b5e1829c11d63",
+                "reference": "062231bf61d2b9448c4fa5a7643b5e1829c11d63",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11785,24 +12685,30 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2020-06-15T13:06:44+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:14:17+00:00"
         },
         {
             "name": "sebastian/resource-operations",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "71421c1745788de4facae1b79af923650bd3ec15"
+                "reference": "0653718a5a629b065e91f774595267f8dc32e213"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/71421c1745788de4facae1b79af923650bd3ec15",
-                "reference": "71421c1745788de4facae1b79af923650bd3ec15",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/0653718a5a629b065e91f774595267f8dc32e213",
+                "reference": "0653718a5a629b065e91f774595267f8dc32e213",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -11830,24 +12736,30 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2020-06-15T13:17:14+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:16:22+00:00"
         },
         {
             "name": "sebastian/type",
-            "version": "2.1.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "bad49207c6f854e7a25cef0ea948ac8ebe3ef9d8"
+                "reference": "86991e2b33446cd96e648c18bcdb1e95afb2c05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/bad49207c6f854e7a25cef0ea948ac8ebe3ef9d8",
-                "reference": "bad49207c6f854e7a25cef0ea948ac8ebe3ef9d8",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/86991e2b33446cd96e648c18bcdb1e95afb2c05a",
+                "reference": "86991e2b33446cd96e648c18bcdb1e95afb2c05a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.2"
@@ -11855,7 +12767,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -11876,24 +12788,30 @@
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
             "homepage": "https://github.com/sebastianbergmann/type",
-            "time": "2020-06-01T12:21:09+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-05T08:31:53+00:00"
         },
         {
             "name": "sebastian/version",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "0411bde656dce64202b39c2f4473993a9081d39e"
+                "reference": "626586115d0ed31cb71483be55beb759b5af5a3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/0411bde656dce64202b39c2f4473993a9081d39e",
-                "reference": "0411bde656dce64202b39c2f4473993a9081d39e",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/626586115d0ed31cb71483be55beb759b5af5a3c",
+                "reference": "626586115d0ed31cb71483be55beb759b5af5a3c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3 || ^8.0"
             },
             "type": "library",
             "extra": {
@@ -11919,7 +12837,13 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2020-01-21T06:36:37+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-26T12:18:43+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -11967,6 +12891,16 @@
                 "linter",
                 "parser",
                 "validator"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-30T19:05:18+00:00"
         },
@@ -12107,6 +13041,16 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
+            "funding": [
+                {
+                    "url": "https://github.com/kukulich",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-22T11:33:09+00:00"
         },
         {
@@ -12208,6 +13152,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-30T20:35:19+00:00"
         },
         {
@@ -12280,20 +13238,34 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-11T21:20:02+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910"
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/f8bed25edc964d015bcd87f1fec5734963931910",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/cd88921e9add61f2064c9c6b30de4f589db42962",
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962",
                 "shasum": ""
             },
             "require": {
@@ -12306,6 +13278,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -12337,7 +13313,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-25T17:37:45+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -12400,6 +13390,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:46:27+00:00"
         },
         {
@@ -12450,6 +13454,20 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
@@ -12590,5 +13608,6 @@
     "platform": {
         "php": ">=7.4.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

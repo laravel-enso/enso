@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
-use LaravelEnso\DataImport\App\Models\DataImport;
+use LaravelEnso\DataImport\Models\DataImport;
 
 $factory->define(DataImport::class, fn () => [
     'type' => (new Collection(config('enso.imports.configs')))->keys()->random(),

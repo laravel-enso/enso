@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Calendar\App\Enums\Colors;
-use LaravelEnso\Calendar\App\Models\Calendar;
+use LaravelEnso\Calendar\Enums\Colors;
+use LaravelEnso\Calendar\Models\Calendar;
 
 $factory->define(Calendar::class, fn (Faker $faker) => [
     'name' => $faker->text,

@@ -1,0 +1,96 @@
+diff --git a/node_modules/@enso-ui/companies/.gitignore b/node_modules/@enso-ui/companies/.gitignore
+new file mode 100644
+index 0000000..d9d1a55
+--- /dev/null
++++ b/node_modules/@enso-ui/companies/.gitignore
+@@ -0,0 +1,7 @@
++/node_modules
++/.vscode
++/.idea
++npm-debug.log
++.DS_STORE
++._*
++yarn.lock
+\ No newline at end of file
+diff --git a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
+index e739306..a5e6335 100644
+--- a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
++++ b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
+@@ -11,7 +11,7 @@
+             <accessories>
+                 <template slot-scope="{ count }">
+                     <tab keep-alive
+-                        id="People">
++                         id="People">
+                         <div class="columns is-centered">
+                             <div class="column is-two-thirds">
+                                 <people :id="companyId"
+@@ -22,7 +22,7 @@
+                         </div>
+                     </tab>
+                     <tab keep-alive
+-                        id="Addresses">
++                         id="Addresses">
+                         <div class="columns is-centered">
+                             <div class="column is-two-thirds">
+                                 <addresses :id="companyId"
+@@ -32,6 +32,39 @@
+                             </div>
+                         </div>
+                     </tab>
++                    <tab keep-alive
++                         id="Comments">
++                        <div class="columns is-centered">
++                            <div class="column is-two-thirds">
++                                <comments :id="companyId"
++                                    type="LaravelEnso\Companies\Models\Company"
++                                    @update="$set(count, 'Comments', $refs.comments.count)"
++                                    ref="comments"/>
++                            </div>
++                        </div>
++                    </tab>
++                    <tab keep-alive
++                         id="Discussions">
++                        <div class="columns is-centered">
++                            <div class="column is-two-thirds">
++                                <discussions :id="companyId"
++                                    type="LaravelEnso\Companies\Models\Company"
++                                    @update="$set(count, 'Discussions', $refs.discussions.count)"
++                                    ref="discussions"/>
++                            </div>
++                        </div>
++                    </tab>
++                    <tab keep-alive
++                         id="Documents">
++                        <div class="columns is-centered">
++                            <div class="column is-two-thirds">
++                                <documents :id="companyId"
++                                    type="LaravelEnso\Companies\Models\Company"
++                                    @update="$set(count, 'Documents', $refs.documents.count)"
++                                    ref="documents"/>
++                            </div>
++                        </div>
++                    </tab>
+                 </template>
+             </accessories>
+         </div>
+@@ -40,7 +73,7 @@
+ 
+ <script>
+ import { Tab } from '@enso-ui/tabs/bulma';
+-import { Accessories, Addresses } from '@enso-ui/bulma';
++import { Accessories, Addresses, Discussions, Comments, Documents } from '@enso-ui/bulma';
+ import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
+ import People from './components/People.vue';
+ 
+@@ -48,8 +81,8 @@ export default {
+     name: 'Edit',
+ 
+     components: {
+-        EnsoForm, FormField, Accessories,
+-        Tab, Addresses, People,
++        Addresses, Accessories, Comments, Discussions,
++        Documents, EnsoForm, FormField, People, Tab,
+     },
+ 
+     computed: {

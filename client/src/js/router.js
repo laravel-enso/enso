@@ -9,6 +9,9 @@ Vue.use(Router);
 
 (new RouteMerger(routes))
     .add(routeImporter(require.context('@calendar/routes', false, /.*\.js$/)))
+    .add(routeImporter(require.context('@howTo/routes', false, /.*\.js$/)))
+    .add(routeImporter(require.context('@activityLog/routes', false, /.*\.js$/)))
+    .add(routeImporter(require.context('@tutorials/routes', false, /.*\.js$/)))
     .add(routeImporter(require.context('./routes', false, /.*\.js$/)));
 
 const router = new Router({

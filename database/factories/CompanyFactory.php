@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Companies\App\Enums\CompanyStatuses;
-use LaravelEnso\Companies\App\Models\Company;
+use LaravelEnso\Companies\Enums\Statuses;
+use LaravelEnso\Companies\Models\Company;
 
 $factory->define(Company::class, fn (Faker $faker) => [
     'name' => $faker->unique()->company,
@@ -13,8 +13,8 @@ $factory->define(Company::class, fn (Faker $faker) => [
     'fax' => $faker->phoneNumber,
     'bank' => $faker->company,
     'bank_account' => $faker->bankAccountNumber,
-    'obs' => $faker->sentence,
+    'notes' => $faker->sentence,
     'pays_vat' => $faker->boolean,
     'is_tenant' => false,
-    'status' => CompanyStatuses::Active,
+    'status' => Statuses::Active,
 ]);

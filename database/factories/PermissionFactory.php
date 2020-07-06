@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Permissions\Models\Permission;
 
 $factory->define(Permission::class, fn (Faker $faker) => [
     'name' => $faker->unique()->word,

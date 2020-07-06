@@ -2,9 +2,9 @@
 
 use Carbon\Carbon;
 use Faker\Generator as Faker;
-use LaravelEnso\People\App\Enums\Genders;
-use LaravelEnso\People\App\Enums\Titles;
-use LaravelEnso\People\App\Models\Person;
+use LaravelEnso\People\Enums\Genders;
+use LaravelEnso\People\Enums\Titles;
+use LaravelEnso\People\Models\Person;
 
 $factory->define(Person::class, function (Faker $faker) {
     $title = Titles::keys()->random();
