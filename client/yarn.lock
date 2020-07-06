@@ -1197,9 +1197,9 @@
     vuex "^3.0.0"
 
 "@enso-ui/forms@^2.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/forms/-/forms-2.0.1.tgz#ad58d2b7a3026a0f8fef0b111fc9b9004b817453"
-  integrity sha512-XBf16nB2ytRlIWVWSXUpzoz50dEWsUMOrfKlO7N/ZYFNZN2mRjpNlrj3twHzOgLWWXslK2wXiuFwz3DnwTERhw==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@enso-ui/forms/-/forms-2.0.2.tgz#906f726db4ef1c490ad4c5e5c150aac9f982efdf"
+  integrity sha512-4u7TYPLEMcNRmGhln4GvSd1mbUscl/9DodPRE6YmzbP4uBSnr06sN+YLaET6lkAjrm6RK56aRavA3Adoc9tFGg==
   dependencies:
     "@enso-ui/datepicker" "^1.1"
     "@enso-ui/directives" "^1.0"
@@ -1576,9 +1576,9 @@
     vue "^2.5.16"
 
 "@enso-ui/ui@^3.0":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-3.0.4.tgz#53d6055917b6d4803e4f085b67ef749d03d36316"
-  integrity sha512-r3j58jRocIA6UNL6jsoyz+/t5wzHzrJ2tVVmy1zm6hvMTi/ryiFSe70VBmsshK9MlYBQDbtysaNsMiPRPo68Ag==
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-3.0.5.tgz#b053df66c5bbf6845853e66d155296657680a2ba"
+  integrity sha512-ZZESxLgRCERPl5P4ovZeLjb5j+mn1ERsmLr7eUdn6L3SnNDpcApJHAyl28WmGhVXRw01v/CIMuzDwUplHJTsdg==
   dependencies:
     "@enso-ui/accessories" "^3.0"
     "@enso-ui/charts" "^2.0"
@@ -1591,6 +1591,7 @@
     "@enso-ui/enums" "^1.0"
     "@enso-ui/files" "^2.0"
     "@enso-ui/forms" "^2.0"
+    "@enso-ui/laravel-validation" "^1.0"
     "@enso-ui/loader" "^2.0"
     "@enso-ui/localisation" "^2.0"
     "@enso-ui/logs" "^2.0"
@@ -1631,6 +1632,7 @@
     pusher-js "^5.0.0"
     v-tooltip "^2.0.0"
     vue "^2.5.16"
+    vue-pull-refresh "^0.2.7"
     vue-router "^3.0.2"
     vuedraggable "^2.16.0"
     vuex "^3.1.0"
@@ -10807,6 +10809,13 @@ vue-loader@^15.7.1, vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-pull-refresh@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/vue-pull-refresh/-/vue-pull-refresh-0.2.7.tgz#ee4025fed2c2ff32390153a0ae2fcb86d5eeded6"
+  integrity sha512-SN0DxNeKrcgduybhHrUgHPHiyjHlfLN29ycslfiV/NeQ5qgDaB3COl1m30cpcqQgk0+pKcCUsygdKrj3qB0AFw==
+  dependencies:
+    vue "^2.0.1"
+
 vue-quill-editor@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/vue-quill-editor/-/vue-quill-editor-3.0.6.tgz#1f85646211d68a31a80a72cb7f45bb2f119bc8fb"
@@ -10857,7 +10866,7 @@ vue-video-player@^5.0:
     videojs-flash "^2.1.0"
     videojs-hotkeys "^0.2.20"
 
-vue@^2.5.16, vue@^2.6.10, vue@^2.6.8:
+vue@^2.0.1, vue@^2.5.16, vue@^2.6.10, vue@^2.6.8:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
