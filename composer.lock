@@ -2223,16 +2223,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "5.0.3",
+            "version": "5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec"
+                "reference": "ce5ffb46d1daf2d5e9f19098eddd65a2f36d7a34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec",
-                "reference": "37cd1ca13d1ab8f7d35f09b3df228e5165ff73ec",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/ce5ffb46d1daf2d5e9f19098eddd65a2f36d7a34",
+                "reference": "ce5ffb46d1daf2d5e9f19098eddd65a2f36d7a34",
                 "shasum": ""
             },
             "require": {
@@ -2320,7 +2320,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2020-07-01T10:29:25+00:00"
+            "time": "2020-07-06T15:40:52+00:00"
         },
         {
             "name": "laravel-enso/countries",
