@@ -1595,16 +1595,16 @@
         },
         {
             "name": "laravel-enso/addresses",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/addresses.git",
-                "reference": "141c28e501179f1437290df82ecc21298d5dcda1"
+                "reference": "1cd98633649319390164fea411bbd7bc7a97769d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/141c28e501179f1437290df82ecc21298d5dcda1",
-                "reference": "141c28e501179f1437290df82ecc21298d5dcda1",
+                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/1cd98633649319390164fea411bbd7bc7a97769d",
+                "reference": "1cd98633649319390164fea411bbd7bc7a97769d",
                 "shasum": ""
             },
             "require": {
@@ -1654,7 +1654,7 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-06-30T11:23:48+00:00"
+            "time": "2020-07-08T10:34:33+00:00"
         },
         {
             "name": "laravel-enso/avatars",
@@ -3134,16 +3134,16 @@
         },
         {
             "name": "laravel-enso/io",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/io.git",
-                "reference": "765fa6d981dc5e96a2c13c96a79a1e9328a69748"
+                "reference": "deedc7a141e98a9cf4fe24e7c769d9c788952bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/io/zipball/765fa6d981dc5e96a2c13c96a79a1e9328a69748",
-                "reference": "765fa6d981dc5e96a2c13c96a79a1e9328a69748",
+                "url": "https://api.github.com/repos/laravel-enso/io/zipball/deedc7a141e98a9cf4fe24e7c769d9c788952bbe",
+                "reference": "deedc7a141e98a9cf4fe24e7c769d9c788952bbe",
                 "shasum": ""
             },
             "require": {
@@ -3184,7 +3184,7 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-06-24T15:42:09+00:00"
+            "time": "2020-07-08T09:07:50+00:00"
         },
         {
             "name": "laravel-enso/localisation",
@@ -5878,16 +5878,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.27",
+            "version": "2.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc"
+                "reference": "d1ca58cf33cb21046d702ae3a7b14fdacd9f3260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
-                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d1ca58cf33cb21046d702ae3a7b14fdacd9f3260",
+                "reference": "d1ca58cf33cb21046d702ae3a7b14fdacd9f3260",
                 "shasum": ""
             },
             "require": {
@@ -5966,7 +5966,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-04-04T23:17:33+00:00"
+            "time": "2020-07-08T09:08:33+00:00"
         },
         {
             "name": "psr/container",
@@ -10719,16 +10719,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61"
+                "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
-                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b20034be5efcdab4fb60ca3a29cba2949aead160",
+                "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160",
                 "shasum": ""
             },
             "require": {
@@ -10778,7 +10778,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-07-07T16:07:38+00:00"
+            "time": "2020-07-08T12:44:21+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -12627,20 +12627,20 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0",
+                "php": "^5.3.3 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -12672,7 +12672,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-06-16T10:16:42+00:00"
+            "time": "2020-07-08T17:02:28+00:00"
         }
     ],
     "aliases": [],

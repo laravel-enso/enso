@@ -142,6 +142,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 - updated web middleware group to api for sanctum
 
 #### addresses
+- dropped the `defaultAddress()` method, instead, the `address()` relation will always return the default address
 - added return type in `isLocalized` helper
 - added `isLocalized` helper
 - replaced web middleware group with api for sanctum
@@ -362,9 +363,10 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 19. `companies` doesn't have `documents`, `comments`, `discussion` anymore, if you still need them you need to install them and using `DynamicMethod` (like [dynamic-methods](https://github.com/laravel-enso/enso/tree/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/app/DynamicRelations), [AppServiceProvider.php](https://github.com/laravel-enso/enso/pull/316/files#diff-80bda0ca3af455d6354e095203e0199aR16-R28), [composer.json](https://github.com/laravel-enso/enso/pull/316/files#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780))
 20. `how-to`, `activity-log`, `tutorials` were removed from the `laravel-enso/core`, therefore if you need to use them you need install too (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/composer.json))
 21. `obs` field was replaced with `notes`, you need to update migration and factories regarding this change
-22. publish the telescope assets by running `php artisan telescope:publish`
-23. publish the horizon assets by running `php artisan horizon:publish`
-24. update version `4.0.0`
+22. replace the deprecated `defaultAddress()` method with `address` where the case
+23. publish the telescope assets by running `php artisan telescope:publish`
+24. publish the horizon assets by running `php artisan horizon:publish`
+25. update version `4.0.0`
 
 ### FrontEnd:
 1. upgrade dependencies to the next major version (for example `"@enso-ui/ui": "^3.0"`) except (`clipboard`, `confirmation`, `datepicker`, `directives`, `divider`, `dropdown-indicator`, `enums`, `erd`, `laravel-validation`, `money`, `progress-bar`, `progress-circle`, `route-mapper`, `strings`, `switch`, `tabs`, `textarea`, `themes`, `transitions`, `wysiwyg`, `uploader`) (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/client/package.json))
@@ -372,9 +374,9 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 3. remove the `eslintrc.js` file from the project root
 4. remove App from namespace of packages,(you can use this regex, `LaravelEnso\\(.*)\\App\\` replace with `LaravelEnso\\$1\\`)
 5. `how-to`, `activity-log`, `tutorials` were removed from the `enso-ui/ui`, therefore if you need to use them you need install too and also you need to setup them(you can look at [.eslintrc.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/.eslintrc.js), [app.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/app.js), [vue.config.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/vue.config.js), [router.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/router.js))
-6. `companies` doesn't have `documetns`, `comments`, `discussion` anymore, if you still need them you can use patch(like [this](https://github.com/laravel-enso/enso/blob/5ea9ba20f63865105acd13c65838f79de9ac860a/client/patches/%40enso-ui%2Bcompanies%2B2.0.1.patch))
-7. toastr was changed in this version, and you need to inject it wherever you need(like [this](https://github.com/enso-ui/forms/commit/51020d02320ff184dab1fda9b5e08eee310fcc65#diff-430b1af0e264e06ed63092d6452b76f5R36-R178)) (it's optional but recommended)
-8. modal was changed and :show was removed, you need to use v-if instead of :show (like [this](https://github.com/enso-ui/files/commit/e167a81b5743444c2466228db7f5bbd329efb49b#diff-19fdd3d0be7c460814ca0301e0d0c61aR1-R5) and [this](https://github.com/enso-ui/companies/commit/7d016b35ea2f580ccc035196eba5f1196183f889#diff-4cdb1f903fa4351c4fa1a92c10489760R61-R68))
+6. `companies` doesn't have `documents`, `comments`, `discussion` anymore, if you still need them you can use patch(like [this](https://github.com/laravel-enso/enso/blob/5ea9ba20f63865105acd13c65838f79de9ac860a/client/patches/%40enso-ui%2Bcompanies%2B2.0.1.patch))
+7. `toastr` was changed in this version, and you need to inject it wherever you need(like [this](https://github.com/enso-ui/forms/commit/51020d02320ff184dab1fda9b5e08eee310fcc65#diff-430b1af0e264e06ed63092d6452b76f5R36-R178)) (it's optional but recommended)
+8. `modal` was changed and `:show` was removed, you need to use `v-if` instead of `:show` (like [this](https://github.com/enso-ui/files/commit/e167a81b5743444c2466228db7f5bbd329efb49b#diff-19fdd3d0be7c460814ca0301e0d0c61aR1-R5) and [this](https://github.com/enso-ui/companies/commit/7d016b35ea2f580ccc035196eba5f1196183f889#diff-4cdb1f903fa4351c4fa1a92c10489760R61-R68))
 9. `documents`, `comments`, `addresses`, `discussions` were extracted from `Accessories` therefore if you need them you can import them from `@enso-ui/bulma` instead of `@enso-ui/accessories` (like [this](https://github.com/enso-ui/people/pull/8/files#diff-255683f769d6397e63c0976349f1204cR70-R72))
 
 ## 3.9.5

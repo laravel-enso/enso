@@ -1867,9 +1867,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "14.0.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.19.tgz#994d99708822bca643a2364f8aeed04a16e0f5a1"
-  integrity sha512-yf3BP/NIXF37BjrK5klu//asUWitOEoUP5xE1mhSUjazotwJ/eJDgEmMQNlOeWOVv72j24QQ+3bqXHE++CFGag==
+  version "14.0.20"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.20.tgz#0da05cddbc761e1fa98af88a17244c8c1ff37231"
+  integrity sha512-MRn/NP3dee8yL5QhbSA6riuwkS+UOcsPUMOIOG3KMUQpuor/2TopdRBu8QaaB4fGU+gz/bzyDWt0FtUbeJ8H1A==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -4441,9 +4441,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.488:
-  version "1.3.492"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.492.tgz#bde16082a05a124266e5ecc9cf0ce53d137f2919"
-  integrity sha512-AD6v9Y2wN0HuoRH4LwCmlSHjkKq51D1U52bTuvM5uPzisbHVm3Hms15c42TBFLewxnSqxAynK/tbeaUi4Rnjqw==
+  version "1.3.493"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.493.tgz#825d4335d053db27dafa72619ba9bae06f79f791"
+  integrity sha512-XI8utnmn79O57cYTS0Y2smVmxwQvVisp7T/5mHHrUnY6yVXaglssFFxiHmSAIBil3c5XmhCqkhcS9j237zj83A==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.3"
@@ -6447,9 +6447,9 @@ jest-worker@^25.4.0:
     supports-color "^7.0.0"
 
 js-base64@^2.1.8:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.6.2.tgz#cf9301bc5cc756892a9a6c8d7138322e5944fb0d"
-  integrity sha512-1hgLrLIrmCgZG+ID3VoLNLOSwjGnoZa8tyrUdEteMeIzsT6PH7PMLyUvbDwzNE56P3PNxyvuIOx4Uh2E5rzQIw==
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.6.3.tgz#7afdb9b57aa7717e15d370b66e8f36a9cb835dc3"
+  integrity sha512-fiUvdfCaAXoQTHdKMgTvg6IkecXDcVz6V5rlftUTclF9IKBjMizvSdQaCl/z/6TApDeby5NL+axYou3i0mu1Pg==
 
 js-message@1.0.5:
   version "1.0.5"
@@ -6784,9 +6784,9 @@ lodash.uniq@^4.5.0:
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.3.0, lodash@~4.17.10:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -7347,9 +7347,9 @@ node-ipc@^9.1.1:
     vm-browserify "^1.0.1"
 
 node-releases@^1.1.58:
-  version "1.1.58"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.58.tgz#8ee20eef30fa60e52755fcc0942def5a734fe935"
-  integrity sha512-NxBudgVKiRh/2aPWMgPR7bPTX0VPmGx5QBwCtdHitnqFE5/O8DeBXuIMH1nwNnw/aMo6AjOrpsHzfY3UbUJ7yg==
+  version "1.1.59"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.59.tgz#4d648330641cec704bff10f8e4fe28e453ab8e8e"
+  integrity sha512-H3JrdUczbdiwxN5FuJPyCHnGHIFqQ0wWxo+9j1kAXAzqNMAHlo+4I/sYYxpyK0irQ73HgdiyzD32oqQDcU2Osw==
 
 node-sass@^4.9.0:
   version "4.14.1"
@@ -10674,9 +10674,9 @@ verror@1.10.0:
     xhr "2.4.0"
 
 "video.js@^6 || ^7", "video.js@^6.6 || ^7.0", "video.js@^6.8.0 || ^7.0.0":
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/video.js/-/video.js-7.8.3.tgz#a32df2b8e5f8d2f6b06d6ccd3bf91c6342a2a365"
-  integrity sha512-u8/1qEZdBeOm7TgBhJg8ab28vd3x62UMaaSnZ79yOMaxCqACP9CzWJT9c3Isfv2jY9BNLBIIft+BqNLTWudtLw==
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/video.js/-/video.js-7.8.4.tgz#645bf40400b413047d2b873c0c65fc8b42128f2a"
+  integrity sha512-XTWWrhfdrk7nTBkqhWKslfXMpUhsDRsZ2L3ISxjuAgadpiomxFV/OARchtwxO+FdnxTm4njJstPmXbVe3F765g==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@videojs/http-streaming" "1.13.2"
