@@ -203,7 +203,7 @@ return [
         'path' => 'exports',
         'timeout' => 60 * 60,
         'sheetLimit' => 1000000,
-        'notifications' => ['email', 'broadcast', 'database'],
+        'notifications' => ['mail', 'broadcast', 'database'],
     ],
 
     /*

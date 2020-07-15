@@ -76,5 +76,6 @@ return [
         'core.addresses.localities',
         'core.addresses.regions',
         'core.addresses.localize',
+        'administration.users.resetPassword',
     ],
 ];
