@@ -1,5 +1,109 @@
 # Laravel Enso's Changelog
 
+## 4.0.1
+
+This is a patch release, therefore it includes several bug fixes and very small changes.
+
+### front-end
+We have updated in all our packages the `animated` dependency to 4.0.0
+
+#### calendar
+- fixed deleting event in a sequence
+- fixed drag event in `EnsoCalendar`
+
+#### commercial (private)
+- updated input clear
+- added settings
+
+#### financials (private)
+- fixed VAT display, now shows numerical value
+
+#### how-to
+- updated `Index.vue` to add tag only when having access to store route
+
+#### mixins
+- updated error code from `555` to `488`
+
+#### modal
+- improved portal creation into instance root
+
+
+### back-end
+We have updated `DynamicsRelations` namespace  to `DynamicRelations` in order to be PSR4 compliant for all packages
+and removed `throttle`
+
+#### calendar
+- drops create action from edit
+
+#### commercial (private)
+- removed `InvoiceableEntity`
+- refactored position adjustment request
+- replaced `onceUsingId` with `setUser`
+- sale now uses the `Methods` trait; fixed the `Person` resource
+- added settings
+- updated the settings form; updated virtual position id references; removed the package config file
+
+#### control-panel-api
+- improved logic in seeder
+
+#### core
+- fixed reset password
+- added `PosterMorphKey` upgrade command
+
+#### data-export
+- fixed comment typo
+
+#### data-import
+- replaced `onceUsingId` with `setUser`
+- fixed comment spacing
+
+#### discounts (private)
+- fixed redirect on delete bug; fixed model import after refactor
+
+#### financials (private)
+- added new `InvoiceableEntity` exception
+- updated `number` type form `unsignedInteger` to `string` for payments and invoices
+- fixed client table filters bug; updated auto number; fixed model load issue after refactor
+
+#### forms
+- fixed typo in comment
+
+#### how-to
+- added `CascadesMorphMap` trait for Poster and updated `AppServiceProvider`
+
+#### impersonate
+- fixed typo in middleware
+- fixed middleware and added `provider` method
+- fix authentication
+
+#### inventory (private)
+- removed show button from the form as route is necessary
+- improved the position form
+
+#### tables
+- replace `onceUsingId` with `setUser`
+- fixes mail driver
+
+#### teams
+- fixed namespaces in `AppServiceProvider` and `Teams`
+
+#### tutorials
+- corrected folder name
+
+### Upgrade steps
+
+To upgrade:
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patch files
+- `php artisan enso:upgrade`
+- all `Auth:onceUsingId()` uses should be updated to `Auth::guard('web')->onceUsingId()` due to sanctum addition
+- remove `'throttle:60,1'` from `App\Http\Kernel`
+- replace tables.export.notifications `email` to `mail`
+- upgrade `"animate.css": "^4.0.0"` in package.json
+- update in `enso.scss` animate import to `animate.compat.css` instead of `animate.css`
+- update `MAILGUN_ENDPOINT` in your `.env` files to `api.mailgun.net` instead of `api.eu.mailgun.net`
+- ensure that permissions are properly configured for each role and then save/refresh the roles configuration files
+
 ## 4.0.0
 With this release we added sanctum to our core, opening the way for mobile applications and better integrations with external apis. We have also refactored all of our backend packages. Among the changes we have brought to our backend code, we have managed to:
 
@@ -11,7 +115,7 @@ With this release we added sanctum to our core, opening the way for mobile appli
 - move helpers from classes to services
 - update the docker image
 
-Since we consider that Enso has matured enough, starting with 4.0.0 we're are going to use [semver](https://semver.org/). As a result, we have updated all package dependencies and incremented the major version where the case.
+Since we consider that Enso has matured enough, starting with 4.0.0 we are going to use [semver](https://semver.org/). As a result, we have updated all package dependencies and incremented the major version where the case.
 
 ### front-end
 
@@ -37,7 +141,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 - added `cancelToken` for subsequent requests
 
 #### comments (new)
-- created new `comments` package substracted from the `accessories`
+- created new `comments` package subtracted from the `accessories`
 
 #### commercial (private)
 - added the `comments`, `documents` packages as dependencies
@@ -53,11 +157,11 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 - removed `App` from namespace
 
 #### discussions (new)
-- created new `discussions` package substracted from the `accessories`
+- created new `discussions` package subtracted from the `accessories`
 - removed `App` from namespace
 
 #### documents (new)
-- created new `documents` package substracted from the `accessories`
+- created new `documents` package subtracted from the `accessories`
 
 #### dropdown
 - exposed a bool selection flag in dropdown's render
@@ -91,7 +195,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 #### modal
 - improved the modal behaviour
 - dropped the need for the `show` control prop. Now the modal will have to be controlled by `v-if="something"`. This is breaking and need refactor in all uses
-- fixed a bug when the modal was open and the router was used to switch the page, which let the modal hang forever and needed a page reload
+- fixed a bug when the modal was open, and the router was used to switch the page, which let the modal hang forever and needed a page reload
 - added a `transitionDuration` prop that allows using the transition also for the above case
 - overall refactor
 
@@ -128,6 +232,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
     - updated the use of toastr by importing and providing it for injection, in App
     - improved store by making use of `vue-router-sync` -> this adds a breaking change for the `setPageTitle` store action that now requires only the new title as param
 - removed how-to/activity-log/tutorials dependencies
+- disabled impersonate in webview
 - fixed style
 - added pusher
 - fixed navbar avatar, now we use `Avatar` component instead of `img` in `Operation` component
@@ -179,6 +284,12 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 - added filters request to request validator and fixes store/update controllers
 - fixed helpers services namespace
 - removed accessories, leaves only addresses
+
+#### control-panel
+- updated controllers to use `Illuminate\Routing\Controller` instead of `App\Http\Controllers\Controller`
+- fixed style
+- added `FilterRequest` in `ValidateApplicationRequest`
+- updated `Application` update controller to except `token` field from request
 
 #### control-panel-api
 - changed token to sanctum
@@ -250,6 +361,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 - added `FiltersRequest` trait
 - improved filters request to receive array or argument list
 - improved `CascadeMorphMap` to always resolve the last model binding
+- improved `Searchable` to detect changes in algolia camelCase keys also
 - updated enso exception error code to 488
 
 #### history-tracker
@@ -265,6 +377,11 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 
 #### impersonate
 - added sanctum
+
+#### io
+- fixed avatar in `IOEvent`
+- small refactor
+- improved logic in `IOEvent` and updated  `IOObserver`
 
 #### localisation
 - changed `web` middleware to `api`
@@ -294,7 +411,9 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 
 #### permissions
 - added abilities trait
-- removed tutorial permission (added dyanmically from the tutorials package)
+- added comments and documents as dependencies
+- added `HtmlDescription` to validation
+- removed tutorial permission (added dynamically from the tutorials package)
 - updated web middleware group to api for sanctum
 
 #### products
@@ -307,6 +426,7 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 
 #### roles
 - changed `web` middleware to `api`
+- updated `HasRoles`
 - removed todo
 
 #### searchable
@@ -342,42 +462,42 @@ We've also refactored the new `toastr` uses by injecting it where needed instead
 # upgrades steps
 ### Backend
 1. update dependencies to next major for example core ^5.0 (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/composer.json))
-2. `composer update`
+2. run `composer update`
 3. add `SANCTUM_STATEFUL_DOMAINS ` to .env (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-cbfd64a28982a1818f2b5f16e7f9d634R68))
 4. remove App from namespace of packages,(you can use this regex, `LaravelEnso\\(.*)\\App\\` replace with `LaravelEnso\\$1\\`)
-4.1. you need to replace `laravel-enso/(.*)/src/App/` with `laravel-enso/$1/src/` too
-5. `Comments`, `Discussions`, `Replies` traits were removed and you need remove them from User.php (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-4614b2d052a2cb7486640775e2bdbb55R2-R9))
-6. `composer dump-autoload`
-7. you need to add `AuthorizationCookie` and `EnsureFrontendRequestsAreStateful` to middleware(like [this](https://github.com/laravel-enso/enso/blob/f0fedbab000035b9b998290c1fd2d2af1e038e0f/app/Http/Kernel.php))
-8. if you didn't bind Core/User to local user you need to add this too `AppServiceProvider` (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-80bda0ca3af455d6354e095203e0199aR11-R14) )
-9. you need to replace `web` middleware with `api` in `RouteServiceProvider.php` and in your local routes (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-b467cc786635bd6945b17726282f1c64R28-R34))
-10. you need to replace defaults.guard to `api` and api.driver with `sanctum` (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-3fc9d8e570780c4eb337c6f860b1e8e0R13-R47))
-11. we have replaced `fillable` property with `guarded` on all of our models, so make sure to update the local models accordingly
-12. `CompanyStatuses`  was replaced with `Statuses`
-13. you need to adds type to migration fields(like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-9c0e569dfec04dd81a69d88cde76a0efR1-R14))
-14. maybe you need to fix routes in imports and static files (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-2e0b85f74baf44e5614b951a9b21056bR100)) (you can use this for find `laravel-enso/.*/src/database`)
-15. publish sanctum config `php artisan vendor:publish  --tag=sanctum-config`
-16. publish monitoring seeder `php artisan vendor:publish  --tag=control-panel-api-seeder` (optional, if you’re using Control Panel Api)
+    - you need to replace `laravel-enso/(.*)/src/App/` with `laravel-enso/$1/src/` too
+5. `Comments`, `Discussions` & `Replies` traits were removed and you need remove them from `User.php` (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-4614b2d052a2cb7486640775e2bdbb55R2-R9))
+6. run `composer dump-autoload`
+7. you need to add the `AuthorizationCookie` and `EnsureFrontendRequestsAreStateful` middleware classes to middleware group (like [this](https://github.com/laravel-enso/enso/blob/f0fedbab000035b9b998290c1fd2d2af1e038e0f/app/Http/Kernel.php))
+8. if you didn't bind Core/User to the local User, you need to do this now in `AppServiceProvider` (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-80bda0ca3af455d6354e095203e0199aR11-R14) )
+9. you need to replace the `web` middleware with `api` in `RouteServiceProvider.php` and in your local `api.php` routes (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-b467cc786635bd6945b17726282f1c64R28-R34))
+10. you must update the configuration values for defaults.guard to `api` and api.driver to `sanctum` (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-3fc9d8e570780c4eb337c6f860b1e8e0))
+11. we have replaced the `fillable` property with `guarded` on all of our models, so make sure to update the local models accordingly
+12. the `CompanyStatuses` enum was renamed to `Statuses`
+13. you need to add types to `LaravelEnso/Migrator` `Migration` class fields (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-9c0e569dfec04dd81a69d88cde76a0ef))
+14. you may need to fix routes in imports and static files (like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-2e0b85f74baf44e5614b951a9b21056bR100)) (you can use this pattern for searching `laravel-enso/.*/src/database`)
+15. publish the sanctum config `php artisan vendor:publish  --tag=sanctum-config`
+16. publish the monitoring seeder `php artisan vendor:publish  --tag=control-panel-api-seeder` (optional, if you’re using Control Panel Api)
 17. add `Broadcast::routes(['middleware' => ['auth:sanctum']]);` to `routes/api.php`(like [this](https://github.com/laravel-enso/enso/pull/316/files#diff-27c5e06ed9d12656d283f7d0c76b49bdR1-R32))
-18. replace `use LaravelEnso\Helpers\Classes\` with `use LaravelEnso\Helpers\Services\`
-19. `companies` doesn't have `documents`, `comments`, `discussion` anymore, if you still need them you need to install them and using `DynamicMethod` (like [dynamic-methods](https://github.com/laravel-enso/enso/tree/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/app/DynamicRelations), [AppServiceProvider.php](https://github.com/laravel-enso/enso/pull/316/files#diff-80bda0ca3af455d6354e095203e0199aR16-R28), [composer.json](https://github.com/laravel-enso/enso/pull/316/files#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780))
-20. `how-to`, `activity-log`, `tutorials` were removed from the `laravel-enso/core`, therefore if you need to use them you need install too (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/composer.json))
-21. `obs` field was replaced with `notes`, you need to update migration and factories regarding this change
-22. replace the deprecated `defaultAddress()` method with `address` where the case
+18. search & replace `use LaravelEnso\Helpers\Classes\` with `use LaravelEnso\Helpers\Services\`
+19. `companies` doesn't have `documents`, `comments`, `discussion` as dependencies anymore, if you still need them you need to install them and using `DynamicMethod` (like [dynamic-methods](https://github.com/laravel-enso/enso/tree/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/app/DynamicRelations), [AppServiceProvider.php](https://github.com/laravel-enso/enso/pull/316/files#diff-80bda0ca3af455d6354e095203e0199aR16-R28), [composer.json](https://github.com/laravel-enso/enso/pull/316/files#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780))
+20. `how-to`, `activity-log` & `tutorials` were removed from the `laravel-enso/core`, therefore if you need to use them you need install too (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/composer.json))
+21. `obs` field was replaced with `notes`, you need to update migrations and factories regarding this change
+22. replace the deprecated `defaultAddress()` method with `address` where necessary
 23. publish the telescope assets by running `php artisan telescope:publish`
 24. publish the horizon assets by running `php artisan horizon:publish`
 25. update version `4.0.0`
 
 ### FrontEnd:
-1. upgrade dependencies to the next major version (for example `"@enso-ui/ui": "^3.0"`) except (`clipboard`, `confirmation`, `datepicker`, `directives`, `divider`, `dropdown-indicator`, `enums`, `erd`, `laravel-validation`, `money`, `progress-bar`, `progress-circle`, `route-mapper`, `strings`, `switch`, `tabs`, `textarea`, `themes`, `transitions`, `wysiwyg`, `uploader`) (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/client/package.json))
-2. run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+1. update dependencies to the next major version (for example `"@enso-ui/ui": "^3.0"`) except (`clipboard`, `confirmation`, `datepicker`, `directives`, `divider`, `dropdown-indicator`, `enums`, `erd`, `laravel-validation`, `money`, `progress-bar`, `progress-circle`, `route-mapper`, `strings`, `switch`, `tabs`, `textarea`, `themes`, `transitions`, `wysiwyg`, `uploader`) (like [this](https://github.com/laravel-enso/enso/blob/6d98e9348bd79f203e1edcbd40732d70e083278a/client/package.json))
+2. run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patch files
 3. remove the `eslintrc.js` file from the project root
-4. remove App from namespace of packages,(you can use this regex, `LaravelEnso\\(.*)\\App\\` replace with `LaravelEnso\\$1\\`)
-5. `how-to`, `activity-log`, `tutorials` were removed from the `enso-ui/ui`, therefore if you need to use them you need install too and also you need to setup them(you can look at [.eslintrc.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/.eslintrc.js), [app.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/app.js), [vue.config.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/vue.config.js), [router.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/router.js))
-6. `companies` doesn't have `documents`, `comments`, `discussion` anymore, if you still need them you can use patch(like [this](https://github.com/laravel-enso/enso/blob/5ea9ba20f63865105acd13c65838f79de9ac860a/client/patches/%40enso-ui%2Bcompanies%2B2.0.1.patch))
-7. `toastr` was changed in this version, and you need to inject it wherever you need(like [this](https://github.com/enso-ui/forms/commit/51020d02320ff184dab1fda9b5e08eee310fcc65#diff-430b1af0e264e06ed63092d6452b76f5R36-R178)) (it's optional but recommended)
-8. `modal` was changed and `:show` was removed, you need to use `v-if` instead of `:show` (like [this](https://github.com/enso-ui/files/commit/e167a81b5743444c2466228db7f5bbd329efb49b#diff-19fdd3d0be7c460814ca0301e0d0c61aR1-R5) and [this](https://github.com/enso-ui/companies/commit/7d016b35ea2f580ccc035196eba5f1196183f889#diff-4cdb1f903fa4351c4fa1a92c10489760R61-R68))
-9. `documents`, `comments`, `addresses`, `discussions` were extracted from `Accessories` therefore if you need them you can import them from `@enso-ui/bulma` instead of `@enso-ui/accessories` (like [this](https://github.com/enso-ui/people/pull/8/files#diff-255683f769d6397e63c0976349f1204cR70-R72))
+4. remove `App` from namespace of packages (you can use this regex, search for `LaravelEnso\\(.*)\\App\\` and replace with `LaravelEnso\\$1\\`)
+5. `how-to`, `activity-log`, `tutorials` were removed from the `enso-ui/ui`, therefore if you need to use them you should install the packages and set them up (you can look at [.eslintrc.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/.eslintrc.js), [app.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/app.js), [vue.config.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/vue.config.js), [router.js](https://github.com/laravel-enso/enso/blob/cf58505cec80bdc49003c0ea11d3837a60fbb4e9/client/src/js/router.js))
+6. `companies` doesn't depend on `documents`, `comments` or `discussion` anymore, if you still need them you can use patch (like [this](https://github.com/laravel-enso/enso/blob/5ea9ba20f63865105acd13c65838f79de9ac860a/client/patches/%40enso-ui%2Bcompanies%2B2.0.1.patch))
+7. toastr was changed in this version, and you need to inject it wherever you need(like [this](https://github.com/enso-ui/forms/commit/51020d02320ff184dab1fda9b5e08eee310fcc65#diff-430b1af0e264e06ed63092d6452b76f5R36-R178)) (it's optional but recommended)
+8. modal was changed and the :show property has been removed, you need to use v-if instead of :show (like [this](https://github.com/enso-ui/files/commit/e167a81b5743444c2466228db7f5bbd329efb49b#diff-19fdd3d0be7c460814ca0301e0d0c61aR1-R5) and [this](https://github.com/enso-ui/companies/commit/7d016b35ea2f580ccc035196eba5f1196183f889#diff-4cdb1f903fa4351c4fa1a92c10489760R61-R68))
+9. `documents`, `comments`, `addresses` & `discussions` were extracted from `Accessories` therefore if you need them you can import them from `@enso-ui/bulma` instead of `@enso-ui/accessories` (like [this](https://github.com/enso-ui/people/pull/8/files#diff-255683f769d6397e63c0976349f1204cR70-R72))
 
 ## 3.9.5
 
