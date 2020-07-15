@@ -96,7 +96,7 @@ To upgrade:
 - run `composer update`
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patch files
 - `php artisan enso:upgrade`
-- all `Auth:onceUsingId()` uses should be updated to `Auth::guard('web')->onceUsingId()` due to sanctum addition
+- all `Auth:onceUsingId()` uses should be updated to `Auth::setUser($user)` due to sanctum addition
 - remove `'throttle:60,1'` from `App\Http\Kernel`
 - replace tables.export.notifications `email` to `mail`
 - upgrade `"animate.css": "^4.0.0"` in package.json
