@@ -183,5 +183,5 @@ return [
         'system.localisation.options',
         'core.addresses.makeShipping',
         'core.addresses.makeBilling',
-    ]
+    ],
 ];
