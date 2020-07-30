@@ -94,6 +94,11 @@ We have updated `README.md` and `codacy badge` for several packages.
 - fixed recursive relations
 - fixed order in `tree()` method
 - removed `hasChildren` scope
+- added `risky` in `.stypeci.yml`
+- added new `depth()` method in model
+- removed `currentAndBelowIds` and `flatten` methods
+- added `flattenCurrentAndBelow`
+- added test
 
 #### cli
 - added type for migration
@@ -136,6 +141,10 @@ We have updated `README.md` and `codacy badge` for several packages.
 - added language options controller
 - simplified options controller
 
+#### products
+- added `risky` in `.stypeci.yml`
+- updated `categories` dependency
+
 #### roles
 - fixed the scenario where roles without a default menu had the first parent menu
 - skips an extra permission query
@@ -159,6 +168,15 @@ To upgrade:
 - due to `control-panel-api` routes rename, we need to update `ControlPanelApiSeeder`: `php artisan vendor:publish --tag=control-panel-api-seeder --force`
 - you need to publish addresses seeders by running: `php artisan vendor:publish --tag=addresses-seeds --force`
 - publish also addresses factory: `php artisan vendor:publish --tag=addresses-factory --force`
+- if using `categories` package, you need to:
+    - update in `composer.json` the categories dependency `"laravel-enso/categories": "^2.0"`
+    - publish factory by running: `php artisan vendor:publish --tag=categories-factories --force`
+    - add the categories test suite to `phpunit.xml`:
+    ```xml
+        <testsuite name="categories">
+            <directory suffix="Test.php">./vendor/laravel-enso/categories/tests</directory>
+        </testsuite>
+    ```
 - `php artisan migrate`
 - `composer dump-autoload`
 - `php artisan enso:upgrade`
