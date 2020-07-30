@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use LaravelEnso\Core\Enums\UserGroups;
 use LaravelEnso\Core\Models\User;
 use LaravelEnso\Core\Models\UserGroup;
 use LaravelEnso\People\Enums\Titles;
@@ -25,7 +26,7 @@ class ControlPanelApiSeeder extends Seeder
     {
         factory(User::class)->create([
             'person_id' => $this->person()->id,
-            'group_id' => UserGroup::whereName('Administrators')->first()->id,
+            'group_id' => UserGroup::find(UserGroups::Admin)->id,
             'email' => $this->person()->email,
             'password' => '!',
             'role_id' => $this->role()->id,
@@ -55,7 +56,7 @@ class ControlPanelApiSeeder extends Seeder
         ]);
 
         $role->permissions()->sync(
-            Permission::where('name', 'like', 'api.controlPanelApi.%')->pluck('id')
+            Permission::where('name', 'like', 'apis.%')->pluck('id')
         );
 
         return $role;

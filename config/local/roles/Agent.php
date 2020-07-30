@@ -22,5 +22,6 @@ return [
         'core.preferences.store',
         'core.search.index',
         'dashboard.index',
+        'system.localisation.options',
     ],
 ];

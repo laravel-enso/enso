@@ -21,5 +21,7 @@ $factory->define(Address::class, function (Faker $faker) {
         'long' => $faker->longitude,
         'notes' => $faker->realText(),
         'is_default' => true,
+        'is_billing' => true,
+        'is_shipping' => true,
     ];
 });
