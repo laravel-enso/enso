@@ -1,5 +1,202 @@
 # Laravel Enso's Changelog
 
+## 4.1.0
+
+This release includes many improvements, bug fixes and also several new features.
+
+### Front-end
+
+#### addresses
+- added `postcode` address detection
+- added `locality_id` in `AddressForm`
+- added `street` to postcode
+- added `isBilling` & `isShipping` to `AddressCard`; updated `Addresses`
+- reordered fields in address form according to template
+- added `form` payload to the `form-loaded` event
+
+#### bulma
+- exported form field group
+- fixed export
+
+#### categories
+- added  level `maxNestingLevel` property and `level` method in `CategoryTree.vue`
+- improved logic
+- fixed dragging and nesting
+- fixed max level validation error display
+
+#### commercial (private)
+- updated `FormContent` due to `supplier_number` to `supplier_order_reference` refactor
+
+#### companies
+- fixed company type in `Edit.vue`
+
+#### data-import
+- added new `Params`, `String`, `Date`, `CustomSelect` and `Boolean` components
+- uses the new `Params` component in `Index.vue`
+- small clean up
+
+#### datepicker
+- fixed disabled property in `CoreDatepicker`
+
+#### dropdown
+- added `show()` method
+
+#### emag (private)
+- updated due to `emag_number` to `client_order_reference` refactor
+
+#### forms
+-  added `form-field-group` field for `has-addons` or `is-grouped` scenarios
+
+#### laravel-validation
+- added `first()` method
+
+#### people
+- updated type in `Edit.vue`
+
+#### roles
+- fixed route in `Edit.vue`
+
+#### select
+- made dropdown available when no options but using taggable
+- added `show()` and `hide()` methods in `EnsoSelect` and `VueSelect` components
+
+#### ui
+- added `sessions` & `token` management
+- updated `Edit.vue`
+- updated `Sessions.vue`
+
+### back-end
+We have updated `README.md` and `codacy badge` for several packages.
+
+#### addresses
+- added `show` route
+- renamed permission
+- added `postcode` auto complete
+- added romania postcodes
+- added directory for `cities` & `regions`
+- updated timestamps
+- removed unused `StateSeeder`
+- improved seeders logic
+- added street to postcode
+- added `is_billing` and `is_shipping`
+- added casts
+- updated factory & migration
+- added `is_billing` and `is_shipping` to options
+- updated `OneLiner.php`
+- improved address form
+- improved `is_default`, `is_shipping`, `is_billing` handling
+- enabled the bool flags in the address form
+- added tests for billing & shipping
+- added missing routes
+- updated `makeDefault`, `makeBilling` and `toggleShipping`
+- made `makeBilling` method public
+
+#### categories
+- improved max nesting level validation message
+- fixed recursive relations
+- fixed order in `tree()` method
+- removed `hasChildren` scope
+- added `risky` in `.stypeci.yml`
+- added new `depth()` method in model
+- removed `currentAndBelowIds` and `flatten` methods
+- added `flattenCurrentAndBelow`
+- added test
+- renamed publishing tag from `categories-factories` to `categories-factory`
+
+#### cli
+- added type for migration
+
+#### commercial (private)
+- renamed `supplier_number` to `supplier_order_reference`
+- replaced `index()->unique()` with `unique()` in migrations
+- removed timestamps from the history model `fillable` attribute; renamed table column
+- updated client stocks import with the new `params` template feature
+- updated the `Sale` model trait usage
+- updated `DailyUpdateStockValues` logic and rules
+
+#### control-panel-api
+- renamed routes
+
+#### core
+- updated `AddressPermissions`
+- added `import.show` permission
+- added `core-api` middleware group
+- added upgrade command to rename permissions
+- added role filter in users
+- added sessions (index & delete)
+- added tokens (create & index & delete)
+- added permission migration
+- updated `UserTokenPermissions.php`
+- updated `UserSessionPermissions.php`
+- added postcode permission
+- added postcode upgrade
+- added street to postcode
+-  updated `Addresses` upgrade command to add `is_billing` and `is_shipping` columns
+- added force to postcode seeder
+- added post migration in `Addresses` upgrade command
+
+#### data-import
+- fixed comment spacing
+- added params validation
+- added support for `params` in template
+- small refactor
+- added `import.show` permission
+- small refactor and clean up
+- added `seederPath` option in config; updated `ExcelSeeder`
+
+#### documentation
+- added extra instructions regarding Sanctum's `SANCTUM_STATEFUL_DOMAINS` env value
+- updated data-import docs
+
+#### inventory (private)
+- updated positions import to use the new data-import template `params` flow
+
+#### localisation
+- added language options controller
+- simplified options controller
+
+#### products
+- added `risky` in `.stypeci.yml`
+- updated `categories` dependency
+
+#### roles
+- fixed the scenario where roles without a default menu had the first parent menu
+- skips an extra permission query
+
+#### tables
+- added default sort
+- added `notVisible` column and `visibility` method in `Columns` builder
+- updates `ColumnTest`
+- renamed sort classes
+- added `defaultSort` for all queries. `dtRowId` will be used if not customized by template
+- fixed default sort when there are columns with same name
+
+#### upgrade
+- added foreign key helper
+
+### Upgrade steps
+
+To upgrade:
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patch files
+- due to `control-panel-api` routes rename, we need to update `ControlPanelApiSeeder`: `php artisan vendor:publish --tag=control-panel-api-seeder --force`
+- you need to publish addresses seeders by running: `php artisan vendor:publish --tag=addresses-seeds --force`
+- publish also addresses factory: `php artisan vendor:publish --tag=addresses-factory --force`
+- if using `categories` package, you need to:
+    - update in `composer.json` the categories dependency `"laravel-enso/categories": "^2.0"`
+    - publish factory by running: `php artisan vendor:publish --tag=categories-factory --force`
+    - add the categories test suite to `phpunit.xml`:
+    ```xml
+        <testsuite name="categories">
+            <directory suffix="Test.php">./vendor/laravel-enso/categories/tests</directory>
+        </testsuite>
+    ```
+- `php artisan migrate`
+- `composer dump-autoload`
+- `php artisan enso:upgrade`
+- ensure that permissions are properly configured for each role and then save/refresh the roles configuration files
+- update the Enso version to `4.1.0` in `config/enso/config.php`
+
 ## 4.0.1
 
 This is a patch release, therefore it includes several bug fixes and very small changes.

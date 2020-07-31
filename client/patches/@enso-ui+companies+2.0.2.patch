@@ -13,7 +13,7 @@ index 0000000..d9d1a55
 +yarn.lock
 \ No newline at end of file
 diff --git a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-index e739306..a5e6335 100644
+index e51d7ee..9c7c320 100644
 --- a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
 +++ b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
 @@ -11,7 +11,7 @@
@@ -43,7 +43,7 @@ index e739306..a5e6335 100644
 +                        <div class="columns is-centered">
 +                            <div class="column is-two-thirds">
 +                                <comments :id="companyId"
-+                                    type="LaravelEnso\Companies\Models\Company"
++                                    type="company"
 +                                    @update="$set(count, 'Comments', $refs.comments.count)"
 +                                    ref="comments"/>
 +                            </div>
@@ -54,7 +54,7 @@ index e739306..a5e6335 100644
 +                        <div class="columns is-centered">
 +                            <div class="column is-two-thirds">
 +                                <discussions :id="companyId"
-+                                    type="LaravelEnso\Companies\Models\Company"
++                                    type="company"
 +                                    @update="$set(count, 'Discussions', $refs.discussions.count)"
 +                                    ref="discussions"/>
 +                            </div>
@@ -65,7 +65,7 @@ index e739306..a5e6335 100644
 +                        <div class="columns is-centered">
 +                            <div class="column is-two-thirds">
 +                                <documents :id="companyId"
-+                                    type="LaravelEnso\Companies\Models\Company"
++                                    type="company"
 +                                    @update="$set(count, 'Documents', $refs.documents.count)"
 +                                    ref="documents"/>
 +                            </div>

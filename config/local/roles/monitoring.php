@@ -5,8 +5,9 @@ return [
     'role' => ['name' => 'monitoring', 'display_name' => 'monitoring'],
     'default_menu' => '',
     'permissions' => [
-        'api.controlPanelApi.statistics',
-        'api.controlPanelApi.actions',
-        'api.controlPanelApi.action',
+        'apis.controlPanel.statistics',
+        'apis.controlPanel.actions',
+        'apis.controlPanel.action',
+        'system.localisation.options',
     ],
 ];
