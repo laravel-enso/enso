@@ -170,7 +170,7 @@ To upgrade:
 - publish also addresses factory: `php artisan vendor:publish --tag=addresses-factory --force`
 - if using `categories` package, you need to:
     - update in `composer.json` the categories dependency `"laravel-enso/categories": "^2.0"`
-    - publish factory by running: `php artisan vendor:publish --tag=categories-factories --force`
+    - publish factory by running: `php artisan vendor:publish --tag=categories-factory --force`
     - add the categories test suite to `phpunit.xml`:
     ```xml
         <testsuite name="categories">
