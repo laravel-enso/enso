@@ -7,7 +7,8 @@ This release includes many improvements, bug fixes and also several new features
 ### Front-end
 
 #### addresses
-- added `locality_id` and `postcode` autocomplete in `AddressForm`
+- added `postcode` address detection
+- added `locality_id` in `AddressForm`
 - added `street` to postcode
 - added `isBilling` & `isShipping` to `AddressCard`; updated `Addresses`
 - reordered fields in address form according to template
@@ -23,7 +24,7 @@ This release includes many improvements, bug fixes and also several new features
 - fixed dragging and nesting
 - fixed max level validation error display
 
-#### commercial
+#### commercial (private)
 - updated `FormContent` due to `supplier_number` to `supplier_order_reference` refactor
 
 #### companies
@@ -40,7 +41,7 @@ This release includes many improvements, bug fixes and also several new features
 #### dropdown
 - added `show()` method
 
-#### emag
+#### emag (private)
 - updated due to `emag_number` to `client_order_reference` refactor
 
 #### forms
@@ -60,8 +61,7 @@ This release includes many improvements, bug fixes and also several new features
 - added `show()` and `hide()` methods in `EnsoSelect` and `VueSelect` components
 
 #### ui
-- added session
-- replaced generate token with accessories
+- added `sessions` & `token` management
 - updated `Edit.vue`
 - updated `Sessions.vue`
 
@@ -88,6 +88,8 @@ We have updated `README.md` and `codacy badge` for several packages.
 - enabled the bool flags in the address form
 - added tests for billing & shipping
 - added missing routes
+- updated `makeDefault`, `makeBilling` and `toggleShipping`
+- made `makeBilling` method public
 
 #### categories
 - improved max nesting level validation message
@@ -99,9 +101,18 @@ We have updated `README.md` and `codacy badge` for several packages.
 - removed `currentAndBelowIds` and `flatten` methods
 - added `flattenCurrentAndBelow`
 - added test
+- renamed publishing tag from `categories-factories` to `categories-factory`
 
 #### cli
 - added type for migration
+
+#### commercial (private)
+- renamed `supplier_number` to `supplier_order_reference`
+- replaced `index()->unique()` with `unique()` in migrations
+- removed timestamps from the history model `fillable` attribute; renamed table column
+- updated client stocks import with the new `params` template feature
+- updated the `Sale` model trait usage
+- updated `DailyUpdateStockValues` logic and rules
 
 #### control-panel-api
 - renamed routes
@@ -127,7 +138,7 @@ We have updated `README.md` and `codacy badge` for several packages.
 #### data-import
 - fixed comment spacing
 - added params validation
-- added params
+- added support for `params` in template
 - small refactor
 - added `import.show` permission
 - small refactor and clean up
@@ -136,6 +147,9 @@ We have updated `README.md` and `codacy badge` for several packages.
 #### documentation
 - added extra instructions regarding Sanctum's `SANCTUM_STATEFUL_DOMAINS` env value
 - updated data-import docs
+
+#### inventory (private)
+- updated positions import to use the new data-import template `params` flow
 
 #### localisation
 - added language options controller
@@ -154,7 +168,7 @@ We have updated `README.md` and `codacy badge` for several packages.
 - added `notVisible` column and `visibility` method in `Columns` builder
 - updates `ColumnTest`
 - renamed sort classes
-- added `defaultSort` to template attribute
+- added `defaultSort` for all queries. `dtRowId` will be used if not customized by template
 - fixed default sort when there are columns with same name
 
 #### upgrade

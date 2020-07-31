@@ -1737,16 +1737,16 @@
         },
         {
             "name": "laravel-enso/addresses",
-            "version": "4.3.5",
+            "version": "4.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/addresses.git",
-                "reference": "70955367639a77880d28fc39ddd9f5f770a0b3c0"
+                "reference": "46341dc662eef35c52187f0a266f5ca3a2c3a90b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/70955367639a77880d28fc39ddd9f5f770a0b3c0",
-                "reference": "70955367639a77880d28fc39ddd9f5f770a0b3c0",
+                "url": "https://api.github.com/repos/laravel-enso/addresses/zipball/46341dc662eef35c52187f0a266f5ca3a2c3a90b",
+                "reference": "46341dc662eef35c52187f0a266f5ca3a2c3a90b",
                 "shasum": ""
             },
             "require": {
@@ -1796,7 +1796,7 @@
                 "laravel",
                 "laravel-enso"
             ],
-            "time": "2020-07-29T09:57:47+00:00"
+            "time": "2020-07-30T17:18:07+00:00"
         },
         {
             "name": "laravel-enso/avatars",
