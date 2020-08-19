@@ -1,4 +1,6 @@
-risky: true\npreset: laravel
+risky: true
+
+preset: laravel
 disabled:
   - unused_use
 finder:
