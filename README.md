@@ -24,8 +24,6 @@
 
 If you are using this project please consult the **[changelog](https://github.com/laravel-enso/Enso/blob/master/CHANGELOG.md)** on every update.
 
-For the v1.x / adminlte version, take a look at the **[adminlte](https://github.com/laravel-enso/Enso/tree/adminlte)** branch.
-
 ### Official Documentation
 
 The documentation is available [here](https://docs.laravel-enso.com) split into backend and frontend.
