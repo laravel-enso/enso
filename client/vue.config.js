@@ -1,14 +1,23 @@
 const CopyPlugin = require('copy-webpack-plugin');
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+
+const inProduction = () => process.env.NODE_ENV === 'production';
+const usesSentry = () => process.env.SENTRY_AUTH_TOKEN
+    && process.env.SENTRY_PROJECT && process.env.SENTRY_ORG;
+
+if (inProduction() && !usesSentry()) {
+    console.warn('For better error handing please configure sentry');
+}
 
 module.exports = {
     pages: {
         main: {
             entry: 'src/js/enso.js',
             minify: true,
-            filename: process.env.NODE_ENV === 'production'
+            filename: inProduction()
                 ? '../resources/views/index.blade.php'
                 : './index.html',
-            template: process.env.NODE_ENV === 'production'
+            template: inProduction()
                 ? '../vendor/laravel-enso/core/stubs/production-index.blade.stub'
                 : '../vendor/laravel-enso/core/stubs/development-index.stub',
         },
@@ -25,6 +34,7 @@ module.exports = {
     },
     outputDir: '../public/',
     configureWebpack: {
+        devtool: inProduction() ? 'hidden-source-map' : 'source-map',
         resolve: {
             alias: {
                 '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
@@ -39,13 +49,18 @@ module.exports = {
             },
         },
         plugins: [
+            inProduction() && usesSentry() && new SentryWebpackPlugin({
+                include: '../public',
+                ignoreFile: '.sentrycliignore',
+                ignore: ['vendor'],
+            }),
             new CopyPlugin([{
                 from: '../resources/images',
                 to: 'images',
                 force: true,
                 folder: true,
             }]),
-        ],
+        ].filter(p => p),
     },
     chainWebpack: config => {
         const scssRules = config.module.rule('scss').oneOfs;
@@ -89,8 +104,8 @@ module.exports = {
                 ...options, name: 'images/[name].[ext]',
             }));
     },
-    productionSourceMap: false,
     css: {
+        sourceMap: true,
         extract: false,
     },
 };
