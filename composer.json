@@ -76,7 +76,9 @@
             "@php artisan key:generate --ansi"
         ],
         "post-update-cmd": [
-            "php artisan enso:localisation:merge"
+            "php artisan enso:localisation:merge",
+            "php artisan telescope:publish",
+            "php artisan horizon:publish"
         ]
     }
 }

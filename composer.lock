@@ -2776,16 +2776,16 @@
         },
         {
             "name": "laravel-enso/enums",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/enums.git",
-                "reference": "350341b77cfad24de168e8352a5130a631cbd8a4"
+                "reference": "064c0f80d115594c80f437bbb7aafced1d4beedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/enums/zipball/350341b77cfad24de168e8352a5130a631cbd8a4",
-                "reference": "350341b77cfad24de168e8352a5130a631cbd8a4",
+                "url": "https://api.github.com/repos/laravel-enso/enums/zipball/064c0f80d115594c80f437bbb7aafced1d4beedc",
+                "reference": "064c0f80d115594c80f437bbb7aafced1d4beedc",
                 "shasum": ""
             },
             "require": {
@@ -2833,7 +2833,7 @@
                 "enums",
                 "laravel-enso"
             ],
-            "time": "2020-07-09T07:10:16+00:00"
+            "time": "2020-10-01T06:59:54+00:00"
         },
         {
             "name": "laravel-enso/excel",
