@@ -102,8 +102,8 @@ The package creates the structure and includes the functionality for working wit
 #### core
 - fixed password resetting
 - fixed logout for inactive user
-- adds region upgrade //  de vazut
-- adds DataImport Upgrade // de vazut
+- adds region upgrade
+- adds DataImport Upgrade
 - added xss-sanitizer
 - removed the `Upgrade` command from `AppServiceProvider`. 
 Upgrades are now entirely handled by the `laravel-enso/upgrade` package

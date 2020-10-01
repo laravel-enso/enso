@@ -2547,16 +2547,16 @@
         },
         {
             "name": "laravel-enso/data-import",
-            "version": "5.1.3",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-import.git",
-                "reference": "ebd1aecb45651c0e0b3ca74b709725c7cf9cd156"
+                "reference": "11482572532ee96c3648378cbb1fe993b2ca819e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/ebd1aecb45651c0e0b3ca74b709725c7cf9cd156",
-                "reference": "ebd1aecb45651c0e0b3ca74b709725c7cf9cd156",
+                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/11482572532ee96c3648378cbb1fe993b2ca819e",
+                "reference": "11482572532ee96c3648378cbb1fe993b2ca819e",
                 "shasum": ""
             },
             "require": {
@@ -2612,7 +2612,7 @@
                 "excel-importer",
                 "laravel-enso"
             ],
-            "time": "2020-09-29T09:55:11+00:00"
+            "time": "2020-10-01T14:59:39+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -4108,16 +4108,16 @@
         },
         {
             "name": "laravel-enso/tables",
-            "version": "4.0.7",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "477bea4be91a038f9f448629c546b42861e1eb27"
+                "reference": "fd033a53d7e5d3bd82e992d361d784f528495461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/477bea4be91a038f9f448629c546b42861e1eb27",
-                "reference": "477bea4be91a038f9f448629c546b42861e1eb27",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/fd033a53d7e5d3bd82e992d361d784f528495461",
+                "reference": "fd033a53d7e5d3bd82e992d361d784f528495461",
                 "shasum": ""
             },
             "require": {
@@ -4162,7 +4162,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2020-09-29T10:06:20+00:00"
+            "time": "2020-10-01T14:52:48+00:00"
         },
         {
             "name": "laravel-enso/teams",
