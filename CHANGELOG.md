@@ -1,8 +1,276 @@
 # Laravel Enso's Changelog
 
+## 4.2.0
+
+This release includes many improvements, bug fixes and a few new features.
+
+## Enso 
+
+### Front-end
+
+#### commercial
+- updated address select to include any params passed from the template
+- updated sample products index page
+- fixed translation keys
+- updated index pages' filters
+- added permission check for inventory quantity adjustment control
+- fixed missing inject/import in `PositionsManager`
+- added permission check for inventory quantity adjustment control
+- added missing inject/import
+- fixes editing fulfilled orders when the computed value had the wrong value
+
+#### data-import
+- improves date params
+- adds missing `vuex` dependency
+
+#### date (new)
+
+This package extracts a collection of date parsing and formatting helpers form enso-ui/ui.
+
+#### datepicker
+- fixed flatpickr timing error when setting the datepicker value to null
+
+#### emag
+- updated sample products index page
+- updated the reference `FormContent` component
+- updated the Order component
+- reverted the Order component field label
+- added new fetch picture button & functionality
+
+#### financials
+- switched interval filters from using `date` to using `due date`
+
+#### forms
+- updated the `DateField` component to cascade the datepicker `clear()` method
+- added encrypt type which enables the ability to hide the currently stored value for fields of this type
+
+#### inventory
+- added the `ProductLocations` component
+- updated sample products index page
+
+#### mixins
+- added handling for Axios request cancellation in `errorHandler`
+
+#### packaging-units (new)
+
+The package creates the structure and includes the functionality for working with product packaging units.
+
+- facilitates defining packaging units for products
+- designed for better product management
+
+#### products
+- added `enso-ui/packaging-units` as dependency
+
+#### tables
+- uses the new `enso-ui/date`
+
+#### typeahead
+- added search label property for the search button
+- updated the `CoreTypeahead` search method to no longer mutate the query before emitting the search event
+- added focus
+
+#### ui
+- removed date helpers and added `enso-ui/date` dependency
+- translated hard-coded footer texts
+
+### Back-end
+
+#### addresses
+- updated region abbreviation column to support up to three characters
+- added new states to USA
+- added abbreviation as query attribute to address options
+- added json file for romanian townships
+- refreshed json files structures and updated values
+- added townships table
+- removed `siruta` from localities
+- added `township_id` column to the `localities` and `postcodes` tables
+- renamed `township` to `township_name`
+
+#### avatars
+- no longer passes the user as method parameter when attaching a newly generated avatar
+- integrated [Gravatar](https://en.gravatar.com/)
+
+#### cache-chain ( NEW )
+
+#### cli
+- added type properties when generating structure migrations
+- fixed error when defining models with namespace
+
+#### cnp-validator
+- Added Laravel 8 support
+
+#### core
+- fixed password resetting
+- fixed logout for inactive user
+- adds region upgrade
+- adds DataImport Upgrade
+- added xss-sanitizer
+- removed the `Upgrade` command from `AppServiceProvider`. 
+Upgrades are now entirely handled by the `laravel-enso/upgrade` package
+- refactored namespace for existing upgrades to work with the new package
+- purged old upgrade classes
+
+#### data-import
+- added `Authorizes` contract for restricting users' ability to perform specific imports
+- added `params` column to `data_imports` table for storing request parameters
+- improved postgres support
+- added the option to cancel an import (both ongoing and 'stuck')
+
+#### enums
+- fixes translation issue with applications where using a different default language (not english)
+
+#### files
+- updated `attach` method signature in `HasFiles` trait - the user parameter defaults to null
+
+#### forms
+- added encrypt type which enables the ability to hide the currently stored value for fields of this type
+
+#### helpers
+- added `Searchable` trait exclusion when running tests
+- added `Encrypt` helper which aids in encrypting and decrypting values
+
+#### localisation
+- fixed json encoding
+- removed leftover files
+- added and updated many keys/translations
+
+#### multitenancy
+- refactored and upgraded for Enso v4
+
+#### roles
+- fixed default menu alias in query
+- fixed role seeder
+
+#### tables
+- added default sort for all table queries
+- added `notVisible` attribute for hiding specific columns by default
+- fixed export bug for nested columns when values don't exist 
+- fixed count when using group by
+- fixed entries counting when exporting excel in non-Enso environments
+- fixed when multiple filters exist for a field
+- added new feature that supports conditional table row actions 
+therefore being able to further customize which actions apply to each row  
+
+#### upgrade
+- implemented auto discovery of local and package upgrade classes when placed in app/Upgrades or src/Upgrades
+- added the ability to set priorities for upgrades
+- added new command: `enso:upgrade:status` which show the status of upgrades
+- added `MigratesPostDataMigration` interface to `Structure`
+- added `Applicable` interface which should be used to define if an upgrade should run or not
+- added `ShouldRunManually` option
+- now uses an `Enum` for the upgrade status table header
+
+**PRIVATE REPOS:**
+#### webshop-commercial
+- moved email template notification table in the partials folder
+- refactored the event listener to async and notification to sync
+- updated 'pay later' orders storing process
+- added missing providers
+- added missing column to the migration file
+- updated migration payment method column
+- removed leftover provider inclusion
+- fixed not translated / hard coded text in the blade templates
+- updated model as per latest contract updates
+- added shipping changes partial template
+- updated contract implementations
+- updated webshop dependency version
+- corrected `PaymentIntent` callback due to flawed refactor
+- various other fixes and refactor
+- added functionality to generate a Sale Payment when client makes a successful card payment
+- removed the `paid` column from the `webshop_orders` table & refactored as required
+
+#### webshop
+- improved internet explorer warning
+- fixed company address deletion bug 
+- added toastr message when address cannot be deleted
+- update orderConfirmation.blade.php
+- added missing authorizations
+- refactored translation method usage
+- removed the address policy and its registration from the AuthServiceProvider
+- improved form request validations
+- added product `manufacturerName` dynamic method; updated templates
+- small changes & comments
+- updates order payment_method keys to int; improved order validation => payment order
+- extracted company & related scripts into partials from the cart form.blade.php blade
+- updated stock computation
+- cleaned up imports
+- improved the settings form layout
+- refactored `StockStatuses` constant from `OnDemand` to `SupplierStock`
+- translated hardcoded text
+- added VueJS component for product prices
+- refactored code to fluent syntax in `AuthServiceProvider`
+- replace `span` with `template` in `Price.vue`
+- translated hard-coded texts; fixed a company update bug
+- fixed error on product show page when a suggested product did not have a manufacturer set
+- removed the js nullish coalescing operator as it is not 100% supported
+- moves cookieConsent to `cookieConsent.blade.php`
+- added phone number as `required` to user registration
+- adds clear cart command
+- fixes N+1 case for product `ManufacturerName` via using `Rememberable`
+- removed the `authorizePayment` method
+- added featured brand & label for the webshop brands
+- updates scss for brand / logo
+- integrated new User Registration Confirmation notification
+- extracted hardcoded shipping cost mentions and replaced with partial
+- added Terms and Conditions to the order review page
+- various small fixes
+- improved redirects from the `Payment` & `Pay` controllers to avoid infinite redirection edge cases
+- fixed the user password reset mechanism
+- integrated the form field encryption where necessary
+- added the new product webshop label feature
+- added a new publish command, that publishes the compiled package assets
+- small product card manufacturer logo render improvement
+
+#### emag
+- updated Sale form template regarding the address select
+- removed customizations to the Sale form & table regarding `client_order_reference` as they're no longer required
+- updated the `EmagPayments` import
+- added new functionality to fetch a product picture for products with valid Emag offers
+
+#### commercial
+- added invoice issued event
+- updated the Sale & Sale return templates regarding the address select
+- removes unused traits in `SaleInvoiceIssued` event
+- small refactor
+- added missing client order ref in the Sale form template
+- added `update` & `delete` policies to all line types; improved line update time limit handling
+- added check when creating a sale payment to ensure the sale is not already linked to a payment
+
+#### financials
+- updated invoiceable entity info to use the billing address; client invoice now support dynamic relations
+- added generic invoice imports to the package
+- updated all package index tables to include record create/update timestamp & user information
+- added a new `Online` payment type
+- implemented conditional action for client payment (receipt) printing
+
+#### inventory
+- added `available()` method on the `Stock` model
+- small refactor
+- added a new `StockUpdated` event and a product `emitStockUpdated` method
+
+#### discounts
+- small refactor in the `SaleDiscountFor` dynamic method
+
+### Upgrade steps
+
+To upgrade:
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. 
+If necessary, update your patch files.
+- `php artisan migrate`
+- `composer dump-autoload`
+- run `php artisan enso:upgrade:status` to view what upgrades are going to run 
+and then `php artisan enso:upgrade` to execute the upgrades
+- make sure permissions are properly configured for each role and then save/refresh the roles configuration files
+- update the Enso version to `4.2.0` in `config/enso/config.php`
+- in `composer.json`, in the `scripts.post-update-cmd` section add the following scripts:
+    * `"php artisan telescope:publish",`
+    * `"php artisan horizon:publish",`
+    * `"php artisan enso:webshop:publish",` (if applicable)
+
 ## 4.1.0
 
-This release includes many improvements, bug fixes and also several new features.
+This release includes many improvements, bug fixes and several new features.
 
 ### Front-end
 
