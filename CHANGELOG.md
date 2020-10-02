@@ -4,24 +4,15 @@
 
 This release includes many improvements, bug fixes and a few new features.
 
-## Enso 
-
 ### Front-end
 
-#### commercial
-- updated address select to include any params passed from the template
-- updated sample products index page
-- fixed translation keys
-- updated index pages' filters
-- added permission check for inventory quantity adjustment control
-- fixed missing inject/import in `PositionsManager`
-- added permission check for inventory quantity adjustment control
-- added missing inject/import
-- fixes editing fulfilled orders when the computed value had the wrong value
+#### accessories
+- removed unused dependency
 
 #### data-import
-- improves date params
-- adds missing `vuex` dependency
+- improved date params usage
+- added the missing `vuex` dependency
+- added the functionality to cancel ongoing or stuck imports 
 
 #### date (new)
 
@@ -30,23 +21,9 @@ This package extracts a collection of date parsing and formatting helpers form e
 #### datepicker
 - fixed flatpickr timing error when setting the datepicker value to null
 
-#### emag
-- updated sample products index page
-- updated the reference `FormContent` component
-- updated the Order component
-- reverted the Order component field label
-- added new fetch picture button & functionality
-
-#### financials
-- switched interval filters from using `date` to using `due date`
-
 #### forms
 - updated the `DateField` component to cascade the datepicker `clear()` method
 - added encrypt type which enables the ability to hide the currently stored value for fields of this type
-
-#### inventory
-- added the `ProductLocations` component
-- updated sample products index page
 
 #### mixins
 - added handling for Axios request cancellation in `errorHandler`
@@ -63,6 +40,8 @@ The package creates the structure and includes the functionality for working wit
 
 #### tables
 - uses the new `enso-ui/date`
+- added the date-picker dependency
+- added ability to conditionally render row actions 
 
 #### typeahead
 - added search label property for the search button
@@ -72,6 +51,33 @@ The package creates the structure and includes the functionality for working wit
 #### ui
 - removed date helpers and added `enso-ui/date` dependency
 - translated hard-coded footer texts
+
+**PRIVATE REPOS:**
+
+#### commercial
+- updated address select to include any params passed from the template
+- updated sample products index page
+- fixed translation keys
+- updated index pages' filters
+- added permission check for inventory quantity adjustment control
+- fixed missing inject/import in `PositionsManager`
+- added permission check for inventory quantity adjustment control
+- added missing inject/import
+- fixes editing fulfilled orders when the computed value had the wrong value
+
+#### emag
+- updated sample products index page
+- updated the reference `FormContent` component
+- updated the Order component
+- reverted the Order component field label
+- added new fetch picture button & functionality
+
+#### financials
+- switched interval filters from using `date` to using `due date`
+
+#### inventory
+- added the `ProductLocations` component
+- updated sample products index page
 
 ### Back-end
 
@@ -89,8 +95,6 @@ The package creates the structure and includes the functionality for working wit
 #### avatars
 - no longer passes the user as method parameter when attaching a newly generated avatar
 - integrated [Gravatar](https://en.gravatar.com/)
-
-#### cache-chain ( NEW )
 
 #### cli
 - added type properties when generating structure migrations
@@ -259,8 +263,8 @@ To upgrade:
 If necessary, update your patch files.
 - `php artisan migrate`
 - `composer dump-autoload`
-- run `php artisan enso:upgrade:status` to view what upgrades are going to run 
-and then `php artisan enso:upgrade` to execute the upgrades
+- run `php artisan enso:upgrade` to execute the upgrades 
+(you may also run`php artisan enso:upgrade:status` to view the upgrades' statuses) 
 - make sure permissions are properly configured for each role and then save/refresh the roles configuration files
 - update the Enso version to `4.2.0` in `config/enso/config.php`
 - in `composer.json`, in the `scripts.post-update-cmd` section add the following scripts:
