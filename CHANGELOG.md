@@ -165,23 +165,36 @@ therefore being able to further customize which actions apply to each row
 - now uses an `Enum` for the upgrade status table header
 
 **PRIVATE REPOS:**
-#### webshop-commercial
-- moved email template notification table in the partials folder
-- refactored the event listener to async and notification to sync
-- updated 'pay later' orders storing process
-- added missing providers
-- added missing column to the migration file
-- updated migration payment method column
-- removed leftover provider inclusion
-- fixed not translated / hard coded text in the blade templates
-- updated model as per latest contract updates
-- added shipping changes partial template
-- updated contract implementations
-- updated webshop dependency version
-- corrected `PaymentIntent` callback due to flawed refactor
-- various other fixes and refactor
-- added functionality to generate a Sale Payment when client makes a successful card payment
-- removed the `paid` column from the `webshop_orders` table & refactored as required
+
+#### commercial
+- added invoice issued event
+- updated the Sale & Sale return templates regarding the address select
+- removes unused traits in `SaleInvoiceIssued` event
+- small refactor
+- added missing client order ref in the Sale form template
+- added `update` & `delete` policies to all line types; improved line update time limit handling
+- added check when creating a sale payment to ensure the sale is not already linked to a payment
+
+#### discounts
+- small refactor in the `SaleDiscountFor` dynamic method
+
+#### emag
+- updated Sale form template regarding the address select
+- removed customizations to the Sale form & table regarding `client_order_reference` as they're no longer required
+- updated the `EmagPayments` import
+- added new functionality to fetch a product picture for products with valid Emag offers
+
+#### financials
+- updated invoiceable entity info to use the billing address; client invoice now support dynamic relations
+- added generic invoice imports to the package
+- updated all package index tables to include record create/update timestamp & user information
+- added a new `Online` payment type
+- implemented conditional action for client payment (receipt) printing
+
+#### inventory
+- added `available()` method on the `Stock` model
+- small refactor
+- added a new `StockUpdated` event and a product `emitStockUpdated` method
 
 #### webshop
 - improved internet explorer warning
@@ -225,35 +238,23 @@ therefore being able to further customize which actions apply to each row
 - added a new publish command, that publishes the compiled package assets
 - small product card manufacturer logo render improvement
 
-#### emag
-- updated Sale form template regarding the address select
-- removed customizations to the Sale form & table regarding `client_order_reference` as they're no longer required
-- updated the `EmagPayments` import
-- added new functionality to fetch a product picture for products with valid Emag offers
-
-#### commercial
-- added invoice issued event
-- updated the Sale & Sale return templates regarding the address select
-- removes unused traits in `SaleInvoiceIssued` event
-- small refactor
-- added missing client order ref in the Sale form template
-- added `update` & `delete` policies to all line types; improved line update time limit handling
-- added check when creating a sale payment to ensure the sale is not already linked to a payment
-
-#### financials
-- updated invoiceable entity info to use the billing address; client invoice now support dynamic relations
-- added generic invoice imports to the package
-- updated all package index tables to include record create/update timestamp & user information
-- added a new `Online` payment type
-- implemented conditional action for client payment (receipt) printing
-
-#### inventory
-- added `available()` method on the `Stock` model
-- small refactor
-- added a new `StockUpdated` event and a product `emitStockUpdated` method
-
-#### discounts
-- small refactor in the `SaleDiscountFor` dynamic method
+#### webshop-commercial
+- moved email template notification table in the partials folder
+- refactored the event listener to async and notification to sync
+- updated 'pay later' orders storing process
+- added missing providers
+- added missing column to the migration file
+- updated migration payment method column
+- removed leftover provider inclusion
+- fixed not translated / hard coded text in the blade templates
+- updated model as per latest contract updates
+- added shipping changes partial template
+- updated contract implementations
+- updated webshop dependency version
+- corrected `PaymentIntent` callback due to flawed refactor
+- various other fixes and refactor
+- added functionality to generate a Sale Payment when client makes a successful card payment
+- removed the `paid` column from the `webshop_orders` table & refactored as required
 
 ### Upgrade steps
 
