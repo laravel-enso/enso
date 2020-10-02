@@ -114,6 +114,7 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 - added `Authorizes` contract for restricting users' ability to perform specific imports
 - added `params` column to `data_imports` table for storing request parameters
 - added postgres queries
+- added the option to cancel an import (both ongoing and 'stuck')
 
 #### enums
 - fixes translation issue with applications where using a different default language (not english)
@@ -147,6 +148,8 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 - fixed count when using group by
 - fixed entries counting when exporting excel in non-Enso environments
 - fixed when multiple filters exist for a field
+- added new feature that supports conditional table row actions 
+therefore being able to further customize which actions apply to each row  
 
 #### upgrade
 - implemented auto discovery of local and package upgrade classes when placed in app/Upgrades or src/Upgrades
@@ -237,7 +240,8 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 - updated invoiceable entity info to use the billing address; client invoice now support dynamic relations
 - added generic invoice imports to the package
 - updated all package index tables to include record create/update timestamp & user information
-- added a new `Online` payment type 
+- added a new `Online` payment type
+- implemented conditional action for client payment (receipt) printing
 
 #### inventory
 - added `available()` method on the `Stock` model
