@@ -4108,16 +4108,16 @@
         },
         {
             "name": "laravel-enso/tables",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "fd033a53d7e5d3bd82e992d361d784f528495461"
+                "reference": "a5df6608f666bca7d36c2d993f19b5d8e6a9f01c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/fd033a53d7e5d3bd82e992d361d784f528495461",
-                "reference": "fd033a53d7e5d3bd82e992d361d784f528495461",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/a5df6608f666bca7d36c2d993f19b5d8e6a9f01c",
+                "reference": "a5df6608f666bca7d36c2d993f19b5d8e6a9f01c",
                 "shasum": ""
             },
             "require": {
@@ -4162,7 +4162,7 @@
                 "datatable",
                 "laravel-enso"
             ],
-            "time": "2020-10-01T14:52:48+00:00"
+            "time": "2020-10-02T07:57:14+00:00"
         },
         {
             "name": "laravel-enso/teams",

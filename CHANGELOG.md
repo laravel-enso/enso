@@ -256,7 +256,7 @@ therefore being able to further customize which actions apply to each row
 To upgrade:
 - run `composer update`
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. 
-If necessary, update your patch files
+If necessary, update your patch files.
 - `php artisan migrate`
 - `composer dump-autoload`
 - run `php artisan enso:upgrade:status` to view what upgrades are going to run 
