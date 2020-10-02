@@ -113,7 +113,7 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 #### data-import
 - added `Authorizes` contract for restricting users' ability to perform specific imports
 - added `params` column to `data_imports` table for storing request parameters
-- added postgres queries
+- improved postgres support
 - added the option to cancel an import (both ongoing and 'stuck')
 
 #### enums
