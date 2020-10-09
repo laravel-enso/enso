@@ -52,6 +52,7 @@ module.exports = {
             inProduction() && usesSentry() && new SentryWebpackPlugin({
                 include: '../public',
                 ignoreFile: '.sentrycliignore',
+                release: process.env.SENTRY_RELEASE,
                 ignore: ['vendor'],
             }),
             new CopyPlugin([{
