@@ -1,5 +1,87 @@
 # Laravel Enso's Changelog
 
+## 4.3.0
+
+This release aims to upgrade the Enso ecosystem to [Laravel 8](https://laravel.com/docs/8.x/releases#laravel-8).
+
+### Front-end
+
+#### select
+- the api request payload was cleaned up and null values are no longer sent to the back-end
+
+### Back-end
+
+Where necessary, packages have been updated to add Laravel 8 compatibility. Changes affect:
+- factories
+- seeders
+- routes (now using imported controller classes instead of strings & namespaces)
+- tests
+- upgrades (older upgrades were deleted)
+- dependencies versions
+
+Where possible, we've kept packages backwards compatible.
+
+#### logs
+- fixes multiple log file types edge case bug
+
+#### products
+- removed default supplier limitation, where previously the default supplier had to have the lowest aquisition price
+
+#### forms
+- added support for the `searchMode` meta attribute, which can be used for select fields
+
+### Upgrade steps
+
+First and foremost, be sure the to read the official [Laravel 8 upgrade guide](https://laravel.com/docs/8.x/upgrade) to understand all implications.
+
+Since we liked the previous flow of publishing factories and customizing them, we've created a `FactoryResolver` class that is used to emulate the old behavior. Basically, when using a factory to create a model, we first search in the local project factories folder and try to find a suitable factory class, otherwise we search for a factory in the factories folder in the laravel-enso package which contains the respective model.
+
+The limitation for the factory naming convention is that if you have two models with the same name, with different namespaces, you'll need to customize the models' `newFactory()` method and implement your own strategy.
+
+To upgrade:
+- within `composer.json` 
+    - update the versions for the following `require` packages
+    ```
+    "fruitcake/laravel-cors": "^2.0",
+    "guzzlehttp/guzzle": "^7.0.1",
+    "laravel-enso/core": "^6.0",
+    "laravel/horizon": "^5.0",
+    "laravel/telescope": "^4.0",
+    "laravel/ui": "^3.0",
+    ```
+    - update the versions for the following `require-dev` packages
+    ```
+    "facade/ignition": "^2.3.6",
+    "nunomaduro/collision": "^5.0",
+    "phpunit/phpunit": "^9.3"
+    ```
+    - add the following namespaces to the `autoload/psr-4` section:
+    ```
+    "Database\\Factories\\": "database/factories/",
+    "Database\\Seeders\\": "database/seeders/"
+    ```
+    - remove the `classmap` block and its contents from the `autoload` section
+- **update where necessary** by following this [merge request](https://github.com/laravel-enso/enso/pull/338) for a list of other updated files  (local factories and seeders cleanup, config files and more).
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. If necessary, update your patch files
+- `php artisan migrate`
+- `composer dump-autoload`
+- `php artisan enso:upgrade`
+- update the Enso version to `4.3.0` in `config/enso/config.php`
+
+Remember:
+- you can delete any non customized local seeders and import them from their package
+- update factories & seeders to
+    - use namespaces
+    - convert to classes
+    - rename the 'seeds' folder to 'seeders'
+- update models with factories and add the new trait `HasFactory` 
+- update tests to
+    - use the new factories
+    - refactor around the deprecated json methods
+- update routes by importing controllers as per the new syntax
+- after updating your routes by importing the controller classes, you need to remove the `protected $namespace = 'App\Http\Controllers';` line in `RouteServiceProvider`
+
 ## 4.2.0
 
 This release includes many improvements, bug fixes and a few new features.
