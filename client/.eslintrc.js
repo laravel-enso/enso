@@ -37,7 +37,7 @@ module.exports = {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ['error', 4],
-        'arrow-parens': ["error", "as-needed"],
+        'arrow-parens': ['error', 'as-needed'],
         'vue/html-indent': 0,
         'vue/attributes-order': 0,
         'no-plusplus': 0,
