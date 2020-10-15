@@ -38,6 +38,8 @@ Since we liked the previous flow of publishing factories and customizing them, w
 
 The limitation for the factory naming convention is that if you have two models with the same name, with different namespaces, you'll need to customize the models' `newFactory()` method and implement your own strategy.
 
+Also, note that starting with this release we're no longer doing a yarn legacy build (only modern) so please take a look at `package.json` & `babel.config.js` and update if necessary.
+
 To upgrade:
 - within `composer.json` 
     - update the versions for the following `require` packages
