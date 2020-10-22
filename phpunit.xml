@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="vendor/autoload.php" printerClass="LaravelEnso\PHPUnitPrettyPrint\PrettyPrint" colors="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+  bootstrap="vendor/autoload.php"
+  printerClass="LaravelEnso\PHPUnitPrettyPrint\PrettyPrint"
+  colors="true"
+  cacheResult="true">
   <coverage processUncoveredFiles="true">
     <include>
       <directory suffix=".php">./app</directory>
@@ -26,9 +31,6 @@
     </testsuite>
     <testsuite name="cli">
       <directory suffix="Test.php">./vendor/laravel-enso/cli/tests</directory>
-    </testsuite>
-    <testsuite name="cnp-validator">
-      <directory suffix="Test.php">./vendor/laravel-enso/cnp-validator/tests</directory>
     </testsuite>
     <testsuite name="comments">
       <directory suffix="Test.php">./vendor/laravel-enso/comments/tests</directory>
