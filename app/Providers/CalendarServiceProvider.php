@@ -3,17 +3,16 @@
 namespace App\Providers;
 
 use LaravelEnso\Calendar\Calendars\BirthdayCalendar;
-use LaravelEnso\Calendar\CalendarServiceProvider as ServiceProvider;
-use LaravelEnso\Calendar\Facades\Calendars;
+use LaravelEnso\Mediator\MediatorServiceProvider;
 
-class CalendarServiceProvider extends ServiceProvider
+class CalendarServiceProvider extends MediatorServiceProvider
 {
-    protected $register = [
-        BirthdayCalendar::class,
-    ];
+    protected bool $optional = false;
 
-    public function boot()
+    public function data(): array
     {
-        Calendars::register($this->register);
+        return [
+            BirthdayCalendar::class,
+        ];
     }
 }
