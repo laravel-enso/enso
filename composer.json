@@ -13,12 +13,13 @@
         "laravel-enso/cli": "^4.0",
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
-        "laravel-enso/core": "^6.0",
+        "laravel-enso/core": "dev-feature/removeTasks as 6.1.0",
         "laravel-enso/discussions": "^3.0",
         "laravel-enso/documents": "^4.0",
         "laravel-enso/excel": "^2.0",
         "laravel-enso/how-to": "^4.0",
         "laravel-enso/pdf": "^2.0",
+        "laravel-enso/tasks": "^1.1",
         "laravel-enso/tutorials": "^4.0",
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",
@@ -62,6 +63,12 @@
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:laravel-enso/core.git"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
