@@ -43,6 +43,7 @@ module.exports = {
                 '@store': `${__dirname}/src/js/store`,
                 '@components': `${__dirname}/src/js/components`,
                 '@calendar': `${__dirname}/node_modules/@enso-ui/calendar/src/bulma`,
+                '@dataImport': `${__dirname}/node_modules/@enso-ui/data-import/src/bulma`,
                 '@howTo': `${__dirname}/node_modules/@enso-ui/how-to/src/bulma`,
                 '@activityLog': `${__dirname}/node_modules/@enso-ui/activity-log/src/bulma`,
                 '@tutorials': `${__dirname}/node_modules/@enso-ui/tutorials/src/bulma`,

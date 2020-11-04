@@ -14,6 +14,7 @@
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
         "laravel-enso/core": "^6.0",
+        "laravel-enso/data-import": "^5.0",
         "laravel-enso/discussions": "^3.0",
         "laravel-enso/documents": "^4.0",
         "laravel-enso/excel": "^2.0",

@@ -17,6 +17,7 @@
         "@enso-ui/activity-log": "^2.0",
         "@enso-ui/bulma": "^3.0",
         "@enso-ui/calendar": "^2.0",
+        "@enso-ui/data-import": "^2.0",
         "@enso-ui/directives": "^1.0",
         "@enso-ui/filters": "^2.0",
         "@enso-ui/forms": "^2.0",
