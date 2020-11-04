@@ -79,7 +79,8 @@
         "post-update-cmd": [
             "php artisan enso:localisation:merge",
             "php artisan telescope:publish",
-            "php artisan horizon:publish"
+            "php artisan horizon:publish",
+            "php artisan enso:upgrade:status"
         ]
     }
 }
