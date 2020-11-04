@@ -16,10 +16,10 @@ sync(store, router);
 
 Vue.config.productionTip = false;
 
-const root = new Vue({
+const vm = new Vue({
     router,
     store,
     ...AppComponent,
 }).$mount('#app');
 
-App.boot(root);
+App.init(vm);
