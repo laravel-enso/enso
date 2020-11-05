@@ -3,11 +3,11 @@ import Vue from 'vue';
 import '@core/modules';
 
 import { sync } from 'vuex-router-sync';
-import AppComponent from '@enso-ui/ui/bulma';
-import App from '@enso-ui/ui/src/bulma/app';
+import Root from '@enso-ui/ui/src/bulma/Root.vue';
+import App from '@enso-ui/ui/src/core/app';
 import store from './store';
 import router from './router';
-import '@enso-ui/ui/src/bulma/boot';
+
 import './app';
 
 import '../sass/enso.scss';
@@ -19,7 +19,7 @@ Vue.config.productionTip = false;
 const vm = new Vue({
     router,
     store,
-    ...AppComponent,
+    ...Root,
 }).$mount('#app');
 
-App.init(vm);
+App.boot(vm, 'bulma');
