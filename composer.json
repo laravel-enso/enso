@@ -14,6 +14,7 @@
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
         "laravel-enso/core": "dev-feature/removeTasks as 6.1.0",
+        "laravel-enso/data-import": "^5.0",
         "laravel-enso/discussions": "^3.0",
         "laravel-enso/documents": "^4.0",
         "laravel-enso/excel": "^2.0",
@@ -85,7 +86,8 @@
         "post-update-cmd": [
             "php artisan enso:localisation:merge",
             "php artisan telescope:publish",
-            "php artisan horizon:publish"
+            "php artisan horizon:publish",
+            "php artisan enso:upgrade:status"
         ]
     }
 }
