@@ -1,25 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {
-    coreModules, coreState, coreGetters, coreMutations, coreActions,
-} from '@core/modules/store';
-
+import App from '@enso-ui/ui/src/core/bulma';
+import LocalStore from '@enso-ui/ui/src/modules/localStore';
 import storeImporter from '@core/modules/importers/storeImporter';
-
-const modules = storeImporter(require.context('./store', false, /.*\.js$/));
 
 Vue.use(Vuex);
 
-const state = {};
-const getters = {};
-const mutations = {};
-const actions = {};
+const modules = storeImporter(require.context('./store', false, /.*\.js$/));
 
-export default new Vuex.Store({
-    strict: true,
-    modules: { ...coreModules, ...modules },
-    state: { ...coreState, ...state },
-    getters: { ...coreGetters, ...getters },
-    mutations: { ...coreMutations, ...mutations },
-    actions: { ...coreActions, ...actions },
-});
+const localStore = (new LocalStore()).setModules(modules);
+
+const store = App.buildStore(localStore);
+
+export default new Vuex.Store(store);

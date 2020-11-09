@@ -4,13 +4,17 @@ import '@core/modules';
 
 import { sync } from 'vuex-router-sync';
 import Root from '@enso-ui/ui/src/bulma/Root.vue';
-import App from '@enso-ui/ui/src/core/app';
-import store from './store';
+import App from '@enso-ui/ui/src/core/bulma';
 import router from './router';
+import store from './store';
 
 import './app';
 
 import '../sass/enso.scss';
+
+const routes = App.buildRoutes(require.context('./routes', false, /.*\.js$/));
+
+router.addRoutes(routes);
 
 sync(store, router);
 
@@ -22,4 +26,4 @@ const vm = new Vue({
     ...Root,
 }).$mount('#app');
 
-App.boot(vm, 'bulma');
+App.boot(vm);
