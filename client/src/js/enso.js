@@ -5,6 +5,7 @@ import App from '@enso-ui/ui/src/core/app';
 import router from '@enso-ui/ui/src/core/services/router';
 import store from '@enso-ui/ui/src/core/services/store';
 import '@enso-ui/ui/src/modules';
+import './localState';
 import './app';
 import '../sass/enso.scss';
 

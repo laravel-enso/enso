@@ -1,4 +1,4 @@
+import Bus from '@enso-ui/ui/src/core/bus';
+
 // eslint-disable-next-line
-export default (context, state) => {
-    // initalise the local state
-};
+Bus.subscribe('stateFetched', ({ context, state }) => {});
