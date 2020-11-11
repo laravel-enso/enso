@@ -7,6 +7,7 @@ import store from '@enso-ui/ui/src/core/services/store';
 import '@enso-ui/ui/src/modules';
 import './app';
 import '../sass/enso.scss';
+import './localState';
 
 Vue.config.productionTip = false;
 
