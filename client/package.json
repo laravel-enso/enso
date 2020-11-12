@@ -25,7 +25,7 @@
         "@enso-ui/mixins": "^2.0",
         "@enso-ui/tables": "^2.0",
         "@enso-ui/tasks": "^2.0",
-        "@enso-ui/themes": "^1.1",
+        "@enso-ui/themes": "^2.0",
         "@enso-ui/transitions": "^1.0",
         "@enso-ui/tutorials": "^3.0",
         "@enso-ui/ui": "^4.0",
