@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb28423c7a2e3e82cbd98171f11e0ff0",
+    "content-hash": "13ff93045f49f4e088fde381c1840061",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2565,11 +2565,11 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "dev-feature/removeTasks",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel-enso/core.git",
-                "reference": "d5ed56b51e68dd0dac21f06addaafc262932c7ac"
+                "reference": "84e448d630e8beeadf943d6affa4a69c2e58ef35"
             },
             "require": {
                 "jenssegers/agent": "^2.6",
@@ -2599,6 +2599,7 @@
                 "laravel-enso/searchable": "^2.0",
                 "laravel-enso/select": "^4.0",
                 "laravel-enso/tables": "^4.0",
+                "laravel-enso/tasks": "^1.0",
                 "laravel-enso/teams": "^3.0",
                 "laravel-enso/track-who": "^2.0",
                 "laravel-enso/upgrade": "^2.0",
@@ -2658,7 +2659,7 @@
                 "vue-bulma",
                 "vue-spa"
             ],
-            "time": "2020-11-02T09:50:36+00:00"
+            "time": "2020-10-30T12:29:44+00:00"
         },
         {
             "name": "laravel-enso/countries",
@@ -2867,16 +2868,16 @@
         },
         {
             "name": "laravel-enso/discussions",
-            "version": "3.1.4",
+            "version": "3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/discussions.git",
-                "reference": "21723d143e36875c12ea8c01484fac23fcb514e1"
+                "reference": "cd6e93d0845d176fa92586d3257108fb2b4bf196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/21723d143e36875c12ea8c01484fac23fcb514e1",
-                "reference": "21723d143e36875c12ea8c01484fac23fcb514e1",
+                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/cd6e93d0845d176fa92586d3257108fb2b4bf196",
+                "reference": "cd6e93d0845d176fa92586d3257108fb2b4bf196",
                 "shasum": ""
             },
             "require": {
@@ -2922,9 +2923,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/discussions/issues",
-                "source": "https://github.com/laravel-enso/discussions/tree/3.1.4"
+                "source": "https://github.com/laravel-enso/discussions/tree/3.1.5"
             },
-            "time": "2020-11-12T15:27:49+00:00"
+            "time": "2020-11-12T16:28:42+00:00"
         },
         {
             "name": "laravel-enso/documents",
@@ -14808,18 +14809,9 @@
             "time": "2020-07-08T17:02:28+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "laravel-enso/core",
-            "version": "dev-feature/removeTasks",
-            "alias": "6.1.0",
-            "alias_normalized": "6.1.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravel-enso/core": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
