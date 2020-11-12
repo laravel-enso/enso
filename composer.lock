@@ -3681,16 +3681,16 @@
         },
         {
             "name": "laravel-enso/localisation",
-            "version": "4.2.1",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/localisation.git",
-                "reference": "94d736149045d487cc1cb9ffeb9eae92425ff46c"
+                "reference": "7fd8a6324a5c65bf323651b78c6dc5139ccd9840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/94d736149045d487cc1cb9ffeb9eae92425ff46c",
-                "reference": "94d736149045d487cc1cb9ffeb9eae92425ff46c",
+                "url": "https://api.github.com/repos/laravel-enso/localisation/zipball/7fd8a6324a5c65bf323651b78c6dc5139ccd9840",
+                "reference": "7fd8a6324a5c65bf323651b78c6dc5139ccd9840",
                 "shasum": ""
             },
             "require": {
@@ -3738,9 +3738,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/localisation/issues",
-                "source": "https://github.com/laravel-enso/localisation/tree/4.2.1"
+                "source": "https://github.com/laravel-enso/localisation/tree/4.3.0"
             },
-            "time": "2020-10-08T15:03:40+00:00"
+            "time": "2020-11-12T15:41:22+00:00"
         },
         {
             "name": "laravel-enso/logs",
