@@ -2867,16 +2867,16 @@
         },
         {
             "name": "laravel-enso/discussions",
-            "version": "3.1.4",
+            "version": "3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/discussions.git",
-                "reference": "21723d143e36875c12ea8c01484fac23fcb514e1"
+                "reference": "cd6e93d0845d176fa92586d3257108fb2b4bf196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/21723d143e36875c12ea8c01484fac23fcb514e1",
-                "reference": "21723d143e36875c12ea8c01484fac23fcb514e1",
+                "url": "https://api.github.com/repos/laravel-enso/discussions/zipball/cd6e93d0845d176fa92586d3257108fb2b4bf196",
+                "reference": "cd6e93d0845d176fa92586d3257108fb2b4bf196",
                 "shasum": ""
             },
             "require": {
@@ -2922,9 +2922,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/discussions/issues",
-                "source": "https://github.com/laravel-enso/discussions/tree/3.1.4"
+                "source": "https://github.com/laravel-enso/discussions/tree/3.1.5"
             },
-            "time": "2020-11-12T15:27:49+00:00"
+            "time": "2020-11-12T16:28:42+00:00"
         },
         {
             "name": "laravel-enso/documents",
