@@ -1,4 +1,4 @@
 // eslint-disable-next-line
-export default (context, state) => {
-    // initalise the local state
-};
+window.addEventListener('local-state-fetched', ({ detail }) => {
+    console.log(detail); // disable in production
+});

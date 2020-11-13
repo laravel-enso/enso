@@ -14,15 +14,11 @@ module.exports = {
         'import/resolver': {
             alias: {
                 map: [
-                    ['@core', `${__dirname}/node_modules/@enso-ui/ui/src`],
+                    ['@ui', `${__dirname}/node_modules/@enso-ui/ui/src`],
                     ['@root', `${__dirname}/src/js`],
                     ['@pages', `${__dirname}/src/js/pages`],
                     ['@store', `${__dirname}/src/js/store`],
                     ['@components', `${__dirname}/src/js/components`],
-                    ['@calendar', `${__dirname}/node_modules/@enso-ui/calendar/src/bulma`],
-                    ['@howTo', `${__dirname}/node_modules/@enso-ui/how-to/src/bulma`],
-                    ['@activityLog', `${__dirname}/node_modules/@enso-ui/activity-log/src/bulma`],
-                    ['@tutorials', `${__dirname}/node_modules/@enso-ui/tutorials/src/bulma`],
                 ],
             },
         },
