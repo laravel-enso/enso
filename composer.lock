@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea99cceb866fc6d3f6e23762e4d82936",
+    "content-hash": "db3336db3c4af6d590d53fcc5ec123b8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2568,8 +2568,14 @@
             "version": "6.1.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:laravel-enso/core.git",
+                "url": "https://github.com/laravel-enso/core.git",
                 "reference": "84e448d630e8beeadf943d6affa4a69c2e58ef35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/84e448d630e8beeadf943d6affa4a69c2e58ef35",
+                "reference": "84e448d630e8beeadf943d6affa4a69c2e58ef35",
+                "shasum": ""
             },
             "require": {
                 "jenssegers/agent": "^2.6",
@@ -2626,6 +2632,7 @@
                     "LaravelEnso\\Core\\Database\\Seeders\\": "database/seeders/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2659,6 +2666,10 @@
                 "vue-bulma",
                 "vue-spa"
             ],
+            "support": {
+                "issues": "https://github.com/laravel-enso/core/issues",
+                "source": "https://github.com/laravel-enso/core/tree/6.1.0"
+            },
             "time": "2020-10-30T12:29:44+00:00"
         },
         {
@@ -11203,16 +11214,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "81698c5e32837c74abf9bb764ff0c1b3e001afb3"
+                "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/81698c5e32837c74abf9bb764ff0c1b3e001afb3",
-                "reference": "81698c5e32837c74abf9bb764ff0c1b3e001afb3",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
+                "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
                 "shasum": ""
             },
             "require": {
@@ -11276,7 +11287,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2020-10-27T13:02:22+00:00"
+            "time": "2020-11-13T13:36:24+00:00"
         },
         {
             "name": "facade/ignition-contracts",
