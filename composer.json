@@ -64,12 +64,6 @@
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:laravel-enso/core.git"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
