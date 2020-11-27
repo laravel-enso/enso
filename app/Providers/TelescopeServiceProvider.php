@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Laravel\Telescope\Telescope;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
+use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
@@ -15,37 +15,23 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filter(function (IncomingEntry $entry) {
-            if ($this->app->isLocal()) {
-                return true;
-            }
-
-            return $entry->isReportableException() ||
-                $entry->isFailedJob() ||
-                $entry->isScheduledTask() ||
-                $entry->hasMonitoredTag();
-        });
+        Telescope::filter(fn (IncomingEntry $entry) => $this->app->isLocal()
+            || $entry->isReportableException()
+            || $entry->isFailedJob()
+            || $entry->isScheduledTask()
+            || $entry->hasMonitoredTag());
     }
 
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->isLocal()) {
-            return;
+        if (! $this->app->isLocal()) {
+            Telescope::hideRequestParameters(['_token']);
+            Telescope::hideRequestHeaders(['cookie', 'x-csrf-token', 'x-xsrf-token']);
         }
-
-        Telescope::hideRequestParameters(['_token']);
-
-        Telescope::hideRequestHeaders([
-            'cookie',
-            'x-csrf-token',
-            'x-xsrf-token',
-        ]);
     }
 
     protected function gate()
     {
-        Gate::define('viewTelescope', function ($user) {
-            return auth()->check() && $user->isAdmin();
-        });
+        Gate::define('viewTelescope', fn ($user) => optional($user)->isAdmin());
     }
 }

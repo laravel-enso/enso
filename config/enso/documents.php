@@ -9,4 +9,7 @@ return [
     'loggableMorph' => [
         'documentable' => [],
     ],
+    'queues' => [
+        'ocr' => 'heavy',
+    ],
 ];

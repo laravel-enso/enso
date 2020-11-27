@@ -1,0 +1,15 @@
+@import '~animate.css/animate.compat.css';
+
+@import './app';
+
+[v-cloak] {
+    display: none;
+}
+
+*:focus {
+    outline:0;
+}
+
+.animated {
+    animation-duration: .5s;
+}

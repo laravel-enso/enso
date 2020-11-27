@@ -26,17 +26,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Chunk Splitting Queue
-    |--------------------------------------------------------------------------
-    | Specifies the queue for the chunk splitting job. Can be set
-    | specifically for every import in its template
-    |
-    */
-
-    'splittingQueue' => 'split',
-
-    /*
-    |--------------------------------------------------------------------------
     | Queues
     |--------------------------------------------------------------------------
     | Specifies the queue for each type of job during the import process.
@@ -76,6 +65,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Unknown Import Error Message
+    |--------------------------------------------------------------------------
+    | If the developer misses covering with validations an error scenario
+    | when that scenario is met the importer will report and unknown
+    | error. Here you can customize that error message.
+     */
+
+    'unknownError' => 'Undetermined import error',
+
+    /*
+    |--------------------------------------------------------------------------
     | Notification channels
     |--------------------------------------------------------------------------
     | After each import the user will be notified by email. Additionally
@@ -92,12 +92,16 @@ return [
     | Holds your import configuration. 'label' is used for the main page select
     | and template is the full path to your import template JSON.
     |
-    */
+     */
 
     'configs' => [
+        'companies' => [
+            'label' => 'Companies',
+            'template' => 'vendor/laravel-enso/companies/src/Imports/Templates/companies.json',
+        ],
         'userGroups' => [
             'label' => 'User Groups',
-            'template' => 'vendor/laravel-enso/data-import/src/app/Tests/userGroups.json',
+            'template' => 'vendor/laravel-enso/data-import/src/Tests/userGroups.json',
         ],
     ],
 ];

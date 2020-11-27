@@ -4,7 +4,7 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - php: 7.3
+    - php: 7.4
 
 cache:
   directories:
@@ -26,6 +26,6 @@ before_script:
 script: vendor/bin/phpunit
 
 after_success:
-  - chmod +x ./.deploy.sh; ./.deploy.sh
+  - curl -s $DEPLOY_WEBHOOK
 
 sudo: required

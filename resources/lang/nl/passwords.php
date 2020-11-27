@@ -1,10 +1,9 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Language Lines
+    | Password Reminder Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -14,9 +13,9 @@ return [
     */
 
     'password' => 'Wachtwoorden moeten minimaal zes tekens lang zijn en overeenkomen met het wachtwoord bevestigingsveld.',
-    'reset'    => 'Uw wachtwoord is opnieuw ingesteld!',
-    'sent'     => 'We hebben u een wachtwoord herstel link gestuurd!',
-    'token'    => 'Deze wachtwoord herstel sleutel is ongeldig.',
-    'user'     => 'We hebben geen gebruiker kunnen vinden met dit e-mail adres.',
-
+    'reset' => 'Het wachtwoord van uw account is gewijzigd.',
+    'sent' => 'We hebben een e-mail verstuurd met instructies om een nieuw wachtwoord in te stellen.',
+    'throttled' => 'Gelieve even te wachten voor u het opnieuw probeert.',
+    'token' => 'Dit wachtwoordhersteltoken is niet geldig.',
+    'user' => 'Geen gebruiker bekend met het e-mailadres.',
 ];

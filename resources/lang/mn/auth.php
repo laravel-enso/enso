@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -11,9 +10,8 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
-     */
+    */
 
-    'failed'   => 'Бүртгэлгүй хэрэглэгч байна.',
-    'throttle' => 'Бүтэлгүй оролдлого их байна. :seconds секундын дараа дахин оролдоно уу.',
-
+    'failed' => 'Хэрэглэгчийн нэр эсвэл нууц үг буруу.',
+    'throttle' => 'Олон удаагийн буруу оролдого. :seconds секундийн дараа дахин оролдоно уу.',
 ];

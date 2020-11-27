@@ -1,30 +1,25 @@
 <?php
 
-use Faker\Generator as Faker;
-use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Roles\app\Models\Role;
-use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\Core\app\Models\UserGroup;
+namespace Database\Factories;
 
-$factory->define(User::class, function (Faker $faker, $attributes = null) {
-    if (isset($attributes['person_id']) && isset($attributes['email'])) {
-        $personId = $attributes['person_id'];
-        $email = $attributes['email'];
-    } else {
-        $person = factory(Person::class)->create();
-        $personId = $person->id;
-        $email = $person->email;
+use LaravelEnso\Core\Database\Factories\UserFactory as CoreUserFactory;
+use LaravelEnso\Core\Models\User;
+use LaravelEnso\Core\Models\UserGroup;
+use LaravelEnso\People\Models\Person;
+use LaravelEnso\Roles\Models\Role;
+
+class UserFactory extends CoreUserFactory
+{
+    protected $model = User::class;
+
+    public function definition()
+    {
+        return [
+            'person_id' => Person::factory(),
+            'group_id' => UserGroup::factory(),
+            'email' => fn ($attributes) => Person::find($attributes['person_id'])->email,
+            'role_id' => Role::factory(),
+            'is_active' => $this->faker->boolean,
+        ];
     }
-
-    return [
-        'person_id' => $personId,
-        'group_id' => function () {
-            return factory(UserGroup::class)->create()->id;
-        },
-        'email' => $email,
-        'role_id' => function () {
-            return factory(Role::class)->create()->id;
-        },
-        'is_active' => $faker->boolean,
-    ];
-});
+}

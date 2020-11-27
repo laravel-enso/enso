@@ -42,6 +42,18 @@ return [
     'exists'         => ':attribute selecionado é inválido.',
     'file'           => ':attribute deve ser um arquivo.',
     'filled'         => 'Campo :attribute é requerido.',
+    'gt' => [
+        'numeric' => 'The :attribute must be greater than :value.',
+        'file' => 'The :attribute must be greater than :value kilobytes.',
+        'string' => 'The :attribute must be greater than :value characters.',
+        'array' => 'The :attribute must have more than :value items.',
+    ],
+    'gte' => [
+        'numeric' => 'The :attribute must be greater than or equal :value.',
+        'file' => 'The :attribute must be greater than or equal :value kilobytes.',
+        'string' => 'The :attribute must be greater than or equal :value characters.',
+        'array' => 'The :attribute must have :value items or more.',
+    ],
     'image'          => 'Campo :attribute deve ser uma imagem.',
     'in'             => ':attribute selecionado é inválido.',
     'in_array'       => 'Campo :attribute não existe em :other.',
@@ -50,6 +62,18 @@ return [
     'ipv4'           => ':attribute deve ser um endereço de IPv4 válido.',
     'ipv6'           => ':attribute deve ser um endereço de IPv6 válido.',
     'json'           => ':attribute deve ser uma string JSON válida.',
+    'lt' => [
+        'numeric' => 'The :attribute must be less than :value.',
+        'file' => 'The :attribute must be less than :value kilobytes.',
+        'string' => 'The :attribute must be less than :value characters.',
+        'array' => 'The :attribute must have less than :value items.',
+    ],
+    'lte' => [
+        'numeric' => 'The :attribute must be less than or equal :value.',
+        'file' => 'The :attribute must be less than or equal :value kilobytes.',
+        'string' => 'The :attribute must be less than or equal :value characters.',
+        'array' => 'The :attribute must not have more than :value items.',
+    ],
     'max'            => [
         'numeric' => ':attribute pode não ser maior que :max.',
         'file'    => ':attribute pode não ser maior que :max kilobytes.',
@@ -65,6 +89,7 @@ return [
         'array'   => ':attribute deve ter no mínimo :min itens.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
+    'not_regex' => 'The :attribute format is invalid.',
     'numeric'              => ':attribute deve ser um número.',
     'present'              => 'Campo :attribute  deve estar presente.',
     'regex'                => 'Formato do :attribute é invalid.',
@@ -82,11 +107,13 @@ return [
         'string'  => ':attribute deve ter :size characters.',
         'array'   => ':attribute deve conter :size itens.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'   => ':attribute deve ser uma string.',
     'timezone' => ':attribute deve estar em uma zona válida.',
     'unique'   => ':attribute já foi escolhido.',
     'uploaded' => ':attribute falhou no envio.',
     'url'      => 'Formato do :attribute é inválido.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,9 +137,9 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
     |
     */
 

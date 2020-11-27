@@ -1,6 +1,20 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Horizon Domain
+    |--------------------------------------------------------------------------
+    |
+    | This is the subdomain where Horizon will be accessible from. If this
+    | setting is null, Horizon will reside under the same domain as the
+    | application. Otherwise, this value will serve as the subdomain.
+    |
+    */
+
+    'domain' => env('HORIZON_DOMAIN'),
+
     /*
     |--------------------------------------------------------------------------
     | Horizon Path
@@ -65,7 +79,10 @@ return [
     */
 
     'waits' => [
-        'redis:default' => 60,
+        'redis:default'       => 60,
+        'redis:light'         => 60,
+        'redis:notifications' => 60,
+        'redis:heavy'         => 60 * 30,
     ],
 
     /*
@@ -80,9 +97,12 @@ return [
     */
 
     'trim' => [
-        'recent' => 60 * 24,
-        'failed' => 60 * 24 * 7,
-        'monitored' => 60 * 24 * 7,
+        'recent'        => 60,
+        'pending'       => 60,
+        'completed'     => 60,
+        'recent_failed' => 60 * 24 * 7,
+        'failed'        => 60 * 24 * 7,
+        'monitored'     => 60 * 24 * 7,
     ],
 
     /*
@@ -128,48 +148,54 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default', 'light', 'notifications'],
-                'balance' => 'auto',
-                'processes' => 9,
-                'tries' => 1,
+                'queue'      => ['default', 'light', 'notifications'],
+                'balance'    => 'auto',
+                'processes'  => 6,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
-                'queue' => ['heavy'],
-                'balance' => 'auto',
-                'processes' => 2,
-                'tries' => 1,
+                'queue'      => ['heavy'],
+                'balance'    => 'auto',
+                'processes'  => 2,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
-                'queue' => ['sync'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
+                'queue'      => ['sync'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default', 'light', 'notifications'],
-                'balance' => 'auto',
-                'processes' => 3,
-                'tries' => 1,
+                'queue'      => ['default', 'light', 'notifications'],
+                'balance'    => 'auto',
+                'processes'  => 6,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-2' => [
                 'connection' => 'redis',
-                'queue' => ['heavy'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
+                'queue'      => ['heavy'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
             'supervisor-3' => [
                 'connection' => 'redis',
-                'queue' => ['sync'],
-                'balance' => 'auto',
-                'processes' => 1,
-                'tries' => 1,
+                'queue'      => ['sync'],
+                'balance'    => 'auto',
+                'processes'  => 1,
+                'tries'      => 1,
+                'timeout'    => 60 * 60,
             ],
         ],
     ],

@@ -2,7 +2,7 @@
     "global": {
         "lang": "en",
         "dtStateSave": true,
-        "expandedMenu": true,
+        "expandedSidebar": true,
         "bookmarks": true,
         "theme": "light",
         "toastrPosition": "bottom-right"

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -11,9 +10,8 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
-     */
+    */
 
-    'failed'   => 'Ezek a bejelentkezési adatok nem egyeznek a mi adatainkkal.',
-    'throttle' => 'Túl sok próbálkozás történt. Kérem próbálja újra :seconds másodperc múlva.',
-
+    'failed'   => 'Rossz email-jelszó páros.',
+    'throttle' => 'Túl sok próbálkozás. Kérjük próbálja újra :seconds másodperc múlva.',
 ];

@@ -2,9 +2,11 @@
 
 namespace App\Exceptions;
 
-use Exception;
-use LaravelEnso\Helpers\app\Exceptions\EnsoException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
+use LaravelEnso\Core\Exceptions\Sentry;
+use LaravelEnso\Helpers\Exceptions\EnsoException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -16,10 +18,10 @@ class Handler extends ExceptionHandler
         'password', 'password_confirmation',
     ];
 
-    public function report(Exception $exception)
+    public function report(Throwable $exception)
     {
-        if (app()->bound('sentry') && $this->shouldReport($exception)) {
-            app('sentry')->captureException($exception);
+        if (App::bound('sentry') && $this->shouldReport($exception)) {
+            Sentry::report($exception);
         }
 
         parent::report($exception);
