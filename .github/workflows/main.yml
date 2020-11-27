@@ -37,6 +37,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - name: 'install & build'
+      - name: 'PhpUnit'
         run: |
           php artisan test
