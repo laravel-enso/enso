@@ -40,4 +40,5 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
       - name: 'install & build'
         run: |
+          ls
           composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
