@@ -37,9 +37,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - uses: borales/actions-yarn@v2.0.0
       - name: 'install & build'
         run: |
-          ls
-          sudo composer self-update
-          composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+          php artisan test
