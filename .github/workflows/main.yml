@@ -41,4 +41,5 @@ jobs:
       - name: 'install & build'
         run: |
           ls
+          sudo composer self-update
           composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
