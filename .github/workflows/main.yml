@@ -39,4 +39,4 @@ jobs:
       - uses: php-actions/composer@v4  
       - name: 'PhpUnit'
         run: |
-          php artisan test
+          sudo php artisan test
