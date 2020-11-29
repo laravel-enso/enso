@@ -91,4 +91,5 @@ jobs:
       - name: 'Run migration'
         run: |
           env
+          cp .env.example .env
           sudo php artisan migrate --force    
