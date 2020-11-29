@@ -33,7 +33,7 @@ jobs:
           path: |
             public
             
-  install:
+  composer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,11 +43,11 @@ jobs:
           name: vendor
           path: vendor
 
-  test:
-    needs: install
+  phpunit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: php-actions/composer@v4  
       - uses: actions/download-artifact@master
         with:
           name: vendor
@@ -55,3 +55,46 @@ jobs:
       - name: 'PhpUnit'
         run: |
           sudo php artisan test
+
+  phpcpd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v4  
+      - uses: actions/download-artifact@master
+        with:
+          name: vendor
+          path: vendor
+      - name: 'Run Phpcpd'
+        run: |
+          sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
+          sudo phpcpd.phar app/ 
+
+  php-insights:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v4  
+      - uses: actions/download-artifact@master
+        with:
+          name: vendor
+          path: vendor
+      - name: 'Run php-insight'
+        run: |
+          sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
+
+  sensiolabs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v4  
+      - uses: actions/download-artifact@master
+        with:
+          name: vendor
+          path: vendor
+      - name: 'Run php-insight'
+        run: |
+          sudo git clone https://github.com/sensiolabs/security-checker.git 
+          cd security-checker
+          sudo composer install  
+          sudo php security-checker security:check ../composer.lock        
