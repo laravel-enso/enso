@@ -51,7 +51,7 @@ jobs:
       - name: 'Run Phpcpd'
         run: |
           sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
-          sudo phpcpd.phar app/ 
+          sudo php phpcpd.phar app/ 
 
   php-insights:
     runs-on: ubuntu-latest
