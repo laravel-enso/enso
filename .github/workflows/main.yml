@@ -81,13 +81,14 @@ jobs:
   migration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql database: ${{env.MYSQL_DATABASE}}
-          mysql user: ${{env.MYSQL_USER}}
-          mysql password: ${{env.MYSQL_PASSWORD}} 
-      - uses: php-actions/composer@v4 
+#       - uses: actions/checkout@v2
+#       - uses: mirromutth/mysql-action@v1.1
+#         with:
+#           mysql database: ${{env.MYSQL_DATABASE}}
+#           mysql user: ${{env.MYSQL_USER}}
+#           mysql password: ${{env.MYSQL_PASSWORD}} 
+#       - uses: php-actions/composer@v4 
       - name: 'Run migration'
         run: |
+          env
           sudo php artisan migrate --force    
