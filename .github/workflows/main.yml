@@ -38,6 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
+      - uses: actions/upload-artifact@master
         with:
           name: vendor
           path: vendor
