@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
 
 env:
-  MYSQL_DATABASE: homestead
-  MYSQL_USER: homestead
-  MYSQL_PASSWORD: secret
+  DB_DATABASE: enso
+  DB_USERNAME: enso
+  DB_PASSWORD: secret
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -81,13 +81,13 @@ jobs:
   migration:
     runs-on: ubuntu-latest
     steps:
-#       - uses: actions/checkout@v2
-#       - uses: mirromutth/mysql-action@v1.1
-#         with:
-#           mysql database: ${{env.MYSQL_DATABASE}}
-#           mysql user: ${{env.MYSQL_USER}}
-#           mysql password: ${{env.MYSQL_PASSWORD}} 
-#       - uses: php-actions/composer@v4 
+      - uses: actions/checkout@v2
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql database: ${{env.DB_DATABASE}}
+          mysql user: ${{env.DB_USERNAME}}
+          mysql password: ${{env.DB_PASSWORD}} 
+      - uses: php-actions/composer@v4 
       - name: 'Run migration'
         run: |
           env
