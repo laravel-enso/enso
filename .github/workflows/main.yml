@@ -83,6 +83,6 @@ jobs:
           mysql user: 'homestead'
           mysql password: 'secret' 
       - uses: php-actions/composer@v4 
-      - name: 'Run php-insight'
+      - name: 'Run migration'
         run: |
-          sudo php artisan migrate      
+          sudo php artisan migrate --force    
