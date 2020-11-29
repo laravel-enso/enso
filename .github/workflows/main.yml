@@ -72,4 +72,17 @@ jobs:
           sudo git clone https://github.com/sensiolabs/security-checker.git 
           cd security-checker
           sudo composer install  
-          sudo php security-checker security:check ../composer.lock        
+          sudo php security-checker security:check ../composer.lock    
+  migration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql database: 'homestead'
+          mysql user: 'homestead'
+          mysql password: 'secret' 
+      - uses: php-actions/composer@v4 
+      - name: 'Run php-insight'
+        run: |
+          sudo php artisan migrate      
