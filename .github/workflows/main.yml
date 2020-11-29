@@ -90,6 +90,6 @@ jobs:
       - uses: php-actions/composer@v4 
       - name: 'Run migration'
         run: |
-          env
+          env | grep -i db_
           cp .env.example .env
-          sudo php artisan migrate --force    
+          php artisan migrate --force    
