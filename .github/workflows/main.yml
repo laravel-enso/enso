@@ -32,26 +32,13 @@ jobs:
           name: public
           path: |
             public
-            
-  composer:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v4  
-      - uses: actions/upload-artifact@master
-        with:
-          name: vendor
-          path: vendor
+          
 
   phpunit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - uses: actions/download-artifact@master
-        with:
-          name: vendor
-          path: vendor
       - name: 'PhpUnit'
         run: |
           sudo php artisan test
@@ -61,10 +48,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - uses: actions/download-artifact@master
-        with:
-          name: vendor
-          path: vendor
       - name: 'Run Phpcpd'
         run: |
           sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
@@ -75,10 +58,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - uses: actions/download-artifact@master
-        with:
-          name: vendor
-          path: vendor
       - name: 'Run php-insight'
         run: |
           sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
@@ -88,10 +67,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
-      - uses: actions/download-artifact@master
-        with:
-          name: vendor
-          path: vendor
       - name: 'Run php-insight'
         run: |
           sudo git clone https://github.com/sensiolabs/security-checker.git 
