@@ -32,11 +32,25 @@ jobs:
           name: public
           path: |
             public
-  test:
+            
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
+        with:
+          name: vendor
+          path: vendor
+
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@master
+        with:
+          name: vendor
+          path: vendor
       - name: 'PhpUnit'
         run: |
           sudo php artisan test
