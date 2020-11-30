@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v4  
+      - uses: shivammathur/setup-php@v2 
       - name: 'PhpUnit'
         run: |
           sudo php artisan test
