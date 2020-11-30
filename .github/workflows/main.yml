@@ -23,6 +23,12 @@ jobs:
   # This workflow contains a single job called "build"
   yarn:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max_old_space_size=3072
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}  
     steps:
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
@@ -92,4 +98,11 @@ jobs:
         run: |
           env | grep -i db_
           cp .env.example .env
-          php artisan migrate --force    
+          php artisan migrate --force
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Trig envoyer'
+        run: |
+          curl ${{ secrets.DEPLOY_WEBHOOK }}
