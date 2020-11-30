@@ -56,9 +56,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v4  
+      - uses: shivammathur/setup-php@v2 
+        with:
+          php-version: '7.4'  
       - name: 'Run Phpcpd'
         run: |
+          sudo composer install 
           sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
           sudo php phpcpd.phar app/ 
 
@@ -66,18 +69,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v4  
+      - uses: shivammathur/setup-php@v2 
+        with:
+          php-version: '7.4'  
       - name: 'Run php-insight'
         run: |
+          sudo composer install 
           sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
 
   sensiolabs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v4  
+      - uses: shivammathur/setup-php@v2 
+        with:
+          php-version: '7.4'  
       - name: 'Run php-insight'
         run: |
+          sudo composer install 
           sudo git clone https://github.com/sensiolabs/security-checker.git 
           cd security-checker
           sudo composer install  
@@ -91,11 +100,12 @@ jobs:
           mysql database: ${{env.DB_DATABASE}}
           mysql user: ${{env.DB_USERNAME}}
           mysql password: ${{env.DB_PASSWORD}} 
-      - uses: php-actions/composer@v4 
+      - uses: shivammathur/setup-php@v2 
+        with:
+          php-version: '7.4'  
       - name: 'Run migration'
         run: |
-          env | grep -i db_
-          cp .env.example .env
+          sudo composer install 
           php artisan migrate --force
   deploy:
     runs-on: ubuntu-latest
