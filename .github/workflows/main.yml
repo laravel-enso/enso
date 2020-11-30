@@ -47,6 +47,7 @@ jobs:
       - uses: shivammathur/setup-php@v2 
       - name: 'PhpUnit'
         run: |
+          sudo composer install 
           sudo php artisan test
 
   phpcpd:
