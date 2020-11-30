@@ -101,6 +101,7 @@ jobs:
           php artisan migrate --force
   deploy:
     runs-on: ubuntu-latest
+    needs: [phpunit, phpcpd, migration, yarn, sensiolabs, php-insights]
     steps:
       - uses: actions/checkout@v2
       - name: 'Trig envoyer'
