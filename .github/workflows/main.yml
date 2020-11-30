@@ -13,9 +13,7 @@ env:
   DB_USERNAME: enso
   DB_PASSWORD: secret
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   yarn:
     runs-on: ubuntu-latest
     env:
@@ -41,8 +39,6 @@ jobs:
             public/js/
             public/images/
             resources/views
-
-          
 
   phpunit:
     runs-on: ubuntu-latest
