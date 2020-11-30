@@ -35,9 +35,13 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: public
+          name: resources
           path: |
-            public
+            public/css/
+            public/js/
+            public/images/
+            resources/views
+
           
 
   phpunit:
