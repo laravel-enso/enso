@@ -15,7 +15,7 @@ env:
 
 jobs:
   yarn:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:20.04
     env:
       NODE_OPTIONS: --max_old_space_size=3072
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
