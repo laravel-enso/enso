@@ -15,7 +15,7 @@ env:
 
 jobs:
   yarn:
-    runs-on: ubuntu:20.04
+    runs-on: ubuntu-20.04
     env:
       NODE_OPTIONS: --max_old_space_size=3072
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
@@ -50,7 +50,7 @@ jobs:
           sudo php artisan test
 
   phpcpd:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v4  
