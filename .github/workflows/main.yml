@@ -41,7 +41,7 @@ jobs:
             resources/views
 
   phpunit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2 
@@ -66,7 +66,7 @@ jobs:
           sudo php phpcpd.phar app/ 
 
   php-insights:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2 
@@ -78,7 +78,7 @@ jobs:
           sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
 
   sensiolabs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2 
@@ -92,7 +92,7 @@ jobs:
           sudo composer install  
           sudo php security-checker security:check ../composer.lock    
   migration:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: mirromutth/mysql-action@v1.1
@@ -108,7 +108,7 @@ jobs:
           sudo composer install 
           php artisan migrate --force
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: ${{ github.event_name == 'deployment' || github.event_name == 'push' }}
     needs: [phpunit, phpcpd, migration, yarn, sensiolabs, php-insights]
     steps:
