@@ -28,6 +28,7 @@ jobs:
       - name: 'install & build'
         run: |
           cd client
+          cp .env.example .env
           yarn install
           yarn build
       - name: Archive production artifacts
