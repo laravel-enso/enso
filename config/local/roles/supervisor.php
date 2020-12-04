@@ -73,5 +73,5 @@ return [
         'tasks.exportExcel',
         'tasks.count',
         'tasks.users',
-    ]
+    ],
 ];
