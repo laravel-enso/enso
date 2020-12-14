@@ -71,8 +71,8 @@
     <testsuite name="logs">
       <directory suffix="Test.php">./vendor/laravel-enso/logs/tests</directory>
     </testsuite>
-    <testsuite name="menu-manager">
-      <directory suffix="Test.php">./vendor/laravel-enso/menu/tests</directory>
+    <testsuite name="menus">
+      <directory suffix="Test.php">./vendor/laravel-enso/menus/tests</directory>
     </testsuite>
     <testsuite name="notifications">
       <directory suffix="Test.php">./vendor/laravel-enso/notifications/tests</directory>

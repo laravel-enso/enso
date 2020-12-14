@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'order' => 2,
     'role' => ['name' => 'supervisor', 'display_name' => 'Supervisor'],
     'default_menu' => 'howTo.videos.index',
     'permissions' => [
@@ -62,16 +61,7 @@ return [
         'core.calendar.destroy',
         'core.calendar.index',
         'core.calendar.options',
-        'tasks.index',
-        'tasks.create',
-        'tasks.store',
-        'tasks.edit',
-        'tasks.update',
-        'tasks.destroy',
-        'tasks.initTable',
-        'tasks.tableData',
-        'tasks.exportExcel',
-        'tasks.count',
-        'tasks.users',
+        'export.cancel',
+        'import.restart',
     ],
 ];

@@ -1,5 +1,381 @@
 # Laravel Enso's Changelog
 
+## 4.5.0
+
+The main reason for this release is the complete overhaul and refactor of the file management flow within Enso, including excel exports and imports. This also means potentially breaking changes, so please read through the entire changelog.
+
+### Front-end
+
+#### auth
+- added autocomplete suggestions on auth form
+
+#### bulma
+- added `Avatar.vue` to the list of bulma components
+
+#### calendar
+- added browser state persisted calendar filter
+
+#### commercial
+- added missing dependencies
+
+#### data-import
+- improved param handling
+- improved param structure
+- improved page layout
+
+#### financials
+- added missing dependencies
+
+#### forms
+- updated lodash import style
+
+#### io
+- improved progress layout, with more information available and the option to cancel the supported operations
+- left room for custom operations
+
+#### notifications
+- fixed dependencies
+- fixed duplicated navigation
+
+#### select
+- updated lodash import style
+
+#### strings
+- added `lcfirst` & `ucfirst` helpers
+
+#### tables
+- implemented selectLabel for custom internal select filters
+- updated lodash import style
+- added a small padding between top controls
+
+#### tasks
+- added missing dependencies
+- fixed duplicated navigation
+- added avatars & updated the `allocated.options` route
+- updated `NavbarTasks.vue` registration order
+
+#### typeahead
+- updated lodash import style
+
+#### ui
+- the home screen for the `enter the application` button is in focus by default, so you can now access the application using the keyboard
+- fixed NavbarItem vue component name
+- added missing `favico.js` dependency
+- attempts to fix `chunkLoadError` on new releases
+- added `newRelease` state prop in global state
+- resolved dependency cycle for router -> store
+- added initial login redirect for guests
+
+#### users
+- now avoids navigation duplicated error when visiting the profile page
+- adds an `index.js` file for easier components import
+- cleanup of dead styling
+
+### Back-end
+
+#### action-logger
+- improved response time by persisting the ActionLog after response
+- fixed extra query by disabling guarded
+
+#### activity-log
+- fixed test name
+- minor update to the `EnumServiceProvider`
+
+
+#### addresses
+- added missing country relation in `Region`
+
+#### avatars
+- added functionality to be able to add an externally hosted avatar
+- improved generation flow and now the impersonator can change the user's avatar
+- updated the package due to `files` refactor
+
+#### calendar
+- the birthdays calendar is now visible depending on user roles
+- added publishable calendar configuration for the roles
+- updated tests
+- calendar reminders are now scheduled from the package service provider and don't need to be added anymore to the local service provider
+- renamed `readyToNotify` scope to `shouldSend`
+
+#### cache-chain (new)
+- package allows for the definition of a chain of caching layers and the retrieval of elements from within the cache, by going through the cache layers in the defined order
+
+#### comments
+- small refactor
+- dropped ordered scope in favor of latest
+
+#### cli
+- now uses `newLine()` instead of `line()`
+- fixed table template path
+- now also creates routes file
+
+#### core
+- added login route for auth users' state
+- removed the `Uploads` trait usage
+- removes `Impersonate` trait usage
+- added job_batches migration
+
+#### countries
+- added active state: `is_active` column, scope, upgrade
+
+#### control-panel
+- added active property for apps
+
+#### data-export
+- major refactor in concert with the `files` update
+- uses the OptimalChunk functionality & removed the config `chunk` option
+- improved the notifications
+- added per sheet progress
+- allows for the cancellation of an in-progress export
+- updated the notification text & added the ability to customize the default notification
+- the `enso:data-export:purge` command is being scheduled from within the package
+- the `DataExport` model has an `expired` scope which takes into account the configuration value for `enso.exports.retainFor`
+
+#### data-import
+- complete re-write of the package
+- improved before & after hook handling (now they actually run correctly in all cases)
+- now uses Laravel's Job batch support
+- rejected rows/chunks are now stored in the database vs files written on disk
+- updated tests
+- updated where impacted by `files` updates
+- updated Model / table structure
+- added per sheet progress
+- allows for the cancellation of an in-progress import
+
+#### departments
+- fixed import
+
+#### documents
+- updated the package due to `files` refactor
+
+#### emails
+- updated package to work with the new `files`
+
+#### enums
+- small code style refactor
+
+#### excel
+- improved service to handle inline/download;
+- renamed `path` to `folder` in `savesToDisk` contract
+- `temp` directory gets created if required & does not exist
+
+#### files
+- removed the `Uploads` trait and relation for user
+- added the `TEMPORARY_LINK_EXPIRATION` env variable
+- upgraded `FileServiceProvider` (breaking change)
+- updates the `Attachable` contract & `HasFile` traits, which are now lighter. All the file operations will be made from now on using the `file` relation / model
+- renames `visible` scope to `browsable`, and `forUser` scope to `for`
+- removed the `File` model's `path` method
+- improved upload and attach flows
+- improved tests and adds attach file test
+- improved upgrade
+
+#### helpers
+- refactor: renamed internal property name
+- changed `static` to `self` for morphSiblings array in the `CascadesMorphMap` trait
+- added the `OptimalChunk` service, extracted from `tables`
+
+#### how-to
+- updated the package due to `files` refactor
+
+#### impersonate
+- improves logic
+- made use of dynamic methods and removed the `Impersonates` trait
+
+#### io
+- improved code
+- added support for better progress reporting
+- registered `IoTypes` enum to app's state
+- improved `IOOperation` contract
+- removed `IOEvents` enum
+- removed `HasIOStatuses` enum
+- added missing person relationship load within the IOEvent class
+
+#### menus
+- reordered imports in test
+
+#### products
+- updated due to `files` upgrade
+
+#### rememberable
+- small cleanup
+- removed layers
+- now uses `cacheLifeTime` to limit the cached element lifespan
+
+#### roles
+- removed deprecated `order` attribute usage
+
+#### searchable
+- fixed code style
+
+#### services
+- fixed code style
+
+#### tables
+- updated the package due to `files` refactor
+- renamed path key to folder in `config.export` array
+- improved export blade
+- added generic and enso specific export handling, including notifications
+- moved `isEnso` getter in Config
+- added a `name` ability to Config
+- improved fetcher to memoize count
+- added fetchMode for Data builder to avoid building actions for exports
+- updated optimal chunk logic to return lower values
+- made use of the new DataExport
+- extracted optimal chunk in helpers
+
+#### tasks
+- added role check when choosing user to allocate to
+- added config for roles
+- added tests
+
+#### track-who
+- small refactor
+
+#### upgrade
+- updated unsuccessful upgrade error message
+
+### Upgrade steps
+
+Although this release contains breaking changes, unless you've been getting deep into the framework, there are high chances these will not affect you.
+
+A files upgrade is included and should run together with any other relevant upgrades, but before running it please read all the notes below.
+
+To upgrade:
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. If necessary, update your patch files
+- `composer dump-autoload`
+- `php artisan enso:upgrade --beforeMigration`
+- `php artisan migrate`
+- `php artisan enso:upgrade`
+- as per every release, delete any local, old upgrades
+- if using the `calendar` package, you should remove the scheduling of the  `enso:calendar:send-reminders` local command as it's being scheduled from within the package
+- if using the `data-export` package, you should remove the scheduling of the  `enso:data-export:purge` local command as it's being scheduled from within the package
+- for table exports, data-import & data-exports templates may have changed slightly, if using internationalized texts, you may need to update your translations
+- phpunit configuration has become more strict so ensure you have the proper path defided for the following packages:
+    - `helpers`:
+  ```xml
+  <directory suffix="Test.php">./vendor/laravel-enso/helpers/tests/unit</directory>
+  ```
+    - `cnpvalidator`/`cnp-validator`:
+  ```xml
+  <directory suffix="Test.php">./vendor/laravel-enso/cnp-validator/tests/features</directory>
+  ```
+    - `menu-manager`/`menus`:
+  ```xml
+  <directory suffix="Test.php">./vendor/laravel-enso/menus/tests/features</directory>
+  ```
+
+#### if running data imports programmatically
+- previously you had to create an `UploadedFile` instance, then pass it to the `Import` service:
+    ```php
+    $file = new UploadedFile(Storage::path($path), $filename, null, null, true);
+    (new Import(self::Type, $file))->handle();
+    ```
+
+- now, you should use the `DataImport->attach()` method and pass the storage relative  path to the file and the filename:
+    ```php
+    DataImport::factory()->make(['type' => self::Type])->attach($path, $filename);
+    ```
+
+#### if generating exports using the `data-export` package
+- the `ExportsExcel` contract has been updated to support generating multiple sheets:
+    ```php
+    public function heading(): array 
+    ```
+  becomes
+    ```php 
+    public function heading(string $sheet): array
+    ```
+    ```php
+    public function query(): Builder
+    ```
+  becomes
+    ```php
+    public function rows(string $sheet): array
+    ````
+    ```php
+    public function attributes(): array
+    ```
+  becomes
+    ```php
+    public function sheets(): array
+    ```
+    ```php
+    public function mapping($row): array
+    ```
+  becomes
+    ```php
+    public function mapping($call): array
+    ```
+- the previous `BeforeExportHook' & `AfterExportHook` contracts have been renamed to `BeforeHook` & `AfterHook` respectively, and allow you to add specific logic before & after running the export as before
+- by default, the user running the export is notified upon the export's completion
+- there is a new `Notifies` contract that allows you to replace the default notification logic, which you may also use to disable notifications
+- if previously, you were handling notifications for exports, consider using the out-of-the-box functionality and remove the notification logic
+- on the exporter, you may optionally add a `public function emailSubject(): string` method and return a custom subject for the email notification
+- on the exporter, you may optionally add a `public function notifiables(DataExport $export): Collection` method, which should return an array of notifiable entities, that receive the export done notification
+- previously, when creating an export, you had to create a DataExport model, the exporter class, instantiate the ExcelExport service, and the call its handle method:
+    ```php
+    $exporter = new MyExporter();
+    $dataExport = DataExport::create([
+        'name' => $exporter->filename(),
+        'entries' => 0,
+        'created_by' => $user->id,
+    ]);
+        
+    (new ExcelExport($user, $dataExport, $exporter))->handle();
+    
+    return $dataExport->download();
+    ```
+- now, you may call the static `excel(...)` method on the `DataExport` model
+    ```php
+    $exporter = new MyExporter();
+  
+    return DataExport::excel($exporter)->file->inline();
+    ```
+- if running exports programmatically or from jobs, authenticate using the required user before running the export:
+    ```php
+    Auth::setUser($this->user);
+    ```
+
+#### if working locally with files, or models that work with files
+
+The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselSlide`, `Company`, `DataExport`, `DataImport`, `Document`, `Picture`, `Poster`, `RejectedImport`, `Upload`, `Video`, `WebshopPage`.
+
+- the included [FilePath](https://github.com/laravel-enso/files/blob/master/src/Upgrades/FilePath.php) upgrade will handle the update of files attached to Enso models (such as those above).
+
+  However, the `Attachable` contract in concert with the `HasFile` trait allows an attachable model to specify a potentially dynamic folder name where to store files.
+
+  **IF** you are using this flow for your own local models, you need to handle upgrade for those file records yourself.
+
+- the `HasFile` trait has been updated and no longer cascades the following methods:
+    - `inline`
+    - `download`
+    - `temporaryLink`
+    - `attach`
+    - `upload`
+    - `folder`
+      What this means is that you should load the file and chain/call the desired method on the file model:
+      ```php
+      $document->file->download();
+      ```
+- the `storagePath()` method has been removed, both from the trait and the File model. You should use instead:
+    ```php
+    Storage::path($document->file->path);
+    ```
+- the `LaravelEnso\Files\Traits/Uploads.php` has been removed
+- previously, when using the `attach(...)` method on the `File` model or the any `Attachable` model, through the `HasFile` proxy method with the same name, the file was being optimized. If you are attaching files that somehow do not come through the Enso flow, handle any needed optimization manually.
+- the `file` relationship as defined in the [HasFile](https://github.com/laravel-enso/files/blob/master/src/Traits/HasFile.php) provides a default if no file exists:
+    ```php
+    public function file(): Relation
+        {
+            return $this->morphOne(File::class, 'attachable')
+                ->withDefault();
+        }
+    ```
+
+  Update any checks using truthy logic such as `if ($myAttachableModel->file) {...}` as required, or you may have unexpected consequences.
+
 ## 4.4.0
 
 The release further decouples ui packages and introduces automatic asset 
