@@ -355,7 +355,8 @@ The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselS
     - `attach`
     - `upload`
     - `folder`
-      What this means is that you should load the file and chain/call the desired method on the file model:
+      
+    What this means is that you should load the file and chain/call the desired method on the file model:
       ```php
       $document->file->download();
       ```
