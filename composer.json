@@ -17,7 +17,7 @@
         "laravel-enso/data-import": "^5.0",
         "laravel-enso/discussions": "^3.0",
         "laravel-enso/documents": "^4.0",
-        "laravel-enso/excel": "^2.0",
+        "laravel-enso/excel": "^3.0",
         "laravel-enso/how-to": "^4.0",
         "laravel-enso/pdf": "^2.0",
         "laravel-enso/tasks": "^1.1",
