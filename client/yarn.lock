@@ -1770,9 +1770,9 @@
     vuex "^3.1.0"
 
 "@enso-ui/users@^1.0":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@enso-ui/users/-/users-1.0.9.tgz#3bc3df8e55665e6dfe71d6c8a33ff70463a6f04b"
-  integrity sha512-wCicsqNOhMUhLnSoxmerskEdVcIzZr4IMnstAQosfCNvOC3mYQJwXrRvisZNAnjOB+OscrtEXltq5pHh4CkyzQ==
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@enso-ui/users/-/users-1.0.10.tgz#e97f916d1ef1db0a073438b6f044b8f41b7c633a"
+  integrity sha512-cE+eAhbr7njwFYHwUAJO/ovnwRZJwUT7x08xDXt2iCjEERupWirWQMflqtic2oL0Wyn/XPkX/70C7VdO50i9Gg==
   dependencies:
     "@enso-ui/auth" "^1.0"
     "@enso-ui/bulma" "^4.0"
@@ -2030,9 +2030,9 @@
     "@types/node" "*"
 
 "@types/express-serve-static-core@*":
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.15.tgz#7c3d37829a991da9a507c1efd44d97532e8909e3"
-  integrity sha512-pb71P0BrBAx7cQE+/7QnA1HTQUkdBKMlkPY7lHUMn0YvPJkL2UA+KW3BdWQ309IT+i9En/qm45ZxpjIcpgEhNQ==
+  version "4.17.16"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.16.tgz#56626e2f60bdd9a5193bc84a1042a506eeb69da7"
+  integrity sha512-hGGiDMatRhcRF2F0EsxSX93iKQJom6No2RwwCm/dvVtNt6FMuq+A/Y4qUZZGqIjqe0LE/jN0wzW86yDFSJwn7A==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -4786,9 +4786,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.621:
-  version "1.3.625"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.625.tgz#a7bd18da4dc732c180b2e95e0e296c0bf22f3bd6"
-  integrity sha512-CsLk/r0C9dAzVPa9QF74HIXduxaucsaRfqiOYvIv2PRhvyC6EOqc/KbpgToQuDVgPf3sNAFZi3iBu4vpGOwGag==
+  version "1.3.626"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.626.tgz#48acdf322be07feb2c1330ba05e4bf6327f721a3"
+  integrity sha512-7CanEvJx74EnvjHu1X8gf93KieyxvFLnqOXAH/ddjWD4RrUZYqdg3pykrQ/7t6SLI7DTsp4tfQXEfzeK5t6oAw==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -11232,9 +11232,9 @@ vue-cal@^3.0:
   integrity sha512-rD5BWeUW4TiaOtA/qdHSBlLBKdF1tc3GayqiEDpCB3kxx/fmJiUtyqSfLtG1UWsPPWBcYQuFE+tjPm3LCtoMEA==
 
 vue-eslint-parser@^7.0.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.2.0.tgz#1e17ae94ca71e617025e05143c8ac5593aacb6ef"
-  integrity sha512-uVcQqe8sUNzdHGcRHMd2Z/hl6qEaWrAmglTKP92Fnq9TYU9un8xsyFgEdFJaXh/1rd7h8Aic1GaiQow5nVneow==
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.3.0.tgz#894085839d99d81296fa081d19643733f23d7559"
+  integrity sha512-n5PJKZbyspD0+8LnaZgpEvNCrjQx1DyDHw8JdWwoxhhC+yRip4TAvSDpXGf9SWX6b0umeB5aR61gwUo6NVvFxw==
   dependencies:
     debug "^4.1.1"
     eslint-scope "^5.0.0"
