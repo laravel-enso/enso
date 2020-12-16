@@ -245,7 +245,7 @@ To upgrade:
 - run `composer update`
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. If necessary, update your patch files
 - `composer dump-autoload`
-- `php artisan enso:upgrade --beforeMigration`
+- `php artisan enso:upgrade --before-migration`
 - `php artisan migrate`
 - `php artisan enso:upgrade`
 - as per every release, delete any local, old upgrades
