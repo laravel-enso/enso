@@ -21,6 +21,7 @@
         "laravel-enso/how-to": "^4.0",
         "laravel-enso/pdf": "^2.0",
         "laravel-enso/tasks": "^1.1",
+        "laravel-enso/teams": "^3.0",
         "laravel-enso/tutorials": "^4.0",
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",

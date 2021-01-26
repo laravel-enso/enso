@@ -1,5 +1,135 @@
 # Laravel Enso's Changelog
 
+## 4.6.0
+
+This release includes improvements, bug fixes, and new features.
+
+### Front-end
+
+#### money
+- improved focus & blur handling, fixed input event payload
+- added the ability to have null value
+
+#### select
+- added debounce for `addTag`
+
+#### tables
+- added support for numbers
+- added formatted filtered / count
+- moved pagination logic to the BE
+- added support for selection controls
+- fixed pagination when *full records info* is false
+
+#### tasks
+- added permissions to register
+
+#### ui
+- announce a new release on every chunk load failed error
+- added permissions to register ref enso-ui/tasks#6
+- fixed auth routes for guests
+
+#### users
+- fixed avatar display when no tooltip is needed
+
+### Back-end
+
+#### addresses
+- added new `addresses.created_by` column; added upgrade
+- added PHPMD config
+- added factories for `Township`, `Locality` and `Region`
+
+#### avatars
+- removed `HasAvatar` trait in favor of dynamic method & observer
+
+#### cli
+- fixed routes stub
+- fixed UI route component imports
+- added common default for the route for the menu config
+
+#### companies
+- added policy for edit page
+
+#### core
+- removed `HasAvatar` trait
+- removed the `laravel-enso/teams` dependency as the package can be added if required
+- binding `Faker\Generator` in production to Dummy laravel-enso/data-export#10
+- added user profile policy
+- fixed import in login controller
+- added namespace to tests
+
+#### data-export
+- fixed notification path
+- added sync excel attaching ability
+- updated permission description in structure
+
+#### data-import
+- updated ExcelSeeder
+- fixes serializing with postgres
+
+#### documentation
+- updated table docs: references to money vs number
+- other table documentation small updates
+
+#### files
+- fixed file path upgrade for projects that don't use data-import
+
+#### filters
+- resolves comparison operators enum from App's container for improved flexibility; ref laravel-enso/filters#4
+
+#### helpers
+- added dummy
+
+#### localisation
+- updated out of stock `ro` translation
+
+#### products
+- updated test namespace
+- updated url for pictures (route name remains the same)
+
+#### roles
+- rolls back ordering removal for the `sync` command
+
+#### tables
+- improved support for numbers; moved pagination on BE
+- fixed test
+- added 'selection' ability for global controls
+- selection works only on selectable tables, and will send to the BE a selection payload with the selected rows
+- buttons that work with selection will be rendered only when a selection is made
+- fixed incorrect pages count, fixed incorrect middle pages
+
+#### tasks
+- added `taskable` contract & factory
+
+### private packages
+
+#### webshop
+- added about-us page
+- added controller import
+- added limited stock limit upgrade
+- added favorites database persistent ref laravel-enso/webshop#33
+- removed restricted/selective mfr load
+
+#### emag
+- fixed file save
+- added authentication in job
+- added fetch orders job
+- added `FetchOrders` command to the service provider
+
+### Upgrade steps
+
+To upgrade:
+- `app/Http/Controllers/Auth` was removed from enso - if not customized locally, you may remove it as well
+- the `teams` package is no longer included with enso by default. If you require it, add it back:
+    - add `"laravel-enso/teams": "^3.0",` to `composer.json`
+    - add `"enso-ui/teams": "^2.0",` to `client/package.json`
+- update the Enso version to `4.6.0` in `config/enso/config.php`
+- run `composer update` in the project's root
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- `php artisan enso:upgrade --before-migration`
+- `php artisan migrate`
+- `php artisan enso:upgrade`
+- as per every release, delete any local, deprecated upgrades
+
 ## 4.5.0
 
 The main reason for this release is the complete overhaul and refactor of the file management flow within Enso, including excel exports and imports. This also means potentially breaking changes, so please read through the entire changelog.
