@@ -63,7 +63,8 @@ This release includes improvements, bug fixes, and new features.
 - updated permission description in structure
 
 #### data-import
-- updated ExcelSeeder 
+- updated ExcelSeeder
+- fixes serializing with postgres
 
 #### documentation
 - updated table docs: references to money vs number
