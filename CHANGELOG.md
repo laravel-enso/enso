@@ -1,7 +1,5 @@
 # Laravel Enso's Changelog
 
-# Laravel Enso's Changelog
-
 ## 4.6.0
 
 This release includes improvements, bug fixes, and new features.
@@ -63,6 +61,9 @@ This release includes improvements, bug fixes, and new features.
 - fixed notification path
 - added sync excel attaching ability
 - updated permission description in structure
+
+#### data-import
+- updated ExcelSeeder 
 
 #### documentation
 - updated table docs: references to money vs number
