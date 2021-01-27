@@ -6,9 +6,15 @@ This release includes improvements, bug fixes, and new features.
 
 ### Front-end
 
+#### io
+- used new websocket getter
+
 #### money
 - improved focus & blur handling, fixed input event payload
 - added the ability to have null value
+
+#### notifications
+- used new websocket getter
 
 #### select
 - added debounce for `addTag`
@@ -22,11 +28,13 @@ This release includes improvements, bug fixes, and new features.
 
 #### tasks
 - added permissions to register
+- used new websocket getter
 
 #### ui
 - announce a new release on every chunk load failed error
 - added permissions to register ref enso-ui/tasks#6
 - fixed auth routes for guests
+- removed predefined websocket channels
 
 #### users
 - fixed avatar display when no tooltip is needed
@@ -119,9 +127,11 @@ This release includes improvements, bug fixes, and new features.
 
 To upgrade:
 - `app/Http/Controllers/Auth` was removed from enso - if not customized locally, you may remove it as well
+- websocket getter changed, and there is a channel getter instead of specific channels getter now; if you are using websocket locally, you need to change the getter(like [this](https://github.com/enso-ui/tasks/pull/7/files))
 - the `teams` package is no longer included with enso by default. If you require it, add it back:
     - add `"laravel-enso/teams": "^3.0",` to `composer.json`
     - add `"enso-ui/teams": "^2.0",` to `client/package.json`
+- remove `Broadcast::routes();` from `app/Providers/BroadcastServiceProvider.php` (like [this](https://github.com/laravel-enso/enso/pull/368/files#diff-f6494976ee4aafbaba31ea0568949f51d3be2681f8c50fbb2a19863fdb78796fR4-R13))
 - update the Enso version to `4.6.0` in `config/enso/config.php`
 - run `composer update` in the project's root
 - run `yarn`, `yarn upgrade && yarn` to ensure you have the latest versions and patches are applied. If necessary, update your patches
