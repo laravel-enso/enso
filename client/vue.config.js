@@ -37,7 +37,7 @@ module.exports = {
         devtool: inProduction ? 'hidden-source-map' : 'source-map',
         resolve: {
             alias: {
-                '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
+                '@ui': `${__dirname}/node_modules/@enso-ui/ui/src`,
                 '@root': `${__dirname}/src/js`,
                 '@pages': `${__dirname}/src/js/pages`,
                 '@store': `${__dirname}/src/js/store`,
