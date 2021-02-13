@@ -3,7 +3,6 @@
 namespace App\DynamicRelations\Company;
 
 use Closure;
-use LaravelEnso\Discussions\Models\Discussion;
 use LaravelEnso\Documents\Models\Document;
 use LaravelEnso\DynamicMethods\Contracts\Method;
 
