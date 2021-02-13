@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo composer install
           sed -i 's/GOOGLE_ANALITICS_TOKEN/${{ secrets.GOOGLE_ANALITICS_TOKEN }}/g' resources/views/stubs/production-index.blade.stub
-          cp -f resources/views/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
+          sudo cp -f resources/views/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
           cd client
           cp .env.example .env
           yarn install
