@@ -27,8 +27,8 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
       - name: 'install & build'
         run: |
-          sed -i 's/GOOGLE_ANALITICS_TOKEN/${{ secrets.GOOGLE_ANALITICS_TOKEN }}/g' resources/stubs/production-index.blade.stub
-          cp -f resources/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
+          sed -i 's/GOOGLE_ANALITICS_TOKEN/${{ secrets.GOOGLE_ANALITICS_TOKEN }}/g' resources/views/stubs/production-index.blade.stub
+          cp -f resources/views/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
           cd client
           cp .env.example .env
           yarn install
