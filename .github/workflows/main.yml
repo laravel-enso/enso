@@ -27,6 +27,7 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
       - name: 'install & build'
         run: |
+          sudo composer install
           sed -i 's/GOOGLE_ANALITICS_TOKEN/${{ secrets.GOOGLE_ANALITICS_TOKEN }}/g' resources/views/stubs/production-index.blade.stub
           cp -f resources/views/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
           cd client
@@ -92,7 +93,6 @@ jobs:
           sudo composer install 
           sudo git clone https://github.com/sensiolabs/security-checker.git 
           cd security-checker
-          sudo composer install  
           sudo php security-checker security:check ../composer.lock    
   migration:
     runs-on: ubuntu-20.04
