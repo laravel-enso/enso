@@ -12,6 +12,7 @@
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/laravel-enso/enso/latest)
 
 
+
 **Hit the ground running when building your new Laravel SPA project with boilerplate and extra functionality out of the box!**
 
 
