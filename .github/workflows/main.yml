@@ -81,7 +81,6 @@ jobs:
           php-version: '7.4'
       - name: 'Run php-insight'
         run: |
-          sudo curl "https://repo.packagist.org/api/security-advisories/"
           sudo composer install
           sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
 
