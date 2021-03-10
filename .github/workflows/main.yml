@@ -21,12 +21,18 @@ jobs:
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
       SENTRY_URL: ${{ secrets.SENTRY_URL }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}  
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
       - name: 'install & build'
         run: |
+          sudo composer install
+          sed -i 's/GOOGLE_ANALITICS_TOKEN/${{ secrets.GOOGLE_ANALITICS_TOKEN }}/g' resources/views/stubs/production-index.blade.stub
+          sudo cp -f resources/views/stubs/production-index.blade.stub vendor/laravel-enso/core/stubs
           cd client
           cp .env.example .env
           yarn install
@@ -45,53 +51,53 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2 
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'  
+          php-version: '7.4'
       - name: 'PhpUnit'
         run: |
-          sudo composer install 
+          sudo composer install
           sudo php artisan test
 
   phpcpd:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2 
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'  
+          php-version: '7.4'
       - name: 'Run Phpcpd'
         run: |
-          sudo composer install 
+          sudo composer install
           sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
-          sudo php phpcpd.phar app/ 
+          sudo php phpcpd.phar app/
 
   php-insights:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2 
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'  
+          php-version: '7.4'
       - name: 'Run php-insight'
         run: |
-          sudo composer install 
+          sudo composer install
           sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
 
-  sensiolabs:
+  security:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2 
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'  
+          php-version: '7.4'
       - name: 'Run php-insight'
         run: |
-          sudo composer install 
-          sudo git clone https://github.com/sensiolabs/security-checker.git 
-          cd security-checker
-          sudo composer install  
-          sudo php security-checker security:check ../composer.lock    
+          PHP_SC_VERSION=$(curl -s "https://api.github.com/repos/fabpot/local-php-security-checker/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/;s/^v//')
+          curl -LSs https://github.com/fabpot/local-php-security-checker/releases/download/v${PHP_SC_VERSION}/local-php-security-checker_${PHP_SC_VERSION}_linux_amd64 > ./php-security-checker
+          chmod +x ./php-security-checker
+          unset PHP_SC_VERSION
+          ./php-security-checker
   migration:
     runs-on: ubuntu-20.04
     steps:
@@ -100,18 +106,18 @@ jobs:
         with:
           mysql database: ${{env.DB_DATABASE}}
           mysql user: ${{env.DB_USERNAME}}
-          mysql password: ${{env.DB_PASSWORD}} 
-      - uses: shivammathur/setup-php@v2 
+          mysql password: ${{env.DB_PASSWORD}}
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'  
+          php-version: '7.4'
       - name: 'Run migration'
         run: |
-          sudo composer install 
+          sudo composer install
           php artisan migrate --force
   deploy:
     runs-on: ubuntu-20.04
     if: ${{ github.event_name == 'deployment' || github.event_name == 'push' }}
-    needs: [phpunit, phpcpd, migration, yarn, sensiolabs, php-insights]
+    needs: [phpunit, phpcpd, migration, yarn, security, php-insights]
     steps:
       - uses: actions/checkout@v2
       - name: 'Trig envoyer'
