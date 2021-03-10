@@ -51,12 +51,17 @@ module.exports = {
                 release: process.env.SENTRY_RELEASE,
                 ignore: ['vendor'],
             }),
-            new CopyPlugin([{
-                from: '../resources/images',
-                to: 'images',
-                force: true,
-                folder: true,
-            }]),
+            new CopyPlugin(
+                {
+                    patterns: [
+                        {
+                            from: '../resources/images',
+                            to: 'images',
+                            force: true,
+                        },
+                    ],
+                },
+            ),
         ].filter(p => p),
     },
     chainWebpack: config => {
