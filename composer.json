@@ -53,7 +53,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "LaravelEnso\\Frisbo\\": "vendor/laravel-enso/frisbo/src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
