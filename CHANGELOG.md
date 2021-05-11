@@ -1,5 +1,423 @@
 # Laravel Enso's Changelog
 
+## 4.7.0
+
+This aims to be the last minor release before upgrading to PHP 8 and includes many improvements, bug fixes and also several new features.
+
+### Front-end
+
+Most of the packages received a dependency list cleanup.
+
+#### activity-log
+- moved the icons file
+
+#### addresses
+- improved postcode in form
+
+#### auth
+- refactored components
+
+#### bulma
+- added orderable trees
+
+#### calendar
+- added filter in `components/CalendarFilter.vue`
+
+#### categories
+- updated dependencies: now uses the orderable trees package
+
+#### clipboard
+- updated readme
+
+#### companies
+- small fixes
+- removed unused code
+- improved people association removal
+
+#### data-import
+- added back cascade of the `browseFiles` method which makes it easier to use the component standalone, for example in a table
+- fixed rejected import download
+
+#### documents
+- added file size limit
+
+#### emag
+- updated commercial form content and components
+
+#### filters
+- added translatable to `vue-filter`
+
+#### financials
+- updated dashboard chart
+- improved client filter
+
+#### forms
+- hided actions in autosave mode
+- returned promises from fetch & submit; added submitting and submitted events
+- added `clearErrorsControl`, `section-divider` class, section visibility and watcher for the form path, so that the form is re-fetched if the path changes
+- fixed style and hidden fields
+- cleaned and updated `CoreForm.vue`
+- updated `FormSection.vue`
+- removed meta
+
+#### inventory
+- updated product components; moved icons to src
+
+#### io
+- fixed channels, small fixes
+
+#### notifications
+- fixed channels, method name
+
+#### orderable-trees (new)
+- facilitates creating and ordering tree structures with `drag-and-drop` functionality
+
+#### products
+- fixed images in picture uploader
+- fixes missing dependency
+
+#### rating (new)
+- simple component which facilitates star rating
+
+#### scroll-to-top
+- updated mobile margins
+
+#### switch
+- made label clickable
+- simplified logic
+
+#### tables
+- fixed boolean classes in table cell and slot
+
+#### tasks
+- used new websocket getter
+
+#### toastr
+- extended HTML support for title similar to body, if html flag is set, treat title (if set) as html.
+
+#### typeahead
+- made search control hidden on mobile
+- passed enso error handler
+- added `taggableoption`: can create when typing non existing options; emits keydown events to be used in different implementation scenarios; small internal refactor
+- cascaded the core typeahead clear method and made the query & loading values available in the controls slot
+
+#### ui
+- fixed `@enso-ui/auth` and `channels`
+- improved logo display in navbar
+- small refactor
+
+### Privates
+
+#### commercial
+- updated pages and components
+- integrated sale channel package
+- allow issue invoice at all times
+- reorders actions to be more natural
+- added cancellation
+- multiple fixes and enhancements
+
+#### eav (new)
+- provides entity attribute value functionality for entities which require a scalable number of attributes
+
+#### emag
+- added response handling for product publish
+- added sale channels and services as dependencies
+- added settings table
+- added option for manual invoice upload
+- various fixes and updates
+
+#### frisbo (new)
+- provides action components for syncing, stock check and dispaching orders on Frisbo platform
+
+#### inventory
+- updated overwritable products pages
+- added warehouses store
+
+#### sale channels (new)
+- basic sale channels CRUD components with store functionality
+
+#### webshop
+- added approve & reject action in table
+- added sale channels and services as dependencies
+- various fixes and improvements
+
+### Back-end
+
+#### addresses
+- added `rememberable` on locality and region
+- improved store logic and label
+- added cast for `addressable_id`
+- allows multiple billing addresses
+- fixed test
+- added postcode to label
+- added scopes and dynamic user relation
+
+#### avatars
+- updated `user_id` cast
+
+#### calendar
+- added phpmd config
+- fixed notification queue
+- updated notification subject
+
+#### categories
+- fixed logic due to illuminate collection constructor update
+- added `rememberable` keys in category, global scope & small changes
+- cleanup and fixes
+- improved scope by adding the table
+- updated `parentTree` to return only parents
+- updated tests to reflect previous changes to the `parentTree` method
+- added `contains` nested scope
+
+#### charts
+- added `colorsConfig` setter, updates `ChartCard` and `Chart`
+- fixed chart options reactivity
+
+#### cli
+- fixed package generation
+
+#### comments
+- updated notification subject
+
+#### companies
+- added `rememberable` keys in company
+- updated factory and tests
+
+#### core
+- extracted impersonate policy
+- added version update
+- fixed import, style, password reset when email is wrong, notification queue and email footer
+- updated `Version.php`, `config.php`and social media icons
+- added core version,  missing key in guest state and admins & supervisors scopes on user
+- improved reset password notification and enso mail theme
+- replaced social media icons with svgs; improved publishing aliases
+- extended the reset storage command to take optional list of folders (comma separated)
+- removed deprecated `googleplus` and unused import
+- reworded reset password notification subject
+
+#### countries
+- added `rememberable` keys in country for iso.
+- added name to `rememberable` keys
+- improved region label
+
+#### data-export
+- fixed notification queue
+
+#### data-import
+- fixed wrong number with restart
+- added error in console mode and validations in template export
+- updated `Chunk.php`
+- reseted counters to zero when data-import was restarted in all cases.
+- removed `ImportTypes`
+
+#### departments
+- removed useless import
+
+#### documentation
+- updated documentation for Search Modes
+
+#### enums
+- added ability to use private constants for custom logic
+- fixed enum localisation and mapping
+
+#### excel
+- refactored in export service
+
+#### forms
+- flexible number of columns
+- added visibility
+- fixed wrong property, meta test, input "content" validation
+- added `clearErrorsControl` structure option
+
+#### helpers
+- updated `Sleep`
+
+#### impersonate
+- added gate
+- updated `AuthServiceProvider.php`
+
+#### io
+- made event dispatchable
+
+#### localisation
+- added & improved translations
+
+#### notifications
+- fixed route (http verb name)
+- fixed order
+- updated test due to route update
+
+#### packaging-units
+- added rememberable keys
+
+#### pdf
+- enabled risky
+- updated margins and added footer font size
+- added download method
+
+#### people
+- added caching feature to `company()` helper
+- `company()` always loads relation
+
+#### products
+- refactored form for easier customization
+- added internal code management
+- improved internal code logic
+- added length in config for internal code
+- removed unwanted section
+- added `attachPicture` method and acquisition price helper
+- implemented product slug
+- added `wysiwyg` form field options
+- migrated towards 4 decimals and updated migration
+- updated company factory use
+- fixed product booted method
+
+#### rememberable
+- added custom key
+- added tests
+- renamed config key & exception message
+- fixed key for polymorphic relation
+- raised default to 1h
+- various fixes
+
+#### roles
+- updated default menu
+
+#### services
+- small visual refactor
+- migrated towards 4 decimals
+- removed unneded financials dependency
+
+#### tables
+- no longer added default order by clause when the base query already has order by clauses applied
+- improved raw total efficiency
+- fixed typo and enum localisation
+
+#### tasks
+- fixed email path
+- updated default menu order
+- updated notification subject
+
+#### upgrade
+- added nullable helper on column
+- added new `hasType` helper method for the `Table` utility class
+
+#### versions
+- improved flow
+
+### Privates
+
+#### api (new)
+- provides boilerplate and base functionality for implementing external apis
+
+#### commercial
+- made events dispatchable; implemented the new computor; improved client stock import service
+- implemented shipping and billing address
+- added container resolve for all `xlsx` document generation instances
+- added payment method
+- migrated towards 4 decimals
+- added undo fullfillment
+- refactored invoice & order blades, order email, notifications
+- added enum for file formats and refactored order controllers
+- added `cancelled_at` and `Cancel` controller
+- added reservable scope
+- updated policies
+- added addresses option controller
+- multiple fixes and enchancements
+
+#### discounts
+- added service `clientDiscounts` relation
+- removed int cast in discounts
+- fixed discount factories
+
+#### eav (new)
+- provides entity attribute value functionality for entities which require a scalable number of attributes
+
+#### emag
+- implemented product publish
+- added sale channels and services as dependencies
+- added settings
+- added voucher handling
+- added payment method to sale creation
+- implemented `free_shipping_above`
+- added emag orders fallback
+- migrated towards 4 decimals
+- added Emag courier accounts, `AddAttachment` action
+- added and updated enums
+- added invoice upload on sale creation flow
+- refactored and added `NewOrder`, `OrderCancellation` and awb notifications
+- multiple fixes and enchancements
+
+#### fetcher
+- fixed stream closing on upload
+- updated notification subjects
+
+#### financials
+- added new `Computor`; dropped `ComputesLines`, `ComputesTotals`, `LineComputor`, `TotalsComputor`
+- migrated towards 4 decimals
+- added `discountWithVat` helper
+- rewrited invoice blades
+- added pdf invoice download option
+- multiple fixes and enchancements
+
+#### frisbo (new)
+- Frisbo api implementation for external order fulfillment. Provides functionality for managing products, dispaching, updating and syncing orders
+
+#### inventory
+- added rememberable on position
+- improved fulfilment flow
+- added new Order contract
+- added reservable scope as needed
+- added `cancel` method in `Warehouse` model and `Fulfilment` contract
+- various fixes and enchancements
+
+#### product-eav (new)
+- loose coupling package implementation between products and eav for avoiding unwanted dependencies
+
+#### sale channels (new)
+- provides basic sale channels structure
+
+#### stripe (new)
+- Stripe api implementation for processing card payments
+
+#### webshop
+- added missing factory attribute and facebook fields
+- added ability to store cart in session if content is not private
+- updated stock statuses
+- implemented fast registration and `free_shipping_above`
+- improved cart logic
+- added google ads support
+- updated payment methods
+- added `welcome_text_on_mobile` to migration
+- removed external ref in orders table
+- fixed seo
+- improved ratings and reviews
+- added product repository
+- thorough layout, flow and functionality refactor
+- multiple fixes and enchancements
+
+#### webshop-commercial
+- implemented the new computor, reused dynamics between product and service
+- implemented shipping & billing addresses
+- added side by side form for adding new card
+- implemented free shipping and finalize order on payment creation;
+- updated the response to support wire transfer
+- updated the Line price method to show unitary price with vat
+- refactored notifications
+- added stripe checkout
+- covered edge case when order payment method is set
+- thorough refactor
+- multiple fixes and enchancements
+
+### Upgrade steps
+
+* update the Enso version to 4.7.0 in `config/enso/config.php`
+* run `composer update` in the project's root
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* `php artisan enso:upgrade --before-migration`
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* as per every release, delete any local, deprecated upgrades
 ## 4.6.0
 
 This release includes improvements, bug fixes, and new features.
