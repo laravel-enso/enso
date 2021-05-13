@@ -1,5 +1,20 @@
 # Laravel Enso's Changelog
 
+## 4.7.1
+
+This is a patch release whose main purpose is to update localisation files.
+
+### Upgrade steps
+
+- update the Enso version to `4.7.1` in `config/enso/config.php`
+- run `composer update` in the project's root
+- publish  the updated localisation assets with `php artisan vendor:publish --tag=enso-localisation --force`
+- run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- `php artisan enso:upgrade --before-migration`
+- `php artisan migrate`
+- `php artisan enso:upgrade`
+- as per every release, delete any local, deprecated upgrades
+
 ## 4.7.0
 
 This aims to be the last minor release before upgrading to PHP 8 and includes many improvements, bug fixes and also several new features.
@@ -839,10 +854,10 @@ To upgrade:
 #### if generating exports using the `data-export` package
 - the `ExportsExcel` contract has been updated to support generating multiple sheets:
     ```php
-    public function heading(): array 
+    public function heading(): array
     ```
   becomes
-    ```php 
+    ```php
     public function heading(string $sheet): array
     ```
     ```php
@@ -880,15 +895,15 @@ To upgrade:
         'entries' => 0,
         'created_by' => $user->id,
     ]);
-        
+
     (new ExcelExport($user, $dataExport, $exporter))->handle();
-    
+
     return $dataExport->download();
     ```
 - now, you may call the static `excel(...)` method on the `DataExport` model
     ```php
     $exporter = new MyExporter();
-  
+
     return DataExport::excel($exporter)->file->inline();
     ```
 - if running exports programmatically or from jobs, authenticate using the required user before running the export:
@@ -913,7 +928,7 @@ The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselS
     - `attach`
     - `upload`
     - `folder`
-      
+
     What this means is that you should load the file and chain/call the desired method on the file model:
       ```php
       $document->file->download();
@@ -937,14 +952,14 @@ The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselS
 
 ## 4.4.0
 
-The release further decouples ui packages and introduces automatic asset 
+The release further decouples ui packages and introduces automatic asset
 discovery and registration, better files organization to help in the future with
-adding a new CSS framework as well as various other improvements. 
+adding a new CSS framework as well as various other improvements.
 This also means breaking changes, so please read through the entire changelog.
 
 ### Front-end
 
-All packages which depend on the `ui` package have had their dependency versions updated. 
+All packages which depend on the `ui` package have had their dependency versions updated.
 
 Also, the `icons.js` files have been moved from the `bulma` folder one level up, since icons are css framework agnostic.
 
@@ -1028,7 +1043,7 @@ a gravatar fetch, which speeds up tests
 #### charts
 - added `autoYMin()` helper
 - added support for gridlines
-- switched `xAxisConfig` parameter order and made dataset optional; 
+- switched `xAxisConfig` parameter order and made dataset optional;
 - added `disableAutoRadius()` in bubble; added `datalabels` config setter
 - improved chart customization
 - added method return types and typed parameters
@@ -1049,7 +1064,7 @@ a gravatar fetch, which speeds up tests
 by adding a `$localisation` variable with the desired value in your enum;
 
 #### forms
-- the Form service now uses the `when` trait so actions may be chained conditionally 
+- the Form service now uses the `when` trait so actions may be chained conditionally
 
 #### io
 - fixed the variable name within the `BroadcastServiceProvider`
@@ -1062,7 +1077,7 @@ by adding a `$localisation` variable with the desired value in your enum;
 
 #### control-panel
 - switched to using Laravel's Http instead of Guzzle
-- refactored services & fixed invalid response edge case bug 
+- refactored services & fixed invalid response edge case bug
 
 #### helpers
 - small refactor in `FactoryResolver`
@@ -1080,7 +1095,7 @@ by adding a `$localisation` variable with the desired value in your enum;
 - refines export done notification
 
 #### upgrade
-- added pre-migration option for the upgrade command; upgrades that run pre-migration 
+- added pre-migration option for the upgrade command; upgrades that run pre-migration
 are also visible in the status report
 - refactored the `MigratesStructure` contract
 - fixed missing `Priority` column in the status report
@@ -1090,16 +1105,16 @@ are also visible in the status report
 As this new release cleaned up the `@enso-ui/ui` package and simplified icon and route
 registration, a bit of cleanup is also required in the local project.
 
-Also, a new `php artisan enso:upgrade --before-migration` command is available that 
+Also, a new `php artisan enso:upgrade --before-migration` command is available that
 is meant be used to run upgrade commands **before** the `php artisan migrate` command,
-which should help with complex upgrade scenarios.  
+which should help with complex upgrade scenarios.
 
 
 To upgrade:
 - within `client/.env` the following entry must be added:
     - `VUE_APP_PROFILE=bulma`
-    The `.env` file must also be available during the build stage, 
-    so take that into account if using CI flows.    
+    The `.env` file must also be available during the build stage,
+    so take that into account if using CI flows.
 - the `@core` alias has been renamed to `@ui`, so update all usages, including
     - local resources (pages, components)
     - the `client/.eslintrc.js` file
@@ -1137,10 +1152,10 @@ To upgrade:
     - `"php artisan enso:upgrade:status"`
 - the `data-import` package has been made optional, if you still require it, add it to:
     - `composer.json` : `"laravel-enso/data-import": "^5.0",`
-    - `package.json`: `"@enso-ui/data-import": "^3.0",`    
+    - `package.json`: `"@enso-ui/data-import": "^3.0",`
 - the `tasks` package has been made optional, if you added it & still require it, add it to:
     - `composer.json` : `"laravel-enso/tasks": "^1.0",`
-    - `package.json`: `"@enso-ui/tasks": "^2.0",`        
+    - `package.json`: `"@enso-ui/tasks": "^2.0",`
 - remove the following files as they're no longer required:
     - `client/src/js/store.js`
     - `client/src/js/router.js`
@@ -1200,7 +1215,7 @@ The limitation for the factory naming convention is that if you have two models 
 Also, note that starting with this release we're no longer doing a yarn legacy build (only modern) so please take a look at `package.json` & `babel.config.js` and update if necessary.
 
 To upgrade:
-- within `composer.json` 
+- within `composer.json`
     - update the versions for the following `require` packages
     ```
     "fruitcake/laravel-cors": "^2.0",
@@ -1236,7 +1251,7 @@ Remember:
     - use namespaces
     - convert to classes
     - rename the 'seeds' folder to 'seeders'
-- update models with factories and add the new trait `HasFactory` 
+- update models with factories and add the new trait `HasFactory`
 - update tests to
     - use the new factories
     - refactor around the deprecated json methods
@@ -1255,7 +1270,7 @@ This release includes many improvements, bug fixes and a few new features.
 #### data-import
 - improved date params usage
 - added the missing `vuex` dependency
-- added the functionality to cancel ongoing or stuck imports 
+- added the functionality to cancel ongoing or stuck imports
 
 #### date (new)
 
@@ -1284,7 +1299,7 @@ The package creates the structure and includes the functionality for working wit
 #### tables
 - uses the new `enso-ui/date`
 - added the date-picker dependency
-- added ability to conditionally render row actions 
+- added ability to conditionally render row actions
 
 #### typeahead
 - added search label property for the search button
@@ -1352,7 +1367,7 @@ The package creates the structure and includes the functionality for working wit
 - adds region upgrade
 - adds DataImport Upgrade
 - added xss-sanitizer
-- removed the `Upgrade` command from `AppServiceProvider`. 
+- removed the `Upgrade` command from `AppServiceProvider`.
 Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 - refactored namespace for existing upgrades to work with the new package
 - purged old upgrade classes
@@ -1391,12 +1406,12 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 #### tables
 - added default sort for all table queries
 - added `notVisible` attribute for hiding specific columns by default
-- fixed export bug for nested columns when values don't exist 
+- fixed export bug for nested columns when values don't exist
 - fixed count when using group by
 - fixed entries counting when exporting excel in non-Enso environments
 - fixed when multiple filters exist for a field
-- added new feature that supports conditional table row actions 
-therefore being able to further customize which actions apply to each row  
+- added new feature that supports conditional table row actions
+therefore being able to further customize which actions apply to each row
 
 #### upgrade
 - implemented auto discovery of local and package upgrade classes when placed in app/Upgrades or src/Upgrades
@@ -1441,7 +1456,7 @@ therefore being able to further customize which actions apply to each row
 
 #### webshop
 - improved internet explorer warning
-- fixed company address deletion bug 
+- fixed company address deletion bug
 - added toastr message when address cannot be deleted
 - update orderConfirmation.blade.php
 - added missing authorizations
@@ -1503,12 +1518,12 @@ therefore being able to further customize which actions apply to each row
 
 To upgrade:
 - run `composer update`
-- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. 
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied.
 If necessary, update your patch files.
 - `php artisan migrate`
 - `composer dump-autoload`
-- run `php artisan enso:upgrade` to execute the upgrades 
-(you may also run`php artisan enso:upgrade:status` to view the upgrades' statuses) 
+- run `php artisan enso:upgrade` to execute the upgrades
+(you may also run`php artisan enso:upgrade:status` to view the upgrades' statuses)
 - make sure permissions are properly configured for each role and then save/refresh the roles configuration files
 - update the Enso version to `4.2.0` in `config/enso/config.php`
 - in `composer.json`, in the `scripts.post-update-cmd` section add the following scripts:
