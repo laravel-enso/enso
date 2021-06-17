@@ -8,7 +8,7 @@ use App\DynamicRelations\Company\Documents;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use LaravelEnso\Companies\Models\Company;
-use LaravelEnso\Core\Models\User as BaseUser;
+use LaravelEnso\Users\Models\User as BaseUser;
 use LaravelEnso\DynamicMethods\Services\Methods;
 
 class AppServiceProvider extends ServiceProvider

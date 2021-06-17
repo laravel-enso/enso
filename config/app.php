@@ -176,7 +176,6 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\LoggerServiceProvider::class,
         App\Providers\CalendarServiceProvider::class,
     ],
 

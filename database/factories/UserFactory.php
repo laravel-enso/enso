@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use LaravelEnso\Core\Database\Factories\UserFactory as CoreUserFactory;
-use LaravelEnso\Core\Models\User;
-use LaravelEnso\Core\Models\UserGroup;
+use LaravelEnso\Users\Database\Factories\UserFactory as CoreUserFactory;
+use LaravelEnso\Users\Models\User;
+use LaravelEnso\UserGroups\Models\UserGroup;
 use LaravelEnso\People\Models\Person;
 use LaravelEnso\Roles\Models\Role;
 
