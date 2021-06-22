@@ -1,5 +1,245 @@
 # Laravel Enso's Changelog
 
+## 4.8.0
+
+This new release adds the possibility for back-end packages to publish their own state to the front-end as well migrates the framework & packages to PHP 8.0. Where applicable, updated packages to take advantage of the new language features.
+
+### Front-end
+
+Most of the packages received a dependency list cleanup.
+
+#### bulma
+- added enhanced progress indicator
+- added `ProgressIndicator` component export
+
+#### charts
+- fixed labels update on structure change
+- added `display` function prop
+
+#### enums
+- renamed the internal `i18n` attribute to `_i18n`, to avoid potention conflicts with enum keys
+
+#### financials
+- fixed supplier invoice index layout
+
+#### localisation
+- improved store module
+
+#### products
+- improved the product form to update slug dynamically
+- improved product picture styling/layout in table & form
+- added newly computed supplier discounted price to the form
+
+#### progress-indicator
+- implemented enhanced indicator; various progress indicator improvements
+
+#### rating
+- updated mobile bottom position
+
+#### scroll-to-top
+- updated mobile bottom position
+
+#### strings
+- fixed the slug helper
+
+#### tables
+- removed the already deprecated `money` support; templates should now use `number ` - more details are found in the upgrade steps
+- added customizable total label via the template's `totalLabel` property
+- fixed page toggling
+
+#### ui
+- improved store module to allow for automatic package store registration
+- small refactor and various fixes
+- added sentry spike protection
+
+#### user-groups
+- removed unneeded file
+
+### Back-end
+
+- all packages have had the route `require` syntax updated to `reqire __DIR__./xxx.php`
+- all packages that were using `money` configuration for numeric formatting have been updated to use the already available `number` configuration
+- all packages that were including data imports, have been updated so that importers respect the new methods' signatures
+- all `get_class($instance)` usages refactored to `$instance::class`
+- seeders and factories have been updated, and where it made sense, helper methods (such as `test()`) were added which create a different factory state (such as for testing)
+
+#### action-logger
+- code cleanup
+
+#### activity-log
+- route refactor
+
+#### api (new)
+-  new package that provides boileplate for implementing APIs
+
+#### categories
+- fixed stacked bar chart
+
+#### charts
+- added `contains` nested scope
+
+#### companies
+- extracted user state to the users package
+
+#### core
+- extracted user state to the users package
+
+#### currencies
+- removed `FixesCurrencyApi` exception
+- refactored to use the new `api` package
+
+#### data-export
+- added `data_exports.name` index upgrade
+
+#### data-import
+- improved error logging for local environments
+- updated interfaces to pass the import model instead of params/user
+- added avoids deletion conflicts and updated delete method
+- added `notifies` boolean flag in json template and `notifiableIds` config option
+- added `params` to optional attributes
+
+#### files
+- improved the file resource
+
+#### helpers
+- disabled algolia syncing when not in production
+- fixed searchable
+- added price computor
+- added new custom cast for `Object`
+
+#### localisation
+- added & updated various keys & translations
+
+#### measurement-units
+- added the name attribute to the rememberable keys config array
+- added `MeasurementUnits` enum
+
+#### products
+- updated price computor use
+- updated product visibility in the supplier resource
+- added newly computed supplier discounted price
+- added `generateSlug` helper
+- added `part_number` index on `product_supplier` pivot
+- updated `package_quantity` type to int
+
+#### roles
+- added config options for restricting user groups
+- improved visible scope
+
+#### sentry
+- extracted sentry functionality from the Core package
+
+#### services
+- made measurement unit not nullable in the table
+- improved upgrade
+
+#### upgrade
+- renamed `nullable` Column method to `isNullable`
+- added `isSigned`, `isUnsigned` helpers, `getPrecision` and `getScale` for decimals
+
+#### users (new)
+- extracted user functionality from the Core package
+- removed title from profile builder
+- added state provider
+- improved `changeGroup` policy
+
+#### user-groups (new)
+- extracted user groups functionality from the Core package
+- added config options for restricting user groups
+- improved visible scope
+
+#### tables
+- added customizable total label
+- removed the already deprecated `money` support; templates should now use `number ` - more details are found in the upgrade steps
+
+### Upgrade steps
+* run `composer update` in the project's root
+* run the upgrade commands (both regular and `before-migration`) to ensure
+  database & strucure is up to date, since this release cleans up a lot of package upgrades
+* upgrade your machine to php8
+* in `composer.json` update  the following dependencies to the given versions:
+    -  `"laravel-enso/core": "^7.0",`
+    -  `"sentry/sentry-laravel": "^2.0.0"`
+    -  `"laravel-enso/phpunit-pretty-print": "^1.0",`
+    -  `"nunomaduro/phpinsights": "^2.0",`
+* search & replace in your local project (including the database folder) the following namespaces:
+    - `Core\Models\UserGroup` -> `UserGroups\Models\UserGroup`
+    - `Core\Enums\UserGroups` -> `UserGroups\Enums\UserGroups`
+    - `Core\\Enums\\UserGroups` -> `UserGroups\\Enums\\UserGroups`
+    - `Core\Models\User` -> `Users\Models\User`
+    - `Core\Policies\User` -> `Users\Policies\User`
+    - `Core\Models\Session` -> `Users\Models\Session`
+    - `Core\Http\Controllers\Administration\Users` -> `Users\Http\Controllers`
+    - `Core\Http\Controllers\Administration\UserGroups` -> `UserGroups\Http\Controllers`
+    - `Core\Tables\Administration\Users` -> `Users\Tabels`
+    - `Core\Forms\Administration\Users` -> `Users\Forms`
+    - `Core\Http\Resources\User` -> `Users\Http\Resources\User`
+    - `Core\\Http\\Resources\\User` -> `Users\\Http\\Resources\\User`
+    - `Core\Http\Requests\ValidateUserRequest` -> `Users\Http\Requests\ValidateUserRequest`
+    - `Core\Database\Factories\UserFactory` -> `Users\Database\Factories\UserFactory`
+    - `Core\Database\Seeders\UserGroupSeeder` -> `UserGroups\Database\Seeders\UserGroupSeeder`
+    - `Core\Database\Seeders\UserSeeder` -> `Users\Database\Seeders\UserSeeder`
+- remove from `config/insights.php` the deprecated:
+```
+use ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff;
+use ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff;
+use ObjectCalisthenics\Sniffs\NamingConventions\ElementNameMinimalLengthSniff;
+```
+* run `composer update` in the project's root
+- update any local person/people factories and seeders and remove the `title` attribute as it has been dropped
+- for your local imports, for the importer & validator classes, update the following method signatures (& logic where necessary):
+    - run: `public function run(Obj $row, DataImport $import);`
+    - after: `public function after(DataImport $import);`
+    - authorizes: `public function authorizes(DataImport $import): bool;`
+    - before: `public function before(DataImport $import);`
+* for your local table JSON templates, change any `money` keys to `number`, and remove any "thousand" & "decimal" attributes. Number supports `precision`, `symbol` and `template` (e.g. "%v %s" - `%v` for value, `%s` for symbol)
+* local `storage/app/.gitignore` should be updated to ignore all and look like this
+    ```
+    *
+    !.gitignore
+    ```
+  You may also remove `.gitignore` files from individual enso created, app sub-folders (except `public`)
+* check the local `config/enso/tables.php` file and if the `export.path` key is present, update it to `export.folder`
+* local state:
+    - remove the local state binding from `App\Providers\AppServiceProvider`: `CoreLocalState::class => LocalState::class,`
+    - remove the `App\Services\LocalState` class after moving any logic to one or more state builder services
+    - from `client/src/js/enso.js`, remove the import: `import './localState';`
+    - remove the file `client/src/js/localState.js`
+    - if you moved logic from the old `LocalState` class, update the file `client/src/js/store/local.js` as required, otherwise you may delete it. Note that the `client/src/js/store` folder MUST be present.
+* compare `config/enso/config.php` with `vendor/laravel-enso/core/config/config.php`
+  and remove any extra, deprecated keys
+* still in `config/enso/config.php` update the Enso version to 4.8.0
+* compare `config/enso/addresses.php` with `vendor/laravel-enso/addresses/config/addresses.php` and remove any extra, deprecated keys
+* update the `password` `config/enso/auth.php` key as follows:
+    ```
+    'password' => [
+            'lifetime' => env('PASSWORD_LIFETIME', 0),
+            'minLength' => env('PASSWORD_MIN_LENGTH', 6),
+            'mixedCase' => (bool) env('PASSWORD_MIXED_CASE', 0),
+            'numeric' => (bool) env('PASSWORD_NUMERIC', 0),
+            'special' => (bool) env('PASSWORD_SPECIAL', 0),
+    ],
+    ```
+* from `Database\Seeders\DatabaseSeeder`, from the `run()` method's unit tests running branch, you may delete the following seeders, as the respective factories have been updated to no longer require this:
+    ```
+                CountrySeeder::class,
+                RegionSeeder::class,
+                TownshipSeeder::class,
+                LocalitySeeder::class,
+    ```
+* update/rename the following `.env` variables:
+    - `PASSWORD_LENGTH` -> `PASSWORD_MIN_LENGTH`
+    - `PASSWORD_NUMERIC_CHARACTERS` -> `PASSWORD_NUMERIC`
+    - `PASSWORD_SPECIAL_CHARACTERS` -> `PASSWORD_SPECIAL`
+    - `PASSWORD_UPPER_CASE_CHARACTERS` -> `PASSWORD_MIXED_CASE`
+* replace `LaravelEnso\Core\Exceptions\Sentry` usage and import with `LaravelEnso\Sentry\Exceptions\Handler` in `App\Exceptions\Handler.php`
+* remove `bulma-rtl` patch from `client\patches`, as is no longer needed
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* as per every release, delete any local, deprecated upgrades
+* it recommended to also run the all the enso tests to make everything is working properly; therefore, compare your local `phpunit.xml` with Enso's and make sure that you're not missing any package tests.
+
 ## 4.7.1
 
 This is a patch release whose main purpose is to update localisation files.
