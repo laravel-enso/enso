@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use LaravelEnso\Core\Models\User as CoreUser;
+use LaravelEnso\Users\Models\User as CoreUser;
 
 class User extends CoreUser
 {

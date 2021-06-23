@@ -24,7 +24,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
     protected function hideSensitiveRequestDetails()
     {
-        if (! $this->app->isLocal()) {
+        if (!$this->app->isLocal()) {
             Telescope::hideRequestParameters(['_token']);
             Telescope::hideRequestHeaders(['cookie', 'x-csrf-token', 'x-xsrf-token']);
         }
@@ -32,6 +32,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
     protected function gate()
     {
-        Gate::define('viewTelescope', fn ($user) => optional($user)->isAdmin());
+        Gate::define('viewTelescope', fn ($user) => $user?->isAdmin());
     }
 }
