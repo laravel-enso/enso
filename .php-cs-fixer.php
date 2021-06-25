@@ -7,17 +7,17 @@ $rules = [
     'array_syntax' => ['syntax' => 'short'],
     'binary_operator_spaces' => [
         'default' => 'single_space',
-        'operators' => ['=>' => null]
+        'operators' => ['=>' => null],
     ],
     'blank_line_after_namespace' => true,
     'blank_line_after_opening_tag' => true,
     'blank_line_before_statement' => [
-        'statements' => ['return']
+        'statements' => ['return'],
     ],
     'braces' => true,
     'cast_spaces' => true,
     'class_attributes_separation' => [
-        'elements' => ['method']
+        'elements' => ['method' => 'one'],
     ],
     'class_definition' => true,
     'concat_space' => ['spacing' => 'none'],
@@ -30,7 +30,6 @@ $rules = [
     'fully_qualified_strict_types' => true,
     'function_declaration' => true,
     'function_typehint_space' => true,
-    'hash_to_slash_comment' => true,
     'heredoc_to_nowdoc' => true,
     'include' => true,
     'increment_style' => ['style' => 'post'],
@@ -38,13 +37,14 @@ $rules = [
     'linebreak_after_opening_tag' => true,
     'line_ending' => true,
     'lowercase_cast' => true,
-    'lowercase_constants' => true,
+    'constant_case' => [
+        'case' => 'lower',
+    ],
     'lowercase_keywords' => true,
     'lowercase_static_reference' => true,
     'magic_method_casing' => true,
     'magic_constant_casing' => true,
     'method_argument_space' => true,
-    'method_separation' => true,
     'native_function_casing' => true,
     'no_alias_functions' => true,
     'no_extra_blank_lines' => [
@@ -53,7 +53,7 @@ $rules = [
             'throw',
             'use',
             'use_trait',
-        ]
+        ],
     ],
     'no_blank_lines_after_class_opening' => true,
     'no_blank_lines_after_phpdoc' => true,
@@ -65,7 +65,7 @@ $rules = [
     'no_mixed_echo_print' => ['use' => 'echo'],
     'no_multiline_whitespace_around_double_arrow' => true,
     'multiline_whitespace_before_semicolons' => [
-        'strategy' => 'no_multi_line'
+        'strategy' => 'no_multi_line',
     ],
     'no_short_bool_cast' => true,
     'no_singleline_whitespace_before_semicolons' => true,
@@ -85,9 +85,11 @@ $rules = [
     'normalize_index_brace' => true,
     'not_operator_with_successor_space' => true,
     'object_operator_without_whitespace' => true,
-    'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+    'ordered_imports' => ['sort_algorithm' => 'alpha'],
     'phpdoc_indent' => true,
-    'phpdoc_inline_tag' => true,
+    'general_phpdoc_tag_rename' => true,
+    'phpdoc_inline_tag_normalizer' => true,
+    'phpdoc_tag_type' => true,
     'phpdoc_no_access' => true,
     'phpdoc_no_package' => true,
     'phpdoc_no_useless_inheritdoc' => true,
@@ -98,7 +100,7 @@ $rules = [
     'phpdoc_trim' => true,
     'phpdoc_types' => true,
     'phpdoc_var_without_name' => true,
-    'psr4' => true,
+    'psr_autoloading' => true,
     'self_accessor' => true,
     'short_scalar_cast' => true,
     'simplified_null_return' => true,
@@ -108,7 +110,7 @@ $rules = [
     'single_import_per_statement' => true,
     'single_line_after_imports' => true,
     'single_line_comment_style' => [
-        'comment_types' => ['hash']
+        'comment_types' => ['hash'],
     ],
     'single_quote' => true,
     'space_after_semicolon' => true,
@@ -116,11 +118,11 @@ $rules = [
     'switch_case_semicolon_to_colon' => true,
     'switch_case_space' => true,
     'ternary_operator_spaces' => true,
-    'trailing_comma_in_multiline_array' => true,
+    'trailing_comma_in_multiline' => true,
     'trim_array_spaces' => true,
     'unary_operator_spaces' => true,
     'visibility_required' => [
-        'elements' => ['method', 'property']
+        'elements' => ['method', 'property'],
     ],
     'whitespace_after_comma_in_array' => true,
 ];
@@ -137,7 +139,7 @@ $finder = Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return PhpCsFixer\Config::create()
+return (new Config())
     ->setFinder($finder)
     ->setRules($rules)
     ->setRiskyAllowed(true)
