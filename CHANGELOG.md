@@ -1,5 +1,678 @@
 # Laravel Enso's Changelog
 
+## 4.8.0
+
+This new release adds the possibility for back-end packages to publish their own state to the front-end as well migrates the framework & packages to PHP 8.0. Where applicable, updated packages to take advantage of the new language features.
+
+### Front-end
+
+Most of the packages received a dependency list cleanup.
+
+#### bulma
+- added enhanced progress indicator
+- added `ProgressIndicator` component export
+
+#### charts
+- fixed labels update on structure change
+- added `display` function prop
+
+#### enums
+- renamed the internal `i18n` attribute to `_i18n`, to avoid potention conflicts with enum keys
+
+#### financials
+- fixed supplier invoice index layout
+
+#### localisation
+- improved store module
+
+#### products
+- improved the product form to update slug dynamically
+- improved product picture styling/layout in table & form
+- added newly computed supplier discounted price to the form
+
+#### progress-indicator
+- implemented enhanced indicator; various progress indicator improvements
+
+#### rating
+- updated mobile bottom position
+
+#### scroll-to-top
+- updated mobile bottom position
+
+#### strings
+- fixed the slug helper
+
+#### tables
+- removed the already deprecated `money` support; templates should now use `number ` - more details are found in the upgrade steps
+- added customizable total label via the template's `totalLabel` property
+- fixed page toggling
+
+#### ui
+- improved store module to allow for automatic package store registration
+- small refactor and various fixes
+- added sentry spike protection
+
+#### user-groups
+- removed unneeded file
+
+### Back-end
+
+- all packages have had the route `require` syntax updated to `reqire __DIR__./xxx.php`
+- all packages that were using `money` configuration for numeric formatting have been updated to use the already available `number` configuration
+- all packages that were including data imports, have been updated so that importers respect the new methods' signatures
+- all `get_class($instance)` usages refactored to `$instance::class`
+- seeders and factories have been updated, and where it made sense, helper methods (such as `test()`) were added which create a different factory state (such as for testing)
+
+#### action-logger
+- code cleanup
+
+#### activity-log
+- route refactor
+
+#### api (new)
+-  new package that provides boileplate for implementing APIs
+
+#### categories
+- fixed stacked bar chart
+
+#### charts
+- added `contains` nested scope
+
+#### companies
+- extracted user state to the users package
+
+#### core
+- extracted user state to the users package
+
+#### currencies
+- removed `FixesCurrencyApi` exception
+- refactored to use the new `api` package
+
+#### data-export
+- added `data_exports.name` index upgrade
+
+#### data-import
+- improved error logging for local environments
+- updated interfaces to pass the import model instead of params/user
+- added avoids deletion conflicts and updated delete method
+- added `notifies` boolean flag in json template and `notifiableIds` config option
+- added `params` to optional attributes
+
+#### files
+- improved the file resource
+
+#### helpers
+- disabled algolia syncing when not in production
+- fixed searchable
+- added price computor
+- added new custom cast for `Object`
+
+#### localisation
+- added & updated various keys & translations
+
+#### measurement-units
+- added the name attribute to the rememberable keys config array
+- added `MeasurementUnits` enum
+
+#### products
+- updated price computor use
+- updated product visibility in the supplier resource
+- added newly computed supplier discounted price
+- added `generateSlug` helper
+- added `part_number` index on `product_supplier` pivot
+- updated `package_quantity` type to int
+
+#### roles
+- added config options for restricting user groups
+- improved visible scope
+
+#### sentry
+- extracted sentry functionality from the Core package
+
+#### services
+- made measurement unit not nullable in the table
+- improved upgrade
+
+#### upgrade
+- renamed `nullable` Column method to `isNullable`
+- added `isSigned`, `isUnsigned` helpers, `getPrecision` and `getScale` for decimals
+
+#### users (new)
+- extracted user functionality from the Core package
+- removed title from profile builder
+- added state provider
+- improved `changeGroup` policy
+
+#### user-groups (new)
+- extracted user groups functionality from the Core package
+- added config options for restricting user groups
+- improved visible scope
+
+#### tables
+- added customizable total label
+- removed the already deprecated `money` support; templates should now use `number ` - more details are found in the upgrade steps
+
+### Upgrade steps
+* run `composer update` in the project's root
+* run the upgrade commands (both regular and `before-migration`) to ensure
+  database & strucure is up to date, since this release cleans up a lot of package upgrades
+* upgrade your machine to php8
+* in `composer.json` update  the following dependencies to the given versions:
+    -  `"laravel-enso/core": "^7.0",`
+    -  `"sentry/sentry-laravel": "^2.0.0"`
+    -  `"laravel-enso/phpunit-pretty-print": "^1.0",`
+    -  `"nunomaduro/phpinsights": "^2.0",`
+* search & replace in your local project (including the database folder) the following namespaces:
+    - `Core\Models\UserGroup` -> `UserGroups\Models\UserGroup`
+    - `Core\Enums\UserGroups` -> `UserGroups\Enums\UserGroups`
+    - `Core\\Enums\\UserGroups` -> `UserGroups\\Enums\\UserGroups`
+    - `Core\Models\User` -> `Users\Models\User`
+    - `Core\Policies\User` -> `Users\Policies\User`
+    - `Core\Models\Session` -> `Users\Models\Session`
+    - `Core\Http\Controllers\Administration\Users` -> `Users\Http\Controllers`
+    - `Core\Http\Controllers\Administration\UserGroups` -> `UserGroups\Http\Controllers`
+    - `Core\Tables\Administration\Users` -> `Users\Tabels`
+    - `Core\Forms\Administration\Users` -> `Users\Forms`
+    - `Core\Http\Resources\User` -> `Users\Http\Resources\User`
+    - `Core\\Http\\Resources\\User` -> `Users\\Http\\Resources\\User`
+    - `Core\Http\Requests\ValidateUserRequest` -> `Users\Http\Requests\ValidateUserRequest`
+    - `Core\Database\Factories\UserFactory` -> `Users\Database\Factories\UserFactory`
+    - `Core\Database\Seeders\UserGroupSeeder` -> `UserGroups\Database\Seeders\UserGroupSeeder`
+    - `Core\Database\Seeders\UserSeeder` -> `Users\Database\Seeders\UserSeeder`
+- remove from `config/insights.php` the deprecated:
+```
+use ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff;
+use ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff;
+use ObjectCalisthenics\Sniffs\NamingConventions\ElementNameMinimalLengthSniff;
+```
+* run `composer update` in the project's root
+- update any local person/people factories and seeders and remove the `title` attribute as it has been dropped
+- for your local imports, for the importer & validator classes, update the following method signatures (& logic where necessary):
+    - run: `public function run(Obj $row, DataImport $import);`
+    - after: `public function after(DataImport $import);`
+    - authorizes: `public function authorizes(DataImport $import): bool;`
+    - before: `public function before(DataImport $import);`
+* for your local table JSON templates, change any `money` keys to `number`, and remove any "thousand" & "decimal" attributes. Number supports `precision`, `symbol` and `template` (e.g. "%v %s" - `%v` for value, `%s` for symbol)
+* local `storage/app/.gitignore` should be updated to ignore all and look like this
+    ```
+    *
+    !.gitignore
+    ```
+  You may also remove `.gitignore` files from individual enso created, app sub-folders (except `public`)
+* check the local `config/enso/tables.php` file and if the `export.path` key is present, update it to `export.folder`
+* local state:
+    - remove the local state binding from `App\Providers\AppServiceProvider`: `CoreLocalState::class => LocalState::class,`
+    - remove the `App\Services\LocalState` class after moving any logic to one or more state builder services
+    - from `client/src/js/enso.js`, remove the import: `import './localState';`
+    - remove the file `client/src/js/localState.js`
+    - if you moved logic from the old `LocalState` class, update the file `client/src/js/store/local.js` as required, otherwise you may delete it. Note that the `client/src/js/store` folder MUST be present.
+* compare `config/enso/config.php` with `vendor/laravel-enso/core/config/config.php`
+  and remove any extra, deprecated keys
+* still in `config/enso/config.php` update the Enso version to 4.8.0
+* compare `config/enso/addresses.php` with `vendor/laravel-enso/addresses/config/addresses.php` and remove any extra, deprecated keys
+* update the `password` `config/enso/auth.php` key as follows:
+    ```
+    'password' => [
+            'lifetime' => env('PASSWORD_LIFETIME', 0),
+            'minLength' => env('PASSWORD_MIN_LENGTH', 6),
+            'mixedCase' => (bool) env('PASSWORD_MIXED_CASE', 0),
+            'numeric' => (bool) env('PASSWORD_NUMERIC', 0),
+            'special' => (bool) env('PASSWORD_SPECIAL', 0),
+    ],
+    ```
+* from `Database\Seeders\DatabaseSeeder`, from the `run()` method's unit tests running branch, you may delete the following seeders, as the respective factories have been updated to no longer require this:
+    ```
+                CountrySeeder::class,
+                RegionSeeder::class,
+                TownshipSeeder::class,
+                LocalitySeeder::class,
+    ```
+* update/rename the following `.env` variables:
+    - `PASSWORD_LENGTH` -> `PASSWORD_MIN_LENGTH`
+    - `PASSWORD_NUMERIC_CHARACTERS` -> `PASSWORD_NUMERIC`
+    - `PASSWORD_SPECIAL_CHARACTERS` -> `PASSWORD_SPECIAL`
+    - `PASSWORD_UPPER_CASE_CHARACTERS` -> `PASSWORD_MIXED_CASE`
+* replace `LaravelEnso\Core\Exceptions\Sentry` usage and import with `LaravelEnso\Sentry\Exceptions\Handler` in `App\Exceptions\Handler.php`
+* remove `bulma-rtl` patch from `client\patches`, as is no longer needed
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* as per every release, delete any local, deprecated upgrades
+* it recommended to also run the all the enso tests to make everything is working properly; therefore, compare your local `phpunit.xml` with Enso's and make sure that you're not missing any package tests.
+
+## 4.7.1
+
+This is a patch release whose main purpose is to update localisation files.
+
+### Upgrade steps
+
+- update the Enso version to `4.7.1` in `config/enso/config.php`
+- run `composer update` in the project's root
+- publish  the updated localisation assets with `php artisan vendor:publish --tag=enso-localisation --force`
+- run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+- `php artisan enso:upgrade --before-migration`
+- `php artisan migrate`
+- `php artisan enso:upgrade`
+- as per every release, delete any local, deprecated upgrades
+
+## 4.7.0
+
+This aims to be the last minor release before upgrading to PHP 8 and includes many improvements, bug fixes and also several new features.
+
+### Front-end
+
+Most of the packages received a dependency list cleanup.
+
+#### activity-log
+- moved the icons file
+
+#### addresses
+- improved postcode in form
+
+#### auth
+- refactored components
+
+#### bulma
+- added orderable trees
+
+#### calendar
+- added filter in `components/CalendarFilter.vue`
+
+#### categories
+- updated dependencies: now uses the orderable trees package
+
+#### clipboard
+- updated readme
+
+#### companies
+- small fixes
+- removed unused code
+- improved people association removal
+
+#### data-import
+- added back cascade of the `browseFiles` method which makes it easier to use the component standalone, for example in a table
+- fixed rejected import download
+
+#### documents
+- added file size limit
+
+#### emag
+- updated commercial form content and components
+
+#### filters
+- added translatable to `vue-filter`
+
+#### financials
+- updated dashboard chart
+- improved client filter
+
+#### forms
+- hided actions in autosave mode
+- returned promises from fetch & submit; added submitting and submitted events
+- added `clearErrorsControl`, `section-divider` class, section visibility and watcher for the form path, so that the form is re-fetched if the path changes
+- fixed style and hidden fields
+- cleaned and updated `CoreForm.vue`
+- updated `FormSection.vue`
+- removed meta
+
+#### inventory
+- updated product components; moved icons to src
+
+#### io
+- fixed channels, small fixes
+
+#### notifications
+- fixed channels, method name
+
+#### orderable-trees (new)
+- facilitates creating and ordering tree structures with `drag-and-drop` functionality
+
+#### products
+- fixed images in picture uploader
+- fixes missing dependency
+
+#### rating (new)
+- simple component which facilitates star rating
+
+#### scroll-to-top
+- updated mobile margins
+
+#### switch
+- made label clickable
+- simplified logic
+
+#### tables
+- fixed boolean classes in table cell and slot
+
+#### tasks
+- used new websocket getter
+
+#### toastr
+- extended HTML support for title similar to body, if html flag is set, treat title (if set) as html.
+
+#### typeahead
+- made search control hidden on mobile
+- passed enso error handler
+- added `taggableoption`: can create when typing non existing options; emits keydown events to be used in different implementation scenarios; small internal refactor
+- cascaded the core typeahead clear method and made the query & loading values available in the controls slot
+
+#### ui
+- fixed `@enso-ui/auth` and `channels`
+- improved logo display in navbar
+- small refactor
+
+### Privates
+
+#### commercial
+- updated pages and components
+- integrated sale channel package
+- allow issue invoice at all times
+- reorders actions to be more natural
+- added cancellation
+- multiple fixes and enhancements
+
+#### eav (new)
+- provides entity attribute value functionality for entities which require a scalable number of attributes
+
+#### emag
+- added response handling for product publish
+- added sale channels and services as dependencies
+- added settings table
+- added option for manual invoice upload
+- various fixes and updates
+
+#### frisbo (new)
+- provides action components for syncing, stock check and dispaching orders on Frisbo platform
+
+#### inventory
+- updated overwritable products pages
+- added warehouses store
+
+#### sale channels (new)
+- basic sale channels CRUD components with store functionality
+
+#### webshop
+- added approve & reject action in table
+- added sale channels and services as dependencies
+- various fixes and improvements
+
+### Back-end
+
+#### addresses
+- added `rememberable` on locality and region
+- improved store logic and label
+- added cast for `addressable_id`
+- allows multiple billing addresses
+- fixed test
+- added postcode to label
+- added scopes and dynamic user relation
+
+#### avatars
+- updated `user_id` cast
+
+#### calendar
+- added phpmd config
+- fixed notification queue
+- updated notification subject
+
+#### categories
+- fixed logic due to illuminate collection constructor update
+- added `rememberable` keys in category, global scope & small changes
+- cleanup and fixes
+- improved scope by adding the table
+- updated `parentTree` to return only parents
+- updated tests to reflect previous changes to the `parentTree` method
+- added `contains` nested scope
+
+#### charts
+- added `colorsConfig` setter, updates `ChartCard` and `Chart`
+- fixed chart options reactivity
+
+#### cli
+- fixed package generation
+
+#### comments
+- updated notification subject
+
+#### companies
+- added `rememberable` keys in company
+- updated factory and tests
+
+#### core
+- extracted impersonate policy
+- added version update
+- fixed import, style, password reset when email is wrong, notification queue and email footer
+- updated `Version.php`, `config.php`and social media icons
+- added core version,  missing key in guest state and admins & supervisors scopes on user
+- improved reset password notification and enso mail theme
+- replaced social media icons with svgs; improved publishing aliases
+- extended the reset storage command to take optional list of folders (comma separated)
+- removed deprecated `googleplus` and unused import
+- reworded reset password notification subject
+
+#### countries
+- added `rememberable` keys in country for iso.
+- added name to `rememberable` keys
+- improved region label
+
+#### data-export
+- fixed notification queue
+
+#### data-import
+- fixed wrong number with restart
+- added error in console mode and validations in template export
+- updated `Chunk.php`
+- reseted counters to zero when data-import was restarted in all cases.
+- removed `ImportTypes`
+
+#### departments
+- removed useless import
+
+#### documentation
+- updated documentation for Search Modes
+
+#### enums
+- added ability to use private constants for custom logic
+- fixed enum localisation and mapping
+
+#### excel
+- refactored in export service
+
+#### forms
+- flexible number of columns
+- added visibility
+- fixed wrong property, meta test, input "content" validation
+- added `clearErrorsControl` structure option
+
+#### helpers
+- updated `Sleep`
+
+#### impersonate
+- added gate
+- updated `AuthServiceProvider.php`
+
+#### io
+- made event dispatchable
+
+#### localisation
+- added & improved translations
+
+#### notifications
+- fixed route (http verb name)
+- fixed order
+- updated test due to route update
+
+#### packaging-units
+- added rememberable keys
+
+#### pdf
+- enabled risky
+- updated margins and added footer font size
+- added download method
+
+#### people
+- added caching feature to `company()` helper
+- `company()` always loads relation
+
+#### products
+- refactored form for easier customization
+- added internal code management
+- improved internal code logic
+- added length in config for internal code
+- removed unwanted section
+- added `attachPicture` method and acquisition price helper
+- implemented product slug
+- added `wysiwyg` form field options
+- migrated towards 4 decimals and updated migration
+- updated company factory use
+- fixed product booted method
+
+#### rememberable
+- added custom key
+- added tests
+- renamed config key & exception message
+- fixed key for polymorphic relation
+- raised default to 1h
+- various fixes
+
+#### roles
+- updated default menu
+
+#### services
+- small visual refactor
+- migrated towards 4 decimals
+- removed unneded financials dependency
+
+#### tables
+- no longer added default order by clause when the base query already has order by clauses applied
+- improved raw total efficiency
+- fixed typo and enum localisation
+
+#### tasks
+- fixed email path
+- updated default menu order
+- updated notification subject
+
+#### upgrade
+- added nullable helper on column
+- added new `hasType` helper method for the `Table` utility class
+
+#### versions
+- improved flow
+
+### Privates
+
+#### api (new)
+- provides boilerplate and base functionality for implementing external apis
+
+#### commercial
+- made events dispatchable; implemented the new computor; improved client stock import service
+- implemented shipping and billing address
+- added container resolve for all `xlsx` document generation instances
+- added payment method
+- migrated towards 4 decimals
+- added undo fullfillment
+- refactored invoice & order blades, order email, notifications
+- added enum for file formats and refactored order controllers
+- added `cancelled_at` and `Cancel` controller
+- added reservable scope
+- updated policies
+- added addresses option controller
+- multiple fixes and enchancements
+
+#### discounts
+- added service `clientDiscounts` relation
+- removed int cast in discounts
+- fixed discount factories
+
+#### eav (new)
+- provides entity attribute value functionality for entities which require a scalable number of attributes
+
+#### emag
+- implemented product publish
+- added sale channels and services as dependencies
+- added settings
+- added voucher handling
+- added payment method to sale creation
+- implemented `free_shipping_above`
+- added emag orders fallback
+- migrated towards 4 decimals
+- added Emag courier accounts, `AddAttachment` action
+- added and updated enums
+- added invoice upload on sale creation flow
+- refactored and added `NewOrder`, `OrderCancellation` and awb notifications
+- multiple fixes and enchancements
+
+#### fetcher
+- fixed stream closing on upload
+- updated notification subjects
+
+#### financials
+- added new `Computor`; dropped `ComputesLines`, `ComputesTotals`, `LineComputor`, `TotalsComputor`
+- migrated towards 4 decimals
+- added `discountWithVat` helper
+- rewrited invoice blades
+- added pdf invoice download option
+- multiple fixes and enchancements
+
+#### frisbo (new)
+- Frisbo api implementation for external order fulfillment. Provides functionality for managing products, dispaching, updating and syncing orders
+
+#### inventory
+- added rememberable on position
+- improved fulfilment flow
+- added new Order contract
+- added reservable scope as needed
+- added `cancel` method in `Warehouse` model and `Fulfilment` contract
+- various fixes and enchancements
+
+#### product-eav (new)
+- loose coupling package implementation between products and eav for avoiding unwanted dependencies
+
+#### sale channels (new)
+- provides basic sale channels structure
+
+#### stripe (new)
+- Stripe api implementation for processing card payments
+
+#### webshop
+- added missing factory attribute and facebook fields
+- added ability to store cart in session if content is not private
+- updated stock statuses
+- implemented fast registration and `free_shipping_above`
+- improved cart logic
+- added google ads support
+- updated payment methods
+- added `welcome_text_on_mobile` to migration
+- removed external ref in orders table
+- fixed seo
+- improved ratings and reviews
+- added product repository
+- thorough layout, flow and functionality refactor
+- multiple fixes and enchancements
+
+#### webshop-commercial
+- implemented the new computor, reused dynamics between product and service
+- implemented shipping & billing addresses
+- added side by side form for adding new card
+- implemented free shipping and finalize order on payment creation;
+- updated the response to support wire transfer
+- updated the Line price method to show unitary price with vat
+- refactored notifications
+- added stripe checkout
+- covered edge case when order payment method is set
+- thorough refactor
+- multiple fixes and enchancements
+
+### Upgrade steps
+
+* update the Enso version to 4.7.0 in `config/enso/config.php`
+* run `composer update` in the project's root
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* `php artisan enso:upgrade --before-migration`
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* as per every release, delete any local, deprecated upgrades
 ## 4.6.0
 
 This release includes improvements, bug fixes, and new features.
@@ -421,10 +1094,10 @@ To upgrade:
 #### if generating exports using the `data-export` package
 - the `ExportsExcel` contract has been updated to support generating multiple sheets:
     ```php
-    public function heading(): array 
+    public function heading(): array
     ```
   becomes
-    ```php 
+    ```php
     public function heading(string $sheet): array
     ```
     ```php
@@ -462,15 +1135,15 @@ To upgrade:
         'entries' => 0,
         'created_by' => $user->id,
     ]);
-        
+
     (new ExcelExport($user, $dataExport, $exporter))->handle();
-    
+
     return $dataExport->download();
     ```
 - now, you may call the static `excel(...)` method on the `DataExport` model
     ```php
     $exporter = new MyExporter();
-  
+
     return DataExport::excel($exporter)->file->inline();
     ```
 - if running exports programmatically or from jobs, authenticate using the required user before running the export:
@@ -495,7 +1168,7 @@ The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselS
     - `attach`
     - `upload`
     - `folder`
-      
+
     What this means is that you should load the file and chain/call the desired method on the file model:
       ```php
       $document->file->download();
@@ -519,14 +1192,14 @@ The following Enso models use the `HasFile` trait: `Avatar`, `Brand`, `CarouselS
 
 ## 4.4.0
 
-The release further decouples ui packages and introduces automatic asset 
+The release further decouples ui packages and introduces automatic asset
 discovery and registration, better files organization to help in the future with
-adding a new CSS framework as well as various other improvements. 
+adding a new CSS framework as well as various other improvements.
 This also means breaking changes, so please read through the entire changelog.
 
 ### Front-end
 
-All packages which depend on the `ui` package have had their dependency versions updated. 
+All packages which depend on the `ui` package have had their dependency versions updated.
 
 Also, the `icons.js` files have been moved from the `bulma` folder one level up, since icons are css framework agnostic.
 
@@ -610,7 +1283,7 @@ a gravatar fetch, which speeds up tests
 #### charts
 - added `autoYMin()` helper
 - added support for gridlines
-- switched `xAxisConfig` parameter order and made dataset optional; 
+- switched `xAxisConfig` parameter order and made dataset optional;
 - added `disableAutoRadius()` in bubble; added `datalabels` config setter
 - improved chart customization
 - added method return types and typed parameters
@@ -631,7 +1304,7 @@ a gravatar fetch, which speeds up tests
 by adding a `$localisation` variable with the desired value in your enum;
 
 #### forms
-- the Form service now uses the `when` trait so actions may be chained conditionally 
+- the Form service now uses the `when` trait so actions may be chained conditionally
 
 #### io
 - fixed the variable name within the `BroadcastServiceProvider`
@@ -644,7 +1317,7 @@ by adding a `$localisation` variable with the desired value in your enum;
 
 #### control-panel
 - switched to using Laravel's Http instead of Guzzle
-- refactored services & fixed invalid response edge case bug 
+- refactored services & fixed invalid response edge case bug
 
 #### helpers
 - small refactor in `FactoryResolver`
@@ -662,7 +1335,7 @@ by adding a `$localisation` variable with the desired value in your enum;
 - refines export done notification
 
 #### upgrade
-- added pre-migration option for the upgrade command; upgrades that run pre-migration 
+- added pre-migration option for the upgrade command; upgrades that run pre-migration
 are also visible in the status report
 - refactored the `MigratesStructure` contract
 - fixed missing `Priority` column in the status report
@@ -672,16 +1345,16 @@ are also visible in the status report
 As this new release cleaned up the `@enso-ui/ui` package and simplified icon and route
 registration, a bit of cleanup is also required in the local project.
 
-Also, a new `php artisan enso:upgrade --before-migration` command is available that 
+Also, a new `php artisan enso:upgrade --before-migration` command is available that
 is meant be used to run upgrade commands **before** the `php artisan migrate` command,
-which should help with complex upgrade scenarios.  
+which should help with complex upgrade scenarios.
 
 
 To upgrade:
 - within `client/.env` the following entry must be added:
     - `VUE_APP_PROFILE=bulma`
-    The `.env` file must also be available during the build stage, 
-    so take that into account if using CI flows.    
+    The `.env` file must also be available during the build stage,
+    so take that into account if using CI flows.
 - the `@core` alias has been renamed to `@ui`, so update all usages, including
     - local resources (pages, components)
     - the `client/.eslintrc.js` file
@@ -719,10 +1392,10 @@ To upgrade:
     - `"php artisan enso:upgrade:status"`
 - the `data-import` package has been made optional, if you still require it, add it to:
     - `composer.json` : `"laravel-enso/data-import": "^5.0",`
-    - `package.json`: `"@enso-ui/data-import": "^3.0",`    
+    - `package.json`: `"@enso-ui/data-import": "^3.0",`
 - the `tasks` package has been made optional, if you added it & still require it, add it to:
     - `composer.json` : `"laravel-enso/tasks": "^1.0",`
-    - `package.json`: `"@enso-ui/tasks": "^2.0",`        
+    - `package.json`: `"@enso-ui/tasks": "^2.0",`
 - remove the following files as they're no longer required:
     - `client/src/js/store.js`
     - `client/src/js/router.js`
@@ -782,7 +1455,7 @@ The limitation for the factory naming convention is that if you have two models 
 Also, note that starting with this release we're no longer doing a yarn legacy build (only modern) so please take a look at `package.json` & `babel.config.js` and update if necessary.
 
 To upgrade:
-- within `composer.json` 
+- within `composer.json`
     - update the versions for the following `require` packages
     ```
     "fruitcake/laravel-cors": "^2.0",
@@ -818,7 +1491,7 @@ Remember:
     - use namespaces
     - convert to classes
     - rename the 'seeds' folder to 'seeders'
-- update models with factories and add the new trait `HasFactory` 
+- update models with factories and add the new trait `HasFactory`
 - update tests to
     - use the new factories
     - refactor around the deprecated json methods
@@ -837,7 +1510,7 @@ This release includes many improvements, bug fixes and a few new features.
 #### data-import
 - improved date params usage
 - added the missing `vuex` dependency
-- added the functionality to cancel ongoing or stuck imports 
+- added the functionality to cancel ongoing or stuck imports
 
 #### date (new)
 
@@ -866,7 +1539,7 @@ The package creates the structure and includes the functionality for working wit
 #### tables
 - uses the new `enso-ui/date`
 - added the date-picker dependency
-- added ability to conditionally render row actions 
+- added ability to conditionally render row actions
 
 #### typeahead
 - added search label property for the search button
@@ -934,7 +1607,7 @@ The package creates the structure and includes the functionality for working wit
 - adds region upgrade
 - adds DataImport Upgrade
 - added xss-sanitizer
-- removed the `Upgrade` command from `AppServiceProvider`. 
+- removed the `Upgrade` command from `AppServiceProvider`.
 Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 - refactored namespace for existing upgrades to work with the new package
 - purged old upgrade classes
@@ -973,12 +1646,12 @@ Upgrades are now entirely handled by the `laravel-enso/upgrade` package
 #### tables
 - added default sort for all table queries
 - added `notVisible` attribute for hiding specific columns by default
-- fixed export bug for nested columns when values don't exist 
+- fixed export bug for nested columns when values don't exist
 - fixed count when using group by
 - fixed entries counting when exporting excel in non-Enso environments
 - fixed when multiple filters exist for a field
-- added new feature that supports conditional table row actions 
-therefore being able to further customize which actions apply to each row  
+- added new feature that supports conditional table row actions
+therefore being able to further customize which actions apply to each row
 
 #### upgrade
 - implemented auto discovery of local and package upgrade classes when placed in app/Upgrades or src/Upgrades
@@ -1023,7 +1696,7 @@ therefore being able to further customize which actions apply to each row
 
 #### webshop
 - improved internet explorer warning
-- fixed company address deletion bug 
+- fixed company address deletion bug
 - added toastr message when address cannot be deleted
 - update orderConfirmation.blade.php
 - added missing authorizations
@@ -1085,12 +1758,12 @@ therefore being able to further customize which actions apply to each row
 
 To upgrade:
 - run `composer update`
-- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. 
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied.
 If necessary, update your patch files.
 - `php artisan migrate`
 - `composer dump-autoload`
-- run `php artisan enso:upgrade` to execute the upgrades 
-(you may also run`php artisan enso:upgrade:status` to view the upgrades' statuses) 
+- run `php artisan enso:upgrade` to execute the upgrades
+(you may also run`php artisan enso:upgrade:status` to view the upgrades' statuses)
 - make sure permissions are properly configured for each role and then save/refresh the roles configuration files
 - update the Enso version to `4.2.0` in `config/enso/config.php`
 - in `composer.json`, in the `scripts.post-update-cmd` section add the following scripts:

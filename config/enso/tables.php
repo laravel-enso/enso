@@ -200,7 +200,7 @@ return [
      */
 
     'export' => [
-        'path' => 'exports',
+        'folder' => 'exports',
         'timeout' => 60 * 60,
         'sheetLimit' => 1000000,
         'notifications' => ['mail', 'broadcast', 'database'],
