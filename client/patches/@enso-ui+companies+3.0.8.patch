@@ -13,27 +13,9 @@ index 0000000..d9d1a55
 +yarn.lock
 \ No newline at end of file
 diff --git a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-index e51d7ee..9c7c320 100644
+index 77cc414..ad19387 100644
 --- a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
 +++ b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-@@ -11,7 +11,7 @@
-             <accessories>
-                 <template slot-scope="{ count }">
-                     <tab keep-alive
--                        id="People">
-+                         id="People">
-                         <div class="columns is-centered">
-                             <div class="column is-two-thirds">
-                                 <people :id="companyId"
-@@ -22,7 +22,7 @@
-                         </div>
-                     </tab>
-                     <tab keep-alive
--                        id="Addresses">
-+                         id="Addresses">
-                         <div class="columns is-centered">
-                             <div class="column is-two-thirds">
-                                 <addresses :id="companyId"
 @@ -32,6 +32,39 @@
                              </div>
                          </div>
@@ -83,14 +65,11 @@ index e51d7ee..9c7c320 100644
  import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
  import People from './components/People.vue';
  
-@@ -48,8 +81,8 @@ export default {
-     name: 'Edit',
- 
-     components: {
--        EnsoForm, FormField, Accessories,
--        Tab, Addresses, People,
-+        Addresses, Accessories, Comments, Discussions,
-+        Documents, EnsoForm, FormField, People, Tab,
+@@ -54,6 +87,7 @@ export default {
+         Tab,
+         Addresses,
+         People,
++        Discussions, Comments, Documents,
      },
  
      computed: {

@@ -10,6 +10,7 @@ if (inProduction && !usesSentry) {
 }
 
 module.exports = {
+    transpileDependencies: ['@enso-ui/strings'],
     pages: {
         main: {
             entry: 'src/js/enso.js',
