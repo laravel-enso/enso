@@ -49,6 +49,9 @@ module.exports = {
             inProduction && usesSentry && new SentryWebpackPlugin({
                 include: '../public',
                 ignoreFile: '.sentrycliignore',
+                authToken: process.env.SENTRY_AUTH_TOKEN,
+                org: process.env.SENTRY_ORG,
+                project: process.env.SENTRY_PROJECT,
                 release: process.env.SENTRY_RELEASE,
                 ignore: ['vendor'],
             }),
