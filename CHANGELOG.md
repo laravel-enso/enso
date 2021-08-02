@@ -1,5 +1,223 @@
 # Laravel Enso's Changelog
 
+## 4.8.1
+### Front-end
+For most of our frontend packages we've added router error handling.  
+
+#### addresses
+- fixed case when address does not have locality/city
+
+#### charts
+- updated `Chart.vue`
+
+#### companies
+- refactored `slot-scope` to `v-scope`
+
+#### control-panel
+- improved layout
+- fixed index and stat value format
+
+#### datepicker
+- fixes edge case when attempting to change value during picker reset
+
+#### forms
+- clears errors before autosave
+
+#### mixins
+- added `413` error code handling
+
+#### modal
+- fixes modal and modal template
+
+#### notifications
+- fixed `Notification` component registration for cases where we might revoke the default notification permission
+
+#### products
+- fixed small bug due to being unable to create slug when name is null
+- reverted check for null, and moved it to the slug method
+
+#### sentry
+- added ingored errors (for `ChunkLoadError`)
+- added `UnhandledRejection` to ignored
+
+#### strings
+- added string validation
+- casted args to string
+- refactored strings
+- updated methods to also handle null parameters, in which case they return an empty string
+
+#### tables
+- fixed number formatter when `fullRecordInfo` is false
+- added ongoing request cancel in before destroy to avoid various timing errors; fixed and refactored `NumberFormatter`
+- renamed method in number formatter
+
+#### typeahead
+- added `force-selection`
+
+#### ui
+- adds sentry context
+- removed duplicated filters
+- fixed navbar item registration
+- fixed text in dark theme on error pages
+- added maintenance mode page
+- fixed router error handler; improved middleware
+
+#### users
+- fixed user profile layout
+
+### back-end
+
+#### action-logger
+- refactors action logger middleware
+- updates `.styleci.yml`
+- removes redundant argument
+
+#### addresses
+- fixed code style
+
+#### avatars
+- improved `gravatar`; renamed observer to `User`
+
+#### companies
+- added company fiscal code request validation
+
+#### control-panel
+- drops org url 
+- adds sentry org to config
+- improves config, adds env vars
+- fixes return types; refactors switch to matches
+- updates id signature & implements id provider
+- adds `is_active` in table builder for apps
+
+#### control-panel-api
+- improves middleware registration
+- extracts api middleware group in the api package
+- improves database sensor
+- removes digits for request monitor
+- improves request monitor
+- extracts id provider
+- improves logic; adds danger class for outdated versions
+- fixed type in Services\Statistics
+
+#### control-panel-common
+- added missing return types in contracts
+- added `IdProvider` abstract class
+
+#### core
+- `.gitIgnore`
+-  adds alias for `ensure-frontent-requests-are-stateful` middleware
+- extras middleware registration in separate provider
+- updates `.styleci.yml`
+- style update
+- removes `core-api` route group
+- improves `Logout` trait to work with non spa env
+- reverts logout
+- New State logic - customization flexibility #393
+- used `App::make` instead of new for providers instantiation for flexibility on customizing states.
+
+#### data-export
+- fixed export error notification
+- added custom row action contract
+
+#### forms
+- fixed section visibility set automatically to visible in the builder
+
+#### helpers
+- added `forceable` index
+- added cascades observers trait
+
+#### localisation
+- updated translations for `webshop` reviews
+- added php version 8 for styleci cfg
+
+#### roles
+- improved syntax in config writer
+
+#### select
+- Options ordering - more sorting flexibility. #46
+- created new select config option 'sortByOptions' for controling Select Options sorting.
+- used new config 'sortByOptions' inside Options get method
+
+
+#### sentry
+- added prefix for recent exceptions; added `dedupeInterval` in publisheable config
+
+#### tables
+- fixed button name check (needed only for row)
+- fixed tests
+
+#### users
+- added policy fixes
+- implemented cascades observers
+
+### Privates
+
+#### webshop-commercial
+- updated middleware names
+
+#### webshop
+- added exception when attempting navigation to unavailable pages; fixes #46
+
+- removed log
+
+- updated cookie consent blade
+
+- cleanup of unused routes; added local auth middleware instead of package
+
+- customized verifiy active state for webshop
+
+- makes product filters a partial;
+
+- built with latest sentry version
+
+- disabled the form  button after submitting a review to avoid double clicks
+
+- updated the Review Submitted notif to include the product name
+
+#### emag
+- handled setting attribute for when value is array; ref #30
+
+- updated offer generation for bundle
+
+- updated new offer resource for bundle products
+
+- updated resource re:ean for packages
+
+#### financials
+- updated flow
+
+- removed hard coded logic for shipping service in XML generation
+
+#### wiki
+- fixes login route
+
+- adds verify active state
+
+
+#### frisbo
+- adds bundle publishing ability
+
+#### api
+- added logs
+- adds core-api midleware group
+
+#### fetcher
+- updates gitlab ci and vue.config
+
+- increased the timeout limit
+
+### Upgrade steps
+
+To upgrade:
+
+- run `composer update`
+- run `yarn`, `yarn upgrade && yarn` to ensure you have the latest package versions and patches are applied. If necessary, update your patch files.
+- `php artisan enso:upgrade --before-migration`
+- `php artisan migrate`
+- `php artisan enso:upgrade` to execute the upgrades
+- make sure permissions are properly configured for each role and then save/refresh the roles configuration files
+- update the Enso version to `4.8.1` in `config/enso/config.php`
+
 ## 4.8.0
 
 This new release adds the possibility for back-end packages to publish their own state to the front-end as well migrates the framework & packages to PHP 8.0. Where applicable, updated packages to take advantage of the new language features.
