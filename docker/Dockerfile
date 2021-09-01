@@ -1,4 +1,4 @@
-FROM php:8.0-cli
+FROM php:8.0-apache
 
 # Apache configuration
 RUN a2enmod rewrite
@@ -28,8 +28,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install bcmath intl zip pcntl soap gd
 
 # Enable imagick
-RUN pecl install imagick-3.4.3
-RUN echo "extension=imagick.so" >> /usr/local/etc/php/conf.d/imagick.ini
+RUN pecl install imagick && docker-php-ext-enable imagick
 
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
