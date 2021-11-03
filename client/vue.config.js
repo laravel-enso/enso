@@ -38,7 +38,7 @@ module.exports = {
         devtool: inProduction ? 'hidden-source-map' : 'source-map',
         resolve: {
             alias: {
-                '@ui': `${__dirname}/node_modules/@enso-ui/ui/src`,
+                '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
                 '@root': `${__dirname}/src/js`,
                 '@pages': `${__dirname}/src/js/pages`,
                 '@store': `${__dirname}/src/js/store`,
@@ -55,17 +55,12 @@ module.exports = {
                 release: process.env.SENTRY_RELEASE,
                 ignore: ['vendor'],
             }),
-            new CopyPlugin(
-                {
-                    patterns: [
-                        {
-                            from: '../resources/images',
-                            to: 'images',
-                            force: true,
-                        },
-                    ],
-                },
-            ),
+            new CopyPlugin([{
+                from: '../resources/images',
+                to: 'images',
+                force: true,
+                folder: true,
+            }]),
         ].filter(p => p),
     },
     chainWebpack: config => {
