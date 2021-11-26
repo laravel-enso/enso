@@ -10,7 +10,7 @@ if (inProduction && !usesSentry) {
 }
 
 module.exports = {
-    transpileDependencies: ['@enso-ui/strings'],
+    transpileDependencies: ['@enso-ui/strings', '@enso-ui/route-mapper'],
     pages: {
         main: {
             entry: 'src/js/enso.js',

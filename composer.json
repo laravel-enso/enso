@@ -30,6 +30,7 @@
         "sentry/sentry-laravel": "^2.0.0"
     },
     "require-dev": {
+        "brianium/paratest": "^6.3",
         "facade/ignition": "^2.3.6",
         "filp/whoops": "^2.1.0",
         "fzaninotto/faker": "^1.9.1",
