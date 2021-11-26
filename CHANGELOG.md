@@ -148,13 +148,13 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - added sync queue for the categories import; if needed, template can be locally customized
 
 #### charts
-- refactored to chartjs 3
+- refactored to `chartjs 3`
 - fixes default tooltip config
 - implemented backend `shortNumbers`
 - fixed horizontal chart
 
 #### cnp-validator
-- updated CnpValidator.php
+- updated `CnpValidator.php`
 - required php 8
 - updated `strlen` usage to `mb_strlen`
 
@@ -177,7 +177,7 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - updated eea for United Kingdom
 
 #### data-import
-- fixed the Template`s notifies method
+- fixed the Template's notifies method
 
 #### documentation
 - added route mapper docs stub & mention about transpiling
@@ -198,9 +198,9 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - added support for meilisearch in searchable
 - removed deprecated searchable trait
 - fixed `Obj casts:` set method now performs json encode
-- fixed Cash label
-- updated codesize/phpmd config rules for constant naming
-- removed Sleep
+- fixed `Cash` label
+- updated `codesize/phpmd` config rules for constant naming
+- removed `Sleep`
 - added new min max utility methods to Decimals
 
 #### localisation
@@ -220,7 +220,7 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - updated strlen usage to `Str::length`
 
 #### select
-- opened up flexibility on Options Service instantiation from OptionsBuilder
+- opened up flexibility on Options Service instantiation from `OptionsBuilder`
 
 #### tables
 - added support for dropdown actions
@@ -265,7 +265,7 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - updated discount observer
 - hides empty filters
 - added price filter
-- added priceFiltered() getter
+- added `priceFiltered()` getter
 - added services for search providers
 - removed `PaymentMethods` enum;
 - added payment config
@@ -277,7 +277,7 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 #### emag
 - refactored add invoice -> upload invoice
 - refactored product index use
-- removed `ValidateStoreRequest` request, MissingOffer` notification, deprecated `parents()` setter call, measurment units implementation, checker scopes & methods, recheck & cleanup flows and  `notSyncedYet` scenarios branch
+- removed `ValidateStoreRequest` request, `MissingOffer` notification, deprecated `parents()` setter call, measurment units implementation, checker scopes & methods, recheck & cleanup flows and  `notSyncedYet` scenarios branch
 - offer download throws exception on error; categories sync service deletes any old emag categories
 - updated order flow: now stopping before generating awb if not fully reserved
 - emag categories now have parent id
