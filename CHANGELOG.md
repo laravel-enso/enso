@@ -1,5 +1,390 @@
 # Laravel Enso's Changelog
 
+## 4.8.2
+This aims to be the last minor release before upgrading to Vue 3 and includes many improvements, bug fixes and also several new features.
+
+### Front-end
+
+#### addresses
+- implemented google package
+
+#### algolia (new)
+- implemented settings package for Algolia
+
+#### bulma
+- added toggle filters
+- added users as dependency
+
+#### charts
+- updated `Chart.vue`
+- updated dependencies
+- fixed chart instance usage
+- brings back default options
+- added `shortNumber` filter
+
+#### data-import
+- improved UX for disabled exports
+
+#### emails
+- updated syntax and eslint config
+
+#### enums
+- updated dependencies and `.eslintrc.js`
+
+#### files
+- small refactor in index
+- removed redundant chart option
+
+#### filters
+- added toggle filters
+- added dirty to filter-state
+- improved dirty watcher in filter state
+
+#### forms
+- added the ability to reload based on a be flag
+- exposed `undo()`
+
+#### google
+- fixed missing icon import
+
+#### meili-search (new)
+- implemented settings package for MeiliSearch
+
+#### mixins
+- fixed edge case with re-rendering login form after logging in
+
+#### mobile-app
+- added `.eslintrc.js`
+- updated `.gitignore` and dependencies
+
+#### range-slider (new)
+- Vue Range Slider based on `noUiSlider`
+
+#### route-mapper
+- updated dependencies
+- updated `.eslintrc.js`
+- refactored the mapper class; fixed bug related to optional params; improved logic/flow
+
+#### scroll-to-top
+- fixed bottom margin
+
+#### search-mode
+- renamed `algolia` to `searchProvider`
+
+#### select
+- fixed multiple select value mutations when using state options
+
+#### sentry
+- updated dependencies and `.eslintrc.js`
+
+#### strings
+- fixed slug generation issue to handle cases when `regEx` matching had no actual matches
+
+#### tables
+- improved key in table header
+- reflected filtered state
+- added missing `mr-1` in controls
+- added `danger` on filter flag
+- added support for dropdown actions
+- added debounce for filters
+
+#### themes
+- added `has-margin-auto`
+- removed `bulma-checkradio`
+- updated `bulma-extensions` dependency
+- imported minimized css from `bulma-extensions`
+
+#### typesense (new)
+- typesense integration for laravel-enso
+
+#### ui
+- added `integrations.js`
+- improved app update notification
+- updated `AppUpdate.vue`
+- fixed app update `v-if`
+- made app update dropdown always visible
+- improved internal `AppUpdate` flow; fixed issue with showing the modal
+- updated bulma-extensions dependency
+
+#### users
+- fixed user profile level margin
+
+### back-end
+
+#### activity-log
+- updated for php 8
+- updated `.styleci.yml`
+
+#### addresses
+- deprecated google config key, uses settings from google package
+- improved validation for case when postcode exists in the DB, but for a different country
+- improved postcode validation
+- added GBR addresses
+- added `Geocoding` service; updated `Coordinates` to use the new service
+
+#### algolia (new)
+- implemented settings package for Algolia
+
+#### api
+- implemented custom headers
+- added a throttle helper
+- added `toJson` method to the api resource
+- improved adding headers to the request
+- added request duration logging
+- updated api logger
+- decreased duration column size
+- removed nullable from duration
+- added public `apiEnabled: bool` on Action
+- improved exception message
+- updated method visibility
+
+#### avatars
+- made the avatars generators configurable
+
+#### categories
+- added options endpoint
+- removed unneeded attribute
+- added categories import
+- added sync queue for the categories import; if needed, template can be locally customized
+
+#### charts
+- refactored to chartjs 3
+- fixes default tooltip config
+- implemented backend `shortNumbers`
+- fixed horizontal chart
+
+#### cnp-validator
+- updated CnpValidator.php
+- required php 8
+- updated `strlen` usage to `mb_strlen`
+
+#### companies
+- fixed company fiscal code in factory
+- added queue sync for the companies import; if needed, template can be locally customized
+- updated import, added new attributes
+- added fiscal code to rememberable keys
+
+#### control-panel-api
+- fixed stat class
+
+#### core
+- added structure for integrations
+- improved app update event
+- added a `Login` trait to work with the latest changes in laravel-ui
+- fixed login test for the new guard config attribute in `sanctum.php`
+
+#### countries
+- updated eea for United Kingdom
+
+#### data-import
+- fixed the Template`s notifies method
+
+#### documentation
+- added route mapper docs stub & mention about transpiling
+
+#### filters
+- renamed `algolia` to `searchProvider`; improves searchProvider results
+
+#### google (new)
+- implemented settings package for Google
+
+#### helpers
+- updated searchable trait
+- added production check
+- configured styleci for php8
+- updated Searchable trait due to new Algolia package
+- updated price computor constructor and vatPercent use
+- fixed searchable for extended / binded models
+- added support for meilisearch in searchable
+- removed deprecated searchable trait
+- fixed `Obj casts:` set method now performs json encode
+- fixed Cash label
+- updated codesize/phpmd config rules for constant naming
+- removed Sleep
+- added new min max utility methods to Decimals
+
+#### localisation
+- updated texts, added new keys & translations
+- added missing cleanup for the language update test
+- added missing php dependency
+- made seeder reusable in local projects
+
+#### logs
+- improved logs collection to handle archives
+- fixed tests
+
+#### meili-search (new)
+- implemented settings package for MeiliSearch
+
+#### phpunit-pretty-print
+- updated strlen usage to `Str::length`
+
+#### select
+- opened up flexibility on Options Service instantiation from OptionsBuilder
+
+#### tables
+- added support for dropdown actions
+- resolved resources from service container
+- updated template
+
+#### tasks
+- fixed export error
+
+#### typesense (new)
+- new typesense integration for Laravel Enso
+
+#### unit-conversion (new)
+- new unit converter utility classes for Laravel Enso.
+
+#### upgrade
+- added `getLength` in `Column`
+- added `exists()` helper for table
+- updated upgrade status to address change in `Symphony` console table
+- ignored upgrades from namespaces that are not within autoload
+
+### Privates
+
+#### webshop-commercial
+- added webshop searchable array
+- maked default ranking 0 in search provider data
+- replaced the product dynamic method `WebshopSearchableArray` with a simple service
+- updated flow for `webshopDiscount`; now we no longer fall through to general supplier discount but use webshop company if no specific cliend discount exits
+- used float casts for searchable attributes
+- updated webshop order implementation
+- fixed class path and deprecated `Online`
+
+#### webshop
+- moved search provider product index to webshop from algolia
+- hides price and discount when no stock available
+- removed `webshop-shadow` role
+- added `isActive` to the `BaseFilters@facets` array (excluded facets)
+- moved searchable attributes to webshop from webshop commercial
+- updated contract & account order actions
+- updated `BaseFilters.php`
+- added availability filters
+- updated discount observer
+- hides empty filters
+- added price filter
+- added priceFiltered() getter
+- added services for search providers
+- removed `PaymentMethods` enum;
+- added payment config
+- added default sorting to newest
+- builded the new price filter
+- implemented most popular sort
+- various fixes, improvements and refactors
+
+#### emag
+- refactored add invoice -> upload invoice
+- refactored product index use
+- removed `ValidateStoreRequest` request, MissingOffer` notification, deprecated `parents()` setter call, measurment units implementation, checker scopes & methods, recheck & cleanup flows and  `notSyncedYet` scenarios branch
+- offer download throws exception on error; categories sync service deletes any old emag categories
+- updated order flow: now stopping before generating awb if not fully reserved
+- emag categories now have parent id
+- implemented awb schedule
+- added vat id to the offer update resource and conversionable unit Enums
+- updated `CreateCategoryEmagCategoryPivotTable` and `CreateEmagOffersTable` migration
+- now an offer is made inactive when we do not have stock
+- removed deprecated `NullableCategoryId` upgrade
+- added `emagDiscount()` dynamic for services, new headers to all emag requests and check for sync / when not empty
+- log now also sends email notification; added checker jobs failure handling
+- made the buy button rank array key `optional`
+- set number of offers & best offer sale price as nullable
+- renamed `last_checked_at` to `checked_at`
+- added check for the presence of the emag settings table for further scheduling
+- refactors `fetchPicture(s)` to `downloadPictures`
+- added new emag status
+- added upgrade to drop offers `discount_percent`
+- removed `auto_pricing` from the `Offer` table resource and urls from the settings form and migration
+- removed download after each operation; updated offer fill, using DI resource, new genius column
+- added upgrade for removal of old settings url columns
+- added commands for activation/deactivation of the emag api
+- various fixes and improvements
+
+#### commercial
+- enabled cancel
+- removed sort by `created_by/updated_by`
+- removed By columns from being searchable
+- added limit for product labels
+- updated products template
+- refactored `grn` to `goodsReceivedNote`
+- added `bulkStockRemoval`
+- added limit and ordering for bulk stock removal;
+- updated sale cancellation policy to exclude invoiced sales
+- added locks
+- updated limit to cover all cases
+- allowed sale fulfill, on default channel & internal warehouses when missing address
+- renamed `externallyFullfilled`
+- added quick fix for sales payment form
+- added awb schedule validation and internal code to typeahead controller
+- added serializeDate to models and cast to settings
+- reverted schema check
+- made settings `warehouse_id` nullable to avoid seed / provider / schedule issues
+- updated awb generation schedule to 06:00
+- various fixes, refactors and improvements
+
+#### financials
+- date is now required for client payments
+- fixed payment due date logic; updated tests
+- fixed case when no serial is given
+- refactored code 
+- due date fixes
+- added date serialization customization for all relevant models
+- updated client invoice form
+
+
+#### inventory
+- removed manual upgrade from the `INsLot` upgrade
+- fixed reservations count for `Reservations.vue` update
+- added `inventoryIn` locks as required to avoid over-reserving
+- extracted to services
+- added `is_bundle` check
+- removed App make from the Inventory interface
+- fixed update available emitting
+
+#### discounts
+- refactor for import
+- added reset
+- improved client product discount importer
+- fixed missing param
+
+#### frisbo
+- converted eav grams to kg when publishing product
+- updated resource to use the new unit conversion package; added validation
+- updated product bundle resource to correctly use bundled quantity
+
+#### eav
+- added a public `searchableKey` method on the attribute
+- improved `eav` filterable searchable key
+- small `Attribute` factory fix
+
+#### product-eav
+- replaced the `EavSearchableArray` dynamic product method with a simple service class
+- updated searchable array
+- improved facets
+- added search provider integration
+- fixed import
+
+### Upgrade steps
+
+* update the Enso version to `4.8.2` in `config/enso/config.php`
+* run `composer update` in the project's root
+* remove the `bulma-extensions` patch
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* after `yarn upgrade`, update `vue.config.js` by adding `@enso-ui/route-mapper` package under `transpileDependencies` key
+* `php artisan enso:upgrade --before-migration`
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* as per every release, delete any local, deprecated upgrades
+* update all models having forms with date fields, by adding the following method:  
+```
+protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+```
+Make sure you have set the `$dates` property.
+
 ## 4.8.1
 ### Front-end
 For most of our frontend packages we've added router error handling.  
