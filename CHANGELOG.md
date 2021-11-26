@@ -242,7 +242,7 @@ This aims to be the last minor release before upgrading to Vue 3 and includes ma
 - updated upgrade status to address change in `Symphony` console table
 - ignored upgrades from namespaces that are not within autoload
 
-### Privates
+### Private packages
 
 #### webshop-commercial
 - added webshop searchable array
