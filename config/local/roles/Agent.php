@@ -22,5 +22,5 @@ return [
         'system.localisation.options',
         'core.comments.users',
         'core.search.index',
-    ]
+    ],
 ];
