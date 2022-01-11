@@ -9,5 +9,5 @@ return [
         'apis.controlPanel.statistics',
         'apis.controlPanel.actions',
         'apis.controlPanel.action',
-    ]
+    ],
 ];

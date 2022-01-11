@@ -63,5 +63,5 @@ return [
         'core.calendar.options',
         'export.cancel',
         'import.restart',
-    ]
+    ],
 ];
