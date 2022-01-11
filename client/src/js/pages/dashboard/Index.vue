@@ -25,7 +25,7 @@
 
 <script>
 
-import { EnsoChartCard as ChartCard } from '@enso-ui/bulma';
+import { EnsoChartCard as ChartCard } from '@enso-ui/charts/bulma';
 
 export default {
     name: 'Index',

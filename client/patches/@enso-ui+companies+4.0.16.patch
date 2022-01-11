@@ -13,42 +13,31 @@ index 0000000..d9d1a55
 +yarn.lock
 \ No newline at end of file
 diff --git a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-index 77cc414..ad19387 100644
+index 0caa203..b096d3b 100644
 --- a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
 +++ b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-@@ -32,6 +32,39 @@
+@@ -32,6 +32,28 @@
                              </div>
                          </div>
                      </tab>
 +                    <tab keep-alive
-+                         id="Comments">
++                        id="Comments">
 +                        <div class="columns is-centered">
 +                            <div class="column is-two-thirds">
 +                                <comments :id="companyId"
 +                                    type="company"
-+                                    @update="$set(count, 'Comments', $refs.comments.count)"
++                                    @update="count.Comments = $refs.comments.count"
 +                                    ref="comments"/>
 +                            </div>
 +                        </div>
 +                    </tab>
 +                    <tab keep-alive
-+                         id="Discussions">
-+                        <div class="columns is-centered">
-+                            <div class="column is-two-thirds">
-+                                <discussions :id="companyId"
-+                                    type="company"
-+                                    @update="$set(count, 'Discussions', $refs.discussions.count)"
-+                                    ref="discussions"/>
-+                            </div>
-+                        </div>
-+                    </tab>
-+                    <tab keep-alive
-+                         id="Documents">
++                        id="Documents">
 +                        <div class="columns is-centered">
 +                            <div class="column is-two-thirds">
 +                                <documents :id="companyId"
 +                                    type="company"
-+                                    @update="$set(count, 'Documents', $refs.documents.count)"
++                                    @update="count.Documents = $refs.documents.count"
 +                                    ref="documents"/>
 +                            </div>
 +                        </div>
@@ -56,20 +45,21 @@ index 77cc414..ad19387 100644
                  </template>
              </accessories>
          </div>
-@@ -40,7 +73,7 @@
- 
- <script>
- import { Tab } from '@enso-ui/tabs/bulma';
--import { Accessories, Addresses } from '@enso-ui/bulma';
-+import { Accessories, Addresses, Discussions, Comments, Documents } from '@enso-ui/bulma';
+@@ -44,6 +66,8 @@ import Accessories from '@enso-ui/accessories/bulma';
+ import { Addresses } from '@enso-ui/addresses/bulma';
  import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
  import People from './components/People.vue';
++import { Comments } from '@enso-ui/comments/bulma';
++import { Documents } from '@enso-ui/documents/bulma';
  
-@@ -54,6 +87,7 @@ export default {
+ export default {
+     name: 'Edit',
+@@ -55,6 +79,8 @@ export default {
          Tab,
          Addresses,
          People,
-+        Discussions, Comments, Documents,
++        Comments,
++        Documents,
      },
  
      computed: {

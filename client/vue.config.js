@@ -1,5 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const path = require('path');
 
 const inProduction = process.env.NODE_ENV === 'production';
 const usesSentry = process.env.SENTRY_AUTH_TOKEN
@@ -10,39 +11,47 @@ if (inProduction && !usesSentry) {
 }
 
 module.exports = {
-    transpileDependencies: ['@enso-ui/strings', '@enso-ui/route-mapper'],
+    transpileDependencies: [
+        '@enso-ui/route-mapper',
+        '@enso-ui/strings',
+        '@enso-ui/toastr',
+    ],
+    publicPath: '/',
+    outputDir: '../public/',
+    indexPath: inProduction
+        ? '../resources/views/index.blade.php'
+        : 'index.html',
     pages: {
         main: {
             entry: 'src/js/enso.js',
-            minify: true,
-            filename: inProduction
-                ? '../resources/views/index.blade.php'
-                : './index.html',
+            minify: !inProduction,
             template: inProduction
                 ? '../vendor/laravel-enso/core/stubs/production-index.blade.stub'
                 : '../vendor/laravel-enso/core/stubs/development-index.stub',
+            filename: inProduction
+                ? '../resources/views/index.blade.php'
+                : 'index.html',
         },
     },
     devServer: {
         proxy: {
-            '/api': {
+            '^/api': {
                 target: process.env.API_URL,
             },
-            '/broadcasting': {
+            '^/broadcasting': {
                 target: process.env.API_URL,
             },
         },
     },
-    outputDir: '../public/',
     configureWebpack: {
         devtool: inProduction ? 'hidden-source-map' : 'source-map',
         resolve: {
             alias: {
-                '@core': `${__dirname}/node_modules/@enso-ui/ui/src`,
-                '@root': `${__dirname}/src/js`,
-                '@pages': `${__dirname}/src/js/pages`,
-                '@store': `${__dirname}/src/js/store`,
-                '@components': `${__dirname}/src/js/components`,
+                '@core': path.resolve(__dirname, '/node_modules/@enso-ui/ui/src'),
+                '@root': path.resolve(__dirname, '/src/js'),
+                '@pages': path.resolve(__dirname, '/src/js/pages'),
+                '@store': path.resolve(__dirname, '/src/js/store'),
+                '@components': path.resolve(__dirname, '/src/js/components'),
             },
         },
         plugins: [
@@ -55,12 +64,14 @@ module.exports = {
                 release: process.env.SENTRY_RELEASE,
                 ignore: ['vendor'],
             }),
-            new CopyPlugin([{
-                from: '../resources/images',
-                to: 'images',
-                force: true,
-                folder: true,
-            }]),
+            new CopyPlugin({
+                patterns: [{
+                    from: '../resources/images',
+                    to: 'images',
+                    force: true,
+
+                }],
+            }),
         ].filter(p => p),
     },
     chainWebpack: config => {
@@ -90,6 +101,21 @@ module.exports = {
         scssRules.store.delete('normal', 'scss-lazy');
         scssRules.store.set('scss-lazy', lazyRule);
         scssRules.store.set('normal', normalRule);
+
+        config.resolve.alias.set('vue', '@vue/compat');
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .tap(options => ({
+                ...options,
+                compilerOptions: {
+                    compatConfig: {
+                        MODE: 2,
+                        COMPILER_V_BIND_OBJECT_ORDER: false,
+                        COMPILER_IS_ON_ELEMENT: false,
+                    },
+                },
+            }));
 
         config.module
             .rule('images')
