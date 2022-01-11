@@ -1,21 +1,31 @@
-import Vue from 'vue';
-import { sync } from 'vuex-router-sync';
 import Root from '@enso-ui/ui/src/bulma/Root.vue';
 import App from '@enso-ui/ui/src/core/app';
 import router from '@enso-ui/ui/src/core/services/router';
 import store from '@enso-ui/ui/src/core/services/store';
-import '@enso-ui/ui/src/modules';
-import './app';
+import VTooltipPlugin from 'v-tooltip';
+// import Vue, { createApp } from 'vue';
+import { createApp } from 'vue';
+import { sync } from 'vuex-router-sync';
 import '../sass/enso.scss';
-
-Vue.config.productionTip = false;
+import './app';
 
 sync(store, router);
 
-const vm = new Vue({
-    router,
-    store,
-    ...Root,
-}).$mount('#app');
+// Vue.configureCompat({
+//     RENDER_FUNCTION: false,
+//     INSTANCE_LISTENERS: false,
+//     COMPONENT_V_MODEL: false,
+//     ATTR_FALSE_VALUE: false,
+//     INSTANCE_ATTRS_CLASS_STYLE: false,
+//     TRANSITION_GROUP_ROOT: false,
+// });
 
-App.boot(vm);
+const app = createApp(Root);
+
+app.use(router)
+    .use(store)
+    .use(VTooltipPlugin);
+
+App.boot(app, store, router);
+
+app.mount('#app');

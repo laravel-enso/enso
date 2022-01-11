@@ -1,10 +1,10 @@
 <?php
 
 return [
+    'order' => 2,
     'role' => ['name' => 'supervisor', 'display_name' => 'Supervisor'],
     'default_menu' => 'howTo.videos.index',
     'permissions' => [
-        'howTo.videos.index',
         'howTo.videos.show',
         'howTo.tags.index',
         'howTo.posters.show',

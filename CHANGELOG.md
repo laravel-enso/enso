@@ -1,5 +1,325 @@
 # Laravel Enso's Changelog
 
+## 4.9.0
+This release upgrades the UI to Vue 3 and also includes under the hood refactor
+for a few core components. We've tried to maintain overall component compatibility
+and done our best to document the breaking changes.
+
+Depending on how complex the UI for your project is, the upgrade may take
+anywhere from a 1.5h to many days, so please take your time to go through the Enso changelog,
+especially the upgrade steps AND also the Vue3 upgrade guide linked below.
+
+### Front-end
+All packages have had their dependencies and dev dependencies updated and pruned.
+Many packages have had linter recommended fixes.
+
+#### filters
+- the `DateIntervalFilter` & `EnsoDateIntervalFilter` components have been retired
+
+#### laravel-validation
+- added an `all()` method, that returns all errors
+
+#### pull-to-refresh (new)
+This a new Enso package, forked from [lakb248/vue-pull-refresh](https://github.com/lakb248/vue-pull-refresh)
+and updated to work with Vue3.
+
+#### select
+- fixed element deselection when the select was used in 'object' mode
+
+### Private packages
+
+#### inventory
+- aligned products index page style & updated table filters/state
+
+#### commercial
+- updated the invoice issuing routes
+- improved items display
+
+#### emag
+- fixed auto pricing controls
+- fixed auto pricing conditions
+- updated emag dependent filters to auto clear when deactivating emag
+- fixed can-access usage; improved Emag.vue
+- added new product filters for emag offers; added new visual indicator for "genius"
+
+#### products
+- small fix for products index styling
+
+#### webshop
+- form cleanup
+
+### Back-end
+
+#### categories
+- fixed ordering bug
+
+#### core
+- updated state Meta: removed csrf token
+
+#### localisation
+- removed the expanded sidebar key (cleanup)
+
+#### tables
+- fixed excel export on all scenarios
+- fixed authenticates on export
+- fixed style
+- updated to allow sortable for nested columns (should be used carefully);
+- extracted Computor from Data
+- improved excel export -> fetcher needs to be redesigned
+- improved excel preparing
+
+#### tutorials
+- updated form to use the new `permissions.options` route
+
+### Private packages
+
+#### commercial
+- updated addresses logic for the sale form
+- fixed status filter
+- improved stock values computation
+- removed created/updated_by fields from being exportable
+- bugfix: only perform invoice cancellation if invoice exits
+- implemented the possibility to enable per sale channel opt-in/out for sale notifications
+- fixed acquisition price in stock values Computor
+- removes unneeded relation loads; fixed style
+
+#### commercial
+- removed the back button for the modal form
+
+#### eav
+- fixed group & attribute reordering bug
+- small Attribute factory fix
+
+#### emag
+- fixed missing return
+- refined stock management
+- improved code to keep the local offer in sync with the emag remote offer on each upload
+- improve order flow for edge cases when API is down
+
+#### frisbo
+- added order update webhook endpoint,
+  append product lot to product name and order notes
+- small refactor
+- added logging for api callbacks
+- expiration date flow enhancements
+
+
+### Vue Migration Build
+In order to migrate a project, we will use the [Vue3 Migration Build](https://v3.vuejs.org/guide/migration/introduction.html#migration-build) as an intermediary step, upgrade the code to make it Vue3 compatible, then finally switch to the regular Vue3 build.
+
+Please read the official documentation linked above, so you have a better understanding of the process.
+
+In order to use the migration build, it needs to be imported and configured:
+- in `client\package.json`: `"@vue/compat": "^3.2.20",`
+- in `vue.config.js`, within the `chainWebpack` config:
+    ```
+        config.resolve.alias.set('vue', '@vue/compat');
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .tap(options => ({
+                ...options,
+                compilerOptions: {
+                    compatConfig: {
+                        MODE: 2,
+                        COMPILER_V_BIND_OBJECT_ORDER: false,
+                        COMPILER_IS_ON_ELEMENT: false,
+                    },
+                },
+            }));
+    ```
+- in `client\src\js\enso.js`:
+    ```
+    Vue.configureCompat({
+        RENDER_FUNCTION: false,
+        INSTANCE_LISTENERS: false,
+        COMPONENT_V_MODEL: false,
+        ATTR_FALSE_VALUE: false,
+        INSTANCE_ATTRS_CLASS_STYLE: false,
+        TRANSITION_GROUP_ROOT: false,
+    });
+    ```
+
+The package & snippets are already present in the Enso release, but they will be commented out, so in order to enable the migration build, open the relevant files and uncomment the blocks above.
+
+Note that the compiler migration build flags belong to the `vue.config.js` file and require the restart of HMR (if using it) while all other flags belong to the `client\src\js\enso.js` file.
+
+### Vue Dev Tools
+For Vue3, a new browser devtools [plugin](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg?hl=en) is needed and can be installed along side the Vue2 plugin.
+
+### Upgrade Steps
+In addition to upgrading the Enso UI to make it Vue3 compatible, we've also made some other changes to a few Enso components some of which may impact your local code.
+
+- update the following files with the latest versions
+    - `.babel.config.js`
+    - `.eslintrc.js`
+    - `vue.config.js`
+    - `client\src\js\enso.js`
+    - `client\package.json`
+    - `client\src\sass\enso.scss`
+- enable the migration mode, as noted above
+- run `yarn && yarn upgrade` and start HMR
+- you should be able to login into the application and will probably have some (lots of) errors and warnings
+- the deprecated `legacyBuild` flow for building the application state has been removed entirely [store.js](https://github.com/enso-ui/ui/pull/86/files#diff-9a955348077f36a44db6037a09c7bb930a0c657685072b2e9cb4acafd1cf4e52)
+- we have aimed to remove global components and instead import them for each use case
+    - the `fa` component is no longer global and needs to be imported locally, where used
+        ```
+        import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
+        ...
+        components: { ..., Fa, ... },
+        ```
+    - the global `http` axios alias is no longer available,
+      instead it should be injected as required:
+      ```
+      inject: ['http']
+      ...
+      myMethod() {
+          this.http.post(...);
+      }
+      ```
+- if using any `@hook:...` hooks, replace all usages with `@vnode-...` [docs](https://v3.vuejs.org/guide/migration/vnode-lifecycle-events.html)
+- in all of your renderless components you can set the `inheritAttrs: false,` attribute to eliminate warnings about inherited attributes
+- `$listeners` has been removed / merged into `$attrs`. See [docs](https://v3.vuejs.org/guide/migration/listeners-removed.html)
+
+  You need to remove `v-on="$listeners"` usages.
+  Note that in such cases, you will probably need to cascade events, either directly or via `v-bind="$attrs"` if applicable.
+
+- `$scopedSlots` property is removed and all slots are exposed via `$slots` as functions. See [docs](https://v3.vuejs.org/guide/migration/slots-unification.html#overview).
+
+  You should replace `this.$scopedSlots.xxx` with `this.$slots.xxx` in your render functions
+- the `beforeDestroy` hook has been renamed to `beforeUnmount` - you should replace all usages project wide. See [docs](https://v3.vuejs.org/guide/migration/introduction.html#other-minor-changes)
+- when using `$el` within components, ensure that there is a single root within the element (e.g. `<div>`)
+- when emitting events in components (e.g. `$emit('click')`), it is recommended to declare/list the emitted events:
+    ```
+    emits: ['click'],
+    ```
+- update the slot syntax, by replacing `v-slot:xxx`  with `#xxx`
+- for components, the `value` property has become `modelValue` and the `input` event has been replaced with `update:modelValue`. See [docs](https://v3.vuejs.org/guide/migration/v-model.html#overview)
+
+  When listening on 'value' changes on components, you need to replace `@input="xxx"` with `@update:model-value="xxx"`.
+  In Vue3 you can also have multiple v-model bindings on the same component. See [docs](https://v3.vuejs.org/guide/component-custom-events.html#multiple-v-model-bindings)
+- in all of your renderless components you can set the `inheritAttrs: false,` attribute to eliminate warnings about inherited attributes
+- note that in Vue3 you can no longer programmatically destroy components as the `$destroy()` method has been removed. See [docs](https://v3.vuejs.org/guide/migration/introduction.html#removed-apis)
+- HTML bound attributes such as `:disabled` will be rendered as `disabled="false"` for false values, and if you need to not have them rendered, the bound attribute value needs to be evaluated to `null` or `undefinded`. See [docs](https://v3.vuejs.org/guide/migration/attribute-coercion.html#_3-x-syntax)
+- if using watch on arrays, you need to add `deep: true` otherwise the callback may not be triggered. See [docs](https://v3.vuejs.org/guide/migration/watch.html#overview)
+- you no longer need to use `$set` & `$delete` to manage object attributes in order to keep responsiveness, you can use regular JS syntax. See [docs](https://v3.vuejs.org/guide/migration/introduction.html#removed-apis).
+- if asynchronously loading components, the syntax has changed. See [docs](https://v3.vuejs.org/guide/migration/async-components.html#overview).
+- transitions have suffered a few changes. See [docs](https://v3.vuejs.org/guide/migration/introduction.html#other-minor-changes)
+- the render function API has changed. See [docs](https://v3.vuejs.org/guide/migration/render-function-api.html#overview)
+- if using `DateFilter` or `EnsoDateFilter` please note:
+    - the `default` property has been removed
+    - the `disabledOptions` property has been renamed to `excluded`
+    - the `default` property has been removed
+    - value/v-model has become `filter`
+    - using `v-model` for `filter` & `interval` is now required
+
+  For example, replace
+    - `v-model="params.dateInterval"` with `v-model:filter="params.dateInterval"`
+    - `:interval="intervals.products.date"` with `v-model:interval="intervals.products.date"`
+
+  where the attributes look like this
+    ```
+    params: {
+        dateInterval: 'thisMonth',
+    },
+    intervals: {
+        products: {
+            date: {
+                max: null,
+                min: null,
+            },
+        },
+    },
+    ```
+
+- if emitting/listening to global events, you should import and refactor to using the `eventBus` instead. See [docs](https://v3.vuejs.org/guide/migration/events-api.html#_2-x-syntax).
+    ```
+    import eventBus from '@enso-ui/ui/scrc/core/services/eventBus';
+    ...
+    eventBus.$emit('my-event');
+    eventBus.$on('my-event', this.myHandler);
+    ```
+- the `<modal>` component no longer needs a `portal` attribute/property, and you should delete all its usages
+- if you're using the automatic component registration, the syntax has changed from
+    ```
+    Vue.component('navbar-notification', Notification);
+    App.registerNavbarItem('navbar-notification', 300, 'core.notifications.count');
+    ```
+  to
+    ```
+    App.registerNavbarItem('navbar-notification', Notification, 300, 'core.notifications.count');
+   ```
+- the `v-tooltip` library has been updated:
+  Import has been updated from
+    ```
+    import { VPopover } from 'v-tooltip';
+    ```
+  to
+    ```
+    import { Dropdown } from 'v-tooltip';
+    ```
+  Component has been updated:
+    ```
+    <v-popover trigger="hover"
+    ```
+  to
+    ```
+    <dropdown :triggers="['hover']"
+    ```
+  The slot name has been updated:
+    ```
+    <template v-slot:popover>
+    ```
+  to
+    ```
+    <template #popper>
+    ```
+
+### Moving forward from Migration Build
+
+Once you've migrated your local pages/components and packages,
+you may switch from the migration build to the regular Vue3 build.
+
+- remove the customization from `vue.config.js` i.e. the code related to @vue/compat
+    ```
+    config.resolve.alias.set('vue', '@vue/compat');
+    config.module
+        .rule('vue')
+        .use('vue-loader')
+        .tap(options => ({
+            ...options,
+            compilerOptions: {
+                compatConfig: {
+                    MODE: 2,
+                    COMPILER_V_BIND_OBJECT_ORDER: false,
+                    COMPILER_IS_ON_ELEMENT: false,
+                },
+            },
+        }));
+    ```
+- remove the compatibility customization to `client\src\js\enso.js`
+  ```
+  Vue.configureCompat({
+      RENDER_FUNCTION: false,
+      INSTANCE_LISTENERS: false,
+      COMPONENT_V_MODEL: false,
+      ATTR_FALSE_VALUE: false,
+      INSTANCE_ATTRS_CLASS_STYLE: false,
+      TRANSITION_GROUP_ROOT: false,
+  });
+  ```
+- remove the `"@vue/compat": "^3.2.20",` dependency from `client/package.json`
+- run yarn, rebuild etc.
+
+### Known issues
+- the [vuejs/vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
+  has an unresolved [issue](https://github.com/vuejs/vuex-router-sync/issues/102)
+  that, at the time of writing, requires a patch package to fix
+- the Chrome devtools plugin is at v6.0.0-beta.21 (pre-release) and may throw
+  a lot of errors such as `Timed out getting app record for app` which should not
+  affect application functionality
+
+
 ## 4.8.2
 This aims to be the last minor release before upgrading to Vue 3 and includes many improvements, bug fixes and also several new features.
 

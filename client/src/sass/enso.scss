@@ -1,6 +1,4 @@
-@import '~animate.css/animate.compat.css';
-
-@import './app';
+@import 'v-tooltip/dist/v-tooltip';
 
 [v-cloak] {
     display: none;
@@ -8,8 +6,4 @@
 
 *:focus {
     outline:0;
-}
-
-.animated {
-    animation-duration: .5s;
 }

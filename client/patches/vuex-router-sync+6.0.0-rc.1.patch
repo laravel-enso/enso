@@ -1,0 +1,4 @@
+diff --git a/node_modules/vuex-router-sync/dist/vuex-router-sync.cjs.js b/node_modules/vuex-router-sync/dist/vuex-router-sync.js
+similarity index 100%
+rename from node_modules/vuex-router-sync/dist/vuex-router-sync.cjs.js
+rename to node_modules/vuex-router-sync/dist/vuex-router-sync.js
