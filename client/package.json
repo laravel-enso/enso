@@ -74,14 +74,13 @@
         "eslint-plugin-vue": "^8.0.3",
         "ignore-assets-webpack-plugin": "^2.0.1",
         "mini-css-extract-plugin": "^2.4.0",
-        "node-sass": "^4.12.0",
+        "node-sass": "^6.0.1",
         "postcss-import": "^14.0.0",
         "postcss-loader": "^4.0.0",
         "postcss-preset-env": "^6.7.0",
         "sass": "^1.43.4",
         "sass-loader": "10.1.1",
-        "style-loader": "^2.0.0",
-        "node-gyp": "^8.4.1"
+        "style-loader": "^2.0.0"
     },
     "postcss": {
         "plugins": {
