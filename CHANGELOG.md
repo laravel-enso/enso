@@ -6,16 +6,15 @@ for a few core components. We've tried to maintain overall component compatibili
 and done our best to document the breaking changes.
 
 Depending on how complex the UI for your project is, the upgrade may take
-anywhere from a 1.5h to many days, so please take your time to go through the Enso changelog
-and especially the upgrade steps AND also the Vue3 upgrade guide linked below.
+anywhere from a 1.5h to many days, so please take your time to go through the Enso changelog,
+especially the upgrade steps AND also the Vue3 upgrade guide linked below.
 
 ### Front-end
 All packages have had their dependencies and dev dependencies updated and pruned.
 Many packages have had linter recommended fixes.
 
 #### filters
-- the `DateIntervalFilter` & `EnsoDateIntervalFilter` components
-  have been retired
+- the `DateIntervalFilter` & `EnsoDateIntervalFilter` components have been retired
 
 #### laravel-validation
 - added an `all()` method, that returns all errors

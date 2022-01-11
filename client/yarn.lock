@@ -1177,13 +1177,14 @@
     vue "^3.0"
 
 "@enso-ui/discussions@^3.0.14":
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/@enso-ui/discussions/-/discussions-3.0.14.tgz#15a92c6467a78515a49e0317f4b7af329e73c0a1"
-  integrity sha512-nxfviXJKOMqszvlnSyboeg77jGu3wxpIzUuuDd5JpXovTlgCKwXrpNLKbUqNXnvBJhXttpjQI+zHiCRqQfOYZg==
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/@enso-ui/discussions/-/discussions-3.0.15.tgz#36cd05021d3ada6660108ba4add5b7c74afb8c44"
+  integrity sha512-2grGq6bB3fVIPpRZxParTNRr21NP6Fm09voVwLjMdpZi00tc2CxIcipv61BMqXLTtVjtOAa8/NDTGTkWGKRy3Q==
   dependencies:
     "@enso-ui/confirmation" "^2.0"
     "@enso-ui/transitions" "^2.0"
     "@enso-ui/ui" "^5.0"
+    "@enso-ui/wysiwyg" "^2.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.2"
     "@fortawesome/free-solid-svg-icons" "^5.11.2"
     "@fortawesome/vue-fontawesome" "3.0.0-5"
@@ -8031,10 +8032,10 @@ node-fetch@^2.6.0:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-forge@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-1.2.0.tgz#850cec9230f62f9a7cd8ddd08dc74b4be52573ad"
-  integrity sha512-M4AsdaP0bGNaSPtatd/+f76asocI0cFaURRdeQVZvrJBrYp2Qohv5hDbGHykuNqCb1BYjWHjdS6HlN50qbztwA==
+node-forge@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.10.0.tgz#32dea2afb3e9926f02ee5ce8794902691a676bf3"
+  integrity sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==
 
 node-gyp@^3.8.0:
   version "3.8.0"
@@ -10209,11 +10210,11 @@ select-hose@^2.0.0:
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
 
 selfsigned@^1.10.8:
-  version "1.10.13"
-  resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-1.10.13.tgz#763e091c684cbcbe98aa40b15b01da3716d68a12"
-  integrity sha512-UmLwTKZwNmXYDAlRFhaEdgEg0dp9k5gfJXuO7uKvSqioN1M0+Mgf4V39IlVZMSuqGoCi6h5legkhNXvWy0rFSg==
+  version "1.10.14"
+  resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-1.10.14.tgz#ee51d84d9dcecc61e07e4aba34f229ab525c1574"
+  integrity sha512-lkjaiAye+wBZDCBsu5BGi0XiLRxeUlsGod5ZP924CRSEoGuZAw/f7y9RKu28rwTfiHVhdavhB0qH0INV6P1lEA==
   dependencies:
-    node-forge "^1.2.0"
+    node-forge "^0.10.0"
 
 "semver@2 || 3 || 4 || 5", semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"

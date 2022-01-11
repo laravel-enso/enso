@@ -13,10 +13,10 @@ index 0000000..d9d1a55
 +yarn.lock
 \ No newline at end of file
 diff --git a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-index 0caa203..b096d3b 100644
+index 0caa203..22ab913 100644
 --- a/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
 +++ b/node_modules/@enso-ui/companies/src/bulma/pages/companies/Edit.vue
-@@ -32,6 +32,28 @@
+@@ -32,6 +32,39 @@
                              </div>
                          </div>
                      </tab>
@@ -28,6 +28,17 @@ index 0caa203..b096d3b 100644
 +                                    type="company"
 +                                    @update="count.Comments = $refs.comments.count"
 +                                    ref="comments"/>
++                            </div>
++                        </div>
++                    </tab>
++                    <tab keep-alive
++                         id="Discussions">
++                        <div class="columns is-centered">
++                            <div class="column is-two-thirds">
++                                <discussions :id="companyId"
++                                    type="company"
++                                    @update="count.Discussions = $refs.discussions.count"
++                                    ref="discussions"/>
 +                            </div>
 +                        </div>
 +                    </tab>
@@ -45,21 +56,23 @@ index 0caa203..b096d3b 100644
                  </template>
              </accessories>
          </div>
-@@ -44,6 +66,8 @@ import Accessories from '@enso-ui/accessories/bulma';
+@@ -44,6 +77,9 @@ import Accessories from '@enso-ui/accessories/bulma';
  import { Addresses } from '@enso-ui/addresses/bulma';
  import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
  import People from './components/People.vue';
 +import { Comments } from '@enso-ui/comments/bulma';
 +import { Documents } from '@enso-ui/documents/bulma';
++import Discussions from '@enso-ui/discussions/bulma';
  
  export default {
      name: 'Edit',
-@@ -55,6 +79,8 @@ export default {
+@@ -55,6 +91,9 @@ export default {
          Tab,
          Addresses,
          People,
 +        Comments,
 +        Documents,
++        Discussions,
      },
  
      computed: {
