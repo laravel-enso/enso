@@ -80,7 +80,8 @@
         "postcss-preset-env": "^6.7.0",
         "sass": "^1.43.4",
         "sass-loader": "10.1.1",
-        "style-loader": "^2.0.0"
+        "style-loader": "^2.0.0",
+        "node-gyp": "^8.4.1"
     },
     "postcss": {
         "plugins": {
