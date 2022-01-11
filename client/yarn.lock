@@ -1042,9 +1042,9 @@
     vue "^3.0"
 
 "@enso-ui/charts@^3.0":
-  version "3.0.13"
-  resolved "https://registry.yarnpkg.com/@enso-ui/charts/-/charts-3.0.13.tgz#c05b018f82bee573834a746b1077e746cb92faaf"
-  integrity sha512-zISjWq8JloPKMGTHDo7IkloupRRkVSJMqn7PjQX48Y/Im9bEgt//yldaPPYi7nO35iZtm6Q3LV57sqoDd8dZ5A==
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/@enso-ui/charts/-/charts-3.0.14.tgz#98175fd5d91300581458280ce7aa103a1e9793e5"
+  integrity sha512-JUhNzwcPfrJFZMy2CoseXIsQxv4J9GrqyJ+/xG7HdF0rXcumDtI8rH3gKTEUJt6DcDuVLBkcKysFImAoYi7d0w==
   dependencies:
     "@enso-ui/card" "^3.0"
     "@enso-ui/directives" "^2.0"
