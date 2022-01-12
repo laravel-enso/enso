@@ -24,7 +24,7 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'

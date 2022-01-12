@@ -2178,9 +2178,9 @@
     "@types/node" "*"
 
 "@types/express-serve-static-core@*", "@types/express-serve-static-core@^4.17.18":
-  version "4.17.27"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.27.tgz#7a776191e47295d2a05962ecbb3a4ce97e38b401"
-  integrity sha512-e/sVallzUTPdyOTiqi8O8pMdBBphscvI6E4JYaKlja4Lm+zh7UFSSdW5VMkRbhDtmrONqOUHOXRguPsDckzxNA==
+  version "4.17.28"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.28.tgz#c47def9f34ec81dc6328d0b1b5303d1ec98d86b8"
+  integrity sha512-P1BJAEAW3E2DJUlkgq4tOL3RyMunoWXqbSCygWo5ZIWTjUgN1YnaXWW4VWl/oc8vs/XoYibEGBKP0uZyF4AHig==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -3833,9 +3833,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001286:
-  version "1.0.30001298"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001298.tgz#0e690039f62e91c3ea581673d716890512e7ec52"
-  integrity sha512-AcKqikjMLlvghZL/vfTHorlQsLDhGRalYf1+GmWCf5SCMziSGjRYQW/JEksj14NaYHIR6KIhrFAy0HV5C25UzQ==
+  version "1.0.30001299"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001299.tgz#d753bf6444ed401eb503cbbe17aa3e1451b5a68c"
+  integrity sha512-iujN4+x7QzqA2NCSrS5VUy+4gLmRd4xv6vbBBsmfVqTx8bLAD8097euLqQgKxSVLvxjSDcvF1T/i9ocgnUFexw==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
@@ -5038,9 +5038,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.4.17:
-  version "1.4.40"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.40.tgz#f5dbced7bfbc7072e5e7ca5487f8f9a42c8bc768"
-  integrity sha512-j+eVIyQGt2EU5xPWUblhpp5P5z5xyAdRgzogBgfe2F5JGV17gr9pfzWBua6DlPL00LavbOjxubWkWkbVQe9Wlw==
+  version "1.4.43"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.43.tgz#665c0cd8d5e7cce0ba78d90a514c8c813ca3bdbe"
+  integrity sha512-PO3kEfcxPrti/4STbXvCkNIF4fgWvCKl2508e6UI7KomCDffpIfeBZLXsh5DK/XGsjUw3kwq6WEsi0MJTlGAdg==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -11339,9 +11339,9 @@ uuid@^8.3.2:
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 v-tooltip@^4.0.0-beta.2:
-  version "4.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-4.0.0-beta.15.tgz#86cbf25bc9bb618248ee98ec6056df6df3322e7a"
-  integrity sha512-lGytVt2DmJtD8/Ml0TTdXCBrXZ6/RN+4zouB9JInAZpCs5xqb9i40cj21iknr5BfoEjz14QrFdypSnYa0XgiEA==
+  version "4.0.0-beta.16"
+  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-4.0.0-beta.16.tgz#da151e635aa9c16597aa1c6ecbe93293dd0674f5"
+  integrity sha512-DOkRNjTNbBYJF1kTOD7fBSA6nKw5AuunBVzXRSmcJVrnmFqQTEjiY62xuv8UTZWkUWcwSV3GPhZyfGM9lB1kkA==
   dependencies:
     "@popperjs/core" "^2.11.0"
     vue-resize "^2.0.0-alpha.1"
