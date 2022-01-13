@@ -48,7 +48,7 @@
         "opencollective-postinstall": "^2.0.0",
         "patch-package": "^6.4.7",
         "postinstall-postinstall": "^2.0.0",
-        "pusher-js": "^5.0.0",
+        "pusher-js": "^7.0.0",
         "v-tooltip": "^4.0.0-beta.2",
         "vue": "^3.0",
         "vue-router": "^4.0.0-0",
