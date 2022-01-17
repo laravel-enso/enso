@@ -170,6 +170,13 @@ In addition to upgrading the Enso UI to make it Vue3 compatible, we've also made
         ```
     - the global `http` axios alias is no longer available,
       instead it should be injected as required:
+      Update:
+      ```
+      myMethod() {
+          axios.post(...);
+      }
+      ```
+      to
       ```
       inject: ['http']
       ...
@@ -187,13 +194,23 @@ In addition to upgrading the Enso UI to make it Vue3 compatible, we've also made
 - `$scopedSlots` property is removed and all slots are exposed via `$slots` as functions. See [docs](https://v3.vuejs.org/guide/migration/slots-unification.html#overview).
 
   You should replace `this.$scopedSlots.xxx` with `this.$slots.xxx` in your render functions
+- update the slot syntax, by replacing `v-slot:xxx`  with `#xxx`
+- if you are still using the deprecated named / scoped slot syntax, update it to the latest syntax first (which is already supported in 2.6)
+  For example, replace
+    ```
+    <template slot-scope="{ count }">
+    ```
+  to
+    ```
+    <template #default="{ count }">
+    ```    
+
 - the `beforeDestroy` hook has been renamed to `beforeUnmount` - you should replace all usages project wide. See [docs](https://v3.vuejs.org/guide/migration/introduction.html#other-minor-changes)
 - when using `$el` within components, ensure that there is a single root within the element (e.g. `<div>`)
 - when emitting events in components (e.g. `$emit('click')`), it is recommended to declare/list the emitted events:
     ```
     emits: ['click'],
     ```
-- update the slot syntax, by replacing `v-slot:xxx`  with `#xxx`
 - for components, the `value` property has become `modelValue` and the `input` event has been replaced with `update:modelValue`. See [docs](https://v3.vuejs.org/guide/migration/v-model.html#overview)
 
   When listening on 'value' changes on components, you need to replace `@input="xxx"` with `@update:model-value="xxx"`.
@@ -240,6 +257,25 @@ In addition to upgrading the Enso UI to make it Vue3 compatible, we've also made
     eventBus.$on('my-event', this.myHandler);
     ```
 - the `<modal>` component no longer needs a `portal` attribute/property, and you should delete all its usages
+- the `AutosizeTextarea` component has been updated and no longer needs to wrap around a textarea. Update:
+    ```
+    <autosize-textarea>
+        <textarea v-model="..."/>
+    </autosize-textarea>
+    ```
+  to
+    ```
+    <autosize-textarea v-model="...">
+    ```
+- filters are no longer supported, refactor as needed (you may use methods instead). For example, update:
+    ```
+    {{ value | numberFormat(2) }}
+    ```
+  to
+    ```
+    {{ numberFormat(value, 2) }}
+    ```
+
 - if you're using the automatic component registration, the syntax has changed from
     ```
     Vue.component('navbar-notification', Notification);
@@ -274,6 +310,17 @@ In addition to upgrading the Enso UI to make it Vue3 compatible, we've also made
     ```
     <template #popper>
     ```
+- we've switched to the standard (non compatibility) syntax for the animate animations. You should prefix animate related classes with `animate__`.
+  For example, update:
+    ```
+    <enso-form class="box animated fadeIn">
+    ```
+  to
+    ```
+    <enso-form class="box animate__animated animate__fadeIn">
+    ```
+
+  Alternatively, refactor using transition components.
 
 ### Moving forward from Migration Build
 
@@ -312,6 +359,8 @@ you may switch from the migration build to the regular Vue3 build.
 - run yarn, rebuild etc.
 
 ### Known issues
+- in development, you will have warnings about `Unexpected mutation of ... prop vue/no-mutating-props` 
+which can be ignored for now
 - the [vuejs/vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
   has an unresolved [issue](https://github.com/vuejs/vuex-router-sync/issues/102)
   that, at the time of writing, requires a patch package to fix

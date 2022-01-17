@@ -29,3 +29,5 @@ app.use(router)
 App.boot(app, store, router);
 
 app.mount('#app');
+
+window.app = App;
