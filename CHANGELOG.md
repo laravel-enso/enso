@@ -1,7 +1,7 @@
 # Laravel Enso's Changelog
 
 ## 4.9.1
-This minor release aims to update front-end packages to use the new bulma syntax. It also includes many improvements and bug fixes.
+This minor release aims to update front-end packages to use the latest bulma syntax. It also includes many improvements and bug fixes.
 
 ### Front-end
 
