@@ -9,6 +9,5 @@ return [
         'apis.controlPanel.actions',
         'apis.controlPanel.action',
         'system.localisation.options',
-        'export.cancel',
     ],
 ];
