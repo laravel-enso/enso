@@ -1,5 +1,113 @@
 # Laravel Enso's Changelog
 
+## 4.9.1
+This minor release aims to update front-end packages to use the latest bulma syntax. It also includes many improvements and bug fixes.
+
+### Front-end
+
+#### auth
+- fixed password confirmation bug
+
+#### data-import
+- added support for template params options in addition to source
+
+#### directives
+- simplified, improved performance & code readability of `v-click-outside`
+
+#### io
+- updated navbar-item use
+
+#### notifications
+- updated `navbar-item` use
+
+#### roles
+- improved `configure.vue` info
+
+#### tables
+- fixed bug affecting preferences saving caused by the vue3 ugrade
+
+#### tasks
+- updated `navbar-item` use
+
+#### themes
+- several deprecated helper classes such as has-margin-small, has-padding-small and their derivates have been removed
+- [v-cloak] & *:focus styling is included within the package
+- since v-tooltip is globally available, its css is loaded within the themes package
+
+#### ui
+- fixed dynamic navbar component registration rendering
+- improved `navbar-item`; added show, hide and touch events
+
+#### users
+- fixed navbar avatar on safari
+
+### back-end
+
+#### core
+8ee62af updated meta: removed csrf token
+
+#### countries
+b4bc27f updates eea for United Kingdom
+
+#### data-import
+- added template params options support
+
+#### permissions
+- added short name in permission resource
+
+#### users
+- fixed user preferences reset
+- changed the User `storePreferences` method visibility to public
+
+### Private packages
+
+#### webshop
+- removed deprecated css classes
+- updated searchable array to use the `visibleOnWebshop` dynamic
+
+#### emag
+- added check for response error
+
+#### commercial
+- added validation on external fulfilment
+- fixed typo
+
+#### wiki
+- removed deprecated css classes
+
+### Upgrade steps
+- if you're still using the deprecated css which have now been removed, you should update:
+    - `has-vertically-centered-content` to `is-flex is-align-items-center`
+    - `has-margin-auto` to `ma`
+    - `has-margin-xxx`, `has-padding-xxx` and their derivates (top, left, etc) to their corresponding bulma counterparts (m-1, m-2, ml-1, etc). See [docs](https://bulma.io/documentation/helpers/spacing-helpers/).
+
+      For example:
+      - `has-margin-large` -> `m-3`
+      - `has-margin-top-large` -> `mt-3`
+      - `has-margin-right-small` -> `mr-1`
+      - `has-margin-bottom-medium` -> `mb-2`
+      - `has-margin-top-small` -> `mt-1`
+      - `has-padding-left-large` -> `pl-3`
+      - `has-padding-large` -> `p-3`
+      - `has-padding-medium` -> `p-2`
+      - `has-margin-top-medium` -> `mt-2`
+
+- remove `[v-cloak]`, `*:focus` &  `@import 'v-tooltip/dist/v-tooltip';` from `client/src/sass/enso.scss`
+
+- update the Enso version to `4.9.1` in `config/enso/config.php`
+
+- run `composer update` in the project's root
+
+- run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+
+- `php artisan enso:upgrade --before-migration`
+
+- `php artisan migrate`
+
+- `php artisan enso:upgrade`
+
+- as per every release, delete any local, deprecated upgrades
+
 ## 4.9.0
 This release upgrades the UI to Vue 3 and also includes under the hood refactor
 for a few core components. We've tried to maintain overall component compatibility

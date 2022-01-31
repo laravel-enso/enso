@@ -3,7 +3,7 @@
 return [
     'order' => 2,
     'role' => ['name' => 'supervisor', 'display_name' => 'Supervisor'],
-    'default_menu' => 'howTo.videos.index',
+    'default_menu' => 'dashboard.index',
     'permissions' => [
         'howTo.videos.show',
         'howTo.tags.index',
