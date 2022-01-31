@@ -184,5 +184,5 @@ return [
         'export.cancel',
         'tasks.users',
         'import.restart',
-    ]
+    ],
 ];

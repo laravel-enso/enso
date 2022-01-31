@@ -44,5 +44,5 @@ return [
         'core.comments.users',
         'system.localisation.options',
         'export.cancel',
-    ]
+    ],
 ];
