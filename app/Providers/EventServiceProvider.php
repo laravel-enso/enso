@@ -11,4 +11,14 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\EventListener',
         ],
     ];
+
+    public function boot()
+    {
+        //
+    }
+
+    public function shouldDiscoverEvents()
+    {
+        return false;
+    }
 }

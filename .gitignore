@@ -17,15 +17,17 @@ Homestead.yaml
 
 # env
 .env
-
+.env.backup
 # logs
 .phpunit.result.cache
 .php_cs
 .php_cs.cache
+npm-debug.log
+yarn-error.log
 
 # code editors
-.idea
-.vscode
+/.idea
+/.vscode
 *.suo
 *.ntvs*
 *.njsproj
