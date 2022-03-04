@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a51e2d6eaa06b7ca51e296c38e047f61",
+    "content-hash": "bcd90e547a08859844c9b0f98de8e493",
     "packages": [
         {
             "name": "barryvdh/laravel-snappy",
@@ -2060,16 +2060,16 @@
         },
         {
             "name": "laravel-enso/avatars",
-            "version": "4.0.4",
+            "version": "4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/avatars.git",
-                "reference": "bb9f19c9dcaa71e1e21821d65126066637c3bda4"
+                "reference": "ff8447a257ac6542cc6e49ceded845b9283c47f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/bb9f19c9dcaa71e1e21821d65126066637c3bda4",
-                "reference": "bb9f19c9dcaa71e1e21821d65126066637c3bda4",
+                "url": "https://api.github.com/repos/laravel-enso/avatars/zipball/ff8447a257ac6542cc6e49ceded845b9283c47f2",
+                "reference": "ff8447a257ac6542cc6e49ceded845b9283c47f2",
                 "shasum": ""
             },
             "require": {
@@ -2116,9 +2116,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/avatars/issues",
-                "source": "https://github.com/laravel-enso/avatars/tree/4.0.4"
+                "source": "https://github.com/laravel-enso/avatars/tree/4.0.6"
             },
-            "time": "2022-03-02T11:08:30+00:00"
+            "time": "2022-03-03T14:07:05+00:00"
         },
         {
             "name": "laravel-enso/calendar",
@@ -2258,67 +2258,6 @@
                 "source": "https://github.com/laravel-enso/charts/tree/4.4.0"
             },
             "time": "2022-03-02T11:15:10+00:00"
-        },
-        {
-            "name": "laravel-enso/cli",
-            "version": "5.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-enso/cli.git",
-                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
-                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
-                "shasum": ""
-            },
-            "require": {
-                "laravel-enso/core": "^8.0",
-                "laravel-enso/enums": "^2.0",
-                "laravel-enso/helpers": "^2.0",
-                "laravel-enso/menus": "^5.0",
-                "laravel-enso/permissions": "^5.0",
-                "laravel-enso/roles": "^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelEnso\\Cli\\AppServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelEnso\\Cli\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Ocneanu",
-                    "email": "aocneanu@gmail.com",
-                    "homepage": "https://laravel-enso.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Cli dependency for Laravel Enso",
-            "homepage": "https://github.com/laravel-enso/cli",
-            "keywords": [
-                "cli",
-                "enso-helper",
-                "laravel-enso"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel-enso/cli/issues",
-                "source": "https://github.com/laravel-enso/cli/tree/5.0.1"
-            },
-            "time": "2022-02-25T13:24:25+00:00"
         },
         {
             "name": "laravel-enso/comments",
@@ -2759,16 +2698,16 @@
         },
         {
             "name": "laravel-enso/data-export",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-export.git",
-                "reference": "0d63eb60331d750b12eceba5ea9fc1d93753d11c"
+                "reference": "d7ef84b9bc66851ddd85243bb7352b75d26ced09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/0d63eb60331d750b12eceba5ea9fc1d93753d11c",
-                "reference": "0d63eb60331d750b12eceba5ea9fc1d93753d11c",
+                "url": "https://api.github.com/repos/laravel-enso/data-export/zipball/d7ef84b9bc66851ddd85243bb7352b75d26ced09",
+                "reference": "d7ef84b9bc66851ddd85243bb7352b75d26ced09",
                 "shasum": ""
             },
             "require": {
@@ -2817,22 +2756,22 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/data-export/issues",
-                "source": "https://github.com/laravel-enso/data-export/tree/3.0.3"
+                "source": "https://github.com/laravel-enso/data-export/tree/3.0.4"
             },
-            "time": "2022-03-03T13:11:22+00:00"
+            "time": "2022-03-03T13:41:36+00:00"
         },
         {
             "name": "laravel-enso/data-import",
-            "version": "6.0.7",
+            "version": "6.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/data-import.git",
-                "reference": "b49bcfc00b7a00faa21e7193f9776cd4b18d3b11"
+                "reference": "b11f22271f4548c748f0d1181a27a83aa0a412e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/b49bcfc00b7a00faa21e7193f9776cd4b18d3b11",
-                "reference": "b49bcfc00b7a00faa21e7193f9776cd4b18d3b11",
+                "url": "https://api.github.com/repos/laravel-enso/data-import/zipball/b11f22271f4548c748f0d1181a27a83aa0a412e7",
+                "reference": "b11f22271f4548c748f0d1181a27a83aa0a412e7",
                 "shasum": ""
             },
             "require": {
@@ -2893,9 +2832,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/data-import/issues",
-                "source": "https://github.com/laravel-enso/data-import/tree/6.0.7"
+                "source": "https://github.com/laravel-enso/data-import/tree/6.0.9"
             },
-            "time": "2022-03-03T13:12:22+00:00"
+            "time": "2022-03-03T14:24:09+00:00"
         },
         {
             "name": "laravel-enso/discussions",
@@ -2960,16 +2899,16 @@
         },
         {
             "name": "laravel-enso/documents",
-            "version": "5.0.3",
+            "version": "5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "a0a317b17b63b7dfb3cdc40116ba799a342bcef3"
+                "reference": "f71506de9a96a4b8a22bbd3f5965f47d4f5583de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/a0a317b17b63b7dfb3cdc40116ba799a342bcef3",
-                "reference": "a0a317b17b63b7dfb3cdc40116ba799a342bcef3",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/f71506de9a96a4b8a22bbd3f5965f47d4f5583de",
+                "reference": "f71506de9a96a4b8a22bbd3f5965f47d4f5583de",
                 "shasum": ""
             },
             "require": {
@@ -3018,9 +2957,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/documents/issues",
-                "source": "https://github.com/laravel-enso/documents/tree/5.0.3"
+                "source": "https://github.com/laravel-enso/documents/tree/5.0.4"
             },
-            "time": "2022-03-02T11:39:50+00:00"
+            "time": "2022-03-03T13:43:10+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
@@ -3198,16 +3137,16 @@
         },
         {
             "name": "laravel-enso/files",
-            "version": "5.0.11",
+            "version": "5.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/files.git",
-                "reference": "a74a3f2bf3e7936856204e69e50d1b5b3227a8cb"
+                "reference": "70c28c245b3d5be49987a9b8bce58093c2836e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/files/zipball/a74a3f2bf3e7936856204e69e50d1b5b3227a8cb",
-                "reference": "a74a3f2bf3e7936856204e69e50d1b5b3227a8cb",
+                "url": "https://api.github.com/repos/laravel-enso/files/zipball/70c28c245b3d5be49987a9b8bce58093c2836e25",
+                "reference": "70c28c245b3d5be49987a9b8bce58093c2836e25",
                 "shasum": ""
             },
             "require": {
@@ -3256,9 +3195,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/files/issues",
-                "source": "https://github.com/laravel-enso/files/tree/5.0.11"
+                "source": "https://github.com/laravel-enso/files/tree/5.0.13"
             },
-            "time": "2022-03-03T12:28:52+00:00"
+            "time": "2022-03-03T14:12:24+00:00"
         },
         {
             "name": "laravel-enso/filters",
@@ -3537,16 +3476,16 @@
         },
         {
             "name": "laravel-enso/how-to",
-            "version": "5.0.3",
+            "version": "5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/how-to.git",
-                "reference": "2a542ba931d27b4f3dcf07898a1a4bff52bd5e1a"
+                "reference": "b1020186c713c9add2130f5153f698cdea4047fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/how-to/zipball/2a542ba931d27b4f3dcf07898a1a4bff52bd5e1a",
-                "reference": "2a542ba931d27b4f3dcf07898a1a4bff52bd5e1a",
+                "url": "https://api.github.com/repos/laravel-enso/how-to/zipball/b1020186c713c9add2130f5153f698cdea4047fa",
+                "reference": "b1020186c713c9add2130f5153f698cdea4047fa",
                 "shasum": ""
             },
             "require": {
@@ -3591,9 +3530,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/how-to/issues",
-                "source": "https://github.com/laravel-enso/how-to/tree/5.0.3"
+                "source": "https://github.com/laravel-enso/how-to/tree/5.0.4"
             },
-            "time": "2022-03-03T09:44:59+00:00"
+            "time": "2022-03-03T13:45:38+00:00"
         },
         {
             "name": "laravel-enso/image-transformer",
@@ -5165,16 +5104,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.3.0",
+            "version": "v9.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d442195be0c1a95324522d733e2369e406db51d1"
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d442195be0c1a95324522d733e2369e406db51d1",
-                "reference": "d442195be0c1a95324522d733e2369e406db51d1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
                 "shasum": ""
             },
             "require": {
@@ -5260,7 +5199,7 @@
                 "mockery/mockery": "^1.4.4",
                 "orchestra/testbench-core": "^7.1",
                 "pda/pheanstalk": "^4.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^9.5.8",
                 "predis/predis": "^1.1.9",
                 "symfony/cache": "^6.0"
@@ -5340,7 +5279,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-03-02T14:37:13+00:00"
+            "time": "2022-03-03T15:15:10+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -5482,78 +5421,6 @@
                 "source": "https://github.com/laravel/sanctum"
             },
             "time": "2022-02-16T14:40:23+00:00"
-        },
-        {
-            "name": "laravel/scout",
-            "version": "v9.4.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/scout.git",
-                "reference": "ac962d2e052e90ca271e9bb1b30229ed870c4963"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/ac962d2e052e90ca271e9bb1b30229ed870c4963",
-                "reference": "ac962d2e052e90ca271e9bb1b30229ed870c4963",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/bus": "^8.0|^9.0",
-                "illuminate/contracts": "^8.0|^9.0",
-                "illuminate/database": "^8.0|^9.0",
-                "illuminate/http": "^8.0|^9.0",
-                "illuminate/pagination": "^8.0|^9.0",
-                "illuminate/queue": "^8.0|^9.0",
-                "illuminate/support": "^8.0|^9.0",
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "meilisearch/meilisearch-php": "^0.19",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^6.17|^7.0",
-                "phpunit/phpunit": "^9.3"
-            },
-            "suggest": {
-                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^2.2).",
-                "meilisearch/meilisearch-php": "Required to use the MeiliSearch engine (^0.17)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "9.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Scout\\ScoutServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Scout\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
-            "keywords": [
-                "algolia",
-                "laravel",
-                "search"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/scout/issues",
-                "source": "https://github.com/laravel/scout"
-            },
-            "time": "2022-02-22T16:20:15+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -9393,6 +9260,71 @@
             "time": "2022-02-25T10:48:52+00:00"
         },
         {
+            "name": "symfony/mailgun-mailer",
+            "version": "v6.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailgun-mailer.git",
+                "reference": "332442e27d4718a7764dbf06751e9ef1377b9ccd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mailgun-mailer/zipball/332442e27d4718a7764dbf06751e9ef1377b9ccd",
+                "reference": "332442e27d4718a7764dbf06751e9ef1377b9ccd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/mailer": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "symfony/http-client": "^5.4|^6.0"
+            },
+            "type": "symfony-mailer-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\Bridge\\Mailgun\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Mailgun Mailer Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/mailgun-mailer/tree/v6.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-02T09:55:41+00:00"
+        },
+        {
             "name": "symfony/mime",
             "version": "v6.0.3",
             "source": {
@@ -12962,6 +12894,67 @@
             "time": "2021-07-22T09:24:00+00:00"
         },
         {
+            "name": "laravel-enso/cli",
+            "version": "5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-enso/cli.git",
+                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
+                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
+                "shasum": ""
+            },
+            "require": {
+                "laravel-enso/core": "^8.0",
+                "laravel-enso/enums": "^2.0",
+                "laravel-enso/helpers": "^2.0",
+                "laravel-enso/menus": "^5.0",
+                "laravel-enso/permissions": "^5.0",
+                "laravel-enso/roles": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEnso\\Cli\\AppServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Ocneanu",
+                    "email": "aocneanu@gmail.com",
+                    "homepage": "https://laravel-enso.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Cli dependency for Laravel Enso",
+            "homepage": "https://github.com/laravel-enso/cli",
+            "keywords": [
+                "cli",
+                "enso-helper",
+                "laravel-enso"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-enso/cli/issues",
+                "source": "https://github.com/laravel-enso/cli/tree/5.0.1"
+            },
+            "time": "2022-02-25T13:24:25+00:00"
+        },
+        {
             "name": "laravel-enso/phpunit-pretty-print",
             "version": "1.1.0",
             "source": {
@@ -13236,16 +13229,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.10.3",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "c6a951b75d684fd43fbbd69617488e1e2e8924ba"
+                "reference": "14daed4296fae74d9e3201d2c4925d1acb7aa614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/c6a951b75d684fd43fbbd69617488e1e2e8924ba",
-                "reference": "c6a951b75d684fd43fbbd69617488e1e2e8924ba",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/14daed4296fae74d9e3201d2c4925d1acb7aa614",
+                "reference": "14daed4296fae74d9e3201d2c4925d1acb7aa614",
                 "shasum": ""
             },
             "require": {
@@ -13283,7 +13276,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.3"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.11.0"
             },
             "funding": [
                 {
@@ -13291,7 +13284,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-02T14:16:47+00:00"
+            "time": "2022-03-03T13:19:32+00:00"
         },
         {
             "name": "nunomaduro/collision",
@@ -15801,6 +15794,290 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
                 "reference": "8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/pipeline": "^8.0|^9.0",
+                "php": "^8.0",
+                "spatie/backtrace": "^1.2",
+                "symfony/http-foundation": "^5.0|^6.0",
+                "symfony/mime": "^5.2|^6.0",
+                "symfony/process": "^5.2|^6.0",
+                "symfony/var-dumper": "^5.2|^6.0"
+            },
+            "require-dev": {
+                "dms/phpunit-arraysubset-asserts": "^0.3.0",
+                "pestphp/pest": "^1.20",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/phpunit-snapshot-assertions": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\FlareClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Send PHP errors to Flare",
+            "homepage": "https://github.com/spatie/flare-client-php",
+            "keywords": [
+                "exception",
+                "flare",
+                "reporting",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/flare-client-php/issues",
+                "source": "https://github.com/spatie/flare-client-php/tree/1.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-01T10:52:59+00:00"
+        },
+        {
+            "name": "spatie/ignition",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/ignition.git",
+                "reference": "5c554067887b7080bc58977fa30a488624d85d20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/5c554067887b7080bc58977fa30a488624d85d20",
+                "reference": "5c554067887b7080bc58977fa30a488624d85d20",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "monolog/monolog": "^2.0",
+                "php": "^8.0",
+                "spatie/flare-client-php": "^1.0",
+                "symfony/console": "^5.4|^6.0",
+                "symfony/var-dumper": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "pestphp/pest": "^1.20",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/ray": "^1.32",
+                "symfony/process": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Ignition\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spatie",
+                    "email": "info@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A beautiful error page for PHP applications.",
+            "homepage": "https://flareapp.io/ignition",
+            "keywords": [
+                "error",
+                "flare",
+                "laravel",
+                "page"
+            ],
+            "support": {
+                "docs": "https://flareapp.io/docs/ignition-for-laravel/introduction",
+                "forum": "https://twitter.com/flareappio",
+                "issues": "https://github.com/spatie/ignition/issues",
+                "source": "https://github.com/spatie/ignition"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-02T10:51:55+00:00"
+        },
+        {
+            "name": "spatie/laravel-ignition",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-ignition.git",
+                "reference": "d349854331789aba9205fd755e0c1d1934ef1463"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/d349854331789aba9205fd755e0c1d1934ef1463",
+                "reference": "d349854331789aba9205fd755e0c1d1934ef1463",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "illuminate/support": "^8.77|^9.0",
+                "monolog/monolog": "^2.3",
+                "php": "^8.0",
+                "spatie/flare-client-php": "^1.0.1",
+                "spatie/ignition": "^1.0",
+                "symfony/console": "^5.0|^6.0",
+                "symfony/var-dumper": "^5.0|^6.0"
+            },
+            "require-dev": {
+                "filp/whoops": "^2.14",
+                "livewire/livewire": "^2.8|dev-develop",
+                "mockery/mockery": "^1.4",
+                "nunomaduro/larastan": "^1.0",
+                "orchestra/testbench": "^6.23|^7.0",
+                "pestphp/pest": "^1.20",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.27"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\LaravelIgnition\\IgnitionServiceProvider"
+                    ],
+                    "aliases": {
+                        "Flare": "Spatie\\LaravelIgnition\\Facades\\Flare"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelIgnition\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spatie",
+                    "email": "info@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A beautiful error page for Laravel applications.",
+            "homepage": "https://flareapp.io/ignition",
+            "keywords": [
+                "error",
+                "flare",
+                "laravel",
+                "page"
+            ],
+            "support": {
+                "docs": "https://flareapp.io/docs/ignition-for-laravel/introduction",
+                "forum": "https://twitter.com/flareappio",
+                "issues": "https://github.com/spatie/laravel-ignition/issues",
+                "source": "https://github.com/spatie/laravel-ignition"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-15T11:02:15+00:00"
+        },
+        {
+            "name": "spatie/backtrace",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/backtrace.git",
+                "reference": "4ee7d41aa5268107906ea8a4d9ceccde136dbd5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/backtrace/zipball/4ee7d41aa5268107906ea8a4d9ceccde136dbd5b",
+                "reference": "4ee7d41aa5268107906ea8a4d9ceccde136dbd5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "phpunit/phpunit": "^9.3",
+                "symfony/var-dumper": "^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Backtrace\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van de Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A better backtrace",
+            "homepage": "https://github.com/spatie/backtrace",
+            "keywords": [
+                "Backtrace",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/backtrace/issues",
+                "source": "https://github.com/spatie/backtrace/tree/1.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/spatie",
+                    "type": "github"
+                },
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "other"
+                }
+            ],
+            "time": "2021-11-09T10:57:15+00:00"
+        },
+        {
+            "name": "symfony/cache",
+            "version": "v6.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/cache.git",
+                "reference": "ac6859b9216350046fa3f00d9f0b51e0f3de28fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/ac6859b9216350046fa3f00d9f0b51e0f3de28fd",
+                "reference": "ac6859b9216350046fa3f00d9f0b51e0f3de28fd",
                 "shasum": ""
             },
             "require": {
