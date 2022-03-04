@@ -1179,9 +1179,9 @@
     vuex "^4.0.0"
 
 "@enso-ui/directives@^2.0":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@enso-ui/directives/-/directives-2.0.12.tgz#ff75fb2fb10487f3055d08be20268b38487003bd"
-  integrity sha512-dLi0tNCQiLRnKTte0EOcqP0JlXCITeP4JmwkTdAZcwjRBh/7XMV/KpO/BgzFA6Xzk1+CV6ai6+MQphI8CdKiuQ==
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/@enso-ui/directives/-/directives-2.0.13.tgz#857c05d6c084a4691a0d7d2de942937253432574"
+  integrity sha512-g9L7VwlXaWGi9v11rT5HrjlefG51WdFHLDyt2yz29Nzqlwml++GWZUHD8Fhtm8gpQ/W62KD9XkPOGkIhW0zYmA==
   dependencies:
     highlight.js "^11.0"
     vue "^3.0"
@@ -1261,9 +1261,9 @@
   integrity sha512-vhmSj8SNYe7NEwHtVAt+p4HrOFw8IWSirfHOMrH+xjjUmGXlYAmuIYbFJux6SmAFEF/euWBwlKCi3Gl0aZVW4Q==
 
 "@enso-ui/files@^5.0":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-5.0.2.tgz#b1a050e7bf10e1849b24f999f5fe3bb373727e36"
-  integrity sha512-Ios1YLsjunnDR8myB2VtNhMJu8ABwj0TLVOdFel0bdGYgGd6gekQWTF8JPe9LjFBYCpQFg+v9xn+NddEcdk1Jw==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-5.1.1.tgz#aa1abd1589fbd61fb8e00ef90da67b7de3ff809b"
+  integrity sha512-cXugodNheeYxhnsSBKJfCvFNCoM0Hnf0X6KZkQDimYmvhSyEkYVDRFOyi4LgotQot76fdIF+OVs1Ai63AobvFg==
   dependencies:
     "@enso-ui/clipboard" "^2.0"
     "@enso-ui/confirmation" "^2.0"
@@ -1439,9 +1439,9 @@
     vuex "^4.0.0"
 
 "@enso-ui/mixins@^4.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/mixins/-/mixins-4.0.0.tgz#cdd43864b96ecb5d8291f018f35c004097376c15"
-  integrity sha512-VZV21XT3uRLWC0fZNOkBa17VpuISiNDfk62rjsrv9HMf91yq95efVKIL9KOhK+OlVLOzL/iiq34A2abXtxxquA==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/mixins/-/mixins-4.0.1.tgz#1bf30efc4b4347375bacda5dbddfd5f94ca3ed6e"
+  integrity sha512-8QMy9zad9plXA5Puqg9CdRmqXtLKmC43PvGzziybVs1wAtVoh33lpX0ioPb+Zs9CcAVmZd6cA/6N+4efKrPmow==
   dependencies:
     "@enso-ui/ui" "^6.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.2"
@@ -1821,9 +1821,9 @@
     vuex "^4.0.0"
 
 "@enso-ui/uploader@^2.0":
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/@enso-ui/uploader/-/uploader-2.0.15.tgz#6743a6aa71ef0e4891fb1ed9deb3c8f070b282d1"
-  integrity sha512-rKxlrW6crwE4G3ePqeL1X8O8HE9TjM/Xfk6HdB0Z1hQSG8kiYjDOh0kxKPfqKX1Z4uECpb4NqloeHIMufEb0mw==
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/@enso-ui/uploader/-/uploader-2.0.16.tgz#df3d45b6355818751cec70e4286f2d550d2ea646"
+  integrity sha512-5a01H0VTe0lppmdNt86xpvPxiEAAnAdZYpIc5fQwU1B2qMqM4OJmlIm1vs+zFoCPPhEjatB2+l09N4Ln37s/WA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.2"
     "@fortawesome/free-solid-svg-icons" "^5.11.2"
@@ -3859,9 +3859,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001312:
-  version "1.0.30001312"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001312.tgz#e11eba4b87e24d22697dae05455d5aea28550d5f"
-  integrity sha512-Wiz1Psk2MEK0pX3rUzWaunLTZzqS2JYZFzNKqAiJGiuxIjRPLgV6+VDPOg6lQOUxmDwhTlh198JsTTi8Hzw6aQ==
+  version "1.0.30001313"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz#a380b079db91621e1b7120895874e2fd62ed2e2f"
+  integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
@@ -4697,9 +4697,9 @@ csso@^4.0.2:
     css-tree "^1.1.2"
 
 csstype@^2.6.8:
-  version "2.6.19"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
-  integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
+  version "2.6.20"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.20.tgz#9229c65ea0b260cf4d3d997cb06288e36a8d6dda"
+  integrity sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -7759,9 +7759,9 @@ mini-css-extract-plugin@^0.9.0:
     webpack-sources "^1.1.0"
 
 mini-css-extract-plugin@^2.4.0:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.5.3.tgz#c5c79f9b22ce9b4f164e9492267358dbe35376d9"
-  integrity sha512-YseMB8cs8U/KCaAGQoqYmfUuhhGW0a9p9XvWXrxVOkE3/IiISTLw4ALNt7JR5B2eYauFM+PQGSbXMDmVbR7Tfw==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.6.0.tgz#578aebc7fc14d32c0ad304c2c34f08af44673f5e"
+  integrity sha512-ndG8nxCEnAemsg4FSgS+yNyHKgkTB4nPKqCOgh65j3/30qqC5RaSQQXMm++Y6sb6E1zRSxPkztj9fqxhS1Eo6w==
   dependencies:
     schema-utils "^4.0.0"
 
@@ -11063,9 +11063,9 @@ ts-pnp@^1.1.6:
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
 tsconfig-paths@^3.12.0:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.12.0.tgz#19769aca6ee8f6a1a341e38c8fa45dd9fb18899b"
-  integrity sha512-e5adrnOYT6zqVnWqZu7i/BQ3BnhzvGbjEjejFXO20lKIKpwTaupkCPgEfv4GZK1IBciJUEhYs3J3p75FdaTFVg==
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.13.0.tgz#f3e9b8f6876698581d94470c03c95b3a48c0e3d7"
+  integrity sha512-nWuffZppoaYK0vQ1SQmkSsQzJoHA4s6uzdb2waRpD806x9yfq153AdVsWz4je2qZcW+pENrMQXbGQ3sMCkXuhw==
   dependencies:
     "@types/json5" "^0.0.29"
     json5 "^1.0.1"

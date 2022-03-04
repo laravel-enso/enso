@@ -16,5 +16,6 @@ return [
         'core.files.favorites',
         'core.files.makePublic',
         'core.files.makePrivate',
-    ],
+        'core.files.update',
+    ]
 ];
