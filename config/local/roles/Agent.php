@@ -51,5 +51,5 @@ return [
         'core.files.makePublic',
         'core.files.makePrivate',
         'core.files.update',
-    ]
+    ],
 ];
