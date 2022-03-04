@@ -15701,16 +15701,16 @@
         },
         {
             "name": "spatie/ignition",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "5c554067887b7080bc58977fa30a488624d85d20"
+                "reference": "9d4e3ccf04acfe67d6caea43913c1fecf859b488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/5c554067887b7080bc58977fa30a488624d85d20",
-                "reference": "5c554067887b7080bc58977fa30a488624d85d20",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/9d4e3ccf04acfe67d6caea43913c1fecf859b488",
+                "reference": "9d4e3ccf04acfe67d6caea43913c1fecf859b488",
                 "shasum": ""
             },
             "require": {
@@ -15768,7 +15768,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-02T10:51:55+00:00"
+            "time": "2022-03-04T12:12:35+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
