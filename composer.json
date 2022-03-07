@@ -31,6 +31,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.0",
         "sentry/sentry-laravel": "^2.0.0",
+        "symfony/http-client": "^6.0",
         "symfony/mailgun-mailer": "^6.0"
     },
     "require-dev": {
@@ -42,7 +43,6 @@
         "laravel-enso/phpunit-pretty-print": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
-        "nunomaduro/phpinsights": "^2.0",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },

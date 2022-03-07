@@ -1079,9 +1079,9 @@
     vue "^3.0"
 
 "@enso-ui/clipboard@^2.0":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@enso-ui/clipboard/-/clipboard-2.0.7.tgz#4a1cc861f72276dedc60df925ddc196cccca1138"
-  integrity sha512-UsQR7ioeXkak76DJWXLtFYAytpDhVHHeDpqS6DhAnznmbCL9QMi14QrsybFfMYef+MuaZdr32CMiDJjPFfYnxA==
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@enso-ui/clipboard/-/clipboard-2.0.8.tgz#ff924ab21226df5fb6cce15f9f84924c7c906310"
+  integrity sha512-ZyPEzt2X4+e9aOhJdwYU9s7ND+jo2vNXibKOgdJQ2207aqJoSu5TubLaysWdtchuFdwg6Ug8olWqYYj3RBZ39Q==
   dependencies:
     vue "^3.0"
 
@@ -1261,9 +1261,9 @@
   integrity sha512-vhmSj8SNYe7NEwHtVAt+p4HrOFw8IWSirfHOMrH+xjjUmGXlYAmuIYbFJux6SmAFEF/euWBwlKCi3Gl0aZVW4Q==
 
 "@enso-ui/files@^5.0":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-5.1.1.tgz#aa1abd1589fbd61fb8e00ef90da67b7de3ff809b"
-  integrity sha512-cXugodNheeYxhnsSBKJfCvFNCoM0Hnf0X6KZkQDimYmvhSyEkYVDRFOyi4LgotQot76fdIF+OVs1Ai63AobvFg==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@enso-ui/files/-/files-5.1.2.tgz#198bb0265c29c0aa5d03b621f5ede18535127e62"
+  integrity sha512-QXwrr2xlVhGEXujEjwgB0aBh90mmBauAizR+ihTJ2FQqqaI5dcXTJJ5miEzMejwFoGN0GM8b6ZgZ0lkDCbgtOg==
   dependencies:
     "@enso-ui/clipboard" "^2.0"
     "@enso-ui/confirmation" "^2.0"
@@ -1753,9 +1753,9 @@
     vue "^3.0"
 
 "@enso-ui/ui@^6.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-6.0.0.tgz#19c74f1cdb0a36a6adac37321648a008a1deb9aa"
-  integrity sha512-o1mScadqFCvIf4AhQDoa/GhiVITC7MfT4YLPmINMBumtsjtXt8uJGevQylsrrUWDlDrt6r9d/h0h639F23FXDQ==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/ui/-/ui-6.0.1.tgz#c755fd7ddf5ff844184f28954a8d9761c8f8f37a"
+  integrity sha512-mtmiKrGZ837cR3RtfJ8I04sYMjvcBRRmZ9IHDNwhup2swzKsHpVu2vG0x6jjYqangmYFCe0CgAISD/FlyhxX2A==
   dependencies:
     "@enso-ui/accessories" "^4.0"
     "@enso-ui/auth" "^3.0"
@@ -2081,9 +2081,9 @@
     tslib "^1.9.3"
 
 "@sentry/cli@^1.73.0":
-  version "1.73.1"
-  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.73.1.tgz#b7ccc964f23230b45921ee91baa52397430dce9e"
-  integrity sha512-EB9mSIVIgHhIDM00pMH1kBcz+pUI//nFB/wtD7PDb6twa+p8GyKV3h2k/HVC7rwY0sQ52lRA2cQysEQuYkgB6Q==
+  version "1.73.2"
+  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.73.2.tgz#968efd44f278a9e0f6755b2749f20b7bbcb289f3"
+  integrity sha512-+pOL6q3IopNrVNFfrw0XEr4SSBLE2WW0qX3TA2Ph4qXxX+8AcgBgf1fck6u8Hf8x2UJORp+LL7O+FpqaiydNsw==
   dependencies:
     https-proxy-agent "^5.0.0"
     mkdirp "^0.5.5"
@@ -3648,12 +3648,12 @@ browserify-zlib@^0.2.0:
     pako "~1.0.5"
 
 browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.17.5, browserslist@^4.19.1, browserslist@^4.6.4:
-  version "4.19.3"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.19.3.tgz#29b7caad327ecf2859485f696f9604214bedd383"
-  integrity sha512-XK3X4xtKJ+Txj8G5c30B4gsm71s69lqXlkYui4s6EkKxuv49qjYlY6oVd+IFJ73d4YymtM3+djvvt/R/iJwwDg==
+  version "4.20.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.20.0.tgz#35951e3541078c125d36df76056e94738a52ebe9"
+  integrity sha512-bnpOoa+DownbciXj0jVGENf8VYQnE2LNWomhYuCsMmmx9Jd9lwq0WXODuwpSsp8AVdKM2/HorrzxAfbKvWTByQ==
   dependencies:
-    caniuse-lite "^1.0.30001312"
-    electron-to-chromium "^1.4.71"
+    caniuse-lite "^1.0.30001313"
+    electron-to-chromium "^1.4.76"
     escalade "^3.1.1"
     node-releases "^2.0.2"
     picocolors "^1.0.0"
@@ -3858,7 +3858,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001312:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001313:
   version "1.0.30001313"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz#a380b079db91621e1b7120895874e2fd62ed2e2f"
   integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
@@ -5061,10 +5061,10 @@ ejs@^2.6.1:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
-electron-to-chromium@^1.4.71:
-  version "1.4.75"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.75.tgz#d1ad9bb46f2f1bf432118c2be21d27ffeae82fdd"
-  integrity sha512-LxgUNeu3BVU7sXaKjUDD9xivocQLxFtq6wgERrutdY/yIOps3ODOZExK1jg8DTEg4U8TUCb5MLGeWFOYuxjF3Q==
+electron-to-chromium@^1.4.76:
+  version "1.4.76"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.76.tgz#a0494baedaf51094b1c172999919becd9975a934"
+  integrity sha512-3Vftv7cenJtQb+k00McEBZ2vVmZ/x+HEF7pcZONZIkOsESqAqVuACmBxMv0JhzX7u0YltU0vSqRqgBSTAhFUjA==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -5889,9 +5889,9 @@ flat-cache@^3.0.4:
     rimraf "^3.0.2"
 
 flatpickr@^4.5.0:
-  version "4.6.9"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.9.tgz#9a13383e8a6814bda5d232eae3fcdccb97dc1499"
-  integrity sha512-F0azNNi8foVWKSF+8X+ZJzz8r9sE1G4hl06RyceIaLvyltKvDl6vqk9Lm/6AUUCi5HWaIjiUbk7UpeE/fOXOpw==
+  version "4.6.10"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.10.tgz#6f581fdf8ebba83766457c7ddae36cc4ec983811"
+  integrity sha512-Z1rNbMAg7WmKPBVj0cOjO/4Ab5H3Of5MMohgVvJpFiEAcWFUcaGgN5yzizKGUUN1j6zXYeYASI2XxqrhbiRoig==
 
 flatted@^3.1.0:
   version "3.2.5"
@@ -6509,9 +6509,9 @@ http-errors@~1.6.2:
     statuses ">= 1.4.0 < 2"
 
 http-parser-js@>=0.5.1:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/http-parser-js/-/http-parser-js-0.5.5.tgz#d7c30d5d3c90d865b4a2e870181f9d6f22ac7ac5"
-  integrity sha512-x+JVEkO2PoM8qqpbPbOL3cqHPwerep7OwzK7Ay+sMQjKzaKCqWvjoXm5tqMP9tXWWTnTzAjIhXg+J99XYuPhPA==
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/http-parser-js/-/http-parser-js-0.5.6.tgz#2e02406ab2df8af8a7abfba62e0da01c62b95afd"
+  integrity sha512-vDlkRPDJn93swjcjqMSaGSPABbIarsr1TLAui/gLDXzV5VsJNdXNzMYDyNBLQkjWQCJ1uizu8T2oDMhmGt0PRA==
 
 http-proxy-middleware@0.19.1:
   version "0.19.1"
@@ -9448,9 +9448,9 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2
     source-map "^0.6.1"
 
 postcss@^8.1.10:
-  version "8.4.7"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.7.tgz#f99862069ec4541de386bf57f5660a6c7a0875a8"
-  integrity sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==
+  version "8.4.8"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.8.tgz#dad963a76e82c081a0657d3a2f3602ce10c2e032"
+  integrity sha512-2tXEqGxrjvAO6U+CJzDL2Fk2kPHTv1jQsYkSoMeOis2SsYaXRO2COxTdQp99cYvif9JTXaAk9lYGc3VhJt7JPQ==
   dependencies:
     nanoid "^3.3.1"
     picocolors "^1.0.0"
