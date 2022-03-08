@@ -1,5 +1,399 @@
 # Laravel Enso's Changelog
 
+## 5.0.0
+
+This breaking release brings the new Enso file system and upgrades all packages to Laravel 9.
+
+The old filesystem was pretty basic and has been upgraded to something more robust by replacing the usage of polymorphic relationships with regular foreign keys (models that were using the `HasFile` trait now have a file relationship through a `file_id` column) with more features (such as favorite files) as well leaving room for future functionality.
+
+We've taken advantage of the breaking version state, included other small changes from our backlog and made a slight change to the mechanism for locally extending package forms and tables.
+
+Due to these changes, most packages have had a refactor and dependency list upgrade.
+
+### Front-end
+
+#### clipboard
+- updated clipboard size
+
+#### confirmation
+- removed unneded `v-bind` from dropdown
+
+#### directives
+- improved `clickOutside.js`
+
+#### documents
+- removed `Document.vue` component, now we use `File.vue` instead
+
+#### files
+- major refactor in order to work with the new file system back-end changes
+- several fixes & enhancements
+- added edit ability for file name
+
+#### how-to
+- fixed uploader
+
+#### mixins
+- improved `ensoFile.js`, now it's constructor receives a `File` resource instead of a filename
+
+#### notifications
+- fixed transition group
+
+#### tables
+- cascades reset method
+
+#### themes
+- fixed confirmation; removes duplicated & deprecated classes
+
+#### ui
+- added `avatarKey` in store
+- made content relative in default layout
+- improved websockets
+
+#### uploader
+- cascades slot in `enso-uploader`
+- small refactor
+
+#### users
+- fixed uploader
+- fixed `v-click-outside` related bug on profile control
+- improved `Avatar.vue`
+- added `Url` component
+
+### back-end
+All packages have been updated with regards to:
+
+- aligning Form builder, Table builder & Form request validation classes naming conventions, by dropping superfluous prefixes.
+
+- when extending forms, rather than overriding the protected constant `TemplatePath` (which has now become private), we've added a protected method `templatePath()` that is used in the forms' constructor. When extending any form builders, you should override this method if you want to use another form template.
+
+- when extending tables, note that the protected constant `TemplatePath` has now become private, and we've updated the public method `templatePath()`. When extending any table builders, you should override this method if you want to use another table template.
+
+- due to the major files refactor, all packages that use files have been updated. `FileServiceProvider` file has been deleted and also removed form composer files.
+
+- the new file system impact has also led to the need of changing the initial order of migrations. For this change it already exists an upgrade, but you should take a note that a lot of package migrations have been renamed.
+
+- all migrations have been upgraded in order to  return an anonymous class by the new Laravel 9 style. This way we can avoid class name collision.
+
+- an important note is that the old `DataImport` and `DataExport` models have been renamed to `Import` and `Export`, respectively.
+
+#### action-logger
+- updated migration style
+
+#### addresses
+- fixed seeders path
+- updated migration classes
+
+#### api
+- no longer sends empty request body
+- fixed api calls
+- added query parameters interface
+
+#### avatars
+- refactor for the new file system
+- updated migrations
+
+#### calendar
+- updated migrations
+
+#### cli
+- fixed synthax error in `Exceptions/WriterProvider.php`
+- fixed template path generation for forms and tables
+
+#### comments
+- updated migrations
+
+#### companies
+- fixed seeders path
+- updated migrations
+
+#### control-panel-api
+- fixed seeders path
+- updated migrations
+
+#### core
+- fixed seeders path
+- updated `Preference` rememberable keys
+- fixed password validation when resetting password and email is missing
+
+#### countries
+- updated `eea` for United Kingdom
+- fixed seeders path
+- updated migrations
+
+#### data-export
+- refactor for the new file system
+- updated migrations
+- renamed `DataExport` model to `Export`
+
+#### data-import
+- switched order for authenticate / authorize
+- refactor for the new file system
+- updated migrations
+- renamed `DataImport` model to `Import`
+- the excel seeder has been updated, please see upgrade steps regarding this change
+
+#### documents
+- refactor for the new file system
+- updated migrations
+
+#### files
+The file system has been significantly improved and has received a lot of new features, such as:
+- switched polymorphic relations to one to one
+- updated migrations
+- a much more user friendly interface
+- added edit ability for file name
+- temporary link generation for 5 minutes, 1 hour or 24 hours
+- improved inline preview
+- allows the transformation of private files into public files and vice versa
+
+#### filters
+- fixed "doesntContain" search mode
+
+#### google
+- updated migrations
+
+#### helpers
+- small refactor
+
+#### how-to
+- refactor for the new file system
+- updated migrations
+
+#### impersonate
+- updated migration;
+
+#### localisation
+- added the `Full Name` key and `RO` translation
+- fixed seeders path
+- updated migrations
+- the localisation files have been moved from `resources/lang` directory to `lang` directory 
+
+#### menus
+- updated migrations
+
+#### notifications
+- updated migrations
+- updated pusher dependency
+
+#### pdf
+- updated laravel snappy
+- added `output()` to Pdf
+- added return types
+
+#### people
+- updated migrations
+
+#### permissions
+- updated migrations
+
+#### roles
+- updated migrations
+
+#### tables
+- added the possibility to conditionally return a table builder using the `tableClass($request)` method in addition to the `$tableClass` property, used in the table related controllers (init, data, excel)
+- fixed resource collection computor
+- refactor for the new file system
+
+#### tasks
+- updated migrations
+
+#### tutorials
+- updated migrations
+
+#### user-groups
+- fixed seeders path
+
+#### users
+- fixed seeders path
+- changed user `defaultPreferences` visibility to `protected`
+- updated migrations
+- updated user preferences to use cache
+
+### Private Packages
+
+#### webshop-commercial
+- updated migration
+- refactor for the new file system
+
+#### webshop
+- rebuilt assets
+- updated registration form label for name to Full Name
+- added default for sorting in order to address bot caching of deprecated URLs
+- fixed seeders path
+- updated migrations
+- removed `services` as dependency
+- refactor for the new file system
+
+#### emag
+- added missing branch from the `UpdateStock` listener; small job rename
+- offer now uses dynamic methods
+- added conditional trim
+- added new `Offer::valid` scope
+- added logic to delete awbs after download
+- fixed `Job` location;
+- updated migrations
+
+#### hr
+- fixed seeders path
+- updated migrations
+
+#### projects
+- fixed seeders path
+- updated migrations
+
+#### contracts
+- updated migrations
+
+#### commercial
+- updated the `UpdateStockValues` due to supllier pivot refactor
+- shipping address is optional on store orders
+- added fix for missing address
+- made supplier query more specific
+- added requests
+- fixed issue due to `product_supplier` pivot id
+- updated migrations
+- refactor for the new file system
+
+#### financials
+- updated migrations
+- refactor for the new file system
+
+#### inventory
+- `bundlePacking` cleanup
+- added `withAvailable` scope on `Product`
+- updated migrations
+
+#### discounts
+- updated migrations
+
+#### wiki
+- updated migrations
+- refactor for the new file system
+
+#### frisbo
+- fixed seeders path
+- updated migrations
+
+#### stripe
+- updated migration
+
+#### eav
+- adds `publish` method `AppServiceProvider`
+- simplified `eav` validation
+- removed unused model
+- added default for validator, when `eav` params payload is missing
+- updated migrations
+
+#### sale-channels
+- updated migrations
+
+#### product-eav
+- fixed `eav` syncing
+- simplified logic; removed attribute id from values pivot
+- added missing model
+- fixed table PK
+- added default for eav sync / Update
+- fixed the `getEav` dynamic; transformed the `$product->attributes()` dynamic relationship into a method
+- updated migration
+- fixes import
+
+### Upgrade steps
+
+First and foremost, be sure the to read the official [Laravel 9 upgrade guide](https://laravel.com/docs/9.x/upgrade) to understand all implications.
+
+* **before starting to upgrade your project, please read with attention the following step:**
+
+Due to the major files package refactor, all the Enso package classes using files will be updated accordingly.
+
+- publish the updated files config with `php artisan vendor:publish --tag=files-config --force`
+
+- add your local models using files under the `upgrade` key. The syntax is: `old attachable_type name => Model::class`.
+
+- if having several models stored under the same folder, then that folder name should be added under the `nonStandardFolders` key, so that the files could be migrated according to the new convention. The new convention is that the folder will be named as the model, written camelCase.
+
+- if you also want to rename your folder, you'll need to specify the name change under `renameFolders` key, as `'old name' => 'new name'`.
+
+- for all models using files, update your migrations by adding `file_id` foreign key.
+
+```
+$table->unsignedBigInteger('file_id')->nullable();
+$table->foreign('file_id')->references('id')->on('files')
+    ->onUpdate('restrict')->onDelete('restrict');
+```
+
+* if using the `ensoFile.js` mixin locally, when instantiating the class, you should pass a file resource object instead of a filename string
+
+* if you're sending email notifications with mailgun and inline attaching pdf files created with the `LaravelEnso\Pdf\Services\Pdf` service, you need to use `->output()` method:
+  ```
+  ...
+  ->attachData($invoice->output(), $this->filename());
+  ...
+  ```
+
+* if locally customizing Enso package **form builders** and providing another template file, while not customizing the constructor, you should
+  * change the `protected const TemplatePath = ...` visibility to private
+  * override the parent's `templatePath()` method:
+
+  ```
+  protected function templatePath(): string
+  {
+      return self::TemplatePath;
+  }
+  ```
+
+* if locally customizing Enso package **table builders** and providing another template file, you should
+  * change the `protected const TemplatePath = ...` visibility to private
+  * override the parent's `templatePath()` method:
+```
+public function templatePath(): string
+    {
+        return self::TemplatePath;
+    }
+```
+
+* if locally extending any **table builder classes**, check your imports as names may have changed. Make sure to also check within your app service providers
+* if locally extending any **request validation classes**, check your imports as names may have changed. Make sure to check within your app service providers
+
+* note that the `DataImport` and `DataExport` models have been renamed to `Import` and `Export`. You should updated your imports accordingly.
+
+* upgrade all package dependencies to their latest version
+
+* if using mailgun, make sure to require `symfony/mailgun-mailer` and `symfony/http-client` by using `composer require symfony/mailgun-mailer symfony/http-client`
+
+* update your `config` files, `.gitignore`, `Middleware` classes, `Providers`, `Exceptions/Handler.php` and `Http/Kernel.php` by following this merge request as an example https://github.com/laravel-enso/enso/pull/417/files 
+
+* refactor your local excel seeders by implementing the following methods
+
+```
+    protected function type(): string // If the $type property is overwritten
+    {
+        return $this->type;
+    }
+
+    protected function filename(): string
+    {
+        return $this->filename;
+    }
+
+```
+* if you need to customize the select options sort method, you can do so by publishing the select config using `php artisan vendor:publish --tag=select-config --force` and updating the `sortByOptions` key as needed.
+
+* update your `DatabaseSeeder` by adding `LaravelEnso\Files\Database\Seeders\TypeSeeder` before `UserSeeder`
+
+* if using `phpinsights`, note that there was a bug https://github.com/nunomaduro/phpinsights/issues/565. The bug was fixed, but not tagged, so you need to update your dependency to `"nunomaduro/phpinsights": "dev-master as 2.1.0",`
+
+* note that all all migrations have been upgraded in order to  return an anonymous class by the new Laravel 9 style. 
+
+* update the Enso version to `5.0.0` in `config/enso/config.php`
+* run `composer update` in the project's root
+* run `yarn`, `yarn upgrade && yarn` in `/client` to ensure you have the latest versions and patches are applied. If necessary, update your patches
+* `php artisan enso:upgrade --before-migration`
+* `php artisan migrate`
+* `php artisan enso:upgrade`
+* `php artisan enso:upgrade --manual`
+* make sure permissions are properly configured for each role and then save/refresh the roles configuration files
+* as per every release, delete any local, deprecated upgrades
+
 ## 4.9.1
 This minor release aims to update front-end packages to use the latest bulma syntax. It also includes many improvements and bug fixes.
 

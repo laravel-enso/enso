@@ -77,17 +77,17 @@ jobs:
           sudo test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
           sudo php phpcpd.phar app/
 
-#  php-insights:
-#    runs-on: ubuntu-20.04
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: '8.0'
-#      - name: 'Run php-insight'
-#        run: |
-#          sudo composer install
-#          sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
+  php-insights:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+      - name: 'Run php-insight'
+        run: |
+          sudo composer install
+          sudo php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
 
   security:
     runs-on: ubuntu-20.04
@@ -122,7 +122,7 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     if: ${{ github.event_name == 'deployment' || github.event_name == 'push' }}
-    needs: [phpunit, phpcpd, migration, yarn, security]
+    needs: [phpunit, phpcpd, migration, yarn, security, php-insights]
     steps:
       - uses: actions/checkout@v2
       - name: 'Trig envoyer'
