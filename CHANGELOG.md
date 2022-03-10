@@ -40,6 +40,7 @@ Due to these changes, most packages have had a refactor and dependency list upgr
 
 #### tables
 - cascades reset method
+- implemented number formatting for nested columns
 
 #### themes
 - fixed confirmation; removes duplicated & deprecated classes
@@ -193,6 +194,7 @@ The file system has been significantly improved and has received a lot of new fe
 - added the possibility to conditionally return a table builder using the `tableClass($request)` method in addition to the `$tableClass` property, used in the table related controllers (init, data, excel)
 - fixed resource collection computor
 - refactor for the new file system
+- implemented number and date formating for nested columns from loaded relationships
 
 #### tasks
 - updated migrations
@@ -380,7 +382,7 @@ public function templatePath(): string
 
 * update your `DatabaseSeeder` by adding `LaravelEnso\Files\Database\Seeders\TypeSeeder` before `UserSeeder`
 
-* if using `phpinsights`, note that there was a bug https://github.com/nunomaduro/phpinsights/issues/565. The bug was fixed, but not tagged, so you need to update your dependency to `"nunomaduro/phpinsights": "dev-master as 2.1.0",`
+* if using `phpinsights`, note that there was a bug https://github.com/nunomaduro/phpinsights/issues/565. The bug was fixed, but not tagged, so you need to update your dependency to `"nunomaduro/phpinsights": "dev-master",`
 
 * note that all all migrations have been upgraded in order to  return an anonymous class by the new Laravel 9 style. 
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6773af6aadeac317df9a21c2e252f5e",
+    "content-hash": "1cc0998002c47a6c507f34ade55a283e",
     "packages": [
         {
             "name": "barryvdh/laravel-snappy",
@@ -460,16 +460,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.13.7",
+            "version": "2.13.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "6e22f6012b42d7932674857989fcf184e9e9b1c3"
+                "reference": "dc9b3c3c8592c935a6e590441f9abc0f9eba335b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6e22f6012b42d7932674857989fcf184e9e9b1c3",
-                "reference": "6e22f6012b42d7932674857989fcf184e9e9b1c3",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/dc9b3c3c8592c935a6e590441f9abc0f9eba335b",
+                "reference": "dc9b3c3c8592c935a6e590441f9abc0f9eba335b",
                 "shasum": ""
             },
             "require": {
@@ -482,13 +482,13 @@
             "require-dev": {
                 "doctrine/coding-standard": "9.0.0",
                 "jetbrains/phpstorm-stubs": "2021.1",
-                "phpstan/phpstan": "1.3.0",
-                "phpunit/phpunit": "^7.5.20|^8.5|9.5.11",
+                "phpstan/phpstan": "1.4.6",
+                "phpunit/phpunit": "^7.5.20|^8.5|9.5.16",
                 "psalm/plugin-phpunit": "0.16.1",
                 "squizlabs/php_codesniffer": "3.6.2",
                 "symfony/cache": "^4.4",
                 "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
-                "vimeo/psalm": "4.16.1"
+                "vimeo/psalm": "4.22.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -549,7 +549,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/2.13.7"
+                "source": "https://github.com/doctrine/dbal/tree/2.13.8"
             },
             "funding": [
                 {
@@ -565,7 +565,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-06T09:08:04+00:00"
+            "time": "2022-03-09T15:25:46+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -3373,16 +3373,16 @@
         },
         {
             "name": "laravel-enso/helpers",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/helpers.git",
-                "reference": "a05106cfba8f6a11cc91a45d2b2958ab2f29bf4c"
+                "reference": "1d7ef41a1fbc9ed59ffde2c4c0fd22deeff042e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/a05106cfba8f6a11cc91a45d2b2958ab2f29bf4c",
-                "reference": "a05106cfba8f6a11cc91a45d2b2958ab2f29bf4c",
+                "url": "https://api.github.com/repos/laravel-enso/helpers/zipball/1d7ef41a1fbc9ed59ffde2c4c0fd22deeff042e9",
+                "reference": "1d7ef41a1fbc9ed59ffde2c4c0fd22deeff042e9",
                 "shasum": ""
             },
             "require": {
@@ -3422,9 +3422,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/helpers/issues",
-                "source": "https://github.com/laravel-enso/helpers/tree/2.7.1"
+                "source": "https://github.com/laravel-enso/helpers/tree/2.7.2"
             },
-            "time": "2022-03-03T10:48:33+00:00"
+            "time": "2022-03-09T11:28:48+00:00"
         },
         {
             "name": "laravel-enso/history-tracker",
@@ -4578,16 +4578,16 @@
         },
         {
             "name": "laravel-enso/tables",
-            "version": "4.11.1",
+            "version": "4.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tables.git",
-                "reference": "0325825f47de0f01f2770935f0d49fe988d48e64"
+                "reference": "abd06fb0c3cf6e62e1787a1657fdcdd31f6c73f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/0325825f47de0f01f2770935f0d49fe988d48e64",
-                "reference": "0325825f47de0f01f2770935f0d49fe988d48e64",
+                "url": "https://api.github.com/repos/laravel-enso/tables/zipball/abd06fb0c3cf6e62e1787a1657fdcdd31f6c73f0",
+                "reference": "abd06fb0c3cf6e62e1787a1657fdcdd31f6c73f0",
                 "shasum": ""
             },
             "require": {
@@ -4634,9 +4634,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/tables/issues",
-                "source": "https://github.com/laravel-enso/tables/tree/4.11.1"
+                "source": "https://github.com/laravel-enso/tables/tree/4.11.2"
             },
-            "time": "2022-03-03T10:26:34+00:00"
+            "time": "2022-03-10T14:53:46+00:00"
         },
         {
             "name": "laravel-enso/tasks",
@@ -5104,16 +5104,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.3.1",
+            "version": "v9.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4"
+                "reference": "29f0aaade82eadd20ef881b4efb88b0dad4e9a5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
-                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/29f0aaade82eadd20ef881b4efb88b0dad4e9a5b",
+                "reference": "29f0aaade82eadd20ef881b4efb88b0dad4e9a5b",
                 "shasum": ""
             },
             "require": {
@@ -5279,7 +5279,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-03-03T15:15:10+00:00"
+            "time": "2022-03-08T16:17:00+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -11092,16 +11092,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.38",
+            "version": "4.1.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/anti-xss.git",
-                "reference": "a659a2a502998146b5024cdf9d76a37f0d1b2492"
+                "reference": "64a59ba4744e6722866ff3440d93561da9e85cd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/a659a2a502998146b5024cdf9d76a37f0d1b2492",
-                "reference": "a659a2a502998146b5024cdf9d76a37f0d1b2492",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/64a59ba4744e6722866ff3440d93561da9e85cd0",
+                "reference": "64a59ba4744e6722866ff3440d93561da9e85cd0",
                 "shasum": ""
             },
             "require": {
@@ -11147,7 +11147,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/anti-xss/issues",
-                "source": "https://github.com/voku/anti-xss/tree/4.1.38"
+                "source": "https://github.com/voku/anti-xss/tree/4.1.39"
             },
             "funding": [
                 {
@@ -11171,20 +11171,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-07T10:26:59+00:00"
+            "time": "2022-03-08T17:03:58+00:00"
         },
         {
             "name": "voku/portable-ascii",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "9bd89e83cecdf8c37b64909454249eaed98b2c89"
+                "reference": "b56450eed252f6801410d810c8e1727224ae0743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/9bd89e83cecdf8c37b64909454249eaed98b2c89",
-                "reference": "9bd89e83cecdf8c37b64909454249eaed98b2c89",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/b56450eed252f6801410d810c8e1727224ae0743",
+                "reference": "b56450eed252f6801410d810c8e1727224ae0743",
                 "shasum": ""
             },
             "require": {
@@ -11221,7 +11221,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/portable-ascii/issues",
-                "source": "https://github.com/voku/portable-ascii/tree/2.0.0"
+                "source": "https://github.com/voku/portable-ascii/tree/2.0.1"
             },
             "funding": [
                 {
@@ -11245,20 +11245,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-24T18:59:03+00:00"
+            "time": "2022-03-08T17:03:00+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "6.0.3",
+            "version": "6.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "82a714b5a4973974c1113e97b11c1044a8b8cb85"
+                "reference": "f6c78e492520115bb2d947c3a0d90a2c6b7a60a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/82a714b5a4973974c1113e97b11c1044a8b8cb85",
-                "reference": "82a714b5a4973974c1113e97b11c1044a8b8cb85",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/f6c78e492520115bb2d947c3a0d90a2c6b7a60a8",
+                "reference": "f6c78e492520115bb2d947c3a0d90a2c6b7a60a8",
                 "shasum": ""
             },
             "require": {
@@ -11320,7 +11320,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/portable-utf8/issues",
-                "source": "https://github.com/voku/portable-utf8/tree/6.0.3"
+                "source": "https://github.com/voku/portable-utf8/tree/6.0.4"
             },
             "funding": [
                 {
@@ -11344,7 +11344,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-30T05:20:24+00:00"
+            "time": "2022-03-08T17:04:59+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -11661,12 +11661,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "575fbfb53fcc2388916d554271c99c8281fea782"
+                "reference": "ae23647f07932754dc9d7fd1d15657273301a009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/575fbfb53fcc2388916d554271c99c8281fea782",
-                "reference": "575fbfb53fcc2388916d554271c99c8281fea782",
+                "url": "https://api.github.com/repos/composer/composer/zipball/ae23647f07932754dc9d7fd1d15657273301a009",
+                "reference": "ae23647f07932754dc9d7fd1d15657273301a009",
                 "shasum": ""
             },
             "require": {
@@ -11759,7 +11759,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-26T13:12:30+00:00"
+            "time": "2022-03-09T19:45:19+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -12748,16 +12748,16 @@
         },
         {
             "name": "laravel-enso/cli",
-            "version": "5.0.1",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/cli.git",
-                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5"
+                "reference": "2f5506c2c5f1a43a0fb581ff6a0704f6af459ae1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
-                "reference": "a3e1dd9ecef9d48b78d890510fa1ee1d1908afc5",
+                "url": "https://api.github.com/repos/laravel-enso/cli/zipball/2f5506c2c5f1a43a0fb581ff6a0704f6af459ae1",
+                "reference": "2f5506c2c5f1a43a0fb581ff6a0704f6af459ae1",
                 "shasum": ""
             },
             "require": {
@@ -12803,9 +12803,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/cli/issues",
-                "source": "https://github.com/laravel-enso/cli/tree/5.0.1"
+                "source": "https://github.com/laravel-enso/cli/tree/5.0.2"
             },
-            "time": "2022-02-25T13:24:25+00:00"
+            "time": "2022-03-10T16:15:22+00:00"
         },
         {
             "name": "laravel-enso/phpunit-pretty-print",
@@ -13232,12 +13232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/phpinsights.git",
-                "reference": "5e84dab8d7ba6fbf698fe606e71787cffce6807e"
+                "reference": "51269b417923219301e9a6546ff05dce46238508"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/phpinsights/zipball/5e84dab8d7ba6fbf698fe606e71787cffce6807e",
-                "reference": "5e84dab8d7ba6fbf698fe606e71787cffce6807e",
+                "url": "https://api.github.com/repos/nunomaduro/phpinsights/zipball/51269b417923219301e9a6546ff05dce46238508",
+                "reference": "51269b417923219301e9a6546ff05dce46238508",
                 "shasum": ""
             },
             "require": {
@@ -13333,7 +13333,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-03-08T13:55:33+00:00"
+            "time": "2022-03-09T01:26:14+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -15773,16 +15773,16 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "d349854331789aba9205fd755e0c1d1934ef1463"
+                "reference": "ea3a5401b631e8a2ce10581c1fec10c240b8e36e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/d349854331789aba9205fd755e0c1d1934ef1463",
-                "reference": "d349854331789aba9205fd755e0c1d1934ef1463",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/ea3a5401b631e8a2ce10581c1fec10c240b8e36e",
+                "reference": "ea3a5401b631e8a2ce10581c1fec10c240b8e36e",
                 "shasum": ""
             },
             "require": {
@@ -15856,7 +15856,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-15T11:02:15+00:00"
+            "time": "2022-03-10T12:29:54+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

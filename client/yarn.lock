@@ -1617,9 +1617,9 @@
     vue "^3.0"
 
 "@enso-ui/tables@^3.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-3.1.0.tgz#15b5986210683ded17dd90e96f853873957b32b1"
-  integrity sha512-wLq+xQUvqTs4evdFaDj1kurfg6zW/GVQENKv3FTvjLuxI0M/vSz6sgOhft81R8QcMrx4zGOI4T8yA4U3rSYVvA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@enso-ui/tables/-/tables-3.1.1.tgz#0314876899f8fb5255993eb9e31c82745fcfd864"
+  integrity sha512-NnJgz1pMgrBQ8kutZ+CzYZAltkMy2epv42c65cyFi+lfJys7rPU2REvQtHz9w8S0jSP1YmkR0lIdrDakqUT7uQ==
   dependencies:
     "@enso-ui/date" "^1.0"
     "@enso-ui/datepicker" "^2.0"
@@ -2181,9 +2181,9 @@
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
 "@tinymce/tinymce-vue@^4.0.0":
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-vue/-/tinymce-vue-4.0.6.tgz#8744d3b5c6e07eff0a037301da0225f0d49a038e"
-  integrity sha512-qZ6tC1v58bILOYFnYxBgDCtryDYG60TO0Fiio8nBoycxcyafMnDrDQuXaSTGDXwZ/AOcQ0ZS1CYvnEFdG6S2tg==
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-vue/-/tinymce-vue-4.0.7.tgz#811dd87a2a9f70e60c43c2d9d932771c0c8b4677"
+  integrity sha512-1esB8wGWrjPCY+rK8vy3QB1cxwXo7HLJWuNrcyPl6LOVR+QJjub0OiV/C+TUEsLN6OpCtRv+QnIqMC5vXz783Q==
   dependencies:
     tinymce "^5.5.0"
 
@@ -2697,9 +2697,9 @@
     prettier "^1.18.2 || ^2.0.0"
 
 "@vue/devtools-api@^6.0.0", "@vue/devtools-api@^6.0.0-beta.11":
-  version "6.0.12"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.12.tgz#7b57cce215ae9f37a86984633b3aa3d595aa5b46"
-  integrity sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw==
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.13.tgz#33f8debe2d0239903b6fc8af10ace45ed3a4fab1"
+  integrity sha512-T34EjcArVqzANedEZe2kXQ+AZsld2z1ptJlkOGm87+blk+s6udnP4ze/NYqV8lz1o9AIivimN0xxteLlWiWQdg==
 
 "@vue/eslint-config-airbnb@^5.0.0":
   version "5.3.0"
@@ -5062,9 +5062,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.4.76:
-  version "1.4.77"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
-  integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
+  version "1.4.80"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.80.tgz#299a1ea3e32810934b4e3c2e4d4cb53136fdab3f"
+  integrity sha512-COsbJCGVYCc/aAY4cd94x1Js3q0r406YKGbdL8LXHg0O9dEjuFEFU/vZneRxBxKo/f1lLHi0YyAR7sbFM+i8Bg==
 
 elliptic@^6.5.3:
   version "6.5.4"
