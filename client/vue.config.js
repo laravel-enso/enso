@@ -102,21 +102,6 @@ module.exports = {
         scssRules.store.set('scss-lazy', lazyRule);
         scssRules.store.set('normal', normalRule);
 
-        // config.resolve.alias.set('vue', '@vue/compat');
-        // config.module
-        //     .rule('vue')
-        //     .use('vue-loader')
-        //     .tap(options => ({
-        //         ...options,
-        //         compilerOptions: {
-        //             compatConfig: {
-        //                 MODE: 2,
-        //                 COMPILER_V_BIND_OBJECT_ORDER: false,
-        //                 COMPILER_IS_ON_ELEMENT: false,
-        //             },
-        //         },
-        //     }));
-
         config.module
             .rule('images')
             .use('url-loader')
