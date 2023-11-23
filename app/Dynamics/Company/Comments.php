@@ -13,6 +13,7 @@ class Comments implements Method
     {
         return [Company::class];
     }
+
     public function name(): string
     {
         return 'comments';

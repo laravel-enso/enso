@@ -13,6 +13,7 @@ class Discussions implements Method
     {
         return [Company::class];
     }
+
     public function name(): string
     {
         return 'discussions';
