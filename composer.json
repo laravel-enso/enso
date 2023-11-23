@@ -14,7 +14,7 @@
         "laravel-enso/calendar": "^3.0",
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
-        "laravel-enso/core": "^8.0",
+        "laravel-enso/core": "^9.0",
         "laravel-enso/data-import": "^6.0",
         "laravel-enso/discussions": "^4.0",
         "laravel-enso/documents": "^5.0",
