@@ -5,9 +5,9 @@ namespace App\DynamicRelations\Company;
 use Closure;
 use LaravelEnso\Comments\Models\Comment;
 use LaravelEnso\Companies\Models\Company;
-use LaravelEnso\DynamicMethods\Contracts\Method;
+use LaravelEnso\DynamicMethods\Contracts\Relation;
 
-class Comments implements Method
+class Comments implements Relation
 {
     public function bindTo(): array
     {

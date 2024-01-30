@@ -5,9 +5,9 @@ namespace App\DynamicRelations\Company;
 use Closure;
 use LaravelEnso\Companies\Models\Company;
 use LaravelEnso\Documents\Models\Document;
-use LaravelEnso\DynamicMethods\Contracts\Method;
+use LaravelEnso\DynamicMethods\Contracts\Relation;
 
-class Documents implements Method
+class Documents implements Relation
 {
     public function bindTo(): array
     {

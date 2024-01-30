@@ -5,9 +5,10 @@ namespace App\DynamicRelations\Company;
 use Closure;
 use LaravelEnso\Companies\Models\Company;
 use LaravelEnso\Discussions\Models\Discussion;
-use LaravelEnso\DynamicMethods\Contracts\Method;
+use LaravelEnso\DynamicMethods\Contracts\Relation;
 
-class Discussions implements Method
+
+class Discussions implements Relation
 {
     public function bindTo(): array
     {
