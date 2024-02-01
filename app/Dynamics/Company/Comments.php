@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DynamicRelations\Company;
+namespace App\Dynamics\Company;
 
 use Closure;
 use LaravelEnso\Comments\Models\Comment;
