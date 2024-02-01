@@ -29,8 +29,8 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^3.0",
-        "sentry/sentry-laravel": "^2.0.0",
+        "laravel/ui": "^4.0",
+        "sentry/sentry-laravel": "^4.0.0",
         "symfony/http-client": "^6.0",
         "symfony/mailgun-mailer": "^6.0"
     },
@@ -45,7 +45,7 @@
         "nunomaduro/collision": "^6.1",
         "nunomaduro/phpinsights": "dev-master",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
