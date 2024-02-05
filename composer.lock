@@ -2643,16 +2643,16 @@
         },
         {
             "name": "laravel-enso/countries",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/countries.git",
-                "reference": "787681e8946e247af147f753202583d0e5a649f2"
+                "reference": "6b0b26a08df6b6203996b69985ef00a4dc6599b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/787681e8946e247af147f753202583d0e5a649f2",
-                "reference": "787681e8946e247af147f753202583d0e5a649f2",
+                "url": "https://api.github.com/repos/laravel-enso/countries/zipball/6b0b26a08df6b6203996b69985ef00a4dc6599b3",
+                "reference": "6b0b26a08df6b6203996b69985ef00a4dc6599b3",
                 "shasum": ""
             },
             "require": {
@@ -2706,9 +2706,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/countries/issues",
-                "source": "https://github.com/laravel-enso/countries/tree/2.4.1"
+                "source": "https://github.com/laravel-enso/countries/tree/2.4.2"
             },
-            "time": "2024-01-10T10:49:17+00:00"
+            "time": "2024-02-05T07:44:07+00:00"
         },
         {
             "name": "laravel-enso/data-export",
@@ -4094,16 +4094,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/people.git",
-                "reference": "661be09120ada4d9b017636b4056089a7ca5fdfc"
+                "reference": "39fa465f57bdcb428517d3d54b2e019af77475e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/people/zipball/661be09120ada4d9b017636b4056089a7ca5fdfc",
-                "reference": "661be09120ada4d9b017636b4056089a7ca5fdfc",
+                "url": "https://api.github.com/repos/laravel-enso/people/zipball/39fa465f57bdcb428517d3d54b2e019af77475e5",
+                "reference": "39fa465f57bdcb428517d3d54b2e019af77475e5",
                 "shasum": ""
             },
             "require": {
@@ -4156,9 +4156,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/people/issues",
-                "source": "https://github.com/laravel-enso/people/tree/4.3.0"
+                "source": "https://github.com/laravel-enso/people/tree/4.3.1"
             },
-            "time": "2024-01-10T09:43:36+00:00"
+            "time": "2024-02-05T07:42:49+00:00"
         },
         {
             "name": "laravel-enso/permissions",
@@ -4670,16 +4670,16 @@
         },
         {
             "name": "laravel-enso/teams",
-            "version": "4.1.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/teams.git",
-                "reference": "c16205933e766b82e4394ee5314678e2b8ca469a"
+                "reference": "2534e8e66a0c5b903bc0ae1da269be630683d98c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/c16205933e766b82e4394ee5314678e2b8ca469a",
-                "reference": "c16205933e766b82e4394ee5314678e2b8ca469a",
+                "url": "https://api.github.com/repos/laravel-enso/teams/zipball/2534e8e66a0c5b903bc0ae1da269be630683d98c",
+                "reference": "2534e8e66a0c5b903bc0ae1da269be630683d98c",
                 "shasum": ""
             },
             "require": {
@@ -4725,9 +4725,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/teams/issues",
-                "source": "https://github.com/laravel-enso/teams/tree/4.1.0"
+                "source": "https://github.com/laravel-enso/teams/tree/4.1.2"
             },
-            "time": "2024-01-10T09:38:51+00:00"
+            "time": "2024-02-05T07:41:24+00:00"
         },
         {
             "name": "laravel-enso/track-who",
@@ -5813,16 +5813,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "3669d6d5f7a47a93c08ddff335e6d945481a1dd5"
+                "reference": "91c24291965bd6d7c46c46a12ba7492f83b1cadf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/3669d6d5f7a47a93c08ddff335e6d945481a1dd5",
-                "reference": "3669d6d5f7a47a93c08ddff335e6d945481a1dd5",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/91c24291965bd6d7c46c46a12ba7492f83b1cadf",
+                "reference": "91c24291965bd6d7c46c46a12ba7492f83b1cadf",
                 "shasum": ""
             },
             "require": {
@@ -5835,7 +5835,7 @@
             },
             "require-dev": {
                 "cebe/markdown": "^1.0",
-                "commonmark/cmark": "0.30.0",
+                "commonmark/cmark": "0.30.3",
                 "commonmark/commonmark.js": "0.30.0",
                 "composer/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
@@ -5845,10 +5845,10 @@
                 "michelf/php-markdown": "^1.4 || ^2.0",
                 "nyholm/psr7": "^1.5",
                 "phpstan/phpstan": "^1.8.2",
-                "phpunit/phpunit": "^9.5.21",
+                "phpunit/phpunit": "^9.5.21 || ^10.5.9 || ^11.0.0",
                 "scrutinizer/ocular": "^1.8.1",
-                "symfony/finder": "^5.3 | ^6.0",
-                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0",
+                "symfony/finder": "^5.3 | ^6.0 || ^7.0",
+                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0 || ^7.0",
                 "unleashedtech/php-coding-standard": "^3.1.1",
                 "vimeo/psalm": "^4.24.0 || ^5.0.0"
             },
@@ -5915,7 +5915,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-30T16:55:00+00:00"
+            "time": "2024-02-02T11:59:32+00:00"
         },
         {
             "name": "league/config",
@@ -6001,16 +6001,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.23.1",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e"
+                "reference": "b25a361508c407563b34fac6f64a8a17a8819675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e",
-                "reference": "199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b25a361508c407563b34fac6f64a8a17a8819675",
+                "reference": "b25a361508c407563b34fac6f64a8a17a8819675",
                 "shasum": ""
             },
             "require": {
@@ -6030,7 +6030,7 @@
             "require-dev": {
                 "async-aws/s3": "^1.5 || ^2.0",
                 "async-aws/simple-s3": "^1.1 || ^2.0",
-                "aws/aws-sdk-php": "^3.220.0",
+                "aws/aws-sdk-php": "^3.295.10",
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
                 "ext-ftp": "*",
@@ -6041,7 +6041,7 @@
                 "phpseclib/phpseclib": "^3.0.34",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.5.11|^10.0",
-                "sabre/dav": "^4.3.1"
+                "sabre/dav": "^4.6.0"
             },
             "type": "library",
             "autoload": {
@@ -6075,7 +6075,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.23.1"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.24.0"
             },
             "funding": [
                 {
@@ -6087,7 +6087,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-26T18:42:03+00:00"
+            "time": "2024-02-04T12:10:17+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -12125,16 +12125,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.48.0",
+            "version": "v3.49.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "a92472c6fb66349de25211f31c77eceae3df024e"
+                "reference": "8742f7aa6f72a399688b65e4f58992c2d4681fc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/a92472c6fb66349de25211f31c77eceae3df024e",
-                "reference": "a92472c6fb66349de25211f31c77eceae3df024e",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/8742f7aa6f72a399688b65e4f58992c2d4681fc2",
+                "reference": "8742f7aa6f72a399688b65e4f58992c2d4681fc2",
                 "shasum": ""
             },
             "require": {
@@ -12204,7 +12204,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.48.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.49.0"
             },
             "funding": [
                 {
@@ -12212,7 +12212,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-19T21:44:39+00:00"
+            "time": "2024-02-02T00:41:40+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
