@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "doctrine/dbal": "^2.8",
+        "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-enso/calendar": "^3.0",
         "laravel-enso/comments": "^4.0",
