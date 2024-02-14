@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
       - name: 'PhpUnit'
         run: |
           sudo composer install
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
       - name: 'Run php-insight'
         run: |
           sudo composer install
@@ -95,7 +95,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
       - name: 'Run php-insight'
         run: |
           PHP_SC_VERSION=$(curl -s "https://api.github.com/repos/fabpot/local-php-security-checker/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/;s/^v//')
@@ -114,7 +114,7 @@ jobs:
           mysql password: ${{env.DB_PASSWORD}}
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
       - name: 'Run migration'
         run: |
           sudo composer install
