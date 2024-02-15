@@ -15,7 +15,7 @@ class UserFactory extends CoreUserFactory
     public function definition()
     {
         return [
-            'person_id' => Person::factory(),
+            'person_id' => Person::factory()->test(),
             'group_id' => UserGroup::factory(),
             'email' => fn ($attributes) => Person::find($attributes['person_id'])->email,
             'role_id' => Role::factory(),
