@@ -4097,16 +4097,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/people.git",
-                "reference": "39fa465f57bdcb428517d3d54b2e019af77475e5"
+                "reference": "07d5d02224196097502da8c1c59152ed0e717e10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/people/zipball/39fa465f57bdcb428517d3d54b2e019af77475e5",
-                "reference": "39fa465f57bdcb428517d3d54b2e019af77475e5",
+                "url": "https://api.github.com/repos/laravel-enso/people/zipball/07d5d02224196097502da8c1c59152ed0e717e10",
+                "reference": "07d5d02224196097502da8c1c59152ed0e717e10",
                 "shasum": ""
             },
             "require": {
@@ -4159,9 +4159,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/people/issues",
-                "source": "https://github.com/laravel-enso/people/tree/4.3.1"
+                "source": "https://github.com/laravel-enso/people/tree/4.3.2"
             },
-            "time": "2024-02-05T07:42:49+00:00"
+            "time": "2024-02-16T07:38:55+00:00"
         },
         {
             "name": "laravel-enso/permissions",
@@ -4603,16 +4603,16 @@
         },
         {
             "name": "laravel-enso/tasks",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/tasks.git",
-                "reference": "1323115f6734fbb8242e42eaf814ce3cb7a645c5"
+                "reference": "4646d563b0b716d446dd8aeacbbfa3317e0b3e64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/tasks/zipball/1323115f6734fbb8242e42eaf814ce3cb7a645c5",
-                "reference": "1323115f6734fbb8242e42eaf814ce3cb7a645c5",
+                "url": "https://api.github.com/repos/laravel-enso/tasks/zipball/4646d563b0b716d446dd8aeacbbfa3317e0b3e64",
+                "reference": "4646d563b0b716d446dd8aeacbbfa3317e0b3e64",
                 "shasum": ""
             },
             "require": {
@@ -4667,9 +4667,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/tasks/issues",
-                "source": "https://github.com/laravel-enso/tasks/tree/2.1.0"
+                "source": "https://github.com/laravel-enso/tasks/tree/2.1.1"
             },
-            "time": "2024-01-10T10:22:25+00:00"
+            "time": "2024-02-16T07:36:30+00:00"
         },
         {
             "name": "laravel-enso/teams",
@@ -4984,16 +4984,16 @@
         },
         {
             "name": "laravel-enso/users",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/users.git",
-                "reference": "f9a6701d4d1ea314bf5ea45f02d8a7cf49826793"
+                "reference": "72550100c27e287280bbe2ff8983802147c8150a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/users/zipball/f9a6701d4d1ea314bf5ea45f02d8a7cf49826793",
-                "reference": "f9a6701d4d1ea314bf5ea45f02d8a7cf49826793",
+                "url": "https://api.github.com/repos/laravel-enso/users/zipball/72550100c27e287280bbe2ff8983802147c8150a",
+                "reference": "72550100c27e287280bbe2ff8983802147c8150a",
                 "shasum": ""
             },
             "require": {
@@ -5061,9 +5061,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/users/issues",
-                "source": "https://github.com/laravel-enso/users/tree/2.3.1"
+                "source": "https://github.com/laravel-enso/users/tree/2.3.2"
             },
-            "time": "2024-02-15T05:10:35+00:00"
+            "time": "2024-02-16T07:34:46+00:00"
         },
         {
             "name": "laravel/framework",
@@ -11346,16 +11346,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.10.4",
+            "version": "v3.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "09d3dc77d7dc1b063e3728a6029c39ee0fbebf1d"
+                "reference": "d1a48965f2b25a6cec2eea07d719b568a37c9a88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/09d3dc77d7dc1b063e3728a6029c39ee0fbebf1d",
-                "reference": "09d3dc77d7dc1b063e3728a6029c39ee0fbebf1d",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d1a48965f2b25a6cec2eea07d719b568a37c9a88",
+                "reference": "d1a48965f2b25a6cec2eea07d719b568a37c9a88",
                 "shasum": ""
             },
             "require": {
@@ -11414,7 +11414,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.10.4"
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.10.5"
             },
             "funding": [
                 {
@@ -11426,7 +11426,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-14T08:52:12+00:00"
+            "time": "2024-02-15T10:45:45+00:00"
         },
         {
             "name": "brianium/paratest",
@@ -12556,16 +12556,16 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.20.1",
+            "version": "v1.20.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "06ebf922ccedfa4cc43015825697ee8c1fb80f7e"
+                "reference": "484625c23a4fa4f303617f29fcacd42951c9c01d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/06ebf922ccedfa4cc43015825697ee8c1fb80f7e",
-                "reference": "06ebf922ccedfa4cc43015825697ee8c1fb80f7e",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/484625c23a4fa4f303617f29fcacd42951c9c01d",
+                "reference": "484625c23a4fa4f303617f29fcacd42951c9c01d",
                 "shasum": ""
             },
             "require": {
@@ -12616,9 +12616,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maximebf/php-debugbar/issues",
-                "source": "https://github.com/maximebf/php-debugbar/tree/v1.20.1"
+                "source": "https://github.com/maximebf/php-debugbar/tree/v1.20.2"
             },
-            "time": "2024-02-13T19:03:14+00:00"
+            "time": "2024-02-15T10:49:09+00:00"
         },
         {
             "name": "mockery/mockery",
