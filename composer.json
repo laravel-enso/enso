@@ -1,7 +1,7 @@
 {
     "name": "laravel-enso/enso",
     "type": "project",
-    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 7.x, Vue and Bulma",
+    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 10.x, Vue and Bulma",
     "keywords": [
         "framework",
         "laravel"
@@ -37,20 +37,24 @@
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "barryvdh/laravel-debugbar": "^3.5",
-        "brianium/paratest": "^6.3",
+        "brianium/paratest": "^7.4",
         "filp/whoops": "^2.1.0",
         "laravel-enso/cli": "^5.0",
-        "laravel-enso/phpunit-pretty-print": "^1.0",
+        "laravel-enso/phpunit-pretty-print": "^1.2",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
+        "nunomaduro/collision": "^7.0",
         "nunomaduro/phpinsights": "dev-master",
-        "phpunit/phpunit": "^9.5.10",
+        "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "laravel": {
@@ -72,7 +76,7 @@
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [

@@ -20,17 +20,10 @@ class Handler extends ExceptionHandler
 
     public function report(Throwable $exception)
     {
-        if (App::bound('sentry') && $this->shouldReport($exception)) {
-            Sentry::report($exception);
-        }
+        // if (App::bound('sentry') && $this->shouldReport($exception)) {
+        //     Sentry::report($exception);
+        // }
 
         parent::report($exception);
     }
-
-    // public function register()
-    // {
-    //     $this->reportable(function (Throwable $e) {
-    //
-    //     });
-    // }
 }
