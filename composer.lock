@@ -3214,16 +3214,16 @@
         },
         {
             "name": "laravel-enso/forms",
-            "version": "4.6.1",
+            "version": "4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/forms.git",
-                "reference": "c562bae762578168c6609fcc48c84b522d6105ea"
+                "reference": "dbd86ed377334479fee5f8130e8bf9ab8a1ecd74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/c562bae762578168c6609fcc48c84b522d6105ea",
-                "reference": "c562bae762578168c6609fcc48c84b522d6105ea",
+                "url": "https://api.github.com/repos/laravel-enso/forms/zipball/dbd86ed377334479fee5f8130e8bf9ab8a1ecd74",
+                "reference": "dbd86ed377334479fee5f8130e8bf9ab8a1ecd74",
                 "shasum": ""
             },
             "require": {
@@ -3268,9 +3268,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/forms/issues",
-                "source": "https://github.com/laravel-enso/forms/tree/4.6.1"
+                "source": "https://github.com/laravel-enso/forms/tree/4.6.2"
             },
-            "time": "2024-02-27T14:27:30+00:00"
+            "time": "2024-02-28T14:29:17+00:00"
         },
         {
             "name": "laravel-enso/google",
