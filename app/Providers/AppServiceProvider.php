@@ -12,11 +12,11 @@ class AppServiceProvider extends ServiceProvider
         BaseUser::class => User::class,
     ];
 
-    public function boot()
+    public function boot(): void
     {
     }
 
-    public function register()
+    public function register(): void
     {
     }
 }
