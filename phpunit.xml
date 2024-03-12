@@ -54,6 +54,7 @@
     <server name="QUEUE_CONNECTION" value="sync"/>
     <server name="SESSION_DRIVER" value="array"/>
     <env name="TELESCOPE_ENABLED" value="false"/>
+    <env name="BCRYPT_ROUNDS" value="12"/>
     <ini name="memory_limit" value="-1"/>
   </php>
 </phpunit>
