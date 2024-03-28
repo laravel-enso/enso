@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.1-cli-bullseys
 
 # Apache configuration
 RUN a2enmod rewrite

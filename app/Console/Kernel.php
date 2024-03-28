@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
 
     private Schedule $schedule;
 
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
         if (App::runningUnitTests()) {
             return;
@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         }
     }
 
-    protected function commands()
+    protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
 
