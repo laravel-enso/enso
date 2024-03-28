@@ -27,7 +27,7 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
