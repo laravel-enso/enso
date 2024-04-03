@@ -1,56 +1,59 @@
 {
     "name": "laravel-enso/enso",
     "type": "project",
-    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 7.x, Vue and Bulma",
+    "description": "Laravel Enso can be a solid start for any SPA based on Laravel 10.x, Vue and Bulma",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
     "require": {
-        "php": ">=8.0",
-        "doctrine/dbal": "^2.8",
+        "php": "^8.0",
+        "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-enso/calendar": "^3.0",
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
-        "laravel-enso/core": "^8.0",
+        "laravel-enso/core": "^9.0",
         "laravel-enso/data-import": "^6.0",
-        "laravel-enso/discussions": "^4.0",
         "laravel-enso/documents": "^5.0",
         "laravel-enso/excel": "^3.0",
+        "laravel-enso/helpers": "^3.0",
         "laravel-enso/how-to": "^5.0",
         "laravel-enso/pdf": "^2.0",
         "laravel-enso/tasks": "^2.0",
         "laravel-enso/teams": "^4.0",
         "laravel-enso/tutorials": "^5.0",
-        "laravel/framework": "^9.2",
+        "laravel/framework": "^10.0",
         "laravel/horizon": "^5.0",
-        "laravel/sanctum": "^2.14.1",
+        "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^3.0",
-        "sentry/sentry-laravel": "^2.0.0",
+        "laravel/ui": "^4.0",
+        "sentry/sentry-laravel": "^4.0.0",
         "symfony/http-client": "^6.0",
         "symfony/mailgun-mailer": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "barryvdh/laravel-debugbar": "^3.5",
-        "brianium/paratest": "^6.3",
+        "brianium/paratest": "^7.4",
         "filp/whoops": "^2.1.0",
         "laravel-enso/cli": "^5.0",
-        "laravel-enso/phpunit-pretty-print": "^1.0",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
+        "nunomaduro/collision": "^7.0",
         "nunomaduro/phpinsights": "dev-master",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "laravel": {
@@ -72,7 +75,7 @@
             "LaravelEnso\\Tables\\Tests\\": "vendor/laravel-enso/tables/tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [

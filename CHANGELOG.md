@@ -1,5 +1,452 @@
 # Laravel Enso's Changelog
 
+## 6.0.0
+
+This release aims to bring our ecosystem one step closer to the latest Laravel release. The primary reason for the delay was the necessity to upgrade all dynamic relations across our entire codebase to support the native Laravel Implementation. This process required extensive testing to ensure proper compatibility.
+
+Additionally, we took this opportunity to implement support for PHP native enums alongside our existing enum implementation. This decision was mandatory for maintaining backward compatibility while also embracing the latest features offered by PHP. Integrating these two required enum implementations further contributed to the release delay.
+
+Here are the key highlights:
+
+- **Laravel 10**: Laravel 10 is now a mandatory requirement for the v6 release.
+
+
+- **Form and Tables Packages Update**: Both packages now support native PHP Enums in addition to our custom implementation, ensuring backward compatibility.
+  
+- **Automatic Dynamic Relations/Methods Registration**: Dynamic relations are now registered automatically and utilize Laravel's native dynamic relation registration functionality. Dynamic methods are registered automatically as well. All dynamic methods and relations must be created under the `App\Dynamics` namespace.
+
+
+### Front-end
+
+#### accessories
+- hides count if 0
+
+#### addresses
+- fixes modal multiple open/close
+- improves logic segregation
+- fixes default value for id in form
+
+#### bookmarks
+- fixes bookmarks
+
+#### calendar
+- removes deprecated imports
+- adds colors
+- fixes import
+
+#### card
+- fixes events
+
+#### charts
+- fixes rounding issue
+
+
+#### checkbox
+- fixes v-model use on prop
+
+
+#### clipboard
+- fixes size
+- removes custom size
+
+
+#### comments
+- improves padding
+- improves word break
+
+
+#### companies
+- adds ability to navigate to person create form from company edit form
+- adds router error handler
+- fixes #16
+
+
+#### confirmation
+- fixes attribute inheritance
+
+#### currencies
+- removes unneeded actions in store
+
+#### data-import
+
+- fixes rejected arg
+- refactor due to `Types` enum deletion
+- adds invisible & template props in import uploader
+- fixes import uploader
+
+#### dropdown
+- fixes selections during transition
+- adds `open-up` prop
+
+#### files
+- adds store
+- adds count option on folder
+- removes max width for files
+- brings back `max-w`
+- improves file layout
+- adds `word-wrap:break-all`
+
+#### filters
+- fixes input filter clear control
+- fixes v-model on input filters
+- supports null in core input filter
+- improves label translation
+- adds `x` padding for header
+
+#### forms
+- implements custom submit path
+- adds `dirtyFields` array
+- adds `Confirmation` to export list
+- makes all actions `<a>` instead of `<button>`
+- removes confirmation modal
+- extracts the new confirmation in its own component
+- adds ability to pass params to select field
+
+#### how-to
+- raised limit for how to videos;
+
+#### io
+- removes redundant websockets connect
+- fixes IO elapsed / remaining toggle
+- improves operation template
+- adds support for tasks
+- makes tasks not cancellable
+
+#### measurement-units
+- makes form smaller
+
+#### menus
+- removes transition group tag from draggable
+- removes unused prop
+
+#### money
+- fixes `modelValue` precision
+- fixes input for values with comma thousands separator
+- fixes null handling
+
+#### notifications
+- removes redundant websockets connect
+
+#### packaging-units
+- improves form
+
+#### people
+- improves edit form
+
+#### progress-circle
+- allows string progress
+
+#### progress-indicator
+- fixes missing import
+
+#### quick-view
+- fixes animation
+
+#### select
+- ignores options if is server side
+- fixes searchLimit condition
+- fixes objects scenario
+- adds open-up prop
+
+#### strings
+- fixes #2
+
+#### switch
+- improves label slots
+
+#### tables
+- adds event on ajax/fetch error
+- implements filter state handling
+- fixes initial filters backup
+- improves filter state handling
+- implements custom css row style
+- fixes mobile controls
+- adds ability to toggle selectable from ui
+- clears selection when selectable is toggled
+- fixes space in records info -> selection details
+
+#### tabs
+- improves tab id type
+
+#### tasks
+- removes redundant websockets connect
+- update error handler in selector
+
+#### themes
+- fixes avatar size
+- fixes tooltip arrow
+- disables light classes for dark theme
+
+#### typeahead
+- now using trim for query length
+- uses invalidRegExp in template
+
+#### ui
+- fixes code style
+- uses await / async in store
+- improves `app-update`
+- puts `app-update` indicator in its original position
+- adds route getter in store
+- added check for having the route in the state obj
+- adds http helper in local
+- fixes password reset
+- adds `app-state-loaded` event
+- adds option to hide/show page header
+- fixes edge case where the `appUpdate` item is not present
+- adds handling for `422` errors in error handler
+- improves navbar item to accept array icons
+
+#### users
+- fixes user profile template
+
+### Back-end
+
+#### action-logger
+- implements `duration`
+
+#### addresses
+- adds `name` in township rememberable keys
+- adds `abbreviation` in region rememberable keys
+- adds ability to update coordinates
+- adds missing relations
+- implements the new `geocodingKey`
+- adds `Region` resource
+- adds locality name to resource `Locality`
+- adds `addresses` relation
+- adds `Abilities` trait
+
+#### api
+- allows string type request body
+- adds timeout contract
+- implements mandatory validation
+- helper update
+
+#### avatar
+- adds minssing `unique()` on `file_id`
+
+#### calendar
+- fixes event filtering
+- adds colors
+
+#### charts
+- depreciate when helper trait
+
+#### comments
+- refactor resource alias
+
+#### companies
+- makes `fiscal_code` unique in importer
+- drops `companies_reg_com_nr_unique`
+
+#### control-panel-api
+- implements `syncPermissions`
+
+#### core
+- removes superfluous enum
+- removes .styleci.yml
+- adds tiktok in config
+- fixes email icons
+- adds `noindex` meta
+
+#### data-export
+- improves export excel speed
+- adds custom max contract
+- adds custom count
+- improves email subject for export done / export error notification
+- implements `CascadesFileDeletion`
+- adds missing `unique()` on `file_id`
+- fixes `syncExporter`
+- improves data export by extracting iteration part; adds `CustomMin` interface
+- fixes edge case in iterator
+- Use qualified key name instead of key name
+- adds notifiables ability to export
+
+#### data-import
+- added the purge command implementation
+- removes prune batches
+- makes private table builder methods protected
+- adds avoids deletion conflicts on import
+- added upgrade; updated migration
+- set batch null on import cancellation
+- implements `CascadesFileDeletion`
+- updated cascade deletion; added missing unique index
+- when restarting an import, optionally cleanup the attached `RejectedImport`
+- improves purge command; improves table builder; fixes `rejected_imports` fk
+- improves purge command
+- fixes `delete` method in model
+- fixed old `deletable($type)` usages
+- fixes rejected load
+- prioritized `RejectedDataImportForeignKey` AFTER `RejectedDataImportId`
+- fixes excel seeder
+- Update `RejectedFileCreatedBy`
+- improves excel seeder for better flexibility
+- refactor due to `Types` enum deletion
+- fixes missing enum
+- adds cancel stuck command
+- implements CSV import
+- reverts example import to excel
+- addresses mentions
+- depreciate when helper trait
+- fixes exception in `Options` service, refactor
+- improves `restart` method
+- adds `txt` as supported type
+
+#### document
+- implements `CascadesFileDeletion`
+- fixed deletion
+- fixed actions
+
+#### dynamic-methods
+- improves dynamic methods and relations functionality, wraps core laravel dynamic relations
+
+#### files
+- adds file id unique upgrade
+- fixes destroy redirect
+- removes file in attachable; adds `CascadesFileDeletion` interface
+- fixes cascadable
+- adds missing `unique()` on `file_id`
+- add upgrade to drop old morphable index
+- improves performance in files index
+- fixed upgrade order & type (manual)
+- adds missing index
+- adds `type_id` & `created_at` index
+- adds state for types
+- improves upload controller logic
+- adds `loadData` in file model
+- fixes icons in type index table;
+- moves `is_public` in `file_types` table
+- fixes factory
+- fixes browsing public files
+
+#### form
+- improves form mutators (arg handling)
+- fixes args handling
+- adds support for params
+- adds support for pivot params & custom params
+- depreciate when helper trait
+
+#### google
+- fixes encrypted columns length
+- updated migrations
+- addresses PR discussion
+- removes static property from settings model
+- adds recaptcha url field
+- adds recaptcha validation rule
+- improves message in recaptcha rule
+- adds geocoding key
+
+#### helpers
+- adds round capability in Decimals
+- adds use index ability in forceable index trait
+- small refactor
+- depreciate when helper trait
+
+#### how-to
+- adds minssing `unique()` on `file_id`
+
+#### io
+- improves `ioEvent`
+- adds support for task
+- reverted interface method return type
+- uses `broadcastQueue` methods in event
+
+#### localisation
+- adds new confirmation text
+- fixes translation
+- improves texts
+
+#### menus
+- refactors the menu table
+
+#### pdf
+- adds filename for inline
+
+#### people
+- adds email in person resource
+- implements `id_series` and `id_number` fields
+- import #23
+- improves factory
+- remove validator
+- fixes upgrade order
+- Update `IdNumber`
+
+#### permissions
+- improves access-route gate to user cache
+
+#### roles
+- manages role-permissions cache
+- improves cache handling
+- caches permissions only in production
+- improves role seeder
+- reverts previous config change
+- improves roles seeder
+- adds user groups selector in form
+
+#### select
+- fixes pivot params with null value
+- depreciate when helper trait, upgrade
+
+#### tables
+- adds properties to number
+- sets decimal & thousand only when were defined
+- removes money
+- adds the ability to define method columns (calls method from model)
+- adds method to default false meta columns array
+- small refactor in filter class
+- fixed error when filtering a multiple selection
+- fixes internal string filters
+- extracts table cache key in a method
+- fixes and improves excel export performance
+- fixes edge case when the writer was not initialised yet
+- fixes enum export
+- implements custom filtered count interface
+- refactors interval logic
+- fixes server side enum computation for loaded relations
+- fixes strip order
+
+#### tasks
+- improves task validation
+
+#### upgrade
+- resets role permission cache
+- adds tiny integer helper
+- adds support for unsigned
+- namespace update
+- adds missing column upgrade helper
+- fixes upgrade structure
+
+#### user
+
+- adds `isSuperior` (role) in user
+- adds `canAccess` helper that caches permissions
+- implements `Role::permissionList()`
+- adds `appellative` getter in user
+
+### Upgrade Steps:
+
+1. **Sync Composer Dependencies**: Update your `composer.json` file according to [this file](https://github.com/laravel-enso/enso/blob/a80232f9fec470ed416e6dbd979f59d7fba463de/composer.json).
+   
+2. **Run Composer Update**: Execute `composer update` in your terminal.
+   - Rename `password_resets` migrations to `password_reset_tokens`.
+   - Run `php artisan enso:upgrade —before-migration` 
+   - Run `php artisan migrate`.
+   - Run `php artisan enso:upgrade`.
+
+
+   - Change `password_resets` to `password_reset_tokens` in `auth.php` as demonstrated [here](https://github.com/laravel-enso/enso/pull/437/files#diff-66a4eb6caa45de87ad409f2f5f2d5e7dd30aacd12de32af921aa32317cf9b2e2).
+   
+   - Update PHPUnit XML config as seen [here](https://github.com/laravel-enso/enso/pull/437/files#diff-ae310e922c85656813bd29d9f3c9a1b87c8aaa83d924813a5b91c67b7abb3cb9).
+
+3. **Follow the official Laravel 10 Upgrade guide**: Refer to the [Laravel 10 Upgrade guide](https://laravel.com/docs/10.x/upgrade#upgrade-10.0), making sure to also check out the [comparison tool](https://github.com/laravel/laravel/compare/9.x...10.x) and update your files accordingly.
+
+4. **Upgrade Dynamic Relations**: Ensure all dynamic methods are under the `App\Dynamics` namespace prefix. Follow [this example](https://github.com/laravel-enso/avatars/blob/master/src/Dynamics/Avatar.php).
+
+5. **Upgrade Dynamic Methods**: Ensure all dynamic methods are under the `App\Dynamics` namespace prefix. Refer to [this commit](https://github.com/laravel-enso/avatars/commit/047244b583af5b17d420a0beac89e4e385bd31cf#diff-5e43f518ac9126a6784660c6f5a3687f242c7011283b1803f0757567bf3f8856).
+
+6. **Update User Factory**: Refer to [this file](https://github.com/laravel-enso/enso/blob/a80232f9fec470ed416e6dbd979f59d7fba463de/database/factories/UserFactory.php).
+
+7. **Optional: Migrate Existing Enso Enums to Native PHP Enums**: If you wish to migrate your existing Enso Enums to native PHP enums, ensure that you use the `LaravelEnso\Enums\Traits\Select.php` Trait in order to retain compatibility with our Forms and Tables packages.
+
 ## 5.0.0
 
 This breaking release brings the new Enso file system and upgrades all packages to Laravel 9.

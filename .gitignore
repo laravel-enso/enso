@@ -24,6 +24,7 @@ Homestead.yaml
 .php_cs.cache
 npm-debug.log
 yarn-error.log
+.phpunit.cache
 
 # code editors
 /.idea

@@ -12,14 +12,15 @@ class UserFactory extends CoreUserFactory
 {
     protected $model = User::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
-            'person_id' => Person::factory(),
+            'person_id' => Person::factory()->test(),
             'group_id' => UserGroup::factory(),
             'email' => fn ($attributes) => Person::find($attributes['person_id'])->email,
             'role_id' => Role::factory(),
             'is_active' => $this->faker->boolean,
+            'password' => bcrypt($this->faker->password),
         ];
     }
 }
