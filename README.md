@@ -85,7 +85,7 @@ The support services are provided by a team of 4 members.
 
 ### Thanks
 
-Built with with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 5.6.x, Bulma 0.6.x, Vuejs 2.5.x and:
+Built with <span style="color:red"> &#10084;&#65039;</span>, crafted on Laravel 8.x, Bulma 0.9.x, Vuejs 2.6.x and:
 
 [Vue Router](https://router.vuejs.org/en), [Vuex](https://vuex.vuejs.org/en/), [Axios](https://github.com/axios/axios),
 [Font awesome 5](https://fontawesome.com), [Animate.css](https://daneden.github.io/animate.css/), 
