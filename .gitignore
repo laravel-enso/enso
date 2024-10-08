@@ -18,6 +18,7 @@ Homestead.yaml
 # env
 .env
 .env.backup
+.phpactor.json
 # logs
 .phpunit.result.cache
 .php_cs
@@ -29,6 +30,7 @@ yarn-error.log
 # code editors
 /.idea
 /.vscode
+/.zed
 *.suo
 *.ntvs*
 *.njsproj
