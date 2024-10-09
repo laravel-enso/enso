@@ -2286,16 +2286,16 @@
         },
         {
             "name": "laravel-enso/comments",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/comments.git",
-                "reference": "bf3f5eb6d93299cf49c7d041084596a6109f27ff"
+                "reference": "8ce392f139227e25516ac7f4690b656d4ac14add"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/bf3f5eb6d93299cf49c7d041084596a6109f27ff",
-                "reference": "bf3f5eb6d93299cf49c7d041084596a6109f27ff",
+                "url": "https://api.github.com/repos/laravel-enso/comments/zipball/8ce392f139227e25516ac7f4690b656d4ac14add",
+                "reference": "8ce392f139227e25516ac7f4690b656d4ac14add",
                 "shasum": ""
             },
             "require": {
@@ -2342,9 +2342,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/comments/issues",
-                "source": "https://github.com/laravel-enso/comments/tree/4.4.0"
+                "source": "https://github.com/laravel-enso/comments/tree/4.4.1"
             },
-            "time": "2024-08-08T21:23:38+00:00"
+            "time": "2024-10-09T07:52:28+00:00"
         },
         {
             "name": "laravel-enso/companies",
@@ -2542,16 +2542,16 @@
         },
         {
             "name": "laravel-enso/core",
-            "version": "10.0.0",
+            "version": "10.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/core.git",
-                "reference": "b179631fee3a99cbb4c1a79c876d7a7e6f11883b"
+                "reference": "dcc2894c672ebe12d43d15797a78c3aa14de2143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/core/zipball/b179631fee3a99cbb4c1a79c876d7a7e6f11883b",
-                "reference": "b179631fee3a99cbb4c1a79c876d7a7e6f11883b",
+                "url": "https://api.github.com/repos/laravel-enso/core/zipball/dcc2894c672ebe12d43d15797a78c3aa14de2143",
+                "reference": "dcc2894c672ebe12d43d15797a78c3aa14de2143",
                 "shasum": ""
             },
             "require": {
@@ -2645,9 +2645,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/core/issues",
-                "source": "https://github.com/laravel-enso/core/tree/10.0.0"
+                "source": "https://github.com/laravel-enso/core/tree/10.0.1"
             },
-            "time": "2024-10-07T13:33:31+00:00"
+            "time": "2024-10-09T07:58:21+00:00"
         },
         {
             "name": "laravel-enso/countries",
@@ -2860,16 +2860,16 @@
         },
         {
             "name": "laravel-enso/documents",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/documents.git",
-                "reference": "e2cfcb061cfebccea67a47b98c2fca43c6ee0e7d"
+                "reference": "32effe6c6d3b9f002daf2f146b4944b6d1db623f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/e2cfcb061cfebccea67a47b98c2fca43c6ee0e7d",
-                "reference": "e2cfcb061cfebccea67a47b98c2fca43c6ee0e7d",
+                "url": "https://api.github.com/repos/laravel-enso/documents/zipball/32effe6c6d3b9f002daf2f146b4944b6d1db623f",
+                "reference": "32effe6c6d3b9f002daf2f146b4944b6d1db623f",
                 "shasum": ""
             },
             "require": {
@@ -2918,9 +2918,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/documents/issues",
-                "source": "https://github.com/laravel-enso/documents/tree/5.2.0"
+                "source": "https://github.com/laravel-enso/documents/tree/5.2.1"
             },
-            "time": "2024-08-08T17:45:27+00:00"
+            "time": "2024-10-09T07:58:54+00:00"
         },
         {
             "name": "laravel-enso/dynamic-methods",
@@ -3169,16 +3169,16 @@
         },
         {
             "name": "laravel-enso/filters",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/filters.git",
-                "reference": "cab31a70f2f21c8bee2279fbb62bb42e57101799"
+                "reference": "55544f83832aadce62b081d106a597fe37ba9e6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/filters/zipball/cab31a70f2f21c8bee2279fbb62bb42e57101799",
-                "reference": "cab31a70f2f21c8bee2279fbb62bb42e57101799",
+                "url": "https://api.github.com/repos/laravel-enso/filters/zipball/55544f83832aadce62b081d106a597fe37ba9e6b",
+                "reference": "55544f83832aadce62b081d106a597fe37ba9e6b",
                 "shasum": ""
             },
             "require": {
@@ -3213,9 +3213,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/filters/issues",
-                "source": "https://github.com/laravel-enso/filters/tree/2.3.0"
+                "source": "https://github.com/laravel-enso/filters/tree/2.3.1"
             },
-            "time": "2024-08-07T18:36:21+00:00"
+            "time": "2024-10-09T07:45:45+00:00"
         },
         {
             "name": "laravel-enso/forms",
@@ -3623,16 +3623,16 @@
         },
         {
             "name": "laravel-enso/io",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/io.git",
-                "reference": "964ddab8e96f75b775d578fa2359a9e52d5d7fd7"
+                "reference": "4d8b0dd5965c5d6495b5b7ed7d2a725d72ce2c64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/io/zipball/964ddab8e96f75b775d578fa2359a9e52d5d7fd7",
-                "reference": "964ddab8e96f75b775d578fa2359a9e52d5d7fd7",
+                "url": "https://api.github.com/repos/laravel-enso/io/zipball/4d8b0dd5965c5d6495b5b7ed7d2a725d72ce2c64",
+                "reference": "4d8b0dd5965c5d6495b5b7ed7d2a725d72ce2c64",
                 "shasum": ""
             },
             "require": {
@@ -3676,9 +3676,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/io/issues",
-                "source": "https://github.com/laravel-enso/io/tree/2.6.0"
+                "source": "https://github.com/laravel-enso/io/tree/2.6.1"
             },
-            "time": "2024-08-08T16:38:41+00:00"
+            "time": "2024-10-09T08:00:09+00:00"
         },
         {
             "name": "laravel-enso/localisation",
@@ -4237,16 +4237,16 @@
         },
         {
             "name": "laravel-enso/rememberable",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/rememberable.git",
-                "reference": "5b310fe4090cf42d35a875a1abbd86eabc4b4a2a"
+                "reference": "28cb99599a1ffc709301f89380c085b287ce3db2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/rememberable/zipball/5b310fe4090cf42d35a875a1abbd86eabc4b4a2a",
-                "reference": "5b310fe4090cf42d35a875a1abbd86eabc4b4a2a",
+                "url": "https://api.github.com/repos/laravel-enso/rememberable/zipball/28cb99599a1ffc709301f89380c085b287ce3db2",
+                "reference": "28cb99599a1ffc709301f89380c085b287ce3db2",
                 "shasum": ""
             },
             "require": {
@@ -4289,9 +4289,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/rememberable/issues",
-                "source": "https://github.com/laravel-enso/rememberable/tree/3.5.0"
+                "source": "https://github.com/laravel-enso/rememberable/tree/3.5.1"
             },
-            "time": "2024-08-08T17:12:21+00:00"
+            "time": "2024-10-09T08:08:25+00:00"
         },
         {
             "name": "laravel-enso/roles",
@@ -4990,16 +4990,16 @@
         },
         {
             "name": "laravel-enso/users",
-            "version": "2.4.0",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/users.git",
-                "reference": "42d403b68352bf1557ba2fe37a9f3a44cce95b10"
+                "reference": "c8d2f2d142b301e346f0590609b9b573f01d3734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/users/zipball/42d403b68352bf1557ba2fe37a9f3a44cce95b10",
-                "reference": "42d403b68352bf1557ba2fe37a9f3a44cce95b10",
+                "url": "https://api.github.com/repos/laravel-enso/users/zipball/c8d2f2d142b301e346f0590609b9b573f01d3734",
+                "reference": "c8d2f2d142b301e346f0590609b9b573f01d3734",
                 "shasum": ""
             },
             "require": {
@@ -5067,22 +5067,22 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/users/issues",
-                "source": "https://github.com/laravel-enso/users/tree/2.4.0"
+                "source": "https://github.com/laravel-enso/users/tree/2.4.2"
             },
-            "time": "2024-10-07T13:45:40+00:00"
+            "time": "2024-10-09T08:07:36+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v11.26.0",
+            "version": "v11.27.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b8cb8998701d5b3cfe68539d3c3da1fc59ddd82b"
+                "reference": "a51d1f2b771c542324a3d9b76a98b1bbc75c0ee9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b8cb8998701d5b3cfe68539d3c3da1fc59ddd82b",
-                "reference": "b8cb8998701d5b3cfe68539d3c3da1fc59ddd82b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a51d1f2b771c542324a3d9b76a98b1bbc75c0ee9",
+                "reference": "a51d1f2b771c542324a3d9b76a98b1bbc75c0ee9",
                 "shasum": ""
             },
             "require": {
@@ -5278,20 +5278,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-10-01T14:29:34+00:00"
+            "time": "2024-10-09T04:17:35+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.29.0",
+            "version": "v5.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "1d97f94412e89ff48683acd58d4a702d6bee7b88"
+                "reference": "9f482f21c23ed01c2366d1157843165165579c23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/1d97f94412e89ff48683acd58d4a702d6bee7b88",
-                "reference": "1d97f94412e89ff48683acd58d4a702d6bee7b88",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/9f482f21c23ed01c2366d1157843165165579c23",
+                "reference": "9f482f21c23ed01c2366d1157843165165579c23",
                 "shasum": ""
             },
             "require": {
@@ -5355,9 +5355,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/horizon/issues",
-                "source": "https://github.com/laravel/horizon/tree/v5.29.0"
+                "source": "https://github.com/laravel/horizon/tree/v5.29.1"
             },
-            "time": "2024-09-24T13:38:25+00:00"
+            "time": "2024-10-08T18:23:02+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -6016,16 +6016,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.29.0",
+            "version": "3.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "0adc0d9a51852e170e0028a60bd271726626d3f0"
+                "reference": "edc1bb7c86fab0776c3287dbd19b5fa278347319"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0adc0d9a51852e170e0028a60bd271726626d3f0",
-                "reference": "0adc0d9a51852e170e0028a60bd271726626d3f0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/edc1bb7c86fab0776c3287dbd19b5fa278347319",
+                "reference": "edc1bb7c86fab0776c3287dbd19b5fa278347319",
                 "shasum": ""
             },
             "require": {
@@ -6093,9 +6093,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.29.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.29.1"
             },
-            "time": "2024-09-29T11:59:11+00:00"
+            "time": "2024-10-08T08:58:34+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -6621,16 +6621,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "3abf7425cd284141dc5d8d14a9ee444de3345d1a"
+                "reference": "8eea230464783aa9671db8eea6f8c6ac5285794b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/3abf7425cd284141dc5d8d14a9ee444de3345d1a",
-                "reference": "3abf7425cd284141dc5d8d14a9ee444de3345d1a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8eea230464783aa9671db8eea6f8c6ac5285794b",
+                "reference": "8eea230464783aa9671db8eea6f8c6ac5285794b",
                 "shasum": ""
             },
             "require": {
@@ -6673,9 +6673,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.3.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.3.1"
             },
-            "time": "2024-09-29T13:56:26+00:00"
+            "time": "2024-10-08T18:51:32+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -13577,16 +13577,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.35",
+            "version": "10.5.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7ac8b4e63f456046dcb4c9787da9382831a1874b"
+                "reference": "aa0a8ce701ea7ee314b0dfaa8970dc94f3f8c870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7ac8b4e63f456046dcb4c9787da9382831a1874b",
-                "reference": "7ac8b4e63f456046dcb4c9787da9382831a1874b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/aa0a8ce701ea7ee314b0dfaa8970dc94f3f8c870",
+                "reference": "aa0a8ce701ea7ee314b0dfaa8970dc94f3f8c870",
                 "shasum": ""
             },
             "require": {
@@ -13658,7 +13658,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.35"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.36"
             },
             "funding": [
                 {
@@ -13674,7 +13674,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-19T10:52:21+00:00"
+            "time": "2024-10-08T15:36:51+00:00"
         },
         {
             "name": "react/cache",
