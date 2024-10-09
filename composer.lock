@@ -4103,16 +4103,16 @@
         },
         {
             "name": "laravel-enso/people",
-            "version": "4.4.1",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-enso/people.git",
-                "reference": "c458ac95c0df364451e606264bea753c8223d15a"
+                "reference": "fb98bdbe38fed80052b03563d0e774ed2044a804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-enso/people/zipball/c458ac95c0df364451e606264bea753c8223d15a",
-                "reference": "c458ac95c0df364451e606264bea753c8223d15a",
+                "url": "https://api.github.com/repos/laravel-enso/people/zipball/fb98bdbe38fed80052b03563d0e774ed2044a804",
+                "reference": "fb98bdbe38fed80052b03563d0e774ed2044a804",
                 "shasum": ""
             },
             "require": {
@@ -4165,9 +4165,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-enso/people/issues",
-                "source": "https://github.com/laravel-enso/people/tree/4.4.1"
+                "source": "https://github.com/laravel-enso/people/tree/4.4.2"
             },
-            "time": "2024-09-18T15:55:18+00:00"
+            "time": "2024-10-09T08:26:46+00:00"
         },
         {
             "name": "laravel-enso/permissions",

@@ -1,5 +1,5 @@
 preset: laravel
-version: 8
+version: 11
 disabled:
   - unused_use
 finder:
