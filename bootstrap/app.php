@@ -38,9 +38,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Auth\Middleware\Authorize::class,
             \LaravelEnso\ControlPanelApi\Http\Middleware\RequestMonitor::class,
         ]))
-    ->withExceptions(
-        function (Exceptions $exceptions) {
-        }
-        // ->reportable(static fn (Throwable $exception) => Handler::report($exception))
-    )
+    ->withExceptions(fn (Exceptions $exceptions) => $exceptions
+        ->reportable(static fn (Throwable $exception) => Handler::report($exception)))
     ->create();
