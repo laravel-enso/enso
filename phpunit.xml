@@ -46,6 +46,7 @@
   </testsuites>
   <php>
     <server name="APP_ENV" value="testing"/>
+    <server name="APP_MAINTENANCE_DRIVER" value="file"/>
     <server name="BCRYPT_ROUNDS" value="4"/>
     <server name="CACHE_DRIVER" value="array"/>
     <server name="DB_CONNECTION" value="sqlite"/>
