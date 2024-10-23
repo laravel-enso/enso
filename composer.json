@@ -8,13 +8,11 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "doctrine/dbal": "^3.3",
-        "guzzlehttp/guzzle": "^7.2",
+        "php": "^8.2",
         "laravel-enso/calendar": "^3.0",
         "laravel-enso/comments": "^4.0",
         "laravel-enso/control-panel-api": "^3.0",
-        "laravel-enso/core": "^9.0",
+        "laravel-enso/core": "^10.0",
         "laravel-enso/data-import": "^6.0",
         "laravel-enso/documents": "^5.0",
         "laravel-enso/excel": "^3.0",
@@ -24,10 +22,10 @@
         "laravel-enso/tasks": "^2.0",
         "laravel-enso/teams": "^4.0",
         "laravel-enso/tutorials": "^5.0",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^11.0",
         "laravel/horizon": "^5.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/telescope": "^4.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "sentry/sentry-laravel": "^4.0.0",
@@ -41,7 +39,7 @@
         "filp/whoops": "^2.1.0",
         "laravel-enso/cli": "^5.0",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
+        "nunomaduro/collision": "^8.1",
         "nunomaduro/phpinsights": "dev-master",
         "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0"
@@ -86,7 +84,8 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
