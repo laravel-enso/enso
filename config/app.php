@@ -1,5 +1,12 @@
 <?php
 
+use Illuminate\Support\Collection;
+
+$domain = (new Collection(
+    explode('.', preg_replace('(^https?://)', '', env('APP_URL')))
+))->splice(1)->implode('.');
+[$prefix] = explode('://', env('APP_URL'));
+
 return [
 
     /*

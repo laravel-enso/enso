@@ -21,7 +21,7 @@ return [
         // Capture queue job information in breadcrumbs
         'queue_info' => true,
 
-        'ignore_exceptions' => EnsoException::class,
+        'ignore_exceptions' => [EnsoException::class],
     ],
 
 ];
