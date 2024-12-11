@@ -24,10 +24,10 @@ module.exports = {
         },
     },
     parserOptions: {
-        parser: 'babel-eslint',
+        parser: '@babel/eslint-parser', 
         sourceType: 'module',
-        ecmaVersion: 2017,
-        allowImportExportEverywhere: true,
+        ecmaVersion: 2021,
+        requireConfigFile: false,
     },
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

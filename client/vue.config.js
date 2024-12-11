@@ -79,6 +79,22 @@ module.exports = {
         const normalRule = scssRules.store.get('normal');
         const lazyRule = config.module.rule('scss').oneOf('scss-lazy');
 
+        // config.module
+        //     .rule('scss')
+        //     .oneOfs.store
+        //     .forEach(item => {
+        //         item
+        //             .use('style-loader')
+        //             .loader('style-loader')
+        //             .options({
+        //                 injectType: 'styleTag',
+        //                 insert: function insertAtTop(element) {
+        //                     const parent = document.querySelector('head');
+        //                     parent.insertBefore(element, parent.firstChild);
+        //                 },
+        //             });
+        //     });
+
         normalRule.uses.values().forEach(use => {
             if (use.name !== 'vue-style-loader') {
                 lazyRule.use(use.name).merge(use.entries());
@@ -105,6 +121,7 @@ module.exports = {
         config.module
             .rule('images')
             .use('url-loader')
+            .loader('url-loader')
             .tap(options => ({
                 ...options, name: 'images/[name].[ext]',
             }));
@@ -112,6 +129,7 @@ module.exports = {
         config.module
             .rule('svg')
             .use('file-loader')
+            .loader('file-loader')
             .tap(options => ({
                 ...options, name: 'images/[name].[ext]',
             }));
