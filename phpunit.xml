@@ -32,7 +32,6 @@
       <directory suffix="Test.php">./vendor/laravel-enso/tables/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/track-who/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/tutorials/tests</directory>
-      <directory suffix="Test.php">./vendor/laravel-enso/upgrade/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/users/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/user-groups/tests</directory>
     </testsuite>
@@ -42,6 +41,7 @@
       <directory suffix="Test.php">./vendor/laravel-enso/data-import/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/documents/tests</directory>
       <directory suffix="Test.php">./vendor/laravel-enso/files/tests</directory>
+      <directory suffix="Test.php">./vendor/laravel-enso/upgrade/tests</directory>
     </testsuite>
   </testsuites>
   <php>
