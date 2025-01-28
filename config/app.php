@@ -22,6 +22,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel Enso'),
 
+    'domain_url' => $domain,
+
+    'asset_url' => env('ASSET_URL', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use LaravelEnso\Helpers\Exceptions\EnsoException;
 use LaravelEnso\Sentry\Exceptions\Handler;
 
 $globalMiddlaware = [
@@ -23,10 +24,23 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(fn (Middleware $middleware) => $middleware
         ->use($globalMiddlaware)
+        ->alias([
+            'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+            'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+            'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+            'can' => \Illuminate\Auth\Middleware\Authorize::class,
+            'guest' => \Illuminate\Auth\Middleware\RedirectIfAuthenticated::class,
+            'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+            'precognitive' => \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
+            'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+            'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        ])
         ->prependToGroup('api', [
             \LaravelEnso\Core\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
         ])
-        ->appendToGroup('wev', [
+        ->appendToGroup('web', [
             \LaravelEnso\ControlPanelApi\Http\Middleware\RequestMonitor::class,
         ])
         ->priority([
@@ -39,5 +53,6 @@ return Application::configure(basePath: dirname(__DIR__))
             \LaravelEnso\ControlPanelApi\Http\Middleware\RequestMonitor::class,
         ]))
     ->withExceptions(fn (Exceptions $exceptions) => $exceptions
+        ->dontReport([EnsoException::class])
         ->reportable(static fn (Throwable $exception) => Handler::report($exception)))
     ->create();
