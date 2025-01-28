@@ -1,8 +1,0 @@
-preset: laravel
-version: 8
-disabled:
-  - unused_use
-finder:
-  not-name:
-    - index.php
-    - server.php

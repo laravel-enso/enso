@@ -1,5 +1,230 @@
 # Laravel Enso's Changelog
 
+## 7.0.0
+
+This release focuses on aligning Laravel Enso with the latest Laravel version (v11), bringing significant updates and improvements. We highly recommend upgrading your base application structure to match the Laravel 11 structure to ensure full compatibility and take advantage of new features.
+
+### Laravel 11 Compatibility
+
+Laravel Enso is now fully compatible with **Laravel 11**. This update brings performance enhancements, security updates, and new features introduced in Laravel 11.
+
+### Recommendations for Upgrading to Laravel 11
+
+We strongly suggest updating your base application to the Laravel 11 structure. For reference, you can explore the changes and updates in this merge request: [Laravel Enso PR #443](https://github.com/laravel-enso/enso/pull/443/files).
+
+In addition to that, please follow the **official Laravel 11 upgrade guide** to ensure your application’s codebase is fully aligned with the new version.
+
+### front-end
+
+#### addresses
+
+- implemented additional features
+
+#### datepicker
+
+- added is-success prop
+
+#### files
+
+- removed unused code
+
+#### forms
+
+- added preview for wysiwyg fields to prevent unnecessary tinymce consumption
+
+#### people
+
+- removed extra component
+
+#### select
+
+- added is-success prop
+- added is-warning prop
+
+#### tables
+
+- fixed bad timing when saving preferences
+- attempted to fix filters reset
+- made another fix attempt
+
+#### textarea
+
+- fixed behavior
+
+#### users
+
+- fixed reactivity
+
+### back-end
+
+#### action logger
+
+- attempted to fix missing request user
+- removed upgrade file
+
+#### addresses
+
+- added additional in label
+- moved geocoding to google
+- fixed casing
+- removed upgrade file
+
+#### api
+
+- implemented as form
+
+#### companies
+
+- implemented dynamic methods
+- removed upgrade file
+
+#### core
+
+- fixed various issues
+- removed upgrade files
+- fixed carbon usage
+
+#### data export
+
+- replaced deprecated box/spout with maintained openspout/openspout
+
+#### data import
+
+- sanitized non-utf-8 chars
+- fixed failed decoding
+- removed upgrade files
+- improved default sort direction
+- replaced deprecated box/spout with openspout/openspout
+
+#### dynamic methods
+
+- fixed binding for dynamic methods
+
+#### enums
+
+- implemented php native enum and added autodiscovery
+- split enum trait into random and select
+- improved search and mapping
+
+#### excel
+
+- replaced deprecated box/spout with openspout/openspout
+
+#### files
+
+- fixed icon in resource
+
+#### filters
+
+- improved clarity
+
+#### forms
+
+- fixed validation
+- improved enum validation for options
+
+#### google
+
+- added geocoding api endpoint
+- improved reviews endpoint
+
+#### helpers
+
+- added `tosnakecase` trait for requests validators
+
+#### localisation
+
+- removed upgrade file
+
+#### select
+
+- implemented nested pivot relations
+- fixed filtration for empty values
+
+#### tables
+
+- fixed exporting tables with default sorts
+- improved validation error for enums
+- refactored validation
+- avoids file write concurrency during parallel testing
+
+#### users
+
+- fixed user seeder
+
+#### versions
+
+- updated various features
+
+### privates
+
+#### webshop
+
+- implemented new features like cookie consent
+
+#### financials
+
+- fixed upgrade inconsistencies and deprecation warnings
+
+#### inventory
+
+- added abilities on inventory in
+- fixed various issues
+
+### Upgrade Steps
+
+To successfully upgrade to Laravel 11 and this latest version of Enso, follow these steps:
+
+1. **Update Composer dependencies:** Update the Laravel version in your `composer.json` file.
+
+   ```bash
+   composer require laravel/framework:^11.0
+   ```
+2. **Run composer update:** Install the new dependencies by running the following command:
+
+   ```bash
+   composer update
+   ```
+3. **Run pre-migration upgrade:** Before migrating your database, ensure you run the upgrade preparation command:
+
+   ```bash
+   php artisan upgrade --before-migration
+   ```
+4. **Run migrations:** Update your database structure using the migration command:
+
+   ```bash
+   php artisan migrate
+   ```
+5. **Run post-migration upgrade:** Complete the upgrade process with the final command:
+
+   ```bash
+   php artisan upgrade
+   ```
+6. **Important! If you updated your config keys, make sure to also update your keys on the live .env**
+
+```bash
+BROADCAST_DRIVER => BROADCAST_CONNECTION
+MAIL_DRIVER => MAIL_MAILER
+... 
+```
+
+### Optional Steps
+
+Depending on your current setup, you might want to consider additional steps for a more complete upgrade:
+
+- **Upgrade your application structure:** You can take inspiration from this [PR](https://github.com/laravel-enso/enso/pull/443/files).
+- **Update .env variable names:**\
+  Laravel 11 introduced changes in the naming conventions for some environment variables. Review and update your `.env` file accordingly.
+- **Migrate cast properties to `casts()` methods:**\
+  Laravel 11 encourages using the `casts()` method for handling property casts. Review your models and migrate any property casts to the new `casts()` method for better structure and maintainability.
+- **Update your custom exports if necessary:**
+
+  This [commit](https://github.com/laravel-enso/data-export/commit/8f7baa404907875509052982b40399f7c3be56c3) deprecated box/spout with maintained openspout/openspout. Check if there are any implications which affect your local exports.
+
+---
+
+Make sure to test your application thoroughly after the upgrade to ensure everything works as expected with the new Laravel 11 structure and features.
+
 ## 6.0.0
 
 This release aims to bring our ecosystem one step closer to the latest Laravel release. The primary reason for the delay was the necessity to upgrade all dynamic relations across our entire codebase to support the native Laravel Implementation. This process required extensive testing to ensure proper compatibility.

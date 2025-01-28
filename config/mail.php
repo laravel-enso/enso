@@ -49,12 +49,23 @@ return [
             'transport' => 'ses',
         ],
 
-        'postmark' => [
-            'transport' => 'postmark',
-        ],
-
         'mailgun' => [
             'transport' => 'mailgun',
+            'client' => [
+                'timeout' => 60 * 3,
+            ],
+        ],
+
+        'postmark' => [
+            'transport' => 'postmark',
+            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            // 'client' => [
+            //     'timeout' => 5,
+            // ],
+        ],
+
+        'resend' => [
+            'transport' => 'resend',
         ],
 
         'sendmail' => [
@@ -117,7 +128,6 @@ return [
 
     'markdown' => [
         'theme' => 'enso',
-
         'paths' => [
             resource_path('views/vendor/mail'),
         ],
