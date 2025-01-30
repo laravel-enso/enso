@@ -11,5 +11,5 @@ Artisan::command('inspire', function () {
 
 if (! App::runningUnitTests()) {
     Schedule::command('queue:prune-failed', ['--hours' => 7 * 24])->weekly();
-    Schedule::command('horizon:snapshot', ['--hours' => 7 * 24])->everyFiveMinutes();
+    Schedule::command('horizon:snapshot')->everyFiveMinutes();
 }
