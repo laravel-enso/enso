@@ -83,7 +83,7 @@
         "@sentry/tracing": "6.19.7",
         "@sentry/vue": "6.19.7",
         "animate.css": "^4.1.1",
-        "axios": "^1.15.2",
+        "axios": "^1.16.0",
         "bulma": "^1.0.4",
         "date-fns": "^4.1.0",
         "laravel-echo": "1.19.0",
