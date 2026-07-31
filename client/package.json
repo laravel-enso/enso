@@ -104,7 +104,7 @@
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-vue": "^9.33.0",
         "globals": "^17.5.0",
-        "postcss": "^8.4.49",
+        "postcss": "^8.5.18",
         "sass": "^1.98.0",
         "sirv": "^3.0.2",
         "vite": "^7.3.1",
